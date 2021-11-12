@@ -1,13 +1,13 @@
 import styles from "../../styles/Home.module.css";
 
 const produtos = [
-  "BP-Berneck",
-  "HDF-Berneck",
-  "MDF-Berneck",
-  "MDP-Berneck",
-  "Plus-Berneck",
-  "BERNECK-Pinus",
-  "BERNECK-Teca",
+  "bp-berneck",
+  "hdf-berneck",
+  "mdf-berneck",
+  "mdp-berneck",
+  "plus-berneck",
+  "berneck-pinus",
+  "berneck-teca",
 ];
 
 export default function Produtos() {
