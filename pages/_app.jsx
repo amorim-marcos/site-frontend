@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import Link from "next/link";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -14,25 +15,35 @@ function MyApp({ Component, pageProps }) {
         <h1 className={styles.title}>Bernenck Frontend</h1>
 
         <div className={styles.grid}>
-          <a href="/somos-berneck" className={styles.card}>
-            <h2>Somos Berneck &rarr;</h2>
-          </a>
+          <Link href="/somos-berneck" className={styles.card}>
+            <div className={styles.card}>
+              <h2>Somos Berneck &rarr;</h2>
+            </div>
+          </Link>
 
-          <a href="/nosso-compromisso" className={styles.card}>
-            <h2>Nosso Compromisso &rarr;</h2>
-          </a>
+          <Link href="/nosso-compromisso" className={styles.card}>
+            <div className={styles.card}>
+              <h2>Nosso Compromisso &rarr;</h2>
+            </div>
+          </Link>
 
-          <a href="/divisao-florestal" className={styles.card}>
-            <h2>Divisão Florestal &rarr;</h2>
-          </a>
+          <Link href="/divisao-florestal" className={styles.card}>
+            <div className={styles.card}>
+              <h2>Divisão Florestal &rarr;</h2>
+            </div>
+          </Link>
 
-          <a href="/produtos" className={styles.card}>
-            <h2>Produtos &rarr;</h2>
-          </a>
+          <Link href="/produtos" className={styles.card}>
+            <div className={styles.card}>
+              <h2>Produtos &rarr;</h2>
+            </div>
+          </Link>
 
-          <a href="/canal-bnk" className={styles.card}>
-            <h2>Canal BNK &rarr;</h2>
-          </a>
+          <Link href="/canal-bnk" className={styles.card}>
+            <div className={styles.card}>
+              <h2>Canal BNK &rarr;</h2>
+            </div>
+          </Link>
         </div>
       </header>
       <Component {...pageProps} />
