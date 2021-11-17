@@ -12,34 +12,34 @@ function MyApp({ Component, pageProps }) {
         <a rel="icon" href="/favicon.ico" />
       </Head>
       <header className={styles.header}>
-        <h1 className={styles.title}>Bernenck Frontend</h1>
+        <h1 className={styles.title}>Berneck Frontend</h1>
 
         <div className={styles.grid}>
-          <Link href="/somos-berneck" className={styles.card}>
+          <Link passHref href="/somos-berneck" className={styles.card}>
             <div className={styles.card}>
               <h2>Somos Berneck &rarr;</h2>
             </div>
           </Link>
 
-          <Link href="/nosso-compromisso" className={styles.card}>
+          <Link passHref href="/nosso-compromisso" className={styles.card}>
             <div className={styles.card}>
               <h2>Nosso Compromisso &rarr;</h2>
             </div>
           </Link>
 
-          <Link href="/divisao-florestal" className={styles.card}>
+          <Link passHref href="/divisao-florestal" className={styles.card}>
             <div className={styles.card}>
               <h2>Divisão Florestal &rarr;</h2>
             </div>
           </Link>
 
-          <Link href="/produtos" className={styles.card}>
+          <Link passHref href="/produtos" className={styles.card}>
             <div className={styles.card}>
               <h2>Produtos &rarr;</h2>
             </div>
           </Link>
 
-          <Link href="/canal-bnk" className={styles.card}>
+          <Link passHref href="/canal-bnk" className={styles.card}>
             <div className={styles.card}>
               <h2>Canal BNK &rarr;</h2>
             </div>
