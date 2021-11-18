@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 type Props = {
   children?: ReactNode
-  title: string
+  title?: string
 }
 
 export default function Main({ title = 'HomePage', children }: Props) {
