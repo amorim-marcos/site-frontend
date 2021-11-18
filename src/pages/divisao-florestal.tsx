@@ -1,7 +1,9 @@
+import Main from 'components/Main'
+
 export default function DivisaoFlorestal() {
   return (
     <div>
-      <h1>Divisão Florestal</h1>
+      <Main title="Divisão Florestal" />
     </div>
   )
 }

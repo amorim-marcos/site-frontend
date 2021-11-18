@@ -1,7 +1,9 @@
+import Main from 'components/Main'
+
 export default function Plus() {
   return (
     <div>
-      <h1>Plus Berneck</h1>
+      <Main title="Plus Berneck" />
     </div>
   )
 }

@@ -1,3 +1,5 @@
+import Main from 'components/Main'
+
 const produtos = [
   'bp-berneck',
   'hdf-berneck',
@@ -11,16 +13,17 @@ const produtos = [
 export default function Produtos() {
   return (
     <div>
-      <h1>Nossos Produtos</h1>
-      <div>
-        <ul>
-          {produtos.map((p) => (
-            <li key={p}>
-              <a href={`/produtos/${p}`}>{p}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Main title="Nossos Produtos">
+        <div>
+          <ul>
+            {produtos.map((p) => (
+              <li key={p}>
+                <a href={`/produtos/${p}`}>{p}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Main>
     </div>
   )
 }

@@ -1,7 +1,9 @@
+import Main from 'components/Main'
+
 export default function Teca() {
   return (
     <div>
-      <h1>Teca Berneck</h1>
+      <Main title="Teca Berneck" />
     </div>
   )
 }

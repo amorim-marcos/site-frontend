@@ -1,7 +1,9 @@
+import Main from 'components/Main'
+
 export default function NossoCompromisso() {
   return (
     <div>
-      <h1>Nosso Compromisso</h1>
+      <Main title="Nosso Compromisso" />
     </div>
   )
 }

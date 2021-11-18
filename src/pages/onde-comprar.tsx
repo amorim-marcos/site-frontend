@@ -1,7 +1,9 @@
+import Main from 'components/Main'
+
 export default function OndeComprar() {
   return (
     <div>
-      <h1>Onde Comprar</h1>
+      <Main title="Onde Comprar" />
     </div>
   )
 }

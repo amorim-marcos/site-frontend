@@ -1,7 +1,9 @@
+import Main from 'components/Main'
+
 export default function SomosBerneck() {
   return (
     <div>
-      <h1>Somos Berneck</h1>
+      <Main title="Somos Berneck" />
     </div>
   )
 }

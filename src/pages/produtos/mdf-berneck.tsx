@@ -1,7 +1,9 @@
+import Main from 'components/Main'
+
 export default function Mdf() {
   return (
     <div>
-      <h1>MDF Berneck</h1>
+      <Main title="MDF Berneck" />
     </div>
   )
 }

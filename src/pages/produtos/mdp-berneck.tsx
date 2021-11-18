@@ -1,7 +1,9 @@
+import Main from 'components/Main'
+
 export default function Mdp() {
   return (
     <div>
-      <h1>MDP Berneck</h1>
+      <Main title="MDP Berneck" />
     </div>
   )
 }

@@ -1,7 +1,9 @@
+import Main from 'components/Main'
+
 export default function FaleConsco() {
   return (
     <div>
-      <h1>Fale Conosco</h1>
+      <Main title="Fale Conosco" />
     </div>
   )
 }

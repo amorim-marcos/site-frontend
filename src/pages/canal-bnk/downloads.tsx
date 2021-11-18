@@ -1,7 +1,9 @@
+import Main from 'components/Main'
+
 export default function Downloads() {
   return (
     <div>
-      <h1>Downloads</h1>
+      <Main title="Downloads" />
     </div>
   )
 }

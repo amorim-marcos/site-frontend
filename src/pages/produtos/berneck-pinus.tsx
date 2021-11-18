@@ -1,7 +1,9 @@
+import Main from 'components/Main'
+
 export default function Pinus() {
   return (
     <div>
-      <h1>Pinus Berneck</h1>
+      <Main title="Pinus Berneck" />
     </div>
   )
 }

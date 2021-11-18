@@ -1,3 +1,5 @@
+import Main from 'components/Main'
+
 const categories = [
   {
     slug: 'inspiracao-sob-medida',
@@ -16,21 +18,21 @@ const categories = [
 export default function CanalBnk() {
   return (
     <div>
-      <h1>Canal BNK</h1>
+      <Main title="Canal BNK">
+        <div>
+          <ul>
+            {categories.map((p) => (
+              <li key={p.slug}>
+                <a href={`/canal-bnk/${p.slug}`}>{p.title}</a>
+              </li>
+            ))}
 
-      <div>
-        <ul>
-          {categories.map((p) => (
-            <li key={p.slug}>
-              <a href={`/canal-bnk/${p.slug}`}>{p.title}</a>
+            <li>
+              <a href={`/canal-bnk/downloads`}>Downloads</a>
             </li>
-          ))}
-
-          <li>
-            <a href={`/canal-bnk/downloads`}>Downloads</a>
-          </li>
-        </ul>
-      </div>
+          </ul>
+        </div>
+      </Main>
     </div>
   )
 }

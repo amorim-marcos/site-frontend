@@ -1,7 +1,9 @@
+import Main from 'components/Main'
+
 export default function Hdf() {
   return (
     <div>
-      <h1>Hdf Berneck</h1>
+      <Main title="Hdf Berneck" />
     </div>
   )
 }

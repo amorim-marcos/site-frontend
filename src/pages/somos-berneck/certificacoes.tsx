@@ -1,7 +1,9 @@
+import Main from 'components/Main'
+
 export default function Certificacoes() {
   return (
     <div>
-      <h1>Certificações</h1>
+      <Main title="Certificações" />
     </div>
   )
 }
