@@ -9,7 +9,7 @@ Projeto construído utilizando node 14
 Instalação de dependências:
 
 ```bash
-$ npm install
+$ yarn
 ```
 
 ## Inciando a aplicação
@@ -19,7 +19,7 @@ $ npm install
 Para iniciar a aplicação em ambiente de desenvolvimento:
 
 ```bash
-$ npm run dev
+$ yarn dev
 ```
 
 ### Build
@@ -27,6 +27,6 @@ $ npm run dev
 Para iniciar a aplicação em ambiente de produção:
 
 ```bash
-$ npm run build
-$ npm run start
+$ yarn build
+$ yarn start
 ```
