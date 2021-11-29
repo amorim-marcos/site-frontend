@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { align } from 'styles/erix'
 
 export const Wrapper = styled.main`
   width: 100%;
@@ -7,9 +8,7 @@ export const Wrapper = styled.main`
   text-align: center;
   display: flex;
 
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  ${align['row-middle-center']}
 
   min-height: 30rem;
 `

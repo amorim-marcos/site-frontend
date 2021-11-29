@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import NextLink from 'next/link'
 import colors from '../../styles/colors'
+import { align } from 'styles/erix'
 
 export const Container = styled.header`
   width: 100%;
@@ -19,9 +20,7 @@ export const Title = styled.h1`
 export const Menu = styled.div`
   height: 10rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${align['row-middle-center']}
 `
 
 export const MenuWrapper = styled.div`
