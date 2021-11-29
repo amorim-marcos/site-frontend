@@ -3,6 +3,8 @@ import Head from 'next/head'
 import Header from 'components/Header'
 
 import GlobalStyles from 'styles/global'
+import Pagebar from 'components/Pagebar'
+import Footer from 'components/Footer'
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -23,6 +25,8 @@ function App({ Component, pageProps }: AppProps) {
       <Header />
 
       <Component {...pageProps} />
+
+      <Footer />
     </>
   )
 }

@@ -18,7 +18,9 @@ export default function Produtos() {
           <ul>
             {produtos.map((p) => (
               <li key={p}>
-                <a href={`/produtos/${p}`}>{p}</a>
+                <a style={{ fontSize: '2rem' }} href={`/produtos/${p}`}>
+                  {p}
+                </a>
               </li>
             ))}
           </ul>
