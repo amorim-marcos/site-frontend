@@ -30,3 +30,20 @@ Para iniciar a aplicação em ambiente de produção:
 $ yarn build
 $ yarn start
 ```
+
+
+## Storybook
+Visualização de componentes
+
+```bash
+$ yarn storybook
+```
+
+
+## React Testing Library + Jest
+DOM testing library + Jest
+
+```bash
+$ yarn storybook
+```
+
