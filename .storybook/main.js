@@ -8,8 +8,18 @@ module.exports = {
       require.resolve('@babel/plugin-transform-react-jsx')
     ]
   }),
-  webpackFinal: (config) => {
+  webpackFinal: async (config) => {
     config.resolve.modules.push(`${process.cwd()}/src`)
-    return config
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          '@emotion/core': '@emotion/react',
+          'emotion-theming': '@emotion/react'
+        }
+      }
+    }
   }
 }
