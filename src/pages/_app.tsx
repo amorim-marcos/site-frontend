@@ -1,16 +1,15 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import Header from 'components/Header'
-
-import GlobalStyles from 'styles/global'
-import Pagebar from 'components/Pagebar'
-import Footer from 'components/Footer'
+import { ChakraProvider } from '@chakra-ui/react'
+import { theme } from 'styles/theme'
+import AppHeader from 'components/AppHeader'
+import AppFooter from 'components/AppFooter'
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ChakraProvider theme={theme}>
       <Head>
-        <title>Berneck - Frontend</title>
+        <title>Berneck</title>
         <link rel="shortcut icon" href="/img/icon-512.png" />
         <link rel="apple-touch-icon" href="/img/icon-512.png" />
         <link rel="manifest" href="/manifest.json" />
@@ -20,14 +19,10 @@ function App({ Component, pageProps }: AppProps) {
           content="A simple project starter to work with TypeScript, React, NextJS and Styled Components"
         />
       </Head>
-      <GlobalStyles />
-
-      <Header />
-
+      <AppHeader />
       <Component {...pageProps} />
-
-      <Footer />
-    </>
+      <AppFooter />
+    </ChakraProvider>
   )
 }
 
