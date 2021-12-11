@@ -1,1 +1,1 @@
-export { default } from '@modules/Compromise'
+export { default } from 'views/Compromise'

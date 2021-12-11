@@ -1,1 +1,1 @@
-export { default } from '@modules/About'
+export { default } from 'views/About'

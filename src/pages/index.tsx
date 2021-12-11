@@ -1,4 +1,4 @@
-import Home from '@modules/Home'
+import Home from 'views/Home'
 
 export default function HomePage() {
   return <Home />

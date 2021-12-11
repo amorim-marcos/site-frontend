@@ -1,9 +1,9 @@
 import { extendTheme } from '@chakra-ui/react'
 import { colors } from './colors'
-import { Button } from './components/button'
-import { Heading } from './components/heading'
-import { Text } from './components/text'
-import { NavLink } from './components/nav-link'
+import { Button } from './variants/button'
+import { Heading } from './variants/heading'
+import { Text } from './variants/text'
+import { NavLink } from './variants/nav-link'
 import { global } from './global'
 
 export const theme = extendTheme({

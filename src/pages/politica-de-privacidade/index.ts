@@ -1,1 +1,1 @@
-export { default } from '@modules/Privacy'
+export { default } from 'views/Privacy'

@@ -1,1 +1,1 @@
-export { default } from '@modules/Forests'
+export { default } from 'views/Forests'

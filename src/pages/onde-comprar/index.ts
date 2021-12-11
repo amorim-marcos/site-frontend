@@ -1,1 +1,1 @@
-export { default } from '@modules/Buy'
+export { default } from 'views/Buy'
