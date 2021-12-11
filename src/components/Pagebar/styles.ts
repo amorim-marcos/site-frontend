@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import colors from 'styles/colors'
-import { align } from 'styles/erix'
+import colors from 'theme/colors'
+import { align } from 'theme/erix'
 
 export const Wrapper = styled.main`
   width: 100%;

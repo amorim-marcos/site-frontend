@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { align } from 'styles/erix'
+import { align } from 'theme/erix'
 
 export const Wrapper = styled.main`
   width: 100%;
