@@ -1,4 +1,4 @@
-import Main from 'components/Main'
+import Main from '@components/Main'
 import { useRouter } from 'next/dist/client/router'
 
 export default function CatalogItem() {

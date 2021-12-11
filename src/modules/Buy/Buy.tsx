@@ -1,6 +1,6 @@
-import Main from 'components/Main'
+import Main from '@components/Main'
 
-export default function OndeComprar() {
+export const Buy = () => {
   return (
     <div>
       <Main title="Onde Comprar" />

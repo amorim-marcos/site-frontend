@@ -1,0 +1,21 @@
+import * as S from './styles'
+import { Button, Heading, Flex, Text } from '@chakra-ui/react'
+
+export default function Home({ title = 'HomePage' }) {
+  return (
+    <S.Wrapper>
+      <Flex flexDirection="column">
+        <S.Title>{title}</S.Title>
+        <Button mb={3}>Test</Button>
+        <Button size="large">Test</Button>
+        <Heading>Heading 1</Heading>
+        <Heading variant="h2">Heading 2</Heading>
+        <Heading variant="h3">Heading 3</Heading>
+        <Heading variant="h4">Heading 5</Heading>
+        <Heading variant="h5">Heading 6</Heading>
+        <Text>Simple text example</Text>
+        <Text variant="body-bold">Simple text example</Text>
+      </Flex>
+    </S.Wrapper>
+  )
+}

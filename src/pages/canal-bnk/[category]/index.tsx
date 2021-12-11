@@ -1,4 +1,4 @@
-import Main from 'components/Main'
+import Main from '@components/Main'
 import { useRouter } from 'next/router'
 
 const posts = ['Post1', 'Post2', 'Post3']

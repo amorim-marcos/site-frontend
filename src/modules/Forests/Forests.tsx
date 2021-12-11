@@ -1,6 +1,6 @@
-import Main from 'components/Main'
+import Main from '@components/Main'
 
-export default function DivisaoFlorestal() {
+export const Forests = () => {
   return (
     <div>
       <Main title="Divisão Florestal" />

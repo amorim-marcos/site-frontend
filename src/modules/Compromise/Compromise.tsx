@@ -1,6 +1,6 @@
-import Main from 'components/Main'
+import Main from '@components/Main'
 
-export default function NossoCompromisso() {
+export const Compromise = () => {
   return (
     <div>
       <Main title="Nosso Compromisso" />

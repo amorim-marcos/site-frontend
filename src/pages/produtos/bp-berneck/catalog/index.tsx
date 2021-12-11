@@ -1,4 +1,4 @@
-import Main from 'components/Main'
+import Main from '@components/Main'
 import Link from 'next/link'
 
 const items = ['terraza', 'volakas', 'galiano', 'etc']

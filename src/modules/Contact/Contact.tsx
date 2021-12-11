@@ -1,6 +1,6 @@
-import Main from 'components/Main'
+import Main from '@components/Main'
 
-export default function FaleConsco() {
+export const Contact = () => {
   return (
     <div>
       <Main title="Fale Conosco" />
