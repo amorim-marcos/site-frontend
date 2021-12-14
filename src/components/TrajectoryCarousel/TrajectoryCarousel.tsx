@@ -44,7 +44,7 @@ export const TrajectoryCarousel = ({ tabs }: Props) => {
         {listTabNames(tabNames)}
       </TabList>
   
-      <TabPanels>
+      <TabPanels >
         {listTabContents(tabs)}
       </TabPanels>
     </Tabs>
