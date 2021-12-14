@@ -1,7 +1,6 @@
 import * as S from './styles'
 import { Tab, Tabs, TabList, TabPanels, TabPanel  } from '@chakra-ui/react'
 import { Props } from 'react'
-import { table } from 'console'
 
 interface TrajectoryContent {
   text: string,
@@ -38,7 +37,7 @@ export const TrajectoryCarousel = ({ tabs }: Props) => {
   const tabNames = tabs.map((tab: TrajectoryTab) => tab.name)
 
   return (
-    <Tabs>
+    <Tabs defaultIndex={0}>
       <TabList>
         {listTabNames(tabNames)}
       </TabList>
