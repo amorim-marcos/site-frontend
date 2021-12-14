@@ -38,7 +38,7 @@ export const TrajectoryCarousel = ({ tabs }: Props) => {
   const tabNames = tabs.map((tab: TrajectoryTab) => tab.name)
 
   return (
-    <Tabs defaultIndex={0}>
+    <Tabs variant='unstyled' defaultIndex={0}>
       <TabList>
         {listTabNames(tabNames)}
       </TabList>
