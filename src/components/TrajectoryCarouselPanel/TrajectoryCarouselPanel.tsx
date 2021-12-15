@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react"
+import { Box, Heading, Text} from "@chakra-ui/react"
 
 export const TrajectoryCarouselPanel = ({ tabData }) => (
   <Box
@@ -8,6 +8,8 @@ export const TrajectoryCarouselPanel = ({ tabData }) => (
     pr="157px"
     pl="157px"
   >
-    {tabData.name}
+    <Heading variant="h1">{tabData.name}</Heading>
+    <Heading variant="h2">{tabData.content.title}</Heading>
+    <Text>{tabData.content.text}</Text>
   </Box>
 )
