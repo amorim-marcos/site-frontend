@@ -2,7 +2,7 @@ import { Flex, Box, Container, Text } from '@chakra-ui/react'
 import NavLink from '@components/NavLink'
 
 export const AppHeader = () => (
-  <Box h={40} bg="brand.primary.800">
+  <Box h={40} bg="green.800">
     <Container maxWidth="container.xl">
       <Flex alignItems="center">
         <NavLink href="/">
