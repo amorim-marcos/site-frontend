@@ -22,7 +22,7 @@ const tabs = [
 export default function Home({ title = 'HomePage' }) {
   return (
     <S.Wrapper>
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" background="#F7EFE2">
         <S.Title>{title}</S.Title>
         <Button mb={3}>Test</Button>
         <Button size="large">Test</Button>

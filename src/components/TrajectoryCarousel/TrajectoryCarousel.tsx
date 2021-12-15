@@ -29,7 +29,7 @@ function listTabContents(tabs: Array<TrajectoryTab>){
   let contents = []
 
   for(let tab of tabs){
-    contents.push(<TabPanel><TrajectoryCarouselPanel tabData={tab}></TrajectoryCarouselPanel></TabPanel>)
+    contents.push(<TabPanel padding={0}><TrajectoryCarouselPanel tabData={tab}></TrajectoryCarouselPanel></TabPanel>)
   }
 
   return contents
@@ -39,7 +39,7 @@ export const TrajectoryCarousel = ({ tabs }: Props) => {
   const tabNames = tabs.map((tab: TrajectoryTab) => tab.name)
 
   return (
-    <Tabs variant='unstyled' defaultIndex={0}>
+    <Tabs minW="1700px" margin="20px" variant='unstyled' defaultIndex={0}>
       <TabList>
         {listTabNames(tabNames)}
       </TabList>
