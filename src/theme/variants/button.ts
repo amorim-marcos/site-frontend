@@ -17,9 +17,9 @@ export const Button = {
   variants: {
     base: {
       color: 'white',
-      bg: 'brand.primary.500',
+      bg: 'green.500',
       _hover: {
-        bg: 'brand.primary.700'
+        bg: 'green.700'
       }
     }
   },
