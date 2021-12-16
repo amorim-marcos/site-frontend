@@ -22,14 +22,14 @@ const PanelImage = (props: { image: string; inaugurationSoon?: boolean }) => (
   </Flex>
 )
 
-interface IOurPlaceInformation {
+export type IOurPlaceInformation = {
   structure: string
   localization: string
   phones: string
   airportDistance: string
 }
 
-interface PlaceProps {
+export type WhereWeArePanelProps = {
   name: string
   city: string
   ourPlaceInformation: IOurPlaceInformation
@@ -40,7 +40,7 @@ interface PlaceProps {
   image: string
 }
 
-export const WhereWeArePanel = (props: PlaceProps) => {
+export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
   const [expand, setExpand] = useState(false)
 
   return (

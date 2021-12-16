@@ -1,7 +1,7 @@
 import { Flex, Image, Link, Text } from '@chakra-ui/react'
 import colors from 'theme/colors'
 
-interface PanelFooterProps {
+export type WhereWeArePanelFooterProps = {
   name: string
   address: string
   googleMapsURL: string
@@ -10,7 +10,7 @@ interface PanelFooterProps {
   onClick: () => void
 }
 
-export const WhereWeArePanelFooter = (props: PanelFooterProps) => (
+export const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
   <Flex
     h="3rem"
     w="100%"

@@ -19,14 +19,14 @@ const SectionContent = (props: { content: string }) => (
   </Text>
 )
 
-interface WhereWeArePlaceInfoProps {
+export type WhereWeArePanelInfoProps = {
   structure: string
   localization: string
   phones: string
   airportDistance: string
 }
 
-export const WhereWeArePanelInfo = (props: WhereWeArePlaceInfoProps) => (
+export const WhereWeArePanelInfo = (props: WhereWeArePanelInfoProps) => (
   <Flex
     w="100%"
     alignItems="flex-start"

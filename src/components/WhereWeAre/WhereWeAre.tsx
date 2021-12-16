@@ -1,9 +1,14 @@
 import { Box, Flex, Text, Image } from '@chakra-ui/react'
+import { WhereWeArePanelProps } from '@components/WhereWeArePanel/WhereWeArePanel'
 
 import WhereWeArePanel from 'components/WhereWeArePanel'
 import colors from 'theme/colors'
 
-export const WhereWeAre = () => {
+export type WhereWeAreProps = {
+  panels: WhereWeArePanelProps[]
+}
+
+export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
   return (
     <Box data-testid="where-we-are">
       <Flex
@@ -29,7 +34,7 @@ export const WhereWeAre = () => {
         </Flex>
 
         <Flex w="100%" wrap="wrap" gap="2.5rem" justifyContent="center">
-          {mockData.map((item, index) => (
+          {panels.map((item, index) => (
             <WhereWeArePanel key={index} {...item} />
           ))}
         </Flex>
@@ -78,25 +83,7 @@ const Description = () => (
   </Box>
 )
 
-interface IOurPlaceInformation {
-  structure: string
-  localization: string
-  phones: string
-  airportDistance: string
-}
-
-interface IWhereWeAre {
-  name: string
-  city: string
-  ourPlaceInformation: IOurPlaceInformation
-  googleMapsURL: string
-  state: string
-  country: string
-  inaugurationSoon: boolean
-  image: string
-}
-
-export const mockObject: IWhereWeAre = {
+export const mockPanelObj: WhereWeArePanelProps = {
   name: 'Matriz',
   city: 'Araucária',
   ourPlaceInformation: {
@@ -115,24 +102,24 @@ export const mockObject: IWhereWeAre = {
   image: 'img/foto_matriz.png'
 }
 
-const mockData: IWhereWeAre[] = [
-  mockObject,
+export const mockPanels: WhereWeArePanelProps[] = [
+  mockPanelObj,
   {
-    ...mockObject,
+    ...mockPanelObj,
     name: 'Unidade Industrial',
     city: 'Curitibanos',
     state: 'SC',
     image: 'img/Curitibanos.png'
   },
   {
-    ...mockObject,
+    ...mockPanelObj,
     name: 'Unidade Industrial',
     city: 'Brasnorte',
     state: 'MG',
     image: 'img/Unidade-Brasnorte.png'
   },
   {
-    ...mockObject,
+    ...mockPanelObj,
     name: 'Unidade Industrial',
     city: 'Lages',
     state: 'SC',
