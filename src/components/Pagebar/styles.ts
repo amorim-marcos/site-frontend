@@ -1,11 +1,10 @@
 import styled from 'styled-components'
-import colors from 'theme/colors'
 import { align } from 'theme/erix'
 
 export const Wrapper = styled.main`
   width: 100%;
   height: 5rem;
-  background: ${colors.berneck_green_light};
+  background: green;
 
   ${align['row-middle-left']}
 
@@ -13,6 +12,6 @@ export const Wrapper = styled.main`
 `
 
 export const Tail = styled.h1`
-  color: ${colors.white};
+  color: #fff;
   font-size: 1.8rem;
 `
