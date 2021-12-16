@@ -47,7 +47,13 @@ export const HeaderMenuItem = ({
           </Text>
         </Center>
       </Link>
-      <Flex flexDir="column" position="absolute" top="100%" left={0}>
+      <Flex
+        display="none"
+        flexDir="column"
+        position="absolute"
+        top="100%"
+        left={0}
+      >
         <SubItem />
         <SubItem />
         <SubItem />
