@@ -1,24 +1,6 @@
 import { Container, Flex, Text } from '@chakra-ui/react'
 import colors from 'theme/colors'
 
-const SectionTitle = (props: { title: string }) => (
-  <Text
-    color={colors.light_green}
-    letterSpacing="-0.6px"
-    fontSize="1.1rem"
-    fontWeight={500}
-    fontFamily="Montserrat"
-  >
-    {`> ${props.title}`}
-  </Text>
-)
-
-const SectionContent = (props: { content: string }) => (
-  <Text fontSize="0.9rem" fontFamily="Montserrat" color="#595959">
-    {props.content}
-  </Text>
-)
-
 export type WhereWeArePanelInfoProps = {
   structure: string
   localization: string
@@ -54,4 +36,22 @@ export const WhereWeArePanelInfo = (props: WhereWeArePanelInfoProps) => (
       <SectionContent content={props.airportDistance} />
     </Container>
   </Flex>
+)
+
+const SectionTitle = (props: { title: string }) => (
+  <Text
+    color={colors.light_green}
+    letterSpacing="-0.6px"
+    fontSize="1.1rem"
+    fontWeight={500}
+    fontFamily="Montserrat"
+  >
+    {`> ${props.title}`}
+  </Text>
+)
+
+const SectionContent = (props: { content: string }) => (
+  <Text fontSize="0.9rem" fontFamily="Montserrat" color="#595959">
+    {props.content}
+  </Text>
 )

@@ -5,23 +5,6 @@ import WhereWeArePanelFooter from './WhereWeArePanelFooter'
 import WhereWeArePanelInfo from 'components/WhereWeArePanel/WhereWeArePanelInfo'
 import colors from 'theme/colors'
 
-const PanelImage = (props: { image: string; inaugurationSoon?: boolean }) => (
-  <Flex justifyContent="center" alignItems="center" pos="relative">
-    <Image
-      w="100%"
-      src={props.image}
-      objectFit="cover"
-      // filter={props.inaugurationSoon ? 'blur(7px)' : 'none'} // Active in production
-    />
-
-    {props.inaugurationSoon && (
-      <Text pos="absolute" align="center" fontWeight={600} color={colors.white}>
-        Em Breve <br /> Inauguração
-      </Text>
-    )}
-  </Flex>
-)
-
 export type IOurPlaceInformation = {
   structure: string
   localization: string
@@ -85,3 +68,20 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
     </Flex>
   )
 }
+
+const PanelImage = (props: { image: string; inaugurationSoon?: boolean }) => (
+  <Flex justifyContent="center" alignItems="center" pos="relative">
+    <Image
+      w="100%"
+      src={props.image}
+      objectFit="cover"
+      // filter={props.inaugurationSoon ? 'blur(7px)' : 'none'} // Active in production
+    />
+
+    {props.inaugurationSoon && (
+      <Text pos="absolute" align="center" fontWeight={600} color={colors.white}>
+        Em Breve <br /> Inauguração
+      </Text>
+    )}
+  </Flex>
+)
