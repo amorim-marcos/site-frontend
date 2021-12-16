@@ -1,12 +1,17 @@
-import { mockObject } from 'components/WhereWeAre/WhereWeAre'
 import { Story, Meta } from '@storybook/react'
-import WhereWeArePanelInfo from '.'
+import {
+  WhereWeArePanelInfo,
+  WhereWeArePanelInfoProps
+} from './WhereWeArePanelInfo'
+
+import { mockPanelObj } from 'components/WhereWeAre/WhereWeAre'
 
 export default {
   title: 'WhereWeArePanelInfo',
-  component: WhereWeArePanelInfo
+  component: WhereWeArePanelInfo,
+  args: { ...mockPanelObj.ourPlaceInformation }
 } as Meta
 
-export const Default: Story = () => (
-  <WhereWeArePanelInfo {...mockObject.ourPlaceInformation} />
+export const Default: Story<WhereWeArePanelInfoProps> = (args) => (
+  <WhereWeArePanelInfo {...args} />
 )
