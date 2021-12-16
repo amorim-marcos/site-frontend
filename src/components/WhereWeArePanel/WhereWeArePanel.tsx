@@ -2,7 +2,7 @@ import { Flex, Image, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 
 import WhereWeArePanelFooter from './WhereWeArePanelFooter'
-import OurPlaceInformation from 'components/OurPlaceInformation'
+import OurPlaceInformation from '@components/WhereWeArePanel/OurPlaceInformation'
 import colors from 'theme/colors'
 
 const PanelImage = (props: { image: string; inaugurationSoon?: boolean }) => (
