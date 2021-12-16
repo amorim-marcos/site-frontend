@@ -6,4 +6,6 @@ export default {
   component: HeaderMenuItem
 } as Meta
 
-export const Default: Story<HeaderMenuItemProps> = (args) => <HeaderMenuItem {...args} />
+export const Default: Story<HeaderMenuItemProps> = (args) => (
+  <HeaderMenuItem {...args} />
+)

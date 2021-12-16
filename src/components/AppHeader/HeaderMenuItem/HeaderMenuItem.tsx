@@ -1,28 +1,24 @@
-import * as S from './styles'
 import { Text, Center, Box, Flex } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useState } from 'react'
+import { HeaderMenuSubItem } from './HeaderMenuSubItem/HeaderMenuSubItem'
 
 export type HeaderMenuItemProps = {
   title?: string
   href?: string
-  items?: Array<ItemProps>
+  subItems?: Array<ItemProps>
 }
 
 export type ItemProps = {
   title?: string
   href?: string
-  subItems: Array<SubItemProps>
-}
-
-export type SubItemProps = {
-  title?: string
-  href?: string
+  subItems?: Array<HeaderMenuItemProps>
 }
 
 export const HeaderMenuItem = ({
   title = 'Title Here',
-  href = '/'
+  href = '/',
+  subItems
 }: HeaderMenuItemProps) => {
   const [open, setOpen] = useState(false)
 
@@ -32,48 +28,37 @@ export const HeaderMenuItem = ({
       onMouseLeave={() => setOpen(false)}
       position="relative"
     >
-      <Link href={href}>
+      <Link href={href} passHref>
         <Center
           h="100%"
           maxHeight={115}
           paddingInline={50}
           _hover={{
-            bg: 'green.550'
+            bg: 'green.700'
           }}
           cursor="pointer"
+          bg={open ? 'green.700' : 'green.800'}
+          transition="0.4s"
         >
-          <Text color="white.100" variant="header-menu">
+          <Text color="#FFF" variant="header-menu">
             {title}
           </Text>
         </Center>
       </Link>
       <Flex
-        display="none"
+        borderTop="6px solid #135740"
         flexDir="column"
         position="absolute"
         top="100%"
         left={0}
+        w="110%"
+        display={open ? 'flex' : 'none'}
       >
-        <SubItem />
-        <SubItem />
-        <SubItem />
-        <SubItem />
-        <SubItem />
-        <SubItem />
-        <SubItem />
+        {subItems &&
+          subItems.map((i) => (
+            <HeaderMenuSubItem key={i.title} title={i.title} />
+          ))}
       </Flex>
     </Box>
-  )
-}
-
-const SubItem = ({ title = 'SubItem', href = '/' }: SubItemProps) => {
-  return (
-    <Link href={href} passHref>
-      <Flex paddingLeft={5} alignItems="center" h="40px" w={290} bg="green.700">
-        <Text color="white.100" variant="header-menu">
-          {title}
-        </Text>
-      </Flex>
-    </Link>
   )
 }
