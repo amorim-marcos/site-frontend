@@ -26,7 +26,7 @@ interface WhereWeArePlaceInfoProps {
   airportDistance: string
 }
 
-export const OurPlaceInformation = (props: WhereWeArePlaceInfoProps) => (
+export const WhereWeArePanelInfo = (props: WhereWeArePlaceInfoProps) => (
   <Flex
     w="100%"
     alignItems="flex-start"

@@ -2,7 +2,7 @@ import { Flex, Image, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 
 import WhereWeArePanelFooter from './WhereWeArePanelFooter'
-import OurPlaceInformation from '@components/WhereWeArePanel/OurPlaceInformation'
+import WhereWeArePanelInfo from 'components/WhereWeArePanel/WhereWeArePanelInfo'
 import colors from 'theme/colors'
 
 const PanelImage = (props: { image: string; inaugurationSoon?: boolean }) => (
@@ -80,7 +80,7 @@ export const WhereWeArePanel = (props: PlaceProps) => {
           onClick={() => setExpand(!expand)}
         />
 
-        <OurPlaceInformation {...props.ourPlaceInformation} />
+        <WhereWeArePanelInfo {...props.ourPlaceInformation} />
       </Flex>
     </Flex>
   )
