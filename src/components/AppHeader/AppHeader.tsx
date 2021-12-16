@@ -9,7 +9,7 @@ export const AppHeader = () => (
           <Text color="white">Berneck</Text>
         </NavLink>
         <Flex ml="auto">
-          <NavLink href="/somos-berneck">Some blog post</NavLink>
+          <NavLink href="/somos-berneck">Somos BERNECK</NavLink>
           <NavLink href="/nosso-compromisso">Nosso Compromisso</NavLink>
           <NavLink href="/divisao-florestal">Divisão Florestal</NavLink>
           <NavLink href="/produtos">Produtos</NavLink>

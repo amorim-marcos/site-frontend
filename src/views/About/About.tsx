@@ -6,6 +6,7 @@ export const About = () => {
     <div>
       <Pagebar />
       <Main title="Somos Berneck" />
+      
     </div>
   )
 }
