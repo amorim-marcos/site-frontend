@@ -1,21 +1,27 @@
 import { Flex, Box, Container, Text } from '@chakra-ui/react'
-import NavLink from '@components/NavLink'
+import NavLink from '../NavLink'
 
-export const AppHeader = () => (
-  <Box h={40} bg="green.800">
-    <Container maxWidth="container.xl">
-      <Flex alignItems="center">
-        <NavLink href="/">
-          <Text color="white">Berneck</Text>
-        </NavLink>
-        <Flex ml="auto">
-          <NavLink href="/somos-berneck">Some blog post</NavLink>
-          <NavLink href="/nosso-compromisso">Nosso Compromisso</NavLink>
-          <NavLink href="/divisao-florestal">Divisão Florestal</NavLink>
-          <NavLink href="/produtos">Produtos</NavLink>
-          <NavLink href="/canal-bnk">Canal BNK</NavLink>
+export type AppHeaderProps = {
+  title?: string
+}
+
+export const AppHeader = ({ title }: AppHeaderProps) => {
+  return (
+    <Box h={40} bg="green.800">
+      <Container maxWidth="container.xl">
+        <Flex alignItems="center">
+          <NavLink href="/">
+            <Text color="white">Berneck</Text>
+          </NavLink>
+          <Flex ml="auto">
+            <NavLink href="/somos-berneck">Some blog post</NavLink>
+            <NavLink href="/nosso-compromisso">Nosso Compromisso</NavLink>
+            <NavLink href="/divisao-florestal">Divisão Florestal</NavLink>
+            <NavLink href="/produtos">Produtos</NavLink>
+            <NavLink href="/canal-bnk">Canal BNK</NavLink>
+          </Flex>
         </Flex>
-      </Flex>
-    </Container>
-  </Box>
-)
+      </Container>
+    </Box>
+  )
+}
