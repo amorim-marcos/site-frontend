@@ -1,8 +1,9 @@
 import { Story, Meta } from '@storybook/react'
-import { AppFooter } from './AppFooter'
+import { AppFooter, AppFooterProps } from './AppFooter'
 
 export default {
-  title: 'AppFooter'
+  title: 'AppFooter',
+  component: AppFooter
 } as Meta
 
-export const Test: Story = () => <AppFooter />
+export const Default: Story<AppFooterProps> = (args) => <AppFooter {...args} />
