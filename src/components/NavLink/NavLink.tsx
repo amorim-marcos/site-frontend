@@ -3,7 +3,7 @@ import { LinkOverlay, LinkBox } from '@chakra-ui/react'
 
 import { Box, useStyleConfig, BoxProps } from '@chakra-ui/react'
 
-type NavLinkProps = BoxProps & {
+export type NavLinkProps = BoxProps & {
   href: string
   variant?: string
 }

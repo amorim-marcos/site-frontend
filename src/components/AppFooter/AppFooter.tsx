@@ -1,9 +1,13 @@
 import { Flex, Container, Text } from '@chakra-ui/react'
 
-export const AppFooter = () => (
-  <Flex h={40} bg="brand.primary.800">
+export type AppFooterProps = {
+  title?: string
+}
+
+export const AppFooter = ({ title }: AppFooterProps) => (
+  <Flex h={40} bg="green.800">
     <Container maxWidth="container.xl">
-      <Text color="white">Berneck</Text>
+      <Text color="white">Berneck {title}</Text>
     </Container>
   </Flex>
 )
