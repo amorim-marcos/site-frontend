@@ -6,5 +6,9 @@ module.exports = withPWA({
   pwa: {
     dest: 'public',
     disable: !isProd
+  },
+  env: {
+    GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
+    MAPBOX_API_KEY: process.env.MAPBOX_API_KEY
   }
 })
