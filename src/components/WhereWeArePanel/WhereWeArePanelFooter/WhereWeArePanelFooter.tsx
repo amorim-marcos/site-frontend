@@ -1,5 +1,4 @@
 import { Flex, Image, Link, Text } from '@chakra-ui/react'
-import colors from 'theme/colors'
 
 export type WhereWeArePanelFooterProps = {
   name: string
@@ -21,7 +20,7 @@ export const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
     alignItems="center"
     justifyContent="space-between"
     borderRadius="0px 0px 33px 0px"
-    bgColor={colors.berneck_green}
+    bgColor="green.900"
   >
     <Flex alignItems="center">
       <Name name={props.name} />
@@ -39,7 +38,7 @@ export const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
 
 const Name = (props: { name: string }) => (
   <Text
-    color={colors.light_green}
+    color="green.600"
     whiteSpace="pre"
     fontWeight="bold"
     fontFamily="Montserrat"
@@ -51,7 +50,7 @@ const Name = (props: { name: string }) => (
 
 const Address = (props: { address: string }) => (
   <Text
-    color={colors.white}
+    color="white"
     fontFamily="Montserrat"
     letterSpacing="-0.36px"
     fontWeight="medium"
@@ -67,7 +66,7 @@ const InfoButtom = (props: { onClick?: () => void; expand: boolean }) => (
     cursor="pointer"
     onClick={props.onClick}
     transition={`all 0.1s ease-in-out`}
-    backgroundColor={props.expand ? colors.light_green : 'none'}
+    backgroundColor={props.expand ? 'green.600' : 'none'}
     borderRadius="100%"
   />
 )

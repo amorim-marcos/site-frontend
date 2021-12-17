@@ -1,5 +1,4 @@
 import { Container, Flex, Text } from '@chakra-ui/react'
-import colors from 'theme/colors'
 
 export type WhereWeArePanelInfoProps = {
   structure: string
@@ -23,35 +22,51 @@ export const WhereWeArePanelInfo = (props: WhereWeArePanelInfoProps) => (
 
     <Container>
       <SectionTitle title="LOCALIZAÇÃO" />
-      <SectionContent content={props.localization} />
+      <SectionPlace content={props.localization} />
     </Container>
 
     <Container>
       <SectionTitle title="TELEFONE" />
-      <SectionContent content={props.phones} />
+      <SectionPlace content={props.phones} />
     </Container>
 
     <Container>
       <SectionTitle title="DISTâNCIA DO AEROPORTO" />
-      <SectionContent content={props.airportDistance} />
+      <SectionPlace content={props.airportDistance} />
     </Container>
   </Flex>
 )
 
-const SectionTitle = (props: { title: string }) => (
+const SectionText = (props: {
+  color: string
+  fontWeight: string
+  children: React.ReactNode
+}) => (
   <Text
-    color={colors.light_green}
-    letterSpacing="-0.6px"
+    fontSpacing="-20px"
     fontSize="1.1rem"
-    fontWeight={500}
     fontFamily="Montserrat"
+    color={props.color}
+    fontWeight={props.fontWeight}
   >
-    {`> ${props.title}`}
+    {props.children}
   </Text>
 )
 
+const SectionTitle = (props: { title: string }) => (
+  <SectionText color="green.600" fontWeight="medium">
+    {`> ${props.title}`}
+  </SectionText>
+)
+
 const SectionContent = (props: { content: string }) => (
-  <Text fontSize="0.9rem" fontFamily="Montserrat" color="#595959">
+  <SectionText color="grey.350" fontWeight="normal">
     {props.content}
-  </Text>
+  </SectionText>
+)
+
+const SectionPlace = (props: { content: string }) => (
+  <SectionText color="grey.350" fontWeight="medium">
+    {props.content}
+  </SectionText>
 )

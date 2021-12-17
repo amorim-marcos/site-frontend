@@ -2,8 +2,7 @@ import { Flex, Image, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 
 import WhereWeArePanelFooter from './WhereWeArePanelFooter'
-import WhereWeArePanelInfo from 'components/WhereWeArePanel/WhereWeArePanelInfo'
-import colors from 'theme/colors'
+import WhereWeArePanelInfo from '@components/WhereWeArePanel/WhereWeArePanelInfo'
 
 export type IOurPlaceInformation = {
   structure: string
@@ -47,7 +46,7 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
         w="100%"
         bottom="3rem"
         pos="absolute"
-        bgColor={colors.white}
+        bgColor="white"
         opacity={expand ? 1 : 0}
         transition={`all 0.3s ease-in-out`}
         boxShadow="15px 5px 15px -1px rgba(0,0,0,0.55)"
@@ -79,7 +78,7 @@ const PanelImage = (props: { image: string; inaugurationSoon?: boolean }) => (
     />
 
     {props.inaugurationSoon && (
-      <Text pos="absolute" align="center" fontWeight={600} color={colors.white}>
+      <Text pos="absolute" align="center" fontWeight="semibold" color="white">
         Em Breve <br /> Inauguração
       </Text>
     )}

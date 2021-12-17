@@ -1,8 +1,7 @@
 import { Box, Flex, Text, Image } from '@chakra-ui/react'
 import { WhereWeArePanelProps } from '@components/WhereWeArePanel/WhereWeArePanel'
 
-import WhereWeArePanel from 'components/WhereWeArePanel'
-import colors from 'theme/colors'
+import WhereWeArePanel from '@components/WhereWeArePanel'
 
 export type WhereWeAreProps = {
   panels: WhereWeArePanelProps[]
@@ -46,36 +45,32 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
 const Title = () => (
   <Box>
     <Text
-      color={colors.berneck_green}
+      color="green.600"
       pb="0.5rem"
       fontSize="2rem"
-      fontWeight="800"
+      fontWeight="extrabold"
       fontFamily="Montserrat"
       letterSpacing="-1px"
     >
       Onde Estamos
     </Text>
 
-    <Box
-      w="4rem"
-      marginLeft="0.2rem"
-      border={`2px solid ${colors.light_green}`}
-    />
+    <Box w="4rem" marginLeft="0.2rem" border="2px solid green.600" />
   </Box>
 )
 
 const Description = () => (
   <Box w="60%">
     <Text
-      color={colors.light_green}
+      color="green.600"
       letterSpacing="-0.6px"
       fontFamily="Montserrat"
-      fontWeight={800}
+      fontWeight="extrabold"
     >
       Localização estratégica
     </Text>
 
-    <Text color="#626161" fontFamily="Montserrat" letterSpacing="-0.4px">
+    <Text color="grey.300" fontFamily="Montserrat" letterSpacing="-0.4px">
       {
         'Localização estratégica Nossas plantas industriais estão estrategicamente localizadas próximas às áreas de cultivo florestal e às principais rodovias e portos do país, com fácil distribuição para todo o território nacional e exterior.'
       }
