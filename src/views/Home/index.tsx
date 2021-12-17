@@ -33,9 +33,20 @@ export default function Home({ title = 'HomePage' }) {
         <Heading variant="h3">Heading 3</Heading>
         <Heading variant="h4">Heading 5</Heading>
         <Heading variant="h5">Heading 6</Heading>
-        <Text>Simple text example</Text>
-        <Text variant="body-bold">Simple text example</Text>
-        <TrajectoryCarousel tabs={tabs}></TrajectoryCarousel>
+
+        <Text variant="body-bold">Body Bold</Text>
+        <Text variant="body">Body</Text>
+        <Text variant="larger-body-bold">Larger Body Bold</Text>
+        <Text variant="larger-body">Larger Body</Text>
+
+        <Text variant="breadcrumbs-selected">Breadcrumbs selected</Text>
+        <Text variant="breadcrumbs">Breadcrumbs</Text>
+        <Text variant="header-menu">Header Menu</Text>
+        <Text variant="header-menu-small">Header Menu Small</Text>
+        <Text variant="canal-bnk-menu">CANAL BNK MENU</Text>
+        <Text variant="primary-button">PRIMARY BUTTON</Text>
+        <Text variant="larger-button">LARGER BUTTON</Text>
+        <Text variant="tags">Tags</Text>
       </Flex>
     </S.Wrapper>
   )
