@@ -1,10 +1,8 @@
-import { Flex, Box, Container, Text, Grid, Center } from '@chakra-ui/react'
+import { Flex, Box, Container, Grid } from '@chakra-ui/react'
 import LogoBerneck from '@components/LogoBerneck'
 import NavLink from '../NavLink'
 import { HeaderMenuItem } from './HeaderMenuItem/HeaderMenuItem'
 import SearchIcon from '@components/SearchIcon'
-import Link from 'next/link'
-import HeaderMenuTopItem from './HeaderTopMenuItem'
 import HeaderTopMenuItem from './HeaderTopMenuItem'
 
 export type AppHeaderProps = {
