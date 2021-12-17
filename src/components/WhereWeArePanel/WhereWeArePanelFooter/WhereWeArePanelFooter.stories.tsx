@@ -4,7 +4,7 @@ import {
   WhereWeArePanelFooterProps
 } from './WhereWeArePanelFooter'
 
-import { mockPanelObj } from 'components/WhereWeAre/WhereWeAre'
+import { mockPanelObj } from '@components/WhereWeAre/WhereWeAre'
 
 export default {
   title: 'WhereWeArePanelFooter',

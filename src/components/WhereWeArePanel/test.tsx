@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-import { mockPanelObj } from 'components/WhereWeAre/WhereWeAre'
+import { mockPanelObj } from '@components/WhereWeAre/WhereWeAre'
 import WhereWeArePanel from '.'
 
 describe('<WhereWeArePanel />', () => {

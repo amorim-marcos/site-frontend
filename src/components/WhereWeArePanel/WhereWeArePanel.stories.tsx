@@ -1,7 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 import { WhereWeArePanel, WhereWeArePanelProps } from './WhereWeArePanel'
 
-import { mockPanelObj } from 'components/WhereWeAre/WhereWeAre'
+import { mockPanelObj } from '@components/WhereWeAre/WhereWeAre'
 
 export default {
   title: 'WhereWeArePanel',
