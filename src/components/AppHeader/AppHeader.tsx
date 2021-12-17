@@ -12,7 +12,7 @@ export type AppHeaderProps = {
 const menuContent = {
   whoWeAre: {
     title: 'QUEM SOMOS',
-    href: '/',
+    href: '/somos-berneck',
     subItems: [
       { title: 'Quem Somos', href: '/' },
       { title: 'Nossa Trajetoria', href: '/' },
@@ -136,7 +136,7 @@ const menuContent = {
 
 export const AppHeader = ({ title }: AppHeaderProps) => {
   return (
-    <Box h={172} bg="green.900">
+    <Box h={172} maxWidth="1920px" bg="green.900">
       <Container maxWidth="1920" padding={0}>
         <Flex h={51}>
           <Box></Box>

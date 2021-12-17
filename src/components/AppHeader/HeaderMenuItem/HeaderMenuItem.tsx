@@ -6,13 +6,14 @@ import { HeaderMenuSubItem } from './HeaderMenuSubItem/HeaderMenuSubItem'
 export type HeaderMenuItemProps = {
   title?: string
   href?: string
-  subItems?: Array<ItemProps>
-}
-
-export type ItemProps = {
-  title?: string
-  href?: string
-  subItems?: Array<HeaderMenuItemProps>
+  subItems?: {
+    title?: string
+    href?: string
+    subItems?: {
+      title?: string
+      href?: string
+    }[]
+  }[]
 }
 
 export const HeaderMenuItem = ({
@@ -51,12 +52,16 @@ export const HeaderMenuItem = ({
         position="absolute"
         top="100%"
         left={0}
-        w="110%"
+        w="calc(100% + 60px)"
         display={open ? 'flex' : 'none'}
       >
         {subItems &&
           subItems.map((i) => (
-            <HeaderMenuSubItem key={i.title} title={i.title} />
+            <HeaderMenuSubItem
+              key={i.title}
+              title={i.title}
+              subItems={i.subItems}
+            />
           ))}
       </Flex>
     </Box>
