@@ -44,6 +44,6 @@ $ yarn storybook
 DOM testing library + Jest
 
 ```bash
-$ yarn storybook
+$ yarn test --watch
 ```
 

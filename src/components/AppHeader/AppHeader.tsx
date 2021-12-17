@@ -5,21 +5,6 @@ import { HeaderMenuItem } from './HeaderMenuItem/HeaderMenuItem'
 import SearchIcon from '@components/SearchIcon'
 import HeaderTopMenuItem from './HeaderTopMenuItem'
 
-<<<<<<< HEAD
-export const AppHeader = () => (
-  <Box h={40} bg="brand.primary.800">
-    <Container maxWidth="container.xl">
-      <Flex alignItems="center">
-        <NavLink href="/">
-          <Text color="white">Berneck</Text>
-        </NavLink>
-        <Flex ml="auto">
-          <NavLink href="/somos-berneck">Somos BERNECK</NavLink>
-          <NavLink href="/nosso-compromisso">Nosso Compromisso</NavLink>
-          <NavLink href="/divisao-florestal">Divisão Florestal</NavLink>
-          <NavLink href="/produtos">Produtos</NavLink>
-          <NavLink href="/canal-bnk">Canal BNK</NavLink>
-=======
 export type AppHeaderProps = {
   title?: string
 }
@@ -200,7 +185,6 @@ export const AppHeader = ({ title }: AppHeaderProps) => {
 
             <SearchIcon />
           </Flex>
->>>>>>> 4b7fb5c550c6cbb3732155d182276fb92389555c
         </Flex>
       </Container>
     </Box>
