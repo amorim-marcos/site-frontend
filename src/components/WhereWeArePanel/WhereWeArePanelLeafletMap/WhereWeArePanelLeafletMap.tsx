@@ -1,8 +1,8 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
+import { useEffect, useState } from 'react'
 import { Flex } from '@chakra-ui/react'
 
-import L from 'leaflet'
+import L, { Map as LeafletMap } from 'leaflet'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
@@ -11,10 +11,21 @@ L.Icon.Default.mergeOptions({
 })
 
 const WhereWeArePanelLeafletMap = () => {
+  const [map, setMap] = useState<LeafletMap>()
+
+  useEffect(() => {
+    if (map) {
+      setInterval(function () {
+        map.invalidateSize({ pan: false })
+      }, 100)
+    }
+  }, [map])
+
   return (
     <Flex w="100%" h="100%" position="relative">
       <MapContainer
         zoom={14}
+        whenCreated={setMap}
         scrollWheelZoom={false}
         center={[40.8054, -74.0241]}
         style={{ height: '100%', width: '100%' }}

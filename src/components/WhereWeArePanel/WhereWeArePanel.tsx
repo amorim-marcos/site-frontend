@@ -2,7 +2,9 @@ import { Flex, Image, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 
 import WhereWeArePanelFooter from './WhereWeArePanelFooter'
-import WhereWeArePanelInfo from '@components/WhereWeArePanel/WhereWeArePanelInfo'
+import WhereWeArePanelLeafletMap from './WhereWeArePanelLeafletMap'
+import WhereWeArePanelInfo from 'components/WhereWeArePanel/WhereWeArePanelInfo'
+import WhereWeArePanelGoogleMaps from './WhereWeArePanelGoogleMaps'
 
 export type IOurPlaceInformation = {
   structure: string
@@ -23,7 +25,11 @@ export type WhereWeArePanelProps = {
 }
 
 export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
-  const [expand, setExpand] = useState(false)
+  const [showOverlay, setShowOverlay] = useState<'map' | 'info' | null>(null)
+
+  const handleShowOverlay = (overlay: 'map' | 'info' | null) => {
+    showOverlay === overlay ? setShowOverlay(null) : setShowOverlay(overlay)
+  }
 
   return (
     <Flex pos="relative" h="31rem" w="50rem" overflow="hidden">
@@ -35,38 +41,51 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
       <WhereWeArePanelFooter
         name={props.name}
         address={`${props.city}, ${props.state} • ${props.country}`}
-        googleMapsURL={props.googleMapsURL}
         inaugurationSoon={props.inaugurationSoon}
-        expand={expand}
-        onClick={() => setExpand(!expand)}
+        showMap={showOverlay === 'map'}
+        showInfo={showOverlay === 'info'}
+        handleToggleInfo={() => handleShowOverlay('info')}
+        handleToggleMap={() => handleShowOverlay('map')}
       />
 
       <Flex
-        h={expand ? '26rem' : '0'}
+        h={showOverlay ? '26rem' : '0'}
         w="100%"
         bottom="3rem"
         pos="absolute"
         bgColor="white"
-        opacity={expand ? 1 : 0}
+        opacity={showOverlay ? 1 : 0}
         transition={`all 0.3s ease-in-out`}
         boxShadow="15px 5px 15px -1px rgba(0,0,0,0.55)"
       >
-        <Image
-          id="close_button"
-          right="1.8rem"
-          top="1.5rem"
-          h="1rem"
-          pos="absolute"
-          src="icon/close_panel.svg"
-          cursor="pointer"
-          onClick={() => setExpand(!expand)}
-        />
+        {showOverlay === 'info' && (
+          <>
+            <CloseButton onClick={() => handleShowOverlay(null)} />
+            <WhereWeArePanelInfo {...props.ourPlaceInformation} />
+          </>
+        )}
 
-        <WhereWeArePanelInfo {...props.ourPlaceInformation} />
+        {showOverlay === 'map' && (
+          <WhereWeArePanelLeafletMap />
+          // <WhereWeArePanelGoogleMaps />
+        )}
       </Flex>
     </Flex>
   )
 }
+
+const CloseButton = (props: { onClick: () => void }) => (
+  <Image
+    id="close_button"
+    right="1.8rem"
+    top="1.5rem"
+    h="1rem"
+    pos="absolute"
+    src="icon/close_panel.svg"
+    cursor="pointer"
+    onClick={props.onClick}
+  />
+)
 
 const PanelImage = (props: { image: string; inaugurationSoon?: boolean }) => (
   <Flex justifyContent="center" alignItems="center" pos="relative">
@@ -78,7 +97,7 @@ const PanelImage = (props: { image: string; inaugurationSoon?: boolean }) => (
     />
 
     {props.inaugurationSoon && (
-      <Text pos="absolute" align="center" fontWeight="semibold" color="white">
+      <Text pos="absolute" align="center" fontWeight={600} color="white">
         Em Breve <br /> Inauguração
       </Text>
     )}

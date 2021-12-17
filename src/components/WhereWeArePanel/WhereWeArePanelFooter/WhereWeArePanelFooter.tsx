@@ -1,12 +1,13 @@
-import { Flex, Image, Link, Text } from '@chakra-ui/react'
+import { Flex, Image, Text } from '@chakra-ui/react'
 
 export type WhereWeArePanelFooterProps = {
   name: string
   address: string
-  googleMapsURL: string
   inaugurationSoon: boolean
-  expand: boolean
-  onClick: () => void
+  showMap: boolean
+  showInfo: boolean
+  handleToggleInfo: () => void
+  handleToggleMap: () => void
 }
 
 export const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
@@ -29,8 +30,11 @@ export const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
 
     {!props.inaugurationSoon && (
       <Flex gap="1rem" alignItems="flex-end" h="100%" mb="1rem" mr="0.5rem">
-        <InfoButtom onClick={props.onClick} expand={props.expand} />
-        <MapButtom googleMapsURL={props.googleMapsURL} />
+        <InfoButtom
+          onClick={props.handleToggleInfo}
+          showInfo={props.showInfo}
+        />
+        <MapButtom onClick={props.handleToggleMap} showMap={props.showMap} />
       </Flex>
     )}
   </Flex>
@@ -59,20 +63,25 @@ const Address = (props: { address: string }) => (
   </Text>
 )
 
-const InfoButtom = (props: { onClick?: () => void; expand: boolean }) => (
+const InfoButtom = (props: { onClick?: () => void; showInfo: boolean }) => (
   <Image
     src="icon/icon_info.svg"
     h="60%"
     cursor="pointer"
+    borderRadius="100%"
     onClick={props.onClick}
     transition={`all 0.1s ease-in-out`}
-    backgroundColor={props.expand ? 'green.600' : 'none'}
-    borderRadius="100%"
+    backgroundColor={props.showInfo ? 'green.600' : 'none'}
   />
 )
 
-const MapButtom = (props: { googleMapsURL: string }) => (
-  <Link href={props.googleMapsURL} isExternal>
-    <Image src="icon/icon_mapa.svg" h="2.2rem" cursor="pointer" />
-  </Link>
+const MapButtom = (props: { onClick?: () => void; showMap: boolean }) => (
+  <Image
+    src="icon/icon_mapa.svg"
+    h="2.2rem"
+    cursor="pointer"
+    onClick={props.onClick}
+    transition={`all 0.1s ease-in-out`}
+    backgroundColor={props.showMap ? 'green.900' : 'none'}
+  />
 )
