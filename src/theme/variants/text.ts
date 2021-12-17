@@ -30,7 +30,7 @@ export const Text = {
     },
     'header-menu-small': {
       fontSize: '16.5px',
-      fontWeight: 'medium'
+      fontWeight: 'semibold'
     },
     'canal-bnk-menu': {
       fontSize: '16px',
