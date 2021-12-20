@@ -5,6 +5,8 @@ import { theme } from 'theme/theme'
 import AppHeader from 'components/AppHeader'
 import AppFooter from 'components/AppFooter'
 
+import 'leaflet/dist/leaflet.css'
+
 function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
