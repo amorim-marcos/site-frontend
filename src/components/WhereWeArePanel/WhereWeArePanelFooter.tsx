@@ -8,17 +8,17 @@ export type WhereWeArePanelFooterProps = {
   handleChangeOverlay: (overlay: 'map' | 'info' | null) => void
 }
 
-export const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
+const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
   <Flex
-    h="3rem"
+    h="4.4rem"
     w="100%"
     bottom={0}
-    zIndex={10}
-    pos="absolute"
-    padding="0 1.5rem"
+    zIndex={1000}
+    pl="1.9rem"
+    pr="2.4rem"
     alignItems="center"
     justifyContent="space-between"
-    borderRadius="0px 0px 33px 0px"
+    borderBottomRightRadius="33px"
     bgColor="green.900"
   >
     <Flex alignItems="center">
@@ -46,7 +46,6 @@ const Name = (props: { name: string }) => (
     color="green.600"
     whiteSpace="pre"
     fontWeight="bold"
-    fontFamily="Montserrat"
     letterSpacing="-0.46px"
   >
     {`${props.name} | `}
@@ -56,8 +55,8 @@ const Name = (props: { name: string }) => (
 const Address = (props: { address: string }) => (
   <Text
     color="white"
-    fontFamily="Montserrat"
     letterSpacing="-0.36px"
+    fontSize="1.1rem"
     fontWeight="medium"
   >
     {props.address}
@@ -67,7 +66,7 @@ const Address = (props: { address: string }) => (
 const InfoBtn = (props: { onClick?: () => void; show: boolean }) => (
   <Image
     src="icon/icon_info.svg"
-    h="60%"
+    h="50%"
     cursor="pointer"
     borderRadius="100%"
     onClick={props.onClick}
@@ -88,3 +87,5 @@ const MapBtn = (props: { onClick?: () => void; show: boolean }) => (
     _hover={{ filter: 'saturate(0.5) brightness(1.1)' }}
   />
 )
+
+export default WhereWeArePanelFooter

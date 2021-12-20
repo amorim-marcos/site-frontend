@@ -1,4 +1,5 @@
-import { Container, Flex, Text, Image } from '@chakra-ui/react'
+import { ReactNode } from 'react'
+import { Flex, Image } from '@chakra-ui/react'
 
 export type WhereWeArePanelInfoProps = {
   structure: string
@@ -13,54 +14,58 @@ const WhereWeArePanelInfo = (props: WhereWeArePanelInfoProps) => (
     <CloseButton onClick={props.onClose} />
 
     <Flex
-      w="100%"
-      alignItems="flex-start"
       justifyContent="center"
       direction="column"
-      gap="1rem"
+      gap="1.4rem"
+      padding="2rem 3rem 2.5rem"
     >
-      <Container>
-        <SectionTitle title="ESTRUTURA" />
+      <Section title="ESTRUTURA">
         <SectionContent content={props.structure} />
-      </Container>
+      </Section>
 
-      <Container>
-        <SectionTitle title="LOCALIZAÇÃO" />
+      <Section title="LOCALIZAÇÃO">
         <SectionPlace content={props.localization} />
-      </Container>
+      </Section>
 
-      <Container>
-        <SectionTitle title="TELEFONE" />
-        <SectionPlace content={props.phones} />
-      </Container>
+      <Section title="TELEFONES">
+        <SectionContent content={props.phones} />
+      </Section>
 
-      <Container>
-        <SectionTitle title="DISTâNCIA DO AEROPORTO" />
-        <SectionPlace content={props.airportDistance} />
-      </Container>
+      <Section title="DISTÂNCIA DO AEROPORTO">
+        <SectionContent content={props.airportDistance} />
+      </Section>
     </Flex>
   </>
+)
+
+const Section = (props: { title: string; children: ReactNode }) => (
+  <Flex direction="column">
+    <SectionTitle title={props.title} />
+    {props.children}
+  </Flex>
 )
 
 const SectionText = (props: {
   color: string
   fontWeight: string
-  children: React.ReactNode
+  children: ReactNode
 }) => (
-  <Text
+  <Flex
+    gap="0.3rem"
+    alignItems="center"
     fontSpacing="-20px"
-    fontSize="1.1rem"
-    fontFamily="Montserrat"
+    fontSize="1.07rem"
     color={props.color}
     fontWeight={props.fontWeight}
   >
     {props.children}
-  </Text>
+  </Flex>
 )
 
 const SectionTitle = (props: { title: string }) => (
   <SectionText color="green.600" fontWeight="medium">
-    {`> ${props.title}`}
+    <ArrowRight />
+    {props.title}
   </SectionText>
 )
 
@@ -88,6 +93,10 @@ const CloseButton = (props: { onClick: () => void }) => (
     transition={`all 0.2s ease-in-out`}
     _hover={{ filter: 'brightness(0.8)' }}
   />
+)
+
+const ArrowRight = (props: { color?: string }) => (
+  <Image h="0.65rem" color={props.color} src="icon/icon_arrow_right.svg" />
 )
 
 export default WhereWeArePanelInfo

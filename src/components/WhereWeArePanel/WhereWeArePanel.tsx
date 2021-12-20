@@ -1,10 +1,10 @@
-import { Flex, Image, Text } from '@chakra-ui/react'
 import { useState } from 'react'
+import { Flex, Image, Text } from '@chakra-ui/react'
 
+import LeafletMaps from '@components/LeafletMaps'
+
+import WhereWeArePanelInfo from './WhereWeArePanelInfo'
 import WhereWeArePanelFooter from './WhereWeArePanelFooter'
-import WhereWeArePanelLeafletMap from './WhereWeArePanelLeafletMap'
-import WhereWeArePanelInfo from 'components/WhereWeArePanel/WhereWeArePanelInfo'
-import WhereWeArePanelGoogleMaps from './WhereWeArePanelGoogleMaps'
 
 export type IOurPlaceInformation = {
   structure: string
@@ -17,6 +17,7 @@ export type WhereWeArePanelProps = {
   name: string
   city: string
   ourPlaceInformation: IOurPlaceInformation
+  coords: [number, number]
   googleMapsURL: string
   state: string
   country: string
@@ -32,25 +33,28 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
   }
 
   return (
-    <Flex pos="relative" h="31rem" w="50rem" overflow="hidden">
+    <Flex pos="relative" h="31rem" w="50rem" direction="column">
       <PanelImage
         image={props.image}
         inaugurationSoon={props.inaugurationSoon}
       />
 
       <Flex
-        h={showOverlay ? '26rem' : '0'}
+        id="panel-overlay"
+        h={showOverlay ? '27rem' : '0'}
+        bottom="4rem"
         w="100%"
-        bottom="3rem"
         pos="absolute"
         bgColor="white"
         opacity={showOverlay ? 1 : 0}
         transition={`all 0.3s ease-in-out`}
-        boxShadow="15px 5px 15px -1px rgba(0,0,0,0.55)"
+        boxShadow="0px 2px 15px -10px #000000"
       >
         {showOverlay === 'map' && (
-          <WhereWeArePanelLeafletMap />
-          // <WhereWeArePanelGoogleMaps />
+          <LeafletMaps
+            center={props.coords}
+            onClick={() => window.open(props.googleMapsURL, '_blank')}
+          />
         )}
 
         {showOverlay === 'info' && (
@@ -75,10 +79,11 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
 const PanelImage = (props: { image: string; inaugurationSoon?: boolean }) => (
   <Flex justifyContent="center" alignItems="center" pos="relative">
     <Image
+      h="100%"
       w="100%"
       src={props.image}
       objectFit="cover"
-      // filter={props.inaugurationSoon ? 'blur(7px)' : 'none'} // Active in production
+      // filter={props.inaugurationSoon ? 'blur(7px)' : 'none'} // @ActiveInProd
     />
 
     {props.inaugurationSoon && (
