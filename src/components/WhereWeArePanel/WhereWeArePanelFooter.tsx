@@ -10,14 +10,16 @@ export type WhereWeArePanelFooterProps = {
 
 const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
   <Flex
-    h="4.4rem"
+    h={{ base: 'fit-content', md: '4.4rem' }}
     w="100%"
     bottom={0}
     zIndex={1000}
-    pl="1.9rem"
-    pr="2.4rem"
+    padding={{ base: '1rem', md: '1rem 2.4rem 1rem 1.9rem' }}
+    gap={{ base: '0.6rem', md: '0' }}
+    wrap={{ base: 'nowrap', md: 'wrap' }}
     alignItems="center"
-    justifyContent="space-between"
+    justifyContent={{ base: 'center', md: 'space-between' }}
+    direction={{ base: 'column', md: 'row' }}
     borderBottomRightRadius="33px"
     bgColor="green.900"
   >
@@ -27,7 +29,7 @@ const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
     </Flex>
 
     {!props.inaugurationSoon && (
-      <Flex gap="1.5rem" alignItems="center" h="100%">
+      <Flex id="buttons" gap="1.5rem" alignItems="center">
         <InfoBtn
           onClick={() => props.handleChangeOverlay('info')}
           show={props.showOverlay === 'info'}
@@ -66,7 +68,7 @@ const Address = (props: { address: string }) => (
 const InfoBtn = (props: { onClick?: () => void; show: boolean }) => (
   <Image
     src="icon/icon_info.svg"
-    h="50%"
+    h="2rem"
     cursor="pointer"
     borderRadius="100%"
     onClick={props.onClick}
@@ -79,8 +81,8 @@ const InfoBtn = (props: { onClick?: () => void; show: boolean }) => (
 const MapBtn = (props: { onClick?: () => void; show: boolean }) => (
   <Image
     src={`icon/${props.show ? 'icon_map_active' : 'icon_map'}.svg`}
-    h="60%"
-    mb="0.5rem"
+    h="2rem"
+    mb={{ base: '0.2rem', md: '0.3rem' }}
     cursor="pointer"
     onClick={props.onClick}
     transition={`all 0.2s ease-in-out`}
