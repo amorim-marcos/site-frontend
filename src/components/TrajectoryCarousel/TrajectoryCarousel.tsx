@@ -2,14 +2,18 @@ import { Tabs, TabList, TabPanels, TabPanel  } from '@chakra-ui/react'
 import { Props } from 'react'
 import { TrajectoryCarouselTab, TrajectoryCarouselPanel } from '@components/TrajectoryCarousel'
 
-interface TrajectoryContent {
-  text: string,
+export type TrajectoryContent = {
+  text: string
   image: string
 }
 
-interface TrajectoryTab {
-  name: string,
+export type TrajectoryTab = {
+  name: string
   content: TrajectoryContent
+}
+
+export type WhereWeArePanelProps = {
+  tabs: Array<TrajectoryTab>
 }
 
 function listTabNames(tabNames: Array<string>){
@@ -33,7 +37,7 @@ function listTabContents(tabs: Array<TrajectoryTab>){
   return contents
 }
 
-export const TrajectoryCarousel = ({ tabs }: Props) => {
+export const TrajectoryCarousel = ({ tabs }: WhereWeArePanelProps) => {
   const tabNames = tabs.map((tab: TrajectoryTab) => tab.name)
 
   return (
