@@ -1,8 +1,8 @@
-import { Box } from "@chakra-ui/react"
+import { Box, BoxProps} from "@chakra-ui/react"
 
 export type ArrowProps = {
-  width: number
-  height: number
+  width: number | string
+  height: number | string
   color: string
   direction?: 'right' | 'left'
 }
@@ -23,12 +23,13 @@ const ArrowLeft = () => {
   )
 }
 
-export const Arrow = ({ width, height, color, direction = "right" }: ArrowProps) => {
+export const Arrow = ({ width, height, color, direction = "right", ...props}: ArrowProps) => {
   return (
     <Box
       color={color}
       width={width}
       height={height}
+      {...props}
     >
       {(direction == 'right') ? <ArrowRight/> : <ArrowLeft/>}
     </Box>
