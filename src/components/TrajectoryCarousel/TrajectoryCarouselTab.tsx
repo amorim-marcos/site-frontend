@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, chakra, useTab, useStyles } from "@chakra-ui/react"
+import { chakra, useTab } from "@chakra-ui/react"
 import { Text } from "@chakra-ui/react"
 
 const StyledTab = chakra('button')

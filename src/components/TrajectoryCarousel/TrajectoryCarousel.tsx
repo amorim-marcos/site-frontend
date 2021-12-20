@@ -1,8 +1,7 @@
 import * as S from './styles'
 import { Tab, Tabs, TabList, TabPanels, TabPanel  } from '@chakra-ui/react'
 import { Props } from 'react'
-import TrajectoryCarouselTab from '@components/TrajectoryCarouselTab'
-import TrajectoryCarouselPanel from '@components/TrajectoryCarouselPanel'
+import { TrajectoryCarouselTab, TrajectoryCarouselPanel } from '@components/TrajectoryCarousel'
 
 interface TrajectoryContent {
   text: string,
