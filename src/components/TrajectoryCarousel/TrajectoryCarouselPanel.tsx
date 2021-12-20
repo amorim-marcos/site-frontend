@@ -9,23 +9,23 @@ export const TrajectoryCarouselPanel = ({ tabData }: TrajectoryCarouselPanelProp
   <Flex
     background="#FFFFFF"
     mt="40px"
-    padding="10px"
+    padding="67px"
     justifyContent="space-around"
     flexDirection={"row"}
   >
     <Flex
-      flex={2}
+      flex={1}
       flexDirection="column"
     >
-      <Heading textAlign="left" variant="h1">{tabData.name}</Heading>
-      <Heading textAlign="left" variant="h2">{tabData.content.title}</Heading>
-      <Text textAlign="justify">{tabData.content.text}</Text>
+      <Heading textAlign="left" variant="h1" color="grey.300">{tabData.name}</Heading>
+      <Heading marginLeft="38px" textAlign="left" variant="h3" color="green.900">{tabData.content.title}</Heading>
+      <Text ml="38px" mt="27px" textAlign="justify">{tabData.content.text}</Text>
     </Flex>
     <Box
       flex={1}
       alignSelf="center"
     >
-      <Image margin="auto" src={tabData.content.image} alt='Dan Abramov'></Image>
+      <Image margin="auto" src={tabData.content.image}></Image>
     </Box>
   </Flex>
 )
