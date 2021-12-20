@@ -20,8 +20,8 @@ export type TrajectoryCarouselProps = {
 function listTabNames(tabNames: Array<string>){
   let tabs = []
 
-  for(let name of tabNames){
-    tabs.push(<TrajectoryCarouselTab>{name}</TrajectoryCarouselTab>)
+  for(let index in tabNames){
+    tabs.push(<TrajectoryCarouselTab key={`tab_`+index}>{tabNames[index]}</TrajectoryCarouselTab>)
   }
 
   return tabs
@@ -31,8 +31,8 @@ function listTabNames(tabNames: Array<string>){
 function listTabContents(tabs: Array<TrajectoryTab>){
   let contents = []
 
-  for(let tab of tabs){
-    contents.push(<TabPanel padding={0}><TrajectoryCarouselPanel tabData={tab}></TrajectoryCarouselPanel></TabPanel>)
+  for(let index in tabs){
+    contents.push(<TabPanel padding={0} key={`panel_`+index}><TrajectoryCarouselPanel tabData={tabs[index]}></TrajectoryCarouselPanel></TabPanel>)
   }
 
   return contents
