@@ -1,40 +1,45 @@
-import { Container, Flex, Text } from '@chakra-ui/react'
+import { Container, Flex, Text, Image } from '@chakra-ui/react'
 
 export type WhereWeArePanelInfoProps = {
   structure: string
   localization: string
   phones: string
   airportDistance: string
+  onClose: () => void
 }
 
-export const WhereWeArePanelInfo = (props: WhereWeArePanelInfoProps) => (
-  <Flex
-    w="100%"
-    alignItems="flex-start"
-    justifyContent="center"
-    direction="column"
-    gap="1rem"
-  >
-    <Container>
-      <SectionTitle title="ESTRUTURA" />
-      <SectionContent content={props.structure} />
-    </Container>
+const WhereWeArePanelInfo = (props: WhereWeArePanelInfoProps) => (
+  <>
+    <CloseButton onClick={props.onClose} />
 
-    <Container>
-      <SectionTitle title="LOCALIZAÇÃO" />
-      <SectionPlace content={props.localization} />
-    </Container>
+    <Flex
+      w="100%"
+      alignItems="flex-start"
+      justifyContent="center"
+      direction="column"
+      gap="1rem"
+    >
+      <Container>
+        <SectionTitle title="ESTRUTURA" />
+        <SectionContent content={props.structure} />
+      </Container>
 
-    <Container>
-      <SectionTitle title="TELEFONE" />
-      <SectionPlace content={props.phones} />
-    </Container>
+      <Container>
+        <SectionTitle title="LOCALIZAÇÃO" />
+        <SectionPlace content={props.localization} />
+      </Container>
 
-    <Container>
-      <SectionTitle title="DISTâNCIA DO AEROPORTO" />
-      <SectionPlace content={props.airportDistance} />
-    </Container>
-  </Flex>
+      <Container>
+        <SectionTitle title="TELEFONE" />
+        <SectionPlace content={props.phones} />
+      </Container>
+
+      <Container>
+        <SectionTitle title="DISTâNCIA DO AEROPORTO" />
+        <SectionPlace content={props.airportDistance} />
+      </Container>
+    </Flex>
+  </>
 )
 
 const SectionText = (props: {
@@ -70,3 +75,19 @@ const SectionPlace = (props: { content: string }) => (
     {props.content}
   </SectionText>
 )
+
+const CloseButton = (props: { onClick: () => void }) => (
+  <Image
+    src="icon/close_panel.svg"
+    h="1rem"
+    top="1.5rem"
+    right="1.8rem"
+    pos="absolute"
+    cursor="pointer"
+    onClick={props.onClick}
+    transition={`all 0.2s ease-in-out`}
+    _hover={{ filter: 'brightness(0.8)' }}
+  />
+)
+
+export default WhereWeArePanelInfo

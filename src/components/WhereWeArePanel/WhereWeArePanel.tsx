@@ -48,16 +48,16 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
         transition={`all 0.3s ease-in-out`}
         boxShadow="15px 5px 15px -1px rgba(0,0,0,0.55)"
       >
-        {showOverlay === 'info' && (
-          <>
-            <CloseButton onClick={() => handleShowOverlay(null)} />
-            <WhereWeArePanelInfo {...props.ourPlaceInformation} />
-          </>
-        )}
-
         {showOverlay === 'map' && (
           <WhereWeArePanelLeafletMap />
           // <WhereWeArePanelGoogleMaps />
+        )}
+
+        {showOverlay === 'info' && (
+          <WhereWeArePanelInfo
+            {...props.ourPlaceInformation}
+            onClose={() => handleShowOverlay(null)}
+          />
         )}
       </Flex>
 
@@ -71,19 +71,6 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
     </Flex>
   )
 }
-
-const CloseButton = (props: { onClick: () => void }) => (
-  <Image
-    id="close_button"
-    right="1.8rem"
-    top="1.5rem"
-    h="1rem"
-    pos="absolute"
-    src="icon/close_panel.svg"
-    cursor="pointer"
-    onClick={props.onClick}
-  />
-)
 
 const PanelImage = (props: { image: string; inaugurationSoon?: boolean }) => (
   <Flex justifyContent="center" alignItems="center" pos="relative">
