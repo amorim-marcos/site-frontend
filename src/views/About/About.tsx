@@ -1,11 +1,16 @@
+import { Box } from '@chakra-ui/react'
 import Main from '@components/Main'
 import Pagebar from '@components/Pagebar'
+import WhereWeAre from '@components/WhereWeAre'
 
 export const About = () => {
   return (
-    <div>
+    <Box>
       <Pagebar />
+
       <Main title="Somos Berneck" />
-    </div>
+
+      <WhereWeAre />
+    </Box>
   )
 }
