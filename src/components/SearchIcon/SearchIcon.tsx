@@ -3,10 +3,14 @@ import { Box, Center } from '@chakra-ui/react'
 
 export type SearchIconProps = {
   stroke?: string
+  onClick?: () => void
 }
-export const SearchIcon = ({ stroke = '#f5f6f4' }: SearchIconProps) => {
+export const SearchIcon = ({
+  stroke = '#f5f6f4',
+  onClick
+}: SearchIconProps) => {
   return (
-    <Center h="100%" paddingLeft={10} paddingY={10} cursor="pointer">
+    <Center onClick={onClick} h="100%" cursor="pointer">
       <svg xmlns="http://www.w3.org/2000/svg" width="34.963" height="34.84">
         <g
           data-name="lupa pesquisa"
