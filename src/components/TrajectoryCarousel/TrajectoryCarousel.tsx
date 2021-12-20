@@ -4,6 +4,7 @@ import { TrajectoryCarouselTab, TrajectoryCarouselPanel } from '@components/Traj
 
 export type TrajectoryContent = {
   text: string
+  title: string
   image: string
 }
 
