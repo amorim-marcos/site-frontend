@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const path = require('path')
 
 module.exports = {
   stories: ['../src/components/**/*.stories.tsx'],
@@ -18,6 +19,31 @@ module.exports = {
         extensions: config.resolve.extensions
       })
     ]
+
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      '@emotion/core': '@emotion/react',
+      'emotion-theming': '@emotion/react'
+    }
+
+    config.module.rules.push({
+      test: /\.js?$/,
+      include: [
+        path.resolve(__dirname, '../node_modules/@react-leaflet/core'),
+        path.resolve(__dirname, '../node_modules/react-leaflet')
+      ],
+      use: {
+        loader: 'babel-loader',
+        options: {
+          plugins: [
+            '@babel/plugin-proposal-nullish-coalescing-operator',
+            '@babel/plugin-proposal-optional-chaining'
+          ],
+          presets: ['@babel/preset-env', '@babel/preset-react']
+        }
+      }
+    })
+
     return config
   }
 }
