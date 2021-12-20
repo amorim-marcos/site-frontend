@@ -26,7 +26,6 @@
     "@chakra-ui/react": "^1.7.3",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
-    "@react-google-maps/api": "^2.7.0",
     "framer-motion": "^4",
     "leaflet": "^1.7.1",
     "next": "11.1.2",
