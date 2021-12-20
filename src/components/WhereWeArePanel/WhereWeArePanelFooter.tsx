@@ -4,10 +4,8 @@ export type WhereWeArePanelFooterProps = {
   name: string
   address: string
   inaugurationSoon: boolean
-  showMap: boolean
-  showInfo: boolean
-  handleToggleInfo: () => void
-  handleToggleMap: () => void
+  showOverlay: string | null
+  handleChangeOverlay: (overlay: 'map' | 'info' | null) => void
 }
 
 export const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
@@ -29,12 +27,15 @@ export const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
     </Flex>
 
     {!props.inaugurationSoon && (
-      <Flex gap="1rem" alignItems="flex-end" h="100%" mb="1rem" mr="0.5rem">
-        <InfoButtom
-          onClick={props.handleToggleInfo}
-          showInfo={props.showInfo}
+      <Flex gap="1.5rem" alignItems="center" h="100%">
+        <InfoBtn
+          onClick={() => props.handleChangeOverlay('info')}
+          show={props.showOverlay === 'info'}
         />
-        <MapButtom onClick={props.handleToggleMap} showMap={props.showMap} />
+        <MapBtn
+          onClick={() => props.handleChangeOverlay('map')}
+          show={props.showOverlay === 'map'}
+        />
       </Flex>
     )}
   </Flex>
@@ -63,25 +64,27 @@ const Address = (props: { address: string }) => (
   </Text>
 )
 
-const InfoButtom = (props: { onClick?: () => void; showInfo: boolean }) => (
+const InfoBtn = (props: { onClick?: () => void; show: boolean }) => (
   <Image
     src="icon/icon_info.svg"
     h="60%"
     cursor="pointer"
     borderRadius="100%"
     onClick={props.onClick}
-    transition={`all 0.1s ease-in-out`}
-    backgroundColor={props.showInfo ? 'green.600' : 'none'}
+    transition={`all 0.2s ease-in-out`}
+    bg={props.show ? 'green.600' : 'none'}
+    _hover={{ filter: 'saturate(0.5)' }}
   />
 )
 
-const MapButtom = (props: { onClick?: () => void; showMap: boolean }) => (
+const MapBtn = (props: { onClick?: () => void; show: boolean }) => (
   <Image
-    src="icon/icon_mapa.svg"
-    h="2.2rem"
+    src={`icon/${props.show ? 'icon_map_active' : 'icon_map'}.svg`}
+    h="60%"
+    mb="0.5rem"
     cursor="pointer"
     onClick={props.onClick}
-    transition={`all 0.1s ease-in-out`}
-    backgroundColor={props.showMap ? 'green.900' : 'none'}
+    transition={`all 0.2s ease-in-out`}
+    _hover={{ filter: 'saturate(0.5) brightness(1.1)' }}
   />
 )

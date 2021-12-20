@@ -38,16 +38,6 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
         inaugurationSoon={props.inaugurationSoon}
       />
 
-      <WhereWeArePanelFooter
-        name={props.name}
-        address={`${props.city}, ${props.state} • ${props.country}`}
-        inaugurationSoon={props.inaugurationSoon}
-        showMap={showOverlay === 'map'}
-        showInfo={showOverlay === 'info'}
-        handleToggleInfo={() => handleShowOverlay('info')}
-        handleToggleMap={() => handleShowOverlay('map')}
-      />
-
       <Flex
         h={showOverlay ? '26rem' : '0'}
         w="100%"
@@ -70,6 +60,14 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
           // <WhereWeArePanelGoogleMaps />
         )}
       </Flex>
+
+      <WhereWeArePanelFooter
+        name={props.name}
+        inaugurationSoon={props.inaugurationSoon}
+        address={`${props.city}, ${props.state} • ${props.country}`}
+        showOverlay={showOverlay}
+        handleChangeOverlay={handleShowOverlay}
+      />
     </Flex>
   )
 }
