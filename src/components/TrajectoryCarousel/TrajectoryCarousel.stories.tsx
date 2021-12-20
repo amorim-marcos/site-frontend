@@ -1,11 +1,12 @@
 import { Story, Meta } from '@storybook/react'
-import { TrajectoryCarousel, TrajectoryCarouselProps } from './TrajectoryCarousel'
+import { TrajectoryCarousel, TrajectoryCarouselProps, mockCarouselObj } from './TrajectoryCarousel'
 
 export default {
   title: 'TrajectoryCarousel',
-  component: TrajectoryCarousel
+  component: TrajectoryCarousel,
+  args: mockCarouselObj
 } as Meta
 
-export const Default: Story<TrajectoryCarouselProps> = () => (
-  <TrajectoryCarousel tabs={[]}/>
+export const Default: Story<TrajectoryCarouselProps> = (args) => (
+  <TrajectoryCarousel {...args}/>
 )
