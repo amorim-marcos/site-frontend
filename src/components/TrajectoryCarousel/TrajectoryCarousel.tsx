@@ -12,7 +12,7 @@ export type TrajectoryTab = {
   content: TrajectoryContent
 }
 
-export type WhereWeArePanelProps = {
+export type TrajectoryCarouselProps = {
   tabs: Array<TrajectoryTab>
 }
 
@@ -37,7 +37,7 @@ function listTabContents(tabs: Array<TrajectoryTab>){
   return contents
 }
 
-export const TrajectoryCarousel = ({ tabs }: WhereWeArePanelProps) => {
+export const TrajectoryCarousel = ({ tabs }: TrajectoryCarouselProps) => {
   const tabNames = tabs.map((tab: TrajectoryTab) => tab.name)
 
   return (
