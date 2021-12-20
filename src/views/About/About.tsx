@@ -1,15 +1,28 @@
-import { Box } from '@chakra-ui/react'
-import Main from '@components/Main'
+import GlobalContainer from '@components/GlobalContainer'
 import Pagebar from '@components/Pagebar'
-import WhereWeAre from '@components/WhereWeAre'
+import PageSection from '@components/PageSection'
+
+const data = {
+  imageUrl: 'url(/assets/imgs/quem_somos_foto_capa.png)',
+  title: 'Quem somos',
+  subtitle: 'Somos a marca da madeira',
+  text: 'Modern home in city center in the heart of historic Los Angeles',
+}
 
 export const About = () => {
   return (
-    <Box>
-      <Pagebar />
 
-      <Main title="Somos Berneck" />
+      <GlobalContainer>
+        <Pagebar title="Quem somos" />
 
-    </Box>
+        <PageSection 
+          data={data}
+          titleColor = 'red.100'
+          titleLineColor = 'red.100'
+          subTitleColor = 'green.200'
+          
+        />
+
+      </GlobalContainer>
   )
 }

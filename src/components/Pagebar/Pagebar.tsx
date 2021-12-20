@@ -6,7 +6,7 @@ export type PagebarProps = {
 export const Pagebar = ({ title }: PagebarProps) => {
   return (
     <S.Wrapper>
-      <S.Tail>Somos Berneck {title}</S.Tail>
+      <S.Tail>{title}</S.Tail>
     </S.Wrapper>
   )
 }

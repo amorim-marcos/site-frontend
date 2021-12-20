@@ -47,3 +47,10 @@ DOM testing library + Jest
 $ yarn test --watch
 ```
 
+
+## Create Automatic Component
+Criação de novo componentes
+
+```bash
+$ yarn generate
+```
