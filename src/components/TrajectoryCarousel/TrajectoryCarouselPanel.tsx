@@ -18,8 +18,9 @@ export const TrajectoryCarouselPanel = ({ tabData }: TrajectoryCarouselPanelProp
       flexDirection="column"
     >
       <Heading textAlign="left" variant="h1" color="grey.300">{tabData.name}</Heading>
-      <Heading marginLeft="38px" textAlign="left" variant="h3" color="green.900">{tabData.content.title}</Heading>
+      <Heading textAlign="left" variant="h3" color="green.900">{tabData.content.title}</Heading>
       <Text ml="38px" mt="27px" textAlign="justify">{tabData.content.text}</Text>
+      
     </Flex>
     <Box
       flex={1}
