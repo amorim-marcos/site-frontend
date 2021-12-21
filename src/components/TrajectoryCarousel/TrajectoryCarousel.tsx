@@ -34,7 +34,7 @@ function listTabContents(tabs: Array<TrajectoryTab>, tabIndex: number){
   let contents = []
 
   for(let index in tabs){
-    contents.push(<TabPanel padding={0} key={`panel_`+index}><TrajectoryCarouselPanel tabData={tabs[index]} myIndex={index} tabIndex={tabIndex}></TrajectoryCarouselPanel></TabPanel>)
+    contents.push(<TabPanel padding={0} key={`panel_`+index}><TrajectoryCarouselPanel tabData={tabs[index]} myIndex={parseInt(index)} tabIndex={tabIndex}></TrajectoryCarouselPanel></TabPanel>)
   }
 
   return contents
