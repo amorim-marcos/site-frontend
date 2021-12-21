@@ -1,6 +1,7 @@
 import { Tabs, TabList, TabPanels, TabPanel  } from '@chakra-ui/react'
 import { Props } from 'react'
 import { TrajectoryCarouselTab, TrajectoryCarouselPanel } from '@components/TrajectoryCarousel'
+import { TrajectoryCarouselControllers } from './TrajectoryCarouselControllers'
 
 export type TrajectoryContent = {
   text: string
@@ -50,6 +51,8 @@ export const TrajectoryCarousel = ({ tabs }: TrajectoryCarouselProps) => {
       <TabPanels >
         {listTabContents(tabs)}
       </TabPanels>
+
+      <TrajectoryCarouselControllers />
     </Tabs>
   )
 }
