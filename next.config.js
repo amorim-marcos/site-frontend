@@ -9,5 +9,9 @@ module.exports = withPWA({
   },
   env: {
     MAPBOX_API_KEY: process.env.MAPBOX_API_KEY
+  },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es', 'pt-BR', 'zn-CN']
   }
 })

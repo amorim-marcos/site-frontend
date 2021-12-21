@@ -1,9 +1,13 @@
 import { Center, Text, Box, Flex } from '@chakra-ui/react'
 import { useState } from 'react'
 import { LanguageBtn } from './LanguageBtn/LanguageBtn'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'react-i18next'
 
 export const LanguageSelector = () => {
   const [open, setOpen] = useState(false)
+  const router = useRouter()
+  const header = useTranslation('header')
 
   return (
     <Center
@@ -47,7 +51,7 @@ export const LanguageSelector = () => {
           </g>
         </svg>
       </Box>
-      <Text color="#FFF">Português</Text>
+      <Text color="#FFF">{header.t('locale')}</Text>
 
       <Box
         transition="0.3s"
@@ -66,9 +70,21 @@ export const LanguageSelector = () => {
           position="absolute"
           top="calc(100% + 5px)"
         >
-          <LanguageBtn title="English" />
-          <LanguageBtn title="Español" />
-          <LanguageBtn title="Mandarim" />
+          {!(router.locale === 'pt-BR') && (
+            <LanguageBtn title="Português" locale="pt-BR" />
+          )}
+
+          {!(router.locale === 'en') && (
+            <LanguageBtn title="English" locale="en" />
+          )}
+
+          {!(router.locale === 'es') && (
+            <LanguageBtn title="Español" locale="es" />
+          )}
+
+          {!(router.locale === 'zn-CN') && (
+            <LanguageBtn title="Mandarim" locale="zn-CN" />
+          )}
         </Flex>
       ) : null}
     </Center>
