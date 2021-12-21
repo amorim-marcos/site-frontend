@@ -9,7 +9,10 @@ import {
 import Link from 'next/link'
 
 export type PagebarProps = {
-  paths?: string[]
+  paths?: {
+    title: string
+    url: string
+  }[]
 }
 export const Pagebar = ({ paths }: PagebarProps) => {
   return (
@@ -69,27 +72,26 @@ export const Pagebar = ({ paths }: PagebarProps) => {
         >
           {paths &&
             paths.map((s, i) => {
-              if (i === paths.length - 1) {
-                return (
-                  <BreadcrumbItem key={s} isCurrentPage>
-                    <BreadcrumbLink color="white.100" href="#">
-                      <Text color="white.100" variant="breadcrumbs-selected">
-                        {s}
-                      </Text>
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
-                )
-              } else {
-                return (
-                  <BreadcrumbItem key={s}>
-                    <BreadcrumbLink color="white.100" href="#">
-                      <Text color="white.100" variant="breadcrumbs">
-                        {s}
-                      </Text>
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
-                )
-              }
+              console.log(i, paths.length)
+              return (
+                <BreadcrumbItem
+                  key={s.title}
+                  isCurrentPage={i === paths.length - 1}
+                >
+                  <BreadcrumbLink color="white.100" href={s.url}>
+                    <Text
+                      color="white.100"
+                      variant={
+                        i === paths.length - 1
+                          ? 'breadcrumbs-selected'
+                          : 'breadcrumbs'
+                      }
+                    >
+                      {s.title}
+                    </Text>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+              )
             })}
         </Breadcrumb>
 
