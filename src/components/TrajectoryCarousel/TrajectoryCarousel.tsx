@@ -22,7 +22,8 @@ function listTabNames(tabNames: Array<string>){
   let tabs = []
 
   for(let index in tabNames){
-    tabs.push(<TrajectoryCarouselTab key={`tab_`+index}>{tabNames[index]}</TrajectoryCarouselTab>)
+    // The style index is 8 because there is 8 lines drawings on trajectory tabs layout.
+    tabs.push(<TrajectoryCarouselTab key={`tab_`+index} styleIndex={parseInt(index) % 8}>{tabNames[index]}</TrajectoryCarouselTab>)
   }
 
   return tabs
@@ -82,6 +83,54 @@ export const mockCarouselObj: TrajectoryCarouselProps = {
     },
     {
       name: "1960",
+      content: {
+        title: "Madeira para o mundo",
+        text: "Modernizando nossas tecnologias e ampliando nossos negócios, conquistamos 7 unidades produtoras de matéria-prima para a produção de compensado. Em 1966 nossa identidade corporativa ganhou forma, revelando a essência da empresa: da tora à lâmina torneada, prensa e os compensados produzidos e comercializados, do Brasil para o mundo.",
+        image: "/img/montagem_2_painel_trajetoria.png"
+      }
+    },
+    {
+      name: "1970",
+      content: {
+        title: "Madeira para o mundo",
+        text: "Modernizando nossas tecnologias e ampliando nossos negócios, conquistamos 7 unidades produtoras de matéria-prima para a produção de compensado. Em 1966 nossa identidade corporativa ganhou forma, revelando a essência da empresa: da tora à lâmina torneada, prensa e os compensados produzidos e comercializados, do Brasil para o mundo.",
+        image: "/img/montagem_2_painel_trajetoria.png"
+      }
+    },
+    {
+      name: "1980",
+      content: {
+        title: "Madeira para o mundo",
+        text: "Modernizando nossas tecnologias e ampliando nossos negócios, conquistamos 7 unidades produtoras de matéria-prima para a produção de compensado. Em 1966 nossa identidade corporativa ganhou forma, revelando a essência da empresa: da tora à lâmina torneada, prensa e os compensados produzidos e comercializados, do Brasil para o mundo.",
+        image: "/img/montagem_2_painel_trajetoria.png"
+      }
+    },
+    {
+      name: "1990",
+      content: {
+        title: "Madeira para o mundo",
+        text: "Modernizando nossas tecnologias e ampliando nossos negócios, conquistamos 7 unidades produtoras de matéria-prima para a produção de compensado. Em 1966 nossa identidade corporativa ganhou forma, revelando a essência da empresa: da tora à lâmina torneada, prensa e os compensados produzidos e comercializados, do Brasil para o mundo.",
+        image: "/img/montagem_2_painel_trajetoria.png"
+      }
+    },
+    {
+      name: "2000",
+      content: {
+        title: "Madeira para o mundo",
+        text: "Modernizando nossas tecnologias e ampliando nossos negócios, conquistamos 7 unidades produtoras de matéria-prima para a produção de compensado. Em 1966 nossa identidade corporativa ganhou forma, revelando a essência da empresa: da tora à lâmina torneada, prensa e os compensados produzidos e comercializados, do Brasil para o mundo.",
+        image: "/img/montagem_2_painel_trajetoria.png"
+      }
+    },
+    {
+      name: "2010",
+      content: {
+        title: "Madeira para o mundo",
+        text: "Modernizando nossas tecnologias e ampliando nossos negócios, conquistamos 7 unidades produtoras de matéria-prima para a produção de compensado. Em 1966 nossa identidade corporativa ganhou forma, revelando a essência da empresa: da tora à lâmina torneada, prensa e os compensados produzidos e comercializados, do Brasil para o mundo.",
+        image: "/img/montagem_2_painel_trajetoria.png"
+      }
+    },
+    {
+      name: "2020",
       content: {
         title: "Madeira para o mundo",
         text: "Modernizando nossas tecnologias e ampliando nossos negócios, conquistamos 7 unidades produtoras de matéria-prima para a produção de compensado. Em 1966 nossa identidade corporativa ganhou forma, revelando a essência da empresa: da tora à lâmina torneada, prensa e os compensados produzidos e comercializados, do Brasil para o mundo.",
