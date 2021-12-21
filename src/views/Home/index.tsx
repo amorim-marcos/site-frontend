@@ -28,7 +28,6 @@ export default function Home({ title = 'HomePage' }) {
         <Text variant="primary-button">PRIMARY BUTTON</Text>
         <Text variant="larger-button">LARGER BUTTON</Text>
         <Text variant="tags">Tags</Text>
-        <TrajectoryCarousel {...mockCarouselObj}></TrajectoryCarousel>
       </Flex>
     </S.Wrapper>
   )

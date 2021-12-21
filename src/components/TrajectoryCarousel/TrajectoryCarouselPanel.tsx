@@ -27,12 +27,24 @@ export const TrajectoryCarouselPanel = ({ tabData, myIndex, tabIndex }: Trajecto
         background="white.100"
         mt="40px"
         justifyContent="space-around"
-        flexDirection={"row"}
+        flexDirection={{
+          xs: 'column',
+          sm: 'column',
+          md: 'column',
+          lg: 'column',
+          xl: 'row'
+        }}
       >
         <Flex
           flex={1}
           flexDirection="column"
-          padding="67px"
+          padding={{
+            xs: "20px",
+            sm: "20px",
+            md: "20px",
+            lg: "67px",
+            xl: "67px"
+          }}
         >
           
           <Heading textAlign="left" variant="h1" color="grey.300">{tabData.name}</Heading>
@@ -46,10 +58,15 @@ export const TrajectoryCarouselPanel = ({ tabData, myIndex, tabIndex }: Trajecto
         </Flex>
         <Box
           flex={1}
-          alignSelf="center"
-          padding="90px"
+          padding={{
+            xs: "50px",
+            sm: "50px",
+            md: "50px",
+            lg: "90px",
+            xl: "90px"
+          }}
         >
-          <Image src={tabData.content.image}></Image>
+          <Image width="100%" alignSelf="center" src={tabData.content.image}></Image>
         </Box>
       </Flex>
   )
