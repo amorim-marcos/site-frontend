@@ -1,5 +1,5 @@
 import { Tabs, TabList, TabPanels, TabPanel  } from '@chakra-ui/react'
-import { Props } from 'react'
+import React from 'react'
 import { TrajectoryCarouselTab, TrajectoryCarouselPanel } from '@components/TrajectoryCarousel'
 import { TrajectoryCarouselControllers } from './TrajectoryCarouselControllers'
 
@@ -42,8 +42,21 @@ function listTabContents(tabs: Array<TrajectoryTab>){
 export const TrajectoryCarousel = ({ tabs }: TrajectoryCarouselProps) => {
   const tabNames = tabs.map((tab: TrajectoryTab) => tab.name)
 
+  const [totalTabs, setTotalTabs] = React.useState(tabs.length)
+
+  const [tabIndex, setTabIndex] = React.useState(0)
+
+  const previousTab = () => {
+    let theTab = ( (tabIndex - 1) == -1 ) ? totalTabs - 1 : tabIndex - 1 
+    setTabIndex(theTab)
+  }
+
+  const nextTab = () => {
+    setTabIndex((tabIndex + 1 ) % totalTabs)
+  }
+
   return (
-    <Tabs minW="1700px" margin="20px" variant='unstyled' defaultIndex={0}>
+    <Tabs index={tabIndex} onChange={(index) => setTabIndex(index)} minW="1700px" margin="20px" variant='unstyled' defaultIndex={0}>
       <TabList>
         {listTabNames(tabNames)}
       </TabList>
@@ -52,7 +65,7 @@ export const TrajectoryCarousel = ({ tabs }: TrajectoryCarouselProps) => {
         {listTabContents(tabs)}
       </TabPanels>
 
-      <TrajectoryCarouselControllers />
+      <TrajectoryCarouselControllers previousTab={previousTab} nextTab={nextTab}/>
     </Tabs>
   )
 }
