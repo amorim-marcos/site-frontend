@@ -30,11 +30,11 @@ function listTabNames(tabNames: Array<string>){
 }
 
 
-function listTabContents(tabs: Array<TrajectoryTab>){
+function listTabContents(tabs: Array<TrajectoryTab>, tabIndex: number){
   let contents = []
 
   for(let index in tabs){
-    contents.push(<TabPanel padding={0} key={`panel_`+index}><TrajectoryCarouselPanel tabData={tabs[index]}></TrajectoryCarouselPanel></TabPanel>)
+    contents.push(<TabPanel padding={0} key={`panel_`+index}><TrajectoryCarouselPanel tabData={tabs[index]} myIndex={index} tabIndex={tabIndex}></TrajectoryCarouselPanel></TabPanel>)
   }
 
   return contents
@@ -63,7 +63,7 @@ export const TrajectoryCarousel = ({ tabs }: TrajectoryCarouselProps) => {
       </TabList>
   
       <TabPanels >
-        {listTabContents(tabs)}
+        {listTabContents(tabs, tabIndex)}
       </TabPanels>
 
       <TrajectoryCarouselControllers previousTab={previousTab} nextTab={nextTab}/>
