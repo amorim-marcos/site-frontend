@@ -16,20 +16,30 @@ export const TrajectoryCarouselControllers = ({nextTab, previousTab}:TrajectoryC
             <Button
                 onClick={previousTab}
                 variant="no-border"
-                backgroundColor="grey.300"
+                background="grey.300"
+                color="grey.150"
                 w="77px"
                 h="77px"
+                _hover={{
+                    background: "green.600",
+                    color: "white.100",
+                }}
             >
-                <Arrow width="22" height="30" direction="left" color="grey.150"/>
+                <Arrow width="22" height="30" direction="left" />
             </Button>
             <Button
                 onClick={nextTab}
                 variant="no-border"
-                backgroundColor="grey.300"
+                background="grey.300"
+                color="grey.150"
                 w="77px"
                 h="77px"
+                _hover={{
+                    background: "green.600",
+                    color: "white.100",
+                }}
             >
-                <Arrow width="22" height="30" direction="right" color="grey.150"/>
+                <Arrow width="22" height="30" direction="right"/>
             </Button>
         </Flex>
     )

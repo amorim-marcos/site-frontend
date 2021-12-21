@@ -3,7 +3,7 @@ import { Box, BoxProps} from "@chakra-ui/react"
 export type ArrowProps = {
   width: number | string
   height: number | string
-  color: string
+  color?: string
   direction?: 'right' | 'left'
 }
 
@@ -26,7 +26,7 @@ const ArrowLeft = () => {
 export const Arrow = ({ width, height, color, direction = "right", ...props}: ArrowProps) => {
   return (
     <Box
-      color={color}
+      color={color ? color : 'inherit'}
       width={width}
       height={height}
       {...props}

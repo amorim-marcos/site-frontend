@@ -12,7 +12,11 @@ export const TrajectoryCarouselTab = React.forwardRef((props:any, ref:any) => {
   return (
     <StyledTab 
       m={1}
-      background={(isSelected) ? '#FFFFFF' : '#F1E0C4'} 
+      background={(isSelected) ? 'white.100' : 'brown.150'} 
+      _hover={{
+          background: "brown.200",
+          color: "green.600",
+      }}
       width="214px"
       height="69px"
       {...tabProps}
