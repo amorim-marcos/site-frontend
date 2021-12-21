@@ -23,7 +23,7 @@ function listTabNames(tabNames: Array<string>){
 
   for(let index in tabNames){
     // The style index is 8 because there is 8 lines drawings on trajectory tabs layout.
-    tabs.push(<TrajectoryCarouselTab key={`tab_`+index} styleIndex={parseInt(index) % 8}>{tabNames[index]}</TrajectoryCarouselTab>)
+    tabs.push(<TrajectoryCarouselTab key={`tab_`+index} tabStyleIndex={parseInt(index) % 8}>{tabNames[index]}</TrajectoryCarouselTab>)
   }
 
   return tabs
