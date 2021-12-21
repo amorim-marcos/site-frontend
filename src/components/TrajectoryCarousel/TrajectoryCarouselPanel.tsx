@@ -8,7 +8,7 @@ export type TrajectoryCarouselPanelProps = {
 
 export const TrajectoryCarouselPanel = ({ tabData }: TrajectoryCarouselPanelProps) => (
   <Flex
-    background="#FFFFFF"
+    background="white.100"
     mt="40px"
     justifyContent="space-around"
     flexDirection={"row"}
