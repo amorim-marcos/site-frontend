@@ -8,7 +8,11 @@ export type TrajectoryCarouselControllersProps = {
 
 export const TrajectoryCarouselControllers = ({nextTab, previousTab}:TrajectoryCarouselControllersProps) => {
     return (
-        <Flex>
+        <Flex
+            alignItems="center"
+            justifyContent="center"
+            mt="-50px"
+        >
             <Button
                 onClick={previousTab}
                 variant="no-border"
