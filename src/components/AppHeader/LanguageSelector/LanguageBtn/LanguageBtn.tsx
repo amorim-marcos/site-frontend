@@ -1,8 +1,21 @@
 import { Text, Flex } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 
-export const LanguageBtn = ({ title = 'Btn Title' }) => {
+export type LanguageBtnProps = {
+  title: string
+  locale: 'en' | 'es' | 'pt-BR' | 'zn-CN'
+}
+
+export const LanguageBtn = ({
+  title = 'Btn Title',
+  locale = 'en'
+}: LanguageBtnProps) => {
+  const router = useRouter()
   return (
     <Flex
+      onClick={() => {
+        router.push('/', '/', { locale })
+      }}
       alignItems="center"
       justifyContent="flex-start"
       height="45px"

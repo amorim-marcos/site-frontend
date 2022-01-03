@@ -13,14 +13,15 @@ import SearchIcon from '@components/SearchIcon'
 import { HeaderTopMenuItem } from './HeaderTopMenuItem/HeaderTopMenuItem'
 import { LanguageSelector } from './LanguageSelector/LanguageSelector'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { colors } from '../../theme/colors'
-export type AppHeaderProps = {
-  title?: string
-}
+export type AppHeaderProps = null
 
-export const AppHeader = ({ title }: AppHeaderProps) => {
+export const AppHeader = () => {
   const [openSearchBar, setOpenSearchBar] = useState(false)
+
+  const header = useTranslation('header')
   return (
     <Box
       marginX="auto"
@@ -40,10 +41,10 @@ export const AppHeader = ({ title }: AppHeaderProps) => {
             templateColumns="repeat(4, 1fr)"
             gap="110px"
           >
-            <HeaderTopMenuItem href="/somos-berneck" title="Fale conosco" />
-            <HeaderTopMenuItem href="/somos-berneck" title="Trabalhe conosco" />
-            <HeaderTopMenuItem href="/somos-berneck" title="Onde comprar" />
-            <HeaderTopMenuItem href="/somos-berneck" title="Acesso restrito" />
+            <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn1')} />
+            <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn2')} />
+            <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn3')} />
+            <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn4')} />
           </Grid>
         </Flex>
         <Flex paddingInline={100} h={115} bg="green.800" alignItems="center">
@@ -52,29 +53,48 @@ export const AppHeader = ({ title }: AppHeaderProps) => {
           </NavLink>
           <Flex h="100%" ml="auto">
             <HeaderMenuItem
-              subItems={menuContent.whoWeAre.subItems}
+              subItems={menuContent.whoWeAre.subItems.map((i) => ({
+                title: header.t(i.key),
+                href: i.href
+              }))}
               href={menuContent.whoWeAre.href}
-              title={menuContent.whoWeAre.title}
+              title={header.t('btn5')}
             />
             <HeaderMenuItem
-              subItems={menuContent.ourCommitment.subItems}
+              subItems={menuContent.ourCommitment.subItems.map((i) => ({
+                title: header.t(i.key),
+                href: i.href
+              }))}
               href={menuContent.ourCommitment.href}
-              title={menuContent.ourCommitment.title}
+              title={header.t('btn6')}
             />
             <HeaderMenuItem
-              subItems={menuContent.florestalDivision.subItems}
+              subItems={menuContent.florestalDivision.subItems.map((i) => ({
+                title: header.t(i.key),
+                href: i.href
+              }))}
               href={menuContent.florestalDivision.href}
-              title={menuContent.florestalDivision.title}
+              title={header.t('btn7')}
             />
             <HeaderMenuItem
-              subItems={menuContent.products.subItems}
+              subItems={menuContent.products.subItems.map((i) => ({
+                title: header.t(i.key),
+                href: i.href,
+                subItems: i.subItems.map((i) => ({
+                  title: header.t(i.key),
+                  href: i.href
+                }))
+              }))}
               href={menuContent.products.href}
-              title={menuContent.products.title}
+              title={header.t('btn8')}
             />
             <HeaderMenuItem
-              subItems={menuContent.channelBNK.subItems}
+              subItems={menuContent.channelBNK.subItems.map((i) => ({
+                title: header.t(i.key),
+                href: i.href
+              }))}
               href={menuContent.channelBNK.href}
-              title={menuContent.channelBNK.title}
+              title={header.t('btn5')}
             />
             <Flex
               alignItems="center"
@@ -136,99 +156,99 @@ export const AppHeader = ({ title }: AppHeaderProps) => {
 
 const menuContent = {
   whoWeAre: {
-    title: 'QUEM SOMOS',
+    key: 'btn5',
     href: '/somos-berneck',
     subItems: [
-      { title: 'Quem Somos', href: '/' },
-      { title: 'Nossa Trajetoria', href: '/' },
-      { title: 'Onde Estamos', href: '/' },
-      { title: 'Certificações', href: '/' }
+      { key: 'btn5_subItem1', href: '/' },
+      { key: 'btn5_subItem2', href: '/' },
+      { key: 'btn5_subItem3', href: '/' },
+      { key: 'btn5_subItem4', href: '/' }
     ]
   },
   ourCommitment: {
-    title: 'NOSSO COMPROMISSO',
+    key: 'btn6',
     href: '/',
     subItems: [
       {
-        title: 'Cultivamos o Meio Ambiente',
+        key: 'btn6_subItem1',
         href: '/'
       },
       {
-        title: 'Cultivamos Nossa Gente',
+        key: 'btn6_subItem2',
         href: '/'
       },
       {
-        title: 'Cultivamos Nossos Valores',
+        key: 'btn6_subItem3',
         href: '/'
       },
       {
-        title: 'Relatórios ESG',
+        key: 'btn6_subItem4',
         href: '/'
       }
     ]
   },
   florestalDivision: {
-    title: 'DIVISÃO FLORESTAL',
+    key: 'btn7',
     href: '/',
     subItems: [
       {
-        title: 'Manejo Florestal',
+        key: 'btn7_subItem1',
         href: '/'
       },
       {
-        title: 'Produção Florestal',
+        key: 'btn7_subItem2',
         href: '/'
       },
       {
-        title: 'Fornecedor Florestal',
+        key: 'btn7_subItem3',
         href: '/'
       },
       {
-        title: 'Resumo Público',
+        key: 'btn7_subItem4',
         href: '/'
       }
     ]
   },
   products: {
-    title: 'PRODUTOS',
+    key: 'btn8',
     href: '/',
     subItems: [
       {
-        title: 'Painéis',
+        key: 'btn8_subItem1',
         href: '/',
         subItems: [
           {
-            title: 'BP BERNECK®',
+            key: 'btn8_subItem2',
             href: '/'
           },
           {
-            title: 'HDF BERNECK®',
+            key: 'btn8_subItem3',
             href: '/'
           },
           {
-            title: 'MDF BERNECK®',
+            key: 'btn8_subItem4',
             href: '/'
           },
           {
-            title: 'MDP BERNECK®',
+            key: 'btn8_subItem5',
             href: '/'
           },
           {
-            title: 'Plus BERNECK®',
+            key: 'btn8_subItem6',
             href: '/'
           }
         ]
       },
       {
-        title: 'Serrados',
+        key: 'btn8_subItem7',
         href: '/',
         subItems: [
           {
-            title: 'BERNECK® Pinus',
+            key: 'btn8_subItem8',
             href: '/'
           },
           {
-            title: 'BERNECK® Teca',
+            key: 'btn8_subItem9',
             href: '/'
           }
         ]
@@ -236,23 +256,23 @@ const menuContent = {
     ]
   },
   channelBNK: {
-    title: 'CANAL BERNECK',
+    key: 'btn9',
     href: '/',
     subItems: [
       {
-        title: 'Inspiração Sob Medida',
+        key: 'btn9_subItem1',
         href: '/'
       },
       {
-        title: 'Matéria-Prima: Conhecimento',
+        key: 'btn9_subItem2',
         href: '/'
       },
       {
-        title: 'Mundo BERNECK',
+        key: 'btn9_subItem3',
         href: '/'
       },
       {
-        title: 'Downlaods',
+        key: 'btn9_subItem4',
         href: '/'
       }
     ]
