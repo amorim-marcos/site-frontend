@@ -8,11 +8,13 @@ import {
 } from '@chakra-ui/react'
 import Link from 'next/link'
 
+export type Path = {
+  title: string
+  url: string
+}
+
 export type PagebarProps = {
-  paths?: {
-    title: string
-    url: string
-  }[]
+  paths?: Array<Path>
 }
 export const Pagebar = ({ paths }: PagebarProps) => {
   return (
