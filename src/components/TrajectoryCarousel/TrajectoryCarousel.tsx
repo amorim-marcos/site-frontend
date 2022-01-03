@@ -57,7 +57,7 @@ export const TrajectoryCarousel = ({ tabs }: TrajectoryCarouselProps) => {
   }
 
   return (
-    <Tabs index={tabIndex} onChange={(index) => setTabIndex(index)} margin="20px" variant='unstyled' defaultIndex={0}>
+    <Tabs maxW="1760px" index={tabIndex} onChange={(index) => setTabIndex(index)} margin="20px" variant='unstyled' defaultIndex={0}>
       <TabList display="block" overflowX="auto" overflowY="hidden" whiteSpace="nowrap">
         {listTabNames(tabNames)}
       </TabList>

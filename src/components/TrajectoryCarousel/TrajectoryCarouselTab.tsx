@@ -13,7 +13,7 @@ export const TrajectoryCarouselTab = React.forwardRef((props:any, ref:any) => {
 
   return (
     <StyledTab 
-      m={1}
+      marginLeft="6px"
       backgroundColor={(isSelected) ? 'white.100' : 'brown.150'} 
       backgroundImage={(isSelected) ? `url("/trajectory-tabs/selected-lines/${tabStyleIndex}.svg")` : `url("/trajectory-tabs/white-lines/${tabStyleIndex}.svg")`}
       _hover={{
