@@ -51,7 +51,7 @@ export const AppHeader = () => {
           <NavLink href="/">
             <LogoBerneck />
           </NavLink>
-          <Flex h="100%" ml="auto">
+          <Flex justifyContent="flex-end" h="100%" width="100%">
             <HeaderMenuItem
               subItems={menuContent.whoWeAre.subItems.map((i) => ({
                 title: header.t(i.key),
@@ -94,7 +94,7 @@ export const AppHeader = () => {
                 href: i.href
               }))}
               href={menuContent.channelBNK.href}
-              title={header.t('btn5')}
+              title={header.t('btn9')}
             />
             <Flex
               alignItems="center"
@@ -159,10 +159,10 @@ const menuContent = {
     key: 'btn5',
     href: '/somos-berneck',
     subItems: [
-      { key: 'btn5_subItem1', href: '/' },
-      { key: 'btn5_subItem2', href: '/' },
-      { key: 'btn5_subItem3', href: '/' },
-      { key: 'btn5_subItem4', href: '/' }
+      { key: 'btn5_subItem1', href: '/somos-berneck' },
+      { key: 'btn5_subItem2', href: '/somos-berneck' },
+      { key: 'btn5_subItem3', href: '/somos-berneck' },
+      { key: 'btn5_subItem4', href: '/somos-berneck' }
     ]
   },
   ourCommitment: {

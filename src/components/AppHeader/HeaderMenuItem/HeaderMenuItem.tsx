@@ -24,24 +24,24 @@ export const HeaderMenuItem = ({
   const [open, setOpen] = useState(false)
 
   return (
-    <Box
+    <Center
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       position="relative"
       zIndex="dropdown"
+      width="18%"
+      h="100%"
+      maxHeight={115}
+      paddingInline={'0px'}
+      _hover={{
+        bg: 'green.700'
+      }}
+      cursor="pointer"
+      transition="0.4s"
+      bg={open ? 'green.700' : 'green.800'}
     >
       <Link href={href} passHref>
-        <Center
-          h="100%"
-          maxHeight={115}
-          paddingInline={'50px'}
-          _hover={{
-            bg: 'green.700'
-          }}
-          cursor="pointer"
-          bg={open ? 'green.700' : 'green.800'}
-          transition="0.4s"
-        >
+        <Center w="100%" h="100%">
           <Text fontSize="14px" color="#FFF" variant="header-menu">
             {title}
           </Text>
@@ -61,10 +61,11 @@ export const HeaderMenuItem = ({
             <HeaderMenuSubItem
               key={i.title}
               title={i.title}
+              href={i.href}
               subItems={i.subItems}
             />
           ))}
       </Flex>
-    </Box>
+    </Center>
   )
 }
