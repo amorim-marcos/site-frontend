@@ -6,12 +6,8 @@ import { Text } from './variants/text'
 import { NavLink } from './variants/nav-link'
 import { global } from './global'
 import { fontWeights } from './fontweight'
-<<<<<<< HEAD
 import { fontSizes } from './fontsizes'
 import { breakPoints } from './breakpoints'
-=======
-import { breakpoints } from './breakpoints'
->>>>>>> root/BNK-42
 
 export const theme = extendTheme({
   grid:{
@@ -20,12 +16,8 @@ export const theme = extendTheme({
   },
   colors,
   fontWeights,
-<<<<<<< HEAD
   fontSizes,
   breakPoints,
-=======
-  breakpoints,
->>>>>>> root/BNK-42
   components: {
     Button,
     Heading,
