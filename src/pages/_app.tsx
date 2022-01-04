@@ -5,6 +5,8 @@ import { theme } from 'theme/theme'
 
 import AppHeader from 'components/AppHeader'
 import AppFooter from 'components/AppFooter'
+import { appWithI18Next } from 'ni18n'
+import { ni18nConfig } from '../../ni18n.config'
 
 import 'leaflet/dist/leaflet.css'
 
@@ -29,4 +31,4 @@ function App({ Component, pageProps }: AppProps) {
   )
 }
 
-export default App
+export default appWithI18Next(App, ni18nConfig)

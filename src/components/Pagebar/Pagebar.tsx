@@ -1,9 +1,22 @@
-import * as S from './styles'
+import {
+  Flex,
+  Text,
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink
+} from '@chakra-ui/react'
+import Link from 'next/link'
+
+export type Path = {
+  title: string
+  url: string
+}
 
 export type PagebarProps = {
-  title?: string
+  paths?: Array<Path>
 }
-export const Pagebar = ({ title }: PagebarProps) => {
+export const Pagebar = ({ paths }: PagebarProps) => {
   return (
     <S.Wrapper>
       <S.Tail>{title}</S.Tail>
