@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+
 export const SectionRaizes = styled.main`
   width: 100%;
   background: #D6DCD5;

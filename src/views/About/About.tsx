@@ -57,6 +57,8 @@ export const About = () => {
 
       </S.SectionParaMundo>
 
+      <Infografico></Infografico>
+
       </GlobalContainer>
   )
 }
