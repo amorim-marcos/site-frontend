@@ -2,14 +2,26 @@
 
 ## Dependências
 
-Projeto construído utilizando node 14
+Projeto construído utilizando Node 14 LTS.
 
 ## Initial Setup
 
-Instalação de dependências:
+Inicie instalando as dependências:
 
 ```bash
 $ yarn
+```
+
+Depois, adicione os hooks de verificação husky com o comando:
+
+```bash
+$ yarn prepare
+```
+
+Caso algum problema esteja ocorrendo com os hooks, comunique a equipe e, caso seja extremamente necessário, desative os hooks com o comando:
+
+```bash
+$ yarn unprepare
 ```
 
 ## Inciando a aplicação
