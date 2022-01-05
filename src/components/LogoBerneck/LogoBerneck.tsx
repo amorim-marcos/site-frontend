@@ -1,23 +1,23 @@
 import { Box, Image } from '@chakra-ui/react'
 import Link from 'next/link'
+import { ResponsiveCss } from '../../types/responsive'
 
 export type LogoBerneckProps = {
   color?: string
-  width?: string
-  height?: string
+  width?: ResponsiveCss
+  height?: ResponsiveCss
 }
 export const LogoBerneck = ({
   color = '#FFF',
-  height = '40',
-  width = '230'
+  height = '40px',
+  width = '230px'
 }: LogoBerneckProps) => {
   return (
     <Link passHref href="/">
-      <Box w={width + 'px'} h={height + 'px'} color={color} cursor="pointer">
+      <Box w={width} h={height} color={color} cursor="pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width={width}
-          height={height}
+          width="100%"
           viewBox="0 0 228.831 39.655"
           role="img"
           aria-label="Berneck"
