@@ -1,11 +1,4 @@
-import {
-  Flex,
-  Box,
-  Container,
-  Grid,
-  Input,
-  CloseButton
-} from '@chakra-ui/react'
+import { Flex, Box, Container, Input, CloseButton } from '@chakra-ui/react'
 import LogoBerneck from '@components/LogoBerneck'
 import NavLink from '../NavLink'
 import { HeaderMenuItem } from './HeaderMenuItem/HeaderMenuItem'
@@ -25,15 +18,29 @@ export const AppHeader = () => {
   return (
     <Box
       marginX="auto"
-      h={{ xl: '150px', '2xl': '172px' }}
+      h={{
+        base: '50px',
+        sm: '60px',
+        md: '88px',
+        lg: '103px',
+        xl: '140px',
+        '2xl': '172px'
+      }}
       maxWidth="1920px"
       bg="green.900"
       position="relative"
     >
       <Container maxWidth="1920" padding={0}>
         <Flex
-          paddingX={{ xl: '75px', '2xl': '90px' }}
-          h={51}
+          paddingX={{ base: '4.5%', sm: '4%', md: '3.5%' }}
+          h={{
+            base: '15px',
+            sm: '20px',
+            md: '25px',
+            lg: '30px',
+            xl: '40px',
+            '2xl': '51px'
+          }}
           justifyContent="space-between"
         >
           <Flex height="100%">
@@ -52,15 +59,36 @@ export const AppHeader = () => {
           </Flex>
         </Flex>
         <Flex
-          paddingInline={{ xl: '80px', '2xl': '4%' }}
-          h={{ xl: '95px', '2xl': '115px' }}
+          paddingInline={{ base: '4%', xl: '4%', '2xl': '4%' }}
+          h={{
+            base: '40px',
+            sm: '38px',
+            md: '60px',
+            lg: '70px',
+            xl: '95px',
+            '2xl': '115px'
+          }}
           bg="green.800"
           alignItems="center"
         >
           <NavLink href="/">
             <LogoBerneck
-              width={{ base: '230px', xl: '180px', '2xl': '220px' }}
-              height={{ base: '230px', xl: '31px', '2xl': '40px' }}
+              width={{
+                base: '70px',
+                sm: '80px',
+                md: '120px',
+                lg: '150px',
+                xl: '180px',
+                '2xl': '220px'
+              }}
+              height={{
+                base: '14px',
+                sm: '14px',
+                md: '20px',
+                lg: '25px',
+                xl: '31px',
+                '2xl': '40px'
+              }}
             />
           </NavLink>
           <Flex
@@ -113,19 +141,40 @@ export const AppHeader = () => {
               href={menuContent.channelBNK.href}
               title={header.t('btn9')}
             />
-            <Flex alignItems="center" justifyContent="center" paddingY={10}>
+            <Flex alignItems="center" justifyContent="center">
               {openSearchBar ? (
                 <CloseButton
-                  h="55px"
-                  w="55px"
+                  h={{
+                    base: '20px',
+                    sm: '20px',
+                    md: '30px',
+                    xl: '40px',
+                    '2xl': '50px'
+                  }}
+                  w={{
+                    base: '20px',
+                    sm: '20px',
+                    md: '30px',
+                    xl: '40px',
+                    '2xl': '50px'
+                  }}
                   bg="green.600"
                   borderRadius="50%"
-                  size="lg"
+                  size="sm"
                   color="white.100"
                   onClick={() => setOpenSearchBar(false)}
                 />
               ) : (
-                <SearchIcon onClick={() => setOpenSearchBar(true)} />
+                <SearchIcon
+                  width={{
+                    base: '10px',
+                    sm: '14px',
+                    md: '18px',
+                    xl: '28px',
+                    '2xl': '35px'
+                  }}
+                  onClick={() => setOpenSearchBar(true)}
+                />
               )}
             </Flex>
           </Flex>
@@ -134,7 +183,13 @@ export const AppHeader = () => {
 
       {openSearchBar ? (
         <Flex
-          height="100px"
+          height={{
+            base: '35px',
+            md: '50px',
+            lg: '60px',
+            xl: '80px',
+            '2xl': '100px'
+          }}
           bg="green.900"
           width="100%"
           position="absolute"
@@ -144,10 +199,18 @@ export const AppHeader = () => {
           zIndex="dropdown"
         >
           <Flex
-            width="450px"
-            borderBottom="2px solid"
+            width={{
+              base: '200px',
+              md: '300px',
+              lg: '350px',
+              xl: '400px',
+              '2xl': '450px'
+            }}
+            borderBottom="solid"
             borderBottomColor="white.100"
             paddingX="5px"
+            height={{ base: '25px' }}
+            borderBottomWidth={{ base: '1px' }}
           >
             <Input
               placeholder="Digite sua busca"
@@ -157,9 +220,29 @@ export const AppHeader = () => {
               focusBorderColor="none"
               color="white.100"
               paddingLeft="0px"
-              fontSize="16px"
+              paddingBottom={{ base: '0px', md: '10px' }}
+              fontSize={{
+                base: '8px',
+                md: '10px',
+                lg: '12px',
+                xl: '14px',
+                '2xl': '16px'
+              }}
+              height={{ base: '30px' }}
             />
-            <SearchIcon stroke={colors.white[100]} />
+            <Box>
+              <SearchIcon
+                stroke={colors.white[100]}
+                width={{
+                  base: '13px',
+                  md: '16px',
+                  lg: '23px',
+                  xl: '28px',
+                  '2xl': '35px'
+                }}
+                height={{ base: '25px', md: '10px', '2xl': '0px' }}
+              />
+            </Box>
           </Flex>
         </Flex>
       ) : null}

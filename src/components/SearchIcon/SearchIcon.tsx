@@ -5,18 +5,20 @@ export type SearchIconProps = {
   stroke?: string
   onClick?: () => void
   width?: ResponsiveCss
+  height?: ResponsiveCss
 }
 export const SearchIcon = ({
   stroke = '#f5f6f4',
   onClick,
-  width = '35px'
+  width = '35px',
+  height = '23px'
 }: SearchIconProps) => {
   return (
     <Center
       color={stroke}
       onClick={onClick}
       width={width}
-      height="35px"
+      height={height}
       cursor="pointer"
     >
       <svg

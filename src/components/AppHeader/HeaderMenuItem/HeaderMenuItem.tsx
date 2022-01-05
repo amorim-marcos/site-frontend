@@ -31,8 +31,15 @@ export const HeaderMenuItem = ({
       zIndex="dropdown"
       h="100%"
       maxHeight={115}
-      marginX={{ xl: '1%', '2xl': '1%' }}
-      paddingX={{ xl: '2.3%', '2xl': '2.3%' }}
+      marginX={{ base: '0.7%', sm: '1.3%', md: '1%', xl: '1%', '2xl': '1%' }}
+      paddingX={{
+        base: '1.6%',
+        sm: '1.9%',
+        md: '2.6%',
+        lg: '2.5%',
+        xl: '2.3%',
+        '2xl': '2.3%'
+      }}
       _hover={{
         bg: 'green.700'
       }}
@@ -43,7 +50,14 @@ export const HeaderMenuItem = ({
       <Link href={href} passHref>
         <Center w="100%" h="100%">
           <Text
-            fontSize={{ base: '14px', xl: '14px', '2xl': '16.5px' }}
+            fontSize={{
+              base: '4px',
+              sm: '6.3px',
+              md: '8.3px',
+              lg: '10px',
+              xl: '13px',
+              '2xl': '16.5px'
+            }}
             color="#FFF"
             variant="header-menu"
             whiteSpace="nowrap"
@@ -53,12 +67,13 @@ export const HeaderMenuItem = ({
         </Center>
       </Link>
       <Flex
-        borderTop="6px solid #135740"
+        borderTop="solid #135740"
+        borderTopWidth={{ base: '2px', md: '3px', xl: '4px', '2xl': '6px' }}
         flexDir="column"
         position="absolute"
         top="100%"
         left={0}
-        w="calc(100% + 60px)"
+        w="calc(150%)"
         display={open ? 'flex' : 'none'}
       >
         {subItems &&
