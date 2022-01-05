@@ -3,11 +3,13 @@ import { render, screen } from '@testing-library/react'
 import TrajectoryCarousel from '.'
 
 describe('<TrajectoryCarousel />', () => {
-  it('should render the heading', () => {
-    const { container } = render(<TrajectoryCarousel />)
+  it('should render all tabs titles', () => {})
 
-    expect(screen.getByRole('heading', { name: /TrajectoryCarousel/i })).toBeInTheDocument()
+  it('should not render if tabs array is empty', () => {})
 
-    expect(container.firstChild).toMatchSnapshot()
-  })
+  it('should not render if tabs contents have some field empty', () => {})
+
+  it('tabs should be ordered by years', () => {})
+
+  it('should not allow duplicated tabs', () => {})
 })
