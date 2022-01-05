@@ -25,33 +25,50 @@ export const AppHeader = () => {
   return (
     <Box
       marginX="auto"
-      h={172}
+      h={{ xl: '150px', '2xl': '172px' }}
       maxWidth="1920px"
       bg="green.900"
       position="relative"
     >
       <Container maxWidth="1920" padding={0}>
-        <Flex h={51}>
-          <Flex marginLeft="100px" height="100%">
+        <Flex
+          paddingX={{ xl: '75px', '2xl': '90px' }}
+          h={51}
+          justifyContent="space-between"
+        >
+          <Flex height="100%">
             <LanguageSelector />
           </Flex>
-          <Grid
-            ml="auto"
-            paddingRight="80px"
-            templateColumns="repeat(4, 1fr)"
-            gap="110px"
+          <Flex
+            justifyContent="flex-end"
+            align="center"
+            flexDir="row"
+            width="100%"
           >
             <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn1')} />
             <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn2')} />
             <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn3')} />
             <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn4')} />
-          </Grid>
+          </Flex>
         </Flex>
-        <Flex paddingInline={100} h={115} bg="green.800" alignItems="center">
+        <Flex
+          paddingInline={{ xl: '80px', '2xl': '4%' }}
+          h={{ xl: '95px', '2xl': '115px' }}
+          bg="green.800"
+          alignItems="center"
+        >
           <NavLink href="/">
-            <LogoBerneck />
+            <LogoBerneck
+              width={{ base: '230px', xl: '180px', '2xl': '220px' }}
+              height={{ base: '230px', xl: '31px', '2xl': '40px' }}
+            />
           </NavLink>
-          <Flex justifyContent="flex-end" h="100%" width="100%">
+          <Flex
+            paddingLeft={'70px'}
+            justifyContent="flex-end"
+            h="100%"
+            width="100%"
+          >
             <HeaderMenuItem
               subItems={menuContent.whoWeAre.subItems.map((i) => ({
                 title: header.t(i.key),
@@ -96,12 +113,7 @@ export const AppHeader = () => {
               href={menuContent.channelBNK.href}
               title={header.t('btn9')}
             />
-            <Flex
-              alignItems="center"
-              justifyContent="center"
-              paddingLeft={10}
-              paddingY={10}
-            >
+            <Flex alignItems="center" justifyContent="center" paddingY={10}>
               {openSearchBar ? (
                 <CloseButton
                   h="55px"
@@ -129,6 +141,7 @@ export const AppHeader = () => {
           top="100%"
           alignItems="center"
           justifyContent="center"
+          zIndex="dropdown"
         >
           <Flex
             width="450px"

@@ -1,4 +1,4 @@
-import { Text, Center, Box, Flex } from '@chakra-ui/react'
+import { Text, Center, Flex } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { HeaderMenuSubItem } from './HeaderMenuSubItem/HeaderMenuSubItem'
@@ -29,10 +29,10 @@ export const HeaderMenuItem = ({
       onMouseLeave={() => setOpen(false)}
       position="relative"
       zIndex="dropdown"
-      width="18%"
       h="100%"
       maxHeight={115}
-      paddingInline={'0px'}
+      marginX={{ xl: '1%', '2xl': '1%' }}
+      paddingX={{ xl: '2.3%', '2xl': '2.3%' }}
       _hover={{
         bg: 'green.700'
       }}
@@ -42,7 +42,12 @@ export const HeaderMenuItem = ({
     >
       <Link href={href} passHref>
         <Center w="100%" h="100%">
-          <Text fontSize="14px" color="#FFF" variant="header-menu">
+          <Text
+            fontSize={{ base: '14px', xl: '14px', '2xl': '16.5px' }}
+            color="#FFF"
+            variant="header-menu"
+            whiteSpace="nowrap"
+          >
             {title}
           </Text>
         </Center>
