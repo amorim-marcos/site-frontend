@@ -1,0 +1,14 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Running pre-push hook..."
+
+echo "Running build..."
+npm run build
+
+echo "Successful build."
+
+echo "Running tests..."
+npm run test 
+
+echo "All tests passed. Branch is ready to be pushed."
