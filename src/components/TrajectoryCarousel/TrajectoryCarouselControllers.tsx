@@ -11,7 +11,10 @@ export const TrajectoryCarouselControllers = ({nextTab, previousTab}:TrajectoryC
         <Flex
             alignItems="center"
             justifyContent="center"
-            mt="-50px"
+            mt={{
+                base: "0",
+                md: "-50px"
+            }}
         >
             <Button
                 onClick={previousTab}
