@@ -1,10 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path')
 
 module.exports = {
   stories: ['../src/components/**/*.stories.tsx'],
-  addons: ['@storybook/addon-essentials', 'storybook-addon-next-router'],
+  addons: [
+    '@storybook/addon-essentials',
+    'storybook-addon-next-router',
+    'storybook-react-i18next'
+  ],
   babel: async (options) => ({
     ...options,
     plugins: [

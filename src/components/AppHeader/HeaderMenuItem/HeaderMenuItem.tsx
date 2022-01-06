@@ -28,12 +28,13 @@ export const HeaderMenuItem = ({
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       position="relative"
+      zIndex="dropdown"
     >
       <Link href={href} passHref>
         <Center
           h="100%"
           maxHeight={115}
-          paddingInline={50}
+          paddingInline={'50px'}
           _hover={{
             bg: 'green.700'
           }}
@@ -41,7 +42,7 @@ export const HeaderMenuItem = ({
           bg={open ? 'green.700' : 'green.800'}
           transition="0.4s"
         >
-          <Text color="#FFF" variant="header-menu">
+          <Text fontSize="14px" color="#FFF" variant="header-menu">
             {title}
           </Text>
         </Center>
