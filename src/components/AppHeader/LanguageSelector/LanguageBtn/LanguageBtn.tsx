@@ -18,13 +18,23 @@ export const LanguageBtn = ({
       }}
       alignItems="center"
       justifyContent="flex-start"
-      height="45px"
+      height={{
+        base: '15px',
+        md: '30px',
+        lg: '35px',
+        xl: '40px',
+        '2xl': '45px'
+      }}
       w="100%"
       bg="green.900"
-      paddingLeft="20px"
+      paddingLeft={{ base: '5px', md: '8px', '2xl': '10px' }}
       _hover={{ bg: 'green.600' }}
     >
-      <Text color="white.100" variant="header-menu">
+      <Text
+        fontSize={{ base: '6px', md: '10px', xl: '12px', '2xl': '16.5px' }}
+        color="white.100"
+        variant="header-menu"
+      >
         {title}
       </Text>
     </Flex>
