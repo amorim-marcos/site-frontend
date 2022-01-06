@@ -57,7 +57,67 @@ export const About = () => {
 
       </S.SectionParaMundo>
 
-      <Infografico></Infografico>
+      <Infografico
+        titleSuperscript1Text = 'Volume de Exportação'
+        content1Text = '+'
+        content2Text = '3500'
+        content3Text = 'TEUs / mês'
+      ></Infografico>
+
+      <Infografico
+        titleSuperscript1Text = 'Relações Comerciais'
+        content1Text = '+'
+        content2Text = '60'
+        content3Text = 'países'
+      ></Infografico>
+
+      <Infografico
+        content2Text = '250'
+        content1Text = '+'
+        titleSubscript1Text = 'Espécies de Animais Silvestres'
+      ></Infografico>
+
+      <Infografico
+        content2Text = '6'
+        titleSubscript1Text = 'Fazendas monitoradas'
+      ></Infografico>
+
+      <Infografico
+        titleSuperscript2Text = 'Reaproveitamos'
+        content1DisplayIcon = 'yes'
+        content1IconName = 'water'
+        content2Text = '30'
+        content4Text = '%'
+        titleSubscript1Text = 'da Água Utilizada'
+      ></Infografico>
+
+
+      <Infografico
+        titleSuperscript2Text = 'Co-geramos'
+        content1DisplayIcon = 'yes'
+        content1IconName = 'energy'
+        content2Text = '60'
+        content4Text = '%'
+        titleSubscript1Text = 'da Energia Utilizada'
+      ></Infografico>
+
+      
+      <Infografico
+        content1Text = '+'
+        content2Text = '7,5'
+        content3Text = 'Mil'
+        // content4Text = 'Colaboradores diretos e indiretos'
+        titleSubscript1Text = 'Colaboradores diretos e indiretos'
+      ></Infografico>
+
+
+      <Infografico
+        content1DisplayIcon = 'yes'
+        content1IconName = 'trees'
+        content2Text = '86'
+        content3Text = 'Mil hectares'
+        titleSubscript1Text = 'Florestas Plantadas para produção'
+      ></Infografico>
 
       </GlobalContainer>
   )

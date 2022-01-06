@@ -1,113 +1,262 @@
+import React, { ReactNode } from 'react'
 import { Heading, Flex, Box, Text, Center, Container } from "@chakra-ui/react"
 
+import { ResponsiveCss } from 'types/responsive'
+
+import WaterIcon from '@components/Icons/WaterIcon'
+import EnergyIcon from '@components/Icons/EnergyIcon'
+import TreesIcon from '@components/Icons/TreesIcon'
 
 export type InfograficoProps = {
-  title?: string
+  // SUPERSCRITS TITLES
+  titleSuperscript1Text?: ReactNode | string
+  titleSuperscript1Display?: 'flex' | 'none'
+  titleSuperscript1Color?: string
+
+  titleSuperscript2Text?: ReactNode | string
+  titleSuperscript2Display?: 'flex' | 'none'
+  titleSuperscript2Color?: string
+
+  // CONTENT
+  content1Text?: ReactNode | string
+  // ICON
+  content1DisplayIcon?: 'yes' | 'no'
+  content1IconName?: string
+  content1IconHeight?: ResponsiveCss
+  content1IconWidth?: ResponsiveCss
+
+  content1Display?: 'flex' | 'none'
+  content1Color?: string
+
+  content2Text?: ReactNode | string
+  content2Display?: 'flex' | 'none'
+  content2Color?: string
+
+  content3Text?: ReactNode | string
+  content3Display?: 'flex' | 'none'
+  content3Color?: string
+
+  content4Text?: ReactNode | string
+  content4Display?: 'flex' | 'none'
+  content4Color?: string
+
+  // SUBSCRIPT TITLE
+  titleSubscript1Text?: ReactNode | string
+  titleSubscript1Display?: 'flex' | 'none'
+  titleSubscript1Color?: string
 }
-export const Infografico = ({ title }: InfograficoProps) => {
+export const Infografico = ({ 
+
+  // SUPERSCRITS TITLES
+  titleSuperscript1Text,
+  titleSuperscript1Display,
+  titleSuperscript1Color = 'green.600',
+
+  titleSuperscript2Text,
+  titleSuperscript2Display,
+  titleSuperscript2Color = 'green.800',
+
+  // CONTENT
+  content1Text,
+  content1Display,
+  // ICON
+  content1DisplayIcon = 'no',
+  content1IconName,
+  content1IconHeight = { base: '30px', sm: '45px', lg: '50px', xl: '55px'},
+  content1IconWidth = { base: '30px', sm: '40px', lg: '40px', xl: '60px'},
+
+  content1Color = 'green.600',
+  content2Text,
+  content2Display,
+  content2Color,
+  content3Text,
+  content3Display,
+  content3Color,
+  content4Text,
+  content4Display,
+  content4Color = 'green.600',
+
+  // SUBSCRIPT TITLE
+  titleSubscript1Text,
+  titleSubscript1Display,
+  titleSubscript1Color = 'green.600',
+}: InfograficoProps) => {
   return (
 
-    <Container w='40%'>
-
+  <Container 
+    display='flex'
+    margin='50px'
+  >
+    <Box 
+      display='flex'
+      // bg='azure'
+    >
+      {/* WRAP MAIN  --> */}
       <Flex 
-        direction="column" 
-        flexWrap="nowrap"
-        bg='yellow'
+        direction='column' 
+        wordBreak='keep-all'
       >
-        
-        <Center 
-          flex='1'
+
+
+       {/* SUPERSCRIT TITLE 1 --> */}
+        <Box 
+          display={titleSuperscript1Display}
+          justifyContent='center'
+          // bg='yellow.200'
         >
           <Heading 
               variant='h1'
-              color='green.600'
-              fontSize='24px'
-            >Volume de exportação</Heading>
-        </Center>
+              color={titleSuperscript1Color}
+              letterSpacing = '-0.94px'
+              fontFamily = 'body'
+              fontWeight= 'bold'
+              // base to 320px | sm to 568px | lg to 1024 | xl to max
+              fontSize={{ base: '16px', sm: '24px', lg: '26px', xl: '30px'}}
+              textAlign='center'
+            >{titleSuperscript1Text}</Heading>
+        </Box>
         
-        <Center>
-          <Heading 
-              variant='h4'
-              color='green.900'
-              fontSize='16px'
-            >Co-geramos</Heading>
-        </Center>
-
+        {/* SUPERSCRIT TITLE 2 --> */}
         <Box 
-          flex='1'
+          display={titleSuperscript2Display}
+          justifyContent='center'
+          marginBottom={{ base: '-8px', sm: '8px', lg: '10px', xl: '15px'}}
+          // bg='greenyellow'
         >
-          
-          <Flex 
-            direction="row"
-            bg='blue'
+          <Heading 
+              variant = 'h4'
+              color = {titleSuperscript2Color}
+              fontSize = {{ base: '13px', sm: '18px', lg: '20px', xl: '22px'}}
+              textAlign = 'center'
+            >{titleSuperscript2Text}</Heading>
+        </Box>
+
+
+
+       {/* BOX CONTENT --> */}
+       <Box 
+          display='flex' 
+          justifyContent='center'
+        >
+          <Box 
+            display='flex'
+            alignItems='center'
+            // bg='aquamarine'
+            maxH='70px'
+         >
+
+          {/* CONTENT 1 --> */}
+          <Box 
+            display={content1Display}
+            // bg='bisque'
           >
 
-            <Box 
-              flex='1'
-              bg='blue.100'
-              display='flex' 
-              alignItems='left'
+            <Heading 
+                variant='h1'
+                color={content1Color}
+                fontFamily = 'body'
+                fontWeight= 'extrabold'
+                fontSize = {{ base: '50px', sm: '85px', lg: '90px', xl: '100px'}}
+              >{content1Text}</Heading>
+           
+           {content1DisplayIcon=='yes' &&
+            <Box marginRight='5px'>
+              {(content1IconName === 'energy' &&
+                <EnergyIcon 
+                  height = {{ base: '30px', sm: '45px', lg: '50px', xl: '55px'}}
+                  width = {{ base: '30px', sm: '40px', lg: '40px', xl: '60px'}}
+                />)
+                || (content1IconName === 'water' &&
+                <WaterIcon 
+                  height = {{ base: '25px', sm: '40px', lg: '45px', xl: '48px'}}
+                  width = {{ base: '25px', sm: '40px', lg: '40px', xl: '60px'}}
+                />)
+                || (content1IconName === 'trees' &&
+                <TreesIcon 
+                  height = {{ base: '80px', sm: '100px', lg: '120px', xl: '140px'}}
+                  width = {{ base: '35px', sm: '50px', lg: '55px', xl: '60px'}}
+                />)}
+
+            </Box>  
+          }
+          
+            
+          </Box>
+            {/* CONTENT 2 --> */}
+              <Heading
+                variant='h1'
+                color={content2Color}
+                letterSpacing = '-0.94px'
+                fontFamily = 'body'
+                fontWeight= 'extrabold'
+                fontSize = {{ base: '50px', sm: '85px', lg: '90px', xl: '100px'}}
+                display={content2Display}
+              >{content2Text}</Heading>
               
-            >
-              <Heading 
-                  variant='h4'
-                  color='green.600'
-                  fontSize='90px'
-                >+</Heading>
-            </Box>
-
-            <Center 
-              flex='1'
-              bg='brown.100'
-            >
-              <Heading 
-                  variant='h4'
-                  color='green.900'
-                  fontSize='80px'
-                >3,500</Heading>
-            </Center>
-
-            <Box
-              flex='1' 
-              bg='red.100'
-              display='flex' 
-            >
-
-              <Flex 
-                direction="column" 
-                alignContent="center" 
-                bg='purple'
+              {/* CONTENT 3 --> */}
+              <Box 
+                display={content3Display}
+                flexDirection='column'
+                // bg='yellow'
+                alignSelf='flex-start'
+                marginTop={{ base: '12px', sm: '5px', lg: '0px', xl: '0px'}}
+                marginLeft='5px'
               >
                 <Heading 
-                    variant='h4'
-                    color='green.900'
-                    fontSize='18px'
-                    display='flex'
-                  >TEUs / mês</Heading>
-                  <Heading 
-                    variant='h4'
-                    color='green.600'
-                    fontSize='45px'
-                  >%</Heading>
-              </Flex>
+                  variant='h4'
+                  color={content3Color}
+                  letterSpacing = '-0.76px'
+                  fontWeight= 'bold'
+                  fontSize= {{ base: '12px', sm: '16px', lg: '18px', xl: '20px'}}
+                  maxWidth={{ base: '50px', sm: '70px', lg: '90px', xl: '100px'}}
+                >{content3Text}</Heading>
+              </Box>
 
-            </Box>
-          
-          </Flex>
-          
+
+              {/* CONTENT 4 --> */}
+              <Box 
+                display={content4Display}
+                // bg='blue.300'
+                flexDirection='column'
+                alignSelf='flex-end'
+              >
+                <Heading 
+                    variant='h1'
+                    color={content4Color}
+                    fontFamily = 'body'
+                    fontWeight= 'extrabold'
+                    fontSize={{ base: '35px', sm: '45px', lg: '60px', xl: '70px'}}
+                    marginBottom={{ base: '6px', sm: '-6px', lg: '-10px', xl: '-16px'}}
+                  >{content4Text}</Heading>
+              </Box>
+
+          </Box>
+
         </Box>
-      
-        <Center 
-          flex='1'
-        >   
+
+
+        {/* SUBSCRIPT TITLE --> */}
+        <Box 
+          display={titleSubscript1Display}
+          justifyContent='center'
+          // bg='lavenderblush'
+          marginTop = {{ base: '-10px', sm: '5px', lg: '10px', xl: '20px'}}
+        >
           <Heading 
               variant='h1'
-              color='green.600'
-              fontSize='24px'
-            >da Água Utilizada</Heading>
-        </Center>
-    </Flex>
+              color={titleSubscript1Color}
+              letterSpacing = '-0.94px'
+              fontFamily = 'body'
+              fontWeight= 'bold'
+              textAlign='center'
+              fontSize={{ base: '16px', sm: '24px', lg: '26px', xl: '30px'}}
+              maxWidth={{ base: '150px', sm: '250px', lg: '250px', xl: '300px'}}
+            >{titleSubscript1Text}</Heading>
+        </Box>
+        {/* SUBSCRIPT TITLE --> */}
 
+      </Flex>
+    </Box>
   </Container>
   )
 }
