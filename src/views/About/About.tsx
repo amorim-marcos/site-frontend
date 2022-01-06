@@ -6,11 +6,18 @@ import WhereWeAre from '@components/WhereWeAre'
 export const About = () => {
   return (
     <Box>
-      <Pagebar />
+      <Pagebar
+        paths={[
+          {
+            title: 'Somos BERNECK®',
+            url: 'somos-berneck'
+          }
+        ]}
+      />
 
       <Main title="Somos Berneck" />
 
-      <WhereWeAre />
+      {/* <WhereWeAre /> */}
     </Box>
   )
 }
