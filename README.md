@@ -56,6 +56,13 @@ $ yarn storybook
 DOM testing library + Jest
 
 ```bash
-$ yarn storybook
+$ yarn test --watch
 ```
 
+
+## Create Automatic Component
+Criação de novo componentes
+
+```bash
+$ yarn generate
+```
