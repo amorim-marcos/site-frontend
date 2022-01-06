@@ -196,7 +196,7 @@ export const AppHeader = () => {
           top="100%"
           alignItems="center"
           justifyContent="center"
-          zIndex="dropdown"
+          zIndex="docked"
         >
           <Flex
             width={{
