@@ -17,6 +17,7 @@ export const AppHeader = () => {
   const header = useTranslation('header')
   return (
     <Box
+      data-testid="header-container"
       marginX="auto"
       h={{
         base: '50px',
