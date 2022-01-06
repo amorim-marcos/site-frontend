@@ -16,6 +16,15 @@ const data = {
 
 export const About = () => {
   return (
+    <Box>
+      <Pagebar
+        paths={[
+          {
+            title: 'Somos BERNECK®',
+            url: 'somos-berneck'
+          }
+        ]}
+      />
 
       <GlobalContainer>
         <Pagebar title="Quem somos" />
@@ -120,5 +129,7 @@ export const About = () => {
       ></Infografico>
 
       </GlobalContainer>
+      {/* <WhereWeAre /> */}
+    </Box>
   )
 }
