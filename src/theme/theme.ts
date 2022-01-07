@@ -7,7 +7,7 @@ import { NavLink } from './variants/nav-link'
 import { global } from './global'
 import { fontWeights } from './fontweight'
 import { fontSizes } from './fontsizes'
-import { breakPoints } from './breakpoints'
+import { breakpoints } from './breakpoints'
 
 export const theme = extendTheme({
   grid:{
@@ -17,7 +17,7 @@ export const theme = extendTheme({
   colors,
   fontWeights,
   fontSizes,
-  breakPoints,
+  breakpoints,
   components: {
     Button,
     Heading,
