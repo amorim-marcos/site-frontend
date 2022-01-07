@@ -14,7 +14,7 @@ export const AppFooter = () => {
       maxWidth="1920px"
       marginX="auto"
       h={{
-        base: '400px',
+        base: '280px',
         sm: '380px',
         md: '460px',
         lg: '600px',
@@ -22,6 +22,7 @@ export const AppFooter = () => {
         '2xl': '732px'
       }}
       bg="green.900"
+      position="relative"
     >
       <Flex
         padding="5%"
@@ -31,12 +32,29 @@ export const AppFooter = () => {
         width="100%"
         flexDir="column"
       >
-        <Flex w="100%" zIndex="docked">
-          <LogoBerneck />
+        <Flex w="100%" alignItems="center" zIndex="docked">
+          <LogoBerneck
+            width={{
+              base: '70px',
+              sm: '100px',
+              md: '120px',
+              lg: '150px',
+              xl: '180px',
+              '2xl': '220px'
+            }}
+            height={{
+              base: '14px',
+              sm: '16px',
+              md: '20px',
+              lg: '25px',
+              xl: '31px',
+              '2xl': '40px'
+            }}
+          />
           <Grid
             ml="auto"
             templateColumns="repeat(5, 1fr)"
-            gap={{ base: '5px', sm: '17px', md: '30px', '2xl': '50px' }}
+            gap={{ base: '15px', sm: '17px', md: '30px', '2xl': '50px' }}
           >
             <SocialIcon
               width={{
@@ -95,7 +113,16 @@ export const AppFooter = () => {
             />
           </Grid>
         </Flex>
-        <Flex justifyContent="space-between" zIndex="docked" marginTop={'6%'}>
+        <Flex
+          justifyContent="space-between"
+          zIndex="docked"
+          marginTop={{
+            base: '7%',
+            sm: '10%',
+            lg: '11%',
+            '2xl': '6%'
+          }}
+        >
           <FooterList
             title={{
               title: footer.t('column1Title'),
@@ -264,13 +291,25 @@ export const AppFooter = () => {
         paddingX={'4%'}
       >
         <Text
-          fontSize={{ base: '6px', md: '8px', lg: '12px', '2xl': '14px' }}
+          fontSize={{
+            base: '6px',
+            sm: '7px',
+            md: '8px',
+            lg: '12px',
+            '2xl': '14px'
+          }}
           color="green.300"
         >
           {footer.t('rights')}
         </Text>
         <Text
-          fontSize={{ base: '6px', md: '8px', lg: '12px', '2xl': '14px' }}
+          fontSize={{
+            base: '6px',
+            sm: '7px',
+            md: '8px',
+            lg: '12px',
+            '2xl': '14px'
+          }}
           color="green.600"
         >
           {footer.t('termsAndPrivacy')}
@@ -278,8 +317,20 @@ export const AppFooter = () => {
         <Link href="http://www.commcepta.com.br/">
           <Image
             cursor="pointer"
-            height={23}
-            width={116}
+            height={{
+              base: '9px',
+              sm: '11px',
+              md: '15px',
+              xl: '19px',
+              '2xl': '23px'
+            }}
+            width={{
+              base: '50px',
+              sm: '60px',
+              md: '80px',
+              xl: '100px',
+              '2xl': '116px'
+            }}
             src="img/logo-commcepta.png"
             alt="Logo Commcepta"
           />
