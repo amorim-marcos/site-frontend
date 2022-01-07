@@ -22,7 +22,9 @@ export const EnergyIcon = ({
         xmlns="http://www.w3.org/2000/svg" 
         width="100%"
         height="100%"
-        viewBox="0 0 25.751 49.729">
+        viewBox="0 0 25.751 49.729"
+        data-testid="energy-icon"
+      >
         <defs>
           <clipPath id="clip-path">
             <path id="Caminho_1389" 

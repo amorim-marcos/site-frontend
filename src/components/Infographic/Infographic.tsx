@@ -7,7 +7,7 @@ import WaterIcon from '@components/Icons/WaterIcon'
 import EnergyIcon from '@components/Icons/EnergyIcon'
 import TreesIcon from '@components/Icons/TreesIcon'
 
-export type InfograficoProps = {
+export type InfographicProps = {
   // SUPERSCRITS TITLES
   titleSuperscript1Text?: ReactNode | string
   titleSuperscript1Display?: 'flex' | 'none'
@@ -20,10 +20,8 @@ export type InfograficoProps = {
   // CONTENT
   content1Text?: ReactNode | string
   // ICON
-  content1DisplayIcon?: 'yes' | 'no'
+  content1DisplayIcon?: 'yes' | 'none'
   content1IconName?: string
-  content1IconHeight?: ResponsiveCss
-  content1IconWidth?: ResponsiveCss
 
   content1Display?: 'flex' | 'none'
   content1Color?: string
@@ -45,10 +43,10 @@ export type InfograficoProps = {
   titleSubscript1Display?: 'flex' | 'none'
   titleSubscript1Color?: string
 }
-export const Infografico = ({ 
+export const Infographic = ({ 
 
   // SUPERSCRITS TITLES
-  titleSuperscript1Text,
+  titleSuperscript1Text = '',
   titleSuperscript1Display,
   titleSuperscript1Color = 'green.600',
 
@@ -60,10 +58,8 @@ export const Infografico = ({
   content1Text,
   content1Display,
   // ICON
-  content1DisplayIcon = 'no',
+  content1DisplayIcon = 'none',
   content1IconName,
-  content1IconHeight = { base: '30px', sm: '45px', lg: '50px', xl: '55px'},
-  content1IconWidth = { base: '30px', sm: '40px', lg: '40px', xl: '60px'},
 
   content1Color = 'green.600',
   content2Text,
@@ -80,7 +76,7 @@ export const Infografico = ({
   titleSubscript1Text,
   titleSubscript1Display,
   titleSubscript1Color = 'green.600',
-}: InfograficoProps) => {
+}: InfographicProps) => {
   return (
 
   <Container 
@@ -151,6 +147,7 @@ export const Infografico = ({
             // bg='bisque'
           >
 
+          {content1DisplayIcon=='none' &&
             <Heading 
                 variant='h1'
                 color={content1Color}
@@ -158,6 +155,7 @@ export const Infografico = ({
                 fontWeight= 'extrabold'
                 fontSize = {{ base: '50px', sm: '85px', lg: '90px', xl: '100px'}}
               >{content1Text}</Heading>
+          }
            
            {content1DisplayIcon=='yes' &&
             <Box marginRight='5px'>
@@ -208,7 +206,7 @@ export const Infografico = ({
                   letterSpacing = '-0.76px'
                   fontWeight= 'bold'
                   fontSize= {{ base: '12px', sm: '16px', lg: '18px', xl: '20px'}}
-                  maxWidth={{ base: '50px', sm: '70px', lg: '90px', xl: '100px'}}
+                  maxWidth={{ base: '50px', sm: '90px', lg: '90px', xl: '100px'}}
                 >{content3Text}</Heading>
               </Box>
 
