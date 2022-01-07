@@ -21,6 +21,14 @@ export const Button = {
       _hover: {
         bg: 'green.700'
       }
+    },
+    "no-border": {
+      borderRadius: '0',
+      color: 'white',
+      bg: 'green.500',
+      _hover: {
+        bg: 'green.700'
+      }
     }
   },
   defaultProps: {

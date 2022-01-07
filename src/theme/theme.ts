@@ -6,12 +6,18 @@ import { Text } from './variants/text'
 import { NavLink } from './variants/nav-link'
 import { global } from './global'
 import { fontWeights } from './fontweight'
-import { breakpoints } from './breakpoints'
+import { fontSizes } from './fontsizes'
+import { breakPoints } from './breakpoints'
 
 export const theme = extendTheme({
+  grid:{
+    container: '130rem',
+    gutter: '3.2rem'
+  },
   colors,
   fontWeights,
-  breakpoints,
+  fontSizes,
+  breakPoints,
   components: {
     Button,
     Heading,
