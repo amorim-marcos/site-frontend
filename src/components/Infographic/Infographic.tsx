@@ -57,11 +57,11 @@ export const Infographic = ({
   // CONTENT
   content1Text,
   content1Display,
+  content1Color = 'green.600',
   // ICON
   content1DisplayIcon = 'none',
   content1IconName,
 
-  content1Color = 'green.600',
   content2Text,
   content2Display,
   content2Color,

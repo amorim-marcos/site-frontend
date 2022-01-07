@@ -17,7 +17,7 @@ export const CarbonIcon = ({
   onClick
  }: CarbonIconProps) => {
   return (
-  <Box w={width} h={height}>
+  <Box w={width} h={height} bg=''>
     <svg 
       xmlns="http://www.w3.org/2000/svg" 
       width="100%" 
