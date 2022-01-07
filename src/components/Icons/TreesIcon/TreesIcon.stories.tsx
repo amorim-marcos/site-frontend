@@ -6,4 +6,12 @@ export default {
   component: TreesIcon
 } as Meta
 
-export const Default: Story<TreesIconProps> = (args) => <TreesIcon {...args} />
+const Template: Story<TreesIconProps> = (args) => <TreesIcon {...args} />
+
+export const Default = Template.bind({})
+Default.args = {
+  stroke1: '#59993f',
+  stroke2: '#144835',
+  height: '100',
+  width: '100'
+}

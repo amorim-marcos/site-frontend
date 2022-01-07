@@ -5,7 +5,7 @@ import GlobalContainer from '@components/GlobalContainer'
 import Pagebar from '@components/Pagebar'
 import PageSection from '@components/PageSection'
 import HeaderTitle from '@components/HeaderTitle'
-import Infografico from '@components/Infografico'
+import Infographic from '@components/Infographic'
 
 const data = {
   imageUrl: 'url(/assets/imgs/quem_somos_foto_capa.png)',
@@ -66,67 +66,67 @@ export const About = () => {
 
       </S.SectionParaMundo>
 
-      <Infografico
+      <Infographic
         titleSuperscript1Text = 'Volume de Exportação'
         content1Text = '+'
         content2Text = '3500'
         content3Text = 'TEUs / mês'
-      ></Infografico>
+      ></Infographic>
 
-      <Infografico
+      <Infographic
         titleSuperscript1Text = 'Relações Comerciais'
         content1Text = '+'
         content2Text = '60'
         content3Text = 'países'
-      ></Infografico>
+      ></Infographic>
 
-      <Infografico
+      <Infographic
         content2Text = '250'
         content1Text = '+'
         titleSubscript1Text = 'Espécies de Animais Silvestres'
-      ></Infografico>
+      ></Infographic>
 
-      <Infografico
+      <Infographic
         content2Text = '6'
         titleSubscript1Text = 'Fazendas monitoradas'
-      ></Infografico>
+      ></Infographic>
 
-      <Infografico
+      <Infographic
         titleSuperscript2Text = 'Reaproveitamos'
         content1DisplayIcon = 'yes'
         content1IconName = 'water'
         content2Text = '30'
         content4Text = '%'
         titleSubscript1Text = 'da Água Utilizada'
-      ></Infografico>
+      ></Infographic>
 
 
-      <Infografico
+      <Infographic
         titleSuperscript2Text = 'Co-geramos'
         content1DisplayIcon = 'yes'
         content1IconName = 'energy'
         content2Text = '60'
         content4Text = '%'
         titleSubscript1Text = 'da Energia Utilizada'
-      ></Infografico>
+      ></Infographic>
 
       
-      <Infografico
+      <Infographic
         content1Text = '+'
         content2Text = '7,5'
         content3Text = 'Mil'
         // content4Text = 'Colaboradores diretos e indiretos'
         titleSubscript1Text = 'Colaboradores diretos e indiretos'
-      ></Infografico>
+      ></Infographic>
 
 
-      <Infografico
+      <Infographic
         content1DisplayIcon = 'yes'
         content1IconName = 'trees'
         content2Text = '86'
         content3Text = 'Mil hectares'
         titleSubscript1Text = 'Florestas Plantadas para produção'
-      ></Infografico>
+      ></Infographic>
 
       </GlobalContainer>
       {/* <WhereWeAre /> */}
