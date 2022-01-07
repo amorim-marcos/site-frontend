@@ -15,38 +15,54 @@ export type FooterListProps = {
 
 export const FooterList = ({ title, items }: FooterListProps) => {
   return (
-    <List spacing="15px">
-      <ListItem cursor="pointer">
-        <Link href={title.href} passHref>
-          <Text
-            _hover={{ color: 'green.600' }}
-            variant="header-menu"
-            fontSize="17px"
-            color="white.100"
-          >
-            {title.title}
-          </Text>
-        </Link>
-      </ListItem>
-      {items.map((i) =>
-        i.empty ? (
-          <Box height="20px"></Box>
-        ) : (
-          <ListItem cursor="pointer" key={i.title}>
-            <Link passHref href={i.href}>
-              <Text
-                _hover={{ color: '#FFF' }}
-                variant="tags"
-                fontSize="16px"
-                color="green.200"
-                fontWeight="600"
-              >
-                {i.title}
-              </Text>
-            </Link>
-          </ListItem>
-        )
-      )}
-    </List>
+    <Box>
+      <List spacing="10%">
+        <ListItem cursor="pointer">
+          <Link href={title.href} passHref>
+            <Text
+              _hover={{ color: 'green.600' }}
+              variant="header-menu"
+              fontSize={{
+                base: '7px',
+                sm: '9px',
+                md: '10px',
+                lg: '13px',
+                xl: '15px',
+                '2xl': '17px'
+              }}
+              color="white.100"
+            >
+              {title.title}
+            </Text>
+          </Link>
+        </ListItem>
+        {items.map((i) =>
+          i.empty ? (
+            <Box height="20px"></Box>
+          ) : (
+            <ListItem cursor="pointer" key={i.title}>
+              <Link passHref href={i.href}>
+                <Text
+                  _hover={{ color: '#FFF' }}
+                  variant="tags"
+                  fontSize={{
+                    base: '6px',
+                    sm: '8px',
+                    md: '9px',
+                    lg: '12px',
+                    xl: '14px',
+                    '2xl': '16px'
+                  }}
+                  color="green.200"
+                  fontWeight="600"
+                >
+                  {i.title}
+                </Text>
+              </Link>
+            </ListItem>
+          )
+        )}
+      </List>
+    </Box>
   )
 }
