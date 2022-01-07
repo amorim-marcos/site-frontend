@@ -30,6 +30,7 @@ export const SocialIcon = ({
         width={width}
         height={height}
         transition="0.5s"
+        aria-label="social-icon"
       >
         {media === 'facebook' ? (
           <svg

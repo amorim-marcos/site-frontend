@@ -10,6 +10,8 @@ export const AppFooter = () => {
   const footer = useTranslation('footer')
   return (
     <Flex
+      aria-label="footer-container"
+      data-testid="footer-container"
       flexDir="column"
       maxWidth="1920px"
       marginX="auto"

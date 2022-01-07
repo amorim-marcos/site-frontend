@@ -13,6 +13,7 @@ export const Grafism = ({ width = '1920px' }: GrafismProps) => {
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         viewBox="0 0 1920 704.355"
+        aria-label="grafism"
       >
         <path
           id="Caminho_1985"
