@@ -11,17 +11,18 @@ export type HouseIconProps = {
 export const HouseIcon = ({ 
   stroke1 = '#59993f',
   stroke2 = '#144835',
-  height = '84px',
-  width = '97px',
+  height = '90px',
+  width = '75px',
   onClick
  }: HouseIconProps) => {
   return (
   <Box w={width} h={height}>
     <svg 
       xmlns="http://www.w3.org/2000/svg" 
-      width="87.124" 
-      height="73.882" 
+      width="100%" 
+      height="100%" 
       viewBox="0 0 87.124 73.882"
+      data-testid="house-icon"
     >
       <g id="casa" transform="translate(-478.458 -739.305)">
         <path id="Caminho_1148" data-name="Caminho 1148" d="M511.226,775.96c-5.355.969-11.025,3.65-12.45,5.906a1.36,1.36,0,0,0-.271,1.073c1.54,5.513-2.185,8.617-4.969,10.111,6.278,2.071,16.141,2.071,21.148,2.071,18.34,0,34.928-6.114,41.85-15.313a80.4,80.4,0,0,0-14.659-3.867c-.046,0-.089.017-.137.019Z" transform="translate(6.664 16.191)" fill="none"/>
