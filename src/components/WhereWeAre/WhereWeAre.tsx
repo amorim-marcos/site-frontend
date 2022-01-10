@@ -16,8 +16,8 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
     <Box>
       <Flex
         w="100%"
-        mb="5rem"
-        gap="5rem"
+        mb="50px"
+        gap={{ base: '30px', md: '83px' }}
         pos="relative"
         overflow="hidden"
         direction="column"
@@ -26,12 +26,17 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
           src="img/grafismo_fundo_cinza.svg"
           pos="absolute"
           zIndex={-1}
-          mr="-6rem"
-          right={0}
-          w="40%"
+          right={{ xs: '-30px', sm: '-90px', '2xl': '-100px' }}
+          top={{ xs: '60px', '2xl': '-10px' }}
         />
 
-        <Flex mt="5.8rem" justifyContent="space-around">
+        <Flex
+          mt="100px"
+          direction={{ base: 'column', md: 'row' }}
+          align={{ base: 'center', md: 'flex-start' }}
+          px={{ base: '20px' }}
+          gap={{ base: '54px', md: '130px' }}
+        >
           <Title />
           <Description />
         </Flex>
@@ -57,30 +62,54 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
 }
 
 const Title = () => (
-  <Box>
+  <Flex
+    direction="column"
+    align={{ base: 'center', md: 'flex-start' }}
+    gap={{ base: '18px', '2xl': '29px' }}
+  >
     <Text
       color="green.800"
-      pb="0.5rem"
-      fontSize="2rem"
+      fontSize={{
+        base: '30px',
+        xs: '35px',
+        sm: '42px',
+        md: '30px',
+        xl: '50px'
+      }}
       fontWeight="extrabold"
       letterSpacing="-1px"
+      lineHeight="1"
     >
       Onde Estamos
     </Text>
 
-    <Box w="5.5rem" h="2px" marginLeft="0.2rem" bg="green.600" />
-  </Box>
+    <Box
+      w={{ base: '88px', md: '48px', xl: '87px' }}
+      h={{ base: '4px', '2xl': '3px' }}
+      ml={{ base: 'none', md: '5px' }}
+      bg="green.600"
+    />
+  </Flex>
 )
 
 const Description = () => (
-  <Box w="60%">
-    <Text color="green.600" letterSpacing="-0.6px" fontWeight="extrabold">
+  <Box w={{ base: '80vw', md: '60%' }}>
+    <Text
+      color="green.600"
+      letterSpacing="-0.6px"
+      fontWeight="extrabold"
+      fontSize={{ base: '20px', sm: '28px', '2xl': '30px' }}
+    >
       Localização estratégica
     </Text>
 
-    <Text color="grey.300" letterSpacing="-0.4px">
+    <Text
+      color="grey.300"
+      letterSpacing="-0.4px"
+      fontSize={{ base: '16px', '2xl': '20px' }}
+    >
       {
-        'Localização estratégica Nossas plantas industriais estão estrategicamente localizadas próximas às áreas de cultivo florestal e às principais rodovias e portos do país, com fácil distribuição para todo o território nacional e exterior.'
+        'Nossas plantas industriais estão estrategicamente localizadas próximas às áreas de cultivo florestal e às principais rodovias e portos do país, com fácil distribuição para todo o território nacional e exterior.'
       }
     </Text>
   </Box>
