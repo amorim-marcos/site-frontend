@@ -1,13 +1,13 @@
-import * as S from './styles'
+import { Heading, Flex, Box, Text, Center, Container } from "@chakra-ui/react"
 
 export type {{pascalCase name}}Props = {
   title?: string
 }
 export const {{pascalCase name}} = ({ title }: {{pascalCase name}}Props) => {
   return (
-    <S.Wrapper>
+    <Box>
       <h1>{{pascalCase name}}</h1>
       <h2>{title}</h2>
-    </S.Wrapper>
+    </Box>
   )
 }
