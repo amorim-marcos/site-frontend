@@ -1,4 +1,5 @@
-import { Flex, Image, Text } from '@chakra-ui/react'
+import { Box, Flex, Image, Text } from '@chakra-ui/react'
+import InfoIcon from '@components/Icons/InfoIcon'
 
 export type WhereWeArePanelFooterProps = {
   name: string
@@ -66,16 +67,15 @@ const Address = (props: { address: string }) => (
 )
 
 const InfoBtn = (props: { onClick?: () => void; show: boolean }) => (
-  <Image
-    src="icon/icon_info.svg"
-    h="35px"
+  <Box
     cursor="pointer"
     borderRadius="100%"
-    onClick={props.onClick}
     transition={`all 0.2s ease-in-out`}
     bg={props.show ? 'green.600' : 'none'}
     _hover={{ filter: 'saturate(0.5)' }}
-  />
+  >
+    <InfoIcon onClick={props.onClick} />
+  </Box>
 )
 
 const MapBtn = (props: { onClick?: () => void; show: boolean }) => (
