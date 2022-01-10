@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { Flex, Image } from '@chakra-ui/react'
+import { ResponsiveCss } from 'types/responsive'
 
 export type WhereWeArePanelInfoProps = {
   structure: string
@@ -53,7 +54,7 @@ const Section = (props: { title: string; children: ReactNode }) => (
 const SectionText = (props: {
   color?: string
   fontWeight?: string
-  fontSize?: string | number | object
+  fontSize?: ResponsiveCss
   children: ReactNode
 }) => (
   <Flex
