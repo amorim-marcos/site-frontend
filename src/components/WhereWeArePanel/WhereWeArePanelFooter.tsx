@@ -10,26 +10,24 @@ export type WhereWeArePanelFooterProps = {
 
 const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
   <Flex
-    h={{ base: 'fit-content', md: '4.4rem' }}
+    h={{ base: '115px', sm: '105px', md: '70px' }}
     w="100%"
-    bottom={0}
-    zIndex={1000}
-    padding={{ base: '1rem', md: '1rem 2.4rem 1rem 1.9rem' }}
-    gap={{ base: '0.6rem', md: '0' }}
+    padding={{ base: '21px 5px 15px', md: '15px 38px' }}
+    gap={{ base: '10px', md: '0' }}
     wrap={{ base: 'nowrap', md: 'wrap' }}
-    alignItems="center"
-    justifyContent={{ base: 'center', md: 'space-between' }}
+    align="center"
+    justify={{ base: 'center', md: 'space-between' }}
     direction={{ base: 'column', md: 'row' }}
     borderBottomRightRadius="33px"
     bgColor="green.900"
   >
-    <Flex alignItems="center">
+    <Flex alignItems="center" direction={{ base: 'column', sm: 'row' }}>
       <Name name={props.name} />
       <Address address={props.address} />
     </Flex>
 
     {!props.inaugurationSoon && (
-      <Flex id="buttons" gap="1.5rem" alignItems="center">
+      <Flex id="buttons" gap={{ base: '15px', md: '24px' }} alignItems="center">
         <InfoBtn
           onClick={() => props.handleChangeOverlay('info')}
           show={props.showOverlay === 'info'}
@@ -48,9 +46,11 @@ const Name = (props: { name: string }) => (
     color="green.600"
     whiteSpace="pre"
     fontWeight="bold"
+    fontSize={{ sm: '18px' }}
     letterSpacing="-0.46px"
+    _after={{ sm: { content: '" | "' } }}
   >
-    {`${props.name} | `}
+    {props.name}
   </Text>
 )
 
@@ -58,7 +58,7 @@ const Address = (props: { address: string }) => (
   <Text
     color="white"
     letterSpacing="-0.36px"
-    fontSize="1.1rem"
+    fontSize={{ base: '14px', md: '18px' }}
     fontWeight="medium"
   >
     {props.address}
@@ -68,7 +68,7 @@ const Address = (props: { address: string }) => (
 const InfoBtn = (props: { onClick?: () => void; show: boolean }) => (
   <Image
     src="icon/icon_info.svg"
-    h="2rem"
+    h="35px"
     cursor="pointer"
     borderRadius="100%"
     onClick={props.onClick}
@@ -81,8 +81,8 @@ const InfoBtn = (props: { onClick?: () => void; show: boolean }) => (
 const MapBtn = (props: { onClick?: () => void; show: boolean }) => (
   <Image
     src={`icon/${props.show ? 'icon_map_active' : 'icon_map'}.svg`}
-    h="2rem"
-    mb={{ base: '0.2rem', md: '0.3rem' }}
+    h="35px"
+    mb={{ base: '5px', md: '5px' }}
     cursor="pointer"
     onClick={props.onClick}
     transition={`all 0.2s ease-in-out`}
