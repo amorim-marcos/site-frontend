@@ -1,0 +1,85 @@
+import { Center, Text, Box, Flex } from '@chakra-ui/react'
+import { useState } from 'react'
+import { LanguageBtn } from './LanguageBtn/LanguageBtn'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'react-i18next'
+import { LanguageIcon } from './LanguageIcon'
+import { ArrowIcon } from './ArrowIcon'
+
+export const LanguageSelector = () => {
+  const [open, setOpen] = useState(false)
+  const router = useRouter()
+  const header = useTranslation('header')
+
+  return (
+    <Center
+      cursor="pointer"
+      position="relative"
+      zIndex="dropdown"
+      onClick={() => setOpen(!open)}
+      transition="0.2s"
+    >
+      <Box marginRight="8%">
+        <LanguageIcon
+          width={{
+            base: '8px',
+            sm: '10px',
+            md: '14px',
+            lg: '18px',
+            xl: '20px',
+            '2xl': '25px'
+          }}
+        />
+      </Box>
+      <Text
+        color="#FFF"
+        fontSize={{
+          base: '8px',
+          md: '10px',
+          lg: '12px',
+          xl: '14px',
+          '2xl': '16.5px'
+        }}
+      >
+        {header.t('locale')}
+      </Text>
+
+      <Box
+        transition="0.3s"
+        transform={open ? 'rotate(180deg)' : ''}
+        marginLeft="8%"
+      >
+        <ArrowIcon
+          width={{ base: '5px', md: '5px', lg: '7px', '2xl': '10px' }}
+        />
+      </Box>
+
+      {open ? (
+        <Flex
+          width="115%"
+          flexDir="column"
+          position="absolute"
+          top="calc(100%)"
+          borderTop="2px solid"
+          borderTopColor="green.600"
+        >
+          {!(router.locale === 'pt-BR') && (
+            <LanguageBtn title="Português" locale="pt-BR" />
+          )}
+
+          {!(router.locale === 'en') && (
+            <LanguageBtn title="English" locale="en" />
+          )}
+
+          {!(router.locale === 'es') && (
+            <LanguageBtn title="Español" locale="es" />
+          )}
+
+          {!(router.locale === 'zn-CN') && (
+            <LanguageBtn title="Mandarim" locale="zn-CN" />
+          )}
+        </Flex>
+      ) : null}
+    </Center>
+  )
+}

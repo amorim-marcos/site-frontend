@@ -6,4 +6,18 @@ export default {
   component: Pagebar
 } as Meta
 
-export const Default: Story<PagebarProps> = (args) => <Pagebar {...args} />
+const Template: Story<PagebarProps> = (args) => <Pagebar {...args} />
+
+export const Default = Template.bind({})
+Default.args = {
+  paths: [
+    {
+      title: 'Canal BNK',
+      url: '/'
+    },
+    {
+      title: 'Inspiração sob medida',
+      url: '/'
+    }
+  ]
+}

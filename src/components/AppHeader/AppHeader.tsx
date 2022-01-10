@@ -1,109 +1,351 @@
-import { Flex, Box, Container, Grid } from '@chakra-ui/react'
+import { Flex, Box, Container, Input, CloseButton } from '@chakra-ui/react'
 import LogoBerneck from '@components/LogoBerneck'
 import NavLink from '../NavLink'
 import { HeaderMenuItem } from './HeaderMenuItem/HeaderMenuItem'
 import SearchIcon from '@components/SearchIcon'
-import HeaderTopMenuItem from './HeaderTopMenuItem'
+import { HeaderTopMenuItem } from './HeaderTopMenuItem/HeaderTopMenuItem'
+import { LanguageSelector } from './LanguageSelector/LanguageSelector'
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
-export type AppHeaderProps = {
-  title?: string
+import { colors } from '../../theme/colors'
+export type AppHeaderProps = null
+
+export const AppHeader = () => {
+  const [openSearchBar, setOpenSearchBar] = useState(false)
+
+  const header = useTranslation('header')
+  return (
+    <Box
+      data-testid="header-container"
+      marginX="auto"
+      h={{
+        base: '50px',
+        sm: '60px',
+        md: '88px',
+        lg: '103px',
+        xl: '140px',
+        '2xl': '172px'
+      }}
+      maxWidth="1920px"
+      bg="green.900"
+      position="relative"
+    >
+      <Container maxWidth="1920" padding={0}>
+        <Flex
+          paddingX={{ base: '4.5%', sm: '4%', md: '3.5%' }}
+          h={{
+            base: '15px',
+            sm: '20px',
+            md: '25px',
+            lg: '30px',
+            xl: '40px',
+            '2xl': '51px'
+          }}
+          justifyContent="space-between"
+        >
+          <Flex height="100%">
+            <LanguageSelector />
+          </Flex>
+          <Flex
+            justifyContent="flex-end"
+            align="center"
+            flexDir="row"
+            width="100%"
+          >
+            <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn1')} />
+            <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn2')} />
+            <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn3')} />
+            <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn4')} />
+          </Flex>
+        </Flex>
+        <Flex
+          paddingInline={{ base: '4%', xl: '4%', '2xl': '4%' }}
+          h={{
+            base: '40px',
+            sm: '38px',
+            md: '60px',
+            lg: '70px',
+            xl: '95px',
+            '2xl': '115px'
+          }}
+          bg="green.800"
+          alignItems="center"
+        >
+          <NavLink href="/">
+            <LogoBerneck
+              width={{
+                base: '70px',
+                sm: '80px',
+                md: '120px',
+                lg: '150px',
+                xl: '180px',
+                '2xl': '220px'
+              }}
+              height={{
+                base: '14px',
+                sm: '14px',
+                md: '20px',
+                lg: '25px',
+                xl: '31px',
+                '2xl': '40px'
+              }}
+            />
+          </NavLink>
+          <Flex
+            paddingLeft={'70px'}
+            justifyContent="flex-end"
+            h="100%"
+            width="100%"
+          >
+            <HeaderMenuItem
+              subItems={menuContent.whoWeAre.subItems.map((i) => ({
+                title: header.t(i.key),
+                href: i.href
+              }))}
+              href={menuContent.whoWeAre.href}
+              title={header.t('btn5')}
+            />
+            <HeaderMenuItem
+              subItems={menuContent.ourCommitment.subItems.map((i) => ({
+                title: header.t(i.key),
+                href: i.href
+              }))}
+              href={menuContent.ourCommitment.href}
+              title={header.t('btn6')}
+            />
+            <HeaderMenuItem
+              subItems={menuContent.florestalDivision.subItems.map((i) => ({
+                title: header.t(i.key),
+                href: i.href
+              }))}
+              href={menuContent.florestalDivision.href}
+              title={header.t('btn7')}
+            />
+            <HeaderMenuItem
+              subItems={menuContent.products.subItems.map((i) => ({
+                title: header.t(i.key),
+                href: i.href,
+                subItems: i.subItems.map((i) => ({
+                  title: header.t(i.key),
+                  href: i.href
+                }))
+              }))}
+              href={menuContent.products.href}
+              title={header.t('btn8')}
+            />
+            <HeaderMenuItem
+              subItems={menuContent.channelBNK.subItems.map((i) => ({
+                title: header.t(i.key),
+                href: i.href
+              }))}
+              href={menuContent.channelBNK.href}
+              title={header.t('btn9')}
+            />
+            <Flex alignItems="center" justifyContent="center">
+              {openSearchBar ? (
+                <CloseButton
+                  h={{
+                    base: '20px',
+                    sm: '20px',
+                    md: '30px',
+                    xl: '40px',
+                    '2xl': '50px'
+                  }}
+                  w={{
+                    base: '20px',
+                    sm: '20px',
+                    md: '30px',
+                    xl: '40px',
+                    '2xl': '50px'
+                  }}
+                  bg="green.600"
+                  borderRadius="50%"
+                  size="sm"
+                  color="white.100"
+                  onClick={() => setOpenSearchBar(false)}
+                />
+              ) : (
+                <SearchIcon
+                  width={{
+                    base: '10px',
+                    sm: '14px',
+                    md: '18px',
+                    xl: '28px',
+                    '2xl': '35px'
+                  }}
+                  onClick={() => setOpenSearchBar(true)}
+                />
+              )}
+            </Flex>
+          </Flex>
+        </Flex>
+      </Container>
+
+      {openSearchBar ? (
+        <Flex
+          height={{
+            base: '35px',
+            md: '50px',
+            lg: '60px',
+            xl: '80px',
+            '2xl': '100px'
+          }}
+          bg="green.900"
+          width="100%"
+          position="absolute"
+          top="100%"
+          alignItems="center"
+          justifyContent="center"
+          zIndex="docked"
+        >
+          <Flex
+            width={{
+              base: '200px',
+              md: '300px',
+              lg: '350px',
+              xl: '400px',
+              '2xl': '450px'
+            }}
+            borderBottom="solid"
+            borderBottomColor="white.100"
+            paddingX="5px"
+            height={{ base: '25px' }}
+            borderBottomWidth={{ base: '1px' }}
+          >
+            <Input
+              placeholder="Digite sua busca"
+              border="none"
+              outline="none"
+              _active={{ border: 'none', outline: 'none' }}
+              focusBorderColor="none"
+              color="white.100"
+              paddingLeft="0px"
+              paddingBottom={{ base: '0px', md: '10px' }}
+              fontSize={{
+                base: '8px',
+                md: '10px',
+                lg: '12px',
+                xl: '14px',
+                '2xl': '16px'
+              }}
+              height={{ base: '30px' }}
+            />
+            <Box>
+              <SearchIcon
+                stroke={colors.white[100]}
+                width={{
+                  base: '13px',
+                  md: '16px',
+                  lg: '23px',
+                  xl: '28px',
+                  '2xl': '35px'
+                }}
+                height={{ base: '25px', md: '10px', '2xl': '0px' }}
+              />
+            </Box>
+          </Flex>
+        </Flex>
+      ) : null}
+    </Box>
+  )
 }
 
 const menuContent = {
   whoWeAre: {
-    title: 'QUEM SOMOS',
+    key: 'btn5',
     href: '/somos-berneck',
     subItems: [
-      { title: 'Quem Somos', href: '/' },
-      { title: 'Nossa Trajetoria', href: '/' },
-      { title: 'Onde Estamos', href: '/' },
-      { title: 'Certificações', href: '/' }
+      { key: 'btn5_subItem1', href: '/somos-berneck' },
+      { key: 'btn5_subItem2', href: '/somos-berneck' },
+      { key: 'btn5_subItem3', href: '/somos-berneck' },
+      { key: 'btn5_subItem4', href: '/somos-berneck' }
     ]
   },
   ourCommitment: {
-    title: 'NOSSO COMPROMISSO',
+    key: 'btn6',
     href: '/',
     subItems: [
       {
-        title: 'Cultivamos o Meio Ambiente',
+        key: 'btn6_subItem1',
         href: '/'
       },
       {
-        title: 'Cultivamos Nossa Gente',
+        key: 'btn6_subItem2',
         href: '/'
       },
       {
-        title: 'Cultivamos Nossos Valores',
+        key: 'btn6_subItem3',
         href: '/'
       },
       {
-        title: 'Relatórios ESG',
+        key: 'btn6_subItem4',
         href: '/'
       }
     ]
   },
   florestalDivision: {
-    title: 'DIVISÃO FLORESTAL',
+    key: 'btn7',
     href: '/',
     subItems: [
       {
-        title: 'Manejo Florestal',
+        key: 'btn7_subItem1',
         href: '/'
       },
       {
-        title: 'Produção Florestal',
+        key: 'btn7_subItem2',
         href: '/'
       },
       {
-        title: 'Fornecedor Florestal',
+        key: 'btn7_subItem3',
         href: '/'
       },
       {
-        title: 'Resumo Público',
+        key: 'btn7_subItem4',
         href: '/'
       }
     ]
   },
   products: {
-    title: 'PRODUTOS',
+    key: 'btn8',
     href: '/',
     subItems: [
       {
-        title: 'Painéis',
+        key: 'btn8_subItem1',
         href: '/',
         subItems: [
           {
-            title: 'BP BERNECK®',
+            key: 'btn8_subItem2',
             href: '/'
           },
           {
-            title: 'HDF BERNECK®',
+            key: 'btn8_subItem3',
             href: '/'
           },
           {
-            title: 'MDF BERNECK®',
+            key: 'btn8_subItem4',
             href: '/'
           },
           {
-            title: 'MDP BERNECK®',
+            key: 'btn8_subItem5',
             href: '/'
           },
           {
-            title: 'Plus BERNECK®',
+            key: 'btn8_subItem6',
             href: '/'
           }
         ]
       },
       {
-        title: 'Serrados',
+        key: 'btn8_subItem7',
         href: '/',
         subItems: [
           {
-            title: 'BERNECK® Pinus',
+            key: 'btn8_subItem8',
             href: '/'
           },
           {
-            title: 'BERNECK® Teca',
+            key: 'btn8_subItem9',
             href: '/'
           }
         ]
@@ -111,82 +353,25 @@ const menuContent = {
     ]
   },
   channelBNK: {
-    title: 'CANAL BERNECK',
+    key: 'btn9',
     href: '/',
     subItems: [
       {
-        title: 'Inspiração Sob Medida',
+        key: 'btn9_subItem1',
         href: '/'
       },
       {
-        title: 'Matéria-Prima: Conhecimento',
+        key: 'btn9_subItem2',
         href: '/'
       },
       {
-        title: 'Mundo BERNECK',
+        key: 'btn9_subItem3',
         href: '/'
       },
       {
-        title: 'Downlaods',
+        key: 'btn9_subItem4',
         href: '/'
       }
     ]
   }
-}
-
-export const AppHeader = ({ title }: AppHeaderProps) => {
-  return (
-    <Box h={172} maxWidth="1920px" bg="green.900">
-      <Container maxWidth="1920" padding={0}>
-        <Flex h={51}>
-          <Box></Box>
-          <Grid
-            ml="auto"
-            paddingRight="80px"
-            templateColumns="repeat(4, 1fr)"
-            gap="110px"
-          >
-            <HeaderTopMenuItem href="/somos-berneck" title="Fale conosco" />
-            <HeaderTopMenuItem href="/somos-berneck" title="Trabalhe conosco" />
-            <HeaderTopMenuItem href="/somos-berneck" title="Onde comprar" />
-            <HeaderTopMenuItem href="/somos-berneck" title="Acesso restrito" />
-          </Grid>
-        </Flex>
-        <Flex paddingInline={100} h={115} bg="green.800" alignItems="center">
-          <NavLink href="/">
-            <LogoBerneck />
-          </NavLink>
-          <Flex h="100%" ml="auto">
-            <HeaderMenuItem
-              subItems={menuContent.whoWeAre.subItems}
-              href={menuContent.whoWeAre.href}
-              title={menuContent.whoWeAre.title}
-            />
-            <HeaderMenuItem
-              subItems={menuContent.ourCommitment.subItems}
-              href={menuContent.ourCommitment.href}
-              title={menuContent.ourCommitment.title}
-            />
-            <HeaderMenuItem
-              subItems={menuContent.florestalDivision.subItems}
-              href={menuContent.florestalDivision.href}
-              title={menuContent.florestalDivision.title}
-            />
-            <HeaderMenuItem
-              subItems={menuContent.products.subItems}
-              href={menuContent.products.href}
-              title={menuContent.products.title}
-            />
-            <HeaderMenuItem
-              subItems={menuContent.channelBNK.subItems}
-              href={menuContent.channelBNK.href}
-              title={menuContent.channelBNK.title}
-            />
-
-            <SearchIcon />
-          </Flex>
-        </Flex>
-      </Container>
-    </Box>
-  )
 }
