@@ -1,21 +1,78 @@
-import { Box, Button } from '@chakra-ui/react'
 import { useState } from 'react'
+import { Box, Flex } from '@chakra-ui/react'
 
-export type CarouselProps = {
-  children?: React.ReactNode[]
-}
+import { useSwipeable } from 'react-swipeable'
+
+export type CarouselProps = { children?: React.ReactNode[] }
 
 export const Carousel = (props: CarouselProps) => {
   const [curr, setCurr] = useState(0)
+  const handlers = useSwipeable({
+    trackMouse: true,
+    onSwipedLeft: () => switchTo('next'),
+    onSwipedRight: () => switchTo('prev')
+  })
+
+  const switchTo = (act: 'next' | 'prev') => {
+    if (!props.children) return
+    const childrenCount = props.children.length
+
+    act === 'next'
+      ? setCurr(curr < childrenCount - 1 ? curr + 1 : curr)
+      : setCurr(curr > 0 ? curr - 1 : curr)
+  }
+
+  const getPosition = (num: number) => {
+    if (num > curr) return 'next'
+    if (num < curr) return 'prev'
+    return 'present'
+  }
 
   return (
-    <Box>
-      <h1>Carousel</h1>
-      <Button onClick={() => setCurr(curr - 1)}>Previous</Button>
-      <Button onClick={() => setCurr(curr + 1)}>Next</Button>
-      {props.children?.map((item, index) => (
-        <Box key={index}>{item}</Box>
-      ))}
-    </Box>
+    <Flex
+      {...handlers}
+      data-testid="carousel"
+      direction="column"
+      align="center"
+      justify="center"
+      gap="30px"
+      pos="relative"
+    >
+      <Box data-testid="items" pos="relative">
+        {props.children?.map((item, index) => (
+          <Item key={index} position={getPosition(index)}>
+            {item}
+          </Item>
+        ))}
+      </Box>
+    </Flex>
   )
 }
+
+const getMargin = (position: 'present' | 'next' | 'prev') => {
+  if (position === 'present') return '0 0 0 0'
+  if (position === 'prev') return '0 0 0 -100%'
+  return '0 0 0 100%'
+}
+
+const getTransform = (position: 'present' | 'next' | 'prev') => {
+  if (position === 'present') return 'translateX(0)'
+  if (position === 'prev') return 'translateX(-100%)'
+  return 'translateX(100%)'
+}
+
+const Item = (props: {
+  position: 'present' | 'next' | 'prev'
+  children: React.ReactNode
+}) => (
+  <Box
+    top={0}
+    pos={props.position === 'present' ? 'relative' : 'absolute'}
+    opacity={props.position === 'present' ? 1 : 0}
+    transition="all 0.8s ease-in-out"
+    transform={getTransform(props.position)}
+    margin={getMargin(props.position)}
+  >
+    {props.children}
+  </Box>
+)
