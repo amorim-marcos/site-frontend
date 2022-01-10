@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
-import { Flex, Image } from '@chakra-ui/react'
+import { Box, Flex, Image } from '@chakra-ui/react'
 import { ResponsiveCss } from 'types/responsive'
+import CloseIcon from '@components/Icons/CloseIcon'
 
 export type WhereWeArePanelInfoProps = {
   structure: string
@@ -12,7 +13,16 @@ export type WhereWeArePanelInfoProps = {
 
 const WhereWeArePanelInfo = (props: WhereWeArePanelInfoProps) => (
   <>
-    <CloseButton onClick={props.onClose} />
+    <Box
+      top="10px"
+      right="15px"
+      pos="absolute"
+      cursor="pointer"
+      transition={`all 0.2s ease-in-out`}
+      _hover={{ filter: 'brightness(0.8)' }}
+    >
+      <CloseIcon onClick={props.onClose} boxSize={['14px']} />
+    </Box>
 
     <Flex
       justifyContent="space-around"
@@ -96,20 +106,6 @@ const SectionContent = (props: { content: string }) => (
   >
     {props.content}
   </SectionText>
-)
-
-const CloseButton = (props: { onClick: () => void }) => (
-  <Image
-    src="icon/close_panel.svg"
-    h="14px"
-    top="13px"
-    right="15px"
-    pos="absolute"
-    cursor="pointer"
-    onClick={props.onClick}
-    transition={`all 0.2s ease-in-out`}
-    _hover={{ filter: 'brightness(0.8)' }}
-  />
 )
 
 export default WhereWeArePanelInfo
