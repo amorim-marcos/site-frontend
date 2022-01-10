@@ -25,35 +25,13 @@ export const EnergyIcon = ({
         viewBox="0 0 25.751 49.729"
         data-testid="energy-icon"
       >
-        <defs>
-          <clipPath id="clip-path">
-            <path id="Caminho_1389" 
-              data-name="Caminho 1389" 
-              d="M391.731,847.218a1.15,1.15,0,0,1-1.114-1.432l5.322-21.061h-6.394a1.15,1.15,0,0,1-1.122-1.4l5.6-24.936a1.15,1.15,0,0,1,1.122-.9H413a1.15,1.15,0,0,1,.961,1.782L403.929,814.53H413a1.15,1.15,0,0,1,.942,1.809l-21.263,30.388A1.15,1.15,0,0,1,391.731,847.218Zm-.75-24.793h6.434a1.15,1.15,0,0,1,1.115,1.432l-4.149,16.418,16.405-23.445H401.8a1.15,1.15,0,0,1-.961-1.782l10.027-15.259h-14.8Z" 
-              transform="translate(798.005 2647.861)" 
-              fill={stroke1}
-            />
-          </clipPath>
-        </defs>
-        <g id="energia" transform="translate(-1186.399 -3445.351)" clip-path="url(#clip-path)">
-          <g id="Grupo_1373" data-name="Grupo 1373" transform="translate(47)">
-            <rect 
-              id="Retângulo_939" 
-              data-name="Retângulo 939" 
-              width="150%"
-              height="150%"
-              transform="translate(1132 3443)" 
-              fill={stroke1} />
-            <rect 
-              id="Retângulo_940" 
-              data-name="Retângulo 940" 
-              width="150%"
-              height="150%"
-              transform="translate(1132 3544)" 
-              fill={stroke2} 
-            />
+        <clipPath id="a">
+          <path d="m391.731 847.218a1.15 1.15 0 0 1 -1.114-1.432l5.322-21.061h-6.394a1.15 1.15 0 0 1 -1.122-1.4l5.6-24.936a1.15 1.15 0 0 1 1.122-.9h17.855a1.15 1.15 0 0 1 .961 1.782l-10.032 15.259h9.071a1.15 1.15 0 0 1 .942 1.809l-21.263 30.388a1.15 1.15 0 0 1 -.948.491zm-.75-24.793h6.434a1.15 1.15 0 0 1 1.115 1.432l-4.149 16.418 16.405-23.445h-8.986a1.15 1.15 0 0 1 -.961-1.782l10.027-15.259h-14.8z" transform="translate(798.005 2647.861)"/>
+        </clipPath>
+          <g clip-path="url(#a)" transform="translate(-1186.399 -3445.351)">
+            <path d="m0 0h41v101h-41z" fill={stroke1} transform="translate(1179 3443)"/>
+            <path d="m0 0h41v101h-41z" fill={stroke2} transform="translate(1179 3544)"/>
           </g>
-        </g>
       </svg>
   </Box>
   )

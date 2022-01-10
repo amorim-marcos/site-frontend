@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react'
 import { Heading, Flex, Box, Text, Center, Container } from "@chakra-ui/react"
 
 import CarbonIcon from '@components/Icons/CarbonIcon'
+import EmissionIcon from '@components/Icons/EmissionIcon'
 
 
 export type Infographic2Props = {
@@ -61,11 +62,15 @@ export const Infographic2 = ({
           >
             <Box display='flex' alignItems='center' margin = {{ base: '8px', sm: '10px', lg: '12px', xl: '14px'}}>
             {(iconName === 'CarbonIcon' &&
-              <CarbonIcon 
-                height = {{ base: '80px', sm: '120px', lg: '120px', xl: '140px'}}
-                width = {{ base: '35px', sm: '90px', lg: '55px', xl: '60px'}}
-              />
-            )}
+                <CarbonIcon 
+                  height = {{ base: '80px', sm: '120px', lg: '120px', xl: '140px'}}
+                  width = {{ base: '35px', sm: '90px', lg: '55px', xl: '60px'}}
+                />)
+                || (iconName === 'EmissionIcon' &&
+                <EmissionIcon 
+                  height = {{ base: '80px', sm: '120px', lg: '120px', xl: '140px'}}
+                  width = {{ base: '35px', sm: '90px', lg: '55px', xl: '60px'}}
+              />)}
             </Box>
           </Box>
 
