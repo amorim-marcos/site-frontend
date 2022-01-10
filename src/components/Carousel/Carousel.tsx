@@ -45,6 +45,30 @@ export const Carousel = (props: CarouselProps) => {
           </Item>
         ))}
       </Box>
+
+      <Flex
+        data-testid="indicators"
+        pos="relative"
+        alignSelf="center"
+        gap="15px"
+        w="100%"
+        h="100%"
+        justify="center"
+      >
+        {props.children?.map((_, index) => (
+          <Box
+            id={`${index}`}
+            key={index}
+            boxSize={'19px'}
+            borderWidth="2px"
+            borderRadius="100%"
+            borderColor="green.600"
+            bg={curr === index ? 'green.600' : 'white'}
+            cursor={curr === index ? 'default' : 'pointer'}
+            onClick={() => setCurr(index)}
+          />
+        ))}
+      </Flex>
     </Flex>
   )
 }
