@@ -1,13 +1,17 @@
-import { Box, Flex, Text, Image } from '@chakra-ui/react'
-import { WhereWeArePanelProps } from '@components/WhereWeArePanel/WhereWeArePanel'
+import { Box, Flex, Text, Image, useMediaQuery } from '@chakra-ui/react'
+import { breakpoints } from 'theme/breakpoints'
 
+import { WhereWeArePanelProps } from '@components/WhereWeArePanel/WhereWeArePanel'
 import WhereWeArePanel from '@components/WhereWeArePanel'
+import Carousel from '@components/Carousel'
 
 export type WhereWeAreProps = {
   panels: WhereWeArePanelProps[]
 }
 
 export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
+  const [isMobile] = useMediaQuery(`(max-width: ${breakpoints.xl})`)
+
   return (
     <Box>
       <Flex
@@ -32,11 +36,21 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
           <Description />
         </Flex>
 
-        <Flex w="100%" wrap="wrap" gap="3.4rem" justifyContent="center">
-          {panels.map((item, index) => (
-            <WhereWeArePanel key={index} {...item} />
-          ))}
-        </Flex>
+        {isMobile ? (
+          <Flex px={{ base: '20px' }} justify="center" py="250px">
+            <Carousel>
+              {panels.map((item) => (
+                <WhereWeArePanel key={item.image} {...item} />
+              ))}
+            </Carousel>
+          </Flex>
+        ) : (
+          <Flex w="100%" wrap="wrap" gap="54px" justify="center">
+            {panels.map((item) => (
+              <WhereWeArePanel key={item.image} {...item} />
+            ))}
+          </Flex>
+        )}
       </Flex>
     </Box>
   )
