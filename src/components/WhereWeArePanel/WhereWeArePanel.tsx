@@ -29,21 +29,24 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
   const [showOverlay, setShowOverlay] = useState<'map' | 'info' | null>(null)
 
   const Overlay = () => {
-    if (showOverlay === 'map') {
-      return (
-        <LeafletMaps
-          center={props.coords}
-          onClick={() => window.open(props.googleMapsURL, '_blank')}
-        />
-      )
-    } else if (showOverlay === 'info') {
-      return (
-        <WhereWeArePanelInfo
-          {...props.ourPlaceInformation}
-          onClose={() => setShowOverlay(null)}
-        />
-      )
-    } else return null
+    switch (showOverlay) {
+      case 'map':
+        return (
+          <LeafletMaps
+            center={props.coords}
+            onClick={() => window.open(props.googleMapsURL, '_blank')}
+          />
+        )
+      case 'info':
+        return (
+          <WhereWeArePanelInfo
+            {...props.ourPlaceInformation}
+            onClose={() => setShowOverlay(null)}
+          />
+        )
+      default:
+        return null
+    }
   }
 
   return (
@@ -65,6 +68,7 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
       pos="relative"
       direction="column"
       userSelect="none"
+      mb={{ sm: '0', md: '70px' }}
     >
       <PanelImage
         image={props.image}

@@ -10,7 +10,7 @@ export type WhereWeAreProps = {
 }
 
 export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
-  const [isMobile] = useMediaQuery(`(max-width: ${breakpoints.xl})`)
+  const [isMobile] = useMediaQuery(`(max-width: ${breakpoints.lg})`)
 
   return (
     <Box>
@@ -42,7 +42,7 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
         </Flex>
 
         {isMobile ? (
-          <Flex px={{ base: '20px' }} justify="center" py="250px">
+          <Flex px={{ base: '20px' }} justify="center">
             <Carousel>
               {panels.map((item) => (
                 <WhereWeArePanel key={item.image} {...item} />
