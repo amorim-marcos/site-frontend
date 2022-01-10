@@ -14,17 +14,22 @@ const WhereWeArePanelInfo = (props: WhereWeArePanelInfoProps) => (
     <CloseButton onClick={props.onClose} />
 
     <Flex
-      justifyContent="center"
+      justifyContent="space-around"
       direction="column"
-      gap="1.4rem"
-      padding="2rem 3rem 2.5rem"
+      padding={{
+        base: '25px 15px 15px',
+        sm: '10px 15px',
+        md: '20px 30px',
+        lg: '30px 35px',
+        xl: '20px 25px'
+      }}
     >
       <Section title="ESTRUTURA">
         <SectionContent content={props.structure} />
       </Section>
 
       <Section title="LOCALIZAÇÃO">
-        <SectionPlace content={props.localization} />
+        <SectionContent content={props.localization} />
       </Section>
 
       <Section title="TELEFONES">
@@ -39,24 +44,31 @@ const WhereWeArePanelInfo = (props: WhereWeArePanelInfoProps) => (
 )
 
 const Section = (props: { title: string; children: ReactNode }) => (
-  <Flex direction="column">
+  <Flex direction="column" gap={{ md: '4px', '2xl': '7px' }}>
     <SectionTitle title={props.title} />
     {props.children}
   </Flex>
 )
 
 const SectionText = (props: {
-  color: string
-  fontWeight: string
+  color?: string
+  fontWeight?: string
+  fontSize?: string | number | object
   children: ReactNode
 }) => (
   <Flex
-    gap="0.3rem"
     alignItems="center"
-    fontSpacing="-20px"
-    fontSize="1.07rem"
-    color={props.color}
-    fontWeight={props.fontWeight}
+    color={props.color ?? 'grey.350'}
+    fontSpacing={{ sm: '-0.3', md: '-20px' }}
+    fontWeight={props.fontWeight ?? 'normal'}
+    fontSize={
+      props.fontSize ?? {
+        base: '13px',
+        md: '15px',
+        xl: '14px',
+        '2xl': '18px'
+      }
+    }
   >
     {props.children}
   </Flex>
@@ -64,19 +76,23 @@ const SectionText = (props: {
 
 const SectionTitle = (props: { title: string }) => (
   <SectionText color="green.600" fontWeight="medium">
-    <ArrowRight />
-    {props.title}
+    <Flex align="center" direction="row" gap="7px">
+      <Image h="7px" w="9px" src="icon/icon_arrow_right.svg" />
+      {props.title}
+    </Flex>
   </SectionText>
 )
 
 const SectionContent = (props: { content: string }) => (
-  <SectionText color="grey.350" fontWeight="normal">
-    {props.content}
-  </SectionText>
-)
-
-const SectionPlace = (props: { content: string }) => (
-  <SectionText color="grey.350" fontWeight="medium">
+  <SectionText
+    fontSize={{
+      base: '12px',
+      sm: '13px',
+      md: '18px',
+      xl: '13px',
+      '2xl': '18px'
+    }}
+  >
     {props.content}
   </SectionText>
 )
@@ -84,19 +100,15 @@ const SectionPlace = (props: { content: string }) => (
 const CloseButton = (props: { onClick: () => void }) => (
   <Image
     src="icon/close_panel.svg"
-    h="1rem"
-    top="1.5rem"
-    right="1.8rem"
+    h="14px"
+    top="13px"
+    right="15px"
     pos="absolute"
     cursor="pointer"
     onClick={props.onClick}
     transition={`all 0.2s ease-in-out`}
     _hover={{ filter: 'brightness(0.8)' }}
   />
-)
-
-const ArrowRight = (props: { color?: string }) => (
-  <Image h="0.65rem" color={props.color} src="icon/icon_arrow_right.svg" />
 )
 
 export default WhereWeArePanelInfo
