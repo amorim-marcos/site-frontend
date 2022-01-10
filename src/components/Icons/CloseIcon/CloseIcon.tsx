@@ -1,17 +1,17 @@
 import { Box } from '@chakra-ui/react'
 import { ResponsiveCss } from 'types/responsive'
 
-export type WaterIconProps = {
+export type CloseIconProps = {
   color?: string
   boxSize?: ResponsiveCss
-  width?: ResponsiveCss
   onClick?: () => void
 }
+
 export const CloseIcon = ({
   color = '#bbc4b9',
   boxSize = ['50'],
   onClick
-}: WaterIconProps) => {
+}: CloseIconProps) => {
   return (
     <Box boxSize={boxSize} onClick={onClick}>
       <svg
