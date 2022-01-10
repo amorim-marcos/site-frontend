@@ -28,7 +28,7 @@ export const EnergyIcon = ({
         <clipPath id="a">
           <path d="m391.731 847.218a1.15 1.15 0 0 1 -1.114-1.432l5.322-21.061h-6.394a1.15 1.15 0 0 1 -1.122-1.4l5.6-24.936a1.15 1.15 0 0 1 1.122-.9h17.855a1.15 1.15 0 0 1 .961 1.782l-10.032 15.259h9.071a1.15 1.15 0 0 1 .942 1.809l-21.263 30.388a1.15 1.15 0 0 1 -.948.491zm-.75-24.793h6.434a1.15 1.15 0 0 1 1.115 1.432l-4.149 16.418 16.405-23.445h-8.986a1.15 1.15 0 0 1 -.961-1.782l10.027-15.259h-14.8z" transform="translate(798.005 2647.861)"/>
         </clipPath>
-          <g clip-path="url(#a)" transform="translate(-1186.399 -3445.351)">
+          <g clipPath="url(#a)" transform="translate(-1186.399 -3445.351)">
             <path d="m0 0h41v101h-41z" fill={stroke1} transform="translate(1179 3443)"/>
             <path d="m0 0h41v101h-41z" fill={stroke2} transform="translate(1179 3544)"/>
           </g>
