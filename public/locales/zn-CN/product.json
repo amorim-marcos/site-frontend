@@ -1,0 +1,10 @@
+{
+    "thickness": "Espessura",
+    "length": "Comprimento",
+    "width": "Largura",
+    "otherDimensionsText" : "*Outras dimensões sob consulta",
+    "dimensionsMM": "Dimensões (mm)",
+    "datasheet": "Ficha técnica",
+    "whereBuy": "Onde comprar",
+    "qualityCertificate": "Certificado de Qualidade"
+}
