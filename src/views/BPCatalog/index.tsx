@@ -1,0 +1,1 @@
+export { BPCatalog as default } from './BPCatalog'
