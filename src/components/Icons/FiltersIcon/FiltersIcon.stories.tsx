@@ -1,12 +1,12 @@
 import { Story, Meta } from '@storybook/react'
-import { WaterIcon, WaterIconProps } from './FiltersIcon'
+import { FiltersIcon, FiltersIconProps } from './FiltersIcon'
 
 export default {
-  title: 'WaterIcon',
-  component: WaterIcon
+  title: 'FiltersIcon',
+  component: FiltersIcon
 } as Meta
 
-const Template: Story<WaterIconProps> = (args) => <WaterIcon {...args} />
+const Template: Story<FiltersIconProps> = (args) => <FiltersIcon {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
