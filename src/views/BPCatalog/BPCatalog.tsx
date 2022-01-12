@@ -31,22 +31,23 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
 
     return (
         <Container maxW="1920px" centerContent>
-            <Container minW="100%">
-                <Flex mt="30px" mb="15px">
-                    <Button onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none" left="0">
-                        <Text>Filtrar Resultados</Text>
-                        <Arrow visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color="grey.100"/>
-                    </Button>
-
-                    {
-                        displayFilters &&
-                        <Box alignSelf="center">
-                            Filters
+            <Container position="relative" mt="30px" mb="15px" minW="100%">
+                <Button onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  position="absolute" top="0" left="0">
+                    <Text>Filtrar Resultados</Text>
+                    <Arrow visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color="grey.100"/>
+                </Button>
+                {
+                    displayFilters &&
+                    <Flex direction="column">
+                        <Box flex={1} alignSelf="center">
+                            Filters 1
                         </Box>
-                    }
-
-                    <Text color="grey.300" marginLeft="auto">{bps.length} Produtos Encontrados</Text>
-                </Flex>
+                        <Box flex={1} minW="100%" minH="50px" background="grey.100">
+                            Filters 2
+                        </Box>
+                    </Flex>
+                }
+                <Text position="absolute" color="grey.300" top="0" right="0">{bps.length} Produtos Encontrados</Text>
             </Container>
             <Container minW="100%">
                 <Grid
