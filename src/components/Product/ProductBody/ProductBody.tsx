@@ -1,4 +1,14 @@
-import { Heading, Flex, Text, Table, Tbody, Tr, Td } from '@chakra-ui/react'
+import {
+  Heading,
+  Flex,
+  Text,
+  Table,
+  Tbody,
+  Tr,
+  Td,
+  Center,
+  Image
+} from '@chakra-ui/react'
 import { ProductDownloadItem } from './ProductDownloadItem/ProductDownloadItem'
 import { useTranslation } from 'react-i18next'
 import { tableItemStyle, paragraphStyle, headingStyle } from './styles'
@@ -39,7 +49,7 @@ export const ProductBody = ({
   return (
     <Flex
       maxWidth="1920px"
-      padding="120px"
+      padding="90px"
       flexDirection="column"
       bg={backgroundColor}
     >
@@ -133,6 +143,55 @@ export const ProductBody = ({
             )}
           </Flex>
         )}
+      </Flex>
+      <Flex
+        marginX="auto"
+        w="100%"
+        bg="white.100"
+        alignItems="flex-start"
+        justifyContent="flex-start"
+        paddingX="30px"
+        boxShadow="0px 0px 15px #00000007"
+        position="relative"
+      >
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          textAlign="center"
+          flexDirection="column"
+          paddingY="160px"
+          width="50%"
+          position="relative"
+        >
+          <Heading fontWeight="light" fontSize="33px" color="#72675E">
+            HDF PLUS BERNECK® com BP
+          </Heading>
+          <Text fontSize="20px">
+            Inove nos projetos com os acabamentos BP em HDF PLUS, laminados
+            melamínicos com a proteção do PLUS BERNECK .
+          </Text>
+          <Center
+            position="absolute"
+            bottom="-39px"
+            bg="#ACCC9F"
+            _hover={{ bg: '#96BC87' }}
+            h="78px"
+            width="80%"
+            borderRadius="17px"
+            cursor="pointer"
+          >
+            <Heading fontSize="18px" color="#FFF">
+              Conheça todos os padrões BP BERNECK em HDF PLUS
+            </Heading>
+          </Center>
+        </Flex>
+        <Image
+          position="absolute"
+          top="-7px"
+          right="-50px"
+          src="/img/hdf_plus_bp.png"
+          width="950px"
+        />
       </Flex>
     </Flex>
   )

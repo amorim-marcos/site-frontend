@@ -18,22 +18,23 @@ export const ProductHeader = ({
 }: ProductHeaderProps) => {
   return (
     <Flex
-      padding="120px"
+      padding="90px"
       flexDirection="column"
       maxWidth="1920px"
       h="430px"
       bg={headerBgColor}
     >
-      {plusIndicator && (
-        <Flex width="fit-content" position="relative">
+      <Flex width="fit-content" position="relative">
+        {plusIndicator && (
           <Box position="absolute" top="20px" right="-110px">
             <PlusIndicator width="100px" />
           </Box>
-          <Heading color="white.100" fontSize="50px">
-            {title}
-          </Heading>
-        </Flex>
-      )}
+        )}
+        <Heading color="white.100" fontSize="50px">
+          {title}
+        </Heading>
+      </Flex>
+
       <Box
         borderBottom="4px solid"
         borderBottomColor="green.600"
