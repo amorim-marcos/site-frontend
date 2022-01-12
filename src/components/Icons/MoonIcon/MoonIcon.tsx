@@ -8,8 +8,8 @@ export type MoonIconProps = {
 }
 export const MoonIcon = ({
   color = 'grey.100',
-  height = '18',
-  width = '18',
+  height = '18px',
+  width = '18px',
   ...props
 }: MoonIconProps) => {
   return (

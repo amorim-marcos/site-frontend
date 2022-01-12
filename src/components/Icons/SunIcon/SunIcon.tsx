@@ -8,8 +8,8 @@ export type SunIconProps = {
 }
 export const SunIcon = ({
   color = 'grey.100',
-  height = '21',
-  width = '21',
+  height = '21px',
+  width = '21px',
   ...props
 }: SunIconProps) => {
   return (

@@ -11,6 +11,6 @@ const Template: Story<SmallGridIconProps> = (args) => <SmallGridIcon {...args} /
 export const Default = Template.bind({})
 Default.args = {
   color: 'grey.100',
-  height: '33',
-  width: '33'
+  height: '33px',
+  width: '33px'
 }

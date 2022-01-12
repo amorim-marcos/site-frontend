@@ -8,8 +8,8 @@ export type MidGridIconProps = {
 }
 export const MidGridIcon = ({
   color = 'grey.100',
-  height = '33',
-  width = '33',
+  height = '33px',
+  width = '33px',
   ...props
 }: MidGridIconProps) => {
   return (

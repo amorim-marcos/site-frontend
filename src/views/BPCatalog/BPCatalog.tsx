@@ -1,7 +1,10 @@
 import React from 'react'
-import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button} from "@chakra-ui/react"
+import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button, Select} from "@chakra-ui/react"
 import Arrow from "@components/Arrow"
 import FiltersIcon from '@components/Icons/FiltersIcon'
+import BigGridIcon from '@components/Icons/BigGridIcon'
+import MidGridIcon from '@components/Icons/MidGridIcon'
+import SmallGridIcon from '@components/Icons/SmallGridIcon'
 
 export type BP = {
     name: string,
@@ -40,14 +43,28 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                 </Button>
                 {
                     displayFilters &&
-                    <Flex direction="column">
-                        <Box flex={1} alignSelf="center">
+                    <Box>
+                        <Box>
                             Filters 1
                         </Box>
-                        <Box flex={1} minW="100%" minH="50px" background="grey.100">
-                            Filters 2
+                        <Box display="inline-block" minW="100%" height="100px" background="grey.100">
+                            <Select margin="auto" display="inline-block" background="white.100" width="160px" fontSize="16px">
+                                    <option value='launch'>lançamento</option>
+                                    <option value='name'>nome</option>
+                                    <option value='scale'>escala de cor</option>
+                            </Select>  
+
+                            <Box  margin="auto"  display="inline-block" width="400px">
+                                <Text display="inline-block"  margin="auto" fontSize="16px" mr="15px">Formato de exibição</Text>
+                                        
+                                <Link display="inline-block"  margin="auto" mr="15px" ><BigGridIcon color="grey.200" /></Link>
+
+                                <Link display="inline-block"   margin="auto"mr="15px"><MidGridIcon color="grey.200" /></Link>
+
+                                <Link display="inline-block"   margin="auto" mr="15px"><SmallGridIcon color="grey.200" /></Link>
+                            </Box>
                         </Box>
-                    </Flex>
+                    </Box>
                 }
                 <Text position="absolute" color="grey.300" top="0" right="0">{bps.length} Produtos Encontrados</Text>
             </Container>
