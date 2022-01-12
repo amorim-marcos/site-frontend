@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button} from "@chakra-ui/react"
 import Arrow from "@components/Arrow"
+import FiltersIcon from '@components/Icons/FiltersIcon'
 
 export type BP = {
     name: string,
@@ -31,8 +32,9 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
 
     return (
         <Container maxW="1920px" paddingInline="0">
-            <Container position="relative" mt="30px" mb="15px" minW="100%" minH="50px" paddingInline="0">
-                <Button onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  position="absolute" top="0" left="0">
+            <Container position="relative" mt="30px" mb={(displayFilters) ? "100px" : "15px"} minW="100%" minH="50px" paddingInline="0">
+                <Button onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  position="absolute" top="0" left="30px">
+                    <FiltersIcon mr="16px" />
                     <Text>Filtrar Resultados</Text>
                     <Arrow visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color="grey.100"/>
                 </Button>
@@ -49,7 +51,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                 }
                 <Text position="absolute" color="grey.300" top="0" right="0">{bps.length} Produtos Encontrados</Text>
             </Container>
-            <Container minW="100%">
+            <Container  minW="100%">
                 <Grid
                     templateRows="repeat(auto, 1fr)"
                     templateColumns="repeat(3, 1fr)"
