@@ -1,10 +1,13 @@
 import React from 'react'
-import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button, Select} from "@chakra-ui/react"
+import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button, Select, Input} from "@chakra-ui/react"
 import Arrow from "@components/Arrow"
 import FiltersIcon from '@components/Icons/FiltersIcon'
 import BigGridIcon from '@components/Icons/BigGridIcon'
 import MidGridIcon from '@components/Icons/MidGridIcon'
 import SmallGridIcon from '@components/Icons/SmallGridIcon'
+import SearchIcon from '@components/SearchIcon'
+import SunIcon from '@components/Icons/SunIcon'
+import MoonIcon from '@components/Icons/MoonIcon'
 
 export type BP = {
     name: string,
@@ -48,21 +51,43 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                             Filters 1
                         </Box>
                         <Box display="inline-block" minW="100%" height="100px" background="grey.100">
-                            <Select margin="auto" display="inline-block" background="white.100" width="160px" fontSize="16px">
+                            <Select position="relative" top="25%" display="inline-block" background="white.100" width="160px" fontSize="16px">
                                     <option value='launch'>lançamento</option>
                                     <option value='name'>nome</option>
                                     <option value='scale'>escala de cor</option>
                             </Select>  
 
-                            <Box  margin="auto"  display="inline-block" width="400px">
-                                <Text display="inline-block"  margin="auto" fontSize="16px" mr="15px">Formato de exibição</Text>
+                            <Box position="relative" top="25%" display="inline-block">
+                                <Text display="inline-block" fontSize="16px" mr="15px">Formato de exibição</Text>
                                         
-                                <Link display="inline-block"  margin="auto" mr="15px" ><BigGridIcon color="grey.200" /></Link>
+                                <Link display="inline-block" mr="15px" ><BigGridIcon color="grey.200" /></Link>
 
-                                <Link display="inline-block"   margin="auto"mr="15px"><MidGridIcon color="grey.200" /></Link>
+                                <Link display="inline-block" mr="15px"><MidGridIcon color="grey.200" /></Link>
 
-                                <Link display="inline-block"   margin="auto" mr="15px"><SmallGridIcon color="grey.200" /></Link>
+                                <Link display="inline-block" mr="15px"><SmallGridIcon color="grey.200" /></Link>
                             </Box>
+
+                            <Box position="relative" top="25%" display="inline-block">
+                                <Box position="relative"  display="inline-block">
+                                    <Input background="white.100" />
+                                </Box>
+                                <Box position="relative"  display="inline-block">
+                                    <SearchIcon />
+                                </Box>
+                            </Box>
+
+                            <Box position="relative" top="25%" display="inline-block">
+                                <Text display="inline-block" fontSize="16px" mr="15px">Cor do fundo</Text>
+                                        
+                                <Box position="relative"  display="inline-block">
+                                    <SunIcon color="grey.300" />
+                                </Box>
+
+                                <Box position="relative"  display="inline-block">
+                                    <MoonIcon color="grey.300" />
+                                </Box>
+                            </Box>
+
                         </Box>
                     </Box>
                 }
