@@ -6,4 +6,12 @@ export default {
   component: EnergyIcon
 } as Meta
 
-export const Default: Story<EnergyIconProps> = (args) => <EnergyIcon {...args} />
+const Template: Story<EnergyIconProps> = (args) => <EnergyIcon {...args} />
+
+export const Default = Template.bind({})
+Default.args = {
+  stroke1: '#59993f',
+  stroke2: '#144835',
+  height: '100',
+  width: '100'
+}
