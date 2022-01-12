@@ -71,11 +71,9 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                 {
                     displayFilters &&
                     <Box margin="0">
-                        <Box>
-                            Filters 1
-                        </Box>
+                        <Box minH="200px"></Box>
                         <Box display="inline-block" minW="100%" height="100px" background={(darkMode) ? 'grey.350' : 'grey.100'}>
-                            <Select color={(darkMode) ? 'green.300' : 'grey.300'} position="relative" top="25%" display="inline-block" backgroundColor={(darkMode) ? "grey.400" : "white.100"} width="160px" fontSize="16px">
+                            <Select color={(darkMode) ? 'green.300' : 'grey.300'} position="relative" top="25%" display="inline-block" border="0" backgroundColor={(darkMode) ? "grey.400" : "white.100"} width="160px" fontSize="16px">
                                     <option value='launch'>lançamento</option>
                                     <option value='name'>nome</option>
                                     <option value='scale'>escala de cor</option>
@@ -104,7 +102,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                             <Box position="relative" top="25%" display="inline-block">
                                 <Text color={(darkMode) ? 'green.300' : 'grey.300'} display="inline-block" fontSize="16px" mr="15px">Cor do fundo</Text>
                                         
-                                <Box position="relative"  display="inline-block">
+                                <Box position="relative"  display="inline-block" mr="15px">
                                     <SunIcon color={(darkMode) ? 'white.100' : 'grey.300'} />
                                 </Box>
 
