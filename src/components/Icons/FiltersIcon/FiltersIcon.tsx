@@ -8,8 +8,8 @@ export type FiltersIconProps = {
 }
 export const FiltersIcon = ({
   color = 'green.500',
-  height = '22',
-  width = '22',
+  height = '22px',
+  width = '22px',
   ...props
 }: FiltersIconProps) => {
   return (

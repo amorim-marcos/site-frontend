@@ -11,6 +11,6 @@ const Template: Story<FiltersIconProps> = (args) => <FiltersIcon {...args} />
 export const Default = Template.bind({})
 Default.args = {
   color: 'green.300',
-  height: '22',
-  width: '22'
+  height: '22px',
+  width: '22px'
 }
