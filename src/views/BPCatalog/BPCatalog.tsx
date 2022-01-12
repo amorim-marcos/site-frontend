@@ -16,6 +16,8 @@ export type BP = {
     pattern_image: string
 }
 
+export type GridSize = 'big' | 'medium' | 'small'
+
 export type BPProps = BP
 
 export type BPCatalogProps = {
@@ -37,6 +39,26 @@ const BP = ({name, product_texture, pattern_image}:BPProps) => {
 export const BPCatalog = ({ bps }:BPCatalogProps) => {
     const [displayFilters, setDisplayFilters] = React.useState(false)
     const [darkMode, setDarkMode] = React.useState(false)
+    const [gridSize, setGridSize] = React.useState('big')
+    const [gridColumnsMode, setGridColumnsMode] = React.useState('repeat(3, 1fr)')
+
+    function changeGridSize(newGridSize:GridSize){
+        setGridSize(newGridSize)
+    }
+
+    React.useEffect(() => {
+        switch(gridSize){
+            case 'big':
+                setGridColumnsMode('repeat(3, 1fr)')
+                break
+            case 'medium':
+                setGridColumnsMode('repeat(5, 1fr)')
+                break
+            case 'small':
+                setGridColumnsMode('repeat(7, 1fr)')
+                break
+        }
+    }, [gridSize])
 
     return (
         <Container maxW="1920px" paddingInline="0">
@@ -62,13 +84,14 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                             <Box position="relative" top="25%" display="inline-block">
                                 <Text display="inline-block" fontSize="16px" mr="15px">Formato de exibição</Text>
                                         
-                                <Button variant="link" display="inline-block" mr="15px" ><BigGridIcon color="grey.200" /></Button>
+                                <Button onClick={() => changeGridSize('big')}variant="link" display="inline-block" mr="15px" ><BigGridIcon color={(gridSize == 'big')? "green.600" : "grey.200"} /></Button>
 
-                                <Button variant="link" display="inline-block" mr="15px"><MidGridIcon color="grey.200" /></Button>
+                                <Button onClick={() => changeGridSize('medium')} variant="link" display="inline-block" mr="15px"><MidGridIcon color={(gridSize == 'medium')? "green.600" : "grey.200"} /></Button>
 
-                                <Button variant="link" display="inline-block" mr="15px"><SmallGridIcon color="grey.200" /></Button>
+                                <Button onClick={() => changeGridSize('small')} variant="link" display="inline-block" mr="15px"><SmallGridIcon color={(gridSize == 'small')? "green.600" : "grey.200"} /></Button>
                             </Box>
 
+                            
                             <Box position="relative" top="25%" display="inline-block">
                                 <Box position="relative"  display="inline-block">
                                     <Input background="white.100" />
@@ -97,10 +120,10 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                 }
                 <Text position="absolute" color="grey.300" top="0" right="0">{bps.length} Produtos Encontrados</Text>
             </Container>
-            <Container  minW="100%">
+            <Container mb="300px" minW="100%">
                 <Grid
                     templateRows="repeat(auto, 1fr)"
-                    templateColumns="repeat(3, 1fr)"
+                    templateColumns={gridColumnsMode}
                     gridGap="30px"
                 >
                     {
