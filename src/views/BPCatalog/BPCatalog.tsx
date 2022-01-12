@@ -30,8 +30,8 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
     const [displayFilters, setDisplayFilters] = React.useState(false)
 
     return (
-        <Container maxW="1920px" centerContent>
-            <Container position="relative" mt="30px" mb="15px" minW="100%">
+        <Container maxW="1920px" paddingInline="0">
+            <Container position="relative" mt="30px" mb="15px" minW="100%" minH="50px" paddingInline="0">
                 <Button onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  position="absolute" top="0" left="0">
                     <Text>Filtrar Resultados</Text>
                     <Arrow visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color="grey.100"/>
