@@ -24,9 +24,9 @@ export type BPCatalogProps = {
     bps: Array<BP>
 }
 
-const BP = ({name, product_texture, pattern_image}:BPProps) => {
+const BP = ({name, product_texture, pattern_image, ...props}:BPProps) => {
     return (
-        <Link>
+        <Link {...props}>
             <Flex direction="column">
                 <Image flex={1} src={pattern_image} />
                 <Text flex={1} fontSize="31px" variant={"body-bold" as any}>{name}</Text>
@@ -61,12 +61,12 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
     }, [gridSize])
 
     return (
-        <Container maxW="1920px" paddingInline="0">
-            <Container position="relative" mt="30px" mb={(displayFilters) ? "100px" : "15px"} minW="100%" minH="50px" paddingInline="0">
+        <Container backgroundColor={(darkMode) ? "grey.400" : "white.100"} maxW="1920px" paddingInline="0" paddingTop="30px" paddingBottom="300px">
+            <Container position="relative" mb={(displayFilters) ? "100px" : "15px"} minW="100%" minH="50px" paddingInline="0">
                 <Button onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  position="absolute" top="0" left="30px">
                     <FiltersIcon mr="16px" />
-                    <Text>Filtrar Resultados</Text>
-                    <Arrow visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color="grey.100"/>
+                    <Text color={(darkMode) ? 'green.300' : 'grey.300'}>Filtrar Resultados</Text>
+                    <Arrow visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color={(darkMode) ? 'green.300' : 'grey.300'}/>
                 </Button>
                 {
                     displayFilters &&
@@ -74,15 +74,15 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                         <Box>
                             Filters 1
                         </Box>
-                        <Box display="inline-block" minW="100%" height="100px" background="grey.100">
-                            <Select position="relative" top="25%" display="inline-block" background="white.100" width="160px" fontSize="16px">
+                        <Box display="inline-block" minW="100%" height="100px" background={(darkMode) ? 'grey.350' : 'grey.100'}>
+                            <Select color={(darkMode) ? 'green.300' : 'grey.300'} position="relative" top="25%" display="inline-block" backgroundColor={(darkMode) ? "grey.400" : "white.100"} width="160px" fontSize="16px">
                                     <option value='launch'>lançamento</option>
                                     <option value='name'>nome</option>
                                     <option value='scale'>escala de cor</option>
                             </Select>  
 
                             <Box position="relative" top="25%" display="inline-block">
-                                <Text display="inline-block" fontSize="16px" mr="15px">Formato de exibição</Text>
+                                <Text color={(darkMode) ? 'green.300' : 'grey.300'} display="inline-block" fontSize="16px" mr="15px">Formato de exibição</Text>
                                         
                                 <Button onClick={() => changeGridSize('big')}variant="link" display="inline-block" mr="15px" ><BigGridIcon color={(gridSize == 'big')? "green.600" : "grey.200"} /></Button>
 
@@ -102,25 +102,25 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                             </Box>
 
                             <Box position="relative" top="25%" display="inline-block">
-                                <Text display="inline-block" fontSize="16px" mr="15px">Cor do fundo</Text>
+                                <Text color={(darkMode) ? 'green.300' : 'grey.300'} display="inline-block" fontSize="16px" mr="15px">Cor do fundo</Text>
                                         
                                 <Box position="relative"  display="inline-block">
-                                    <SunIcon color="grey.300" />
+                                    <SunIcon color={(darkMode) ? 'white.100' : 'grey.300'} />
                                 </Box>
 
                                 <Button onClick={() => setDarkMode(!darkMode)} variant="link" display="inline-block" mr="15px"><FiltersDarkModeIcon activated={darkMode}/></Button>
 
                                 <Box position="relative"  display="inline-block">
-                                    <MoonIcon color="grey.300" />
+                                    <MoonIcon color={(darkMode) ? 'white.100' : 'grey.300'} />
                                 </Box>
                             </Box>
 
                         </Box>
                     </Box>
                 }
-                <Text position="absolute" color="grey.300" top="0" right="0">{bps.length} Produtos Encontrados</Text>
+                <Text position="absolute" color={(darkMode) ? 'green.300' : 'grey.300'} top="0" right="0">{bps.length} Produtos Encontrados</Text>
             </Container>
-            <Container mb="300px" minW="100%">
+            <Container minW="100%">
                 <Grid
                     templateRows="repeat(auto, 1fr)"
                     templateColumns={gridColumnsMode}
@@ -129,7 +129,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                     {
                         bps && bps.map((bp) => (
                             <GridItem>
-                                <BP name={bp.name} product_texture={bp.product_texture} pattern_image={bp.pattern_image} />
+                                <BP color={(darkMode) ? 'white.100' : 'grey.400'} name={bp.name} product_texture={bp.product_texture} pattern_image={bp.pattern_image} />
                             </GridItem>
                         ))
                     }
