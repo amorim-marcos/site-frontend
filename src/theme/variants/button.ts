@@ -23,6 +23,7 @@ export const Button = {
       }
     },
     "link": {
+      w: 'auto',
       borderRadius: '0',
       color: 'grey.300',
       bg: 'none',

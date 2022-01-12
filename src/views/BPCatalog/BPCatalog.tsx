@@ -8,6 +8,7 @@ import SmallGridIcon from '@components/Icons/SmallGridIcon'
 import SearchIcon from '@components/SearchIcon'
 import SunIcon from '@components/Icons/SunIcon'
 import MoonIcon from '@components/Icons/MoonIcon'
+import FiltersDarkModeIcon from '@components/Icons/FiltersDarkModeIcon'
 
 export type BP = {
     name: string,
@@ -35,6 +36,7 @@ const BP = ({name, product_texture, pattern_image}:BPProps) => {
 
 export const BPCatalog = ({ bps }:BPCatalogProps) => {
     const [displayFilters, setDisplayFilters] = React.useState(false)
+    const [darkMode, setDarkMode] = React.useState(false)
 
     return (
         <Container maxW="1920px" paddingInline="0">
@@ -46,7 +48,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                 </Button>
                 {
                     displayFilters &&
-                    <Box>
+                    <Box margin="0">
                         <Box>
                             Filters 1
                         </Box>
@@ -60,11 +62,11 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                             <Box position="relative" top="25%" display="inline-block">
                                 <Text display="inline-block" fontSize="16px" mr="15px">Formato de exibição</Text>
                                         
-                                <Link display="inline-block" mr="15px" ><BigGridIcon color="grey.200" /></Link>
+                                <Button variant="link" display="inline-block" mr="15px" ><BigGridIcon color="grey.200" /></Button>
 
-                                <Link display="inline-block" mr="15px"><MidGridIcon color="grey.200" /></Link>
+                                <Button variant="link" display="inline-block" mr="15px"><MidGridIcon color="grey.200" /></Button>
 
-                                <Link display="inline-block" mr="15px"><SmallGridIcon color="grey.200" /></Link>
+                                <Button variant="link" display="inline-block" mr="15px"><SmallGridIcon color="grey.200" /></Button>
                             </Box>
 
                             <Box position="relative" top="25%" display="inline-block">
@@ -82,6 +84,8 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                 <Box position="relative"  display="inline-block">
                                     <SunIcon color="grey.300" />
                                 </Box>
+
+                                <Button onClick={() => setDarkMode(!darkMode)} variant="link" display="inline-block" mr="15px"><FiltersDarkModeIcon activated={darkMode}/></Button>
 
                                 <Box position="relative"  display="inline-block">
                                     <MoonIcon color="grey.300" />
