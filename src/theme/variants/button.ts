@@ -24,7 +24,7 @@ export const Button = {
     },
     "link": {
       borderRadius: '0',
-      color: 'grey',
+      color: 'grey.300',
       bg: 'none',
       _hover: {
         bg: 'none'

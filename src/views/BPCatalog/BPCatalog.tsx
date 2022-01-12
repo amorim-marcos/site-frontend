@@ -1,3 +1,4 @@
+import React from 'react'
 import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button} from "@chakra-ui/react"
 import Arrow from "@components/Arrow"
 
@@ -26,16 +27,25 @@ const BP = ({name, product_texture, pattern_image}:BPProps) => {
 }
 
 export const BPCatalog = ({ bps }:BPCatalogProps) => {
+    const [displayFilters, setDisplayFilters] = React.useState(false)
+
     return (
         <Container maxW="1920px" centerContent>
             <Container minW="100%">
                 <Flex mt="30px" mb="15px">
-                    <Button variant="link" backgroundColor="none" left="0">
+                    <Button onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none" left="0">
                         <Text>Filtrar Resultados</Text>
-                        <Arrow ml="10px" direction="right" width="3" height="6" color="grey.100"/>
+                        <Arrow visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color="grey.100"/>
                     </Button>
 
-                    <Text marginLeft="auto">{bps.length} Produtos Encontrados</Text>
+                    {
+                        displayFilters &&
+                        <Box alignSelf="center">
+                            Filters
+                        </Box>
+                    }
+
+                    <Text color="grey.300" marginLeft="auto">{bps.length} Produtos Encontrados</Text>
                 </Flex>
             </Container>
             <Container minW="100%">
