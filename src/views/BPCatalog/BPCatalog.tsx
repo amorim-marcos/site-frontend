@@ -142,9 +142,72 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
         setFilters(newFilters)
     }
 
-    function applyFilters(filters, currentBps){
-        let filteredBps = currentBps.slice()
-        return filteredBps
+    function applyFilters(filters, originalBps){
+        let filteredBps = originalBps
+
+        // search
+        if(filters["nameSearched"] && filters["nameSearched"] !== ""){
+            filteredBps = filteredBps.filter((bp:string) => {
+                return bp.name.toLowerCase().startsWith(filters["nameSearched"].toLowerCase())
+            })
+        }
+
+        // panels
+        if(filters["panels"].length > 0){
+            filteredBps = filteredBps.filter((bp:string) => {
+                return filters["panels"].includes(bp.panel)
+            })            
+        }
+
+        // collections
+        if(filters["collections"].length > 0){
+            filteredBps = filteredBps.filter((bp:string) => {
+                return filters["collections"].includes(bp.collection)
+            })            
+        }
+
+        // colorations
+        if(filters["colorations"].length > 0){
+            filteredBps = filteredBps.filter((bp:string) => {
+                return filters["colorations"].includes(bp.coloration)
+            })            
+        }
+
+        // order
+        switch(filters["orderBy"]){
+            case "launch": 
+                filteredBps = filteredBps.sort(
+                    (a, b) => {
+                        let dateA = new Date(a["launch"])
+                        let dateB = new Date(b["launch"])
+                        if(dateA > dateB){
+                            return 1
+                        }else if(dateA < dateB){
+                            return -1
+                        }else{
+                            return 0
+                        }
+                    }
+                )
+                break
+            case "name":
+                filteredBps = filteredBps.sort(
+                    (a, b) => {
+                        if(a["name"].toLowerCase() > b["name"].toLowerCase()){
+                            return 1
+                        }else if(a["name"].toLowerCase() < b["name"].toLowerCase()){
+                            return -1
+                        }else{
+                            return 0
+                        }
+                    }
+                )
+                break
+            case "scale":
+                break
+        }
+
+        return filteredBps.slice()
     }
 
     React.useEffect(() => {
@@ -162,8 +225,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
     }, [gridSize])
 
     React.useEffect(()=>{
-        setFilteredBps(applyFilters(filters, filteredBps))
-        console.log(filters)
+        setFilteredBps(applyFilters(filters, bps))
     }, [filters])
 
     
@@ -366,7 +428,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                         </Box>
                     </Box>
                 }
-                <Text position="absolute" color={(darkMode) ? 'green.300' : 'grey.300'} top="0" right="0">{bps.length} Produtos Encontrados</Text>
+                <Text position="absolute" color={(darkMode) ? 'green.300' : 'grey.300'} top="0" right="0">{filteredBps.length} Produtos Encontrados</Text>
             </Container>
             <Container minW="100%">
                 <Grid
