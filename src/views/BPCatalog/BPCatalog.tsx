@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button, Select, Input, Center} from "@chakra-ui/react"
+import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button, Select, Input, Center, Checkbox} from "@chakra-ui/react"
 import Arrow from "@components/Arrow"
 import FiltersIcon from '@components/Icons/FiltersIcon'
 import BigGridIcon from '@components/Icons/BigGridIcon'
@@ -18,17 +18,26 @@ export type BP = {
     pattern_image: string
 }
 
+export type FilterCheckBox = {
+    title: string,
+    code: string,
+    background_image: string
+}
+
 export type FilterPanelName = 'none' | 'panels' | 'collections' | 'colorations'
 
 export type GridSize = 'big' | 'medium' | 'small'
 
 export type BPProps = BP
 
+export type FilterCheckBoxProps = FilterCheckBox
+
 export type BPCatalogProps = {
     bps: Array<BP>
 }
 
-const BP = ({name, product_texture, pattern_image, ...props}:BPProps) => {
+
+const BP = ({name, product_texture, pattern_image, ...props}: BPProps) => {
     return (
         <Link {...props}>
             <Flex direction="column">
@@ -38,6 +47,85 @@ const BP = ({name, product_texture, pattern_image, ...props}:BPProps) => {
             </Flex>
         </Link>
     )
+}
+
+const FilterCheckbox = ({title, code, background_image, ...props}: FilterCheckBoxProps) => {
+    return (
+        <Button position="relative" color="green.900" justifyContent="start" variant="link" borderRadius="5px" height="60px" minW="250px" {...props} padding="28px" overflow="hidden">
+            <Checkbox zIndex="2" mr="5px"></Checkbox>
+            <Text zIndex="2">{title}</Text>
+            <Image position="absolute" top="0" right="0" zIndex="1" src={background_image} ></Image>
+        </Button>
+    )
+}
+
+const filtersCheckboxes = {
+    "panels": [
+        {
+            title: "MDF",
+            code: "mdf",
+            background_image: "/bps/filters_masks/origens.png"
+        },
+        {
+            title: "MDP",
+            code: "mdp",
+            background_image: "/bps/filters_masks/origens.png"
+        },
+        {
+            title: "HDF Plus",
+            code: "hdf_plus",
+            background_image: "/bps/filters_masks/origens.png"
+        },
+        {
+            title: "MDF Plus",
+            code: "mdf_plus",
+            background_image: "/bps/filters_masks/origens.png"
+        },
+        {
+            title: "MDP Plus",
+            code: "mdp_plus",
+            background_image: "/bps/filters_masks/origens.png"
+        }
+    ],
+    "collections": [
+        {
+            title: "Origens.",
+            code: "origens",
+            background_image: "/bps/filters_masks/origens.png"
+        },
+        {
+            title: "Nomade",
+            code: "nomade",
+            background_image: "/bps/filters_masks/origens.png"
+        }
+    ],
+    "colorations": [
+        {
+            title: "Madeiras Claras",
+            code: "madeiras_claras",
+            background_image: "/bps/filters_masks/origens.png"
+        },
+        {
+            title: "Madeiras médias",
+            code: "madeiras_medias",
+            background_image: "/bps/filters_masks/origens.png"
+        },
+        {
+            title: "Madeiras Escuras",
+            code: "madeiras_escuras",
+            background_image: "/bps/filters_masks/origens.png"
+        },
+        {
+            title: "Tecidos, pedras, e outros",
+            code: "outros",
+            background_image: "/bps/filters_masks/origens.png"
+        },
+        {
+            title: "Combine Fácil",
+            code: "combine_facil",
+            background_image: "/bps/filters_masks/origens.png"
+        }
+    ]
 }
 
 export const BPCatalog = ({ bps }:BPCatalogProps) => {
@@ -135,13 +223,25 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                 </Center>
                                 <Center position="relative" display={(currentFilterPanel == 'none') ? 'none' : 'normal'} flex={1} minH="100px">
                                     <Box display={(currentFilterPanel != 'panels') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
-                                        Panels filter
+                                        <Flex justifyContent="center">
+                                            {
+                                                filtersCheckboxes["panels"].map((filter) => <FilterCheckbox title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" key={"panels"+filter.code}/>)
+                                            }
+                                        </Flex>
                                     </Box>
                                     <Box display={(currentFilterPanel != 'collections') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
-                                        Collections filter
+                                        <Flex justifyContent="center">
+                                            {
+                                                filtersCheckboxes["collections"].map((filter) => <FilterCheckbox title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" />)
+                                            }
+                                        </Flex>
                                     </Box>
                                     <Box display={(currentFilterPanel != 'colorations') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
-                                        Colorations filter
+                                        <Flex justifyContent="center">
+                                            {
+                                                filtersCheckboxes["colorations"].map((filter) => <FilterCheckbox title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" />)
+                                            }
+                                        </Flex>
                                     </Box>
                                 </Center>
                             </Flex>
