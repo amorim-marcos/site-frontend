@@ -34,7 +34,7 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
           mt="100px"
           direction={{ base: 'column', md: 'row' }}
           align={{ base: 'center', md: 'flex-start' }}
-          px={{ base: '20px' }}
+          px={{ md: '30px', lg: '80px', xl: '60px', '2xl': '120px' }}
           gap={{ base: '54px', md: '130px' }}
         >
           <Title />
