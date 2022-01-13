@@ -326,13 +326,13 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                         <Text color={(darkMode) ? 'green.300' : 'grey.300'} display="inline-block" fontSize="16px" mr="15px">Cor do fundo</Text>
                                         
                                         <Box position="relative"  display="inline-block" mr="15px">
-                                            <SunIcon color={(darkMode) ? 'white.100' : 'grey.300'} />
+                                            <SunIcon color={(darkMode) ? 'green.300' : 'grey.300'} />
                                         </Box>
         
                                         <Button onClick={() => setDarkMode(!darkMode)} variant="link" display="inline-block" mr="15px"><FiltersDarkModeIcon activated={darkMode}/></Button>
         
                                         <Box position="relative"  display="inline-block">
-                                            <MoonIcon color={(darkMode) ? 'white.100' : 'grey.300'} />
+                                            <MoonIcon color={(darkMode) ? 'green.300' : 'grey.300'} />
                                         </Box>
                                 </Flex>
                             </Box>
