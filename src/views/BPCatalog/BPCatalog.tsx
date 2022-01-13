@@ -9,7 +9,7 @@ import SearchIcon from '@components/SearchIcon'
 import SunIcon from '@components/Icons/SunIcon'
 import MoonIcon from '@components/Icons/MoonIcon'
 import FiltersDarkModeIcon from '@components/Icons/FiltersDarkModeIcon'
-
+import Pagebar from '@components/Pagebar'
 import { colors } from 'theme/colors'
 
 export type BP = {
@@ -176,7 +176,25 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
     }, [gridSize])
 
     return (
+        <>
+        <Pagebar
+            paths={[
+                {
+                    title: 'Produtos',
+                    url: 'produtos'
+                },
+                {
+                    title: 'BP BERNECK®',
+                    url: '/produtos/bp-berneck'
+                },                
+                {
+                    title: 'Catálogo BP',
+                    url: '/produtos/bp-berneck/catalog'
+                }
+            ]}
+        />
         <Container backgroundColor={(darkMode) ? "grey.400" : "white.100"} maxW="1920px" paddingInline="0" paddingTop="30px" paddingBottom="300px">
+           
             <Container position="relative" mb={(displayFilters) ? "100px" : "15px"} minW="100%" minH="50px" paddingInline="0">
                 <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  position="absolute" top="0" left="30px">
                     <FiltersIcon mr="16px" />
@@ -374,5 +392,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
             </Container>
 
         </Container>
+        </>
+
     )
 }
