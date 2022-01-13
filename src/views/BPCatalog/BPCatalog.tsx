@@ -53,7 +53,7 @@ const FilterCheckbox = ({title, code, background_image, ...props}: FilterCheckBo
     return (
         <Button position="relative" color="green.900" justifyContent="start" variant="link" borderRadius="5px" height="60px" minW="250px" {...props} padding="28px" overflow="hidden">
             <Checkbox zIndex="2" mr="5px"></Checkbox>
-            <Text zIndex="2">{title}</Text>
+            <Text fontWeight="600" color="green.900" zIndex="2">{title}</Text>
             <Image position="absolute" top="0" right="0" zIndex="1" src={background_image} ></Image>
         </Button>
     )
@@ -174,16 +174,18 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                     displayFilters &&
                     <Box margin="0">
                         <Box >
-                            <Flex direction="column">
-                                <Center flex={1} mb="20px">
-                                    <Flex>
+                            <Flex position="relative" direction="column">
+                                <Center>
+                                    <Box position="absolute" background="green.600" width="650px" height="6px" bottom="-3px"/>
+                                </Center>
+                                <Center mb="20px">
+                                    <Flex justifyContent="space-between">
                                         <Button 
                                             onClick={() => changeFilterPanel('panels')}
                                             variant="link"
                                             color="grey.300"
                                             w="180px"
                                             h="30px"
-                                            mr="120px"
                                             borderBottom={(currentFilterPanel == 'panels') ? "solid" : "none"}
                                             borderBottomColor={"green.500"}
                                             borderBottomWidth={{ base: '4px' }}
@@ -197,7 +199,6 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                             color="grey.300"
                                             w="180px"
                                             h="30px"
-                                            mr="120px"
                                             borderBottom={(currentFilterPanel == 'collections') ? "solid" : "none"}
                                             borderBottomColor={"green.500"}
                                             borderBottomWidth={{ base: '4px' }}
@@ -211,7 +212,6 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                             color="grey.300"
                                             w="180px"
                                             h="30px"
-                                            mr="120px"
                                             borderBottom={(currentFilterPanel == 'colorations') ? "solid" : "none"}
                                             borderBottomColor={"green.500"}
                                             borderBottomWidth={{ base: '4px' }}
