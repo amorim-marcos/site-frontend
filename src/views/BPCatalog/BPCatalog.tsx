@@ -204,7 +204,8 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                             borderBottomWidth={{ base: '4px' }}
                                             fontSize="22px"
                                         >
-                                            <Text color={(darkMode) ? 'green.300' : 'grey.300'}>PAINÉIS</Text>
+                                            <Text color={(darkMode) ? 'green.300' : 'grey.300'} mr="10px">PAINÉIS</Text>
+                                            <Arrow direction={(currentFilterPanel == 'panels') ? "down" : "up"} width="3" height="6" color={ (darkMode) ? "green.200" : "grey.200" } />
                                         </Button> 
                                         <Button 
                                             onClick={() => changeFilterPanel('collections')}
@@ -217,7 +218,8 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                             borderBottomWidth={{ base: '4px' }}
                                             fontSize="22px"
                                         >
-                                            <Text color={(darkMode) ? 'green.300' : 'grey.300'}>COLEÇÕES</Text>
+                                            <Text color={(darkMode) ? 'green.300' : 'grey.300'} mr="10px">COLEÇÕES</Text>
+                                            <Arrow direction={(currentFilterPanel == 'collections') ? "down" : "up"} width="3" height="6" color={ (darkMode) ? "green.200" : "grey.200" } />
                                         </Button>  
                                         <Button 
                                             onClick={() => changeFilterPanel('colorations')}
@@ -230,7 +232,8 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                             borderBottomWidth={{ base: '4px' }}
                                             fontSize="22px"
                                         >
-                                            <Text color={(darkMode) ? 'green.300' : 'grey.300'}>COLORAÇÃO</Text>
+                                            <Text color={(darkMode) ? 'green.300' : 'grey.300'} mr="10px">COLORAÇÃO</Text>
+                                            <Arrow direction={(currentFilterPanel == 'colorations') ? "down" : "up"} width="3" height="6" color={ (darkMode) ? "green.200" : "grey.200" } />
                                         </Button>   
                                     </Flex>
                                 </Center>
