@@ -50,9 +50,21 @@ const BP = ({name, product_texture, pattern_image, ...props}: BPProps) => {
 }
 
 const FilterCheckbox = ({title, code, background_image, ...props}: FilterCheckBoxProps) => {
+    const [checked, setChecked] = React.useState(false)
     return (
-        <Button position="relative" color="green.900" justifyContent="start" variant="link" borderRadius="5px" height="60px" minW="250px" {...props} padding="28px" overflow="hidden">
-            <Checkbox zIndex="2" mr="5px"></Checkbox>
+        <Button background="transparent" zIndex="3" onClick={() => { setChecked(!checked)}} position="relative" color="green.900" justifyContent="start" variant="link" borderRadius="5px" height="60px" minW="250px" {...props} padding="28px" overflow="hidden">
+            <Checkbox 
+                onClickCapture={(e) => { e.preventDefault(); e.stopPropagation(); setChecked(!checked)}} 
+                padding="0"
+                iconColor='green.600'
+                border="1px solid"
+                borderColor="green.900"
+                borderRadius="3px"
+                colorScheme="white.100"
+                isChecked={checked}
+                zIndex="2" 
+                mr="5px" 
+            />
             <Text fontWeight="600" color="green.900" zIndex="2">{title}</Text>
             <Image position="absolute" top="0" right="0" zIndex="1" src={background_image} ></Image>
         </Button>
