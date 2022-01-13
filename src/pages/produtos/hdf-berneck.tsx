@@ -4,6 +4,25 @@ export default function Hdf() {
   return (
     <div>
       <Product
+        grafism="type1"
+        imgSrc="/img/hdf.png"
+        imgMarginTop={{
+          base: '36px',
+          sm: '52px',
+          md: '69px',
+          lg: '86px',
+          xl: '104px',
+          '2xl': '130px'
+        }}
+        imgMarginRight={{
+          base: '-133px',
+          sm: '-180px',
+          md: '-240px',
+          lg: '-300px',
+          xl: '-360px',
+          '2xl': '-450px'
+        }}
+        secondaryBackground="#F3E9DA"
         header={{
           title: 'HDF BERNECK®',
           headerBgColor: '#E0CBA5',
@@ -25,23 +44,38 @@ export default function Hdf() {
             length: '2750',
             width: '1850 / 2130 / 2200'
           },
-          backgroundColor: '#FCFCFC',
-          secondaryBackground: '#F3E9DA',
-          whereBuy: true,
-          datasheet: true,
-          qualityCertificate: true
+          backgroundColor: '#FCFCFC'
         }}
       />
 
       <Product
-        grafism="2"
+        grafism="type2"
+        imgSrc="/img/hdf_plus.png"
+        imgMarginTop={{
+          base: '94px',
+          sm: '128px',
+          md: '170px',
+          lg: '213px',
+          xl: '256px',
+          '2xl': '320px'
+        }}
+        imgMarginRight={{
+          base: '-150px',
+          sm: '-204px',
+          md: '-272px',
+          lg: '-340px',
+          xl: '-408px',
+          '2xl': '-510'
+        }}
+        secondaryBackground="#F5F6F4"
+        plusProduct
         header={{
           plusIndicator: true,
           title: 'HDF PLUS BERNECK®',
           headerBgColor: '#ACCC9F',
-          subtitle: 'Painel de Fibra de Alta Densidade ',
+          subtitle: 'É Plus porque tem mais proteção à umidade ',
           description:
-            'É produzido 100% com Pinus, que possui fibras longas, proporcionando uma maior maleabilidade ao painel além de coloração bem clara, que assegura excelente resultado para os processos de pintura e impressão.'
+            'A qualidade do HDF BERNECK® aliada à máxima proteção contra umidade e cupins.'
         }}
         body={{
           heading1: 'Mais tecnologia, mais qualidade, mais proteção',
@@ -62,9 +96,12 @@ export default function Hdf() {
             width: '1850'
           },
           backgroundColor: '#E8E8E8',
-          secondaryBackground: '#F5F6F4',
-          whereBuy: true,
-          datasheet: true
+          productWithBP: {
+            title: 'HDF PLUS BERNECK® com BP',
+            description:
+              'Inove nos projetos com os acabamentos BP em HDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
+            btnText: 'Conheça todos os padrões BP BERNECK em HDF PLUS'
+          }
         }}
       />
     </div>

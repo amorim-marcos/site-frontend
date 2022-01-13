@@ -201,12 +201,12 @@ export const AppFooter = () => (
       <Text fontSize="14px" color="green.600">
         Termos de Uso e Política de Privacidade
       </Text>
-      <Link href="http://www.commcepta.com.br/">
+      <Link passHref href="http://www.commcepta.com.br/">
         <Image
           cursor="pointer"
           height={23}
           width={116}
-          src="img/logo-commcepta.png"
+          src="/img/logo-commcepta.png"
           alt="Logo Commcepta"
         />
       </Link>

@@ -18,19 +18,56 @@ export const ProductHeader = ({
 }: ProductHeaderProps) => {
   return (
     <Flex
-      padding="90px"
+      padding="5%"
       flexDirection="column"
       maxWidth="1920px"
-      h="430px"
       bg={headerBgColor}
     >
       <Flex width="fit-content" position="relative">
         {plusIndicator && (
-          <Box position="absolute" top="20px" right="-110px">
-            <PlusIndicator width="100px" />
+          <Box
+            position="absolute"
+            top={{
+              base: '2px',
+              sm: '6px',
+              md: '10px',
+              lg: '14px',
+              xl: '16px',
+              '2xl': '20px'
+            }}
+            right={{
+              base: '-60px',
+              sm: '-70px',
+              md: '-80px',
+              lg: '-90px',
+              xl: '-100px',
+              '2xl': '-110px'
+            }}
+          >
+            <PlusIndicator
+              width={{
+                base: '50px',
+                sm: '60px',
+                md: '70px',
+                lg: '80px',
+                xl: '90px',
+                '2xl': '100px'
+              }}
+            />
           </Box>
         )}
-        <Heading color="white.100" fontSize="50px">
+        <Heading
+          color="white.100"
+          fontSize={{
+            base: '20px',
+            sm: '25px',
+            md: '30px',
+            lg: '35px',
+            xl: '40px',
+            '2xl': '50px'
+          }}
+          zIndex="docked"
+        >
           {title}
         </Heading>
       </Flex>
@@ -39,13 +76,43 @@ export const ProductHeader = ({
         borderBottom="4px solid"
         borderBottomColor="green.600"
         w="87px"
-        marginTop="20px"
+        marginTop={{
+          base: '10px',
+          sm: '12px',
+          md: '14px',
+          lg: '16px',
+          xl: '18px',
+          '2xl': '20px'
+        }}
         marginBottom="20px"
       />
-      <Heading fontSize="30px" color="green.900">
+      <Heading
+        fontSize={{
+          base: '8px',
+          sm: '11px',
+          md: '14px',
+          lg: '18px',
+          xl: '22px',
+          '2xl': '30px'
+        }}
+        color="green.900"
+        zIndex="docked"
+      >
         {subtitle}
       </Heading>
-      <Text fontSize="20px" color="green.900" width="45%">
+      <Text
+        fontSize={{
+          base: '7px',
+          sm: '8px',
+          md: '11px',
+          lg: '14px',
+          xl: '17px',
+          '2xl': '20px'
+        }}
+        color="green.900"
+        width="45%"
+        zIndex="docked"
+      >
         {description}
       </Text>
     </Flex>

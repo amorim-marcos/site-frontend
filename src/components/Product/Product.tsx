@@ -1,7 +1,8 @@
-import { Box, Image } from '@chakra-ui/react'
-import { GrafismProduct1 } from './GrafismProduct1/GrafismProduct1'
-import { GrafismProduct2 } from './GrafismProduct2/GrafismProduct2'
+import { Box, Image, Flex } from '@chakra-ui/react'
+import { ResponsiveCss } from 'types/responsive'
+import { GrafismProduct } from './GrafismProduct/GrafismProduct'
 import { ProductBody, ProductBodyProps } from './ProductBody/ProductBody'
+import { ProductDownloadAndLinks } from './ProductDownloadAndLinks/ProductDownloadAndLinks'
 import {
   ProductHeader,
   ProductHeaderProps
@@ -10,26 +11,55 @@ import {
 export type ProductProps = {
   header?: ProductHeaderProps
   body?: ProductBodyProps
-  grafism?: '1' | '2'
+  grafism?: 'type1' | 'type2'
+  imgSrc?: string
+  imgMarginTop?: ResponsiveCss
+  imgMarginRight?: ResponsiveCss
+  secondaryBackground?: string
+  plusProduct?: boolean
 }
-export const Product = ({ header, body, grafism = '1' }: ProductProps) => {
+export const Product = ({
+  header,
+  body,
+  grafism,
+  imgSrc,
+  imgMarginTop,
+  imgMarginRight,
+  secondaryBackground,
+  plusProduct
+}: ProductProps) => {
   return (
     <Box overflow="hidden" position="relative" marginX="auto" maxWidth="1920px">
-      {grafism === '1' ? (
-        <Box position="absolute" top="-610px" right="-630px">
-          <GrafismProduct1 />
-        </Box>
-      ) : (
-        <Box position="absolute" top="-150px" right="-430px">
-          <GrafismProduct2 />
-        </Box>
+      <GrafismProduct grafism={grafism || 'type1'} />
+
+      {imgSrc && (
+        <Flex
+          direction="column"
+          width="100vw"
+          maxWidth="1920px"
+          position="absolute"
+          top="0"
+          right="0"
+          alignItems="flex-end"
+        >
+          <Box>
+            <Image
+              src={imgSrc}
+              alt="product image"
+              width="80vw"
+              maxWidth="1414px"
+              marginTop={imgMarginTop}
+              marginRight={imgMarginRight}
+            />
+          </Box>
+          <ProductDownloadAndLinks
+            plusProduct={plusProduct}
+            backgroundColor={secondaryBackground}
+          />
+        </Flex>
       )}
-      <Box position="absolute" top="130px" right="-400px">
-        <Image src="/img/hdf_plus.png" alt="hdf image" width="1414px" />
-        {/* <Image src="/img/hdf.png" alt="hdf image" width="1414px" /> */}
-      </Box>
       <ProductHeader {...header} />
-      <ProductBody {...body} />
+      <ProductBody {...body} secondaryBackground={secondaryBackground} />
     </Box>
   )
 }

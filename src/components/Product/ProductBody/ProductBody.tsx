@@ -1,17 +1,9 @@
-import {
-  Heading,
-  Flex,
-  Text,
-  Table,
-  Tbody,
-  Tr,
-  Td,
-  Center,
-  Image
-} from '@chakra-ui/react'
-import { ProductDownloadItem } from './ProductDownloadItem/ProductDownloadItem'
+import { Heading, Flex, Text, Table, Tbody, Tr, Td } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { tableItemStyle, paragraphStyle, headingStyle } from './styles'
+import { ProductWithBP } from './ProductWithBP/ProductWithBP'
+
+import { ProductWithBPProps } from './ProductWithBP/ProductWithBP'
 
 export type ProductBodyProps = {
   heading1?: string
@@ -27,9 +19,7 @@ export type ProductBodyProps = {
   }
   backgroundColor?: string
   secondaryBackground?: string
-  whereBuy?: boolean
-  qualityCertificate?: boolean
-  datasheet?: boolean
+  productWithBP?: ProductWithBPProps
 }
 export const ProductBody = ({
   heading1,
@@ -41,15 +31,13 @@ export const ProductBody = ({
   dimensions,
   backgroundColor = 'white.100',
   secondaryBackground = '#FEFEFE',
-  whereBuy = false,
-  qualityCertificate = false,
-  datasheet = false
+  productWithBP
 }: ProductBodyProps) => {
   const product = useTranslation('product')
   return (
     <Flex
       maxWidth="1920px"
-      padding="90px"
+      padding="5%"
       flexDirection="column"
       bg={backgroundColor}
     >
@@ -77,9 +65,23 @@ export const ProductBody = ({
           <Heading {...headingStyle}>{product.t('dimensionsMM')}</Heading>
           <Table
             fontWeight="light"
-            fontSize="18.5px"
+            fontSize={{
+              base: '8px',
+              sm: '7px',
+              md: '12px',
+              lg: '14px',
+              xl: '16px',
+              '2xl': '18.5px'
+            }}
             fontFamily="Montserrat"
-            width="450px"
+            width={{
+              base: '200px',
+              sm: '170px',
+              md: '270px',
+              lg: '350px',
+              xl: '400px',
+              '2xl': '450px'
+            }}
             variant="unstyled"
             color="#626161"
           >
@@ -110,89 +112,23 @@ export const ProductBody = ({
               </Tr>
             </Tbody>
           </Table>
-          <Text marginBottom="80px" fontSize="16px" color="green.900">
+          <Text
+            marginBottom="80px"
+            fontSize={{
+              base: '6px',
+              sm: '8px',
+              md: '10px',
+              lg: '12px',
+              xl: '14px',
+              '2xl': '16px'
+            }}
+            color="green.900"
+          >
             {product.t('otherDimensionsText')}
           </Text>
         </Flex>
-        {(qualityCertificate || whereBuy || datasheet) && (
-          <Flex
-            alignItems="center"
-            justifyContent="space-around"
-            marginTop="25px"
-            w={qualityCertificate && whereBuy && datasheet ? '930px' : '789px'}
-            h="136px"
-            bg={secondaryBackground}
-          >
-            {datasheet && (
-              <ProductDownloadItem
-                iconName="datasheet"
-                text={product.t('datasheet')}
-              />
-            )}
-            {whereBuy && (
-              <ProductDownloadItem
-                iconName="location"
-                text={product.t('whereBuy')}
-              />
-            )}
-            {qualityCertificate && (
-              <ProductDownloadItem
-                iconName="qualityCertificate"
-                text={product.t('qualityCertificate')}
-              />
-            )}
-          </Flex>
-        )}
       </Flex>
-      <Flex
-        marginX="auto"
-        w="100%"
-        bg="white.100"
-        alignItems="flex-start"
-        justifyContent="flex-start"
-        paddingX="30px"
-        boxShadow="0px 0px 15px #00000007"
-        position="relative"
-      >
-        <Flex
-          justifyContent="center"
-          alignItems="center"
-          textAlign="center"
-          flexDirection="column"
-          paddingY="160px"
-          width="50%"
-          position="relative"
-        >
-          <Heading fontWeight="light" fontSize="33px" color="#72675E">
-            HDF PLUS BERNECK® com BP
-          </Heading>
-          <Text fontSize="20px">
-            Inove nos projetos com os acabamentos BP em HDF PLUS, laminados
-            melamínicos com a proteção do PLUS BERNECK .
-          </Text>
-          <Center
-            position="absolute"
-            bottom="-39px"
-            bg="#ACCC9F"
-            _hover={{ bg: '#96BC87' }}
-            h="78px"
-            width="80%"
-            borderRadius="17px"
-            cursor="pointer"
-          >
-            <Heading fontSize="18px" color="#FFF">
-              Conheça todos os padrões BP BERNECK em HDF PLUS
-            </Heading>
-          </Center>
-        </Flex>
-        <Image
-          position="absolute"
-          top="-7px"
-          right="-50px"
-          src="/img/hdf_plus_bp.png"
-          width="950px"
-        />
-      </Flex>
+      {productWithBP && <ProductWithBP {...productWithBP} />}
     </Flex>
   )
 }
