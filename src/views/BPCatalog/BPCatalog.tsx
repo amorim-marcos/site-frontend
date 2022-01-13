@@ -11,6 +11,7 @@ import MoonIcon from '@components/Icons/MoonIcon'
 import FiltersDarkModeIcon from '@components/Icons/FiltersDarkModeIcon'
 import Pagebar from '@components/Pagebar'
 import { colors } from 'theme/colors'
+import BpPatternImage from '@components/BpPatternImage'
 
 export type BP = {
     name: string,
@@ -42,7 +43,7 @@ const BP = ({name, product_texture, pattern_image, ...props}: BPProps) => {
     return (
         <Link {...props}>
             <Flex direction="column">
-                <Image flex={1} src={pattern_image} />
+                <BpPatternImage flex={1} image_url={pattern_image} />
                 <Text flex={1} fontSize="31px" variant={"body-bold" as any}>{name}</Text>
                 <Text flex={1} fontSize="28px">{product_texture}</Text>
             </Flex>
