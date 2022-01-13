@@ -75,25 +75,27 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                     displayFilters &&
                     <Box margin="0">
                         <Box minH="200px"></Box>
-                        <Box display="inline-block" minW="100%" height="100px" background={(darkMode) ? 'grey.350' : 'grey.100'}>
-                            <Select color={(darkMode) ? 'green.300' : 'grey.300'} position="relative" top="25%" display="inline-block" border="0" backgroundColor={(darkMode) ? "grey.400" : "white.100"} width="160px" fontSize="16px">
+                        <Box display="inline-block" minW="100%" height="100px" background={(darkMode) ? 'grey.350' : 'grey.100'} paddingLeft="20%">
+                            <Select mr="30px" color={(darkMode) ? 'green.300' : 'grey.300'} position="relative" top="30px" display="inline-block" border="0" backgroundColor={(darkMode) ? "grey.400" : "white.100"} width="160px" fontSize="16px">
                                     <option value='launch'>lançamento</option>
                                     <option value='name'>nome</option>
                                     <option value='scale'>escala de cor</option>
                             </Select>  
 
-                            <Box position="relative" top="25%" display="inline-block">
-                                <Text color={(darkMode) ? 'green.300' : 'grey.300'} display="inline-block" fontSize="16px" mr="15px">Formato de exibição</Text>
-                                        
-                                <Button onClick={() => changeGridSize('big')}variant="link" display="inline-block" mr="15px" ><BigGridIcon color={(gridSize == 'big')? "green.500" : "grey.200"} /></Button>
+                            <Box position="relative" top="30px" display="inline-block" mr="30px">
+                                <Flex justifyContent="center" alignItems="center">
+                                    <Text color={(darkMode) ? 'green.300' : 'grey.300'} display="inline-block" fontSize="16px" mr="15px">Formato de exibição</Text>
+                                            
+                                    <Button onClick={() => changeGridSize('big')}variant="link" display="inline-block" mr="15px" ><BigGridIcon color={(gridSize == 'big')? "green.500" : "grey.200"} /></Button>
 
-                                <Button onClick={() => changeGridSize('medium')} variant="link" display="inline-block" mr="15px"><MidGridIcon color={(gridSize == 'medium')? "green.500" : "grey.200"} /></Button>
+                                    <Button onClick={() => changeGridSize('medium')} variant="link" display="inline-block" mr="15px"><MidGridIcon color={(gridSize == 'medium')? "green.500" : "grey.200"} /></Button>
 
-                                <Button onClick={() => changeGridSize('small')} variant="link" display="inline-block" mr="15px"><SmallGridIcon color={(gridSize == 'small')? "green.500" : "grey.200"} /></Button>
+                                    <Button onClick={() => changeGridSize('small')} variant="link" display="inline-block" mr="15px"><SmallGridIcon color={(gridSize == 'small')? "green.500" : "grey.200"} /></Button>
+                                </Flex>
                             </Box>
 
                             
-                            <Box position="relative" top="25%" display="inline-block">
+                            <Box position="relative" top="30px" display="inline-block" mr="30px">
                                 <Box position="relative"  display="inline-block">
                                     <Flex
                                         width={{
@@ -147,20 +149,22 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                 </Box>
                             </Box>
 
-                            <Box position="relative" top="25%" display="inline-block">
-                                <Text color={(darkMode) ? 'green.300' : 'grey.300'} display="inline-block" fontSize="16px" mr="15px">Cor do fundo</Text>
+                            <Box position="relative" top="30px" display="inline-block">
+
+                                <Flex justifyContent="center" alignItems="center">
+                                        <Text color={(darkMode) ? 'green.300' : 'grey.300'} display="inline-block" fontSize="16px" mr="15px">Cor do fundo</Text>
                                         
-                                <Box position="relative"  display="inline-block" mr="15px">
-                                    <SunIcon color={(darkMode) ? 'white.100' : 'grey.300'} />
-                                </Box>
-
-                                <Button onClick={() => setDarkMode(!darkMode)} variant="link" display="inline-block" mr="15px"><FiltersDarkModeIcon activated={darkMode}/></Button>
-
-                                <Box position="relative"  display="inline-block">
-                                    <MoonIcon color={(darkMode) ? 'white.100' : 'grey.300'} />
-                                </Box>
+                                        <Box position="relative"  display="inline-block" mr="15px">
+                                            <SunIcon color={(darkMode) ? 'white.100' : 'grey.300'} />
+                                        </Box>
+        
+                                        <Button onClick={() => setDarkMode(!darkMode)} variant="link" display="inline-block" mr="15px"><FiltersDarkModeIcon activated={darkMode}/></Button>
+        
+                                        <Box position="relative"  display="inline-block">
+                                            <MoonIcon color={(darkMode) ? 'white.100' : 'grey.300'} />
+                                        </Box>
+                                </Flex>
                             </Box>
-
                         </Box>
                     </Box>
                 }
