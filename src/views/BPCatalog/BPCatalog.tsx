@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button, Select, Input} from "@chakra-ui/react"
+import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button, Select, Input, Center} from "@chakra-ui/react"
 import Arrow from "@components/Arrow"
 import FiltersIcon from '@components/Icons/FiltersIcon'
 import BigGridIcon from '@components/Icons/BigGridIcon'
@@ -17,6 +17,8 @@ export type BP = {
     product_texture: string,
     pattern_image: string
 }
+
+export type FilterPanelName = 'none' | 'panels' | 'collections' | 'colorations'
 
 export type GridSize = 'big' | 'medium' | 'small'
 
@@ -44,9 +46,18 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
     const [gridSize, setGridSize] = React.useState('big')
     const [gridColumnsMode, setGridColumnsMode] = React.useState('repeat(3, 1fr)')
     const [searchSelected, setSearchSelected] = React.useState(false)
+    const [currentFilterPanel, setCurrentFilterPanel] = React.useState('none')
 
     function changeGridSize(newGridSize:GridSize){
         setGridSize(newGridSize)
+    }
+
+    function changeFilterPanel(newFilterPanel:FilterPanelName){
+        if(currentFilterPanel == newFilterPanel){
+            setCurrentFilterPanel('none')
+        }else{
+            setCurrentFilterPanel(newFilterPanel)
+        } 
     }
 
     React.useEffect(() => {
@@ -74,7 +85,67 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                 {
                     displayFilters &&
                     <Box margin="0">
-                        <Box minH="200px"></Box>
+                        <Box >
+                            <Flex direction="column">
+                                <Center flex={1} minH="100px">
+                                    <Flex>
+                                        <Button 
+                                            onClick={() => changeFilterPanel('panels')}
+                                            variant="link"
+                                            color="grey.300"
+                                            w="180px"
+                                            h="30px"
+                                            mr="120px"
+                                            borderBottom={(currentFilterPanel == 'panels') ? "solid" : "none"}
+                                            borderBottomColor={"green.500"}
+                                            borderBottomWidth={{ base: '4px' }}
+                                            fontSize="22px"
+                                        >
+                                            <Text color={(darkMode) ? 'green.300' : 'grey.300'}>PAINÉIS</Text>
+                                        </Button> 
+                                        <Button 
+                                            onClick={() => changeFilterPanel('collections')}
+                                            variant="link"
+                                            color="grey.300"
+                                            w="180px"
+                                            h="30px"
+                                            mr="120px"
+                                            borderBottom={(currentFilterPanel == 'collections') ? "solid" : "none"}
+                                            borderBottomColor={"green.500"}
+                                            borderBottomWidth={{ base: '4px' }}
+                                            fontSize="22px"
+                                        >
+                                            <Text color={(darkMode) ? 'green.300' : 'grey.300'}>COLEÇÕES</Text>
+                                        </Button>  
+                                        <Button 
+                                            onClick={() => changeFilterPanel('colorations')}
+                                            variant="link"
+                                            color="grey.300"
+                                            w="180px"
+                                            h="30px"
+                                            mr="120px"
+                                            borderBottom={(currentFilterPanel == 'colorations') ? "solid" : "none"}
+                                            borderBottomColor={"green.500"}
+                                            borderBottomWidth={{ base: '4px' }}
+                                            fontSize="22px"
+                                        >
+                                            <Text color={(darkMode) ? 'green.300' : 'grey.300'}>COLORAÇÃO</Text>
+                                        </Button>   
+                                    </Flex>
+                                </Center>
+                                <Center position="relative" display={(currentFilterPanel == 'none') ? 'none' : 'normal'} flex={1} minH="100px">
+                                    <Box display={(currentFilterPanel != 'panels') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                                        Panels filter
+                                    </Box>
+                                    <Box display={(currentFilterPanel != 'collections') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                                        Collections filter
+                                    </Box>
+                                    <Box display={(currentFilterPanel != 'colorations') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                                        Colorations filter
+                                    </Box>
+                                </Center>
+                            </Flex>
+                        </Box>
                         <Box display="inline-block" minW="100%" height="100px" background={(darkMode) ? 'grey.350' : 'grey.100'} paddingLeft="20%">
                             <Select mr="30px" color={(darkMode) ? 'green.300' : 'grey.300'} position="relative" top="30px" display="inline-block" border="0" backgroundColor={(darkMode) ? "grey.400" : "white.100"} width="160px" fontSize="16px">
                                     <option value='launch'>lançamento</option>
