@@ -113,6 +113,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                             onFocus={()=>{ setSearchSelected(true) }}
                                             onBlur={()=>{ setSearchSelected(false) }}
                                             placeholder="Pesquise pelo nome"
+                                            _placeholder={{color: (darkMode) ? 'green.300' : "grey.300"}}
                                             border="none"
                                             outline="none"
                                             _active={{ border: 'none', outline: 'none' }}
