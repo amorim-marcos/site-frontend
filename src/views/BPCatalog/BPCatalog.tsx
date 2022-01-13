@@ -175,7 +175,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                     <Box margin="0">
                         <Box >
                             <Flex direction="column">
-                                <Center flex={1} minH="100px">
+                                <Center flex={1} mb="20px">
                                     <Flex>
                                         <Button 
                                             onClick={() => changeFilterPanel('panels')}
