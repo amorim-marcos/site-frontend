@@ -6,6 +6,7 @@ import Pagebar from '@components/Pagebar'
 import PageSection from '@components/PageSection'
 import HeaderTitle from '@components/HeaderTitle'
 import Infografico from '@components/Infografico'
+import WhereWeAre from '@components/WhereWeAre'
 
 const data = {
   imageUrl: 'url(/assets/imgs/quem_somos_foto_capa.png)',
@@ -138,7 +139,7 @@ export const About = () => {
           titleSubscript1Text="Florestas Plantadas para produção"
         ></Infografico>
       </GlobalContainer>
-      {/* <WhereWeAre /> */}
+      <WhereWeAre />
     </Box>
   )
 }

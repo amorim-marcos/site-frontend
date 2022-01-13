@@ -6,7 +6,7 @@ import WhereWeArePanel from '@components/WhereWeArePanel'
 import Carousel from '@components/Carousel'
 
 export type WhereWeAreProps = {
-  panels: WhereWeArePanelProps[]
+  panels?: WhereWeArePanelProps[]
 }
 
 export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
