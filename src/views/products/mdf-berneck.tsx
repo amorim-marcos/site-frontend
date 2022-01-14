@@ -6,15 +6,16 @@ export default function Hdf() {
       <Product
         grafism="type1"
         imgSrc="/img/mdf.png"
+        imgWidth="60vw"
         imgMarginTop={{
-          base: '-30px'
+          base: '0px'
         }}
         imgMarginRight={{
-          base: '-100px',
-          sm: '-120px',
-          md: '-170px',
-          lg: '-200px',
-          xl: '-250px',
+          base: '-50px',
+          sm: '-60px',
+          md: '-60px',
+          lg: '-80px',
+          xl: '-100px',
           '2xl': '-200px'
         }}
         secondaryBackground="#F3E9DA"
@@ -44,36 +45,38 @@ export default function Hdf() {
           },
           backgroundColor: '#FCFCFC',
           productWithBP: {
-            imgSrc: '/img/mdp_bp.png',
+            backgroundColor: '#FBF6F0',
+            imgSrc: '/img/mdf_bp.png',
             type: 'centralizedBtn',
             title: 'MDF BERNECK® com BP',
             description:
               'A combinação das qualidades do MDF com a variedade de acabamentos do BP fornecem inúmeras possibilidades de utilização. Encontre a melhor para a sua aplicação.',
             btnText: 'Conheça todos os padrões BP BERNECK em MDF',
             btnColor: '#D8C39F',
-            marginTop: '150px'
+            marginTop: '230px'
           }
         }}
       />
 
       <Product
         grafism="type2"
-        imgSrc="/img/hdf_plus.png"
+        imgSrc="/img/mdf_plus.png"
+        imgWidth="60vw"
         imgMarginTop={{
-          base: '94px',
-          sm: '128px',
-          md: '170px',
-          lg: '213px',
-          xl: '256px',
-          '2xl': '320px'
+          base: '9px',
+          sm: '10px',
+          md: '11px',
+          lg: '12px',
+          xl: '13px',
+          '2xl': '14px'
         }}
         imgMarginRight={{
-          base: '-150px',
-          sm: '-204px',
-          md: '-272px',
-          lg: '-340px',
-          xl: '-408px',
-          '2xl': '-510'
+          base: '-10px',
+          sm: '-15px',
+          md: '-20px',
+          lg: '-25px',
+          xl: '-30px',
+          '2xl': '-36px'
         }}
         secondaryBackground="#F5F6F4"
         plusProduct
@@ -110,8 +113,12 @@ export default function Hdf() {
             title: 'MDF PLUS BERNECK® com BP',
             description:
               'Inove nos projetos com os acabamentos BP em MDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
-            btnText: 'Conheça todos os padrões BP BERNECK em MDF PLUS'
+            btnText: 'Conheça todos os padrões BP BERNECK em MDF PLUS',
+            imgSrc: '/img/mdf_plus_bp.png'
           }
+        }}
+        downloadAndLinks={{
+          qualityCertificate: false
         }}
       />
     </div>
