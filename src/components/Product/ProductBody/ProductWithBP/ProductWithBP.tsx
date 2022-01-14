@@ -1,4 +1,5 @@
 import { Flex, Heading, Text, Image, Center, Box } from '@chakra-ui/react'
+import { ResponsiveCss } from 'types/responsive'
 import { GrafismProductWithBP } from './GrafismProductWithBP/GrafismProductWithBP'
 
 export type ProductWithBPProps = {
@@ -13,6 +14,7 @@ export type ProductWithBPProps = {
   btnText?: string
   type?: 'centralizedBtn' | 'bottomBtn'
   grafismColor?: string
+  marginTop?: ResponsiveCss
 }
 
 function arrowDistance(type: 'centralizedBtn' | 'bottomBtn') {
@@ -34,7 +36,8 @@ export const ProductWithBP = ({
   btnTextColor = '#FFF',
   btnText = 'Btn text',
   type = 'bottomBtn',
-  grafismColor = '#dfdbd9'
+  grafismColor = '#dfdbd9',
+  marginTop = '0px'
 }: ProductWithBPProps) => {
   return (
     <Flex
@@ -48,6 +51,7 @@ export const ProductWithBP = ({
       position="relative"
       h={type === 'bottomBtn' ? '23.7vw' : '22.5vw'}
       maxHeight={type === 'bottomBtn' ? '457px' : '432px'}
+      marginTop={marginTop}
     >
       <Box position="absolute" {...arrowDistance(type)} left="0">
         <GrafismProductWithBP

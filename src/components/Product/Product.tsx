@@ -2,7 +2,10 @@ import { Box, Image, Flex } from '@chakra-ui/react'
 import { ResponsiveCss } from 'types/responsive'
 import { GrafismProduct } from './GrafismProduct/GrafismProduct'
 import { ProductBody, ProductBodyProps } from './ProductBody/ProductBody'
-import { ProductDownloadAndLinks } from './ProductDownloadAndLinks/ProductDownloadAndLinks'
+import {
+  ProductDownloadAndLinks,
+  ProductDownloadAndLinksProps
+} from './ProductDownloadAndLinks/ProductDownloadAndLinks'
 import {
   ProductHeader,
   ProductHeaderProps
@@ -17,6 +20,7 @@ export type ProductProps = {
   imgMarginRight?: ResponsiveCss
   secondaryBackground?: string
   plusProduct?: boolean
+  downloadAndLinks?: ProductDownloadAndLinksProps
 }
 export const Product = ({
   header,
@@ -26,7 +30,8 @@ export const Product = ({
   imgMarginTop,
   imgMarginRight,
   secondaryBackground,
-  plusProduct
+  plusProduct,
+  downloadAndLinks
 }: ProductProps) => {
   return (
     <Box overflow="hidden" position="relative" marginX="auto" maxWidth="1920px">
@@ -55,6 +60,7 @@ export const Product = ({
           <ProductDownloadAndLinks
             plusProduct={plusProduct}
             backgroundColor={secondaryBackground}
+            {...downloadAndLinks}
           />
         </Flex>
       )}
