@@ -5,24 +5,23 @@ export default function PlusBerneckView() {
     <div>
       <Product
         grafism="type2"
-        imgSrc="/img/hdf_plus.png"
+        imgSrc="/img/plus.png"
         imgMarginTop={{
           base: '94px',
-          sm: '128px',
-          md: '170px',
-          lg: '213px',
-          xl: '256px',
-          '2xl': '320px'
+          sm: '20px',
+          md: '17px',
+          lg: '40px',
+          xl: '40px',
+          '2xl': '40px'
         }}
         imgMarginRight={{
           base: '-150px',
-          sm: '-204px',
-          md: '-272px',
-          lg: '-340px',
-          xl: '-408px',
-          '2xl': '-510'
+          sm: '-220px',
+          md: '-280px',
+          lg: '-370px',
+          xl: '-420px',
+          '2xl': '-524px'
         }}
-        downloadAndLinks={{ qualityCertificate: false }}
         secondaryBackground="#F5F6F4"
         plusProduct
         header={{
