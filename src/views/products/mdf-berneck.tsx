@@ -24,25 +24,28 @@ export default function Hdf() {
         }}
         secondaryBackground="#F3E9DA"
         header={{
-          title: 'HDF BERNECK®',
+          title: 'MDF BERNECK®',
           headerBgColor: '#E0CBA5',
-          subtitle: 'Painel de Fibra de Alta Densidade',
+          subtitle: 'Painel de Fibra de Média Densidade',
           description:
-            'É produzido 100% com Pinus, que possui fibras longas, proporcionando uma maior maleabilidade ao painel além de coloração bem clara, que assegura excelente resultado para os processos de pintura e impressão.'
+            'Produzido a partir de 9mm. Excelente para os processos de pintura e impressão.'
         }}
         body={{
           heading1: 'Descrição',
           paragraph1:
-            'É formado por fibras de madeira de alta densidade, High Density Fiberboard. Por ser produzido em prensa contínua de última geração, possui excelente estabilidade dimensional, superfície uniforme e lisa com espessuras a partir de 2,5 mm.',
+            'Produzido em prensas contínuas de altíssima tecnologia, o que assegura um painel homogêneo, ótimo para os processos de usinagem e baixo relevo. Por ser produzido com Pinus, que possui fibras longas, possui maleabilidade superior e coloração bem clara, excelente para os processos de pintura e impressão.',
           heading2: 'Usos e Aplicações',
           paragraph2:
-            'O HDF BERNECK® garante excelente resultado e custo/benefício em fundo de móveis, lateral e fundo de gavetas, capas de portas, peças curvas, para a produção de pisos, artesanatos, bem como na fabricação de painéis de grandes espessuras (tipo colmeias).',
+            'O MDF BERNECK® assegura excelente resultado em todos os tipos de móveis para peças com usinagens profundas e trabalhos de baixo relevo, além de embalagens, aplicações na construção civil, artesanatos, etc.',
           heading3: 'Acabamentos',
-          paragraph3: '• Natural (sem revestimento)',
+          paragraph3: [
+            '• Natural (sem revestimento) ',
+            '• Revestido com laminado de baixa pressão BP BERNECK®'
+          ],
           dimensions: {
-            thickness: '2,5 / 2,8 / 3 / 4 / 6',
+            thickness: '9 / 12 / 15 / 18 / 22 / 25',
             length: '2750',
-            width: '1850 / 2130 / 2200'
+            width: '1850 a 2200'
           },
           backgroundColor: '#FCFCFC'
         }}
@@ -71,36 +74,38 @@ export default function Hdf() {
         plusProduct
         header={{
           plusIndicator: true,
-          title: 'HDF PLUS BERNECK®',
+          title: 'MDF PLUS BERNECK®',
           headerBgColor: '#ACCC9F',
-          subtitle: 'É Plus porque tem mais proteção à umidade ',
+          subtitle: 'É Plus porque tem mais proteção à umidade',
           description:
-            'A qualidade do HDF BERNECK® aliada à máxima proteção contra umidade e cupins.'
+            'A qualidade do MDF BERNECK® aliada à máxima proteção contra umidade e cupins.'
         }}
         body={{
           heading1: 'Mais tecnologia, mais qualidade, mais proteção',
           paragraph1: [
-            'O HDF PLUS BERNECK® é o painel formado por fibras de madeira de alta densidade, High Density Fiberboard, produzido em prensa contínua com resinas especiais que garantem maior resistência à umidade.',
-            'Possui a coloração esverdeada como identificação internacional do produto com maior resistência à umidade, diferenciando-o dos painéis Standard. Essa pigmentação pode variar a cada lote de produção e não está associada ao princípio ativo de hidro resistência, ou seja, não é a prova dágua.',
-            'Vale inovar nos projetos com HDF PLUS. Um ótimo investimento, com incomparável custo benefício.'
+            'O MDF PLUS BERNECK é o painel formado por fibras de madeira de média densidade, Medium Density Fiberboard, produzido em prensa contínua com resinas especiais que garantem maior resistência à umidade. O MDF PLUS BERNECK® assegura excelente resultado em todos os tipos de móveis para peças com trabalhos de baixo relevo e ótimas condições para corte e bordas arredondadas para pintura. ',
+            'Possui a coloração esverdeada como identificação internacional do produto com maior resistência à umidade, diferenciando-o dos painéis Standard. Essa pigmentação pode variar a cada lote de produção e não está associada ao princípio ativo de hidro resistência, pois não é à prova d´água.',
+            'Vale inovar nos projetos com MDF PLUS. Um ótimo investimento, com incomparável custo benefício.'
           ],
           heading2: 'Usos e Aplicações',
           paragraph2:
-            'Indicado, por exemplo, para fundo de móveis e gavetas, peças curvas e pequenos nichos.',
+            'Indicado para móveis de cozinhas, banheiros, lavanderias e ambientes comerciais.',
           heading3: 'Acabamentos',
-          paragraph3:
-            '• Natural (sem revestimento) • Com laminado de baixa pressão BP BERNECK®',
+          paragraph3: [
+            '• Natural (sem revestimento)',
+            '• Revestido com laminado de baixa pressão BP BERNECK®'
+          ],
           dimensions: {
-            thickness: '6',
+            thickness: '9 / 12 / 15 / 18 / 25',
             length: '2750',
             width: '1850'
           },
           backgroundColor: '#E8E8E8',
           productWithBP: {
-            title: 'HDF PLUS BERNECK® com BP',
+            title: 'MDF PLUS BERNECK® com BP',
             description:
-              'Inove nos projetos com os acabamentos BP em HDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
-            btnText: 'Conheça todos os padrões BP BERNECK em HDF PLUS'
+              'Inove nos projetos com os acabamentos BP em MDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
+            btnText: 'Conheça todos os padrões BP BERNECK em MDF PLUS'
           }
         }}
       />
