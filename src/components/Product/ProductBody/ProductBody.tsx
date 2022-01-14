@@ -56,9 +56,9 @@ export const ProductBody = ({
         ))
       )}
 
-      <Heading {...headingStyle}>{heading2}</Heading>
-      <Text {...paragraphStyle}>{paragraph2}</Text>
-      <Heading {...headingStyle}>{heading3}</Heading>
+      {heading2 && <Heading {...headingStyle}>{heading2}</Heading>}
+      {paragraph2 && <Text {...paragraphStyle}>{paragraph2}</Text>}
+      {paragraph3 && <Heading {...headingStyle}>{heading3}</Heading>}
 
       {typeof paragraph3 === 'string' ? (
         <Text {...paragraphStyle}>{paragraph3}</Text>
