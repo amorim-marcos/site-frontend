@@ -147,28 +147,44 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
 
         // search
         if(filters["nameSearched"] && filters["nameSearched"] !== ""){
-            filteredBps = filteredBps.filter((bp:string) => {
+            filteredBps = filteredBps.filter((bp:any) => {
                 return bp.name.toLowerCase().startsWith(filters["nameSearched"].toLowerCase())
             })
         }
 
         // panels
         if(filters["panels"].length > 0){
-            filteredBps = filteredBps.filter((bp:string) => {
-                return filters["panels"].includes(bp.panel)
+            filteredBps = filteredBps.filter((bp:any) => {
+                if(bp.panels && bp.panels.length > 0){
+                    for(let panel of bp.panels){
+                        if(filters["panels"].includes(panel)){
+                            return true
+                        }
+                    }
+                    return false
+                }
+                return false
             })            
         }
 
         // collections
         if(filters["collections"].length > 0){
-            filteredBps = filteredBps.filter((bp:string) => {
-                return filters["collections"].includes(bp.collection)
-            })            
+            filteredBps = filteredBps.filter((bp:any) => {
+                if(bp.collections && bp.collections.length > 0){
+                    for(let collection of bp.collections){
+                        if(filters["collections"].includes(collection)){
+                            return true
+                        }
+                    }
+                    return false
+                }
+                return false
+            })             
         }
 
         // colorations
         if(filters["colorations"].length > 0){
-            filteredBps = filteredBps.filter((bp:string) => {
+            filteredBps = filteredBps.filter((bp:any) => {
                 return filters["colorations"].includes(bp.coloration)
             })            
         }
@@ -176,7 +192,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
         // order
         switch(filters["orderBy"]){
             case "launch": 
-                filteredBps = filteredBps.sort(
+                filteredBps.sort(
                     (a, b) => {
                         let dateA = new Date(a["launch"])
                         let dateB = new Date(b["launch"])
@@ -191,7 +207,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                 )
                 break
             case "name":
-                filteredBps = filteredBps.sort(
+                filteredBps.sort(
                     (a, b) => {
                         if(a["name"].toLowerCase() > b["name"].toLowerCase()){
                             return 1
@@ -204,6 +220,17 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                 )
                 break
             case "scale":
+                filteredBps.sort(
+                    (a, b) => {
+                        if(a["scale"] > b["scale"]){
+                            return 1
+                        }else if(a["scale"] < b["scale"]){
+                            return -1
+                        }else{
+                            return 0
+                        }
+                    }
+                )
                 break
         }
 
