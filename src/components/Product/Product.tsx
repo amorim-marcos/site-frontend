@@ -1,6 +1,9 @@
 import { Box, Image, Flex } from '@chakra-ui/react'
 import { ResponsiveCss } from 'types/responsive'
-import { GrafismProduct } from './GrafismProduct/GrafismProduct'
+import {
+  GrafismProduct,
+  GrafismProductProps
+} from './GrafismProduct/GrafismProduct'
 import { ProductBody, ProductBodyProps } from './ProductBody/ProductBody'
 import {
   ProductDownloadAndLinks,
@@ -23,6 +26,7 @@ export type ProductProps = {
   downloadAndLinks?: ProductDownloadAndLinksProps
   imgWidth?: ResponsiveCss
   imgMaxWidth?: ResponsiveCss
+  grafismProps?: GrafismProductProps
 }
 export const Product = ({
   header,
@@ -35,11 +39,12 @@ export const Product = ({
   plusProduct,
   downloadAndLinks,
   imgWidth = '80vw',
-  imgMaxWidth = '1415px'
+  imgMaxWidth = '1415px',
+  grafismProps
 }: ProductProps) => {
   return (
     <Box overflow="hidden" position="relative" marginX="auto" maxWidth="1920px">
-      <GrafismProduct grafism={grafism || 'type1'} />
+      <GrafismProduct {...grafismProps} grafism={grafism || 'type1'} />
 
       {imgSrc && (
         <Flex

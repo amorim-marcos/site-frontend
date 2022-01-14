@@ -1,12 +1,19 @@
-import { GrafismProduct1 } from './GrafismProduct1/GrafismProduct1'
+import {
+  GrafismProduct1,
+  GrafismProductProps as SubGrafismProps
+} from './GrafismProduct1/GrafismProduct1'
 import { GrafismProduct2 } from './GrafismProduct2/GrafismProduct2'
 import { Box } from '@chakra-ui/react'
 
 export type GrafismProductProps = {
   grafism: 'type1' | 'type2'
+  grafismProps?: SubGrafismProps
 }
 
-export const GrafismProduct = ({ grafism }: GrafismProductProps) => {
+export const GrafismProduct = ({
+  grafism,
+  grafismProps
+}: GrafismProductProps) => {
   console.log(grafism)
   return grafism === 'type1' ? (
     <Box
@@ -40,6 +47,7 @@ export const GrafismProduct = ({ grafism }: GrafismProductProps) => {
           '2xl': '1760px'
         }}
         // maxWidth={{ xl: '1400px', '2xl': '1760px' }}
+        {...grafismProps}
       />
     </Box>
   ) : (
@@ -65,6 +73,7 @@ export const GrafismProduct = ({ grafism }: GrafismProductProps) => {
           xl: '1405px',
           '2xl': '1650px'
         }}
+        {...grafismProps}
       />
     </Box>
   )
