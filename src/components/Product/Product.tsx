@@ -21,6 +21,8 @@ export type ProductProps = {
   secondaryBackground?: string
   plusProduct?: boolean
   downloadAndLinks?: ProductDownloadAndLinksProps
+  imgWidth?: ResponsiveCss
+  imgMaxWidth?: ResponsiveCss
 }
 export const Product = ({
   header,
@@ -31,7 +33,9 @@ export const Product = ({
   imgMarginRight,
   secondaryBackground,
   plusProduct,
-  downloadAndLinks
+  downloadAndLinks,
+  imgWidth = '80vw',
+  imgMaxWidth = '1415px'
 }: ProductProps) => {
   return (
     <Box overflow="hidden" position="relative" marginX="auto" maxWidth="1920px">
@@ -51,8 +55,8 @@ export const Product = ({
             <Image
               src={imgSrc}
               alt="product image"
-              width="80vw"
-              maxWidth="1414px"
+              width={imgWidth}
+              maxWidth={imgMaxWidth}
               marginTop={imgMarginTop}
               marginRight={imgMarginRight}
             />
