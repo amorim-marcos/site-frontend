@@ -4,17 +4,26 @@ import { ResponsiveCss } from '../../../../../types/responsive'
 export type GrafismProductWithBPProps = {
   width?: ResponsiveCss
   color?: string
+  type?: 'centralizedBtn' | 'bottomBtn'
+}
+
+function visible(type: 'centralizedBtn' | 'bottomBtn') {
+  if (type === 'bottomBtn') {
+    return { top: '-20px' }
+  }
+  return { bottom: '-20px' }
 }
 
 export const GrafismProductWithBP = ({
   width,
-  color = '#0a6c3b'
+  color = '#0a6c3b',
+  type = 'bottomBtn'
 }: GrafismProductWithBPProps) => {
   return (
     <Box overflow="hidden" height={'400px'} position="relative" width={width}>
       <Box
         position="absolute"
-        top="-20px"
+        {...visible(type)}
         left="-2"
         width={width}
         color={color}
