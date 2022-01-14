@@ -74,74 +74,76 @@ export const ProductBody = ({
         ))
       )}
 
-      <Flex justifyContent="space-between">
-        <Flex flexDirection="column">
-          <Heading {...headingStyle}>{product.t('dimensionsMM')}</Heading>
-          <Table
-            fontWeight="light"
-            fontSize={{
-              base: '8px',
-              sm: '7px',
-              md: '12px',
-              lg: '14px',
-              xl: '16px',
-              '2xl': '18.5px'
-            }}
-            fontFamily="Montserrat"
-            width={{
-              base: '200px',
-              sm: '170px',
-              md: '270px',
-              lg: '350px',
-              xl: '400px',
-              '2xl': '450px'
-            }}
-            variant="unstyled"
-            color="#626161"
-          >
-            <Tbody>
-              <Tr>
-                <Td {...tableItemStyle(backgroundColor, secondaryBackground)}>
-                  {product.t('thickness')}
-                </Td>
-                <Td {...tableItemStyle(backgroundColor, secondaryBackground)}>
-                  {dimensions?.thickness}
-                </Td>
-              </Tr>
-              <Tr>
-                <Td {...tableItemStyle(backgroundColor, secondaryBackground)}>
-                  {product.t('length')}
-                </Td>
-                <Td {...tableItemStyle(backgroundColor, secondaryBackground)}>
-                  {dimensions?.length}
-                </Td>
-              </Tr>
-              <Tr>
-                <Td {...tableItemStyle(backgroundColor, secondaryBackground)}>
-                  {product.t('width')}
-                </Td>
-                <Td {...tableItemStyle(backgroundColor, secondaryBackground)}>
-                  {dimensions?.width}
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
-          <Text
-            marginBottom="80px"
-            fontSize={{
-              base: '6px',
-              sm: '8px',
-              md: '10px',
-              lg: '12px',
-              xl: '14px',
-              '2xl': '16px'
-            }}
-            color="green.900"
-          >
-            {product.t('otherDimensionsText')}
-          </Text>
+      {dimensions && (
+        <Flex justifyContent="space-between">
+          <Flex flexDirection="column">
+            <Heading {...headingStyle}>{product.t('dimensionsMM')}</Heading>
+            <Table
+              fontWeight="light"
+              fontSize={{
+                base: '8px',
+                sm: '7px',
+                md: '12px',
+                lg: '14px',
+                xl: '16px',
+                '2xl': '18.5px'
+              }}
+              fontFamily="Montserrat"
+              width={{
+                base: '200px',
+                sm: '170px',
+                md: '270px',
+                lg: '350px',
+                xl: '400px',
+                '2xl': '450px'
+              }}
+              variant="unstyled"
+              color="#626161"
+            >
+              <Tbody>
+                <Tr>
+                  <Td {...tableItemStyle(backgroundColor, secondaryBackground)}>
+                    {product.t('thickness')}
+                  </Td>
+                  <Td {...tableItemStyle(backgroundColor, secondaryBackground)}>
+                    {dimensions?.thickness}
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td {...tableItemStyle(backgroundColor, secondaryBackground)}>
+                    {product.t('length')}
+                  </Td>
+                  <Td {...tableItemStyle(backgroundColor, secondaryBackground)}>
+                    {dimensions?.length}
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td {...tableItemStyle(backgroundColor, secondaryBackground)}>
+                    {product.t('width')}
+                  </Td>
+                  <Td {...tableItemStyle(backgroundColor, secondaryBackground)}>
+                    {dimensions?.width}
+                  </Td>
+                </Tr>
+              </Tbody>
+            </Table>
+            <Text
+              marginBottom="80px"
+              fontSize={{
+                base: '6px',
+                sm: '8px',
+                md: '10px',
+                lg: '12px',
+                xl: '14px',
+                '2xl': '16px'
+              }}
+              color="green.900"
+            >
+              {product.t('otherDimensionsText')}
+            </Text>
+          </Flex>
         </Flex>
-      </Flex>
+      )}
       {productWithBP && <ProductWithBP {...productWithBP} />}
     </Flex>
   )
