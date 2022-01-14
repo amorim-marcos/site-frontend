@@ -11,7 +11,7 @@ export type ProductBodyProps = {
   heading2?: string
   paragraph2?: string
   heading3?: string
-  paragraph3?: string
+  paragraph3?: string | Array<string>
   dimensions?: {
     thickness?: string
     length?: string
@@ -59,7 +59,21 @@ export const ProductBody = ({
       <Heading {...headingStyle}>{heading2}</Heading>
       <Text {...paragraphStyle}>{paragraph2}</Text>
       <Heading {...headingStyle}>{heading3}</Heading>
-      <Text {...paragraphStyle}>{paragraph3}</Text>
+
+      {typeof paragraph3 === 'string' ? (
+        <Text {...paragraphStyle}>{paragraph3}</Text>
+      ) : (
+        paragraph3?.map((p, i) => (
+          <Text
+            key={p}
+            {...paragraphStyle}
+            marginBottom={i === paragraph3.length - 1 ? '80px' : '0px'}
+          >
+            {p}
+          </Text>
+        ))
+      )}
+
       <Flex justifyContent="space-between">
         <Flex flexDirection="column">
           <Heading {...headingStyle}>{product.t('dimensionsMM')}</Heading>
