@@ -11,10 +11,20 @@ export type ProductWithBPProps = {
   textColor?: string
   btnTextColor?: string
   btnText?: string
+  type?: 'centralizedBtn' | 'bottomBtn'
+  grafismColor?: string
+}
+
+function arrowDistance(type: 'centralizedBtn' | 'bottomBtn') {
+  if (type === 'bottomBtn') {
+    return { top: '0' }
+  }
+
+  return { bottom: '15%' }
 }
 
 export const ProductWithBP = ({
-  imgSrc = '/img/hdf_plus_bp.png',
+  imgSrc = '/img/mdp_bp.png',
   description = 'Description',
   title = 'BERNECK® com BP',
   btnHoverColor = '#96BC87',
@@ -22,7 +32,9 @@ export const ProductWithBP = ({
   backgroundColor = 'white.100',
   textColor = '#72675E',
   btnTextColor = '#FFF',
-  btnText = 'Btn text'
+  btnText = 'Btn text',
+  type = 'bottomBtn',
+  grafismColor = '#dfdbd9'
 }: ProductWithBPProps) => {
   return (
     <Flex
@@ -34,20 +46,21 @@ export const ProductWithBP = ({
       paddingX="30px"
       boxShadow="0px 0px 15px #00000007"
       position="relative"
-      h="23.7vw"
-      maxHeight="457px"
+      h={type === 'bottomBtn' ? '23.7vw' : '22.5vw'}
+      maxHeight={type === 'bottomBtn' ? '457px' : '432px'}
     >
-      <Box position="absolute" top="0" left="0">
+      <Box position="absolute" {...arrowDistance(type)} left="0">
         <GrafismProductWithBP
+          type={type}
           width={{
             base: '50px',
-            sm: '70px',
-            md: '80px',
-            lg: '95px',
-            xl: '110px',
-            '2xl': '131px'
+            sm: '60px',
+            md: '75px',
+            lg: '90px',
+            xl: '100px',
+            '2xl': '120px'
           }}
-          color="#dfdbd9"
+          color={grafismColor}
         />
       </Box>
       <Flex
@@ -82,60 +95,115 @@ export const ProductWithBP = ({
             xl: '15px',
             '2xl': '18px'
           }}
-          width="90%"
+          width="84%"
           marginTop={{
-            base: '2px',
-            sm: '6px',
-            md: '5px',
-            lg: '9px',
-            xl: '13px',
-            '2xl': '20px'
+            base: '7px',
+            sm: '10px',
+            md: '15px',
+            lg: '20px',
+            xl: '25px',
+            '2xl': '30px'
           }}
         >
           {description}
         </Text>
+        {type === 'centralizedBtn' && (
+          <Center
+            bg={btnColor}
+            _hover={{ bg: btnHoverColor }}
+            h={{
+              base: '20px',
+              sm: '30px',
+              md: '40px',
+              lg: '50px',
+              xl: '60px',
+              '2xl': '78px'
+            }}
+            width="75%"
+            borderRadius={{
+              base: '2px',
+              sm: '5px',
+              md: '8px',
+              lg: '11px',
+              xl: '14px',
+              '2xl': '17px'
+            }}
+            cursor="pointer"
+            marginTop={{
+              base: '7px',
+              sm: '10px',
+              md: '15px',
+              lg: '20px',
+              xl: '25px',
+              '2xl': '30px'
+            }}
+          >
+            <Heading
+              fontSize={{
+                base: '4px',
+                sm: '5px',
+                md: '7.5px',
+                lg: '11px',
+                xl: '14px',
+                '2xl': '17px'
+              }}
+              color={btnTextColor}
+            >
+              {btnText}
+            </Heading>
+          </Center>
+        )}
       </Flex>
       <Image
         position="absolute"
-        top="-1.5%"
-        right="-3%"
+        top={type === 'bottomBtn' ? '-1.5%' : '-17%'}
+        right={type === 'bottomBtn' ? '-3%' : '-3%'}
         src={imgSrc}
         width="52vw"
         maxWidth="998px"
       />
 
-      <Center
-        position="absolute"
-        bottom="-10%"
-        left="5.7%"
-        bg={btnColor}
-        _hover={{ bg: btnHoverColor }}
-        h={{
-          base: '20px',
-          sm: '30px',
-          md: '50px',
-          lg: '60px',
-          xl: '70px',
-          '2xl': '78px'
-        }}
-        width="40%"
-        borderRadius="17px"
-        cursor="pointer"
-      >
-        <Heading
-          fontSize={{
-            base: '5px',
-            sm: '6px',
-            md: '8.5px',
-            lg: '12px',
-            xl: '15px',
-            '2xl': '18px'
+      {type === 'bottomBtn' && (
+        <Center
+          position="absolute"
+          bottom="-10%"
+          left="5.7%"
+          bg={btnColor}
+          _hover={{ bg: btnHoverColor }}
+          h={{
+            base: '20px',
+            sm: '30px',
+            md: '50px',
+            lg: '60px',
+            xl: '70px',
+            '2xl': '78px'
           }}
-          color={btnTextColor}
+          width="40%"
+          borderRadius={{
+            base: '2px',
+            sm: '5px',
+            md: '8px',
+            lg: '11px',
+            xl: '14px',
+            '2xl': '17px'
+          }}
+          cursor="pointer"
         >
-          {btnText}
-        </Heading>
-      </Center>
+          <Heading
+            fontSize={{
+              base: '5px',
+              sm: '6px',
+              md: '8.5px',
+              lg: '12px',
+              xl: '15px',
+              '2xl': '18px'
+            }}
+            color={btnTextColor}
+          >
+            {btnText}
+          </Heading>
+        </Center>
+      )}
     </Flex>
   )
 }
