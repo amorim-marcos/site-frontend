@@ -7,6 +7,7 @@ export default function Hdf() {
         grafism="type1"
         imgSrc="/img/mdf.png"
         imgWidth="60vw"
+        imgMaxWidth="1151px"
         imgMarginTop={{
           base: '0px'
         }}
@@ -53,7 +54,8 @@ export default function Hdf() {
               'A combinação das qualidades do MDF com a variedade de acabamentos do BP fornecem inúmeras possibilidades de utilização. Encontre a melhor para a sua aplicação.',
             btnText: 'Conheça todos os padrões BP BERNECK em MDF',
             btnColor: '#D8C39F',
-            marginTop: '230px'
+            grafismColor: '#D8C39F',
+            marginTop: '100px'
           }
         }}
       />
@@ -62,6 +64,7 @@ export default function Hdf() {
         grafism="type2"
         imgSrc="/img/mdf_plus.png"
         imgWidth="60vw"
+        imgMaxWidth="1151px"
         imgMarginTop={{
           base: '9px',
           sm: '10px',
