@@ -23,6 +23,7 @@ export const ProductDownloadAndLinks = ({
     <Flex
       alignItems="center"
       justifyContent="space-around"
+      marginTop="4%"
       marginRight={{
         base: '1.5%',
         sm: '1%',

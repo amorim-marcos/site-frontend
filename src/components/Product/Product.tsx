@@ -61,11 +61,13 @@ export const Product = ({
               marginRight={imgMarginRight}
             />
           </Box>
-          <ProductDownloadAndLinks
-            plusProduct={plusProduct}
-            backgroundColor={secondaryBackground}
-            {...downloadAndLinks}
-          />
+          {downloadAndLinks && (
+            <ProductDownloadAndLinks
+              plusProduct={plusProduct}
+              backgroundColor={secondaryBackground}
+              {...downloadAndLinks}
+            />
+          )}
         </Flex>
       )}
       <ProductHeader {...header} />
