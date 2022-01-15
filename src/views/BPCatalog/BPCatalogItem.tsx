@@ -20,32 +20,67 @@ import {
 import { Link } from 'react-scroll'
 
 import Arrow from '@components/Arrow'
-// Skeleton base of the component created
+import SearchIcon from '@components/SearchIcon'
+
 export const BPCatalogItem = () => {
   return (
     <Box>
-      <Intro />
+      <Intro
+        textureName="Terrazza"
+        textureDescription="Com a proposta do granilite e um mix de tonalidades de cimento branco, areia e diferentes minerais, este BP BERNECK® é um ícone da arquitetura em seus projetos."
+      />
       <Inspire />
       <TextureProperties />
     </Box>
   )
 }
 
-const Intro = (props: any) => (
-  <Box>
-    <Image src="" /> {/* Texture */}
-    <Image src="" /> {/* Graphism */}
-    <Flex data-testid="texture-attr">
-      {props.textureName}
-      {props.textureDescription}
+const Intro = (props: { textureName: string; textureDescription: string }) => (
+  <Flex
+    h="797px"
+    bgImg="/bps/patterns/cacau.jpg"
+    bgRepeat="repeat"
+    pl="205px"
+    align="center"
+    pos="relative"
+  >
+    <Image
+      src="/img/grafismo_topo_direita.svg"
+      pos="absolute"
+      boxSize={['642px', '538px']}
+      top="0"
+      right="0"
+    />
+    <Flex
+      data-testid="texture-attr"
+      boxSize={['547px', '476px']}
+      direction="column"
+      padding="78px 71px 0 75px"
+      bg="green.100"
+      pos="relative"
+    >
+      <Text
+        fontSize="53px"
+        fontWeight={800}
+        letterSpacing="-1.06px"
+        color="green.900"
+        pb="24px"
+      >
+        {props.textureName}
+      </Text>
+      <Text fontSize="23px" letterSpacing="-0.23px" color="grey.300" pb="22px">
+        {props.textureDescription}
+      </Text>
 
-      <Box h="3px" w="80px" bg="green.600" />
+      <Box h="3px" w="87px" bg="green.600" />
 
-      <Link to="texture-props" smooth>
-        <Image src="" />
-      </Link>
+      <Box cursor="pointer" pos="absolute" bottom="29px" right="29px">
+        <Link to="texture-props" smooth>
+          <SearchIcon stroke="green.500" />
+        </Link>
+      </Box>
     </Flex>
-  </Box>
+  </Flex>
 )
 
 const Inspire = (props: any) => {
