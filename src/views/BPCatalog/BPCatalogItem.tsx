@@ -29,7 +29,16 @@ export const BPCatalogItem = () => {
         textureName="Terrazza"
         textureDescription="Com a proposta do granilite e um mix de tonalidades de cimento branco, areia e diferentes minerais, este BP BERNECK® é um ícone da arquitetura em seus projetos."
       />
-      <Inspire />
+      <Inspire
+        microDescription="Textura contemporânea com agradável sensação ao toque."
+        anotherTextures={[
+          { name: 'Louro Preto', img: '/bps/patterns/amantea.jpg' },
+          { name: 'Ceramik', img: '/bps/patterns/calcare.jpg' },
+          { name: 'Millennial', img: '/bps/patterns/gengibre.jpg' },
+          { name: 'Denim', img: '/bps/patterns/wengue_ravena.jpg' }
+        ]}
+        patternDescription="O padrão Solanum traz personalidade e um apelo estético único aos projetos de móveis e interiores. O novo padrão é inspirado no Cumaru, madeira proveniente da Amazônia, e valoriza a cultura brasileira. Lançamento da Coleção Nômade, ele chama a atenção pela tonalidade castanho-mel e pela facilidade de combinar com tudo, trazendo calor e beleza aos móveis e interiores."
+      />
       <TextureProperties />
     </Box>
   )
@@ -76,14 +85,21 @@ const Intro = (props: { textureName: string; textureDescription: string }) => (
 
       <Box cursor="pointer" pos="absolute" bottom="29px" right="29px">
         <Link to="texture-props" smooth>
-          <SearchIcon stroke="green.500" />
+          <SearchIcon stroke="green.600" />
         </Link>
       </Box>
     </Flex>
   </Flex>
 )
 
-const Inspire = (props: any) => {
+const Inspire = (props: {
+  microDescription: string
+  anotherTextures: {
+    name: string
+    img: string
+  }[]
+  patternDescription: string
+}) => {
   const [curr, setCurr] = useState(0)
 
   const switchTo = (act: 'next' | 'prev') => {
@@ -96,51 +112,154 @@ const Inspire = (props: any) => {
   }
 
   return (
-    <Box>
-      <Box data-testid="micro-texture">
-        <Image src={''} />
-        <Text>MICRO</Text>
-        <Text>{props.description}</Text>
-      </Box>
+    <Box pos="relative">
+      <Flex data-testid="micro-texture" pos="absolute" left="140px" top="-65px">
+        <Image
+          src="/bps/patterns/azul_vel.jpg"
+          borderRadius="100%"
+          boxSize="129px"
+          zIndex={10}
+        />
+        <Flex>
+          <Text
+            bg="green.600"
+            w="185px"
+            h="41px"
+            borderTopRightRadius="22px"
+            color="white"
+            fontSize="26px"
+            fontWeight="bold"
+            letterSpacing="-0.26px"
+            textAlign="center"
+            pos="absolute"
+            top="24px"
+            left="110px"
+          >
+            MICRO
+          </Text>
+          <Text
+            w="40vw"
+            pos="absolute"
+            fontSize="18px"
+            letterSpacing="0px"
+            color="grey.300"
+            top="76px"
+            left="145px"
+          >
+            {props.microDescription}
+          </Text>
+        </Flex>
+      </Flex>
 
-      <Box data-testid="combine-texture">
-        <Text>COMBINE COM:</Text>
-        <Box>
+      <Box
+        data-testid="combine-texture"
+        pos="absolute"
+        right="86px"
+        top="-175px"
+        zIndex={100}
+      >
+        <Flex
+          bg="green.900"
+          w="214px"
+          h="44px"
+          padding="10px 27px"
+          borderTopRightRadius="26px"
+          align="center"
+          justify="center"
+        >
+          <Text
+            fontSize="20px"
+            fontWeight="medium"
+            color="white"
+            letterSpacing="-0.2px"
+          >
+            COMBINE COM:
+          </Text>
+        </Flex>
+        <Flex>
           {props.anotherTextures?.map((texture) => (
-            <Flex key={texture.id}>
-              <Image bg={texture.img} />
-              <Text>{texture.name}</Text>
+            <Flex key={texture.name} direction="column">
+              <Image src={texture.img} w="211px" h="350px" />
+              <Text fontSize="20px" letterSpacing="0px" color="grey.300">
+                {texture.name}
+              </Text>
             </Flex>
           ))}
-        </Box>
+        </Flex>
       </Box>
 
-      <Box data-testid="texture-examples">
-        <Text>Insipire-se</Text>
-        <Image src="" />
+      <Flex pl="88px" pos="relative" h="1080px">
+        <Flex
+          data-testid="texture-examples"
+          pt="208px"
+          zIndex={100}
+          pos="absolute"
+          direction="column"
+        >
+          <Text
+            fontSize="37px"
+            fontWeight={800}
+            letterSpacing="-0.74px"
+            color="green.700"
+            pb="21px"
+          >
+            Insipire-se
+          </Text>
 
-        <Box data-testid="examples-control">
-          <Box onClick={() => switchTo('prev')}>
-            <Arrow width="20px" height="20px" direction="left" />
-          </Box>
+          <Image
+            src="/assets/imgs/foto_fabrica.png"
+            w="846px"
+            h="562px"
+            objectFit="cover"
+          />
 
-          <Box onClick={() => switchTo('next')}>
-            <Arrow width="20px" height="20px" direction="right" />
-          </Box>
-        </Box>
-      </Box>
-
-      <Flex data-testid="texture-description">
-        <Text>{props.patternDescription}</Text>
-
-        <Flex>
-          <Image src="" />
-          Assista ao vídeo
+          <Flex
+            data-testid="examples-control"
+            alignSelf="flex-end"
+            mr="40px"
+            mt="-38px"
+          >
+            <ArrowButton onClick={() => switchTo('prev')} direction="left" />
+            <ArrowButton onClick={() => switchTo('next')} direction="right" />
+          </Flex>
         </Flex>
 
-        <Flex>
-          <Image src="" />
-          Confira o ebook
+        <Flex
+          data-testid="texture-description"
+          bg="#D6DCD5"
+          mt="165px"
+          w="1440px"
+          h="633px"
+          padding="223px 183px 203px 596px"
+          direction="column"
+          pos="absolute"
+          right="0"
+        >
+          <Text w="660px" fontSize="20px" letterSpacing="0px" color="green.900">
+            {props.patternDescription}
+          </Text>
+
+          <Flex pt="52px" gap="116px">
+            <Flex
+              color="green.500"
+              fontSize="20px"
+              fontWeight="bold"
+              letterSpacing="0px"
+            >
+              <Image src="" />
+              Assista ao vídeo
+            </Flex>
+
+            <Flex
+              color="green.500"
+              fontSize="20px"
+              fontWeight="bold"
+              letterSpacing="0px"
+            >
+              <Image src="" />
+              Confira o ebook
+            </Flex>
+          </Flex>
         </Flex>
       </Flex>
     </Box>
@@ -250,5 +369,30 @@ const TextureProperties = (props: any) => (
         </AccordionItem>
       </Accordion>
     </Flex>
+  </Flex>
+)
+
+const ArrowButton = (props: {
+  onClick: () => void
+  direction: 'left' | 'right'
+}) => (
+  <Flex
+    onClick={props.onClick}
+    _hover={{
+      filter: 'brightness(0.8)'
+    }}
+    transition="all 0.2s ease-in-out"
+    cursor="pointer"
+    bg="grey.300"
+    boxSize="77px"
+    align="center"
+    justify="center"
+  >
+    <Arrow
+      direction={props.direction}
+      width="21px"
+      height="30px"
+      color="grey.100"
+    />
   </Flex>
 )
