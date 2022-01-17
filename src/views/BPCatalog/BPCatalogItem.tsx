@@ -38,7 +38,7 @@ export const BPCatalogItem = () => {
   return (
     <Box pos="relative">
       <Intro
-        texture="/bps/patterns/volakas.jpg"
+        texture="/bps/patterns/cacau.jpg"
         textureName="Terrazza"
         textureDescription="Com a proposta do granilite e um mix de tonalidades de cimento branco, areia e diferentes minerais, este BP BERNECK® é um ícone da arquitetura em seus projetos."
       />
@@ -53,8 +53,8 @@ export const BPCatalogItem = () => {
         patternDescription="O padrão Solanum traz personalidade e um apelo estético único aos projetos de móveis e interiores. O novo padrão é inspirado no Cumaru, madeira proveniente da Amazônia, e valoriza a cultura brasileira. Lançamento da Coleção Nômade, ele chama a atenção pela tonalidade castanho-mel e pela facilidade de combinar com tudo, trazendo calor e beleza aos móveis e interiores."
       />
       <TextureProperties
-        texture="/bps/patterns/volakas.jpg"
-        textureName="Volakas"
+        texture="/bps/patterns/cacau.jpg"
+        textureName="Cacau"
         mdp={{ thickness: '12 / 15 / 18 / 25', size: '2,75 x 1,85' }}
         mdf={{ thickness: '6 / 9 / 15 / 18 / 25', size: '2,75 x 1,85' }}
       />
@@ -157,7 +157,7 @@ const Intro = (props: {
     pos="relative"
   >
     <Image
-      src="/img/grafismo_topo_direita.svg"
+      src="/img/grafismo_com_imagem.png"
       pos="absolute"
       boxSize={['642px', '538px']}
       top="0"
