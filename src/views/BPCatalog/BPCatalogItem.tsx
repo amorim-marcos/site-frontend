@@ -19,9 +19,15 @@ import {
 } from '@chakra-ui/react'
 import { Link } from 'react-scroll'
 
+import {
+  ZoomInIcon,
+  CertificationsIcon,
+  ReportsIcon,
+  PlayIcon,
+  EarthIcon,
+  TapIcon
+} from '@components/Icons'
 import Arrow from '@components/Arrow'
-import SearchIcon from '@components/SearchIcon'
-import ReportsIcon from '@components/Icons/ReportsIcon'
 
 export type Wood = { thickness: string; size: string }
 
@@ -183,7 +189,7 @@ const Intro = (props: {
 
       <Box cursor="pointer" pos="absolute" bottom="29px" right="29px">
         <Link to="texture-props" smooth offset={-80}>
-          <SearchIcon stroke="green.600" />
+          <ZoomInIcon />
         </Link>
       </Box>
     </Flex>
@@ -207,7 +213,13 @@ const Inspire = (props: {
 
   return (
     <Box pos="relative">
-      <Flex data-testid="micro-texture" pos="relative" left="140px" top="-65px">
+      <Flex
+        data-testid="micro-texture"
+        pos="relative"
+        left="140px"
+        top="-65px"
+        w="fit-content"
+      >
         <Image
           src="/bps/patterns/azul_vel.jpg"
           borderRadius="100%"
@@ -249,6 +261,7 @@ const Inspire = (props: {
         data-testid="combine-texture"
         pos="relative"
         left="52%"
+        w="fit-content"
         top="-330px"
         zIndex={100}
       >
@@ -282,7 +295,7 @@ const Inspire = (props: {
         </Flex>
       </Box>
 
-      <Flex pl="88px" pos="relative" mt="-580px">
+      <Flex pl="88px" pos="relative" mt="-580px" wrap="wrap">
         <Flex data-testid="texture-examples" pt="208px" direction="column">
           <Text
             fontSize="37px"
@@ -312,35 +325,47 @@ const Inspire = (props: {
           </Flex>
         </Flex>
 
-        <Flex
-          data-testid="texture-description"
+        <Box
           bg="#D6DCD5"
           mt="165px"
           w="1440px"
           h="633px"
-          padding="223px 183px 203px 596px"
-          direction="column"
           pos="absolute"
           right="0"
           zIndex={-1}
+        />
+
+        <Flex
+          data-testid="texture-description"
+          mt="165px"
+          w="840px"
+          h="633px"
+          padding="223px 100px 203px 120px"
+          direction="column"
+          right="0"
         >
           <Text w="660px" fontSize="20px" letterSpacing="0px" color="green.900">
             {props.patternDescription}
           </Text>
 
-          <Flex pt="52px" gap="116px">
+          <Flex pt="52px" gap="116px" zIndex={1000}>
             <TextureContentButton
               title="Assista ao vídeo"
               onClick={() => alert('video')}
             >
-              <ReportsIcon stroke1="#6AA353" width="35px" height="35px" />
+              <PlayIcon />
             </TextureContentButton>
 
             <TextureContentButton
               title="Confira o ebook"
               onClick={() => alert('ebook')}
             >
-              <ReportsIcon stroke1="#6AA353" width="35px" height="35px" />
+              <ReportsIcon
+                stroke1="#6AA353"
+                width="35px"
+                height="35px"
+                transform="scaleY(-1)"
+              />
             </TextureContentButton>
           </Flex>
         </Flex>
@@ -355,7 +380,7 @@ const TextureProperties = (props: {
   mdp: Wood
   mdf: Wood
 }) => (
-  <Flex align="center" justify="center" gap="102px">
+  <Flex align="center" justify="center" gap="102px" wrap="wrap">
     <Flex direction="column" gap="93px">
       <Flex
         data-testid="download-pattern"
@@ -398,7 +423,7 @@ const TextureProperties = (props: {
           title="CONFIRA"
           description="Certificado de Qualidade"
           onClick={() => alert('certificado')}
-          icon={<ReportsIcon width="39px" />}
+          icon={<CertificationsIcon width="61px" height="86px" />}
           graphism=""
         />
 
@@ -406,7 +431,7 @@ const TextureProperties = (props: {
           title="DESCUBRA"
           description="Onde Comprar"
           onClick={() => alert('Local')}
-          icon={<ReportsIcon width="39px" />}
+          icon={<EarthIcon />}
           graphism=""
         />
       </Flex>
@@ -502,7 +527,7 @@ const TextureProperties = (props: {
             </Text>
 
             <Flex align="center" padding="20px 0 10px" gap="12px">
-              <ReportsIcon stroke1="#919191" width="40px" height="26px" />
+              <TapIcon />
               <Text
                 fontSize="20px"
                 letterSpacing="-0.4px"
@@ -554,8 +579,8 @@ const TextureContentButton = (props: {
     fontWeight="bold"
     letterSpacing="0px"
     gap="14px"
-    onClick={props.onClick}
     cursor="pointer"
+    onClick={props.onClick}
     transition="all 0.2s ease-in-out"
     _hover={{ filter: 'brightness(0.8)' }}
   >
