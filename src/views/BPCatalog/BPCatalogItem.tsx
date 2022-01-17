@@ -23,6 +23,8 @@ import Arrow from '@components/Arrow'
 import SearchIcon from '@components/SearchIcon'
 import ReportsIcon from '@components/Icons/ReportsIcon'
 
+export type Wood = { thickness: string; size: string }
+
 export const BPCatalogItem = () => {
   const prevBp = 'SOLANUM'
   const nextBp = 'VERTI'
@@ -347,30 +349,6 @@ const Inspire = (props: {
   )
 }
 
-const TextureContentButton = (props: {
-  title: string
-  onClick: () => void
-  children: ReactNode
-}) => (
-  <Flex
-    align="center"
-    color="green.500"
-    fontSize="20px"
-    fontWeight="bold"
-    letterSpacing="0px"
-    gap="14px"
-    onClick={props.onClick}
-    cursor="pointer"
-    transition="all 0.2s ease-in-out"
-    _hover={{ filter: 'brightness(0.8)' }}
-  >
-    {props.children}
-    {props.title}
-  </Flex>
-)
-
-type Wood = { thickness: string; size: string }
-
 const TextureProperties = (props: {
   texture: string
   textureName: string
@@ -439,7 +417,62 @@ const TextureProperties = (props: {
         <AccordionItem>
           <AccordionButtonBp title="DISPONÍVEL EM" />
           <AccordionPanelBp>
-            <BpProperties mdp={props.mdp} mdf={props.mdf} />
+            <Flex direction="column">
+              <Box pb="40px">
+                <Text
+                  fonSize="19px"
+                  fontWeight="bold"
+                  letterSpacing="-0.37px"
+                  color="grey.300"
+                >
+                  MDP BERNECK®
+                </Text>
+                <Table variant="simple">
+                  <Tbody>
+                    <Tr>
+                      <TdGreen>Espessuras (mm)</TdGreen>
+                      <TdGreen>{props.mdp.thickness}</TdGreen>
+                    </Tr>
+                    <Tr>
+                      <TdGreen>Dimensão (m)</TdGreen>
+                      <TdGreen>{props.mdp.size}</TdGreen>
+                    </Tr>
+                  </Tbody>
+                </Table>
+              </Box>
+
+              <Box pb="13px">
+                <Text
+                  fonSize="19px"
+                  fontWeight="bold"
+                  letterSpacing="-0.37px"
+                  color="grey.300"
+                >
+                  MDF BERNECK®
+                </Text>
+                <Table variant="simple">
+                  <Tbody>
+                    <Tr>
+                      <TdGreen>Espessuras (mm)</TdGreen>
+                      <TdGreen>{props.mdf.thickness}</TdGreen>
+                    </Tr>
+                    <Tr>
+                      <TdGreen>Dimensão (m)</TdGreen>
+                      <TdGreen>{props.mdf.size}</TdGreen>
+                    </Tr>
+                  </Tbody>
+                </Table>
+              </Box>
+
+              <Text
+                fontSize="16px"
+                fontWeight="medium"
+                letterSpacing="-0.32px"
+                color="green.200"
+              >
+                *Outras dimensões sob consulta
+              </Text>
+            </Flex>
           </AccordionPanelBp>
         </AccordionItem>
 
@@ -509,28 +542,25 @@ const TextureProperties = (props: {
   </Flex>
 )
 
-const ArrowButton = (props: {
+const TextureContentButton = (props: {
+  title: string
   onClick: () => void
-  direction: 'left' | 'right'
+  children: ReactNode
 }) => (
   <Flex
-    onClick={props.onClick}
-    _hover={{
-      filter: 'brightness(0.8)'
-    }}
-    transition="all 0.2s ease-in-out"
-    cursor="pointer"
-    bg="grey.300"
-    boxSize="77px"
     align="center"
-    justify="center"
+    color="green.500"
+    fontSize="20px"
+    fontWeight="bold"
+    letterSpacing="0px"
+    gap="14px"
+    onClick={props.onClick}
+    cursor="pointer"
+    transition="all 0.2s ease-in-out"
+    _hover={{ filter: 'brightness(0.8)' }}
   >
-    <Arrow
-      direction={props.direction}
-      width="21px"
-      height="30px"
-      color="grey.100"
-    />
+    {props.children}
+    {props.title}
   </Flex>
 )
 
@@ -580,6 +610,31 @@ const PatternInfo = (props: {
   </Flex>
 )
 
+const ArrowButton = (props: {
+  onClick: () => void
+  direction: 'left' | 'right'
+}) => (
+  <Flex
+    onClick={props.onClick}
+    _hover={{
+      filter: 'brightness(0.8)'
+    }}
+    transition="all 0.2s ease-in-out"
+    cursor="pointer"
+    bg="grey.300"
+    boxSize="77px"
+    align="center"
+    justify="center"
+  >
+    <Arrow
+      direction={props.direction}
+      width="21px"
+      height="30px"
+      color="grey.100"
+    />
+  </Flex>
+)
+
 interface AccordionButtonBpProps extends AccordionButtonProps {
   title: string
 }
@@ -612,63 +667,4 @@ const TdGreen = (props: TableCellProps) => (
   >
     {props.children}
   </Td>
-)
-
-const BpProperties = (props: { mdp: Wood; mdf: Wood }) => (
-  <Flex direction="column">
-    <Box pb="40px">
-      <Text
-        fonSize="19px"
-        fontWeight="bold"
-        letterSpacing="-0.37px"
-        color="grey.300"
-      >
-        MDP BERNECK®
-      </Text>
-      <Table variant="simple">
-        <Tbody>
-          <Tr>
-            <TdGreen>Espessuras (mm)</TdGreen>
-            <TdGreen>{props.mdp.thickness}</TdGreen>
-          </Tr>
-          <Tr>
-            <TdGreen>Dimensão (m)</TdGreen>
-            <TdGreen>{props.mdp.size}</TdGreen>
-          </Tr>
-        </Tbody>
-      </Table>
-    </Box>
-
-    <Box pb="13px">
-      <Text
-        fonSize="19px"
-        fontWeight="bold"
-        letterSpacing="-0.37px"
-        color="grey.300"
-      >
-        MDF BERNECK®
-      </Text>
-      <Table variant="simple">
-        <Tbody>
-          <Tr>
-            <TdGreen>Espessuras (mm)</TdGreen>
-            <TdGreen>{props.mdf.thickness}</TdGreen>
-          </Tr>
-          <Tr>
-            <TdGreen>Dimensão (m)</TdGreen>
-            <TdGreen>{props.mdf.size}</TdGreen>
-          </Tr>
-        </Tbody>
-      </Table>
-    </Box>
-
-    <Text
-      fontSize="16px"
-      fontWeight="medium"
-      letterSpacing="-0.32px"
-      color="green.200"
-    >
-      *Outras dimensões sob consulta
-    </Text>
-  </Flex>
 )
