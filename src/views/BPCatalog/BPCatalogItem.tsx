@@ -424,7 +424,14 @@ const TextureProperties = (props: {
           description="Certificado de Qualidade"
           onClick={() => alert('certificado')}
           icon={<CertificationsIcon width="61px" height="86px" />}
-          graphism=""
+          graphism={
+            <Image
+              src="/img/grafismo_button_left.svg"
+              filter={'brightness(0.65)'}
+              pos="absolute"
+              left={0}
+            />
+          }
         />
 
         <PatternInfo
@@ -432,7 +439,14 @@ const TextureProperties = (props: {
           description="Onde Comprar"
           onClick={() => alert('Local')}
           icon={<EarthIcon />}
-          graphism=""
+          graphism={
+            <Image
+              src="/img/grafismo_button_right.svg"
+              filter={'brightness(0.65)'}
+              pos="absolute"
+              right={0}
+            />
+          }
         />
       </Flex>
     </Flex>
@@ -584,8 +598,8 @@ const TextureContentButton = (props: {
     transition="all 0.2s ease-in-out"
     _hover={{ filter: 'brightness(0.8)' }}
   >
-    {props.children}
     {props.title}
+    {props.children}
   </Flex>
 )
 
@@ -605,15 +619,16 @@ const PatternInfo = (props: {
     pl="84px"
     gap="45px"
     cursor="pointer"
+    pos="relative"
     onClick={props.onClick}
     _hover={{
       filter: 'brightness(1.2)'
     }}
   >
-    {props.icon}
     {props.graphism}
+    {props.icon}
 
-    <Box>
+    <Box zIndex={10}>
       <Text
         fontSize="23px"
         fontWeight="medium"
