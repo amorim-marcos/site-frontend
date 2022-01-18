@@ -61,9 +61,9 @@ export const About = () => {
           >
            <Text
               fontFamily = 'body'
-              fontWeight= 'bold'
+              fontWeight= 'extrabold'
               color = 'green.600'
-              fontSize = {{ base: '18px', sm: '24px', lg: '27px', xl: '50px'}}
+              fontSize = {{ base: '18px', sm: '24px', lg: '27px', xl: '30px'}}
               // alignSelf='center'
             >Raízes firmes para crescer</Text>
             
@@ -72,7 +72,7 @@ export const About = () => {
               fontWeight= 'normal'
               color='green.900'
               fontSize = {{ base: '8px', sm: '12px', lg: '16px', xl: '20px'}}
-              marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '12px'}}
+              marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '20px'}}
             >A força da natureza nos faz crescer. Trabalhamos duro para que nossos produtos ajudem a melhorar a vida das pessoas, apoiando o mercado global e gerando um impacto positivo nas comunidades locais. Nossas parcerias são vigorosas e criam vínculos duradouros com nossos clientes, fornecedores e toda a sociedade. Buscamos e desenvolvemos soluções ágeis e flexíveis para atender aos mais diversos propósitos, e aos mais de 60 países em todos os continentes. Estar próximo, nos faz chegar mais longe.</Text>
           </Box>
           
@@ -123,7 +123,7 @@ export const About = () => {
               <Box
                 // bg='blue'
                 position='absolute'
-                margin = {{ base: '-25% 42%', sm: '-25% 42%', md: '-18% 38%',  lg: '-14% 25%', xl: '-13% 29%'}}
+                margin = {{ base: '-25% 42%', sm: '-25% 42%', md: '-18% 38%',  lg: '-14% 25%', xl: '-10% 25%'}}
               >
                 <Infographic
                   titleSuperscript1Text = 'Volume de Exportação'
@@ -147,7 +147,7 @@ export const About = () => {
               flex='1'
               alignSelf='center'
               marginTop = {{ base: '50px', sm: '4%', lg: '3%', xl: '2%'}}
-              marginRight = {{ base: '5%', sm: '5%', lg: '5%', xl: '2%'}}
+              marginRight = {{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
               marginLeft = {{ base: '5%', sm: '5%', lg: '70%', xl: '20%'}}
               marginBottom = {{ base: '5%', sm: '5%', lg: '3%', xl: '2%'}}
             >
@@ -155,13 +155,13 @@ export const About = () => {
                 fontFamily = 'body'
                 fontWeight= 'bold'
                 color = 'green.900'
-                fontSize = {{ base: '18px', sm: '24px', lg: '27px', xl: '50px'}}
+                fontSize = {{ base: '18px', sm: '24px', lg: '27px', xl: '30px'}}
                 // alignSelf='center'
               >Madeira para o mundo</Text>
               
               <Text
                 fontFamily = 'body'
-                fontWeight= 'normal'
+                fontWeight= 'medium'
                 color='brown.350'
                 fontSize = {{ base: '8px', sm: '12px', lg: '16px', xl: '20px'}}
                 marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '10px'}}
@@ -290,6 +290,75 @@ export const About = () => {
       </Flex>
     </Box>
     {/* FIM REVENDEDORES */}
+
+
+
+
+    {/* INICIO CERTIFICADOS */}
+  <Box
+      bg= 'white.100' 
+    >
+      <Flex
+        // bg='red'
+        direction = {{ base: 'column', sm: 'row', lg: 'row', xl: 'row'}}
+        h = {{ base: '20px', sm: '25px', lg: '50px', xl: '490px'}}
+        alignContent='center'
+      >
+      <Image
+        // bg='pink'
+        src='/assets/imgs/grafismo_topo_esquerda.png'
+        marginLeft={{ base: '-20px', sm: '-20px', lg: '-30px', xl: '-50px'}}
+        h='100%'
+        
+      />
+        <Box
+          // bg='azure'
+          flex='1'
+          margin = {{ base: '20px', sm: '25px', lg: '50px', xl: '60px'}}
+          alignSelf='center'
+        >
+          <Text
+            fontFamily = 'body'
+            fontWeight= 'extrabold'
+            color = 'green.900'
+            fontSize = {{ base: '18px', sm: '24px', lg: '27px', xl: '50px'}}
+            // alignSelf='center'
+          >Certificações</Text>
+           <Box 
+              margin={{ base: '0px 3px', sm: '8px', lg: '16px', xl: '20px 0px'}}
+              h="3px"
+              w={{ base: '60px', sm: '70px', lg: '80px', xl: '90px'}}
+              bg="green.600"
+              borderRadius="20px"
+              alignSelf="right"
+            />
+          <Text
+            fontFamily = 'body'
+            fontWeight= 'normal'
+            color='green.900'
+            fontSize = {{ base: '8px', sm: '12px', lg: '16px', xl: '20px'}}
+            marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '12px'}}
+          >Manejo florestal, qualidade produtiva, controle de fabricação. Para nós, qualidade e desenvolvimento responsável são mais do que objetivos a serem alcançados, são práticas incorporadas em nosso dia a dia.</Text>
+        </Box>
+        
+        <Box
+          // bg='yellow'
+          flex='1'
+          margin = {{ base: '20px', sm: '25px', lg: '50px', xl: '60px'}}
+          alignSelf='center'
+        >
+          <Image 
+            src='/assets/imgs/img_nossas_certificacoes.png'
+            w={{ base: '300px', sm: '400px', lg: '550px', xl: '100%'}}
+            
+          />
+        </Box>
+
+      </Flex>
+    </Box>
+    {/* FIM CERTIFICADOS */}
+
+
 
 
     {/* </GlobalContainer> */}
