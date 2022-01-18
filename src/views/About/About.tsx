@@ -217,14 +217,9 @@ export const About = () => {
             >Do cultivo da nossa terra, cresceu um comprometimento com a gestão ambientalmente sustentável e socialmente responsável. São mais de 65 anos buscando e desenvolvendo novas aplicações com a nossa madeira de forma versátil e renovável, 100% provenientes de cultivos florestais.</Text>
         
           </Flex>
-
-          <Flex
-            bg='black'
-            marginBottom = {{ base: '5%', sm: '5%', lg: '4%', xl: '4%'}}
-          >
+          <Flex justifyContent="center" alignItems="center" width="100%" margin={{ xs: "0", sm: "0", md: "0", lg: "20px", xl: "20px" }}>
             <TrajectoryCarousel {...mockCarouselObj}/>
           </Flex>
-
         </Flex>
       </Box>
       {/* FIM TRAJETORIA CAROUSEL */}
@@ -234,6 +229,7 @@ export const About = () => {
       <Flex
         bg='pink'
       >
+        
         <WhereWeAre {...mockPanelObj}/>
       </Flex>
       {/* FIM ONDE ESTAMOS */}
