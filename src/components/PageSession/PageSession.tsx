@@ -70,7 +70,7 @@ export const PageSession = ({
       <Image
         // bg='red'
         src='/assets/imgs/grafismo_topo_direita.png'
-        marginTop={{ base: '150px', sm: '100px', lg: '200px', xl: '200px'}}
+        marginTop={{ base: '150px', sm: '100px', lg: '150px', xl: '200px'}}
         marginRight={{ base: '-10px', sm: '-20px', lg: '-30px', xl: '-50px'}}
         h='100%'
       />
@@ -80,8 +80,8 @@ export const PageSession = ({
         // bg = 'grey'
         position='absolute'
         zIndex='base'
-        w={{ base: '90%', sm: '90%', lg: '90%', xl: '70%'}}
-        marginLeft={{ base: '-10px', sm: '-20px', lg: '-30px', xl: '120px'}}
+        w={{ base: '80%', sm: '80%', lg: '80%', xl: '75%'}}
+        marginLeft={{ base: '-10px', sm: '-20px', lg: '40px', xl: '95px'}}
       >
 
         <Flex
@@ -93,15 +93,16 @@ export const PageSession = ({
             // bg='red'
             flexWrap='nowrap'
             flex='1'
+            margin={{ base: '0%', sm: '0%', lg: '2%', xl: '2%'}}
             >
              <Text
               fontFamily = 'body'
               fontWeight= 'extrabold'
               color={titleColor}
-              fontSize = {{ base: '18px', sm: '24px', lg: '27px', xl: '50px'}}
+              fontSize = {{ base: '18px', sm: '32px', lg: '40px', xl: '50px'}}
             >{data.title}</Text>
             <Box 
-              marginTop={{ base: '3px', sm: '8px', lg: '16px', xl: '31px'}}
+              marginTop={{ base: '3px', sm: '10px', lg: '20px', xl: '31px'}}
               h="3px"
               w={{ base: '60px', sm: '70px', lg: '80px', xl: '90px'}}
               bg="green.600"
@@ -110,22 +111,22 @@ export const PageSession = ({
           </Box>
 
           <Box
-            margin={{ base: '3px 0px', sm: '5px 0px', lg: '4px 8px', xl: '15px 0px'}}
+            margin={{ base: '3px 0px', sm: '5px 0px', lg: '10px 0px', xl: '15px 0px'}}
             // bg='green.200'
-            flex='2'
+            flex={{ base: 'column', sm: 'column', lg: '1.3', xl: '2'}}
           >
             <Text
               fontFamily = 'body'
               fontWeight= 'bold'
               color={subTitleColor}
-              fontSize = {{ base: '10px', sm: '18px', lg: '24px', xl: '30px'}}
+              fontSize = {{ base: '10px', sm: '22px', lg: '24px', xl: '30px'}}
             >{data.subtitle}</Text>
             
             <Text
               fontFamily = 'body'
               fontWeight= 'normal'
               color={subTitleColor}
-              fontSize = {{ base: '8px', sm: '12px', lg: '16px', xl: '20px'}}
+              fontSize = {{ base: '8px', sm: '14px', lg: '16px', xl: '20px'}}
             >{data.text}</Text>
           </Box>
 
