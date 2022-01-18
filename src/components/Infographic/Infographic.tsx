@@ -81,11 +81,12 @@ export const Infographic = ({
 
   <Container 
     display='flex'
-    // margin='50px'
+    
   >
     <Box 
       display='flex'
       // bg='azure'
+      margin='3%'
     >
       {/* WRAP MAIN  --> */}
       <Flex 
@@ -98,7 +99,7 @@ export const Infographic = ({
         <Box 
           display={titleSuperscript1Display}
           justifyContent='center'
-          bg='black'
+          // bg='black'
         >
           <Heading 
               variant='h1'
@@ -107,7 +108,7 @@ export const Infographic = ({
               fontFamily = 'body'
               fontWeight= 'bold'
               // base to 320px | sm to 568px | lg to 1024 | xl to max
-              fontSize={{ base: '10px', sm: '12px', lg: '14px', xl: '16px'}}
+              fontSize={{ base: '10px', sm: '12px', lg: '14px', xl: '20px'}}
               textAlign='center'
             >{titleSuperscript1Text}</Heading>
         </Box>
@@ -117,7 +118,7 @@ export const Infographic = ({
           display={titleSuperscript2Display}
           justifyContent='center'
           // marginBottom={{ base: '0px', sm: '0px', lg: '0px', xl: '0px'}}
-          bg='greenyellow'
+          // bg='greenyellow'
         >
           <Heading 
               variant = 'h4'
@@ -137,14 +138,14 @@ export const Infographic = ({
           <Box 
             display='flex'
             alignItems='center'
-            bg='aquamarine'
+            // bg='aquamarine'
             maxH='70px'
          >
 
           {/* CONTENT 1 --> */}
           <Box 
             display={content1Display}
-            bg='bisque'
+            // bg='bisque'
           >
 
           {content1DisplayIcon=='none' &&
@@ -153,7 +154,7 @@ export const Infographic = ({
                 color={content1Color}
                 fontFamily = 'body'
                 fontWeight= 'extrabold'
-                fontSize = {{ base: '50px', sm: '50px', lg: '50px', xl: '50px'}}
+                fontSize = {{ base: '40px', sm: '50px', lg: '50px', xl: '80px'}}
               >{content1Text}</Heading>
           }
            
@@ -187,7 +188,7 @@ export const Infographic = ({
                 letterSpacing = '-0.94px'
                 fontFamily = 'body'
                 fontWeight= 'extrabold'
-                fontSize = {{ base: '50px', sm: '50px', lg: '50px', xl: '50px'}}
+                fontSize = {{ base: '40px', sm: '50px', lg: '50px', xl: '80px'}}
                 display={content2Display}
               >{content2Text}</Heading>
               
@@ -195,7 +196,7 @@ export const Infographic = ({
               <Box 
                 display={content3Display}
                 flexDirection='column'
-                bg='yellow'
+                // bg='yellow'
                 alignSelf='flex-start'
                 marginTop={{ base: '12px', sm: '15px', lg: '10px', xl: '10px'}}
                 marginLeft='5px'
@@ -205,7 +206,7 @@ export const Infographic = ({
                   color={content3Color}
                   letterSpacing = '-0.76px'
                   fontWeight= 'bold'
-                  bg='red'
+                  // bg='red'
                   fontSize= {{ base: '10px', sm: '12px', lg: '14px', xl: '14px'}}
                   maxWidth={{ base: '50px', sm: '60px', lg: '80px', xl: '59px'}}
                 >{content3Text}</Heading>
@@ -224,7 +225,7 @@ export const Infographic = ({
                     color={content4Color}
                     fontFamily = 'body'
                     fontWeight= 'extrabold'
-                    bg='pink'
+                    // bg='pink'
                     fontSize={{ base: '20px', sm: '30px', lg: '40px', xl: '70px'}}
                     marginBottom={{ base: '10px', sm: '5px', lg: '-10px', xl: '-16px'}}
                   >{content4Text}</Heading>
@@ -239,7 +240,7 @@ export const Infographic = ({
         <Box 
           display={titleSubscript1Display}
           justifyContent='center'
-          bg='pink.400'
+          // bg='pink.400'
           marginTop = {{ base: '-10px', sm: '-5px', lg: '10px', xl: '5px'}}
         >
           <Heading 
