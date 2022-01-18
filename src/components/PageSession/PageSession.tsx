@@ -80,7 +80,8 @@ export const PageSession = ({
         // bg = 'grey'
         position='absolute'
         zIndex='base'
-        w={{ base: '90%', sm: '90%', lg: '90%', xl: '80%'}}
+        w={{ base: '90%', sm: '90%', lg: '90%', xl: '70%'}}
+        marginLeft={{ base: '-10px', sm: '-20px', lg: '-30px', xl: '120px'}}
       >
 
         <Flex
@@ -89,17 +90,18 @@ export const PageSession = ({
         
           <Box 
             w='100%'
-            // bg='green.800'
+            // bg='red'
             flexWrap='nowrap'
+            flex='1'
             >
              <Text
               fontFamily = 'body'
-              fontWeight= 'bold'
+              fontWeight= 'extrabold'
               color={titleColor}
               fontSize = {{ base: '18px', sm: '24px', lg: '27px', xl: '50px'}}
             >{data.title}</Text>
             <Box 
-              marginTop={{ base: '3px', sm: '8px', lg: '16px', xl: '25px'}}
+              marginTop={{ base: '3px', sm: '8px', lg: '16px', xl: '31px'}}
               h="3px"
               w={{ base: '60px', sm: '70px', lg: '80px', xl: '90px'}}
               bg="green.600"
@@ -108,8 +110,9 @@ export const PageSession = ({
           </Box>
 
           <Box
-            margin={{ base: '3px 0px', sm: '5px 0px', lg: '4px 8px', xl: '15px 15px'}}
+            margin={{ base: '3px 0px', sm: '5px 0px', lg: '4px 8px', xl: '15px 0px'}}
             // bg='green.200'
+            flex='2'
           >
             <Text
               fontFamily = 'body'

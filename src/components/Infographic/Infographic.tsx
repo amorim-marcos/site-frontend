@@ -108,7 +108,7 @@ export const Infographic = ({
               fontFamily = 'body'
               fontWeight= 'bold'
               // base to 320px | sm to 568px | lg to 1024 | xl to max
-              fontSize={{ base: '10px', sm: '12px', lg: '14px', xl: '20px'}}
+              fontSize={{ base: '10px', sm: '12px', lg: '14px', xl: '26px'}}
               textAlign='center'
             >{titleSuperscript1Text}</Heading>
         </Box>
@@ -154,7 +154,7 @@ export const Infographic = ({
                 color={content1Color}
                 fontFamily = 'body'
                 fontWeight= 'extrabold'
-                fontSize = {{ base: '40px', sm: '50px', lg: '50px', xl: '80px'}}
+                fontSize = {{ base: '40px', sm: '50px', lg: '50px', xl: '90px'}}
               >{content1Text}</Heading>
           }
            
@@ -188,7 +188,7 @@ export const Infographic = ({
                 letterSpacing = '-0.94px'
                 fontFamily = 'body'
                 fontWeight= 'extrabold'
-                fontSize = {{ base: '40px', sm: '50px', lg: '50px', xl: '80px'}}
+                fontSize = {{ base: '40px', sm: '50px', lg: '50px', xl: '90px'}}
                 display={content2Display}
               >{content2Text}</Heading>
               
@@ -198,7 +198,7 @@ export const Infographic = ({
                 flexDirection='column'
                 // bg='yellow'
                 alignSelf='flex-start'
-                marginTop={{ base: '12px', sm: '15px', lg: '10px', xl: '10px'}}
+                marginTop={{ base: '12px', sm: '15px', lg: '10px', xl: '0px'}}
                 marginLeft='5px'
               >
                 <Heading 
@@ -207,8 +207,8 @@ export const Infographic = ({
                   letterSpacing = '-0.76px'
                   fontWeight= 'bold'
                   // bg='red'
-                  fontSize= {{ base: '10px', sm: '12px', lg: '14px', xl: '14px'}}
-                  maxWidth={{ base: '50px', sm: '60px', lg: '80px', xl: '59px'}}
+                  fontSize= {{ base: '10px', sm: '12px', lg: '14px', xl: '20px'}}
+                  maxWidth={{ base: '50px', sm: '60px', lg: '80px', xl: '100px'}}
                 >{content3Text}</Heading>
               </Box>
 
