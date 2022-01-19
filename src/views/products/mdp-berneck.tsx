@@ -8,22 +8,12 @@ export default function Hdf() {
           grafism: 'type1'
         }}
         imgSrc="/img/mdp.png"
+        imgWidth={{ base: '100vw', sm: '60vw' }}
+        imgMaxWidth="1151px"
         imgMarginTop={{
-          base: '36px',
-          sm: '52px',
-          md: '69px',
-          lg: '86px',
-          xl: '104px',
-          '2xl': '0'
+          base: '0px'
         }}
-        imgMarginRight={{
-          base: '-80px',
-          sm: '-108px',
-          md: '-145px',
-          lg: '-181px',
-          xl: '-217px',
-          '2xl': '-272px'
-        }}
+        imgMarginRight="0px"
         secondaryBackground="#F3E9DA"
         downloadAndLinks={{
           datasheet: true,
@@ -71,22 +61,13 @@ export default function Hdf() {
           grafism: 'type2'
         }}
         imgSrc="/img/mdp_plus.png"
+        imgWidth={{ base: '100vw', sm: '53vw' }}
+        imgMaxWidth="1017px"
         imgMarginTop={{
-          base: '59px',
-          sm: '80px',
-          md: '106px',
-          lg: '133px',
-          xl: '160px',
-          '2xl': '200px'
+          sm: '12%',
+          lg: '5%'
         }}
-        imgMarginRight={{
-          base: '-88px',
-          sm: '-120px',
-          md: '-160px',
-          lg: '-200px',
-          xl: '-240px',
-          '2xl': '-300px'
-        }}
+        imgMarginRight="0px"
         secondaryBackground="#F5F6F4"
         plusProduct
         downloadAndLinks={{

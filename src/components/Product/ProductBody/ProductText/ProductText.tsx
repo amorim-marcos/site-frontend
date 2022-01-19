@@ -34,7 +34,18 @@ export const ProductText = ({
         <Text
           key={p}
           {...TextSyle}
-          marginBottom={i === content.length - 1 ? '50px' : '0px'}
+          marginBottom={
+            i !== content.length - 1 && paragraph
+              ? {
+                  base: '7px',
+                  sm: '10px',
+                  md: '20px',
+                  lg: '30px',
+                  xl: '40px',
+                  '2xl': '50px'
+                }
+              : '0px'
+          }
         >
           {p}
         </Text>

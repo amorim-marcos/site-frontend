@@ -50,6 +50,7 @@ export const ProductBody = ({
       flexDirection="column"
       bg={backgroundColor}
       paddingBottom={paddingBottom}
+      paddingTop={{ base: '5%' }}
     >
       {description && (
         <Box
@@ -177,6 +178,14 @@ export const ProductBody = ({
             tableBorderColor={backgroundColor}
             tableBackgroundColor={secondaryBackgroundColor}
             dimensions={dimensions}
+            tableWidth={{
+              base: '300px',
+              sm: '170px',
+              md: '270px',
+              lg: '350px',
+              xl: '400px',
+              '2xl': '450px'
+            }}
           />
         </Box>
       )}

@@ -1,4 +1,4 @@
-import { Box, Image, Flex } from '@chakra-ui/react'
+import { Box, Image, Flex, useMediaQuery } from '@chakra-ui/react'
 import { ResponsiveCss } from 'types/responsive'
 import {
   GrafismProduct,
@@ -27,6 +27,7 @@ export type ProductProps = {
   imgMaxWidth?: ResponsiveCss
   grafismProps: GrafismProductProps
 }
+
 export const Product = ({
   header,
   body,
@@ -50,28 +51,45 @@ export const Product = ({
           direction="column"
           width="100vw"
           maxWidth="1920px"
-          position="absolute"
+          position={{ base: 'relative', sm: 'absolute' }}
           top="0"
           right="0"
-          alignItems="flex-end"
+          alignItems={'flex-end'}
         >
-          <Box>
+          <Flex
+            justifyContent="flex-end"
+            w="100vw"
+            bg={{ base: body?.backgroundColor, sm: 'none' }}
+          >
             <Image
+              as="img"
+              src={imgSrc}
+              alt="product image"
+              width={imgWidth}
+              maxWidth={imgMaxWidth}
+              marginTop={'-30%'}
+              marginRight={imgMarginRight}
+              display={{ base: 'block', sm: 'none' }}
+            />
+
+            <Image
+              as="img"
               src={imgSrc}
               alt="product image"
               width={imgWidth}
               maxWidth={imgMaxWidth}
               marginTop={imgMarginTop}
               marginRight={imgMarginRight}
+              display={{ base: 'none', sm: 'block' }}
             />
-          </Box>
-          {downloadAndLinks && (
+          </Flex>
+          {/* {downloadAndLinks && (
             <ProductDownloadAndLinks
               plusProduct={plusProduct}
               backgroundColor={secondaryBackground}
               {...downloadAndLinks}
             />
-          )}
+          )} */}
         </Flex>
       )}
       <ProductBody {...body} secondaryBackgroundColor={secondaryBackground} />

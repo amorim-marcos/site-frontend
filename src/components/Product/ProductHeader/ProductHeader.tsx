@@ -23,7 +23,7 @@ export const ProductHeader = ({
       maxWidth="1920px"
       bg={headerBgColor}
       align={{ base: 'center', sm: 'flex-start' }}
-      paddingBottom={{ base: '60px', sm: '5%' }}
+      paddingBottom={{ base: '30vh', sm: '5%' }}
     >
       <Flex
         width="fit-content"
@@ -65,7 +65,7 @@ export const ProductHeader = ({
         <Heading
           color="white.100"
           fontSize={{
-            base: '30px',
+            base: '33px',
             sm: '25px',
             md: '30px',
             lg: '35px',
@@ -93,37 +93,40 @@ export const ProductHeader = ({
         }}
         marginBottom="20px"
       />
-      <Box>
-        <Heading
+      <Flex flexDirection="column">
+        <Box>
+          <Heading
+            fontSize={{
+              base: '17px',
+              sm: '11px',
+              md: '14px',
+              lg: '18px',
+              xl: '22px',
+              '2xl': '30px'
+            }}
+            color="green.900"
+            zIndex="docked"
+            marginBottom={{ base: '15px', sm: '0px' }}
+          >
+            {subtitle}
+          </Heading>
+        </Box>
+        <Text
           fontSize={{
-            base: '15px',
-            sm: '11px',
-            md: '14px',
-            lg: '18px',
-            xl: '22px',
-            '2xl': '30px'
+            base: '13px',
+            sm: '8px',
+            md: '11px',
+            lg: '14px',
+            xl: '17px',
+            '2xl': '20px'
           }}
           color="green.900"
+          width={{ base: '100%', sm: '45%' }}
           zIndex="docked"
         >
-          {subtitle}
-        </Heading>
-      </Box>
-      <Text
-        fontSize={{
-          base: '7px',
-          sm: '8px',
-          md: '11px',
-          lg: '14px',
-          xl: '17px',
-          '2xl': '20px'
-        }}
-        color="green.900"
-        width={{ base: '100%', sm: '45%' }}
-        zIndex="docked"
-      >
-        {description}
-      </Text>
+          {description}
+        </Text>
+      </Flex>
     </Flex>
   )
 }

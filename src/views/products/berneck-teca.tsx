@@ -14,7 +14,7 @@ export default function BerneckTecaView() {
           }
         }}
         imgSrc="/img/teca.png"
-        imgWidth="56vw"
+        imgWidth={{ base: '110vw', sm: '56vw' }}
         imgMaxWidth="1075px"
         imgMarginTop={{
           base: '94px',
@@ -25,7 +25,7 @@ export default function BerneckTecaView() {
           '2xl': '-60px'
         }}
         imgMarginRight={{
-          base: '-150px',
+          base: '-65px',
           sm: '-51px',
           md: '-100px',
           lg: '-100px',

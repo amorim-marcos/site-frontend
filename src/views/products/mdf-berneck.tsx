@@ -8,7 +8,7 @@ export default function Hdf() {
           grafism: 'type1'
         }}
         imgSrc="/img/mdf.png"
-        imgWidth="60vw"
+        imgWidth={{ base: '100vw', sm: '60vw' }}
         imgMaxWidth="1151px"
         imgMarginTop={{
           base: '0px'
@@ -69,7 +69,7 @@ export default function Hdf() {
           grafism: 'type2'
         }}
         imgSrc="/img/mdf_plus.png"
-        imgWidth="60vw"
+        imgWidth={{ base: '100vw', sm: '60vw' }}
         imgMaxWidth="1151px"
         imgMarginTop={{
           base: '9px',
