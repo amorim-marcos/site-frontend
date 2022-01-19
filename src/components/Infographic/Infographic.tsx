@@ -81,11 +81,12 @@ export const Infographic = ({
 
   <Container 
     display='flex'
-    margin='50px'
+    
   >
     <Box 
       display='flex'
       // bg='azure'
+      margin='3%'
     >
       {/* WRAP MAIN  --> */}
       <Flex 
@@ -98,7 +99,7 @@ export const Infographic = ({
         <Box 
           display={titleSuperscript1Display}
           justifyContent='center'
-          // bg='yellow.200'
+          // bg='black'
         >
           <Heading 
               variant='h1'
@@ -107,7 +108,7 @@ export const Infographic = ({
               fontFamily = 'body'
               fontWeight= 'bold'
               // base to 320px | sm to 568px | lg to 1024 | xl to max
-              fontSize={{ base: '16px', sm: '24px', lg: '26px', xl: '30px'}}
+              fontSize={{ base: '10px', sm: '12px', lg: '14px', xl: '26px'}}
               textAlign='center'
             >{titleSuperscript1Text}</Heading>
         </Box>
@@ -116,13 +117,13 @@ export const Infographic = ({
         <Box 
           display={titleSuperscript2Display}
           justifyContent='center'
-          marginBottom={{ base: '-8px', sm: '8px', lg: '10px', xl: '15px'}}
+          // marginBottom={{ base: '0px', sm: '0px', lg: '0px', xl: '0px'}}
           // bg='greenyellow'
         >
           <Heading 
               variant = 'h4'
               color = {titleSuperscript2Color}
-              fontSize = {{ base: '13px', sm: '18px', lg: '20px', xl: '22px'}}
+              fontSize={{ base: '8px', sm: '10px', lg: '14px', xl: '1px'}}
               textAlign = 'center'
             >{titleSuperscript2Text}</Heading>
         </Box>
@@ -153,7 +154,7 @@ export const Infographic = ({
                 color={content1Color}
                 fontFamily = 'body'
                 fontWeight= 'extrabold'
-                fontSize = {{ base: '50px', sm: '85px', lg: '90px', xl: '100px'}}
+                fontSize = {{ base: '40px', sm: '50px', lg: '50px', xl: '90px'}}
               >{content1Text}</Heading>
           }
            
@@ -161,18 +162,18 @@ export const Infographic = ({
             <Box marginRight='5px'>
               {(content1IconName === 'energy' &&
                 <EnergyIcon 
-                  height = {{ base: '30px', sm: '45px', lg: '50px', xl: '55px'}}
-                  width = {{ base: '30px', sm: '40px', lg: '40px', xl: '60px'}}
+                  height = {{ base: '40px', sm: '40px', lg: '50px', xl: '55px'}}
+                  width = {{ base: '30px', sm: '30px', lg: '40px', xl: '60px'}}
                 />)
                 || (content1IconName === 'water' &&
                 <WaterIcon 
-                  height = {{ base: '25px', sm: '40px', lg: '45px', xl: '48px'}}
-                  width = {{ base: '25px', sm: '40px', lg: '40px', xl: '60px'}}
+                  height = {{ base: '25px', sm: '35px', lg: '45px', xl: '48px'}}
+                  width = {{ base: '25px', sm: '30px', lg: '40px', xl: '60px'}}
                 />)
                 || (content1IconName === 'trees' &&
                 <TreesIcon 
                   height = {{ base: '80px', sm: '100px', lg: '120px', xl: '140px'}}
-                  width = {{ base: '35px', sm: '50px', lg: '55px', xl: '60px'}}
+                  width = {{ base: '35px', sm: '40px', lg: '55px', xl: '60px'}}
                 />)}
 
             </Box>  
@@ -187,7 +188,7 @@ export const Infographic = ({
                 letterSpacing = '-0.94px'
                 fontFamily = 'body'
                 fontWeight= 'extrabold'
-                fontSize = {{ base: '50px', sm: '85px', lg: '90px', xl: '100px'}}
+                fontSize = {{ base: '40px', sm: '50px', lg: '50px', xl: '90px'}}
                 display={content2Display}
               >{content2Text}</Heading>
               
@@ -197,7 +198,7 @@ export const Infographic = ({
                 flexDirection='column'
                 // bg='yellow'
                 alignSelf='flex-start'
-                marginTop={{ base: '12px', sm: '5px', lg: '0px', xl: '0px'}}
+                marginTop={{ base: '12px', sm: '15px', lg: '10px', xl: '0px'}}
                 marginLeft='5px'
               >
                 <Heading 
@@ -205,8 +206,9 @@ export const Infographic = ({
                   color={content3Color}
                   letterSpacing = '-0.76px'
                   fontWeight= 'bold'
-                  fontSize= {{ base: '12px', sm: '16px', lg: '18px', xl: '20px'}}
-                  maxWidth={{ base: '50px', sm: '90px', lg: '90px', xl: '100px'}}
+                  // bg='red'
+                  fontSize= {{ base: '10px', sm: '12px', lg: '14px', xl: '20px'}}
+                  maxWidth={{ base: '50px', sm: '60px', lg: '80px', xl: '100px'}}
                 >{content3Text}</Heading>
               </Box>
 
@@ -223,8 +225,9 @@ export const Infographic = ({
                     color={content4Color}
                     fontFamily = 'body'
                     fontWeight= 'extrabold'
-                    fontSize={{ base: '35px', sm: '45px', lg: '60px', xl: '70px'}}
-                    marginBottom={{ base: '6px', sm: '-6px', lg: '-10px', xl: '-16px'}}
+                    // bg='pink'
+                    fontSize={{ base: '20px', sm: '30px', lg: '40px', xl: '70px'}}
+                    marginBottom={{ base: '10px', sm: '5px', lg: '-10px', xl: '-16px'}}
                   >{content4Text}</Heading>
               </Box>
 
@@ -237,8 +240,8 @@ export const Infographic = ({
         <Box 
           display={titleSubscript1Display}
           justifyContent='center'
-          // bg='lavenderblush'
-          marginTop = {{ base: '-10px', sm: '5px', lg: '10px', xl: '20px'}}
+          // bg='pink.400'
+          marginTop = {{ base: '-10px', sm: '-5px', lg: '10px', xl: '5px'}}
         >
           <Heading 
               variant='h1'
@@ -247,8 +250,8 @@ export const Infographic = ({
               fontFamily = 'body'
               fontWeight= 'bold'
               textAlign='center'
-              fontSize={{ base: '16px', sm: '24px', lg: '26px', xl: '30px'}}
-              maxWidth={{ base: '150px', sm: '250px', lg: '250px', xl: '300px'}}
+              fontSize={{ base: '10px', sm: '12px', lg: '14px', xl: '16px'}}
+              maxWidth={{ base: '150px', sm: '200px', lg: '250px', xl: '300px'}}
             >{titleSubscript1Text}</Heading>
         </Box>
         {/* SUBSCRIPT TITLE --> */}

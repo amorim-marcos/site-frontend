@@ -1,19 +1,23 @@
-import { Box, Flex, Text, Image } from '@chakra-ui/react'
-import { WhereWeArePanelProps } from '@components/WhereWeArePanel/WhereWeArePanel'
+import { Box, Flex, Text, Image, useMediaQuery } from '@chakra-ui/react'
+import { breakpoints } from 'theme/breakpoints'
 
+import { WhereWeArePanelProps } from '@components/WhereWeArePanel/WhereWeArePanel'
 import WhereWeArePanel from '@components/WhereWeArePanel'
+import Carousel from '@components/Carousel'
 
 export type WhereWeAreProps = {
-  panels: WhereWeArePanelProps[]
+  panels?: WhereWeArePanelProps[]
 }
 
 export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
+  const [isMobile] = useMediaQuery(`(max-width: ${breakpoints.lg})`)
+
   return (
     <Box>
       <Flex
         w="100%"
-        mb="5rem"
-        gap="5rem"
+        mb="50px"
+        gap={{ base: '30px', md: '83px' }}
         pos="relative"
         overflow="hidden"
         direction="column"
@@ -22,51 +26,89 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
           src="img/grafismo_fundo_cinza.svg"
           pos="absolute"
           zIndex={-1}
-          mr="-6rem"
-          right={0}
-          w="40%"
+          right={{ xs: '-30px', sm: '-90px', '2xl': '-100px' }}
+          top={{ xs: '60px', '2xl': '-10px' }}
         />
 
-        <Flex mt="5.8rem" justifyContent="space-around">
+        <Flex
+          mt="100px"
+          direction={{ base: 'column', md: 'row' }}
+          align={{ base: 'center', md: 'flex-start' }}
+          px={{ md: '30px', lg: '80px', xl: '60px', '2xl': '120px' }}
+          gap={{ base: '20px', md: '130px' }}
+        >
           <Title />
           <Description />
         </Flex>
 
-        <Flex w="100%" wrap="wrap" gap="3.4rem" justifyContent="center">
-          {panels.map((item, index) => (
-            <WhereWeArePanel key={index} {...item} />
-          ))}
-        </Flex>
+        {isMobile ? (
+          <Flex as={'carousel' as any} px={{ base: '20px' }} justify="center">
+            <Carousel>
+              {panels.map((item) => (
+                <WhereWeArePanel key={item.image} {...item} />
+              ))}
+            </Carousel>
+          </Flex>
+        ) : (
+          <Flex w="100%" wrap="wrap" gap="54px" justify="center">
+            {panels.map((item) => (
+              <WhereWeArePanel key={item.image} {...item} />
+            ))}
+          </Flex>
+        )}
       </Flex>
     </Box>
   )
 }
 
 const Title = () => (
-  <Box>
+  <Flex
+    direction="column"
+    align={{ base: 'center', md: 'flex-start' }}
+    gap={{ base: '10px', '2xl': '29px' }}
+  >
     <Text
       color="green.800"
-      pb="0.5rem"
-      fontSize="2rem"
-      fontWeight="extrabold"
+      fontSize = {{ base: '18px', sm: '32px', lg: '40px', xl: '50px'}}
+      fontFamily = 'body'
+      fontWeight= 'extrabold'
       letterSpacing="-1px"
+      lineHeight="1"
     >
       Onde Estamos
     </Text>
 
-    <Box w="5.5rem" h="2px" marginLeft="0.2rem" bg="green.600" />
-  </Box>
+    <Box 
+      h="3px"
+      w={{ base: '60px', sm: '70px', lg: '80px', xl: '90px'}}
+      bg="green.600"
+      borderRadius="20px"
+    />
+  </Flex>
 )
 
 const Description = () => (
-  <Box w="60%">
-    <Text color="green.600" letterSpacing="-0.6px" fontWeight="extrabold">
+  <Box 
+    w={{ base: '80vw', md: '60%' }}
+  >
+    <Text
+      color="green.600"
+      letterSpacing="-0.6px"
+      fontWeight="extrabold"
+      fontSize = {{ base: '10px', sm: '22px', lg: '24px', xl: '30px'}}
+      textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+    >
       Localização estratégica
     </Text>
 
-    <Text color="grey.300" letterSpacing="-0.4px">
+    <Text
+      color="grey.300"
+      letterSpacing="-0.4px"
+      fontSize = {{ base: '8px', sm: '14px', lg: '16px', xl: '20px'}}
+      textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+    >
       {
-        'Localização estratégica Nossas plantas industriais estão estrategicamente localizadas próximas às áreas de cultivo florestal e às principais rodovias e portos do país, com fácil distribuição para todo o território nacional e exterior.'
+        'Nossas plantas industriais estão estrategicamente localizadas próximas às áreas de cultivo florestal e às principais rodovias e portos do país, com fácil distribuição para todo o território nacional e exterior.'
       }
     </Text>
   </Box>
