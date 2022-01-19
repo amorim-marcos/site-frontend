@@ -28,21 +28,73 @@ export type WhereWeArePanelProps = {
 export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
   const [showOverlay, setShowOverlay] = useState<'map' | 'info' | null>(null)
 
-  const handleShowOverlay = (overlay: 'map' | 'info' | null) => {
-    showOverlay === overlay ? setShowOverlay(null) : setShowOverlay(overlay)
+  const Overlay = () => {
+    switch (showOverlay) {
+      case 'map':
+        return (
+          <LeafletMaps
+            center={props.coords}
+            onClick={() => window.open(props.googleMapsURL, '_blank')}
+          />
+        )
+      case 'info':
+        return (
+          <WhereWeArePanelInfo
+            {...props.ourPlaceInformation}
+            onClose={() => setShowOverlay(null)}
+          />
+        )
+      default:
+        return null
+    }
   }
 
   return (
-    <Flex pos="relative" h="31rem" w="50rem" direction="column">
+    <Flex
+      h={{
+        base: '445px',
+        md: '400px',
+        lg: '435px',
+        xl: '295px',
+        '2xl': '435px'
+      }}
+      w={{
+        base: '90vw',
+        md: '720px',
+        lg: '810px',
+        xl: '550px',
+        '2xl': '810px'
+      }}
+      pos="relative"
+      direction="column"
+      userSelect="none"
+      mb={{ sm: '0', md: '70px' }}
+    >
       <PanelImage
         image={props.image}
         inaugurationSoon={props.inaugurationSoon}
       />
 
       <Flex
-        id="panel-overlay"
-        h={showOverlay ? '27rem' : '0'}
-        bottom="4rem"
+        data-testid="panel-overlay"
+        h={
+          showOverlay
+            ? {
+                base: '330px', //'0px',
+                sm: '340px', //'568px',
+                md: '400px', //'768px',
+                lg: '436px', //'1024px',
+                xl: '300px', //'1280px',
+                '2xl': '436px' //'1536px'
+              }
+            : 0
+        }
+        bottom={{
+          base: '115px', //'0px',
+          sm: '105px', //'568px',
+          md: '10px', //'768px',
+          lg: '-1px' //'1024px',
+        }}
         w="100%"
         pos="absolute"
         bgColor="white"
@@ -50,19 +102,7 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
         transition={`all 0.3s ease-in-out`}
         boxShadow="0px 2px 15px -10px #000000"
       >
-        {showOverlay === 'map' && (
-          <LeafletMaps
-            center={props.coords}
-            onClick={() => window.open(props.googleMapsURL, '_blank')}
-          />
-        )}
-
-        {showOverlay === 'info' && (
-          <WhereWeArePanelInfo
-            {...props.ourPlaceInformation}
-            onClose={() => handleShowOverlay(null)}
-          />
-        )}
+        <Overlay />
       </Flex>
 
       <WhereWeArePanelFooter
@@ -70,19 +110,25 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
         inaugurationSoon={props.inaugurationSoon}
         address={`${props.city}, ${props.state} • ${props.country}`}
         showOverlay={showOverlay}
-        handleChangeOverlay={handleShowOverlay}
+        handleChangeOverlay={(overlay: 'map' | 'info' | null) => {
+          showOverlay === overlay
+            ? setShowOverlay(null)
+            : setShowOverlay(overlay)
+        }}
       />
     </Flex>
   )
 }
 
 const PanelImage = (props: { image: string; inaugurationSoon?: boolean }) => (
-  <Flex justifyContent="center" alignItems="center" pos="relative">
+  <Flex h="100%" justifyContent="center" alignItems="center" pos="relative">
     <Image
       h="100%"
-      w="100%"
       src={props.image}
+      cursor={{ md: 'pointer' }}
       objectFit="cover"
+      userSelect="none"
+      draggable="false"
       // filter={props.inaugurationSoon ? 'blur(7px)' : 'none'} // @ActiveInProd
     />
 
