@@ -21,7 +21,7 @@ export const FooterList = ({ title, items }: FooterListProps) => {
           <Link href={title.href} passHref>
             <Text
               _hover={{ color: 'green.600' }}
-              variant={'header-menu'}
+              variant={'header-menu' as any}
               fontSize={{
                 base: '7px',
                 sm: '8px',
@@ -44,7 +44,7 @@ export const FooterList = ({ title, items }: FooterListProps) => {
               <Link passHref href={i.href}>
                 <Text
                   _hover={{ color: '#FFF' }}
-                  variant="tags"
+                  variant={"tags" as any}
                   fontSize={{
                     base: '6px',
                     sm: '7px',

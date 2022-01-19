@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react'
-import { QualityPinus } from './QualityPinus'
+import { QualityPinus, QualityPinusProps } from './QualityPinus'
 
 export default {
   title: 'QualityPinus',

@@ -1,6 +1,6 @@
 import { Box, BoxProps} from "@chakra-ui/react"
 
-export type ArrowProps = {
+export type ArrowProps = BoxProps & {
   width: number | string
   height: number | string
   color?: string
