@@ -48,14 +48,35 @@ export const TrajectoryCarouselPanel = ({ tabData, myIndex, tabIndex }: Trajecto
           }}
         >
           
-          <Heading textAlign="left" variant="h1" fontSize={{ base: "48px", sm: "65px"}} color="grey.300">{tabData.name}</Heading>
+          <Heading 
+            textAlign="left" 
+            variant="h1" 
+            fontSize={{ base: '18px', sm: '32px', lg: '40px', xl: '50px'}}
+            color="grey.300"
+          >{tabData.name}</Heading>
           <Flex
             alignItems="start"
           >
-            <Arrow width='14px' height='19px' color="green.600" mt={{base: "5px", md: "8px"}}></Arrow>
-            <Heading textAlign="left" variant="h3" fontSize={{ base: "25px", sm: "40px"}} color="green.900" ml="24px">{tabData.content.title}</Heading>
+            <Arrow 
+              width='14px' 
+              height='19px' 
+              color="green.600" 
+              mt={{base: "5px", md: "8px"}}
+              ></Arrow>
+            <Heading 
+              textAlign="left" 
+              variant="h3" 
+              fontSize = {{ base: '10px', sm: '22px', lg: '24px', xl: '30px'}}
+              color="green.900" 
+              ml="24px"
+            >{tabData.content.title}</Heading>
           </Flex>
-          <Text ml={{base: "15px", md: "38px"}} mt={{base: "10px", md: "27px"}} fontSize={{ base: "15px", sm: "20px"}} textAlign="justify">{tabData.content.text}</Text>
+          <Text 
+            ml={{base: "15px", md: "38px"}} 
+            mt={{base: "10px", md: "27px"}} 
+            fontSize = {{ base: '8px', sm: '14px', lg: '16px', xl: '20px'}}
+            textAlign="left"
+          >{tabData.content.text}</Text>
         </Flex>
         <Box
           flex={1}
@@ -67,7 +88,7 @@ export const TrajectoryCarouselPanel = ({ tabData, myIndex, tabIndex }: Trajecto
           }}
           alignSelf="center"
         >
-          <Image width="100%" src={tabData.content.image}></Image>
+          <Image width="90%" src={tabData.content.image}></Image>
         </Box>
       </Flex>
   )

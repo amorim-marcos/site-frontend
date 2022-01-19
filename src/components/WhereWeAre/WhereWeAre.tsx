@@ -35,7 +35,7 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
           direction={{ base: 'column', md: 'row' }}
           align={{ base: 'center', md: 'flex-start' }}
           px={{ md: '30px', lg: '80px', xl: '60px', '2xl': '120px' }}
-          gap={{ base: '54px', md: '130px' }}
+          gap={{ base: '20px', md: '130px' }}
         >
           <Title />
           <Description />
@@ -65,40 +65,38 @@ const Title = () => (
   <Flex
     direction="column"
     align={{ base: 'center', md: 'flex-start' }}
-    gap={{ base: '18px', '2xl': '29px' }}
+    gap={{ base: '10px', '2xl': '29px' }}
   >
     <Text
       color="green.800"
-      fontSize={{
-        base: '30px',
-        xs: '35px',
-        sm: '42px',
-        md: '30px',
-        xl: '50px'
-      }}
-      fontWeight="extrabold"
+      fontSize = {{ base: '18px', sm: '32px', lg: '40px', xl: '50px'}}
+      fontFamily = 'body'
+      fontWeight= 'extrabold'
       letterSpacing="-1px"
       lineHeight="1"
     >
       Onde Estamos
     </Text>
 
-    <Box
-      w={{ base: '88px', md: '48px', xl: '87px' }}
-      h={{ base: '4px', '2xl': '3px' }}
-      ml={{ base: 'none', md: '5px' }}
+    <Box 
+      h="3px"
+      w={{ base: '60px', sm: '70px', lg: '80px', xl: '90px'}}
       bg="green.600"
+      borderRadius="20px"
     />
   </Flex>
 )
 
 const Description = () => (
-  <Box w={{ base: '80vw', md: '60%' }}>
+  <Box 
+    w={{ base: '80vw', md: '60%' }}
+  >
     <Text
       color="green.600"
       letterSpacing="-0.6px"
       fontWeight="extrabold"
-      fontSize={{ base: '20px', sm: '28px', '2xl': '30px' }}
+      fontSize = {{ base: '10px', sm: '22px', lg: '24px', xl: '30px'}}
+      textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
     >
       Localização estratégica
     </Text>
@@ -106,7 +104,8 @@ const Description = () => (
     <Text
       color="grey.300"
       letterSpacing="-0.4px"
-      fontSize={{ base: '16px', '2xl': '20px' }}
+      fontSize = {{ base: '8px', sm: '14px', lg: '16px', xl: '20px'}}
+      textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
     >
       {
         'Nossas plantas industriais estão estrategicamente localizadas próximas às áreas de cultivo florestal e às principais rodovias e portos do país, com fácil distribuição para todo o território nacional e exterior.'

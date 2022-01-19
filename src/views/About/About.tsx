@@ -57,7 +57,8 @@ export const About = () => {
 
       {/* INICIO RAIZES FIRMES PARA CRESCER */}
       <Box
-        bg= 'green.200' 
+        bg= 'green.200'
+        h={{ base: '500px', sm: '420px', lg: '500px', xl: '600px'}}
       >
         <Flex
           // bg='red'
@@ -66,23 +67,25 @@ export const About = () => {
           <Box
             // bg='pink'
             flex='1'
-            margin = {{ base: '5%', sm: '35px', lg: '50px', xl: '60px'}}
-            h='100%'
+            margin = {{ base: '5%', sm: '35px', lg: '50px', xl: '5%'}}
+            // h='100%'
             alignSelf='center'
           >
-           <Text
+           <Text as='h1'
+              variant = 'h1'
               fontFamily = 'body'
               fontWeight= 'extrabold'
               color = 'green.600'
-              fontSize = {{ base: '18px', sm: '24px', lg: '27px', xl: '30px'}}
+              // fontSize = {{ base: '18px', sm: '24px', lg: '27px', xl: '30px'}}
               // alignSelf='center'
             >{dataRaizes.title}</Text>
             
-            <Text
+        
+            <Text as='h4'
               fontFamily = 'body'
-              fontWeight= 'normal'
+              // fontWeight= 'normal'
               color='green.900'
-              fontSize = {{ base: '8px', sm: '12px', lg: '16px', xl: '20px'}}
+              // fontSize = {{ base: '8px', sm: '12px', lg: '16px', xl: '20px'}}
               marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '20px'}}
             >{dataRaizes.text}</Text>
           </Box>
@@ -205,7 +208,7 @@ export const About = () => {
           >
             <Text
               fontFamily = 'body'
-              fontWeight = 'bold'
+              fontWeight = 'extrabold'
               color = 'green.900'
               fontSize = {{ base: '18px', sm: '32px', lg: '40px', xl: '50px'}}
               textAlign = 'center'
@@ -228,7 +231,7 @@ export const About = () => {
             >Do cultivo da nossa terra, cresceu um comprometimento com a gestão ambientalmente sustentável e socialmente responsável. São mais de 65 anos buscando e desenvolvendo novas aplicações com a nossa madeira de forma versátil e renovável, 100% provenientes de cultivos florestais.</Text>
         
           </Flex>
-          <Flex justifyContent="center" alignItems="center" width="100%" margin={{ xs: "0", sm: "0", md: "0", lg: "20px", xl: "20px" }}>
+          <Flex justifyContent="center" alignItems="center" width="90%" margin={{ xs: "0", sm: "0", md: "0", lg: "20px", xl: "20px" }}>
             <TrajectoryCarousel {...mockCarouselObj}/>
           </Flex>
         </Flex>
@@ -299,8 +302,6 @@ export const About = () => {
     {/* FIM REVENDEDORES */}
 
 
-
-
     {/* INICIO CERTIFICADOS */}
     <Flex
       bg='white'
@@ -326,35 +327,53 @@ export const About = () => {
         position='absolute'
         zIndex='base'
         margin = {{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
+        direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
       >
       <Box
           flex='1'
-          // bg='grey'
+          // bg='yellow'
         >
         {/* COLUNA 1 FLEX */}
         <Flex
           direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
-           w={{ base: '90%', sm: '90%', lg: '70%', xl: '70%'}}
+          w={{ base: '90%', sm: '90%', lg: '70%', xl: '70%'}}
         >
           <Box 
             w='100%'
+            
             // bg='red'
             flexWrap='nowrap'
             flex='1'
             >
-             <Text
-              fontFamily = 'body'
-              fontWeight= 'extrabold'
-              color= 'green.900'
-              fontSize = {{ base: '18px', sm: '32px', lg: '40px', xl: '50px'}}
-            >Certificações</Text>
-            <Box 
-              marginTop={{ base: '3px', sm: '10px', lg: '20px', xl: '31px'}}
-              h="3px"
-              w={{ base: '60px', sm: '70px', lg: '80px', xl: '90px'}}
-              bg="green.600"
-              borderRadius="20px"
-            />
+             <Flex 
+            // bg='red'
+            direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
+          >
+            <Box
+              // bg='orange'
+            >
+              <Text
+                  fontFamily = 'body'
+                  fontWeight= 'extrabold'
+                  color='green.900'
+                  fontSize = {{ base: '18px', sm: '32px', lg: '40px', xl: '50px'}}
+                  textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+              >Certificação</Text>
+            </Box>
+            
+            <Box
+              // bg='white'
+              alignSelf={{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}}
+            >
+              <Box 
+                marginTop={{ base: '3px', sm: '10px', lg: '20px', xl: '20px'}}
+                h="3px"
+                w={{ base: '60px', sm: '70px', lg: '80px', xl: '90px'}}
+                bg="green.600"
+                borderRadius="20px"
+              />
+            </Box>
+          </Flex>
           </Box>
 
           <Box
@@ -366,6 +385,7 @@ export const About = () => {
               fontWeight= 'normal'
               color='green.900'
               fontSize = {{ base: '8px', sm: '14px', lg: '16px', xl: '20px'}}
+              textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
             >Manejo florestal, qualidade produtiva, controle de fabricação. Para nós, qualidade e desenvolvimento responsável são mais do que objetivos a serem alcançados, são práticas incorporadas em nosso dia a dia.</Text>
           </Box>
         </Flex>   

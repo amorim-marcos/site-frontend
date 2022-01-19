@@ -5,8 +5,8 @@ export const Text = {
       fontWeight: 'semibold'
     },
     body: {
-      fontSize: '20px',
-      fontWeight: 'medium'
+      fontSize: { base: '8px', sm: '12px', lg: '16px', xl: '20px'},
+      fontWeight: 'normal'
     },
     'larger-body-bold': {
       fontSize: '23px',
@@ -49,6 +49,31 @@ export const Text = {
       fontSize: '20px',
       fontWeight: 'normal',
       letterSpacing: '-0.4px'
+    },
+    h1: {
+      color: 'green.800',
+      fontSize: { base: '18px', sm: '32px', lg: '40px', xl: '50px'},
+      fontWeight: 700
+    },
+    h2: {
+      color: 'green.700',
+      fontSize: '50px',
+      fontWeight: 800
+    },
+    h3: {
+      color: 'green.700',
+      fontSize: '30px',
+      fontWeight: 800
+    },
+    h4: {
+      color: 'green.700',
+      fontSize: { base: '8px', sm: '12px', lg: '16px', xl: '20px'},
+      fontWeight: 'extrabold',
+    },
+    h5: {
+      color: 'green.700',
+      fontSize: '25px',
+      fontWeight: 400
     }
   },
   defaultProps: {
