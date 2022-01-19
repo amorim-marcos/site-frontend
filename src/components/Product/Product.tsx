@@ -54,7 +54,6 @@ export const Product = ({
           top="0"
           right="0"
           alignItems="flex-end"
-          visibility={{ base: 'hidden' }}
         >
           <Box>
             <Image
