@@ -146,7 +146,8 @@ export default function BerneckTecaView() {
               tableBackgroundColor="#E8DDD5"
               tableBorderColor="#FFF"
               tableWidth={{
-                base: '300px',
+                base: '280px',
+                xs: '320px',
                 sm: '250px',
                 md: '350px',
                 lg: '480px',

@@ -6,7 +6,7 @@ export const tableItemStyle = (borderColor: string, background: string) => ({
   padding: '0px',
   bg: background,
   height: {
-    base: '15px',
+    base: '30px',
     sm: '20px',
     md: '25px',
     lg: '30px',
@@ -28,7 +28,7 @@ const headingStyle = {
   },
   color: 'green.900',
   fontSize: {
-    base: '8px',
+    base: '20px',
     sm: '11px',
     md: '14px',
     lg: '18px',
@@ -73,7 +73,7 @@ export const ProductDimensions = ({
         <Table
           fontWeight="light"
           fontSize={{
-            base: '8px',
+            base: '10px',
             sm: '7px',
             md: '12px',
             lg: '14px',
@@ -114,7 +114,7 @@ export const ProductDimensions = ({
         </Table>
         <Text
           fontSize={{
-            base: '6px',
+            base: '13px',
             sm: '8px',
             md: '10px',
             lg: '12px',
