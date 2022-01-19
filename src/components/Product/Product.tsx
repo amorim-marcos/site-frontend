@@ -17,7 +17,6 @@ import {
 export type ProductProps = {
   header?: ProductHeaderProps
   body?: ProductBodyProps
-  grafism?: 'type1' | 'type2'
   imgSrc?: string
   imgMarginTop?: ResponsiveCss
   imgMarginRight?: ResponsiveCss
@@ -26,12 +25,11 @@ export type ProductProps = {
   downloadAndLinks?: ProductDownloadAndLinksProps
   imgWidth?: ResponsiveCss
   imgMaxWidth?: ResponsiveCss
-  grafismProps?: GrafismProductProps
+  grafismProps: GrafismProductProps
 }
 export const Product = ({
   header,
   body,
-  grafism,
   imgSrc,
   imgMarginTop,
   imgMarginRight,
@@ -44,7 +42,7 @@ export const Product = ({
 }: ProductProps) => {
   return (
     <Box overflow="hidden" position="relative" marginX="auto" maxWidth="1920px">
-      <GrafismProduct {...grafismProps} grafism={grafism || 'type1'} />
+      <GrafismProduct {...grafismProps} />
 
       {imgSrc && (
         <Flex
@@ -76,7 +74,7 @@ export const Product = ({
         </Flex>
       )}
       <ProductHeader {...header} />
-      <ProductBody {...body} secondaryBackground={secondaryBackground} />
+      <ProductBody {...body} secondaryBackgroundColor={secondaryBackground} />
     </Box>
   )
 }

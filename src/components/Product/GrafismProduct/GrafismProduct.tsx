@@ -3,10 +3,11 @@ import {
   GrafismProductProps as SubGrafismProps
 } from './GrafismProduct1/GrafismProduct1'
 import { GrafismProduct2 } from './GrafismProduct2/GrafismProduct2'
+import { GrafismProduct3 } from './GrafismProduct3/GrafismProduct3'
 import { Box } from '@chakra-ui/react'
 
 export type GrafismProductProps = {
-  grafism: 'type1' | 'type2'
+  grafism: 'type1' | 'type2' | 'type3'
   grafismProps?: SubGrafismProps
 }
 
@@ -14,7 +15,6 @@ export const GrafismProduct = ({
   grafism,
   grafismProps
 }: GrafismProductProps) => {
-  console.log(grafism)
   return grafism === 'type1' ? (
     <Box
       position="absolute"
@@ -26,14 +26,6 @@ export const GrafismProduct = ({
         xl: '-480px',
         '2xl': '-630px'
       }}
-      // right={{
-      //   base: '-530px',
-      //   sm: '-256px',
-      //   md: '-340px',
-      //   lg: '-424px',
-      //   xl: '-530px',
-      //   '2xl': '-640px'
-      // }}
       left={'40%'}
       zIndex="base"
     >
@@ -46,11 +38,10 @@ export const GrafismProduct = ({
           xl: '1400px',
           '2xl': '1760px'
         }}
-        // maxWidth={{ xl: '1400px', '2xl': '1760px' }}
         {...grafismProps}
       />
     </Box>
-  ) : (
+  ) : grafism === 'type2' ? (
     <Box
       zIndex="base"
       position="absolute"
@@ -65,6 +56,32 @@ export const GrafismProduct = ({
       left="36%"
     >
       <GrafismProduct2
+        width={{
+          base: '520px',
+          sm: '702px',
+          md: '937px',
+          lg: '1171px',
+          xl: '1405px',
+          '2xl': '1650px'
+        }}
+        {...grafismProps}
+      />
+    </Box>
+  ) : (
+    <Box
+      zIndex="base"
+      position="absolute"
+      top={{
+        base: '-70px',
+        sm: '-94px',
+        md: '-126px',
+        lg: '-158px',
+        xl: '-189px',
+        '2xl': '-237px'
+      }}
+      left="36%"
+    >
+      <GrafismProduct3
         width={{
           base: '520px',
           sm: '702px',

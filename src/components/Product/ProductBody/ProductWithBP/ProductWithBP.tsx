@@ -99,7 +99,7 @@ export const ProductWithBP = ({
             xl: '15px',
             '2xl': '18px'
           }}
-          width="84%"
+          width="75%"
           marginTop={{
             base: '7px',
             sm: '10px',

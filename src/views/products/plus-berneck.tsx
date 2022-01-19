@@ -4,7 +4,9 @@ export default function PlusBerneckView() {
   return (
     <div>
       <Product
-        grafism="type2"
+        grafismProps={{
+          grafism: 'type1'
+        }}
         imgSrc="/img/plus.png"
         imgMarginTop={{
           base: '94px',
@@ -38,7 +40,6 @@ export default function PlusBerneckView() {
           heading2: 'Normas de qualidade',
           paragraph2:
             'Os produtos da linha PLUS BERNECK® seguem as normas ABNT NBR 14.810 e ABNT NBR 15.316 (V313) e registram indicadores superiores aos estabelecidos pela normativa.',
-          heading3: 'Acabamentos',
           backgroundColor: '#E8E8E8'
         }}
       />

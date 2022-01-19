@@ -4,7 +4,9 @@ export default function Hdf() {
   return (
     <div>
       <Product
-        grafism="type1"
+        grafismProps={{
+          grafism: 'type1'
+        }}
         imgSrc="/img/mdp.png"
         imgMarginTop={{
           base: '36px',
@@ -23,6 +25,11 @@ export default function Hdf() {
           '2xl': '-272px'
         }}
         secondaryBackground="#F3E9DA"
+        downloadAndLinks={{
+          datasheet: true,
+          whereBuy: true,
+          qualityCertificate: true
+        }}
         header={{
           title: 'MDP BERNECK®',
           headerBgColor: '#E0CBA5',
@@ -31,14 +38,11 @@ export default function Hdf() {
             'Destaca-se pela coloração bem clara e homogênea, superfície lisa e camada interna bem compactada, assegurada pela perfeita distribuição das partículas'
         }}
         body={{
-          heading1: 'Descrição',
-          paragraph1:
+          description:
             'O MDP BERNECK é formado por partículas de madeira de média densidade, Medium Density Particleboard. É produzido em prensas contínuas de ultima geração. É um dos produtos mais tecnológicos e econômicos para produção de móveis de linhas retas. Destaca-se por sua coloração clara e homogenia e pela menor absorção superficial por ter a camada externa com alta densidade e uniformidade, assegurada pela perfeita distribuição das partículas de madeira.',
-          heading2: 'Usos e Aplicações',
-          paragraph2:
+          usesAndApplications:
             'Especialmente indicado para os processos de pintura e impressão, que exigem superfícies uniformes e de baixa absorção e para o revestimento com qualquer material (BPs, laminados de PVC, laminados de Alta Pressão (AP), lâminas de madeira, lâminas pré-compostas, etc.). Proporciona excelente resultado em móveis para dormitórios, escritórios, cozinhas, além de eletro-eletrônicos, construção civil, painéis para decoração, entre outros.',
-          heading3: 'Acabamentos',
-          paragraph3: [
+          finishes: [
             '• Natural (sem revestimento)',
             '• Revestido com laminado de baixa pressão BP BERNECK®'
           ],
@@ -63,7 +67,9 @@ export default function Hdf() {
       />
 
       <Product
-        grafism="type2"
+        grafismProps={{
+          grafism: 'type2'
+        }}
         imgSrc="/img/mdp_plus.png"
         imgMarginTop={{
           base: '59px',
@@ -95,18 +101,15 @@ export default function Hdf() {
             'A qualidade do MDP BERNECK® aliada à máxima proteção contra umidade e cupins.'
         }}
         body={{
-          heading1: 'Mais tecnologia, mais qualidade, mais proteção',
-          paragraph1: [
+          moreTechnologyQualityProtection: [
             'O MDP BERNECK é formado por partículas de madeira de média densidade, Medium Density Particleboard. É produzido em prensas contínuas de última geração. É um dos produtos mais tecnológicos e econômicos para produção de móveis que não necessitem de trabalhos de baixo relevo. ',
             'O MDP PLUS é um produto inovador! Além de ser um painel de madeira com maior resistência à umidade, ele traz inúmeras vantagens: leveza, custo competitivo e desempenho superior quando comparado às demais opções do mercado.',
             'Possui a coloração esverdeada no miolo como identificação internacional do produto com maior resistência à umidade, diferenciando-o dos painéis Standard. Essa pigmentação pode variar a cada lote de produção e não está associada ao princípio ativo de hidro resistência, ou seja, não é à prova d’água.',
             'Vale inovar nos projetos com MDP Plus. Um ótimo investimento, com incomparável custo benefício'
           ],
-          heading2: 'Usos e Aplicações',
-          paragraph2:
+          usesAndApplications:
             'Indicado para móveis de cozinhas, banheiros, lavanderias e ambientes comerciais.',
-          heading3: 'Acabamentos',
-          paragraph3: [
+          finishes: [
             '• Natural (sem revestimento)',
             '• Revestido com laminado de baixa pressão BP BERNECK®'
           ],

@@ -4,7 +4,9 @@ export default function Hdf() {
   return (
     <div>
       <Product
-        grafism="type1"
+        grafismProps={{
+          grafism: 'type1'
+        }}
         imgSrc="/img/mdf.png"
         imgWidth="60vw"
         imgMaxWidth="1151px"
@@ -20,6 +22,11 @@ export default function Hdf() {
           '2xl': '-200px'
         }}
         secondaryBackground="#F3E9DA"
+        downloadAndLinks={{
+          datasheet: true,
+          whereBuy: true,
+          qualityCertificate: true
+        }}
         header={{
           title: 'MDF BERNECK®',
           headerBgColor: '#E0CBA5',
@@ -28,14 +35,11 @@ export default function Hdf() {
             'Produzido a partir de 9mm. Excelente para os processos de pintura e impressão.'
         }}
         body={{
-          heading1: 'Descrição',
-          paragraph1:
+          description:
             'Produzido em prensas contínuas de altíssima tecnologia, o que assegura um painel homogêneo, ótimo para os processos de usinagem e baixo relevo. Por ser produzido com Pinus, que possui fibras longas, possui maleabilidade superior e coloração bem clara, excelente para os processos de pintura e impressão.',
-          heading2: 'Usos e Aplicações',
-          paragraph2:
+          usesAndApplications:
             'O MDF BERNECK® assegura excelente resultado em todos os tipos de móveis para peças com usinagens profundas e trabalhos de baixo relevo, além de embalagens, aplicações na construção civil, artesanatos, etc.',
-          heading3: 'Acabamentos',
-          paragraph3: [
+          finishes: [
             '• Natural (sem revestimento) ',
             '• Revestido com laminado de baixa pressão BP BERNECK®'
           ],
@@ -61,7 +65,9 @@ export default function Hdf() {
       />
 
       <Product
-        grafism="type2"
+        grafismProps={{
+          grafism: 'type2'
+        }}
         imgSrc="/img/mdf_plus.png"
         imgWidth="60vw"
         imgMaxWidth="1151px"
@@ -92,17 +98,14 @@ export default function Hdf() {
             'A qualidade do MDF BERNECK® aliada à máxima proteção contra umidade e cupins.'
         }}
         body={{
-          heading1: 'Mais tecnologia, mais qualidade, mais proteção',
-          paragraph1: [
+          moreTechnologyQualityProtection: [
             'O MDF PLUS BERNECK é o painel formado por fibras de madeira de média densidade, Medium Density Fiberboard, produzido em prensa contínua com resinas especiais que garantem maior resistência à umidade. O MDF PLUS BERNECK® assegura excelente resultado em todos os tipos de móveis para peças com trabalhos de baixo relevo e ótimas condições para corte e bordas arredondadas para pintura. ',
             'Possui a coloração esverdeada como identificação internacional do produto com maior resistência à umidade, diferenciando-o dos painéis Standard. Essa pigmentação pode variar a cada lote de produção e não está associada ao princípio ativo de hidro resistência, pois não é à prova d´água.',
             'Vale inovar nos projetos com MDF PLUS. Um ótimo investimento, com incomparável custo benefício.'
           ],
-          heading2: 'Usos e Aplicações',
-          paragraph2:
+          usesAndApplications:
             'Indicado para móveis de cozinhas, banheiros, lavanderias e ambientes comerciais.',
-          heading3: 'Acabamentos',
-          paragraph3: [
+          finishes: [
             '• Natural (sem revestimento)',
             '• Revestido com laminado de baixa pressão BP BERNECK®'
           ],
