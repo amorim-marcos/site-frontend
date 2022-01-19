@@ -106,9 +106,9 @@ export const Pagebar = ({ paths }: PagebarProps) => {
                         '2xl': '23.5px'
                       }}
                       variant={
-                        i === paths.length - 1
+                        ( i === paths.length - 1
                           ? 'breadcrumbs-selected'
-                          : 'breadcrumbs'
+                          : 'breadcrumbs' ) as any
                       }
                     >
                       {s.title}
@@ -123,7 +123,7 @@ export const Pagebar = ({ paths }: PagebarProps) => {
           <Text
             color="green.900"
             cursor="pointer"
-            variant="breadcrumbs"
+            variant={"breadcrumbs" as any}
             fontSize={{
               base: '8px',
               sm: '12px',

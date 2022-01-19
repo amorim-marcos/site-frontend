@@ -7,7 +7,7 @@ import PageSession from '@components/PageSession'
 import HeaderTitle from '@components/HeaderTitle'
 import Infographic from '@components/Infographic'
 import TrajectoryCarousel, {mockCarouselObj } from '@components/TrajectoryCarousel'
-import WhereWeAre, { mockPanelObj } from '@components/WhereWeAre'
+import WhereWeAre, { mockPanels } from '@components/WhereWeAre'
 import { SP } from 'next/dist/shared/lib/utils'
 
 const dataPageSession = {
@@ -72,7 +72,7 @@ export const About = () => {
             alignSelf='center'
           >
            <Text as='h1'
-              variant = 'h1'
+              variant={'h1' as any}
               fontFamily = 'body'
               fontWeight= 'extrabold'
               color = 'green.600'
@@ -244,7 +244,7 @@ export const About = () => {
         // bg='pink'
       >
         
-        <WhereWeAre {...mockPanelObj}/>
+        <WhereWeAre panels={mockPanels}/>
       </Flex>
       {/* FIM ONDE ESTAMOS */}
 

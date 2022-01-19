@@ -1,6 +1,6 @@
-import { Box, Image} from "@chakra-ui/react"
+import { Box, Image, BoxProps} from "@chakra-ui/react"
 
-export type BpPatternImageProps = {
+export type BpPatternImageProps = BoxProps & {
   image_url?: string
 }
 export const BpPatternImage = ({ image_url, ...props }: BpPatternImageProps) => {

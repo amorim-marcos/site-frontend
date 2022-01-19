@@ -1,7 +1,7 @@
-import { Box, Center } from '@chakra-ui/react'
+import { Box, BoxProps, Center } from '@chakra-ui/react'
 import { ResponsiveCss } from 'types/responsive'
 
-export type FiltersIconProps = {
+export type FiltersIconProps = BoxProps & {
   color?: string
   height?: ResponsiveCss
   width?: ResponsiveCss

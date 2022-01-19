@@ -1,10 +1,12 @@
 import { Flex, Grid, Text, Box, Image } from '@chakra-ui/react'
 import LogoBerneck from '../LogoBerneck'
-import SocialIcon from '../SocialIcon'
+import SocialIcon from '@components/Icons/SocialIcon'
 import { FooterList } from './FooterList/FooterList'
 import { Grafism } from './Grafism/Grafism'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
+
+export type AppFooterProps = { }
 
 export const AppFooter = () => {
   const footer = useTranslation('footer')

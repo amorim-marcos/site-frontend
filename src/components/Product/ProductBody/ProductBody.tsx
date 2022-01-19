@@ -16,6 +16,10 @@ import {
 import { ResponsiveCss } from 'types/responsive'
 
 export type ProductBodyProps = {
+  heading1?: string,
+  paragraph1?: string,
+  heading2?:string,
+  paragraph2?:string,
   description?: string | Array<string>
   moreTechnologyQualityProtection?: string | Array<string>
   usesAndApplications?: string | Array<string>

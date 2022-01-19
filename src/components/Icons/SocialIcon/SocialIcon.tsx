@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import Link from 'next/link'
-import { ResponsiveCss } from 'types/responsive'
+import { ResponsiveCss } from '../../../types/responsive'
 
 export type SocialIconProps = {
   media: 'facebook' | 'instagram' | 'linkedin' | 'youtube' | 'pinterest'

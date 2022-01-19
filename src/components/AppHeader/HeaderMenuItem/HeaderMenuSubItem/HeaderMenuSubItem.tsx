@@ -46,7 +46,7 @@ export const HeaderMenuSubItem = ({
               '2xl': '16.5px'
             }}
             color="white.100"
-            variant="header-menu"
+            variant={"header-menu" as any}
           >
             {title || 'Component text'}
           </Text>
@@ -88,7 +88,7 @@ export const HeaderMenuSubItem = ({
                   '2xl': '16.5px'
                 }}
                 color="white.100"
-                variant="header-menu-small"
+                variant={"header-menu-small" as any}
               >
                 {i.title}
               </Text>

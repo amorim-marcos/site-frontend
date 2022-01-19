@@ -59,7 +59,7 @@ export const HeaderMenuItem = ({
               '2xl': '16.5px'
             }}
             color="#FFF"
-            variant="header-menu"
+            variant={"header-menu" as any}
             whiteSpace="nowrap"
           >
             {title}

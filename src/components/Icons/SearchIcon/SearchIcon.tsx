@@ -1,5 +1,5 @@
 import { Center } from '@chakra-ui/react'
-import { ResponsiveCss } from '../../types/responsive'
+import { ResponsiveCss } from '../../../types/responsive'
 
 export type SearchIconProps = {
   stroke?: string

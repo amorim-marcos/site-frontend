@@ -5,7 +5,7 @@ import { Box, useStyleConfig, BoxProps } from '@chakra-ui/react'
 
 export type NavLinkProps = BoxProps & {
   href: string
-  variant?: string
+  variant?: string|any
 }
 
 export const NavLink = ({ variant, children, href, ...rest }: NavLinkProps) => {
