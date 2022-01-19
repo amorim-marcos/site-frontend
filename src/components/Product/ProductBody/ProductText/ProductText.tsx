@@ -7,7 +7,7 @@ export type ProductTextProps = {
 
 const TextSyle: TextProps = {
   fontSize: {
-    base: '7px',
+    base: '14px',
     sm: '8px',
     md: '11px',
     lg: '14px',
@@ -15,9 +15,11 @@ const TextSyle: TextProps = {
     '2xl': '20px'
   },
   color: 'green.900',
-  width: '43%',
-  zIndex: 'docked',
-  marginBottom: '80px'
+  width: {
+    base: '100%',
+    sm: '43%'
+  },
+  zIndex: 'docked'
 }
 
 export const ProductText = ({
@@ -32,9 +34,7 @@ export const ProductText = ({
         <Text
           key={p}
           {...TextSyle}
-          marginBottom={
-            i === content.length - 1 ? '80px' : paragraph ? '50px' : '0px'
-          }
+          marginBottom={i === content.length - 1 ? '50px' : '0px'}
         >
           {p}
         </Text>

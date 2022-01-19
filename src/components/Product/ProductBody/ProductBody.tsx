@@ -52,35 +52,115 @@ export const ProductBody = ({
       paddingBottom={paddingBottom}
     >
       {description && (
-        <>
-          <Heading {...headingStyle}>{product.t('Description')}</Heading>
+        <Box
+          marginBottom={{
+            base: '30px',
+            sm: '40px',
+            md: '50px',
+            lg: '60px',
+            xl: '70px',
+            '2xl': '80px'
+          }}
+        >
+          <Heading
+            fontSize={{
+              base: '20px',
+              sm: '11px',
+              md: '14px',
+              lg: '18px',
+              xl: '22px',
+              '2xl': '30px'
+            }}
+            variant="productTitle"
+          >
+            {product.t('Description')}
+          </Heading>
           <ProductText paragraph content={description} />
-        </>
+        </Box>
       )}
 
       {moreTechnologyQualityProtection && (
-        <>
-          <Heading {...headingStyle}>
+        <Box
+          marginBottom={{
+            base: '30px',
+            sm: '40px',
+            md: '50px',
+            lg: '60px',
+            xl: '70px',
+            '2xl': '80px'
+          }}
+        >
+          <Heading
+            variant="productTitle"
+            fontSize={{
+              base: '20px',
+              sm: '11px',
+              md: '14px',
+              lg: '18px',
+              xl: '22px',
+              '2xl': '30px'
+            }}
+          >
             {product.t('MoreTechnologyQualityProtection')}
           </Heading>
           <ProductText paragraph content={moreTechnologyQualityProtection} />
-        </>
+        </Box>
       )}
 
       {usesAndApplications && (
-        <>
-          <Heading {...headingStyle}>
+        <Box
+          marginBottom={{
+            base: '30px',
+            sm: '40px',
+            md: '50px',
+            lg: '60px',
+            xl: '70px',
+            '2xl': '80px'
+          }}
+        >
+          <Heading
+            variant="productTitle"
+            fontSize={{
+              base: '20px',
+              sm: '11px',
+              md: '14px',
+              lg: '18px',
+              xl: '22px',
+              '2xl': '30px'
+            }}
+          >
             {product.t('UsesAndApplications')}
           </Heading>
           <ProductText content={usesAndApplications} />
-        </>
+        </Box>
       )}
 
       {finishes && (
-        <>
-          <Heading {...headingStyle}>{product.t('Finishes')}</Heading>
+        <Box
+          marginBottom={{
+            base: '30px',
+            sm: '40px',
+            md: '50px',
+            lg: '60px',
+            xl: '70px',
+            '2xl': '80px'
+          }}
+        >
+          <Heading
+            fontSize={{
+              base: '20px',
+              sm: '11px',
+              md: '14px',
+              lg: '18px',
+              xl: '22px',
+              '2xl': '30px'
+            }}
+            variant="productTitle"
+          >
+            {product.t('Finishes')}
+          </Heading>
           <ProductText content={finishes} />
-        </>
+        </Box>
       )}
 
       {specifications && (

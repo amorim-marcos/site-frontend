@@ -44,6 +44,7 @@ export const Product = ({
     <Box overflow="hidden" position="relative" marginX="auto" maxWidth="1920px">
       <GrafismProduct {...grafismProps} />
 
+      <ProductHeader {...header} />
       {imgSrc && (
         <Flex
           direction="column"
@@ -53,6 +54,7 @@ export const Product = ({
           top="0"
           right="0"
           alignItems="flex-end"
+          visibility={{ base: 'hidden' }}
         >
           <Box>
             <Image
@@ -73,7 +75,6 @@ export const Product = ({
           )}
         </Flex>
       )}
-      <ProductHeader {...header} />
       <ProductBody {...body} secondaryBackgroundColor={secondaryBackground} />
     </Box>
   )

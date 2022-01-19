@@ -22,8 +22,14 @@ export const ProductHeader = ({
       flexDirection="column"
       maxWidth="1920px"
       bg={headerBgColor}
+      align={{ base: 'center', sm: 'flex-start' }}
+      paddingBottom={{ base: '60px', sm: '5%' }}
     >
-      <Flex width="fit-content" position="relative">
+      <Flex
+        width="fit-content"
+        position="relative"
+        align={{ base: 'center', sm: 'flex-start' }}
+      >
         {plusIndicator && (
           <Box
             position="absolute"
@@ -59,7 +65,7 @@ export const ProductHeader = ({
         <Heading
           color="white.100"
           fontSize={{
-            base: '20px',
+            base: '30px',
             sm: '25px',
             md: '30px',
             lg: '35px',
@@ -73,7 +79,8 @@ export const ProductHeader = ({
       </Flex>
 
       <Box
-        borderBottom="4px solid"
+        borderBottom="solid"
+        borderBottomWidth={{ base: '2px', sm: '4px' }}
         borderBottomColor="green.600"
         w="87px"
         marginTop={{
@@ -86,20 +93,22 @@ export const ProductHeader = ({
         }}
         marginBottom="20px"
       />
-      <Heading
-        fontSize={{
-          base: '8px',
-          sm: '11px',
-          md: '14px',
-          lg: '18px',
-          xl: '22px',
-          '2xl': '30px'
-        }}
-        color="green.900"
-        zIndex="docked"
-      >
-        {subtitle}
-      </Heading>
+      <Box>
+        <Heading
+          fontSize={{
+            base: '15px',
+            sm: '11px',
+            md: '14px',
+            lg: '18px',
+            xl: '22px',
+            '2xl': '30px'
+          }}
+          color="green.900"
+          zIndex="docked"
+        >
+          {subtitle}
+        </Heading>
+      </Box>
       <Text
         fontSize={{
           base: '7px',
@@ -110,7 +119,7 @@ export const ProductHeader = ({
           '2xl': '20px'
         }}
         color="green.900"
-        width="45%"
+        width={{ base: '100%', sm: '45%' }}
         zIndex="docked"
       >
         {description}
