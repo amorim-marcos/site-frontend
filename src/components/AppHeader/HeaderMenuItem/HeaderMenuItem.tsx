@@ -1,4 +1,4 @@
-import { Text, Center, Flex } from '@chakra-ui/react'
+import { Text, Center, Flex, TextProps } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { HeaderMenuSubItem } from './HeaderMenuSubItem/HeaderMenuSubItem'

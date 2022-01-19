@@ -74,6 +74,18 @@ export const Text = {
       color: 'green.700',
       fontSize: '25px',
       fontWeight: 400
+    },
+    productBody: {
+      fontSize: {
+        base: '14px',
+        sm: '8px',
+        md: '11px',
+        lg: '14px',
+        xl: '17px',
+        '2xl': '20px'
+      },
+      color: 'green.900',
+      zIndex: 'docked'
     }
   },
   defaultProps: {

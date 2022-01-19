@@ -272,72 +272,33 @@ export const AppFooter = () => {
           />
         </Flex>
 
-        <Box zIndex="base" position="absolute" top="-35px" left="0">
-          <Grafism
-            width={{
-              base: '520px',
-              xs: '768px',
-              sm: '1024px',
-              md: '1280px',
-              lg: '1536px',
-              xl: '1920px'
-            }}
-          />
-        </Box>
-      </Flex>
-      <Flex
-        w="100%"
-        h="100px"
-        alignItems="center"
-        justifyContent="space-between"
-        paddingX={'4%'}
-      >
-        <Text
-          fontSize={{
-            base: '6px',
-            sm: '7px',
-            md: '8px',
-            lg: '12px',
-            '2xl': '14px'
-          }}
-          color="green.300"
-        >
-          {footer.t('rights')}
-        </Text>
-        <Text
-          fontSize={{
-            base: '6px',
-            sm: '7px',
-            md: '8px',
-            lg: '12px',
-            '2xl': '14px'
-          }}
-          color="green.600"
-        >
-          {footer.t('termsAndPrivacy')}
-        </Text>
-        <Link href="http://www.commcepta.com.br/">
-          <Image
-            cursor="pointer"
-            height={{
-              base: '9px',
-              sm: '11px',
-              md: '15px',
-              xl: '19px',
-              '2xl': '23px'
-            }}
-            width={{
-              base: '50px',
-              sm: '60px',
-              md: '80px',
-              xl: '100px',
-              '2xl': '116px'
-            }}
-            src="img/logo-commcepta.png"
-            alt="Logo Commcepta"
-          />
-        </Link>
-      </Flex>
+      <Box zIndex="base" position="absolute" top="-35px" left="0">
+        <Grafism />
+      </Box>
     </Flex>
+    <Flex
+      w="100%"
+      h="100px"
+      alignItems="center"
+      justifyContent="space-between"
+      paddingX="70px"
+    >
+      <Text fontSize="14px" color="green.300">
+        © 2021 BERNECK . Todos os direitos reservados.
+      </Text>
+      <Text fontSize="14px" color="green.600">
+        Termos de Uso e Política de Privacidade
+      </Text>
+      <Link passHref href="http://www.commcepta.com.br/">
+        <Image
+          cursor="pointer"
+          height={23}
+          width={116}
+          src="/img/logo-commcepta.png"
+          alt="Logo Commcepta"
+        />
+      </Link>
+    </Flex>
+  </Flex>
   )
 }
