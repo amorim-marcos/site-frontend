@@ -11,16 +11,16 @@ export type EarthIconProps = {
 export const EarthIcon = ({
   stroke1 = '#75ab17',
   stroke2 = '#edd8ba',
-  height = '78',
-  width = '78',
+  height = '78px',
+  width = '78px',
   onClick
 }: EarthIconProps) => {
   return (
     <Box w={width} h={height} onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="78.686"
-        height="78.485"
+        width="100%"
+        height="100%"
         viewBox="0 0 78.686 78.485"
       >
         <g
