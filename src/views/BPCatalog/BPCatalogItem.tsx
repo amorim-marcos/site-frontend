@@ -38,6 +38,7 @@ import {
 } from '@components/Icons'
 import { useRouter } from 'next/router'
 import CloseIcon from '@components/Icons/CloseIcon'
+import Pagebar from '@components/Pagebar'
 
 export type Wood = { thickness: string; size: string }
 
@@ -67,6 +68,26 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
 
   return (
     <Box pos="relative">
+      <Pagebar
+        paths={[
+          {
+            title: 'Produtos',
+            url: '/products'
+          },
+          {
+            title: 'BP BERNECK®',
+            url: '/products/bp-berneck'
+          },
+          {
+            title: 'Catálogo BP',
+            url: '/products/bp-berneck/catalog'
+          },
+          {
+            title: props.texture.name,
+            url: props.texture.name.toLowerCase()
+          }
+        ]}
+      />
       <DownloadModal
         textureName={props.texture.name}
         textureImg={props.texture.img}
@@ -426,6 +447,7 @@ const TextureProperties = (props: {
       direction="column"
       gap={{ base: '63px', '2xl': '93px' }}
       w={{ base: '100%', xl: '50%', '2xl': 'inherit' }}
+      mt={{ '2xl': '54px' }}
       align={{ base: 'center', '2xl': 'flex-start' }}
       justify={{ base: 'center', '2xl': 'inherit' }}
     >
@@ -668,7 +690,7 @@ const PageNavegation = (props: { next: string; prev: string }) => {
   return (
     <Flex
       w="100%"
-      pt={{ base: '100px', '2xl': '254px' }}
+      pt={{ base: '100px', '2xl': '140px' }}
       justify="space-between"
     >
       <Flex
