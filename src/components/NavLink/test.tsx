@@ -4,6 +4,6 @@ import NavLink from '.'
 
 describe('<NavLink />', () => {
   it('should render the component', () => {
-    const { container } = render(<NavLink />)
+    const { container } = render(<NavLink href="/" />)
   })
 })

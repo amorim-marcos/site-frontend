@@ -10,7 +10,7 @@ import { fontSizes } from './fontsizes'
 import { breakpoints } from './breakpoints'
 
 export const theme = extendTheme({
-  grid:{
+  grid: {
     container: '130rem',
     gutter: '3.2rem'
   },

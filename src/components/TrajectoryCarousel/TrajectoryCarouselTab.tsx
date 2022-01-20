@@ -25,7 +25,7 @@ export const TrajectoryCarouselTab = React.forwardRef((props:any, ref:any) => {
       height="69px"
       {...tabProps}
     >
-      <Text variant="body-bold">{tabProps.children}</Text>
+      <Text variant={"body-bold" as any}>{tabProps.children}</Text>
     </StyledTab>
   )
 })

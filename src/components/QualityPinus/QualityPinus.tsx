@@ -12,6 +12,8 @@ import ProductDimensions from '@components/ProductDimensions'
 import { useTranslation } from 'react-i18next'
 import { QualityBtnTexture } from './QualityPinusBtnsTexture/QualityBtnTexture'
 
+export type QualityPinusProps = {}
+
 export const QualityPinus = () => {
   const pinus = useTranslation('pinus-berneck')
 
