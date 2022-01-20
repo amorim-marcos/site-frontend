@@ -28,6 +28,7 @@ import {
   TapIcon,
   Arrow
 } from '@components/Icons'
+import { useRouter } from 'next/router'
 
 export type Wood = { thickness: string; size: string }
 
@@ -48,123 +49,33 @@ export type BPCatalogItemProps = {
   }
   mdp: Wood
   mdf: Wood
+  next: string
+  prev: string
 }
 
-export const BPCatalogItem = (props: BPCatalogItemProps) => {
-  const prevBp = 'SOLANUM'
-  const nextBp = 'VERTI'
+export const BPCatalogItem = (props: BPCatalogItemProps) => (
+  <Box pos="relative">
+    <Intro
+      texture={props.texture.img}
+      textureName={props.texture.name}
+      textureDescription={props.texture.description}
+    />
+    <Inspire
+      patternName={props.pattern.name}
+      microDescription={props.pattern.description}
+      anotherTextures={props.pattern.anothers}
+      patternDescription={props.pattern.about}
+    />
+    <TextureProperties
+      texture={props.texture.img}
+      textureName={props.texture.name}
+      mdp={props.mdp}
+      mdf={props.mdf}
+    />
 
-  return (
-    <Box pos="relative">
-      <Intro
-        texture={props.texture.img}
-        textureName={props.texture.name}
-        textureDescription={props.texture.description}
-      />
-      <Inspire
-        patternName={props.pattern.name}
-        microDescription={props.pattern.description}
-        anotherTextures={props.pattern.anothers}
-        patternDescription={props.pattern.about}
-      />
-      <TextureProperties
-        texture={props.texture.img}
-        textureName={props.texture.name}
-        mdp={props.mdp}
-        mdf={props.mdf}
-      />
-
-      <Flex
-        w="100%"
-        pt={{ base: '100px', '2xl': '254px' }}
-        justify="space-between"
-      >
-        <Flex
-          w={{ base: 'fit-content', sm: '296px' }}
-          h={{ base: '90px', sm: '113px' }}
-          padding={{ base: '15px', sm: '0px' }}
-          gap="23px"
-          align="center"
-          justify="center"
-          boxShadow="0px 0px 30px #00000029"
-          borderTopRightRadius={{ base: '0', sm: '26px' }}
-          cursor="pointer"
-          onClick={() => alert(prevBp)}
-          transition="all 0.2s ease-in-out"
-          _hover={{ filter: 'brightness(0.8)' }}
-        >
-          <Arrow
-            direction="left"
-            width={{ base: '20px', sm: '30px' }}
-            height={{ base: '30px', sm: '40px' }}
-            color="green.200"
-          />
-          <Box>
-            <Text
-              fontSize={{ base: '20px', sm: '23px' }}
-              fontWeight="bold"
-              letterSpacing="-0.46px"
-              color="grey.300"
-            >
-              Anterior
-            </Text>
-
-            <Text
-              fontSize={{ base: '16px', sm: '18px' }}
-              fontWeight="medium"
-              letterSpacing="-0.36px"
-              color="grey.300"
-            >
-              {prevBp}
-            </Text>
-          </Box>
-        </Flex>
-
-        <Flex
-          w={{ base: 'fit-content', sm: '296px' }}
-          h={{ base: '90px', sm: '113px' }}
-          padding={{ base: '15px', sm: '0px' }}
-          gap="23px"
-          align="center"
-          justify="center"
-          boxShadow="0px 0px 30px #00000029"
-          borderTopLeftRadius={{ base: '0', sm: '26px' }}
-          cursor="pointer"
-          onClick={() => alert(nextBp)}
-          transition="all 0.2s ease-in-out"
-          _hover={{ filter: 'brightness(0.8)' }}
-        >
-          <Flex direction="column" align="flex-end">
-            <Text
-              fontSize={{ base: '20px', sm: '23px' }}
-              fontWeight="bold"
-              letterSpacing="-0.46px"
-              color="grey.300"
-            >
-              Próximo
-            </Text>
-
-            <Text
-              fontSize={{ base: '16px', sm: '18px' }}
-              fontWeight="medium"
-              letterSpacing="-0.36px"
-              color="grey.300"
-            >
-              {nextBp}
-            </Text>
-          </Flex>
-
-          <Arrow
-            direction="right"
-            width={{ base: '20px', sm: '30px' }}
-            height={{ base: '30px', sm: '40px' }}
-            color="green.200"
-          />
-        </Flex>
-      </Flex>
-    </Box>
-  )
-}
+    <PageNavegation next={props.next} prev={props.prev} />
+  </Box>
+)
 
 const Intro = (props: {
   texture: string
@@ -729,6 +640,105 @@ const TextureProperties = (props: {
     </Accordion>
   </Flex>
 )
+
+const PageNavegation = (props: { next: string; prev: string }) => {
+  const router = useRouter()
+
+  return (
+    <Flex
+      w="100%"
+      pt={{ base: '100px', '2xl': '254px' }}
+      justify="space-between"
+    >
+      <Flex
+        w={{ base: 'fit-content', sm: '296px' }}
+        h={{ base: '90px', sm: '113px' }}
+        padding={{ base: '15px', sm: '0px' }}
+        gap="23px"
+        align="center"
+        justify="center"
+        boxShadow="0px 0px 30px #00000029"
+        borderTopRightRadius={{ base: '0', sm: '26px' }}
+        cursor="pointer"
+        onClick={() =>
+          router.push(`/products/bp-berneck/catalog/${props.prev}`)
+        }
+        transition="all 0.2s ease-in-out"
+        _hover={{ filter: 'brightness(0.8)' }}
+      >
+        <Arrow
+          direction="left"
+          width={{ base: '20px', sm: '30px' }}
+          height={{ base: '30px', sm: '40px' }}
+          color="green.200"
+        />
+        <Box>
+          <Text
+            fontSize={{ base: '20px', sm: '23px' }}
+            fontWeight="bold"
+            letterSpacing="-0.46px"
+            color="grey.300"
+          >
+            Anterior
+          </Text>
+
+          <Text
+            fontSize={{ base: '16px', sm: '18px' }}
+            fontWeight="medium"
+            letterSpacing="-0.36px"
+            color="grey.300"
+          >
+            {props.prev}
+          </Text>
+        </Box>
+      </Flex>
+
+      <Flex
+        w={{ base: 'fit-content', sm: '296px' }}
+        h={{ base: '90px', sm: '113px' }}
+        padding={{ base: '15px', sm: '0px' }}
+        gap="23px"
+        align="center"
+        justify="center"
+        boxShadow="0px 0px 30px #00000029"
+        borderTopLeftRadius={{ base: '0', sm: '26px' }}
+        cursor="pointer"
+        onClick={() =>
+          router.push(`/products/bp-berneck/catalog/${props.next}`)
+        }
+        transition="all 0.2s ease-in-out"
+        _hover={{ filter: 'brightness(0.8)' }}
+      >
+        <Flex direction="column" align="flex-end">
+          <Text
+            fontSize={{ base: '20px', sm: '23px' }}
+            fontWeight="bold"
+            letterSpacing="-0.46px"
+            color="grey.300"
+          >
+            Próximo
+          </Text>
+
+          <Text
+            fontSize={{ base: '16px', sm: '18px' }}
+            fontWeight="medium"
+            letterSpacing="-0.36px"
+            color="grey.300"
+          >
+            {props.next}
+          </Text>
+        </Flex>
+
+        <Arrow
+          direction="right"
+          width={{ base: '20px', sm: '30px' }}
+          height={{ base: '30px', sm: '40px' }}
+          color="green.200"
+        />
+      </Flex>
+    </Flex>
+  )
+}
 
 const TextureContentButton = (props: {
   title: string

@@ -26,5 +26,7 @@ const data = {
     ]
   },
   mdp: { thickness: '12 / 15 / 18 / 25', size: '2,75 x 1,85' },
-  mdf: { thickness: '6 / 9 / 15 / 18 / 25', size: '2,75 x 1,85' }
+  mdf: { thickness: '6 / 9 / 15 / 18 / 25', size: '2,75 x 1,85' },
+  next: 'SOLANUM',
+  prev: 'VERTI'
 }
