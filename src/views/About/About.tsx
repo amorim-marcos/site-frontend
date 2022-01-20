@@ -6,8 +6,8 @@ import Pagebar from '@components/Pagebar'
 import PageSession from '@components/PageSession'
 import HeaderTitle from '@components/HeaderTitle'
 import Infographic from '@components/Infographic'
-import TrajectoryCarousel, {mockCarouselObj } from '@components/TrajectoryCarousel'
-import WhereWeAre, { mockPanelObj } from '@components/WhereWeAre'
+import TrajectoryCarousel, { mockCarouselObj } from '@components/TrajectoryCarousel'
+import WhereWeAre, { mockPanels } from '@components/WhereWeAre'
 import CompletedTitle from '@components/CompletedTitle'
 import { SP } from 'next/dist/shared/lib/utils'
 import { EarthIcon } from '@components/Icons'
@@ -92,7 +92,7 @@ export const About = () => {
             alignSelf='center'
           >
               <Text as='h3'
-                  variant = 'h3'
+                  variant = {"h3" as any}
                   fontFamily = 'body'
                   color = 'green.600'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
@@ -194,7 +194,7 @@ export const About = () => {
             alignSelf='center'
           >
                 <Text as='h3'
-                  variant = 'h3'
+                  variant = {"h3" as any}
                   fontFamily = 'body'
                   color = 'green.900'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
@@ -292,7 +292,7 @@ export const About = () => {
               flex = '2'
             >
               <Text as='h3'
-                variant = 'h3'
+                variant = {"h3" as any}
                 fontFamily = 'body'
                 color='green.600'
                 textAlign = {{ base: 'center', sm: 'center', lg: 'center', xl: 'left'}}
@@ -312,15 +312,13 @@ export const About = () => {
             margin={{ base: "0", xs: "0", sm: "0", md: "0", lg: "0", xl: "0 0 0 5%" }}
             color='red'
           >
-            <WhereWeAre {...mockPanelObj}/>
+            <WhereWeAre />
           </Flex>
       
         </Flex>
         
       </Flex>
       {/* FIM ONDE ESTAMOS */}
-
-
 
 
 

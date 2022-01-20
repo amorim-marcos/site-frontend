@@ -30,7 +30,7 @@ export const CompletedTitle = ({
                 // bg='orange'
               >
                 <Text as='h1'
-                    variant='h1'
+                    variant={'h1' as any}
                     color={titleColor}
                     textAlign={textAlignH1}
                 >{titleString}</Text>
