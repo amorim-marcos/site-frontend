@@ -264,89 +264,89 @@ const menuContent = {
   },
   ourCommitment: {
     key: 'btn6',
-    href: '/',
+    href: '/nosso-compromisso',
     subItems: [
       {
         key: 'btn6_subItem1',
-        href: '/'
+        href: '/nosso-compromisso'
       },
       {
         key: 'btn6_subItem2',
-        href: '/'
+        href: '/nosso-compromisso'
       },
       {
         key: 'btn6_subItem3',
-        href: '/'
+        href: '/nosso-compromisso'
       },
       {
         key: 'btn6_subItem4',
-        href: '/'
+        href: '/nosso-compromisso'
       }
     ]
   },
   florestalDivision: {
     key: 'btn7',
-    href: '/',
+    href: '/divisao-florestal',
     subItems: [
       {
         key: 'btn7_subItem1',
-        href: '/'
+        href: '/divisao-florestal'
       },
       {
         key: 'btn7_subItem2',
-        href: '/'
+        href: '/divisao-florestal'
       },
       {
         key: 'btn7_subItem3',
-        href: '/'
+        href: '/divisao-florestal'
       },
       {
         key: 'btn7_subItem4',
-        href: '/'
+        href: '/divisao-florestal'
       }
     ]
   },
   products: {
     key: 'btn8',
-    href: '/',
+    href: '/products',
     subItems: [
       {
         key: 'btn8_subItem1',
-        href: '/',
+        href: '/products',
         subItems: [
           {
             key: 'btn8_subItem2',
-            href: '/'
+            href: '/products/bp-berneck'
           },
           {
             key: 'btn8_subItem3',
-            href: '/'
+            href: '/products/hdf-berneck'
           },
           {
             key: 'btn8_subItem4',
-            href: '/'
+            href: '/products/mdf-berneck'
           },
           {
             key: 'btn8_subItem5',
-            href: '/'
+            href: '/products/mdp-berneck'
           },
           {
             key: 'btn8_subItem6',
-            href: '/'
+            href: '/products/plus-berneck'
           }
         ]
       },
       {
         key: 'btn8_subItem7',
-        href: '/',
+        href: '/products',
         subItems: [
           {
             key: 'btn8_subItem8',
-            href: '/'
+            href: '/products/berneck-pinus'
           },
           {
             key: 'btn8_subItem9',
-            href: '/'
+            href: '/products/berneck-teca'
           }
         ]
       }
@@ -354,23 +354,23 @@ const menuContent = {
   },
   channelBNK: {
     key: 'btn9',
-    href: '/',
+    href: '/canal-bnk',
     subItems: [
       {
         key: 'btn9_subItem1',
-        href: '/'
+        href: '/canal-bnk'
       },
       {
         key: 'btn9_subItem2',
-        href: '/'
+        href: '/canal-bnk'
       },
       {
         key: 'btn9_subItem3',
-        href: '/'
+        href: '/canal-bnk'
       },
       {
         key: 'btn9_subItem4',
-        href: '/'
+        href: '/canal-bnk'
       }
     ]
   }
