@@ -790,9 +790,12 @@ const DownloadModal = (props: {
   onClose: () => void
 }) => (
   <Modal isOpen={props.isOpen} onClose={props.onClose}>
-    <ModalOverlay bg="rgba(255, 255, 255, 0.5)" backdropFilter="blur(9px)" />
-    <ModalContent boxShadow="5px 5px 5px rgba(0, 0, 0, 0.2)">
-      <ModalHeader borderTopRadius="26px">
+    <ModalOverlay bg="rgba(255, 255, 255, 0.4)" backdropFilter="blur(9px)" />
+    <ModalContent
+      boxShadow="2px 2px 10px -1px rgba(0,0,0,0.6)"
+      borderTopRadius="22px"
+    >
+      <ModalHeader>
         <Flex align="center" justify="space-between" w="100%" pr="20px">
           <Text
             color="green.900"
