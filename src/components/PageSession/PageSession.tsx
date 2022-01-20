@@ -87,7 +87,7 @@ export const PageSession = ({
             direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
             // bg='yellow'
           >
-                <CompletedTitle titleColor = 'white' titleString = {data.title} alignSelfLine = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}}/>
+                <CompletedTitle titleColor = 'white' titleString = {data.title} alignLine = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}}/>
 
                 <Box
                   margin={{ base: '3px 0px', sm: '5px 0px', lg: '10px 0px', xl: '15px 10px'}}

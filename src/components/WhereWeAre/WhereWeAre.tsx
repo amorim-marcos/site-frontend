@@ -23,7 +23,13 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
           </Carousel>
         </Flex>
       ) : (
-        <Flex w="100%" wrap="wrap" gap="54px" justify="center">
+        <Flex 
+          w="100%" 
+          wrap="wrap" 
+          gap="54px" 
+          // justify="center" 
+          // bg="red"
+        >
           {panels.map((item) => (
             <WhereWeArePanel key={item.image} {...item} />
           ))}

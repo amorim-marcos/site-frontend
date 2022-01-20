@@ -40,43 +40,44 @@ export const TrajectoryCarouselPanel = ({ tabData, myIndex, tabIndex }: Trajecto
           }}
           flexDirection="column"
           padding={{
+            base: "10px",
             xs: "20px",
             sm: "20px",
             md: "20px",
             lg: "67px",
             xl: "67px"
           }}
+          // bg="red"
         >
           
-          <Heading 
-            textAlign="left" 
-            variant="h1" 
-            fontSize={{ base: '18px', sm: '32px', lg: '40px', xl: '50px'}}
-            color="grey.300"
-          >{tabData.name}</Heading>
-          <Flex
-            alignItems="start"
-          >
-            <Arrow 
-              width='14px' 
-              height='19px' 
-              color="green.600" 
-              mt={{base: "5px", md: "8px"}}
-              ></Arrow>
-            <Heading 
-              textAlign="left" 
-              variant="h3" 
-              fontSize = {{ base: '10px', sm: '22px', lg: '24px', xl: '30px'}}
-              color="green.900" 
-              ml="24px"
-            >{tabData.content.title}</Heading>
+            <Text as="h1" 
+              variant="h1" 
+              color="grey.300"
+            >{tabData.name}</Text>
+            <Flex
+              alignItems="center"
+              // justifyContent="center"
+            >
+                <Arrow 
+                  width={{ base: '10px', sm: '12px', lg: '16px', xl: '20px'}}
+                  height={{ base: '14px', sm: '14px', lg: '20px', xl: '30px'}}
+                  color="green.600" 
+                  mt={{base: "5px", md: "8px"}}
+                  ></Arrow>
+                <Text as="h3" 
+                  variant="h3" 
+                  color="green.900" 
+                  ml={{ base: '12px', sm: '20px', lg: '22px', xl: '24px'}}
+                >{tabData.content.title}</Text>
           </Flex>
-          <Text 
-            ml={{base: "15px", md: "38px"}} 
-            mt={{base: "10px", md: "27px"}} 
-            fontSize = {{ base: '8px', sm: '14px', lg: '16px', xl: '20px'}}
-            textAlign="left"
-          >{tabData.content.text}</Text>
+          <Box
+            // bg="green.300"
+            marginTop='5px'
+          >
+            <Text
+              fontFamily = 'body'
+            >{tabData.content.text}</Text>
+          </Box>
         </Flex>
         <Box
           flex={1}

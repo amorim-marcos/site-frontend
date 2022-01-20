@@ -12,7 +12,7 @@ export type WhereWeArePanelFooterProps = {
 
 const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
   <Flex
-    h={{ base: '115px', sm: '105px', md: '70px' }}
+    h={{ base: '115px', sm: '105px', md: '70px', lg: '100px' }}
     w="100%"
     padding={{ base: '21px 5px 15px', md: '15px 38px' }}
     gap={{ base: '10px', md: '0' }}

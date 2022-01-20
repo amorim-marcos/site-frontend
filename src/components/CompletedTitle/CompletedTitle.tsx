@@ -5,13 +5,15 @@ export type CompletedTitleProps = {
   // Title
   titleColor?: string
   titleString?: string
-  alignSelfLine?: 'center' | 'flex-start' | 'flex-end'
+  alignLine?: 'center' | 'flex-start' | 'flex-end'
+  textAlignH1?: 'center' | 'left' | 'right'
 }
 export const CompletedTitle = ({ 
   // Heading1
   titleColor = 'green.800',
   titleString = 'BERNECK',
-  alignSelfLine = 'center'
+  alignLine = 'center',
+  textAlignH1 = 'center'
 }: CompletedTitleProps) => {
   return (
     <Box>
@@ -30,13 +32,13 @@ export const CompletedTitle = ({
                 <Text as='h1'
                     variant='h1'
                     color={titleColor}
-                    textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                    textAlign={textAlignH1}
                 >{titleString}</Text>
               </Box>
               
               <Box
                 // bg='white'
-                alignSelf={alignSelfLine}
+                alignSelf={alignLine}
               >
                 <Box 
                   marginTop={{ base: '3px', sm: '10px', lg: '20px', xl: '20px'}}

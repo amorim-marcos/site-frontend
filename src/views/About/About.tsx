@@ -10,6 +10,8 @@ import TrajectoryCarousel, {mockCarouselObj } from '@components/TrajectoryCarous
 import WhereWeAre, { mockPanelObj } from '@components/WhereWeAre'
 import CompletedTitle from '@components/CompletedTitle'
 import { SP } from 'next/dist/shared/lib/utils'
+import { EarthIcon } from '@components/Icons'
+import PatternInfo from '@components/PatternInfo'
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
@@ -34,6 +36,13 @@ const dataTrajetoria = {
   title: 'Nossa Trajetória',
   text: 'Do cultivo da nossa terra, cresceu um comprometimento com a gestão ambientalmente sustentável e socialmente responsável. São mais de 65 anos buscando e desenvolvendo novas aplicações com a nossa madeira de forma versátil e renovável, 100% provenientes de cultivos florestais.',
 }
+
+const dataOndeEstamos = {
+  title: 'Onde Estamos',
+  subtitle: 'Localização estratégica',
+  text: 'Nossas plantas industriais estão estrategicamente localizadas próximas às áreas de cultivo florestal e às principais rodovias e portos do país, com fácil distribuição para todo o território nacional e exterior.',
+}
+
 
 export const About = () => {
   return (
@@ -145,7 +154,7 @@ export const About = () => {
             h={{ base: '300px', sm: '350px', md: '250px', lg: '230px', xl: '300px', '2xl': '350px'}}
           >
               <Flex
-                // bg='red'
+                // bg='grey'
                 direction = {{ base: 'row', sm: 'row', md: 'row', lg: 'row', xl: 'row'}}
                 justifyItems='center'
                 justifyContent='center'
@@ -159,22 +168,20 @@ export const About = () => {
                 {/* BOX 2 */}
                 <Box
                   // bg='red'
-                  flex={{ base: '1.2', sm: '1.2', md: '1.2', lg: '1.2', xl: '2'}}
+                  flex={{ base: '1.2', sm: '1.2', md: '1.2', lg: '1.1', xl: '1'}}
                 >
                     <Infographic
                       titleSuperscript1Text = 'Volume de Exportação'
                       content1Text = '+'
                       content2Text = '3500'
                       content3Text = 'TEUs / mês'
-                    ></Infographic>
+                    />
                     <Infographic
                       titleSuperscript1Text = 'Relações Comerciais'
                       content1Text = '+'
                       content2Text = '60'
                       content3Text = 'países'
-                    ></Infographic>
-
-
+                    />
                 </Box>
               </Flex>
           </Box>
@@ -183,7 +190,7 @@ export const About = () => {
           <Box
             // bg='grey'
             flex='1'
-            margin = {{ base: '8% 10% 10% 10%', sm: '8% 10% 8% 10%', lg: '8% 5% 8% 0%', xl: '8% 8% 8% 12%'}}
+            margin = {{ base: '8% 10% 10% 10%', sm: '8% 10% 8% 10%', lg: '8% 5% 8% 0%', xl: '8% 8% 8% 5%'}}
             alignSelf='center'
           >
                 <Text as='h3'
@@ -210,62 +217,109 @@ export const About = () => {
 
 
 
-
-
-
-
-
-      <Box>
-        
-          <Flex
-            bg='azure'
-            flex='1'
-            direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
-            alignItems='center'
-          >
-            <CompletedTitle titleString = {dataTrajetoria.title} />
-            <Text
-              fontFamily = 'body'
-              color='brown.350'
-              marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '20px'}}
-              textAlign = 'center'
-            >{dataTrajetoria.text} </Text>
-            <Flex 
-              justifyContent="center" 
-              alignItems="center" 
-              width="90%" 
-              margin={{ xs: "0", sm: "0", md: "0", lg: "20px", xl: "20px" }}
-            ><TrajectoryCarousel {...mockCarouselObj}/></Flex>
-          </Flex>
-      </Box>
-      {/* FIM TRAJETORIA CAROUSEL */}
-      
-
-      {/* INICIO TRAJETORIA */}
-      <Flex
-        bg='pink'
-      >
+       {/* INICIO TRAJETORIA CAROUSEL */}
+      <Box
+          bg= 'brown.100'
+        >
         <Flex
+          // bg='yellow'
+          direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
+          alignItems='center'
+          padding={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
+        >
+          
+          <Flex
             direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
             // bg='pink'
             flex='1'
             alignItems='center'
             margin={{ base: '5% 5%', sm: '5% 5%', lg: '5% 20%', xl: '5% 20%'}}
           >
-            <CompletedTitle titleString = {dataTrajetoria.title} />
-            
-            <Text
-              fontFamily = 'body'
-              color='brown.350'
-              marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '20px'}}
-              textAlign = 'center'
-            >{dataTrajetoria.text} </Text>
-        
+              <CompletedTitle titleString = {dataTrajetoria.title} />
+              <Text
+                fontFamily = 'body'
+                color='brown.350'
+                marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '20px'}}
+                textAlign = 'center'
+              >{dataTrajetoria.text} </Text>
+
+          </Flex>
+          <Flex justifyContent="center" alignItems="center" width="100%" margin={{ xs: "0", sm: "0", md: "0", lg: "20px", xl: "20px" }}>
+              <TrajectoryCarousel {...mockCarouselObj}/>
           </Flex>
         
-        {/* <WhereWeAre {...mockPanelObj}/> */}
+        </Flex>
+      </Box>
+      {/* FIM TRAJETORIA CAROUSEL */}
+
+      
+
+
+
+      {/* INICIO ONDE ESTAMOS */}
+      <Flex
+        maxWidth="1920px"
+        marginX="auto"
+        position='relative'
+        zIndex='base'
+        overflowY="hidden"
+        overflowX="hidden"
+        bg = 'white.100'
+      >
+        <Flex
+          direction = 'column'
+          // bg='pink'
+          marginBottom={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
+        >
+          {/* FLEX 1 - BOX 1 */}
+          <Flex
+            direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'row'}}
+            // bg='azure'
+            flex='1'
+            // alignItems='center'
+            margin={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
+          >
+            <CompletedTitle 
+              titleColor = 'green.900' 
+              titleString = {dataOndeEstamos.title} 
+              alignLine = {{ base: 'center', sm: 'center', lg: 'center', xl: 'flex-start'}}
+              textAlign =  {{ base: 'center', sm: 'left', lg: 'left', xl: 'left'}}
+            />
+
+            <Box
+              margin={{ base: '3px 0px', sm: '5px 0px', lg: '5px 0px', xl: '15px 10px'}}
+              // bg='pink'
+              flex = '2'
+            >
+              <Text as='h3'
+                variant = 'h3'
+                fontFamily = 'body'
+                color='green.600'
+                textAlign = {{ base: 'center', sm: 'center', lg: 'center', xl: 'left'}}
+              >{dataOndeEstamos.subtitle}</Text>
+              <Text
+                fontFamily = 'body'
+                textAlign = {{ base: 'center', sm: 'center', lg: 'center', xl: 'left'}}
+              >{dataOndeEstamos.text}</Text>
+
+            </Box>
+          </Flex>
+          {/* FLEX 1 - BOX 2 */}
+          <Flex 
+            justifyContent="center" 
+            alignItems="center" 
+            width="100%" 
+            margin={{ base: "0", xs: "0", sm: "0", md: "0", lg: "0", xl: "0 0 0 5%" }}
+            color='red'
+          >
+            <WhereWeAre {...mockPanelObj}/>
+          </Flex>
+      
+        </Flex>
+        
       </Flex>
-      {/* FIM TRAJETORIA */}
+      {/* FIM ONDE ESTAMOS */}
+
 
 
 
@@ -296,9 +350,6 @@ export const About = () => {
           
           <Text
             fontFamily = 'body'
-            fontWeight= 'normal'
-            color='green.900'
-            fontSize = {{ base: '8px', sm: '12px', lg: '16px', xl: '20px'}}
             marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '12px'}}
           >Nossos produtos estão nos melhores móveis e revendas especializadas do Brasil e do mundo.</Text>
         </Box>
@@ -309,10 +360,16 @@ export const About = () => {
           margin = {{ base: '20px', sm: '25px', lg: '50px', xl: '60px'}}
           alignSelf='center'
         >
-          <Image 
-            src='/assets/imgs/onde_comprar.png'
-            w={{ base: '300px', sm: '400px', lg: '550px', xl: '600px'}}
-            
+          <PatternInfo
+            title="DESCUBRA"
+            description="Onde Comprar"
+            onClick={() => alert('Vai para Onde Comprar')}
+            icon={
+              <EarthIcon
+                width={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                height={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+              />
+            }
           />
         </Box>
 
@@ -422,15 +479,9 @@ export const About = () => {
         </Box>
 
       </Flex>
-       
-
-
     
   </Flex>   
     {/* FIM CERTIFICADOS */}
-
-
-
 
     {/* </GlobalContainer> */}
     {/* <WhereWeAre /> */}

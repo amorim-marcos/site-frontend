@@ -186,7 +186,7 @@ export const Infographic = ({
                     flexDirection='column'
                     // bg='yellow'
                     alignSelf='flex-start'
-                    marginTop={{ base: '5px', sm: '10px', lg: '10px', xl: '0px'}}
+                    marginTop={{ base: '5px', sm: '10px', lg: '5px', xl: '0px'}}
                     marginLeft='5px'
                   >
                       <Text 
