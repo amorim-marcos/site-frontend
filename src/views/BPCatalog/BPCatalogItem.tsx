@@ -15,7 +15,14 @@ import {
   TableCellProps,
   Tbody,
   Td,
-  Tr
+  Tr,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  useDisclosure,
+  Link as ChakraLink
 } from '@chakra-ui/react'
 import { Link } from 'react-scroll'
 
@@ -26,9 +33,11 @@ import {
   PlayIcon,
   EarthIcon,
   TapIcon,
-  Arrow
+  Arrow,
+  DownloadIcon
 } from '@components/Icons'
 import { useRouter } from 'next/router'
+import CloseIcon from '@components/Icons/CloseIcon'
 
 export type Wood = { thickness: string; size: string }
 
@@ -53,29 +62,40 @@ export type BPCatalogItemProps = {
   prev: string
 }
 
-export const BPCatalogItem = (props: BPCatalogItemProps) => (
-  <Box pos="relative">
-    <Intro
-      texture={props.texture.img}
-      textureName={props.texture.name}
-      textureDescription={props.texture.description}
-    />
-    <Inspire
-      patternName={props.pattern.name}
-      microDescription={props.pattern.description}
-      anotherTextures={props.pattern.anothers}
-      patternDescription={props.pattern.about}
-    />
-    <TextureProperties
-      texture={props.texture.img}
-      textureName={props.texture.name}
-      mdp={props.mdp}
-      mdf={props.mdf}
-    />
+export const BPCatalogItem = (props: BPCatalogItemProps) => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
-    <PageNavegation next={props.next} prev={props.prev} />
-  </Box>
-)
+  return (
+    <Box pos="relative">
+      <DownloadModal
+        textureName={props.texture.name}
+        textureImg={props.texture.img}
+        isOpen={isOpen}
+        onClose={onClose}
+      />
+      <Intro
+        texture={props.texture.img}
+        textureName={props.texture.name}
+        textureDescription={props.texture.description}
+      />
+      <Inspire
+        patternName={props.pattern.name}
+        microDescription={props.pattern.description}
+        anotherTextures={props.pattern.anothers}
+        patternDescription={props.pattern.about}
+      />
+      <TextureProperties
+        texture={props.texture.img}
+        textureName={props.texture.name}
+        mdp={props.mdp}
+        mdf={props.mdf}
+        handleDownload={onOpen}
+      />
+
+      <PageNavegation next={props.next} prev={props.prev} />
+    </Box>
+  )
+}
 
 const Intro = (props: {
   texture: string
@@ -393,6 +413,7 @@ const TextureProperties = (props: {
   textureName: string
   mdp: Wood
   mdf: Wood
+  handleDownload: () => void
 }) => (
   <Flex
     align="center"
@@ -415,7 +436,7 @@ const TextureProperties = (props: {
         gap="27px"
         cursor="pointer"
         wrap={{ base: 'wrap', sm: 'nowrap' }}
-        onClick={() => alert('download')}
+        onClick={props.handleDownload}
       >
         <Image
           src={props.texture}
@@ -739,6 +760,56 @@ const PageNavegation = (props: { next: string; prev: string }) => {
     </Flex>
   )
 }
+
+const DownloadModal = (props: {
+  textureName: string
+  textureImg: string
+  isOpen: boolean
+  onClose: () => void
+}) => (
+  <Modal isOpen={props.isOpen} onClose={props.onClose}>
+    <ModalOverlay bg="rgba(255, 255, 255, 0.5)" backdropFilter="blur(9px)" />
+    <ModalContent boxShadow="5px 5px 5px rgba(0, 0, 0, 0.2)">
+      <ModalHeader borderTopRadius="26px">
+        <Flex align="center" justify="space-between" w="100%" pr="20px">
+          <Text
+            color="green.900"
+            fontSize="33px"
+            fontWeight="extrabold"
+            letterSpacing="-0.66px"
+          >
+            {props.textureName}
+          </Text>
+          <CloseIcon
+            onClick={props.onClose}
+            boxSize="25px"
+            color="#143127"
+            cursor="pointer"
+            transition="all 0.3s ease-in-out"
+            _hover={{ filter: 'brightness(2.5)' }}
+          />
+        </Flex>
+      </ModalHeader>
+      <ModalBody pos="relative" padding={0}>
+        <Image
+          src={props.textureImg}
+          w={{ base: '100%', sm: '538px' }}
+          h={{ base: '420px', sm: '620px' }}
+        />
+        <ChakraLink href={props.textureImg} download>
+          <DownloadIcon
+            pos="absolute"
+            bottom="34px"
+            right="35px"
+            cursor="pointer"
+            transition="all 0.3s ease-in-out"
+            _hover={{ filter: 'brightness(1.2)' }}
+          />
+        </ChakraLink>
+      </ModalBody>
+    </ModalContent>
+  </Modal>
+)
 
 const TextureContentButton = (props: {
   title: string
