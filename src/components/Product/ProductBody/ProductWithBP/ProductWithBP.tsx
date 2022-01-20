@@ -14,7 +14,6 @@ export type ProductWithBPProps = {
   btnText?: string
   type?: 'centralizedBtn' | 'bottomBtn'
   grafismColor?: string
-  marginTop?: ResponsiveCss
 }
 
 function arrowDistance(type: 'centralizedBtn' | 'bottomBtn') {
@@ -36,8 +35,7 @@ export const ProductWithBP = ({
   btnTextColor = '#FFF',
   btnText = 'Btn text',
   type = 'bottomBtn',
-  grafismColor = '#dfdbd9',
-  marginTop = '0px'
+  grafismColor = '#dfdbd9'
 }: ProductWithBPProps) => {
   return (
     <Flex
@@ -49,11 +47,16 @@ export const ProductWithBP = ({
       paddingX="30px"
       boxShadow="0px 0px 15px #00000007"
       position="relative"
-      h={type === 'bottomBtn' ? '23.7vw' : '22.5vw'}
+      h={
+        type === 'bottomBtn'
+          ? { base: 'auto', sm: '23.7vw' }
+          : { base: 'auto', sm: '22.5vw' }
+      }
       maxHeight={type === 'bottomBtn' ? '457px' : '432px'}
-      marginTop={marginTop}
+      flexDirection={{ base: 'column', sm: 'row' }}
+      paddingTop={{ base: '30px', sm: '0px' }}
     >
-      <Box position="absolute" {...arrowDistance(type)} left="0">
+      <Box position={'absolute'} {...arrowDistance(type)} left="0">
         <GrafismProductWithBP
           type={type}
           width={{
@@ -72,13 +75,13 @@ export const ProductWithBP = ({
         alignItems="center"
         textAlign="center"
         flexDirection="column"
-        width="50%"
+        width={{ base: '100%', sm: '50%' }}
         position="relative"
       >
         <Heading
           fontWeight="light"
           fontSize={{
-            base: '10px',
+            base: '14px',
             sm: '12px',
             md: '16px',
             lg: '20px',
@@ -92,14 +95,14 @@ export const ProductWithBP = ({
         <Text
           color={textColor}
           fontSize={{
-            base: '5px',
+            base: '12px',
             sm: '6px',
             md: '9px',
             lg: '12px',
             xl: '15px',
             '2xl': '18px'
           }}
-          width="75%"
+          width={{ base: '100%', sm: '75%' }}
           marginTop={{
             base: '7px',
             sm: '10px',
@@ -116,16 +119,17 @@ export const ProductWithBP = ({
             bg={btnColor}
             _hover={{ bg: btnHoverColor }}
             h={{
-              base: '20px',
+              base: '40px',
               sm: '30px',
               md: '40px',
               lg: '50px',
               xl: '60px',
               '2xl': '78px'
             }}
-            width="75%"
+            width={{ base: '90%', sm: '75%' }}
+            marginY={{ base: '15px', sm: '0' }}
             borderRadius={{
-              base: '2px',
+              base: '12px',
               sm: '5px',
               md: '8px',
               lg: '11px',
@@ -141,10 +145,11 @@ export const ProductWithBP = ({
               xl: '25px',
               '2xl': '30px'
             }}
+            padding="10px"
           >
             <Heading
               fontSize={{
-                base: '4px',
+                base: '10px',
                 sm: '5px',
                 md: '7.5px',
                 lg: '11px',
@@ -158,33 +163,26 @@ export const ProductWithBP = ({
           </Center>
         )}
       </Flex>
-      <Image
-        position="absolute"
-        top={type === 'bottomBtn' ? '-1.5%' : '-17%'}
-        right={type === 'bottomBtn' ? '-3%' : '-3%'}
-        src={imgSrc}
-        width="52vw"
-        maxWidth="998px"
-      />
 
       {type === 'bottomBtn' && (
         <Center
-          position="absolute"
-          bottom="-10%"
-          left="5.7%"
+          position={{ base: 'relative', sm: 'absolute' }}
+          bottom={{ base: '0', sm: '-10%' }}
+          left={{ base: '0', sm: '5.7%' }}
           bg={btnColor}
           _hover={{ bg: btnHoverColor }}
+          marginY={{ base: '15px', sm: '0' }}
           h={{
-            base: '20px',
+            base: '40px',
             sm: '30px',
             md: '50px',
             lg: '60px',
             xl: '70px',
             '2xl': '78px'
           }}
-          width="40%"
+          width={{ base: '90%', sm: '40%' }}
           borderRadius={{
-            base: '2px',
+            base: '12px',
             sm: '5px',
             md: '8px',
             lg: '11px',
@@ -192,10 +190,12 @@ export const ProductWithBP = ({
             '2xl': '17px'
           }}
           cursor="pointer"
+          textAlign="center"
+          padding="10px"
         >
           <Heading
             fontSize={{
-              base: '5px',
+              base: '10px',
               sm: '6px',
               md: '8.5px',
               lg: '12px',
@@ -208,6 +208,15 @@ export const ProductWithBP = ({
           </Heading>
         </Center>
       )}
+
+      <Image
+        position={{ base: 'relative', sm: 'absolute' }}
+        top={{ base: '0', sm: type === 'bottomBtn' ? '-1.5%' : '-17%' }}
+        right={{ base: '0', sm: type === 'bottomBtn' ? '-3%' : '-3%' }}
+        src={imgSrc}
+        width={{ base: '117vw', sm: '52vw' }}
+        maxWidth={{ base: '117vw', sm: '998px' }}
+      />
     </Flex>
   )
 }

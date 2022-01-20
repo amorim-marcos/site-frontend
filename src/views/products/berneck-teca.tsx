@@ -14,10 +14,10 @@ export default function BerneckTecaView() {
           }
         }}
         imgSrc="/img/teca.png"
-        imgWidth="56vw"
+        imgWidth={{ base: '110vw', sm: '56vw' }}
         imgMaxWidth="1075px"
         imgMarginTop={{
-          base: '94px',
+          base: '-30%',
           sm: '-24px',
           md: '-30px',
           lg: '0px',
@@ -25,7 +25,7 @@ export default function BerneckTecaView() {
           '2xl': '-60px'
         }}
         imgMarginRight={{
-          base: '-150px',
+          base: '-65px',
           sm: '-51px',
           md: '-100px',
           lg: '-100px',
@@ -146,7 +146,7 @@ export default function BerneckTecaView() {
               tableBackgroundColor="#E8DDD5"
               tableBorderColor="#FFF"
               tableWidth={{
-                base: '280px',
+                base: '210px',
                 xs: '320px',
                 sm: '250px',
                 md: '350px',

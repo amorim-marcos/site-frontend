@@ -19,19 +19,19 @@ export const GrafismProduct = ({
     <Box
       position="absolute"
       top={{
-        base: '-480px',
+        base: '-150px',
         sm: '-246px',
         md: '-324px',
         lg: '-404px',
         xl: '-480px',
         '2xl': '-630px'
       }}
-      left={'40%'}
+      left={{ base: '0', sm: '40%' }}
       zIndex="base"
     >
       <GrafismProduct1
         width={{
-          base: '520px',
+          base: '920px',
           sm: '704px',
           md: '938px',
           lg: '1173px',
@@ -46,33 +46,37 @@ export const GrafismProduct = ({
       zIndex="base"
       position="absolute"
       top={{
-        base: '-70px',
+        base: '230px',
         sm: '-90px',
         md: '-130px',
         lg: '-160px',
         xl: '-180px',
         '2xl': '-236px'
       }}
-      left="36%"
+      left={{ base: '-120px', sm: '36%' }}
+      h={{ base: '300px', sm: 'auto' }}
+      overflow="hidden"
     >
-      <GrafismProduct2
-        width={{
-          base: '520px',
-          sm: '702px',
-          md: '937px',
-          lg: '1171px',
-          xl: '1405px',
-          '2xl': '1650px'
-        }}
-        {...grafismProps}
-      />
+      <Box marginTop={{ base: '-110px', sm: '0' }}>
+        <GrafismProduct2
+          width={{
+            base: '900px',
+            sm: '702px',
+            md: '937px',
+            lg: '1171px',
+            xl: '1405px',
+            '2xl': '1650px'
+          }}
+          {...grafismProps}
+        />
+      </Box>
     </Box>
   ) : (
     <Box
       zIndex="base"
       position="absolute"
       top={{
-        base: '-70px',
+        base: '-210px',
         sm: '-94px',
         md: '-126px',
         lg: '-158px',
@@ -83,7 +87,7 @@ export const GrafismProduct = ({
     >
       <GrafismProduct3
         width={{
-          base: '520px',
+          base: '702px',
           sm: '702px',
           md: '937px',
           lg: '1171px',
