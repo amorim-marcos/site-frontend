@@ -3,6 +3,8 @@ import React, { ReactNode } from 'react'
 import { Box, Image, Text, Flex, Container, Wrap, Heading, Spacer } from '@chakra-ui/react'
 import { Wrapper } from '@components/LeafletMaps/styles'
 
+import CompletedTitle from '@components/CompletedTitle'
+
 
 export type PageSessionProps = {
   // Title
@@ -75,84 +77,43 @@ export const PageSession = ({
         h='100%'
       />
 
-     
       <Box
         // bg = 'grey'
         position='absolute'
         zIndex='base'
         w={{ base: '80%', sm: '80%', lg: '80%', xl: '80%'}}
       >
-
-      <Flex
-        direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
-        // bg='yellow'
-      >
-        
-        <Box
-          // bg='beige'
-          flex='1.2'
-        >
-          <Flex 
-            // bg='red'
-            direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
+          <Flex
+            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
+            // bg='yellow'
           >
-            <Box
-              // bg='orange'
-            >
-              <Text
-                  fontFamily = 'body'
-                  fontWeight= 'extrabold'
-                  color={titleColor}
-                  fontSize = {{ base: '18px', sm: '32px', lg: '40px', xl: '50px'}}
-                  textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
-              >{data.title}</Text>
-            </Box>
-            
-            <Box
-              // bg='white'
-              alignSelf={{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}}
-            >
-              <Box 
-                marginTop={{ base: '3px', sm: '10px', lg: '20px', xl: '20px'}}
-                h="3px"
-                w={{ base: '60px', sm: '70px', lg: '80px', xl: '90px'}}
-                bg="green.600"
-                borderRadius="20px"
-              />
-            </Box>
-          </Flex>
-          </Box>
+                <CompletedTitle titleColor = 'white' titleString = {data.title} alignSelfLine = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}}/>
 
-          <Box
-            margin={{ base: '3px 0px', sm: '5px 0px', lg: '10px 0px', xl: '15px 10px'}}
-            // bg='pink'
-            flex = '2'
-          >
-            <Text
-              fontFamily = 'body'
-              fontWeight= 'bold'
-              color={subTitleColor}
-              fontSize = {{ base: '10px', sm: '22px', lg: '24px', xl: '30px'}}
-              textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
-            >{data.subtitle}</Text>
-            
-            <Text
-              fontFamily = 'body'
-              fontWeight= 'normal'
-              color={subTitleColor}
-              fontSize = {{ base: '8px', sm: '14px', lg: '16px', xl: '20px'}}
-              textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
-            >{data.text}</Text>
-          </Box>
+                <Box
+                  margin={{ base: '3px 0px', sm: '5px 0px', lg: '10px 0px', xl: '15px 10px'}}
+                  // bg='pink'
+                  flex = '2'
+                >
+                  <Text as='h3'
+                    variant = 'h3'
+                    fontFamily = 'body'
+                    color={subTitleColor}
+                    textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                  >{data.subtitle}</Text>
+                  <Text
+                    fontFamily = 'body'
+                    fontWeight= 'normal'
+                    color={subTitleColor}
+                    fontSize = {{ base: '8px', sm: '14px', lg: '16px', xl: '20px'}}
+                    textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                  >{data.text}</Text>
+              
+                </Box>
 
-        </Flex>   
-
+          </Flex>   
 
       </Box>
-       
-
-
-    
+      
   </Flex>   
   )
 }

@@ -101,31 +101,23 @@ export const Infographic = ({
           justifyContent='center'
           // bg='black'
         >
-          <Heading 
-              variant='h1'
+          <Text
+              variant='h3'
               color={titleSuperscript1Color}
               letterSpacing = '-0.94px'
-              fontFamily = 'body'
-              fontWeight= 'bold'
-              // base to 320px | sm to 568px | lg to 1024 | xl to max
-              fontSize={{ base: '10px', sm: '12px', lg: '14px', xl: '26px'}}
-              textAlign='center'
-            >{titleSuperscript1Text}</Heading>
+            >{titleSuperscript1Text}</Text>
         </Box>
         
         {/* SUPERSCRIT TITLE 2 --> */}
         <Box 
           display={titleSuperscript2Display}
-          justifyContent='center'
-          // marginBottom={{ base: '0px', sm: '0px', lg: '0px', xl: '0px'}}
           // bg='greenyellow'
         >
-          <Heading 
+          <Text 
               variant = 'h4'
               color = {titleSuperscript2Color}
-              fontSize={{ base: '8px', sm: '10px', lg: '14px', xl: '1px'}}
               textAlign = 'center'
-            >{titleSuperscript2Text}</Heading>
+            >{titleSuperscript2Text}</Text>
         </Box>
 
 
@@ -139,78 +131,72 @@ export const Infographic = ({
             display='flex'
             alignItems='center'
             // bg='aquamarine'
-            maxH='70px'
-         >
-
-          {/* CONTENT 1 --> */}
-          <Box 
-            display={content1Display}
-            // bg='bisque'
+            maxH={{ base: '45px', sm: '50px', lg: '50px', xl: '70px'}}
           >
 
-          {content1DisplayIcon=='none' &&
-            <Heading 
-                variant='h1'
-                color={content1Color}
-                fontFamily = 'body'
-                fontWeight= 'extrabold'
-                fontSize = {{ base: '40px', sm: '50px', lg: '50px', xl: '90px'}}
-              >{content1Text}</Heading>
-          }
-           
-           {content1DisplayIcon=='yes' &&
-            <Box marginRight='5px'>
-              {(content1IconName === 'energy' &&
-                <EnergyIcon 
-                  height = {{ base: '40px', sm: '40px', lg: '50px', xl: '55px'}}
-                  width = {{ base: '30px', sm: '30px', lg: '40px', xl: '60px'}}
-                />)
-                || (content1IconName === 'water' &&
-                <WaterIcon 
-                  height = {{ base: '25px', sm: '35px', lg: '45px', xl: '48px'}}
-                  width = {{ base: '25px', sm: '30px', lg: '40px', xl: '60px'}}
-                />)
-                || (content1IconName === 'trees' &&
-                <TreesIcon 
-                  height = {{ base: '80px', sm: '100px', lg: '120px', xl: '140px'}}
-                  width = {{ base: '35px', sm: '40px', lg: '55px', xl: '60px'}}
-                />)}
-
-            </Box>  
-          }
-          
-            
-          </Box>
-            {/* CONTENT 2 --> */}
-              <Heading
-                variant='h1'
-                color={content2Color}
-                letterSpacing = '-0.94px'
-                fontFamily = 'body'
-                fontWeight= 'extrabold'
-                fontSize = {{ base: '40px', sm: '50px', lg: '50px', xl: '90px'}}
-                display={content2Display}
-              >{content2Text}</Heading>
-              
-              {/* CONTENT 3 --> */}
+              {/* CONTENT 1 --> */}
               <Box 
-                display={content3Display}
-                flexDirection='column'
-                // bg='yellow'
-                alignSelf='flex-start'
-                marginTop={{ base: '12px', sm: '15px', lg: '10px', xl: '0px'}}
-                marginLeft='5px'
+                display={content1Display}
+                // bg='bisque'
               >
-                <Heading 
-                  variant='h4'
-                  color={content3Color}
-                  letterSpacing = '-0.76px'
-                  fontWeight= 'bold'
-                  // bg='red'
-                  fontSize= {{ base: '10px', sm: '12px', lg: '14px', xl: '20px'}}
-                  maxWidth={{ base: '50px', sm: '60px', lg: '80px', xl: '100px'}}
-                >{content3Text}</Heading>
-              </Box>
+                    {content1DisplayIcon=='none' &&
+                      <Text 
+                          variant='h1'
+                          color={content1Color}
+                          fontFamily = 'body'
+                          fontSize = {{ base: '40px', sm: '48px', lg: '50px', xl: '90px'}}
+                        >{content1Text}</Text>
+                    }
+                    
+                    {content1DisplayIcon=='yes' &&
+                      <Box marginRight='5px'>
+                        {(content1IconName === 'energy' &&
+                          <EnergyIcon 
+                            height = {{ base: '40px', sm: '40px', lg: '50px', xl: '55px'}}
+                            width = {{ base: '30px', sm: '30px', lg: '40px', xl: '60px'}}
+                          />)
+                          || (content1IconName === 'water' &&
+                          <WaterIcon 
+                            height = {{ base: '25px', sm: '35px', lg: '45px', xl: '48px'}}
+                            width = {{ base: '25px', sm: '30px', lg: '40px', xl: '60px'}}
+                          />)
+                          || (content1IconName === 'trees' &&
+                          <TreesIcon 
+                            height = {{ base: '80px', sm: '100px', lg: '120px', xl: '140px'}}
+                            width = {{ base: '35px', sm: '40px', lg: '55px', xl: '60px'}}
+                          />)}
+
+                      </Box>  
+                    }
+                </Box>
+
+                {/* CONTENT 2 NUMBER --> */}
+                  <Text
+                    variant='h1'
+                    color={content2Color}
+                    letterSpacing = '-0.94px'
+                    fontFamily = 'body'
+                    fontSize = {{ base: '40px', sm: '48px', lg: '50px', xl: '90px'}}
+                    display={content2Display}
+                  >{content2Text}</Text>
+              
+                {/* CONTENT 3 SUPERSCRIPT --> */}
+                  <Box 
+                    display={content3Display}
+                    flexDirection='column'
+                    // bg='yellow'
+                    alignSelf='flex-start'
+                    marginTop={{ base: '5px', sm: '10px', lg: '10px', xl: '0px'}}
+                    marginLeft='5px'
+                  >
+                      <Text 
+                        variant='h4'
+                        color={content3Color}
+                        letterSpacing = '-0.76px'
+                        // bg='red'
+                        maxWidth={{ base: '50px', sm: '80px', lg: '80px', xl: '100px'}}
+                      >{content3Text}</Text>
+                  </Box>
 
 
               {/* CONTENT 4 --> */}
@@ -220,15 +206,14 @@ export const Infographic = ({
                 flexDirection='column'
                 alignSelf='flex-end'
               >
-                <Heading 
+                <Text 
                     variant='h1'
                     color={content4Color}
                     fontFamily = 'body'
-                    fontWeight= 'extrabold'
                     // bg='pink'
                     fontSize={{ base: '20px', sm: '30px', lg: '40px', xl: '70px'}}
                     marginBottom={{ base: '10px', sm: '5px', lg: '-10px', xl: '-16px'}}
-                  >{content4Text}</Heading>
+                  >{content4Text}</Text>
               </Box>
 
           </Box>
@@ -243,16 +228,14 @@ export const Infographic = ({
           // bg='pink.400'
           marginTop = {{ base: '-10px', sm: '-5px', lg: '10px', xl: '5px'}}
         >
-          <Heading 
-              variant='h1'
+          <Text 
+              variant='h3'
               color={titleSubscript1Color}
               letterSpacing = '-0.94px'
               fontFamily = 'body'
-              fontWeight= 'bold'
               textAlign='center'
-              fontSize={{ base: '10px', sm: '12px', lg: '14px', xl: '16px'}}
               maxWidth={{ base: '150px', sm: '200px', lg: '250px', xl: '300px'}}
-            >{titleSubscript1Text}</Heading>
+            >{titleSubscript1Text}</Text>
         </Box>
         {/* SUBSCRIPT TITLE --> */}
 
