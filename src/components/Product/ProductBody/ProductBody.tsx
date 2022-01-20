@@ -27,6 +27,7 @@ export type ProductBodyProps = {
   tertiaryBackgroundColor?: string
   productWithBP?: ProductWithBPProps
   paddingBottom?: ResponsiveCss
+  BottomComponent?: React.ReactNode
 }
 export const ProductBody = ({
   description,
@@ -39,157 +40,167 @@ export const ProductBody = ({
   tertiaryBackgroundColor = '#BDCEC3',
   productWithBP,
   specifications,
-  paddingBottom
+  paddingBottom = '0px',
+  BottomComponent
 }: ProductBodyProps) => {
   const product = useTranslation('product')
 
   return (
     <Flex
       maxWidth="1920px"
-      padding="5%"
       flexDirection="column"
       bg={backgroundColor}
       paddingBottom={paddingBottom}
       paddingTop={{ base: '5%' }}
     >
-      {description && (
-        <Box
-          marginBottom={{
-            base: '30px',
-            sm: '40px',
-            md: '50px',
-            lg: '60px',
-            xl: '70px',
-            '2xl': '80px'
-          }}
-        >
-          <Heading
-            fontSize={{
-              base: '20px',
-              sm: '11px',
-              md: '14px',
-              lg: '18px',
-              xl: '22px',
-              '2xl': '30px'
-            }}
-            variant="productTitle"
-          >
-            {product.t('Description')}
-          </Heading>
-          <ProductText paragraph content={description} />
-        </Box>
-      )}
-
-      {moreTechnologyQualityProtection && (
-        <Box
-          marginBottom={{
-            base: '30px',
-            sm: '40px',
-            md: '50px',
-            lg: '60px',
-            xl: '70px',
-            '2xl': '80px'
-          }}
-        >
-          <Heading
-            variant="productTitle"
-            fontSize={{
-              base: '20px',
-              sm: '11px',
-              md: '14px',
-              lg: '18px',
-              xl: '22px',
-              '2xl': '30px'
+      <Box paddingX="5%">
+        {description && (
+          <Box
+            marginBottom={{
+              base: '30px',
+              sm: '40px',
+              md: '50px',
+              lg: '60px',
+              xl: '70px',
+              '2xl': '80px'
             }}
           >
-            {product.t('MoreTechnologyQualityProtection')}
-          </Heading>
-          <ProductText paragraph content={moreTechnologyQualityProtection} />
-        </Box>
-      )}
+            <Heading
+              fontSize={{
+                base: '20px',
+                sm: '11px',
+                md: '14px',
+                lg: '18px',
+                xl: '22px',
+                '2xl': '30px'
+              }}
+              variant="productTitle"
+            >
+              {product.t('Description')}
+            </Heading>
+            <ProductText paragraph content={description} />
+          </Box>
+        )}
 
-      {usesAndApplications && (
-        <Box
-          marginBottom={{
-            base: '30px',
-            sm: '40px',
-            md: '50px',
-            lg: '60px',
-            xl: '70px',
-            '2xl': '80px'
-          }}
-        >
-          <Heading
-            variant="productTitle"
-            fontSize={{
-              base: '20px',
-              sm: '11px',
-              md: '14px',
-              lg: '18px',
-              xl: '22px',
-              '2xl': '30px'
+        {moreTechnologyQualityProtection && (
+          <Box
+            marginBottom={{
+              base: '30px',
+              sm: '40px',
+              md: '50px',
+              lg: '60px',
+              xl: '70px',
+              '2xl': '80px'
             }}
           >
-            {product.t('UsesAndApplications')}
-          </Heading>
-          <ProductText content={usesAndApplications} />
-        </Box>
-      )}
+            <Heading
+              variant="productTitle"
+              fontSize={{
+                base: '20px',
+                sm: '11px',
+                md: '14px',
+                lg: '18px',
+                xl: '22px',
+                '2xl': '30px'
+              }}
+            >
+              {product.t('MoreTechnologyQualityProtection')}
+            </Heading>
+            <ProductText paragraph content={moreTechnologyQualityProtection} />
+          </Box>
+        )}
 
-      {finishes && (
-        <Box
-          marginBottom={{
-            base: '30px',
-            sm: '40px',
-            md: '50px',
-            lg: '60px',
-            xl: '70px',
-            '2xl': '80px'
-          }}
-        >
-          <Heading
-            fontSize={{
-              base: '20px',
-              sm: '11px',
-              md: '14px',
-              lg: '18px',
-              xl: '22px',
-              '2xl': '30px'
+        {usesAndApplications && (
+          <Box
+            marginBottom={{
+              base: '30px',
+              sm: '40px',
+              md: '50px',
+              lg: '60px',
+              xl: '70px',
+              '2xl': '80px'
             }}
-            variant="productTitle"
           >
-            {product.t('Finishes')}
-          </Heading>
-          <ProductText content={finishes} />
-        </Box>
-      )}
+            <Heading
+              variant="productTitle"
+              fontSize={{
+                base: '20px',
+                sm: '11px',
+                md: '14px',
+                lg: '18px',
+                xl: '22px',
+                '2xl': '30px'
+              }}
+            >
+              {product.t('UsesAndApplications')}
+            </Heading>
+            <ProductText content={usesAndApplications} />
+          </Box>
+        )}
 
-      {specifications && (
-        <ProductSpecification
-          tableBackgroundColor={tertiaryBackgroundColor}
-          tableBorderColor={backgroundColor}
-          content={specifications}
-        />
-      )}
+        {finishes && (
+          <Box
+            marginBottom={{
+              base: '30px',
+              sm: '40px',
+              md: '50px',
+              lg: '60px',
+              xl: '70px',
+              '2xl': '80px'
+            }}
+          >
+            <Heading
+              fontSize={{
+                base: '20px',
+                sm: '11px',
+                md: '14px',
+                lg: '18px',
+                xl: '22px',
+                '2xl': '30px'
+              }}
+              variant="productTitle"
+            >
+              {product.t('Finishes')}
+            </Heading>
+            <ProductText content={finishes} />
+          </Box>
+        )}
 
-      {dimensions && (
-        <Box marginBottom="80px">
-          <ProductDimensions
+        {specifications && (
+          <ProductSpecification
+            tableBackgroundColor={tertiaryBackgroundColor}
             tableBorderColor={backgroundColor}
-            tableBackgroundColor={secondaryBackgroundColor}
-            dimensions={dimensions}
-            tableWidth={{
-              base: '300px',
-              sm: '170px',
-              md: '270px',
-              lg: '350px',
-              xl: '400px',
-              '2xl': '450px'
-            }}
+            content={specifications}
           />
+        )}
+
+        {dimensions && (
+          <Box marginBottom="80px">
+            <ProductDimensions
+              tableBorderColor={backgroundColor}
+              tableBackgroundColor={secondaryBackgroundColor}
+              dimensions={dimensions}
+              tableWidth={{
+                base: '300px',
+                sm: '170px',
+                md: '270px',
+                lg: '350px',
+                xl: '400px',
+                '2xl': '450px'
+              }}
+            />
+          </Box>
+        )}
+      </Box>
+      {BottomComponent}
+      {productWithBP && (
+        <Box
+          marginBottom={{ base: '30px', sm: '50px' }}
+          paddingX={{ base: '0', sm: '5%' }}
+        >
+          <ProductWithBP {...productWithBP} />
         </Box>
       )}
-      {productWithBP && <ProductWithBP {...productWithBP} />}
     </Flex>
   )
 }

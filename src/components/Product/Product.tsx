@@ -1,4 +1,5 @@
 import { Box, Image, Flex, useMediaQuery } from '@chakra-ui/react'
+import useWindowDimensions from 'hooks/useWindow'
 import { ResponsiveCss } from 'types/responsive'
 import {
   GrafismProduct,
@@ -41,6 +42,9 @@ export const Product = ({
   imgMaxWidth = '1415px',
   grafismProps
 }: ProductProps) => {
+  const { width } = useWindowDimensions()
+  const isMobile = width && width < 568
+
   return (
     <Box overflow="hidden" position="relative" marginX="auto" maxWidth="1920px">
       <GrafismProduct {...grafismProps} />
@@ -83,16 +87,35 @@ export const Product = ({
               display={{ base: 'none', sm: 'block' }}
             />
           </Flex>
-          {/* {downloadAndLinks && (
+          {!isMobile && downloadAndLinks && (
             <ProductDownloadAndLinks
               plusProduct={plusProduct}
               backgroundColor={secondaryBackground}
               {...downloadAndLinks}
             />
-          )} */}
+          )}
         </Flex>
       )}
-      <ProductBody {...body} secondaryBackgroundColor={secondaryBackground} />
+      <ProductBody
+        {...body}
+        secondaryBackgroundColor={secondaryBackground}
+        BottomComponent={
+          isMobile && (
+            <Flex
+              bg={body?.backgroundColor}
+              alignItems="center"
+              justifyContent="center"
+              w="100vw"
+            >
+              <ProductDownloadAndLinks
+                plusProduct={plusProduct}
+                backgroundColor={secondaryBackground}
+                {...downloadAndLinks}
+              />
+            </Flex>
+          )
+        }
+      />
     </Box>
   )
 }
