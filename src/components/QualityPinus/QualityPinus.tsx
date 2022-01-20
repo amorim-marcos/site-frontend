@@ -12,8 +12,6 @@ import ProductDimensions from '@components/ProductDimensions'
 import { useTranslation } from 'react-i18next'
 import { QualityBtnTexture } from './QualityPinusBtnsTexture/QualityBtnTexture'
 
-export type QualityPinusProps = {}
-
 export const QualityPinus = () => {
   const pinus = useTranslation('pinus-berneck')
 
@@ -55,7 +53,12 @@ export const QualityPinus = () => {
         {pinus.t('qualitiesPinusBerneck')}
       </Heading>
       <Flex>
-        <Box w="588px" h="631px" bg="#cba57a"></Box>
+        <Flex
+          backgroundImage="url('/img/pinus_quality.png')"
+          minWidth="450px"
+          h="550px"
+          // bg="#cba57a"
+        ></Flex>
 
         <Flex marginLeft="20px" flexDirection="column">
           <Flex h="64px" justifyContent="flex-start" marginBottom="50px">
@@ -182,7 +185,7 @@ export const QualityPinus = () => {
 }
 
 const btnStyle: CenterProps = {
-  w: '192px',
+  w: '180px',
   bg: '#E6EBE5',
   marginRight: '10px',
   position: 'relative'

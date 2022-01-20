@@ -9,6 +9,7 @@ export type ProductDownloadItemProps = {
   hoverColor?: string
   onClick?: () => void
   iconName?: 'datasheet' | 'location' | 'qualityCertificate'
+  backgroundColor?: string
 }
 
 export const ProductDownloadItem = ({
@@ -16,14 +17,38 @@ export const ProductDownloadItem = ({
   textColor = '#665E5A',
   text = 'Ficha técnica',
   onClick,
-  iconName = 'datasheet'
+  iconName = 'datasheet',
+  backgroundColor = '#FFF'
 }: ProductDownloadItemProps) => {
   return (
-    <Flex onClick={onClick} justifyContent="center" alignItems="center">
+    <Flex
+      padding={{ base: '10px', sm: '0' }}
+      h={{
+        base: '100px',
+        sm: '50px',
+        md: '65px',
+        lg: '85px',
+        xl: '100px',
+        '2xl': '136px'
+      }}
+      w={{
+        base: '100vw',
+        sm: '98px',
+        md: '125px',
+        lg: '165px',
+        xl: '216px',
+        '2xl': '270px'
+      }}
+      onClick={onClick}
+      justifyContent="center"
+      alignItems="center"
+      backgroundColor={backgroundColor}
+      marginBottom={{ base: '15px', sm: '0px' }}
+    >
       {iconName === 'datasheet' ? (
         <DatasheetIcon
           width={{
-            base: '7px',
+            base: '30px',
             sm: '8px',
             md: '13px',
             lg: '15px',
@@ -35,7 +60,7 @@ export const ProductDownloadItem = ({
       ) : iconName === 'location' ? (
         <LocationIcon
           width={{
-            base: '7px',
+            base: '30px',
             sm: '8px',
             md: '13px',
             lg: '15px',
@@ -47,7 +72,7 @@ export const ProductDownloadItem = ({
       ) : (
         <QualityCertificateIcon
           width={{
-            base: '7px',
+            base: '30px',
             sm: '8px',
             md: '13px',
             lg: '15px',
@@ -61,7 +86,7 @@ export const ProductDownloadItem = ({
         _hover={{ color: hoverColor }}
         color={textColor}
         fontSize={{
-          base: '6px',
+          base: '16px',
           sm: '8px',
           md: '10px',
           lg: '14px',
@@ -69,16 +94,8 @@ export const ProductDownloadItem = ({
           '2xl': '20px'
         }}
         fontWeight="bold"
-        width={{
-          base: '10px',
-          sm: '70px',
-          md: '93px',
-          lg: '110px',
-          xl: '130px',
-          '2xl': '160px'
-        }}
         marginLeft={{
-          base: '5px',
+          base: '15px',
           sm: '7px',
           md: '9px',
           lg: '11px',

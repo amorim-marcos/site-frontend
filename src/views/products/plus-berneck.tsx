@@ -1,3 +1,5 @@
+import PlusPanelsPresentation from '@components/PlusPanelsPresentation'
+import PlusTestInfo from '@components/PlusTestInfo'
 import Product from '../../components/Product'
 
 export default function PlusBerneckView() {
@@ -8,8 +10,10 @@ export default function PlusBerneckView() {
           grafism: 'type1'
         }}
         imgSrc="/img/plus.png"
+        imgWidth={{ base: '120vw', sm: '80vw' }}
+        imgMaxWidth="1415px"
         imgMarginTop={{
-          base: '94px',
+          base: '-30%',
           sm: '20px',
           md: '17px',
           lg: '40px',
@@ -34,15 +38,17 @@ export default function PlusBerneckView() {
             'Os painéis da Linha PLUS BERNECK® são indicados para fabricação de móveis a serem aplicados em ambientes como cozinhas, banheiros e lavanderias.'
         }}
         body={{
-          heading1: 'Mais tecnologia, mais qualidade, mais proteção',
-          paragraph1:
+          moreTechnologyQualityProtection:
             'Há quase 70 anos, a BERNECK® é a marca da madeira e das grandes soluções para seus projetos. Agora ainda mais, com toda a qualidade e maior resistência que a linha PLUS BERNECK® oferece.',
-          heading2: 'Normas de qualidade',
-          paragraph2:
+          qualityStandards:
             'Os produtos da linha PLUS BERNECK® seguem as normas ABNT NBR 14.810 e ABNT NBR 15.316 (V313) e registram indicadores superiores aos estabelecidos pela normativa.',
-          backgroundColor: '#E8E8E8'
+          backgroundColor: '#FFF',
+          abntInfo: '• ABNT NBR 15.316 • ABNT NBR 14.810'
         }}
       />
+
+      <PlusTestInfo />
+      <PlusPanelsPresentation />
     </div>
   )
 }
