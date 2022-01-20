@@ -1,4 +1,5 @@
-import { Box, Image, Flex } from '@chakra-ui/react'
+import { Box, Image, Flex, useMediaQuery } from '@chakra-ui/react'
+import useWindowDimensions from 'hooks/useWindow'
 import { ResponsiveCss } from 'types/responsive'
 import {
   GrafismProduct,
@@ -27,6 +28,7 @@ export type ProductProps = {
   imgMaxWidth?: ResponsiveCss
   grafismProps: GrafismProductProps
 }
+
 export const Product = ({
   header,
   body,
@@ -40,6 +42,9 @@ export const Product = ({
   imgMaxWidth = '1415px',
   grafismProps
 }: ProductProps) => {
+  const { width } = useWindowDimensions()
+  const isMobile = width && width < 568
+
   return (
     <Box overflow="hidden" position="relative" marginX="auto" maxWidth="1920px">
       <GrafismProduct {...grafismProps} />
@@ -50,14 +55,18 @@ export const Product = ({
           direction="column"
           width="100vw"
           maxWidth="1920px"
-          position="absolute"
+          position={{ base: 'relative', sm: 'absolute' }}
           top="0"
           right="0"
-          alignItems="flex-end"
-          visibility={{ base: 'hidden' }}
+          alignItems={'flex-end'}
         >
-          <Box>
+          <Flex
+            justifyContent="flex-end"
+            w="100vw"
+            bg={{ base: body?.backgroundColor, sm: 'none' }}
+          >
             <Image
+              as="img"
               src={imgSrc}
               alt="product image"
               width={imgWidth}
@@ -65,8 +74,8 @@ export const Product = ({
               marginTop={imgMarginTop}
               marginRight={imgMarginRight}
             />
-          </Box>
-          {downloadAndLinks && (
+          </Flex>
+          {!isMobile && downloadAndLinks && (
             <ProductDownloadAndLinks
               plusProduct={plusProduct}
               backgroundColor={secondaryBackground}
@@ -75,7 +84,27 @@ export const Product = ({
           )}
         </Flex>
       )}
-      <ProductBody {...body} secondaryBackgroundColor={secondaryBackground} />
+      <ProductBody
+        {...body}
+        secondaryBackgroundColor={secondaryBackground}
+        BottomComponent={
+          isMobile &&
+          downloadAndLinks && (
+            <Flex
+              bg={body?.backgroundColor}
+              alignItems="center"
+              justifyContent="center"
+              w="100vw"
+            >
+              <ProductDownloadAndLinks
+                plusProduct={plusProduct}
+                backgroundColor={secondaryBackground}
+                {...downloadAndLinks}
+              />
+            </Flex>
+          )
+        }
+      />
     </Box>
   )
 }

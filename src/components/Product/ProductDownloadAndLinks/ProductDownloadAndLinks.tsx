@@ -21,77 +21,49 @@ export const ProductDownloadAndLinks = ({
   const product = useTranslation('product')
   return (
     <Flex
+      flexDirection={{ base: 'column', sm: 'row' }}
       alignItems="center"
       justifyContent="space-around"
       marginTop="4%"
       marginRight={{
-        base: '1.5%',
+        base: '0',
         sm: '1%',
         md: '2%',
         lg: '3%',
         xl: '3%',
-        '2xl': '4%'
+        '2xl': '2%'
       }}
-      paddingX={{
-        base: '3px',
-        sm: '5px',
-        md: '20px',
-        lg: '10px',
-        xl: '20px'
-      }}
-      w={
-        qualityCertificate && whereBuy && datasheet
-          ? {
-              base: '250px',
-              sm: '320px',
-              md: '399px',
-              lg: '520px',
-              xl: '650px',
-              '2xl': '50%'
-            }
-          : {
-              base: '250px',
-              sm: '220px',
-              md: '300px',
-              lg: '375px',
-              xl: '480px',
-              '2xl': '40%'
-            }
-      }
-      h={{
-        base: '40px',
-        sm: '50px',
-        md: '65px',
-        lg: '85px',
-        xl: '100px',
-        '2xl': '136px'
-      }}
-      bg={backgroundColor}
       position="relative"
-      maxWidth="930px"
     >
       {datasheet && (
         <ProductDownloadItem
           iconName="datasheet"
           text={product.t('datasheet')}
+          backgroundColor={backgroundColor}
         />
       )}
       {whereBuy && (
-        <ProductDownloadItem iconName="location" text={product.t('whereBuy')} />
+        <ProductDownloadItem
+          iconName="location"
+          text={product.t('whereBuy')}
+          backgroundColor={backgroundColor}
+        />
       )}
       {qualityCertificate && (
         <ProductDownloadItem
           iconName="qualityCertificate"
           text={product.t('qualityCertificate')}
+          backgroundColor={backgroundColor}
         />
       )}
       {plusProduct && (
         <Flex
           alignItems="center"
           justifyContent="center"
-          position="absolute"
+          position={{ base: 'relative', sm: 'absolute' }}
+          marginY={{ base: '30px', sm: '0px' }}
           bottom={{
-            base: '-40px',
+            base: '0',
             sm: '-45px',
             md: '-50px',
             lg: '-60px',
@@ -108,7 +80,7 @@ export const ProductDownloadAndLinks = ({
           >
             <Text
               fontSize={{
-                base: '8px',
+                base: '18px',
                 sm: '10px',
                 md: '12px',
                 lg: '14px',
@@ -122,7 +94,7 @@ export const ProductDownloadAndLinks = ({
             <Heading
               color="green.800"
               fontSize={{
-                base: '10px',
+                base: '20px',
                 sm: '12px',
                 md: '14px',
                 lg: '16px',
@@ -135,7 +107,7 @@ export const ProductDownloadAndLinks = ({
           </Flex>
           <ArrowIcon
             width={{
-              base: '5px',
+              base: '30px',
               sm: '10px',
               md: '15px',
               lg: '20px',

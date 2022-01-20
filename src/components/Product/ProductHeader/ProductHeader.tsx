@@ -23,36 +23,35 @@ export const ProductHeader = ({
       maxWidth="1920px"
       bg={headerBgColor}
       align={{ base: 'center', sm: 'flex-start' }}
-      paddingBottom={{ base: '60px', sm: '5%' }}
+      paddingBottom={{ base: '30vh', sm: '5%' }}
     >
       <Flex
         width="fit-content"
         position="relative"
         align={{ base: 'center', sm: 'flex-start' }}
+        justifyContent="flex-end"
+        flexDirection={{ base: 'row-reverse', sm: 'row' }}
+        textAlign="left"
       >
         {plusIndicator && (
           <Box
-            position="absolute"
+            position={'absolute'}
             top={{
-              base: '2px',
+              base: '30px',
               sm: '6px',
               md: '10px',
               lg: '14px',
               xl: '16px',
               '2xl': '20px'
             }}
-            right={{
-              base: '-60px',
-              sm: '-70px',
-              md: '-80px',
-              lg: '-90px',
-              xl: '-100px',
-              '2xl': '-110px'
+            left={{
+              base: '200px',
+              sm: '102%'
             }}
           >
             <PlusIndicator
               width={{
-                base: '50px',
+                base: '80px',
                 sm: '60px',
                 md: '70px',
                 lg: '80px',
@@ -63,16 +62,17 @@ export const ProductHeader = ({
           </Box>
         )}
         <Heading
+          zIndex="docked"
           color="white.100"
           fontSize={{
-            base: '30px',
+            base: '33px',
             sm: '25px',
             md: '30px',
             lg: '35px',
             xl: '40px',
             '2xl': '50px'
           }}
-          zIndex="docked"
+          width={plusIndicator ? { base: '68%', sm: 'auto' } : 'auto'}
         >
           {title}
         </Heading>
@@ -80,7 +80,7 @@ export const ProductHeader = ({
 
       <Box
         borderBottom="solid"
-        borderBottomWidth={{ base: '2px', sm: '4px' }}
+        borderBottomWidth={{ base: '2px', sm: '3px', lg: '4px' }}
         borderBottomColor="green.600"
         w="87px"
         marginTop={{
@@ -93,37 +93,40 @@ export const ProductHeader = ({
         }}
         marginBottom="20px"
       />
-      <Box>
-        <Heading
+      <Flex flexDirection="column">
+        <Box>
+          <Heading
+            fontSize={{
+              base: '17px',
+              sm: '11px',
+              md: '14px',
+              lg: '18px',
+              xl: '22px',
+              '2xl': '30px'
+            }}
+            color="green.900"
+            zIndex="docked"
+            marginBottom={{ base: '15px', sm: '0px' }}
+          >
+            {subtitle}
+          </Heading>
+        </Box>
+        <Text
           fontSize={{
-            base: '15px',
-            sm: '11px',
-            md: '14px',
-            lg: '18px',
-            xl: '22px',
-            '2xl': '30px'
+            base: '13px',
+            sm: '8px',
+            md: '11px',
+            lg: '14px',
+            xl: '17px',
+            '2xl': '20px'
           }}
           color="green.900"
+          width={{ base: '100%', sm: '45%' }}
           zIndex="docked"
         >
-          {subtitle}
-        </Heading>
-      </Box>
-      <Text
-        fontSize={{
-          base: '7px',
-          sm: '8px',
-          md: '11px',
-          lg: '14px',
-          xl: '17px',
-          '2xl': '20px'
-        }}
-        color="green.900"
-        width={{ base: '100%', sm: '45%' }}
-        zIndex="docked"
-      >
-        {description}
-      </Text>
+          {description}
+        </Text>
+      </Flex>
     </Flex>
   )
 }

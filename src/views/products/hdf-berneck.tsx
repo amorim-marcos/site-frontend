@@ -8,8 +8,9 @@ export default function HdfBerneckView() {
         grafismProps={{
           grafism: 'type1'
         }}
+        imgWidth={{ base: '130vw', sm: '74vw' }}
         imgMarginTop={{
-          base: '36px',
+          base: '-30%',
           sm: '52px',
           md: '69px',
           lg: '86px',
@@ -54,11 +55,12 @@ export default function HdfBerneckView() {
 
       <Product
         imgSrc="/img/hdf_plus.png"
+        imgWidth={{ base: '130vw', sm: '74vw' }}
         grafismProps={{
           grafism: 'type2'
         }}
         imgMarginTop={{
-          base: '94px',
+          base: '-30%',
           sm: '128px',
           md: '170px',
           lg: '213px',
