@@ -1,5 +1,9 @@
 import { ReactNode, useState } from 'react'
 import {
+  Box,
+  Flex,
+  Image,
+  Text,
   Accordion,
   AccordionButton,
   AccordionButtonProps,
@@ -7,14 +11,10 @@ import {
   AccordionItem,
   AccordionPanel,
   AccordionPanelProps,
-  Box,
-  Flex,
-  Image,
   Table,
   TableCellProps,
   Tbody,
   Td,
-  Text,
   Tr
 } from '@chakra-ui/react'
 import { Link } from 'react-scroll'
@@ -25,9 +25,9 @@ import {
   ReportsIcon,
   PlayIcon,
   EarthIcon,
-  TapIcon
+  TapIcon,
+  Arrow
 } from '@components/Icons'
-import Arrow from '@components/Arrow'
 
 export type Wood = { thickness: string; size: string }
 
