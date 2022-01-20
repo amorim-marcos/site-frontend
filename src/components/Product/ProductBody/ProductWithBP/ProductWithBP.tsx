@@ -14,7 +14,6 @@ export type ProductWithBPProps = {
   btnText?: string
   type?: 'centralizedBtn' | 'bottomBtn'
   grafismColor?: string
-  marginTop?: ResponsiveCss
 }
 
 function arrowDistance(type: 'centralizedBtn' | 'bottomBtn') {
@@ -36,8 +35,7 @@ export const ProductWithBP = ({
   btnTextColor = '#FFF',
   btnText = 'Btn text',
   type = 'bottomBtn',
-  grafismColor = '#dfdbd9',
-  marginTop = '0px'
+  grafismColor = '#dfdbd9'
 }: ProductWithBPProps) => {
   return (
     <Flex
@@ -55,7 +53,6 @@ export const ProductWithBP = ({
           : { base: 'auto', sm: '22.5vw' }
       }
       maxHeight={type === 'bottomBtn' ? '457px' : '432px'}
-      marginTop={marginTop}
       flexDirection={{ base: 'column', sm: 'row' }}
       paddingTop={{ base: '30px', sm: '0px' }}
     >

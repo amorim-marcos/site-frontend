@@ -17,7 +17,7 @@ export default function BerneckTecaView() {
         imgWidth={{ base: '110vw', sm: '56vw' }}
         imgMaxWidth="1075px"
         imgMarginTop={{
-          base: '94px',
+          base: '-30%',
           sm: '-24px',
           md: '-30px',
           lg: '0px',
@@ -146,7 +146,7 @@ export default function BerneckTecaView() {
               tableBackgroundColor="#E8DDD5"
               tableBorderColor="#FFF"
               tableWidth={{
-                base: '280px',
+                base: '210px',
                 xs: '320px',
                 sm: '250px',
                 md: '350px',

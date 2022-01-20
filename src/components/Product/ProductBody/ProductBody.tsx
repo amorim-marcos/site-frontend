@@ -167,11 +167,13 @@ export const ProductBody = ({
         )}
 
         {specifications && (
-          <ProductSpecification
-            tableBackgroundColor={tertiaryBackgroundColor}
-            tableBorderColor={backgroundColor}
-            content={specifications}
-          />
+          <Box marginBottom="100px">
+            <ProductSpecification
+              tableBackgroundColor={tertiaryBackgroundColor}
+              tableBorderColor={backgroundColor}
+              content={specifications}
+            />
+          </Box>
         )}
 
         {dimensions && (

@@ -71,20 +71,8 @@ export const Product = ({
               alt="product image"
               width={imgWidth}
               maxWidth={imgMaxWidth}
-              marginTop={'-30%'}
-              marginRight={imgMarginRight}
-              display={{ base: 'block', sm: 'none' }}
-            />
-
-            <Image
-              as="img"
-              src={imgSrc}
-              alt="product image"
-              width={imgWidth}
-              maxWidth={imgMaxWidth}
               marginTop={imgMarginTop}
               marginRight={imgMarginRight}
-              display={{ base: 'none', sm: 'block' }}
             />
           </Flex>
           {!isMobile && downloadAndLinks && (
