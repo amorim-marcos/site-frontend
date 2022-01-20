@@ -33,7 +33,6 @@ export const DownloadIcon = ({
             height="68.964"
             filterUnits="userSpaceOnUse"
           >
-            <feOffset input="SourceAlpha" />
             <feGaussianBlur stdDeviation="2" result="blur" />
             <feFlood floodOpacity="0.027" />
             <feComposite operator="in" in2="blur" />
