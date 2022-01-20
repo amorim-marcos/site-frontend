@@ -31,33 +31,47 @@ import {
 
 export type Wood = { thickness: string; size: string }
 
-export const BPCatalogItem = () => {
+export type BPCatalogItemProps = {
+  texture: {
+    img: string
+    name: string
+    description: string
+  }
+  pattern: {
+    name: string
+    description: string
+    about: string
+    anothers: {
+      name: string
+      img: string
+    }[]
+  }
+  mdp: Wood
+  mdf: Wood
+}
+
+export const BPCatalogItem = (props: BPCatalogItemProps) => {
   const prevBp = 'SOLANUM'
   const nextBp = 'VERTI'
 
   return (
     <Box pos="relative">
       <Intro
-        texture="/bps/patterns/cacau.jpg"
-        textureName="Terrazza"
-        textureDescription="Com a proposta do granilite e um mix de tonalidades de cimento branco, areia e diferentes minerais, este BP BERNECK® é um ícone da arquitetura em seus projetos."
+        texture={props.texture.img}
+        textureName={props.texture.name}
+        textureDescription={props.texture.description}
       />
       <Inspire
-        microDescription="Textura contemporânea com agradável sensação ao toque."
-        anotherTextures={[
-          { name: 'Louro Preto', img: '/bps/patterns/amantea.jpg' },
-          { name: 'Ceramik', img: '/bps/patterns/calcare.jpg' },
-          { name: 'Millennial', img: '/bps/patterns/gengibre.jpg' },
-          { name: 'Denim', img: '/bps/patterns/wengue_ravena.jpg' }
-        ]}
-        patternName="MICRO"
-        patternDescription="O padrão Solanum traz personalidade e um apelo estético único aos projetos de móveis e interiores. O novo padrão é inspirado no Cumaru, madeira proveniente da Amazônia, e valoriza a cultura brasileira. Lançamento da Coleção Nômade, ele chama a atenção pela tonalidade castanho-mel e pela facilidade de combinar com tudo, trazendo calor e beleza aos móveis e interiores."
+        patternName={props.pattern.name}
+        microDescription={props.pattern.description}
+        anotherTextures={props.pattern.anothers}
+        patternDescription={props.pattern.about}
       />
       <TextureProperties
-        texture="/bps/patterns/cacau.jpg"
-        textureName="Cacau"
-        mdp={{ thickness: '12 / 15 / 18 / 25', size: '2,75 x 1,85' }}
-        mdf={{ thickness: '6 / 9 / 15 / 18 / 25', size: '2,75 x 1,85' }}
+        texture={props.texture.img}
+        textureName={props.texture.name}
+        mdp={props.mdp}
+        mdf={props.mdf}
       />
 
       <Flex
