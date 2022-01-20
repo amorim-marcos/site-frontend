@@ -33,7 +33,7 @@ export const LanguageBtn = ({
       <Text
         fontSize={{ base: '6px', md: '10px', xl: '12px', '2xl': '16.5px' }}
         color="white.100"
-        variant="header-menu"
+        variant={"header-menu" as any}
       >
         {title}
       </Text>

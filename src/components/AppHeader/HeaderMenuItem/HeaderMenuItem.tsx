@@ -1,4 +1,4 @@
-import { Text, Center, Flex } from '@chakra-ui/react'
+import { Text, Center, Flex, TextProps } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { HeaderMenuSubItem } from './HeaderMenuSubItem/HeaderMenuSubItem'
@@ -59,7 +59,7 @@ export const HeaderMenuItem = ({
               '2xl': '16.5px'
             }}
             color="#FFF"
-            variant="header-menu"
+            variant={"header-menu" as any}
             whiteSpace="nowrap"
           >
             {title}

@@ -16,7 +16,7 @@ export const HeaderTopMenuItem = ({
       <Link href={href} passHref>
         <Text
           _hover={{ color: '#FFF' }}
-          variant="header-menu-small"
+          variant={"header-menu-small" as any}
           color="green.200"
           cursor="pointer"
           whiteSpace="nowrap"

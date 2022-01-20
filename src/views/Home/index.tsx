@@ -10,24 +10,24 @@ export default function Home({ title = 'HomePage' }) {
         <Button mb={3}>Test</Button>
         <Button size="large">Test</Button>
         <Heading>Heading 1</Heading>
-        <Heading variant="h2">Heading 2</Heading>
-        <Heading variant="h3">Heading 3</Heading>
-        <Heading variant="h4">Heading 5</Heading>
-        <Heading variant="h5">Heading 6</Heading>
+        <Heading variant={"h2" as any}>Heading 2</Heading>
+        <Heading variant={"h3" as any}>Heading 3</Heading>
+        <Heading variant={"h4" as any}>Heading 5</Heading>
+        <Heading variant={"h5" as any}>Heading 6</Heading>
 
-        <Text variant="body-bold">Body Bold</Text>
-        <Text variant="body">Body</Text>
-        <Text variant="larger-body-bold">Larger Body Bold</Text>
-        <Text variant="larger-body">Larger Body</Text>
+        <Text variant={"body-bold" as any}>Body Bold</Text>
+        <Text variant={"body" as any}>Body</Text>
+        <Text variant={"larger-body-bold" as any}>Larger Body Bold</Text>
+        <Text variant={"larger-body" as any}>Larger Body</Text>
 
-        <Text variant="breadcrumbs-selected">Breadcrumbs selected</Text>
-        <Text variant="breadcrumbs">Breadcrumbs</Text>
-        <Text variant="header-menu">Header Menu</Text>
-        <Text variant="header-menu-small">Header Menu Small</Text>
-        <Text variant="canal-bnk-menu">CANAL BNK MENU</Text>
-        <Text variant="primary-button">PRIMARY BUTTON</Text>
-        <Text variant="larger-button">LARGER BUTTON</Text>
-        <Text variant="tags">Tags</Text>
+        <Text variant={"breadcrumbs-selected" as any}>Breadcrumbs selected</Text>
+        <Text variant={"breadcrumbs" as any}>Breadcrumbs</Text>
+        <Text variant={"header-menu" as any}>Header Menu</Text>
+        <Text variant={"header-menu-small" as any} >Header Menu Small</Text>
+        <Text variant={"canal-bnk-menu" as any}>CANAL BNK MENU</Text>
+        <Text variant={"primary-button" as any}>PRIMARY BUTTON</Text>
+        <Text variant={"larger-button" as any}>LARGER BUTTON</Text>
+        <Text variant={"tags" as any}>Tags</Text>
       </Flex>
     </S.Wrapper>
   )

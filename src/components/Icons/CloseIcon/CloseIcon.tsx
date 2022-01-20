@@ -1,7 +1,7 @@
-import { Box } from '@chakra-ui/react'
+import { Box, BoxProps } from '@chakra-ui/react'
 import { ResponsiveCss } from 'types/responsive'
 
-export type CloseIconProps = {
+export interface CloseIconProps extends BoxProps {
   color?: string
   boxSize?: ResponsiveCss
   onClick?: () => void
@@ -10,14 +10,15 @@ export type CloseIconProps = {
 export const CloseIcon = ({
   color = '#bbc4b9',
   boxSize = ['50'],
-  onClick
+  onClick,
+  ...rest
 }: CloseIconProps) => {
   return (
-    <Box boxSize={boxSize} onClick={onClick}>
+    <Box boxSize={boxSize} onClick={onClick} {...rest}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="18.109"
-        height="18.474"
+        width="100%"
+        height="100%"
         viewBox="0 0 18.109 18.474"
       >
         <g id="x" transform="translate(-1175.767 -160.84)">

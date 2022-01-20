@@ -1,11 +1,11 @@
 import { Box, Flex, Text, Image, useMediaQuery, Button } from '@chakra-ui/react'
 import Arrow from "@components/Arrow"
 import { breakpoints } from 'theme/breakpoints'
-
+import { MouseEvent } from 'react'
 
 export type TrajectoryCarouselControllersProps = {
-    nextTab: Function
-    previousTab: Function
+    nextTab: (event: MouseEvent) => void;
+    previousTab: (event: MouseEvent) => void;
 }
 
 export const TrajectoryCarouselControllers = ({nextTab, previousTab}:TrajectoryCarouselControllersProps) => {
