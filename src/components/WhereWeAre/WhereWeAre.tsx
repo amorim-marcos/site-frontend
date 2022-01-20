@@ -14,105 +14,31 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
 
   return (
     <Box>
-      <Flex
-        w="100%"
-        mb="50px"
-        gap={{ base: '30px', md: '83px' }}
-        pos="relative"
-        overflow="hidden"
-        direction="column"
-      >
-        <Image
-          src="img/grafismo_fundo_cinza.svg"
-          pos="absolute"
-          zIndex={-1}
-          right={{ xs: '-30px', sm: '-90px', '2xl': '-100px' }}
-          top={{ xs: '60px', '2xl': '-10px' }}
-        />
-
-        <Flex
-          mt="100px"
-          direction={{ base: 'column', md: 'row' }}
-          align={{ base: 'center', md: 'flex-start' }}
-          px={{ md: '30px', lg: '80px', xl: '60px', '2xl': '120px' }}
-          gap={{ base: '20px', md: '130px' }}
-        >
-          <Title />
-          <Description />
-        </Flex>
-
-        {isMobile ? (
-          <Flex as={'carousel' as any} px={{ base: '20px' }} justify="center">
-            <Carousel>
-              {panels.map((item) => (
-                <WhereWeArePanel key={item.image} {...item} />
-              ))}
-            </Carousel>
-          </Flex>
-        ) : (
-          <Flex w="100%" wrap="wrap" gap="54px" justify="center">
+      {isMobile ? (
+        <Flex as={'carousel' as any} px={{ base: '20px' }} justify="center">
+          <Carousel>
             {panels.map((item) => (
               <WhereWeArePanel key={item.image} {...item} />
             ))}
-          </Flex>
-        )}
-      </Flex>
+          </Carousel>
+        </Flex>
+      ) : (
+        <Flex 
+          w="100%" 
+          wrap="wrap" 
+          gap="54px" 
+          // justify="center" 
+          // bg="red"
+        >
+          {panels.map((item) => (
+            <WhereWeArePanel key={item.image} {...item} />
+          ))}
+        </Flex>
+      )}
+  
     </Box>
   )
 }
-
-const Title = () => (
-  <Flex
-    direction="column"
-    align={{ base: 'center', md: 'flex-start' }}
-    gap={{ base: '10px', '2xl': '29px' }}
-  >
-    <Text
-      color="green.800"
-      fontSize = {{ base: '18px', sm: '32px', lg: '40px', xl: '50px'}}
-      fontFamily = 'body'
-      fontWeight= 'extrabold'
-      letterSpacing="-1px"
-      lineHeight="1"
-    >
-      Onde Estamos
-    </Text>
-
-    <Box 
-      h="3px"
-      w={{ base: '60px', sm: '70px', lg: '80px', xl: '90px'}}
-      bg="green.600"
-      borderRadius="20px"
-    />
-  </Flex>
-)
-
-const Description = () => (
-  <Box 
-    w={{ base: '80vw', md: '60%' }}
-  >
-    <Text
-      color="green.600"
-      letterSpacing="-0.6px"
-      fontWeight="extrabold"
-      fontSize = {{ base: '10px', sm: '22px', lg: '24px', xl: '30px'}}
-      textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
-    >
-      Localização estratégica
-    </Text>
-
-    <Text
-      color="grey.300"
-      letterSpacing="-0.4px"
-      fontSize = {{ base: '8px', sm: '14px', lg: '16px', xl: '20px'}}
-      textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
-    >
-      {
-        'Nossas plantas industriais estão estrategicamente localizadas próximas às áreas de cultivo florestal e às principais rodovias e portos do país, com fácil distribuição para todo o território nacional e exterior.'
-      }
-    </Text>
-  </Box>
-)
 
 export const mockPanelObj: WhereWeArePanelProps = {
   name: 'Matriz',

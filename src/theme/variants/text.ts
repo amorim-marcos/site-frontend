@@ -9,19 +9,19 @@ export const Text = {
       fontWeight: 'normal'
     },
     'larger-body-bold': {
-      fontSize: '23px',
+      fontSize: { base: '11px', sm: '15px', lg: '19px', xl: '23px'},
       fontWeight: 'medium'
     },
     'larger-body': {
-      fontSize: '20px',
+      fontSize: { base: '8px', sm: '12px', lg: '16px', xl: '20px'},
       fontWeight: 'normal'
     },
     'breadcrumbs-selected': {
-      fontSize: '23px',
+      fontSize: { base: '11px', sm: '15px', lg: '19px', xl: '23px'},
       fontWeight: 'bold'
     },
     breadcrumbs: {
-      fontSize: '20px',
+      fontSize: { base: '8px', sm: '12px', lg: '16px', xl: '20px'},
       fontWeight: 'normal'
     },
     'header-menu': {
@@ -52,18 +52,18 @@ export const Text = {
     },
     h1: {
       color: 'green.800',
-      fontSize: { base: '18px', sm: '32px', lg: '40px', xl: '50px' },
-      fontWeight: 700
+      fontSize: { base: '18px', sm: '32px', lg: '40px', xl: '50px'},
+      fontWeight: 'extrabold'
     },
     h2: {
-      color: 'green.700',
-      fontSize: '50px',
-      fontWeight: 800
+      color: 'green.600',
+      fontSize: { base: '14px', sm: '22px', lg: '30px', xl: '40px'},
+      fontWeight: 'semibold'
     },
     h3: {
       color: 'green.700',
-      fontSize: '30px',
-      fontWeight: 800
+      fontSize: { base: '12px', sm: '16px', lg: '24px', xl: '30px'},
+      fontWeight: 'extrabold'
     },
     h4: {
       color: 'green.700',
