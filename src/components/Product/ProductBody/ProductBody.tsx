@@ -14,12 +14,15 @@ import {
   ProductSpecification
 } from './ProductSpecifications/ProductSpecifications'
 import { ResponsiveCss } from 'types/responsive'
+import QualityCertificateIcon from '@components/Icons/QualityCertificateIcon'
 
 export type ProductBodyProps = {
   description?: string | Array<string>
   moreTechnologyQualityProtection?: string | Array<string>
   usesAndApplications?: string | Array<string>
   finishes?: string | Array<string>
+  qualityStandards?: string | Array<string>
+  abntInfo?: string
   dimensions?: DimensionsProps
   specifications?: Array<Specification>
   backgroundColor?: string
@@ -41,7 +44,9 @@ export const ProductBody = ({
   productWithBP,
   specifications,
   paddingBottom = '0px',
-  BottomComponent
+  BottomComponent,
+  qualityStandards,
+  abntInfo
 }: ProductBodyProps) => {
   const product = useTranslation('product')
 
@@ -53,7 +58,7 @@ export const ProductBody = ({
       paddingBottom={paddingBottom}
       paddingTop={{ base: '5%' }}
     >
-      <Box paddingX="5%">
+      <Box padding="5%">
         {description && (
           <Box
             marginBottom={{
@@ -164,6 +169,62 @@ export const ProductBody = ({
             </Heading>
             <ProductText content={finishes} />
           </Box>
+        )}
+
+        {qualityStandards && (
+          <Box
+            marginBottom={{
+              base: '30px',
+              sm: '40px',
+              md: '50px',
+              lg: '60px',
+              xl: '70px',
+              '2xl': '80px'
+            }}
+          >
+            <Heading
+              fontSize={{
+                base: '20px',
+                sm: '11px',
+                md: '14px',
+                lg: '18px',
+                xl: '22px',
+                '2xl': '30px'
+              }}
+              variant="productTitle"
+            >
+              {product.t('qualityStandards')}
+            </Heading>
+            <ProductText content={qualityStandards} />
+          </Box>
+        )}
+
+        {abntInfo && (
+          <Flex alignItems="center">
+            <Box
+              marginRight={{
+                base: '20px',
+                sm: '6px',
+                md: '10px',
+                lg: '14px',
+                xl: '16px',
+                '2xl': '20px'
+              }}
+            >
+              <QualityCertificateIcon
+                stroke="green.900"
+                width={{
+                  base: '40px',
+                  sm: '10px',
+                  md: '15px',
+                  lg: '20px',
+                  xl: '30px',
+                  '2xl': '40px'
+                }}
+              />
+            </Box>
+            <ProductText content={abntInfo} />
+          </Flex>
         )}
 
         {specifications && (

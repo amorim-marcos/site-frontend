@@ -88,7 +88,8 @@ export const Product = ({
         {...body}
         secondaryBackgroundColor={secondaryBackground}
         BottomComponent={
-          isMobile && (
+          isMobile &&
+          downloadAndLinks && (
             <Flex
               bg={body?.backgroundColor}
               alignItems="center"
