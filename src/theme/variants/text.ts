@@ -71,11 +71,6 @@ export const Text = {
       fontWeight: 'extrabold',
     },
     h5: {
-<<<<<<< HEAD
-      color: 'green.500',
-      fontSize: { base: '8px', sm: '12px', lg: '14px', xl: '18px'},
-      fontWeight: 'normal'
-=======
       color: 'green.700',
       fontSize: '25px',
       fontWeight: 400
@@ -91,7 +86,6 @@ export const Text = {
       },
       color: 'green.900',
       zIndex: 'docked'
->>>>>>> 448f1aa8519d31dd9d4db941ee800f20148f16f5
     }
   },
   defaultProps: {
