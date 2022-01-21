@@ -105,7 +105,7 @@ export const QualityPinus = () => {
               '2xl': '50px'
             }}
           >
-            <Center {...btnStyle}>
+            <Center {...selectedBtnStyle}>
               <Box {...textureBtnContainer}>
                 <QualityBtnTexture texture="1" />
               </Box>
@@ -202,7 +202,22 @@ const btnStyle: CenterProps = {
   w: '20%',
   bg: '#E6EBE5',
   marginRight: '10px',
-  position: 'relative'
+  position: 'relative',
+  cursor: 'pointer',
+  _hover: {
+    bg: '#C7D0C5'
+  }
+}
+
+const selectedBtnStyle: CenterProps = {
+  w: '20%',
+  bg: '#A9BBAF',
+  marginRight: '10px',
+  position: 'relative',
+  cursor: 'pointer',
+  _hover: {
+    bg: '#C7D0C5'
+  }
 }
 
 const textureBtnContainer: BoxProps = {

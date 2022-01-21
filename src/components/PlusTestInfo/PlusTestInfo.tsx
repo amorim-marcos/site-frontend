@@ -7,6 +7,7 @@ import {
   Container,
   Image
 } from '@chakra-ui/react'
+import PlusInfoTable from '@components/PlusInfoTable'
 
 import ArrowIcon from '../Icons/ArrowIcon'
 export type PlusTestInfoProps = {
@@ -81,18 +82,55 @@ export const PlusTestInfo = ({ title }: PlusTestInfoProps) => {
       </Flex>
 
       <Flex flexDirection={{ base: 'column', sm: 'row' }}>
-        <Box>
+        <Box width={{ base: '90%', sm: '40%' }}>
           <Text marginTop="40px" variant={'productTitle' as any}>
             Muito importante
           </Text>
 
-          <Box width={{ base: '90%', sm: '40%' }}>
+          <Box>
             <ItemCite text="Utilize a linha BERNECK PLUS em áreas que não tenham contato direto com água." />
             <ItemCite text=" É indispensável proteger todas as faces e bordas do painel contra ação da umidade, inclusive as não aparentes, pois este produto não é isento a mofo. " />
             <ItemCite text="Ambientes com focos de cupim devem ser tratados antes da instalação de qualquer móvel, inclusive os com a linha PLUS BERNECK®." />
           </Box>
         </Box>
-        <Box bg="#FFFFFF" w="40%"></Box>
+        <Box>
+          <PlusInfoTable
+            rows={[
+              {
+                column1: 'MDF STD',
+                column2: '47,0 g',
+                column3: '13,10 %',
+                column4: '0,94 mm',
+                column5: '6,40 %',
+                plus: false
+              },
+              {
+                column1: 'MDP STD',
+                column2: '25,7 g',
+                column3: '7,40 %',
+                column4: '0,74 mm',
+                column5: '4,90 %',
+                plus: false
+              },
+              {
+                column1: 'MDF PLUS BERNECK',
+                column2: '17,5 g',
+                column3: '5,90 %',
+                column4: '0,61 mm',
+                column5: '0,61 mm',
+                plus: true
+              },
+              {
+                column1: 'MDP PLUS BERNECK',
+                column2: '5,0 g',
+                column3: '1,40 %',
+                column4: '0,57 mm',
+                column5: '0,57 mm',
+                plus: true
+              }
+            ]}
+          />
+        </Box>
       </Flex>
     </Box>
   )
