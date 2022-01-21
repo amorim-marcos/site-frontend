@@ -13,7 +13,7 @@ export type SocialIconProps = {
 
 export const SocialIcon = ({
   media,
-  color = '#59993f',
+  color = 'green.550',
   hoverColor = '#b8c1be',
   width = '42',
   height = '41',

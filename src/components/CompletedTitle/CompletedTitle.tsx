@@ -1,19 +1,18 @@
-import { Heading, Flex, Box, Text, Center, Container } from "@chakra-ui/react"
+import { Heading, Flex, Box, Text, BoxProps, TextProps } from "@chakra-ui/react"
 import React, { ReactNode } from 'react'
 
-export type CompletedTitleProps = {
+
+export type CompletedTitleProps =  BoxProps & TextProps & {
   // Title
   titleColor?: string
   titleString?: string
-  alignLine?: 'center' | 'flex-start' | 'flex-end'
-  textAlignH1?: 'center' | 'left' | 'right'
 }
 export const CompletedTitle = ({ 
   // Heading1
   titleColor = 'green.800',
   titleString = 'BERNECK',
-  alignLine = 'center',
-  textAlignH1 = 'center'
+  alignSelf = 'center',
+  textAlign = 'left'
 }: CompletedTitleProps) => {
   return (
     <Box>
@@ -32,13 +31,13 @@ export const CompletedTitle = ({
                 <Text as='h1'
                     variant={'h1' as any}
                     color={titleColor}
-                    textAlign={textAlignH1}
+                    textAlign={textAlign}
                 >{titleString}</Text>
               </Box>
               
-              <Box
+              <Flex
                 // bg='white'
-                alignSelf={alignLine}
+                alignSelf={alignSelf}
               >
                 <Box 
                   marginTop={{ base: '3px', sm: '10px', lg: '20px', xl: '20px'}}
@@ -47,7 +46,7 @@ export const CompletedTitle = ({
                   bg="green.600"
                   borderRadius="20px"
                 />
-              </Box>
+              </Flex>
               
             </Flex>
 

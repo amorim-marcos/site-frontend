@@ -11,7 +11,7 @@ export const PatternInfo = ({
   title="CONFIRA",
   description="Certificado de Qualidade",
   icon="",
-  onClick = ""
+  onClick
  }: PatternInfoProps) => {
   return (
     <Flex
@@ -52,16 +52,18 @@ export const PatternInfo = ({
         padding={{ base: '5%', sm: '2%', lg: '2%', xl: '1%'}}
       >
         <Text as="h4"
-          variant = "h4"
+          variant = {"h4" as any}
           fontWeight="medium"
           letterSpacing="-0.45px"
           color="green.600"
+          fontSize = {{ base: '8px', sm: '12px', lg: '14px', xl: '18px'}}
         >{title}</Text>
         <Text as="h2"
-          variant = "h2"
+          variant = {"h2" as any}
           fontWeight="extrabold"
           letterSpacing="-0.68px"
           color="white"
+          fontSize = {{ base: '14px', sm: '22px', lg: '24px', xl: '32px'}}
         >{description}</Text>
       </Box>
 

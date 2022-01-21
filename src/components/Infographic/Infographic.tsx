@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { Heading, Flex, Box, Text, Center, Container } from "@chakra-ui/react"
+import { Heading, Flex, Box, Text, Center, Container, TextProps } from "@chakra-ui/react"
 
 import { ResponsiveCss } from 'types/responsive'
 
@@ -61,7 +61,7 @@ export const Infographic = ({
   // ICON
   content1DisplayIcon = 'none',
   content1IconName,
-
+  // TEXT
   content2Text,
   content2Display,
   content2Color,
@@ -71,17 +71,17 @@ export const Infographic = ({
   content4Text,
   content4Display,
   content4Color = 'green.600',
-
+  fontSize = { base: '20px', sm: '30px', lg: '40px', xl: '70px'},
   // SUBSCRIPT TITLE
   titleSubscript1Text,
   titleSubscript1Display,
   titleSubscript1Color = 'green.600',
-}: InfographicProps) => {
+}: InfographicProps & TextProps) => {
   return (
 
   <Container 
     display='flex'
-    
+    justifyContent='center'
   >
     <Box 
       display='flex'
@@ -102,7 +102,7 @@ export const Infographic = ({
           // bg='black'
         >
           <Text
-              variant='h3'
+              variant={'h3' as any}
               color={titleSuperscript1Color}
               letterSpacing = '-0.94px'
             >{titleSuperscript1Text}</Text>
@@ -114,7 +114,7 @@ export const Infographic = ({
           // bg='greenyellow'
         >
           <Text 
-              variant = 'h4'
+              variant = {'h4' as any}
               color = {titleSuperscript2Color}
               textAlign = 'center'
             >{titleSuperscript2Text}</Text>
@@ -141,7 +141,7 @@ export const Infographic = ({
               >
                     {content1DisplayIcon=='none' &&
                       <Text 
-                          variant='h1'
+                          variant={'h1' as any}
                           color={content1Color}
                           fontFamily = 'body'
                           fontSize = {{ base: '40px', sm: '48px', lg: '50px', xl: '90px'}}
@@ -172,7 +172,7 @@ export const Infographic = ({
 
                 {/* CONTENT 2 NUMBER --> */}
                   <Text
-                    variant='h1'
+                    variant={'h1' as any}
                     color={content2Color}
                     letterSpacing = '-0.94px'
                     fontFamily = 'body'
@@ -190,7 +190,7 @@ export const Infographic = ({
                     marginLeft='5px'
                   >
                       <Text 
-                        variant='h4'
+                        variant={'h4' as any}
                         color={content3Color}
                         letterSpacing = '-0.76px'
                         // bg='red'
@@ -207,11 +207,11 @@ export const Infographic = ({
                 alignSelf='flex-end'
               >
                 <Text 
-                    variant='h1'
+                    variant={'h1' as any}
                     color={content4Color}
-                    fontFamily = 'body'
                     // bg='pink'
-                    fontSize={{ base: '20px', sm: '30px', lg: '40px', xl: '70px'}}
+                    // fontSize={{ base: '20px', sm: '30px', lg: '40px', xl: '70px'}}
+                    fontSize = {fontSize}
                     marginBottom={{ base: '10px', sm: '5px', lg: '-10px', xl: '-16px'}}
                   >{content4Text}</Text>
               </Box>
@@ -226,15 +226,15 @@ export const Infographic = ({
           display={titleSubscript1Display}
           justifyContent='center'
           // bg='pink.400'
-          marginTop = {{ base: '-10px', sm: '-5px', lg: '10px', xl: '5px'}}
+          marginTop = {{ base: '0px', sm: '5px', lg: '5px', xl: '5px'}}
         >
           <Text 
-              variant='h3'
+              variant={'h3' as any}
               color={titleSubscript1Color}
               letterSpacing = '-0.94px'
-              fontFamily = 'body'
               textAlign='center'
               maxWidth={{ base: '150px', sm: '200px', lg: '250px', xl: '300px'}}
+              fontSize={{ base: '10px', sm: '16px', lg: '18px', xl: '30px'}}
             >{titleSubscript1Text}</Text>
         </Box>
         {/* SUBSCRIPT TITLE --> */}
