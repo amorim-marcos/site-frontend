@@ -6,7 +6,7 @@ export const tableItemStyle = (borderColor: string, background: string) => ({
   padding: '0px',
   bg: background,
   height: {
-    base: '30px',
+    base: '20px',
     sm: '20px',
     md: '25px',
     lg: '30px',
@@ -14,7 +14,8 @@ export const tableItemStyle = (borderColor: string, background: string) => ({
     '2xl': '40px'
   },
   border: `3px solid ${borderColor}`,
-  paddingLeft: '15px'
+  paddingLeft: { base: '5px', sm: '15px' },
+  paddingRight: { base: '5px', sm: '15px' }
 })
 
 const headingStyle = {

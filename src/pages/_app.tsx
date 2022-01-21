@@ -24,9 +24,9 @@ function App({ Component, pageProps }: AppProps) {
           content="A simple project starter to work with TypeScript, React, NextJS and Styled Components"
         />
       </Head>
-      <AppHeader />
+      {/* <AppHeader /> */}
       <Component {...pageProps} />
-      <AppFooter />
+      {/* <AppFooter /> */}
     </ChakraProvider>
   )
 }

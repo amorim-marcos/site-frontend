@@ -1,6 +1,5 @@
 import { Heading, Flex, Box } from '@chakra-ui/react'
 import { ProductWithBP } from './ProductWithBP/ProductWithBP'
-import { headingStyle } from './styles'
 import {
   ProductDimensions,
   DimensionsProps
@@ -228,7 +227,16 @@ export const ProductBody = ({
         )}
 
         {specifications && (
-          <Box marginBottom="100px">
+          <Box
+            marginBottom={{
+              base: '20px',
+              sm: '30px',
+              md: '40px',
+              lg: '60px',
+              xl: '80px',
+              '2xl': '100px'
+            }}
+          >
             <ProductSpecification
               tableBackgroundColor={tertiaryBackgroundColor}
               tableBorderColor={backgroundColor}
