@@ -1,11 +1,10 @@
-import { Heading, Table, Tbody, Tr, Td } from '@chakra-ui/react'
-import { headingStyle } from '../styles'
+import { Text, Table, Tbody, Tr, Td } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 
 export const tableItemStyle = (borderColor: string, background: string) => ({
   padding: '0px',
   paddingLeft: {
-    base: '3px',
+    base: '7px',
     sm: '7px',
     md: '11px',
     lg: '14px',
@@ -14,7 +13,7 @@ export const tableItemStyle = (borderColor: string, background: string) => ({
   },
   bg: background,
   height: {
-    base: '15px',
+    base: '45px',
     sm: '20px',
     md: '25px',
     lg: '30px',
@@ -46,7 +45,7 @@ export const ProductSpecification = ({
 
   return (
     <>
-      <Heading {...headingStyle}>{product.t('Specifications')}</Heading>
+      <Text variant={'productTitle' as any}>{product.t('Specifications')}</Text>
       <Table
         fontWeight="light"
         fontSize={{
@@ -59,7 +58,9 @@ export const ProductSpecification = ({
         }}
         fontFamily="Montserrat"
         width={{
-          base: '50%'
+          base: '100%',
+          sm: '65%',
+          '2xl': '50%'
         }}
         variant="unstyled"
         color={textColor}
@@ -72,13 +73,13 @@ export const ProductSpecification = ({
                   {...tableItemStyle(tableBorderColor, tableBackgroundColor)}
                   width="40%"
                 >
-                  {i.title}
+                  <Text variant={'productBody' as any}>{i.title}</Text>
                 </Td>
                 <Td
                   {...tableItemStyle(tableBorderColor, tableBackgroundColor)}
                   width="60%"
                 >
-                  {i.description}
+                  <Text variant={'productBody' as any}>{i.description}</Text>
                 </Td>
               </Tr>
             )

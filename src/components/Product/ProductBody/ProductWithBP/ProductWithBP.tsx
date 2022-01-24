@@ -55,6 +55,7 @@ export const ProductWithBP = ({
       maxHeight={type === 'bottomBtn' ? '457px' : '432px'}
       flexDirection={{ base: 'column', sm: 'row' }}
       paddingTop={{ base: '30px', sm: '0px' }}
+      marginBottom="30px"
     >
       <Box position={'absolute'} {...arrowDistance(type)} left="0">
         <GrafismProductWithBP

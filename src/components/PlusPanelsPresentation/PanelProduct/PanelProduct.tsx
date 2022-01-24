@@ -47,7 +47,12 @@ export const PanelProduct = ({
       <Text variant={'productBody' as any} color="#626161">
         {description}
       </Text>
-      <Image position="absolute" transition="0.5s" {...imageProps} />
+      <Image
+        aria-label="plusImage"
+        position="absolute"
+        transition="0.5s"
+        {...imageProps}
+      />
     </Flex>
   )
 }

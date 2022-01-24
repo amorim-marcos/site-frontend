@@ -76,26 +76,28 @@ export const GrafismProduct = ({
       zIndex="base"
       position="absolute"
       top={{
-        base: '-210px',
+        base: '-190px',
         sm: '-94px',
         md: '-126px',
         lg: '-158px',
         xl: '-189px',
         '2xl': '-237px'
       }}
-      left="36%"
+      left={{ base: '0px', sm: '36%' }}
     >
-      <GrafismProduct3
-        width={{
-          base: '702px',
-          sm: '702px',
-          md: '937px',
-          lg: '1171px',
-          xl: '1405px',
-          '2xl': '1650px'
-        }}
-        {...grafismProps}
-      />
+      <Box marginTop={{ base: '-110px', sm: '0' }}>
+        <GrafismProduct3
+          width={{
+            base: '1102px',
+            sm: '702px',
+            md: '937px',
+            lg: '1171px',
+            xl: '1405px',
+            '2xl': '1650px'
+          }}
+          {...grafismProps}
+        />
+      </Box>
     </Box>
   )
 }
