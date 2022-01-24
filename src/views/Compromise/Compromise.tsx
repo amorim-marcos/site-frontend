@@ -952,7 +952,7 @@ export const Compromise = () => {
 
 
 
-      {/* INICIO Compromisso com a conduta corporativa */}
+      {/* INICIO Nossas práticas de ESG */}
       <Flex
         maxWidth="1920px"
         marginX="auto"
@@ -963,6 +963,9 @@ export const Compromise = () => {
         overflowY="hidden"
         overflowX="hidden"
         bg = 'green.100'
+        backgroundImage="/assets/imgs/grafismos_fundo2.png"
+        backgroundPosition="-900px top"
+        backgroundRepeat="no-repeat"  
       >
         <Flex
           // bg='blue'
@@ -1017,13 +1020,11 @@ export const Compromise = () => {
 
               </Box>
           </Box>
-         
-          
         
         </Flex> 
 
       </Flex> 
-      {/* FIM Compromisso com a conduta corporativa */}
+      {/* FIM Nossas práticas de ESG */}
 
     </Box>
   )

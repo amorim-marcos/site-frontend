@@ -82,11 +82,15 @@ export const Infographic = ({
   <Container 
     display='flex'
     justifyContent='center'
+    // bg="blackAlpha.600"
+    margin='3%'
+    maxWidth="400px"
+    // maxHeight={"auto"}
   >
     <Box 
       display='flex'
       // bg='azure'
-      margin='3%'
+     
     >
       {/* WRAP MAIN  --> */}
       <Flex 
@@ -181,22 +185,26 @@ export const Infographic = ({
                   >{content2Text}</Text>
               
                 {/* CONTENT 3 SUPERSCRIPT --> */}
-                  <Box 
+                  <Flex 
                     display={content3Display}
                     flexDirection='column'
                     // bg='yellow'
                     alignSelf='flex-start'
                     marginTop={{ base: '5px', sm: '10px', lg: '5px', xl: '0px'}}
                     marginLeft='5px'
+                    // wordBreak='keep-all'
+                    // overflow="hidden"
+                    // whiteSpace={'nowrap'}
+                    // word-wrap={"normal"}
                   >
                       <Text 
                         variant={'h4' as any}
                         color={content3Color}
                         letterSpacing = '-0.76px'
                         // bg='red'
-                        maxWidth={{ base: '50px', sm: '80px', lg: '80px', xl: '100px'}}
+                        maxWidth={{ base: '50px', sm: '80px', lg: '80px', xl: '120px'}}
                       >{content3Text}</Text>
-                  </Box>
+                  </Flex>
 
 
               {/* CONTENT 4 --> */}
