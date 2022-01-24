@@ -87,7 +87,12 @@ export const PageSession = ({
             direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
             // bg='yellow'
           >
-                <CompletedTitle titleColor = 'white' titleString = {data.title} alignLine = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}}/>
+                <CompletedTitle 
+                  titleColor = 'white' 
+                  titleString = {data.title} 
+                  alignSelf = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}}
+                  textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                />
 
                 <Box
                   margin={{ base: '3px 0px', sm: '5px 0px', lg: '10px 0px', xl: '15px 10px'}}
@@ -95,16 +100,13 @@ export const PageSession = ({
                   flex = '2'
                 >
                   <Text as='h3'
-                    variant = 'h3'
+                    variant = {'h3' as any}
                     fontFamily = 'body'
                     color={subTitleColor}
                     textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
                   >{data.subtitle}</Text>
                   <Text
-                    fontFamily = 'body'
-                    fontWeight= 'normal'
                     color={subTitleColor}
-                    fontSize = {{ base: '8px', sm: '14px', lg: '16px', xl: '20px'}}
                     textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
                   >{data.text}</Text>
               
