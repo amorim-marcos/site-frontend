@@ -2,43 +2,6 @@ import { Flex, Heading, Table, Tbody, Tr, Td, Text } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { ResponsiveCss } from 'types/responsive'
 
-export const tableItemStyle = (borderColor: string, background: string) => ({
-  padding: '0px',
-  bg: background,
-  height: {
-    base: '20px',
-    sm: '20px',
-    md: '25px',
-    lg: '30px',
-    xl: '35px',
-    '2xl': '40px'
-  },
-  border: `3px solid ${borderColor}`,
-  paddingLeft: { base: '5px', sm: '15px' },
-  paddingRight: { base: '5px', sm: '15px' }
-})
-
-const headingStyle = {
-  marginBottom: {
-    base: '8px',
-    sm: '9px',
-    md: '11px',
-    lg: '14px',
-    xl: '17px',
-    '2xl': '20px'
-  },
-  color: 'green.900',
-  fontSize: {
-    base: '20px',
-    sm: '11px',
-    md: '14px',
-    lg: '18px',
-    xl: '22px',
-    '2xl': '30px'
-  },
-  zIndex: 'docked'
-}
-
 export type ProductDimensionsProps = {
   tableBorderColor?: string
   tableBackgroundColor?: string
@@ -129,4 +92,41 @@ export const ProductDimensions = ({
       </Flex>
     </Flex>
   )
+}
+
+export const tableItemStyle = (borderColor: string, background: string) => ({
+  padding: '0px',
+  bg: background,
+  height: {
+    base: '20px',
+    sm: '20px',
+    md: '25px',
+    lg: '30px',
+    xl: '35px',
+    '2xl': '40px'
+  },
+  border: `3px solid ${borderColor}`,
+  paddingLeft: { base: '5px', sm: '15px' },
+  paddingRight: { base: '5px', sm: '15px' }
+})
+
+const headingStyle = {
+  marginBottom: {
+    base: '8px',
+    sm: '9px',
+    md: '11px',
+    lg: '14px',
+    xl: '17px',
+    '2xl': '20px'
+  },
+  color: 'green.900',
+  fontSize: {
+    base: '20px',
+    sm: '11px',
+    md: '14px',
+    lg: '18px',
+    xl: '22px',
+    '2xl': '30px'
+  },
+  zIndex: 'docked'
 }

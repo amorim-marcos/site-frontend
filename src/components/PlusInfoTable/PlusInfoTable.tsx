@@ -1,7 +1,7 @@
 import { Image, Flex, Box, Text, BoxProps } from '@chakra-ui/react'
 
 export type PlusInfoTableProps = {
-  rows: {
+  rows?: {
     column1: string
     column2: string
     column3: string
@@ -41,6 +41,7 @@ export const PlusInfoTable = ({ rows }: PlusInfoTableProps) => {
                 '2xl': '29px'
               }}
               src="/img/gota.png"
+              aria-label="gotaIcon.png"
             />
           </Box>
           <Box
@@ -63,6 +64,7 @@ export const PlusInfoTable = ({ rows }: PlusInfoTableProps) => {
                 '2xl': '56px'
               }}
               src="/img/mdfIcon.png"
+              aria-label="mdfIcon.png"
             />
           </Box>
         </Flex>

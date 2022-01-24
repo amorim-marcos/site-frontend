@@ -18,6 +18,7 @@ export const GrafismProduct1 = ({
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         viewBox="0 0 1760.675 1625.089"
+        aria-label="grafismProduct"
       >
         <defs>
           <clipPath id="clip-path">

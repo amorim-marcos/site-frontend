@@ -24,7 +24,13 @@ export const PlusTestInfo = ({
   tableInfo
 }: PlusTestInfoProps) => {
   return (
-    <Box bg="#E8E8E8" maxWidth="1920px" marginX="auto" padding="5%">
+    <Box
+      aria-label="plusTestinfoContainer"
+      bg="#E8E8E8"
+      maxWidth="1920px"
+      marginX="auto"
+      padding="5%"
+    >
       <Text variant={'productTitle' as any}>{title}</Text>
       <Text variant={'productBody' as any} width={{ base: '100%', sm: '44%' }}>
         {description}

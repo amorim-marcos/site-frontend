@@ -2,19 +2,24 @@ import { Flex, Box, Text } from '@chakra-ui/react'
 import { PanelProduct, PanelProductProps } from './PanelProduct/PanelProduct'
 
 export type PlusPanelsPresentationProps = {
-  products: {
+  products?: {
     first: PanelProductProps
     second: PanelProductProps
     third: PanelProductProps
   }
-  title: string
+  title?: string
 }
 export const PlusPanelsPresentation = ({
   products,
   title
 }: PlusPanelsPresentationProps) => {
   return (
-    <Box maxWidth="1920px" marginX="auto" padding="5%">
+    <Box
+      aria-label="PlusPanelPrensentationContainer"
+      maxWidth="1920px"
+      marginX="auto"
+      padding="5%"
+    >
       <Text variant={'productTitle' as any}>{title}</Text>
       <Flex
         marginTop={{
@@ -30,11 +35,15 @@ export const PlusPanelsPresentation = ({
         w="100%"
         flexDirection={{ base: 'column', sm: 'row' }}
       >
-        <PanelProduct {...products.first} />
+        {products && (
+          <>
+            <PanelProduct {...products.first} />
 
-        <PanelProduct {...products.second} />
+            <PanelProduct {...products.second} />
 
-        <PanelProduct {...products.third} />
+            <PanelProduct {...products.third} />
+          </>
+        )}
       </Flex>
     </Box>
   )

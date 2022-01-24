@@ -17,6 +17,7 @@ export const QualityPinus = () => {
 
   return (
     <Flex
+      aria-label="qualityPinusContainer"
       maxWidth="1920px"
       marginX="auto"
       paddingX={{
@@ -71,7 +72,6 @@ export const QualityPinus = () => {
             xl: '504px',
             '2xl': '631px'
           }}
-          // bg="#cba57a"
         ></Flex>
 
         <Flex
