@@ -5,7 +5,7 @@ export const Text = {
       fontWeight: 'semibold'
     },
     body: {
-      fontSize: { base: '8px', sm: '12px', lg: '16px', xl: '20px' },
+      fontSize: { base: '8px', sm: '12px', lg: '15px', xl: '18px' },
       fontWeight: 'normal'
     },
     'larger-body-bold': {
@@ -72,8 +72,8 @@ export const Text = {
     },
     h5: {
       color: 'green.700',
-      fontSize: '25px',
-      fontWeight: 400
+      fontSize: { base: '8px', sm: '10px', lg: '14px', xl: '18px' },
+      fontWeight: 'medium'
     },
     productBody: {
       fontSize: {

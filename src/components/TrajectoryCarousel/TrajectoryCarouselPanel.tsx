@@ -51,7 +51,7 @@ export const TrajectoryCarouselPanel = ({ tabData, myIndex, tabIndex }: Trajecto
         >
           
             <Text as="h1" 
-              variant="h1" 
+              variant={"h1" as any} 
               color="grey.300"
             >{tabData.name}</Text>
             <Flex
@@ -65,7 +65,7 @@ export const TrajectoryCarouselPanel = ({ tabData, myIndex, tabIndex }: Trajecto
                   mt={{base: "5px", md: "8px"}}
                   ></Arrow>
                 <Text as="h3" 
-                  variant="h3" 
+                  variant={"h3" as any}
                   color="green.900" 
                   ml={{ base: '12px', sm: '20px', lg: '22px', xl: '24px'}}
                 >{tabData.content.title}</Text>

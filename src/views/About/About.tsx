@@ -1,15 +1,10 @@
-import * as S from './styles'
 import { Box, Image, Text, Flex, Container, Wrap, Heading, Spacer } from '@chakra-ui/react'
-
-import GlobalContainer from '@components/GlobalContainer'
 import Pagebar from '@components/Pagebar'
 import PageSession from '@components/PageSession'
-import HeaderTitle from '@components/HeaderTitle'
 import Infographic from '@components/Infographic'
-import TrajectoryCarousel, {mockCarouselObj } from '@components/TrajectoryCarousel'
-import WhereWeAre, { mockPanelObj } from '@components/WhereWeAre'
+import TrajectoryCarousel, { mockCarouselObj } from '@components/TrajectoryCarousel'
+import WhereWeAre from '@components/WhereWeAre'
 import CompletedTitle from '@components/CompletedTitle'
-import { SP } from 'next/dist/shared/lib/utils'
 import { EarthIcon } from '@components/Icons'
 import PatternInfo from '@components/PatternInfo'
 
@@ -41,6 +36,12 @@ const dataOndeEstamos = {
   title: 'Onde Estamos',
   subtitle: 'Localização estratégica',
   text: 'Nossas plantas industriais estão estrategicamente localizadas próximas às áreas de cultivo florestal e às principais rodovias e portos do país, com fácil distribuição para todo o território nacional e exterior.',
+}
+
+const dataCertificacao = {
+  title: 'Certificações',
+  subtitle: '',
+  text: 'Manejo florestal, qualidade produtiva, controle de fabricação. Para nós, qualidade e desenvolvimento responsável são mais do que objetivos a serem alcançados, são práticas incorporadas em nosso dia a dia.',
 }
 
 
@@ -92,13 +93,11 @@ export const About = () => {
             alignSelf='center'
           >
               <Text as='h3'
-                  variant = 'h3'
-                  fontFamily = 'body'
+                  variant = {"h3" as any}
                   color = 'green.600'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
                 >{dataRaizes.title}</Text>
                 <Text
-                  fontFamily = 'body'
                   color='green.900'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
                   marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '20px'}}
@@ -194,7 +193,7 @@ export const About = () => {
             alignSelf='center'
           >
                 <Text as='h3'
-                  variant = 'h3'
+                  variant = {"h3" as any}
                   fontFamily = 'body'
                   color = 'green.900'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
@@ -235,13 +234,16 @@ export const About = () => {
             alignItems='center'
             margin={{ base: '5% 5%', sm: '5% 5%', lg: '5% 20%', xl: '5% 20%'}}
           >
-              <CompletedTitle titleString = {dataTrajetoria.title} />
+              <CompletedTitle 
+                titleString = {dataTrajetoria.title}
+                textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+              />
               <Text
                 fontFamily = 'body'
                 color='brown.350'
                 marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '20px'}}
                 textAlign = 'center'
-              >{dataTrajetoria.text} </Text>
+              >{dataTrajetoria.text}</Text>
 
           </Flex>
           <Flex justifyContent="center" alignItems="center" width="100%" margin={{ xs: "0", sm: "0", md: "0", lg: "20px", xl: "20px" }}>
@@ -282,8 +284,8 @@ export const About = () => {
             <CompletedTitle 
               titleColor = 'green.900' 
               titleString = {dataOndeEstamos.title} 
-              alignLine = {{ base: 'center', sm: 'center', lg: 'center', xl: 'flex-start'}}
-              textAlign =  {{ base: 'center', sm: 'left', lg: 'left', xl: 'left'}}
+              alignSelf = {{ base: 'center', sm: 'center', lg: 'center', xl: 'flex-start'}} 
+              textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
             />
 
             <Box
@@ -292,7 +294,7 @@ export const About = () => {
               flex = '2'
             >
               <Text as='h3'
-                variant = 'h3'
+                variant = {"h3" as any}
                 fontFamily = 'body'
                 color='green.600'
                 textAlign = {{ base: 'center', sm: 'center', lg: 'center', xl: 'left'}}
@@ -312,7 +314,7 @@ export const About = () => {
             margin={{ base: "0", xs: "0", sm: "0", md: "0", lg: "0", xl: "0 0 0 5%" }}
             color='red'
           >
-            <WhereWeAre {...mockPanelObj}/>
+            <WhereWeAre />
           </Flex>
       
         </Flex>
@@ -416,40 +418,21 @@ export const About = () => {
         >
           <Box 
             w='100%'
-            
             // bg='red'
             flexWrap='nowrap'
             flex='1'
             >
              <Flex 
-            // bg='red'
-            direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
-          >
-            <Box
-              // bg='orange'
+                // bg='red'
+                direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
             >
-              <Text
-                  fontFamily = 'body'
-                  fontWeight= 'extrabold'
-                  color='green.900'
-                  fontSize = {{ base: '18px', sm: '32px', lg: '40px', xl: '50px'}}
-                  textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
-              >Certificação</Text>
-            </Box>
-            
-            <Box
-              // bg='white'
-              alignSelf={{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}}
-            >
-              <Box 
-                marginTop={{ base: '3px', sm: '10px', lg: '20px', xl: '20px'}}
-                h="3px"
-                w={{ base: '60px', sm: '70px', lg: '80px', xl: '90px'}}
-                bg="green.600"
-                borderRadius="20px"
-              />
-            </Box>
-          </Flex>
+                <CompletedTitle 
+                  titleColor = 'green.900' 
+                  titleString = {dataCertificacao.title} 
+                  alignSelf = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}} 
+                  textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                />
+            </Flex>
           </Box>
 
           <Box
@@ -462,7 +445,7 @@ export const About = () => {
               color='green.900'
               fontSize = {{ base: '8px', sm: '14px', lg: '16px', xl: '20px'}}
               textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
-            >Manejo florestal, qualidade produtiva, controle de fabricação. Para nós, qualidade e desenvolvimento responsável são mais do que objetivos a serem alcançados, são práticas incorporadas em nosso dia a dia.</Text>
+            >{dataCertificacao.text}</Text>
           </Box>
         </Flex>   
         </Box>
