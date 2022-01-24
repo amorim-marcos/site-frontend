@@ -2,8 +2,8 @@ import { Box, BoxProps } from '@chakra-ui/react'
 import { ResponsiveCss } from 'types/responsive'
 
 export type ArrowProps = BoxProps & {
-  width: number | ResponsiveCss
-  height: number | ResponsiveCss
+  width?: number | ResponsiveCss
+  height?: number | ResponsiveCss
   color?: ResponsiveCss
   direction?: 'right' | 'left' | 'up' | 'down'
 }
