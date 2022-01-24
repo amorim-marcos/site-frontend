@@ -1,19 +1,5 @@
 import { Image, Flex, Box, Text, BoxProps } from '@chakra-ui/react'
 
-export const tableItemStyle = (borderColor: string, background: string) => ({
-  bg: background,
-  height: {
-    base: '45px',
-    sm: '20px',
-    md: '25px',
-    lg: '30px',
-    xl: '35px',
-    '2xl': '30px'
-  },
-  border: `4px solid ${borderColor}`,
-  padding: '10px'
-})
-
 export type PlusInfoTableProps = {
   rows: {
     column1: string
@@ -25,105 +11,6 @@ export type PlusInfoTableProps = {
   }[]
 }
 
-const tableText = {
-  base: '6px',
-  xs: '8px',
-  sm: '5px',
-  md: '9px',
-  lg: '11px',
-  xl: '14px',
-  '2xl': '17px'
-}
-
-const firstItemWidth = {
-  base: '100px',
-  sm: '72px',
-  md: '129px',
-  lg: '170px',
-  xl: '200px',
-  '2xl': '280px'
-}
-
-const itemWidth = {
-  base: '100px',
-  sm: '68px',
-  md: '90px',
-  lg: '113px',
-  xl: '136px',
-  '2xl': '170px'
-}
-
-const itemWidthDoble = {
-  base: '200px',
-  sm: '136px',
-  md: '180px',
-  lg: '226px',
-  xl: '272px',
-  '2xl': '340px'
-}
-
-const itemPaddingY = {
-  base: '2px',
-  sm: '3px',
-  md: '4px',
-  lg: '5px',
-  xl: '6px',
-  '2xl': '7px'
-}
-
-const itemPaddingRight = {
-  base: '5px',
-  sm: '10px',
-  md: '15px',
-  lg: '20px',
-  xl: '25px',
-  '2xl': '30px'
-}
-
-const itemPaddingX = {
-  base: '5px',
-  sm: '3px',
-  md: '6px',
-  lg: '9px',
-  xl: '12px',
-  '2xl': '15px'
-}
-
-const tableFirstItem: BoxProps = {
-  width: firstItemWidth,
-  bg: '#FFF',
-  border: '1px solid #E8E8E8',
-  paddingX: itemPaddingX,
-  paddingY: itemPaddingY,
-  paddingRight: itemPaddingRight
-}
-
-const tableItem: BoxProps = {
-  width: itemWidth,
-  bg: '#FFF',
-  border: '1px solid #E8E8E8',
-  paddingX: itemPaddingX,
-  paddingY: itemPaddingY,
-  paddingRight: itemPaddingRight
-}
-
-const tableItemPlus: BoxProps = {
-  width: itemWidth,
-  bg: '#C2DFB7',
-  border: '1px solid #E8E8E8',
-  paddingX: itemPaddingX,
-  paddingY: itemPaddingY,
-  paddingRight: itemPaddingRight
-}
-
-const tableItemTitle: BoxProps = {
-  width: itemWidth,
-  bg: 'none',
-  border: '1px solid #E8E8E8',
-  paddingX: itemPaddingX,
-  paddingY: itemPaddingY,
-  paddingRight: itemPaddingRight
-}
 export const PlusInfoTable = ({ rows }: PlusInfoTableProps) => {
   return (
     <Box
@@ -220,7 +107,11 @@ export const PlusInfoTable = ({ rows }: PlusInfoTableProps) => {
           rows.map((r) => {
             return (
               <Flex key={r.column1}>
-                <Box {...tableFirstItem} w={firstItemWidth}>
+                <Box
+                  {...tableFirstItem}
+                  w={firstItemWidth}
+                  bg={r.plus ? '#C2DFB7' : '#FFF'}
+                >
                   <Text variant={'productBody' as any} fontSize={tableText}>
                     {r.column1}
                   </Text>
@@ -251,4 +142,118 @@ export const PlusInfoTable = ({ rows }: PlusInfoTableProps) => {
       </Flex>
     </Box>
   )
+}
+
+export const tableItemStyle = (borderColor: string, background: string) => ({
+  bg: background,
+  height: {
+    base: '45px',
+    sm: '20px',
+    md: '25px',
+    lg: '30px',
+    xl: '35px',
+    '2xl': '30px'
+  },
+  border: `4px solid ${borderColor}`,
+  padding: '10px'
+})
+
+const tableText = {
+  base: '6px',
+  xs: '8px',
+  sm: '5px',
+  md: '9px',
+  lg: '11px',
+  xl: '14px',
+  '2xl': '17px'
+}
+
+const firstItemWidth = {
+  base: '100px',
+  sm: '72px',
+  md: '129px',
+  lg: '170px',
+  xl: '200px',
+  '2xl': '260px'
+}
+
+const itemWidth = {
+  base: '100px',
+  sm: '68px',
+  md: '90px',
+  lg: '113px',
+  xl: '136px',
+  '2xl': '170px'
+}
+
+const itemWidthDoble = {
+  base: '200px',
+  sm: '136px',
+  md: '180px',
+  lg: '226px',
+  xl: '272px',
+  '2xl': '340px'
+}
+
+const itemPaddingY = {
+  base: '2px',
+  sm: '3px',
+  md: '4px',
+  lg: '5px',
+  xl: '6px',
+  '2xl': '7px'
+}
+
+const itemPaddingRight = {
+  base: '5px',
+  sm: '10px',
+  md: '15px',
+  lg: '20px',
+  xl: '25px',
+  '2xl': '30px'
+}
+
+const itemPaddingX = {
+  base: '5px',
+  sm: '3px',
+  md: '6px',
+  lg: '9px',
+  xl: '12px',
+  '2xl': '15px'
+}
+
+const tableFirstItem: BoxProps = {
+  width: firstItemWidth,
+  bg: '#FFF',
+  border: '1px solid #E8E8E8',
+  paddingX: itemPaddingX,
+  paddingY: itemPaddingY,
+  paddingRight: itemPaddingRight
+}
+
+const tableItem: BoxProps = {
+  width: itemWidth,
+  bg: '#FFF',
+  border: '1px solid #E8E8E8',
+  paddingX: itemPaddingX,
+  paddingY: itemPaddingY,
+  paddingRight: itemPaddingRight
+}
+
+const tableItemPlus: BoxProps = {
+  width: itemWidth,
+  bg: '#C2DFB7',
+  border: '1px solid #E8E8E8',
+  paddingX: itemPaddingX,
+  paddingY: itemPaddingY,
+  paddingRight: itemPaddingRight
+}
+
+const tableItemTitle: BoxProps = {
+  width: itemWidth,
+  bg: 'none',
+  border: '1px solid #E8E8E8',
+  paddingX: itemPaddingX,
+  paddingY: itemPaddingY,
+  paddingRight: itemPaddingRight
 }

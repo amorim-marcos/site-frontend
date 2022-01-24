@@ -1,29 +1,33 @@
-import {
-  Heading,
-  Flex,
-  Box,
-  Text,
-  Center,
-  Container,
-  Image
-} from '@chakra-ui/react'
+import { Flex, Box, Text } from '@chakra-ui/react'
 import PlusInfoTable from '@components/PlusInfoTable'
+import { PlusInfoTableProps } from '@components/PlusInfoTable/PlusInfoTable'
 
 import ArrowIcon from '../Icons/ArrowIcon'
 export type PlusTestInfoProps = {
   title?: string
+  description?: string
+  testSteps?: {
+    first: string
+    second: string
+    third: string
+  }
+  extraInfoTitle?: string
+  extraInfoBody?: Array<string>
+  tableInfo?: PlusInfoTableProps
 }
-export const PlusTestInfo = ({ title }: PlusTestInfoProps) => {
+export const PlusTestInfo = ({
+  title,
+  description,
+  testSteps,
+  extraInfoTitle,
+  extraInfoBody,
+  tableInfo
+}: PlusTestInfoProps) => {
   return (
     <Box bg="#E8E8E8" maxWidth="1920px" marginX="auto" padding="5%">
-      <Text variant={'productTitle' as any}>
-        Fizemos o teste. Está comprovado e aprovado.
-      </Text>
+      <Text variant={'productTitle' as any}>{title}</Text>
       <Text variant={'productBody' as any} width={{ base: '100%', sm: '44%' }}>
-        Para ilustrar melhor as características dos produtos PLUS BERNECK®,
-        fizemos um teste com o objetivo de avaliar como os painéis reagem à
-        absorção de umidade e ao ganho de espessura, comparando-os com os
-        painéis standard.
+        {description}
       </Text>
       <Flex
         paddingY={{
@@ -53,8 +57,7 @@ export const PlusTestInfo = ({ title }: PlusTestInfoProps) => {
         >
           <Text variant={'berneckPlusTestInfoNumber' as any}>1</Text>
           <Text variant={'productBody' as any}>
-            Pesamos e medimos a espessura dos corpos de prova: amostras de 15mm
-            de MDF e MDP Standard, e MDF e MDP Plus, todas sem revestimento.
+            {testSteps && testSteps.first}
           </Text>
         </Flex>
         <Flex
@@ -64,8 +67,7 @@ export const PlusTestInfo = ({ title }: PlusTestInfoProps) => {
         >
           <Text variant={'berneckPlusTestInfoNumber' as any}>2</Text>
           <Text variant={'productBody' as any}>
-            Acondicionamos as amostras por 16 dias em estufa com temperatura
-            constante de 25ºC e umidade relativa do ar de 90%.
+            {testSteps && testSteps.second}
           </Text>
         </Flex>
         <Flex
@@ -75,62 +77,26 @@ export const PlusTestInfo = ({ title }: PlusTestInfoProps) => {
         >
           <Text variant={'berneckPlusTestInfoNumber' as any}>3</Text>
           <Text variant={'productBody' as any}>
-            Após este período, novamente pesamos e medidos a espessura dos
-            corpos de prova.
+            {testSteps && testSteps.third}
           </Text>
         </Flex>
       </Flex>
 
-      <Flex flexDirection={{ base: 'column', sm: 'row' }}>
+      <Flex
+        justifyContent="space-between"
+        flexDirection={{ base: 'column', sm: 'row' }}
+      >
         <Box width={{ base: '90%', sm: '40%' }}>
           <Text marginTop="40px" variant={'productTitle' as any}>
-            Muito importante
+            {extraInfoTitle}
           </Text>
 
           <Box>
-            <ItemCite text="Utilize a linha BERNECK PLUS em áreas que não tenham contato direto com água." />
-            <ItemCite text=" É indispensável proteger todas as faces e bordas do painel contra ação da umidade, inclusive as não aparentes, pois este produto não é isento a mofo. " />
-            <ItemCite text="Ambientes com focos de cupim devem ser tratados antes da instalação de qualquer móvel, inclusive os com a linha PLUS BERNECK®." />
+            {extraInfoBody &&
+              extraInfoBody.map((e) => <ItemCite key={e} text={e} />)}
           </Box>
         </Box>
-        <Box>
-          <PlusInfoTable
-            rows={[
-              {
-                column1: 'MDF STD',
-                column2: '47,0 g',
-                column3: '13,10 %',
-                column4: '0,94 mm',
-                column5: '6,40 %',
-                plus: false
-              },
-              {
-                column1: 'MDP STD',
-                column2: '25,7 g',
-                column3: '7,40 %',
-                column4: '0,74 mm',
-                column5: '4,90 %',
-                plus: false
-              },
-              {
-                column1: 'MDF PLUS BERNECK',
-                column2: '17,5 g',
-                column3: '5,90 %',
-                column4: '0,61 mm',
-                column5: '0,61 mm',
-                plus: true
-              },
-              {
-                column1: 'MDP PLUS BERNECK',
-                column2: '5,0 g',
-                column3: '1,40 %',
-                column4: '0,57 mm',
-                column5: '0,57 mm',
-                plus: true
-              }
-            ]}
-          />
-        </Box>
+        <Box>{tableInfo && <PlusInfoTable rows={tableInfo.rows} />}</Box>
       </Flex>
     </Box>
   )
