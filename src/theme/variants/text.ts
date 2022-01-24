@@ -90,7 +90,8 @@ export const Text = {
     productTitle: {
       fontWeight: 'bold',
       fontSize: {
-        base: '20px',
+        base: '15px',
+        xs: '20px',
         sm: '11px',
         md: '14px',
         lg: '18px',
@@ -100,11 +101,11 @@ export const Text = {
       color: 'green.900',
       zIndex: 'docked',
       marginBottom: {
-        base: '8px',
-        sm: '9px',
-        md: '11px',
-        lg: '14px',
-        xl: '17px',
+        base: '5px',
+        xs: '8px',
+        md: '10px',
+        lg: '13px',
+        xl: '16px',
         '2xl': '20px'
       }
     },
