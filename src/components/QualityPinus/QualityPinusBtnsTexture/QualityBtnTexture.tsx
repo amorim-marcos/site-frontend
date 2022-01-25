@@ -1,18 +1,17 @@
-import { Box } from '@chakra-ui/react'
+import { Box, BoxProps } from '@chakra-ui/react'
 import { ResponsiveCss } from 'types/responsive'
 
-export type QualityBtnTextureProps = {
-  width?: ResponsiveCss
-  color?: ResponsiveCss
+export interface QualityBtnTextureProps extends BoxProps {
   texture: '1' | '2' | '3' | '4' | '5'
 }
 export const QualityBtnTexture = ({
-  width = '197px',
+  width = '100%',
   color = '#FFF',
-  texture = '1'
+  texture = '1',
+  ...rest
 }: QualityBtnTextureProps) => {
   return (
-    <Box width={width} color={color}>
+    <Box width={width} color={color} {...rest}>
       {texture === '1' ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -17,15 +17,12 @@ export const QualityPinus = () => {
 
   return (
     <Flex
+      aria-label="qualityPinusContainer"
       maxWidth="1920px"
       marginX="auto"
       paddingX={{
-        base: '60px',
-        sm: '70px',
-        md: '80px',
-        lg: '90px',
-        xl: '100px',
-        '2xl': '5%'
+        base: '6%',
+        sm: '4%'
       }}
       paddingY={{
         base: '20px',
@@ -38,88 +35,129 @@ export const QualityPinus = () => {
       flexDirection="column"
       bg="#FCFCFC"
     >
-      <Heading
-        color="green.900"
-        fontSize={{
-          base: '8px',
-          sm: '11px',
-          md: '14px',
-          lg: '18px',
-          xl: '22px',
-          '2xl': '30px'
+      <Text
+        variant={'productTitle' as any}
+        marginBottom={{
+          base: '50px',
+          sm: '10px',
+          md: '20px',
+          lg: '30px',
+          xl: '40px',
+          '2xl': '50px'
         }}
-        marginBottom={'50px'}
       >
         {pinus.t('qualitiesPinusBerneck')}
-      </Heading>
-      <Flex>
+      </Text>
+      <Flex
+        flexDirection={{ base: 'column', sm: 'row' }}
+        justifyContent="space-between"
+        w="100%"
+      >
         <Flex
           backgroundImage="url('/img/pinus_quality.png')"
-          minWidth="450px"
-          h="550px"
-          // bg="#cba57a"
+          backgroundSize="auto 100%"
+          minWidth={{
+            base: '70vw',
+            sm: '235px',
+            md: '313px',
+            lg: '392px',
+            xl: '470px',
+            '2xl': '588px'
+          }}
+          h={{
+            base: '70vw',
+            sm: '252px',
+            md: '336px',
+            lg: '420px',
+            xl: '504px',
+            '2xl': '631px'
+          }}
         ></Flex>
 
-        <Flex marginLeft="20px" flexDirection="column">
-          <Flex h="64px" justifyContent="flex-start" marginBottom="50px">
-            <Center {...btnStyle}>
+        <Flex
+          marginLeft={{
+            base: '0px',
+            sm: '10px',
+            md: '20px',
+            lg: '30px',
+            xl: '40px',
+            '2xl': '50px'
+          }}
+          flexDirection="column"
+        >
+          <Flex
+            marginY={{ base: '30px', sm: '0' }}
+            h={{
+              base: '25px',
+              sm: '25px',
+              md: '34px',
+              lg: '42px',
+              xl: '51px',
+              '2xl': '64px'
+            }}
+            justifyContent="flex-start"
+            marginBottom={{
+              base: '30px',
+              sm: '10px',
+              md: '20px',
+              lg: '30px',
+              xl: '40px',
+              '2xl': '50px'
+            }}
+          >
+            <Center {...selectedBtnStyle}>
               <Box {...textureBtnContainer}>
                 <QualityBtnTexture texture="1" />
               </Box>
-              <Text {...btnTextStyle}>108</Text>
+              <Text variant={'productTitle' as any} marginBottom="0">
+                108
+              </Text>
             </Center>
             <Center {...btnStyle}>
               <Box {...textureBtnContainer}>
                 <QualityBtnTexture texture="2" />
               </Box>
-              <Text {...btnTextStyle}>108</Text>
+              <Text variant={'productTitle' as any} marginBottom="0">
+                108
+              </Text>
             </Center>
             <Center {...btnStyle}>
               <Box {...textureBtnContainer}>
                 <QualityBtnTexture texture="3" />
               </Box>
-              <Text {...btnTextStyle}>108</Text>
+              <Text variant={'productTitle' as any} marginBottom="0">
+                108
+              </Text>
             </Center>
             <Center {...btnStyle}>
               <Box {...textureBtnContainer}>
                 <QualityBtnTexture texture="4" />
               </Box>
-              <Text {...btnTextStyle}>108</Text>
+              <Text variant={'productTitle' as any} marginBottom="0">
+                108
+              </Text>
             </Center>
             <Center {...btnStyle}>
               <Box {...textureBtnContainer}>
                 <QualityBtnTexture texture="5" />
               </Box>
-              <Text {...btnTextStyle}>108</Text>
+              <Text variant={'productTitle' as any} marginBottom="0">
+                108
+              </Text>
             </Center>
           </Flex>
-          <Flex flexDirection="column" justifyContent="space-between" h="100%">
+          <Flex
+            flexDirection="column"
+            justifyContent="space-between"
+            h={{ base: '450px', sm: '100%' }}
+          >
             <Box>
-              <Heading
-                color="green.900"
-                fontSize={{
-                  base: '8px',
-                  sm: '11px',
-                  md: '14px',
-                  lg: '18px',
-                  xl: '22px',
-                  '2xl': '30px'
-                }}
-                marginBottom="20px"
-              >
+              <Text variant={'productTitle' as any}>
                 Qualidade 101 ︱ COL A
-              </Heading>
+              </Text>
               <Text
-                fontSize={{
-                  base: '7px',
-                  sm: '8px',
-                  md: '11px',
-                  lg: '14px',
-                  xl: '17px',
-                  '2xl': '20px'
-                }}
-                color="green.900"
-                zIndex="docked"
+                variant={'productBody' as any}
+                w={{ base: '100%', sm: '90%' }}
               >
                 BERNECK® PINUS - 101 é proveniente de peças laterais da tora, o
                 que confere maior densidade e menores tamanhos de nós. Pode ser
@@ -137,43 +175,19 @@ export const QualityPinus = () => {
                 tableBorderColor="#FCFCFC"
                 tableBackgroundColor="#E6EBE5"
                 tableWidth={{
-                  base: '200px',
-                  sm: '170px',
-                  md: '270px',
-                  lg: '350px',
-                  xl: '400px',
-                  '2xl': '800px'
+                  base: '300px',
+                  sm: '280px',
+                  md: '373px',
+                  lg: '466px',
+                  xl: '560px',
+                  '2xl': '700px'
                 }}
               />
             </Box>
 
             <Box>
-              <Heading
-                color="green.900"
-                fontSize={{
-                  base: '8px',
-                  sm: '11px',
-                  md: '14px',
-                  lg: '18px',
-                  xl: '22px',
-                  '2xl': '30px'
-                }}
-                marginBottom="20px"
-              >
-                Usos e Aplicações
-              </Heading>
-              <Text
-                fontSize={{
-                  base: '7px',
-                  sm: '8px',
-                  md: '11px',
-                  lg: '14px',
-                  xl: '17px',
-                  '2xl': '20px'
-                }}
-                color="green.900"
-                zIndex="docked"
-              >
+              <Text variant={'productTitle' as any}>Usos e Aplicações</Text>
+              <Text variant={'productBody' as any}>
                 Móveis / Estofados / Construção Civil / Molduras / Estrutural
               </Text>
             </Box>
@@ -185,16 +199,25 @@ export const QualityPinus = () => {
 }
 
 const btnStyle: CenterProps = {
-  w: '180px',
+  w: '20%',
   bg: '#E6EBE5',
   marginRight: '10px',
-  position: 'relative'
+  position: 'relative',
+  cursor: 'pointer',
+  _hover: {
+    bg: '#C7D0C5'
+  }
 }
 
-const btnTextStyle: TextProps = {
-  color: 'green.900',
-  fontWeight: 'bold',
-  fontSize: '30px'
+const selectedBtnStyle: CenterProps = {
+  w: '20%',
+  bg: '#A9BBAF',
+  marginRight: '10px',
+  position: 'relative',
+  cursor: 'pointer',
+  _hover: {
+    bg: '#C7D0C5'
+  }
 }
 
 const textureBtnContainer: BoxProps = {

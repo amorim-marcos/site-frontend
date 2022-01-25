@@ -1,6 +1,5 @@
-import { Heading, Flex, Box } from '@chakra-ui/react'
+import { Heading, Flex, Box, Text } from '@chakra-ui/react'
 import { ProductWithBP } from './ProductWithBP/ProductWithBP'
-import { headingStyle } from './styles'
 import {
   ProductDimensions,
   DimensionsProps
@@ -56,7 +55,7 @@ export const ProductBody = ({
       flexDirection="column"
       bg={backgroundColor}
       paddingBottom={paddingBottom}
-      paddingTop={{ base: '5%' }}
+      paddingTop={{ base: '5%', sm: '0' }}
     >
       <Box padding="5%">
         {description && (
@@ -70,19 +69,9 @@ export const ProductBody = ({
               '2xl': '80px'
             }}
           >
-            <Heading
-              fontSize={{
-                base: '20px',
-                sm: '11px',
-                md: '14px',
-                lg: '18px',
-                xl: '22px',
-                '2xl': '30px'
-              }}
-              variant="productTitle"
-            >
+            <Text variant={'productTitle' as any}>
               {product.t('Description')}
-            </Heading>
+            </Text>
             <ProductText paragraph content={description} />
           </Box>
         )}
@@ -98,19 +87,9 @@ export const ProductBody = ({
               '2xl': '80px'
             }}
           >
-            <Heading
-              variant="productTitle"
-              fontSize={{
-                base: '20px',
-                sm: '11px',
-                md: '14px',
-                lg: '18px',
-                xl: '22px',
-                '2xl': '30px'
-              }}
-            >
+            <Text variant={'productTitle' as any}>
               {product.t('MoreTechnologyQualityProtection')}
-            </Heading>
+            </Text>
             <ProductText paragraph content={moreTechnologyQualityProtection} />
           </Box>
         )}
@@ -126,19 +105,9 @@ export const ProductBody = ({
               '2xl': '80px'
             }}
           >
-            <Heading
-              variant="productTitle"
-              fontSize={{
-                base: '20px',
-                sm: '11px',
-                md: '14px',
-                lg: '18px',
-                xl: '22px',
-                '2xl': '30px'
-              }}
-            >
+            <Text variant={'productTitle' as any}>
               {product.t('UsesAndApplications')}
-            </Heading>
+            </Text>
             <ProductText content={usesAndApplications} />
           </Box>
         )}
@@ -154,19 +123,7 @@ export const ProductBody = ({
               '2xl': '80px'
             }}
           >
-            <Heading
-              fontSize={{
-                base: '20px',
-                sm: '11px',
-                md: '14px',
-                lg: '18px',
-                xl: '22px',
-                '2xl': '30px'
-              }}
-              variant="productTitle"
-            >
-              {product.t('Finishes')}
-            </Heading>
+            <Text variant={'productTitle' as any}>{product.t('Finishes')}</Text>
             <ProductText content={finishes} />
           </Box>
         )}
@@ -182,19 +139,9 @@ export const ProductBody = ({
               '2xl': '80px'
             }}
           >
-            <Heading
-              fontSize={{
-                base: '20px',
-                sm: '11px',
-                md: '14px',
-                lg: '18px',
-                xl: '22px',
-                '2xl': '30px'
-              }}
-              variant="productTitle"
-            >
+            <Text variant={'productTitle' as any}>
               {product.t('qualityStandards')}
-            </Heading>
+            </Text>
             <ProductText content={qualityStandards} />
           </Box>
         )}
@@ -228,7 +175,16 @@ export const ProductBody = ({
         )}
 
         {specifications && (
-          <Box marginBottom="100px">
+          <Box
+            marginBottom={{
+              base: '20px',
+              sm: '30px',
+              md: '40px',
+              lg: '60px',
+              xl: '80px',
+              '2xl': '100px'
+            }}
+          >
             <ProductSpecification
               tableBackgroundColor={tertiaryBackgroundColor}
               tableBorderColor={backgroundColor}

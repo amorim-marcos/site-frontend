@@ -1,4 +1,4 @@
-import { Box, Image, Flex, useMediaQuery } from '@chakra-ui/react'
+import { Box, Image, Flex } from '@chakra-ui/react'
 import useWindowDimensions from 'hooks/useWindow'
 import { ResponsiveCss } from 'types/responsive'
 import {
@@ -26,7 +26,7 @@ export type ProductProps = {
   downloadAndLinks?: ProductDownloadAndLinksProps
   imgWidth?: ResponsiveCss
   imgMaxWidth?: ResponsiveCss
-  grafismProps: GrafismProductProps
+  grafismProps?: GrafismProductProps
 }
 
 export const Product = ({
@@ -40,13 +40,21 @@ export const Product = ({
   downloadAndLinks,
   imgWidth = '80vw',
   imgMaxWidth = '1415px',
-  grafismProps
+  grafismProps = {
+    grafism: 'type1'
+  }
 }: ProductProps) => {
   const { width } = useWindowDimensions()
   const isMobile = width && width < 568
 
   return (
-    <Box overflow="hidden" position="relative" marginX="auto" maxWidth="1920px">
+    <Box
+      aria-label="productContainer"
+      overflow="hidden"
+      position="relative"
+      marginX="auto"
+      maxWidth="1920px"
+    >
       <GrafismProduct {...grafismProps} />
 
       <ProductHeader {...header} />
