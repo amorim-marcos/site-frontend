@@ -7,12 +7,18 @@ import { HeaderTopMenuItem } from './HeaderTopMenuItem/HeaderTopMenuItem'
 import { LanguageSelector } from './LanguageSelector/LanguageSelector'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import useMobile from '../../hooks/useMobile'
+import { menuNavigation } from './MenuVanigation'
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { IoMdClose, IoMdMenu } from 'react-icons/io'
 
 import { colors } from '../../theme/colors'
 export type AppHeaderProps = null
 
 export const AppHeader = () => {
   const [openSearchBar, setOpenSearchBar] = useState(false)
+  const [menuMobileOpen, setMenuMobileOpen] = useState(false)
+  const { isMobile } = useMobile(568)
 
   const header = useTranslation('header')
   return (
@@ -20,7 +26,7 @@ export const AppHeader = () => {
       data-testid="header-container"
       marginX="auto"
       h={{
-        base: '50px',
+        base: '75px',
         sm: '60px',
         md: '88px',
         lg: '103px',
@@ -28,14 +34,14 @@ export const AppHeader = () => {
         '2xl': '172px'
       }}
       maxWidth="1920px"
-      bg="green.900"
+      bg={'green.900'}
       position="relative"
     >
-      <Container maxWidth="1920" padding={0}>
+      <Container zIndex="modal" position="fixed" maxWidth="1920" padding={0}>
         <Flex
           paddingX={{ base: '4.5%', sm: '4%', md: '3.5%' }}
           h={{
-            base: '15px',
+            base: '25px',
             sm: '20px',
             md: '25px',
             lg: '30px',
@@ -43,26 +49,41 @@ export const AppHeader = () => {
             '2xl': '51px'
           }}
           justifyContent="space-between"
+          bg="green.900"
         >
           <Flex height="100%">
             <LanguageSelector />
           </Flex>
-          <Flex
-            justifyContent="flex-end"
-            align="center"
-            flexDir="row"
-            width="100%"
-          >
-            <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn1')} />
-            <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn2')} />
-            <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn3')} />
-            <HeaderTopMenuItem href="/somos-berneck" title={header.t('btn4')} />
-          </Flex>
+          {!isMobile && (
+            <Flex
+              justifyContent="flex-end"
+              align="center"
+              flexDir="row"
+              width="100%"
+            >
+              <HeaderTopMenuItem
+                href="/somos-berneck"
+                title={header.t('btn1')}
+              />
+              <HeaderTopMenuItem
+                href="/somos-berneck"
+                title={header.t('btn2')}
+              />
+              <HeaderTopMenuItem
+                href="/somos-berneck"
+                title={header.t('btn3')}
+              />
+              <HeaderTopMenuItem
+                href="/somos-berneck"
+                title={header.t('btn4')}
+              />
+            </Flex>
+          )}
         </Flex>
         <Flex
           paddingInline={{ base: '4%', xl: '4%', '2xl': '4%' }}
           h={{
-            base: '40px',
+            base: '50px',
             sm: '38px',
             md: '60px',
             lg: '70px',
@@ -71,59 +92,80 @@ export const AppHeader = () => {
           }}
           bg="green.800"
           alignItems="center"
+          justifyContent={{ base: 'center' }}
+          position="relative"
         >
+          {isMobile && (
+            <Flex
+              onClick={() => setMenuMobileOpen(!menuMobileOpen)}
+              position="absolute"
+              top="0"
+              left="10px"
+              cursor="pointer"
+              h="100%"
+              alignItems="center"
+            >
+              {menuMobileOpen ? (
+                <IoMdClose color="#FFF" size={'30px'} />
+              ) : (
+                <IoMdMenu color="#FFF" size={'30px'} />
+              )}
+            </Flex>
+          )}
           <NavLink href="/">
             <LogoBerneck
               width={{
-                base: '70px',
+                base: '110px',
                 sm: '80px',
                 md: '120px',
                 lg: '150px',
                 xl: '180px',
                 '2xl': '220px'
               }}
-              height={{
-                base: '14px',
-                sm: '14px',
-                md: '20px',
-                lg: '25px',
-                xl: '31px',
-                '2xl': '40px'
-              }}
             />
           </NavLink>
+
           <Flex
-            paddingLeft={'70px'}
-            justifyContent="flex-end"
-            h="100%"
-            width="100%"
+            paddingLeft={{ base: '0', sm: '70px' }}
+            justifyContent="flex-start"
+            h={{ base: 'calc(100vh - 75px)', sm: '100%' }}
+            position={{ base: 'absolute', sm: 'inherit' }}
+            width={{ base: '100vw', sm: '100%' }}
+            top={{ base: '100%', sm: '0' }}
+            zIndex="dropdown"
+            bg={{ base: 'green.700', sm: 'none' }}
+            flexDirection={{ base: 'column', sm: 'row' }}
+            display={isMobile && !menuMobileOpen ? 'none' : 'flex'}
           >
             <HeaderMenuItem
-              subItems={menuContent.whoWeAre.subItems.map((i) => ({
+              subItems={menuNavigation.whoWeAre.subItems.map((i) => ({
                 title: header.t(i.key),
                 href: i.href
               }))}
-              href={menuContent.whoWeAre.href}
+              href={menuNavigation.whoWeAre.href}
               title={header.t('btn5')}
+              closeMenuMobile={() => setMenuMobileOpen(false)}
             />
             <HeaderMenuItem
-              subItems={menuContent.ourCommitment.subItems.map((i) => ({
+              subItems={menuNavigation.ourCommitment.subItems.map((i) => ({
                 title: header.t(i.key),
                 href: i.href
               }))}
-              href={menuContent.ourCommitment.href}
+              href={menuNavigation.ourCommitment.href}
               title={header.t('btn6')}
+              closeMenuMobile={() => setMenuMobileOpen(false)}
             />
             <HeaderMenuItem
-              subItems={menuContent.florestalDivision.subItems.map((i) => ({
+              subItems={menuNavigation.florestalDivision.subItems.map((i) => ({
                 title: header.t(i.key),
                 href: i.href
               }))}
-              href={menuContent.florestalDivision.href}
+              href={menuNavigation.florestalDivision.href}
               title={header.t('btn7')}
+              closeMenuMobile={() => setMenuMobileOpen(false)}
             />
             <HeaderMenuItem
-              subItems={menuContent.products.subItems.map((i) => ({
+              subItems={menuNavigation.products.subItems.map((i) => ({
                 title: header.t(i.key),
                 href: i.href,
                 subItems: i.subItems.map((i) => ({
@@ -131,53 +173,57 @@ export const AppHeader = () => {
                   href: i.href
                 }))
               }))}
-              href={menuContent.products.href}
+              href={menuNavigation.products.href}
               title={header.t('btn8')}
+              closeMenuMobile={() => setMenuMobileOpen(false)}
             />
             <HeaderMenuItem
-              subItems={menuContent.channelBNK.subItems.map((i) => ({
+              subItems={menuNavigation.channelBNK.subItems.map((i) => ({
                 title: header.t(i.key),
                 href: i.href
               }))}
-              href={menuContent.channelBNK.href}
+              href={menuNavigation.channelBNK.href}
               title={header.t('btn9')}
+              closeMenuMobile={() => setMenuMobileOpen(false)}
             />
-            <Flex alignItems="center" justifyContent="center">
-              {openSearchBar ? (
-                <CloseButton
-                  h={{
-                    base: '20px',
-                    sm: '20px',
-                    md: '30px',
-                    xl: '40px',
-                    '2xl': '50px'
-                  }}
-                  w={{
-                    base: '20px',
-                    sm: '20px',
-                    md: '30px',
-                    xl: '40px',
-                    '2xl': '50px'
-                  }}
-                  bg="green.600"
-                  borderRadius="50%"
-                  size="sm"
-                  color="white.100"
-                  onClick={() => setOpenSearchBar(false)}
-                />
-              ) : (
-                <SearchIcon
-                  width={{
-                    base: '10px',
-                    sm: '14px',
-                    md: '18px',
-                    xl: '28px',
-                    '2xl': '35px'
-                  }}
-                  onClick={() => setOpenSearchBar(true)}
-                />
-              )}
-            </Flex>
+            {!isMobile && (
+              <Flex alignItems="center" justifyContent="center">
+                {openSearchBar ? (
+                  <CloseButton
+                    h={{
+                      base: '20px',
+                      sm: '20px',
+                      md: '30px',
+                      xl: '40px',
+                      '2xl': '50px'
+                    }}
+                    w={{
+                      base: '20px',
+                      sm: '20px',
+                      md: '30px',
+                      xl: '40px',
+                      '2xl': '50px'
+                    }}
+                    bg="green.600"
+                    borderRadius="50%"
+                    size="sm"
+                    color="white.100"
+                    onClick={() => setOpenSearchBar(false)}
+                  />
+                ) : (
+                  <SearchIcon
+                    width={{
+                      base: '10px',
+                      sm: '14px',
+                      md: '18px',
+                      xl: '28px',
+                      '2xl': '35px'
+                    }}
+                    onClick={() => setOpenSearchBar(true)}
+                  />
+                )}
+              </Flex>
+            )}
           </Flex>
         </Flex>
       </Container>
@@ -249,129 +295,4 @@ export const AppHeader = () => {
       ) : null}
     </Box>
   )
-}
-
-const menuContent = {
-  whoWeAre: {
-    key: 'btn5',
-    href: '/somos-berneck',
-    subItems: [
-      { key: 'btn5_subItem1', href: '/somos-berneck' },
-      { key: 'btn5_subItem2', href: '/somos-berneck' },
-      { key: 'btn5_subItem3', href: '/somos-berneck' },
-      { key: 'btn5_subItem4', href: '/somos-berneck' }
-    ]
-  },
-  ourCommitment: {
-    key: 'btn6',
-    href: '/nosso-compromisso',
-    subItems: [
-      {
-        key: 'btn6_subItem1',
-        href: '/nosso-compromisso'
-      },
-      {
-        key: 'btn6_subItem2',
-        href: '/nosso-compromisso'
-      },
-      {
-        key: 'btn6_subItem3',
-        href: '/nosso-compromisso'
-      },
-      {
-        key: 'btn6_subItem4',
-        href: '/nosso-compromisso'
-      }
-    ]
-  },
-  florestalDivision: {
-    key: 'btn7',
-    href: '/divisao-florestal',
-    subItems: [
-      {
-        key: 'btn7_subItem1',
-        href: '/divisao-florestal'
-      },
-      {
-        key: 'btn7_subItem2',
-        href: '/divisao-florestal'
-      },
-      {
-        key: 'btn7_subItem3',
-        href: '/divisao-florestal'
-      },
-      {
-        key: 'btn7_subItem4',
-        href: '/divisao-florestal'
-      }
-    ]
-  },
-  products: {
-    key: 'btn8',
-    href: '/products',
-    subItems: [
-      {
-        key: 'btn8_subItem1',
-        href: '/products',
-        subItems: [
-          {
-            key: 'btn8_subItem2',
-            href: '/products/bp-berneck'
-          },
-          {
-            key: 'btn8_subItem3',
-            href: '/products/hdf-berneck'
-          },
-          {
-            key: 'btn8_subItem4',
-            href: '/products/mdf-berneck'
-          },
-          {
-            key: 'btn8_subItem5',
-            href: '/products/mdp-berneck'
-          },
-          {
-            key: 'btn8_subItem6',
-            href: '/products/plus-berneck'
-          }
-        ]
-      },
-      {
-        key: 'btn8_subItem7',
-        href: '/products',
-        subItems: [
-          {
-            key: 'btn8_subItem8',
-            href: '/products/berneck-pinus'
-          },
-          {
-            key: 'btn8_subItem9',
-            href: '/products/berneck-teca'
-          }
-        ]
-      }
-    ]
-  },
-  channelBNK: {
-    key: 'btn9',
-    href: '/canal-bnk',
-    subItems: [
-      {
-        key: 'btn9_subItem1',
-        href: '/canal-bnk'
-      },
-      {
-        key: 'btn9_subItem2',
-        href: '/canal-bnk'
-      },
-      {
-        key: 'btn9_subItem3',
-        href: '/canal-bnk'
-      },
-      {
-        key: 'btn9_subItem4',
-        href: '/canal-bnk'
-      }
-    ]
-  }
 }

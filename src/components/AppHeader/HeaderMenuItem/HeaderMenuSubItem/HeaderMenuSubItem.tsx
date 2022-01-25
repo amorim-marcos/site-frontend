@@ -1,5 +1,6 @@
-import { Text, Flex, Center } from '@chakra-ui/react'
+import { Text, Flex, Box } from '@chakra-ui/react'
 import Link from 'next/link'
+import useMobile from '../../../../hooks/useMobile'
 
 export type HeaderMenuSubItemProps = {
   title?: string
@@ -8,19 +9,22 @@ export type HeaderMenuSubItemProps = {
     title?: string
     href?: string
   }[]
+  onClick?: () => void
 }
 
 export const HeaderMenuSubItem = ({
   title,
   href = '/',
-  subItems
+  subItems,
+  onClick
 }: HeaderMenuSubItemProps) => {
+  const { isMobile } = useMobile(568)
   return (
-    <Flex flexDir="column">
+    <Flex onClick={onClick} flexDir="column">
       <Link href={href} passHref>
         <Flex
           paddingLeft={{
-            base: '3px',
+            base: '15px',
             sm: '5px',
             md: '12px',
             lg: '15px',
@@ -28,17 +32,30 @@ export const HeaderMenuSubItem = ({
             '2xl': '25px'
           }}
           cursor="pointer"
-          _hover={{
-            bg: subItems ? 'green.800' : '#79B928'
-          }}
+          {...(!isMobile && {
+            _hover: {
+              bg: subItems ? 'green.800' : '#79B928'
+            }
+          })}
           alignItems="center"
-          h={{ sm: '20px', md: '30px', lg: '35px', xl: '40px', '2xl': '50px' }}
-          w="100%"
-          bg="green.800"
+          h={{
+            base: '60px',
+            sm: '20px',
+            md: '30px',
+            lg: '35px',
+            xl: '40px',
+            '2xl': '50px'
+          }}
+          w={{ base: '100%', sm: '100%' }}
+          bg={isMobile ? 'green.700' : 'green.800'}
+          {...(isMobile && {
+            borderBottom: '2px solid',
+            borderBottomColor: 'green.800'
+          })}
         >
           <Text
             fontSize={{
-              base: '4px',
+              base: '14px',
               sm: '6.3px',
               md: '8.3px',
               lg: '10px',
@@ -46,56 +63,59 @@ export const HeaderMenuSubItem = ({
               '2xl': '16.5px'
             }}
             color="white.100"
-            variant={"header-menu" as any}
+            variant={'header-menu' as any}
           >
             {title || 'Component text'}
           </Text>
           <Flex flexDir="column"></Flex>
         </Flex>
       </Link>
-      {subItems?.map((i) => {
-        return (
-          <Link passHref href={i.href || '/'} key={i.title}>
-            <Flex
-              paddingLeft={{
-                base: '3px',
-                sm: '5px',
-                md: '12px',
-                lg: '15px',
-                xl: '20px',
-                '2xl': '25px'
-              }}
-              cursor="pointer"
-              _hover={{ bg: '#79B928' }}
-              alignItems="center"
-              h={{
-                sm: '20px',
-                md: '30px',
-                lg: '35px',
-                xl: '40px',
-                '2xl': '50px'
-              }}
-              w="100%"
-              bg="green.700"
-            >
-              <Text
-                fontSize={{
-                  base: '4px',
-                  sm: '6.3px',
-                  md: '8.3px',
-                  lg: '10px',
-                  xl: '13px',
-                  '2xl': '16.5px'
+      <Box>
+        {subItems?.map((i) => {
+          return (
+            <Link passHref href={i.href || '/'} key={i.title}>
+              <Flex
+                paddingLeft={{
+                  base: '15px',
+                  sm: '5px',
+                  md: '12px',
+                  lg: '15px',
+                  xl: '20px',
+                  '2xl': '25px'
                 }}
-                color="white.100"
-                variant={"header-menu-small" as any}
+                cursor="pointer"
+                _hover={{ bg: '#79B928' }}
+                alignItems="center"
+                h={{
+                  base: '40px',
+                  sm: '20px',
+                  md: '30px',
+                  lg: '35px',
+                  xl: '40px',
+                  '2xl': '50px'
+                }}
+                w="100%"
+                bg="green.700"
               >
-                {i.title}
-              </Text>
-            </Flex>
-          </Link>
-        )
-      })}
+                <Text
+                  fontSize={{
+                    base: '14px',
+                    sm: '6.3px',
+                    md: '8.3px',
+                    lg: '10px',
+                    xl: '13px',
+                    '2xl': '16.5px'
+                  }}
+                  color="white.100"
+                  variant={'header-menu-small' as any}
+                >
+                  {i.title}
+                </Text>
+              </Flex>
+            </Link>
+          )
+        })}
+      </Box>
     </Flex>
   )
 }
