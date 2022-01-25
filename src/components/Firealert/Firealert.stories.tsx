@@ -1,9 +1,9 @@
 import { Story, Meta } from '@storybook/react'
-import { Firealert, FirealertProps } from './Firealert'
+import { FireAlert, FireAlertProps } from './FireAlert'
 
 export default {
-  title: 'Firealert',
-  component: Firealert
+  title: 'FireAlert',
+  component: FireAlert
 } as Meta
 
-export const Default: Story<FirealertProps> = (args) => <Firealert {...args} />
+export const Default: Story<FireAlertProps> = (args) => <FireAlert {...args} />

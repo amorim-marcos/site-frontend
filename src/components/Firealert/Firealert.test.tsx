@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 
-import Firealert from '.'
+import FireAlert from '.'
 
-describe('<Firealert />', () => {
+describe('<FireAlert />', () => {
   it('should render the component', () => {
-    const { container } = render(<Firealert />)
+    const { container } = render(<FireAlert />)
   })
 })

@@ -1,7 +1,7 @@
 import { Container, Box, HStack, Spacer, Flex, Link, Text, Image, Button, Select, Input, Center, Checkbox, BoxProps, LinkProps} from "@chakra-ui/react"
 import Pagebar from '@components/Pagebar'
 import PageSession from '@components/PageSession'
-import Firealert from '@components/Firealert'
+import FireAlert from '@components/FireAlert'
 import CompletedTitle from '@components/CompletedTitle'
 import PatternInfo from '@components/PatternInfo'
 import { CertificationsIcon, ReportsIcon } from '@components/Icons'
@@ -48,7 +48,7 @@ export const Forests = () => {
         ]}
       />
 
-      <Firealert 
+      <FireAlert 
         title = {bannerIcendio.title}
         display={bannerIcendio.display}
       />

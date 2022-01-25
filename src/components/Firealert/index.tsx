@@ -1,1 +1,1 @@
-export { Firealert as default } from './Firealert'
+export { FireAlert as default } from './FireAlert'

@@ -2,13 +2,13 @@ import { Heading, Flex, Box, Text, LayoutProps, Button } from "@chakra-ui/react"
 import { EarthIcon  } from '@components/Icons'
 import CloseIcon from "@components/Icons/CloseIcon"
 
-export type FirealertProps = LayoutProps & {
+export type FireAlertProps = LayoutProps & {
   title?: string
   // display?: "flex"
 }
-export const Firealert = ({ 
+export const FireAlert = ({ 
   title = "Em caso de incêndio em nossas florestas e entornos, ligue para 41 2109-3855 [PR] | 41 2109-3856 [PR] | 49 3245-9015 [SC] | 49 3245-9186 [SC]",
- }: FirealertProps ) => {
+ }: FireAlertProps ) => {
   return (
     <Flex
       maxWidth="1920px"
