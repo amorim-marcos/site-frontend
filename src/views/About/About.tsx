@@ -92,7 +92,7 @@ export const About = () => {
             margin = {{ base: '8% 8% 2% 8%', sm: '8% 8% 2% 8%', lg: '5%', xl: '5%'}}
             alignSelf='center'
           >
-              <Text as='h3'
+                <Text as='h3'
                   variant = {"h3" as any}
                   color = 'green.600'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}

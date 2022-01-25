@@ -1,13 +1,11 @@
 import { Container, Box, HStack, Spacer, Flex, Link, Text, Image, Button, Select, Input, Center, Checkbox, BoxProps, LinkProps} from "@chakra-ui/react"
 import Pagebar from '@components/Pagebar'
 import PageSession from '@components/PageSession'
-import Arrow from "@components/Arrow"
+import Firealert from '@components/Firealert'
 import CompletedTitle from '@components/CompletedTitle'
 import PatternInfo from '@components/PatternInfo'
 import { CertificationsIcon, ReportsIcon } from '@components/Icons'
 import Infographic from '@components/Infographic'
-import Infographic2 from "@components/Infographic2"
-import { SynergyIcon } from "@components/Icons"
 import {
   List,
   ListItem,
@@ -28,6 +26,11 @@ const dataValores = {
   text: 'Plantamos mais de 7 milhões de árvores por ano. Nossas florestas plantadas são importantes sob o aspecto econômico, social e trazem benefícios para o meio ambiente. Nossas áreas florestais são constituídas por plantações e áreas naturais que contribuem para a conservação dos ecossistemas, fundamentais à vida no planeta. Além disso, trabalhamos no mapeamento das comunidades afetadas pelas operações de manejo florestal para que possamos adotar resoluções para as interferências negativas, contribuindo ainda mais para a geração de uma cadeia de valor.'
 }
 
+const bannerIcendio = {
+  title: "Em caso de incêndio em nossas florestas e entornos, ligue para 41 2109-3855 [PR] | 41 2109-3856 [PR] | 49 3245-9015 [SC] | 49 3245-9186 [SC]",
+  display: "flex"
+}
+
 export const Forests = () => {
   return (
     <Box
@@ -43,6 +46,11 @@ export const Forests = () => {
             url: 'divisao-florestal'
           }
         ]}
+      />
+
+      <Firealert 
+        title = {bannerIcendio.title}
+        display={bannerIcendio.display}
       />
 
       <PageSession 
@@ -258,7 +266,7 @@ export const Forests = () => {
             // bg='yellow'
             flex='1'
           >
-                 <CompletedTitle 
+                <CompletedTitle 
                   titleString = "Manejo Florestal"
                   textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
                   alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
@@ -303,8 +311,6 @@ export const Forests = () => {
             flex='1'
             margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
-             
-
               <Text
               >Texto template</Text>
           </Box>
@@ -314,10 +320,10 @@ export const Forests = () => {
             // bg='yellow'
             flex='1'
           >
-             <Text as='h3'
-                  variant = {"h3" as any}
-                  textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                >Preservação da biodiversidade</Text>
+              <Text as='h3'
+                variant = {"h3" as any}
+                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+              >Preservação da biodiversidade</Text>
               <Text
                 marginTop={"2%"}
               >Os estudos da biodiversidade são ferramentas importantes para a manutenção de um manejo florestal responsável. Nosso Programa Anual de Monitoramento de Fauna das Unidades Florestais da BERNECK® analisa os aspectos de evolução, recuperação de áreas degradadas, impacto ambiental, distribuição e composição da biodiversidade local. 
@@ -327,7 +333,6 @@ export const Forests = () => {
                 // textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
               >
               O plantio em mosaicos, a proteção de cursos d’água, prevenção de incêndios florestais e o uso racional dos recursos naturais podem contribuir – e muito – para a sustentabilidade do meio ambiente. Esse manejo florestal ajuda no estabelecimento de corredores ecológicos, que favorecem a circulação de mais de XXX espécies de animais silvestres, colaborando com a conservação da biodiversidade.
-              
               </Text>
           </Box>
         
