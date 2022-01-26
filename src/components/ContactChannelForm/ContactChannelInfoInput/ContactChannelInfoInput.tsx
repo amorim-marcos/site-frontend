@@ -8,6 +8,7 @@ export const ContactChannelInfoInput = (props: ContactChannelInfoInputProps) => 
       fontWeight="semibold"
       borderRadius="0"
       backgroundColor="brown.200"
+      backgroundImage="/contact-channels/contact-channel-info-background.svg"
       border="0"
       color="white.100"
       paddingLeft="20px"

@@ -1,7 +1,7 @@
 import { Container, Flex, Image, Text, Box} from "@chakra-ui/react"
 import CompletedTitle from "@components/CompletedTitle"
 import ContactChannelForm from "@components/ContactChannelForm"
-import ContactChannelSelectButton from "@components/ContactChannelSelectButton"
+import ContactChannelSelectButton from "@components/ContactChannelForm/ContactChannelSelectButton"
 import { EarthIcon, BagIcon, BadgeIcon } from "@components/Icons"
 import Pagebar from "@components/Pagebar"
 import PatternInfo from "@components/PatternInfo"
