@@ -22,7 +22,7 @@ export const ContactChannelInfoInput = (props: ContactChannelInfoInputProps) => 
           border: '0'
         }
       }
-      readonly
+      readOnly
     />
   )
 }

@@ -5,6 +5,7 @@ import ContactChannelSelectButton from "@components/ContactChannelSelectButton"
 import { EarthIcon, BagIcon, BadgeIcon } from "@components/Icons"
 import Pagebar from "@components/Pagebar"
 import PatternInfo from "@components/PatternInfo"
+import React from "react"
 
 export type ContactChannelData = {
   name: string,
@@ -18,6 +19,8 @@ export type ContactViewProps = {
 }
 
 export const Contact = ({ contact_channels }:ContactViewProps) => {
+  const [contact_channel, setContactChannel] = React.useState<ContactChannelData | null>(null)
+
   return (
     <>
       <Pagebar 
@@ -35,7 +38,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
             textAlign="center"
           />
         </Flex>
-        <Flex mt="60px" justifyContent="center">
+        <Flex mt="60px" justifyContent="center" paddingBottom="80px">
           <Flex
             wrap="wrap"
             paddingLeft="100px"
@@ -44,11 +47,11 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
             alignItems="center"
           >
             {
-              contact_channels.map((channel) => <ContactChannelSelectButton mr="20px" mb="15px" name={channel.name}  service_code={channel.service_code} />)
+              contact_channels.map((channel) => <ContactChannelSelectButton isActive={(contact_channel != null && contact_channel.service_code == channel.service_code) ? true : false} onClick={(isActive) => { if(!isActive){ setContactChannel(channel)} else{setContactChannel(null)}}} mr="20px" mb="15px" name={channel.name}  service_code={channel.service_code} />)
             }
           </Flex>
         </Flex>
-        <Flex mt="80px" backgroundColor="white.100" minH="500px" paddingTop="80px" paddingBottom="60px">
+        <Flex display={(contact_channel !== null) ? 'normal' : 'none' } backgroundColor="white.100" minH="500px" paddingTop="80px" paddingBottom="60px">
             <Flex justifyContent="space-around" flexDirection="row" paddingLeft="120px" paddingRight="120px">
               <Flex flex="1" justifyContent="flex-start" direction="column">
                 <Text as="h3" variant={"h3" as any}>Assessoria de Imprensa</Text>
