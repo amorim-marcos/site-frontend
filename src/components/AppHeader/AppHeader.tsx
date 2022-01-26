@@ -35,7 +35,12 @@ export const AppHeader = () => {
       bg={'green.900'}
       position="relative"
     >
-      <Container zIndex="modal" position="fixed" maxWidth="1920" padding={0}>
+      <Container
+        zIndex="modal"
+        position={{ base: 'fixed', sm: 'relative' }}
+        maxWidth="1920"
+        padding={0}
+      >
         <Flex
           paddingX={{ base: '4.5%', sm: '4%', md: '3.5%' }}
           h={{
