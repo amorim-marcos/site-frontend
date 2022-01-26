@@ -1,8 +1,10 @@
-import { Container, Flex, Image, Text} from "@chakra-ui/react"
+import { Container, Flex, Image, Text, Box} from "@chakra-ui/react"
 import CompletedTitle from "@components/CompletedTitle"
 import ContactChannelForm from "@components/ContactChannelForm"
 import ContactChannelSelectButton from "@components/ContactChannelSelectButton"
+import { EarthIcon, BagIcon, BadgeIcon } from "@components/Icons"
 import Pagebar from "@components/Pagebar"
+import PatternInfo from "@components/PatternInfo"
 
 export type ContactChannelData = {
   name: string,
@@ -57,6 +59,49 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
                 <ContactChannelForm channel_name="Assessoria de Imprensa" service_code="AI"/>
               </Flex>
             </Flex>
+        </Flex>
+        <Flex backgroundColor="green.400" paddingTop="100px" paddingBottom="100px">
+          <Flex width="full" flexDirection="row" paddingLeft="80px" paddingRight="80px">
+            <Box flex="1" mr="45px">
+              <PatternInfo
+                  title="DESCUBRA"
+                  description="Onde Comprar"
+                  onClick={() => alert('Vai para Onde Comprar')}
+                  icon={
+                    <EarthIcon
+                      width={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                      height={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                    />
+                  }
+                />
+            </Box>
+            <Box flex="1" mr="45px">
+              <PatternInfo
+                  title="Solicite Nosso"
+                  description="Mostruário"
+                  onClick={() => alert('Vai para Solicitar Mostruário')}
+                  icon={
+                    <BagIcon
+                      width={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                      height={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                    />
+                  }
+                />
+            </Box>
+            <Box flex="1">
+              <PatternInfo
+                  title="Confira Nossas"
+                  description="Vagas abertas"
+                  onClick={() => alert('Vai para Onde Comprar')}
+                  icon={
+                    <BadgeIcon
+                      width={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                      height={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                    />
+                  }
+                />
+            </Box>
+          </Flex>
         </Flex>
       </Container>
     </>
