@@ -4,6 +4,6 @@ import ContactChannelSelectButton from '.'
 
 describe('<ContactChannelSelectButton />', () => {
   it('should render the component', () => {
-    const { container } = render(<ContactChannelSelectButton />)
+    const { container } = render(<ContactChannelSelectButton name="Test" />)
   })
 })
