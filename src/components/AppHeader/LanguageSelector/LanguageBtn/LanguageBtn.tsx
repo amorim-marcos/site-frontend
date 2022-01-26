@@ -19,7 +19,8 @@ export const LanguageBtn = ({
       alignItems="center"
       justifyContent="flex-start"
       height={{
-        base: '15px',
+        base: '35px',
+        sm: '15px',
         md: '30px',
         lg: '35px',
         xl: '40px',
@@ -31,9 +32,15 @@ export const LanguageBtn = ({
       _hover={{ bg: 'green.600' }}
     >
       <Text
-        fontSize={{ base: '6px', md: '10px', xl: '12px', '2xl': '16.5px' }}
+        fontSize={{
+          base: '10px',
+          sm: '6px',
+          md: '10px',
+          xl: '12px',
+          '2xl': '16.5px'
+        }}
         color="white.100"
-        variant={"header-menu" as any}
+        variant={'header-menu' as any}
       >
         {title}
       </Text>
