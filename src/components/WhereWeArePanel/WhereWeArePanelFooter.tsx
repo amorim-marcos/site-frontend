@@ -13,7 +13,6 @@ export type WhereWeArePanelFooterProps = {
 const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
   <Flex
     h={{ base: '115px', sm: '105px', md: '70px', lg: '100px' }}
-    w="100%"
     padding={{ base: '21px 5px 15px', md: '15px 38px' }}
     gap={{ base: '10px', md: '0' }}
     wrap={{ base: 'nowrap', md: 'wrap' }}
@@ -29,7 +28,12 @@ const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
     </Flex>
 
     {!props.inaugurationSoon && (
-      <Flex id="buttons" gap={{ base: '15px', md: '24px' }} alignItems="center">
+      <Flex 
+        id="buttons" 
+        gap={{ base: '15px', md: '24px' }} 
+        alignItems="center"
+        // bg="blue"
+      >
         <InfoBtn
           onClick={() => props.handleChangeOverlay('info')}
           show={props.showOverlay === 'info'}
@@ -38,6 +42,17 @@ const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
           onClick={() => props.handleChangeOverlay('map')}
           show={props.showOverlay === 'map'}
         />
+      </Flex>
+    )}
+    
+    {props.inaugurationSoon && (
+      <Flex 
+        id="buttons" 
+        gap={{ base: '15px', md: '24px' }} 
+        alignItems="center"
+        bg="green"
+        h={"40px"}
+      >
       </Flex>
     )}
   </Flex>

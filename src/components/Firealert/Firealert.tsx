@@ -11,6 +11,7 @@ export const FireAlert = ({
  }: FireAlertProps ) => {
   return (
     <Flex
+      data-testid="fire-alert"
       maxWidth="1920px"
       marginX="auto"
       position='relative'

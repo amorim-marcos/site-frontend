@@ -1,5 +1,5 @@
 import React from "react"
-import { chakra, useTab } from "@chakra-ui/react"
+import { chakra, Flex, useTab } from "@chakra-ui/react"
 import { Text } from "@chakra-ui/react"
 
 const StyledTab = chakra('button')
@@ -21,11 +21,14 @@ export const TrajectoryCarouselTab = React.forwardRef((props:any, ref:any) => {
           backgroundColor: "brown.200",
           color: "green.600",
       }}
-      width="214px"
-      height="69px"
+      width={{ base: '100px', sm: '100px', lg: '160px', xl: '210px'}}
+      height={{ base: '35px', sm: '40px', lg: '60px', xl: '70px'}}
       {...tabProps}
     >
-      <Text variant={"body-bold" as any}>{tabProps.children}</Text>
+      <Text 
+        variant={"h4" as any}
+        color = "brown.500"
+      >{tabProps.children}</Text>
     </StyledTab>
   )
 })

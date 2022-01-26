@@ -24,9 +24,9 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
         </Flex>
       ) : (
         <Flex 
-          w="100%" 
+          w="90%" 
           wrap="wrap" 
-          gap="54px" 
+          gap={{ base: '0px', sm: '0px', lg: '50px', xl: '50px'}}
           // justify="center" 
           // bg="red"
         >

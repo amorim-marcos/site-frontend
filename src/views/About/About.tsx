@@ -7,6 +7,7 @@ import WhereWeAre from '@components/WhereWeAre'
 import CompletedTitle from '@components/CompletedTitle'
 import { EarthIcon } from '@components/Icons'
 import PatternInfo from '@components/PatternInfo'
+import PatternInfoPhoto from '@components/PatternInfoPhoto'
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
@@ -285,7 +286,7 @@ export const About = () => {
               titleColor = 'green.900' 
               titleString = {dataOndeEstamos.title} 
               alignSelf = {{ base: 'center', sm: 'center', lg: 'center', xl: 'flex-start'}} 
-              textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+              textAlign =  {{ base: 'center', sm: 'center', lg: 'center', xl: 'left'}}
             />
 
             <Box
@@ -327,147 +328,118 @@ export const About = () => {
 
 
   {/* INICIO REVENDEDORES */}
-  <Box
-      bg= 'green.200' 
-    >
-      <Flex
-        // bg='red'
-        direction = {{ base: 'row', sm: 'row', lg: 'row', xl: 'row'}}
-        h = {{ base: '100px', sm: '200px', lg: '300px', xl: '400px'}}
-        alignContent='center'
+  <Flex
+        maxWidth="1920px"
+        marginX="auto"
+        // alignItems='center'
+        // justifyContent='center'
+        position='relative'
+        zIndex='base'
+        overflowY="hidden"
+        overflowX="hidden"
+        bg = 'green.200'
       >
-        <Box
-          // bg='azure'
-          flex='1'
-          margin = {{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
-          alignSelf='center'
+        <Flex
+          // bg='red'
+          direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
+          width={"100%"}
         >
-          <Text
-            fontFamily = 'body'
-            fontWeight= 'extrabold'
-            color = 'green.900'
-            fontSize = {{ base: '18px', sm: '24px', lg: '27px', xl: '30px'}}
+          <Box
+            // bg='pink'
+            flex='1'
+            margin = {{ base: '8% 8% 2% 8%', sm: '8% 8% 2% 8%', lg: '5%', xl: '5%'}}
             // alignSelf='center'
-          >Revendedores</Text>
-          
-          <Text
-            fontFamily = 'body'
-            marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '12px'}}
-          >Nossos produtos estão nos melhores móveis e revendas especializadas do Brasil e do mundo.</Text>
-        </Box>
-        
-        <Box
-          // bg='yellow'
-          flex='1'
-          margin = {{ base: '20px', sm: '25px', lg: '50px', xl: '60px'}}
-          alignSelf='center'
-        >
-          <PatternInfo
-            title="DESCUBRA"
-            description="Onde Comprar"
-            onClick={() => alert('Vai para Onde Comprar')}
-            icon={
-              <EarthIcon
-                width={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
-                height={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+          >
+                <Text as='h3'
+                  variant = {"h3" as any}
+                  textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+                >Revendedores</Text>
+                <Text
+                  color='green.900'
+                  textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+                  marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '20px'}}
+                >Nossos produtos estão nos melhores móveis e revendas especializadas do Brasil e do mundo.</Text>
+
+          </Box>
+          <Box
+            // bg='yellow'
+            flex='1'
+            margin = {{ base: '2% 8% 8% 8%', sm: '2% 8% 8% 8%', lg: '5%', xl: '5%'}}
+          >
+              <PatternInfo
+                title="DESCUBRA"
+                description="Onde Comprar"
+                onClick={() => alert('Onde Comprar')}
+                icon={
+                  <EarthIcon
+                    width={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                    height={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                  />
+                }
               />
-            }
-          />
-        </Box>
+          </Box>
+
+        </Flex>
 
       </Flex>
-    </Box>
     {/* FIM REVENDEDORES */}
 
 
     {/* INICIO CERTIFICADOS */}
-    <Flex
-      bg='white'
-      maxWidth="1920px"
-      marginX="auto"
-      h={{ base: '200px', sm: '280px', lg: '350px', xl: '500px'}}
-      position='relative'
-      zIndex='base'
-      overflowY="hidden"
-      overflowX="hidden"
-    >
-     {/* IMAGEM DE FUNDO   */}
-      <Image
-        // bg='pink'
-        src='/assets/imgs/grafismo_fundo_cinza.png'
-        marginLeft={{ base: '-20px', sm: '-20px', lg: '-30px', xl: '-250px'}}
-        h='200%'
-        
-      />
-      {/* CONTENT */}
-      <Flex
-        // bg = 'grey'
-        position='absolute'
+     <Flex
+        maxWidth="1920px"
+        marginX="auto"
+        alignItems='center'
+        justifyContent='center'
+        position='relative'
         zIndex='base'
-        margin = {{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
-        direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
+        overflowY="hidden"
+        overflowX="hidden"
+        bg = 'white.100'
+        backgroundImage="/assets/imgs/grafismos_fundo2.png"
+        backgroundPosition="center"
+        backgroundRepeat="no-repeat"  
       >
-      <Box
-          flex='1'
-          // bg='yellow'
-        >
-        {/* COLUNA 1 FLEX */}
         <Flex
-          direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
-          w={{ base: '90%', sm: '90%', lg: '70%', xl: '70%'}}
+          // bg='purple'
+          direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
+          alignItems={"center"}
         >
-          <Box 
-            w='100%'
-            // bg='red'
-            flexWrap='nowrap'
-            flex='1'
-            >
-             <Flex 
-                // bg='red'
-                direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
-            >
-                <CompletedTitle 
-                  titleColor = 'green.900' 
-                  titleString = {dataCertificacao.title} 
-                  alignSelf = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}} 
-                  textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
-                />
-            </Flex>
-          </Box>
-
+          {/* BOX 1 */}
           <Box
-            margin={{ base: '3px 0px', sm: '5px 0px', lg: '10px 0px', xl: '15px 0px'}}
-            // bg='green.200'
-          > 
-            <Text
-              fontFamily = 'body'
-              fontWeight= 'normal'
-              color='green.900'
-              fontSize = {{ base: '8px', sm: '14px', lg: '16px', xl: '20px'}}
-              textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
-            >{dataCertificacao.text}</Text>
+            margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 0% 5% 5%'}}
+            // bg='blue'
+            flex='1'
+            justifyItem={"flex-start"}
+          >
+                <CompletedTitle 
+                  titleString = "Certificações"
+                  textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+                  alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
+                />
+                <Text
+                  marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px'}}
+                >Manejo florestal, qualidade produtiva, controle de fabricação. Para nós, qualidade e desenvolvimento responsável são mais do que objetivos a serem alcançados, são práticas incorporadas em nosso dia a dia.
+                </Text>
           </Box>
-        </Flex>   
-        </Box>
+          {/* BOX 2 */}
+          <Box
+            bg='yellow'
+            flex='1'
+            margin = {{ base: '2% 8% 8% 8%', sm: '2% 8% 8% 8%', lg: '5%', xl: '5%'}}
+          >
+             <PatternInfoPhoto 
+                onClick={() => alert('Vai para Nossas Certificações')}
+                imgSrc="/assets/imgs/banner_certificacoes.png"
+             />
+          </Box>
+        
+        </Flex> 
 
-        {/* IMAGEM LATERAL */}
-        <Box
-          flex='1'
-          // bg='green'
-          alignSelf='center'
-        >
-          <Image 
-              src='/assets/imgs/img_nossas_certificacoes.png'
-            />
-        </Box>
+      </Flex> 
+      {/* FIM CERTIFICADOS */}
 
-      </Flex>
-    
-  </Flex>   
-    {/* FIM CERTIFICADOS */}
-
-    {/* </GlobalContainer> */}
-    {/* <WhereWeAre /> */}
-  </Box>
+  
+</Box>
   )
 }

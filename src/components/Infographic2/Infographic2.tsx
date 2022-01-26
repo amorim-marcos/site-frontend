@@ -54,6 +54,7 @@ export const Infographic2 = ({
     <Container 
       display='flex'
       justifyContent='center'
+      data-testid="infographic2"
     >
         <Flex 
           direction='row'

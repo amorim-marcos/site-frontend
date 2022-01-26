@@ -148,22 +148,19 @@ export const Forests = () => {
             
             </Flex>
 
-            <HStack
+            <Flex
               // bg='tomato'
-              // spacing='24px'
-              // direction = {{ base: 'row', sm: 'row', lg: 'row', xl: 'row'}}
               margin = {{ base: '8% 7% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 5% 2% 5%', xl: '5% 5% 5% 5%'}}
-              alignItems='center'
-              justifyContent='space-evenly'
-              // position='relative'
-              // zIndex='base'
               flexWrap={'wrap'}
-              // overflowY="hidden"
-              // overflowX="hidden"
-              // maxWidth="1500px"
-              // marginX="auto"
+              justifyContent='center'
             >
               
+                <Flex
+                  // bg="grey.100"
+                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                  
+                >
                   <Infographic
                     content3Text = 'mil hectares'
                     content1DisplayIcon = 'yes'
@@ -171,6 +168,12 @@ export const Forests = () => {
                     content2Text = '86'
                     titleSubscript1Text = 'Florestas Plantadas para Produção'
                   />
+                </Flex>
+                <Flex
+                  // bg="yellow.100"
+                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                >
                   <Infographic
                     content3Text = 'mil hectares'
                     content1DisplayIcon = 'yes'
@@ -178,6 +181,12 @@ export const Forests = () => {
                     content2Text = '92'
                     titleSubscript1Text = 'Preservação de Florestas Nativas'
                   />
+                </Flex>
+                <Flex
+                  // bg="orange.100"
+                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                >
                   <Infographic
                     content3Text = 'municípios'
                     content1DisplayIcon = 'yes'
@@ -185,6 +194,12 @@ export const Forests = () => {
                     content2Text = '60'
                     titleSubscript1Text = 'Cadeia de Valor'
                   />
+                </Flex>
+                <Flex
+                  // bg="red.100"
+                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                >
                   <Infographic
                     content3Text = 'mil hectares'
                     content1DisplayIcon = 'yes'
@@ -192,24 +207,37 @@ export const Forests = () => {
                     content2Text = '86'
                     titleSubscript1Text = 'Florestas Plantadas para Produção'
                   />
-                  <Infographic
-                    content3Text = 'mil hectares'
-                    content1DisplayIcon = 'yes'
-                    content1IconName = 'trees'
-                    content2Text = '92'
-                    titleSubscript1Text = 'Preservação de Florestas Nativas'
-                  />
-                  <Infographic
-                    content3Text = 'municípios'
-                    content1DisplayIcon = 'yes'
-                    content1IconName = 'trees'
-                    content2Text = '60'
-                    titleSubscript1Text = 'Cadeia de Valor'
-                  />
+                </Flex>
+                <Flex
+                  // bg="blue.100"
+                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                >
 
+                  <Infographic
+                    content3Text = 'mil hectares'
+                    content1DisplayIcon = 'yes'
+                    content1IconName = 'trees'
+                    content2Text = '92'
+                    titleSubscript1Text = 'Preservação de Florestas Nativas'
+                  />
+                </Flex>
+                <Flex
+                  // bg="purple.100"
+                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                >
+                  <Infographic
+                    content3Text = 'municípios'
+                    content1DisplayIcon = 'yes'
+                    content1IconName = 'trees'
+                    content2Text = '60'
+                    titleSubscript1Text = 'Cadeia de Valor'
+                  />
+                </Flex>  
 
             
-           </HStack>
+           </Flex>
         </Flex>
 
       </Flex>

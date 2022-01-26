@@ -1,4 +1,4 @@
-import { Tabs, TabList, TabPanels, TabPanel  } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, TabPanel, Flex  } from '@chakra-ui/react'
 import React from 'react'
 import { TrajectoryCarouselTab, TrajectoryCarouselPanel } from '@components/TrajectoryCarousel'
 import { TrajectoryCarouselControllers } from './TrajectoryCarouselControllers'
@@ -57,17 +57,35 @@ export const TrajectoryCarousel = ({ tabs }: TrajectoryCarouselProps) => {
   }
 
   return (
-    <Tabs width="100%" maxW="1760px" index={tabIndex} onChange={(index) => setTabIndex(index)} variant='unstyled' defaultIndex={0}>
-      <TabList display="block" overflowX="auto" overflowY="hidden" whiteSpace="nowrap">
+
+    <Tabs 
+      width="100%" 
+      maxW="1760px"
+      index={tabIndex} 
+      onChange={(index) => setTabIndex(index)} 
+      variant='unstyled' 
+      defaultIndex={0}
+      // bg="tomato"
+    >
+      <TabList 
+        display="block" 
+        overflowX="auto" 
+        overflowY="hidden" 
+        whiteSpace="nowrap"
+        // bg="blue"
+      >
         {listTabNames(tabNames)}
       </TabList>
+  
   
       <TabPanels >
         {listTabContents(tabs, tabIndex)}
       </TabPanels>
 
       <TrajectoryCarouselControllers previousTab={previousTab} nextTab={nextTab}/>
+    
     </Tabs>
+  
   )
 }
 

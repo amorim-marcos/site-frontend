@@ -51,24 +51,19 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
 
   return (
     <Flex
-      h={{
-        base: '445px',
-        md: '400px',
-        lg: '435px',
-        xl: '295px',
-        '2xl': '435px'
-      }}
-      w={{
-        base: '90vw',
-        md: '720px',
-        lg: '810px',
-        xl: '550px',
-        '2xl': '810px'
-      }}
+      // h={{
+      //   base: '445px',
+      //   md: '400px',
+      //   lg: '435px',
+      //   xl: '380px',
+      //   // '2xl': '435px'
+      // }}
+      w={{ base: '100%', md: '100%', lg: '100%', xl: '46%', '2xl': '48%' }}
       pos="relative"
       direction="column"
       userSelect="none"
-      mb={{ sm: '0', md: '70px' }}
+      // mb={{ sm: '0', md: '10px' }}
+      // bg="yellow"
     >
       <PanelImage
         image={props.image}
@@ -84,8 +79,8 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
                 sm: '340px', //'568px',
                 md: '400px', //'768px',
                 lg: '436px', //'1024px',
-                xl: '300px', //'1280px',
-                '2xl': '436px' //'1536px'
+                // xl: '300px', //'1280px',
+                // '2xl': '436px' //'1536px'
               }
             : 0
         }
