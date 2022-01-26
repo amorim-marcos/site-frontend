@@ -1,10 +1,11 @@
-import { Container, Flex, Image, Text, Box} from "@chakra-ui/react"
+import { Container, Flex, Image, Text, Box, Button} from "@chakra-ui/react"
 import CompletedTitle from "@components/CompletedTitle"
 import ContactChannelForm from "@components/ContactChannelForm"
 import ContactChannelSelectButton from "@components/ContactChannelForm/ContactChannelSelectButton"
 import { EarthIcon, BagIcon, BadgeIcon } from "@components/Icons"
 import Pagebar from "@components/Pagebar"
 import PatternInfo from "@components/PatternInfo"
+import useMobile from "hooks/useMobile"
 import React from "react"
 
 export type ContactChannelData = {
@@ -20,7 +21,8 @@ export type ContactViewProps = {
 
 export const Contact = ({ contact_channels }:ContactViewProps) => {
   const [contact_channel, setContactChannel] = React.useState<ContactChannelData | null>(null)
-
+  const { isMobile } = useMobile(1024)
+  const [showAllAreas, setShowAllAreas] = React.useState<Boolean>(true)
   return (
     <>
       <Pagebar 
@@ -38,18 +40,40 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
             textAlign="center"
           />
         </Flex>
-        <Flex mt="60px" justifyContent="center" paddingBottom="80px">
-          <Flex
-            wrap="wrap"
-            paddingLeft="100px"
-            paddingRight="100px"
-            justifyContent="center"
-            alignItems="center"
-          >
-            {
-              contact_channels.map((channel) => <ContactChannelSelectButton isActive={(contact_channel != null && contact_channel.service_code == channel.service_code) ? true : false} onClick={(isActive) => { if(!isActive){ setContactChannel(channel)} else{setContactChannel(null)}}} mr="20px" mb="15px" name={channel.name}  service_code={channel.service_code} />)
-            }
-          </Flex>
+        <Flex flexDirection="column" mt="60px" justifyContent="center" paddingBottom="80px">
+          {
+            (isMobile && !showAllAreas)
+            ? 
+              (
+                <ContactChannelSelectButton 
+                  isActive={(contact_channel != null) ? true : false} 
+                  onClick={(isActive) => { if(!isActive){ setContactChannel((contact_channel != null) ? contact_channel : contact_channels[0]); setShowAllAreas(false); } else{setContactChannel(null); setShowAllAreas(true)}}}
+                  mr="20px" mb="15px" 
+                  name={(contact_channel != null) ? contact_channel.name : contact_channels[0].name}  service_code={(contact_channel != null) ? contact_channel.service_code : contact_channels[0].service_code} 
+                />
+              )
+            : (
+              <Flex
+                wrap="wrap"
+                paddingLeft="100px"
+                paddingRight="100px"
+                justifyContent="center"
+                alignItems="center"
+              >
+                {
+                  contact_channels.map((channel) => <ContactChannelSelectButton isActive={(contact_channel != null && contact_channel.service_code == channel.service_code) ? true : false} onClick={(isActive) => { if(!isActive){ setContactChannel(channel); setShowAllAreas(false)} else{setContactChannel(null); setShowAllAreas(true)}}} mr="20px" mb="15px" name={channel.name}  service_code={channel.service_code} />)
+                }
+              </Flex>
+            )          
+
+          }
+          {
+            isMobile &&           
+            <Flex mt="20px" justifyContent="center">
+              <Button onClick={() => { setShowAllAreas(!showAllAreas) }} variant="link">{(showAllAreas) ? "esconder áreas" : "ver todas as áreas"}</Button>
+            </Flex>
+          }
+
         </Flex>
         { 
         contact_channel && 
