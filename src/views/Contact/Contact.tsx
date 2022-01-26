@@ -51,18 +51,21 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
             }
           </Flex>
         </Flex>
-        <Flex display={(contact_channel !== null) ? 'normal' : 'none' } backgroundColor="white.100" minH="500px" paddingTop="80px" paddingBottom="60px">
+        { 
+        contact_channel && 
+        <Flex backgroundColor="white.100" minH="500px" paddingTop="80px" paddingBottom="60px">
             <Flex justifyContent="space-around" flexDirection="row" paddingLeft="120px" paddingRight="120px">
               <Flex flex="1" justifyContent="flex-start" direction="column">
-                <Text as="h3" variant={"h3" as any}>Assessoria de Imprensa</Text>
-                <Text mt="40px" fontFamily='body'  variant={"body" as any}>Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.</Text>
-                <Image mt="30px" src="/img/contact-channel.png" />
+                <Text as="h3" variant={"h3" as any}>{contact_channel.name}</Text>
+                <Text mt="40px" fontFamily='body'  variant={"body" as any}>{contact_channel.description}</Text>
+                <Image mt="30px" src={contact_channel.image} />
               </Flex>
               <Flex flex="2">
-                <ContactChannelForm channel_name="Assessoria de Imprensa" service_code="AI"/>
+                <ContactChannelForm channel_name={contact_channel.name} service_code={contact_channel.service_code}/>
               </Flex>
             </Flex>
-        </Flex>
+        </Flex>        
+        }
         <Flex backgroundColor="green.400" paddingTop="100px" paddingBottom="100px">
           <Flex width="full" flexDirection="row" paddingLeft="80px" paddingRight="80px">
             <Box flex="1" mr="45px">

@@ -8,97 +8,85 @@ export default function ContactPage() {
 const mockContactChannels: Array<ContactChannelData> = [
     {
         name: "Assessoria de Imprensa",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
         service_code: 'AI'
     },
     {
         name: "Assistência Técnica",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
         service_code: 'AT'
     },
     {
         name: "Comercial",
-        description: "Text description mocking.",
-        image: "/img/contact-channel.png",
-        service_code: 'CO'
-    },
-    {
-        name: "Comercial",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
         service_code: 'CO'
     },
     {
         name: "Financeiro",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
         service_code: 'FIN'
     },
     {
         name: "Fornecimento Florestal",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
         service_code: 'FOR'
     },
     {
         name: "Jurídico",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
         service_code: 'JUR'
     },
     {
         name: "Marketing",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
         service_code: 'MKT'
     },   
     {
-        name: "Marketing",
-        description: "Text description mocking.",
-        image: "/img/contact-channel.png",
-        service_code: 'MKT'
-    }, 
-    {
         name: "Projetos Incentivados",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
         service_code: 'PI'
     },  
     {
         name: "Qualidade",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
         service_code: 'QLT'
     },  
     {
         name: "Recursos humanos",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
         service_code: 'RH'
     },
     {
         name: "Relacionamento com a Comunidade",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
-        service_code: 'RH'
+        service_code: 'RCC'
     },
     {
         name: "Suprimentos",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
         service_code: 'SUP'
     },   
     {
         name: "Ouvidoria",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
         service_code: 'OUV'
     }, 
     {
         name: "Outros",
-        description: "Text description mocking.",
+        description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
         service_code: 'OTH'
     }, 
