@@ -25,6 +25,7 @@ export const SponsoredProjects = ({ panels = mockPanels }: SponsoredProjectsProp
       ) : (
         <Flex 
           // w="100%" 
+          // alignContent={"start"}
         >
           {panels.map((item) => (
             <HighlightBoxPanel key={item.image} {...item} />

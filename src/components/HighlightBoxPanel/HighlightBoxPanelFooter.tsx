@@ -10,11 +10,9 @@ const HighlightBoxPanelFooter = (props: HighlightBoxPanelProps) => (
     h={{ base: '55px', sm: '80px', md: '90px', lg: '110px' }}
     // maxWidth={'80%'}
     wrap={{ base: 'nowrap', md: 'wrap' }}
-    // align="center"
-    // justify={{ base: 'center', md: 'space-between' }}
-    direction={'column'}
+    direction="column"
     borderBottomRightRadius="33px"
-    bgColor="green.900"
+    bgColor="green.800"
     flexWrap={"wrap"}
   >
     <Flex 

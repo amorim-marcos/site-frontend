@@ -760,8 +760,9 @@ export const Compromise = () => {
           >
              <Text as='h3'
                   variant = {"h3" as any}
-                  textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                  marginBottom={{ base: '10px', sm: '10px', lg: '20px', xl: '20px'}}
+                  textAlign={{ base: 'center', sm: 'center', lg: 'center', xl: 'left'}}
+                  marginBottom={{ base: '10px', sm: '10px', lg: '20px', xl: '30px'}}
+                  color="green.600"
                 >Confira alguns projetos patrocinados por nós:</Text>
               <SponsoredProjects />
           </Box>
