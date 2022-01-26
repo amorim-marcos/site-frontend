@@ -16,14 +16,16 @@ export type HeaderMenuItemProps = {
       href?: string
     }[]
   }[]
-  closeMenuMobile?: () => void
+  closeMenuMobile: () => void
+  borderBottom?: boolean
 }
 
 export const HeaderMenuItem = ({
   title = 'Title Here',
   subItems,
   href = '/',
-  closeMenuMobile
+  closeMenuMobile,
+  borderBottom = true
 }: HeaderMenuItemProps) => {
   const [open, setOpen] = useState(false)
   const { isMobile } = useMobile(568)
@@ -52,10 +54,11 @@ export const HeaderMenuItem = ({
       cursor="pointer"
       transition="0.4s"
       bg={isMobile || open ? 'green.700' : 'green.800'}
-      {...(isMobile && {
-        borderBottom: '2px solid',
-        borderBottomColor: 'green.800'
-      })}
+      {...(isMobile &&
+        borderBottom && {
+          borderBottom: '2px solid',
+          borderBottomColor: 'green.800'
+        })}
     >
       {!isMobile && (
         <Link href={href} passHref>
@@ -126,6 +129,7 @@ export const HeaderMenuItem = ({
         h={{ base: 'calc(100vh - 75px)', sm: 'auto' }}
         zIndex="modal"
         bg="green.700"
+        {...(isMobile && { overflowY: 'scroll', paddingBottom: '20px' })}
       >
         {isMobile && (
           <Flex
@@ -163,26 +167,32 @@ export const HeaderMenuItem = ({
                 <Box
                   borderBottom="2px solid"
                   borderBottomColor="green.800"
-                  marginX="15px"
+                  marginX={{ base: '15px', sm: '0' }}
                 >
                   <HeaderMenuSubItem
                     key={i.title}
                     title={i.title}
                     href={i.href}
                     subItems={i.subItems}
-                    onClick={closeMenuMobile}
+                    onClick={() => {
+                      setOpen(false)
+                      closeMenuMobile()
+                    }}
                   />
                 </Box>
               )
             } else {
               return (
-                <Box marginX="15px">
+                <Box marginX={{ base: '15px', sm: '0' }}>
                   <HeaderMenuSubItem
                     key={i.title}
                     title={i.title}
                     href={i.href}
                     subItems={i.subItems}
-                    onClick={closeMenuMobile}
+                    onClick={() => {
+                      setOpen(false)
+                      closeMenuMobile()
+                    }}
                   />
                 </Box>
               )

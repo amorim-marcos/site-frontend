@@ -1,4 +1,20 @@
 export const menuNavigation = {
+  speakWithUs: {
+    key: 'btn1',
+    href: '/'
+  },
+  workWithUs: {
+    key: 'btn2',
+    href: '/'
+  },
+  whereBuy: {
+    key: 'btn3',
+    href: '/'
+  },
+  restrictAccess: {
+    key: 'btn4',
+    href: '/'
+  },
   whoWeAre: {
     key: 'btn5',
     href: '/somos-berneck',

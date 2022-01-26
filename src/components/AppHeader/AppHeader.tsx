@@ -1,15 +1,13 @@
 import { Flex, Box, Container, Input, CloseButton } from '@chakra-ui/react'
 import LogoBerneck from '@components/LogoBerneck'
-import NavLink from '../NavLink'
 import { HeaderMenuItem } from './HeaderMenuItem/HeaderMenuItem'
 import SearchIcon from '@components/Icons/SearchIcon'
-import { HeaderTopMenuItem } from './HeaderTopMenuItem/HeaderTopMenuItem'
+import { HeaderSecondaryItem } from './HeaderSecondaryItem/HeaderSecondaryItem'
 import { LanguageSelector } from './LanguageSelector/LanguageSelector'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import useMobile from '../../hooks/useMobile'
 import { menuNavigation } from './MenuVanigation'
-import { GiHamburgerMenu } from 'react-icons/gi'
 import { IoMdClose, IoMdMenu } from 'react-icons/io'
 
 import { colors } from '../../theme/colors'
@@ -61,21 +59,21 @@ export const AppHeader = () => {
               flexDir="row"
               width="100%"
             >
-              <HeaderTopMenuItem
-                href="/somos-berneck"
-                title={header.t('btn1')}
+              <HeaderSecondaryItem
+                href={menuNavigation.speakWithUs.href}
+                title={header.t(menuNavigation.speakWithUs.key)}
               />
-              <HeaderTopMenuItem
-                href="/somos-berneck"
-                title={header.t('btn2')}
+              <HeaderSecondaryItem
+                href={menuNavigation.workWithUs.href}
+                title={header.t(menuNavigation.workWithUs.key)}
               />
-              <HeaderTopMenuItem
-                href="/somos-berneck"
-                title={header.t('btn3')}
+              <HeaderSecondaryItem
+                href={menuNavigation.whereBuy.href}
+                title={header.t(menuNavigation.whereBuy.key)}
               />
-              <HeaderTopMenuItem
-                href="/somos-berneck"
-                title={header.t('btn4')}
+              <HeaderSecondaryItem
+                href={menuNavigation.restrictAccess.href}
+                title={header.t(menuNavigation.restrictAccess.key)}
               />
             </Flex>
           )}
@@ -112,80 +110,114 @@ export const AppHeader = () => {
               )}
             </Flex>
           )}
-          <NavLink href="/">
-            <LogoBerneck
-              width={{
-                base: '110px',
-                sm: '80px',
-                md: '120px',
-                lg: '150px',
-                xl: '180px',
-                '2xl': '220px'
-              }}
-            />
-          </NavLink>
+
+          <LogoBerneck
+            width={{
+              base: '110px',
+              sm: '80px',
+              md: '120px',
+              lg: '150px',
+              xl: '180px',
+              '2xl': '220px'
+            }}
+          />
 
           <Flex
             paddingLeft={{ base: '0', sm: '70px' }}
-            justifyContent="flex-start"
+            justifyContent={{ base: 'flex-start', sm: 'flex-end' }}
             h={{ base: 'calc(100vh - 75px)', sm: '100%' }}
             position={{ base: 'absolute', sm: 'inherit' }}
             width={{ base: '100vw', sm: '100%' }}
             top={{ base: '100%', sm: '0' }}
             zIndex="dropdown"
-            bg={{ base: 'green.700', sm: 'none' }}
+            bg={{ base: 'green.800', sm: 'none' }}
             flexDirection={{ base: 'column', sm: 'row' }}
             display={isMobile && !menuMobileOpen ? 'none' : 'flex'}
           >
-            <HeaderMenuItem
-              subItems={menuNavigation.whoWeAre.subItems.map((i) => ({
-                title: header.t(i.key),
-                href: i.href
-              }))}
-              href={menuNavigation.whoWeAre.href}
-              title={header.t('btn5')}
-              closeMenuMobile={() => setMenuMobileOpen(false)}
-            />
-            <HeaderMenuItem
-              subItems={menuNavigation.ourCommitment.subItems.map((i) => ({
-                title: header.t(i.key),
-                href: i.href
-              }))}
-              href={menuNavigation.ourCommitment.href}
-              title={header.t('btn6')}
-              closeMenuMobile={() => setMenuMobileOpen(false)}
-            />
-            <HeaderMenuItem
-              subItems={menuNavigation.florestalDivision.subItems.map((i) => ({
-                title: header.t(i.key),
-                href: i.href
-              }))}
-              href={menuNavigation.florestalDivision.href}
-              title={header.t('btn7')}
-              closeMenuMobile={() => setMenuMobileOpen(false)}
-            />
-            <HeaderMenuItem
-              subItems={menuNavigation.products.subItems.map((i) => ({
-                title: header.t(i.key),
-                href: i.href,
-                subItems: i.subItems.map((i) => ({
+            <Flex
+              {...(isMobile && {
+                paddingX: '10px',
+                bg: 'green.700',
+                flexDirection: 'column'
+              })}
+              {...(!isMobile && {
+                justifyContent: 'flex-end'
+              })}
+              w="100%"
+            >
+              <HeaderMenuItem
+                subItems={menuNavigation.whoWeAre.subItems.map((i) => ({
                   title: header.t(i.key),
                   href: i.href
-                }))
-              }))}
-              href={menuNavigation.products.href}
-              title={header.t('btn8')}
-              closeMenuMobile={() => setMenuMobileOpen(false)}
-            />
-            <HeaderMenuItem
-              subItems={menuNavigation.channelBNK.subItems.map((i) => ({
-                title: header.t(i.key),
-                href: i.href
-              }))}
-              href={menuNavigation.channelBNK.href}
-              title={header.t('btn9')}
-              closeMenuMobile={() => setMenuMobileOpen(false)}
-            />
+                }))}
+                href={menuNavigation.whoWeAre.href}
+                title={header.t('btn5')}
+                closeMenuMobile={() => setMenuMobileOpen(false)}
+              />
+              <HeaderMenuItem
+                subItems={menuNavigation.ourCommitment.subItems.map((i) => ({
+                  title: header.t(i.key),
+                  href: i.href
+                }))}
+                href={menuNavigation.ourCommitment.href}
+                title={header.t('btn6')}
+                closeMenuMobile={() => setMenuMobileOpen(false)}
+              />
+              <HeaderMenuItem
+                subItems={menuNavigation.florestalDivision.subItems.map(
+                  (i) => ({
+                    title: header.t(i.key),
+                    href: i.href
+                  })
+                )}
+                href={menuNavigation.florestalDivision.href}
+                title={header.t('btn7')}
+                closeMenuMobile={() => setMenuMobileOpen(false)}
+              />
+              <HeaderMenuItem
+                subItems={menuNavigation.products.subItems.map((i) => ({
+                  title: header.t(i.key),
+                  href: i.href,
+                  subItems: i.subItems.map((i) => ({
+                    title: header.t(i.key),
+                    href: i.href
+                  }))
+                }))}
+                href={menuNavigation.products.href}
+                title={header.t('btn8')}
+                closeMenuMobile={() => setMenuMobileOpen(false)}
+              />
+              <HeaderMenuItem
+                subItems={menuNavigation.channelBNK.subItems.map((i) => ({
+                  title: header.t(i.key),
+                  href: i.href
+                }))}
+                href={menuNavigation.channelBNK.href}
+                title={header.t('btn9')}
+                closeMenuMobile={() => setMenuMobileOpen(false)}
+                borderBottom={false}
+              />
+            </Flex>
+            {isMobile && (
+              <Box onClick={() => setMenuMobileOpen(false)} bg="green.800">
+                <HeaderSecondaryItem
+                  href={menuNavigation.speakWithUs.href}
+                  title={header.t(menuNavigation.speakWithUs.key)}
+                />
+                <HeaderSecondaryItem
+                  href={menuNavigation.workWithUs.href}
+                  title={header.t(menuNavigation.workWithUs.key)}
+                />
+                <HeaderSecondaryItem
+                  href={menuNavigation.whereBuy.href}
+                  title={header.t(menuNavigation.whereBuy.key)}
+                />
+                <HeaderSecondaryItem
+                  href={menuNavigation.restrictAccess.href}
+                  title={header.t(menuNavigation.restrictAccess.key)}
+                />
+              </Box>
+            )}
             {!isMobile && (
               <Flex alignItems="center" justifyContent="center">
                 {openSearchBar ? (
