@@ -5,7 +5,7 @@ export type PatternInfoPhotoProps = {
   title?: string
   description?: string
   imgSrc?: string
-  onClick: () => void
+  onClick?: () => void
 }
 export const PatternInfoPhoto = ({ 
   title="CONHEÇA",

@@ -8,6 +8,7 @@ import { CertificationsIcon } from '@components/Icons'
 import Infographic from '@components/Infographic'
 import Infographic2 from "@components/Infographic2"
 import { SynergyIcon } from "@components/Icons"
+import SponsoredProjects from "@components/SponsoredProjects"
 import {
   List,
   ListItem,
@@ -754,16 +755,15 @@ export const Compromise = () => {
           {/* BOX 2 */}
           <Box
             margin = {{ base: '2% 5% 5% 5%', sm: '2% 5% 5% 5%', lg: '2% 5% 5% 5%', xl: '2% 5% 5% 5%'}}
-            bg='yellow'
+            // bg='yellow'
             flex='1'
           >
              <Text as='h3'
                   variant = {"h3" as any}
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+                  marginBottom={{ base: '10px', sm: '10px', lg: '20px', xl: '20px'}}
                 >Confira alguns projetos patrocinados por nós:</Text>
-              <Text
-              >COMPONENTE LISTA
-              </Text>
+              <SponsoredProjects />
           </Box>
         
         </Flex> 
