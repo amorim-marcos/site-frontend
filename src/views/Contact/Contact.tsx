@@ -40,7 +40,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
             textAlign="center"
           />
         </Flex>
-        <Flex flexDirection="column" mt="60px" justifyContent="center" paddingBottom="80px">
+        <Flex flexDirection="column" mt="55px" justifyContent="center" paddingBottom={{base: "40px", lg: "80px"}}>
           {
             (isMobile && !showAllAreas)
             ? 
@@ -86,7 +86,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
                 <Image mt={{ base: "10px", lg: "30px"}} src={contact_channel.image} order={{ base: "2", lg: "3"}} />
               </Flex>
               <Flex flex="2">
-                <ContactChannelForm channel_name={contact_channel.name} service_code={contact_channel.service_code} paddingLeft={{ base:0, lg:"80px"}} paddingRight={{ base:0, lg:"80px"}}/>
+                <ContactChannelForm channel_name={contact_channel.name} service_code={contact_channel.service_code} paddingLeft={{ base:0, lg:"80px"}} paddingRight={{ base:0, lg: "10px", xl: "30px"}}/>
               </Flex>
             </Flex>
         </Flex>        
