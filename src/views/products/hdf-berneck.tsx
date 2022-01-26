@@ -1,8 +1,21 @@
+import Pagebar from '@components/Pagebar'
 import Product from '../../components/Product'
 
 export default function HdfBerneckView() {
   return (
     <div>
+      <Pagebar
+        paths={[
+          {
+            title: 'Produtos',
+            url: '/products'
+          },
+          {
+            title: 'HDF BERNECK®',
+            url: 'products/hdf-berneck'
+          }
+        ]}
+      />
       <Product
         imgSrc="/img/hdf.png"
         grafismProps={{
