@@ -17,7 +17,7 @@ export const BadgeIcon = ({
 }: BadgeIconProps) => {
   return (
     <Box w={width} h={height} onClick={onClick}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="78.964" height="70.417" viewBox="0 0 78.964 70.417">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 78.964 70.417">
         <g id="vagas" transform="translate(-777.749 -1341.656)">
           <g id="Caminho_342" data-name="Caminho 342" transform="translate(816.756 1341.656)">
             <g id="Grupo_774" data-name="Grupo 774">
