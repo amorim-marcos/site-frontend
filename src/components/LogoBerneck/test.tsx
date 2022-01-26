@@ -16,18 +16,4 @@ describe('<LogoBerneck />', () => {
       color: 'tomato'
     })
   })
-
-  it('should have a height of 40px by default', () => {
-    renderWithTheme(<LogoBerneck />)
-    expect(screen.getByLabelText(/Berneck/i).parentElement).toHaveStyle({
-      height: '40px'
-    })
-  })
-
-  it('should have a specific height when specified', () => {
-    renderWithTheme(<LogoBerneck height="50" />)
-    expect(screen.getByLabelText(/Berneck/i).parentElement).toHaveStyle({
-      height: '50px'
-    })
-  })
 })
