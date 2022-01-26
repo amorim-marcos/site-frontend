@@ -1,6 +1,7 @@
 import { Box, Flex, FormControl } from "@chakra-ui/react"
 import FormInput from "@components/FormInput"
 import FormSelect from "@components/FormSelect"
+import FormTextArea from "@components/FormTextArea"
 import ContactChannelFormLabel from "./ContactChannelFormLabel"
 
 export type ContactChannelFormProps = {
@@ -97,6 +98,19 @@ export const ContactChannelForm = ({ channel_name, service_code }: ContactChanne
           >
             <ContactChannelFormLabel visibility="hidden" htmlFor="enterprise">Empresa</ContactChannelFormLabel>
             <FormInput name="enterprise" placeholder="Empresa" />
+          </FormControl>   
+        </Box> 
+        <Box mt="12px" flex="1">
+          <FormControl
+            as='fieldset'
+            _focusWithin={{
+              label: {
+                visibility: "visible"
+              }
+            }}
+          >
+            <ContactChannelFormLabel visibility="hidden" htmlFor="message">Mensagem</ContactChannelFormLabel>
+            <FormTextArea name="message" placeholder="Mensagem"></FormTextArea>
           </FormControl>   
         </Box> 
       </form>

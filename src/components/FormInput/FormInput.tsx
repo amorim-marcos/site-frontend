@@ -24,7 +24,10 @@ export const FormInput = (props: FormInputProps) => {
       _focus={
         {
           border: '1px',
-          borderColor: 'green.600'
+          borderColor: 'green.600',
+          _placeholder: {
+            color: 'transparent'
+          }
         }
       }
       {...props} 

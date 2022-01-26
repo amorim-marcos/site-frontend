@@ -9,8 +9,17 @@ export const FormSelect = (props: FormSelectProps) => {
       backgroundColor="brown.100"
       border="0"
       color="brown.300"
-
       h="50px"
+
+      _focus={
+        {
+          border: '1px',
+          borderColor: 'green.600',
+          _placeholder: {
+            color: "transparent"
+          }
+        }
+      }
       {...props}
     >
       {props.children}
