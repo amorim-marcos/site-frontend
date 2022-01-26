@@ -7,6 +7,7 @@ export const HouseIcon = ({ width = '75px', ...props }: BoxProps) => {
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         viewBox="0 0 26.768 23.391"
+        aria-label="house-icon"
       >
         <g id="casinha" transform="translate(-4 -5)">
           <g
