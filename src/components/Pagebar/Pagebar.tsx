@@ -60,6 +60,7 @@ export const Pagebar = ({ paths }: PagebarProps) => {
       >
         <Link passHref href="/">
           <HouseIcon
+            data-testid="house-icon"
             width={{
               base: '26px',
               sm: '13px',
