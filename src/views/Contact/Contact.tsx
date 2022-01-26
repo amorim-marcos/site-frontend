@@ -78,7 +78,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
         </Flex>
         { 
         contact_channel && 
-        <Flex justifyContent="center" backgroundColor="white.100" minH="500px" paddingTop="80px" paddingBottom="60px">
+        <Flex justifyContent="center" backgroundColor="white.100" minH="500px" paddingTop={{ base: "40px", lg:"80px"}} paddingBottom="60px">
             <Flex justifyContent="space-around" flexDirection={{ base: "column", lg: "row"}} paddingLeft={ { base: "40px", lg: "120px" }} paddingRight={ { base: "40px", lg: "120px" } }>
               <Flex flex="1" justifyContent="flex-start" direction="column">
                 <Text as="h3" variant={"h3" as any} order="1">{contact_channel.name}</Text>
@@ -91,9 +91,9 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
             </Flex>
         </Flex>        
         }
-        <Flex backgroundColor="green.400" paddingTop="100px" paddingBottom="100px">
-          <Flex width="full" flexDirection="row" paddingLeft="80px" paddingRight="80px">
-            <Box flex="1" mr="45px">
+        <Flex backgroundColor="green.400" paddingTop={{base: "50px", lg:"100px"}} paddingBottom={{base: "50px", lg:"100px"}}>
+          <Flex width="full" flexDirection={{base: "column", lg: "row"}} paddingLeft={{base: 0, lg: "80px"}} paddingRight={{base: 0, lg: "80px"}}>
+            <Box flex="1" mr={{base: 0, lg: "45px"}}>
               <PatternInfo
                   title="DESCUBRA"
                   description="Onde Comprar"
@@ -106,7 +106,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
                   }
                 />
             </Box>
-            <Box flex="1" mr="45px">
+            <Box flex="1" mr={{base: 0, lg: "45px"}} mt={{ base: "45px", lg: 0}}>
               <PatternInfo
                   title="Solicite Nosso"
                   description="Mostruário"
@@ -119,7 +119,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
                   }
                 />
             </Box>
-            <Box flex="1">
+            <Box flex="1" mt={{ base: "45px", lg: 0}}>
               <PatternInfo
                   title="Confira Nossas"
                   description="Vagas abertas"
