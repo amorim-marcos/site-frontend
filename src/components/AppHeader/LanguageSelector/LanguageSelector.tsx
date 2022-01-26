@@ -22,7 +22,7 @@ export const LanguageSelector = () => {
       <Box marginRight="8%">
         <LanguageIcon
           width={{
-            base: '8px',
+            base: '12px',
             sm: '10px',
             md: '14px',
             lg: '18px',
@@ -34,7 +34,7 @@ export const LanguageSelector = () => {
       <Text
         color="#FFF"
         fontSize={{
-          base: '8px',
+          base: '11px',
           md: '10px',
           lg: '12px',
           xl: '14px',
