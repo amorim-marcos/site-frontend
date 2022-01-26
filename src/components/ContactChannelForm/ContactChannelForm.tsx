@@ -1,5 +1,6 @@
 import { Box, Flex, FormControl, FormLabel, Input } from "@chakra-ui/react"
 import FormInput from "@components/FormInput"
+import ContactChannelFormLabel from "./ContactChannelFormLabel"
 
 export type ContactChannelFormProps = {
   channel_name: string,
@@ -11,8 +12,8 @@ export const ContactChannelForm = ({ channel_name, service_code }: ContactChanne
       <form>
         <Box flex="1">
           <FormControl>
-            <FormLabel>*Nome</FormLabel>
-            <FormInput placeholder="*Nome" />
+            <ContactChannelFormLabel htmlFor="name">*Nome</ContactChannelFormLabel>
+            <FormInput name="name" placeholder="*Nome" />
           </FormControl>   
         </Box>
       </form>
