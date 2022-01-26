@@ -44,14 +44,6 @@ export const AppFooter = () => {
               xl: '180px',
               '2xl': '220px'
             }}
-            height={{
-              base: '14px',
-              sm: '16px',
-              md: '20px',
-              lg: '25px',
-              xl: '31px',
-              '2xl': '40px'
-            }}
           />
           <Grid
             ml="auto"
