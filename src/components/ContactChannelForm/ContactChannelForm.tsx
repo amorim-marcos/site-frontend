@@ -1,17 +1,17 @@
-import { Box, Button, Flex, FormControl, Input } from "@chakra-ui/react"
+import { Box, Button, Flex, FlexProps, FormControl, Input } from "@chakra-ui/react"
 import FormInput from "@components/FormInput"
 import FormSelect from "@components/FormSelect"
 import FormTextArea from "@components/FormTextArea"
 import ContactChannelFormLabel from "./ContactChannelFormLabel"
 import ContactChannelInfoInput from "./ContactChannelInfoInput"
 
-export type ContactChannelFormProps = {
+export type ContactChannelFormProps = FlexProps & {
   channel_name: string,
   service_code: string
 }
-export const ContactChannelForm = ({ channel_name, service_code }: ContactChannelFormProps) => {
+export const ContactChannelForm = ({ channel_name, service_code, ...props}: ContactChannelFormProps) => {
   return (
-    <Flex width="full" flexDirection="column" paddingLeft="80px" paddingRight="80px">
+    <Flex width="full" flexDirection="column" {...props}>
       <form>
         <Box flex="1">
           <FormControl
@@ -55,7 +55,7 @@ export const ContactChannelForm = ({ channel_name, service_code }: ContactChanne
             <FormInput type="tel" name="tel" placeholder="*Telefone" />
           </FormControl>   
         </Box>       
-        <Flex flexDirection="row" flex="1" mt="12px">
+        <Flex flexDirection={{base: "column", md: "row"}} flex="1" mt="12px">
           <FormControl
             as='fieldset'
 
@@ -124,7 +124,7 @@ export const ContactChannelForm = ({ channel_name, service_code }: ContactChanne
           </FormControl>   
         </Box> 
         <Flex mt="12px">
-            <Button type="submit" marginLeft="auto">ENVIAR</Button>
+            <Button type="submit" w={{base: "100%", lg: "240px"}} marginLeft={{ base: "normal", lg:"auto"}}>ENVIAR</Button>
         </Flex>
       </form>
     </Flex>

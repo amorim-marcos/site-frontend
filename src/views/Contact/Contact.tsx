@@ -46,6 +46,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
             ? 
               (
                 <ContactChannelSelectButton 
+                  alignSelf="center"
                   isActive={(contact_channel != null) ? true : false} 
                   onClick={(isActive) => { if(!isActive){ setContactChannel((contact_channel != null) ? contact_channel : contact_channels[0]); setShowAllAreas(false); } else{setContactChannel(null); setShowAllAreas(true)}}}
                   mr="20px" mb="15px" 
@@ -77,15 +78,15 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
         </Flex>
         { 
         contact_channel && 
-        <Flex backgroundColor="white.100" minH="500px" paddingTop="80px" paddingBottom="60px">
-            <Flex justifyContent="space-around" flexDirection="row" paddingLeft="120px" paddingRight="120px">
+        <Flex justifyContent="center" backgroundColor="white.100" minH="500px" paddingTop="80px" paddingBottom="60px">
+            <Flex justifyContent="space-around" flexDirection={{ base: "column", lg: "row"}} paddingLeft={ { base: "40px", lg: "120px" }} paddingRight={ { base: "40px", lg: "120px" } }>
               <Flex flex="1" justifyContent="flex-start" direction="column">
-                <Text as="h3" variant={"h3" as any}>{contact_channel.name}</Text>
-                <Text mt="40px" fontFamily='body'  variant={"body" as any}>{contact_channel.description}</Text>
-                <Image mt="30px" src={contact_channel.image} />
+                <Text as="h3" variant={"h3" as any} order="1">{contact_channel.name}</Text>
+                <Text mt={{ base: "10px", lg: "40px"}} fontFamily='body'  variant={"body" as any} order={{ base: "3", lg: "2"}}>{contact_channel.description}</Text>
+                <Image mt={{ base: "10px", lg: "30px"}} src={contact_channel.image} order={{ base: "2", lg: "3"}} />
               </Flex>
               <Flex flex="2">
-                <ContactChannelForm channel_name={contact_channel.name} service_code={contact_channel.service_code}/>
+                <ContactChannelForm channel_name={contact_channel.name} service_code={contact_channel.service_code} paddingLeft={{ base:0, lg:"80px"}} paddingRight={{ base:0, lg:"80px"}}/>
               </Flex>
             </Flex>
         </Flex>        
