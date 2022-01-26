@@ -1,4 +1,4 @@
-import { Box, Button, Flex, FlexProps, FormControl, Input } from "@chakra-ui/react"
+import { Box, Button, Flex, FlexProps, FormControl, Input, Text } from "@chakra-ui/react"
 import FormInput from "@components/FormInput"
 import FormSelect from "@components/FormSelect"
 import FormTextArea from "@components/FormTextArea"
@@ -123,6 +123,9 @@ export const ContactChannelForm = ({ channel_name, service_code, ...props}: Cont
             <FormTextArea name="message" placeholder="Mensagem"></FormTextArea>
           </FormControl>   
         </Box> 
+        <Flex mt="5px">
+            <Text variant={"body" as any} color="grey.300">*Campos obrigatórios</Text>
+        </Flex>
         <Flex mt="12px">
             <Button type="submit" w={{base: "100%", lg: "240px"}} marginLeft={{ base: "normal", lg:"auto"}}>ENVIAR</Button>
         </Flex>
