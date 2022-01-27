@@ -56,14 +56,12 @@ export const PatternInfo = ({
           fontWeight="medium"
           letterSpacing="-0.45px"
           color="green.600"
-          fontSize = {{ base: '8px', sm: '12px', lg: '14px', xl: '18px'}}
         >{title}</Text>
         <Text as="h2"
           variant = {"h2" as any}
           fontWeight="extrabold"
           letterSpacing="-0.68px"
           color="white"
-          fontSize = {{ base: '14px', sm: '22px', lg: '24px', xl: '32px'}}
         >{description}</Text>
       </Box>
 

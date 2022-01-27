@@ -64,7 +64,7 @@ export const PageSession = ({
         // bg = 'red'
         flex="1"
         position='absolute'
-        // direction={{ base: 'row', sm: 'row', lg: 'row', xl: 'row'}}
+        direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row'}}
       >
          <Image
           // bg='pink'
@@ -73,7 +73,7 @@ export const PageSession = ({
           // h='100%'
           
         />
-        <Spacer />
+        {/* <Spacer /> */}
         <Image
           // bg='red'
           src='/assets/imgs/grafismo_topo_direita.png'
@@ -94,18 +94,23 @@ export const PageSession = ({
             direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
             // bg='yellow'
           >
+              <Box
+                  margin={{ base: '30px 0px', sm: '5px 0px', lg: '10px 0px', xl: '15px 10px'}}
+                  // bg='red'
+                  flex = '1'
+              >
                 <CompletedTitle 
                   titleColor = 'white' 
                   titleString = {data.title} 
                   alignSelf = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}}
                   textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
                 />
-
-                <Box
-                  margin={{ base: '30px 0px', sm: '5px 0px', lg: '10px 0px', xl: '15px 10px'}}
-                  // bg='pink'
-                  flex = '2'
-                >
+              </Box>
+              <Box
+                margin={{ base: '0px', sm: '5px 0px', lg: '20px 0px', xl: '15px 10px'}}
+                // bg='pink'
+                flex = '2'
+              >
                   <Text as='h3'
                     variant = {'h3' as any}
                     fontFamily = 'body'
@@ -118,7 +123,7 @@ export const PageSession = ({
                     marginTop={{ base: '3%', sm: '5px 0px', lg: '10px 0px', xl: '15px 10px'}}
                   >{data.text}</Text>
               
-                </Box>
+              </Box>
 
           </Flex>   
 
