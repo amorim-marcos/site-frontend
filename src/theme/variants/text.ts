@@ -67,12 +67,12 @@ export const Text = {
     },
     h4: {
       color: 'green.700',
-      fontSize: { base: '10px', sm: '12px', lg: '16px', xl: '20px' },
+      fontSize: { base: '10px', sm: '14px', lg: '16px', xl: '20px' },
       fontWeight: 'extrabold'
     },
     h5: {
       color: 'green.700',
-      fontSize: { base: '8px', sm: '10px', lg: '14px', xl: '18px' },
+      fontSize: { base: '8px', sm: '12px', lg: '14px', xl: '13px' },
       fontWeight: 'medium'
     },
     productBody: {

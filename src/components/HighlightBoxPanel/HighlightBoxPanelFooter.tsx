@@ -7,18 +7,18 @@ export type HighlightBoxPanelProps = {
 
 const HighlightBoxPanelFooter = (props: HighlightBoxPanelProps) => (
   <Flex
-    h={{ base: '55px', sm: '80px', md: '90px', lg: '110px' }}
+    h={{ base: '50px', sm: '70px', lg: '80px', xl: '90px' }}
     // maxWidth={'80%'}
     wrap={{ base: 'nowrap', md: 'wrap' }}
     direction="column"
     borderBottomRightRadius="33px"
     bgColor="green.800"
-    flexWrap={"wrap"}
+    flexWrap={"nowrap"}
   >
     <Flex 
       // alignItems="flex-start"
-      marginLeft={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
-      marginTop={{ base: '5%', sm: '5%', lg: '5%', xl: '4%'}}
+      marginLeft={{ base: '3%', sm: '5%', lg: '4%', xl: '3%'}}
+      marginTop={{ base: '3%', sm: '3.5%', lg: '4%', xl: '3%'}}
       // bg="red"
       flex="1"
     >
@@ -26,7 +26,7 @@ const HighlightBoxPanelFooter = (props: HighlightBoxPanelProps) => (
     </Flex>
 
     <Flex 
-      marginLeft={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
+      marginLeft={{ base: '3%', sm: '5%', lg: '4%', xl: '3%'}}
       marginBottom={{ base: '2%', sm: '2%', lg: '2%', xl: '2%'}}
       // bg="blue"
       flex="1"

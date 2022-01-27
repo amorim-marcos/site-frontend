@@ -6,6 +6,7 @@ import CompletedTitle from '@components/CompletedTitle'
 import PatternInfo from '@components/PatternInfo'
 import { CertificationsIcon, ReportsIcon } from '@components/Icons'
 import Infographic from '@components/Infographic'
+import FeaturedBanner from "@components/FeaturedBanner"
 import {
   List,
   ListItem,
@@ -516,31 +517,54 @@ export const Forests = () => {
           </Box>
           {/* BOX 2 */}
           <Flex
-            margin = {{ base: '3% 5% 5% 5%', sm: '3% 5% 5% 5%', lg: '5% 5% 5% 5%', xl: '5% 5% 5% 2%'}}
-            direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
+            margin = {{ base: '3% 5% 5% 5%', sm: '3% 5% 5% 5%', lg: '5% 5% 5% 5%', xl: '1% 0% 5% 0%'}}
+            direction = {{ base: 'row', sm: 'row', lg: 'row', xl: 'row'}}
             alignItems={"center"}
-            // bg='yellow'
+            // bg='tomato'
             flex='1'
           >
-             <Image 
-                src="/assets/imgs/170130-Berneck-58.png"
-             />
-              <Button 
-                onClick={() => alert('seja um fornecedor florestal')}
-                w={{ base: '200px', sm: '350px', lg: '500px', xl: '60%'}}
-                h={{ base: '50px', sm: '65px', lg: '80px', xl: '10%'}}
-                padding={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
-                marginTop={{ base: '-15px', sm: '-20px', lg: '-50px', xl: '-20px'}}
-              >
-                <Text as="h5"
-                  variant={"h5" as any}
-                  fontFamily = 'body'
-                  color='white'
-                  textAlign="center"
-                  fontWeight="bold"
-                >Seja um Fornecedor Florestal</Text>
-              </Button>
-          
+
+            <Flex
+              flex='1'
+              // bg='yellow'
+              direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
+            >
+                <FeaturedBanner 
+                    title = "Sistema de Monitoramento Florestal"
+                    srcImage="./img/iStock-1281848381.png"
+                />
+                <FeaturedBanner 
+                    title = "Florestas próximas das Unidades Industriais"
+                    srcImage="./img/6-3_AEREA FABRICA_menor.png"
+                />
+                  <FeaturedBanner 
+                    title = "Planejamento e Inventário Florestal"
+                    srcImage="./img/iStock-1298404583.png"
+                />
+             </Flex>
+
+             <Flex
+              flex='1'
+              // bg='blue'
+              direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
+            >
+                <FeaturedBanner 
+                    title = "Equipamentos e Tecnologia de Colheita inovadores"
+                    srcImage ="./img/3–6_OP_GRUA_menor.png"
+                    invert = {true}
+                />
+                <FeaturedBanner 
+                    title = "Logística Florestal Integrada"
+                    srcImage="./img/DSC_3131.png"
+                    invert = {true}
+                />
+                  <FeaturedBanner 
+                    title = "Pesquisa aplicada à melhoria da Qualidade Florestal"
+                    srcImage="./img/5–2_MUDAS (1).png"
+                    invert = {true}
+                />
+             </Flex>
+                
           </Flex>
         
         </Flex> 
@@ -652,10 +676,10 @@ export const Forests = () => {
         >
           {/* BOX 1 */}
           <Box
-            bg='pink'
+            // bg='pink'
             flex='2'
             // justifyItem={"center"}
-            margin = {{ base: '5% 5% 3% 5%', sm: '5% 5% 3% 5%', lg: '8% 5% 5% 5%', xl: '5% % 5% 2%'}}
+            margin = {{ base: '5% 5% 3% 5%', sm: '5% 5% 3% 5%', lg: '5% 5% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
              <CompletedTitle 
                 titleString = "Resumo público de Manejo Florestal"
@@ -672,59 +696,96 @@ export const Forests = () => {
           {/* BOX 2 */}
           <Box
             margin = {{ base: '0% 5% 5% 5%', sm: '0% 5% 5% 5%', lg: '2% 2% 8% 0%', xl: '5% 5% 5% 2%'}}
-            padding={{ base: '5% 10%', sm: '5% 10%', lg: '10% 10%', xl: '5% 10%'}}
-            bg='blue'
+            padding={{ base: '10%', sm: '10%', lg: '10%', xl: '5%'}}
+            // bg='blue'
             flex='1'
-            backgroundImage="/assets/imgs/fundo_relatorio.svg"
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"  
             position='relative'
             zIndex='base'
             overflowY="hidden"
             overflowX="hidden"
+            backgroundImage="/assets/imgs/fundo_relatorio.svg"
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat" 
           >
-              
+            
               <List spacing={{ base: '5', sm: '5', lg: '5', xl: '5'}}>
               {/* {dataValores.list.map((item) => ( */}
                 <ListItem>
                   <ReportsIcon 
-
+                    height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    stroke1="green.800"
                   />
                   <Text
-                    fontFamily = 'body'
+                    variant = {"h5" as any}
                     fontWeight= 'bold'
                     color={"green.800"}
+                    marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
+                    marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
+                    cursor="pointer"
+                        _hover={{
+                          color: 'green.550'
+                        }}
                   >Resumo público de Manejo Florestal • PR</Text>
                 </ListItem>
                 <ListItem>
-                <ReportsIcon 
-                />
+                  <ReportsIcon 
+                    height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    stroke1="green.800"
+                  />
                   <Text
-                    fontFamily = 'body'
+                    variant = {"h5" as any}
                     fontWeight= 'bold'
                     color={"green.800"}
-                  >Resumo público de Manejo Florestal • SC</Text>
+                    marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
+                    marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
+                    cursor="pointer"
+                        _hover={{
+                          color: 'green.550'
+                        }}
+                  >Resumo público de Manejo Florestal • PR</Text>
                 </ListItem>
                 <ListItem>
-                <ReportsIcon 
-                />
+                  <ReportsIcon 
+                    height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    stroke1="green.800"
+                  />
                   <Text
-                    fontFamily = 'body'
+                    variant = {"h5" as any}
                     fontWeight= 'bold'
                     color={"green.800"}
-                  >Resumo público de Manejo Florestal • RS</Text>
+                    marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
+                    marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
+                    cursor="pointer"
+                        _hover={{
+                          color: 'green.550'
+                        }}
+                  >Resumo público de Manejo Florestal • PR</Text>
                 </ListItem>
                 <ListItem>
-                <ReportsIcon 
-                />
+                  <ReportsIcon 
+                    height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    stroke1="green.800"
+                  />
                   <Text
-                    fontFamily = 'body'
+                    variant = {"h5" as any}
                     fontWeight= 'bold'
                     color={"green.800"}
-                  >Resumo público de Manejo Florestal • MT</Text>
+                    marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
+                    marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
+                    cursor="pointer"
+                        _hover={{
+                          color: 'green.550'
+                        }}
+                  >Resumo público de Manejo Florestal • PR</Text>
                 </ListItem>
+               
               </List>
-
+            
+            {/* </Flex> */}
              
           </Box>
         

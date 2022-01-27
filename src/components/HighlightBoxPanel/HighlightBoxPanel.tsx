@@ -12,7 +12,7 @@ export type HighlightBoxPanelProps = {
 export const HighlightBoxPanel = ( props: HighlightBoxPanelProps ) => {
   return (
     <Flex
-      w={{ base: '100%', md: '100%', lg: '100%', xl: '30%' }}
+      w={{ base: '95%', md: '95%', lg: '95%', xl: '30%' }}
       pos="relative"
       direction="column"
       userSelect="none"

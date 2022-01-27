@@ -18,7 +18,7 @@ export const FireAlert = ({
       zIndex='base'
       overflowY="hidden"
       overflowX="hidden"
-      bg = 'brown.300'
+      bg = 'brown.400'
       // display = {display}
     >
         <Flex
