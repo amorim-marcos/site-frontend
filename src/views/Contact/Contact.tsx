@@ -41,7 +41,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
       setHeight(h)
       setWidth(w)
     }
-  }, [channelsParentRef])
+  }, [channelsParentRef.current.clientWidth])
 
   React.useEffect(() => {
     if(Object.keys(bgArray).length == contact_channels.length){
@@ -55,8 +55,6 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
         const buttonsH:number = 58
         const spaceSize:number = 15
         const marginSize:number = 20
-
-        console.log(imgW, originalFlexWidth, channelsParentWidth)
         
         const bgArrayCopy = {...bgArray}
 
@@ -109,7 +107,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
 
         setFinalBgArray({...bgArrayCopy})
     }
-  }, [bgArray])
+  }, [bgArray, channelsParentWidth])
 
 
   return (
