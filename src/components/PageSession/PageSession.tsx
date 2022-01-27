@@ -64,7 +64,7 @@ export const PageSession = ({
         // bg = 'red'
         flex="1"
         position='absolute'
-        direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row'}}
+        direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
       >
          <Image
           // bg='pink'
@@ -88,14 +88,14 @@ export const PageSession = ({
         // bg = 'grey'
         flex="1"
         zIndex={10}
-        margin={{ base: '5%', sm: '3%', lg: '5%', xl: '5%'}}
+        margin={{ base: '5%', sm: '8%', lg: '5%', xl: '5%'}}
       >
          <Flex
             direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
             // bg='yellow'
           >
               <Box
-                  margin={{ base: '30px 0px', sm: '5px 0px', lg: '10px 0px', xl: '15px 10px'}}
+                  margin={{ base: '30px 0px', sm: '30px 0px', lg: '10px 0px', xl: '15px 10px'}}
                   // bg='red'
                   flex = '1'
               >

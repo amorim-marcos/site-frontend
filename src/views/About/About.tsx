@@ -94,7 +94,7 @@ export const About = () => {
             // bg='pink'
             flex="1"
             margin={{
-              base: '8% 8% 2% 8%',
+              base: '8% 8% 2% 5%',
               sm: '8% 8% 2% 8%',
               lg: '5%',
               xl: '5%'
@@ -117,7 +117,7 @@ export const About = () => {
             // bg='yellow'
             flex="1"
             margin={{
-              base: '2% 8% 8% 8%',
+              base: '5% 8% 10% 5%',
               sm: '2% 8% 8% 8%',
               lg: '5%',
               xl: '5%'
@@ -170,32 +170,45 @@ export const About = () => {
               lg: '8% 0% 8% 0%',
               xl: '8% 0% 8% 0%'
             }}
-            backgroundImage={dataMundo.imageSrc}
-            backgroundPosition="left"
-            backgroundRepeat="no-repeat"
-            backgroundSize="contain"
+            
           >
             <Flex
               // bg='grey'
               direction={{
-                base: 'row',
+                base: 'column',
                 sm: 'row',
                 md: 'row',
                 lg: 'row',
                 xl: 'row'
               }}
               justifyItems="center"
-              justifyContent="center"
+              justifyContent="flex-end"
             >
               {/* BOX 1 */}
               <Box
-                flex={{ base: '1.2', sm: '1.2', md: '1.1', lg: '1', xl: '1' }}
+                flex={{ base: '1', sm: '1', lg: '1', xl: '1' }}
+                // marginLeft={'-300px'}
                 // bg='yellow'
-              />
+                // backgroundImage={dataMundo.imageSrc}
+                // backgroundPosition="left"
+                // backgroundRepeat="no-repeat"
+                // backgroundSize="contain"
+              >
+                <Image
+                  src={dataMundo.imageSrc}
+                  w={{ base: '55%', lg: '60%'}}
+                  opacity =  {{ base: '0.5', sm: '1' }}
+                />
+
+              </Box>
               {/* BOX 2 */}
               <Box
-                // bg='red'
-                flex={{ base: '1.2', sm: '1.2', md: '1.2', lg: '1.1', xl: '1' }}
+                // bg='pink.100'
+                
+                flex={{ base: '3', sm: '3', lg: '3', xl: '1' }}
+                position={"absolute"}
+                alignSelf={"center"}
+                margin={{ base: '-20% 0%', sm: '0% -10%', lg: '0% -8%', xl: '0% -8%' }}
               >
                 <Infographic
                   titleSuperscript1Text="Volume de Exportação"
@@ -218,7 +231,7 @@ export const About = () => {
             // bg='grey'
             flex="1"
             margin={{
-              base: '8% 10% 10% 10%',
+              base: '30% 10% 10% 5%',
               sm: '8% 10% 8% 10%',
               lg: '8% 5% 8% 0%',
               xl: '8% 8% 8% 5%'
@@ -272,7 +285,7 @@ export const About = () => {
             // bg='pink'
             flex="1"
             alignItems="center"
-            margin={{ base: '8% 5%', sm: '5% 5%', lg: '5% 20%', xl: '5% 20%' }}
+            margin={{ base: '8% 5%', sm: '8% 5%', lg: '5% 10%', xl: '5% 10%' }}
           >
             <CompletedTitle
               titleString={dataTrajetoria.title}
@@ -286,7 +299,7 @@ export const About = () => {
             <Text
               fontFamily="body"
               color="brown.350"
-              marginTop={{ base: '30px', sm: '8px', lg: '10px', xl: '20px' }}
+              marginTop={{ base: '30px', sm: '30px', lg: '30px', xl: '30px' }}
               textAlign="center"
             >
               {dataTrajetoria.text}
@@ -423,7 +436,7 @@ export const About = () => {
           <Box
             // bg='pink'
             flex='1'
-            margin = {{ base: '8% 8% 2% 8%', sm: '8% 8% 2% 8%', lg: '5%', xl: '5%'}}
+            margin = {{ base: '8% 8% 5% 5%', sm: '8% 8% 2% 8%', lg: '5%', xl: '5%'}}
             // alignSelf='center'
           >
                 <Text as='h3'
@@ -501,7 +514,7 @@ export const About = () => {
           </Box>
           {/* BOX 2 */}
           <Box
-            // bg='yellow'
+            bg='yellow'
             flex='1'
             margin = {{ base: '2% 0% 5% 0%', sm: '2% 0% 5% 0%', lg: '5%', xl: '5%'}}
           >
