@@ -10,6 +10,7 @@ import HouseIcon from '@components/Icons/HouseIcon'
 import Link from 'next/link'
 import { PagebarGrafism } from './PagebarGrafism/PagebarGrafism'
 import { useTranslation } from 'react-i18next'
+import ArrowIcon from '@components/Icons/ArrowIcon'
 
 export type Path = {
   title: string
@@ -23,6 +24,7 @@ export const Pagebar = ({ paths }: PagebarProps) => {
   const pagebar = useTranslation('pagebar')
   return (
     <Flex
+      display={{ base: 'none', sm: 'flex' }}
       alignItems="center"
       justifyContent="space-between"
       bg="green.500"
@@ -58,7 +60,8 @@ export const Pagebar = ({ paths }: PagebarProps) => {
       >
         <Link passHref href="/">
           <HouseIcon
-            height={{
+            data-testid="house-icon"
+            width={{
               base: '26px',
               sm: '13px',
               md: '16px',
@@ -66,6 +69,7 @@ export const Pagebar = ({ paths }: PagebarProps) => {
               xl: '22px',
               '2xl': '26px'
             }}
+            color="white.100"
           />
         </Link>
       </Box>
@@ -81,10 +85,33 @@ export const Pagebar = ({ paths }: PagebarProps) => {
           }}
         />
       </Box>
-      <Flex zIndex="docked" w="100%">
+      <Flex alignItems="center" zIndex="docked" w="100%">
         <Breadcrumb
           marginLeft="70px"
-          separator={<Text color="white.100">{'>'}</Text>}
+          separator={
+            <Box
+              marginX={{
+                base: '83px',
+                sm: '0px',
+                md: '3px',
+                lg: '6px',
+                xl: '9px',
+                '2xl': '10px'
+              }}
+            >
+              <ArrowIcon
+                width={{
+                  base: '14px',
+                  sm: '6px',
+                  md: '8px',
+                  lg: '10px',
+                  xl: '12px',
+                  '2xl': '14px'
+                }}
+                stroke="white.100"
+              />
+            </Box>
+          }
         >
           {paths &&
             paths.map((s, i) => {
@@ -106,9 +133,9 @@ export const Pagebar = ({ paths }: PagebarProps) => {
                         '2xl': '23.5px'
                       }}
                       variant={
-                        ( i === paths.length - 1
+                        (i === paths.length - 1
                           ? 'breadcrumbs-selected'
-                          : 'breadcrumbs' ) as any
+                          : 'breadcrumbs') as any
                       }
                     >
                       {s.title}
@@ -119,11 +146,34 @@ export const Pagebar = ({ paths }: PagebarProps) => {
             })}
         </Breadcrumb>
 
-        <Flex alignItems="center" marginLeft="auto">
+        <Flex _hover={{ opacity: '0.6' }} alignItems="center" marginLeft="auto">
+          <Box
+            transform="rotate(180deg)"
+            marginRight={{
+              base: '83px',
+              sm: '0px',
+              md: '3px',
+              lg: '6px',
+              xl: '9px',
+              '2xl': '10px'
+            }}
+          >
+            <ArrowIcon
+              width={{
+                base: '14px',
+                sm: '6px',
+                md: '8px',
+                lg: '10px',
+                xl: '12px',
+                '2xl': '15px'
+              }}
+              stroke="green.800"
+            />
+          </Box>
           <Text
             color="green.900"
             cursor="pointer"
-            variant={"breadcrumbs" as any}
+            variant={'breadcrumbs' as any}
             fontSize={{
               base: '8px',
               sm: '12px',
@@ -132,9 +182,7 @@ export const Pagebar = ({ paths }: PagebarProps) => {
               xl: '19px',
               '2xl': '23.5px'
             }}
-            _hover={{ color: 'white.100' }}
           >
-            {'< '}
             {pagebar.t('backBtn')}
           </Text>
         </Flex>

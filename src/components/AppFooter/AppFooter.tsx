@@ -5,9 +5,12 @@ import { FooterList } from './FooterList/FooterList'
 import { Grafism } from './Grafism/Grafism'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
+import { footerNavigation } from './footerNavigation'
+import useMobile from 'hooks/useMobile'
 
 export const AppFooter = () => {
   const footer = useTranslation('footer')
+  const { isMobile } = useMobile(568)
   return (
     <Flex
       aria-label="footer-container"
@@ -16,7 +19,7 @@ export const AppFooter = () => {
       maxWidth="1920px"
       marginX="auto"
       h={{
-        base: '280px',
+        base: '240px',
         sm: '380px',
         md: '460px',
         lg: '600px',
@@ -34,266 +37,190 @@ export const AppFooter = () => {
         width="100%"
         flexDir="column"
       >
-        <Flex w="100%" alignItems="center" zIndex="docked">
+        <Flex
+          w="100%"
+          flexDirection={{ base: 'column', sm: 'row' }}
+          alignItems={{ base: 'flex-start', sm: 'center' }}
+          zIndex="docked"
+          marginTop={{ base: '20px', sm: '0' }}
+        >
           <LogoBerneck
             width={{
-              base: '70px',
+              base: '110px',
               sm: '100px',
               md: '120px',
               lg: '150px',
               xl: '180px',
               '2xl': '220px'
             }}
-            height={{
-              base: '14px',
-              sm: '16px',
-              md: '20px',
-              lg: '25px',
-              xl: '31px',
-              '2xl': '40px'
-            }}
           />
-          <Grid
-            ml="auto"
-            templateColumns="repeat(5, 1fr)"
-            gap={{ base: '15px', sm: '17px', md: '30px', '2xl': '50px' }}
+          <Flex
+            // border="1px solid pink"
+            w={{ base: '100%', sm: '30%' }}
+            ml={{ base: '0', sm: 'auto' }}
+            justifyContent={{ base: 'space-around', sm: 'flex-end' }}
+            marginY={{ base: '30px', sm: 'none' }}
           >
             <SocialIcon
-              width={{
-                base: '20px',
-                sm: '23px',
-                md: '25px',
-                lg: '30px',
-                xl: '35px',
-                '2xl': '42px'
-              }}
+              marginLeft={socialIconMarginLeft}
+              width={socialIconWidth}
               media="facebook"
             />
             <SocialIcon
-              width={{
-                base: '20px',
-                sm: '23px',
-                md: '25px',
-                lg: '30px',
-                xl: '35px',
-                '2xl': '42px'
-              }}
+              marginLeft={socialIconMarginLeft}
+              width={socialIconWidth}
               media="instagram"
             />
             <SocialIcon
-              width={{
-                base: '20px',
-                sm: '23px',
-                md: '25px',
-                lg: '30px',
-                xl: '35px',
-                '2xl': '42px'
-              }}
+              marginLeft={socialIconMarginLeft}
+              width={socialIconWidth}
               media="linkedin"
             />
             <SocialIcon
-              width={{
-                base: '20px',
-                sm: '23px',
-                md: '25px',
-                lg: '30px',
-                xl: '35px',
-                '2xl': '42px'
-              }}
+              marginLeft={socialIconMarginLeft}
+              width={socialIconWidth}
               media="youtube"
             />
             <SocialIcon
-              width={{
-                base: '20px',
-                sm: '23px',
-                md: '25px',
-                lg: '30px',
-                xl: '35px',
-                '2xl': '42px'
-              }}
+              marginLeft={socialIconMarginLeft}
+              width={socialIconWidth}
               media="pinterest"
             />
-          </Grid>
+          </Flex>
         </Flex>
-        <Flex
-          justifyContent="space-between"
-          zIndex="docked"
-          marginTop={{
-            base: '7%',
-            sm: '10%',
-            lg: '11%',
-            '2xl': '6%'
-          }}
-        >
-          <FooterList
-            title={{
-              title: footer.t('column1Title'),
-              href: '#'
+        {!isMobile && (
+          <Flex
+            justifyContent="space-between"
+            zIndex="docked"
+            marginTop={{
+              base: '7%',
+              sm: '10%',
+              lg: '11%',
+              '2xl': '6%'
             }}
-            items={[
-              {
-                title: footer.t('column1Subitem1'),
-                href: '#'
-              },
-              {
-                title: footer.t('column1Subitem2'),
-                href: '#'
-              },
-              {
-                title: footer.t('column1Subitem3'),
-                href: '#'
-              },
-              {
-                title: footer.t('column1Subitem4'),
-                href: '#'
-              }
-            ]}
-          />
+          >
+            <FooterList
+              title={{
+                title: footer.t(footerNavigation.column1.titleKey),
+                href: footerNavigation.column1.href
+              }}
+              items={footerNavigation.column1.items.map((i) => ({
+                title: footer.t(i.titleKey),
+                href: i.href
+              }))}
+            />
 
-          <FooterList
-            title={{
-              title: footer.t('column2Title'),
-              href: '#'
-            }}
-            items={[
-              {
-                title: footer.t('column2Subitem1'),
-                href: '#'
-              },
-              {
-                title: footer.t('column2Subitem2'),
-                href: '#'
-              },
-              {
-                title: footer.t('column2Subitem3'),
-                href: '#'
-              },
-              {
-                title: footer.t('column2Subitem4'),
-                href: '#'
-              }
-            ]}
-          />
+            <FooterList
+              title={{
+                title: footer.t(footerNavigation.column2.titleKey),
+                href: footerNavigation.column2.href
+              }}
+              items={footerNavigation.column2.items.map((i) => ({
+                title: footer.t(i.titleKey),
+                href: i.href
+              }))}
+            />
 
-          <FooterList
-            title={{
-              title: footer.t('column3Title'),
-              href: '#'
-            }}
-            items={[
-              {
-                title: footer.t('column3Subitem1'),
-                href: '#'
-              },
-              {
-                title: footer.t('column3Subitem2'),
-                href: '#'
-              },
-              {
-                title: footer.t('column3Subitem3'),
-                href: '#'
-              },
-              {
-                title: footer.t('column3Subitem4'),
-                href: '#'
-              }
-            ]}
-          />
+            <FooterList
+              title={{
+                title: footer.t(footerNavigation.column3.titleKey),
+                href: footerNavigation.column3.href
+              }}
+              items={footerNavigation.column3.items.map((i) => ({
+                title: footer.t(i.titleKey),
+                href: i.href
+              }))}
+            />
 
-          <FooterList
-            title={{
-              title: footer.t('column4Title'),
-              href: '#'
-            }}
-            items={[
-              {
-                title: footer.t('column4Subitem1'),
-                href: '#'
-              },
-              {
-                title: footer.t('column4Subitem2'),
-                href: '#'
-              },
-              {
-                title: footer.t('column4Subitem3'),
-                href: '#'
-              },
-              {
-                title: footer.t('column4Subitem4'),
-                href: '#'
-              },
-              {
-                title: footer.t('column4Subitem5'),
-                href: '#'
-              },
-              {
-                title: footer.t('column4Subitem6'),
-                href: '#'
-              },
-              {
-                title: footer.t('column4Subitem7'),
-                href: '#'
-              }
-            ]}
-          />
+            <FooterList
+              title={{
+                title: footer.t(footerNavigation.column4.titleKey),
+                href: footerNavigation.column4.href
+              }}
+              items={footerNavigation.column4.items.map((i) => ({
+                title: footer.t(i.titleKey),
+                href: i.href
+              }))}
+            />
 
-          <FooterList
-            title={{
-              title: footer.t('column5Title'),
-              href: '#'
-            }}
-            items={[
-              {
-                title: footer.t('column5Subitem1'),
-                href: '#'
-              },
-              {
-                title: '',
-                href: '#',
-                empty: true
-              },
-              {
-                title: footer.t('column5Subitem2'),
-                href: '#'
-              },
-              {
-                title: footer.t('column5Subitem3'),
-                href: '#'
-              },
-              {
-                title: footer.t('column5Subitem4'),
-                href: '#'
-              },
-              {
-                title: footer.t('column5Subitem5'),
-                href: '#'
-              }
-            ]}
-          />
-        </Flex>
+            <FooterList
+              title={{
+                title: footer.t(footerNavigation.column5.titleKey),
+                href: footerNavigation.column5.href
+              }}
+              items={footerNavigation.column5.items.map((i) => ({
+                title: footer.t(i.titleKey),
+                href: i.href,
+                empty: i.empty
+              }))}
+            />
+          </Flex>
+        )}
 
         <Box zIndex="base" position="absolute" top="-35px" left="0">
-          <Grafism />
+          <Grafism width={{ base: '1024px', sm: '1280px', lg: '1920px' }} />
         </Box>
       </Flex>
       <Flex
         w="100%"
-        h="100px"
+        h={{ base: '230px', sm: '100px' }}
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent={{ base: 'space-evenly', sm: 'space-between' }}
         paddingX="70px"
+        position="relative"
+        flexDirection={{ base: 'column', sm: 'row' }}
       >
-        <Text fontSize="14px" color="green.300">
+        <Text
+          width="fit-content"
+          position={{ base: 'absolute', sm: 'relative' }}
+          top={{ base: '-30px', sm: '0' }}
+          left={{ base: '0' }}
+          right={{ base: '0' }}
+          marginX={{ base: 'auto', sm: '0' }}
+          fontSize={{
+            base: '12px',
+            sm: '6px',
+            md: '8px',
+            lg: '10px',
+            xl: '12px',
+            '2xl': '14px'
+          }}
+          color="green.300"
+        >
           © 2021 BERNECK . Todos os direitos reservados.
         </Text>
-        <Text fontSize="14px" color="green.600">
+        <Text
+          fontSize={{
+            base: '11px',
+            sm: '6px',
+            md: '8px',
+            lg: '10px',
+            xl: '12px',
+            '2xl': '14px'
+          }}
+          color="green.600"
+        >
           Termos de Uso e Política de Privacidade
         </Text>
         <Link passHref href="http://www.commcepta.com.br/">
           <Image
             cursor="pointer"
-            height={23}
-            width={116}
+            height={{
+              base: '23px',
+              sm: '9px',
+              md: '12px',
+              lg: '15px',
+              xl: '18px',
+              '2xl': '23px'
+            }}
+            width={{
+              base: '116px',
+              sm: '46px',
+              md: '61px',
+              lg: '77px',
+              xl: '92px',
+              '2xl': '116px'
+            }}
             src="/img/logo-commcepta.png"
             alt="Logo Commcepta"
           />
@@ -301,4 +228,21 @@ export const AppFooter = () => {
       </Flex>
     </Flex>
   )
+}
+
+const socialIconWidth = {
+  base: '30px',
+  sm: '23px',
+  md: '25px',
+  lg: '30px',
+  xl: '35px',
+  '2xl': '42px'
+}
+
+const socialIconMarginLeft = {
+  base: '0px',
+  sm: '20px',
+  lg: '30px',
+  xl: '40px',
+  '2xl': '50px'
 }
