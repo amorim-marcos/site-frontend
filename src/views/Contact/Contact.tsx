@@ -32,6 +32,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
   const [finalBgArray, setFinalBgArray] = React.useState<any>({})
 
   if (typeof window !== 'undefined') {
+    // @ts-ignore
     React.useEffect(() => {
       if(channelsParentRef && channelsParentRef.current){
         // @ts-ignore
@@ -44,8 +45,15 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
           setWidth(w)
         }
       }
-    // @ts-ignore 
-    }, [channelsParentRef.current.clientWidth])
+      
+      // @ts-ignore
+      if(!channelsParentRef.current || !channelsParentRef.current.clientWidth){
+        return true
+      }else{
+        // @ts-ignore
+        return channelsParentRef.current.clientWidth != channelsParentWidth
+      }
+    })
   }
   
   React.useEffect(() => {
