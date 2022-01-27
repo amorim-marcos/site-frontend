@@ -28,6 +28,9 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
   const [channelsParentHeight, setHeight] = React.useState<number>(0)
   const [channelsParentWidth, setWidth] = React.useState<number>(0)
 
+  const [bgArray, setBgArray] = React.useState<any>({})
+  const [finalBgArray, setFinalBgArray] = React.useState<any>({})
+
   React.useEffect(() => {
     // @ts-ignore
     let h = channelsParentRef.current.clientHeight
@@ -39,6 +42,13 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
       setWidth(h)
     }
   })
+
+  React.useEffect(() => {
+    if(Object.keys(bgArray).length == contact_channels.length){
+     console.log(bgArray)
+    }
+  }, [bgArray])
+
 
   return (
     <>
@@ -82,8 +92,14 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
               >
                 {
                   contact_channels.map(
-                    (channel) => 
+                    (channel, index) => 
                       <ContactChannelSelectButton 
+                        onFinishRender={
+                          function(width, height){ 
+                            bgArray[index.toString()] = { width, height, x: 0, y: 0};
+                            setBgArray({...bgArray})
+                          }
+                        }
                         isActive={(contact_channel != null && contact_channel.service_code == channel.service_code) ? true : false} 
                         onClick={(isActive) => { if(!isActive){ setContactChannel(channel); setShowAllAreas(false)} else{setContactChannel(null); setShowAllAreas(true)}}} 
                         mr="20px" mb="15px" 
