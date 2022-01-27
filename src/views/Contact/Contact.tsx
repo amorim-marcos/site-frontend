@@ -12,7 +12,8 @@ export type ContactChannelData = {
   name: string,
   description: string,
   image: string,
-  service_code: string
+  service_code: string,
+  attention_required?: boolean
 }
 
 export type ContactViewProps = {
@@ -62,7 +63,14 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
                 alignItems="center"
               >
                 {
-                  contact_channels.map((channel) => <ContactChannelSelectButton isActive={(contact_channel != null && contact_channel.service_code == channel.service_code) ? true : false} onClick={(isActive) => { if(!isActive){ setContactChannel(channel); setShowAllAreas(false)} else{setContactChannel(null); setShowAllAreas(true)}}} mr="20px" mb="15px" name={channel.name}  service_code={channel.service_code} />)
+                  contact_channels.map(
+                    (channel) => 
+                      <ContactChannelSelectButton 
+                        isActive={(contact_channel != null && contact_channel.service_code == channel.service_code) ? true : false} 
+                        onClick={(isActive) => { if(!isActive){ setContactChannel(channel); setShowAllAreas(false)} else{setContactChannel(null); setShowAllAreas(true)}}} 
+                        mr="20px" mb="15px" 
+                        name={channel.name}  service_code={channel.service_code} attention_required={(channel.attention_required) ? true : false}
+                      />)
                 }
               </Flex>
             )          

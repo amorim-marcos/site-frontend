@@ -82,7 +82,8 @@ const mockContactChannels: Array<ContactChannelData> = [
         name: "Ouvidoria",
         description: "Trabalha para um canal de comunicação e deseja saber mais sobre nós, nossos compromissos, florestas e produtos? Conte com nosso time de Comunicação Corporativa para enriquecer seu conhecimento sobre a BERNECK e encontrar comunicados, anúncios e informações elaboradas por nossa assessoria de imprensa.",
         image: "/img/contact-channel.png",
-        service_code: 'OUV'
+        service_code: 'OUV',
+        attention_required: true
     }, 
     {
         name: "Outros",
