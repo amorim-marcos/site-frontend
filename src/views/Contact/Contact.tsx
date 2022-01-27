@@ -38,10 +38,10 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
     let w = channelsParentRef.current.clientWidth
 
     if(w && h){
-      setHeight(w)
-      setWidth(h)
+      setHeight(h)
+      setWidth(w)
     }
-  })
+  }, [channelsParentRef])
 
   React.useEffect(() => {
     if(Object.keys(bgArray).length == contact_channels.length){
