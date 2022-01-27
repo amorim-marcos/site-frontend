@@ -461,7 +461,7 @@ export const About = () => {
 
       </Flex>
     {/* FIM REVENDEDORES */}
-
+        <Flex>
           <Box
             // bg='yellow'
             flex="1"
@@ -493,7 +493,6 @@ export const About = () => {
             />
           </Box>
         </Flex>
-      </Box>
       {/* FIM REVENDEDORES */}
 
     {/* INICIO CERTIFICADOS */}
