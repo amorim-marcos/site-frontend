@@ -31,19 +31,23 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
   const [bgArray, setBgArray] = React.useState<any>({})
   const [finalBgArray, setFinalBgArray] = React.useState<any>({})
 
-  React.useEffect(() => {
-    // @ts-ignore
-    let h = channelsParentRef.current.clientHeight
-    // @ts-ignore
-    let w = channelsParentRef.current.clientWidth
-
-    if(w && h){
-      setHeight(h)
-      setWidth(w)
-    }
-  // @ts-ignore 
-  }, [channelsParentRef.current.clientWidth])
-
+  if (typeof window !== 'undefined') {
+    React.useEffect(() => {
+      if(channelsParentRef && channelsParentRef.current){
+        // @ts-ignore
+        let h = channelsParentRef.current.clientHeight
+        // @ts-ignore
+        let w = channelsParentRef.current.clientWidth
+  
+        if(w && h){
+          setHeight(h)
+          setWidth(w)
+        }
+      }
+    // @ts-ignore 
+    }, [channelsParentRef.current.clientWidth])
+  }
+  
   React.useEffect(() => {
     if(Object.keys(bgArray).length == contact_channels.length){
         // Define know values
