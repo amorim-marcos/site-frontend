@@ -19,13 +19,13 @@ export const ContactChannelSelectButton = ({ name, attention_required = false, s
 
   React.useEffect(() => {
     // @ts-ignore
-    let w = ref.current.clientHeight
+    let h = ref.current.clientHeight
     // @ts-ignore
-    let h = ref.current.clientWidth
+    let w = ref.current.clientWidth
 
     if(w && h){
-      setHeight(w)
-      setWidth(h)
+      setHeight(h)
+      setWidth(w)
     }
   })
 
