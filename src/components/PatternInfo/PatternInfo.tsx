@@ -2,14 +2,14 @@ import { Heading, Flex, Box, Text, Center, Image } from "@chakra-ui/react"
 import React, { ReactNode } from 'react'
 
 export type PatternInfoProps = {
-  title: string
-  description: string
-  icon: ReactNode
+  title?: string
+  description?: string
+  icon?: ReactNode
   onClick: () => void
 }
 export const PatternInfo = ({ 
-  title="CONFIRA",
-  description="Certificado de Qualidade",
+  title="",
+  description="",
   icon="",
   onClick
  }: PatternInfoProps) => {
@@ -30,7 +30,7 @@ export const PatternInfo = ({
       padding={{ base: '5%', sm: '5%', lg: '10%', xl: '3%'}}
     >
       <Box 
-        h="100%"
+        // h="100%"
       >
         <Image
           src="/img/grafismo_button_right.svg"
@@ -44,7 +44,7 @@ export const PatternInfo = ({
 
       <Box 
         zIndex={10}
-        padding={{ base: '1%', sm: '3%', lg: '2%', xl: '5%'}}
+        padding={{ base: '1%', sm: '1%', lg: '2%', xl: '5%'}}
       >{icon}</Box>
 
       <Box 

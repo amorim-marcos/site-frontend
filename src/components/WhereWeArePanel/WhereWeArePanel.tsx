@@ -51,24 +51,23 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
 
   return (
     <Flex
-      h={{
-        base: '445px',
-        md: '400px',
-        lg: '435px',
-        xl: '295px',
-        '2xl': '435px'
-      }}
+      // h={{
+      //   base: '445px',
+      //   md: '400px',
+      //   lg: '435px',
+      //   xl: '295px',
+      //   '2xl': '435px'
+      // }}
       w={{
         base: '90vw',
         md: '720px',
         lg: '810px',
-        xl: '550px',
-        '2xl': '810px'
+        xl: '40%'
       }}
       pos="relative"
       direction="column"
       userSelect="none"
-      mb={{ sm: '0', md: '70px' }}
+      // mb={{ sm: '0', md: '70px' }}
     >
       <PanelImage
         image={props.image}

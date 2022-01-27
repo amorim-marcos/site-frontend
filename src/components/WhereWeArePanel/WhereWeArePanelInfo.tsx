@@ -55,7 +55,7 @@ const WhereWeArePanelInfo = (props: WhereWeArePanelInfoProps) => (
 )
 
 const Section = (props: { title: string; children: ReactNode }) => (
-  <Flex direction="column" gap={{ md: '4px', '2xl': '7px' }}>
+  <Flex direction="column" gap={{ md: '4px', xl: '7px' }}>
     <SectionTitle title={props.title} />
     {props.children}
   </Flex>
@@ -76,8 +76,8 @@ const SectionText = (props: {
       props.fontSize ?? {
         base: '13px',
         md: '15px',
-        xl: '14px',
-        '2xl': '18px'
+        xl: '18px',
+        // '2xl': '18px'
       }
     }
   >
@@ -100,8 +100,8 @@ const SectionContent = (props: { content: string }) => (
       base: '12px',
       sm: '13px',
       md: '18px',
-      xl: '13px',
-      '2xl': '18px'
+      // xl: '18px',
+      // '2xl': '18px'
     }}
   >
     {props.content}
