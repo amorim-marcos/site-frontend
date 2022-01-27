@@ -27,7 +27,8 @@ export const TrajectoryCarouselTab = React.forwardRef((props:any, ref:any) => {
     >
       <Text 
         variant={"h4" as any}
-        color = "brown.500"
+        color = "brown.300"
+        
       >{tabProps.children}</Text>
     </StyledTab>
   )

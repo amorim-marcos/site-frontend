@@ -34,7 +34,7 @@ const dataRaizes = {
 }
 
 const dataMundo = {
-  title: 'Madeiras para o mundo',
+  title: 'Madeira para o mundo',
   text: 'Somos uma das maiores exportadoras de painéis e serrados do Brasil. Nossos produtos atendem aos mais elevados padrões do mercado internacional, garantindo o fornecimento da melhor matéria-prima para indústrias dos mais diversos setores. Tudo isso alinhado às exigências de entrada nos países importadores, com a agilidade logística obtida através da localização estratégica de nossas fábricas e integrada à garantia de qualidade na entrega.',
   imageSrc: '/assets/imgs/quem_somos_container.png'
 }
@@ -103,7 +103,7 @@ export const About = () => {
           >
                 <Text as='h3'
                   variant = {"h3" as any}
-                  color = 'green.600'
+                  color = 'green.550'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
                 >{dataRaizes.title}</Text>
                 <Text
@@ -125,12 +125,14 @@ export const About = () => {
           >
             <Image
               src={dataRaizes.imageSrc}
-              w={{ base: '50%', sm: '50%', lg: '500px', xl: '500px' }}
+              w={{ base: '100%', sm: '100%', lg: '500px', xl: '500px' }}
             />
           </Box>
         </Flex>
       </Flex>
       {/* FIM RAIZES FIRMES PARA CRESCER */}
+
+
 
       {/* INICIO PARA O MADEIRAS MUNDO */}
       <Flex
@@ -172,14 +174,6 @@ export const About = () => {
             backgroundPosition="left"
             backgroundRepeat="no-repeat"
             backgroundSize="contain"
-            h={{
-              base: '300px',
-              sm: '350px',
-              md: '250px',
-              lg: '230px',
-              xl: '300px',
-              '2xl': '350px'
-            }}
           >
             <Flex
               // bg='grey'
@@ -253,6 +247,8 @@ export const About = () => {
       </Flex>
       {/* FIM PARA O MADEIRAS MUNDO */}
 
+
+
       {/* INICIO TRAJETORIA CAROUSEL */}
       <Box bg="brown.100">
         <Flex
@@ -276,7 +272,7 @@ export const About = () => {
             // bg='pink'
             flex="1"
             alignItems="center"
-            margin={{ base: '5% 5%', sm: '5% 5%', lg: '5% 20%', xl: '5% 20%' }}
+            margin={{ base: '8% 5%', sm: '5% 5%', lg: '5% 20%', xl: '5% 20%' }}
           >
             <CompletedTitle
               titleString={dataTrajetoria.title}
@@ -290,7 +286,7 @@ export const About = () => {
             <Text
               fontFamily="body"
               color="brown.350"
-              marginTop={{ base: '8px', sm: '8px', lg: '10px', xl: '20px' }}
+              marginTop={{ base: '30px', sm: '8px', lg: '10px', xl: '20px' }}
               textAlign="center"
             >
               {dataTrajetoria.text}
@@ -307,6 +303,8 @@ export const About = () => {
         </Flex>
       </Box>
       {/* FIM TRAJETORIA CAROUSEL */}
+
+
 
       {/* INICIO ONDE ESTAMOS */}
       <Flex
@@ -345,9 +343,9 @@ export const About = () => {
 
             <Box
               margin={{
-                base: '3px 0px',
-                sm: '5px 0px',
-                lg: '5px 0px',
+                base: '25px 0px',
+                sm: '25px 0px',
+                lg: '25px 0px',
                 xl: '15px 10px'
               }}
               // bg='pink'
@@ -359,9 +357,9 @@ export const About = () => {
                 fontFamily="body"
                 color="green.600"
                 textAlign={{
-                  base: 'center',
-                  sm: 'center',
-                  lg: 'center',
+                  base: 'left',
+                  sm: 'left',
+                  lg: 'left',
                   xl: 'left'
                 }}
               >
@@ -370,9 +368,9 @@ export const About = () => {
               <Text
                 fontFamily="body"
                 textAlign={{
-                  base: 'center',
-                  sm: 'center',
-                  lg: 'center',
+                  base: 'left',
+                  sm: 'left',
+                  lg: 'left',
                   xl: 'left'
                 }}
               >
@@ -440,9 +438,9 @@ export const About = () => {
 
           </Box>
           <Box
-            // bg='yellow'
+            bg='yellow'
             flex='1'
-            margin = {{ base: '2% 8% 8% 8%', sm: '2% 8% 8% 8%', lg: '5%', xl: '5%'}}
+            margin = {{ base: '3% 0% 0% 0%', sm: '3% 0% 0% 0%', lg: '5%', xl: '5%'}}
           >
               <PatternInfo
                 title="DESCUBRA"
@@ -450,8 +448,8 @@ export const About = () => {
                 onClick={() => alert('Onde Comprar')}
                 icon={
                   <EarthIcon
-                    width={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
-                    height={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                    width={{ base: '60px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                    height={{ base: '60px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
                   />
                 }
               />
@@ -461,39 +459,8 @@ export const About = () => {
 
       </Flex>
     {/* FIM REVENDEDORES */}
-        <Flex>
-          <Box
-            // bg='yellow'
-            flex="1"
-            margin={{ base: '20px', sm: '25px', lg: '50px', xl: '60px' }}
-            alignSelf="center"
-          >
-            <PatternInfo
-              title="DESCUBRA"
-              description="Onde Comprar"
-              onClick={() => alert('Vai para Onde Comprar')}
-              icon={
-                <EarthIcon
-                  width={{
-                    base: '30px',
-                    xs: '30px',
-                    sm: '58px',
-                    lg: '70px',
-                    xl: '80px'
-                  }}
-                  height={{
-                    base: '30px',
-                    xs: '30px',
-                    sm: '58px',
-                    lg: '70px',
-                    xl: '80px'
-                  }}
-                />
-              }
-            />
-          </Box>
-        </Flex>
-      {/* FIM REVENDEDORES */}
+      
+
 
     {/* INICIO CERTIFICADOS */}
      <Flex
@@ -517,26 +484,26 @@ export const About = () => {
         >
           {/* BOX 1 */}
           <Box
-            margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 0% 5% 5%'}}
+            margin = {{ base: '10% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 0% 5% 5%'}}
             // bg='blue'
             flex='1'
             justifyItem={"flex-start"}
           >
                 <CompletedTitle 
                   titleString = "Certificações"
-                  textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                  alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
+                  textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                  alignSelf = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}} 
                 />
                 <Text
-                  marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px'}}
+                  marginTop={{ base: '25px', sm: '25px', lg: '20px', xl: '20px'}}
                 >Manejo florestal, qualidade produtiva, controle de fabricação. Para nós, qualidade e desenvolvimento responsável são mais do que objetivos a serem alcançados, são práticas incorporadas em nosso dia a dia.
                 </Text>
           </Box>
           {/* BOX 2 */}
           <Box
-            bg='yellow'
+            // bg='yellow'
             flex='1'
-            margin = {{ base: '2% 8% 8% 8%', sm: '2% 8% 8% 8%', lg: '5%', xl: '5%'}}
+            margin = {{ base: '2% 0% 5% 0%', sm: '2% 0% 5% 0%', lg: '5%', xl: '5%'}}
           >
              <PatternInfoPhoto 
                 onClick={() => alert('Vai para Nossas Certificações')}
