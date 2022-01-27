@@ -5,7 +5,7 @@ export const Text = {
       fontWeight: 'semibold'
     },
     body: {
-      fontSize: { base: '8px', sm: '12px', lg: '15px', xl: '18px' },
+      fontSize: { base: '16px', sm: '12px', lg: '15px', xl: '18px' },
       fontWeight: 'normal'
     },
     'larger-body-bold': {
@@ -52,7 +52,7 @@ export const Text = {
     },
     h1: {
       color: 'green.800',
-      fontSize: { base: '18px', sm: '32px', lg: '40px', xl: '50px'},
+      fontSize: { base: '36px', sm: '32px', lg: '40px', xl: '50px'},
       fontWeight: 'extrabold'
     },
     h2: {
@@ -62,7 +62,7 @@ export const Text = {
     },
     h3: {
       color: 'green.700',
-      fontSize: { base: '12px', sm: '16px', lg: '24px', xl: '30px'},
+      fontSize: { base: '20px', sm: '16px', lg: '24px', xl: '30px'},
       fontWeight: 'extrabold'
     },
     h4: {

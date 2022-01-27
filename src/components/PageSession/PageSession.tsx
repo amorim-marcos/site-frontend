@@ -49,41 +49,48 @@ export const PageSession = ({
     <Flex
       maxWidth="1920px"
       marginX="auto"
-      h={{ base: '250px', sm: '420px', lg: '500px', xl: '500px'}}
-      backgroundImage={data.imageUrl}
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"    
       alignItems='center'
       justifyContent='center'
       position='relative'
       zIndex='base'
       overflowY="hidden"
       overflowX="hidden"
+      backgroundImage={data.imageUrl}
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"    
+      // bg='tomato'
     >
-       
-      <Image
-        // bg='pink'
-        src='/assets/imgs/grafismo_topo_esquerda.png'
-        marginLeft={{ base: '-20px', sm: '-20px', lg: '-30px', xl: '-50px'}}
-        h='100%'
-        
-      />
-      <Spacer />
-      <Image
-        // bg='red'
-        src='/assets/imgs/grafismo_topo_direita.png'
-        marginTop={{ base: '150px', sm: '100px', lg: '150px', xl: '200px'}}
-        marginRight={{ base: '-10px', sm: '-20px', lg: '-30px', xl: '-50px'}}
-        h='100%'
-      />
+      <Box
+        // bg = 'red'
+        flex="1"
+        position='absolute'
+        // direction={{ base: 'row', sm: 'row', lg: 'row', xl: 'row'}}
+      >
+         <Image
+          // bg='pink'
+          src='/assets/imgs/grafismo_topo_esquerda.png'
+          // marginLeft={{ base: '-20px', sm: '-20px', lg: '-30px', xl: '-50px'}}
+          // h='100%'
+          
+        />
+        <Spacer />
+        <Image
+          // bg='red'
+          src='/assets/imgs/grafismo_topo_direita.png'
+          // marginTop={{ base: '150px', sm: '100px', lg: '150px', xl: '200px'}}
+          // marginRight={{ base: '-10px', sm: '-20px', lg: '-30px', xl: '-50px'}}
+          // h='100%'
+        />
 
+      </Box>
+       
       <Box
         // bg = 'grey'
-        position='absolute'
-        zIndex='base'
-        w={{ base: '80%', sm: '80%', lg: '80%', xl: '80%'}}
+        flex="1"
+        zIndex={10}
+        margin={{ base: '5%', sm: '3%', lg: '5%', xl: '5%'}}
       >
-          <Flex
+         <Flex
             direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
             // bg='yellow'
           >
@@ -95,7 +102,7 @@ export const PageSession = ({
                 />
 
                 <Box
-                  margin={{ base: '3px 0px', sm: '5px 0px', lg: '10px 0px', xl: '15px 10px'}}
+                  margin={{ base: '30px 0px', sm: '5px 0px', lg: '10px 0px', xl: '15px 10px'}}
                   // bg='pink'
                   flex = '2'
                 >
@@ -103,11 +110,12 @@ export const PageSession = ({
                     variant = {'h3' as any}
                     fontFamily = 'body'
                     color={subTitleColor}
-                    textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                    textAlign = {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
                   >{data.subtitle}</Text>
                   <Text
                     color={subTitleColor}
-                    textAlign = {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                    textAlign = {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+                    marginTop={{ base: '3%', sm: '5px 0px', lg: '10px 0px', xl: '15px 10px'}}
                   >{data.text}</Text>
               
                 </Box>
