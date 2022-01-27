@@ -41,6 +41,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
       setHeight(h)
       setWidth(w)
     }
+  // @ts-ignore 
   }, [channelsParentRef.current.clientWidth])
 
   React.useEffect(() => {
