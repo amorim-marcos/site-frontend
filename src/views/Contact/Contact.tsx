@@ -45,7 +45,69 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
 
   React.useEffect(() => {
     if(Object.keys(bgArray).length == contact_channels.length){
-     console.log(bgArray)
+        // Define know values
+        const imgW:number = 1922
+        const originalFlexWidth = channelsParentWidth
+
+        // Now it is fixed values. We should work on resposivity of that values getting for better results.
+        const padding = 200
+        const flexWidth:number = channelsParentWidth - padding 
+        const buttonsH:number = 58
+        const spaceSize:number = 15
+        const marginSize:number = 20
+
+        console.log(imgW, originalFlexWidth, channelsParentWidth)
+        
+        const bgArrayCopy = {...bgArray}
+
+        // Discover and organize the lines of tabs
+        let lines = []
+        var currentLineWidth = 0
+        var currentLineArray:Array<any> = []
+        lines.push(currentLineArray)
+
+        for(let i=0; i<Object.keys(bgArray).length; i++){ 
+          // If the current tab has a size greater than available space, then pass to next line.
+          if( currentLineWidth + bgArrayCopy[i.toString()]["width"] + marginSize >= flexWidth){
+            currentLineWidth = bgArrayCopy[i.toString()]["width"] + marginSize
+            currentLineArray = []
+            lines.push(currentLineArray)
+          }else{
+            currentLineWidth = currentLineWidth + bgArrayCopy[i.toString()]["width"] + marginSize
+          }
+
+          currentLineArray.push(i)
+        }
+
+        let visitedItems = 0
+
+        // Calculate all tabs positioning x and y iteraring over all lines previously organized. 
+        for(let line in lines){
+          let currentLine = lines[line]
+
+          // Calculate line box dimensions. 
+          let lineBoxWidth = 0
+          
+          for(let i = visitedItems; i < visitedItems + currentLine.length; i++){
+              lineBoxWidth = lineBoxWidth + bgArrayCopy[i.toString()]["width"] + marginSize
+          }
+
+          // Set up dimensions and limits where tabs will use background.
+          const originalImgX = Math.floor((imgW - originalFlexWidth) / 2) // discover original bg image borders relating to flex width.
+          var currentX = originalImgX + Math.floor((originalFlexWidth - lineBoxWidth) / 2) // horizontal positioning
+          var currentY = parseInt(line)*(buttonsH + spaceSize) // vertical positioning
+
+          // Iterate over current line to set up bg positions. 
+          for(let i = visitedItems; i < visitedItems + currentLine.length; i++){
+            bgArrayCopy[i.toString()]["x"] = currentX 
+            bgArrayCopy[i.toString()]["y"] = currentY
+            currentX = currentX + bgArrayCopy[i.toString()]["width"] + marginSize
+          }
+
+          visitedItems = visitedItems + currentLine.length
+        }
+
+        setFinalBgArray({...bgArrayCopy})
     }
   }, [bgArray])
 
@@ -67,7 +129,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
             textAlign="center"
           />
         </Flex>
-        <Flex flexDirection="column" mt="55px" justifyContent="center" paddingBottom={{base: "40px", lg: "80px"}}>
+        <Flex flexDirection="column" mt="55px" justifyContent="center" paddingBottom={{base: "40px", lg: "80px"}} ref={channelsParentRef}>
           {
             (isMobile && !showAllAreas)
             ? 
@@ -88,7 +150,6 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
                 paddingRight="100px"
                 justifyContent="center"
                 alignItems="center"
-                ref={channelsParentRef}
               >
                 {
                   contact_channels.map(
@@ -104,6 +165,8 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
                         onClick={(isActive) => { if(!isActive){ setContactChannel(channel); setShowAllAreas(false)} else{setContactChannel(null); setShowAllAreas(true)}}} 
                         mr="20px" mb="15px" 
                         name={channel.name}  service_code={channel.service_code} attention_required={(channel.attention_required) ? true : false}
+                        bgX={(finalBgArray[index.toString()] && finalBgArray[index.toString()].x) ? finalBgArray[index].x : 0}
+                        bgY={(finalBgArray[index.toString()] && finalBgArray[index.toString()].y) ? finalBgArray[index].y : 0}
                       />)
                 }
               </Flex>
