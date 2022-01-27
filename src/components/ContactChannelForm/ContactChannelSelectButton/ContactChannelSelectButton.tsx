@@ -50,7 +50,7 @@ export const ContactChannelSelectButton = ({ name, attention_required = false, s
       }}
       ref={ref} 
       onClick={handleOnClick} 
-      variant={"contact-channel" as any} backgroundColor={(isActive) ? "brown.200" : "brown.150"} color={(isActive) ? "white.100" : "grey.300"} 
+      variant={"contact-channel" as any} backgroundColor={(isActive) ? "brown.250" : "brown.150"} color={(isActive) ? "white.100" : "grey.300"} 
       {...props}
     >
       {name}
