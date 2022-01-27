@@ -52,6 +52,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
                   onClick={(isActive) => { if(!isActive){ setContactChannel((contact_channel != null) ? contact_channel : contact_channels[0]); setShowAllAreas(false); } else{setContactChannel(null); setShowAllAreas(true)}}}
                   mr="20px" mb="15px" 
                   name={(contact_channel != null) ? contact_channel.name : contact_channels[0].name}  service_code={(contact_channel != null) ? contact_channel.service_code : contact_channels[0].service_code} 
+                  attention_required={(contact_channel != null && contact_channel.attention_required) ? true : false}
                 />
               )
             : (

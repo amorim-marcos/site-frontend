@@ -5,7 +5,7 @@ import React from "react"
 
 export type ContactChannelSelectButtonProps = ButtonProps & {
   name: string,
-  attention_required: boolean,
+  attention_required?: boolean,
   service_code?: string
   setChannel?: Function
   unsetChannel?: Function
