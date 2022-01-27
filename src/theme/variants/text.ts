@@ -5,7 +5,7 @@ export const Text = {
       fontWeight: 'semibold'
     },
     body: {
-      fontSize: { base: '8px', sm: '12px', lg: '15px', xl: '18px' },
+      fontSize: { base: '15px', sm: '12px', lg: '15px', xl: '18px' },
       fontWeight: 'normal'
     },
     'larger-body-bold': {
@@ -52,23 +52,24 @@ export const Text = {
     },
     h1: {
       color: 'green.800',
-      fontSize: { base: '18px', sm: '32px', lg: '40px', xl: '50px'},
-      fontWeight: 'extrabold'
+      fontSize: { base: '34px', sm: '32px', lg: '40px', xl: '50px'},
+      fontWeight: 'extrabold',
+      letterSpacing: '-0.84px'
     },
     h2: {
       color: 'green.600',
-      fontSize: { base: '14px', sm: '22px', lg: '30px', xl: '40px'},
+      fontSize: { base: '22px', sm: '22px', lg: '30px', xl: '40px'},
       fontWeight: 'semibold'
     },
     h3: {
       color: 'green.700',
-      fontSize: { base: '12px', sm: '16px', lg: '24px', xl: '30px'},
+      fontSize: { base: '20px', sm: '16px', lg: '24px', xl: '30px'},
       fontWeight: 'extrabold'
     },
     h4: {
       color: 'green.700',
-      fontSize: { base: '10px', sm: '14px', lg: '16px', xl: '20px' },
-      fontWeight: 'extrabold'
+      fontSize: { base: '17px', sm: '18px', lg: '18px', xl: '20px' },
+      fontWeight: 'bold'
     },
     h5: {
       color: 'green.700',
