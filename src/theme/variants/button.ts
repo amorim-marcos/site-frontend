@@ -38,6 +38,18 @@ export const Button = {
       _hover: {
         bg: 'green.700'
       }
+    },
+    "contact-channel": {
+      w: 'auto',
+      h: '58px',
+      borderRadius: '0',
+      color: 'grey.300',
+      bg: 'brown.150',
+      paddingLeft: '15px',
+      paddingRight: '15px',
+      _hover: {
+        bg: 'brown.200'
+      }      
     }
   },
   defaultProps: {
