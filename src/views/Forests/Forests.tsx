@@ -1,13 +1,12 @@
 import { Container, Box, HStack, Spacer, Flex, Link, Text, Image, Button, Select, Input, Center, Checkbox, BoxProps, LinkProps} from "@chakra-ui/react"
 import Pagebar from '@components/Pagebar'
 import PageSession from '@components/PageSession'
-import Arrow from "@components/Arrow"
+import FireAlert from '@components/FireAlert'
 import CompletedTitle from '@components/CompletedTitle'
 import PatternInfo from '@components/PatternInfo'
 import { CertificationsIcon, ReportsIcon } from '@components/Icons'
 import Infographic from '@components/Infographic'
-import Infographic2 from "@components/Infographic2"
-import { SynergyIcon } from "@components/Icons"
+import FeaturedBanner from "@components/FeaturedBanner"
 import {
   List,
   ListItem,
@@ -28,6 +27,11 @@ const dataValores = {
   text: 'Plantamos mais de 7 milhões de árvores por ano. Nossas florestas plantadas são importantes sob o aspecto econômico, social e trazem benefícios para o meio ambiente. Nossas áreas florestais são constituídas por plantações e áreas naturais que contribuem para a conservação dos ecossistemas, fundamentais à vida no planeta. Além disso, trabalhamos no mapeamento das comunidades afetadas pelas operações de manejo florestal para que possamos adotar resoluções para as interferências negativas, contribuindo ainda mais para a geração de uma cadeia de valor.'
 }
 
+const bannerIcendio = {
+  title: "Em caso de incêndio em nossas florestas e entornos, ligue para 41 2109-3855 [PR] | 41 2109-3856 [PR] | 49 3245-9015 [SC] | 49 3245-9186 [SC]",
+  display: "flex"
+}
+
 export const Forests = () => {
   return (
     <Box
@@ -43,6 +47,11 @@ export const Forests = () => {
             url: 'divisao-florestal'
           }
         ]}
+      />
+
+      <FireAlert 
+        title = {bannerIcendio.title}
+        display={bannerIcendio.display}
       />
 
       <PageSession 
@@ -140,22 +149,19 @@ export const Forests = () => {
             
             </Flex>
 
-            <HStack
+            <Flex
               // bg='tomato'
-              // spacing='24px'
-              // direction = {{ base: 'row', sm: 'row', lg: 'row', xl: 'row'}}
               margin = {{ base: '8% 7% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 5% 2% 5%', xl: '5% 5% 5% 5%'}}
-              alignItems='center'
-              justifyContent='space-evenly'
-              // position='relative'
-              // zIndex='base'
               flexWrap={'wrap'}
-              // overflowY="hidden"
-              // overflowX="hidden"
-              // maxWidth="1500px"
-              // marginX="auto"
+              justifyContent='center'
             >
               
+                <Flex
+                  // bg="grey.100"
+                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                  
+                >
                   <Infographic
                     content3Text = 'mil hectares'
                     content1DisplayIcon = 'yes'
@@ -163,6 +169,12 @@ export const Forests = () => {
                     content2Text = '86'
                     titleSubscript1Text = 'Florestas Plantadas para Produção'
                   />
+                </Flex>
+                <Flex
+                  // bg="yellow.100"
+                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                >
                   <Infographic
                     content3Text = 'mil hectares'
                     content1DisplayIcon = 'yes'
@@ -170,6 +182,12 @@ export const Forests = () => {
                     content2Text = '92'
                     titleSubscript1Text = 'Preservação de Florestas Nativas'
                   />
+                </Flex>
+                <Flex
+                  // bg="orange.100"
+                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                >
                   <Infographic
                     content3Text = 'municípios'
                     content1DisplayIcon = 'yes'
@@ -177,6 +195,12 @@ export const Forests = () => {
                     content2Text = '60'
                     titleSubscript1Text = 'Cadeia de Valor'
                   />
+                </Flex>
+                <Flex
+                  // bg="red.100"
+                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                >
                   <Infographic
                     content3Text = 'mil hectares'
                     content1DisplayIcon = 'yes'
@@ -184,24 +208,37 @@ export const Forests = () => {
                     content2Text = '86'
                     titleSubscript1Text = 'Florestas Plantadas para Produção'
                   />
-                  <Infographic
-                    content3Text = 'mil hectares'
-                    content1DisplayIcon = 'yes'
-                    content1IconName = 'trees'
-                    content2Text = '92'
-                    titleSubscript1Text = 'Preservação de Florestas Nativas'
-                  />
-                  <Infographic
-                    content3Text = 'municípios'
-                    content1DisplayIcon = 'yes'
-                    content1IconName = 'trees'
-                    content2Text = '60'
-                    titleSubscript1Text = 'Cadeia de Valor'
-                  />
+                </Flex>
+                <Flex
+                  // bg="blue.100"
+                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                >
 
+                  <Infographic
+                    content3Text = 'mil hectares'
+                    content1DisplayIcon = 'yes'
+                    content1IconName = 'trees'
+                    content2Text = '92'
+                    titleSubscript1Text = 'Preservação de Florestas Nativas'
+                  />
+                </Flex>
+                <Flex
+                  // bg="purple.100"
+                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                >
+                  <Infographic
+                    content3Text = 'municípios'
+                    content1DisplayIcon = 'yes'
+                    content1IconName = 'trees'
+                    content2Text = '60'
+                    titleSubscript1Text = 'Cadeia de Valor'
+                  />
+                </Flex>  
 
             
-           </HStack>
+           </Flex>
         </Flex>
 
       </Flex>
@@ -258,7 +295,7 @@ export const Forests = () => {
             // bg='yellow'
             flex='1'
           >
-                 <CompletedTitle 
+                <CompletedTitle 
                   titleString = "Manejo Florestal"
                   textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
                   alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
@@ -303,8 +340,6 @@ export const Forests = () => {
             flex='1'
             margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
-             
-
               <Text
               >Texto template</Text>
           </Box>
@@ -314,10 +349,10 @@ export const Forests = () => {
             // bg='yellow'
             flex='1'
           >
-             <Text as='h3'
-                  variant = {"h3" as any}
-                  textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                >Preservação da biodiversidade</Text>
+              <Text as='h3'
+                variant = {"h3" as any}
+                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+              >Preservação da biodiversidade</Text>
               <Text
                 marginTop={"2%"}
               >Os estudos da biodiversidade são ferramentas importantes para a manutenção de um manejo florestal responsável. Nosso Programa Anual de Monitoramento de Fauna das Unidades Florestais da BERNECK® analisa os aspectos de evolução, recuperação de áreas degradadas, impacto ambiental, distribuição e composição da biodiversidade local. 
@@ -327,7 +362,6 @@ export const Forests = () => {
                 // textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
               >
               O plantio em mosaicos, a proteção de cursos d’água, prevenção de incêndios florestais e o uso racional dos recursos naturais podem contribuir – e muito – para a sustentabilidade do meio ambiente. Esse manejo florestal ajuda no estabelecimento de corredores ecológicos, que favorecem a circulação de mais de XXX espécies de animais silvestres, colaborando com a conservação da biodiversidade.
-              
               </Text>
           </Box>
         
@@ -483,31 +517,54 @@ export const Forests = () => {
           </Box>
           {/* BOX 2 */}
           <Flex
-            margin = {{ base: '3% 5% 5% 5%', sm: '3% 5% 5% 5%', lg: '5% 5% 5% 5%', xl: '5% 5% 5% 2%'}}
-            direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
+            margin = {{ base: '3% 5% 5% 5%', sm: '3% 5% 5% 5%', lg: '5% 5% 5% 5%', xl: '1% 0% 5% 0%'}}
+            direction = {{ base: 'row', sm: 'row', lg: 'row', xl: 'row'}}
             alignItems={"center"}
-            // bg='yellow'
+            // bg='tomato'
             flex='1'
           >
-             <Image 
-                src="/assets/imgs/170130-Berneck-58.png"
-             />
-              <Button 
-                onClick={() => alert('seja um fornecedor florestal')}
-                w={{ base: '200px', sm: '350px', lg: '500px', xl: '60%'}}
-                h={{ base: '50px', sm: '65px', lg: '80px', xl: '10%'}}
-                padding={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
-                marginTop={{ base: '-15px', sm: '-20px', lg: '-50px', xl: '-20px'}}
-              >
-                <Text as="h5"
-                  variant={"h5" as any}
-                  fontFamily = 'body'
-                  color='white'
-                  textAlign="center"
-                  fontWeight="bold"
-                >Seja um Fornecedor Florestal</Text>
-              </Button>
-          
+
+            <Flex
+              flex='1'
+              // bg='yellow'
+              direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
+            >
+                <FeaturedBanner 
+                    title = "Sistema de Monitoramento Florestal"
+                    srcImage="./img/iStock-1281848381.png"
+                />
+                <FeaturedBanner 
+                    title = "Florestas próximas das Unidades Industriais"
+                    srcImage="./img/6-3_AEREA FABRICA_menor.png"
+                />
+                  <FeaturedBanner 
+                    title = "Planejamento e Inventário Florestal"
+                    srcImage="./img/iStock-1298404583.png"
+                />
+             </Flex>
+
+             <Flex
+              flex='1'
+              // bg='blue'
+              direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
+            >
+                <FeaturedBanner 
+                    title = "Equipamentos e Tecnologia de Colheita inovadores"
+                    srcImage ="./img/3–6_OP_GRUA_menor.png"
+                    invert = {true}
+                />
+                <FeaturedBanner 
+                    title = "Logística Florestal Integrada"
+                    srcImage="./img/DSC_3131.png"
+                    invert = {true}
+                />
+                  <FeaturedBanner 
+                    title = "Pesquisa aplicada à melhoria da Qualidade Florestal"
+                    srcImage="./img/5–2_MUDAS (1).png"
+                    invert = {true}
+                />
+             </Flex>
+                
           </Flex>
         
         </Flex> 
@@ -619,10 +676,10 @@ export const Forests = () => {
         >
           {/* BOX 1 */}
           <Box
-            bg='pink'
+            // bg='pink'
             flex='2'
             // justifyItem={"center"}
-            margin = {{ base: '5% 5% 3% 5%', sm: '5% 5% 3% 5%', lg: '8% 5% 5% 5%', xl: '5% % 5% 2%'}}
+            margin = {{ base: '5% 5% 3% 5%', sm: '5% 5% 3% 5%', lg: '5% 5% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
              <CompletedTitle 
                 titleString = "Resumo público de Manejo Florestal"
@@ -639,59 +696,96 @@ export const Forests = () => {
           {/* BOX 2 */}
           <Box
             margin = {{ base: '0% 5% 5% 5%', sm: '0% 5% 5% 5%', lg: '2% 2% 8% 0%', xl: '5% 5% 5% 2%'}}
-            padding={{ base: '5% 10%', sm: '5% 10%', lg: '10% 10%', xl: '5% 10%'}}
-            bg='blue'
+            padding={{ base: '10%', sm: '10%', lg: '10%', xl: '5%'}}
+            // bg='blue'
             flex='1'
-            backgroundImage="/assets/imgs/fundo_relatorio.svg"
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"  
             position='relative'
             zIndex='base'
             overflowY="hidden"
             overflowX="hidden"
+            backgroundImage="/assets/imgs/fundo_relatorio.svg"
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat" 
           >
-              
+            
               <List spacing={{ base: '5', sm: '5', lg: '5', xl: '5'}}>
               {/* {dataValores.list.map((item) => ( */}
                 <ListItem>
                   <ReportsIcon 
-
+                    height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    stroke1="green.800"
                   />
                   <Text
-                    fontFamily = 'body'
+                    variant = {"h5" as any}
                     fontWeight= 'bold'
                     color={"green.800"}
+                    marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
+                    marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
+                    cursor="pointer"
+                        _hover={{
+                          color: 'green.550'
+                        }}
                   >Resumo público de Manejo Florestal • PR</Text>
                 </ListItem>
                 <ListItem>
-                <ReportsIcon 
-                />
+                  <ReportsIcon 
+                    height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    stroke1="green.800"
+                  />
                   <Text
-                    fontFamily = 'body'
+                    variant = {"h5" as any}
                     fontWeight= 'bold'
                     color={"green.800"}
-                  >Resumo público de Manejo Florestal • SC</Text>
+                    marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
+                    marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
+                    cursor="pointer"
+                        _hover={{
+                          color: 'green.550'
+                        }}
+                  >Resumo público de Manejo Florestal • PR</Text>
                 </ListItem>
                 <ListItem>
-                <ReportsIcon 
-                />
+                  <ReportsIcon 
+                    height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    stroke1="green.800"
+                  />
                   <Text
-                    fontFamily = 'body'
+                    variant = {"h5" as any}
                     fontWeight= 'bold'
                     color={"green.800"}
-                  >Resumo público de Manejo Florestal • RS</Text>
+                    marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
+                    marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
+                    cursor="pointer"
+                        _hover={{
+                          color: 'green.550'
+                        }}
+                  >Resumo público de Manejo Florestal • PR</Text>
                 </ListItem>
                 <ListItem>
-                <ReportsIcon 
-                />
+                  <ReportsIcon 
+                    height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                    stroke1="green.800"
+                  />
                   <Text
-                    fontFamily = 'body'
+                    variant = {"h5" as any}
                     fontWeight= 'bold'
                     color={"green.800"}
-                  >Resumo público de Manejo Florestal • MT</Text>
+                    marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
+                    marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
+                    cursor="pointer"
+                        _hover={{
+                          color: 'green.550'
+                        }}
+                  >Resumo público de Manejo Florestal • PR</Text>
                 </ListItem>
+               
               </List>
-
+            
+            {/* </Flex> */}
              
           </Box>
         

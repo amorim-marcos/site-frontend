@@ -86,6 +86,7 @@ export const Infographic = ({
     margin='3%'
     maxWidth="400px"
     // maxHeight={"auto"}
+    data-testid="infographic"
   >
     <Box 
       display='flex'

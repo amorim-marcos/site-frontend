@@ -4,10 +4,11 @@ import PageSession from '@components/PageSession'
 import Arrow from "@components/Arrow"
 import CompletedTitle from '@components/CompletedTitle'
 import PatternInfo from '@components/PatternInfo'
-import { CertificationsIcon } from '@components/Icons'
+import { CertificationsIcon, ReportsIcon } from '@components/Icons'
 import Infographic from '@components/Infographic'
 import Infographic2 from "@components/Infographic2"
 import { SynergyIcon } from "@components/Icons"
+import SponsoredProjects from "@components/SponsoredProjects"
 import {
   List,
   ListItem,
@@ -754,16 +755,16 @@ export const Compromise = () => {
           {/* BOX 2 */}
           <Box
             margin = {{ base: '2% 5% 5% 5%', sm: '2% 5% 5% 5%', lg: '2% 5% 5% 5%', xl: '2% 5% 5% 5%'}}
-            bg='yellow'
+            // bg='yellow'
             flex='1'
           >
              <Text as='h3'
                   variant = {"h3" as any}
-                  textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+                  textAlign={{ base: 'center', sm: 'center', lg: 'center', xl: 'left'}}
+                  marginBottom={{ base: '10px', sm: '10px', lg: '20px', xl: '30px'}}
+                  color="green.600"
                 >Confira alguns projetos patrocinados por nós:</Text>
-              <Text
-              >COMPONENTE LISTA
-              </Text>
+              <SponsoredProjects />
           </Box>
         
         </Flex> 
@@ -988,35 +989,58 @@ export const Compromise = () => {
             margin = {{ base: '0% 5% 5% 5%', sm: '0% 5% 5% 5%', lg: '5% 2% 5% 2%', xl: '5% 2% 5% 2%'}}
             // bg='blue'
             flex='1.5'
-            justifyItem={"flex-start"}
+            // justifyItem={"center"}
           >
+              {/* BOX 1 */}
               <Box
-                flex='2'
-              >
-                <CompletedTitle 
-                  titleString = "Relatório ESG – BERNECK®"
-                  textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                  alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
-                />
-                <Text
-                  marginTop = {{ base: '2%', sm: '2%', lg: '3%', xl: '3%'}}
-                >Nossas práticas de ESG – Environmental, Social and Governance (Ambiental, Social e Governança) incorporam questões destas três áreas, indo além das tradicionais métricas econômico-financeiras. O Relatório ESG marca nossa visão sobre o tema, iniciativas conectadas e indicadores que comprovam nossa atuação na conservação do meio ambiente, relação com a comunidade e conduta corporativa.
-                </Text>
-              </Box>
-              <Box
-                margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 2%', xl: '5% 2% 5% 2%'}}
-                // bg="red"
-                backgroundImage="/assets/imgs/fundo_relatorio.svg"
-                backgroundPosition="center"
-                backgroundRepeat="no-repeat"  
                 flex='1'
               >
-                <Text
-                  marginTop = {{ base: '2%', sm: '2%', lg: '3%', xl: '3%'}}
-                  padding={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
-                  textAlign =  {{ base: 'center', sm: 'center', lg: 'center', xl: 'center'}}
-                >Relatório ESG
-                </Text>
+                  <CompletedTitle 
+                    titleString = "Relatório ESG – BERNECK®"
+                    textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+                    alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
+                  />
+                  <Text
+                    marginTop = {{ base: '2%', sm: '2%', lg: '3%', xl: '3%'}}
+                  >Nossas práticas de ESG – Environmental, Social and Governance (Ambiental, Social e Governança) incorporam questões destas três áreas, indo além das tradicionais métricas econômico-financeiras. O Relatório ESG marca nossa visão sobre o tema, iniciativas conectadas e indicadores que comprovam nossa atuação na conservação do meio ambiente, relação com a comunidade e conduta corporativa.
+                  </Text>
+
+              </Box>
+              {/* BOX 2 */}
+              <Box
+                margin = {{ base: '5% 0% 5% 0%', sm: '5% 0% 5% 0%', lg: '2% 2% 8% 0%', xl: '5% 0% 5% 0%'}}
+                padding={{ base: '10%', sm: '10%', lg: '10%', xl: '5%'}}
+                // bg='blue'
+                flex='1'
+                backgroundImage="/assets/imgs/fundo_relatorio.svg"
+                backgroundPosition="left"
+                backgroundRepeat="no-repeat" 
+                alignSelf={"flex-end"}
+              >
+                 <List spacing={{ base: '5', sm: '5', lg: '5', xl: '5'}}>
+                  {/* {dataValores.list.map((item) => ( */}
+                    <ListItem
+                      
+                    >
+                      <ReportsIcon 
+                        height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                        width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
+                        stroke1="green.800"
+                      />
+                      <Text
+                        variant = {"h5" as any}
+                        fontWeight= 'bold'
+                        color={"green.800"}
+                        marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
+                        marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
+                        cursor="pointer"
+                        _hover={{
+                          color: 'green.550'
+                        }}
+                      >Relatorio ESG</Text>
+                    </ListItem>
+                  </List>
+
 
               </Box>
           </Box>

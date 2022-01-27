@@ -25,7 +25,9 @@ export const TrajectoryCarouselPanel = ({ tabData, myIndex, tabIndex }: Trajecto
         opacity={(active) ? '1' : '0'}
         transition={(active) ? 'opacity 0.5s linear;' : 'none'}
         background="white.100"
-        mt="40px"
+        // mt="40px"
+        // marginLeft={"6px"}
+        marginTop={{ base: "6px", sm: "10px", lg: "20px", xl: "40px" }}
         justifyContent="space-around"
         flexDirection={{
           base: 'column',
