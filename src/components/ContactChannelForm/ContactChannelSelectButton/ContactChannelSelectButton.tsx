@@ -10,12 +10,17 @@ export type ContactChannelSelectButtonProps = ButtonProps & {
   setChannel?: Function
   unsetChannel?: Function
   onClick?: (isActive:boolean) => void
+  onFinishRender: (width:number, height:number) => void
   isActive?: Boolean
 }
-export const ContactChannelSelectButton = ({ name, attention_required = false, service_code, setChannel, unsetChannel, isActive = false, onClick, ...props }: ContactChannelSelectButtonProps) => {
+export const ContactChannelSelectButton = ({ name, attention_required = false, service_code, setChannel, unsetChannel, isActive = false, onClick, onFinishRender, ...props }: ContactChannelSelectButtonProps) => {
   const [height, setHeight] = React.useState<number|null>(0)
   const [width, setWidth] = React.useState<number|null>(0)
   const ref = React.useRef(null)
+
+  const handleOnClick = () => {
+    if(onClick) onClick(isActive)
+  }
 
   React.useEffect(() => {
     // @ts-ignore
@@ -29,9 +34,9 @@ export const ContactChannelSelectButton = ({ name, attention_required = false, s
     }
   })
 
-  const handleOnClick = () => {
-    if(onClick) onClick(isActive)
-  }
+  React.useEffect(() => {
+    if(width && height && width > 0 && height > 0) onFinishRender(width, height)
+  }, [width, height])
 
   return (
     <>
