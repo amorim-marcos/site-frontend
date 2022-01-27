@@ -12,8 +12,10 @@ export type ContactChannelSelectButtonProps = ButtonProps & {
   onClick?: (isActive:boolean) => void
   onFinishRender?: (width:number, height:number) => void
   isActive?: Boolean
+  bgX?:number
+  bgY?:number
 }
-export const ContactChannelSelectButton = ({ name, attention_required = false, service_code, setChannel, unsetChannel, isActive = false, onClick, onFinishRender = () => {}, ...props }: ContactChannelSelectButtonProps) => {
+export const ContactChannelSelectButton = ({ name, attention_required = false, service_code, setChannel, unsetChannel, isActive = false, bgX = 0, bgY = 0, onClick, onFinishRender = () => {}, ...props }: ContactChannelSelectButtonProps) => {
   const [height, setHeight] = React.useState<number|null>(0)
   const [width, setWidth] = React.useState<number|null>(0)
   const ref = React.useRef(null)
@@ -41,6 +43,11 @@ export const ContactChannelSelectButton = ({ name, attention_required = false, s
   return (
     <>
     <Button 
+      background={(isActive) ? "url(/contact-channels/contact-channel-tab-bg-selecionado.svg) repeat" : "url(/contact-channels/contact-channel-tab-bg-regular.svg) repeat"} 
+      backgroundPosition={`-${bgX}px -${bgY}px`}
+      _hover={{
+        background: "url(/contact-channels/contact-channel-tab-bg-hover.svg) repeat" 
+      }}
       ref={ref} 
       onClick={handleOnClick} 
       variant={"contact-channel" as any} backgroundColor={(isActive) ? "brown.200" : "brown.150"} color={(isActive) ? "white.100" : "grey.300"} 
