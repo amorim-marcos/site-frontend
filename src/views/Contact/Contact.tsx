@@ -24,6 +24,22 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
   const [contact_channel, setContactChannel] = React.useState<ContactChannelData | null>(null)
   const { isMobile } = useMobile(1024)
   const [showAllAreas, setShowAllAreas] = React.useState<Boolean>(true)
+  const channelsParentRef = React.useRef(null)
+  const [channelsParentHeight, setHeight] = React.useState<number>(0)
+  const [channelsParentWidth, setWidth] = React.useState<number>(0)
+
+  React.useEffect(() => {
+    // @ts-ignore
+    let h = channelsParentRef.current.clientHeight
+    // @ts-ignore
+    let w = channelsParentRef.current.clientWidth
+
+    if(w && h){
+      setHeight(w)
+      setWidth(h)
+    }
+  })
+
   return (
     <>
       <Pagebar 
@@ -62,6 +78,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
                 paddingRight="100px"
                 justifyContent="center"
                 alignItems="center"
+                ref={channelsParentRef}
               >
                 {
                   contact_channels.map(
