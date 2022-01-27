@@ -66,7 +66,7 @@ export const FireAlert = ({
             >
                <Button 
                 onClick={() => alert('close')}
-                bgColor={"brown.300"}
+                bgColor={"brown.400"}
                 w={{ base: '60%', sm: '60%', lg: '60%', xl: '60%'}}
                 h={{ base: '10%', sm: '610%', lg: '10%', xl: '10%'}}
               >
