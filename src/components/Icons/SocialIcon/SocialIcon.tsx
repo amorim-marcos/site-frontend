@@ -1,13 +1,10 @@
-import { Box } from '@chakra-ui/react'
+import { Box, BoxProps } from '@chakra-ui/react'
 import Link from 'next/link'
 import { ResponsiveCss } from '../../../types/responsive'
 
-export type SocialIconProps = {
+export interface SocialIconProps extends BoxProps {
   media: 'facebook' | 'instagram' | 'linkedin' | 'youtube' | 'pinterest'
-  color?: string
   hoverColor?: string
-  width?: ResponsiveCss
-  height?: ResponsiveCss
   href?: string
 }
 
@@ -16,7 +13,6 @@ export const SocialIcon = ({
   color = 'green.550',
   hoverColor = '#b8c1be',
   width = '42',
-  height = '41',
   href = '#',
   ...props
 }: SocialIconProps) => {
@@ -28,7 +24,6 @@ export const SocialIcon = ({
         color={color}
         _hover={{ color: hoverColor }}
         width={width}
-        height={height}
         transition="0.5s"
         aria-label="social-icon"
       >
@@ -38,7 +33,6 @@ export const SocialIcon = ({
             data-name="face cinza"
             xmlns="http://www.w3.org/2000/svg"
             width="100%"
-            height="100%"
             viewBox="0 0 42.231 41.774"
             aria-label="facebook-icon"
           >
