@@ -57,9 +57,10 @@ export const PageSession = ({
       overflowX="hidden"
       backgroundImage={data.imageUrl}
       backgroundPosition="center"
-      backgroundRepeat="no-repeat"    
+      backgroundRepeat="repeat"    
       // bg='tomato'
     >
+      {/* BOX 1 */}
       <Box
         // bg = 'red'
         flex="1"
@@ -70,25 +71,24 @@ export const PageSession = ({
           // bg='pink'
           src='/assets/imgs/grafismo_topo_esquerda.png'
           // marginLeft={{ base: '-20px', sm: '-20px', lg: '-30px', xl: '-50px'}}
-          // h='100%'
+          // w={{ base: '0%', sm: '100%'}}
           
         />
         {/* <Spacer /> */}
         <Image
           // bg='red'
           src='/assets/imgs/grafismo_topo_direita.png'
-          // marginTop={{ base: '150px', sm: '100px', lg: '150px', xl: '200px'}}
-          // marginRight={{ base: '-10px', sm: '-20px', lg: '-30px', xl: '-50px'}}
-          // h='100%'
+          // w={{ base: '50%', sm: '100%'}}
         />
 
       </Box>
-       
+      
+      {/* BOX 2 */}
       <Box
         // bg = 'grey'
         flex="1"
         zIndex={10}
-        margin={{ base: '5%', sm: '8%', lg: '5%', xl: '5%'}}
+        margin={{ base: '10% 5%', sm: '5%', lg: '5%', xl: '5%'}}
       >
          <Flex
             direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}

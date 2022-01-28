@@ -19,7 +19,7 @@ const dataPageSession = {
   imageUrl: 'url(/assets/imgs/Grupo_1872.png)',
   title: 'Divisão florestal',
   subtitle: '',
-  text: 'Somos a marca da madeira, por isso, nossa matéria-prima é tão importante para nós e cuidamos com responsabilidade de nossas florestas. Toda a nossa madeira é proveniente de florestas plantadas, preservando as florestas nativas e garantindo o emprego e a renda no campo para milhares de famílias. As práticas de manejo florestal adotadas em nossas florestas asseguram a utilização racional dos recursos naturais para a produção em escala e longo prazo da matéria-prima que abastece nossas fábricas.'
+  text: 'Somos a marca da madeira, por isso, nossa matéria-prima é tão importante para nós e cuidamos com responsabilidade de nossas florestas. Toda a nossa madeira é proveniente de florestas plantadas, preservando as florestas nativas e garantindo o emprego e a renda no campo para milhares de famílias. As práticas de manejo florestal adotadas em nossas florestas asseguram a utilização racional dos recursos naturais para a produção em escala e longo prazo da matéria-prima que abastece nossas fábricas.Somos a marca da madeira, por isso, nossa matéria-prima é tão importante para nós e cuidamos com responsabilidade de nossas florestas. Toda a nossa madeira é proveniente de florestas plantadas, preservando as florestas nativas e garantindo o emprego e a renda no campo para milhares de famílias. As práticas de manejo florestal adotadas em nossas florestas asseguram a utilização racional dos recursos naturais para a produção em escala e longo prazo da matéria-prima que abastece nossas fábricas.'
 }
 
 const dataValores = {
@@ -83,7 +83,7 @@ export const Forests = () => {
             >
               {/* BOX 1 */}
               <Box
-                // bg='yellow'
+                // bg='yellow.99'
                 flex='1'
                 margin = {{ base: '8% 7% 0% 5%', sm: '5% 5% 0% 5%', lg: '5% 5% 5% 5%', xl: '5% 5% 2% 5%'}}
               >
@@ -100,16 +100,17 @@ export const Forests = () => {
               </Box>
               {/* BOX 2 */}
               <Box
-                // bg='pink'
+                // bg='grey.100'
                 flex='1'
-                margin = {{ base: '8% 7% 0% 5%', sm: '5% 5% 0% 5%', lg: '5% 5% 0% 5%', xl: '5% 5% 0% 5%'}}
+                margin = {{ base: '8% 0% 0% 0%', sm: '2% 5% 0% 5%', lg: '5% 5% 0% 5%', xl: '5% 5% 0% 5%'}}
               >
 
                 <Flex
                   // bg='blue'
                   direction='column'
                   alignItems="center"
-                  padding={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
+                  justifyContent={"center"}
+                  padding={{ base: '6%', sm: '3%', lg: '5%', xl: '5%'}}
                   backgroundImage="/assets/imgs/fundo_madeira.svg"
                   backgroundPosition="center"
                   backgroundRepeat="no-repeat"  
@@ -130,14 +131,13 @@ export const Forests = () => {
                     >Conservamos para colher sempre!</Text>
                     
                     <Button 
-                      onClick={() => alert('colorations')}
-                      w={{ base: '70%', sm: '70%', lg: '90%', xl: '90%'}}
-                      h={{ base: '70%', sm: '70%', lg: '90%', xl: '90%'}}
-                      padding={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
+                      onClick={() => alert('Compromisso')}
+                      w={{ base: '100%', sm: '70%', lg: '100%', xl: '80%'}}
+                      h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%'}}
+                      padding={{ base: '4%', sm: '3%', lg: '5%', xl: '5%'}}
                     >
                       <Text as="h5"
                         variant={"h5" as any}
-                        fontFamily = 'body'
                         color='white'
                         textAlign="center"
                         fontWeight="bold"
@@ -148,19 +148,18 @@ export const Forests = () => {
               </Box>
             
             </Flex>
-
+            {/* BOX 3 */}
             <Flex
               // bg='tomato'
-              margin = {{ base: '8% 7% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 5% 2% 5%', xl: '5% 5% 5% 5%'}}
+              margin = {{ base: '8% 0% 5% 0%', sm: '5% 0% 5% 0%', lg: '5% 5% 2% 5%', xl: '5% 0% 5% 0%'}}
               flexWrap={'wrap'}
               justifyContent='center'
             >
               
                 <Flex
                   // bg="grey.100"
-                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  width={{ base: '300px', sm: '250px', lg: '300px', xl: '30%'}}
                   height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
-                  
                 >
                   <Infographic
                     content3Text = 'mil hectares'
@@ -172,68 +171,68 @@ export const Forests = () => {
                 </Flex>
                 <Flex
                   // bg="yellow.100"
-                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  width={{ base: '300px', sm: '250px', lg: '300px', xl: '30%'}}
                   height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
                 >
                   <Infographic
                     content3Text = 'mil hectares'
                     content1DisplayIcon = 'yes'
-                    content1IconName = 'trees'
+                    content1IconName = 'forest'
                     content2Text = '92'
                     titleSubscript1Text = 'Preservação de Florestas Nativas'
                   />
                 </Flex>
                 <Flex
                   // bg="orange.100"
-                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  width={{ base: '300px', sm: '250px', lg: '300px', xl: '30%'}}
                   height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
                 >
                   <Infographic
                     content3Text = 'municípios'
                     content1DisplayIcon = 'yes'
-                    content1IconName = 'trees'
+                    content1IconName = 'house'
                     content2Text = '60'
                     titleSubscript1Text = 'Cadeia de Valor'
                   />
                 </Flex>
                 <Flex
                   // bg="red.100"
-                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  width={{ base: '300px', sm: '250px', lg: '300px', xl: '30%'}}
                   height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
                 >
                   <Infographic
-                    content3Text = 'mil hectares'
+                    content3Text = 'mil funcionários'
                     content1DisplayIcon = 'yes'
-                    content1IconName = 'trees'
-                    content2Text = '86'
-                    titleSubscript1Text = 'Florestas Plantadas para Produção'
+                    content1IconName = 'employees'
+                    content2Text = '100'
+                    titleSubscript1Text = 'Desenvolvimento da Comunidade'
                   />
                 </Flex>
                 <Flex
                   // bg="blue.100"
-                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  width={{ base: '300px', sm: '250px', lg: '300px', xl: '30%'}}
                   height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
                 >
 
                   <Infographic
                     content3Text = 'mil hectares'
                     content1DisplayIcon = 'yes'
-                    content1IconName = 'trees'
+                    content1IconName = 'synergy'
                     content2Text = '92'
                     titleSubscript1Text = 'Preservação de Florestas Nativas'
                   />
                 </Flex>
                 <Flex
                   // bg="purple.100"
-                  width={{ base: '200px', sm: '350px', lg: '400px', xl: '450px'}}
+                  width={{ base: '300px', sm: '250px', lg: '300px', xl: '30%'}}
                   height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
                 >
                   <Infographic
                     content3Text = 'municípios'
                     content1DisplayIcon = 'yes'
-                    content1IconName = 'trees'
-                    content2Text = '60'
-                    titleSubscript1Text = 'Cadeia de Valor'
+                    content1IconName = 'earth'
+                    content2Text = '154'
+                    titleSubscript1Text = 'Teste com texto mais comprido'
                   />
                 </Flex>  
 
@@ -273,7 +272,7 @@ export const Forests = () => {
             // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
             <Box
-              margin={{ base: '30% 8% 5% 8%', sm: '30% 8% 5% 8%', lg: '65% 8% 5% 8%', xl: '70% 8% 5% 8%'}}
+              margin={{ base: '30% 8% 5% 8%', sm: '30% 8% 5% 8%', lg: '80% 5% 8% 5%', xl: '80% 8% 8% 8%'}}
               h="100%"
             >
              <PatternInfo
@@ -291,17 +290,17 @@ export const Forests = () => {
           </Box>
           {/* BOX 2 */}
           <Box
-            margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 5% 5% 5%', xl: '5% 5% 5% 5%'}}
+            margin = {{ base: '8% 5% 10% 5%', sm: '5% 5% 8% 5%', lg: '5% 5% 5% 5%', xl: '5% 5% 5% 5%'}}
             // bg='yellow'
             flex='1'
           >
                 <CompletedTitle 
                   titleString = "Manejo Florestal"
-                  textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                  alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
+                  textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                  alignSelf = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}} 
                 />
                 <Text
-                  marginTop={"3%"}
+                  marginTop={{ base: '10%', sm: '4%', lg: '4%', xl: '4%'}}
                   textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
                 >O principal objetivo do manejo florestal da BERNECK® é produzir madeira premium, de alta qualidade. Planejar e conduzir o desenvolvimento das áreas de produção através do uso de técnicas de manejo condizentes com as características de cada região é fundamental para o sucesso dos nossos resultados. Assim, é possível garantir a sustentabilidade do negócio e a produtividade da floresta em curto, médio e longo prazo. Foi assim que nos certificamos em Manejo Florestal pelo FSC , sistema de certificação internacional que reconhece florestas manejadas de forma ambientalmente responsável, socialmente benéfico e economicamente viável.
                 </Text>
@@ -336,17 +335,73 @@ export const Forests = () => {
         >
           {/* BOX 1 */}
           <Box
-            bg='pink'
+            // bg='pink'
             flex='1'
-            margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+            margin = {{ base: '8% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
-              <Text
-              >Texto template</Text>
+
+              {/* INTERNAL FLEX */}
+              <Flex
+                // bg='grey'
+                direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
+              >
+                {/* INTERNAL FLEX - BOX 1 */}
+                <Flex
+                  bg='white.100'
+                  flex={1}
+                  marginLeft={{ base: '10%', sm: '10%', lg: '10%', xl: '10%'}}
+                >
+                  <Infographic
+                    content1Text = '+'
+                    content2Text = '250'
+                    titleSubscript1Text = 'Espécies de Animais Silvestres'
+                  />
+
+                  <Infographic
+                    content2Text = '6'
+                    titleSubscript1Text = 'Fazendas Monitoradas'
+                  />
+
+                </Flex>
+                {/* INTERNAL FLEX - BOX 2 */}
+                <Flex
+                  // bg='grey.400'
+                  flex={1}
+                  // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
+                >
+                  <Flex
+                    // bg='grey.400'
+                    flex={2}
+                    // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
+                  >
+                     <Image 
+                      src="/assets/imgs/IMG_0618.png"
+                    />
+                  </Flex>
+                  <Flex
+                    // bg='grey.400'
+                    flex={1}
+                    // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
+                  >
+                     <Text as='h5'
+                        variant = {"h5" as any}
+                        padding={{ base: '5%', sm: '5%', lg: '10%', xl: '5%'}}
+                        color={"brown.300"}
+                        // textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+                    >* Dados do Programa de Avistamento de Fauna de 2019 a 2021</Text>
+                  </Flex>
+
+                </Flex>
+
+              </Flex>
+
+
           </Box>
           {/* BOX 2 */}
           <Box
-            margin = {{ base: '0% 5% 5% 5%', sm: '0% 5% 5% 5%', lg: '5% 5% 5% 5%', xl: '5% 5% 5% 2%'}}
+            margin = {{ base: '0% 5% 10% 5%', sm: '0% 5% 5% 5%', lg: '5% 5% 5% 5%', xl: '5% 5% 5% 2%'}}
             // bg='yellow'
+            alignSelf={"center"}
             flex='1'
           >
               <Text as='h3'
@@ -394,18 +449,18 @@ export const Forests = () => {
         >
           {/* BOX 1 */}
           <Box
-            margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 8% 5%', lg: '3% 3% 3% 3%', xl: '3% 3% 3% 3%'}}
+            margin = {{ base: '8% 5% 5% 5%', sm: '8% 5% 8% 5%', lg: '5% 3% 8% 3%', xl: '5% 3% 3% 3%'}}
             // bg='yellow'
             flex='1'
             justifyItem={"flex-start"}
           >
                  <CompletedTitle 
                   titleString = "Produção Florestal"
-                  textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                  alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
+                  textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                  alignSelf = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}} 
                 />
                 <Text
-                  marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px'}}
+                  marginTop={{ base: '10%', sm: '5%', lg: '4%', xl: '4%'}}
                 >Nossas árvores plantadas são utilizadas de maneira inteligente. O tronco é usado para a serraria, a parte mais fina da árvore para os painéis e a casca para produzir energia. Os galhos e raízes são deixados no campo e servem de nutrientes para o solo e as novas plantações. Desta maneira, aproveitamos tudo o que a floresta nos proporciona, sem desperdícios. Fazemos o Ciclo Completo da Floresta. Por trás de cada uma das etapas da produção florestal existem ações organizadas para garantir seu sucesso e produtividade. O Programa de Melhoramento Genético, por exemplo, envolve o desenvolvimento de matrizes de alta produtividade para coleta de sementes. Somado a isto, a BERNECK® conta com dois viveiros para produção de mudas, no Paraná e em Santa Catarina, com capacidade para expedir aproximadamente 8 milhões de mudas por ano.
                 </Text>
           </Box>
@@ -415,19 +470,37 @@ export const Forests = () => {
             // bg='pink'
             flex='1'
             justifyItem={"center"}
-            margin = {{ base: '0% 5% 5% 5%', sm: '0% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+            margin = {{ base: '0% 0% 0% 0%', sm: '0% 0% 0% 0%', lg: '5% 2% 5% 5%', xl: '8% 2% 5% 5%'}}
           >
              <Image 
               src="/assets/imgs/IMG_0618.png"
              />
           </Box>
-        
+
         </Flex> 
+
+       
 
       </Flex> 
       {/* FIM Produção Florestal */}
 
 
+      {/* MADEIRA FLYANTE */}
+      <Flex
+        marginX="auto"
+        zIndex={10}
+        overflowY="hidden"
+        overflowX="hidden"
+        // bg='blue'
+        justifyContent={"flex-end"}
+        position={"absolute"}
+        margin = {{ base: '-25% 0% 0% 35%', sm: '-20% -0% 5% 40%', lg: '-22% 0% 5% 60%', xl: '-15% 0% 5% 70%'}}
+      >
+          <Image 
+            src="/assets/imgs/madeiras.png"
+          />
+      </Flex>
+      {/* MADEIRA FLYANTE */}
 
 
       {/* INICIO Do plantio à colheita */}
@@ -460,7 +533,7 @@ export const Forests = () => {
           </Box>
           {/* BOX 2 */}
           <Box
-            margin = {{ base: '0% 5% 5% 5%', sm: '0% 5% 8% 5%', lg: '3% 3% 3% 3%', xl: '3% 5% 3% 3%'}}
+            margin = {{ base: '0% 5% 8% 5%', sm: '0% 5% 8% 5%', lg: '3% 3% 3% 3%', xl: '3% 5% 3% 3%'}}
             // bg='yellow'
             flex='1'
             justifyItem={"flex-start"}
@@ -501,12 +574,14 @@ export const Forests = () => {
         <Flex
           // bg='blue'
           direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
+          
         >
           {/* BOX 1 */}
           <Box
             // bg='pink'
-            flex={{ base: '1', sm: '1', lg: '2', xl: '1'}}
-            margin = {{ base: '5% 5% 0% 5%', sm: '5% 5% 0% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+            flex={{ base: '1', sm: '1', lg: '1', xl: '1'}}
+            margin = {{ base: '8% 5% 0% 5%', sm: '8% 5% 0% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+            
           >
              <CompletedTitle 
                 titleString = "Destaques da produção florestal"
@@ -517,8 +592,8 @@ export const Forests = () => {
           </Box>
           {/* BOX 2 */}
           <Flex
-            margin = {{ base: '3% 5% 5% 5%', sm: '3% 5% 5% 5%', lg: '5% 5% 5% 5%', xl: '1% 0% 5% 0%'}}
-            direction = {{ base: 'row', sm: 'row', lg: 'row', xl: 'row'}}
+            margin = {{ base: '3% 0% 5% 0%', sm: '3% 0% 5% 0%', lg: '1% 5% 5% 5%', xl: '1% 0% 5% 0%'}}
+            direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
             alignItems={"center"}
             // bg='tomato'
             flex='1'
@@ -530,7 +605,7 @@ export const Forests = () => {
               direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
             >
                 <FeaturedBanner 
-                    title = "Sistema de Monitoramento Florestal"
+                    title = "Sistema de Monitoramento Florestal Sistema de Monitoramento Florestal Sistema de Monitoramento Florestal z fsafaefaefaef"
                     srcImage="./img/iStock-1281848381.png"
                 />
                 <FeaturedBanner 
@@ -594,15 +669,15 @@ export const Forests = () => {
           <Box
             // bg='pink'
             flex={{ base: '1', sm: '1', lg: '2', xl: '1'}}
-            margin = {{ base: '5% 5% 0% 5%', sm: '5% 5% 0% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+            margin = {{ base: '8% 5% 0% 5%', sm: '8% 5% 0% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
              <CompletedTitle 
                 titleString = "Fornecedor Florestal"
-                textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
+                textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                alignSelf = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}} 
               />
               <Text
-                marginTop = {{ base: '2%', sm: '2%', lg: '3%', xl: '3%'}}
+                marginTop={{ base: '10%', sm: '5%', lg: '4%', xl: '4%'}}
                 color={"green.800"}
               >Para atuar em equilíbrio com o meio ambiente, a BERNECK® utiliza toras e cavacos de madeiras com garantia de procedência. Por isso, trabalhamos em parceria com produtores selecionados, apoiando o desenvolvimento das suas atividades. É uma grande oportunidade de negócio para a família rural, pois proporciona uma alternativa de renda, valorização da propriedade, trabalho e melhoria da qualidade de vida com a produção de madeira.
               </Text>
@@ -616,7 +691,7 @@ export const Forests = () => {
           </Box>
           {/* BOX 2 */}
           <Flex
-            margin = {{ base: '3% 5% 5% 5%', sm: '3% 5% 5% 5%', lg: '5% 5% 5% 5%', xl: '5% 5% 5% 2%'}}
+            margin = {{ base: '3% 0% 5% 0%', sm: '3% 0% 5% 0%', lg: '5% 5% 5% 5%', xl: '5% 5% 5% 2%'}}
             direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
             alignItems={"center"}
             // bg='yellow'
@@ -627,14 +702,13 @@ export const Forests = () => {
              />
               <Button 
                 onClick={() => alert('seja um fornecedor florestal')}
-                w={{ base: '200px', sm: '350px', lg: '500px', xl: '60%'}}
-                h={{ base: '50px', sm: '65px', lg: '80px', xl: '10%'}}
-                padding={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
+                w={{ base: '90%', sm: '70%', lg: '90%', xl: '70%'}}
+                h={{ base: '100%', sm: '70%', lg: '15%', xl: '10%'}}
+                padding={{ base: '4%', sm: '3%', lg: '5%', xl: '5%'}}
                 marginTop={{ base: '-15px', sm: '-20px', lg: '-50px', xl: '-20px'}}
               >
                 <Text as="h5"
                   variant={"h5" as any}
-                  fontFamily = 'body'
                   color='white'
                   textAlign="center"
                   fontWeight="bold"
@@ -679,7 +753,7 @@ export const Forests = () => {
             // bg='pink'
             flex='2'
             // justifyItem={"center"}
-            margin = {{ base: '5% 5% 3% 5%', sm: '5% 5% 3% 5%', lg: '5% 5% 5% 5%', xl: '5% 2% 5% 5%'}}
+            margin = {{ base: '8% 5% 3% 5%', sm: '8% 5% 3% 5%', lg: '5% 5% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
              <CompletedTitle 
                 titleString = "Resumo público de Manejo Florestal"
@@ -687,15 +761,15 @@ export const Forests = () => {
                 alignSelf = {{ base: 'center', sm: 'center', lg: 'center', xl: 'flex-start'}} 
               />
               <Text
-                marginTop = {{ base: '2%', sm: '2%', lg: '3%', xl: '3%'}}
+                marginTop={{ base: '10%', sm: '5%', lg: '4%', xl: '4%'}}
                 color={"green.800"}
-                textAlign =  {{ base: 'center', sm: 'center', lg: 'center', xl: 'left'}}
+                textAlign =  {{ base: 'left', sm: 'left', lg: 'center', xl: 'left'}}
               >Saiba mais sobre o manejo responsável das nossas florestas.
               </Text>
           </Box>
           {/* BOX 2 */}
           <Box
-            margin = {{ base: '0% 5% 5% 5%', sm: '0% 5% 5% 5%', lg: '2% 2% 8% 0%', xl: '5% 5% 5% 2%'}}
+            margin = {{ base: '0% 0% 5% 0%', sm: '0% 0% 5% 0%', lg: '2% 2% 8% 0%', xl: '5% 5% 5% 2%'}}
             padding={{ base: '10%', sm: '10%', lg: '10%', xl: '5%'}}
             // bg='blue'
             flex='1'

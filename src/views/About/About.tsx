@@ -95,7 +95,7 @@ export const About = () => {
             flex="1"
             margin={{
               base: '8% 8% 2% 5%',
-              sm: '8% 8% 2% 8%',
+              sm: '8% 8% 2% 5%',
               lg: '5%',
               xl: '5%'
             }}
@@ -118,7 +118,7 @@ export const About = () => {
             flex="1"
             margin={{
               base: '5% 8% 10% 5%',
-              sm: '2% 8% 8% 8%',
+              sm: '2% 8% 8% 5%',
               lg: '5%',
               xl: '5%'
             }}
@@ -162,7 +162,7 @@ export const About = () => {
           {/* GLOBAL BOX 1 */}
           <Box
             // bg='pink'
-            flex={{ base: '1', sm: '1', md: '1', lg: '2', xl: '2' }}
+            flex={{ base: '1', sm: '1', md: '1', lg: '1', xl: '1' }}
             margin={{
               base: '8% 0% 0% 0%',
               sm: '8% 0% 0% 0%',
@@ -187,8 +187,8 @@ export const About = () => {
               {/* BOX 1 */}
               <Box
                 flex={{ base: '1', sm: '1', lg: '1', xl: '1' }}
-                // marginLeft={'-300px'}
-                // bg='yellow'
+                w={{ base: '80%', sm: '40%', lg: '100%', xl: '100%' }}
+                // bg='yellow.100'
                 // backgroundImage={dataMundo.imageSrc}
                 // backgroundPosition="left"
                 // backgroundRepeat="no-repeat"
@@ -203,12 +203,11 @@ export const About = () => {
               </Box>
               {/* BOX 2 */}
               <Box
-                // bg='pink.100'
-                
+                // bg='blue.100'
                 flex={{ base: '3', sm: '3', lg: '3', xl: '1' }}
                 position={"absolute"}
                 alignSelf={"center"}
-                margin={{ base: '-20% 0%', sm: '0% -10%', lg: '0% -8%', xl: '0% -8%' }}
+                margin={{ base: '-25% 0%', sm: '0% 0%', lg: '0% 0%', xl: '0% 0%' }}
               >
                 <Infographic
                   titleSuperscript1Text="Volume de Exportação"
@@ -232,8 +231,8 @@ export const About = () => {
             flex="1"
             margin={{
               base: '30% 10% 10% 5%',
-              sm: '8% 10% 8% 10%',
-              lg: '8% 5% 8% 0%',
+              sm: '8% 10% 8% 5%',
+              lg: '8% 5% 8% 3%',
               xl: '8% 8% 8% 5%'
             }}
             alignSelf="center"
@@ -404,7 +403,7 @@ export const About = () => {
               lg: '0',
               xl: '0 0 0 5%'
             }}
-            color="red"
+            // color="red"
           >
             <WhereWeAre />
           </Flex>
@@ -436,7 +435,7 @@ export const About = () => {
           <Box
             // bg='pink'
             flex='1'
-            margin = {{ base: '8% 8% 5% 5%', sm: '8% 8% 2% 8%', lg: '5%', xl: '5%'}}
+            margin = {{ base: '8% 8% 5% 5%', sm: '8% 8% 2% 5%', lg: '5%', xl: '5%'}}
             // alignSelf='center'
           >
                 <Text as='h3'

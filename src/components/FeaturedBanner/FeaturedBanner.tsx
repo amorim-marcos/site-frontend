@@ -21,7 +21,7 @@ export const FeaturedBanner = ({
 }: FeaturedBannerProps) => {
   return (
     <Flex
-        maxWidth="700px"
+        maxWidth={{ base: '320px', sm: '320px', lg: '700px', xl: '700px'}}
         marginX="auto"
         alignItems='center'
         justifyContent='center'
@@ -30,19 +30,20 @@ export const FeaturedBanner = ({
         overflowY="hidden"
         overflowX="hidden"
         bg = 'green.150'
-        margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '3%', xl: '4%'}}
+        margin = {{ base: '3% 5% 3% 5%', sm: '5% 5% 5% 5%', lg: '3%', xl: '4%'}}
+        h={{ base: '100%', sm: '100%', lg: '135px', xl: '180px'}}
       >
     
         <Flex
-          // bg='blue'
+          // bg='blue.100'
           direction = {reverse(invert) as any}
           alignItems={"center"}
         >
           {/* BOX 1 */}
           <Box
-            // bg='pink'
+            // bg='pink.100'
             flex='1'
-            justifyItem={"center"}
+            // justifyItem={"center"}
             // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
              <Image 
@@ -54,15 +55,18 @@ export const FeaturedBanner = ({
           {/* BOX 2 */}
           <Box
             margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 7% 5% 5%', xl: '5% 5% 5% 5%'}}
-            // bg='yellow'
-            flex='2'
-            
+            // bg='tomato.100'
+            flex='1'
+            // justifyItem={"center"}
           >
+             
                 <Text as='h4'
                   variant = {"h4" as any}
                   fontWeight= 'bold'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
                 >{title}</Text>
+            
+
           </Box>
         
         </Flex> 
