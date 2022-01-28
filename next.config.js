@@ -8,7 +8,10 @@ module.exports = withPWA({
     disable: !isProd
   },
   env: {
-    MAPBOX_API_KEY: process.env.MAPBOX_API_KEY
+    MAPBOX_API_KEY: process.env.MAPBOX_API_KEY,
+    YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY,
+    YOUTUBE_PLAYLIST_ID: process.env.YOUTUBE_PLAYLIST_ID,
+    YOUTUBE_PLAYLIST_URL: process.env.YOUTUBE_PLAYLIST_URL
   },
   i18n: {
     defaultLocale: 'en',
