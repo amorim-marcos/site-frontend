@@ -20,25 +20,6 @@ import { EarthIcon } from '@components/Icons'
 import PatternInfo from '@components/PatternInfo'
 import PatternInfoPhoto from '@components/PatternInfoPhoto'
 
-const dataPageSession = {
-  imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
-  title: 'Quem somos',
-  subtitle: 'Somos a marca da madeira',
-  text: 'Somos uma grande floresta viva, cultivada há 3 gerações e nutrida por valores disseminados de pai para filho. Desde a nossa fundação em 1952, estamos envolvidos em toda a cadeia produtiva de painéis e serrados, do plantio e colheita de árvores à manufatura de produtos de madeira premium, que contribuem para o desenvolvimento social e econômico do Brasil e para o mundo.'
-}
-
-const dataRaizes = {
-  title: 'Raízes firmes para crescer',
-  text: 'A força da natureza nos faz crescer. Trabalhamos duro para que nossos produtos ajudem a melhorar a vida das pessoas, apoiando o mercado global e gerando um impacto positivo nas comunidades locais. Nossas parcerias são vigorosas e criam vínculos duradouros com nossos clientes, fornecedores e toda a sociedade. Buscamos e desenvolvemos soluções ágeis e flexíveis para atender aos mais diversos propósitos, e aos mais de 60 países em todos os continentes. Estar próximo, nos faz chegar mais longe.',
-  imageSrc: '/assets/imgs/foto_fabrica.png'
-}
-
-const dataMundo = {
-  title: 'Madeira para o mundo',
-  text: 'Somos uma das maiores exportadoras de painéis e serrados do Brasil. Nossos produtos atendem aos mais elevados padrões do mercado internacional, garantindo o fornecimento da melhor matéria-prima para indústrias dos mais diversos setores. Tudo isso alinhado às exigências de entrada nos países importadores, com a agilidade logística obtida através da localização estratégica de nossas fábricas e integrada à garantia de qualidade na entrega.',
-  imageSrc: '/assets/imgs/quem_somos_container.png'
-}
-
 const dataTrajetoria = {
   title: 'Nossa Trajetória',
   text: 'Do cultivo da nossa terra, cresceu um comprometimento com a gestão ambientalmente sustentável e socialmente responsável. São mais de 65 anos buscando e desenvolvendo novas aplicações com a nossa madeira de forma versátil e renovável, 100% provenientes de cultivos florestais.'
@@ -56,7 +37,22 @@ const dataCertificacao = {
   text: 'Manejo florestal, qualidade produtiva, controle de fabricação. Para nós, qualidade e desenvolvimento responsável são mais do que objetivos a serem alcançados, são práticas incorporadas em nosso dia a dia.'
 }
 
-export const About = () => {
+export type AboutPageContent = {
+  header_title: string,
+  header_text: string,
+  section1_title: string,
+  section1_text: string,
+  section2_title: string,
+  section2_text: string,
+  exportation_volume: number,
+  comercial_relationship: number,
+}
+
+export type AboutProps = {
+  page_content: AboutPageContent
+}
+
+export const About = ({ page_content }:AboutProps) => {
   return (
     <Box maxWidth="1920px" marginX="auto" bg="green.100">
       <Pagebar
@@ -69,7 +65,12 @@ export const About = () => {
       />
 
       <PageSession
-        data={dataPageSession}
+        data={{
+          imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
+          title: 'Quem somos',
+          subtitle: page_content.header_title,
+          text: page_content.header_text
+        }}
         titleColor="white"
         subTitleColor="white"
       />
@@ -105,12 +106,12 @@ export const About = () => {
                   variant = {"h3" as any}
                   color = 'green.550'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                >{dataRaizes.title}</Text>
+                >{page_content.section1_title}</Text>
                 <Text
                   color='green.900'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
                   marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '20px'}}
-                >{dataRaizes.text}</Text>
+                >{page_content.section1_text}</Text>
 
           </Box>
           <Box
@@ -124,7 +125,7 @@ export const About = () => {
             }}
           >
             <Image
-              src={dataRaizes.imageSrc}
+              src={'/assets/imgs/foto_fabrica.png'}
               w={{ base: '100%', sm: '100%', lg: '500px', xl: '500px' }}
             />
           </Box>
@@ -170,7 +171,7 @@ export const About = () => {
               lg: '8% 0% 8% 0%',
               xl: '8% 0% 8% 0%'
             }}
-            backgroundImage={dataMundo.imageSrc}
+            backgroundImage={'/assets/imgs/quem_somos_container.png'}
             backgroundPosition="left"
             backgroundRepeat="no-repeat"
             backgroundSize="contain"
@@ -200,13 +201,13 @@ export const About = () => {
                 <Infographic
                   titleSuperscript1Text="Volume de Exportação"
                   content1Text="+"
-                  content2Text="3500"
+                  content2Text={page_content.exportation_volume}
                   content3Text="TEUs / mês"
                 />
                 <Infographic
                   titleSuperscript1Text="Relações Comerciais"
                   content1Text="+"
-                  content2Text="60"
+                  content2Text={page_content.comercial_relationship}
                   content3Text="países"
                 />
               </Box>
@@ -232,7 +233,7 @@ export const About = () => {
               color="green.900"
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
             >
-              {dataMundo.title}
+              {page_content.section2_title}
             </Text>
             <Text
               fontFamily="body"
@@ -240,7 +241,7 @@ export const About = () => {
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
               marginTop={{ base: '8px', sm: '8px', lg: '10px', xl: '20px' }}
             >
-              {dataMundo.text}
+              {page_content.section2_text}
             </Text>
           </Box>
         </Flex>
