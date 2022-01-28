@@ -57,7 +57,8 @@ export const PageSession = ({
       overflowX="hidden"
       backgroundImage={data.imageUrl}
       backgroundPosition="center"
-      backgroundRepeat="repeat"    
+      backgroundRepeat="no-repeat"    
+      backgroundSize={"cover"}
       // bg='tomato'
     >
       {/* BOX 1 */}
