@@ -1,9 +1,16 @@
 import { Box, BoxProps } from '@chakra-ui/react'
 import Link from 'next/link'
-import { ResponsiveCss } from '../../../types/responsive'
 
 export interface SocialIconProps extends BoxProps {
-  media: 'facebook' | 'instagram' | 'linkedin' | 'youtube' | 'pinterest'
+  media:
+    | 'facebook'
+    | 'instagram'
+    | 'linkedin'
+    | 'youtube'
+    | 'pinterest'
+    | 'twitter'
+    | 'whatsapp'
+  color?: string
   hoverColor?: string
   href?: string
 }
