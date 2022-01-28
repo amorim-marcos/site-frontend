@@ -12,6 +12,6 @@ export async function getStaticProps() {
       props: {
         page_content
       },
-      revalidate: 7200
+      revalidate: process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME
     }
   }
