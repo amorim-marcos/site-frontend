@@ -21,7 +21,7 @@ export const FeaturedBanner = ({
 }: FeaturedBannerProps) => {
   return (
     <Flex
-        maxWidth={{ base: '320px', sm: '320px', lg: '700px', xl: '700px'}}
+        maxWidth={{ base: '320px', sm: '400px', lg: '700px', xl: '700px'}}
         marginX="auto"
         alignItems='center'
         justifyContent='center'

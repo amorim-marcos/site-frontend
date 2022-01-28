@@ -207,7 +207,7 @@ export const About = () => {
                 flex={{ base: '3', sm: '3', lg: '3', xl: '1' }}
                 position={"absolute"}
                 alignSelf={"center"}
-                margin={{ base: '-25% 0%', sm: '0% 0%', lg: '0% 0%', xl: '0% 0%' }}
+                margin={{ base: '20% 0%', sm: '0% 0%', lg: '0% 0%', xl: '0% 0%' }}
               >
                 <Infographic
                   titleSuperscript1Text="Volume de Exportação"

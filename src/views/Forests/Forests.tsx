@@ -158,8 +158,8 @@ export const Forests = () => {
               
                 <Flex
                   // bg="grey.100"
-                  width={{ base: '300px', sm: '250px', lg: '300px', xl: '30%'}}
-                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                  width={{ base: '320px', sm: '250px', lg: '300px', xl: '30%'}}
+                  height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px'}}
                 >
                   <Infographic
                     content3Text = 'mil hectares'
@@ -171,8 +171,8 @@ export const Forests = () => {
                 </Flex>
                 <Flex
                   // bg="yellow.100"
-                  width={{ base: '300px', sm: '250px', lg: '300px', xl: '30%'}}
-                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                  width={{ base: '320px', sm: '250px', lg: '300px', xl: '30%'}}
+                  height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px'}}
                 >
                   <Infographic
                     content3Text = 'mil hectares'
@@ -184,8 +184,8 @@ export const Forests = () => {
                 </Flex>
                 <Flex
                   // bg="orange.100"
-                  width={{ base: '300px', sm: '250px', lg: '300px', xl: '30%'}}
-                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                  width={{ base: '320px', sm: '250px', lg: '300px', xl: '30%'}}
+                  height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px'}}
                 >
                   <Infographic
                     content3Text = 'municípios'
@@ -197,8 +197,8 @@ export const Forests = () => {
                 </Flex>
                 <Flex
                   // bg="red.100"
-                  width={{ base: '300px', sm: '250px', lg: '300px', xl: '30%'}}
-                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                  width={{ base: '320px', sm: '250px', lg: '300px', xl: '30%'}}
+                  height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px'}}
                 >
                   <Infographic
                     content3Text = 'mil funcionários'
@@ -210,8 +210,8 @@ export const Forests = () => {
                 </Flex>
                 <Flex
                   // bg="blue.100"
-                  width={{ base: '300px', sm: '250px', lg: '300px', xl: '30%'}}
-                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                  width={{ base: '320px', sm: '250px', lg: '300px', xl: '30%'}}
+                  height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px'}}
                 >
 
                   <Infographic
@@ -224,8 +224,8 @@ export const Forests = () => {
                 </Flex>
                 <Flex
                   // bg="purple.100"
-                  width={{ base: '300px', sm: '250px', lg: '300px', xl: '30%'}}
-                  height={{ base: '90px', sm: '130px', lg: '150px', xl: '200px'}}
+                  width={{ base: '320px', sm: '250px', lg: '300px', xl: '30%'}}
+                  height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px'}}
                 >
                   <Infographic
                     content3Text = 'municípios'
@@ -337,7 +337,7 @@ export const Forests = () => {
           <Box
             // bg='pink'
             flex='1'
-            margin = {{ base: '8% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+            margin = {{ base: '0% 0% 5% 0%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
 
               {/* INTERNAL FLEX */}
@@ -349,7 +349,7 @@ export const Forests = () => {
                 <Flex
                   bg='white.100'
                   flex={1}
-                  marginLeft={{ base: '10%', sm: '10%', lg: '10%', xl: '10%'}}
+                  marginLeft={{ base: '0%', sm: '10%', lg: '10%', xl: '10%'}}
                 >
                   <Infographic
                     content1Text = '+'
@@ -494,7 +494,7 @@ export const Forests = () => {
         // bg='blue'
         justifyContent={"flex-end"}
         position={"absolute"}
-        margin = {{ base: '-25% 0% 0% 35%', sm: '-20% -0% 5% 40%', lg: '-22% 0% 5% 60%', xl: '-15% 0% 5% 70%'}}
+        margin = {{ base: '-30% 0% 0% 40%', sm: '-22% -0% 5% 55%', lg: '-22% 0% 5% 65%', xl: '-15% 0% 5% 70%'}}
       >
           <Image 
             src="/assets/imgs/madeiras.png"

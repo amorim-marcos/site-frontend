@@ -7,7 +7,7 @@ export type HighlightBoxPanelProps = {
 
 const HighlightBoxPanelFooter = (props: HighlightBoxPanelProps) => (
   <Flex
-    h={{ base: '50px', sm: '70px', lg: '80px', xl: '90px' }}
+    h={{ base: '65px', sm: '75px', lg: '80px', xl: '90px' }}
     // maxWidth={'80%'}
     wrap={{ base: 'nowrap', md: 'wrap' }}
     direction="column"

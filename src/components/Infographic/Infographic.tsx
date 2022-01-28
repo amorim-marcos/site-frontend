@@ -167,17 +167,17 @@ export const Infographic = ({
                           || (content1IconName === 'trees' &&
                           <TreesIcon 
                             height = {{ base: '80px', sm: '100px', lg: '120px', xl: '140px'}}
-                            width = {{ base: '35px', sm: '40px', lg: '55px', xl: '60px'}}
+                            width = {{ base: '40px', sm: '40px', lg: '55px', xl: '60px'}}
                           />)
                           || (content1IconName === 'forest' &&
                           <ForestIcon 
                             height = {{ base: '50px', sm: '100px', lg: '120px', xl: '140px'}}
-                            width = {{ base: '25px', sm: '40px', lg: '42px', xl: '55px'}}
+                            width = {{ base: '40px', sm: '40px', lg: '42px', xl: '55px'}}
                           />)
                           || (content1IconName === 'house' &&
                           <HouseWithPath 
                             height = {{ base: '50px', sm: '100px', lg: '120px', xl: '140px'}}
-                            width = {{ base: '35px', sm: '50px', lg: '60px', xl: '80px'}}
+                            width = {{ base: '45px', sm: '50px', lg: '60px', xl: '80px'}}
                           />)
                           || (content1IconName === 'employees' &&
                           <EmployeesIcon 
@@ -224,8 +224,8 @@ export const Infographic = ({
                         color={content3Color}
                         letterSpacing = '-0.76px'
                         // bg='red'
-                        fontSize= {{ base: '11px', sm: '14px', lg: '15px', xl: '20px' }}
-                        maxWidth={{ base: '70px', sm: '90px', lg: '100px', xl: '150px'}}
+                        fontSize= {{ base: '13px', sm: '14px', lg: '15px', xl: '20px' }}
+                        maxWidth={{ base: '80px', sm: '90px', lg: '100px', xl: '150px'}}
                       >{content3Text}</Text>
                   </Flex>
 
@@ -264,8 +264,8 @@ export const Infographic = ({
               color={titleSubscript1Color}
               letterSpacing = '-0.94px'
               textAlign='center'
-              maxWidth={{ base: '150px', sm: '200px', lg: '250px', xl: '300px'}}
-              fontSize={{ base: '10px', sm: '16px', lg: '18px', xl: '30px'}}
+              maxWidth={{ base: '220px', sm: '200px', lg: '250px', xl: '300px'}}
+              // fontSize={{ base: '10px', sm: '16px', lg: '18px', xl: '30px'}}
             >{titleSubscript1Text}</Text>
         </Box>
         {/* SUBSCRIPT TITLE --> */}

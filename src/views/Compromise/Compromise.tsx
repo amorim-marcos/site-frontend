@@ -89,7 +89,7 @@ export const Compromise = () => {
           <Box
             // bg='pink'
             flex='1'
-            margin = {{ base: '8% 0% 2% 0%', sm: '5% 5% 2% 5%', lg: '5%', xl: '5%'}}
+            margin = {{ base: '0% 0% 2% 0%', sm: '5% 5% 2% 5%', lg: '5%', xl: '5%'}}
           >
 
             <Flex
@@ -275,9 +275,9 @@ export const Compromise = () => {
 
               </Box>
 
-              {/* LINHA 2 */}
+              {/* COLUNA 2 */}
               <Box
-                bg='blue'
+                // bg='blue'
                 flex='1'
               >
                 <Flex
@@ -322,10 +322,11 @@ export const Compromise = () => {
         zIndex='base'
         overflowY="hidden"
         overflowX="hidden"
-        bg = 'tomato'
+        bg = 'green.500'
         backgroundImage="/assets/imgs/img_floresta.png"
-        backgroundPosition="center"
-        backgroundRepeat="repeat"
+        backgroundPosition="left"
+        backgroundRepeat="no-repeat"
+        backgroundSize={"cover"}
       >
         <Flex
           // bg='pink'
@@ -382,7 +383,7 @@ export const Compromise = () => {
               <Text
                 color="white.100"
                 textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                marginTop = {{ base: '10%', sm: '2%', lg: '3%', xl: '3%'}}
+                marginTop = {{ base: '3%', sm: '2%', lg: '3%', xl: '3%'}}
               >Nossos programas florestais atuam na proteção dos mananciais, na restauração das matas ciliares e plantação de florestas junto às reservas nativas que mantemos. Eles contribuem para a regulação dos ciclos hidrológicos, controle de erosão e da qualidade dos solos, conservação da biodiversidade, captação ou sequestro de carbono e outras medidas fundamentais para reduzir os efeitos das mudanças climáticas no mundo. Como uma empresa ambientalmente responsável, calculamos as emissões atmosféricas em todas as operações executadas pela BERNECK®. Compilamos estas informações nos Inventários de Gases de Efeito Estufa - GEE que colaboram na elaboração de estratégias, planos e metas para a redução das emissões e intervenção positiva nas mudanças climáticas. Em contrapartida, nossos mais de 64,5 mil hectares de plantios florestais contribuem ativamente para a retirada de carbono do ambiente pelas árvores, superando – e muito – nossas emissões de CO₂.</Text>
           </Box>
         
@@ -631,19 +632,20 @@ export const Compromise = () => {
              <Image 
                 src="/assets/imgs/170130-Berneck-58.png"
              />
+
               <Button 
                 onClick={() => alert('trabalhe conosco')}
-                w={{ base: '200px', sm: '350px', lg: '500px', xl: '60%'}}
-                h={{ base: '50px', sm: '65px', lg: '80px', xl: '10%'}}
-                padding={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
+                w={{ base: '90%', sm: '70%', lg: '100%', xl: '80%'}}
+                h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%'}}
+                padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%'}}
                 marginTop={{ base: '-15px', sm: '-20px', lg: '-50px', xl: '-20px'}}
               >
-                  <Text as="h5"
-                    variant={"h5" as any}
-                    color='white'
-                    textAlign="center"
-                    fontWeight="bold"
-                  >Faça parte desse time</Text>
+                <Text as="h5"
+                  variant={"h5" as any}
+                  color='white'
+                  textAlign="center"
+                  fontWeight="bold"
+                >Faça parte desse time</Text>
               </Button>
           
           </Flex>
@@ -810,7 +812,7 @@ export const Compromise = () => {
           </Box>
           {/* BOX 2 */}
           <Box
-            margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 7% 5% 5%', xl: '5% 5% 5% 5%'}}
+            margin = {{ base: '5% 5% 10% 5%', sm: '5% 5% 5% 5%', lg: '5% 7% 5% 5%', xl: '5% 5% 5% 5%'}}
             // bg='yellow'
             flex='1'
           >
@@ -820,7 +822,7 @@ export const Compromise = () => {
                   alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
                 />
                 <Text
-                  marginTop = {{ base: '2%', sm: '2%', lg: '3%', xl: '3%'}}
+                  marginTop = {{ base: '8%', sm: '2%', lg: '3%', xl: '3%'}}
                 >E por valorizar as pessoas, a BERNECK® aposta também em um programa de Governança e Compliance. Somos uma empresa de alta performance, com uma gestão alinhada, competente e, sobretudo, transparente. Nossos valores familiares transcendem gerações e colaboradores, por acreditarmos na união, na clareza e na transparência em tudo o que fazemos. Nossas práticas socioambientais se baseiam em princípios éticos e de preocupação com o todo. Desde a semente plantada na terra, que quase duas décadas depois se transformará na matéria-prima para os painéis revestidos, todos os nossos processos são desenvolvidos para serem sustentáveis. Feitos para deixar o mínimo impacto ambiental e oferecer soluções inovadoras sempre. De família para família, da nossa casa para o seu ambiente.
                 </Text>
           </Box>
@@ -932,17 +934,18 @@ export const Compromise = () => {
             // bg='grey'
             flex='1'
           >
-            <Button 
-                onClick={() => alert('Quero fazer uma denúncia anônima')}
-                w={{ base: '200px', sm: '350px', lg: '500px', xl: '500px'}}
-                h={{ base: '35px', sm: '65px', lg: '80px', xl: '80px'}}
-                padding={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
+
+              <Button 
+                onClick={() => alert('trabalhe conosco')}
+                w={{ base: '100%', sm: '70%', lg: '100%', xl: '80%'}}
+                h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%'}}
+                padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%'}}
               >
-               <Text as="h5"
-                    variant={"h5" as any}
-                    color='white'
-                    textAlign="center"
-                    fontWeight="bold"
+                <Text as="h5"
+                  variant={"h5" as any}
+                  color='white'
+                  textAlign="center"
+                  fontWeight="bold"
                 >Quero fazer uma denúncia anônima</Text>
               </Button>
           </Box>
