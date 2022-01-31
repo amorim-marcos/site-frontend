@@ -5,7 +5,7 @@ export const Text = {
       fontWeight: 'semibold'
     },
     body: {
-      fontSize: { base: '15px', sm: '12px', lg: '15px', xl: '18px' },
+      fontSize: { base: '14px', sm: '15px', lg: '16px', xl: '18px' },
       fontWeight: 'normal'
     },
     'larger-body-bold': {
