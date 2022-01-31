@@ -19,6 +19,7 @@ import CompletedTitle from '@components/CompletedTitle'
 import { EarthIcon } from '@components/Icons'
 import PatternInfo from '@components/PatternInfo'
 import PatternInfoPhoto from '@components/PatternInfoPhoto'
+import { TrajectoryTab } from '@components/TrajectoryCarousel/TrajectoryCarousel'
 
 const dataTrajetoria = {
   title: 'Nossa Trajetória',
@@ -50,9 +51,10 @@ export type AboutPageContent = {
 
 export type AboutProps = {
   page_content: AboutPageContent
+  our_trajectory_tabs: Array<TrajectoryTab>
 }
 
-export const About = ({ page_content }:AboutProps) => {
+export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
   return (
     <Box maxWidth="1920px" marginX="auto" bg="green.100">
       <Pagebar
@@ -299,7 +301,7 @@ export const About = ({ page_content }:AboutProps) => {
             width="100%"
             margin={{ xs: '0', sm: '0', md: '0', lg: '20px', xl: '20px' }}
           >
-            <TrajectoryCarousel {...mockCarouselObj} />
+            <TrajectoryCarousel tabs={our_trajectory_tabs} />
           </Flex>
         </Flex>
       </Box>
