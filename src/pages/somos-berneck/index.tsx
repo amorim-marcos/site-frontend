@@ -5,11 +5,10 @@ import { GetStaticProps } from 'next'
 
 export type AboutPageProps = {
   page_content: AboutPageContent
-  our_trajectory_tabs: TrajectoryTab
-  context: any
+  our_trajectory_tabs: Array<TrajectoryTab>
 }
 
-export default function AboutPage({ page_content, our_trajectory_tabs, context }:any){
+export default function AboutPage({ page_content, our_trajectory_tabs }:AboutPageProps){
     return <About page_content={page_content} our_trajectory_tabs={our_trajectory_tabs}/>
 }
 
