@@ -49,8 +49,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return {
       props: {
         page_content,
-        our_trajectory_tabs,
-        context
+        our_trajectory_tabs
       },
       revalidate: parseInt(process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? "7200")
     }
