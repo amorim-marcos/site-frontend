@@ -17,7 +17,7 @@ export const PatternInfo = ({
     <Flex
       data-testid="pattern-info-box"
       align="center"
-      bg="green.900"
+      bg="green.800"
       cursor="pointer"
       pos="relative"
       zIndex='base'

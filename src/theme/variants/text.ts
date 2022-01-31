@@ -5,7 +5,7 @@ export const Text = {
       fontWeight: 'semibold'
     },
     body: {
-      fontSize: { base: '15px', sm: '12px', lg: '15px', xl: '18px' },
+      fontSize: { base: '14px', sm: '15px', lg: '16px', xl: '18px' },
       fontWeight: 'normal'
     },
     'larger-body-bold': {
@@ -63,17 +63,18 @@ export const Text = {
     },
     h3: {
       color: 'green.700',
-      fontSize: { base: '20px', sm: '16px', lg: '24px', xl: '30px'},
+      fontSize: { base: '20px', sm: '20px', lg: '24px', xl: '30px'},
       fontWeight: 'extrabold'
     },
     h4: {
       color: 'green.700',
       fontSize: { base: '17px', sm: '18px', lg: '18px', xl: '20px' },
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      letterSpacing: "-0.45px"
     },
     h5: {
       color: 'green.700',
-      fontSize: { base: '8px', sm: '12px', lg: '14px', xl: '13px' },
+      fontSize: { base: '13px', sm: '14px', lg: '14px', xl: '16px' },
       fontWeight: 'medium'
     },
     productBody: {

@@ -15,7 +15,10 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
   return (
     <Box>
       {isMobile ? (
-        <Flex as={'carousel' as any} px={{ base: '20px' }} justify="center">
+        <Flex as={'carousel' as any} 
+          px={{ base: '20px' }} 
+          justify="center"
+        >
           <Carousel>
             {panels.map((item) => (
               <WhereWeArePanel key={item.image} {...item} />
