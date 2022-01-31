@@ -47,6 +47,13 @@ export type AboutPageContent = {
   section2_text: string,
   exportation_volume: number,
   comercial_relationship: number,
+  our_trajectory_title: string,
+  our_trajectory_description: string,
+  where_we_are_title: string,
+  where_we_are_subtitle: string,
+  where_we_are_description: string,
+  resellers_description: string,
+  certifications_description: string
 }
 
 export type AboutProps = {
@@ -278,7 +285,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
             margin={{ base: '8% 5%', sm: '5% 5%', lg: '5% 20%', xl: '5% 20%' }}
           >
             <CompletedTitle
-              titleString={dataTrajetoria.title}
+              titleString={page_content.our_trajectory_title}
               textAlign={{
                 base: 'center',
                 sm: 'center',
@@ -292,7 +299,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
               marginTop={{ base: '30px', sm: '8px', lg: '10px', xl: '20px' }}
               textAlign="center"
             >
-              {dataTrajetoria.text}
+              {page_content.our_trajectory_description}
             </Text>
           </Flex>
           <Flex
@@ -339,7 +346,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
           >
             <CompletedTitle 
               titleColor = 'green.900' 
-              titleString = {dataOndeEstamos.title} 
+              titleString = {page_content.where_we_are_title} 
               alignSelf = {{ base: 'center', sm: 'center', lg: 'center', xl: 'flex-start'}} 
               textAlign =  {{ base: 'center', sm: 'center', lg: 'center', xl: 'left'}}
             />
@@ -366,7 +373,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
                   xl: 'left'
                 }}
               >
-                {dataOndeEstamos.subtitle}
+                {page_content.where_we_are_subtitle}
               </Text>
               <Text
                 fontFamily="body"
@@ -377,7 +384,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
                   xl: 'left'
                 }}
               >
-                {dataOndeEstamos.text}
+                {page_content.where_we_are_description}
               </Text>
             </Box>
           </Flex>
@@ -437,7 +444,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
                   color='green.900'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
                   marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '20px'}}
-                >Nossos produtos estão nos melhores móveis e revendas especializadas do Brasil e do mundo.</Text>
+                >{page_content.resellers_description}</Text>
 
           </Box>
           <Box
@@ -499,7 +506,8 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
                 />
                 <Text
                   marginTop={{ base: '25px', sm: '25px', lg: '20px', xl: '20px'}}
-                >Manejo florestal, qualidade produtiva, controle de fabricação. Para nós, qualidade e desenvolvimento responsável são mais do que objetivos a serem alcançados, são práticas incorporadas em nosso dia a dia.
+                >
+                  {page_content.certifications_description}
                 </Text>
           </Box>
           {/* BOX 2 */}

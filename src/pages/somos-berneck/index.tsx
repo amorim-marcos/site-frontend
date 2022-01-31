@@ -20,14 +20,14 @@ export async function getStaticProps() {
     const our_trajectory = await res.json()
 
     const our_trajectory_tabs = our_trajectory.year.map((year:any) => {
-      return {
+      return ({
         name: year.year,
         content: {
           title: year.title,
           text: year.description,
-          image: process.env.NEXT_PUBLIC_API_URL+year.image.url
+          image: process.env.NEXT_PUBLIC_API_URL + year.image.url
         }
-      }
+      })
     })
 
     return {
