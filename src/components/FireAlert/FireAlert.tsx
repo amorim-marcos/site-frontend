@@ -22,11 +22,8 @@ export const FireAlert = ({
       // display = {display}
     >
         <Flex
-          direction = {{ base: 'row', sm: 'row', lg: 'row', xl: 'row'}}
+          direction = {{ base: 'column', sm: 'row', lg: 'row', xl: 'row'}}
           // bg='red'
-          // margin = {{ base: '0.5%', sm: '0.5%', lg: '0.5%', xl: '1%'}}
-          // maxWidth="1920px"
-          // marginX="auto"
           w={"100%"}
         >
 
@@ -54,6 +51,7 @@ export const FireAlert = ({
               <Text as='h4'
                   variant = {"h4" as any}
                   color={"white"}
+                  textAlign={{ base: 'center', sm: 'left'}}
               >{title}</Text>
 
             </Flex>
@@ -71,8 +69,8 @@ export const FireAlert = ({
                 h={{ base: '10%', sm: '610%', lg: '10%', xl: '10%'}}
               >
                 <CloseIcon
-                  width={{ base: '8px', xs: '12px', sm: '19px', lg: '20px', xl: '20px' }}
-                  height={{ base: '8px', xs: '12px', sm: '19px', lg: '20px', xl: '20px' }}
+                  width={{ base: '16px', sm: '19px', lg: '20px', xl: '20px' }}
+                  height={{ base: '16px', sm: '19px', lg: '20px', xl: '20px' }}
                   color={"white"}
                 />
               </Button>
