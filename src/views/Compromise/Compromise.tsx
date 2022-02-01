@@ -16,6 +16,7 @@ import {
   OrderedList,
   UnorderedList,
 } from '@chakra-ui/react'
+import PatternCertification from "@components/PatternCertification"
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/nosso-compromisso-filtro-1x.jpg)',
@@ -635,10 +636,10 @@ export const Compromise = () => {
 
               <Button 
                 onClick={() => alert('trabalhe conosco')}
-                w={{ base: '90%', sm: '70%', lg: '100%', xl: '80%'}}
-                h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%'}}
-                padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%'}}
-                marginTop={{ base: '-15px', sm: '-20px', lg: '-50px', xl: '-20px'}}
+                w={{ base: '90%', sm: '90%', lg: '90%', xl: '90%'}}
+                h={{ base: '10%', sm: '10%', lg: '10%', xl: '10%'}}
+                padding={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
+                marginTop={{ base: '-15px', sm: '-20px', lg: '-40px', xl: '-20px'}}
               >
                 <Text as="h5"
                   variant={"h5" as any}
@@ -936,10 +937,10 @@ export const Compromise = () => {
           >
 
               <Button 
-                onClick={() => alert('trabalhe conosco')}
-                w={{ base: '100%', sm: '70%', lg: '100%', xl: '80%'}}
-                h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%'}}
-                padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%'}}
+                onClick={() => alert('Quero fazer uma denúncia anônima')}
+                w={{ base: '100%', sm: '100%', lg: '100%', xl: '100%'}}
+                h={{ base: '30%', sm: '30%', lg: '30%', xl: '40%'}}
+                padding={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
               >
                 <Text as="h5"
                   variant={"h5" as any}
@@ -1019,32 +1020,19 @@ export const Compromise = () => {
                 backgroundImage="/assets/imgs/fundo_relatorio.svg"
                 backgroundPosition="left"
                 backgroundRepeat="no-repeat" 
-                alignSelf={"flex-end"}
+                backgroundSize={"cover"}
+                alignItems={"center"}
+                alignContent={"center"}
+                justifyContent={"center"}
+                justifyItems={"center"}
               >
-                 <List spacing={{ base: '5', sm: '5', lg: '5', xl: '5'}}>
-                  {/* {dataValores.list.map((item) => ( */}
-                    <ListItem
-                      
-                    >
-                      <ReportsIcon 
-                        height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
-                        width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
-                        stroke1="green.800"
-                      />
-                      <Text
-                        variant = {"h5" as any}
-                        fontWeight= 'bold'
-                        color={"green.800"}
-                        marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
-                        marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
-                        cursor="pointer"
-                        _hover={{
-                          color: 'green.550'
-                        }}
-                      >Relatorio ESG</Text>
-                    </ListItem>
-                  </List>
-
+                 <PatternCertification 
+                    title = "Relatório ESG"
+                    titleInitialColor = "green.800"
+                    iconName = 'reports'
+                    iconInitialColor1 = "#004934"
+                    iconInitialColor2 = "#004934"
+                  />
 
               </Box>
           </Box>

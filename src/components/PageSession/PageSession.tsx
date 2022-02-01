@@ -17,6 +17,8 @@ export type PageSessionProps = {
   subTitleColor?: string
   subTitleType?: string
   subTitleLineDisplay?: 'flex' | 'none'
+  // Grafismo
+  viewGrafismo?: string
   // Data
   data : {
     imageUrl: string,
@@ -36,6 +38,8 @@ export const PageSession = ({
   subTitleColor = 'white.100',
   subTitleType = 'h3',
   subTitleLineDisplay = 'none',
+  // Grafismo
+  viewGrafismo = 'flex',
   // Data
   data = {
     imageUrl: '',
@@ -67,19 +71,21 @@ export const PageSession = ({
         flex="1"
         position='absolute'
         direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
+        display={viewGrafismo}
       >
          <Image
           // bg='pink'
           src='/assets/imgs/grafismo_topo_esquerda.png'
-          // marginLeft={{ base: '-20px', sm: '-20px', lg: '-30px', xl: '-50px'}}
-          // w={{ base: '0%', sm: '100%'}}
+          marginLeft={{ base: '-20px', sm: '-100px', lg: '-270px', xl: '-50px'}}
+          w={{ base: '50%', sm: '90%'}}
           
         />
         {/* <Spacer /> */}
         <Image
           // bg='red'
           src='/assets/imgs/grafismo_topo_direita.png'
-          // w={{ base: '50%', sm: '100%'}}
+          marginLeft={{ base: '120px', sm: '-100px', lg: '170px', xl: '-50px'}}
+          w={{ base: '50%', sm: '90%'}}
         />
 
       </Box>
@@ -101,7 +107,7 @@ export const PageSession = ({
                   flex = '1'
               >
                 <CompletedTitle 
-                  titleColor = 'white' 
+                  titleColor = {titleColor}
                   titleString = {data.title} 
                   alignSelf = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}}
                   textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}

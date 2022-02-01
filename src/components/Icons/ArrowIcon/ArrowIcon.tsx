@@ -11,7 +11,7 @@ export const ArrowIcon = ({
   onClick,
   width = '30px',
   stroke = 'white',
-  hoverStroke = 'gray.300'
+  hoverStroke = 'grey.300'
 }: ArrowIconProps) => {
   return (
     <Box
