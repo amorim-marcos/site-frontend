@@ -68,13 +68,10 @@ export const DownloadSection = ({
       <Flex
         zIndex="docked"
         marginY="3%"
-        justifyContent={
-          isMobile
-            ? 'center'
-            : itemsData.length > 4
-            ? 'space-between'
-            : 'flex-start'
-        }
+        justifyContent={{
+          base: 'center',
+          sm: itemsData.length > 4 ? 'space-between' : 'flex-start'
+        }}
       >
         {itemsData.map((item, i) => {
           return i < 5 ? (
@@ -83,9 +80,9 @@ export const DownloadSection = ({
               key={item.title}
               imageUrl={item.urlImage}
               title={item.title}
-              marginRight={
-                itemsData.length <= 4 ? { base: '0', sm: '3.5%' } : '0'
-              }
+              // marginRight={
+              //   itemsData.length <= 4 ? { base: '0', sm: '3.5%' } : '0'
+              // }
             />
           ) : (
             ''
