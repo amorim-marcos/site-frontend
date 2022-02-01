@@ -88,8 +88,8 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
       <Flex
         maxWidth="1920px"
         marginX="auto"
-        alignItems="center"
-        justifyContent="center"
+        // alignItems="center"
+        // justifyContent="center"
         position="relative"
         zIndex="base"
         overflowY="hidden"
@@ -488,8 +488,8 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
      <Flex
         maxWidth="1920px"
         marginX="auto"
-        alignItems='center'
-        justifyContent='center'
+        // alignItems='center'
+        // justifyContent='center'
         position='relative'
         zIndex='base'
         overflowY="hidden"
@@ -524,9 +524,9 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
           </Box>
           {/* BOX 2 */}
           <Box
-            bg='yellow'
+            // bg='yellow'
             flex='1'
-            margin = {{ base: '2% 0% 5% 0%', sm: '2% 0% 5% 0%', lg: '5%', xl: '5%'}}
+            margin = {{ base: '0% 0% 8% 0%', sm: '0% 0% 5% 0%', lg: '5%', xl: '5%'}}
           >
              <PatternInfoPhoto 
                 onClick={() => alert('Vai para Nossas Certificações')}

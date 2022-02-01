@@ -4,6 +4,7 @@ import { Box, Image, Text, Flex, Container, Wrap, Heading, Spacer } from '@chakr
 import { Wrapper } from '@components/LeafletMaps/styles'
 
 import CompletedTitle from '@components/CompletedTitle'
+import GrafismLeft from '@components/GrafismLeft'
 
 
 export type PageSessionProps = {
@@ -19,6 +20,8 @@ export type PageSessionProps = {
   subTitleLineDisplay?: 'flex' | 'none'
   // Grafismo
   viewGrafismo?: string
+  GrafismLeftStroke?: string
+  GrafismLeftOpacity?: string
   // Data
   data : {
     imageUrl: string,
@@ -40,6 +43,8 @@ export const PageSession = ({
   subTitleLineDisplay = 'none',
   // Grafismo
   viewGrafismo = 'flex',
+  GrafismLeftStroke = '#143127',
+  GrafismLeftOpacity = '0.6',
   // Data
   data = {
     imageUrl: '',
@@ -73,20 +78,31 @@ export const PageSession = ({
         direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
         display={viewGrafismo}
       >
-         <Image
-          // bg='pink'
-          src='/assets/imgs/grafismo_topo_esquerda.png'
-          marginLeft={{ base: '-20px', sm: '-100px', lg: '-270px', xl: '-50px'}}
-          w={{ base: '50%', sm: '90%'}}
-          
-        />
-        {/* <Spacer /> */}
-        <Image
-          // bg='red'
-          src='/assets/imgs/grafismo_topo_direita.png'
-          marginLeft={{ base: '120px', sm: '-100px', lg: '170px', xl: '-50px'}}
-          w={{ base: '50%', sm: '90%'}}
-        />
+  
+        <Box
+          ml = {{ base: '-10%', sm: '-10%', lg: '-30%', xl: '-30%'}}
+          mt = {{ base: '-20%', sm: '0%'}}
+        >
+          <GrafismLeft
+            stroke = {GrafismLeftStroke}
+            height = {{ base: '300px', sm: '400px', lg: '500px', xl: '550px'}}
+            width = {{ base: '300px', sm: '400px', lg: '400px', xl: '414px'}}
+            opacity = '0.6'
+          />
+        </Box>
+
+        <Box
+          ml = {{ base: '14%', sm: '20%', lg: '60%', xl: '70%'}}
+          mt = {{ base: '50%', sm: '0%'}}
+        >
+          <GrafismLeft
+            stroke = {GrafismLeftStroke}
+            height = {{ base: '300px', sm: '400px', lg: '500px', xl: '550px'}}
+            width = {{ base: '300px', sm: '400px', lg: '400px', xl: '414px'}}
+            opacity = '0.6'
+            transform = {'rotate(180deg)'}
+          />
+        </Box>
 
       </Box>
       

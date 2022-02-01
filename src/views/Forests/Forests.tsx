@@ -282,8 +282,8 @@ export const Forests = () => {
                 onClick={() => alert('Vai para Nossas Certificações')}
                 icon={
                   <CertificationsIcon
-                    width={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
-                    height={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                    width={{ base: '40px', xs: '50px', sm: '58px', lg: '70px', xl: '80px' }}
+                    height={{ base: '40px', xs: '50px', sm: '58px', lg: '70px', xl: '80px' }}
                   />
                 }
               />
@@ -770,9 +770,9 @@ export const Forests = () => {
           </Box>
           {/* BOX 2 */}
           <Box
-            margin = {{ base: '0% 0% 5% 0%', sm: '0% 0% 5% 0%', lg: '2% 2% 8% 0%', xl: '5% 5% 5% 0%'}}
+            margin = {{ base: '0% 5% 5% 5%', sm: '0% 5% 5% 5%', lg: '2% 2% 8% 0%', xl: '5% 5% 5% 0%'}}
             padding={{ base: '10%', sm: '10%', lg: '10%', xl: '2%'}}
-            bg='blue'
+            // bg='blue'
             flex='1'
             position='relative'
             zIndex='base'

@@ -38,7 +38,9 @@ export const Certification = () => (
     }}
     titleColor="green.900"
     subTitleColor="brown.350"
-    viewGrafismo = "none"
+    viewGrafismo = "flex"
+    GrafismLeftStroke = '#E0CBA5'
+    GrafismLeftOpacity = "0.2"
   />
 
 
