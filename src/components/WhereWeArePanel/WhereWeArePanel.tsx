@@ -51,13 +51,6 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
 
   return (
     <Flex
-      // h={{
-      //   base: '445px',
-      //   md: '400px',
-      //   lg: '435px',
-      //   xl: '295px',
-      //   '2xl': '435px'
-      // }}
       w={{
         base: '90vw',
         md: '720px',
