@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next'
 import Category from 'views/Canal-BNK/category'
 import { Post, CategoryLabel } from 'types/data/Post'
 
-import { POSTS } from '../_mock_data'
+import { POSTS } from 'mocks/canal_bnk'
 
 export interface CategoryPageProps {
   category: CategoryLabel

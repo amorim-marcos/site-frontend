@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next'
 import { Post } from 'types/data'
 import CanalBNK from 'views/Canal-BNK'
 
-import { POSTS } from './_mock_data'
+import { POSTS } from 'mocks/canal_bnk'
 
 export interface CanalBnkProps {
   posts: Post[]
