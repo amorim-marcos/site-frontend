@@ -5,7 +5,9 @@ import { NavButton } from './sections/Intro'
 import { Post as IPost } from 'types/data'
 import { Category as ICategory } from './'
 
-import useMobile from 'hooks/useMobile'
+// ZauJulio
+// Ref: Lazy loading
+// Ref: https://www.better.dev/lazy-loading-next-js
 
 export interface CategoryProps {
   posts?: IPost[]
@@ -13,8 +15,6 @@ export interface CategoryProps {
 }
 
 export default function Category(props: CategoryProps) {
-  const { isMobile } = useMobile(568)
-
   return (
     <Flex
       data-testid="intro-header"
