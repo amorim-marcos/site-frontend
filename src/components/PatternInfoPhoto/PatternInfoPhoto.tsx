@@ -17,7 +17,6 @@ export const PatternInfoPhoto = ({
   return (
     <Flex
       data-testid="pattern-info-box-photo"
-      align="center"
       bg="white.100"
       cursor="pointer"
       pos="relative"
@@ -62,8 +61,6 @@ export const PatternInfoPhoto = ({
         >
           <Text as="h5"
             variant = {"h5" as any}
-            // fontWeight="bold"
-            // letterSpacing="-0.45px"
             color="green.900"
           >{title}</Text>
         </Flex>

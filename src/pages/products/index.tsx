@@ -1,5 +1,1 @@
-export default function Produtos() {
-  return (
-    <></>
-  )
-}
+export { default } from 'views/Products'

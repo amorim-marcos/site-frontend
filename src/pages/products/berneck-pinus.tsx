@@ -1,1 +1,1 @@
-export { default } from '../../views/products/berneck-pinus'
+export { default } from '../../views/Products/berneck-pinus'
