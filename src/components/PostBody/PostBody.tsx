@@ -13,11 +13,11 @@ export const PostBody = ({ title }: PostBodyProps) => {
       w="100%"
       maxWidth={{
         base: '320px',
-        sm: '568px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px'
+        sm: '558px',
+        md: '758px',
+        lg: '1014px',
+        xl: '1270px',
+        '2xl': '1526px'
       }}
       zIndex="docked"
     >
@@ -48,7 +48,7 @@ export const PostBody = ({ title }: PostBodyProps) => {
         {/* End Social media */}
 
         {/* Title and category */}
-        <Flex flexDirection="column">
+        <Flex maxWidth={'78%'} flexDirection="column">
           <Flex alignItems="center">
             <ArrowIcon width="10px" stroke="green.600" />
             <Text marginLeft="2%" variant={'body' as any}>
@@ -80,7 +80,7 @@ export const PostBody = ({ title }: PostBodyProps) => {
       {/* End of post header */}
 
       {/* Post content */}
-      <Text w="50%" marginLeft="15%">
+      <Text marginTop="5%" w="50%" marginLeft="15%">
         O jornal Valor Econômico realizou a edição anual do prêmio Valor 1000 e
         escolheu as 25 melhores empresas em seus setores de atuação. Como
         resultado, a BERNECK® foi anunciada como a empresa campeã no setor de
