@@ -43,7 +43,24 @@ function CanalBNKFC(props: CanalBNKProps) {
 
   return (
     <Box>
-      <Pagebar paths={[{ title: 'Canal Bnk', url: '/canal-bnk' }]} />
+      {category !== 'all' ? (
+        <Pagebar
+          paths={[
+            { title: 'Canal Bnk', url: '/canal-bnk' },
+            {
+              title:
+                category === 'inspiration'
+                  ? 'Inspiração sob medida'
+                  : category === 'feedstock'
+                  ? 'Matéria-prima: conhecimento'
+                  : 'Mundo Berneck',
+              url: '/canal-bnk'
+            }
+          ]}
+        />
+      ) : (
+        <Pagebar paths={[{ title: 'Canal Bnk', url: '/canal-bnk' }]} />
+      )}
 
       <Intro
         posts={
