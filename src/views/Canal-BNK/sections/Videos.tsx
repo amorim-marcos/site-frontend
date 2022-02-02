@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 
 import { Flex, Box, Image, Text, Link } from '@chakra-ui/react'
 
 import { PlayIcon } from '@components/Icons'
 import { Section } from './Section'
+import { CategoryContext } from '..'
 
 const YOUTUBE_PLAYLIST_ITEMS_API =
   'https://www.googleapis.com/youtube/v3/playlistItems'
@@ -25,14 +26,34 @@ interface IVideos {
   }
 }
 
+const PLAYLISTS = {
+  all: {
+    id: 'PL0jp-uZ7a4g9FQWW5R_u0pz4yzV4RiOXu',
+    url: 'https://www.youtube.com/watch?v=KQetemT1sWc&list=PL0jp-uZ7a4g9FQWW5R_u0pz4yzV4RiOXu'
+  },
+  inspiration: {
+    id: 'PL718D16542AE44430',
+    url: 'https://www.youtube.com/watch?v=-tJYN-eG1zk&list=PL718D16542AE44430'
+  },
+  feedstock: {
+    id: 'PLP02sRgldWRb9LjuQgJ4AfxCd4cxygDrA',
+    url: 'https://www.youtube.com/watch?v=O4irXQhgMqg&list=PLP02sRgldWRb9LjuQgJ4AfxCd4cxygDrA'
+  },
+  world: {
+    id: 'PL718D16542AE44430',
+    url: 'https://www.youtube.com/watch?v=-tJYN-eG1zk&list=PL718D16542AE44430'
+  }
+}
+
 export const Videos = () => {
+  const { category } = useContext(CategoryContext)
   const [videos, setVideos] = useState<IVideos[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetch(
         `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&maxResults=${4}&playlistId=${
-          process.env.YOUTUBE_PLAYLIST_ID
+          PLAYLISTS[category].id
         }&key=${process.env.YOUTUBE_API_KEY}`
       )
       const data = await result.json()
@@ -40,26 +61,36 @@ export const Videos = () => {
     }
 
     fetchData()
-  }, [])
+  }, [category])
 
   return (
     <Section
       title="Vídeos"
       seeMore={{
         text: 'Veja mais vídeos',
-        link: process.env.YOUTUBE_PLAYLIST_URL
+        link: PLAYLISTS[category].url
       }}
-      bg="grey.150"
-      py="100px"
+      bg={
+        category === 'all' || category === 'feedstock'
+          ? 'grey.150'
+          : 'brown.100'
+      }
+      py={{ base: '52px', lg: '100px' }}
+      px={{ base: '20px', lg: '0' }}
     >
       <Flex
         w="100%"
         data-testid="videos"
         gap="34px"
-        wrap={{ base: 'wrap', lg: 'nowrap' }}
-        px="88px"
+        px={{ base: '0', lg: '88px' }}
         pt="60px"
-        justify="center"
+        pb={{ base: '20px', lg: '0' }}
+        justify={{
+          base: 'flex-start',
+          lg: 'center'
+        }}
+        overflowX={{ base: 'scroll', lg: 'hidden' }}
+        overflowY="hidden"
       >
         {videos?.map(({ id, snippet }) => {
           return (
