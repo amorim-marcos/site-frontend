@@ -19,25 +19,7 @@ import CompletedTitle from '@components/CompletedTitle'
 import { EarthIcon } from '@components/Icons'
 import PatternInfo from '@components/PatternInfo'
 import PatternInfoPhoto from '@components/PatternInfoPhoto'
-
-const dataPageSession = {
-  imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
-  title: 'Quem somos',
-  subtitle: 'Somos a marca da madeira',
-  text: 'Somos uma grande floresta viva, cultivada há 3 gerações e nutrida por valores disseminados de pai para filho. Desde a nossa fundação em 1952, estamos envolvidos em toda a cadeia produtiva de painéis e serrados, do plantio e colheita de árvores à manufatura de produtos de madeira premium, que contribuem para o desenvolvimento social e econômico do Brasil e para o mundo.'
-}
-
-const dataRaizes = {
-  title: 'Raízes firmes para crescer',
-  text: 'A força da natureza nos faz crescer. Trabalhamos duro para que nossos produtos ajudem a melhorar a vida das pessoas, apoiando o mercado global e gerando um impacto positivo nas comunidades locais. Nossas parcerias são vigorosas e criam vínculos duradouros com nossos clientes, fornecedores e toda a sociedade. Buscamos e desenvolvemos soluções ágeis e flexíveis para atender aos mais diversos propósitos, e aos mais de 60 países em todos os continentes. Estar próximo, nos faz chegar mais longe.',
-  imageSrc: '/assets/imgs/foto_fabrica.png'
-}
-
-const dataMundo = {
-  title: 'Madeiras para o mundo',
-  text: 'Somos uma das maiores exportadoras de painéis e serrados do Brasil. Nossos produtos atendem aos mais elevados padrões do mercado internacional, garantindo o fornecimento da melhor matéria-prima para indústrias dos mais diversos setores. Tudo isso alinhado às exigências de entrada nos países importadores, com a agilidade logística obtida através da localização estratégica de nossas fábricas e integrada à garantia de qualidade na entrega.',
-  imageSrc: '/assets/imgs/quem_somos_container.png'
-}
+import { TrajectoryTab } from '@components/TrajectoryCarousel/TrajectoryCarousel'
 
 const dataTrajetoria = {
   title: 'Nossa Trajetória',
@@ -56,7 +38,30 @@ const dataCertificacao = {
   text: 'Manejo florestal, qualidade produtiva, controle de fabricação. Para nós, qualidade e desenvolvimento responsável são mais do que objetivos a serem alcançados, são práticas incorporadas em nosso dia a dia.'
 }
 
-export const About = () => {
+export type AboutPageContent = {
+  header_title: string,
+  header_text: string,
+  section1_title: string,
+  section1_text: string,
+  section2_title: string,
+  section2_text: string,
+  exportation_volume: number,
+  comercial_relationship: number,
+  our_trajectory_title: string,
+  our_trajectory_description: string,
+  where_we_are_title: string,
+  where_we_are_subtitle: string,
+  where_we_are_description: string,
+  resellers_description: string,
+  certifications_description: string
+}
+
+export type AboutProps = {
+  page_content: AboutPageContent
+  our_trajectory_tabs: Array<TrajectoryTab>
+}
+
+export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
   return (
     <Box maxWidth="1920px" marginX="auto" bg="green.100">
       <Pagebar
@@ -69,7 +74,12 @@ export const About = () => {
       />
 
       <PageSession
-        data={dataPageSession}
+        data={{
+          imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
+          title: 'Quem somos',
+          subtitle: page_content.header_title,
+          text: page_content.header_text
+        }}
         titleColor="white"
         subTitleColor="white"
       />
@@ -94,8 +104,8 @@ export const About = () => {
             // bg='pink'
             flex="1"
             margin={{
-              base: '8% 8% 2% 8%',
-              sm: '8% 8% 2% 8%',
+              base: '8% 8% 2% 5%',
+              sm: '8% 8% 2% 5%',
               lg: '5%',
               xl: '5%'
             }}
@@ -103,34 +113,36 @@ export const About = () => {
           >
                 <Text as='h3'
                   variant = {"h3" as any}
-                  color = 'green.600'
+                  color = 'green.550'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                >{dataRaizes.title}</Text>
+                >{page_content.section1_title}</Text>
                 <Text
                   color='green.900'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
                   marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '20px'}}
-                >{dataRaizes.text}</Text>
+                >{page_content.section1_text}</Text>
 
           </Box>
           <Box
             // bg='yellow'
             flex="1"
             margin={{
-              base: '2% 8% 8% 8%',
-              sm: '2% 8% 8% 8%',
+              base: '5% 8% 10% 5%',
+              sm: '2% 8% 8% 5%',
               lg: '5%',
               xl: '5%'
             }}
           >
             <Image
-              src={dataRaizes.imageSrc}
-              w={{ base: '50%', sm: '50%', lg: '500px', xl: '500px' }}
+              src={'/assets/imgs/foto_fabrica.png'}
+              w={{ base: '100%', sm: '100%', lg: '500px', xl: '500px' }}
             />
           </Box>
         </Flex>
       </Flex>
       {/* FIM RAIZES FIRMES PARA CRESCER */}
+
+
 
       {/* INICIO PARA O MADEIRAS MUNDO */}
       <Flex
@@ -160,7 +172,7 @@ export const About = () => {
           {/* GLOBAL BOX 1 */}
           <Box
             // bg='pink'
-            flex={{ base: '1', sm: '1', md: '1', lg: '2', xl: '2' }}
+            flex={{ base: '1', sm: '1', md: '1', lg: '1', xl: '1' }}
             margin={{
               base: '8% 0% 0% 0%',
               sm: '8% 0% 0% 0%',
@@ -168,51 +180,55 @@ export const About = () => {
               lg: '8% 0% 8% 0%',
               xl: '8% 0% 8% 0%'
             }}
-            backgroundImage={dataMundo.imageSrc}
-            backgroundPosition="left"
-            backgroundRepeat="no-repeat"
-            backgroundSize="contain"
-            h={{
-              base: '300px',
-              sm: '350px',
-              md: '250px',
-              lg: '230px',
-              xl: '300px',
-              '2xl': '350px'
-            }}
+            
           >
             <Flex
               // bg='grey'
               direction={{
-                base: 'row',
+                base: 'column',
                 sm: 'row',
                 md: 'row',
                 lg: 'row',
                 xl: 'row'
               }}
               justifyItems="center"
-              justifyContent="center"
+              justifyContent="flex-end"
             >
               {/* BOX 1 */}
               <Box
-                flex={{ base: '1.2', sm: '1.2', md: '1.1', lg: '1', xl: '1' }}
-                // bg='yellow'
-              />
+                flex={{ base: '1', sm: '1', lg: '1', xl: '1' }}
+                w={{ base: '80%', sm: '40%', lg: '100%', xl: '100%' }}
+                // bg='yellow.100'
+                // backgroundImage={dataMundo.imageSrc}
+                // backgroundPosition="left"
+                // backgroundRepeat="no-repeat"
+                // backgroundSize="contain"
+              >
+                <Image
+                  src='/assets/imgs/quem_somos_container.png'
+                  w={{ base: '55%', lg: '60%'}}
+                  opacity =  {{ base: '0.5', sm: '1' }}
+                />
+
+              </Box>
               {/* BOX 2 */}
               <Box
-                // bg='red'
-                flex={{ base: '1.2', sm: '1.2', md: '1.2', lg: '1.1', xl: '1' }}
+                // bg='blue.100'
+                flex={{ base: '3', sm: '3', lg: '3', xl: '1' }}
+                position={"absolute"}
+                alignSelf={"center"}
+                margin={{ base: '20% 0%', sm: '0% 0%', lg: '0% 0%', xl: '0% 0%' }}
               >
                 <Infographic
                   titleSuperscript1Text="Volume de Exportação"
                   content1Text="+"
-                  content2Text="3500"
+                  content2Text={page_content.exportation_volume}
                   content3Text="TEUs / mês"
                 />
                 <Infographic
                   titleSuperscript1Text="Relações Comerciais"
                   content1Text="+"
-                  content2Text="60"
+                  content2Text={page_content.comercial_relationship}
                   content3Text="países"
                 />
               </Box>
@@ -224,9 +240,9 @@ export const About = () => {
             // bg='grey'
             flex="1"
             margin={{
-              base: '8% 10% 10% 10%',
-              sm: '8% 10% 8% 10%',
-              lg: '8% 5% 8% 0%',
+              base: '30% 10% 10% 5%',
+              sm: '8% 10% 8% 5%',
+              lg: '8% 5% 8% 3%',
               xl: '8% 8% 8% 5%'
             }}
             alignSelf="center"
@@ -238,7 +254,7 @@ export const About = () => {
               color="green.900"
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
             >
-              {dataMundo.title}
+              {page_content.section2_title}
             </Text>
             <Text
               fontFamily="body"
@@ -246,12 +262,14 @@ export const About = () => {
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
               marginTop={{ base: '8px', sm: '8px', lg: '10px', xl: '20px' }}
             >
-              {dataMundo.text}
+              {page_content.section2_text}
             </Text>
           </Box>
         </Flex>
       </Flex>
       {/* FIM PARA O MADEIRAS MUNDO */}
+
+
 
       {/* INICIO TRAJETORIA CAROUSEL */}
       <Box bg="brown.100">
@@ -276,10 +294,10 @@ export const About = () => {
             // bg='pink'
             flex="1"
             alignItems="center"
-            margin={{ base: '5% 5%', sm: '5% 5%', lg: '5% 20%', xl: '5% 20%' }}
+            margin={{ base: '8% 5%', sm: '8% 5%', lg: '5% 10%', xl: '5% 10%' }}
           >
             <CompletedTitle
-              titleString={dataTrajetoria.title}
+              titleString={page_content.our_trajectory_title}
               textAlign={{
                 base: 'center',
                 sm: 'center',
@@ -290,10 +308,10 @@ export const About = () => {
             <Text
               fontFamily="body"
               color="brown.350"
-              marginTop={{ base: '8px', sm: '8px', lg: '10px', xl: '20px' }}
+              marginTop={{ base: '30px', sm: '30px', lg: '30px', xl: '30px' }}
               textAlign="center"
             >
-              {dataTrajetoria.text}
+              {page_content.our_trajectory_description}
             </Text>
           </Flex>
           <Flex
@@ -302,11 +320,13 @@ export const About = () => {
             width="100%"
             margin={{ xs: '0', sm: '0', md: '0', lg: '20px', xl: '20px' }}
           >
-            <TrajectoryCarousel {...mockCarouselObj} />
+            <TrajectoryCarousel tabs={our_trajectory_tabs} />
           </Flex>
         </Flex>
       </Box>
       {/* FIM TRAJETORIA CAROUSEL */}
+
+
 
       {/* INICIO ONDE ESTAMOS */}
       <Flex
@@ -338,16 +358,16 @@ export const About = () => {
           >
             <CompletedTitle 
               titleColor = 'green.900' 
-              titleString = {dataOndeEstamos.title} 
+              titleString = {page_content.where_we_are_title} 
               alignSelf = {{ base: 'center', sm: 'center', lg: 'center', xl: 'flex-start'}} 
               textAlign =  {{ base: 'center', sm: 'center', lg: 'center', xl: 'left'}}
             />
 
             <Box
               margin={{
-                base: '3px 0px',
-                sm: '5px 0px',
-                lg: '5px 0px',
+                base: '25px 0px',
+                sm: '25px 0px',
+                lg: '25px 0px',
                 xl: '15px 10px'
               }}
               // bg='pink'
@@ -359,24 +379,24 @@ export const About = () => {
                 fontFamily="body"
                 color="green.600"
                 textAlign={{
-                  base: 'center',
-                  sm: 'center',
-                  lg: 'center',
+                  base: 'left',
+                  sm: 'left',
+                  lg: 'left',
                   xl: 'left'
                 }}
               >
-                {dataOndeEstamos.subtitle}
+                {page_content.where_we_are_subtitle}
               </Text>
               <Text
                 fontFamily="body"
                 textAlign={{
-                  base: 'center',
-                  sm: 'center',
-                  lg: 'center',
+                  base: 'left',
+                  sm: 'left',
+                  lg: 'left',
                   xl: 'left'
                 }}
               >
-                {dataOndeEstamos.text}
+                {page_content.where_we_are_description}
               </Text>
             </Box>
           </Flex>
@@ -393,7 +413,7 @@ export const About = () => {
               lg: '0',
               xl: '0 0 0 5%'
             }}
-            color="red"
+            // color="red"
           >
             <WhereWeAre />
           </Flex>
@@ -425,7 +445,7 @@ export const About = () => {
           <Box
             // bg='pink'
             flex='1'
-            margin = {{ base: '8% 8% 2% 8%', sm: '8% 8% 2% 8%', lg: '5%', xl: '5%'}}
+            margin = {{ base: '8% 8% 5% 5%', sm: '8% 8% 2% 5%', lg: '5%', xl: '5%'}}
             // alignSelf='center'
           >
                 <Text as='h3'
@@ -436,13 +456,13 @@ export const About = () => {
                   color='green.900'
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
                   marginTop = {{ base: '8px', sm: '8px', lg: '10px', xl: '20px'}}
-                >Nossos produtos estão nos melhores móveis e revendas especializadas do Brasil e do mundo.</Text>
+                >{page_content.resellers_description}</Text>
 
           </Box>
           <Box
-            // bg='yellow'
+            bg='yellow'
             flex='1'
-            margin = {{ base: '2% 8% 8% 8%', sm: '2% 8% 8% 8%', lg: '5%', xl: '5%'}}
+            margin = {{ base: '3% 0% 0% 0%', sm: '3% 0% 0% 0%', lg: '5%', xl: '5%'}}
           >
               <PatternInfo
                 title="DESCUBRA"
@@ -450,8 +470,8 @@ export const About = () => {
                 onClick={() => alert('Onde Comprar')}
                 icon={
                   <EarthIcon
-                    width={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
-                    height={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                    width={{ base: '60px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                    height={{ base: '60px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
                   />
                 }
               />
@@ -461,39 +481,8 @@ export const About = () => {
 
       </Flex>
     {/* FIM REVENDEDORES */}
-        <Flex>
-          <Box
-            // bg='yellow'
-            flex="1"
-            margin={{ base: '20px', sm: '25px', lg: '50px', xl: '60px' }}
-            alignSelf="center"
-          >
-            <PatternInfo
-              title="DESCUBRA"
-              description="Onde Comprar"
-              onClick={() => alert('Vai para Onde Comprar')}
-              icon={
-                <EarthIcon
-                  width={{
-                    base: '30px',
-                    xs: '30px',
-                    sm: '58px',
-                    lg: '70px',
-                    xl: '80px'
-                  }}
-                  height={{
-                    base: '30px',
-                    xs: '30px',
-                    sm: '58px',
-                    lg: '70px',
-                    xl: '80px'
-                  }}
-                />
-              }
-            />
-          </Box>
-        </Flex>
-      {/* FIM REVENDEDORES */}
+      
+
 
     {/* INICIO CERTIFICADOS */}
      <Flex
@@ -517,26 +506,27 @@ export const About = () => {
         >
           {/* BOX 1 */}
           <Box
-            margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 0% 5% 5%'}}
+            margin = {{ base: '10% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 0% 5% 5%'}}
             // bg='blue'
             flex='1'
             justifyItem={"flex-start"}
           >
                 <CompletedTitle 
                   titleString = "Certificações"
-                  textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                  alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
+                  textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                  alignSelf = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}} 
                 />
                 <Text
-                  marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px'}}
-                >Manejo florestal, qualidade produtiva, controle de fabricação. Para nós, qualidade e desenvolvimento responsável são mais do que objetivos a serem alcançados, são práticas incorporadas em nosso dia a dia.
+                  marginTop={{ base: '25px', sm: '25px', lg: '20px', xl: '20px'}}
+                >
+                  {page_content.certifications_description}
                 </Text>
           </Box>
           {/* BOX 2 */}
           <Box
             bg='yellow'
             flex='1'
-            margin = {{ base: '2% 8% 8% 8%', sm: '2% 8% 8% 8%', lg: '5%', xl: '5%'}}
+            margin = {{ base: '2% 0% 5% 0%', sm: '2% 0% 5% 0%', lg: '5%', xl: '5%'}}
           >
              <PatternInfoPhoto 
                 onClick={() => alert('Vai para Nossas Certificações')}

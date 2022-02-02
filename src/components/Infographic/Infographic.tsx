@@ -3,9 +3,8 @@ import { Heading, Flex, Box, Text, Center, Container, TextProps } from "@chakra-
 
 import { ResponsiveCss } from 'types/responsive'
 
-import WaterIcon from '@components/Icons/WaterIcon'
-import EnergyIcon from '@components/Icons/EnergyIcon'
-import TreesIcon from '@components/Icons/TreesIcon'
+import {WaterIcon, EnergyIcon, TreesIcon, ForestIcon, EmployeesIcon, EarthIcon, SynergyIcon } from '@components/Icons'
+import HouseWithPath from '@components/Icons/HouseWithPath'
 
 export type InfographicProps = {
   // SUPERSCRITS TITLES
@@ -168,8 +167,34 @@ export const Infographic = ({
                           || (content1IconName === 'trees' &&
                           <TreesIcon 
                             height = {{ base: '80px', sm: '100px', lg: '120px', xl: '140px'}}
-                            width = {{ base: '35px', sm: '40px', lg: '55px', xl: '60px'}}
-                          />)}
+                            width = {{ base: '40px', sm: '40px', lg: '55px', xl: '60px'}}
+                          />)
+                          || (content1IconName === 'forest' &&
+                          <ForestIcon 
+                            height = {{ base: '50px', sm: '100px', lg: '120px', xl: '140px'}}
+                            width = {{ base: '40px', sm: '40px', lg: '42px', xl: '55px'}}
+                          />)
+                          || (content1IconName === 'house' &&
+                          <HouseWithPath 
+                            height = {{ base: '50px', sm: '100px', lg: '120px', xl: '140px'}}
+                            width = {{ base: '45px', sm: '50px', lg: '60px', xl: '80px'}}
+                          />)
+                          || (content1IconName === 'employees' &&
+                          <EmployeesIcon 
+                            height = {{ base: '45px', sm: '80px', lg: '120px', xl: '140px'}}
+                            width = {{ base: '28px', sm: '35px', lg: '45px', xl: '60px'}}
+                          />)
+                          || (content1IconName === 'earth' &&
+                          <EarthIcon 
+                            height = {{ base: '45px', sm: '80px', lg: '120px', xl: '140px'}}
+                            width = {{ base: '28px', sm: '35px', lg: '45px', xl: '60px'}}
+                          />)
+                          || (content1IconName === 'synergy' &&
+                          <SynergyIcon 
+                            height = {{ base: '45px', sm: '80px', lg: '120px', xl: '140px'}}
+                            width = {{ base: '28px', sm: '35px', lg: '45px', xl: '60px'}}
+                          />)
+                        }
 
                       </Box>  
                     }
@@ -191,19 +216,16 @@ export const Infographic = ({
                     flexDirection='column'
                     // bg='yellow'
                     alignSelf='flex-start'
-                    marginTop={{ base: '5px', sm: '10px', lg: '5px', xl: '0px'}}
+                    marginTop={{ base: '5px', sm: '5px', lg: '2px', xl: '0px'}}
                     marginLeft='5px'
-                    // wordBreak='keep-all'
-                    // overflow="hidden"
-                    // whiteSpace={'nowrap'}
-                    // word-wrap={"normal"}
                   >
                       <Text 
                         variant={'h4' as any}
                         color={content3Color}
                         letterSpacing = '-0.76px'
                         // bg='red'
-                        maxWidth={{ base: '50px', sm: '80px', lg: '80px', xl: '120px'}}
+                        fontSize= {{ base: '13px', sm: '14px', lg: '15px', xl: '20px' }}
+                        maxWidth={{ base: '80px', sm: '90px', lg: '100px', xl: '150px'}}
                       >{content3Text}</Text>
                   </Flex>
 
@@ -242,8 +264,8 @@ export const Infographic = ({
               color={titleSubscript1Color}
               letterSpacing = '-0.94px'
               textAlign='center'
-              maxWidth={{ base: '150px', sm: '200px', lg: '250px', xl: '300px'}}
-              fontSize={{ base: '10px', sm: '16px', lg: '18px', xl: '30px'}}
+              maxWidth={{ base: '220px', sm: '200px', lg: '250px', xl: '300px'}}
+              // fontSize={{ base: '10px', sm: '16px', lg: '18px', xl: '30px'}}
             >{titleSubscript1Text}</Text>
         </Box>
         {/* SUBSCRIPT TITLE --> */}

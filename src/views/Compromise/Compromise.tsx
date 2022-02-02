@@ -89,14 +89,14 @@ export const Compromise = () => {
           <Box
             // bg='pink'
             flex='1'
-            margin = {{ base: '8% 7% 2% 5%', sm: '5% 5% 2% 5%', lg: '5%', xl: '5%'}}
+            margin = {{ base: '0% 0% 2% 0%', sm: '5% 5% 2% 5%', lg: '5%', xl: '5%'}}
           >
 
             <Flex
               // bg='blue'
               direction='column'
               alignItems="center"
-              padding={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
+              padding={{ base: '6%', sm: '3%', lg: '5%', xl: '5%'}}
               backgroundImage="/assets/imgs/fundo_madeira.svg"
               backgroundPosition="center"
               backgroundRepeat="no-repeat"  
@@ -121,14 +121,13 @@ export const Compromise = () => {
                   margin={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
                 >Conheça:</Text>
                 <Button 
-                  onClick={() => alert('colorations')}
-                  w={{ base: '70%', sm: '70%', lg: '90%', xl: '90%'}}
-                  h={{ base: '70%', sm: '70%', lg: '90%', xl: '90%'}}
-                  padding={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
+                   onClick={() => alert('Etica')}
+                   w={{ base: '100%', sm: '70%', lg: '100%', xl: '80%'}}
+                   h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%'}}
+                   padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%'}}
                 >
                   <Text as="h5"
                     variant={"h5" as any}
-                    fontFamily = 'body'
                     color='white'
                     textAlign="center"
                     fontWeight="bold"
@@ -147,7 +146,7 @@ export const Compromise = () => {
               <Text as='h3'
                   variant = {"h3" as any}
                   color = 'green.550'
-                  marginBottom={{ base: '2%', sm: '2%', lg: '5%', xl: '5%'}}
+                  marginBottom={{ base: '5%', sm: '2%', lg: '5%', xl: '5%'}}
               >{dataValores.title}</Text>
               
               <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5'}}>
@@ -224,15 +223,15 @@ export const Compromise = () => {
           <Box
             // bg='pink'
             flex='1'
-            margin = {{ base: '8% 5% 2% 5%', sm: '5% 5% 2% 5%', lg: '5% 2% 7% 5%', xl: '5% 2% 5% 5%'}}
+            margin = {{ base: '8% 5% 2% 5%', sm: '8% 5% 2% 5%', lg: '5% 2% 7% 5%', xl: '5% 2% 5% 5%'}}
           >
               <CompletedTitle 
                 titleString = {dataCultivamos.title}
-                textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
+                textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                alignSelf = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}} 
               />
               <Text
-                marginTop = {{ base: '2%', sm: '2%', lg: '3%', xl: '3%'}}
+                marginTop = {{ base: '10%', sm: '8%', lg: '3%', xl: '3%'}}
               >{dataCultivamos.text}</Text>
           </Box>
 
@@ -276,9 +275,9 @@ export const Compromise = () => {
 
               </Box>
 
-              {/* LINHA 2 */}
+              {/* COLUNA 2 */}
               <Box
-                bg='blue'
+                // bg='blue'
                 flex='1'
               >
                 <Flex
@@ -323,10 +322,11 @@ export const Compromise = () => {
         zIndex='base'
         overflowY="hidden"
         overflowX="hidden"
-        // bg = 'tomato'
+        bg = 'green.500'
         backgroundImage="/assets/imgs/img_floresta.png"
-        backgroundPosition="center"
+        backgroundPosition="left"
         backgroundRepeat="no-repeat"
+        backgroundSize={"cover"}
       >
         <Flex
           // bg='pink'
@@ -337,7 +337,7 @@ export const Compromise = () => {
           <Box
             // bg='pink'
             flex='1'
-            margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 0%', lg: '8% 2% 8% 2%', xl: '5% 2% 5% 5%'}}
+            margin = {{ base: '5% 0% 5% 0%', sm: '5% 0% 5% 0%', lg: '8% 2% 8% 2%', xl: '5% 2% 5% 5%'}}
           >
               <Flex
                 // bg='black'
@@ -371,7 +371,7 @@ export const Compromise = () => {
           </Box>
           {/* BOX 2 */}
           <Box
-            margin = {{ base: '0% 8% 10% 5%', sm: '0% 5% 5% 5%', lg: '8% 7% 8% 0%', xl: '5% 5% 5% 2%'}}
+            margin = {{ base: '0% 8% 10% 5%', sm: '3% 5% 8% 5%', lg: '8% 7% 8% 0%', xl: '5% 5% 5% 2%'}}
             // bg='yellow'
             flex='1'
           >
@@ -383,6 +383,7 @@ export const Compromise = () => {
               <Text
                 color="white.100"
                 textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+                marginTop = {{ base: '3%', sm: '2%', lg: '3%', xl: '3%'}}
               >Nossos programas florestais atuam na proteção dos mananciais, na restauração das matas ciliares e plantação de florestas junto às reservas nativas que mantemos. Eles contribuem para a regulação dos ciclos hidrológicos, controle de erosão e da qualidade dos solos, conservação da biodiversidade, captação ou sequestro de carbono e outras medidas fundamentais para reduzir os efeitos das mudanças climáticas no mundo. Como uma empresa ambientalmente responsável, calculamos as emissões atmosféricas em todas as operações executadas pela BERNECK®. Compilamos estas informações nos Inventários de Gases de Efeito Estufa - GEE que colaboram na elaboração de estratégias, planos e metas para a redução das emissões e intervenção positiva nas mudanças climáticas. Em contrapartida, nossos mais de 64,5 mil hectares de plantios florestais contribuem ativamente para a retirada de carbono do ambiente pelas árvores, superando – e muito – nossas emissões de CO₂.</Text>
           </Box>
         
@@ -490,14 +491,13 @@ export const Compromise = () => {
                       margin={{ base: '5%', sm: '5%', lg: '10%', xl: '10%'}}
                     >Conheça as iniciativas que compõem o Programa de Reciclagem da BERNECK®:</Text>
                     <Button 
-                      onClick={() => alert('colorations')}
-                      w={{ base: '70%', sm: '70%', lg: '90%', xl: '90%'}}
-                      h={{ base: '70%', sm: '70%', lg: '90%', xl: '90%'}}
-                      padding={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
+                      onClick={() => alert('Iniciativas')}
+                      w={{ base: '100%', sm: '70%', lg: '100%', xl: '80%'}}
+                      h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%'}}
+                      padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%'}}
                     >
                       <Text as="h5"
                         variant={"h5" as any}
-                        fontFamily = 'body'
                         color='white'
                         textAlign="center"
                         fontWeight="bold"
@@ -550,15 +550,17 @@ export const Compromise = () => {
           </Box>
           {/* BOX 2 */}
           <Box
-            margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 7% 5% 5%', xl: '5% 5% 5% 5%'}}
+            margin = {{ base: '5% 5% 10% 5%', sm: '5% 5% 8% 5%', lg: '5% 7% 5% 5%', xl: '5% 5% 5% 5%'}}
             // bg='yellow'
             flex='1'
           >
                 <Text as='h3'
                   variant = {"h3" as any}
                   textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+                  marginTop={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
                 >Preservação da fauna e da flora</Text>
                 <Text
+                marginTop={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
                 >Nossas florestas plantadas são adjacentes às áreas de preservação florestal, onde há plena e completa preservação da Flora e Fauna. Por sermos uma empresa comprometida com o meio ambiente, atuamos na redução do uso de produtos químicos no processo produtivo, adoção do cultivo mínimo, sem utilizar o fogo, fertilizantes ou qualquer tipo de tratamento para o preparo dos terrenos, utilização de galhos e raízes descartados da indústria para reposição de nutrientes do solo, entre outras tantas ações que a BERNECK® executa em benefício da regeneração e manutenção das áreas de preservação. Atuamos no Controle de Processos Erosivos, Recuperação de Áreas Degradadas, Salvamento e Resgate de Fauna, e outros 14 programas ambientais executados conforme orienta os diplomas legais vigentes, respeitando e protegendo a Flora e a Fauna. Monitoramos mais de 250 espécies animais circulantes em nossas áreas plantadas e nativas no Paraná e Santa Catarina. Práticas que inibem a ocorrência de caça e pesca, e contribuem para a preservação de espécies raras ou ameaçadas de extinção.
                 </Text>
           </Box>
@@ -590,21 +592,22 @@ export const Compromise = () => {
           <Box
             // bg='pink'
             flex={{ base: '1', sm: '1', lg: '2', xl: '1'}}
-            margin = {{ base: '5% 5% 0% 5%', sm: '5% 5% 0% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+            margin = {{ base: '8% 5% 0% 5%', sm: '8% 5% 0% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
              <CompletedTitle 
                 titleString = "Cultivamos nossa gente"
-                textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-                alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
+                textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
+                alignSelf = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}} 
               />
               <Text
-                marginTop = {{ base: '2%', sm: '2%', lg: '3%', xl: '3%'}}
+                marginTop={{ base: '10%', sm: '10%', lg: '5%', xl: '5%'}}
               >Temos orgulho dos nossos mais de 7,5 mil colaboradores diretos e indiretos da BERNECK®. São inúmeras histórias de vida que tornam a nossa empresa comprometida com a sociedade de forma verdadeiramente responsável. Somos uma empresa familiar e, de família para família, acreditamos no desenvolvimento técnico e humano dos nossos colaboradores. São cerca de 3 mil funcionários diretos no Paraná, Santa Catarina e Mato Grosso que realizam treinamentos e capacitações por meios dos programas de trainee, desenvolvimento de lideranças e bolsa auxílio para financiamento de cursos técnicos, de graduação e de pós-graduação. Incentivamos o desenvolvimento constante dos nossos colaboradores e acreditamos que crescemos juntos, olhando para a mesma direção.
               </Text>
               <Box
-                // bg='tomato'
+                // bg='blue'
                 flex='1'
                 margin = {{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
+                alignSelf={"center"}
               >
                 <Infographic
                   content1Text = '+'
@@ -629,16 +632,16 @@ export const Compromise = () => {
              <Image 
                 src="/assets/imgs/170130-Berneck-58.png"
              />
+
               <Button 
                 onClick={() => alert('trabalhe conosco')}
-                w={{ base: '200px', sm: '350px', lg: '500px', xl: '60%'}}
-                h={{ base: '50px', sm: '65px', lg: '80px', xl: '10%'}}
-                padding={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
+                w={{ base: '90%', sm: '70%', lg: '100%', xl: '80%'}}
+                h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%'}}
+                padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%'}}
                 marginTop={{ base: '-15px', sm: '-20px', lg: '-50px', xl: '-20px'}}
               >
                 <Text as="h5"
                   variant={"h5" as any}
-                  fontFamily = 'body'
                   color='white'
                   textAlign="center"
                   fontWeight="bold"
@@ -680,7 +683,7 @@ export const Compromise = () => {
             // bg='pink'
             flex='1'
             justifyItem={"center"}
-            margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+            margin = {{ base: '0% 0% 5% 0%', sm: '0% 0% 5% 0%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
              <Image 
               src="/assets/imgs/img_criancas.png"
@@ -688,7 +691,7 @@ export const Compromise = () => {
           </Box>
           {/* BOX 2 */}
           <Box
-            margin = {{ base: '0% 5% 5% 5%', sm: '0% 5% 8% 5%', lg: '3% 3% 3% 3%', xl: '3% 3% 3% 3%'}}
+            margin = {{ base: '0% 5% 10% 5%', sm: '0% 5% 8% 5%', lg: '3% 3% 3% 3%', xl: '3% 3% 3% 3%'}}
             // bg='yellow'
             flex='1'
             justifyItem={"flex-start"}
@@ -735,19 +738,20 @@ export const Compromise = () => {
               <Flex
                 alignItems={"center"}
                 // bg="pink.600"
+                direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
               >
                 <SynergyIcon
                    stroke1 = '#59993f'
                    stroke2 = '#143127'
-                   height = '150px'
-                   width = '150px'
+                   height = {{ base: '60px', sm: '80px', lg: '100px', xl: '150px'}}
+                   width = {{ base: '60px', sm: '80px', lg: '100px', xl: '150px'}}
                 />
-                <Text as='h3'
-                  variant = {"h3" as any}
-                  fontWeight =  'semibold'
+                <Text as='h4'
+                  variant = {"h4" as any}
+                  fontWeight = 'semibold'
                   color = "green.900"
-                  letterSpacing = '-0.56px'
-                  marginLeft={'40px'}
+                  textAlign={{ base: 'center', sm: 'center', lg: 'center', xl: 'left'}}
+                  padding={{ base: '5%', sm: '5%', lg: '3%', xl: '3%'}}
                 >Por meio das leis de incentivo, a BERNECK® apoia projetos que auxiliam o Estado a criar uma sinergia e impacto social positivo, levando estímulo aos jovens e à população em geral.
                 </Text>
             </Flex>
@@ -760,8 +764,8 @@ export const Compromise = () => {
           >
              <Text as='h3'
                   variant = {"h3" as any}
-                  textAlign={{ base: 'center', sm: 'center', lg: 'center', xl: 'left'}}
-                  marginBottom={{ base: '10px', sm: '10px', lg: '20px', xl: '30px'}}
+                  textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+                  margin={{ base: '20px 0px', sm: '20px 0px', lg: '30px 0px', xl: '30px 0px'}}
                   color="green.600"
                 >Confira alguns projetos patrocinados por nós:</Text>
               <SponsoredProjects />
@@ -808,7 +812,7 @@ export const Compromise = () => {
           </Box>
           {/* BOX 2 */}
           <Box
-            margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 7% 5% 5%', xl: '5% 5% 5% 5%'}}
+            margin = {{ base: '5% 5% 10% 5%', sm: '5% 5% 5% 5%', lg: '5% 7% 5% 5%', xl: '5% 5% 5% 5%'}}
             // bg='yellow'
             flex='1'
           >
@@ -818,7 +822,7 @@ export const Compromise = () => {
                   alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
                 />
                 <Text
-                  marginTop = {{ base: '2%', sm: '2%', lg: '3%', xl: '3%'}}
+                  marginTop = {{ base: '8%', sm: '2%', lg: '3%', xl: '3%'}}
                 >E por valorizar as pessoas, a BERNECK® aposta também em um programa de Governança e Compliance. Somos uma empresa de alta performance, com uma gestão alinhada, competente e, sobretudo, transparente. Nossos valores familiares transcendem gerações e colaboradores, por acreditarmos na união, na clareza e na transparência em tudo o que fazemos. Nossas práticas socioambientais se baseiam em princípios éticos e de preocupação com o todo. Desde a semente plantada na terra, que quase duas décadas depois se transformará na matéria-prima para os painéis revestidos, todos os nossos processos são desenvolvidos para serem sustentáveis. Feitos para deixar o mínimo impacto ambiental e oferecer soluções inovadoras sempre. De família para família, da nossa casa para o seu ambiente.
                 </Text>
           </Box>
@@ -852,7 +856,7 @@ export const Compromise = () => {
         >
           {/* BOX 1 */}
           <Box
-            margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+            margin = {{ base: '10% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
             // bg='yellow'
             flex='1'
             justifyItem={"flex-start"}
@@ -872,7 +876,7 @@ export const Compromise = () => {
             // bg='pink'
             flex='1'
             justifyItem={"center"}
-            margin = {{ base: '0% 5% 5% 5%', sm: '0% 5% 8% 5%', lg: '3% 3% 3% 3%', xl: '3% 3% 3% 3%'}}
+            margin = {{ base: '0% 0% 0% 0%', sm: '0% 5% 8% 5%', lg: '3% 3% 3% 3%', xl: '3% 3% 3% 3%'}}
           >
              <Image 
               src="/assets/imgs/170130-Berneck-48.png"
@@ -930,15 +934,15 @@ export const Compromise = () => {
             // bg='grey'
             flex='1'
           >
-            <Button 
+
+              <Button 
                 onClick={() => alert('trabalhe conosco')}
-                w={{ base: '200px', sm: '350px', lg: '500px', xl: '500px'}}
-                h={{ base: '35px', sm: '65px', lg: '80px', xl: '80px'}}
-                padding={{ base: '3%', sm: '3%', lg: '5%', xl: '5%'}}
+                w={{ base: '100%', sm: '70%', lg: '100%', xl: '80%'}}
+                h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%'}}
+                padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%'}}
               >
                 <Text as="h5"
                   variant={"h5" as any}
-                  fontFamily = 'body'
                   color='white'
                   textAlign="center"
                   fontWeight="bold"
@@ -978,7 +982,7 @@ export const Compromise = () => {
             // bg='pink'
             flex='1'
             justifyItem={"center"}
-            margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 8% 5%', lg: '3% 3% 3% 3%', xl: '3% 3% 3% 3%'}}
+            margin = {{ base: '0% 0% 5% 0%', sm: '0% 0% 5% 0%', lg: '3% 3% 3% 3%', xl: '3% 3% 3% 3%'}}
           >
              <Image 
               src="/assets/imgs/relatorio esg.png"
@@ -986,7 +990,7 @@ export const Compromise = () => {
           </Box>
           {/* BOX 2 */}
           <Box
-            margin = {{ base: '0% 5% 5% 5%', sm: '0% 5% 5% 5%', lg: '5% 2% 5% 2%', xl: '5% 2% 5% 2%'}}
+            margin = {{ base: '5% 5% 5% 5%', sm: '0% 5% 5% 5%', lg: '5% 2% 5% 2%', xl: '5% 2% 5% 2%'}}
             // bg='blue'
             flex='1.5'
             // justifyItem={"center"}
@@ -1001,7 +1005,7 @@ export const Compromise = () => {
                     alignSelf = {{ base: 'flex-start', sm: 'flex-start', lg: 'flex-start', xl: 'flex-start'}} 
                   />
                   <Text
-                    marginTop = {{ base: '2%', sm: '2%', lg: '3%', xl: '3%'}}
+                    marginTop = {{ base: '5%', sm: '2%', lg: '3%', xl: '3%'}}
                   >Nossas práticas de ESG – Environmental, Social and Governance (Ambiental, Social e Governança) incorporam questões destas três áreas, indo além das tradicionais métricas econômico-financeiras. O Relatório ESG marca nossa visão sobre o tema, iniciativas conectadas e indicadores que comprovam nossa atuação na conservação do meio ambiente, relação com a comunidade e conduta corporativa.
                   </Text>
 

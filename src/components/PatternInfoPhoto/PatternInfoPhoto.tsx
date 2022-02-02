@@ -15,54 +15,50 @@ export const PatternInfoPhoto = ({
  }: PatternInfoPhotoProps) => {
   return (
     <Flex
-      maxWidth="1500px"
-      marginX="auto"
       data-testid="pattern-info-box-photo"
-      align="center"
       bg="white.100"
       cursor="pointer"
       pos="relative"
       zIndex='base'
       onClick={onClick}
       _hover={{
-        bgGradient: "linear(to-t, rgba(100,0,0,1), rgba(255,0,0,0))"
+        filter: 'brightness(1.2)'
       }}
       overflowY="hidden"
       overflowX="hidden"
-      backgroundImage={imgSrc}
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat" 
+      padding={{ base: '10%', sm: '2%', lg: '2%', xl: '15%'}}
+    >
       
-    >
-     <Flex
-      // bg='pink'
-      // flex='1'
-      justifyItem={"center"}
-    >
-      <Box
-        margin={{ base: '10% 8% 5% 8%', sm: '10% 8% 5% 8%', lg: '15% 8% 5% 8%', xl: '20% 8% 5% 8%'}}
-        h="100%"
-        w={{ base: '300px', sm: '500px', lg: '480px', xl: '600px'}}
-        // bg='blue'
+      <Box 
+        //bg="tomato.100"
+      >
+        <Image
+          src="/assets/imgs/banner_certificacoes.png"
+          filter={'brightness(0.65)'}
+          pos="absolute"
+          // right={0}
+          // objectFit="cover"
+          // h="100%"
+        />
+      </Box>
+
+      <Box 
+        zIndex={10}
+        padding={{ base: '5%', sm: '2%', lg: '2%', xl: '5%'}}
       >
         <Text as="h4"
           variant = {"h4" as any}
           fontWeight="medium"
           letterSpacing="-0.45px"
-          color="green.900"
-          fontSize = {{ base: '8px', sm: '12px', lg: '14px', xl: '18px'}}
+          color="green.600"
         >{title}</Text>
         <Text as="h2"
           variant = {"h2" as any}
           fontWeight="extrabold"
           letterSpacing="-0.68px"
           color="white"
-          fontSize = {{ base: '14px', sm: '22px', lg: '24px', xl: '32px'}}
         >{description}</Text>
-
       </Box>
-    
-    </Flex>
 
       
 
