@@ -37,8 +37,9 @@ export const Carousel = (props: CarouselProps) => {
       justify="center"
       gap="30px"
       pos="relative"
+      w="100%"
     >
-      <Box data-testid="items" pos="relative">
+      <Box data-testid="items" pos="relative" w="100%">
         {props.children?.map((item, index) => (
           <Item key={index} position={getPosition(index)}>
             {item}
