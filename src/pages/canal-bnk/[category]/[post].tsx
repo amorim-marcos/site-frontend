@@ -1,8 +1,5 @@
-import { useRouter } from 'next/router'
+import { PostsView } from 'views/channelBNK/PostsView'
 
 export default function Post() {
-  const { query } = useRouter()
-  return (
-    <></>
-  )
+  return <PostsView />
 }
