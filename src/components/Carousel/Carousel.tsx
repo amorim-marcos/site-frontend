@@ -3,7 +3,10 @@ import { Box, Flex } from '@chakra-ui/react'
 
 import { useSwipeable } from 'react-swipeable'
 
-export type CarouselProps = { children?: React.ReactNode[] }
+export type CarouselProps = { 
+  children?: React.ReactNode[] 
+  carouselType?: string 
+}
 
 export const Carousel = (props: CarouselProps) => {
   const [curr, setCurr] = useState(0)
@@ -29,15 +32,18 @@ export const Carousel = (props: CarouselProps) => {
   }
 
   return (
+   
     <Flex
       {...handlers}
       data-testid="carousel"
       direction="column"
-      align="center"
-      justify="center"
-      gap="30px"
+      // align="center"
+      // justify="center"
       pos="relative"
+      // bg="blue"
+      maxHeight={{ base: '220px', sm: '400px', lg: '500px', xl: '800px'}}
     >
+    
       <Box data-testid="items" pos="relative">
         {props.children?.map((item, index) => (
           <Item key={index} position={getPosition(index)}>
@@ -46,6 +52,7 @@ export const Carousel = (props: CarouselProps) => {
         ))}
       </Box>
 
+      {props.carouselType != "brown" && 
       <Flex
         data-testid="indicators"
         pos="relative"
@@ -54,6 +61,8 @@ export const Carousel = (props: CarouselProps) => {
         w="100%"
         h="100%"
         justify="center"
+        // bg="red"
+        marginTop={"20px"}
       >
         {props.children?.map((_, index) => (
           <Box
@@ -69,6 +78,30 @@ export const Carousel = (props: CarouselProps) => {
           />
         ))}
       </Flex>
+      }
+      {props.carouselType === "brown" && 
+      <Flex
+        data-testid="indicators"
+        pos="absolute"
+        zIndex={10}
+        // bg="blue"
+        flex="1"
+        marginTop = {{ base: '32%', sm: '33%', lg: '35%', xl: '35%'}}
+        marginLeft={{ base: '8%', sm: '10%', lg: '10%', xl: '10%'}}
+        gap={{ base: '3px', sm: '8px', lg: '10px', xl: '10px'}}
+      >
+        {props.children?.map((_, index) => (
+          <Box
+            id={`${index}`}
+            key={index}
+            boxSize={{ base: '10px', sm: '16px', lg: '20px', xl: '20px'}}
+            bg={curr === index ? 'brown.300' : 'brown.200'}
+            cursor={curr === index ? 'default' : 'pointer'}
+            onClick={() => setCurr(index)}
+        />
+        ))}
+      </Flex>
+    }
     </Flex>
   )
 }

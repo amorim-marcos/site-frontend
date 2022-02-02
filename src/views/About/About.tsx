@@ -528,6 +528,10 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
               <PatternInfoPhoto 
                 onClick={() => alert('Vai para Nossas Certificações')}
                 imgSrc="/assets/imgs/banner_certificacoes.png"
+                title = "CONHEÇA"
+                description="Nossas certificações"
+                titleColor = "green.900"
+                descriptionColor='white'
              />
           </Box>
 

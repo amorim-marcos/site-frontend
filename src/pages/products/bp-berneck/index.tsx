@@ -1,5 +1,1 @@
-export default function BpBerneck() {
-  return (
-    <></>
-  )
-}
+export { default } from 'views/Products/bp-berneck'

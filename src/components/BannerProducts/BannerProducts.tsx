@@ -9,6 +9,7 @@ export type BannerProductsProps = {
   bgColor?: string
   srcImg?: string
   srcMargin?: ResponsiveCss
+  onClick?: () => void
 }
 export const BannerProducts = ({ 
   title,
@@ -17,7 +18,8 @@ export const BannerProducts = ({
   subtitleColor,
   bgColor,
   srcImg,
-  srcMargin
+  srcMargin,
+  onClick
  }: BannerProductsProps) => {
   return (
     <Flex
@@ -35,26 +37,26 @@ export const BannerProducts = ({
       h={"100%"}
       w={"100%"}
       alignItems={"flex-end"}
+      onClick={onClick}
     >
 
       <Box
         position={"absolute"}
         zIndex='base'
-       
       >
         <Image
           src = {srcImg}
-          m={srcMargin}
+          m = {srcMargin}
         />
       </Box>
     
     <Flex 
         zIndex={10}
-        p={{ base: '5%', sm: '6%', lg: '8%', xl: '8%'}}
+        // p={{ base: '5%', sm: '6%', lg: '8%', xl: '8%'}}
+        p={{ base: '5%', sm: '20px', lg: '30px', xl: '35px'}}
         // bg="blue"
         flex="4"
         direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}
-       
       >
         <Flex 
           // bg="pink"
