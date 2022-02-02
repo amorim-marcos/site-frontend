@@ -7,5 +7,5 @@ export type Post = {
   Category: Category
   Tags: Tag[]
   Cover: string
-  date: Date
+  date: Date | string
 }
