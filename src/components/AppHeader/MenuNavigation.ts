@@ -22,7 +22,7 @@ export const menuNavigation = {
       { key: 'btn5_subItem1', href: '/somos-berneck' },
       { key: 'btn5_subItem2', href: '/somos-berneck' },
       { key: 'btn5_subItem3', href: '/somos-berneck' },
-      { key: 'btn5_subItem4', href: '/somos-berneck' }
+      { key: 'btn5_subItem4', href: '/certificacoes' }
     ]
   },
   ourCommitment: {

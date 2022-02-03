@@ -1,4 +1,5 @@
 import { Heading, Flex, Box, Text, Center, Image } from "@chakra-ui/react"
+import GrafismLeft from "@components/GrafismLeft"
 import React, { ReactNode } from 'react'
 
 export type PatternInfoProps = {
@@ -31,39 +32,57 @@ export const PatternInfo = ({
     >
       <Box 
         // h="100%"
+        position={"absolute"}
+        zIndex='base'
+        // bg="red"
       >
-        <Image
-          src="/img/grafismo_button_right.svg"
-          filter={'brightness(0.65)'}
-          pos="absolute"
-          right={0}
-          objectFit="cover"
-          h="100%"
-        />
+        <GrafismLeft
+            stroke = {"#143127"}
+            height = {{ base: '200px', sm: '200px', lg: '250px', xl: '250px'}}
+            width = {{ base: '200px', sm: '200px', lg: '250px', xl: '250px'}}
+            opacity = '0.4'
+            transform="translate(100)"
+          />
       </Box>
 
-      <Box 
+      <Flex 
         zIndex={10}
         padding={{ base: '1%', sm: '1%', lg: '2%', xl: '5%'}}
-      >{icon}</Box>
+        // bg="grey"
+        flex="1"
+        justifyContent={"center"}
+      >{icon}</Flex>
 
-      <Box 
+      <Flex 
         zIndex={10}
         padding={{ base: '5%', sm: '2%', lg: '2%', xl: '1%'}}
+        // bg="blue"
+        flex="4"
+        direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}
       >
-        <Text as="h4"
-          variant = {"h4" as any}
-          fontWeight="medium"
-          letterSpacing="-0.45px"
-          color="green.600"
-        >{title}</Text>
-        <Text as="h2"
-          variant = {"h2" as any}
-          fontWeight="extrabold"
-          letterSpacing="-0.68px"
-          color="white"
-        >{description}</Text>
-      </Box>
+        <Flex 
+          // bg="pink"
+          flex="1"
+        >
+          <Text as="h4"
+            variant = {"h4" as any}
+            fontWeight="medium"
+            letterSpacing="-0.45px"
+            color="green.600"
+          >{title}</Text>
+        </Flex>
+        <Flex 
+          // bg="white"
+          flex="1"
+        >
+          <Text as="h2"
+            variant = {"h2" as any}
+            fontWeight="extrabold"
+            letterSpacing="-0.68px"
+            color="white"
+          >{description}</Text>
+        </Flex>
+      </Flex>
 
   </Flex>
   )

@@ -1,5 +1,6 @@
 import { Heading, Flex, Box, Text, Center, Image } from "@chakra-ui/react"
 import React, { ReactNode } from 'react'
+import GrafismLeft from "@components/GrafismLeft"
 
 export type PatternInfoPhotoProps = {
   title?: string
@@ -22,46 +23,60 @@ export const PatternInfoPhoto = ({
       zIndex='base'
       onClick={onClick}
       _hover={{
-        filter: 'brightness(1.2)'
+        filter: 'brightness(90%)'
       }}
       overflowY="hidden"
       overflowX="hidden"
-      padding={{ base: '10%', sm: '2%', lg: '2%', xl: '15%'}}
+      backgroundImage="/assets/imgs/banner_certificacoes.png"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      backgroundSize={"cover"}
+      padding={{ base: '8%', sm: '8%', lg: '10%', xl: '8%'}}
     >
-      
       <Box 
-        //bg="tomato.100"
+        // h="100%"
+        position={"absolute"}
+        zIndex='base'
+        // bg="red"
       >
-        <Image
-          src="/assets/imgs/banner_certificacoes.png"
-          filter={'brightness(0.65)'}
-          pos="absolute"
-          // right={0}
-          // objectFit="cover"
-          // h="100%"
-        />
+        <GrafismLeft
+            stroke = {"#B9B9B9"}
+            height = {{ base: '200px', sm: '200px', lg: '250px', xl: '250px'}}
+            width = {{ base: '200px', sm: '200px', lg: '250px', xl: '250px'}}
+            opacity = '0.4'
+            transform="translate(100)"
+          />
       </Box>
 
-      <Box 
+      <Flex 
         zIndex={10}
-        padding={{ base: '5%', sm: '2%', lg: '2%', xl: '5%'}}
+        mt={{ base: '5%', sm: '2%', lg: '2%', xl: '13%'}}
+        // bg="blue"
+        flex="4"
+        direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}
       >
-        <Text as="h4"
-          variant = {"h4" as any}
-          fontWeight="medium"
-          letterSpacing="-0.45px"
-          color="green.600"
-        >{title}</Text>
-        <Text as="h2"
-          variant = {"h2" as any}
-          fontWeight="extrabold"
-          letterSpacing="-0.68px"
-          color="white"
-        >{description}</Text>
-      </Box>
+        <Flex 
+          // bg="pink"
+          flex="1"
+        >
+          <Text as="h5"
+            variant = {"h5" as any}
+            color="green.900"
+          >{title}</Text>
+        </Flex>
+        <Flex 
+          // bg="white"
+          flex="1"
+        >
+          <Text as="h2"
+            variant = {"h2" as any}
+            fontWeight="extrabold"
+            letterSpacing="-0.68px"
+            color="white"
+          >{description}</Text>
+        </Flex>
+      </Flex>
 
-      
-
-  </Flex>
+</Flex>
   )
 }
