@@ -1,16 +1,17 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-import { Flex, Box, Image, Text } from '@chakra-ui/react'
+import { Flex, Image, Text } from '@chakra-ui/react'
 import Pagebar from '@components/Pagebar'
 import PostBody from '@components/PostBody'
 import PostRelationalContent from '@components/PostRelationalContent'
 import React, { useState } from 'react'
-import parser from 'react-html-parser'
 
-export const PostsView = () => {
-  const [data, setData] = useState(
-    '<h1>Hello</h1><script>console.log("AAAAA"); alert("Deu ruim")</script>'
-  )
+import { PostBodyProps } from '@components/PostBody/PostBody'
 
+export type PostViewProps = {
+  postBody?: PostBodyProps
+}
+
+export const PostsView = ({ postBody }: PostViewProps) => {
   return (
     <>
       <Pagebar
@@ -43,7 +44,7 @@ export const PostsView = () => {
           zIndex="docked"
           height={{
             base: '320px',
-            sm: '259px',
+            sm: '300px',
             md: '349px',
             lg: '439px',
             xl: '529px',
@@ -51,8 +52,8 @@ export const PostsView = () => {
           }}
           bg="black"
           w={{
-            base: '320px',
-            sm: '558px',
+            base: '100vw',
+
             md: '758px',
             lg: '1014px',
             xl: '1270px',
@@ -66,11 +67,11 @@ export const PostsView = () => {
         {/* Grafisms */}
         <Image
           src="/img/grafismo_direita_post.svg"
-          right="-9%"
-          top="-5%"
+          right={{ base: '65%', md: '-9%' }}
+          top={{ base: '-200px', sm: '-240px', md: '-5%' }}
           position="absolute"
-          zIndex="base"
-          width="43vw"
+          zIndex={{ base: 'docked', md: 'base' }}
+          width={{ base: '590px', md: '43vw' }}
           maxWidth="825px"
         />
         <Image
@@ -79,21 +80,24 @@ export const PostsView = () => {
           position="absolute"
           top={{ base: '5%', xl: '10%', '2xl': '15%' }}
           right="5%"
-          width="20vw"
-          maxWidth="384px"
+          width={'20vw'}
+          maxWidth={'384px'}
+          display={{ base: 'none', md: 'block' }}
         />
         <Image
           src="/img/grafismo_esquerda_post.svg"
-          left="0"
-          top={{ base: '5%', xl: '10%', '2xl': '15%' }}
+          left={{ base: '85%', md: '0' }}
+          transform={{ base: 'rotate(180deg)', md: '' }}
+          top={{ base: '2%', md: '5%', xl: '10%', '2xl': '15%' }}
           position="absolute"
-          width="12vw"
+          width={{ base: '25vw', md: '12vw' }}
           maxWidth="230px"
+          zIndex={{ base: 'docked', md: 'base' }}
         />
         {/* End of Grafisms */}
 
         {/* Post body section */}
-        <PostBody />
+        <PostBody {...postBody} />
         {/* End of post body section */}
 
         {/* Relational content */}

@@ -2,69 +2,112 @@ import { Flex, Box, Text, Image } from '@chakra-ui/react'
 import CompletedTitle from '@components/CompletedTitle'
 import { SocialIcon } from '@components/Icons'
 import ArrowIcon from '@components/Icons/ArrowIcon'
+import { useEffect, useState } from 'react'
+import parser from 'react-html-parser'
+import { Wrapper } from './styles'
+import DOMPurify from 'dompurify'
 
 export type PostBodyProps = {
-  title?: string
+  category?: string
+  publishDate?: string
+  postTitle?: string
+  postContent?: string
 }
-export const PostBody = ({ title }: PostBodyProps) => {
+export const PostBody = ({
+  category,
+  publishDate,
+  postTitle,
+  postContent
+}: PostBodyProps) => {
+  const [content, setContent] = useState('<h1>Hello world</h1>')
+  useEffect(() => {
+    if (!!postContent && postContent?.length > 0) {
+      const dirty = postContent?.replace(
+        '/uploads',
+        `${process.env.NEXT_PUBLIC_API_URL}/uploads`
+      )
+      const clean = DOMPurify.sanitize(dirty)
+      setContent(clean)
+    }
+  }, [postContent])
   return (
     <Flex
       flexDirection="column"
       w="100%"
       maxWidth={{
-        base: '320px',
-        sm: '558px',
+        base: '90%',
+
         md: '758px',
         lg: '1014px',
         xl: '1270px',
         '2xl': '1526px'
       }}
       zIndex="docked"
+      paddingTop={{ base: '8%', md: '0' }}
     >
       {/* Post body header */}
       <Flex
+        flexDirection={{ base: 'column', md: 'row' }}
         marginTop="3%"
-        justifyContent="space-between"
         w="100%"
-        alignItems="center"
+        alignItems={'center'}
+        position={'relative'}
       >
-        {/* Social Media */}
-        <Flex flexDirection="column">
-          <SocialIcon
-            media="facebook"
-            marginY="40%"
-            marginLeft="50%"
-            color="brown.350"
-            width="40px"
-          />
-          <SocialIcon
-            media="twitter"
-            marginLeft="50%"
-            marginY="40%"
-            color="brown.350"
-            width="40px"
-          />
-        </Flex>
-        {/* End Social media */}
-
-        {/* Title and category */}
-        <Flex maxWidth={'78%'} flexDirection="column">
-          <Flex alignItems="center">
-            <ArrowIcon width="10px" stroke="green.600" />
-            <Text marginLeft="2%" variant={'body' as any}>
-              MUNDO BERNECK
-            </Text>
+        <Flex
+          flexDirection={{ base: 'column-reverse', md: 'row' }}
+          alignItems={{ base: 'flex-start', md: 'center' }}
+        >
+          {/* Social Media */}
+          <Flex
+            marginX={{ base: '0', md: '2%' }}
+            flexDirection={{ base: 'row', md: 'column' }}
+          >
+            <SocialIcon
+              media="facebook"
+              marginY={{ base: '20%', md: '40%' }}
+              color="brown.350"
+              width={{ base: '70px', md: '40px' }}
+              marginRight={{ base: '15%' }}
+            />
+            <SocialIcon
+              media="twitter"
+              marginY={{ base: '20%', md: '40%' }}
+              color="brown.350"
+              width={{ base: '70px', md: '40px' }}
+            />
           </Flex>
-          <CompletedTitle
-            titleString="BERNECK® é destaque no prêmio Valor 1000"
-            textAlign="left"
-            alignSelf="left"
-          />
+          {/* End Social media */}
+
+          {/* Title and category */}
+          <Flex
+            maxWidth={{ base: '100%' }}
+            flexDirection="column"
+            paddingLeft={{ base: '0', md: '3%' }}
+          >
+            <Flex marginBottom={{ base: '15px', md: '0' }} alignItems="center">
+              <ArrowIcon width="10px" stroke="green.600" />
+              <Text marginLeft={'2%'} variant={'body' as any}>
+                {category}
+              </Text>
+            </Flex>
+            <CompletedTitle
+              titleString={postTitle}
+              textAlign="left"
+              alignSelf="left"
+            />
+          </Flex>
+          {/* End of title and category */}
         </Flex>
-        {/* End of title and category */}
 
         {/* Date publish */}
-        <Flex paddingRight="3%" h="50px" alignItems="center">
+        <Flex
+          position={{ base: 'absolute', md: 'relative' }}
+          paddingX="3%"
+          h="50px"
+          alignItems="center"
+          bottom={{ base: '8%', md: '0' }}
+          right={{ base: '0', md: '0' }}
+        >
           <Image
             marginRight="15px"
             src="/img/calendario.png"
@@ -72,7 +115,7 @@ export const PostBody = ({ title }: PostBodyProps) => {
             height="30px"
           />
           <Text color="grey.350" variant={'body' as any}>
-            30/10/2020
+            {publishDate}
           </Text>
         </Flex>
         {/* End of date publish */}
@@ -80,66 +123,22 @@ export const PostBody = ({ title }: PostBodyProps) => {
       {/* End of post header */}
 
       {/* Post content */}
-      <Text marginTop="5%" w="50%" marginLeft="15%">
-        O jornal Valor Econômico realizou a edição anual do prêmio Valor 1000 e
-        escolheu as 25 melhores empresas em seus setores de atuação. Como
-        resultado, a BERNECK® foi anunciada como a empresa campeã no setor de
-        Materiais de Construção e de Decoração. Este é o sexto ano em que
-        figuramos na liderança do segmento. A premiação foi realizada pela
-        primeira vez em formato online, com transmissão pelo canal YouTube. A
-        cerimônia contou com a participação especial de Fernando Henrique
-        Cardoso, presidente do Brasil em 2000, ano de lançamento do jornal. Na
-        ocasião, ele fez uma análise da evolução do País nos últimos 20 anos e
-        abordou os principais desafios políticos e econômicos na atual
-        conjuntura.
-      </Text>
-
-      <Text w="50%" marginLeft="15%">
-        O jornal Valor Econômico realizou a edição anual do prêmio Valor 1000 e
-        escolheu as 25 melhores empresas em seus setores de atuação. Como
-        resultado, a BERNECK® foi anunciada como a empresa campeã no setor de
-        Materiais de Construção e de Decoração. Este é o sexto ano em que
-        figuramos na liderança do segmento. A premiação foi realizada pela
-        primeira vez em formato online, com transmissão pelo canal YouTube. A
-        cerimônia contou com a participação especial de Fernando Henrique
-        Cardoso, presidente do Brasil em 2000, ano de lançamento do jornal. Na
-        ocasião, ele fez uma análise da evolução do País nos últimos 20 anos e
-        abordou os principais desafios políticos e econômicos na atual
-        conjuntura.
-      </Text>
-
-      <Text w="50%" marginLeft="15%">
-        O jornal Valor Econômico realizou a edição anual do prêmio Valor 1000 e
-        escolheu as 25 melhores empresas em seus setores de atuação. Como
-        resultado, a BERNECK® foi anunciada como a empresa campeã no setor de
-        Materiais de Construção e de Decoração. Este é o sexto ano em que
-        figuramos na liderança do segmento. A premiação foi realizada pela
-        primeira vez em formato online, com transmissão pelo canal YouTube. A
-        cerimônia contou com a participação especial de Fernando Henrique
-        Cardoso, presidente do Brasil em 2000, ano de lançamento do jornal. Na
-        ocasião, ele fez uma análise da evolução do País nos últimos 20 anos e
-        abordou os principais desafios políticos e econômicos na atual
-        conjuntura.
-      </Text>
-
-      <Text w="50%" marginLeft="15%">
-        O jornal Valor Econômico realizou a edição anual do prêmio Valor 1000 e
-        escolheu as 25 melhores empresas em seus setores de atuação. Como
-        resultado, a BERNECK® foi anunciada como a empresa campeã no setor de
-        Materiais de Construção e de Decoração. Este é o sexto ano em que
-        figuramos na liderança do segmento. A premiação foi realizada pela
-        primeira vez em formato online, com transmissão pelo canal YouTube. A
-        cerimônia contou com a participação especial de Fernando Henrique
-        Cardoso, presidente do Brasil em 2000, ano de lançamento do jornal. Na
-        ocasião, ele fez uma análise da evolução do País nos últimos 20 anos e
-        abordou os principais desafios políticos e econômicos na atual
-        conjuntura.
-      </Text>
+      <Box
+        marginTop="3%"
+        w={{ base: '100%', md: '80%', xl: '50%' }}
+        marginLeft={{ base: '0', md: '12%', xl: '10%' }}
+      >
+        <Wrapper>{content && parser(content)}</Wrapper>
+      </Box>
       {/* End of post content */}
 
       {/* Tags sections */}
-
-      <Flex marginY="3%" w="60%" marginLeft="15%" wrap="wrap">
+      <Flex
+        marginY="3%"
+        w={{ base: '100%', md: '80%', xl: '50%' }}
+        marginLeft={{ base: '0', md: '12%', xl: '10%' }}
+        wrap="wrap"
+      >
         <TagItem tag="materiais de construção" />
         <TagItem tag="decoração" />
         <TagItem tag="nova fábrica" />

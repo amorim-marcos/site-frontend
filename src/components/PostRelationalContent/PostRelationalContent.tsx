@@ -1,5 +1,6 @@
 import { Heading, Flex, Box, Text, Image } from '@chakra-ui/react'
 import ArrowIcon from '@components/Icons/ArrowIcon'
+import { useState } from 'react'
 
 export type PostRelationalContentProps = {
   title?: string
@@ -18,7 +19,11 @@ export const PostRelationalContent = ({
       <Text marginBottom="3%" as="h3" color="green.800" variant={'h3' as any}>
         Conteúdos Relacionados
       </Text>
-      <Flex alignItems="center" justifyContent="space-between">
+      <Flex
+        overflowX={{ base: 'scroll', md: 'visible' }}
+        alignItems="center"
+        justifyContent="space-between"
+      >
         <RelationalItem
           category="INSPIRAÇÃO SOB MEDIDA"
           urlImage="https://casaclaudia.abril.com.br/wp-content/uploads/2017/06/sala31.jpg"
@@ -64,8 +69,16 @@ export const RelationalItem = ({
   title,
   color
 }: RelationalItemProps) => {
+  const [mouseDown, setMouseDown] = useState(true)
   return (
-    <Flex flexDirection="column" w="22%" h="540px">
+    <Flex
+      onMouseEnter={() => setMouseDown(true)}
+      onMouseLeave={() => setMouseDown(false)}
+      flexDirection="column"
+      marginRight={{ base: '40px', md: '0' }}
+      w={{ base: '60vw', md: '22%' }}
+      minWidth={{ base: '60vw', sm: '50vw', md: '0' }}
+    >
       <Box h="50%" w="100%" overflow="hidden">
         <Image h="100%" w="100%" objectFit="cover" src={urlImage} />
       </Box>
@@ -92,7 +105,8 @@ export const RelationalItem = ({
           </Text>
         </Flex>
         <Box
-          width="50%"
+          transition={'0.5s'}
+          width={mouseDown ? '80%' : '50%'}
           borderBottom="4px solid"
           borderBottomColor={color}
           marginLeft="10%"
