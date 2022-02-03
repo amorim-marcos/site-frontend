@@ -133,7 +133,7 @@ export const menuNavigation = {
       },
       {
         key: 'btn9_subItem4',
-        href: '/canal-bnk'
+        href: '/canal-bnk/downloads'
       }
     ]
   }
