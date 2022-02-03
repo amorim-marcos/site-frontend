@@ -88,6 +88,7 @@ export const Products = () => (
               srcImg = "img/mdf.png"
               srcMargin = {{ base: '5%', sm: '2%', lg: '0% -5% 0% 20%', xl: '0% -5% 0% 20%'}}
               onClick={() => alert("Ir para BP")}
+              bannerSize = {{ base: '30px', sm: '20px', lg: '30px', xl: '35px'}}
             />
         </GridItem>
 
@@ -101,6 +102,7 @@ export const Products = () => (
             srcImg = "img/plus.png"
             srcMargin = {{ base: '25%', sm: '0% 25% 30% 25%', lg: '0% 0% 60% 20%', xl: '0% 0% 40% 20%'}}
             onClick={() => alert("Ir para Produto")}
+            bannerSize = {{ base: '5%', sm: '20px', lg: '30px', xl: '35px'}}
           />
         </GridItem>
         
@@ -114,6 +116,7 @@ export const Products = () => (
             srcImg = "img/hdf.png"
             srcMargin = {{ base: '25%', sm: '0% 0% 30% 30%', lg: '0% 0% 70% 25%', xl: '0% 0% 40% 20%'}}
             onClick={() => alert("Ir para Produto")}
+            bannerSize = {{ base: '5%', sm: '20px', lg: '30px', xl: '35px'}}
           />
         </GridItem>
 
@@ -127,6 +130,7 @@ export const Products = () => (
             srcImg = "img/mdf.png"
             srcMargin = {{ base: '25%', sm: '0% 0% 30% 20%', lg: '0% 0% 50% 10%', xl: '0% 0% 30% 20%'}}
             onClick={() => alert("Ir para Produto")}
+            bannerSize = {{ base: '5%', sm: '20px', lg: '30px', xl: '35px'}}
           />
         </GridItem>
         <GridItem>
@@ -139,6 +143,7 @@ export const Products = () => (
             srcImg = "img/mdp.png"
             srcMargin = {{ base: '25%', sm: '0% 0% 30% 20%', lg: '0% 0% 50% 10%', xl: '0% 0% 30% 20%'}}
             onClick={() => alert("Ir para Produto")}
+            bannerSize = {{ base: '5%', sm: '20px', lg: '30px', xl: '35px'}}
           />
         </GridItem>
         
@@ -152,6 +157,7 @@ export const Products = () => (
             srcImg = "img/teca.png"
             srcMargin = {{ base: '25%', sm: '0% 0% 30% 20%', lg: '0% 0% 50% 10%', xl: '0% 0% 30% 20%'}}
             onClick={() => alert("Ir para Produto")}
+            bannerSize = {{ base: '5%', sm: '20px', lg: '30px', xl: '35px'}}
           />
         </GridItem>
 
@@ -165,6 +171,7 @@ export const Products = () => (
               srcImg = "img/pinus.png"
               srcMargin = {{ base: '25%', sm: '0% 0% 30% 20%', lg: '-30% -25% 0% 20%', xl: '-10% -25% 0% 20%'}}
               onClick={() => alert("Ir para Produto")}
+              bannerSize = {{ base: '5%', sm: '20px', lg: '30px', xl: '35px'}}
             />
         </GridItem>
 

@@ -6,6 +6,7 @@ import CompletedTitle from '@components/CompletedTitle'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import BannerGallery from '@components/BannerGallery'
 import PatternInfoPhoto from '@components/PatternInfoPhoto'
+import BannerCollections from '@components/BannerCollections'
   
 export type BpBerneckViewProps = {
     name: string
@@ -81,10 +82,20 @@ export default function BpBerneckView(props:BpBerneckViewProps) {
             />
         </GridItem>
         <GridItem rowSpan={1} colSpan={{ base: '1', sm: '1', lg: '1', xl: '1'} as any} bg='papayawhip' >
-
+            <BannerCollections 
+                title = "Conheça"
+                titleColor = 'brown.300'
+                imgSrc = "../img/banner_nomade.png"
+                ArrowIconColor ='#74675D'
+            />
         </GridItem>
         <GridItem rowSpan={1} colSpan={{ base: '1', sm: '1', lg: '1', xl: '1'} as any} bg='blue' >
-
+            <BannerCollections 
+                title = "Conheça"
+                titleColor = 'green.700'
+                imgSrc = "../img/banner_origens.png"
+                ArrowIconColor ='#0A6C3B'
+            />
         </GridItem>
     </Grid>
     {/* FIM BANNER COLECAO */}

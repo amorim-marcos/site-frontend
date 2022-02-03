@@ -807,7 +807,7 @@ export const Compromise = () => {
             // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
              <Image 
-              src="/assets/imgs/cultivamos nossos valores.png"
+              src="/assets/imgs/cultivamos_nossos_valores.png"
              />
              
           </Box>
