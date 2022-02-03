@@ -7,7 +7,7 @@ import { LanguageSelector } from './LanguageSelector/LanguageSelector'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import useMobile from '../../hooks/useMobile'
-import { menuNavigation } from './MenuVanigation'
+import { menuNavigation } from './MenuNavigation'
 import { IoMdClose, IoMdMenu } from 'react-icons/io'
 
 import { colors } from '../../theme/colors'

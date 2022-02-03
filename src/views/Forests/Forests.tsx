@@ -14,6 +14,7 @@ import {
   OrderedList,
   UnorderedList,
 } from '@chakra-ui/react'
+import PatternCertification from "@components/PatternCertification"
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/Grupo_1872.png)',
@@ -281,8 +282,8 @@ export const Forests = () => {
                 onClick={() => alert('Vai para Nossas Certificações')}
                 icon={
                   <CertificationsIcon
-                    width={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
-                    height={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
+                    width={{ base: '40px', xs: '50px', sm: '58px', lg: '70px', xl: '80px' }}
+                    height={{ base: '40px', xs: '50px', sm: '58px', lg: '70px', xl: '80px' }}
                   />
                 }
               />
@@ -732,8 +733,8 @@ export const Forests = () => {
       <Flex
         maxWidth="1920px"
         marginX="auto"
-        alignItems='center'
-        justifyContent='center'
+        // alignItems='center'
+        // justifyContent='center'
         position='relative'
         zIndex='base'
         overflowY="hidden"
@@ -751,7 +752,7 @@ export const Forests = () => {
           {/* BOX 1 */}
           <Box
             // bg='pink'
-            flex='2'
+            flex='1'
             // justifyItem={"center"}
             margin = {{ base: '8% 5% 3% 5%', sm: '8% 5% 3% 5%', lg: '5% 5% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
@@ -769,8 +770,8 @@ export const Forests = () => {
           </Box>
           {/* BOX 2 */}
           <Box
-            margin = {{ base: '0% 0% 5% 0%', sm: '0% 0% 5% 0%', lg: '2% 2% 8% 0%', xl: '5% 5% 5% 2%'}}
-            padding={{ base: '10%', sm: '10%', lg: '10%', xl: '5%'}}
+            margin = {{ base: '0% 5% 5% 5%', sm: '0% 5% 5% 5%', lg: '2% 2% 8% 0%', xl: '5% 5% 5% 0%'}}
+            padding={{ base: '10%', sm: '10%', lg: '10%', xl: '2%'}}
             // bg='blue'
             flex='1'
             position='relative'
@@ -780,86 +781,37 @@ export const Forests = () => {
             backgroundImage="/assets/imgs/fundo_relatorio.svg"
             backgroundPosition="center"
             backgroundRepeat="no-repeat" 
+            backgroundSize={"cover"}
           >
             
-              <List spacing={{ base: '5', sm: '5', lg: '5', xl: '5'}}>
-              {/* {dataValores.list.map((item) => ( */}
-                <ListItem>
-                  <ReportsIcon 
-                    height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
-                    width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
-                    stroke1="green.800"
-                  />
-                  <Text
-                    variant = {"h5" as any}
-                    fontWeight= 'bold'
-                    color={"green.800"}
-                    marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
-                    marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
-                    cursor="pointer"
-                        _hover={{
-                          color: 'green.550'
-                        }}
-                  >Resumo público de Manejo Florestal • PR</Text>
-                </ListItem>
-                <ListItem>
-                  <ReportsIcon 
-                    height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
-                    width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
-                    stroke1="green.800"
-                  />
-                  <Text
-                    variant = {"h5" as any}
-                    fontWeight= 'bold'
-                    color={"green.800"}
-                    marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
-                    marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
-                    cursor="pointer"
-                        _hover={{
-                          color: 'green.550'
-                        }}
-                  >Resumo público de Manejo Florestal • PR</Text>
-                </ListItem>
-                <ListItem>
-                  <ReportsIcon 
-                    height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
-                    width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
-                    stroke1="green.800"
-                  />
-                  <Text
-                    variant = {"h5" as any}
-                    fontWeight= 'bold'
-                    color={"green.800"}
-                    marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
-                    marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
-                    cursor="pointer"
-                        _hover={{
-                          color: 'green.550'
-                        }}
-                  >Resumo público de Manejo Florestal • PR</Text>
-                </ListItem>
-                <ListItem>
-                  <ReportsIcon 
-                    height={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
-                    width={{ base: '20px', sm: '25px', lg: '30px', xl: '30px'}}
-                    stroke1="green.800"
-                  />
-                  <Text
-                    variant = {"h5" as any}
-                    fontWeight= 'bold'
-                    color={"green.800"}
-                    marginTop={{ base: '-15px', sm: '-20px', lg: '-20px', xl: '-25px'}}
-                    marginLeft={{ base: '30px', sm: '30px', lg: '40px', xl: '40px'}}
-                    cursor="pointer"
-                        _hover={{
-                          color: 'green.550'
-                        }}
-                  >Resumo público de Manejo Florestal • PR</Text>
-                </ListItem>
-               
-              </List>
-            
-            {/* </Flex> */}
+              <PatternCertification 
+                title = "Resumo público de Manejo Florestal • PR"
+                titleInitialColor = "green.800"
+                iconName = 'reports'
+                iconInitialColor1 = "#004934"
+                iconInitialColor2 = "#004934"
+              />
+               <PatternCertification 
+                title = "Resumo público de Manejo Florestal • SC"
+                titleInitialColor = "green.800"
+                iconName = 'reports'
+                iconInitialColor1 = "#004934"
+                iconInitialColor2 = "#004934"
+              />
+               <PatternCertification 
+                title = "Resumo público de Manejo Florestal • RS"
+                titleInitialColor = "green.800"
+                iconName = 'reports'
+                iconInitialColor1 = "#004934"
+                iconInitialColor2 = "#004934"
+              />
+               <PatternCertification 
+                title = "Resumo público de Manejo Florestal • MT"
+                titleInitialColor = "green.800"
+                iconName = 'reports'
+                iconInitialColor1 = "#004934"
+                iconInitialColor2 = "#004934"
+              />
              
           </Box>
         

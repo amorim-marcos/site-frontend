@@ -88,8 +88,8 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
       <Flex
         maxWidth="1920px"
         marginX="auto"
-        alignItems="center"
-        justifyContent="center"
+        // alignItems="center"
+        // justifyContent="center"
         position="relative"
         zIndex="base"
         overflowY="hidden"
@@ -425,8 +425,8 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
 
 
 
-  {/* INICIO REVENDEDORES */}
-  <Flex
+    {/* INICIO REVENDEDORES */}
+    <Flex
         maxWidth="1920px"
         marginX="auto"
         // alignItems='center'
@@ -485,31 +485,27 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
 
 
     {/* INICIO CERTIFICADOS */}
-     <Flex
+    <Flex
         maxWidth="1920px"
         marginX="auto"
-        alignItems='center'
-        justifyContent='center'
+        // alignItems='center'
+        // justifyContent='center'
         position='relative'
         zIndex='base'
         overflowY="hidden"
         overflowX="hidden"
         bg = 'white.100'
-        backgroundImage="/assets/imgs/grafismos_fundo2.png"
-        backgroundPosition="center"
-        backgroundRepeat="no-repeat"  
       >
         <Flex
-          // bg='purple'
+          // bg='red'
           direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
-          alignItems={"center"}
+          width={"100%"}
         >
-          {/* BOX 1 */}
           <Box
-            margin = {{ base: '10% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 0% 5% 5%'}}
-            // bg='blue'
+            // bg='pink'
             flex='1'
-            justifyItem={"flex-start"}
+            margin = {{ base: '8% 8% 5% 5%', sm: '8% 8% 2% 5%', lg: '5%', xl: '5%'}}
+            // alignSelf='center'
           >
                 <CompletedTitle 
                   titleString = "Certificações"
@@ -521,22 +517,23 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
                 >
                   {page_content.certifications_description}
                 </Text>
+
           </Box>
-          {/* BOX 2 */}
           <Box
-            bg='yellow'
+            // bg='yellow'
             flex='1'
-            margin = {{ base: '2% 0% 5% 0%', sm: '2% 0% 5% 0%', lg: '5%', xl: '5%'}}
+            margin = {{ base: '3% 0% 0% 0%', sm: '3% 0% 0% 0%', lg: '5%', xl: '5%'}}
+            // alignSelf='center'
           >
-             <PatternInfoPhoto 
+              <PatternInfoPhoto 
                 onClick={() => alert('Vai para Nossas Certificações')}
                 imgSrc="/assets/imgs/banner_certificacoes.png"
              />
           </Box>
-        
-        </Flex> 
 
-      </Flex> 
+        </Flex>
+
+      </Flex>   
       {/* FIM CERTIFICADOS */}
 
   
