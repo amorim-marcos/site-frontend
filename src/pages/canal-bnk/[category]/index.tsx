@@ -1,10 +1,35 @@
-import { useRouter } from 'next/router'
+import { GetServerSideProps } from 'next'
 
-const posts = ['Post1', 'Post2', 'Post3']
+import Category from 'views/Canal-BNK/category'
+import { Post, CategoryLabel } from 'types/data/Post'
 
-export default function Category() {
-  const { query } = useRouter()
-  return (
-    <></>
-  )
+import { POSTS } from 'mocks/canal_bnk'
+
+export interface CategoryPageProps {
+  category: CategoryLabel
+  posts: Post[]
+}
+
+export default function CategoryPage(props: CategoryPageProps) {
+  return <Category posts={props.posts} category={props.category} />
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { params } = context
+  const category = params?.category as CategoryLabel
+
+  const getCategoryName = () => {
+    return category === 'inspiration'
+      ? 'INSPIRAÇÃO SOB MEDIDA'
+      : category === 'feedstock'
+      ? 'MATÉRIA-PRIMA: CONHECIMENTO'
+      : 'MUNDO BERNECK'
+  }
+
+  const posts =
+    category === 'all'
+      ? POSTS
+      : POSTS.filter((post) => post.Category.Name === getCategoryName())
+
+  return { props: { category: params?.category, posts } }
 }

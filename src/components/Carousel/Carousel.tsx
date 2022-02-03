@@ -42,9 +42,9 @@ export const Carousel = (props: CarouselProps) => {
       pos="relative"
       // bg="blue"
       maxHeight={{ base: '220px', sm: '400px', lg: '500px', xl: '800px'}}
+      w="100%"
     >
-    
-      <Box data-testid="items" pos="relative">
+      <Box data-testid="items" pos="relative" w="100%">
         {props.children?.map((item, index) => (
           <Item key={index} position={getPosition(index)}>
             {item}
