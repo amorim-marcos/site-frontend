@@ -4,6 +4,7 @@ import { Box, Image, Text, Flex, Container, Wrap, Heading, Spacer } from '@chakr
 import { Wrapper } from '@components/LeafletMaps/styles'
 
 import CompletedTitle from '@components/CompletedTitle'
+import GrafismLeft from '@components/GrafismLeft'
 
 
 export type PageSessionProps = {
@@ -17,6 +18,10 @@ export type PageSessionProps = {
   subTitleColor?: string
   subTitleType?: string
   subTitleLineDisplay?: 'flex' | 'none'
+  // Grafismo
+  viewGrafismo?: string
+  GrafismLeftStroke?: string
+  GrafismLeftOpacity?: string
   // Data
   data : {
     imageUrl: string,
@@ -36,6 +41,10 @@ export const PageSession = ({
   subTitleColor = 'white.100',
   subTitleType = 'h3',
   subTitleLineDisplay = 'none',
+  // Grafismo
+  viewGrafismo = 'flex',
+  GrafismLeftStroke = '#143127',
+  GrafismLeftOpacity = '0.6',
   // Data
   data = {
     imageUrl: '',
@@ -67,20 +76,33 @@ export const PageSession = ({
         flex="1"
         position='absolute'
         direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
+        display={viewGrafismo}
       >
-         <Image
-          // bg='pink'
-          src='/assets/imgs/grafismo_topo_esquerda.png'
-          // marginLeft={{ base: '-20px', sm: '-20px', lg: '-30px', xl: '-50px'}}
-          // w={{ base: '0%', sm: '100%'}}
-          
-        />
-        {/* <Spacer /> */}
-        <Image
-          // bg='red'
-          src='/assets/imgs/grafismo_topo_direita.png'
-          // w={{ base: '50%', sm: '100%'}}
-        />
+  
+        <Box
+          ml = {{ base: '-10%', sm: '-10%', lg: '-30%', xl: '-30%'}}
+          mt = {{ base: '-20%', sm: '0%'}}
+        >
+          <GrafismLeft
+            stroke = {GrafismLeftStroke}
+            height = {{ base: '300px', sm: '400px', lg: '500px', xl: '550px'}}
+            width = {{ base: '300px', sm: '400px', lg: '400px', xl: '414px'}}
+            opacity = '0.6'
+          />
+        </Box>
+
+        <Box
+          ml = {{ base: '14%', sm: '20%', lg: '60%', xl: '70%'}}
+          mt = {{ base: '50%', sm: '0%'}}
+        >
+          <GrafismLeft
+            stroke = {GrafismLeftStroke}
+            height = {{ base: '300px', sm: '400px', lg: '500px', xl: '550px'}}
+            width = {{ base: '300px', sm: '400px', lg: '400px', xl: '414px'}}
+            opacity = '0.6'
+            transform = {'rotate(180deg)'}
+          />
+        </Box>
 
       </Box>
       
@@ -101,7 +123,7 @@ export const PageSession = ({
                   flex = '1'
               >
                 <CompletedTitle 
-                  titleColor = 'white' 
+                  titleColor = {titleColor}
                   titleString = {data.title} 
                   alignSelf = {{ base: 'center', sm: 'center', lg: 'flex-start', xl: 'flex-start'}}
                   textAlign =  {{ base: 'center', sm: 'center', lg: 'left', xl: 'left'}}
