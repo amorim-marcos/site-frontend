@@ -73,7 +73,7 @@ export const Products = () => (
       <Grid
         h={{ base: '1800px', sm: '1300px', lg: '1300px', xl: '1400px', '2xl': '1885px'}}
         w={{ base: '90%', sm: '93%', lg: '93%', xl: '93%'}}
-        margin={{ base: '5%', sm: '3% 3%', lg: '3% 3%', xl: '5% 3%'}}
+        margin={{ base: '5%', sm: '3% 3%', lg: '3% 3%', xl: '3% 3%'}}
         templateRows={{ base: 'repeat(7, 1fr)', sm: 'repeat(4, 1fr)', lg: 'repeat(3, 1fr)', xl: 'repeat(3, 1fr)'}}
         templateColumns={{ base: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)', xl: 'repeat(3, 1fr)'}}
         gap={{ base: '5', sm: '4', lg: '8', xl: '10'}}
@@ -87,6 +87,8 @@ export const Products = () => (
               bgColor="brown.300"
               srcImg = "img/mdf.png"
               srcMargin = {{ base: '5%', sm: '2%', lg: '0% -5% 0% 20%', xl: '0% -5% 0% 20%'}}
+              onClick={() => alert("Ir para BP")}
+              bannerSize = {{ base: '30px', sm: '20px', lg: '30px', xl: '35px'}}
             />
         </GridItem>
 
@@ -99,6 +101,8 @@ export const Products = () => (
             bgColor="green.400"
             srcImg = "img/plus.png"
             srcMargin = {{ base: '25%', sm: '0% 25% 30% 25%', lg: '0% 0% 60% 20%', xl: '0% 0% 40% 20%'}}
+            onClick={() => alert("Ir para Produto")}
+            bannerSize = {{ base: '5%', sm: '20px', lg: '30px', xl: '35px'}}
           />
         </GridItem>
         
@@ -111,6 +115,8 @@ export const Products = () => (
             bgColor="brown.200"
             srcImg = "img/hdf.png"
             srcMargin = {{ base: '25%', sm: '0% 0% 30% 30%', lg: '0% 0% 70% 25%', xl: '0% 0% 40% 20%'}}
+            onClick={() => alert("Ir para Produto")}
+            bannerSize = {{ base: '5%', sm: '20px', lg: '30px', xl: '35px'}}
           />
         </GridItem>
 
@@ -123,6 +129,8 @@ export const Products = () => (
             bgColor="brown.200"
             srcImg = "img/mdf.png"
             srcMargin = {{ base: '25%', sm: '0% 0% 30% 20%', lg: '0% 0% 50% 10%', xl: '0% 0% 30% 20%'}}
+            onClick={() => alert("Ir para Produto")}
+            bannerSize = {{ base: '5%', sm: '20px', lg: '30px', xl: '35px'}}
           />
         </GridItem>
         <GridItem>
@@ -134,6 +142,8 @@ export const Products = () => (
             bgColor="brown.200"
             srcImg = "img/mdp.png"
             srcMargin = {{ base: '25%', sm: '0% 0% 30% 20%', lg: '0% 0% 50% 10%', xl: '0% 0% 30% 20%'}}
+            onClick={() => alert("Ir para Produto")}
+            bannerSize = {{ base: '5%', sm: '20px', lg: '30px', xl: '35px'}}
           />
         </GridItem>
         
@@ -146,6 +156,8 @@ export const Products = () => (
             bgColor="brown.250"
             srcImg = "img/teca.png"
             srcMargin = {{ base: '25%', sm: '0% 0% 30% 20%', lg: '0% 0% 50% 10%', xl: '0% 0% 30% 20%'}}
+            onClick={() => alert("Ir para Produto")}
+            bannerSize = {{ base: '5%', sm: '20px', lg: '30px', xl: '35px'}}
           />
         </GridItem>
 
@@ -158,6 +170,8 @@ export const Products = () => (
               bgColor="green.300"
               srcImg = "img/pinus.png"
               srcMargin = {{ base: '25%', sm: '0% 0% 30% 20%', lg: '-30% -25% 0% 20%', xl: '-10% -25% 0% 20%'}}
+              onClick={() => alert("Ir para Produto")}
+              bannerSize = {{ base: '5%', sm: '20px', lg: '30px', xl: '35px'}}
             />
         </GridItem>
 

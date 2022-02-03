@@ -9,20 +9,14 @@ export type BannerProductsProps = {
   bgColor?: string
   srcImg?: string
   srcMargin?: ResponsiveCss
+  bannerSize?: ResponsiveCss
+  onClick?: () => void
 }
-export const BannerProducts = ({ 
-  title,
-  titleColor,
-  subtitle,
-  subtitleColor,
-  bgColor,
-  srcImg,
-  srcMargin
- }: BannerProductsProps) => {
+export const BannerProducts = (props: BannerProductsProps) => {
   return (
     <Flex
       data-testid="pattern-info-box-photo"
-      bg={bgColor}
+      bg={props.bgColor}
       cursor="pointer"
       pos="relative"
       zIndex='base'
@@ -35,46 +29,55 @@ export const BannerProducts = ({
       h={"100%"}
       w={"100%"}
       alignItems={"flex-end"}
+      onClick={props.onClick}
     >
 
       <Box
         position={"absolute"}
         zIndex='base'
-       
       >
         <Image
-          src = {srcImg}
-          m={srcMargin}
+          src = {props.srcImg}
+          m = {props.srcMargin}
         />
       </Box>
     
-    <Flex 
+      <Flex 
         zIndex={10}
-        p={{ base: '5%', sm: '6%', lg: '8%', xl: '8%'}}
-        // bg="blue"
-        flex="4"
-        direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}
-       
+        mr={props.bannerSize}
+        // bg="black"
+        flex="1"
+        mb = {{ base: '6%', sm: '20px', lg: '25px', xl: '40px'}}
+        ml = {{ base: '6%', sm: '20px', lg: '25px', xl: '40px'}}
+        direction={{ base: 'row', sm: 'row', lg: 'row', xl: 'row' }}
       >
         <Flex 
-          // bg="pink"
+          // bg="yellow"
           flex="1"
+          alignItems={"flex-start"}
+          direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}
         >
-          <Text as="h1"
-            variant = {"h1" as any}
-            color={titleColor}
-          >{title}</Text>
+          <Flex 
+            // bg="pink"
+            flex="1"
+          >
+            <Text as="h1"
+              variant = {"h1" as any}
+              color={props.titleColor}
+            >{props.title}</Text>
+          </Flex>
+          <Flex 
+            // bg="white"
+            flex="1"
+          >
+            <Text as="h4"
+              variant = {"h4" as any}
+              color={props.subtitleColor}
+              fontWeight={"medium"}
+            >{props.subtitle}</Text>
+          </Flex>
         </Flex>
-        <Flex 
-          // bg="white"
-          flex="1"
-        >
-          <Text as="h4"
-            variant = {"h4" as any}
-            color={subtitleColor}
-            fontWeight={"medium"}
-          >{subtitle}</Text>
-        </Flex>
+
       </Flex>
 
     </Flex>

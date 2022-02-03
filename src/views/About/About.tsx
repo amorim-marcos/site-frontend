@@ -341,7 +341,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
         <Flex
           direction="column"
           // bg='pink'
-          marginBottom={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
+          marginBottom={{ base: '40%', sm: '20%', lg: '10%', xl: '5%' }}
         >
           {/* FLEX 1 - BOX 1 */}
           <Flex
@@ -528,6 +528,10 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
               <PatternInfoPhoto 
                 onClick={() => alert('Vai para Nossas Certificações')}
                 imgSrc="/assets/imgs/banner_certificacoes.png"
+                title = "CONHEÇA"
+                description="Nossas certificações"
+                titleColor = "green.900"
+                descriptionColor='white'
              />
           </Box>
 
