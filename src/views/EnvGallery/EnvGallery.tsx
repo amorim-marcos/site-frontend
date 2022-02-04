@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button, Select, Input, Center, Checkbox, BoxProps, LinkProps} from "@chakra-ui/react"
+import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button, Select, Input, Center, Checkbox, BoxProps, LinkProps, ButtonProps} from "@chakra-ui/react"
 import Pagebar from '@components/Pagebar'
 import Arrow from "@components/Arrow"
 import FiltersIcon from '@components/Icons/FiltersIcon'
