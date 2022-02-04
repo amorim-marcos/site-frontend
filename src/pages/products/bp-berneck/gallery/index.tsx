@@ -1,5 +1,5 @@
+import EnvGallery from "views/EnvGallery"
+
 export default function Gallery() {
-  return (
-    <></>
-  )
+  return <EnvGallery envs={[]} />
 }
