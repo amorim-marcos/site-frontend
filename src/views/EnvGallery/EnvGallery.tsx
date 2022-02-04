@@ -3,6 +3,8 @@ import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button, Select
 import Pagebar from '@components/Pagebar'
 import Arrow from "@components/Arrow"
 import FiltersIcon from '@components/Icons/FiltersIcon'
+import SearchIcon from '@components/Icons/SearchIcon'
+import { colors } from 'theme/colors'
 
 export type EnvProps = LinkProps & {
     type: string,
@@ -96,6 +98,7 @@ export type EnvGalleryProps = {
 export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
     const [displayFilters, setDisplayFilters] = React.useState(false)
     const [currentFilterPanel, setCurrentFilterPanel] = React.useState('none')
+    const [searchSelected, setSearchSelected] = React.useState(false)
 
     function changeFilterPanel(newFilterPanel:FilterPanelName){
         if(currentFilterPanel == newFilterPanel){
@@ -208,6 +211,57 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                                         </Center>
                                     </Box>
                                 </Center>
+                                <Box position="absolute" top="0" right="50px">
+                                    <Flex
+                                        width={{
+                                            base: '100px',
+                                            md: '200px',
+                                            lg: '250px',
+                                            xl: '300px',
+                                            '2xl': '350px'
+                                        }}
+                                        borderBottom="solid"
+                                        borderBottomColor={(searchSelected) ? "green.500" : "grey.300"}
+                                        paddingX="5px"
+                                        height={{ base: '25px' }}
+                                        borderBottomWidth={{ base: '2px' }}
+                                    >
+                                        <Input
+                                            onFocus={()=>{ setSearchSelected(true) }}
+                                            onBlur={()=>{ setSearchSelected(false) }}
+                                            placeholder="Pesquise pelo nome"
+                                            _placeholder={{ color: "grey.300"}}
+                                            border="none"
+                                            outline="none"
+                                            _active={{ border: 'none', outline: 'none' }}
+                                            focusBorderColor="none"
+                                            color='grey.300'
+                                            paddingLeft="0px"
+                                            paddingBottom={{ base: '0px', md: '10px' }}
+                                            fontSize={{
+                                                base: '8px',
+                                                md: '10px',
+                                                lg: '12px',
+                                                xl: '14px',
+                                                '2xl': '16px'
+                                            }}
+                                            height={{ base: '30px' }}
+                                        />
+                                        <Box>
+                                        <SearchIcon
+                                            stroke={(searchSelected)? colors.green[500] : colors.grey[300]}
+                                            width={{
+                                                base: '13px',
+                                                md: '16px',
+                                                lg: '23px',
+                                                xl: '28px',
+                                                '2xl': '35px'
+                                            }}
+                                            height={{ base: '25px', md: '10px', '2xl': '0px' }}
+                                        />
+                                        </Box>
+                                    </Flex>
+                                </Box>
                             </Flex>
                         </Box>
                     </Box>
