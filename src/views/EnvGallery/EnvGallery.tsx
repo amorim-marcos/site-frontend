@@ -25,15 +25,44 @@ const Env = ({type, name, image_url, ...props}:EnvProps) => {
 
 }
 
+type BPFilterProps = ButtonProps & {
+    name: string,
+    texture: string,
+    pattern_image: string
+}
+
+const BPFilter = ({name, texture, pattern_image, ...props}: BPFilterProps) => {
+    const [displayInfo, setDisplayInfo] = React.useState(false)
+    return (
+        <Button 
+            onMouseEnter={() => setDisplayInfo(true) }
+            onMouseLeave={() => setDisplayInfo(false)}
+            minW="155px" 
+            height="55px" 
+            {...props}
+        >
+            <Box position="absolute" top="0" left="0" zIndex="1" width="100%" height="100%" borderRadius="5px" padding="0" margin="0" backgroundImage={`url(${pattern_image})`} backgroundRepeat="repeat" backgroundSize="cover"></Box>
+            <Box display={(!displayInfo) ? 'none' : 'normal'} zIndex="2" width="100%" height="100%" position="absolute" top="0" left="0" backgroundColor="white.100" opacity="0.6"></Box>
+            <Box display={(!displayInfo) ? 'none' : 'normal'} zIndex="3" width="100%" height="100%" position="absolute" top="0" left="0">
+                <Flex direction="column" alignItems="flex-start" mt="5px" ml="5px" color="grey.400">
+                    <Text variant={"body-bold" as any}>{name}</Text>
+                    <Text color="grey.600">{texture}</Text>
+                </Flex>
+            </Box>
+        </Button>
+    )
+}
+
 export type ValidFilterNames = 'bps' | 'ambient' | 'style'
 
 export type FilterPanelName = 'none' | ValidFilterNames
 
 export type EnvGalleryProps = {
-    envs: Array<any>
+    envs: Array<any>,
+    availableBps: Array<any>
 }
 
-export const EnvGallery = ({ envs }:EnvGalleryProps) => {
+export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
     const [displayFilters, setDisplayFilters] = React.useState(false)
     const [currentFilterPanel, setCurrentFilterPanel] = React.useState('none')
 
@@ -123,10 +152,10 @@ export const EnvGallery = ({ envs }:EnvGalleryProps) => {
                                         </Button>   
                                     </Flex>
                                 </Center>
-                                <Center position="relative" display={(currentFilterPanel == 'none') ? 'none' : 'normal'} flex={1} minH="100px">
+                                <Center position="relative" display={(currentFilterPanel == 'none') ? 'none' : 'normal'} flex={1} minH="100px" mb="20px">
                                     <Box display={(currentFilterPanel != 'bps') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
-                                        <Flex justifyContent="center">
-                                            BP Berneck® filtro
+                                        <Flex justifyContent="center" wrap="wrap">
+                                            {availableBps && availableBps.map((bp) => <BPFilter mr="15px" mt="10px" name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} /> )}
                                         </Flex>
                                     </Box>
                                     <Box display={(currentFilterPanel != 'ambient') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
