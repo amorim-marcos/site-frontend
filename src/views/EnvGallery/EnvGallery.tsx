@@ -53,6 +53,37 @@ const BPFilter = ({name, texture, pattern_image, ...props}: BPFilterProps) => {
     )
 }
 
+export type FilterCheckBox = BoxProps &{
+    title: string,
+    code: string,
+    onCheck?: Function
+}
+
+export type FilterCheckBoxProps = FilterCheckBox
+
+const FilterCheckbox = ({title, code, onCheck = () => {}, ...props}: FilterCheckBoxProps) => {
+    const [checked, setChecked] = React.useState(false)
+    const [value, setValue] = React.useState(code)
+    return (
+        // @ts-ignore
+        <Button background="green.150" onClick={(e) => { setChecked(!checked); if(onCheck) onCheck(checked, value)}} position="relative" color="green.900" justifyContent="start" variant="link" borderRadius="5px" height="60px" minW="250px" {...props} padding="28px" overflow="hidden">
+            <Checkbox 
+                onClickCapture={(e) => { e.preventDefault(); e.stopPropagation(); setChecked(!checked); if(onCheck) onCheck(checked, value)}} 
+                padding="0"
+                iconColor='green.600'
+                border="1px solid"
+                borderColor="green.900"
+                borderRadius="3px"
+                colorScheme="white.100"
+                isChecked={checked}
+                zIndex="2" 
+                mr="5px" 
+            />
+            <Text fontWeight="600" fontSize="19px" color="green.900" zIndex="2">{title}</Text>
+        </Button>
+    )
+}
+
 export type ValidFilterNames = 'bps' | 'ambient' | 'style'
 
 export type FilterPanelName = 'none' | ValidFilterNames
@@ -159,14 +190,22 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                                         </Flex>
                                     </Box>
                                     <Box display={(currentFilterPanel != 'ambient') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
-                                        <Flex justifyContent="center">
-                                           Ambiente filtro
-                                        </Flex>
+                                        <Center>
+                                            <Flex justifyContent="flex-start" wrap="wrap">
+                                                {
+                                                    filtersCheckboxes["ambients"].map((filter) => <FilterCheckbox title={filter.title} code={filter.code} mr="15px" mt="10px" />)
+                                                }
+                                            </Flex>
+                                        </Center>
                                     </Box>
                                     <Box display={(currentFilterPanel != 'style') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
-                                        <Flex justifyContent="center">
-                                            Estilo filtro
-                                        </Flex>
+                                        <Center>
+                                            <Flex justifyContent="flex-start" wrap="wrap">
+                                                {
+                                                    filtersCheckboxes["styles"].map((filter) => <FilterCheckbox title={filter.title} code={filter.code} mr="15px" mt="10px" />)
+                                                }
+                                            </Flex>
+                                        </Center>
                                     </Box>
                                 </Center>
                             </Flex>
@@ -193,4 +232,95 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
         </>
 
     )
+}
+
+const filtersCheckboxes = {
+    "ambients": [
+        {
+            title: "Adega",
+            code: "adega"
+        },
+        {
+            title: "Área de serviço",
+            code: "area_servico"
+        },
+        {
+            title: "Banheiro",
+            code: "banheiro"
+        },
+        {
+            title: "Bar e restaurante",
+            code: "bar_resturante"
+        },
+        {
+            title: "Comercial",
+            code: "comercial"
+        },
+        {
+            title: "Corredor",
+            code: "corredor"
+        },
+        {
+            title: "Cozinha",
+            code: "cozinha"
+        },
+        {
+            title: "Garagem",
+            code: "garagem"
+        },
+        {
+            title: "Home",
+            code: "home"
+        },
+        {
+            title: "Infantil",
+            code: "infantil"
+        }
+    ],
+    "styles": [
+        {
+            title: "Aconchegante",
+            code: "Aconchegante"
+        },
+        {
+            title: "Clássico",
+            code: "classico"
+        },
+        {
+            title: "Contemporâneo",
+            code: "contemporaneo"
+        },
+        {
+            title: "Escandinavo",
+            code: "escandinavo"
+        },
+        {
+            title: "Industrial",
+            code: "industrial"
+        },
+        {
+            title: "Lúdico",
+            code: "lúdico"
+        },
+        {
+            title: "Moderno",
+            code: "moderno"
+        },
+        {
+            title: "Natural",
+            code: "natural"
+        },
+        {
+            title: "Sóbrio",
+            code: "sobrio"
+        },
+        {
+            title: "Sofisticado",
+            code: "sofisticado"
+        },
+        {
+            title: "Urbano",
+            code: "urbano"
+        }
+    ]
 }
