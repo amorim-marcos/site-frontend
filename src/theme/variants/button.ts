@@ -50,6 +50,19 @@ export const Button = {
       _hover: {
         bg: 'brown.200'
       }      
+    },
+    "apply-filters": {
+      w: 'auto',
+      minW: '200px',
+      h: '50px',
+      borderRadius: '0',
+      paddingLeft: '15px',
+      paddingRight: '15px',
+      color: 'white',
+      bg: 'green.500',
+      _hover: {
+        bg: 'green.700'
+      }
     }
   },
   defaultProps: {

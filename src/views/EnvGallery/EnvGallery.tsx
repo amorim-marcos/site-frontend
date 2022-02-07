@@ -99,6 +99,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
     const [displayFilters, setDisplayFilters] = React.useState(false)
     const [currentFilterPanel, setCurrentFilterPanel] = React.useState('none')
     const [searchSelected, setSearchSelected] = React.useState(false)
+    const [filteredEnvs, setFilteredEnvs] = React.useState(envs)
 
     function changeFilterPanel(newFilterPanel:FilterPanelName){
         if(currentFilterPanel == newFilterPanel){
@@ -186,7 +187,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                                         </Button>   
                                     </Flex>
                                 </Center>
-                                <Center position="relative" display={(currentFilterPanel == 'none') ? 'none' : 'normal'} flex={1} minH="100px" mb="20px">
+                                <Center position="relative" display={(currentFilterPanel == 'none') ? 'none' : 'normal'} flex={1} minH="100px">
                                     <Box display={(currentFilterPanel != 'bps') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
                                         <Flex justifyContent="center" wrap="wrap">
                                             {availableBps && availableBps.map((bp) => <BPFilter mr="15px" mt="10px" name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} /> )}
@@ -210,6 +211,9 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                                             </Flex>
                                         </Center>
                                     </Box>
+                                    <Flex justifyContent="center" padding="30px">
+                                        <Button variant={"apply-filters" as any}>Filtrar</Button>
+                                    </Flex>
                                 </Center>
                                 <Box position="absolute" top="0" right="50px">
                                     <Flex
@@ -274,7 +278,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                     gridGap="30px"
                 >
                     {
-                        envs && envs.map((env) => (
+                        filteredEnvs && filteredEnvs.map((env) => (
                             <GridItem mt="60px">
                                 <Env type={env.type} name={env.name} image_url={env.image_url} />
                             </GridItem>
