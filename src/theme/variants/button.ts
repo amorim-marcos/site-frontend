@@ -51,7 +51,7 @@ export const Button = {
         bg: 'brown.200'
       }      
     },
-    "apply-filters": {
+    "filters": {
       w: 'auto',
       minW: '200px',
       h: '50px',

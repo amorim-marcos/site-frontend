@@ -31,20 +31,30 @@ type BPFilterProps = ButtonProps & {
     name: string,
     texture: string,
     pattern_image: string
+    isSelected?: boolean
+    onSelect?: Function
 }
 
-const BPFilter = ({name, texture, pattern_image, ...props}: BPFilterProps) => {
+const BPFilter = ({name, texture, pattern_image, isSelected = false, onSelect, ...props}: BPFilterProps) => {
     const [displayInfo, setDisplayInfo] = React.useState(false)
+    const [selected, setSelected] = React.useState(false)
+    
+    React.useEffect(() => {
+        setSelected(isSelected)
+    }, [isSelected])
+
     return (
         <Button 
+            zIndex="5"
+            onClick={(e) => { if(onSelect) onSelect(selected)}}
             onMouseEnter={() => setDisplayInfo(true) }
             onMouseLeave={() => setDisplayInfo(false)}
             minW="155px" 
             height="55px" 
             {...props}
         >
-            <Box position="absolute" top="0" left="0" zIndex="1" width="100%" height="100%" borderRadius="5px" padding="0" margin="0" backgroundImage={`url(${pattern_image})`} backgroundRepeat="repeat" backgroundSize="cover"></Box>
-            <Box display={(!displayInfo) ? 'none' : 'normal'} zIndex="2" width="100%" height="100%" position="absolute" top="0" left="0" backgroundColor="white.100" opacity="0.6"></Box>
+            <Box boxShadow={(selected) ? "0px 0px 3px green" : "none"} position="absolute" top="0" left="0" zIndex="1" width="100%" height="100%" borderRadius="5px" padding="0" margin="0" backgroundImage={`url(${pattern_image})`} backgroundRepeat="repeat" backgroundSize="cover"></Box>
+            <Box  display={(!displayInfo) ? 'none' : 'normal'} zIndex="2" width="100%" height="100%" position="absolute" top="0" left="0" backgroundColor="white.100" opacity="0.6"></Box>
             <Box display={(!displayInfo) ? 'none' : 'normal'} zIndex="3" width="100%" height="100%" position="absolute" top="0" left="0">
                 <Flex direction="column" alignItems="flex-start" mt="5px" ml="5px" color="grey.400">
                     <Text variant={"body-bold" as any}>{name}</Text>
@@ -58,19 +68,25 @@ const BPFilter = ({name, texture, pattern_image, ...props}: BPFilterProps) => {
 export type FilterCheckBox = BoxProps &{
     title: string,
     code: string,
+    isChecked?: boolean
     onCheck?: Function
 }
 
 export type FilterCheckBoxProps = FilterCheckBox
 
-const FilterCheckbox = ({title, code, onCheck = () => {}, ...props}: FilterCheckBoxProps) => {
-    const [checked, setChecked] = React.useState(false)
+const FilterCheckbox = ({title, code, isChecked = false, onCheck = () => {}, ...props}: FilterCheckBoxProps) => {
+    const [checked, setChecked] = React.useState(isChecked)
     const [value, setValue] = React.useState(code)
+
+    React.useEffect(() => {
+        setChecked(isChecked)
+    }, [isChecked])
+
     return (
         // @ts-ignore
-        <Button background="green.150" onClick={(e) => { setChecked(!checked); if(onCheck) onCheck(checked, value)}} position="relative" color="green.900" justifyContent="start" variant="link" borderRadius="5px" height="60px" minW="250px" {...props} padding="28px" overflow="hidden">
+        <Button background="green.150" onClick={(e) => { if(onCheck) onCheck(checked, value)}} position="relative" color="green.900" justifyContent="start" variant="link" borderRadius="5px" height="60px" minW="250px" {...props} padding="28px" overflow="hidden">
             <Checkbox 
-                onClickCapture={(e) => { e.preventDefault(); e.stopPropagation(); setChecked(!checked); if(onCheck) onCheck(checked, value)}} 
+                onClickCapture={(e) => { e.preventDefault(); e.stopPropagation(); if(onCheck) onCheck(checked, value)}} 
                 padding="0"
                 iconColor='green.600'
                 border="1px solid"
@@ -86,9 +102,24 @@ const FilterCheckbox = ({title, code, onCheck = () => {}, ...props}: FilterCheck
     )
 }
 
-export type ValidFilterNames = 'bps' | 'ambient' | 'style'
+export type ValidFilterNames = 'bps' | 'ambients' | 'styles'
 
 export type FilterPanelName = 'none' | ValidFilterNames
+
+
+export type Filters = {
+    "nameSearched": string,
+    "bps": Array<string>,
+    "ambients": Array<string>,
+    "styles": Array<string>    
+}
+
+const initialFilters:Filters = {
+    "nameSearched": "",
+    "bps": [],
+    "ambients": [],
+    "styles": []
+}
 
 export type EnvGalleryProps = {
     envs: Array<any>,
@@ -100,6 +131,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
     const [currentFilterPanel, setCurrentFilterPanel] = React.useState('none')
     const [searchSelected, setSearchSelected] = React.useState(false)
     const [filteredEnvs, setFilteredEnvs] = React.useState(envs)
+    const [filters, setFilters] = React.useState(initialFilters)
 
     function changeFilterPanel(newFilterPanel:FilterPanelName){
         if(currentFilterPanel == newFilterPanel){
@@ -108,6 +140,77 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
             setCurrentFilterPanel(newFilterPanel)
         } 
     }
+
+    function appendFilter(type:ValidFilterNames, value:string){
+        let filtersArray = filters[type]
+
+        filtersArray.push(value)
+
+        let newFilters:Filters = {...filters}
+
+        newFilters[type] = filtersArray
+
+        setFilters(newFilters)
+    }
+
+    function removeFilter(type:ValidFilterNames, value:string){
+        let filtersArray = filters[type]
+
+        let index = filtersArray.indexOf(value)
+
+        if (index > -1) {
+            filtersArray.splice(index, 1);
+        }
+
+        let newFilters = { ...filters }
+
+        newFilters[type] = filtersArray
+
+        setFilters(newFilters)
+    }
+
+    function applyFilters(filters:any, originalEnvs:Array<any>){
+        let filteredEnvs = originalEnvs
+        
+        // search
+        if(filters["nameSearched"] && filters["nameSearched"] !== ""){
+            filteredEnvs = filteredEnvs.filter((env:any) => {
+                return env.name.toLowerCase().startsWith(filters["nameSearched"].toLowerCase())
+            })
+        }
+
+        // bps
+        if(filters["bps"].length > 0){
+            filteredEnvs = filteredEnvs.filter((env:any) => {
+                if(env.bps && env.bps.length > 0){
+                    for(let bp of env.bps){
+                        if(filters["bps"].includes(bp)){
+                            return true
+                        }
+                    }
+                    return false
+                }
+                return false
+            })             
+        }
+
+        // ambients
+        if(filters["ambients"].length > 0){
+            filteredEnvs = filteredEnvs.filter((env:any) => {
+                return filters["ambients"].includes(env.ambient)
+            })            
+        }
+
+        // styles
+        if(filters["styles"].length > 0){
+            filteredEnvs = filteredEnvs.filter((env:any) => {
+                return filters["styles"].includes(env.style)
+            })            
+        }
+
+        return filteredEnvs.slice()
+    }
+
     return (
         <>
         <Pagebar
@@ -158,61 +261,81 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                                             <Arrow direction={(currentFilterPanel == 'bps') ? "down" : "up"} width="3" height="6" color="grey.200" />
                                         </Button> 
                                         <Button 
-                                            onClick={() => changeFilterPanel('ambient')}
+                                            onClick={() => changeFilterPanel('ambients')}
                                             variant="link"
                                             color="grey.300"
                                             w="180px"
                                             h="30px"
-                                            borderBottom={(currentFilterPanel == 'ambient') ? "solid" : "none"}
+                                            borderBottom={(currentFilterPanel == 'ambients') ? "solid" : "none"}
                                             borderBottomColor={"green.500"}
                                             borderBottomWidth={{ base: '4px' }}
                                             fontSize="22px"
                                         >
                                             <Text color='grey.300' mr="10px">AMBIENTE</Text>
-                                            <Arrow direction={(currentFilterPanel == 'ambient') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                                            <Arrow direction={(currentFilterPanel == 'ambients') ? "down" : "up"} width="3" height="6" color="grey.200" />
                                         </Button>  
                                         <Button 
-                                            onClick={() => changeFilterPanel('style')}
+                                            onClick={() => changeFilterPanel('styles')}
                                             variant="link"
                                             color="grey.300"
                                             w="180px"
                                             h="30px"
-                                            borderBottom={(currentFilterPanel == 'style') ? "solid" : "none"}
+                                            borderBottom={(currentFilterPanel == 'styles') ? "solid" : "none"}
                                             borderBottomColor={"green.500"}
                                             borderBottomWidth={{ base: '4px' }}
                                             fontSize="22px"
                                         >
                                             <Text color='grey.300' mr="10px">ESTILO</Text>
-                                            <Arrow direction={(currentFilterPanel == 'style') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                                            <Arrow direction={(currentFilterPanel == 'styles') ? "down" : "up"} width="3" height="6" color="grey.200" />
                                         </Button>   
                                     </Flex>
                                 </Center>
                                 <Center position="relative" display={(currentFilterPanel == 'none') ? 'none' : 'normal'} flex={1} minH="100px">
                                     <Box display={(currentFilterPanel != 'bps') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
                                         <Flex justifyContent="center" wrap="wrap">
-                                            {availableBps && availableBps.map((bp) => <BPFilter mr="15px" mt="10px" name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} /> )}
+                                            {availableBps && availableBps.map((bp) => 
+                                                <BPFilter 
+                                                    isSelected={filters["bps"].includes(bp.name)}
+                                                    onSelect={(selected) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
+                                                    mr="15px" mt="10px" 
+                                                    name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
+                                                /> 
+                                            )}
                                         </Flex>
                                     </Box>
-                                    <Box display={(currentFilterPanel != 'ambient') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                                    <Box display={(currentFilterPanel != 'ambients') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
                                         <Center>
                                             <Flex justifyContent="flex-start" wrap="wrap">
                                                 {
-                                                    filtersCheckboxes["ambients"].map((filter) => <FilterCheckbox title={filter.title} code={filter.code} mr="15px" mt="10px" />)
+                                                    filtersCheckboxes["ambients"].map((filter) => 
+                                                    <FilterCheckbox 
+                                                        isChecked={filters["ambients"].includes(filter.code)}
+                                                        onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("ambients", value) : removeFilter("ambients", value) }}
+                                                        title={filter.title} code={filter.code} 
+                                                        mr="15px" mt="10px" 
+                                                    />)
                                                 }
                                             </Flex>
                                         </Center>
                                     </Box>
-                                    <Box display={(currentFilterPanel != 'style') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                                    <Box display={(currentFilterPanel != 'styles') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
                                         <Center>
                                             <Flex justifyContent="flex-start" wrap="wrap">
                                                 {
-                                                    filtersCheckboxes["styles"].map((filter) => <FilterCheckbox title={filter.title} code={filter.code} mr="15px" mt="10px" />)
+                                                    filtersCheckboxes["styles"].map((filter) => 
+                                                        <FilterCheckbox 
+                                                            isChecked={filters["styles"].includes(filter.code)}
+                                                            onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("styles", value) : removeFilter("styles", value) }}
+                                                            title={filter.title} code={filter.code} 
+                                                            mr="15px" mt="10px" 
+                                                        />)
                                                 }
                                             </Flex>
                                         </Center>
                                     </Box>
                                     <Flex justifyContent="center" padding="30px">
-                                        <Button variant={"apply-filters" as any}>Filtrar</Button>
+                                        <Button variant={"filters" as any} mr="30px" onClick={() =>setFilteredEnvs(applyFilters(filters, envs))}>Filtrar</Button>
+                                        <Button variant={"filters" as any} onClick={() => { setFilters(initialFilters); setFilteredEnvs(applyFilters(initialFilters, envs)) }}>Limpar filtros</Button>
                                     </Flex>
                                 </Center>
                                 <Box position="absolute" top="0" right="50px">
@@ -250,6 +373,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                                                 '2xl': '16px'
                                             }}
                                             height={{ base: '30px' }}
+                                            onChange={(e) => { setFilters({ ...filters, nameSearched: e.target.value })}}
                                         />
                                         <Box>
                                         <SearchIcon
@@ -272,6 +396,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                 }
             </Container>
             <Container minW="100%">
+                <Text>{JSON.stringify(filters)}</Text>
                 <Grid
                     templateRows="repeat(auto, 1fr)"
                     templateColumns="repeat(3, 1fr)"
