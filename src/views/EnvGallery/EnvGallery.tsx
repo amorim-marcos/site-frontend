@@ -32,10 +32,10 @@ type BPFilterProps = ButtonProps & {
     texture: string,
     pattern_image: string
     isSelected?: boolean
-    onSelect?: Function
+    toggleSelect?: Function
 }
 
-const BPFilter = ({name, texture, pattern_image, isSelected = false, onSelect, ...props}: BPFilterProps) => {
+const BPFilter = ({name, texture, pattern_image, isSelected = false, toggleSelect, ...props}: BPFilterProps) => {
     const [displayInfo, setDisplayInfo] = React.useState(false)
     const [selected, setSelected] = React.useState(false)
     
@@ -46,7 +46,7 @@ const BPFilter = ({name, texture, pattern_image, isSelected = false, onSelect, .
     return (
         <Button 
             zIndex="5"
-            onClick={(e) => { if(onSelect) onSelect(selected)}}
+            onClick={(e) => { if(toggleSelect) toggleSelect(selected)}}
             onMouseEnter={() => setDisplayInfo(true) }
             onMouseLeave={() => setDisplayInfo(false)}
             minW="155px" 
@@ -211,6 +211,10 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
         return filteredEnvs.slice()
     }
 
+    React.useEffect(() => {
+        if(filters.nameSearched)
+    }, [filteredEnvs])
+
     return (
         <>
         <Pagebar
@@ -296,7 +300,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                                             {availableBps && availableBps.map((bp) => 
                                                 <BPFilter 
                                                     isSelected={filters["bps"].includes(bp.name)}
-                                                    onSelect={(selected) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
+                                                    toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
                                                     mr="15px" mt="10px" 
                                                     name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
                                                 /> 
@@ -396,7 +400,6 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                 }
             </Container>
             <Container minW="100%">
-                <Text>{JSON.stringify(filters)}</Text>
                 <Grid
                     templateRows="repeat(auto, 1fr)"
                     templateColumns="repeat(3, 1fr)"
