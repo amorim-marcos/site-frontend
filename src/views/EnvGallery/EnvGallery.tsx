@@ -5,6 +5,7 @@ import Arrow from "@components/Arrow"
 import FiltersIcon from '@components/Icons/FiltersIcon'
 import SearchIcon from '@components/Icons/SearchIcon'
 import { colors } from 'theme/colors'
+import CloseIcon from '@components/Icons/CloseIcon'
 
 export type EnvProps = LinkProps & {
     type: string,
@@ -232,8 +233,8 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
         <Container backgroundColor="white.100" maxW="1920px" paddingInline="0" paddingTop="30px" paddingBottom="300px">
             <Container position="relative" mb={(displayFilters) ? "100px" : "15px"} minW="100%" minH="50px" paddingInline="0">
                 <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  position="absolute" top="0" left="30px">
-                    <FiltersIcon mr="16px" />
-                    <Text>Filtrar Resultados</Text>
+                    {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
+                    <Text>{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
                     <Arrow visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='grey.300' />
                 </Button>
                 {
