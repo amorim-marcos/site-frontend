@@ -211,10 +211,6 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
         return filteredEnvs.slice()
     }
 
-    React.useEffect(() => {
-        if(filters.nameSearched)
-    }, [filteredEnvs])
-
     return (
         <>
         <Pagebar
