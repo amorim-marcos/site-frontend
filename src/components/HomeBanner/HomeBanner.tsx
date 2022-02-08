@@ -28,7 +28,9 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
   }
 
   useInterval(next, 3000)
-  return (
+  return items.length <= 0 ? (
+    <h1>No items passed</h1>
+  ) : (
     <Flex
       maxWidth="1920px"
       marginX="auto"
@@ -100,6 +102,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
             md: 'linear-gradient(90deg, rgba(241,224,196,0.76234243697479) 0%, rgba(255,255,255,0) 100%)'
           }}
         ></Box>
+
         <Image
           src={items[currentItem].imageUrl}
           objectFit={'cover'}

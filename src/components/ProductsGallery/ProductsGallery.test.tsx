@@ -4,6 +4,6 @@ import ProductsGallery from '.'
 
 describe('<ProductsGallery />', () => {
   it('should render the component', () => {
-    const { container } = render(<ProductsGallery />)
+    const { container } = render(<ProductsGallery products={[]} />)
   })
 })

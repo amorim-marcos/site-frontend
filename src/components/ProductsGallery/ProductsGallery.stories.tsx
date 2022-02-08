@@ -6,4 +6,6 @@ export default {
   component: ProductsGallery
 } as Meta
 
-export const Default: Story<ProductsGalleryProps> = (args) => <ProductsGallery {...args} />
+export const Default: Story<ProductsGalleryProps> = (args) => (
+  <ProductsGallery {...args} />
+)

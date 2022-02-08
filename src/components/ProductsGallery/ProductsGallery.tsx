@@ -63,7 +63,7 @@ export const ProductsGallery = ({ products }: ProductsGalleryProps) => {
     console.log(width)
   }, [width])
 
-  return (
+  return products.length > 0 ? (
     <Flex
       overflow="hidden"
       w="100vw"
@@ -197,5 +197,7 @@ export const ProductsGallery = ({ products }: ProductsGalleryProps) => {
         </Flex>
       </Box>
     </Flex>
+  ) : (
+    <h1>No products passed</h1>
   )
 }

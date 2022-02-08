@@ -4,6 +4,6 @@ import HomeBanner from '.'
 
 describe('<HomeBanner />', () => {
   it('should render the component', () => {
-    const { container } = render(<HomeBanner />)
+    const { container } = render(<HomeBanner items={[]} />)
   })
 })
