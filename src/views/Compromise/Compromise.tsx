@@ -542,7 +542,7 @@ export const Compromise = () => {
           <Box
             // bg='pink'
             flex='1'
-            justifyItem={"center"}
+            justifyItems={"center"}
             // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
              <Image 
@@ -683,7 +683,7 @@ export const Compromise = () => {
           <Box
             // bg='pink'
             flex='1'
-            justifyItem={"center"}
+            justifyItems={"center"}
             margin = {{ base: '0% 0% 5% 0%', sm: '0% 0% 5% 0%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
              <Image 
@@ -695,7 +695,7 @@ export const Compromise = () => {
             margin = {{ base: '0% 5% 10% 5%', sm: '0% 5% 8% 5%', lg: '3% 3% 3% 3%', xl: '3% 3% 3% 3%'}}
             // bg='yellow'
             flex='1'
-            justifyItem={"flex-start"}
+            justifyItems={"flex-start"}
           >
                 <Text as='h3'
                   variant = {"h3" as any}
@@ -803,7 +803,7 @@ export const Compromise = () => {
           <Box
             // bg='pink'
             flex='1'
-            justifyItem={"center"}
+            justifyItems={"center"}
             // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
              <Image 
@@ -860,7 +860,7 @@ export const Compromise = () => {
             margin = {{ base: '10% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
             // bg='yellow'
             flex='1'
-            justifyItem={"flex-start"}
+            justifyItems={"flex-start"}
           >
                 <Text as='h3'
                   variant = {"h3" as any}
@@ -876,7 +876,7 @@ export const Compromise = () => {
           <Box
             // bg='pink'
             flex='1'
-            justifyItem={"center"}
+            justifyItems={"center"}
             margin = {{ base: '0% 0% 0% 0%', sm: '0% 5% 8% 5%', lg: '3% 3% 3% 3%', xl: '3% 3% 3% 3%'}}
           >
              <Image 
@@ -982,7 +982,7 @@ export const Compromise = () => {
           <Box
             // bg='pink'
             flex='1'
-            justifyItem={"center"}
+            justifyItems={"center"}
             margin = {{ base: '0% 0% 5% 0%', sm: '0% 0% 5% 0%', lg: '3% 3% 3% 3%', xl: '3% 3% 3% 3%'}}
           >
              <Image 
@@ -994,7 +994,7 @@ export const Compromise = () => {
             margin = {{ base: '5% 5% 5% 5%', sm: '0% 5% 5% 5%', lg: '5% 2% 5% 2%', xl: '5% 2% 5% 2%'}}
             // bg='blue'
             flex='1.5'
-            // justifyItem={"center"}
+            // justifyItems={"center"}
           >
               {/* BOX 1 */}
               <Box
