@@ -244,8 +244,8 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                     <Box margin="0">
                         <Box>
                             <Flex position="relative" direction="column">
-                                <Center>
-                                    <Box display={{base: "none", md: "normal"}} position="absolute" background="green.600" width="650px" height="6px" bottom="-3px"/>
+                                <Center display={{base: "none", md: "normal"}}>
+                                    <Box position="absolute" background="green.600" width="650px" height="6px" bottom="-3px"/>
                                 </Center>
                                 <Center mb="20px">
                                     <Flex justifyContent="space-between">
@@ -341,7 +341,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                                         <Button variant={"filters" as any} onClick={() => { setFilters(initialFilters); setFilteredEnvs(applyFilters(initialFilters, envs)) }}>Limpar filtros</Button>
                                     </Flex>
                                 </Center>
-                                <Box position="absolute" top="0" right="50px">
+                                <Box display={{base: "none", md: "normal"}} position="absolute" top="0" right="50px">
                                     <Flex
                                         width={{
                                             base: '100px',
