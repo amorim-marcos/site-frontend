@@ -17,11 +17,11 @@ const Env = ({type, name, image_url, ...props}:EnvProps) => {
     return(
         <Link {...props}>
             <Flex direction="column">
-                <Box overflow="hidden" width="548px" height="409px">
+                <Box overflow="hidden" width={{base: "367px", md: "548px"}} height={{ base: "274px", md: "409px"}}>
                     <Image objectFit="cover" objectPosition="center" width="100%" height="100%" overflow="hidden" flex={1} src={image_url} />
                 </Box>
-                <Text flex={1} fontSize="31px" variant={"body-bold" as any}>{type}</Text>
-                <Text flex={1} fontSize="28px">{name}</Text>
+                <Text flex={1} fontSize={{base: "23px", md: "31px"}} variant={"body-bold" as any}>{type}</Text>
+                <Text flex={1} fontSize={{base: "17px", md: "28px"}}>{name}</Text>
             </Flex>
         </Link>
     )
@@ -230,20 +230,22 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                 }
             ]}
         />
-        <Container backgroundColor="white.100" maxW="1920px" paddingInline="0" paddingTop="30px" paddingBottom="300px">
-            <Container position="relative" mb={(displayFilters) ? "100px" : "15px"} minW="100%" minH="50px" paddingInline="0">
-                <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  position="absolute" top="0" left="30px">
-                    {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
-                    <Text>{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
-                    <Arrow visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='grey.300' />
-                </Button>
+        <Container backgroundColor="white.100" maxW="1920px" width="100%" paddingInline="0" paddingTop="30px" paddingBottom="300px">
+            <Container position="relative" mb={(displayFilters) ? { base: "40px", md: "100px"} : { base: "5px", md: "15px"}} minW="100%" minH={{ base: "0" , md: "50px"}} paddingInline="0">
+                <Box position={{base: "relative", md: "absolute"}} top="0" left={{base: "20px", md: "30px"}}>
+                    <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  >
+                        {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
+                        <Text fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
+                        <Arrow display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='grey.300' />
+                    </Button>
+                </Box>
                 {
                     displayFilters &&
                     <Box margin="0">
-                        <Box >
+                        <Box>
                             <Flex position="relative" direction="column">
                                 <Center>
-                                    <Box position="absolute" background="green.600" width="650px" height="6px" bottom="-3px"/>
+                                    <Box display={{base: "none", md: "normal"}} position="absolute" background="green.600" width="650px" height="6px" bottom="-3px"/>
                                 </Center>
                                 <Center mb="20px">
                                     <Flex justifyContent="space-between">
@@ -399,13 +401,13 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
             <Container minW="100%">
                 <Grid
                     templateRows="repeat(auto, 1fr)"
-                    templateColumns="repeat(3, 1fr)"
-                    gridGap="30px"
+                    templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)"} }
+                    gridGap={{base: "none", md: "30px"}}
                 >
                     {
                         filteredEnvs && filteredEnvs.map((env) => (
                             <GridItem mt="60px">
-                                <Env type={env.type} name={env.name} image_url={env.image_url} />
+                                <Env type={env.type} name={env.name} image_url={env.image_url} />      
                             </GridItem>
                         ))
                     }
