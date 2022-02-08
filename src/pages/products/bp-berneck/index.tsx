@@ -1,1 +1,1 @@
-export { default } from 'views/Products/bp-berneck'
+export { default } from 'views/products/bp-berneck'

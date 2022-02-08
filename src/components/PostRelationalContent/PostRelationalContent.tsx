@@ -1,6 +1,5 @@
-import { Heading, Flex, Box, Text, Image } from '@chakra-ui/react'
-import ArrowIcon from '@components/Icons/ArrowIcon'
-import { useState } from 'react'
+import { Flex, Text } from '@chakra-ui/react'
+import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
 
 export type PostRelationalContentProps = {
   title?: string
@@ -24,92 +23,32 @@ export const PostRelationalContent = ({
         alignItems="center"
         justifyContent="space-between"
       >
-        <RelationalItem
+        <ChannelBnkRelationalItem
           category="INSPIRAÇÃO SOB MEDIDA"
           urlImage="https://casaclaudia.abril.com.br/wp-content/uploads/2017/06/sala31.jpg"
           color="brown.150"
           title="Como usar o círculo cromático para combinar padrões BP"
         />
 
-        <RelationalItem
+        <ChannelBnkRelationalItem
           category="INSPIRAÇÃO SOB MEDIDA"
           urlImage="https://casaclaudia.abril.com.br/wp-content/uploads/2017/06/sala31.jpg"
           color="green.600"
           title="Como usar o círculo cromático para combinar padrões BP"
         />
 
-        <RelationalItem
+        <ChannelBnkRelationalItem
           category="INSPIRAÇÃO SOB MEDIDA"
           urlImage="https://casaclaudia.abril.com.br/wp-content/uploads/2017/06/sala31.jpg"
           color="brown.150"
           title="Como usar o círculo cromático para combinar padrões BP"
         />
 
-        <RelationalItem
+        <ChannelBnkRelationalItem
           category="INSPIRAÇÃO SOB MEDIDA"
           urlImage="https://casaclaudia.abril.com.br/wp-content/uploads/2017/06/sala31.jpg"
           color="brown.150"
           title="Como usar o círculo cromático para combinar padrões BP"
-        />
-      </Flex>
-    </Flex>
-  )
-}
-
-export type RelationalItemProps = {
-  category: string
-  title: string
-  color: string
-  urlImage: string
-}
-
-export const RelationalItem = ({
-  category,
-  urlImage,
-  title,
-  color
-}: RelationalItemProps) => {
-  const [mouseDown, setMouseDown] = useState(true)
-  return (
-    <Flex
-      onMouseEnter={() => setMouseDown(true)}
-      onMouseLeave={() => setMouseDown(false)}
-      flexDirection="column"
-      marginRight={{ base: '40px', md: '0' }}
-      w={{ base: '60vw', md: '22%' }}
-      minWidth={{ base: '60vw', sm: '50vw', md: '0' }}
-    >
-      <Box h="50%" w="100%" overflow="hidden">
-        <Image h="100%" w="100%" objectFit="cover" src={urlImage} />
-      </Box>
-      <Flex
-        w="100%"
-        h="50%"
-        bg="white.100"
-        flexDirection="column"
-        justifyContent="space-between"
-      >
-        <Flex padding="8%" flexDirection="column">
-          <Flex alignItems="center">
-            <ArrowIcon stroke={color} width="5%" />
-            <Text marginLeft="3%" color="grey.400">
-              {category}
-            </Text>
-          </Flex>
-          <Text
-            marginTop="8%"
-            variant={'breadcrumbs-selected' as any}
-            color="green.800"
-          >
-            {title}
-          </Text>
-        </Flex>
-        <Box
-          transition={'0.5s'}
-          width={mouseDown ? '80%' : '50%'}
-          borderBottom="4px solid"
-          borderBottomColor={color}
-          marginLeft="10%"
         />
       </Flex>
     </Flex>
