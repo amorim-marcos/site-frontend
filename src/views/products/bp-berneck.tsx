@@ -1,4 +1,12 @@
-import { Flex, Text, Box, Image, Grid, GridItem } from '@chakra-ui/react'
+import {
+  Flex,
+  Text,
+  Box,
+  Image,
+  Grid,
+  GridItem,
+  Button
+} from '@chakra-ui/react'
 import Pagebar from '@components/Pagebar'
 import Carousel from '@components/Carousel'
 import BannerProducts from '@components/BannerProducts'
@@ -7,6 +15,7 @@ import ArrowIcon from '@components/Icons/ArrowIcon'
 import BannerGallery from '@components/BannerGallery'
 import PatternInfoPhoto from '@components/PatternInfoPhoto'
 import BannerCollections from '@components/BannerCollections'
+import { useState } from 'react'
 
 export type BpBerneckViewProps = {
   name: string
@@ -14,6 +23,7 @@ export type BpBerneckViewProps = {
 }
 
 export default function BpBerneckView(props: BpBerneckViewProps) {
+  const [transform, setStranform] = useState(0)
   return (
     <Box maxWidth="1920px" marginX="auto" bg="white.100">
       <Pagebar
@@ -24,6 +34,37 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           }
         ]}
       />
+      <Flex>
+        {[1, 2, 3, 4].map((i) => {
+          return (
+            <Box
+              key={i}
+              transition={'0.5s'}
+              transform={`translateX(${transform * 100}%)`}
+              w="10vw"
+              h="300px"
+              bg="magenta"
+              marginRight="20px"
+            ></Box>
+          )
+        })}
+      </Flex>
+      <Button
+        onClick={() => {
+          console.log(transform)
+          setStranform(transform + 1)
+        }}
+      >
+        Fun
+      </Button>
+      <Button
+        onClick={() => {
+          console.log(transform)
+          setStranform(transform - 1)
+        }}
+      >
+        Fun
+      </Button>
 
       {/* INICIO BANNER CAROUSEL */}
       <Flex
