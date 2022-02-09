@@ -140,13 +140,22 @@ export type FiltersSelectProps = {
 const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel, currentFilterPanel, appendFilter, removeFilter, setFilters, setFilteredEnvs, applyFilters, bps, envs, filters }:FiltersSelectProps) => {
     return (
         <Box background="white.200" >
-            <Box position={{base: "relative", md: "absolute"}} top="0" left={{base: "20px", md: "30px"}}>
-                <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  >
+            <Flex 
+                paddingLeft={{base: "20px", md: "30px"}}
+                justifyContent="start"
+                alignItems="center" 
+                minH="80px"
+            >
+                <Button 
+                    zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} 
+                    variant="link" backgroundColor="none" 
+                    
+                >
                     {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
                     <Text fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
                     <Arrow display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='grey.300' />
                 </Button>
-            </Box>
+            </Flex>
             {
                 displayFilters && 
                 <Box margin="0" width="100%" height="100%">
@@ -214,7 +223,7 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
 
     return (
         <Box background="white.200">
-            <Box position={{base: "relative", md: "absolute"}} top="0" left={{base: "20px", md: "30px"}}>
+            <Box position={{base: "relative", md: "absolute"}} paddingTop="30px" left={{base: "20px", md: "30px"}}>
                 <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  >
                     {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
                     <Text fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
@@ -223,7 +232,7 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
             </Box>
             {
                 displayFilters && 
-                <Box margin="0">
+                <Box margin="0" paddingTop="30px">
                     <Box>
                         <Flex position="relative" direction="column">
                             <Center>
@@ -491,7 +500,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                 }
             ]}
         />
-        <Container backgroundColor="white.100" maxW="1920px" width="100%" paddingInline="0" paddingTop="30px" paddingBottom="300px">
+        <Container backgroundColor="white.100" maxW="1920px" width="100%" paddingInline="0" paddingBottom="300px">
             <Container position="relative" mb={(displayFilters) ? { base: "40px", md: "100px"} : { base: "5px", md: "15px"}} minW="100%" minH={{ base: "0" , md: "50px"}} paddingInline="0">
                 {
                     (
