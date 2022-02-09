@@ -141,6 +141,9 @@ export type FiltersSelectProps = {
 }
 
 const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel, currentFilterPanel, appendFilter, removeFilter, setFilters, setFilteredEnvs, applyFilters, bps, envs, filters }:FiltersSelectProps) => {
+    const [seeMoreBps, setSeeMoreBps] = React.useState(false)
+    const TOTAL_BPS_SHOW_FIRST = 9
+
     return (
         <Box background="white.200" >
             <Flex 
@@ -184,18 +187,59 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                     templateColumns="repeat(3, 1fr)"
                                     gridGap="10px"
                                 >
-                                            {bps && bps.map((bp) => 
-                                                <GridItem>
-                                                    <BPFilter 
-                                                        isSelected={filters["bps"].includes(bp.name)}
-                                                        toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
-                                                        mt="10px"
-                                                        w="100%"
-                                                        name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
-                                                    /> 
-                                                </GridItem>
-                                            )}
-                                </Grid>                                 
+                                    {
+                                        ( (bps && bps.length <= TOTAL_BPS_SHOW_FIRST) || seeMoreBps) 
+                                        ? bps.map((bp) => 
+                                            <GridItem>
+                                                <BPFilter 
+                                                    isSelected={filters["bps"].includes(bp.name)}
+                                                    toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
+                                                    mt="10px"
+                                                    w="100%"
+                                                    name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
+                                                /> 
+                                            </GridItem>
+                                        )
+                                        : bps.slice(0, TOTAL_BPS_SHOW_FIRST).map((bp) => 
+                                            <GridItem>
+                                                <BPFilter 
+                                                    isSelected={filters["bps"].includes(bp.name)}
+                                                    toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
+                                                    mt="10px"
+                                                    w="100%"
+                                                    name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
+                                                /> 
+                                            </GridItem>
+                                        )
+                                    }   
+                                </Grid>    
+                                {
+                                    (seeMoreBps)
+                                    ? <Button 
+                                        mt="20px" w="100%" 
+                                        bg="white.100"
+                                        color="grey.300"
+                                        variant={"filters" as any} 
+                                        _hover={{
+                                            bg: 'white.100'
+                                        }}
+                                        onClick={() => setSeeMoreBps(false)}
+                                        >
+                                            Ver menos
+                                        </Button>
+                                    : (bps.length >= TOTAL_BPS_SHOW_FIRST) && 
+                                        <Button 
+                                        mt="20px" w="100%" 
+                                        bg="white.100"
+                                        color="grey.300"
+                                        variant={"filters" as any} 
+                                        _hover={{
+                                            bg: 'white.100'
+                                        }}
+                                        onClick={() => setSeeMoreBps(true)}>
+                                            Ver mais
+                                        </Button>
+                                }                             
                             </Box>
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
