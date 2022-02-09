@@ -323,8 +323,31 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                 </Box>                      
             }
             {
-                ( displayFilters && currentFilterPanel != "none") && <Button w="100%" position="fixed" bottom="0" variant={"filters" as any} mr="30px" onClick={() =>setFilteredEnvs(applyFilters(filters, envs))}>Filtrar</Button>
+                ( displayFilters && currentFilterPanel != "none") && <Button w="100%" position="fixed" bottom="0" variant={"filters" as any} mr="30px" onClick={() => { setFilteredEnvs(applyFilters(filters, envs)); setDisplayFilters(false) }}>Filtrar</Button>
             }
+            {
+                !displayFilters && 
+                <>
+                    <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
+                    <Flex 
+                        paddingLeft={{base: "20px", md: "30px"}}
+                        justifyContent="center"
+                        alignItems="center" 
+                        minH="50px"
+                    >   
+                        <Button 
+                            zIndex="10"
+                            onClick={() => { setFilters(initialFilters); setFilteredEnvs(applyFilters(initialFilters, envs)) }}
+                            variant="link"
+                            backgroundColor="none"    
+                        >
+                            Limpar filtros
+                        </Button>
+                    </Flex>
+                </>
+
+            }
+
         </Box>
     )
 }
