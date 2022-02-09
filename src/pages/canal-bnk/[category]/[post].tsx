@@ -1,4 +1,4 @@
-import { PostsView } from 'views/channelBNK/PostsView'
+import { PostsView } from 'views/Canal-BNK/Posts/PostsView'
 
 import { useEffect, useState } from 'react'
 

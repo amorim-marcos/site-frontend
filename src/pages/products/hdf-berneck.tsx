@@ -1,4 +1,4 @@
-import HdfBerneckView from 'views/Products/hdf-berneck'
+import HdfBerneckView from 'views/products/hdf-berneck'
 
 export default function HdfBerneckPage() {
   return <HdfBerneckView />

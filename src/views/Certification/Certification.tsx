@@ -127,7 +127,7 @@ export const Certification = () => (
           <Box
             // bg='pink'
             flex='1'
-            justifyItem={"center"}
+            justifyItems={"center"}
             backgroundImage="/assets/imgs/iStock-621469294.png"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"  
@@ -176,7 +176,7 @@ export const Certification = () => (
           mt={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
           // bg='pink'
           flex='1'
-          // justifyItem={"center"}
+          // justifyItems={"center"}
         >
             
           <CompletedTitle 

@@ -555,7 +555,7 @@ const TextureProperties = (props: {
           <Flex direction="column">
             <Box pb="40px">
               <Text
-                fonSize={{ base: '16px', '2xl': '19px' }}
+                fontSize={{ base: '16px', '2xl': '19px' }}
                 fontWeight="bold"
                 letterSpacing="-0.37px"
                 color="grey.300"
@@ -578,7 +578,7 @@ const TextureProperties = (props: {
 
             <Box pb="13px">
               <Text
-                fonSize={{ base: '16px', '2xl': '19px' }}
+                fontSize={{ base: '16px', '2xl': '19px' }}
                 fontWeight="bold"
                 letterSpacing="-0.37px"
                 color="grey.300"

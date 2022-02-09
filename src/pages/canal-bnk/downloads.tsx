@@ -1,4 +1,4 @@
-import { DownlodasView } from 'views/channelBNK/DownloadsView'
+import { DownlodasView } from 'views/Canal-BNK/Downloads/DownloadsView'
 
 export default function Downloads() {
   return <DownlodasView />

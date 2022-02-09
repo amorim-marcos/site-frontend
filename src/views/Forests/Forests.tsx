@@ -266,7 +266,7 @@ export const Forests = () => {
            <Box
             // bg='pink'
             flex='1'
-            justifyItem={"center"}
+            justifyItems={"center"}
             backgroundImage="/assets/imgs/iStock-621469294.png"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"  
@@ -453,7 +453,7 @@ export const Forests = () => {
             margin = {{ base: '8% 5% 5% 5%', sm: '8% 5% 8% 5%', lg: '5% 3% 8% 3%', xl: '5% 3% 3% 3%'}}
             // bg='yellow'
             flex='1'
-            justifyItem={"flex-start"}
+            justifyItems={"flex-start"}
           >
                  <CompletedTitle 
                   titleString = "Produção Florestal"
@@ -470,7 +470,7 @@ export const Forests = () => {
           <Box
             // bg='pink'
             flex='1'
-            justifyItem={"center"}
+            justifyItems={"center"}
             margin = {{ base: '0% 0% 0% 0%', sm: '0% 0% 0% 0%', lg: '5% 2% 5% 5%', xl: '8% 2% 5% 5%'}}
           >
              <Image 
@@ -525,7 +525,7 @@ export const Forests = () => {
           <Box
             // bg='pink'
             flex='1'
-            justifyItem={"center"}
+            justifyItems={"center"}
             margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 0% 5% 5%'}}
           >
              <Image 
@@ -537,7 +537,7 @@ export const Forests = () => {
             margin = {{ base: '0% 5% 8% 5%', sm: '0% 5% 8% 5%', lg: '3% 3% 3% 3%', xl: '3% 5% 3% 3%'}}
             // bg='yellow'
             flex='1'
-            justifyItem={"flex-start"}
+            justifyItems={"flex-start"}
           >
                 <Text as='h3'
                   variant = {"h3" as any}
@@ -753,7 +753,7 @@ export const Forests = () => {
           <Box
             // bg='pink'
             flex='1'
-            // justifyItem={"center"}
+            // justifyItems={"center"}
             margin = {{ base: '8% 5% 3% 5%', sm: '8% 5% 3% 5%', lg: '5% 5% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
              <CompletedTitle 

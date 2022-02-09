@@ -43,7 +43,7 @@ export const FeaturedBanner = ({
           <Box
             // bg='pink.100'
             flex='1'
-            // justifyItem={"center"}
+            // justifyItems={"center"}
             // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
           >
              <Image 
@@ -57,7 +57,7 @@ export const FeaturedBanner = ({
             margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 7% 5% 5%', xl: '5% 5% 5% 5%'}}
             // bg='tomato.100'
             flex='1'
-            // justifyItem={"center"}
+            // justifyItems={"center"}
           >
              
                 <Text as='h4'
