@@ -6,6 +6,7 @@ import FiltersIcon from '@components/Icons/FiltersIcon'
 import SearchIcon from '@components/Icons/SearchIcon'
 import { colors } from 'theme/colors'
 import CloseIcon from '@components/Icons/CloseIcon'
+import useMobile from 'hooks/useMobile'
 
 export type EnvProps = LinkProps & {
     type: string,
@@ -121,8 +122,11 @@ const initialFilters:Filters = {
     "styles": []
 }
 
-const FiltersAccordion = () => {
-
+const FiltersAccordion = ({ changeFilterPanel, currentFilterPanel, appendFilter, removeFilter, setFilters, setFilteredEnvs, applyFilters, bps, envs, filters }:FiltersSelectProps) => {
+    return (
+        <>
+        </>
+    )
 }
 
 export type FiltersSelectProps = {
@@ -310,6 +314,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
     const [currentFilterPanel, setCurrentFilterPanel] = React.useState('none')
     const [filteredEnvs, setFilteredEnvs] = React.useState(envs)
     const [filters, setFilters] = React.useState(initialFilters)
+    const { isMobile } = useMobile(1024)
 
     function changeFilterPanel(newFilterPanel:FilterPanelName){
         if(currentFilterPanel == newFilterPanel){
@@ -408,6 +413,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
             ]}
         />
         <Container backgroundColor="white.100" maxW="1920px" width="100%" paddingInline="0" paddingTop="30px" paddingBottom="300px">
+            <Text>{isMobile.toString()}</Text>
             <Container position="relative" mb={(displayFilters) ? { base: "40px", md: "100px"} : { base: "5px", md: "15px"}} minW="100%" minH={{ base: "0" , md: "50px"}} paddingInline="0">
                 <Box position={{base: "relative", md: "absolute"}} top="0" left={{base: "20px", md: "30px"}}>
                     <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  >
@@ -417,19 +423,34 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                     </Button>
                 </Box>
                 {
-                    displayFilters &&
-                    <FiltersTabs 
-                        changeFilterPanel={changeFilterPanel} 
-                        currentFilterPanel={currentFilterPanel}
-                        appendFilter={appendFilter} 
-                        removeFilter={removeFilter} 
-                        setFilters={setFilters} 
-                        setFilteredEnvs={setFilteredEnvs} 
-                        applyFilters={applyFilters} 
-                        bps={availableBps} 
-                        envs={envs} 
-                        filters={filters}
-                    />
+                    displayFilters && 
+                    (
+                        (isMobile) 
+                        ? <FiltersAccordion 
+                            changeFilterPanel={changeFilterPanel} 
+                            currentFilterPanel={currentFilterPanel}
+                            appendFilter={appendFilter} 
+                            removeFilter={removeFilter} 
+                            setFilters={setFilters} 
+                            setFilteredEnvs={setFilteredEnvs} 
+                            applyFilters={applyFilters} 
+                            bps={availableBps} 
+                            envs={envs} 
+                            filters={filters}
+                        />
+                        : <FiltersTabs 
+                            changeFilterPanel={changeFilterPanel} 
+                            currentFilterPanel={currentFilterPanel}
+                            appendFilter={appendFilter} 
+                            removeFilter={removeFilter} 
+                            setFilters={setFilters} 
+                            setFilteredEnvs={setFilteredEnvs} 
+                            applyFilters={applyFilters} 
+                            bps={availableBps} 
+                            envs={envs} 
+                            filters={filters}
+                        />
+                    )
                 }
             </Container>
             <Container minW="100%">
