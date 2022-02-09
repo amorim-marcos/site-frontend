@@ -145,7 +145,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
     const TOTAL_BPS_SHOW_FIRST = 9
 
     return (
-        <Box background="white.200" >
+        <Box background="white.200" height="100%">
             <Flex 
                 paddingLeft={{base: "20px", md: "30px"}}
                 justifyContent="start"
@@ -319,7 +319,11 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
                     </Flex>
+                    
                 </Box>                      
+            }
+            {
+                ( displayFilters && currentFilterPanel != "none") && <Button w="100%" position="fixed" bottom="0" variant={"filters" as any} mr="30px" onClick={() =>setFilteredEnvs(applyFilters(filters, envs))}>Filtrar</Button>
             }
         </Box>
     )
@@ -608,7 +612,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
             ]}
         />
         <Container backgroundColor="white.100" maxW="1920px" width="100%" paddingInline="0" paddingBottom="300px">
-            <Container position="relative" mb={(displayFilters) ? { base: "40px", md: "100px"} : { base: "5px", md: "15px"}} minW="100%" minH={{ base: "0" , md: "50px"}} paddingInline="0">
+            <Container zIndex="30" position={(isMobile && displayFilters) ? "absolute" : "relative"} mb={(displayFilters) ? { base: "40px", md: "100px"} : { base: "5px", md: "15px"}} minW="100%" minH={{ base: "0" , md: "50px"}} height={(isMobile && displayFilters) ? "100%" : "auto"} paddingInline="0">
                 {
                     (
                         (isMobile) 
@@ -643,7 +647,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                     )
                 }
             </Container>
-            <Container minW="100%">
+            <Container display={(isMobile && displayFilters) ? "none" : "normal"} minW="100%">
                 <Grid
                     templateRows="repeat(auto, 1fr)"
                     templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)"} }
