@@ -122,14 +122,9 @@ const initialFilters:Filters = {
     "styles": []
 }
 
-const FiltersAccordion = ({ changeFilterPanel, currentFilterPanel, appendFilter, removeFilter, setFilters, setFilteredEnvs, applyFilters, bps, envs, filters }:FiltersSelectProps) => {
-    return (
-        <>
-        </>
-    )
-}
-
 export type FiltersSelectProps = {
+    displayFilters: boolean
+    setDisplayFilters: Function
     changeFilterPanel: Function
     appendFilter: Function
     removeFilter: Function
@@ -142,164 +137,248 @@ export type FiltersSelectProps = {
     filters: any
 }
 
-const FiltersTabs = ({ changeFilterPanel, currentFilterPanel, appendFilter, removeFilter, setFilters, setFilteredEnvs, applyFilters, bps, envs, filters }:FiltersSelectProps) => {
-    const [searchSelected, setSearchSelected] = React.useState(false)
-
+const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel, currentFilterPanel, appendFilter, removeFilter, setFilters, setFilteredEnvs, applyFilters, bps, envs, filters }:FiltersSelectProps) => {
     return (
-        <Box margin="0">
-            <Box>
-                <Flex position="relative" direction="column">
-                    <Center>
-                        <Box position="absolute" background="green.600" width="650px" height="6px" bottom="-3px"/>
-                    </Center>
-                    <Center mb="20px">
-                        <Flex justifyContent="space-between">
+        <Box background="white.200" >
+            <Box position={{base: "relative", md: "absolute"}} top="0" left={{base: "20px", md: "30px"}}>
+                <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  >
+                    {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
+                    <Text fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
+                    <Arrow display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='grey.300' />
+                </Button>
+            </Box>
+            {
+                displayFilters && 
+                <Box margin="0" width="100%" height="100%">
+                    <Flex  direction="column">
+                        <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
+                        <Box width="100%" paddingLeft="20px" paddingRight="20px">
                             <Button 
                                 onClick={() => changeFilterPanel('bps')}
                                 variant="link"
                                 color="grey.300"
-                                w="180px"
-                                h="30px"
-                                borderBottom={(currentFilterPanel == 'bps') ? "solid" : "none"}
-                                borderBottomColor={"green.500"}
-                                borderBottomWidth={{ base: '4px' }}
+                                w="100%"
+                                height="80px"
                                 fontSize="22px"
+                                justifyContent="start"
+                                alignItems="center"
                             >
                                 <Text color='grey.300' mr="10px">BP BERNECK®</Text>
-                                <Arrow direction={(currentFilterPanel == 'bps') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                                <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'bps') ? "down" : "up"} width="3" height="6" color="grey.200" />
                             </Button> 
+
+                            
+                        </Box>
+                        <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
+                        <Box width="100%" paddingLeft="20px" paddingRight="20px">
                             <Button 
                                 onClick={() => changeFilterPanel('ambients')}
                                 variant="link"
                                 color="grey.300"
-                                w="180px"
-                                h="30px"
-                                borderBottom={(currentFilterPanel == 'ambients') ? "solid" : "none"}
-                                borderBottomColor={"green.500"}
-                                borderBottomWidth={{ base: '4px' }}
+                                w="100%"
+                                height="80px"
                                 fontSize="22px"
+                                justifyContent="start"
+                                alignItems="center"
                             >
                                 <Text color='grey.300' mr="10px">AMBIENTE</Text>
-                                <Arrow direction={(currentFilterPanel == 'ambients') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                                <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'ambients') ? "down" : "up"} width="3" height="6" color="grey.200" />
                             </Button>  
+                        </Box>
+                        <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
+                        <Box width="100%" paddingLeft="20px" paddingRight="20px">
                             <Button 
                                 onClick={() => changeFilterPanel('styles')}
                                 variant="link"
                                 color="grey.300"
-                                w="180px"
-                                h="30px"
-                                borderBottom={(currentFilterPanel == 'styles') ? "solid" : "none"}
-                                borderBottomColor={"green.500"}
-                                borderBottomWidth={{ base: '4px' }}
+                                w="100%"
+                                height="80px"
                                 fontSize="22px"
+                                justifyContent="start"
+                                alignItems="center"
                             >
                                 <Text color='grey.300' mr="10px">ESTILO</Text>
-                                <Arrow direction={(currentFilterPanel == 'styles') ? "down" : "up"} width="3" height="6" color="grey.200" />
-                            </Button>   
-                        </Flex>
-                    </Center>
-                    <Center position="relative" display={(currentFilterPanel == 'none') ? 'none' : 'normal'} flex={1} minH="100px">
-                        <Box display={(currentFilterPanel != 'bps') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
-                            <Flex justifyContent="center" wrap="wrap">
-                                {bps && bps.map((bp) => 
-                                    <BPFilter 
-                                        isSelected={filters["bps"].includes(bp.name)}
-                                        toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
-                                        mr="15px" mt="10px" 
-                                        name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
-                                    /> 
-                                )}
-                            </Flex>
+                                <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'styles') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                            </Button>  
                         </Box>
-                        <Box display={(currentFilterPanel != 'ambients') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                        <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
+                    </Flex>
+                </Box>                      
+            }
+        </Box>
+    )
+}
+
+const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, currentFilterPanel, appendFilter, removeFilter, setFilters, setFilteredEnvs, applyFilters, bps, envs, filters }:FiltersSelectProps) => {
+    const [searchSelected, setSearchSelected] = React.useState(false)
+
+    return (
+        <Box background="white.200">
+            <Box position={{base: "relative", md: "absolute"}} top="0" left={{base: "20px", md: "30px"}}>
+                <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  >
+                    {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
+                    <Text fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
+                    <Arrow display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='grey.300' />
+                </Button>
+            </Box>
+            {
+                displayFilters && 
+                <Box margin="0">
+                    <Box>
+                        <Flex position="relative" direction="column">
                             <Center>
-                                <Flex justifyContent="flex-start" wrap="wrap">
-                                    {
-                                        filtersCheckboxes["ambients"].map((filter) => 
-                                        <FilterCheckbox 
-                                            isChecked={filters["ambients"].includes(filter.code)}
-                                            onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("ambients", value) : removeFilter("ambients", value) }}
-                                            title={filter.title} code={filter.code} 
-                                            mr="15px" mt="10px" 
-                                        />)
-                                    }
+                                <Box position="absolute" background="green.600" width="650px" height="6px" bottom="-3px"/>
+                            </Center>
+                            <Center mb="20px">
+                                <Flex justifyContent="space-between">
+                                    <Button 
+                                        onClick={() => changeFilterPanel('bps')}
+                                        variant="link"
+                                        color="grey.300"
+                                        w="180px"
+                                        h="30px"
+                                        borderBottom={(currentFilterPanel == 'bps') ? "solid" : "none"}
+                                        borderBottomColor={"green.500"}
+                                        borderBottomWidth={{ base: '4px' }}
+                                        fontSize="22px"
+                                    >
+                                        <Text color='grey.300' mr="10px">BP BERNECK®</Text>
+                                        <Arrow direction={(currentFilterPanel == 'bps') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                                    </Button> 
+                                    <Button 
+                                        onClick={() => changeFilterPanel('ambients')}
+                                        variant="link"
+                                        color="grey.300"
+                                        w="180px"
+                                        h="30px"
+                                        borderBottom={(currentFilterPanel == 'ambients') ? "solid" : "none"}
+                                        borderBottomColor={"green.500"}
+                                        borderBottomWidth={{ base: '4px' }}
+                                        fontSize="22px"
+                                    >
+                                        <Text color='grey.300' mr="10px">AMBIENTE</Text>
+                                        <Arrow direction={(currentFilterPanel == 'ambients') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                                    </Button>  
+                                    <Button 
+                                        onClick={() => changeFilterPanel('styles')}
+                                        variant="link"
+                                        color="grey.300"
+                                        w="180px"
+                                        h="30px"
+                                        borderBottom={(currentFilterPanel == 'styles') ? "solid" : "none"}
+                                        borderBottomColor={"green.500"}
+                                        borderBottomWidth={{ base: '4px' }}
+                                        fontSize="22px"
+                                    >
+                                        <Text color='grey.300' mr="10px">ESTILO</Text>
+                                        <Arrow direction={(currentFilterPanel == 'styles') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                                    </Button>   
                                 </Flex>
                             </Center>
-                        </Box>
-                        <Box display={(currentFilterPanel != 'styles') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
-                            <Center>
-                                <Flex justifyContent="flex-start" wrap="wrap">
-                                    {
-                                        filtersCheckboxes["styles"].map((filter) => 
-                                            <FilterCheckbox 
-                                                isChecked={filters["styles"].includes(filter.code)}
-                                                onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("styles", value) : removeFilter("styles", value) }}
-                                                title={filter.title} code={filter.code} 
+                            <Center position="relative" display={(currentFilterPanel == 'none') ? 'none' : 'normal'} flex={1} minH="100px">
+                                <Box display={(currentFilterPanel != 'bps') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                                    <Flex justifyContent="center" wrap="wrap">
+                                        {bps && bps.map((bp) => 
+                                            <BPFilter 
+                                                isSelected={filters["bps"].includes(bp.name)}
+                                                toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
                                                 mr="15px" mt="10px" 
-                                            />)
-                                    }
+                                                name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
+                                            /> 
+                                        )}
+                                    </Flex>
+                                </Box>
+                                <Box display={(currentFilterPanel != 'ambients') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                                    <Center>
+                                        <Flex justifyContent="flex-start" wrap="wrap">
+                                            {
+                                                filtersCheckboxes["ambients"].map((filter) => 
+                                                <FilterCheckbox 
+                                                    isChecked={filters["ambients"].includes(filter.code)}
+                                                    onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("ambients", value) : removeFilter("ambients", value) }}
+                                                    title={filter.title} code={filter.code} 
+                                                    mr="15px" mt="10px" 
+                                                />)
+                                            }
+                                        </Flex>
+                                    </Center>
+                                </Box>
+                                <Box display={(currentFilterPanel != 'styles') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                                    <Center>
+                                        <Flex justifyContent="flex-start" wrap="wrap">
+                                            {
+                                                filtersCheckboxes["styles"].map((filter) => 
+                                                    <FilterCheckbox 
+                                                        isChecked={filters["styles"].includes(filter.code)}
+                                                        onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("styles", value) : removeFilter("styles", value) }}
+                                                        title={filter.title} code={filter.code} 
+                                                        mr="15px" mt="10px" 
+                                                    />)
+                                            }
+                                        </Flex>
+                                    </Center>
+                                </Box>
+                                <Flex justifyContent="center" padding="30px">
+                                    <Button variant={"filters" as any} mr="30px" onClick={() =>setFilteredEnvs(applyFilters(filters, envs))}>Filtrar</Button>
+                                    <Button variant={"filters" as any} onClick={() => { setFilters(initialFilters); setFilteredEnvs(applyFilters(initialFilters, envs)) }}>Limpar filtros</Button>
                                 </Flex>
                             </Center>
-                        </Box>
-                        <Flex justifyContent="center" padding="30px">
-                            <Button variant={"filters" as any} mr="30px" onClick={() =>setFilteredEnvs(applyFilters(filters, envs))}>Filtrar</Button>
-                            <Button variant={"filters" as any} onClick={() => { setFilters(initialFilters); setFilteredEnvs(applyFilters(initialFilters, envs)) }}>Limpar filtros</Button>
-                        </Flex>
-                    </Center>
-                    <Box display={{base: "none", md: "normal"}} position="absolute" top="0" right="50px">
-                        <Flex
-                            width={{
-                                base: '100px',
-                                md: '200px',
-                                lg: '250px',
-                                xl: '300px',
-                                '2xl': '350px'
-                            }}
-                            borderBottom="solid"
-                            borderBottomColor={(searchSelected) ? "green.500" : "grey.300"}
-                            paddingX="5px"
-                            height={{ base: '25px' }}
-                            borderBottomWidth={{ base: '2px' }}
-                        >
-                            <Input
-                                onFocus={()=>{ setSearchSelected(true) }}
-                                onBlur={()=>{ setSearchSelected(false) }}
-                                placeholder="Pesquise pelo nome"
-                                _placeholder={{ color: "grey.300"}}
-                                border="none"
-                                outline="none"
-                                _active={{ border: 'none', outline: 'none' }}
-                                focusBorderColor="none"
-                                color='grey.300'
-                                paddingLeft="0px"
-                                paddingBottom={{ base: '0px', md: '10px' }}
-                                fontSize={{
-                                    base: '8px',
-                                    md: '10px',
-                                    lg: '12px',
-                                    xl: '14px',
-                                    '2xl': '16px'
-                                }}
-                                height={{ base: '30px' }}
-                                onChange={(e) => { setFilters({ ...filters, nameSearched: e.target.value })}}
-                            />
-                            <Box>
-                            <SearchIcon
-                                stroke={(searchSelected)? colors.green[500] : colors.grey[300]}
-                                width={{
-                                    base: '13px',
-                                    md: '16px',
-                                    lg: '23px',
-                                    xl: '28px',
-                                    '2xl': '35px'
-                                }}
-                                height={{ base: '25px', md: '10px', '2xl': '0px' }}
-                            />
+                            <Box display={{base: "none", md: "normal"}} position="absolute" top="0" right="50px">
+                                <Flex
+                                    width={{
+                                        base: '100px',
+                                        md: '200px',
+                                        lg: '250px',
+                                        xl: '300px',
+                                        '2xl': '350px'
+                                    }}
+                                    borderBottom="solid"
+                                    borderBottomColor={(searchSelected) ? "green.500" : "grey.300"}
+                                    paddingX="5px"
+                                    height={{ base: '25px' }}
+                                    borderBottomWidth={{ base: '2px' }}
+                                >
+                                    <Input
+                                        onFocus={()=>{ setSearchSelected(true) }}
+                                        onBlur={()=>{ setSearchSelected(false) }}
+                                        placeholder="Pesquise pelo nome"
+                                        _placeholder={{ color: "grey.300"}}
+                                        border="none"
+                                        outline="none"
+                                        _active={{ border: 'none', outline: 'none' }}
+                                        focusBorderColor="none"
+                                        color='grey.300'
+                                        paddingLeft="0px"
+                                        paddingBottom={{ base: '0px', md: '10px' }}
+                                        fontSize={{
+                                            base: '8px',
+                                            md: '10px',
+                                            lg: '12px',
+                                            xl: '14px',
+                                            '2xl': '16px'
+                                        }}
+                                        height={{ base: '30px' }}
+                                        onChange={(e) => { setFilters({ ...filters, nameSearched: e.target.value })}}
+                                    />
+                                    <Box>
+                                    <SearchIcon
+                                        stroke={(searchSelected)? colors.green[500] : colors.grey[300]}
+                                        width={{
+                                            base: '13px',
+                                            md: '16px',
+                                            lg: '23px',
+                                            xl: '28px',
+                                            '2xl': '35px'
+                                        }}
+                                        height={{ base: '25px', md: '10px', '2xl': '0px' }}
+                                    />
+                                    </Box>
+                                </Flex>
                             </Box>
                         </Flex>
                     </Box>
-                </Flex>
-            </Box>
+                </Box>
+            }
         </Box>
     )
 }
@@ -413,20 +492,13 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
             ]}
         />
         <Container backgroundColor="white.100" maxW="1920px" width="100%" paddingInline="0" paddingTop="30px" paddingBottom="300px">
-            <Text>{isMobile.toString()}</Text>
             <Container position="relative" mb={(displayFilters) ? { base: "40px", md: "100px"} : { base: "5px", md: "15px"}} minW="100%" minH={{ base: "0" , md: "50px"}} paddingInline="0">
-                <Box position={{base: "relative", md: "absolute"}} top="0" left={{base: "20px", md: "30px"}}>
-                    <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  >
-                        {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
-                        <Text fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
-                        <Arrow display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='grey.300' />
-                    </Button>
-                </Box>
                 {
-                    displayFilters && 
                     (
                         (isMobile) 
                         ? <FiltersAccordion 
+                            displayFilters={displayFilters}
+                            setDisplayFilters={setDisplayFilters}
                             changeFilterPanel={changeFilterPanel} 
                             currentFilterPanel={currentFilterPanel}
                             appendFilter={appendFilter} 
@@ -439,6 +511,8 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                             filters={filters}
                         />
                         : <FiltersTabs 
+                            displayFilters={displayFilters}
+                            setDisplayFilters={setDisplayFilters}
                             changeFilterPanel={changeFilterPanel} 
                             currentFilterPanel={currentFilterPanel}
                             appendFilter={appendFilter} 
