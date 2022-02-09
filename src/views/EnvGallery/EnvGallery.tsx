@@ -175,8 +175,18 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                 <Text color='grey.300' mr="10px">BP BERNECK®</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'bps') ? "down" : "up"} width="3" height="6" color="grey.200" />
                             </Button> 
-
-                            
+                            <Box display={(currentFilterPanel != 'bps') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                                    <Flex justifyContent="center" wrap="wrap">
+                                        {bps && bps.map((bp) => 
+                                            <BPFilter 
+                                                isSelected={filters["bps"].includes(bp.name)}
+                                                toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
+                                                mr="15px" mt="10px" 
+                                                name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
+                                            /> 
+                                        )}
+                                    </Flex>
+                            </Box> 
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
                         <Box width="100%" paddingLeft="20px" paddingRight="20px">
@@ -192,7 +202,22 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                             >
                                 <Text color='grey.300' mr="10px">AMBIENTE</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'ambients') ? "down" : "up"} width="3" height="6" color="grey.200" />
-                            </Button>  
+                            </Button> 
+                            <Box display={(currentFilterPanel != 'ambients') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                                <Center>
+                                    <Flex justifyContent="flex-start" wrap="wrap">
+                                        {
+                                            filtersCheckboxes["ambients"].map((filter) => 
+                                            <FilterCheckbox 
+                                                isChecked={filters["ambients"].includes(filter.code)}
+                                                onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("ambients", value) : removeFilter("ambients", value) }}
+                                                title={filter.title} code={filter.code} 
+                                                mr="15px" mt="10px" 
+                                            />)
+                                        }
+                                    </Flex>
+                                </Center>
+                            </Box>
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
                         <Box width="100%" paddingLeft="20px" paddingRight="20px">
@@ -208,7 +233,22 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                             >
                                 <Text color='grey.300' mr="10px">ESTILO</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'styles') ? "down" : "up"} width="3" height="6" color="grey.200" />
-                            </Button>  
+                            </Button>
+                            <Box display={(currentFilterPanel != 'styles') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                                <Center>
+                                    <Flex justifyContent="flex-start" wrap="wrap">
+                                        {
+                                            filtersCheckboxes["styles"].map((filter) => 
+                                                <FilterCheckbox 
+                                                    isChecked={filters["styles"].includes(filter.code)}
+                                                    onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("styles", value) : removeFilter("styles", value) }}
+                                                    title={filter.title} code={filter.code} 
+                                                    mr="15px" mt="10px" 
+                                                />)
+                                        }
+                                    </Flex>
+                                </Center>
+                            </Box>   
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
                     </Flex>
