@@ -51,16 +51,15 @@ const BPFilter = ({name, texture, pattern_image, isSelected = false, toggleSelec
             onClick={(e) => { if(toggleSelect) toggleSelect(selected)}}
             onMouseEnter={() => setDisplayInfo(true) }
             onMouseLeave={() => setDisplayInfo(false)}
-            maxW={{base: "120px", md: "155px"}} 
-            height="55px" 
+            height={{base: "43px", md:"55px"}} 
             {...props}
         >
             <Box boxShadow={(selected) ? "0px 0px 3px green" : "none"} position="absolute" top="0" left="0" zIndex="1" width="100%" height="100%" borderRadius="5px" padding="0" margin="0" backgroundImage={`url(${pattern_image})`} backgroundRepeat="repeat" backgroundSize="cover"></Box>
             <Box  display={(!displayInfo) ? 'none' : 'normal'} zIndex="2" width="100%" height="100%" position="absolute" top="0" left="0" backgroundColor="white.100" opacity="0.6"></Box>
             <Box display={(!displayInfo) ? 'none' : 'normal'} zIndex="3" width="100%" height="100%" position="absolute" top="0" left="0">
                 <Flex direction="column" alignItems="flex-start" mt="5px" ml="5px" color="grey.400">
-                    <Text variant={"body-bold" as any}>{name}</Text>
-                    <Text color="grey.600">{texture}</Text>
+                    <Text fontSize={{base: "11px", md: "16px"}} variant={"body-bold" as any}>{name}</Text>
+                    <Text fontSize={{base: "10px", md: "14px"}} color="grey.600">{texture}</Text>
                 </Flex>
             </Box>
         </Button>
@@ -86,7 +85,11 @@ const FilterCheckbox = ({title, code, isChecked = false, onCheck = () => {}, ...
 
     return (
         // @ts-ignore
-        <Button background="green.150" onClick={(e) => { if(onCheck) onCheck(checked, value)}} position="relative" color="green.900" justifyContent="start" variant="link" borderRadius="5px" height="60px" minW="250px" {...props} padding="28px" overflow="hidden">
+        <Button 
+            background="green.150" 
+            onClick={(e) => { if(onCheck) onCheck(checked, value)}} 
+            position="relative" color="green.900" justifyContent="start" variant="link" 
+            borderRadius="5px" height={{base: "38px" , md: "60px"}} minW={{base: "auto", md: "250px"}} {...props} padding="28px" overflow="hidden">
             <Checkbox 
                 onClickCapture={(e) => { e.preventDefault(); e.stopPropagation(); if(onCheck) onCheck(checked, value)}} 
                 padding="0"
@@ -99,7 +102,7 @@ const FilterCheckbox = ({title, code, isChecked = false, onCheck = () => {}, ...
                 zIndex="2" 
                 mr="5px" 
             />
-            <Text fontWeight="600" fontSize="19px" color="green.900" zIndex="2">{title}</Text>
+            <Text fontWeight="600" fontSize={{ base: "15px" , md: "19px" }} color="green.900" zIndex="2">{title}</Text>
         </Button>
     )
 }
@@ -158,7 +161,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
             </Flex>
             {
                 displayFilters && 
-                <Box margin="0" width="100%" height="100%">
+                <Box margin="0" width="100%">
                     <Flex  direction="column">
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
                         <Box width="100%" paddingLeft="20px" paddingRight="20px">
@@ -175,24 +178,25 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                 <Text color='grey.300' mr="10px">BP BERNECK®</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'bps') ? "down" : "up"} width="3" height="6" color="grey.200" />
                             </Button> 
-                            <Grid  
-                                templateRows="repeat(auto, 1fr)"
-                                templateColumns="repeat(3, 1fr)"
-                                display={(currentFilterPanel != 'bps') ? 'none' : 'normal'} 
-                                top="0" left="0" width="100%" height="100%"
-                                paddingBottom="25px"
-                            >
-                                    <GridItem wrap="wrap" justifyContent="space-around">
-                                        {bps && bps.map((bp) => 
-                                            <BPFilter 
-                                                isSelected={filters["bps"].includes(bp.name)}
-                                                toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
-                                                mt="10px" mr="10px" 
-                                                name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
-                                            /> 
-                                        )}
-                                    </GridItem>
-                            </Grid> 
+                            <Box display={(currentFilterPanel != 'bps') ? 'none' : 'normal'}  top="0" left="0" width="100%" height="100%" paddingBottom="25px">
+                                <Grid  
+                                    templateRows="repeat(auto, 1fr)"
+                                    templateColumns="repeat(3, 1fr)"
+                                    gridGap="10px"
+                                >
+                                            {bps && bps.map((bp) => 
+                                                <GridItem>
+                                                    <BPFilter 
+                                                        isSelected={filters["bps"].includes(bp.name)}
+                                                        toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
+                                                        mt="10px"
+                                                        w="100%"
+                                                        name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
+                                                    /> 
+                                                </GridItem>
+                                            )}
+                                </Grid>                                 
+                            </Box>
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
                         <Box width="100%" paddingLeft="20px" paddingRight="20px">
@@ -210,19 +214,26 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'ambients') ? "down" : "up"} width="3" height="6" color="grey.200" />
                             </Button> 
                             <Box display={(currentFilterPanel != 'ambients') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
-                                <Center>
-                                    <Flex justifyContent="flex-start" wrap="wrap">
+                                <Grid
+                                   templateRows="repeat(auto, 1fr)"
+                                   templateColumns="repeat(2, 1fr)"
+                                   gridGap="5px"
+                                >
                                         {
                                             filtersCheckboxes["ambients"].map((filter) => 
-                                            <FilterCheckbox 
-                                                isChecked={filters["ambients"].includes(filter.code)}
-                                                onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("ambients", value) : removeFilter("ambients", value) }}
-                                                title={filter.title} code={filter.code} 
-                                                mr="15px" mt="10px" 
-                                            />)
+                                                <GridItem>
+                                                    <FilterCheckbox 
+                                                        isChecked={filters["ambients"].includes(filter.code)}
+                                                        onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("ambients", value) : removeFilter("ambients", value) }}
+                                                        title={filter.title} code={filter.code} 
+                                                        w="100%"
+                                                        mt="10px" 
+                                                    />
+                                                </GridItem>
+                                            )
                                         }
-                                    </Flex>
-                                </Center>
+                                    
+                                </Grid>
                             </Box>
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
@@ -241,19 +252,24 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'styles') ? "down" : "up"} width="3" height="6" color="grey.200" />
                             </Button>
                             <Box display={(currentFilterPanel != 'styles') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
-                                <Center>
-                                    <Flex justifyContent="flex-start" wrap="wrap">
+                                <Grid
+                                   templateRows="repeat(auto, 1fr)"
+                                   templateColumns="repeat(2, 1fr)"
+                                   gridGap="5px"
+                                >
                                         {
                                             filtersCheckboxes["styles"].map((filter) => 
-                                                <FilterCheckbox 
-                                                    isChecked={filters["styles"].includes(filter.code)}
-                                                    onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("styles", value) : removeFilter("styles", value) }}
-                                                    title={filter.title} code={filter.code} 
-                                                    mr="15px" mt="10px" 
-                                                />)
+                                                <GridItem>
+                                                    <FilterCheckbox 
+                                                        isChecked={filters["styles"].includes(filter.code)}
+                                                        onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("styles", value) : removeFilter("styles", value) }}
+                                                        title={filter.title} code={filter.code} 
+                                                        mr="15px" mt="10px" 
+                                                    />
+                                                </GridItem>
+                                            )
                                         }
-                                    </Flex>
-                                </Center>
+                                </Grid>
                             </Box>   
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
