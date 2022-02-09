@@ -51,7 +51,7 @@ const BPFilter = ({name, texture, pattern_image, isSelected = false, toggleSelec
             onClick={(e) => { if(toggleSelect) toggleSelect(selected)}}
             onMouseEnter={() => setDisplayInfo(true) }
             onMouseLeave={() => setDisplayInfo(false)}
-            minW="155px" 
+            maxW={{base: "120px", md: "155px"}} 
             height="55px" 
             {...props}
         >
@@ -175,18 +175,24 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                 <Text color='grey.300' mr="10px">BP BERNECK®</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'bps') ? "down" : "up"} width="3" height="6" color="grey.200" />
                             </Button> 
-                            <Box display={(currentFilterPanel != 'bps') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
-                                    <Flex justifyContent="center" wrap="wrap">
+                            <Grid  
+                                templateRows="repeat(auto, 1fr)"
+                                templateColumns="repeat(3, 1fr)"
+                                display={(currentFilterPanel != 'bps') ? 'none' : 'normal'} 
+                                top="0" left="0" width="100%" height="100%"
+                                paddingBottom="25px"
+                            >
+                                    <GridItem wrap="wrap" justifyContent="space-around">
                                         {bps && bps.map((bp) => 
                                             <BPFilter 
                                                 isSelected={filters["bps"].includes(bp.name)}
                                                 toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
-                                                mr="15px" mt="10px" 
+                                                mt="10px" mr="10px" 
                                                 name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
                                             /> 
                                         )}
-                                    </Flex>
-                            </Box> 
+                                    </GridItem>
+                            </Grid> 
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
                         <Box width="100%" paddingLeft="20px" paddingRight="20px">
@@ -203,7 +209,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                 <Text color='grey.300' mr="10px">AMBIENTE</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'ambients') ? "down" : "up"} width="3" height="6" color="grey.200" />
                             </Button> 
-                            <Box display={(currentFilterPanel != 'ambients') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                            <Box display={(currentFilterPanel != 'ambients') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
                                 <Center>
                                     <Flex justifyContent="flex-start" wrap="wrap">
                                         {
@@ -220,7 +226,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                             </Box>
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
-                        <Box width="100%" paddingLeft="20px" paddingRight="20px">
+                        <Box width="100%" paddingLeft="20px" paddingRight="20px" >
                             <Button 
                                 onClick={() => changeFilterPanel('styles')}
                                 variant="link"
@@ -234,7 +240,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                 <Text color='grey.300' mr="10px">ESTILO</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'styles') ? "down" : "up"} width="3" height="6" color="grey.200" />
                             </Button>
-                            <Box display={(currentFilterPanel != 'styles') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
+                            <Box display={(currentFilterPanel != 'styles') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
                                 <Center>
                                     <Flex justifyContent="flex-start" wrap="wrap">
                                         {
@@ -326,7 +332,7 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                             </Center>
                             <Center position="relative" display={(currentFilterPanel == 'none') ? 'none' : 'normal'} flex={1} minH="100px">
                                 <Box display={(currentFilterPanel != 'bps') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
-                                    <Flex justifyContent="center" wrap="wrap">
+                                    <Flex alignItems="flex-start" wrap="wrap">
                                         {bps && bps.map((bp) => 
                                             <BPFilter 
                                                 isSelected={filters["bps"].includes(bp.name)}
