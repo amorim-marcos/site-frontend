@@ -264,7 +264,8 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                                         isChecked={filters["styles"].includes(filter.code)}
                                                         onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("styles", value) : removeFilter("styles", value) }}
                                                         title={filter.title} code={filter.code} 
-                                                        mr="15px" mt="10px" 
+                                                        mt="10px" 
+                                                        w="100%"
                                                     />
                                                 </GridItem>
                                             )
