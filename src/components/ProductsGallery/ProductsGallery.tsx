@@ -45,6 +45,6 @@ export const ProductsGallery = ({
       })}
     </CarouselMultiElements>
   ) : (
-    <h1>No products passed</h1>
+    <h1>products missing</h1>
   )
 }
