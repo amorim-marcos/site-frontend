@@ -68,7 +68,13 @@ export const Text = {
     },
     h4: {
       color: 'green.700',
-      fontSize: { base: '17px', sm: '18px', lg: '18px', xl: '20px' },
+      fontSize: {
+        base: '25px',
+        md: '16px',
+        lg: '18px',
+        xl: '20px',
+        '2xl': '24px'
+      },
       fontWeight: 'bold',
       letterSpacing: '-0.45px'
     },

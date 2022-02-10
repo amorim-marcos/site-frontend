@@ -1,8 +1,5 @@
 import Home from 'views/Home'
 
 export default function HomePage() {
-  return <Home 
-            name='Teste'
-            imageSrc=''
-        />
+  return <Home name="Teste" imageSrc="" />
 }

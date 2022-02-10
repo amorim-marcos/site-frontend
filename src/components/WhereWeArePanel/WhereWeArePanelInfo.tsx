@@ -70,13 +70,13 @@ const SectionText = (props: {
   <Flex
     alignItems="center"
     color={props.color ?? 'grey.350'}
-    fontSpacing={{ sm: '-0.3', md: '-20px' }}
+    letterSpacing={{ sm: '-0.3', md: '-20px' }}
     fontWeight={props.fontWeight ?? 'normal'}
     fontSize={
       props.fontSize ?? {
         base: '13px',
         md: '15px',
-        xl: '18px',
+        xl: '18px'
         // '2xl': '18px'
       }
     }
@@ -99,7 +99,7 @@ const SectionContent = (props: { content: string }) => (
     fontSize={{
       base: '12px',
       sm: '13px',
-      md: '18px',
+      md: '18px'
       // xl: '18px',
       // '2xl': '18px'
     }}
