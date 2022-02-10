@@ -405,7 +405,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                     >   
                         <Button 
                             zIndex="10"
-                            onClick={() => { setFilters(initialFilters); setFilteredEnvs(applyFilters(initialFilters, envs)) }}
+                            onClick={() => { setFilters(JSON.parse(JSON.stringify(initialFilters))); setFilteredEnvs(applyFilters(initialFilters, envs)) }}
                             variant="link"
                             backgroundColor="none"    
                         >
@@ -530,7 +530,7 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                 </Box>
                                 <Flex justifyContent="center" padding="30px">
                                     <Button variant={"filters" as any} mr="30px" onClick={() =>setFilteredEnvs(applyFilters(filters, envs))}>Filtrar</Button>
-                                    { !filtersEmpty && <Button variant={"filters" as any} onClick={() => { setFilters(initialFilters); setFilteredEnvs(applyFilters(initialFilters, envs)) }}>Limpar filtros</Button> }
+                                    { !filtersEmpty && <Button variant={"filters" as any} onClick={() => { setFilters(JSON.parse(JSON.stringify(initialFilters))); setFilteredEnvs(applyFilters(initialFilters, envs)) }}>Limpar filtros</Button> }
                                 </Flex>
                             </Center>
                             <Box position="absolute" top="0" right="50px">
@@ -603,7 +603,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
     const [displayFilters, setDisplayFilters] = React.useState(false)
     const [currentFilterPanel, setCurrentFilterPanel] = React.useState('none')
     const [filteredEnvs, setFilteredEnvs] = React.useState(envs)
-    const [filters, setFilters] = React.useState(initialFilters)
+    const [filters, setFilters] = React.useState(JSON.parse(JSON.stringify(initialFilters)))
     const [filtersEmpty, setFiltersEmpty] = React.useState(true)
     const { isMobile } = useMobile(1024)
 
