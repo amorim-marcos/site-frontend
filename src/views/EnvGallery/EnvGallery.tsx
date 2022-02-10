@@ -344,7 +344,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                 </Box>                      
             }
             {
-                ( displayFilters && currentFilterPanel != "none") && <Button w="100%" position="fixed" bottom="0" variant={"filters" as any} mr="30px" onClick={() => { setFilteredEnvs(applyFilters(filters, envs)); setDisplayFilters(false) }}>Filtrar</Button>
+                ( displayFilters && currentFilterPanel != "none") && <Button zIndex="11" w="100%" position="fixed" bottom="0" variant={"filters" as any} mr="30px" onClick={() => { setFilteredEnvs(applyFilters(filters, envs)); setDisplayFilters(false) }}>Filtrar</Button>
             }
             {openSearchBar && (
                 <Flex
