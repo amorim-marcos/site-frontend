@@ -138,9 +138,10 @@ export type FiltersSelectProps = {
     envs: Array<any>
     bps: Array<any>
     filters: any
+    filtersEmpty: boolean
 }
 
-const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel, currentFilterPanel, appendFilter, removeFilter, setFilters, setFilteredEnvs, applyFilters, bps, envs, filters }:FiltersSelectProps) => {
+const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel, currentFilterPanel, appendFilter, removeFilter, setFilters, setFilteredEnvs, applyFilters, bps, envs, filters, filtersEmpty }:FiltersSelectProps) => {
     const [seeMoreBps, setSeeMoreBps] = React.useState(false)
     const [openSearchBar, setOpenSearchBar] = React.useState(false)
     const TOTAL_BPS_SHOW_FIRST = 9
@@ -393,7 +394,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                 </Flex>
             )}
             {
-                !displayFilters && 
+                ( !displayFilters && !filtersEmpty ) && 
                 <>
                     <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
                     <Flex 
@@ -418,7 +419,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
     )
 }
 
-const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, currentFilterPanel, appendFilter, removeFilter, setFilters, setFilteredEnvs, applyFilters, bps, envs, filters }:FiltersSelectProps) => {
+const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, currentFilterPanel, appendFilter, removeFilter, setFilters, setFilteredEnvs, applyFilters, bps, envs, filters, filtersEmpty }:FiltersSelectProps) => {
     const [searchSelected, setSearchSelected] = React.useState(false)
 
     return (
@@ -529,7 +530,7 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                 </Box>
                                 <Flex justifyContent="center" padding="30px">
                                     <Button variant={"filters" as any} mr="30px" onClick={() =>setFilteredEnvs(applyFilters(filters, envs))}>Filtrar</Button>
-                                    <Button variant={"filters" as any} onClick={() => { setFilters(initialFilters); setFilteredEnvs(applyFilters(initialFilters, envs)) }}>Limpar filtros</Button>
+                                    { !filtersEmpty && <Button variant={"filters" as any} onClick={() => { setFilters(initialFilters); setFilteredEnvs(applyFilters(initialFilters, envs)) }}>Limpar filtros</Button> }
                                 </Flex>
                             </Center>
                             <Box position="absolute" top="0" right="50px">
@@ -603,6 +604,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
     const [currentFilterPanel, setCurrentFilterPanel] = React.useState('none')
     const [filteredEnvs, setFilteredEnvs] = React.useState(envs)
     const [filters, setFilters] = React.useState(initialFilters)
+    const [filtersEmpty, setFiltersEmpty] = React.useState(true)
     const { isMobile } = useMobile(1024)
 
     function changeFilterPanel(newFilterPanel:FilterPanelName){
@@ -683,6 +685,14 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
         return filteredEnvs.slice()
     }
 
+    React.useEffect(() => {
+        if(filters.ambients.length == 0 && filters.bps.length == 0 && filters.styles.length == 0 && filters.nameSearched === ""){
+            setFiltersEmpty(true)
+        }else{
+            setFiltersEmpty(false)
+        }
+    }, [filters])
+
     return (
         <>
         <Pagebar
@@ -719,6 +729,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                             bps={availableBps} 
                             envs={envs} 
                             filters={filters}
+                            filtersEmpty={filtersEmpty}
                         />
                         : <FiltersTabs 
                             displayFilters={displayFilters}
@@ -733,6 +744,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                             bps={availableBps} 
                             envs={envs} 
                             filters={filters}
+                            filtersEmpty={filtersEmpty}
                         />
                     )
                 }
