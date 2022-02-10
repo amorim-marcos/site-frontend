@@ -84,10 +84,10 @@ const FilterCheckbox = ({title, code, isChecked = false, onCheck = () => {}, ...
     }, [isChecked])
 
     return (
-        // @ts-ignore
         <Button 
             background="green.150" 
-            onClick={(e) => { if(onCheck) onCheck(checked, value)}} 
+            // @ts-ignore
+            onClick={() => { if(onCheck) onCheck(checked, value)}} 
             position="relative" color="green.900" justifyContent="start" variant="link" 
             borderRadius="5px" height={{base: "38px" , md: "60px"}} minW={{base: "auto", md: "250px"}} {...props} padding="28px" overflow="hidden">
             <Checkbox 
