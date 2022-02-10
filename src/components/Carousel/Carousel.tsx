@@ -85,8 +85,10 @@ export const Carousel = (props: CarouselProps) => {
           zIndex={10}
           // bg="blue"
           flex="1"
-          marginTop={{ base: '32%', sm: '33%', lg: '35%', xl: '35%' }}
-          marginLeft={{ base: '8%', sm: '10%', lg: '10%', xl: '10%' }}
+          // marginTop={{ base: '32%', sm: '33%', lg: '35%', xl: '35%' }}
+          // marginLeft={{ base: '8%', sm: '10%', lg: '10%', xl: '10%' }}
+          bottom="10%"
+          left="10%"
           gap={{ base: '3px', sm: '8px', lg: '10px', xl: '10px' }}
         >
           {props.children?.map((_, index) => (

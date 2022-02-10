@@ -1,5 +1,6 @@
 import { Heading, Flex, Box, Text, Center, Button } from '@chakra-ui/react'
 import ArrowIcon from '@components/Icons/ArrowIcon'
+import { json } from 'node:stream/consumers'
 import { useState, useEffect } from 'react'
 
 export type CarouselMultiElementsProps = {
@@ -18,10 +19,7 @@ export const CarouselMultiElements = ({
   const [hoverBtnControl, setHoverBtnControl] = useState(false)
 
   function next() {
-    if (
-      startItem < items.length - numberOfEvidenceElements &&
-      endItem < items.length - numberOfEvidenceElements - 1
-    ) {
+    if (startItem < items.length - numberOfEvidenceElements - 1) {
       setStartItem(startItem + 1)
       setStranform(transform - 1)
       setEndItem(endItem + 1)
@@ -59,7 +57,8 @@ export const CarouselMultiElements = ({
             children.map((i, j) => {
               return (
                 <Box
-                  key={i?.toString()}
+                  overflow="hidden"
+                  key={j}
                   // border="1px solid magenta"
                   minWidth={`${100 / numberOfEvidenceElements}%`}
                   paddingX="1%"
