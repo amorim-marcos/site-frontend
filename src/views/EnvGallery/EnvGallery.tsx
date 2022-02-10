@@ -55,11 +55,11 @@ const BPFilter = ({name, texture, pattern_image, isSelected = false, toggleSelec
             {...props}
         >
             <Box boxShadow={(selected) ? "0px 0px 3px green" : "none"} position="absolute" top="0" left="0" zIndex="1" width="100%" height="100%" borderRadius="5px" padding="0" margin="0" backgroundImage={`url(${pattern_image})`} backgroundRepeat="repeat" backgroundSize="cover"></Box>
-            <Box  display={(!displayInfo) ? 'none' : 'normal'} zIndex="2" width="100%" height="100%" position="absolute" top="0" left="0" backgroundColor="white.100" opacity="0.6"></Box>
-            <Box display={(!displayInfo) ? 'none' : 'normal'} zIndex="3" width="100%" height="100%" position="absolute" top="0" left="0">
+            <Box  display={(!displayInfo && !selected) ? 'none' : 'normal'} zIndex="2" width="100%" height="100%" position="absolute" top="0" left="0" backgroundColor="white.100" opacity="0.6"></Box>
+            <Box display={(!displayInfo && !selected) ? 'none' : 'normal'} zIndex="3" width="100%" height="100%" position="absolute" top="0" left="0">
                 <Flex direction="column" alignItems="flex-start" mt="5px" ml="5px" color="grey.400">
                     <Text fontSize={{base: "11px", md: "16px"}} variant={"body-bold" as any}>{name}</Text>
-                    <Text fontSize={{base: "10px", md: "14px"}} color="grey.600">{texture}</Text>
+                    <Text display={{base: 'none', xs: 'inherit'}} fontSize={{base: "10px", md: "14px"}} color="grey.600">{texture}</Text>
                 </Flex>
             </Box>
         </Button>
@@ -85,12 +85,15 @@ const FilterCheckbox = ({title, code, isChecked = false, onCheck = () => {}, ...
 
     return (
         <Button 
-            background="green.150" 
+            background={(checked) ? "green.400" : "green.300"} 
+            _hover={{}}
             // @ts-ignore
             onClick={() => { if(onCheck) onCheck(checked, value)}} 
             position="relative" color="green.900" justifyContent="start" variant="link" 
-            borderRadius="5px" height={{base: "38px" , md: "60px"}} minW={{base: "auto", md: "250px"}} {...props} padding="28px" overflow="hidden">
+            borderRadius="5px" height={{base: "38px" , md: "60px"}} minW={{base: "auto", md: "250px"}} {...props} padding={{base: "5px", md: "28px"}} overflow="hidden"
+        >
             <Checkbox 
+                display={{base: "none", md: "inherit"}}
                 onClickCapture={(e) => { e.preventDefault(); e.stopPropagation(); if(onCheck) onCheck(checked, value)}} 
                 padding="0"
                 iconColor='green.600'
@@ -281,7 +284,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                             <Box display={(currentFilterPanel != 'ambients') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
                                 <Grid
                                    templateRows="repeat(auto, 1fr)"
-                                   templateColumns="repeat(2, 1fr)"
+                                   templateColumns={{base: "repeat(1, 1fr)", xs: "repeat(2, 1fr)"}}
                                    gridGap="5px"
                                 >
                                         {
@@ -319,7 +322,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                             <Box display={(currentFilterPanel != 'styles') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
                                 <Grid
                                    templateRows="repeat(auto, 1fr)"
-                                   templateColumns="repeat(2, 1fr)"
+                                   templateColumns={{base: "repeat(1, 1fr)", xs: "repeat(2, 1fr)"}}
                                    gridGap="5px"
                                 >
                                         {
