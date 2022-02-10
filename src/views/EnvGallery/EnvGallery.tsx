@@ -17,8 +17,8 @@ export type EnvProps = LinkProps & {
 const Env = ({type, name, image_url, ...props}:EnvProps) => {
     return(
         <Link {...props}>
-            <Flex direction="column" width={{base: "367px", sm: "508px", md: "367px", '2xl': "508px"}}>
-                <Box overflow="hidden" width={{base: "367px", sm: "508px", md: "367px", '2xl': "508px"}} height={{ base: "274px", sm: "369px", 'md': "274px", '2xl': "369px"}}>
+            <Flex direction="column" width={{base: "184px", xs: "367px", sm: "508px", md: "367px", '2xl': "508px"}}>
+                <Box overflow="hidden" width={{base: "184px", xs: "367px", sm: "508px", md: "367px", '2xl': "508px"}} height={{ base: "137px", xs: "274px", sm: "369px", 'md': "274px", '2xl': "369px"}}>
                     <Image objectFit="cover" objectPosition="center" width="100%" height="100%" overflow="hidden" flex={1} src={image_url} />
                 </Box>
                 <Text width="100%" flex={1} fontSize={{base: "23px", lg: "31px"}} variant={"body-bold" as any}>{type}</Text>
