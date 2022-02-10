@@ -1,4 +1,5 @@
-import { Heading, Flex, Box, Text, Center, Image } from "@chakra-ui/react"
+import { Heading, Flex, Box, Text, Center, Image } from '@chakra-ui/react'
+import { useState } from 'react'
 
 export type BannerGalleryProps = {
   title?: string
@@ -6,31 +7,48 @@ export type BannerGalleryProps = {
   backgroundImage?: string
 }
 export const BannerGallery = (props: BannerGalleryProps) => {
+  const [mouseEnter, setMouseEnter] = useState(false)
   return (
     <Box
-      backgroundImage={props.backgroundImage}
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      backgroundSize={"cover"}
+      onMouseEnter={() => setMouseEnter(true)}
+      onMouseLeave={() => setMouseEnter(false)}
+      cursor={'pointer'}
+      position={'relative'}
+      h={'100%'}
+      w={'100%'}
+      overflow="hidden"
     >
       <Flex
-        // bg="red"
-        h={"610px"}
-        w={"398px"}
-        alignItems={"flex-end"}
+        backgroundImage={props.backgroundImage}
+        transition={'0.5s'}
+        backgroundPosition="center"
+        backgroundRepeat="no-repeat"
+        backgroundSize={'cover'}
+        width={mouseEnter ? '103%' : '100%'}
+        height={mouseEnter ? '103%' : '100%'}
+        position={'absolute'}
+        top="0"
+        left="0"
       >
         <Flex
-          bg={props.bgColor}
-          borderTopRightRadius={"20px"}
-          h={"70px"}
-          p={"20px"}
-          flex="0.98"
-
+          // bg="red"
+          w="100%"
+          alignItems={'flex-end'}
         >
-            <Text as='h4'
-                variant={'h4' as any}
-                color={"white"}
-            >{props.title}</Text>
+          <Flex
+            bg={props.bgColor}
+            borderTopRightRadius={'20px'}
+            h={'70px'}
+            p={'20px'}
+            flex="0.98"
+            transition={'0.5s'}
+            opacity={mouseEnter ? '0' : '1'}
+            marginBottom={mouseEnter ? '-30px' : '0'}
+          >
+            <Text as="h4" variant={'h4' as any} color={'white'}>
+              {props.title}
+            </Text>
+          </Flex>
         </Flex>
       </Flex>
     </Box>
