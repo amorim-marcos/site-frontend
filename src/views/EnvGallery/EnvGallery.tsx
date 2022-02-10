@@ -17,12 +17,12 @@ export type EnvProps = LinkProps & {
 const Env = ({type, name, image_url, ...props}:EnvProps) => {
     return(
         <Link {...props}>
-            <Flex direction="column">
-                <Box overflow="hidden" width={{base: "367px", md: "548px"}} height={{ base: "274px", md: "409px"}}>
+            <Flex direction="column" width={{base: "367px", sm: "508px", md: "367px", '2xl': "508px"}}>
+                <Box overflow="hidden" width={{base: "367px", sm: "508px", md: "367px", '2xl': "508px"}} height={{ base: "274px", sm: "369px", 'md': "274px", '2xl': "369px"}}>
                     <Image objectFit="cover" objectPosition="center" width="100%" height="100%" overflow="hidden" flex={1} src={image_url} />
                 </Box>
-                <Text flex={1} fontSize={{base: "23px", md: "31px"}} variant={"body-bold" as any}>{type}</Text>
-                <Text flex={1} fontSize={{base: "17px", md: "28px"}}>{name}</Text>
+                <Text width="100%" flex={1} fontSize={{base: "23px", lg: "31px"}} variant={"body-bold" as any}>{type}</Text>
+                <Text width="100%" flex={1} fontSize={{base: "17px", lg: "28px"}}>{name}</Text>
             </Flex>
         </Link>
     )
@@ -750,19 +750,25 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                 }
             </Container>
             <Container display={(isMobile && displayFilters) ? "none" : "normal"} minW="100%">
-                <Grid
-                    templateRows="repeat(auto, 1fr)"
-                    templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)"} }
-                    gridGap={{base: "none", md: "30px"}}
-                >
-                    {
-                        filteredEnvs && filteredEnvs.map((env) => (
-                            <GridItem mt="60px">
-                                <Env type={env.type} name={env.name} image_url={env.image_url} />      
-                            </GridItem>
-                        ))
-                    }
-                </Grid>
+                <Center>
+                    <Grid
+                        width="100%"
+                        overflow="hidden"
+                        templateRows="repeat(auto, 1fr)"
+                        templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)", xl: "repeat(3, 1fr)"}}
+                        gridGap={{base: "none", sm: "10px", md: "30px", xl: "10px", '2xl': "30px"}}
+                        justifyItems="center"
+                    >
+                        {
+                            filteredEnvs && filteredEnvs.map((env) => (
+                                <GridItem mt="60px">
+                                    <Env type={env.type} name={env.name} image_url={env.image_url} />      
+                                </GridItem>
+                            ))
+                        }
+                    </Grid>
+                </Center>
+
             </Container>
         </Container>
         </>
