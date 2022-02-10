@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button, Select, Input, Center, Checkbox, BoxProps, LinkProps, ButtonProps} from "@chakra-ui/react"
+import { Container, Box, Grid, GridItem, Flex, Link, Text, Image, Button, Select, Input, Center, Checkbox, BoxProps, LinkProps, ButtonProps, CloseButton} from "@chakra-ui/react"
 import Pagebar from '@components/Pagebar'
 import Arrow from "@components/Arrow"
 import FiltersIcon from '@components/Icons/FiltersIcon'
@@ -142,18 +142,19 @@ export type FiltersSelectProps = {
 
 const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel, currentFilterPanel, appendFilter, removeFilter, setFilters, setFilteredEnvs, applyFilters, bps, envs, filters }:FiltersSelectProps) => {
     const [seeMoreBps, setSeeMoreBps] = React.useState(false)
+    const [openSearchBar, setOpenSearchBar] = React.useState(false)
     const TOTAL_BPS_SHOW_FIRST = 9
 
     return (
         <Box background="white.200" height="100%">
             <Flex 
-                paddingLeft={{base: "20px", md: "30px"}}
-                justifyContent="start"
+                padding={{base: "25px"}}
+                justifyContent="space-between"
                 alignItems="center" 
                 minH="80px"
             >
                 <Button 
-                    zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} 
+                    zIndex="10" onClick={() => { setDisplayFilters(!displayFilters); setOpenSearchBar(false); }} 
                     variant="link" backgroundColor="none" 
                     
                 >
@@ -161,6 +162,25 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                     <Text fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
                     <Arrow display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='grey.300' />
                 </Button>
+                {
+                    !displayFilters && 
+                    <Box zIndex="11" right="0">
+                        {openSearchBar ? (
+                            <CloseIcon 
+                                w="30px" h="30px" color="#8BB879" 
+                                onClick={() => setOpenSearchBar(false)}
+                                cursor="pointer"
+                            />
+                            ) : (
+                            <SearchIcon
+                                width="36px"
+                                stroke={colors.grey[300]}
+                                onClick={() => setOpenSearchBar(true)}
+                            />
+                        )}
+                    </Box>
+                }
+
             </Flex>
             {
                 displayFilters && 
@@ -325,6 +345,53 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
             {
                 ( displayFilters && currentFilterPanel != "none") && <Button w="100%" position="fixed" bottom="0" variant={"filters" as any} mr="30px" onClick={() => { setFilteredEnvs(applyFilters(filters, envs)); setDisplayFilters(false) }}>Filtrar</Button>
             }
+            {openSearchBar && (
+                <Flex
+                    height="65px"
+                    bg="green.550"
+                    width="100%"
+                    top="100%"
+                    alignItems="center"
+                    justifyContent="center"
+                    zIndex="docked"
+                    padding="25px"
+                >
+                    <Flex
+                        width="100%"
+                        borderBottom="solid"
+                        borderBottomColor="white.100"
+                        paddingX="5px"
+                        height="30px"
+                        borderBottomWidth={{ base: '1px' }}
+                    >
+                        <Input
+                            placeholder="Digite sua busca"
+                            border="none"
+                            outline="none"
+                            _active={{ border: 'none', outline: 'none' }}
+                            focusBorderColor="none"
+                            color="white.100"
+                            paddingLeft="0px"
+                            paddingBottom={{ base: '0px', md: '10px' }}
+                            fontSize="15px"
+                            _placeholder={{
+                                color: "white.100"
+                            }}
+                            value={filters.nameSearched}
+                            height={{ base: '30px' }}
+                            onChange={(e) => {setFilters({ ...filters, nameSearched: e.target.value })}}
+                        />
+                        <Box>
+                            <SearchIcon
+                                onClick={() => setFilteredEnvs(applyFilters(filters, envs))}
+                                stroke={colors.white[100]}
+                                width="30px"
+                                height={{ base: '25px', md: '10px', '2xl': '0px' }}
+                            />
+                        </Box>
+                    </Flex>
+                </Flex>
+            )}
             {
                 !displayFilters && 
                 <>
@@ -347,7 +414,6 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                 </>
 
             }
-
         </Box>
     )
 }
@@ -356,7 +422,7 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
     const [searchSelected, setSearchSelected] = React.useState(false)
 
     return (
-        <Box background="white.200">
+        <Box background="white.200" minH="80px">
             <Box position={{base: "relative", md: "absolute"}} paddingTop="30px" left={{base: "20px", md: "30px"}}>
                 <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  >
                     {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
