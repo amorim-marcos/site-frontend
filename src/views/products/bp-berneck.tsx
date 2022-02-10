@@ -7,13 +7,60 @@ import ArrowIcon from '@components/Icons/ArrowIcon'
 import BannerGallery from '@components/BannerGallery'
 import PatternInfoPhoto from '@components/PatternInfoPhoto'
 import BannerCollections from '@components/BannerCollections'
+import { useState } from 'react'
+import CarouselMultiElements from '@components/CarouselMultiElements'
+import useMobile from 'hooks/useMobile'
 
 export type BpBerneckViewProps = {
   name: string
   imageSrc: string
 }
 
+const items = [
+  {
+    title: 'Cozinhas',
+    bgColor: 'green.250',
+    backgroundImage: '../img/Imagem70.png',
+    id: 0
+  },
+  {
+    title: 'Quartos',
+    bgColor: 'brown.200',
+    backgroundImage: '../img/Imagem70.png',
+    id: 1
+  },
+
+  {
+    title: 'Quartos2',
+    bgColor: 'brown.200',
+    backgroundImage: '../img/Imagem70.png',
+    id: 2
+  },
+
+  {
+    title: 'Quartos3',
+    bgColor: 'brown.200',
+    backgroundImage: '../img/Imagem70.png',
+    id: 3
+  },
+
+  {
+    title: 'Quartos4',
+    bgColor: 'brown.200',
+    backgroundImage: '../img/Imagem70.png',
+    id: 4
+  },
+
+  {
+    title: 'Quartos5',
+    bgColor: 'brown.200',
+    backgroundImage: '../img/Imagem70.png',
+    id: 5
+  }
+]
+
 export default function BpBerneckView(props: BpBerneckViewProps) {
+  const { isMobile } = useMobile(768)
   return (
     <Box maxWidth="1920px" marginX="auto" bg="white.100">
       <Pagebar
@@ -76,6 +123,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             bgColor="brown.300"
             srcImg="../img/BPS.png"
             onClick={() => alert('Ir para BP')}
+            sizeType="rectangle"
           />
         </GridItem>
         <GridItem
@@ -106,27 +154,19 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
       {/* FIM BANNER COLECAO */}
 
       {/* INICIO Galeria de Ambientes */}
+
       <Flex
-        maxWidth="1920px"
-        marginX="auto"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
+        flexDirection={'column'}
         bg="green.200"
-        direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}
+        maxWidth={'1920px'}
+        marginX="auto"
+        paddingTop={'5%'}
       >
-        {/* TITULO */}
         <Flex
-          // bg="grey"
-          flex="1"
-          m={{
-            base: '2% 2% 0% 2%',
-            sm: '5% 5% 2% 5%',
-            lg: '5% 5% 2% 5%',
-            xl: '5% 5% 2% 5%'
-          }}
-          direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
+          paddingX={'5%'}
+          w="100%"
+          alignItems={'center'}
+          justifyContent={'space-between'}
         >
           <CompletedTitle
             titleString="Inspire-se"
@@ -139,33 +179,17 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             }}
           />
 
-          {/* FRASE */}
           <Flex
-            flex="1"
-            // bg="tomato"
-            alignItems={'flex-end'}
+            cursor={'pointer'}
+            _hover={{ opacity: '0.7' }}
+            alignItems={'center'}
+            onClick={() => alert('Ir para galeria')}
           >
-            {/* INICIO FLEX INTERNO */}
-            <Flex
-              // bg="black"
-              flex="10"
-              direction={{
-                base: 'column',
-                sm: 'column',
-                lg: 'column',
-                xl: 'column'
-              }}
-              alignItems={'flex-end'}
-            >
+            <Flex wrap={'nowrap'} direction={'column'} alignItems={'flex-end'}>
               <Text
                 as="h4"
                 variant={'h4' as any}
-                textAlign={{
-                  base: 'right',
-                  sm: 'right',
-                  lg: 'right',
-                  xl: 'right'
-                }}
+                textAlign={'right'}
                 fontWeight={'medium'}
               >
                 Acesse a nossa
@@ -173,158 +197,138 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
 
               <Text
                 as="h4"
+                whiteSpace={'nowrap'}
                 variant={'h4' as any}
-                textAlign={{
-                  base: 'right',
-                  sm: 'right',
-                  lg: 'right',
-                  xl: 'right'
-                }}
+                textAlign={'right'}
               >
                 Galeria de ambientes
               </Text>
             </Flex>
             <Flex
-              // bg="yellow"
-              flex="1"
-              p={{ base: '5px', sm: '5px', lg: '5px', xl: '10px' }}
+              p={{ base: '5px', xl: '10px' }}
               alignItems={'flex-end'}
-              direction={{
-                base: 'column',
-                sm: 'column',
-                lg: 'column',
-                xl: 'column'
-              }}
+              direction={'column'}
             >
               <ArrowIcon
-                width={{ base: '30px', md: '40px', lg: '32px', xl: '32px' }}
-                stroke="#6DB416"
+                width={{ base: '30px', md: '40px', lg: '32px' }}
+                stroke="green.700"
               />
             </Flex>
-            {/* FIM FLEX INTERNO */}
           </Flex>
         </Flex>
+        <CarouselMultiElements numberOfEvidenceElements={isMobile ? 1 : 4}>
+          {items.map((i) => {
+            return (
+              <Box
+                key={i.id}
+                w="100%"
+                h={{
+                  base: '100vw',
 
-        {/* INICIO GALERIA DE AMBIENTES FOTOS */}
-        <Flex
-          bg="green"
-          flex="1"
-          m={{
-            base: '5% 2% 5% 2%',
-            sm: '0% 5% 5% 5%',
-            lg: '0% 5% 5% 5%',
-            xl: '0% 5% 5% 5%'
-          }}
-          overflowY="hidden"
-          overflowX="hidden"
-        >
-          <Flex
-            // bg="black"
-            flex="1"
-          >
-            {/* GALERIA // PAGINACAO */}
-            <Box m={'10px'}>
-              <BannerGallery
-                title="Cozinhas"
-                bgColor="green.250"
-                backgroundImage="../img/Imagem70.png"
-              />
-            </Box>
-            <Box m={'10px'}>
-              <BannerGallery
-                title="Salas de estar"
-                bgColor="brown.300"
-                backgroundImage="../img/Imagem67.png"
-              />
-            </Box>
-            <Box m={'10px'}>
-              <BannerGallery
-                title="Quartos"
-                bgColor="brown.200"
-                backgroundImage="../img/Imagem70.png"
-              />
-            </Box>
-            <Box m={'10px'}>
-              <BannerGallery
-                title="Banheiros"
-                bgColor="brown.250"
-                backgroundImage="../img/Imagem67.png"
-              />
-            </Box>
-          </Flex>
-        </Flex>
-        {/* FIM GALERIA DE AMBIENTES FOTOS */}
+                  md: '325px',
+                  lg: '406px',
+                  xl: '488px',
+                  '2xl': '610px'
+                }}
+              >
+                <BannerGallery
+                  title={i.title}
+                  bgColor={i.bgColor}
+                  backgroundImage={i.backgroundImage}
+                />
+              </Box>
+            )
+          })}
+        </CarouselMultiElements>
       </Flex>
-      {/* FIM Galeria de Ambientes */}
 
-      <Box
-        // bg="green"
-        // flex="1"
-        m={{
-          base: '5% 0% 5% 0%',
-          sm: '5% 0% 5% 0%',
-          lg: '5% 5% 5% 5%',
-          xl: '5% 5% 5% 5%'
-        }}
+      {/* FIM Galeria de Ambientes */}
+      <Flex
+        maxWidth={'1920px'}
+        marginX="auto"
+        bg="white.100"
+        padding="5%"
+        justifyContent={'space-between'}
+        flexDirection={{ base: 'column', md: 'row' }}
       >
-        <Grid
-          h={{ base: '600px', sm: '600px', lg: '320px', xl: '423px' }}
-          w={{ base: '100%', sm: '100%', lg: '100%', xl: '100%' }}
-          // margin={{ base: '0%', sm: '0%', lg: '0%', xl: '3% 3%'}}
-          templateRows={{
-            base: 'repeat(3, 1fr)',
-            sm: 'repeat(3, 1fr)',
-            lg: 'repeat(1, 1fr)',
-            xl: 'repeat(1, 1fr)'
-          }}
-          templateColumns={{
-            base: 'repeat(1, 1fr)',
-            sm: 'repeat(1, 1fr)',
-            lg: 'repeat(3, 1fr)',
-            xl: 'repeat(3, 1fr)'
-          }}
-          gap={{ base: '5', sm: '4', lg: '8', xl: '10' }}
-        >
-          <GridItem rowSpan={1} colSpan={1}>
-            <PatternInfoPhoto
-              onClick={() => alert('Vai para Nossas Certificações')}
-              imgSrc="../img/Imagem71.png"
-              title="FAÇA O DOWNLOAD"
-              description="Pack de Padrões BP BERNECK"
-              titleColor="brown.350"
-              descriptionColor="green.900"
-            />
-          </GridItem>
-          <GridItem colSpan={1}>
-            <PatternInfoPhoto
-              onClick={() => alert('Vai para Nossas Certificações')}
-              imgSrc="../img/Imagem72.png"
-              title="CONHEÇA MAIS"
-              description="Revista Inspirare BNK"
-              titleColor="white.100"
-              descriptionColor="green.900"
-            />
-          </GridItem>
-          <GridItem colSpan={1}>
-            <PatternInfoPhoto
-              onClick={() => alert('Vai para Nossas Certificações')}
-              imgSrc="../img/Imagem73.png"
-              title="CONHEÇA MAIS"
-              description="Materiais de Suporte"
-              titleColor="white.100"
-              descriptionColor="green.900"
-            />
-          </GridItem>
-        </Grid>
-      </Box>
+        {[
+          {
+            srcImg: '/assets/imgs/pagina_capa_bp/pack_padroes_bp.png',
+            id: 1,
+            title: 'Pack de Padrões BP BERNECK',
+            subtTitle: 'FAÇA O DOWNLOAD',
+            subTitleColor: 'green.800'
+          },
+          {
+            srcImg: '/assets/imgs/pagina_capa_bp/revista_inspirare.png',
+            id: 2,
+            title: 'Revista Inspirare BNK',
+            subtTitle: 'CONHEÇA MAIS',
+            subTitleColor: 'white.100'
+          },
+          {
+            srcImg: '/assets/imgs/pagina_capa_bp/materiais_suporte.png',
+            id: 3,
+            title: 'Materiais de Suporte',
+            subtTitle: 'CONHEÇA MAIS',
+            subTitleColor: 'white.100'
+          }
+        ].map((i) => {
+          return (
+            <Flex
+              w={{ base: '100%', md: '30%' }}
+              h={{
+                base: '100vw',
+                md: '225px',
+                lg: '282px',
+                xl: '338px',
+                '2xl': '423px'
+              }}
+              key={i.id}
+              flexDirection={'column'}
+              justifyContent={'flex-end'}
+              padding="2%"
+              background={`url(${i.srcImg})`}
+              backgroundSize={'cover'}
+              cursor={'pointer'}
+              position={'relative'}
+              marginY={{ base: '5%', md: '0' }}
+            >
+              <Text
+                zIndex={'docked'}
+                color={i.subTitleColor}
+                variant={'larger-body' as any}
+              >
+                {i.subtTitle}
+              </Text>
+              <Text zIndex={'docked'} as="h3" variant={'h3' as any}>
+                {i.title}
+              </Text>
+              <Box
+                position={'absolute'}
+                top="0"
+                left="0"
+                w="100%"
+                h="100%"
+                transition={'0.5s'}
+                zIndex={'base'}
+                _hover={{
+                  bg: 'linear-gradient(180deg, rgba(255,255,255,0) 48%, rgba(172,204,159,0.7959558823529411) 100%)'
+                }}
+              />
+            </Flex>
+          )
+        })}
+      </Flex>
     </Box>
   )
 }
 
 const PanelImage = (props: { imageSrc: string }) => (
-  <Flex h="100%" justifyContent="center" alignItems="center" pos="relative">
+  <Flex w="100vw" h={{ base: '100%' }}>
     <Image
       h="100%"
+      w="100%"
       src={props.imageSrc}
       cursor={{ md: 'pointer' }}
       objectFit="cover"

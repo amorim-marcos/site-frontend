@@ -9,6 +9,8 @@ import {
 } from '@chakra-ui/react'
 
 import BannerProducts from '@components/BannerProducts'
+import CarouselMultiElements from '@components/CarouselMultiElements'
+import CarouselMutiElements from '@components/CarouselMultiElements'
 import CompletedTitle from '@components/CompletedTitle'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import { Contactusicon } from '@components/Icons/Contactusicon/Contactusicon'
@@ -41,7 +43,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
     >
       {/* TITULO */}
       <Flex
-        // bg="grey"
+        //bg="grey"
         flex="1"
         m={{
           base: '5% 2% 0% 2%',
@@ -103,10 +105,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
             p={{ base: '5px', sm: '5px', lg: '5px', xl: '10px' }}
             alignItems={'flex-end'}
             direction={{
-              base: 'column',
-              sm: 'column',
-              lg: 'column',
-              xl: 'column'
+              base: 'column'
             }}
           >
             <ArrowIcon
@@ -117,8 +116,14 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
           {/* FIM FLEX INTERNO */}
         </Flex>
       </Flex>
+
       {/* INICIO GALERIA PRODUTOS */}
-      <ProductsGallery products={products} />
+      <Box display={{ base: 'none', md: 'block' }}>
+        <ProductsGallery numberEvidence={3} products={products} />
+      </Box>
+      <Box display={{ base: 'block', md: 'none' }}>
+        <ProductsGallery numberEvidence={1} products={products} />
+      </Box>
       {/* FIM GALERIA PRODUTOS */}
       <Flex
         // bg="yellow"

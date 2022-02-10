@@ -120,6 +120,7 @@ export default function Home(props: HomeProps) {
             bannerSize: { base: '100px', sm: '150px', lg: '200px', xl: '300px' }
           }
         ]}
+        numberEvidence={3}
       />
       {/* FIM Nossos Produtos */}
 

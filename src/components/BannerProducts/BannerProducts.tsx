@@ -47,12 +47,32 @@ export const BannerProducts = ({
     >
       <Box
         position={'absolute'}
-        right={mouseEnter ? '-1%' : '-10%'}
-        top={mouseEnter ? '-1%' : '-10%'}
+        right={
+          sizeType === 'rectangle'
+            ? mouseEnter
+              ? '-1%'
+              : '-5%'
+            : mouseEnter
+            ? '-3%'
+            : '-7%'
+        }
+        top={
+          sizeType === 'rectangle'
+            ? mouseEnter
+              ? '-14%'
+              : '-17%'
+            : mouseEnter
+            ? '-3%'
+            : '-7%'
+        }
         transition={'0.5s'}
         zIndex="base"
-        h={sizeType === 'square' ? '100%' : '120%'}
-        w={sizeType === 'square' ? '100%' : '60%'}
+        h={sizeType === 'square' ? '100%' : '130%'}
+        w={
+          sizeType === 'square'
+            ? { base: '100%', lg: '100%' }
+            : { base: '63%', lg: '63%' }
+        }
         background={`url(${srcImg})`}
         backgroundRepeat={'no-repeat'}
         backgroundPosition={'center left'}
@@ -83,6 +103,7 @@ export const BannerProducts = ({
           <Flex
             // bg="pink"
             flex="1"
+            w={sizeType === 'rectangle' ? '50%' : '100%'}
           >
             <Text as="h1" variant={'h1' as any} color={titleColor}>
               {title}
