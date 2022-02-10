@@ -466,7 +466,7 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                     <Button variant={"filters" as any} onClick={() => { setFilters(initialFilters); setFilteredEnvs(applyFilters(initialFilters, envs)) }}>Limpar filtros</Button>
                                 </Flex>
                             </Center>
-                            <Box display={{base: "none", md: "normal"}} position="absolute" top="0" right="50px">
+                            <Box position="absolute" top="0" right="50px">
                                 <Flex
                                     width={{
                                         base: '100px',
@@ -501,20 +501,21 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                             '2xl': '16px'
                                         }}
                                         height={{ base: '30px' }}
-                                        onChange={(e) => { setFilters({ ...filters, nameSearched: e.target.value })}}
+                                        onChange={(e) => {setFilters({ ...filters, nameSearched: e.target.value })}}
                                     />
                                     <Box>
-                                    <SearchIcon
-                                        stroke={(searchSelected)? colors.green[500] : colors.grey[300]}
-                                        width={{
-                                            base: '13px',
-                                            md: '16px',
-                                            lg: '23px',
-                                            xl: '28px',
-                                            '2xl': '35px'
-                                        }}
-                                        height={{ base: '25px', md: '10px', '2xl': '0px' }}
-                                    />
+                                        <SearchIcon
+                                            onClick={() => setFilteredEnvs(applyFilters(filters, envs))}
+                                            stroke={(searchSelected)? colors.green[500] : colors.grey[300]}
+                                            width={{
+                                                base: '13px',
+                                                md: '16px',
+                                                lg: '23px',
+                                                xl: '28px',
+                                                '2xl': '35px'
+                                            }}
+                                            height={{ base: '25px', md: '10px', '2xl': '0px' }}
+                                        />
                                     </Box>
                                 </Flex>
                             </Box>
