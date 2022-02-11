@@ -4,12 +4,10 @@ import { json } from 'node:stream/consumers'
 import { useState, useEffect } from 'react'
 
 export type CarouselMultiElementsProps = {
-  items?: string[]
   numberOfEvidenceElements?: number
-  children?: React.ReactNode[]
+  children: React.ReactNode[]
 }
 export const CarouselMultiElements = ({
-  items = ['1', '2', '3', '4', '5', '6', '7'],
   numberOfEvidenceElements = 3,
   children
 }: CarouselMultiElementsProps) => {
@@ -19,8 +17,8 @@ export const CarouselMultiElements = ({
   const [hoverBtnControl, setHoverBtnControl] = useState(false)
 
   function next() {
-    if (startItem < items.length - numberOfEvidenceElements - 1) {
-      setStartItem(startItem + 1)
+    if (startItem < children.length - numberOfEvidenceElements) {
+      setStartItem((v) => v + 1)
       setStranform(transform - 1)
       setEndItem(endItem + 1)
     }
