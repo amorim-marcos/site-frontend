@@ -4,6 +4,12 @@ import CarouselMutiElements from '.'
 
 describe('<CarouselMutiElements />', () => {
   it('should render the component', () => {
-    const { container } = render(<CarouselMutiElements />)
+    const { container } = render(
+      <CarouselMutiElements>
+        <div></div>
+        <div></div>
+        <div></div>
+      </CarouselMutiElements>
+    )
   })
 })
