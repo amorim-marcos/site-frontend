@@ -35,7 +35,7 @@ export const Downloads = () => {
 
               <DownloadColorPanel
                 title="Revista Opinus"
-                colorPanel="grey"
+                colorPanel="gray"
                 url="/"
                 img="/assets/imgs/canal-bnk/img_revista_opinus.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_opinus.svg"
@@ -45,7 +45,7 @@ export const Downloads = () => {
             <Flex w="100%" gap="34px" px="88px">
               <DownloadColorPanel
                 title="Relatórios"
-                colorPanel="grey"
+                colorPanel="gray"
                 url="/"
                 img="/assets/imgs/canal-bnk/img_relatorios.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_relatorios.svg"
@@ -81,7 +81,7 @@ export const Downloads = () => {
 
               <DownloadColorPanel
                 title="Certificados Florestais"
-                colorPanel="grey"
+                colorPanel="gray"
                 url="/"
                 img="/assets/imgs/canal-bnk/img_certificados_florestais.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_certificados_florestais.svg"
@@ -150,7 +150,7 @@ interface DownloadColorPanelProps extends FlexProps {
   url: string
   img: string
   graphism: string
-  colorPanel: 'grey' | 'green' | 'brown'
+  colorPanel: 'gray' | 'green' | 'brown'
 }
 
 const DownloadColorPanel = (props: DownloadColorPanelProps) => {
@@ -263,7 +263,7 @@ const WORLD = [
   <DownloadColorPanel
     key="Revista Opinus"
     title="Revista Opinus"
-    colorPanel="grey"
+    colorPanel="gray"
     url="/"
     img="/assets/imgs/canal-bnk/img_revista_opinus.png"
     graphism="/assets/imgs/canal-bnk/grafismos_opinus.svg"
@@ -272,7 +272,7 @@ const WORLD = [
   <DownloadColorPanel
     key="Relatórios"
     title="Relatórios"
-    colorPanel="grey"
+    colorPanel="gray"
     url="/"
     img="/assets/imgs/canal-bnk/img_relatorios.png"
     graphism="/assets/imgs/canal-bnk/grafismo_relatorios.svg"
@@ -281,7 +281,7 @@ const WORLD = [
   <DownloadColorPanel
     key="Certificados Florestais"
     title="Certificados Florestais"
-    colorPanel="grey"
+    colorPanel="gray"
     url="/"
     img="/assets/imgs/canal-bnk/img_certificados_florestais.png"
     graphism="/assets/imgs/canal-bnk/grafismo_certificados_florestais.svg"

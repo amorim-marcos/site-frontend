@@ -104,7 +104,7 @@ export default function Category(props: CategoryProps) {
             <NavButton
               justify={{ base: 'space-between', xl: 'center' }}
               selected={props.category === 'inspiration'}
-              color={props.category === 'world' ? 'green.900' : 'grey.350'}
+              color={props.category === 'world' ? 'green.900' : 'gray.350'}
               borderColor={
                 props.category === 'all' || props.category === 'inspiration'
                   ? 'brown.200'
@@ -119,7 +119,7 @@ export default function Category(props: CategoryProps) {
             <NavButton
               justify={{ base: 'space-between', xl: 'center' }}
               selected={props.category === 'feedstock'}
-              color={props.category === 'world' ? 'green.900' : 'grey.350'}
+              color={props.category === 'world' ? 'green.900' : 'gray.350'}
               borderColor={
                 props.category === 'all' || props.category === 'feedstock'
                   ? 'green.250'
@@ -134,7 +134,7 @@ export default function Category(props: CategoryProps) {
             <NavButton
               justify={{ base: 'space-between', xl: 'center' }}
               selected={props.category === 'world'}
-              color={props.category === 'world' ? 'green.900' : 'grey.350'}
+              color={props.category === 'world' ? 'green.900' : 'gray.350'}
               borderColor={
                 props.category === 'all' || props.category === 'world'
                   ? 'green.600'

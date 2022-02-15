@@ -57,9 +57,9 @@ const BPFilter = ({name, texture, pattern_image, isSelected = false, toggleSelec
             <Box boxShadow={(selected) ? "0px 0px 3px green" : "none"} position="absolute" top="0" left="0" zIndex="1" width="100%" height="100%" borderRadius="5px" padding="0" margin="0" backgroundImage={`url(${pattern_image})`} backgroundRepeat="repeat" backgroundSize="cover"></Box>
             <Box  display={(!displayInfo && !selected) ? 'none' : 'normal'} zIndex="2" width="100%" height="100%" position="absolute" top="0" left="0" backgroundColor="white.100" opacity="0.6"></Box>
             <Box display={(!displayInfo && !selected) ? 'none' : 'normal'} zIndex="3" width="100%" height="100%" position="absolute" top="0" left="0">
-                <Flex direction="column" alignItems="flex-start" mt="5px" ml="5px" color="grey.400">
+                <Flex direction="column" alignItems="flex-start" mt="5px" ml="5px" color="gray.400">
                     <Text fontSize={{base: "11px", md: "16px"}} variant={"body-bold" as any}>{name}</Text>
-                    <Text display={{base: 'none', xs: 'inherit'}} fontSize={{base: "10px", md: "14px"}} color="grey.600">{texture}</Text>
+                    <Text display={{base: 'none', xs: 'inherit'}} fontSize={{base: "10px", md: "14px"}} color="gray.600">{texture}</Text>
                 </Flex>
             </Box>
         </Button>
@@ -164,7 +164,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                 >
                     {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
                     <Text fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
-                    <Arrow display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='grey.300' />
+                    <Arrow display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='gray.300' />
                 </Button>
                 {
                     !displayFilters && 
@@ -178,7 +178,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                             ) : (
                             <SearchIcon
                                 width="36px"
-                                stroke={colors.grey[300]}
+                                stroke={colors.gray[300]}
                                 onClick={() => setOpenSearchBar(true)}
                             />
                         )}
@@ -195,15 +195,15 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                             <Button 
                                 onClick={() => changeFilterPanel('bps')}
                                 variant="link"
-                                color="grey.300"
+                                color="gray.300"
                                 w="100%"
                                 height="80px"
                                 fontSize="22px"
                                 justifyContent="start"
                                 alignItems="center"
                             >
-                                <Text color='grey.300' mr="10px">BP BERNECK®</Text>
-                                <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'bps') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                                <Text color='gray.300' mr="10px">BP BERNECK®</Text>
+                                <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'bps') ? "down" : "up"} width="3" height="6" color="gray.200" />
                             </Button> 
                             <Box display={(currentFilterPanel != 'bps') ? 'none' : 'normal'}  top="0" left="0" width="100%" height="100%" paddingBottom="25px">
                                 <Grid  
@@ -242,7 +242,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                     ? <Button 
                                         mt="20px" w="100%" 
                                         bg="white.100"
-                                        color="grey.300"
+                                        color="gray.300"
                                         variant={"filters" as any} 
                                         _hover={{
                                             bg: 'white.100'
@@ -255,7 +255,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                         <Button 
                                         mt="20px" w="100%" 
                                         bg="white.100"
-                                        color="grey.300"
+                                        color="gray.300"
                                         variant={"filters" as any} 
                                         _hover={{
                                             bg: 'white.100'
@@ -271,15 +271,15 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                             <Button 
                                 onClick={() => changeFilterPanel('ambients')}
                                 variant="link"
-                                color="grey.300"
+                                color="gray.300"
                                 w="100%"
                                 height="80px"
                                 fontSize="22px"
                                 justifyContent="start"
                                 alignItems="center"
                             >
-                                <Text color='grey.300' mr="10px">AMBIENTE</Text>
-                                <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'ambients') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                                <Text color='gray.300' mr="10px">AMBIENTE</Text>
+                                <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'ambients') ? "down" : "up"} width="3" height="6" color="gray.200" />
                             </Button> 
                             <Box display={(currentFilterPanel != 'ambients') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
                                 <Grid
@@ -309,15 +309,15 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                             <Button 
                                 onClick={() => changeFilterPanel('styles')}
                                 variant="link"
-                                color="grey.300"
+                                color="gray.300"
                                 w="100%"
                                 height="80px"
                                 fontSize="22px"
                                 justifyContent="start"
                                 alignItems="center"
                             >
-                                <Text color='grey.300' mr="10px">ESTILO</Text>
-                                <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'styles') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                                <Text color='gray.300' mr="10px">ESTILO</Text>
+                                <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'styles') ? "down" : "up"} width="3" height="6" color="gray.200" />
                             </Button>
                             <Box display={(currentFilterPanel != 'styles') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
                                 <Grid
@@ -431,7 +431,7 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                 <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  >
                     {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
                     <Text fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
-                    <Arrow display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='grey.300' />
+                    <Arrow display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='gray.300' />
                 </Button>
             </Box>
             {
@@ -447,7 +447,7 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                     <Button 
                                         onClick={() => changeFilterPanel('bps')}
                                         variant="link"
-                                        color="grey.300"
+                                        color="gray.300"
                                         w="180px"
                                         h="30px"
                                         borderBottom={(currentFilterPanel == 'bps') ? "solid" : "none"}
@@ -455,13 +455,13 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                         borderBottomWidth={{ base: '4px' }}
                                         fontSize="22px"
                                     >
-                                        <Text color='grey.300' mr="10px">BP BERNECK®</Text>
-                                        <Arrow direction={(currentFilterPanel == 'bps') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                                        <Text color='gray.300' mr="10px">BP BERNECK®</Text>
+                                        <Arrow direction={(currentFilterPanel == 'bps') ? "down" : "up"} width="3" height="6" color="gray.200" />
                                     </Button> 
                                     <Button 
                                         onClick={() => changeFilterPanel('ambients')}
                                         variant="link"
-                                        color="grey.300"
+                                        color="gray.300"
                                         w="180px"
                                         h="30px"
                                         borderBottom={(currentFilterPanel == 'ambients') ? "solid" : "none"}
@@ -469,13 +469,13 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                         borderBottomWidth={{ base: '4px' }}
                                         fontSize="22px"
                                     >
-                                        <Text color='grey.300' mr="10px">AMBIENTE</Text>
-                                        <Arrow direction={(currentFilterPanel == 'ambients') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                                        <Text color='gray.300' mr="10px">AMBIENTE</Text>
+                                        <Arrow direction={(currentFilterPanel == 'ambients') ? "down" : "up"} width="3" height="6" color="gray.200" />
                                     </Button>  
                                     <Button 
                                         onClick={() => changeFilterPanel('styles')}
                                         variant="link"
-                                        color="grey.300"
+                                        color="gray.300"
                                         w="180px"
                                         h="30px"
                                         borderBottom={(currentFilterPanel == 'styles') ? "solid" : "none"}
@@ -483,8 +483,8 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                         borderBottomWidth={{ base: '4px' }}
                                         fontSize="22px"
                                     >
-                                        <Text color='grey.300' mr="10px">ESTILO</Text>
-                                        <Arrow direction={(currentFilterPanel == 'styles') ? "down" : "up"} width="3" height="6" color="grey.200" />
+                                        <Text color='gray.300' mr="10px">ESTILO</Text>
+                                        <Arrow direction={(currentFilterPanel == 'styles') ? "down" : "up"} width="3" height="6" color="gray.200" />
                                     </Button>   
                                 </Flex>
                             </Center>
@@ -546,7 +546,7 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                         '2xl': '350px'
                                     }}
                                     borderBottom="solid"
-                                    borderBottomColor={(searchSelected) ? "green.500" : "grey.300"}
+                                    borderBottomColor={(searchSelected) ? "green.500" : "gray.300"}
                                     paddingX="5px"
                                     height={{ base: '25px' }}
                                     borderBottomWidth={{ base: '2px' }}
@@ -555,12 +555,12 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                         onFocus={()=>{ setSearchSelected(true) }}
                                         onBlur={()=>{ setSearchSelected(false) }}
                                         placeholder="Pesquise pelo nome"
-                                        _placeholder={{ color: "grey.300"}}
+                                        _placeholder={{ color: "gray.300"}}
                                         border="none"
                                         outline="none"
                                         _active={{ border: 'none', outline: 'none' }}
                                         focusBorderColor="none"
-                                        color='grey.300'
+                                        color='gray.300'
                                         paddingLeft="0px"
                                         paddingBottom={{ base: '0px', md: '10px' }}
                                         fontSize={{
@@ -576,7 +576,7 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                     <Box>
                                         <SearchIcon
                                             onClick={() => setFilteredEnvs(applyFilters(filters, envs))}
-                                            stroke={(searchSelected)? colors.green[500] : colors.grey[300]}
+                                            stroke={(searchSelected)? colors.green[500] : colors.gray[300]}
                                             width={{
                                                 base: '13px',
                                                 md: '16px',

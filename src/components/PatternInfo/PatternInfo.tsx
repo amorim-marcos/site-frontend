@@ -37,7 +37,7 @@ export const PatternInfo = ({
       <Flex
         zIndex={10}
         padding={{ base: '1%', sm: '1%', lg: '2%', xl: '5%' }}
-        // bg="grey"
+        // bg="gray"
         flex="1"
         justifyContent={'center'}
       >

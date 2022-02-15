@@ -163,7 +163,7 @@ const Intro = (props: {
       <Text
         fontSize={{ base: '20px', '2xl': '23px' }}
         letterSpacing="-0.23px"
-        color="grey.300"
+        color="gray.300"
         pb="22px"
       >
         {props.textureDescription}
@@ -237,7 +237,7 @@ const Inspire = (props: {
             pos="absolute"
             fontSize="18px"
             letterSpacing="0px"
-            color="grey.300"
+            color="gray.300"
             top={{ base: '130px', lg: '75px' }}
             left={{ base: '-18%', lg: '110px', '2xl': '145px' }}
             textAlign={{ base: 'center', '2xl': 'left' }}
@@ -295,7 +295,7 @@ const Inspire = (props: {
                 <Text
                   fontSize="20px"
                   letterSpacing="0px"
-                  color={{ base: 'grey.400', sm: 'grey.300' }}
+                  color={{ base: 'gray.400', sm: 'gray.300' }}
                   textAlign={{ base: 'center', '2xl': 'left' }}
                   pos={{ base: 'absolute', sm: 'relative' }}
                   bg={{ base: 'rgba( 226, 226, 226, 0.55 )', sm: 'none' }}
@@ -466,7 +466,7 @@ const TextureProperties = (props: {
           h={{ base: '128px', '2xl': '148px' }}
           border="7px solid"
           borderRadius="100%"
-          borderColor="grey.150"
+          borderColor="gray.150"
         />
 
         <Flex direction="column">
@@ -482,7 +482,7 @@ const TextureProperties = (props: {
             fontSize={{ base: '31px', '2xl': '34px' }}
             fontWeight="bold"
             letterSpacing="-0.68px"
-            color="grey.300"
+            color="gray.300"
           >
             Padrão {props.textureName}
           </Text>
@@ -558,7 +558,7 @@ const TextureProperties = (props: {
                 fontSize={{ base: '16px', '2xl': '19px' }}
                 fontWeight="bold"
                 letterSpacing="-0.37px"
-                color="grey.300"
+                color="gray.300"
               >
                 MDP BERNECK®
               </Text>
@@ -581,7 +581,7 @@ const TextureProperties = (props: {
                 fontSize={{ base: '16px', '2xl': '19px' }}
                 fontWeight="bold"
                 letterSpacing="-0.37px"
-                color="grey.300"
+                color="gray.300"
               >
                 MDF BERNECK®
               </Text>
@@ -617,7 +617,7 @@ const TextureProperties = (props: {
           <Text
             fontSize={{ base: '17px', '2xl': '20px' }}
             letterSpacing="-0.4px"
-            color="grey.300"
+            color="gray.300"
             pb="14px"
           >
             Nossos <b>painéis BP BERNECK®</b> são revestidos com laminado
@@ -631,7 +631,7 @@ const TextureProperties = (props: {
           <Text
             fontSize={{ base: '17px', '2xl': '20px' }}
             letterSpacing="-0.4px"
-            color="grey.300"
+            color="gray.300"
           >
             Os painéis possuem superfície fechada reduzindo a proliferação de
             micro organismos, ideal para ambientes que requeiram fácil
@@ -655,7 +655,7 @@ const TextureProperties = (props: {
           <Text
             fontSize={{ base: '17px', '2xl': '20px' }}
             letterSpacing="-0.4px"
-            color="grey.250"
+            color="gray.250"
           >
             Todos os padrões possuem fitas de borda desenvolvidas em parceria
             com os melhores fornecedores do mercado. É importante que todas as
@@ -670,7 +670,7 @@ const TextureProperties = (props: {
         <AccordionPanelBp
           fontSize={{ base: '17px', '2xl': '20px' }}
           letterSpacing="-0.4px"
-          color="grey.300"
+          color="gray.300"
         >
           Para uso exclusivo interno, proporciona excelente resultado em móveis
           para cozinha, escritório, quarto, banheiro, estar, personalização de
@@ -720,7 +720,7 @@ const PageNavegation = (props: { next: string; prev: string }) => {
             fontSize={{ base: '20px', sm: '23px' }}
             fontWeight="bold"
             letterSpacing="-0.46px"
-            color="grey.300"
+            color="gray.300"
           >
             Anterior
           </Text>
@@ -729,7 +729,7 @@ const PageNavegation = (props: { next: string; prev: string }) => {
             fontSize={{ base: '16px', sm: '18px' }}
             fontWeight="medium"
             letterSpacing="-0.36px"
-            color="grey.300"
+            color="gray.300"
           >
             {props.prev}
           </Text>
@@ -757,7 +757,7 @@ const PageNavegation = (props: { next: string; prev: string }) => {
             fontSize={{ base: '20px', sm: '23px' }}
             fontWeight="bold"
             letterSpacing="-0.46px"
-            color="grey.300"
+            color="gray.300"
           >
             Próximo
           </Text>
@@ -766,7 +766,7 @@ const PageNavegation = (props: { next: string; prev: string }) => {
             fontSize={{ base: '16px', sm: '18px' }}
             fontWeight="medium"
             letterSpacing="-0.36px"
-            color="grey.300"
+            color="gray.300"
           >
             {props.next}
           </Text>
@@ -920,7 +920,7 @@ const ArrowButton = (props: {
     }}
     transition="all 0.2s ease-in-out"
     cursor="pointer"
-    bg="grey.300"
+    bg="gray.300"
     boxSize="77px"
     align="center"
     justify="center"
@@ -930,7 +930,7 @@ const ArrowButton = (props: {
       direction={props.direction}
       width="21px"
       height="30px"
-      color="grey.100"
+      color="gray.100"
     />
   </Flex>
 )
@@ -942,7 +942,7 @@ interface AccordionButtonBpProps extends AccordionButtonProps {
 const AccordionButtonBp = (props: AccordionButtonBpProps) => (
   <h2>
     <AccordionButton {...props} _focus={{ boxShadow: 'none' }}>
-      <Box flex="1" textAlign="left" color="grey.300">
+      <Box flex="1" textAlign="left" color="gray.300">
         {props.title}
       </Box>
       <AccordionIcon />
@@ -965,7 +965,7 @@ const TdGreen = (props: TableCellProps) => (
     bg="#D7EABE"
     fontSize={{ base: '17px', '2xl': '19px' }}
     letterSpacing="-0.37px"
-    color="grey.300"
+    color="gray.300"
     border="2px solid #F5F6F4"
     {...props}
   >

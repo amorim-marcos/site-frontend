@@ -39,7 +39,7 @@ export const ChannelBnkRelationalItem = ({
         <Flex padding="8%" flexDirection="column">
           <Flex alignItems="center">
             <ArrowIcon stroke={color} width="5%" />
-            <Text marginLeft="3%" color="grey.400">
+            <Text marginLeft="3%" color="gray.400">
               {category}
             </Text>
           </Flex>

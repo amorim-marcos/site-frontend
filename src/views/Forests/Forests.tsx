@@ -75,7 +75,7 @@ export const Forests = () => {
       >
         <Flex
           direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
-          // bg='grey'
+          // bg='gray'
         >
 
             <Flex
@@ -101,7 +101,7 @@ export const Forests = () => {
               </Box>
               {/* BOX 2 */}
               <Box
-                // bg='grey.100'
+                // bg='gray.100'
                 flex='1'
                 margin = {{ base: '8% 0% 0% 0%', sm: '2% 5% 0% 5%', lg: '5% 5% 0% 5%', xl: '5% 5% 0% 5%'}}
               >
@@ -158,7 +158,7 @@ export const Forests = () => {
             >
               
                 <Flex
-                  // bg="grey.100"
+                  // bg="gray.100"
                   width={{ base: '320px', sm: '250px', lg: '300px', xl: '30%'}}
                   height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px'}}
                 >
@@ -328,7 +328,7 @@ export const Forests = () => {
         zIndex='base'
         overflowY="hidden"
         overflowX="hidden"
-        bg = 'grey.100' 
+        bg = 'gray.100' 
       >
         <Flex
           // bg='blue'
@@ -343,7 +343,7 @@ export const Forests = () => {
 
               {/* INTERNAL FLEX */}
               <Flex
-                // bg='grey'
+                // bg='gray'
                 direction = {{ base: 'column', sm: 'column', lg: 'column', xl: 'column'}}
               >
                 {/* INTERNAL FLEX - BOX 1 */}
@@ -366,12 +366,12 @@ export const Forests = () => {
                 </Flex>
                 {/* INTERNAL FLEX - BOX 2 */}
                 <Flex
-                  // bg='grey.400'
+                  // bg='gray.400'
                   flex={1}
                   // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
                 >
                   <Flex
-                    // bg='grey.400'
+                    // bg='gray.400'
                     flex={2}
                     // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
                   >
@@ -380,7 +380,7 @@ export const Forests = () => {
                     />
                   </Flex>
                   <Flex
-                    // bg='grey.400'
+                    // bg='gray.400'
                     flex={1}
                     // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
                   >
@@ -567,7 +567,7 @@ export const Forests = () => {
         zIndex='base'
         overflowY="hidden"
         overflowX="hidden"
-        bg = 'grey.100'
+        bg = 'gray.100'
         backgroundImage="/assets/imgs/grafismos_fundo2.png"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"  

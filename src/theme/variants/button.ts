@@ -25,7 +25,7 @@ export const Button = {
     "link": {
       w: 'auto',
       borderRadius: '0',
-      color: 'grey.300',
+      color: 'gray.300',
       bg: 'none',
       _hover: {
         bg: 'none'
@@ -43,7 +43,7 @@ export const Button = {
       w: 'auto',
       h: '58px',
       borderRadius: '0',
-      color: 'grey.300',
+      color: 'gray.300',
       bg: 'brown.150',
       paddingLeft: '15px',
       paddingRight: '15px',

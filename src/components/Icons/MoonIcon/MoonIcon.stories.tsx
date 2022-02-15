@@ -10,7 +10,7 @@ const Template: Story<MoonIconProps> = (args) => <MoonIcon {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  color: 'grey.100',
+  color: 'gray.100',
   height: '18px',
   width: '18px'
 }

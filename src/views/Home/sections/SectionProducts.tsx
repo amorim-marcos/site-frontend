@@ -43,7 +43,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
     >
       {/* TITULO */}
       <Flex
-        //bg="grey"
+        //bg="gray"
         flex="1"
         m={{
           base: '5% 2% 0% 2%',

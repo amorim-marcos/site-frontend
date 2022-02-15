@@ -10,7 +10,7 @@ const Template: Story<SunIconProps> = (args) => <SunIcon {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  color: 'grey.100',
+  color: 'gray.100',
   height: '22px',
   width: '22px'
 }

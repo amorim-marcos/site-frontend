@@ -114,7 +114,7 @@ export const PostBody = ({
             w="30px"
             height="30px"
           />
-          <Text color="grey.350" variant={'body' as any}>
+          <Text color="gray.350" variant={'body' as any}>
             {publishDate}
           </Text>
         </Flex>

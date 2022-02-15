@@ -72,7 +72,7 @@ export const Videos = () => {
       }}
       bg={
         category === 'all' || category === 'feedstock'
-          ? 'grey.150'
+          ? 'gray.150'
           : 'brown.100'
       }
       py={{ base: '52px', lg: '100px' }}

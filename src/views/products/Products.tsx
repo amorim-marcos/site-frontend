@@ -38,7 +38,7 @@ export const Products = () => {
         bg="white"
       >
         <Flex
-          // bg='grey'
+          // bg='gray'
           direction={{
             base: 'column',
             sm: 'column',
@@ -127,9 +127,9 @@ export const Products = () => {
         <GridItem>
           <BannerProducts
             title="HDF BERNECK®"
-            titleColor="grey.400"
+            titleColor="gray.400"
             subtitle="Painel de Fibra de Alta Densidade"
-            subtitleColor="grey.400"
+            subtitleColor="gray.400"
             bgColor="brown.200"
             srcImg="img/hdf.png"
             onClick={() => alert('Ir para Produto')}
@@ -140,9 +140,9 @@ export const Products = () => {
         <GridItem>
           <BannerProducts
             title="MDF BERNECK®"
-            titleColor="grey.400"
+            titleColor="gray.400"
             subtitle="Painel de Fibra de Média Densidade"
-            subtitleColor="grey.400"
+            subtitleColor="gray.400"
             bgColor="brown.200"
             srcImg="img/mdf.png"
             onClick={() => alert('Ir para Produto')}
@@ -152,9 +152,9 @@ export const Products = () => {
         <GridItem>
           <BannerProducts
             title="MDP BERNECK®"
-            titleColor="grey.400"
+            titleColor="gray.400"
             subtitle="Painel de Partículas de Média Densidade"
-            subtitleColor="grey.400"
+            subtitleColor="gray.400"
             bgColor="brown.200"
             srcImg="img/mdp.png"
             onClick={() => alert('Ir para Produto')}
@@ -165,9 +165,9 @@ export const Products = () => {
         <GridItem>
           <BannerProducts
             title="BERNECK® TECA"
-            titleColor="grey.400"
+            titleColor="gray.400"
             subtitle="Madeira Serrada de Teca"
-            subtitleColor="grey.400"
+            subtitleColor="gray.400"
             bgColor="brown.250"
             srcImg="img/teca.png"
             onClick={() => alert('Ir para Produto')}
@@ -180,7 +180,7 @@ export const Products = () => {
             title="BERNECK® PINUS"
             titleColor="green.900"
             subtitle="Madeira Serrada de Pinus"
-            subtitleColor="grey.400"
+            subtitleColor="gray.400"
             bgColor="green.300"
             srcImg="img/pinus.png"
             onClick={() => alert('Ir para Produto')}
