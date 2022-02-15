@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="18" viewBox="0 0 30 18">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Retângulo_1185" data-name="Retângulo 1185" width="30" height="18" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Colombia" transform="translate(-235.09 -296.495)">
+    <g id="Grupo_1593" data-name="Grupo 1593" transform="translate(235.09 296.495)">
+      <g id="Grupo_1592" data-name="Grupo 1592" transform="translate(0 0)">
+        <g id="Grupo_1591" data-name="Grupo 1591" clip-path="url(#clip-path)">
+          <rect id="Retângulo_1182" data-name="Retângulo 1182" width="30" height="9" fill="#f3d02f"/>
+          <rect id="Retângulo_1183" data-name="Retângulo 1183" width="30" height="4.5" transform="translate(0 9)" fill="#22368f"/>
+          <rect id="Retângulo_1184" data-name="Retângulo 1184" width="30" height="4.499" transform="translate(0 13.501)" fill="#bc0030"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

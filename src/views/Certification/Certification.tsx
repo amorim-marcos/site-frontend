@@ -191,7 +191,7 @@ export const Certification = () => (
           ml = {{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
           mr = {{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
           mt={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
-          bg='grey.100'
+          bg='gray.100'
           flex='1'
           direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
           alignItems='center'
@@ -290,7 +290,7 @@ export const Certification = () => (
           ml = {{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
           mr = {{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
           mt={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
-          bg='grey.100'
+          bg='gray.100'
           flex='1'
           direction = {{ base: 'column', sm: 'column', lg: 'row-reverse', xl: 'row-reverse'}}
           alignItems='center'
@@ -389,7 +389,7 @@ export const Certification = () => (
           ml = {{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
           mt={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
           mr = {{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
-          bg='grey.100'
+          bg='gray.100'
           flex='1'
           direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
           alignItems='center'
@@ -489,7 +489,7 @@ export const Certification = () => (
           mt={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
           mb={{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
           mr = {{ base: '5%', sm: '5%', lg: '5%', xl: '5%'}}
-          bg='grey.100'
+          bg='gray.100'
           flex='1'
           direction = {{ base: 'column', sm: 'column', lg: 'row-reverse', xl: 'row-reverse'}}
           alignItems='center'

@@ -6,11 +6,13 @@ export default {
   component: SmallGridIcon
 } as Meta
 
-const Template: Story<SmallGridIconProps> = (args) => <SmallGridIcon {...args} />
+const Template: Story<SmallGridIconProps> = (args) => (
+  <SmallGridIcon {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {
-  color: 'grey.100',
+  color: 'gray.100',
   height: '33px',
   width: '33px'
 }

@@ -112,7 +112,7 @@ export const PageSession = ({
 
       {/* BOX 2 */}
       <Box
-        // bg = 'grey'
+        // bg = 'gray'
         flex="1"
         zIndex={10}
         margin={{ base: '10% 5%', sm: '5%', lg: '5%', xl: '5%' }}

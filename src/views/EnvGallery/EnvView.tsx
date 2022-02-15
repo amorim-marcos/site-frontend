@@ -108,7 +108,7 @@ export const EnvView = ({ otherEnvs, imgs, tableContent }: EnvViewProps) => {
                         <Text
                           variant={'body' as any}
                           fontWeight="bold"
-                          color="grey.250"
+                          color="gray.250"
                         >
                           {item.column1}
                         </Text>
@@ -123,7 +123,7 @@ export const EnvView = ({ otherEnvs, imgs, tableContent }: EnvViewProps) => {
                         alignItems="center"
                         w="full"
                       >
-                        <Text variant={'body' as any} color="grey.250">
+                        <Text variant={'body' as any} color="gray.250">
                           {item.column2}
                         </Text>
                       </Flex>

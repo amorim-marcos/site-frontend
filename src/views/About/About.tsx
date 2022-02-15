@@ -183,7 +183,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
             
           >
             <Flex
-              // bg='grey'
+              // bg='gray'
               direction={{
                 base: 'column',
                 sm: 'row',
@@ -237,7 +237,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
 
           {/* GLOBAL BOX 2 */}
           <Box
-            // bg='grey'
+            // bg='gray'
             flex="1"
             margin={{
               base: '30% 10% 10% 5%',

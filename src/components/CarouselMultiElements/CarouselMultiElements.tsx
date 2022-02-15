@@ -82,8 +82,8 @@ export const CarouselMultiElements = ({
           onMouseEnter={() => setHoverBtnControl(true)}
           onMouseLeave={() => setHoverBtnControl(false)}
           variant="no-border"
-          background="grey.300"
-          color="grey.150"
+          background="gray.300"
+          color="gray.150"
           w={{ base: '70px', sm: '50px', lg: '60px', xl: '77px' }}
           h={{ base: '70px', sm: '50px', lg: '60px', xl: '77px' }}
           _hover={{
@@ -94,7 +94,7 @@ export const CarouselMultiElements = ({
         >
           <ArrowIcon
             direction="left"
-            stroke={hoverBtnControl ? 'white.100' : 'grey.200'}
+            stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
             width="40%"
           />
         </Button>
@@ -102,8 +102,8 @@ export const CarouselMultiElements = ({
           onMouseEnter={() => setHoverBtnControl(true)}
           onMouseLeave={() => setHoverBtnControl(false)}
           variant="no-border"
-          background="grey.300"
-          color="grey.150"
+          background="gray.300"
+          color="gray.150"
           w={{ base: '70px', sm: '50px', lg: '60px', xl: '77px' }}
           h={{ base: '70px', sm: '50px', lg: '60px', xl: '77px' }}
           _hover={{
@@ -114,7 +114,7 @@ export const CarouselMultiElements = ({
         >
           <ArrowIcon
             width="40%"
-            stroke={hoverBtnControl ? 'white.100' : 'grey.200'}
+            stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
           />
         </Button>
       </Flex>

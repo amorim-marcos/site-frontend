@@ -124,7 +124,7 @@ export const ContactChannelForm = ({ channel_name, service_code, ...props}: Cont
           </FormControl>   
         </Box> 
         <Flex mt="5px">
-            <Text variant={"body" as any} color="grey.300">*Campos obrigatórios</Text>
+            <Text variant={"body" as any} color="gray.300">*Campos obrigatórios</Text>
         </Flex>
         <Flex mt="12px">
             <Button type="submit" w={{base: "100%", lg: "240px"}} marginLeft={{ base: "normal", lg:"auto"}}>ENVIAR</Button>

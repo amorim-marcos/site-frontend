@@ -81,9 +81,9 @@ export default function Home(props: HomeProps) {
           },
           {
             title: 'HDF BERNECK®',
-            titleColor: 'grey.400',
+            titleColor: 'gray.400',
             subtitle: 'Painel de Fibra de Alta Densidade',
-            subtitleColor: 'grey.400',
+            subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: 'img/hdf.png',
             onClick: () => alert('Ir para Produto'),
@@ -111,9 +111,9 @@ export default function Home(props: HomeProps) {
           },
           {
             title: 'HDF BERNECK®2',
-            titleColor: 'grey.400',
+            titleColor: 'gray.400',
             subtitle: 'Painel de Fibra de Alta Densidade',
-            subtitleColor: 'grey.400',
+            subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: 'img/hdf.png',
             onClick: () => alert('Ir para Produto'),

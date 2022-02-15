@@ -7,7 +7,7 @@ export type SmallGridIconProps = {
   width?: ResponsiveCss
 }
 export const SmallGridIcon = ({
-  color = 'grey.100',
+  color = 'gray.100',
   height = '33px',
   width = '33px',
   ...props

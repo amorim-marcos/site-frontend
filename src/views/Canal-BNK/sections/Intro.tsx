@@ -199,7 +199,7 @@ export const Intro = (props: { posts: IPost[] }) => {
                 justify={{ base: 'space-between', lg: 'center' }}
                 selected={category === 'inspiration'}
                 onClick={() => setCategory('inspiration')}
-                color={category === 'world' ? 'green.900' : 'grey.360'}
+                color={category === 'world' ? 'green.900' : 'gray.360'}
                 borderColor={
                   category === 'all' || category === 'inspiration'
                     ? 'brown.200'
@@ -215,7 +215,7 @@ export const Intro = (props: { posts: IPost[] }) => {
                 justify={{ base: 'space-between', lg: 'center' }}
                 selected={category === 'feedstock'}
                 onClick={() => setCategory('feedstock')}
-                color={category === 'world' ? 'green.900' : 'grey.360'}
+                color={category === 'world' ? 'green.900' : 'gray.360'}
                 borderColor={
                   category === 'all' || category === 'feedstock'
                     ? 'green.250'
@@ -229,7 +229,7 @@ export const Intro = (props: { posts: IPost[] }) => {
                 justify={{ base: 'space-between', lg: 'center' }}
                 selected={category === 'world'}
                 onClick={() => setCategory('world')}
-                color={category === 'world' ? 'green.900' : 'grey.360'}
+                color={category === 'world' ? 'green.900' : 'gray.360'}
                 borderColor={
                   category === 'all' || category === 'world'
                     ? 'green.600'
@@ -334,7 +334,7 @@ export const NavButton = (props: NavButtonProps) => {
       h="62px"
       border="2px solid"
       borderRadius="17px"
-      color={'grey.350'}
+      color={'gray.350'}
       {...rest}
       bg={selected ? 'white' : 'transparent'}
       borderColor={selected ? 'transparent' : borderColor}

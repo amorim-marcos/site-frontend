@@ -223,7 +223,7 @@ const SocialNetwork = (props: {
     >
       {props.icon}
 
-      <Text fontSize="23px" fontWeight={600} color="grey.250">
+      <Text fontSize="23px" fontWeight={600} color="gray.250">
         {props.title}
       </Text>
     </Flex>

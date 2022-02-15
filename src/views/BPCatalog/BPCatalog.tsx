@@ -275,13 +275,13 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                 }
             ]}
         />
-        <Container backgroundColor={(darkMode) ? "grey.400" : "white.100"} maxW="1920px" paddingInline="0" paddingTop="30px" paddingBottom="300px">
+        <Container backgroundColor={(darkMode) ? "gray.400" : "white.100"} maxW="1920px" paddingInline="0" paddingTop="30px" paddingBottom="300px">
            
             <Container position="relative" mb={(displayFilters) ? "100px" : "15px"} minW="100%" minH="50px" paddingInline="0">
                 <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  position="absolute" top="0" left="30px">
                     <FiltersIcon mr="16px" />
-                    <Text color={(darkMode) ? 'green.300' : 'grey.300'}>Filtrar Resultados</Text>
-                    <Arrow visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color={(darkMode) ? 'green.300' : 'grey.300'}/>
+                    <Text color={(darkMode) ? 'green.300' : 'gray.300'}>Filtrar Resultados</Text>
+                    <Arrow visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color={(darkMode) ? 'green.300' : 'gray.300'}/>
                 </Button>
                 {
                     displayFilters &&
@@ -296,7 +296,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                         <Button 
                                             onClick={() => changeFilterPanel('panels')}
                                             variant="link"
-                                            color="grey.300"
+                                            color="gray.300"
                                             w="180px"
                                             h="30px"
                                             borderBottom={(currentFilterPanel == 'panels') ? "solid" : "none"}
@@ -304,13 +304,13 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                             borderBottomWidth={{ base: '4px' }}
                                             fontSize="22px"
                                         >
-                                            <Text color={(darkMode) ? 'green.300' : 'grey.300'} mr="10px">PAINÉIS</Text>
-                                            <Arrow direction={(currentFilterPanel == 'panels') ? "down" : "up"} width="3" height="6" color={ (darkMode) ? "green.200" : "grey.200" } />
+                                            <Text color={(darkMode) ? 'green.300' : 'gray.300'} mr="10px">PAINÉIS</Text>
+                                            <Arrow direction={(currentFilterPanel == 'panels') ? "down" : "up"} width="3" height="6" color={ (darkMode) ? "green.200" : "gray.200" } />
                                         </Button> 
                                         <Button 
                                             onClick={() => changeFilterPanel('collections')}
                                             variant="link"
-                                            color="grey.300"
+                                            color="gray.300"
                                             w="180px"
                                             h="30px"
                                             borderBottom={(currentFilterPanel == 'collections') ? "solid" : "none"}
@@ -318,13 +318,13 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                             borderBottomWidth={{ base: '4px' }}
                                             fontSize="22px"
                                         >
-                                            <Text color={(darkMode) ? 'green.300' : 'grey.300'} mr="10px">COLEÇÕES</Text>
-                                            <Arrow direction={(currentFilterPanel == 'collections') ? "down" : "up"} width="3" height="6" color={ (darkMode) ? "green.200" : "grey.200" } />
+                                            <Text color={(darkMode) ? 'green.300' : 'gray.300'} mr="10px">COLEÇÕES</Text>
+                                            <Arrow direction={(currentFilterPanel == 'collections') ? "down" : "up"} width="3" height="6" color={ (darkMode) ? "green.200" : "gray.200" } />
                                         </Button>  
                                         <Button 
                                             onClick={() => changeFilterPanel('colorations')}
                                             variant="link"
-                                            color="grey.300"
+                                            color="gray.300"
                                             w="180px"
                                             h="30px"
                                             borderBottom={(currentFilterPanel == 'colorations') ? "solid" : "none"}
@@ -332,8 +332,8 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                             borderBottomWidth={{ base: '4px' }}
                                             fontSize="22px"
                                         >
-                                            <Text color={(darkMode) ? 'green.300' : 'grey.300'} mr="10px">COLORAÇÃO</Text>
-                                            <Arrow direction={(currentFilterPanel == 'colorations') ? "down" : "up"} width="3" height="6" color={ (darkMode) ? "green.200" : "grey.200" } />
+                                            <Text color={(darkMode) ? 'green.300' : 'gray.300'} mr="10px">COLORAÇÃO</Text>
+                                            <Arrow direction={(currentFilterPanel == 'colorations') ? "down" : "up"} width="3" height="6" color={ (darkMode) ? "green.200" : "gray.200" } />
                                         </Button>   
                                     </Flex>
                                 </Center>
@@ -362,8 +362,8 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                 </Center>
                             </Flex>
                         </Box>
-                        <Box display="inline-block" minW="100%" height="100px" background={(darkMode) ? 'grey.350' : 'grey.100'} paddingLeft="20%">
-                            <Select onChange={(e) => { setFilters({ ...filters, orderBy: e.target.value })}} mr="30px" color={(darkMode) ? 'green.300' : 'grey.300'} position="relative" top="30px" display="inline-block" border="0" backgroundColor={(darkMode) ? "grey.400" : "white.100"} width="160px" fontSize="16px">
+                        <Box display="inline-block" minW="100%" height="100px" background={(darkMode) ? 'gray.350' : 'gray.100'} paddingLeft="20%">
+                            <Select onChange={(e) => { setFilters({ ...filters, orderBy: e.target.value })}} mr="30px" color={(darkMode) ? 'green.300' : 'gray.300'} position="relative" top="30px" display="inline-block" border="0" backgroundColor={(darkMode) ? "gray.400" : "white.100"} width="160px" fontSize="16px">
                                     <option value='launch'>lançamento</option>
                                     <option value='name'>nome</option>
                                     <option value='scale'>escala de cor</option>
@@ -371,13 +371,13 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
 
                             <Box position="relative" top="30px" display="inline-block" mr="30px">
                                 <Flex justifyContent="center" alignItems="center">
-                                    <Text color={(darkMode) ? 'green.300' : 'grey.300'} display="inline-block" fontSize="16px" mr="15px">Formato de exibição</Text>
+                                    <Text color={(darkMode) ? 'green.300' : 'gray.300'} display="inline-block" fontSize="16px" mr="15px">Formato de exibição</Text>
                                             
-                                    <Button onClick={() => changeGridSize('big')}variant="link" display="inline-block" mr="15px" ><BigGridIcon color={(gridSize == 'big')? "green.500" : "grey.200"} /></Button>
+                                    <Button onClick={() => changeGridSize('big')}variant="link" display="inline-block" mr="15px" ><BigGridIcon color={(gridSize == 'big')? "green.500" : "gray.200"} /></Button>
 
-                                    <Button onClick={() => changeGridSize('medium')} variant="link" display="inline-block" mr="15px"><MidGridIcon color={(gridSize == 'medium')? "green.500" : "grey.200"} /></Button>
+                                    <Button onClick={() => changeGridSize('medium')} variant="link" display="inline-block" mr="15px"><MidGridIcon color={(gridSize == 'medium')? "green.500" : "gray.200"} /></Button>
 
-                                    <Button onClick={() => changeGridSize('small')} variant="link" display="inline-block" mr="15px"><SmallGridIcon color={(gridSize == 'small')? "green.500" : "grey.200"} /></Button>
+                                    <Button onClick={() => changeGridSize('small')} variant="link" display="inline-block" mr="15px"><SmallGridIcon color={(gridSize == 'small')? "green.500" : "gray.200"} /></Button>
                                 </Flex>
                             </Box>
 
@@ -393,7 +393,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                             '2xl': '350px'
                                         }}
                                         borderBottom="solid"
-                                        borderBottomColor={(searchSelected) ? "green.500" : ( (darkMode) ? 'green.300' : "grey.300" )}
+                                        borderBottomColor={(searchSelected) ? "green.500" : ( (darkMode) ? 'green.300' : "gray.300" )}
                                         paddingX="5px"
                                         height={{ base: '25px' }}
                                         borderBottomWidth={{ base: '2px' }}
@@ -402,12 +402,12 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                             onFocus={()=>{ setSearchSelected(true) }}
                                             onBlur={()=>{ setSearchSelected(false) }}
                                             placeholder="Pesquise pelo nome"
-                                            _placeholder={{color: (darkMode) ? 'green.300' : "grey.300"}}
+                                            _placeholder={{color: (darkMode) ? 'green.300' : "gray.300"}}
                                             border="none"
                                             outline="none"
                                             _active={{ border: 'none', outline: 'none' }}
                                             focusBorderColor="none"
-                                            color={(darkMode) ? 'green.300' : 'grey.300'}
+                                            color={(darkMode) ? 'green.300' : 'gray.300'}
                                             paddingLeft="0px"
                                             paddingBottom={{ base: '0px', md: '10px' }}
                                             fontSize={{
@@ -422,7 +422,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                                         />
                                         <Box>
                                         <SearchIcon
-                                            stroke={(searchSelected)? colors.green[500] : ( (darkMode) ? colors.green[300] : colors.grey[300])}
+                                            stroke={(searchSelected)? colors.green[500] : ( (darkMode) ? colors.green[300] : colors.gray[300])}
                                             width={{
                                                 base: '13px',
                                                 md: '16px',
@@ -440,23 +440,23 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                             <Box position="relative" top="30px" display="inline-block">
 
                                 <Flex justifyContent="center" alignItems="center">
-                                        <Text color={(darkMode) ? 'green.300' : 'grey.300'} display="inline-block" fontSize="16px" mr="15px">Cor do fundo</Text>
+                                        <Text color={(darkMode) ? 'green.300' : 'gray.300'} display="inline-block" fontSize="16px" mr="15px">Cor do fundo</Text>
                                         
                                         <Box position="relative"  display="inline-block" mr="15px">
-                                            <SunIcon color={(darkMode) ? 'green.300' : 'grey.300'} />
+                                            <SunIcon color={(darkMode) ? 'green.300' : 'gray.300'} />
                                         </Box>
         
                                         <Button onClick={() => setDarkMode(!darkMode)} variant="link" display="inline-block" mr="15px"><FiltersDarkModeIcon activated={darkMode}/></Button>
         
                                         <Box position="relative"  display="inline-block">
-                                            <MoonIcon color={(darkMode) ? 'green.300' : 'grey.300'} />
+                                            <MoonIcon color={(darkMode) ? 'green.300' : 'gray.300'} />
                                         </Box>
                                 </Flex>
                             </Box>
                         </Box>
                     </Box>
                 }
-                <Text position="absolute" color={(darkMode) ? 'green.300' : 'grey.300'} top="0" right="0">{filteredBps.length} Produtos Encontrados</Text>
+                <Text position="absolute" color={(darkMode) ? 'green.300' : 'gray.300'} top="0" right="0">{filteredBps.length} Produtos Encontrados</Text>
             </Container>
             <Container minW="100%">
                 <Grid
@@ -467,7 +467,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                     {
                         filteredBps && filteredBps.map((bp) => (
                             <GridItem>
-                                <BP color={(darkMode) ? 'white.100' : 'grey.400'} name={bp.name} product_texture={bp.product_texture} pattern_image={bp.pattern_image} />
+                                <BP color={(darkMode) ? 'white.100' : 'gray.400'} name={bp.name} product_texture={bp.product_texture} pattern_image={bp.pattern_image} />
                             </GridItem>
                         ))
                     }

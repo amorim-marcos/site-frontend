@@ -131,7 +131,7 @@ export const Post = (props: PostProps) => {
               as="h2"
               w="100%"
               whiteSpace="normal"
-              color={categoryPage === 'world' ? 'white' : 'grey.350'}
+              color={categoryPage === 'world' ? 'white' : 'gray.350'}
               fontSize={{ base: '10px', lg: '14px', xl: '10px', '2xl': '14px' }}
               letterSpacing={
                 imgPos === 'top' || imgPos === 'bottom' ? '2.4px' : '2.1px'
@@ -154,7 +154,7 @@ export const Post = (props: PostProps) => {
                   imgPos === 'top' || imgPos === 'bottom' ? '2.4px' : '2.1px'
                 }
                 fontWeight="mediuem"
-                color={categoryPage === 'world' ? 'white' : 'grey.350'}
+                color={categoryPage === 'world' ? 'white' : 'gray.350'}
               >
                 {post?.date && new Date(post?.date).toLocaleDateString()}
               </Text>
@@ -197,7 +197,7 @@ export const Post = (props: PostProps) => {
             noOfLines={3}
             fontSize="17px"
             letterSpacing="-0.34px"
-            color={'grey.350'}
+            color={'gray.350'}
             {...previewTextProps}
           >
             {post?.Content}
@@ -211,7 +211,7 @@ export const Post = (props: PostProps) => {
                 media="facebook"
                 width="38px"
                 height="38px"
-                color={categoryPage === 'world' ? 'white' : 'grey.350'}
+                color={categoryPage === 'world' ? 'white' : 'gray.350'}
                 hoverColor={getSocialIconHoverColor()}
               />
             </Link>
@@ -221,7 +221,7 @@ export const Post = (props: PostProps) => {
                 media="twitter"
                 width="38px"
                 height="38px"
-                color={categoryPage === 'world' ? 'white' : 'grey.350'}
+                color={categoryPage === 'world' ? 'white' : 'gray.350'}
                 hoverColor={getSocialIconHoverColor()}
               />
             </Link>
@@ -231,7 +231,7 @@ export const Post = (props: PostProps) => {
                 media="whatsapp"
                 width="38px"
                 height="38px"
-                color={categoryPage === 'world' ? 'white' : 'grey.350'}
+                color={categoryPage === 'world' ? 'white' : 'gray.350'}
                 hoverColor={getSocialIconHoverColor()}
               />
             </Link>
