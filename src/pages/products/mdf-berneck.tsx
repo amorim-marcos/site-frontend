@@ -10,7 +10,6 @@ export type MdfBerneckPageProps = {
 }
 
 export default function MdfBerneckPage(props: MdfBerneckPageProps) {
-  console.log(props.page_content)
   return (
     <MdfBerneckView
       mdf={{
