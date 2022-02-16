@@ -27,8 +27,6 @@ export type HdfBerneckPageProps = {
 }
 
 export default function HdfBerneckPage(props: HdfBerneckPageProps) {
-  console.log(props)
-  console.log('AAAAAAAAAAAA')
   return (
     <HdfBerneckView
       hdf={{
