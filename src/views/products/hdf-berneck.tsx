@@ -1,7 +1,27 @@
 import Pagebar from '@components/Pagebar'
 import Product from '../../components/Product'
 
-export default function HdfBerneckView() {
+interface ProductProps {
+  title: string
+  subTitle: string
+  description: string
+  subTitleDescription: string
+  finishes: string[]
+  usesAndApplications: string
+  dimensions: {
+    thickness: string
+    length: string
+    width: string
+  }
+  technical_sheet?: string
+}
+
+export type HdfBerneckViewProps = {
+  hdf: ProductProps
+  hdf_plus: ProductProps
+}
+
+export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
   return (
     <div>
       <Pagebar
@@ -41,26 +61,23 @@ export default function HdfBerneckView() {
         secondaryBackground="#F3E9DA"
         downloadAndLinks={{
           qualityCertificate: true,
-          datasheet: true,
+          datasheetUrl: hdf.technical_sheet,
           whereBuy: true
         }}
         header={{
-          title: 'HDF BERNECK®',
-          subtitle: 'Painel de Fibra de Alta Densidade ',
+          title: hdf.title,
+          subtitle: hdf.subTitle,
           headerBgColor: '#E0CBA5',
-          description:
-            'É produzido 100% com Pinus, que possui fibras longas, proporcionando uma maior maleabilidade ao painel além de coloração bem clara, que assegura excelente resultado para os processos de pintura e impressão.'
+          description: hdf.subTitleDescription
         }}
         body={{
-          description:
-            'É formado por fibras de madeira de alta densidade, High Density Fiberboard. Por ser produzido em prensa contínua de última geração, possui excelente estabilidade dimensional, superfície uniforme e lisa com espessuras a partir de 2,5 mm.',
-          usesAndApplications:
-            'O HDF BERNECK® garante excelente resultado e custo/benefício em fundo de móveis, lateral e fundo de gavetas, capas de portas, peças curvas, para a produção de pisos, artesanatos, bem como na fabricação de painéis de grandes espessuras (tipo colmeias).',
-          finishes: '• Natural (sem revestimento)',
+          description: hdf.description,
+          usesAndApplications: hdf.usesAndApplications,
+          finishes: hdf.finishes,
           dimensions: {
-            thickness: '2,5 / 2,8 / 3 / 4 / 6',
-            length: '2750',
-            width: '1850 / 2130 / 2200'
+            thickness: hdf.dimensions.thickness,
+            length: hdf.dimensions.length,
+            width: hdf.dimensions.width
           },
           backgroundColor: '#FCFCFC'
         }}
@@ -88,34 +105,28 @@ export default function HdfBerneckView() {
           xl: '-408px',
           '2xl': '-510'
         }}
-        downloadAndLinks={{ qualityCertificate: false }}
+        downloadAndLinks={{
+          qualityCertificate: false,
+          datasheetUrl: hdf_plus.technical_sheet
+        }}
         secondaryBackground="#F5F6F4"
         plusProduct
         header={{
           plusIndicator: true,
-          title: 'HDF PLUS BERNECK®',
+          title: hdf_plus.title,
           headerBgColor: '#ACCC9F',
-          subtitle: 'É Plus porque tem mais proteção à umidade ',
-          description:
-            'A qualidade do HDF BERNECK® aliada à máxima proteção contra umidade e cupins.'
+          subtitle: hdf_plus.subTitle,
+          description: hdf_plus.subTitleDescription
         }}
         body={{
           backgroundColor: '#E8E8E8',
-          moreTechnologyQualityProtection: [
-            'O HDF PLUS BERNECK® é o painel formado por fibras de madeira de alta densidade, High Density Fiberboard, produzido em prensa contínua com resinas especiais que garantem maior resistência à umidade.',
-            'Possui a coloração esverdeada como identificação internacional do produto com maior resistência à umidade, diferenciando-o dos painéis Standard. Essa pigmentação pode variar a cada lote de produção e não está associada ao princípio ativo de hidro resistência, ou seja, não é a prova dágua.',
-            'Vale inovar nos projetos com HDF PLUS. Um ótimo investimento, com incomparável custo benefício.'
-          ],
-          usesAndApplications:
-            'Indicado, por exemplo, para fundo de móveis e gavetas, peças curvas e pequenos nichos.',
-          finishes: [
-            '• Natural (sem revestimento)',
-            '• Com laminado de baixa pressão BP BERNECK®'
-          ],
+          moreTechnologyQualityProtection: hdf_plus.description,
+          usesAndApplications: hdf_plus.usesAndApplications,
+          finishes: hdf_plus.finishes,
           dimensions: {
-            thickness: '6',
-            length: '2750',
-            width: '1850'
+            thickness: hdf_plus.dimensions.thickness,
+            length: hdf_plus.dimensions.length,
+            width: hdf_plus.dimensions.width
           },
           productWithBP: {
             title: 'HDF PLUS BERNECK® com BP',
