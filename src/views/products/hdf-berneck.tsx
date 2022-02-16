@@ -1,7 +1,7 @@
 import Pagebar from '@components/Pagebar'
 import Product from '../../components/Product'
 
-interface ProductProps {
+export interface ProductProps {
   title: string
   subTitle: string
   description: string
