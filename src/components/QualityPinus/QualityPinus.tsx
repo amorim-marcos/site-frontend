@@ -86,81 +86,88 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
             marginBottom={'5%'}
             wrap={'wrap'}
           >
-            {items.map((item, i) => {
-              return (
-                <Center
-                  key={item.id}
-                  position={'relative'}
-                  minWidth={{
-                    base: '40vw',
-                    sm: '80px',
-                    md: '106px',
-                    lg: '133px',
-                    xl: '160px',
-                    '2xl': '200px'
-                  }}
-                  h={{
-                    base: '60px',
-                    sm: '25px',
-                    md: '34px',
-                    lg: '42px',
-                    xl: '51px',
-                    '2xl': '64px'
-                  }}
-                  marginRight={{ base: '0', sm: '2%' }}
-                  bg="#E6EBE5"
-                  cursor="pointer"
-                  marginBottom="2%"
-                  onClick={() => setCurrentItem(i)}
-                >
-                  <Box {...textureBtnContainer}>
-                    <QualityBtnTexture texture={getTexture(i + 1)} />
-                  </Box>
-                  <Text variant={'productTitle' as any} marginBottom="0">
-                    {item.number}
-                  </Text>
-                </Center>
-              )
-            })}
+            {items &&
+              items.map((item, i) => {
+                return (
+                  <Center
+                    key={item.id}
+                    position={'relative'}
+                    minWidth={{
+                      base: '40vw',
+                      sm: '80px',
+                      md: '106px',
+                      lg: '133px',
+                      xl: '160px',
+                      '2xl': '200px'
+                    }}
+                    h={{
+                      base: '60px',
+                      sm: '25px',
+                      md: '34px',
+                      lg: '42px',
+                      xl: '51px',
+                      '2xl': '64px'
+                    }}
+                    marginRight={{ base: '0', sm: '2%' }}
+                    bg="#E6EBE5"
+                    cursor="pointer"
+                    marginBottom="2%"
+                    onClick={() => setCurrentItem(i)}
+                  >
+                    <Box {...textureBtnContainer}>
+                      <QualityBtnTexture texture={getTexture(i + 1)} />
+                    </Box>
+                    <Text variant={'productTitle' as any} marginBottom="0">
+                      {item.number}
+                    </Text>
+                  </Center>
+                )
+              })}
           </Flex>
           <Flex flexDirection="column" justifyContent="space-between">
-            <Box marginBottom="3%">
-              <Text variant={'productTitle' as any}>
-                {items[currentItem].name} ︱ COL {items[currentItem].col}
-              </Text>
-              <Text
-                variant={'productBody' as any}
-                w={{ base: '100%', sm: '90%' }}
-              >
-                {items[currentItem].description}
-              </Text>
-            </Box>
+            {items.length > 0 && (
+              <Box marginBottom="3%">
+                <Text variant={'productTitle' as any}>
+                  {items[currentItem].name} ︱ COL {items[currentItem].col}
+                </Text>
+                <Text
+                  variant={'productBody' as any}
+                  w={{ base: '100%', sm: '90%' }}
+                >
+                  {items[currentItem].description}
+                </Text>
+              </Box>
+            )}
 
             <Box marginBottom={'3%'}>
-              <ProductDimensions
-                dimensions={{
-                  length: items[currentItem]._length,
-                  width: items[currentItem]._width,
-                  thickness: items[currentItem].thickness
-                }}
-                tableBorderColor="#FCFCFC"
-                tableBackgroundColor="#E6EBE5"
-                tableWidth={{
-                  base: '300px',
-                  sm: '280px',
-                  md: '373px',
-                  lg: '466px',
-                  xl: '560px',
-                  '2xl': '700px'
-                }}
-              />
+              {items.length > 0 && (
+                <ProductDimensions
+                  dimensions={{
+                    length: items[currentItem]._length,
+                    width: items[currentItem]._width,
+                    thickness: items[currentItem].thickness
+                  }}
+                  tableBorderColor="#FCFCFC"
+                  tableBackgroundColor="#E6EBE5"
+                  tableWidth={{
+                    base: '300px',
+                    sm: '280px',
+                    md: '373px',
+                    lg: '466px',
+                    xl: '560px',
+                    '2xl': '700px'
+                  }}
+                />
+              )}
             </Box>
 
             <Box>
               <Text variant={'productTitle' as any}>Usos e Aplicações</Text>
-              <Text variant={'productBody' as any}>
-                {items[currentItem].uses_and_applications}
-              </Text>
+              {items.length > 0 && (
+                <Text variant={'productBody' as any}>
+                  {items[currentItem].uses_and_applications}
+                </Text>
+              )}
             </Box>
           </Flex>
         </Flex>

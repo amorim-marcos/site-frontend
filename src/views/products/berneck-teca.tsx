@@ -32,7 +32,7 @@ export default function BerneckTecaView() {
         }}
         secondaryBackground="#F5F6F4"
         downloadAndLinks={{
-          datasheet: true,
+          datasheetUrl: '/',
           whereBuy: true,
           qualityCertificate: false,
           backgroundColor: '#dbc3b2'
