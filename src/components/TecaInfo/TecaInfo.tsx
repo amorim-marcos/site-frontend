@@ -1,13 +1,15 @@
-import { Flex, Text, Box } from '@chakra-ui/react'
+import { Flex, Text, Box, List, ListItem, ListIcon } from '@chakra-ui/react'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import ProductDimensions from '@components/ProductDimensions'
 import { DimensionsProps } from '@components/ProductDimensions/ProductDimensions'
 import { useTranslation } from 'react-i18next'
+import parser from 'react-html-parser'
+import { Wrapper } from './style'
 
 export type TecaInfoProps = {
   dimensions?: DimensionsProps
   usesAndApplications?: string | Array<string>
-  machinability?: Array<string>
+  machinability?: string
   supplyInformation?: Array<string>
 }
 export const TecaInfo = ({
@@ -28,22 +30,33 @@ export const TecaInfo = ({
     >
       <Box
         marginBottom={{ base: '20px', sm: '0' }}
+        paddingLeft={{ base: '15px' }}
         width={{ base: '100%', sm: '45%' }}
       >
         <Text variant={'productTitle' as any}>
           {product.t('machinability')}
         </Text>
-        {machinability &&
-          machinability.map((m) => <ItemCite key={m} text={m} />)}
+        {/* {machinability && (
+          <Text variant={'productBody' as any}>{parser(machinability)}</Text>
+        )} */}
 
-        <Box marginTop="20px">
+        {machinability && (
+          <Wrapper>
+            <Text variant={'productBody' as any}>{parser(machinability)}</Text>
+          </Wrapper>
+        )}
+
+        {/* {machinability &&
+          machinability.map((m) => <ItemCite key={m} text={m} />)} */}
+
+        {/* <Box marginTop="20px">
           <Text variant={'productBody' as any}>
             {product.t('supplyInformationTitleTeca')}
           </Text>
 
           {supplyInformation &&
             supplyInformation.map((s) => <ItemCite key={s} text={s} />)}
-        </Box>
+        </Box> */}
       </Box>
 
       <Flex
