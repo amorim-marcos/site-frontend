@@ -109,7 +109,8 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
                       '2xl': '64px'
                     }}
                     marginRight={{ base: '0', sm: '2%' }}
-                    bg="#E6EBE5"
+                    bg={i === currentItem ? 'green.250' : '#E6EBE5'}
+                    _hover={{ bg: 'green.200' }}
                     cursor="pointer"
                     marginBottom="2%"
                     onClick={() => setCurrentItem(i)}
