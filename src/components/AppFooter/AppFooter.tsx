@@ -100,6 +100,7 @@ export const AppFooter = () => {
             }}
           >
             <FooterList
+              key={0}
               title={{
                 title: footer.t(footerNavigation.column1.titleKey),
                 href: footerNavigation.column1.href
@@ -111,6 +112,7 @@ export const AppFooter = () => {
             />
 
             <FooterList
+              key={1}
               title={{
                 title: footer.t(footerNavigation.column2.titleKey),
                 href: footerNavigation.column2.href
@@ -122,6 +124,7 @@ export const AppFooter = () => {
             />
 
             <FooterList
+              key={2}
               title={{
                 title: footer.t(footerNavigation.column3.titleKey),
                 href: footerNavigation.column3.href
@@ -133,6 +136,7 @@ export const AppFooter = () => {
             />
 
             <FooterList
+              key={3}
               title={{
                 title: footer.t(footerNavigation.column4.titleKey),
                 href: footerNavigation.column4.href
@@ -144,6 +148,7 @@ export const AppFooter = () => {
             />
 
             <FooterList
+              key={4}
               title={{
                 title: footer.t(footerNavigation.column5.titleKey),
                 href: footerNavigation.column5.href

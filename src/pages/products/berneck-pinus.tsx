@@ -29,7 +29,6 @@ export type BerneckPinusPageProps = {
 }
 
 export default function BerneckPinus(props: BerneckPinusPageProps) {
-  console.log(props)
   return (
     <BerneckPinusView
       pinus={{

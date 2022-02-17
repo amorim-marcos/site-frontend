@@ -165,6 +165,7 @@ export const HeaderMenuItem = ({
             if (j !== subItems.length - 1 && i.subItems) {
               return (
                 <Box
+                  key={j}
                   borderBottom="2px solid"
                   borderBottomColor="green.800"
                   marginX={{ base: '15px', sm: '0' }}
@@ -183,7 +184,7 @@ export const HeaderMenuItem = ({
               )
             } else {
               return (
-                <Box marginX={{ base: '15px', sm: '0' }}>
+                <Box key={j} marginX={{ base: '15px', sm: '0' }}>
                   <HeaderMenuSubItem
                     key={i.title}
                     title={i.title}

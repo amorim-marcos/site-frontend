@@ -71,9 +71,9 @@ export const HeaderMenuSubItem = ({
         </Flex>
       </Link>
       <Box>
-        {subItems?.map((i) => {
+        {subItems?.map((i, j) => {
           return (
-            <Link passHref href={i.href || '/'} key={i.title}>
+            <Link key={j} passHref href={i.href || '/'}>
               <Flex
                 paddingLeft={{
                   base: '15px',
