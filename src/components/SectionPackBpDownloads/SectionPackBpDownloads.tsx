@@ -53,6 +53,7 @@ export const SectionPackBpDownloads = () => {
           flexDir="column"
           justifyContent="center"
           alignItems="center"
+          textAlign={'center'}
         >
           <Text as="h3" variant={'h3' as any}>
             Pack de Padrões BP BERNECK®

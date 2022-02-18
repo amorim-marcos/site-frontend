@@ -1,4 +1,12 @@
-import { Flex, Box, Text, Image, Button, FlexProps } from '@chakra-ui/react'
+import {
+  Flex,
+  Box,
+  Text,
+  Image,
+  Button,
+  FlexProps,
+  Link
+} from '@chakra-ui/react'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import useMobile from 'hooks/useMobile'
 import { useState } from 'react'
@@ -10,6 +18,7 @@ export type DownloadSectionProps = {
   items: Array<{
     urlImage: string
     title: string
+    downloadUrl: string
   }>
 }
 export const DownloadSection = ({
@@ -23,7 +32,7 @@ export const DownloadSection = ({
   const [hoverBtnControl, setHoverBtnControl] = useState(false)
 
   function avanceRight() {
-    if (items.length > 5) {
+    if (isMobile || items.length > 5) {
       const item = itemsData[0]
       const newArray = itemsData.filter((j, i) => i > 0)
       newArray.push(item)
@@ -32,7 +41,7 @@ export const DownloadSection = ({
   }
 
   function avanceLeft() {
-    if (items.length > 5) {
+    if (isMobile || items.length > 5) {
       const item = itemsData[itemsData.length - 1]
       const newArray = itemsData.filter((j, i) => i < itemsData.length - 1)
       newArray.unshift(item)
@@ -82,8 +91,10 @@ export const DownloadSection = ({
         {itemsData.map((item, i) => {
           return i < 5 ? (
             <Item
-              display={i < 1 ? { base: 'flex' } : { base: 'none', sm: 'flex' }}
               key={i}
+              url={item.downloadUrl}
+              cursor={'pointer'}
+              display={i < 1 ? { base: 'flex' } : { base: 'none', sm: 'flex' }}
               imageUrl={item.urlImage}
               title={item.title}
               marginRight={
@@ -150,9 +161,10 @@ export const DownloadSection = ({
 export interface ItemProps extends FlexProps {
   imageUrl: string
   title: string
+  url: string
 }
 
-const Item = ({ title, imageUrl, ...props }: ItemProps) => {
+const Item = ({ url, title, imageUrl, ...props }: ItemProps) => {
   return (
     <Flex
       {...props}
@@ -160,25 +172,27 @@ const Item = ({ title, imageUrl, ...props }: ItemProps) => {
       flexDirection="column"
       alignItems="center"
     >
-      <Flex
-        w="100%"
-        h={{
-          base: '334px',
-          sm: '133px',
-          md: '178px',
-          lg: '222px',
-          xl: '267px',
-          '2xl': '334px'
-        }}
-        bg="white.100"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Image src={imageUrl} maxHeight="90%" maxWidth="70%" />
-      </Flex>
-      <Text marginTop="10%" color="brown.300" variant={'body' as any}>
-        {title}
-      </Text>
+      <Link href={url} w="100%" isExternal>
+        <Flex
+          w="100%"
+          h={{
+            base: '334px',
+            sm: '133px',
+            md: '178px',
+            lg: '222px',
+            xl: '267px',
+            '2xl': '334px'
+          }}
+          bg="white.100"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Image src={imageUrl} maxHeight="90%" maxWidth="70%" />
+        </Flex>
+        <Text marginTop="10%" color="brown.300" variant={'body' as any}>
+          {title}
+        </Text>
+      </Link>
     </Flex>
   )
 }

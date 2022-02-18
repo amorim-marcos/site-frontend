@@ -32,7 +32,7 @@ export type DownloadsViewProps = {
 
 export const DownlodasView = ({ items }: DownloadsViewProps) => {
   const { isMobile, width } = useMobile(568)
-  // console.log(items)
+
   return (
     <Flex flexDir="column" maxWidth="1920px" marginX="auto">
       {/* Downloads Header */}
@@ -47,16 +47,17 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
         position="relative"
         justifyContent="center"
         overflow="hidden"
+        alignItems={{ base: 'center', sm: 'flex-start' }}
       >
         <CompletedTitle
           titleString="Downloads"
-          textAlign="left"
-          alignSelf="left"
+          textAlign={{ base: 'center', sm: 'left' }}
+          alignSelf={isMobile ? 'center' : 'left'}
           zIndex="docked"
         />
         <Text
           variant={'body' as any}
-          w={{ base: '70%', sm: '50%' }}
+          w={{ base: '100%', sm: '50%' }}
           marginTop={{ base: '1%', xl: '3%' }}
           color="brown.300"
         >
@@ -64,15 +65,22 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
           além de revistas, informativos, fichas técnicas, pack de padrões BP
           BERNECK® e muito mais em um só lugar.
         </Text>
-        <Image
-          src="/img/downloads_header_img.png"
+        <Box
+          h="100%"
           position={'absolute'}
           top="0"
           left={{ base: '55%', sm: '47%' }}
-          height={{ base: '100%', sm: '35vw', md: '25vw' }}
-          maxHeight="298px"
-          objectFit="cover"
-        />
+          overflow="hidden"
+        >
+          <Box w="100vw" h="100%">
+            <Image
+              src="/img/downloads_header_img.png"
+              width={'auto'}
+              height={'100%'}
+              display={{ base: 'none', sm: 'block' }}
+            />
+          </Box>
+        </Box>
       </Flex>
       {/* End Downloads Header */}
       {/* Start Downloads sections */}
@@ -87,7 +95,8 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
                   items={i.items.map((w) => {
                     return {
                       title: w.title,
-                      urlImage: w.image.url
+                      urlImage: w.image.url,
+                      downloadUrl: w.file.url
                     }
                   })}
                   key={0}
@@ -116,7 +125,8 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
                   items={i.items.map((w) => {
                     return {
                       title: w.title,
-                      urlImage: w.image.url
+                      urlImage: w.image.url,
+                      downloadUrl: w.file.url
                     }
                   })}
                   key={0}

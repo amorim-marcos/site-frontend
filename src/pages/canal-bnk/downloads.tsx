@@ -18,6 +18,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     image: {
       url: string
     }
+    file: {
+      url: string
+    }
   }
 
   const locale = context.locale
@@ -54,6 +57,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
             ...element,
             image: {
               url: process.env.NEXT_PUBLIC_API_URL + element.image.url
+            },
+            file: {
+              url: process.env.NEXT_PUBLIC_API_URL + element.file.url
             }
           })
         }
