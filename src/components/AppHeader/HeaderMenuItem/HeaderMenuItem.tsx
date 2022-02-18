@@ -35,44 +35,42 @@ export const HeaderMenuItem = ({
       onMouseEnter={() => !isMobile && setOpen(true)}
       onMouseLeave={() => !isMobile && setOpen(false)}
       position="relative"
-      h={{ base: '9vh', sm: '100%' }}
+      h={{ base: '9vh', md: '100%' }}
       maxHeight={115}
-      marginX={{ base: '0px', sm: '1.3%', md: '1%', xl: '1%', '2xl': '1%' }}
+      marginX={{ base: '0px', md: '1%', xl: '1%', '2xl': '1%' }}
       paddingX={{
         base: '0px',
-        sm: '1.9%',
         md: '2.6%',
         lg: '2.5%',
         xl: '2.3%',
         '2xl': '2.3%'
       }}
-      {...(isMobile && {
-        _hover: {
+      _hover={{
+        base: {
           bg: 'green.700'
+        },
+        md: {
+          bg: 'none'
         }
-      })}
+      }}
       cursor="pointer"
       transition="0.4s"
-      bg={isMobile || open ? 'green.700' : 'green.800'}
-      {...(isMobile &&
-        borderBottom && {
-          borderBottom: '2px solid',
-          borderBottomColor: 'green.800'
-        })}
+      bg={{ base: 'green.700', md: open ? 'green.700' : 'green.800' }}
+      borderBottom={{ base: borderBottom ? '2px solid' : '', md: 'none' }}
+      borderBottomColor={{ base: borderBottom ? 'green.800' : '', md: 'none' }}
     >
-      {!isMobile && (
+      <Box display={{ base: 'none', md: 'block' }}>
         <Link href={href} passHref>
           <Flex
             justifyContent="space-between"
             alignItems="center"
             w="100%"
             h="100%"
-            {...(isMobile && { paddingX: '10px' })}
+            paddingX={{ base: '10px', md: '0' }}
           >
             <Text
               fontSize={{
                 base: '10px',
-                sm: '6.3px',
                 md: '8.3px',
                 lg: '10px',
                 xl: '13px',
@@ -84,82 +82,84 @@ export const HeaderMenuItem = ({
             >
               {title}
             </Text>
-            {isMobile && <ArrowIcon width="10px" stroke="green.800" />}
+            <Box display={{ base: 'block', md: 'none' }}>
+              <ArrowIcon width="10px" stroke="green.800" />
+            </Box>
           </Flex>
         </Link>
-      )}
+      </Box>
 
-      {isMobile && (
-        <Flex
-          justifyContent="space-between"
-          alignItems="center"
-          w="100%"
-          h="100%"
-          {...(isMobile && { paddingX: '10px' })}
-          onClick={() => setOpen(true)}
+      <Flex
+        display={{ base: 'flex', md: 'none' }}
+        justifyContent="space-between"
+        alignItems="center"
+        w="100%"
+        h="100%"
+        paddingX={{ base: '10px', md: '0' }}
+        onClick={() => setOpen(true)}
+      >
+        <Text
+          fontSize={{
+            base: '10px',
+            md: '8.3px',
+            lg: '10px',
+            xl: '13px',
+            '2xl': '16.5px'
+          }}
+          color="#FFF"
+          variant={'header-menu' as any}
+          whiteSpace="nowrap"
         >
-          <Text
-            fontSize={{
-              base: '10px',
-              sm: '6.3px',
-              md: '8.3px',
-              lg: '10px',
-              xl: '13px',
-              '2xl': '16.5px'
-            }}
-            color="#FFF"
-            variant={'header-menu' as any}
-            whiteSpace="nowrap"
-          >
-            {title}
-          </Text>
-          {isMobile && <ArrowIcon width="10px" stroke="green.800" />}
-        </Flex>
-      )}
+          {title}
+        </Text>
+        <Box display={{ base: 'block', md: 'none' }}>
+          <ArrowIcon width="10px" stroke="green.800" />
+        </Box>
+      </Flex>
 
       <Flex
         borderTop="solid #135740"
         borderTopWidth={{ base: '2px', md: '3px', xl: '4px', '2xl': '6px' }}
         flexDir="column"
-        position={{ base: 'fixed', sm: 'absolute' }}
-        top={{ base: '90px', sm: '100%' }}
+        position={{ base: 'fixed', md: 'absolute' }}
+        top={{ base: '90px', md: '100%' }}
         left={{ base: '0' }}
-        w={{ base: '100vw', sm: 'calc(150%)' }}
+        w={{ base: '100vw', md: 'calc(150%)' }}
         display={open ? 'flex' : 'none'}
-        h={{ base: 'calc(100vh - 75px)', sm: 'auto' }}
+        h={{ base: 'calc(100vh - 75px)', md: 'auto' }}
         zIndex="modal"
         bg="green.700"
-        {...(isMobile && { overflowY: 'scroll', paddingBottom: '20px' })}
+        overflow={{ base: 'scroll', md: 'visible' }}
+        paddingBottom={{ base: '20px', md: '0' }}
       >
-        {isMobile && (
-          <Flex
-            justifyContent="space-between"
-            p="15px"
-            w="100%"
-            h="60px"
-            bg="green.800"
-            alignItems="center"
-            onClick={() => setOpen(false)}
+        <Flex
+          display={{ base: 'flex', md: 'none' }}
+          justifyContent="space-between"
+          p="15px"
+          w="100%"
+          h="60px"
+          bg="green.800"
+          alignItems="center"
+          onClick={() => setOpen(false)}
+        >
+          <Text
+            fontSize={{
+              base: '14px',
+              md: '8.3px',
+              lg: '10px',
+              xl: '13px',
+              '2xl': '16.5px'
+            }}
+            color="white.100"
+            variant={'header-menu' as any}
           >
-            <Text
-              fontSize={{
-                base: '14px',
-                sm: '6.3px',
-                md: '8.3px',
-                lg: '10px',
-                xl: '13px',
-                '2xl': '16.5px'
-              }}
-              color="white.100"
-              variant={'header-menu' as any}
-            >
-              {title}
-            </Text>
-            <Box transform="rotate(180deg)">
-              <ArrowIcon stroke="#FFF" width="10px" />
-            </Box>
-          </Flex>
-        )}
+            {title}
+          </Text>
+          <Box transform="rotate(180deg)">
+            <ArrowIcon stroke="#FFF" width="10px" />
+          </Box>
+        </Flex>
+
         {subItems &&
           subItems.map((i, j) => {
             if (j !== subItems.length - 1 && i.subItems) {
@@ -168,7 +168,7 @@ export const HeaderMenuItem = ({
                   key={j}
                   borderBottom="2px solid"
                   borderBottomColor="green.800"
-                  marginX={{ base: '15px', sm: '0' }}
+                  marginX={{ base: '15px', md: '0' }}
                 >
                   <HeaderMenuSubItem
                     key={i.title}
@@ -184,7 +184,7 @@ export const HeaderMenuItem = ({
               )
             } else {
               return (
-                <Box key={j} marginX={{ base: '15px', sm: '0' }}>
+                <Box key={j} marginX={{ base: '15px', md: '0' }}>
                   <HeaderMenuSubItem
                     key={i.title}
                     title={i.title}
