@@ -27,7 +27,7 @@ export const DownloadSection = ({
   items,
   description
 }: DownloadSectionProps) => {
-  const { isMobile } = useMobile(568)
+  const { isMobile } = useMobile(768)
   const [itemsData, setItemsData] = useState(items)
   const [hoverBtnControl, setHoverBtnControl] = useState(false)
 
@@ -56,7 +56,7 @@ export const DownloadSection = ({
       p="3%"
       bg="green.100"
       position="relative"
-      {...(isMobile && { paddingBottom: '10%' })}
+      paddingBottom={{ base: '10%', md: '0' }}
     >
       <Text as="h3" variant={'h3' as any} color="green.800" zIndex="docked">
         {title}
@@ -65,27 +65,31 @@ export const DownloadSection = ({
         {description}
       </Text>
 
-      {!isMobile && (
-        <Box position="absolute" top={'0'} right={'0'} zIndex="base">
-          <Image
-            src={
-              grafism === 'type1'
-                ? '/img/grafism_downloads1.png'
-                : grafism === 'type2'
-                ? '/img/grafism_downloads2.png'
-                : '/img/grafism_downloads3.png'
-            }
-            width="43vw"
-          />
-        </Box>
-      )}
+      <Box
+        display={{ base: 'none', md: 'block' }}
+        position="absolute"
+        top={'0'}
+        right={'0'}
+        zIndex="base"
+      >
+        <Image
+          src={
+            grafism === 'type1'
+              ? '/img/grafism_downloads1.png'
+              : grafism === 'type2'
+              ? '/img/grafism_downloads2.png'
+              : '/img/grafism_downloads3.png'
+          }
+          width="43vw"
+        />
+      </Box>
 
       <Flex
         zIndex="docked"
         marginY="3%"
         justifyContent={{
           base: 'center',
-          sm: itemsData.length > 4 ? 'space-between' : 'flex-start'
+          md: itemsData.length > 4 ? 'space-between' : 'flex-start'
         }}
       >
         {itemsData.map((item, i) => {
@@ -94,11 +98,11 @@ export const DownloadSection = ({
               key={i}
               url={item.downloadUrl}
               cursor={'pointer'}
-              display={i < 1 ? { base: 'flex' } : { base: 'none', sm: 'flex' }}
+              display={i < 1 ? { base: 'flex' } : { base: 'none', md: 'flex' }}
               imageUrl={item.urlImage}
               title={item.title}
               marginRight={
-                itemsData.length <= 4 ? { base: '0', sm: '3.5%' } : '0'
+                itemsData.length <= 4 ? { base: '0', md: '3.5%' } : '0'
               }
             />
           ) : (
@@ -112,7 +116,7 @@ export const DownloadSection = ({
         right="0px"
         marginX="auto"
         w="fit-content"
-        bottom={{ base: '-17px', sm: '-25px', lg: '-30px', xl: '-38px' }}
+        bottom={{ base: '-17px', md: '-25px', lg: '-30px', xl: '-38px' }}
       >
         <Button
           onMouseEnter={() => setHoverBtnControl(true)}
@@ -120,8 +124,8 @@ export const DownloadSection = ({
           variant="no-border"
           background="gray.300"
           color="gray.150"
-          w={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
-          h={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
+          w={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
+          h={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
           _hover={{
             background: 'green.600',
             color: 'white.100'
@@ -140,8 +144,8 @@ export const DownloadSection = ({
           variant="no-border"
           background="gray.300"
           color="gray.150"
-          w={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
-          h={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
+          w={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
+          h={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
           _hover={{
             background: 'green.600',
             color: 'white.100'
@@ -168,7 +172,7 @@ const Item = ({ url, title, imageUrl, ...props }: ItemProps) => {
   return (
     <Flex
       {...props}
-      w={{ base: '90%', sm: '17%' }}
+      w={{ base: '90%', md: '17%' }}
       flexDirection="column"
       alignItems="center"
     >
@@ -177,7 +181,6 @@ const Item = ({ url, title, imageUrl, ...props }: ItemProps) => {
           w="100%"
           h={{
             base: '334px',
-            sm: '133px',
             md: '178px',
             lg: '222px',
             xl: '267px',

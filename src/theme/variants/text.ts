@@ -7,7 +7,7 @@ export const Text = {
     body: {
       fontSize: {
         base: '14px',
-        sm: '8px',
+        sm: '17px',
         md: '11px',
         lg: '14px',
         xl: '17px',

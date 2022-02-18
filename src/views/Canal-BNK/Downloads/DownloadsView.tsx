@@ -41,23 +41,34 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
         width="100%"
         bg="brown.100"
         paddingX="5%"
-        paddingY={{ base: '20px', sm: '0' }}
-        height={{ base: 'auto', sm: '35vw', md: '25vw' }}
+        paddingY={{ base: '20px', md: '0' }}
+        height={{ base: 'auto', md: '25vw' }}
         maxHeight="298px"
         position="relative"
         justifyContent="center"
         overflow="hidden"
-        alignItems={{ base: 'center', sm: 'flex-start' }}
+        alignItems={{ base: 'center', md: 'flex-start' }}
       >
-        <CompletedTitle
-          titleString="Downloads"
-          textAlign={{ base: 'center', sm: 'left' }}
-          alignSelf={isMobile ? 'center' : 'left'}
-          zIndex="docked"
-        />
+        <Box display={{ base: 'none', md: 'block' }}>
+          <CompletedTitle
+            titleString="Downloads"
+            textAlign="left"
+            alignSelf="left"
+            zIndex="docked"
+          />
+        </Box>
+
+        <Box display={{ base: 'block', md: 'none' }}>
+          <CompletedTitle
+            titleString="Downloads"
+            textAlign="center"
+            alignSelf="center"
+            zIndex="docked"
+          />
+        </Box>
         <Text
           variant={'body' as any}
-          w={{ base: '100%', sm: '50%' }}
+          w={{ base: '100%', md: '50%' }}
           marginTop={{ base: '1%', xl: '3%' }}
           color="brown.300"
         >
@@ -69,7 +80,7 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
           h="100%"
           position={'absolute'}
           top="0"
-          left={{ base: '55%', sm: '47%' }}
+          left={{ base: '55%', md: '47%' }}
           overflow="hidden"
         >
           <Box w="100vw" h="100%">
@@ -77,7 +88,7 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
               src="/img/downloads_header_img.png"
               width={'auto'}
               height={'100%'}
-              display={{ base: 'none', sm: 'block' }}
+              display={{ base: 'none', md: 'block' }}
             />
           </Box>
         </Box>

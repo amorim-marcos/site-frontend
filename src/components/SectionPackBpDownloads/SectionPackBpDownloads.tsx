@@ -6,42 +6,42 @@ export const SectionPackBpDownloads = () => {
   return (
     <Flex
       w="100%"
-      marginBottom={{ base: '400px', sm: '10%' }}
+      marginBottom={{ base: '400px', md: '10%' }}
       justifyContent="center"
     >
       <Flex
         bg="#F6EFE3"
         maxWidth="1920px"
         minWidth={width && width < 1920 ? '100vw' : '1920px'}
-        h={{ base: 'auto', sm: '23vw' }}
+        h={{ base: 'auto', md: '23vw' }}
         maxHeight="441px"
         position="relative"
         justifyContent="space-around"
-        flexDirection={{ base: 'column', sm: 'row' }}
+        flexDirection={{ base: 'column', md: 'row' }}
       >
         <Box
           bg="brown.300"
-          w={{ base: '100vw', sm: '40%' }}
-          height={{ base: '335px', sm: '100%' }}
+          w={{ base: '100vw', md: '40%' }}
+          height={{ base: '335px', md: '100%' }}
           right="0"
           position="absolute"
-          top={{ base: '100%', sm: '0' }}
+          top={{ base: '100%', md: '0' }}
         >
           <Image
             position="absolute"
-            w={{ base: '100vw', sm: 'auto' }}
-            height={{ base: 'auto', sm: '23vw' }}
-            maxHeight={{ base: 'auto', sm: '442px' }}
-            left={{ base: '0', sm: '-25%' }}
-            top={{ base: '0', sm: '0' }}
+            w={{ base: '100vw', md: 'auto' }}
+            height={{ base: 'auto', md: '23vw' }}
+            maxHeight={{ base: 'auto', md: '442px' }}
+            left={{ base: '0', md: '-25%' }}
+            top={{ base: '0', md: '0' }}
             src="/img/grafism_bp_downloads.png"
           />
           <Image
             position="absolute"
-            height={{ base: '100%', sm: '23vw' }}
-            maxHeight={{ sm: '442px' }}
+            height={{ base: '100%', md: '23vw' }}
+            maxHeight={{ md: '442px' }}
             right="0"
-            top={{ base: '0', sm: '0' }}
+            top={{ base: '0', md: '0' }}
             src="/img/pack_bp_downlodas.png"
             flexShrink="0"
             objectFit="cover"
@@ -49,7 +49,7 @@ export const SectionPackBpDownloads = () => {
         </Box>
 
         <Flex
-          paddingY={{ base: '50px', sm: '0' }}
+          paddingY={{ base: '50px', md: '0' }}
           flexDir="column"
           justifyContent="center"
           alignItems="center"
@@ -73,7 +73,7 @@ export const SectionPackBpDownloads = () => {
             color="white.100"
             w="60%"
             variant="unstyled"
-            height={{ base: '50px', sm: '20%' }}
+            height={{ base: '50px', md: '20%' }}
           >
             <Text color="white.100" fontWeight="bold" variant={'body' as any}>
               Pack de Padrões
@@ -81,7 +81,7 @@ export const SectionPackBpDownloads = () => {
           </Button>
         </Flex>
 
-        <Box w={{ base: '40%', sm: '35%', md: '30%', lg: '25%' }}></Box>
+        <Box w={{ base: '40%', md: '30%', lg: '25%' }}></Box>
       </Flex>
     </Flex>
   )
