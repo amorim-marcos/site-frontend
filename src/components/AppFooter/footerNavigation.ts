@@ -46,12 +46,12 @@ export const footerNavigation = {
     titleKey: 'column5Title',
     href: '#',
     items: [
-      { titleKey: 'column4Subitem1', href: '#' },
+      { titleKey: 'column5Subitem1', href: '#' },
       { titleKey: '', href: '', empty: true },
-      { titleKey: 'column4Subitem1', href: '#' },
-      { titleKey: 'column4Subitem3', href: '#' },
-      { titleKey: 'column4Subitem4', href: '#' },
-      { titleKey: 'column4Subitem5', href: '#' }
+      { titleKey: 'column5Subitem2', href: '#' },
+      { titleKey: 'column5Subitem3', href: '#' },
+      { titleKey: 'column5Subitem4', href: '#' },
+      { titleKey: 'column5Subitem5', href: '#' }
     ]
   }
 }

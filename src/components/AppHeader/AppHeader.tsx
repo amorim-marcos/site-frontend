@@ -280,7 +280,7 @@ export const AppHeader = () => {
           top="100%"
           alignItems="center"
           justifyContent="center"
-          zIndex="docked"
+          zIndex="overlay"
         >
           <Flex
             width={{

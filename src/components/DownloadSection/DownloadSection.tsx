@@ -4,7 +4,8 @@ import useMobile from 'hooks/useMobile'
 import { useState } from 'react'
 
 export type DownloadSectionProps = {
-  title?: string
+  title: string
+  description: string
   grafism: 'type1' | 'type2' | 'type3'
   items: Array<{
     urlImage: string
@@ -14,24 +15,29 @@ export type DownloadSectionProps = {
 export const DownloadSection = ({
   title,
   grafism,
-  items
+  items,
+  description
 }: DownloadSectionProps) => {
   const { isMobile } = useMobile(568)
   const [itemsData, setItemsData] = useState(items)
   const [hoverBtnControl, setHoverBtnControl] = useState(false)
 
   function avanceRight() {
-    const item = itemsData[0]
-    const newArray = itemsData.filter((j, i) => i > 0)
-    newArray.push(item)
-    setItemsData(newArray)
+    if (items.length > 5) {
+      const item = itemsData[0]
+      const newArray = itemsData.filter((j, i) => i > 0)
+      newArray.push(item)
+      setItemsData(newArray)
+    }
   }
 
   function avanceLeft() {
-    const item = itemsData[itemsData.length - 1]
-    const newArray = itemsData.filter((j, i) => i < itemsData.length - 1)
-    newArray.unshift(item)
-    setItemsData(newArray)
+    if (items.length > 5) {
+      const item = itemsData[itemsData.length - 1]
+      const newArray = itemsData.filter((j, i) => i < itemsData.length - 1)
+      newArray.unshift(item)
+      setItemsData(newArray)
+    }
   }
 
   return (
@@ -44,10 +50,10 @@ export const DownloadSection = ({
       {...(isMobile && { paddingBottom: '10%' })}
     >
       <Text as="h3" variant={'h3' as any} color="green.800" zIndex="docked">
-        Materiais de divulgação
+        {title}
       </Text>
       <Text variant={'body' as any} color="green.900" zIndex="docked">
-        Encontre aqui os materiais de divulgação da BERNECK®.
+        {description}
       </Text>
 
       {!isMobile && (
@@ -77,12 +83,12 @@ export const DownloadSection = ({
           return i < 5 ? (
             <Item
               display={i < 1 ? { base: 'flex' } : { base: 'none', sm: 'flex' }}
-              key={item.title}
+              key={i}
               imageUrl={item.urlImage}
               title={item.title}
-              // marginRight={
-              //   itemsData.length <= 4 ? { base: '0', sm: '3.5%' } : '0'
-              // }
+              marginRight={
+                itemsData.length <= 4 ? { base: '0', sm: '3.5%' } : '0'
+              }
             />
           ) : (
             ''
