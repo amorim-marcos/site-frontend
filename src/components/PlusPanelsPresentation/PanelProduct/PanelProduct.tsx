@@ -4,14 +4,18 @@ export type PanelProductProps = {
   title: string
   description: string
   imageProps: ImageProps
+  onClick?: () => void
 }
 export const PanelProduct = ({
   description,
   title,
-  imageProps
+  imageProps,
+  onClick
 }: PanelProductProps) => {
   return (
     <Flex
+      onClick={onClick}
+      cursor="pointer"
       flexDirection="column"
       justifyContent="flex-end"
       padding={{

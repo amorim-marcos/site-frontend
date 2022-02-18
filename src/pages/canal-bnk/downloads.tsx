@@ -14,13 +14,19 @@ export default function DownloadsPage(props: DonwloadsPageProps) {
 export const getStaticProps: GetStaticProps = async (context) => {
   type DownloadsItemProps = {
     download_type: { type: string }
-    id: string
+    id: number
     image: {
       url: string
     }
     file: {
       url: string
     }
+  }
+
+  type PageContentProps = {
+    id: number
+    type: string
+    items: DownloadsItemProps[]
   }
 
   const locale = context.locale
@@ -48,25 +54,31 @@ export const getStaticProps: GetStaticProps = async (context) => {
     downloadTypes = await res.json()
   }
 
-  const page_content = downloadTypes.map((i) => {
-    const list: DownloadsItemProps[] = []
-    downloadItems.forEach((element: DownloadsItemProps) => {
-      if (element.download_type) {
-        if (element.download_type.type === i.type) {
-          list.push({
-            ...element,
-            image: {
-              url: process.env.NEXT_PUBLIC_API_URL + element.image.url
-            },
-            file: {
-              url: process.env.NEXT_PUBLIC_API_URL + element.file.url
-            }
-          })
+  let page_content: PageContentProps[]
+
+  if (downloadTypes.length) {
+    page_content = downloadTypes.map((i) => {
+      const list: DownloadsItemProps[] = []
+      downloadItems.forEach((element: DownloadsItemProps) => {
+        if (element.download_type) {
+          if (element.download_type.type === i.type) {
+            list.push({
+              ...element,
+              image: {
+                url: process.env.NEXT_PUBLIC_API_URL + element.image.url
+              },
+              file: {
+                url: process.env.NEXT_PUBLIC_API_URL + element.file.url
+              }
+            })
+          }
         }
-      }
+      })
+      return { items: list, ...i }
     })
-    return { items: list, ...i }
-  })
+  } else {
+    page_content = []
+  }
 
   return {
     props: {

@@ -1,4 +1,4 @@
-import { Flex, Box, Text } from '@chakra-ui/react'
+import { Flex, Box, Text, Link } from '@chakra-ui/react'
 import { PanelProduct, PanelProductProps } from './PanelProduct/PanelProduct'
 
 export type PlusPanelsPresentationProps = {
