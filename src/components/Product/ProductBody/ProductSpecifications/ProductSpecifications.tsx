@@ -66,9 +66,9 @@ export const ProductSpecification = ({
         color={textColor}
       >
         <Tbody>
-          {content.map((i) => {
+          {content.map((i, j) => {
             return (
-              <Tr key={i.title}>
+              <Tr key={j}>
                 <Td
                   {...tableItemStyle(tableBorderColor, tableBackgroundColor)}
                   width="40%"

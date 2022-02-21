@@ -36,27 +36,12 @@ export const TecaInfo = ({
         <Text variant={'productTitle' as any}>
           {product.t('machinability')}
         </Text>
-        {/* {machinability && (
-          <Text variant={'productBody' as any}>{parser(machinability)}</Text>
-        )} */}
 
         {machinability && (
           <Wrapper>
             <Text variant={'productBody' as any}>{parser(machinability)}</Text>
           </Wrapper>
         )}
-
-        {/* {machinability &&
-          machinability.map((m) => <ItemCite key={m} text={m} />)} */}
-
-        {/* <Box marginTop="20px">
-          <Text variant={'productBody' as any}>
-            {product.t('supplyInformationTitleTeca')}
-          </Text>
-
-          {supplyInformation &&
-            supplyInformation.map((s) => <ItemCite key={s} text={s} />)}
-        </Box> */}
       </Box>
 
       <Flex

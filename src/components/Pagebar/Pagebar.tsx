@@ -117,10 +117,7 @@ export const Pagebar = ({ paths }: PagebarProps) => {
             paths.map((s, i) => {
               console.log(i, paths.length)
               return (
-                <BreadcrumbItem
-                  key={s.title}
-                  isCurrentPage={i === paths.length - 1}
-                >
+                <BreadcrumbItem key={i} isCurrentPage={i === paths.length - 1}>
                   <BreadcrumbLink color="white.100" href={s.url}>
                     <Text
                       color="white.100"

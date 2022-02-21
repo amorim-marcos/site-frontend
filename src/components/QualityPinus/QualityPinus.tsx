@@ -90,7 +90,7 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
               items.map((item, i) => {
                 return (
                   <Center
-                    key={item.id}
+                    key={i}
                     position={'relative'}
                     minWidth={{
                       base: '40vw',

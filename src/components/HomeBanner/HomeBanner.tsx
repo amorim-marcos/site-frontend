@@ -199,6 +199,7 @@ const Indicator = ({ items, currentItem }: IndicatorProps) => {
       {items.map((item, i) => {
         return i === currentItem ? (
           <Box
+            key={i}
             margin="5px"
             border="1px solid"
             borderColor={'brown.300'}
@@ -221,6 +222,7 @@ const Indicator = ({ items, currentItem }: IndicatorProps) => {
           />
         ) : (
           <Box
+            key={i}
             margin="5px"
             w={{
               base: '20px',

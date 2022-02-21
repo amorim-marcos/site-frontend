@@ -49,9 +49,9 @@ export const WhereBuyTable = () => {
           </Flex>
         </Flex>
       </Flex>
-      {data.countries.map((c) => {
+      {data.countries.map((c, i) => {
         return (
-          <Flex key={c.id} bg="green.400" w="100%">
+          <Flex key={i} bg="green.400" w="100%">
             <Flex
               flexDirection={'column'}
               alignItems={'center'}
@@ -68,9 +68,9 @@ export const WhereBuyTable = () => {
               <Text variant={'body' as any}>{c.name}</Text>
             </Flex>
             <Flex w="90%" flexDirection={'column'}>
-              {c.rows.map((r) => {
+              {c.rows.map((r, i) => {
                 return (
-                  <Flex key={r.city + r.client + r.contact} w="100%">
+                  <Flex key={i} w="100%">
                     <Flex
                       {...cellBodyStyle}
                       {...(isMobile && { width: '20%' })}

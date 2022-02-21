@@ -8,8 +8,9 @@ import HighlightBoxPanel from '@components/HighlightBoxPanel'
 export type SponsoredProjectsProps = {
   panels?: HighlightBoxPanelProps[]
 }
-export const SponsoredProjects = ({ panels = mockPanels }: SponsoredProjectsProps) => {
-
+export const SponsoredProjects = ({
+  panels = mockPanels
+}: SponsoredProjectsProps) => {
   const [isMobile] = useMediaQuery(`(max-width: ${breakpoints.lg})`)
 
   return (
@@ -17,22 +18,21 @@ export const SponsoredProjects = ({ panels = mockPanels }: SponsoredProjectsProp
       {isMobile ? (
         <Flex as={'carousel' as any} px={{ base: '20px' }} justify="center">
           <Carousel>
-            {panels.map((item) => (
-              <HighlightBoxPanel key={item.image} {...item} />
+            {panels.map((item, i) => (
+              <HighlightBoxPanel key={i} {...item} />
             ))}
           </Carousel>
         </Flex>
       ) : (
-        <Flex 
-          // w="100%" 
-          // alignContent={"start"}
+        <Flex
+        // w="100%"
+        // alignContent={"start"}
         >
-          {panels.map((item) => (
-            <HighlightBoxPanel key={item.image} {...item} />
+          {panels.map((item, j) => (
+            <HighlightBoxPanel key={j} {...item} />
           ))}
         </Flex>
       )}
-  
     </Box>
   )
 }

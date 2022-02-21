@@ -17,10 +17,10 @@ export const ProductsGallery = ({
 }: ProductsGalleryProps) => {
   return products.length > 1 ? (
     <CarouselMultiElements numberOfEvidenceElements={numberEvidence}>
-      {products.map((p) => {
+      {products.map((p, i) => {
         return (
           <Box
-            key={p.title}
+            key={i}
             h={{
               base: '535px',
               sm: '655px',
