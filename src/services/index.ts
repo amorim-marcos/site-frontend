@@ -1,0 +1,1 @@
+export { meiliSearch } from './meilisearch'
