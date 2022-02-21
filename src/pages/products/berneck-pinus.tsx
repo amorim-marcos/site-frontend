@@ -1,6 +1,21 @@
 import { GetStaticProps } from 'next'
 import BerneckPinusView from 'views/products/berneck-pinus'
 
+export type SawnQuality = {
+  col: string
+  description: string
+  id: number
+  name: string
+  number: number
+  thickness: string
+  uses_and_applications: string
+  _length: string
+  _width: string
+  image: {
+    url: string
+  }
+}
+
 export type BerneckPinusPageProps = {
   page_content: {
     average_density: string
@@ -10,17 +25,7 @@ export type BerneckPinusPageProps = {
     header_subtitle: string
     header_subtitle_description: string
     id: number
-    sawns_qualities: {
-      col: string
-      description: string
-      id: number
-      name: string
-      number: number
-      thickness: string
-      uses_and_applications: string
-      _length: string
-      _width: string
-    }[]
+    sawns_qualities: SawnQuality[]
     species: string
     standard_humity: string
     technical_sheet: string
@@ -82,6 +87,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   page_content.technical_sheet =
     process.env.NEXT_PUBLIC_API_URL + page_content.technical_sheet.url
+
+  page_content.sawns_qualities.forEach((item: SawnQuality) => {
+    item.image.url = process.env.NEXT_PUBLIC_API_URL + item.image.url
+  })
 
   return {
     props: {

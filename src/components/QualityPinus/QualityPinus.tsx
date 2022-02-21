@@ -4,7 +4,8 @@ import {
   Text,
   Center,
   CenterProps,
-  BoxProps
+  BoxProps,
+  Image
 } from '@chakra-ui/react'
 import ProductDimensions from '@components/ProductDimensions'
 import useMobile from 'hooks/useMobile'
@@ -22,6 +23,9 @@ type ItemProps = {
   uses_and_applications: string
   _length: string
   _width: string
+  image: {
+    url: string
+  }
 }
 
 export type QualityPinusProps = {
@@ -73,10 +77,18 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
         w="100%"
       >
         <Flex
-          border="1px solid brown"
           w={{ base: '100%', sm: '30%' }}
           css={isMobile ? { height: '40vh' } : { height: 'full' }}
-        ></Flex>
+        >
+          {items.length > 0 && (
+            <Image
+              h="100%"
+              w="100%"
+              objectFit={'cover'}
+              src={items[currentItem].image.url}
+            />
+          )}
+        </Flex>
 
         <Flex width={{ base: '100%', sm: '67%' }} flexDirection="column">
           <Flex
