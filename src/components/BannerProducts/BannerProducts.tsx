@@ -12,7 +12,7 @@ export type BannerProductsProps = {
   bannerSize?: ResponsiveCss
   onClick?: () => void
   sizeType?: 'square' | 'rectangle'
-  urlLink: string
+  urlLink?: string
 }
 export const BannerProducts = ({
   title,
