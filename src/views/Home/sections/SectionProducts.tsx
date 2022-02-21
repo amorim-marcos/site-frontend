@@ -1,16 +1,5 @@
-import {
-  Box,
-  GridItem,
-  Grid,
-  Flex,
-  Text,
-  Image,
-  Button
-} from '@chakra-ui/react'
+import { Box, Text, Flex } from '@chakra-ui/react'
 
-import BannerProducts from '@components/BannerProducts'
-import CarouselMultiElements from '@components/CarouselMultiElements'
-import CarouselMutiElements from '@components/CarouselMultiElements'
 import CompletedTitle from '@components/CompletedTitle'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import { Contactusicon } from '@components/Icons/Contactusicon/Contactusicon'
@@ -18,15 +7,12 @@ import EarthIcon from '@components/Icons/EarthIcon'
 import PatternInfo from '@components/PatternInfo'
 import ProductsGallery from '@components/ProductsGallery'
 import { ProductsGalleryProps } from '@components/ProductsGallery/ProductsGallery'
-import useMobile from 'hooks/useMobile'
-
-import { useState } from 'react'
-
-const vet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+import { useRouter } from 'next/router'
 
 export type SectionsProductsProps = ProductsGalleryProps
 
 export const SectionProducts = ({ products }: SectionsProductsProps) => {
+  const router = useRouter()
   return (
     <Flex
       maxWidth="1920px"
@@ -144,7 +130,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
           <PatternInfo
             title="DESCUBRA"
             description="Onde Comprar"
-            onClick={() => alert('Onde Comprar')}
+            onClick={() => router.push('/onde-comprar')}
             icon={
               <EarthIcon
                 width={{
@@ -178,7 +164,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
           <PatternInfo
             title="ENTRE EM CONTATO"
             description="Fale Conosco"
-            onClick={() => alert('Fale Conosco')}
+            onClick={() => router.push('/contact')}
             icon={
               <Contactusicon
                 width={{

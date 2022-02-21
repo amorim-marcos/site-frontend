@@ -1,7 +1,16 @@
 import { Flex, Image, Text } from '@chakra-ui/react'
 import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
 
-export const SectionChannelBNK = () => {
+export type SectionChannelBNKProps = {
+  items: {
+    category: string
+    urlImage: string
+    color: string
+    title: string
+  }[]
+}
+
+export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
   return (
     <Flex
       justifyContent={'center'}
@@ -46,29 +55,20 @@ export const SectionChannelBNK = () => {
           'scrollbar-width': 'none'
         }}
       >
-        <ChannelBnkRelationalItem
-          category="INSPIRAÇÃO SOB MEDIDA"
-          urlImage="https://casaclaudia.abril.com.br/wp-content/uploads/2017/06/sala31.jpg"
-          color="brown.150"
-          title="Como usar o círculo cromático para combinar padrões BP"
-          w="28%"
-        />
-
-        <ChannelBnkRelationalItem
-          category="INSPIRAÇÃO SOB MEDIDA"
-          urlImage="https://casaclaudia.abril.com.br/wp-content/uploads/2017/06/sala31.jpg"
-          color="brown.150"
-          title="Como usar o círculo cromático para combinar padrões BP"
-          w="28%"
-        />
-
-        <ChannelBnkRelationalItem
-          category="INSPIRAÇÃO SOB MEDIDA"
-          urlImage="https://casaclaudia.abril.com.br/wp-content/uploads/2017/06/sala31.jpg"
-          color="brown.150"
-          title="Como usar o círculo cromático para combinar padrões BP"
-          w="28%"
-        />
+        {props.items &&
+          props.items.length === 3 &&
+          props.items.map((item, j) => {
+            return (
+              <ChannelBnkRelationalItem
+                key={j}
+                category={item.category}
+                urlImage={item.urlImage}
+                color={item.color}
+                title={item.title}
+                w="28%"
+              />
+            )
+          })}
       </Flex>
     </Flex>
   )

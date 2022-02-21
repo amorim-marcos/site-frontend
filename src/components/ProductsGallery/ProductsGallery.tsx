@@ -2,10 +2,8 @@ import { Box } from '@chakra-ui/react'
 
 import BannerProducts from '@components/BannerProducts'
 import { BannerProductsProps } from '@components/BannerProducts/BannerProducts'
-import {
-  CarouselMultiElements,
-  CarouselMultiElementsProps
-} from '@components/CarouselMultiElements/CarouselMultiElements'
+import { CarouselMultiElements } from '@components/CarouselMultiElements/CarouselMultiElements'
+import { useRouter } from 'next/router'
 
 export type ProductsGalleryProps = {
   products: BannerProductsProps[]
@@ -15,6 +13,7 @@ export const ProductsGallery = ({
   products,
   numberEvidence
 }: ProductsGalleryProps) => {
+  const router = useRouter()
   return products.length > 1 ? (
     <CarouselMultiElements numberOfEvidenceElements={numberEvidence}>
       {products.map((p, i) => {
@@ -37,8 +36,9 @@ export const ProductsGallery = ({
               subtitleColor={p.subtitleColor}
               bgColor={p.bgColor}
               srcImg={p.srcImg}
-              onClick={() => alert('Ir para BP')}
+              onClick={() => router.push(`/products/${p.urlLink}`)}
               bannerSize={p.bannerSize}
+              urlLink={p.urlLink}
             />
           </Box>
         )
