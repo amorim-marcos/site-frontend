@@ -120,17 +120,18 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
         paddingLeft={{ base: '20px', md: '0' }}
       >
         <Flex>
-          <ArrowIcon
-            width={{
-              base: '20px',
-
-              md: '10px',
-              lg: '13px',
-              xl: '16px',
-              '2xl': '20px'
-            }}
-            stroke="green.600"
-          />
+          <Box marginTop="0px">
+            <ArrowIcon
+              width={{
+                base: '20px',
+                md: '10px',
+                lg: '14px',
+                xl: '16px',
+                '2xl': '20px'
+              }}
+              stroke="green.600"
+            />
+          </Box>
           <Flex marginLeft={'2%'} flexDirection={'column'}>
             <Text
               marginBottom={'2%'}
@@ -150,7 +151,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
               opacity={opacity ? '1' : '0'}
               transition={'0.4s'}
               maxWidth={{
-                base: '95vw',
+                base: '90vw',
                 md: '550px',
                 lg: '650px',
                 xl: '750px',
