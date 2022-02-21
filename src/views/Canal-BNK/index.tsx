@@ -19,14 +19,16 @@ export function CategoryCtxProvider(props: { children: ReactNode }) {
   const [category, setCategory] = useState<Category>('all')
 
   return (
-    <CategoryContext.Provider
-      value={{
-        category,
-        setCategory
-      }}
-    >
-      {props.children}
-    </CategoryContext.Provider>
+    <Box maxWidth={'1920px'} marginX="auto">
+      <CategoryContext.Provider
+        value={{
+          category,
+          setCategory
+        }}
+      >
+        {props.children}
+      </CategoryContext.Provider>
+    </Box>
   )
 }
 
