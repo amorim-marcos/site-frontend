@@ -1,22 +1,38 @@
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+
 import { Flex, Box, Container, Input, CloseButton } from '@chakra-ui/react'
+import { IoMdClose, IoMdMenu } from 'react-icons/io'
+import { useTranslation } from 'react-i18next'
+
 import LogoBerneck from '@components/LogoBerneck'
-import { HeaderMenuItem } from './HeaderMenuItem/HeaderMenuItem'
 import SearchIcon from '@components/Icons/SearchIcon'
+import { HeaderMenuItem } from './HeaderMenuItem/HeaderMenuItem'
 import { HeaderSecondaryItem } from './HeaderSecondaryItem/HeaderSecondaryItem'
 import { LanguageSelector } from './LanguageSelector/LanguageSelector'
-import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import useMobile from '../../hooks/useMobile'
 import { menuNavigation } from './MenuNavigation'
-import { IoMdClose, IoMdMenu } from 'react-icons/io'
+
+import useMobile from '../../hooks/useMobile'
 
 import { colors } from '../../theme/colors'
+
 export type AppHeaderProps = null
 
 export const AppHeader = () => {
+  const [searchQuery, setSearchQuery] = useState('')
   const [openSearchBar, setOpenSearchBar] = useState(false)
   const [menuMobileOpen, setMenuMobileOpen] = useState(false)
   const { isMobile } = useMobile(568)
+  const router = useRouter()
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value)
+  }
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    router.push('/search/' + searchQuery)
+  }
 
   const header = useTranslation('header')
   return (
@@ -282,52 +298,56 @@ export const AppHeader = () => {
           justifyContent="center"
           zIndex="docked"
         >
-          <Flex
-            width={{
-              base: '200px',
-              md: '300px',
-              lg: '350px',
-              xl: '400px',
-              '2xl': '450px'
-            }}
-            borderBottom="solid"
-            borderBottomColor="white.100"
-            paddingX="5px"
-            height={{ base: '25px' }}
-            borderBottomWidth={{ base: '1px' }}
-          >
-            <Input
-              placeholder="Digite sua busca"
-              border="none"
-              outline="none"
-              _active={{ border: 'none', outline: 'none' }}
-              focusBorderColor="none"
-              color="white.100"
-              paddingLeft="0px"
-              paddingBottom={{ base: '0px', md: '10px' }}
-              fontSize={{
-                base: '8px',
-                md: '10px',
-                lg: '12px',
-                xl: '14px',
-                '2xl': '16px'
+          <form onSubmit={handleSubmit}>
+            <Flex
+              width={{
+                base: '200px',
+                md: '300px',
+                lg: '350px',
+                xl: '400px',
+                '2xl': '450px'
               }}
-              height={{ base: '30px' }}
-            />
-            <Box>
-              <SearchIcon
-                stroke={colors.white[100]}
-                width={{
-                  base: '13px',
-                  md: '16px',
-                  lg: '23px',
-                  xl: '28px',
-                  '2xl': '35px'
+              borderBottom="solid"
+              borderBottomColor="white.100"
+              paddingX="5px"
+              height={{ base: '25px' }}
+              borderBottomWidth={{ base: '1px' }}
+            >
+              <Input
+                value={searchQuery}
+                onChange={handleChange}
+                placeholder="Digite sua busca"
+                border="none"
+                outline="none"
+                _active={{ border: 'none', outline: 'none' }}
+                focusBorderColor="none"
+                color="white.100"
+                paddingLeft="0px"
+                paddingBottom={{ base: '0px', md: '10px' }}
+                fontSize={{
+                  base: '8px',
+                  md: '10px',
+                  lg: '12px',
+                  xl: '14px',
+                  '2xl': '16px'
                 }}
-                height={{ base: '25px', md: '10px', '2xl': '0px' }}
+                height={{ base: '30px' }}
               />
-            </Box>
-          </Flex>
+              <Box>
+                <SearchIcon
+                  stroke={colors.white[100]}
+                  width={{
+                    base: '13px',
+                    md: '16px',
+                    lg: '23px',
+                    xl: '28px',
+                    '2xl': '35px'
+                  }}
+                  height={{ base: '25px', md: '10px', '2xl': '0px' }}
+                />
+              </Box>
+            </Flex>
+          </form>
         </Flex>
       ) : null}
     </Box>
