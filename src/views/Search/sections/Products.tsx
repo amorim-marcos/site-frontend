@@ -1,4 +1,5 @@
 import { Flex, Box, Text, Image } from '@chakra-ui/react'
+import BpPatternImage from '@components/BpPatternImage'
 
 export const SectionProducts = (props: { content: unknown[] }) => (
   <Flex direction="column" px={'120px'} pt="84px">
@@ -27,21 +28,25 @@ export const SectionProducts = (props: { content: unknown[] }) => (
       </Text>
     </Flex>
 
-    {console.log(props.content)}
-
-    <Flex bg="#FFFBF4" w="100%" borderTop={'3px solid'} borderColor="green.600">
+    <Flex
+      bg="#FFFBF4"
+      w="100%"
+      borderTop={'3px solid'}
+      borderColor="green.600"
+      overflowX="scroll"
+    >
       {props.content.map((item: any) => (
         <Flex
           key={item.id}
-          w="400px"
+          minW="400px"
           gap="28px"
           cursor="pointer"
           role="group"
           padding="33px"
           direction={'column'}
         >
-          <Image
-            src="/assets/imgs/search/pages_placeholder.png"
+          <BpPatternImage
+            image_url={'/bps/patterns/volakas.jpg'} // item.pattern_image
             w="233px"
             h="386px"
             transition={'all .2s ease-in-out'}
@@ -57,7 +62,7 @@ export const SectionProducts = (props: { content: unknown[] }) => (
               fontSize={'23px'}
               fontWeight={'bold'}
             >
-              {item.header_subtitle}
+              {item.name}
             </Text>
 
             <Text
@@ -67,7 +72,7 @@ export const SectionProducts = (props: { content: unknown[] }) => (
               fontSize={'14px'}
               fontWeight={'medium'}
             >
-              {item.header_subtitle_description}
+              {item.description}
             </Text>
           </Box>
         </Flex>
