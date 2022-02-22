@@ -72,7 +72,7 @@ export default function Search(props: SearchProps) {
           <Text
             as={'h3' as any}
             pt="42px"
-            color="green.900"
+            color="green.800"
             fontSize={'15px'}
             fontWeight={600}
           >
