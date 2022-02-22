@@ -333,7 +333,7 @@ export const AppHeader = () => {
                 }}
                 height={{ base: '30px' }}
               />
-              <Box>
+              <Box onClick={() => router.push('/search/' + searchQuery)}>
                 <SearchIcon
                   stroke={colors.white[100]}
                   width={{
