@@ -143,7 +143,7 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                 >
                     {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
                     <Text color={(darkMode) ? 'green.300' : 'gray.300'} fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
-                    <Arrow color={(darkMode) ? 'green.300' : 'gray.300'} display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='gray.300' />
+                    <Arrow color={(darkMode) ? 'green.300' : 'gray.300'} display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" />
                 </Button>
                 {
                     !displayFilters && 
