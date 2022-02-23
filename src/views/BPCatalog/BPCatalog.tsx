@@ -189,10 +189,11 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                         panels.map((filter) => 
                                             <FilterCheckbox 
                                                 mb="10px"
+                                                minW="100%"
                                                 isChecked={filters["panels"].includes(filter.code)}
                                                 onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("panels", value) : removeFilter("panels", value) }} 
                                                 title={filter.title} code={filter.code} background_image={filter.background_image} 
-                                                mr="30px" key={"panels"+filter.code}
+                                                key={"panels"+filter.code}
                                             />
                                         )
                                     }
@@ -217,10 +218,11 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                     {
                                         collections.map((filter) => 
                                             <FilterCheckbox 
+                                                minW="100%"
                                                 mb="10px"
                                                 isChecked={filters["collections"].includes(filter.code)}
                                                 onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("collections", value) : removeFilter("collections", value) }} 
-                                                title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" 
+                                                title={filter.title} code={filter.code} background_image={filter.background_image} 
                                             />
                                         )
                                     }
@@ -245,10 +247,11 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                     {
                                         colorations.map((filter) => 
                                             <FilterCheckbox 
+                                                minW="100%"
                                                 mb="10px"
                                                 isChecked={filters["colorations"].includes(filter.code)}
                                                 onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("colorations", value) : removeFilter("colorations", value) }} 
-                                                title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" 
+                                                title={filter.title} code={filter.code} background_image={filter.background_image}
                                             />
                                         )
                                     }
