@@ -757,7 +757,6 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
     }, [gridSize])
 
     React.useEffect(() => {
-        console.log(filters)
         if(filters.panels.length == 0 && filters.collections.length == 0 && filters.colorations.length == 0 && filters.nameSearched === ""){
             setFiltersEmpty(true)
         }else{
