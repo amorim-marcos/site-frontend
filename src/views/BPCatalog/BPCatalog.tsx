@@ -317,11 +317,11 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
             )}
             {
                 !displayFilters &&         
-                <Flex minW="100%" height="100px" background={(darkMode) ? 'gray.350' : 'gray.100'} justifyContent="space-between" alignItems="center">
+                <Flex minW="100%" height="100px" background={(darkMode) ? 'gray.350' : 'gray.100'} justifyContent="center" alignItems="center">
                     <Select 
                         onChange={(e) => { setFilters({ ...filters, orderBy: e.target.value }); setFilteredBps(applyFilters({ ...filters, orderBy: e.target.value }, bps))}} 
                         color={(darkMode) ? 'green.300' : 'gray.300'} border="0" 
-                        backgroundColor={(darkMode) ? "gray.400" : "white.100"} width="160px" fontSize="16px"
+                        backgroundColor={(darkMode) ? "gray.400" : "white.100"} width="160px" fontSize="16px" mr="10px"
                     >
                             <option value='launch'>lançamento</option>
                             <option value='name'>nome</option>
@@ -385,8 +385,8 @@ const FiltersTabs = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, 
     return (
         <>
         <Button zIndex="10" onClick={() => setDisplayFilters(!displayFilters)} variant="link" backgroundColor="none"  position="absolute" top="0" left="30px">
-            <FiltersIcon mr="16px" />
-            <Text color={(darkMode) ? 'green.300' : 'gray.300'}>Filtrar Resultados</Text>
+            {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
+            <Text color={(darkMode) ? 'green.300' : 'gray.300'} fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
             <Arrow visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color={(darkMode) ? 'green.300' : 'gray.300'}/>
         </Button>
         {
