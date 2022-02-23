@@ -31,7 +31,8 @@ export type FilterCheckBox = BoxProps &{
     title: string,
     code: string,
     background_image: string,
-    onCheck?: Function
+    onCheck?: Function,
+    isChecked: boolean
 }
 
 export type ValidFilterNames = 'panels' | 'collections' | 'colorations'
@@ -61,21 +62,26 @@ const BP = ({name, product_texture, pattern_image, ...props}: BPProps) => {
     )
 }
 
-const FilterCheckbox = ({title, code, background_image, onCheck, ...props}: FilterCheckBoxProps) => {
+const FilterCheckbox = ({title, code, background_image, onCheck, isChecked, ...props}: FilterCheckBoxProps) => {
     const [checked, setChecked] = React.useState(false)
     const [value, setValue] = React.useState(code)
+
+    React.useEffect(() => {
+        setChecked(isChecked)
+    }, [isChecked])
+    
     return (
         // @ts-ignore
-        <Button background="transparent" zIndex="3" onClick={(e) => { setChecked(!checked); if(onCheck) onCheck(checked, value)}} position="relative" color="green.900" justifyContent="start" variant="link" borderRadius="5px" height="60px" minW="250px" {...props} padding="28px" overflow="hidden">
+        <Button background="transparent" zIndex="3" onClick={(e) => { if(onCheck) onCheck(checked, value)}} position="relative" color="green.900" justifyContent="start" variant="link" borderRadius="5px" height="60px" minW="250px" {...props} padding="28px" overflow="hidden">
             <Checkbox 
-                onClickCapture={(e) => { e.preventDefault(); e.stopPropagation(); setChecked(!checked); if(onCheck) onCheck(checked, value)}} 
+                onClickCapture={(e) => { e.preventDefault(); e.stopPropagation(); if(onCheck) onCheck(checked, value)}} 
                 padding="0"
                 iconColor='green.600'
                 border="1px solid"
                 borderColor="green.900"
                 borderRadius="3px"
                 colorScheme="white.100"
-                isChecked={checked}
+                isChecked={isChecked}
                 zIndex="2" 
                 mr="5px" 
             />
@@ -102,6 +108,7 @@ export type FiltersSelectProps = {
     appendFilter: Function
     removeFilter: Function
     setFilters: Function
+    bps: Array<any>
     setFilteredBps: Function
     applyFilters: Function
     gridSize: string
@@ -115,7 +122,7 @@ export type FiltersSelectProps = {
     filteredBpsLength: number
 }
 
-const FiltersTabs = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, changeFilterPanel, currentFilterPanel, panels, collections, colorations, appendFilter, gridSize, changeGridSize, removeFilter, setFilters, setFilteredBps, applyFilters, bps, envs, filters, filtersEmpty, filteredBpsLength}: FiltersSelectProps) => {
+const FiltersTabs = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, changeFilterPanel, currentFilterPanel, panels, collections, colorations, appendFilter, gridSize, changeGridSize, removeFilter, setFilters, bps, setFilteredBps, applyFilters, filters, filtersEmpty, filteredBpsLength}: FiltersSelectProps) => {
     const [searchSelected, setSearchSelected] = React.useState(false)
 
     return (
@@ -184,29 +191,52 @@ const FiltersTabs = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, 
                                 <Box display={(currentFilterPanel != 'panels') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
                                     <Flex justifyContent="center">
                                         {
-                                            panels.map((filter) => <FilterCheckbox onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("panels", value) : removeFilter("panels", value) }} title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" key={"panels"+filter.code}/>)
+                                            panels.map((filter) => 
+                                                <FilterCheckbox 
+                                                    isChecked={filters["panels"].includes(filter.code)}
+                                                    onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("panels", value) : removeFilter("panels", value) }} 
+                                                    title={filter.title} code={filter.code} background_image={filter.background_image} 
+                                                    mr="30px" key={"panels"+filter.code}
+                                                />
+                                            )
                                         }
                                     </Flex>
                                 </Box>
                                 <Box display={(currentFilterPanel != 'collections') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
                                     <Flex justifyContent="center">
                                         {
-                                            collections.map((filter) => <FilterCheckbox onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("collections", value) : removeFilter("collections", value) }} title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" />)
+                                            collections.map((filter) => 
+                                                <FilterCheckbox 
+                                                    isChecked={filters["collections"].includes(filter.code)}
+                                                    onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("collections", value) : removeFilter("collections", value) }} 
+                                                    title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" 
+                                                />
+                                            )
                                         }
                                     </Flex>
                                 </Box>
                                 <Box display={(currentFilterPanel != 'colorations') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
                                     <Flex justifyContent="center">
                                         {
-                                            colorations.map((filter) => <FilterCheckbox onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("colorations", value) : removeFilter("colorations", value) }} title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" />)
+                                            colorations.map((filter) => 
+                                                <FilterCheckbox 
+                                                    isChecked={filters["colorations"].includes(filter.code)}
+                                                    onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("colorations", value) : removeFilter("colorations", value) }} 
+                                                    title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" 
+                                                />
+                                            )
                                         }
                                     </Flex>
                                 </Box>
+                                <Flex justifyContent="center" padding="30px">
+                                    <Button variant={"filters" as any} mr="30px" onClick={() =>setFilteredBps(applyFilters(filters, bps))}>Filtrar</Button>
+                                    { !filtersEmpty && <Button variant={"filters" as any} onClick={() => { setFilters(JSON.parse(JSON.stringify(initialFilters))); setFilteredBps(applyFilters(initialFilters, bps)) }}>Limpar filtros</Button> }
+                                </Flex>
                             </Center>
                         </Flex>
                     </Box>
                     <Box display="inline-block" minW="100%" height="100px" background={(darkMode) ? 'gray.350' : 'gray.100'} paddingLeft="20%">
-                        <Select onChange={(e) => { setFilters({ ...filters, orderBy: e.target.value })}} mr="30px" color={(darkMode) ? 'green.300' : 'gray.300'} position="relative" top="30px" display="inline-block" border="0" backgroundColor={(darkMode) ? "gray.400" : "white.100"} width="160px" fontSize="16px">
+                        <Select onChange={(e) => { setFilters({ ...filters, orderBy: e.target.value }); setFilteredBps(applyFilters({ ...filters, orderBy: e.target.value }, bps))}} mr="30px" color={(darkMode) ? 'green.300' : 'gray.300'} position="relative" top="30px" display="inline-block" border="0" backgroundColor={(darkMode) ? "gray.400" : "white.100"} width="160px" fontSize="16px">
                                 <option value='launch'>lançamento</option>
                                 <option value='name'>nome</option>
                                 <option value='scale'>escala de cor</option>
@@ -265,6 +295,7 @@ const FiltersTabs = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, 
                                     />
                                     <Box>
                                     <SearchIcon
+                                        onClick={() => setFilteredBps(applyFilters(filters, bps))}
                                         stroke={(searchSelected)? colors.green[500] : ( (darkMode) ? colors.green[300] : colors.gray[300])}
                                         width={{
                                             base: '13px',
@@ -311,7 +342,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
     const [gridSize, setGridSize] = React.useState('big')
     const [gridColumnsMode, setGridColumnsMode] = React.useState('repeat(3, 1fr)')
     const [currentFilterPanel, setCurrentFilterPanel] = React.useState('none')
-    const [filters, setFilters] = React.useState(initialFilters)
+    const [filters, setFilters] = React.useState(JSON.parse(JSON.stringify(initialFilters)))
     const [filteredBps, setFilteredBps] = React.useState(bps)
     const [filtersEmpty, setFiltersEmpty] = React.useState(true)
 
@@ -464,9 +495,15 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
         }
     }, [gridSize])
 
-    React.useEffect(()=>{
-        setFilteredBps(applyFilters(filters, bps))
+    React.useEffect(() => {
+        console.log(filters)
+        if(filters.panels.length == 0 && filters.collections.length == 0 && filters.colorations.length == 0 && filters.nameSearched === ""){
+            setFiltersEmpty(true)
+        }else{
+            setFiltersEmpty(false)
+        }
     }, [filters])
+
 
     
     return (
@@ -498,6 +535,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                 appendFilter={appendFilter} 
                 removeFilter={removeFilter} 
                 setFilters={setFilters} 
+                bps={bps}
                 setFilteredBps={setFilteredBps} 
                 applyFilters={applyFilters} 
                 panels={filtersCheckboxes["panels"]}
