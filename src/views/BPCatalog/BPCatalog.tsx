@@ -129,7 +129,7 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
 
     return (
         <>
-        <Box background="white.200" height="100%">
+        <Box backgroundColor={(darkMode) ? "gray.400" : "white.200"} height="100%">
             <Flex 
                 padding={{base: "25px"}}
                 justifyContent="space-between"
@@ -142,8 +142,8 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                     
                 >
                     {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
-                    <Text fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
-                    <Arrow display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='gray.300' />
+                    <Text color={(darkMode) ? 'green.300' : 'gray.300'} fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
+                    <Arrow color={(darkMode) ? 'green.300' : 'gray.300'} display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='gray.300' />
                 </Button>
                 {
                     !displayFilters && 
@@ -181,7 +181,7 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                 justifyContent="start"
                                 alignItems="center"
                             >
-                                <Text color='gray.300' mr="10px">PAINÉIS</Text>
+                                <Text color={(darkMode) ? 'green.300' : 'gray.300'} mr="10px">PAINÉIS</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'panels') ? "down" : "up"} width="3" height="6" color="gray.200" />
                             </Button> 
                             <Box display={(currentFilterPanel != 'panels') ? 'none' : 'normal'}  top="0" left="0" width="100%" height="100%" paddingBottom="25px">                          
@@ -212,7 +212,7 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                 justifyContent="start"
                                 alignItems="center"
                             >
-                                <Text color='gray.300' mr="10px">COLEÇÕES</Text>
+                                <Text color={(darkMode) ? 'green.300' : 'gray.300'} mr="10px">COLEÇÕES</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'collections') ? "down" : "up"} width="3" height="6" color="gray.200" />
                             </Button> 
                             <Box display={(currentFilterPanel != 'collections') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
@@ -242,7 +242,7 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                 justifyContent="start"
                                 alignItems="center"
                             >
-                                <Text color='gray.300' mr="10px">COLORAÇÃO</Text>
+                                <Text color={(darkMode) ? 'green.300' : 'gray.300'} mr="10px">COLORAÇÃO</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'colorations') ? "down" : "up"} width="3" height="6" color="gray.200" />
                             </Button>
                             <Box display={(currentFilterPanel != 'colorations') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
