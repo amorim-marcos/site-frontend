@@ -4,10 +4,12 @@ import Link from 'next/link'
 export type HeaderSecondaryItemProps = {
   title?: string
   href?: string
+  target?: string
 }
 export const HeaderSecondaryItem = ({
   title = 'TopMenuItem',
-  href = '/'
+  href = '/',
+  target='_self'
 }: HeaderSecondaryItemProps) => {
   const { isMobile } = useMobile(568)
   return (
@@ -24,6 +26,7 @@ export const HeaderSecondaryItem = ({
       })}
     >
       <Link href={href} passHref>
+        <a ref={href} target={target}>
         <Text
           _hover={{ color: '#FFF' }}
           variant={'header-menu-small' as any}
@@ -41,6 +44,7 @@ export const HeaderSecondaryItem = ({
         >
           {title}
         </Text>
+        </a>
       </Link>
     </Flex>
   )

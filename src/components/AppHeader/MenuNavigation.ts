@@ -1,27 +1,27 @@
 export const menuNavigation = {
   speakWithUs: {
     key: 'btn1',
-    href: '/'
+    href: '/contact'
   },
   workWithUs: {
     key: 'btn2',
-    href: '/'
+    href: 'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup'
   },
   whereBuy: {
     key: 'btn3',
-    href: '/'
+    href: '/onde-comprar'
   },
   restrictAccess: {
     key: 'btn4',
-    href: '/'
+    href: 'http://portalcrm.berneck.com.br/'
   },
   whoWeAre: {
     key: 'btn5',
     href: '/somos-berneck',
     subItems: [
-      { key: 'btn5_subItem1', href: '/somos-berneck' },
-      { key: 'btn5_subItem2', href: '/somos-berneck' },
-      { key: 'btn5_subItem3', href: '/somos-berneck' },
+      // { key: 'btn5_subItem1', href: '/somos-berneck' },
+      { key: 'btn5_subItem2', href: '/somos-berneck#trajetoria' },
+      { key: 'btn5_subItem3', href: '/somos-berneck#onde-estamos' },
       { key: 'btn5_subItem4', href: '/certificacoes' }
     ]
   },
@@ -31,19 +31,19 @@ export const menuNavigation = {
     subItems: [
       {
         key: 'btn6_subItem1',
-        href: '/nosso-compromisso'
+        href: '/nosso-compromisso#meio-ambiente'
       },
       {
         key: 'btn6_subItem2',
-        href: '/nosso-compromisso'
+        href: '/nosso-compromisso#nossa-gente'
       },
       {
         key: 'btn6_subItem3',
-        href: '/nosso-compromisso'
+        href: '/nosso-compromisso#nossos-valores'
       },
       {
         key: 'btn6_subItem4',
-        href: '/nosso-compromisso'
+        href: '/nosso-compromisso#relatorio'
       }
     ]
   },
@@ -53,19 +53,19 @@ export const menuNavigation = {
     subItems: [
       {
         key: 'btn7_subItem1',
-        href: '/divisao-florestal'
+        href: '/divisao-florestal#manejo'
       },
       {
         key: 'btn7_subItem2',
-        href: '/divisao-florestal'
+        href: '/divisao-florestal#producao'
       },
       {
         key: 'btn7_subItem3',
-        href: '/divisao-florestal'
+        href: '/divisao-florestal#fornecedor'
       },
       {
         key: 'btn7_subItem4',
-        href: '/divisao-florestal'
+        href: '/divisao-florestal#resumo-publico'
       }
     ]
   },
@@ -80,6 +80,14 @@ export const menuNavigation = {
           {
             key: 'btn8_subItem2',
             href: '/products/bp-berneck'
+          },
+          {
+            key: 'btn8_subItem21',
+            href: '/products/bp-berneck/catalog'
+          },
+          {
+            key: 'btn8_subItem22',
+            href: '/products/bp-berneck/gallery'
           },
           {
             key: 'btn8_subItem3',

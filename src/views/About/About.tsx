@@ -272,7 +272,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
 
 
       {/* INICIO TRAJETORIA CAROUSEL */}
-      <Box bg="brown.100">
+      <Box bg="brown.100" id="trajetoria">
         <Flex
           // bg='yellow'
           direction={{
@@ -329,7 +329,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
 
 
       {/* INICIO ONDE ESTAMOS */}
-      <Flex
+      <Flex id="onde-estamos"
         maxWidth="1920px"
         marginX="auto"
         position="relative"

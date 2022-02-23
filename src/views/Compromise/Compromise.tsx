@@ -265,7 +265,7 @@ export const Compromise = () => {
       {/* FIM VALORES */}
 
       {/* INICIO Cultivamos o meio ambiente */}
-      <Flex
+      <Flex id="meio-ambiente"
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"
@@ -780,7 +780,7 @@ export const Compromise = () => {
       {/* FIM Preservação da fauna e da flora */}
 
       {/* INICIO Cultivamos nossa gente */}
-      <Flex
+      <Flex id="nossa-gente"
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"
@@ -1072,7 +1072,7 @@ export const Compromise = () => {
       {/* FIM Confira alguns projetos patrocinados por nós */}
 
       {/* INICIO Cultivamos nossos valores */}
-      <Flex
+      <Flex id="nossos-valores"
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"
@@ -1321,7 +1321,7 @@ export const Compromise = () => {
       {/* FIM Ouvidoria */}
 
       {/* INICIO Nossas práticas de ESG */}
-      <Flex
+      <Flex id="relatorio"
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"
