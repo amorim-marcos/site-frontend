@@ -445,40 +445,40 @@ const FiltersTabs = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, 
                         </Center>
                         <Center position="relative" display={(currentFilterPanel == 'none') ? 'none' : 'normal'} flex={1} minH="100px">
                             <Box display={(currentFilterPanel != 'panels') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
-                                <Flex justifyContent="center">
+                                <Flex justifyContent="center" wrap="wrap">
                                     {
                                         panels.map((filter) => 
                                             <FilterCheckbox 
                                                 isChecked={filters["panels"].includes(filter.code)}
                                                 onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("panels", value) : removeFilter("panels", value) }} 
                                                 title={filter.title} code={filter.code} background_image={filter.background_image} 
-                                                mr="30px" key={"panels"+filter.code}
+                                                mr="30px" mb="10px" key={"panels"+filter.code}
                                             />
                                         )
                                     }
                                 </Flex>
                             </Box>
                             <Box display={(currentFilterPanel != 'collections') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
-                                <Flex justifyContent="center">
+                                <Flex justifyContent="center" wrap="wrap">
                                     {
                                         collections.map((filter) => 
                                             <FilterCheckbox 
                                                 isChecked={filters["collections"].includes(filter.code)}
                                                 onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("collections", value) : removeFilter("collections", value) }} 
-                                                title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" 
+                                                title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" mb="10px"
                                             />
                                         )
                                     }
                                 </Flex>
                             </Box>
                             <Box display={(currentFilterPanel != 'colorations') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
-                                <Flex justifyContent="center">
+                                <Flex justifyContent="center" wrap="wrap">
                                     {
                                         colorations.map((filter) => 
                                             <FilterCheckbox 
                                                 isChecked={filters["colorations"].includes(filter.code)}
                                                 onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("colorations", value) : removeFilter("colorations", value) }} 
-                                                title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" 
+                                                title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" mb="10px" 
                                             />
                                         )
                                     }
