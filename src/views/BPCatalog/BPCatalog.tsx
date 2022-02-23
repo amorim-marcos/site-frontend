@@ -189,7 +189,8 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                         panels.map((filter) => 
                                             <FilterCheckbox 
                                                 mb="10px"
-                                                minW="100%"
+                                                minW={{base: "100%", sm: "48%"}}
+                                                mr={{base: 0, sm: "2%"}}
                                                 isChecked={filters["panels"].includes(filter.code)}
                                                 onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("panels", value) : removeFilter("panels", value) }} 
                                                 title={filter.title} code={filter.code} background_image={filter.background_image} 
@@ -218,7 +219,8 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                     {
                                         collections.map((filter) => 
                                             <FilterCheckbox 
-                                                minW="100%"
+                                                minW={{base: "100%", sm: "48%"}}
+                                                mr={{base: 0, sm: "2%"}}
                                                 mb="10px"
                                                 isChecked={filters["collections"].includes(filter.code)}
                                                 onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("collections", value) : removeFilter("collections", value) }} 
@@ -247,7 +249,8 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                     {
                                         colorations.map((filter) => 
                                             <FilterCheckbox 
-                                                minW="100%"
+                                                minW={{base: "100%", sm: "48%"}}
+                                                mr={{base: 0, sm: "2%"}}
                                                 mb="10px"
                                                 isChecked={filters["colorations"].includes(filter.code)}
                                                 onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("colorations", value) : removeFilter("colorations", value) }} 
