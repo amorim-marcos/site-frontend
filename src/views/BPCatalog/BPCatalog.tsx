@@ -313,6 +313,42 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                 </Flex>
             )}
             {
+                !displayFilters &&         
+                <Flex minW="100%" height="100px" background={(darkMode) ? 'gray.350' : 'gray.100'} justifyContent="space-between" alignItems="center">
+                    <Select 
+                        onChange={(e) => { setFilters({ ...filters, orderBy: e.target.value }); setFilteredBps(applyFilters({ ...filters, orderBy: e.target.value }, bps))}} 
+                        color={(darkMode) ? 'green.300' : 'gray.300'} border="0" 
+                        backgroundColor={(darkMode) ? "gray.400" : "white.100"} width="160px" fontSize="16px"
+                    >
+                            <option value='launch'>lançamento</option>
+                            <option value='name'>nome</option>
+                            <option value='scale'>escala de cor</option>
+                    </Select>  
+
+                    <Box>
+                        <Flex justifyContent="center" alignItems="center">
+                            <Button onClick={() => changeGridSize('mobile-big')}variant="link" display="inline-block" mr="15px" ><BigGridIcon color={(gridSize == 'mobile-big')? "green.500" : "gray.200"} /></Button>
+
+                            <Button onClick={() => changeGridSize('mobile-medium')} variant="link" display="inline-block" mr="15px"><MidGridIcon color={(gridSize == 'mobile-medium')? "green.500" : "gray.200"} /></Button>
+                        </Flex>
+                    </Box>
+
+                    <Box>
+                        <Flex justifyContent="center" alignItems="center">
+                                <Box position="relative"  display="inline-block" mr="15px">
+                                    <SunIcon color={(darkMode) ? 'green.300' : 'gray.300'} />
+                                </Box>
+
+                                <Button onClick={() => setDarkMode(!darkMode)} variant="link" display="inline-block" mr="15px"><FiltersDarkModeIcon activated={darkMode}/></Button>
+
+                                <Box position="relative"  display="inline-block">
+                                    <MoonIcon color={(darkMode) ? 'green.300' : 'gray.300'} />
+                                </Box>
+                        </Flex>
+                    </Box>
+                </Flex>
+            }
+            {
                 ( !displayFilters && !filtersEmpty ) && 
                 <>
                     <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
@@ -335,42 +371,6 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
 
             }
         </Box>
-        {
-            !displayFilters &&         
-            <Flex minW="100%" height="100px" background={(darkMode) ? 'gray.350' : 'gray.100'} justifyContent="space-between" alignItems="center">
-                <Select 
-                    onChange={(e) => { setFilters({ ...filters, orderBy: e.target.value }); setFilteredBps(applyFilters({ ...filters, orderBy: e.target.value }, bps))}} 
-                    color={(darkMode) ? 'green.300' : 'gray.300'} border="0" 
-                    backgroundColor={(darkMode) ? "gray.400" : "white.100"} width="160px" fontSize="16px"
-                >
-                        <option value='launch'>lançamento</option>
-                        <option value='name'>nome</option>
-                        <option value='scale'>escala de cor</option>
-                </Select>  
-
-                <Box>
-                    <Flex justifyContent="center" alignItems="center">
-                        <Button onClick={() => changeGridSize('mobile-big')}variant="link" display="inline-block" mr="15px" ><BigGridIcon color={(gridSize == 'mobile-big')? "green.500" : "gray.200"} /></Button>
-
-                        <Button onClick={() => changeGridSize('mobile-medium')} variant="link" display="inline-block" mr="15px"><MidGridIcon color={(gridSize == 'mobile-medium')? "green.500" : "gray.200"} /></Button>
-                    </Flex>
-                </Box>
-
-                <Box>
-                    <Flex justifyContent="center" alignItems="center">
-                            <Box position="relative"  display="inline-block" mr="15px">
-                                <SunIcon color={(darkMode) ? 'green.300' : 'gray.300'} />
-                            </Box>
-
-                            <Button onClick={() => setDarkMode(!darkMode)} variant="link" display="inline-block" mr="15px"><FiltersDarkModeIcon activated={darkMode}/></Button>
-
-                            <Box position="relative"  display="inline-block">
-                                <MoonIcon color={(darkMode) ? 'green.300' : 'gray.300'} />
-                            </Box>
-                    </Flex>
-                </Box>
-            </Flex>
-        }
 
         </>
     )
