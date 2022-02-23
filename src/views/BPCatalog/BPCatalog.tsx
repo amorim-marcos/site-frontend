@@ -12,6 +12,7 @@ import FiltersDarkModeIcon from '@components/Icons/FiltersDarkModeIcon'
 import Pagebar from '@components/Pagebar'
 import { colors } from 'theme/colors'
 import BpPatternImage from '@components/BpPatternImage'
+import useMobile from 'hooks/useMobile'
 
 export type BP = {
     name: string,
@@ -69,7 +70,7 @@ const FilterCheckbox = ({title, code, background_image, onCheck, isChecked, ...p
     React.useEffect(() => {
         setChecked(isChecked)
     }, [isChecked])
-    
+
     return (
         // @ts-ignore
         <Button background="transparent" zIndex="3" onClick={(e) => { if(onCheck) onCheck(checked, value)}} position="relative" color="green.900" justifyContent="start" variant="link" borderRadius="5px" height="60px" minW="250px" {...props} padding="28px" overflow="hidden">
@@ -120,6 +121,13 @@ export type FiltersSelectProps = {
     filters: any
     filtersEmpty: boolean
     filteredBpsLength: number
+}
+
+const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, changeFilterPanel, currentFilterPanel, panels, collections, colorations, appendFilter, gridSize, changeGridSize, removeFilter, setFilters, bps, setFilteredBps, applyFilters, filters, filtersEmpty, filteredBpsLength}: FiltersSelectProps) => {
+    return (
+        <>
+        </>
+    )
 }
 
 const FiltersTabs = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, changeFilterPanel, currentFilterPanel, panels, collections, colorations, appendFilter, gridSize, changeGridSize, removeFilter, setFilters, bps, setFilteredBps, applyFilters, filters, filtersEmpty, filteredBpsLength}: FiltersSelectProps) => {
@@ -336,6 +344,8 @@ const FiltersTabs = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, 
     )
 }
 
+
+
 export const BPCatalog = ({ bps }:BPCatalogProps) => {
     const [displayFilters, setDisplayFilters] = React.useState(false)
     const [darkMode, setDarkMode] = React.useState(false)
@@ -345,6 +355,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
     const [filters, setFilters] = React.useState(JSON.parse(JSON.stringify(initialFilters)))
     const [filteredBps, setFilteredBps] = React.useState(bps)
     const [filtersEmpty, setFiltersEmpty] = React.useState(true)
+    const { isMobile } = useMobile(1024)
 
     function changeGridSize(newGridSize:GridSize){
         setGridSize(newGridSize)
@@ -525,28 +536,54 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
             ]}
         />
         <Container backgroundColor={(darkMode) ? "gray.400" : "white.100"} maxW="1920px" paddingInline="0" paddingTop="30px" paddingBottom="300px">
-            <FiltersTabs 
-                darkMode={darkMode}
-                setDarkMode={setDarkMode}
-                displayFilters={displayFilters}
-                setDisplayFilters={setDisplayFilters}
-                changeFilterPanel={changeFilterPanel} 
-                currentFilterPanel={currentFilterPanel}
-                appendFilter={appendFilter} 
-                removeFilter={removeFilter} 
-                setFilters={setFilters} 
-                bps={bps}
-                setFilteredBps={setFilteredBps} 
-                applyFilters={applyFilters} 
-                panels={filtersCheckboxes["panels"]}
-                colorations={filtersCheckboxes["colorations"]} 
-                collections={filtersCheckboxes["collections"]} 
-                filters={filters}
-                filtersEmpty={filtersEmpty}
-                filteredBpsLength={filteredBps.length}
-                gridSize={gridSize}
-                changeGridSize={changeGridSize}
-            />
+            {(isMobile) 
+                ?  <FiltersAccordion 
+                        darkMode={darkMode}
+                        setDarkMode={setDarkMode}
+                        displayFilters={displayFilters}
+                        setDisplayFilters={setDisplayFilters}
+                        changeFilterPanel={changeFilterPanel} 
+                        currentFilterPanel={currentFilterPanel}
+                        appendFilter={appendFilter} 
+                        removeFilter={removeFilter} 
+                        setFilters={setFilters} 
+                        bps={bps}
+                        setFilteredBps={setFilteredBps} 
+                        applyFilters={applyFilters} 
+                        panels={filtersCheckboxes["panels"]}
+                        colorations={filtersCheckboxes["colorations"]} 
+                        collections={filtersCheckboxes["collections"]} 
+                        filters={filters}
+                        filtersEmpty={filtersEmpty}
+                        filteredBpsLength={filteredBps.length}
+                        gridSize={gridSize}
+                        changeGridSize={changeGridSize}
+                    />
+                :   <FiltersTabs 
+                        darkMode={darkMode}
+                        setDarkMode={setDarkMode}
+                        displayFilters={displayFilters}
+                        setDisplayFilters={setDisplayFilters}
+                        changeFilterPanel={changeFilterPanel} 
+                        currentFilterPanel={currentFilterPanel}
+                        appendFilter={appendFilter} 
+                        removeFilter={removeFilter} 
+                        setFilters={setFilters} 
+                        bps={bps}
+                        setFilteredBps={setFilteredBps} 
+                        applyFilters={applyFilters} 
+                        panels={filtersCheckboxes["panels"]}
+                        colorations={filtersCheckboxes["colorations"]} 
+                        collections={filtersCheckboxes["collections"]} 
+                        filters={filters}
+                        filtersEmpty={filtersEmpty}
+                        filteredBpsLength={filteredBps.length}
+                        gridSize={gridSize}
+                        changeGridSize={changeGridSize}
+                    />
+            }
+            
+
             <Container minW="100%">
                 <Grid
                     templateRows="repeat(auto, 1fr)"
