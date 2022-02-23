@@ -765,7 +765,13 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
         }
     }, [filters])
 
-
+    React.useEffect(() => {
+        if(isMobile){
+            setGridSize('mobile-big')
+        }else{
+            setGridSize('big')
+        }
+    }, [isMobile])
     
     return (
         <>
