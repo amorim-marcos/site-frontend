@@ -337,14 +337,18 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
         </Box>
         {
             !displayFilters &&         
-            <Box display="inline-block" minW="100%" height="100px" background={(darkMode) ? 'gray.350' : 'gray.100'} paddingLeft="20%">
-                <Select onChange={(e) => { setFilters({ ...filters, orderBy: e.target.value }); setFilteredBps(applyFilters({ ...filters, orderBy: e.target.value }, bps))}} mr="30px" color={(darkMode) ? 'green.300' : 'gray.300'} position="relative" top="30px" display="inline-block" border="0" backgroundColor={(darkMode) ? "gray.400" : "white.100"} width="160px" fontSize="16px">
+            <Flex minW="100%" height="100px" background={(darkMode) ? 'gray.350' : 'gray.100'} justifyContent="space-between" alignItems="center">
+                <Select 
+                    onChange={(e) => { setFilters({ ...filters, orderBy: e.target.value }); setFilteredBps(applyFilters({ ...filters, orderBy: e.target.value }, bps))}} 
+                    color={(darkMode) ? 'green.300' : 'gray.300'} border="0" 
+                    backgroundColor={(darkMode) ? "gray.400" : "white.100"} width="160px" fontSize="16px"
+                >
                         <option value='launch'>lançamento</option>
                         <option value='name'>nome</option>
                         <option value='scale'>escala de cor</option>
                 </Select>  
 
-                <Box position="relative" top="30px" display="inline-block" mr="30px">
+                <Box>
                     <Flex justifyContent="center" alignItems="center">
                         <Button onClick={() => changeGridSize('mobile-big')}variant="link" display="inline-block" mr="15px" ><BigGridIcon color={(gridSize == 'mobile-big')? "green.500" : "gray.200"} /></Button>
 
@@ -352,7 +356,7 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                     </Flex>
                 </Box>
 
-                <Box position="relative" top="30px" display="inline-block">
+                <Box>
                     <Flex justifyContent="center" alignItems="center">
                             <Box position="relative"  display="inline-block" mr="15px">
                                 <SunIcon color={(darkMode) ? 'green.300' : 'gray.300'} />
@@ -365,7 +369,7 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                             </Box>
                     </Flex>
                 </Box>
-            </Box>
+            </Flex>
         }
 
         </>
