@@ -104,7 +104,7 @@ export const Buy = () => {
 
             <Text
               whiteSpace={'nowrap'}
-              variant={'body'}
+              variant={'body' as any}
               color={locationBrasil ? 'white.100' : 'gray.400'}
               marginLeft={'5%'}
             >
@@ -138,7 +138,7 @@ export const Buy = () => {
           >
             <Text
               whiteSpace={'nowrap'}
-              variant={'body'}
+              variant={'body' as any}
               marginRight={'5%'}
               color={locationBrasil ? 'gray.400' : 'white.100'}
             >
