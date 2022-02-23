@@ -73,16 +73,18 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
         ]}
       />
 
-      <PageSession
-        data={{
-          imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
-          title: 'Quem somos',
-          subtitle: page_content.header_title,
-          text: page_content.header_text
-        }}
-        titleColor="white"
-        subTitleColor="white"
-      />
+      <Box id="quem-somos">
+        <PageSession 
+          data={{
+            imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
+            title: 'Quem somos',
+            subtitle: page_content.header_title,
+            text: page_content.header_text
+          }}
+          titleColor="white"
+          subTitleColor="white"
+        />
+      </Box>
 
       {/* INICIO RAIZES FIRMES PARA CRESCER */}
       <Flex
