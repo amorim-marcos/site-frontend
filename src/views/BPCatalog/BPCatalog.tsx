@@ -185,7 +185,17 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'panels') ? "down" : "up"} width="3" height="6" color="gray.200" />
                             </Button> 
                             <Box display={(currentFilterPanel != 'panels') ? 'none' : 'normal'}  top="0" left="0" width="100%" height="100%" paddingBottom="25px">                          
-                                Panels
+                                    {
+                                        panels.map((filter) => 
+                                            <FilterCheckbox 
+                                                mb="10px"
+                                                isChecked={filters["panels"].includes(filter.code)}
+                                                onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("panels", value) : removeFilter("panels", value) }} 
+                                                title={filter.title} code={filter.code} background_image={filter.background_image} 
+                                                mr="30px" key={"panels"+filter.code}
+                                            />
+                                        )
+                                    }
                             </Box>
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
@@ -204,7 +214,16 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'collections') ? "down" : "up"} width="3" height="6" color="gray.200" />
                             </Button> 
                             <Box display={(currentFilterPanel != 'collections') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
-                                Collections
+                                    {
+                                        collections.map((filter) => 
+                                            <FilterCheckbox 
+                                                mb="10px"
+                                                isChecked={filters["collections"].includes(filter.code)}
+                                                onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("collections", value) : removeFilter("collections", value) }} 
+                                                title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" 
+                                            />
+                                        )
+                                    }
                             </Box>
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
@@ -223,7 +242,16 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'colorations') ? "down" : "up"} width="3" height="6" color="gray.200" />
                             </Button>
                             <Box display={(currentFilterPanel != 'colorations') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
-                                Colorations
+                                    {
+                                        colorations.map((filter) => 
+                                            <FilterCheckbox 
+                                                mb="10px"
+                                                isChecked={filters["colorations"].includes(filter.code)}
+                                                onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("colorations", value) : removeFilter("colorations", value) }} 
+                                                title={filter.title} code={filter.code} background_image={filter.background_image} mr="30px" 
+                                            />
+                                        )
+                                    }
                             </Box>   
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
