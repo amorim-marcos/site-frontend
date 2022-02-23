@@ -335,6 +335,39 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
 
             }
         </Box>
+        {
+            !displayFilters &&         
+            <Box display="inline-block" minW="100%" height="100px" background={(darkMode) ? 'gray.350' : 'gray.100'} paddingLeft="20%">
+                <Select onChange={(e) => { setFilters({ ...filters, orderBy: e.target.value }); setFilteredBps(applyFilters({ ...filters, orderBy: e.target.value }, bps))}} mr="30px" color={(darkMode) ? 'green.300' : 'gray.300'} position="relative" top="30px" display="inline-block" border="0" backgroundColor={(darkMode) ? "gray.400" : "white.100"} width="160px" fontSize="16px">
+                        <option value='launch'>lançamento</option>
+                        <option value='name'>nome</option>
+                        <option value='scale'>escala de cor</option>
+                </Select>  
+
+                <Box position="relative" top="30px" display="inline-block" mr="30px">
+                    <Flex justifyContent="center" alignItems="center">
+                        <Button onClick={() => changeGridSize('mobile-big')}variant="link" display="inline-block" mr="15px" ><BigGridIcon color={(gridSize == 'mobile-big')? "green.500" : "gray.200"} /></Button>
+
+                        <Button onClick={() => changeGridSize('mobile-medium')} variant="link" display="inline-block" mr="15px"><MidGridIcon color={(gridSize == 'mobile-medium')? "green.500" : "gray.200"} /></Button>
+                    </Flex>
+                </Box>
+
+                <Box position="relative" top="30px" display="inline-block">
+                    <Flex justifyContent="center" alignItems="center">
+                            <Box position="relative"  display="inline-block" mr="15px">
+                                <SunIcon color={(darkMode) ? 'green.300' : 'gray.300'} />
+                            </Box>
+
+                            <Button onClick={() => setDarkMode(!darkMode)} variant="link" display="inline-block" mr="15px"><FiltersDarkModeIcon activated={darkMode}/></Button>
+
+                            <Box position="relative"  display="inline-block">
+                                <MoonIcon color={(darkMode) ? 'green.300' : 'gray.300'} />
+                            </Box>
+                    </Flex>
+                </Box>
+            </Box>
+        }
+
         </>
     )
 }
@@ -709,6 +742,12 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                 break
             case 'small':
                 setGridColumnsMode('repeat(7, 1fr)')
+                break
+            case 'mobile-big':
+                setGridColumnsMode('repeat(1, 1fr)')
+                break
+            case 'mobile-medium':
+                setGridColumnsMode('repeat(2, 1fr)')
                 break
         }
     }, [gridSize])
