@@ -5,7 +5,8 @@ import {
   Flex,
   Text,
   Image,
-  Button
+  Button,
+  Link
 } from '@chakra-ui/react'
 
 import BannerProducts from '@components/BannerProducts'
@@ -19,14 +20,16 @@ import PatternInfo from '@components/PatternInfo'
 import ProductsGallery from '@components/ProductsGallery'
 import { ProductsGalleryProps } from '@components/ProductsGallery/ProductsGallery'
 import useMobile from 'hooks/useMobile'
-
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 const vet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 export type SectionsProductsProps = ProductsGalleryProps
 
 export const SectionProducts = ({ products }: SectionsProductsProps) => {
+  const router = useRouter()
+
   return (
     <Flex
       maxWidth="1920px"
@@ -84,20 +87,24 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
             }}
             alignItems={'flex-end'}
           >
-            <Text
-              as="h4"
-              variant={'h4' as any}
-              textAlign={{
-                base: 'right',
-                sm: 'right',
-                lg: 'right',
-                xl: 'right'
-              }}
-              fontWeight={'medium'}
-              color={'green.550'}
+            <Link
+              onClick={() => router.push('/products')}
             >
-              Veja todos os produtos
-            </Text>
+              <Text
+                as="h4"
+                variant={'h4' as any}
+                textAlign={{
+                  base: 'right',
+                  sm: 'right',
+                  lg: 'right',
+                  xl: 'right'
+                }}
+                fontWeight={'medium'}
+                color={'green.550'}
+              >
+                Veja todos os produtos
+              </Text>
+            </Link>
           </Flex>
           <Flex
             // bg="yellow"
@@ -144,7 +151,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
           <PatternInfo
             title="DESCUBRA"
             description="Onde Comprar"
-            onClick={() => alert('Onde Comprar')}
+            onClick={() => router.push('/onde-comprar')}
             icon={
               <EarthIcon
                 width={{
@@ -178,7 +185,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
           <PatternInfo
             title="ENTRE EM CONTATO"
             description="Fale Conosco"
-            onClick={() => alert('Fale Conosco')}
+            onClick={() => router.push('/contact')}
             icon={
               <Contactusicon
                 width={{
