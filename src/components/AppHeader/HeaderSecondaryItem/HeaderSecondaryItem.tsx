@@ -11,13 +11,13 @@ export const HeaderSecondaryItem = ({
   return (
     <Flex
       alignItems="center"
-      marginLeft={{ base: '0', md: '6%', xl: '7%', '2xl': '8%' }}
       width={{ base: 'calc(100vw - 20px)', md: 'auto' }}
       height={{ base: '9vh', md: 'auto' }}
       borderBottom={{ base: '2px solid', md: 'none' }}
       borderBottomColor={{ base: 'green.900', md: 'none' }}
       paddingX={{ base: '10px', md: '0' }}
       marginX={{ base: '10px', md: '0' }}
+      marginLeft={{ base: '0', md: '6%', xl: '7%', '2xl': '8%' }}
     >
       <Link href={href} passHref>
         <Text

@@ -13,7 +13,8 @@ module.exports = withPWA({
     YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY
   },
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'es', 'pt-BR', 'zn-CN']
+    defaultLocale: 'pt-BR',
+    locales: ['pt-BR']
+    // locales: ['en', 'es', 'pt-BR', 'zn-CN']
   }
 })
