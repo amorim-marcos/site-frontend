@@ -57,8 +57,8 @@ const BP = ({name, product_texture, pattern_image, ...props}: BPProps) => {
         <Link {...props}>
             <Flex direction="column">
                 <BpPatternImage flex={1} image_url={pattern_image} />
-                <Text flex={1} fontSize="31px" variant={"body-bold" as any}>{name}</Text>
-                <Text flex={1} fontSize="28px">{product_texture}</Text>
+                <Text flex={1} fontSize={{base: "20px", xl: "31px"}} variant={"body-bold" as any}>{name}</Text>
+                <Text flex={1} fontSize={{ base: "15px", xl: "28px"}}>{product_texture}</Text>
             </Flex>
         </Link>
     )
@@ -87,7 +87,7 @@ const FilterCheckbox = ({title, code, background_image, onCheck, isChecked, ...p
                 zIndex="2" 
                 mr="5px" 
             />
-            <Text fontWeight="600" fontSize="19px" color="green.900" zIndex="2">{title}</Text>
+            <Text fontWeight="600" fontSize={{ base: "17px", md: "19px"}} color="green.900" zIndex="2">{title}</Text>
             <Image position="absolute" top="0" right="0" zIndex="1" src={background_image} ></Image>
         </Button>
     )
@@ -181,7 +181,7 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                 justifyContent="start"
                                 alignItems="center"
                             >
-                                <Text color={(darkMode) ? 'green.300' : 'gray.300'} mr="10px">PAINÉIS</Text>
+                                <Text fontSize="17px" color={(darkMode) ? 'green.300' : 'gray.300'} mr="10px">PAINÉIS</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'panels') ? "down" : "up"} width="3" height="6" color="gray.200" />
                             </Button> 
                             <Box display={(currentFilterPanel != 'panels') ? 'none' : 'normal'}  top="0" left="0" width="100%" height="100%" paddingBottom="25px">                          
@@ -212,7 +212,7 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                 justifyContent="start"
                                 alignItems="center"
                             >
-                                <Text color={(darkMode) ? 'green.300' : 'gray.300'} mr="10px">COLEÇÕES</Text>
+                                <Text fontSize="17px" color={(darkMode) ? 'green.300' : 'gray.300'} mr="10px">COLEÇÕES</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'collections') ? "down" : "up"} width="3" height="6" color="gray.200" />
                             </Button> 
                             <Box display={(currentFilterPanel != 'collections') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
@@ -242,7 +242,7 @@ const FiltersAccordion = ({darkMode, setDarkMode, displayFilters, setDisplayFilt
                                 justifyContent="start"
                                 alignItems="center"
                             >
-                                <Text color={(darkMode) ? 'green.300' : 'gray.300'} mr="10px">COLORAÇÃO</Text>
+                                <Text fontSize="17px" color={(darkMode) ? 'green.300' : 'gray.300'} mr="10px">COLORAÇÃO</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'colorations') ? "down" : "up"} width="3" height="6" color="gray.200" />
                             </Button>
                             <Box display={(currentFilterPanel != 'colorations') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
@@ -591,8 +591,6 @@ const FiltersTabs = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, 
     )
 }
 
-
-
 export const BPCatalog = ({ bps }:BPCatalogProps) => {
     const [displayFilters, setDisplayFilters] = React.useState(false)
     const [darkMode, setDarkMode] = React.useState(false)
@@ -846,7 +844,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                 <Grid
                     templateRows="repeat(auto, 1fr)"
                     templateColumns={gridColumnsMode}
-                    gridGap="30px"
+                    gridGap={{base: "10px", xl: "30px"}}
                 >
                     {
                         filteredBps && filteredBps.map((bp) => (
