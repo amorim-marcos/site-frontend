@@ -491,14 +491,14 @@ const FiltersTabs = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, 
                         </Center>
                     </Flex>
                 </Box>
-                <Box display="inline-block" minW="100%" height="100px" background={(darkMode) ? 'gray.350' : 'gray.100'} paddingLeft="20%">
-                    <Select onChange={(e) => { setFilters({ ...filters, orderBy: e.target.value }); setFilteredBps(applyFilters({ ...filters, orderBy: e.target.value }, bps))}} mr="30px" color={(darkMode) ? 'green.300' : 'gray.300'} position="relative" top="30px" display="inline-block" border="0" backgroundColor={(darkMode) ? "gray.400" : "white.100"} width="160px" fontSize="16px">
+                <Flex justifyContent="center" alignItems="center" minW="100%" height="100px" background={(darkMode) ? 'gray.350' : 'gray.100'}>
+                    <Select onChange={(e) => { setFilters({ ...filters, orderBy: e.target.value }); setFilteredBps(applyFilters({ ...filters, orderBy: e.target.value }, bps))}} mr="30px" color={(darkMode) ? 'green.300' : 'gray.300'} position="relative" display="inline-block" border="0" backgroundColor={(darkMode) ? "gray.400" : "white.100"} width="160px" fontSize="16px">
                             <option value='launch'>lançamento</option>
                             <option value='name'>nome</option>
                             <option value='scale'>escala de cor</option>
                     </Select>  
 
-                    <Box position="relative" top="30px" display="inline-block" mr="30px">
+                    <Box position="relative" display="inline-block" mr="30px">
                         <Flex justifyContent="center" alignItems="center">
                             <Text color={(darkMode) ? 'green.300' : 'gray.300'} display="inline-block" fontSize="16px" mr="15px">Formato de exibição</Text>
                                     
@@ -511,7 +511,7 @@ const FiltersTabs = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, 
                     </Box>
 
                     
-                    <Box position="relative" top="30px" display="inline-block" mr="30px">
+                    <Box position="relative" display="inline-block" mr="30px">
                         <Box position="relative"  display="inline-block">
                             <Flex
                                 width={{
@@ -567,7 +567,7 @@ const FiltersTabs = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, 
                         </Box>
                     </Box>
 
-                    <Box position="relative" top="30px" display="inline-block">
+                    <Box position="relative" display="inline-block">
 
                         <Flex justifyContent="center" alignItems="center">
                                 <Text color={(darkMode) ? 'green.300' : 'gray.300'} display="inline-block" fontSize="16px" mr="15px">Cor do fundo</Text>
@@ -583,7 +583,7 @@ const FiltersTabs = ({darkMode, setDarkMode, displayFilters, setDisplayFilters, 
                                 </Box>
                         </Flex>
                     </Box>
-                </Box>
+                </Flex>
             </Box>
         }
         <Text position="absolute" color={(darkMode) ? 'green.300' : 'gray.300'} top="0" right="0">{filteredBpsLength} Produtos Encontrados</Text>
