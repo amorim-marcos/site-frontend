@@ -1,101 +1,117 @@
+import { useRouter } from 'next/router'
 import { Flex, Box, Text, Image, Button } from '@chakra-ui/react'
 
-export const SectionPages = (props: { content: unknown[] }) => (
-  <Flex
-    bg="#FFFBF4"
-    w="100%"
-    direction={'column'}
-    borderTop={'3px solid'}
-    borderColor="green.600"
-  >
-    {props.content.map((item: any) =>
-      item.id.includes('berneck-teca') ? (
-        <Page
-          key={item.id}
-          image={'/assets/imgs/search/teca_page.png'}
-          content={{
-            title: item.header_subtitle,
-            description: item.description
-          }}
-        />
-      ) : item.id.includes('berneck-pinus') ? (
-        <Page
-          key={item.id}
-          image={'/assets/imgs/search/pinus_page.png'}
-          content={{
-            title: item.header_subtitle,
-            description: item.description
-          }}
-        />
-      ) : item.id.includes('forest-division') ? (
-        <Page
-          key={item.id}
-          image={'/assets/imgs/divisao-florestal-1x.jpg'}
-          content={{
-            title: 'Divisão Florestal',
-            description: item.header_text
-          }}
-        />
-      ) : item.id.includes('hdf-berneck') ? (
-        <Page
-          key={item.id}
-          image={'/assets/imgs/search/hdf_page.png'}
-          content={{
-            title: 'HDF Berneck©',
-            description: item.hdf_berneck.description
-          }}
-        />
-      ) : item.id.includes('mdf-berneck') ? (
-        <Page
-          key={item.id}
-          image={'/assets/imgs/search/mdf_page.png'}
-          content={{
-            title: 'MDF Berneck©',
-            description: item.mdf_berneck.description
-          }}
-        />
-      ) : item.id.includes('mdp-berneck') ? (
-        <Page
-          key={item.id}
-          image={'/assets/imgs/search/mdp_page.png'}
-          content={{
-            title: 'MDP Berneck©',
-            description: item.mdp_berneck.description
-          }}
-        />
-      ) : item.id.includes('our-commitment') ? (
-        <Page
-          key={item.id}
-          image={'/assets/imgs/nosso-compromisso-1x.jpg'}
-          content={{
-            title: 'Nosso Compromisso',
-            description: item.header_text
-          }}
-        />
-      ) : item.id.includes('our-trajectory') ? (
-        <Page
-          key={item.id}
-          image={'/assets/imgs/foto_fabrica@2x.png'}
-          content={{
-            title: 'Nossa Trajetória',
-            description: item.year[item.year.length - 1].description
-          }}
-        />
-      ) : (
-        item.id.includes('who-we-are') && (
+export const SectionPages = (props: { content: unknown[] }) => {
+  const router = useRouter()
+
+  return (
+    <Flex
+      bg="#FFFBF4"
+      w="100%"
+      direction={'column'}
+      borderTop={'3px solid'}
+      borderColor="green.600"
+    >
+      {props.content.map((item: any) =>
+        item.id.includes('berneck-teca') ? (
           <Page
             key={item.id}
-            image={'/assets/imgs/capa_somos_berneck.png'}
+            onClick={() => router.push('/products/berneck-teca')}
+            image={'/assets/imgs/search/teca_page.png'}
             content={{
-              title: 'Quem Somos',
+              title: item.header_subtitle,
+              description: item.description
+            }}
+          />
+        ) : item.id.includes('berneck-pinus') ? (
+          <Page
+            key={item.id}
+            onClick={() => router.push('/products/berneck-pinus')}
+            image={'/assets/imgs/search/pinus_page.png'}
+            content={{
+              title: item.header_subtitle,
+              description: item.description
+            }}
+          />
+        ) : item.id.includes('forest-division') ? (
+          <Page
+            key={item.id}
+            onClick={() => router.push('/divisao-florestal')}
+            image={'/assets/imgs/divisao-florestal-1x.jpg'}
+            content={{
+              title: 'Divisão Florestal',
               description: item.header_text
             }}
           />
+        ) : item.id.includes('hdf-berneck') ? (
+          <Page
+            key={item.id}
+            onClick={() => router.push('/products/hdf-berneck')}
+            image={'/assets/imgs/search/hdf_page.png'}
+            content={{
+              title: 'HDF Berneck©',
+              description: item.hdf_berneck.description
+            }}
+          />
+        ) : item.id.includes('mdf-berneck') ? (
+          <Page
+            key={item.id}
+            onClick={() => router.push('/products/mdf-berneck')}
+            image={'/assets/imgs/search/mdf_page.png'}
+            content={{
+              title: 'MDF Berneck©',
+              description: item.mdf_berneck.description
+            }}
+          />
+        ) : item.id.includes('mdp-berneck') ? (
+          <Page
+            key={item.id}
+            onClick={() => router.push('/products/mdp-berneck')}
+            image={'/assets/imgs/search/mdp_page.png'}
+            content={{
+              title: 'MDP Berneck©',
+              description: item.mdp_berneck.description
+            }}
+          />
+        ) : item.id.includes('our-commitment') ? (
+          <Page
+            key={item.id}
+            onClick={() => router.push('/nosso-compromisso')}
+            image={'/assets/imgs/nosso-compromisso-1x.jpg'}
+            content={{
+              title: 'Nosso Compromisso',
+              description: item.header_text
+            }}
+          />
+        ) : item.id.includes('our-trajectory') ? (
+          <Page
+            key={item.id}
+            onClick={() =>
+              router.push('/somos-berneck#:~:text=Nossa%20Trajet%C3%B3ria')
+            }
+            image={'/assets/imgs/foto_fabrica@2x.png'}
+            content={{
+              title: 'Nossa Trajetória',
+              description: item.year[item.year.length - 1].description
+            }}
+          />
+        ) : (
+          item.id.includes('who-we-are') && (
+            <Page
+              key={item.id}
+              onClick={() => router.push('/somos-berneck')}
+              image={'/assets/imgs/capa_somos_berneck.png'}
+              content={{
+                title: 'Quem Somos',
+                description: item.header_text
+              }}
+            />
+          )
         )
-      )
-    )}
-  </Flex>
-)
+      )}
+    </Flex>
+  )
+}
 
 const Page = (props: {
   image: string
@@ -103,12 +119,14 @@ const Page = (props: {
     title: string
     description: string
   }
+  onClick: () => void
 }) => (
   <Flex w="100%" direction="column">
     <Flex
       role="group"
       w="100%"
       cursor="pointer"
+      onClick={props.onClick}
       justify="space-between"
       direction={{ base: 'column', lg: 'row' }}
       gap={{ base: '25px', lg: '69px' }}
