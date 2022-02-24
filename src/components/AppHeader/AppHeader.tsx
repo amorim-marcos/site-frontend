@@ -87,6 +87,7 @@ export const AppHeader = () => {
               <HeaderSecondaryItem
                 href={menuNavigation.workWithUs.href}
                 title={header.t(menuNavigation.workWithUs.key)}
+                target="_blank"
               />
               <HeaderSecondaryItem
                 href={menuNavigation.whereBuy.href}
@@ -95,6 +96,7 @@ export const AppHeader = () => {
               <HeaderSecondaryItem
                 href={menuNavigation.restrictAccess.href}
                 title={header.t(menuNavigation.restrictAccess.key)}
+                target="_blank"
               />
             </Flex>
           )}

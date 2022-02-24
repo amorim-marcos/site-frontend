@@ -247,7 +247,7 @@ export const Forests = () => {
 
 
       {/* INICIO Manejo Florestal */}
-      <Flex
+      <Flex id="manejo"
         maxWidth="1920px"
         marginX="auto"
         alignItems='center'
@@ -429,7 +429,7 @@ export const Forests = () => {
 
 
       {/* INICIO Produção Florestal */}
-      <Flex
+      <Flex id="producao"
         maxWidth="1920px"
         marginX="auto"
         alignItems='center'
@@ -651,7 +651,7 @@ export const Forests = () => {
 
 
       {/* INICIO Fornecedor Florestal */}
-      <Flex
+      <Flex id="fornecedor"
         maxWidth="1920px"
         marginX="auto"
         alignItems='center'
@@ -730,7 +730,7 @@ export const Forests = () => {
 
 
       {/* INICIO Resumo público de Manejo Florestal */}
-      <Flex
+      <Flex id="resumo-publico"
         maxWidth="1920px"
         marginX="auto"
         // alignItems='center'
