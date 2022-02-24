@@ -11,6 +11,9 @@ import Link from 'next/link'
 import { PagebarGrafism } from './PagebarGrafism/PagebarGrafism'
 import { useTranslation } from 'react-i18next'
 import ArrowIcon from '@components/Icons/ArrowIcon'
+import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import { CategoryContext } from 'views/Canal-BNK/index'
 
 export type Path = {
   title: string
@@ -21,6 +24,8 @@ export type PagebarProps = {
   paths?: Array<Path>
 }
 export const Pagebar = ({ paths }: PagebarProps) => {
+  const { seeOnlyPosts, setSeeOnlyPosts } = useContext(CategoryContext)
+  const router = useRouter()
   const pagebar = useTranslation('pagebar')
   return (
     <Flex
@@ -115,7 +120,6 @@ export const Pagebar = ({ paths }: PagebarProps) => {
         >
           {paths &&
             paths.map((s, i) => {
-              console.log(i, paths.length)
               return (
                 <BreadcrumbItem key={i} isCurrentPage={i === paths.length - 1}>
                   <BreadcrumbLink color="white.100" href={s.url}>
@@ -143,7 +147,18 @@ export const Pagebar = ({ paths }: PagebarProps) => {
             })}
         </Breadcrumb>
 
-        <Flex _hover={{ opacity: '0.6' }} alignItems="center" marginLeft="auto">
+        <Flex
+          _hover={{ opacity: '0.6' }}
+          onClick={() => {
+            if (seeOnlyPosts) {
+              setSeeOnlyPosts(false)
+            } else {
+              router.back()
+            }
+          }}
+          alignItems="center"
+          marginLeft="auto"
+        >
           <Box
             transform="rotate(180deg)"
             marginRight={{

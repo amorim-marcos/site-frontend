@@ -1,29 +1,56 @@
-import { createContext, ReactNode, useContext, useState } from 'react'
-import { Box } from '@chakra-ui/react'
-
-import Pagebar from '@components/Pagebar'
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useState
+} from 'react'
 import { Intro, Videos, Downloads, Connect } from './sections'
-
-import { Post, CategoryLabel } from 'types/data/Post'
-
-export type Category = CategoryLabel
+import { Post, Category } from 'types/data/Post'
+import Pagebar from '@components/Pagebar'
+import { Box } from '@chakra-ui/react'
+import { useEffect } from 'react'
 
 export const CategoryContext = createContext(
   {} as {
-    category: Category
-    setCategory: (category: Category) => void
+    currentCategory: number
+    changeCurrentCategory: (category: number) => void
+    categories: Category[]
+    setCategories: (v: Category[]) => void
+    seeOnlyPosts: boolean
+    setSeeOnlyPosts: (v: boolean) => void
   }
 )
 
 export function CategoryCtxProvider(props: { children: ReactNode }) {
-  const [category, setCategory] = useState<Category>('all')
+  const [currentCategory, setCurrentCategory] = useState<number>(-1)
+  const [categories, setCategories] = useState<Category[]>([])
+  const [seeOnlyPosts, setSeeOnlyPosts] = useState(false)
 
+  const changeCurrentCategory = useCallback(
+    (i: number) => {
+      if (i < categories.length) {
+        setCurrentCategory(i)
+      }
+    },
+    [categories]
+  )
+
+  useEffect(() => {
+    if (!!categories && categories.length <= 0) {
+      setCurrentCategory(-1)
+    }
+  }, [currentCategory, categories])
   return (
     <Box maxWidth={'1920px'} marginX="auto">
       <CategoryContext.Provider
         value={{
-          category,
-          setCategory
+          currentCategory,
+          changeCurrentCategory,
+          categories,
+          setCategories,
+          seeOnlyPosts,
+          setSeeOnlyPosts
         }}
       >
         {props.children}
@@ -33,29 +60,29 @@ export function CategoryCtxProvider(props: { children: ReactNode }) {
 }
 
 function CanalBNKFC(props: CanalBNKProps) {
-  const { category } = useContext(CategoryContext)
+  const {
+    currentCategory,
+    setCategories,
+    categories,
+    seeOnlyPosts,
+    changeCurrentCategory
+  } = useContext(CategoryContext)
 
-  const getCategoryName = () => {
-    return category === 'inspiration'
-      ? 'INSPIRAÇÃO SOB MEDIDA'
-      : category === 'feedstock'
-      ? 'MATÉRIA-PRIMA: CONHECIMENTO'
-      : 'MUNDO BERNECK'
-  }
+  useEffect(() => {
+    if (props.categories) {
+      setCategories(props.categories)
+      changeCurrentCategory(props.defaultCategory)
+    }
+  }, [props, setCategories, changeCurrentCategory])
 
   return (
     <Box>
-      {category !== 'all' ? (
+      {currentCategory !== -1 ? (
         <Pagebar
           paths={[
             { title: 'Canal Bnk', url: '/canal-bnk' },
             {
-              title:
-                category === 'inspiration'
-                  ? 'Inspiração sob medida'
-                  : category === 'feedstock'
-                  ? 'Matéria-prima: conhecimento'
-                  : 'Mundo Berneck',
+              title: categories[currentCategory].name,
               url: '/canal-bnk'
             }
           ]}
@@ -66,22 +93,29 @@ function CanalBNKFC(props: CanalBNKProps) {
 
       <Intro
         posts={
-          category === 'all'
+          currentCategory === -1
             ? props.posts
             : props.posts.filter(
-                (post) => post.Category.Name === getCategoryName()
+                (post) =>
+                  post.category.name === categories[currentCategory].name
               )
         }
       />
-      <Videos />
-      <Downloads />
-      <Connect />
+      {/* <Videos /> */}
+      {!seeOnlyPosts && (
+        <>
+          <Downloads />
+          <Connect />
+        </>
+      )}
     </Box>
   )
 }
 
 export interface CanalBNKProps {
   posts: Post[]
+  categories: Category[]
+  defaultCategory: number
 }
 
 export default function CanalBNK(props: CanalBNKProps) {

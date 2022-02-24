@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 import {
   Flex,
@@ -14,10 +14,11 @@ import { Arrow } from '@components/Icons'
 import Post from '@components/Post'
 
 import useMobile from 'hooks/useMobile'
-import { Category, CategoryContext } from '..'
+import { CategoryContext } from '..'
 
 import { Post as IPost } from 'types/data'
 import { Section } from './Section'
+import { Category } from 'types/data/Post/Category'
 
 export const PANEL_COLOR = {
   all: 'white',
@@ -27,7 +28,13 @@ export const PANEL_COLOR = {
 }
 
 export const Intro = (props: { posts: IPost[] }) => {
-  const { category, setCategory } = useContext(CategoryContext)
+  const {
+    currentCategory,
+    changeCurrentCategory,
+    categories,
+    seeOnlyPosts,
+    setSeeOnlyPosts
+  } = useContext(CategoryContext)
 
   return (
     <Box
@@ -35,11 +42,11 @@ export const Intro = (props: { posts: IPost[] }) => {
       overflow="hidden"
       w="100%"
       bg={
-        category === 'all'
+        currentCategory === -1
           ? 'brown.100'
-          : category === 'inspiration'
+          : currentCategory === 0
           ? 'brown.200'
-          : category === 'feedstock'
+          : currentCategory === 1
           ? 'green.200'
           : 'green.600'
       }
@@ -52,12 +59,12 @@ export const Intro = (props: { posts: IPost[] }) => {
         left="-80px"
         top="300px"
         opacity={
-          category === 'all' ? 0.6 : category === 'inspiration' ? 0.9 : 0.2
+          currentCategory === -1 ? 0.6 : currentCategory === 0 ? 0.9 : 0.2
         }
         filter={
-          category === 'all'
+          currentCategory === -1
             ? 'brightness(1) contrast(0.5) sepia(1) grayscale(0.6) hue-rotate(350deg) saturate(1.4)'
-            : category === 'feedstock'
+            : currentCategory === 1
             ? 'brightness(0.5) contrast(0.2) sepia(1) grayscale(0.6) hue-rotate(110deg) saturate(1)'
             : ''
         }
@@ -73,12 +80,12 @@ export const Intro = (props: { posts: IPost[] }) => {
         right="-150px"
         top="0"
         opacity={
-          category === 'all' ? 0.6 : category === 'inspiration' ? 0.9 : 0.2
+          currentCategory === -1 ? 0.6 : currentCategory === 0 ? 0.9 : 0.2
         }
         filter={
-          category === 'all'
+          currentCategory === -1
             ? 'brightness(1) contrast(0.5) sepia(1) grayscale(0.6) hue-rotate(350deg) saturate(1.4)'
-            : category === 'feedstock'
+            : currentCategory === 1
             ? 'brightness(0.5) contrast(0.2) sepia(1) grayscale(0.6) hue-rotate(110deg) saturate(1)'
             : ''
         }
@@ -92,218 +99,333 @@ export const Intro = (props: { posts: IPost[] }) => {
         <Flex
           data-testid="intro-header"
           w="100%"
-          pt="67px"
-          px={{ base: '10px', sm: '30px', lg: '0' }}
-          pl={{ lg: '88px' }}
-          pos="relative"
-          align="center"
+          // pt="67px"
+          // px={{ base: '10px', sm: '30px', lg: '0' }}
+          // pl={{ lg: '88px' }}
+          // pos="relative"
           justifyContent="space-between"
           zIndex={100}
-          direction={{
-            base: 'column',
-            xl: 'row'
-          }}
+          direction={{ base: 'column', lg: 'row' }}
+          padding={'5% 5% 0 5%'}
         >
-          <Flex direction="column" alignSelf={{ base: 'flex-start' }}>
+          <Flex
+            direction="column"
+            alignSelf={{ base: 'flex-start' }}
+            w={{ lg: '30%', '2xl': '23%' }}
+          >
             <Image
               src={
-                category === 'all'
+                currentCategory === -1
                   ? '/assets/imgs/canal-bnk/Canal_Berneck.svg'
-                  : category === 'inspiration'
+                  : currentCategory === 0
                   ? '/assets/imgs/canal-bnk/canal_bnk_materia.svg'
-                  : category === 'feedstock'
+                  : currentCategory === 1
                   ? '/assets/imgs/canal-bnk/canal_bnk_materia.svg'
                   : '/assets/imgs/canal-bnk/canal_bnk_mundo.svg'
               }
               w={{ base: '206px', lg: '210px' }}
-              pb="42px"
+              // pb="42px"
             />
 
-            <Box
-              w={{ base: '75%', lg: category === 'all' ? '256px' : '650px' }}
-            >
-              <Text
-                as="h1"
-                fontWeight={800}
-                fontSize="21px"
-                letterSpacing="2.1px"
-                color={
-                  category === 'all'
-                    ? '#436D5D'
-                    : category === 'inspiration'
-                    ? 'green.900'
-                    : category === 'feedstock'
-                    ? 'green.900'
-                    : 'white'
-                }
-              >
-                {category === 'inspiration'
-                  ? 'INSPIRAÇÃO SOB MEDIDA'
-                  : category === 'feedstock'
-                  ? 'MATÉRIA-PRIMA: CONHECIMENTO'
-                  : category === 'world' && 'MUNDO BERNECK'}
-              </Text>
+            <Box w={'100%'} marginTop="50px">
+              {!seeOnlyPosts && (
+                <Text
+                  as="h1"
+                  w="100%"
+                  fontWeight={800}
+                  fontSize="21px"
+                  letterSpacing="2.1px"
+                  color={
+                    currentCategory === -1
+                      ? '#436D5D'
+                      : currentCategory === 0
+                      ? 'green.900'
+                      : currentCategory === 1
+                      ? 'green.900'
+                      : 'white'
+                  }
+                >
+                  {currentCategory !== -1 && categories[currentCategory].name}
+                </Text>
+              )}
 
-              <Text
-                as="h2"
-                fontSize="20px"
-                letterSpacing="-0.4px"
-                color={
-                  category === 'all'
-                    ? '#436D5D'
-                    : category === 'inspiration'
-                    ? 'green.900'
-                    : category === 'feedstock'
-                    ? 'green.900'
-                    : 'white'
-                }
-              >
-                {category === 'all'
-                  ? 'Nosso canal de conteúdos sobre madeira, inspiração e muito mais.'
-                  : category === 'inspiration'
-                  ? 'Sua fonte de inspiração com ambientes harmoniosos, combinações irresistíveis, nossas coleções e muito mais.'
-                  : category === 'feedstock'
-                  ? 'Conheça as diferenças e aplicações de nossos produtos e aprenda a utilizar o melhor de cada um em seus projetos.'
-                  : 'Fique por dentro de nossas notícias corporativas e acompanhe as novidades da BERNECK® e da indústria'}
-              </Text>
+              {!seeOnlyPosts && (
+                <Text
+                  as="h2"
+                  width={{ base: '100%', lg: '130%' }}
+                  fontSize="20px"
+                  letterSpacing="-0.4px"
+                  color={
+                    currentCategory === -1
+                      ? '#436D5D'
+                      : currentCategory === 0
+                      ? 'green.900'
+                      : currentCategory === 1
+                      ? 'green.900'
+                      : 'white'
+                  }
+                >
+                  {(currentCategory !== -1 &&
+                    categories[currentCategory].description) ||
+                    'Nosso canal de conteúdos sobre madeira, inspiração e muito mais.'}
+                </Text>
+              )}
+
+              {seeOnlyPosts && (
+                <Text
+                  as="h1"
+                  w="75%"
+                  fontWeight={800}
+                  fontSize="21px"
+                  letterSpacing="2.1px"
+                  color={currentCategory === -1 ? 'green.900' : '#436D5D'}
+                >
+                  Todos os conteúdos
+                </Text>
+              )}
             </Box>
           </Flex>
 
           <Flex
-            w={{ base: '100%', xl: '50%', '2xl': '80%' }}
-            wrap="wrap"
+            width={{ base: '100%', lg: '70%', '2xl': '80%' }}
+            wrap={{ base: 'nowrap', lg: 'wrap' }}
             justify="end"
-            pos={{ lg: 'absolute' }}
-            top={{ lg: '30%' }}
-            right={{ lg: '88px' }}
+            // pos={{ lg: 'absolute' }}
+            // top={{ lg: '30%' }}
+            // right={{ lg: '88px' }}
             gap="32px"
-            pt={{ base: '27px', lg: '0' }}
+            // pt={{ base: '27px', lg: '0' }}
             direction={{
               base: 'column',
               lg: 'row'
             }}
+            marginTop={{ base: '40px', lg: '0' }}
+            alignItems={{ base: 'center', lg: 'flex-start' }}
+            height={{ base: 'auto', lg: '150px' }}
           >
-            <Flex gap="32px" direction={{ base: 'column', lg: 'row' }}>
+            {/* <Flex gap="32px" direction={{ base: 'column', lg: 'row' }}>
               <NavButton
                 hideArrow
                 justify="center"
-                selected={category === 'all'}
-                onClick={() => setCategory('all')}
+                selected={currentCategory === -1}
+                onClick={() => changeCurrentCategory(-1)}
                 color={'green.900'}
-                borderColor={category === 'all' ? 'brown.200' : 'white'}
+                borderColor={currentCategory === -1 ? 'brown.200' : 'white'}
               >
                 VER TUDO
               </NavButton>
 
+              {categories.length > 0 && (
+                <NavButton
+                  justify={{ base: 'space-between', lg: 'center' }}
+                  selected={currentCategory === 0}
+                  onClick={() => changeCurrentCategory(0)}
+                  color={currentCategory === 0 ? 'green.900' : 'gray.360'}
+                  borderColor={
+                    currentCategory === -1 || currentCategory === 0
+                      ? 'brown.200'
+                      : 'white'
+                  }
+                >
+                  {categories[0].name}
+                </NavButton>
+              )}
+            </Flex>
+
+            <Flex
+              border="1px solid orange"
+              gap="32px"
+              direction={{ base: 'column', lg: 'row' }}
+            >
+              {categories.length > 1 && (
+                <NavButton
+                  justify={{ base: 'space-between', lg: 'center' }}
+                  selected={currentCategory === 1}
+                  onClick={() => changeCurrentCategory(1)}
+                  color={currentCategory === 1 ? 'green.900' : 'gray.360'}
+                  borderColor={
+                    currentCategory === -1 || currentCategory === 1
+                      ? 'green.250'
+                      : 'white'
+                  }
+                >
+                  {categories[1].name}
+                </NavButton>
+              )}
+
+              {categories.length > 2 && (
+                <NavButton
+                  justify={{ base: 'space-between', lg: 'center' }}
+                  selected={currentCategory === 2}
+                  onClick={() => changeCurrentCategory(2)}
+                  color={currentCategory === 2 ? 'green.900' : 'gray.360'}
+                  borderColor={
+                    currentCategory === -1 || currentCategory === 2
+                      ? 'green.600'
+                      : 'white'
+                  }
+                >
+                  {categories[2].name}
+                </NavButton>
+              )}
+            </Flex> */}
+
+            <NavButton
+              hideArrow
+              justify="center"
+              selected={currentCategory === -1}
+              onClick={() => changeCurrentCategory(-1)}
+              color={'green.900'}
+              borderColor={currentCategory === -1 ? 'brown.200' : 'white'}
+            >
+              VER TUDO
+            </NavButton>
+
+            {categories.length > 0 && (
               <NavButton
                 justify={{ base: 'space-between', lg: 'center' }}
-                selected={category === 'inspiration'}
-                onClick={() => setCategory('inspiration')}
-                color={category === 'world' ? 'green.900' : 'gray.360'}
+                selected={currentCategory === 0}
+                onClick={() => changeCurrentCategory(0)}
+                color={currentCategory === 0 ? 'green.900' : 'gray.360'}
                 borderColor={
-                  category === 'all' || category === 'inspiration'
+                  currentCategory === -1 || currentCategory === 0
                     ? 'brown.200'
                     : 'white'
                 }
               >
-                INSPIRAÇÃO SOB MEDIDA
+                {categories[0].name}
               </NavButton>
-            </Flex>
+            )}
 
-            <Flex gap="32px" direction={{ base: 'column', lg: 'row' }}>
+            {categories.length > 1 && (
               <NavButton
                 justify={{ base: 'space-between', lg: 'center' }}
-                selected={category === 'feedstock'}
-                onClick={() => setCategory('feedstock')}
-                color={category === 'world' ? 'green.900' : 'gray.360'}
+                selected={currentCategory === 1}
+                onClick={() => changeCurrentCategory(1)}
+                color={currentCategory === 1 ? 'green.900' : 'gray.360'}
                 borderColor={
-                  category === 'all' || category === 'feedstock'
+                  currentCategory === -1 || currentCategory === 1
                     ? 'green.250'
                     : 'white'
                 }
               >
-                MATÉRIA-PRIMA: CONHECIMENTO
+                {categories[1].name}
               </NavButton>
+            )}
 
+            {categories.length > 2 && (
               <NavButton
                 justify={{ base: 'space-between', lg: 'center' }}
-                selected={category === 'world'}
-                onClick={() => setCategory('world')}
-                color={category === 'world' ? 'green.900' : 'gray.360'}
+                selected={currentCategory === 2}
+                onClick={() => changeCurrentCategory(2)}
+                color={currentCategory === 2 ? 'green.900' : 'gray.360'}
                 borderColor={
-                  category === 'all' || category === 'world'
+                  currentCategory === -1 || currentCategory === 2
                     ? 'green.600'
                     : 'white'
                 }
               >
-                MUNDO BERNECK
+                {categories[2].name}
               </NavButton>
-            </Flex>
+            )}
           </Flex>
         </Flex>
 
         <Section
           w="100%"
           zIndex={100}
-          seeMore={{
-            text: 'Veja mais conteúdos',
-            link: `/canal-bnk/${category}`
-          }}
+          {...(!seeOnlyPosts && {
+            seeMore: {
+              text: 'Veja mais conteúdos',
+              link: `/canal-bnk/${currentCategory}`,
+              onClick: () => setSeeOnlyPosts(true),
+              textColor:
+                currentCategory === -1
+                  ? 'green.600'
+                  : currentCategory === 0
+                  ? 'brown.300'
+                  : 'white.100'
+            }
+          })}
         >
-          <Flex
-            data-testid="intro-content"
-            align="center"
-            justify="center"
-            direction={{ base: 'column', xl: 'row' }}
-            zIndex={10}
-            w="100%"
-            pt="58px"
-            pb={{ lg: '120px' }}
-            gap={{ base: '47px', lg: '44px' }}
-          >
-            <HeroPost post={props.posts[0]} category={category} />
-
+          {!seeOnlyPosts && (
             <Flex
-              data-testid="intro-content-more"
-              direction={{ lg: 'column' }}
-              gap="44px"
-              whiteSpace="nowrap"
-              w={{ base: '90%', lg: 'auto' }}
-              overflowX={{ base: 'scroll', lg: 'hidden' }}
-              overflowY="hidden"
+              data-testid="intro-content"
               align="center"
+              justify="center"
+              direction={{ base: 'column', xl: 'row' }}
+              zIndex={10}
+              w="100%"
+              pt="58px"
+              pb={{ lg: '120px' }}
+              gap={{ base: '47px', lg: '44px' }}
             >
-              <SmallPost post={props.posts[1]} category={category} />
-              <SmallPost post={props.posts[2]} category={category} />
-              <SmallPost post={props.posts[3]} category={category} />
+              {props.posts.length > 0 && <HeroPost post={props.posts[0]} />}
+
+              <Flex
+                data-testid="intro-content-more"
+                direction={{ lg: 'column' }}
+                gap="44px"
+                whiteSpace="nowrap"
+                w={{ base: '90%', lg: 'auto' }}
+                overflowX={{ base: 'scroll', lg: 'hidden' }}
+                overflowY="hidden"
+                align="center"
+              >
+                {props.posts.length > 1 && <SmallPost post={props.posts[1]} />}
+                {props.posts.length > 2 && <SmallPost post={props.posts[2]} />}
+                {props.posts.length > 3 && <SmallPost post={props.posts[3]} />}
+              </Flex>
             </Flex>
-          </Flex>
+          )}
+
+          {seeOnlyPosts && (
+            <Flex
+              gap="58px"
+              paddingBottom="200px"
+              direction="column"
+              align="center"
+              w="100%"
+            >
+              {props.posts?.map((post, j) => (
+                <Post
+                  showDate
+                  showShareOptions
+                  showPreview
+                  key={j}
+                  post={post}
+                  h="821px"
+                  w={{ base: '100%', xl: '1014px' }}
+                />
+              ))}
+            </Flex>
+          )}
         </Section>
       </Flex>
     </Box>
   )
 }
 
-const HeroPost = (props: { category: Category; post: IPost }) => (
-  <Post
-    categoryPage={props.category}
-    h={{ base: '376px', md: '661px' }}
-    w={{
-      base: '90%',
-      lg: '980px',
-      xl: '550px',
-      '2xl': '1013px'
-    }}
-    post={props.post}
-  />
-)
+const HeroPost = (props: { post: IPost }) => {
+  return (
+    <Post
+      h={{ base: '376px', md: '661px' }}
+      w={{
+        base: '90%',
+        lg: '980px',
+        xl: '550px',
+        '2xl': '1013px'
+      }}
+      post={props.post}
+    />
+  )
+}
 
-const SmallPost = (props: { category: Category; post: IPost }) => {
+const SmallPost = (props: { post: IPost }) => {
   const { isMobile } = useMobile(1024)
 
   return (
     <Post
-      categoryPage={props.category}
       h={{ base: '376px', lg: '190px' }}
       w={{
         base: '250px',
@@ -330,17 +452,17 @@ export const NavButton = (props: NavButtonProps) => {
   return (
     <Button
       as="button"
-      w="100%"
       h="62px"
+      w={{ base: '100%', lg: 'auto' }}
       border="2px solid"
       borderRadius="17px"
       color={'gray.350'}
-      {...rest}
       bg={selected ? 'white' : 'transparent'}
       borderColor={selected ? 'transparent' : borderColor}
       _visited={{ color: '#436D5D' }}
       _hover={{ filter: 'brightness(0.98)', bg: 'white' }}
       _focus={{ outline: '0' }}
+      {...rest}
     >
       <Flex
         align="center"
@@ -351,7 +473,7 @@ export const NavButton = (props: NavButtonProps) => {
         py={{ base: '17px', lg: '21px' }}
       >
         <Text
-          fontSize={{ base: '11px', sm: '14px', '2xl': '16px' }}
+          fontSize={{ base: '11px', sm: '14px', '2xl': '14px' }}
           letterSpacing="2.4px"
           fontWeight={600}
           pt="2px"

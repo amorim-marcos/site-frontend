@@ -9,7 +9,7 @@ import { Section } from './Section'
 import { CategoryContext } from '..'
 
 export const Downloads = () => {
-  const { category } = useContext(CategoryContext)
+  const { currentCategory } = useContext(CategoryContext)
   const { isMobile } = useMobile(1024)
 
   return (
@@ -22,8 +22,14 @@ export const Downloads = () => {
       py={{ base: '54px', lg: '100px' }}
     >
       {!isMobile &&
-        (category === 'all' ? (
-          <Flex data-testid="downloads" pt="65px" gap="34px" direction="column">
+        (currentCategory === -1 ? (
+          <Flex
+            display={{ base: 'none', md: 'flex' }}
+            data-testid="downloads"
+            pt="65px"
+            gap="34px"
+            direction="column"
+          >
             <Flex w="100%" gap="34px" px="88px">
               <DownloadColorPanel
                 title="Revista Inspirare BNK"
@@ -99,47 +105,53 @@ export const Downloads = () => {
         ) : (
           <Flex data-testid="downloads" pt="65px" gap="34px" direction="column">
             <Flex w="100%" gap="34px" px="88px">
-              {category === 'inspiration'
-                ? INSPIRATION
-                : category === 'feedstock'
-                ? FEEDSTOCK
-                : category === 'world'
-                ? WORLD
+              {currentCategory === 0
+                ? categoryOne
+                : currentCategory === 1
+                ? categoryTwo
+                : currentCategory === 2
+                ? categoryThree
                 : null}
             </Flex>
           </Flex>
         ))}
 
-      {isMobile &&
-        (category === 'all' ? (
-          <Flex
-            data-testid="downloads"
-            pt="65px"
-            gap="34px"
-            direction="column"
-            align="center"
-            justify="center"
-            overflow="hidden"
-          >
-            <Carousel>{INSPIRATION}</Carousel>
+      {currentCategory === -1 ? (
+        <Flex
+          display={{ base: 'flex', md: 'none' }}
+          data-testid="downloads"
+          pt="65px"
+          gap="34px"
+          direction="column"
+          align="center"
+          justify="center"
+          overflow="hidden"
+        >
+          <Carousel>{categoryOne}</Carousel>
 
-            <Carousel>{FEEDSTOCK}</Carousel>
+          <Carousel>{categoryTwo}</Carousel>
 
-            <Carousel>{WORLD}</Carousel>
+          <Carousel>{categoryThree}</Carousel>
+        </Flex>
+      ) : (
+        <Flex
+          display={{ base: 'flex', md: 'none' }}
+          data-testid="downloads"
+          pt="65px"
+          gap="34px"
+          direction="column"
+        >
+          <Flex gap="34px">
+            <Carousel>
+              {currentCategory === 0
+                ? categoryOne
+                : currentCategory === 1
+                ? categoryTwo
+                : categoryThree}
+            </Carousel>
           </Flex>
-        ) : (
-          <Flex data-testid="downloads" pt="65px" gap="34px" direction="column">
-            <Flex gap="34px">
-              <Carousel>
-                {category === 'inspiration'
-                  ? INSPIRATION
-                  : category === 'feedstock'
-                  ? FEEDSTOCK
-                  : WORLD}
-              </Carousel>
-            </Flex>
-          </Flex>
-        ))}
+        </Flex>
+      )}
     </Section>
   )
 }
@@ -210,7 +222,7 @@ const DownloadColorPanel = (props: DownloadColorPanelProps) => {
   )
 }
 
-const INSPIRATION = [
+const categoryOne = [
   <DownloadColorPanel
     key="Revista Inspirare BNK"
     title="Revista Inspirare BNK"
@@ -239,7 +251,7 @@ const INSPIRATION = [
   />
 ]
 
-const FEEDSTOCK = [
+const categoryTwo = [
   <DownloadColorPanel
     key="Materiais de Suporte"
     title="Materiais de Suporte"
@@ -259,7 +271,7 @@ const FEEDSTOCK = [
   />
 ]
 
-const WORLD = [
+const categoryThree = [
   <DownloadColorPanel
     key="Revista Opinus"
     title="Revista Opinus"

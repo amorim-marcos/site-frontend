@@ -3,7 +3,6 @@ import Home from 'views/Home'
 import { HomeProps } from '../views/Home/index'
 
 export default function HomePage(props: HomeProps) {
-  console.log(props.posts)
   return <Home {...props} />
 }
 

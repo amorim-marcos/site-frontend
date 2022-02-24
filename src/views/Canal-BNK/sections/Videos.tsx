@@ -46,7 +46,7 @@ const PLAYLISTS = {
 }
 
 export const Videos = () => {
-  const { category } = useContext(CategoryContext)
+  /*const { categories, currentCategory } = useContext(CategoryContext)
   const [videos, setVideos] = useState<IVideos[]>([])
 
   useEffect(() => {
@@ -141,5 +141,6 @@ export const Videos = () => {
         })}
       </Flex>
     </Section>
-  )
+  )*/
+  return <h1>Videos sections</h1>
 }

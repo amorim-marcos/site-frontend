@@ -1,18 +1,17 @@
 import { Box, Flex, Text, FlexProps, Link } from '@chakra-ui/react'
 import Arrow from '@components/Arrow'
 import useMobile from 'hooks/useMobile'
+import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import { CategoryContext } from '..'
 
 interface SectionProps extends FlexProps {
   title?: string
-  seeMore?: {
-    text?: string
-    link?: string
-  }
+  seeMore?: SeeMoreProps
 }
 
 export const Section = (props: SectionProps) => {
   const { title, seeMore, children, ...rest } = props
-  const { isMobile } = useMobile(1024)
 
   return (
     <Flex direction="column" pb={{ base: '58px', lg: '0' }} {...rest}>
@@ -46,13 +45,22 @@ export const Section = (props: SectionProps) => {
           <Box />
         )}
 
-        {!isMobile && seeMore && <SeeMore {...seeMore} />}
+        {seeMore && (
+          <Box display={{ base: 'none', lg: 'block' }}>
+            <SeeMore {...seeMore} />
+          </Box>
+        )}
       </Flex>
 
       {children}
 
-      {isMobile && seeMore && (
-        <Flex pt="19px" w="100%" justify="flex-end">
+      {seeMore && (
+        <Flex
+          display={{ base: 'flex', lg: 'none' }}
+          pt="19px"
+          w="100%"
+          justify="flex-end"
+        >
           <SeeMore {...seeMore} />
         </Flex>
       )}
@@ -60,20 +68,42 @@ export const Section = (props: SectionProps) => {
   )
 }
 
-const SeeMore = (props: { text?: string; link?: string }) => (
-  <Flex alignSelf="flex-end" align="center" justify="center" gap="14px">
-    <Link
-      href={props?.link}
-      letterSpacing="-0.4px"
-      fontSize={{ base: '16px', lg: '20px' }}
-      color="green.500"
+type SeeMoreProps = {
+  text?: string
+  link?: string
+  onClick?: () => void
+  textColor?: string
+}
+
+const SeeMore = (props: SeeMoreProps) => {
+  const router = useRouter()
+
+  return (
+    <Flex
+      onClick={() => {
+        if (props.onClick) {
+          props.onClick()
+        } else if (typeof props.link !== 'undefined') {
+          router.push(props.link)
+        }
+      }}
+      alignSelf="flex-end"
+      align="center"
+      justify="center"
+      gap="14px"
     >
-      {props?.text}
-    </Link>
-    <Arrow
-      width={{ base: '8px', lg: '11px' }}
-      height={{ base: '11px', lg: '16px' }}
-      color="green.500"
-    />
-  </Flex>
-)
+      <Link
+        letterSpacing="-0.4px"
+        fontSize={{ base: '16px', lg: '20px' }}
+        color={props.textColor ? props.textColor : 'green.500'}
+      >
+        {props?.text}
+      </Link>
+      <Arrow
+        width={{ base: '8px', lg: '11px' }}
+        height={{ base: '11px', lg: '16px' }}
+        color={props.textColor ? props.textColor : 'green.500'}
+      />
+    </Flex>
+  )
+}
