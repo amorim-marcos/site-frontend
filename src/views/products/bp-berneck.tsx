@@ -10,6 +10,7 @@ import BannerCollections from '@components/BannerCollections'
 import { useState } from 'react'
 import CarouselMultiElements from '@components/CarouselMultiElements'
 import useMobile from 'hooks/useMobile'
+import { useRouter } from 'next/router'
 
 export type BpBerneckViewProps = {
   name: string
@@ -61,6 +62,8 @@ const items = [
 
 export default function BpBerneckView(props: BpBerneckViewProps) {
   const { isMobile } = useMobile(768)
+  const router = useRouter()
+
   return (
     <Box maxWidth="1920px" marginX="auto" bg="white.100">
       <Pagebar
@@ -122,7 +125,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             subtitleColor="brown.200"
             bgColor="brown.300"
             srcImg="../img/BPS.png"
-            onClick={() => alert('Ir para BP')}
+            onClick={() => router.push('/products/bp-berneck/catalog')}
             sizeType="rectangle"
           />
         </GridItem>
@@ -183,7 +186,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             cursor={'pointer'}
             _hover={{ opacity: '0.7' }}
             alignItems={'center'}
-            onClick={() => alert('Ir para galeria')}
+            onClick={() => router.push('/products/bp-berneck/gallery')}
           >
             <Flex wrap={'nowrap'} direction={'column'} alignItems={'flex-end'}>
               <Text
@@ -221,6 +224,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             return (
               <Box
                 key={i.id}
+                onClick={() => router.push('/products/bp-berneck/gallery/item')}
                 w="100%"
                 h={{
                   base: '100vw',

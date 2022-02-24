@@ -21,6 +21,7 @@ import { useState } from 'react'
 import { SectionProducts } from './sections/SectionProducts'
 import { SectionBanners } from './sections/SectionBanners'
 import { Connect } from 'views/Canal-BNK/sections'
+import { useRouter } from 'next/router'
 
 export type HomeProps = {
   name: string
@@ -28,6 +29,8 @@ export type HomeProps = {
 }
 
 export default function Home(props: HomeProps) {
+  const router = useRouter()
+
   return (
     <Box maxWidth="1920px" marginX="auto" bg="white.100">
       {/* INICIO BANNER CAROUSEL */}
@@ -66,7 +69,7 @@ export default function Home(props: HomeProps) {
             subtitleColor: 'brown.200',
             bgColor: 'brown.300',
             srcImg: 'img/mdf.png',
-            onClick: () => alert('Ir para BP'),
+            onClick: () => router.push('/products/bp-berneck'),
             bannerSize: { base: '100px', sm: '150px', lg: '200px', xl: '300px' }
           },
           {
@@ -76,7 +79,7 @@ export default function Home(props: HomeProps) {
             subtitleColor: 'brown.350',
             bgColor: 'green.400',
             srcImg: 'img/plus.png',
-            onClick: () => alert('Ir para Produto'),
+            onClick: () => router.push('/products/plus-berneck'),
             bannerSize: { base: '100px', sm: '150px', lg: '200px', xl: '300px' }
           },
           {
@@ -86,37 +89,7 @@ export default function Home(props: HomeProps) {
             subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: 'img/hdf.png',
-            onClick: () => alert('Ir para Produto'),
-            bannerSize: { base: '100px', sm: '150px', lg: '200px', xl: '300px' }
-          },
-          {
-            title: 'BP BERNECK®2',
-            titleColor: 'white',
-            subtitle: 'Laminado Melamínico Decorativo',
-            subtitleColor: 'brown.200',
-            bgColor: 'brown.300',
-            srcImg: 'img/mdf.png',
-            onClick: () => alert('Ir para BP'),
-            bannerSize: { base: '100px', sm: '150px', lg: '200px', xl: '300px' }
-          },
-          {
-            title: 'PLUS BERNECK®2',
-            titleColor: 'white',
-            subtitle: 'Linha de Painéis com Resistência Extra à Umidade',
-            subtitleColor: 'brown.350',
-            bgColor: 'green.400',
-            srcImg: 'img/plus.png',
-            onClick: () => alert('Ir para Produto'),
-            bannerSize: { base: '100px', sm: '150px', lg: '200px', xl: '300px' }
-          },
-          {
-            title: 'HDF BERNECK®2',
-            titleColor: 'gray.400',
-            subtitle: 'Painel de Fibra de Alta Densidade',
-            subtitleColor: 'gray.400',
-            bgColor: 'brown.200',
-            srcImg: 'img/hdf.png',
-            onClick: () => alert('Ir para Produto'),
+            onClick: () => router.push('/products/hdf-berneck'),
             bannerSize: { base: '100px', sm: '150px', lg: '200px', xl: '300px' }
           }
         ]}
@@ -127,7 +100,7 @@ export default function Home(props: HomeProps) {
       {/* INICIO dos banners */}
       <SectionBanners
         banner1={{
-          onClick: () => alert('Vai para Nossas Certificações'),
+          onClick: () => router.push('/certificacoes'),
           imgSrc: '/assets/imgs/cultivamos_nossos_valores.png',
           title: 'CONHEÇA',
           description: 'Nossas certificações',
@@ -135,10 +108,10 @@ export default function Home(props: HomeProps) {
           descriptionColor: 'white'
         }}
         banner2={{
-          onClick: () => alert('Vai para Nossas Certificações'),
+          onClick: () => router.push('/divisao-florestal'),
           imgSrc: '/img/reflorestamento.jpeg',
           title: 'CONHEÇA',
-          description: 'Nossas certificações',
+          description: 'Divisão Florestal',
           titleColor: 'green.600',
           descriptionColor: 'white'
         }}

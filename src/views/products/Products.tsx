@@ -12,9 +12,11 @@ import Pagebar from '@components/Pagebar'
 import CompletedTitle from '@components/CompletedTitle'
 import BannerProducts from '@components/BannerProducts'
 import useMobile from 'hooks/useMobile'
+import { useRouter } from 'next/router'
 
 export const Products = () => {
   const { isMobile, width } = useMobile(1024)
+  const router = useRouter()
 
   return (
     <Box maxWidth="1920px" marginX="auto" bg="white.100">
@@ -105,7 +107,7 @@ export const Products = () => {
             subtitleColor="brown.200"
             bgColor="brown.300"
             srcImg="img/mdf.png"
-            onClick={() => alert('Ir para BP')}
+            onClick={() => router.push('/products/bp-berneck')}
             bannerSize={{ base: '30px', sm: '20px', lg: '30px', xl: '35 px' }}
             sizeType={!!width && width <= 568 ? 'square' : 'rectangle'}
           />
@@ -119,7 +121,7 @@ export const Products = () => {
             subtitleColor="brown.350"
             bgColor="green.400"
             srcImg="img/plus.png"
-            onClick={() => alert('Ir para Produto')}
+            onClick={() => router.push('/products/plus-berneck')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
           />
         </GridItem>
@@ -132,7 +134,7 @@ export const Products = () => {
             subtitleColor="gray.400"
             bgColor="brown.200"
             srcImg="img/hdf.png"
-            onClick={() => alert('Ir para Produto')}
+            onClick={() => router.push('/products/hdf-berneck')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
           />
         </GridItem>
@@ -145,7 +147,7 @@ export const Products = () => {
             subtitleColor="gray.400"
             bgColor="brown.200"
             srcImg="img/mdf.png"
-            onClick={() => alert('Ir para Produto')}
+            onClick={() => router.push('/products/mdf-berneck')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
           />
         </GridItem>
@@ -157,7 +159,7 @@ export const Products = () => {
             subtitleColor="gray.400"
             bgColor="brown.200"
             srcImg="img/mdp.png"
-            onClick={() => alert('Ir para Produto')}
+            onClick={() => router.push('/products/mdp-berneck')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
           />
         </GridItem>
@@ -170,7 +172,7 @@ export const Products = () => {
             subtitleColor="gray.400"
             bgColor="brown.250"
             srcImg="img/teca.png"
-            onClick={() => alert('Ir para Produto')}
+            onClick={() => router.push('/products/berneck-teca')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
           />
         </GridItem>
@@ -183,7 +185,7 @@ export const Products = () => {
             subtitleColor="gray.400"
             bgColor="green.300"
             srcImg="img/pinus.png"
-            onClick={() => alert('Ir para Produto')}
+            onClick={() => router.push('/products/berneck-pinus')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
             sizeType={isMobile ? 'square' : 'rectangle'}
           />

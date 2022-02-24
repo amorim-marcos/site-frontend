@@ -14,6 +14,7 @@ import { colors } from 'theme/colors'
 import BpPatternImage from '@components/BpPatternImage'
 import useMobile from 'hooks/useMobile'
 import CloseIcon from '@components/Icons/CloseIcon'
+import { useRouter } from 'next/router'
 
 export type BP = {
     name: string,
@@ -601,6 +602,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
     const [filteredBps, setFilteredBps] = React.useState(bps)
     const [filtersEmpty, setFiltersEmpty] = React.useState(true)
     const { isMobile } = useMobile(1024)
+    const router = useRouter()
 
     function changeGridSize(newGridSize:GridSize){
         setGridSize(newGridSize)
@@ -849,7 +851,7 @@ export const BPCatalog = ({ bps }:BPCatalogProps) => {
                     {
                         filteredBps && filteredBps.map((bp) => (
                             <GridItem>
-                                <BP color={(darkMode) ? 'white.100' : 'gray.400'} name={bp.name} product_texture={bp.product_texture} pattern_image={bp.pattern_image} />
+                                <BP href="/products/bp-berneck/catalog/terraza" color={(darkMode) ? 'white.100' : 'gray.400'} name={bp.name} product_texture={bp.product_texture} pattern_image={bp.pattern_image} />
                             </GridItem>
                         ))
                     }

@@ -88,7 +88,7 @@ export const Post = (props: PostProps) => {
           : 'column-reverse'
       }
       role="group"
-      onClick={() => router.push(`/${post?.Category.Name}/${post?.Title}`)}
+      onClick={() => router.push(`/canal-bnk/mundo-berneck/titulo`)}
       {...rest}
     >
       <Box
