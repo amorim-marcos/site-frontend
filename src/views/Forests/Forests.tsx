@@ -15,6 +15,7 @@ import {
   UnorderedList,
 } from '@chakra-ui/react'
 import PatternCertification from "@components/PatternCertification"
+import { useRouter } from "next/router"
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/Grupo_1872.png)',
@@ -34,6 +35,7 @@ const bannerIcendio = {
 }
 
 export const Forests = () => {
+  const router = useRouter()
   return (
     <Box
       maxWidth="1920px"
@@ -132,7 +134,7 @@ export const Forests = () => {
                     >Conservamos para colher sempre!</Text>
                     
                     <Button 
-                      onClick={() => alert('Compromisso')}
+                      onClick={() => router.push('/nosso-compromisso')}
                       w={{ base: '100%', sm: '70%', lg: '100%', xl: '80%'}}
                       h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%'}}
                       padding={{ base: '4%', sm: '3%', lg: '5%', xl: '5%'}}
@@ -279,7 +281,7 @@ export const Forests = () => {
              <PatternInfo
                 title="CONHEÇA"
                 description="Nossas Certificações"
-                onClick={() => alert('Vai para Nossas Certificações')}
+                onClick={() => router.push('/certificacoes')}
                 icon={
                   <CertificationsIcon
                     width={{ base: '40px', xs: '50px', sm: '58px', lg: '70px', xl: '80px' }}
