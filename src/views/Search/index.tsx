@@ -14,7 +14,7 @@ export interface SearchProps {
 
 export default function Search(props: SearchProps) {
   return (
-    <Box maxWidth="1920px" bg="green.100">
+    <Box maxWidth="1920px" w="100%" h="100%" bg="green.100">
       <Pagebar
         paths={[
           {
@@ -28,22 +28,22 @@ export default function Search(props: SearchProps) {
         ]}
       />
 
-      <Flex direction="column" pb="145px">
-        <Flex
-          direction="column"
-          justify="center"
-          align="center"
-          w="100%"
-          h="264px"
-          bg="green.400"
-          pos="relative"
-          overflow="hidden"
-        >
+      <Flex
+        direction="column"
+        justify="center"
+        align="center"
+        w="100%"
+        h="264px"
+        bg="green.400"
+        pos="relative"
+        overflow="hidden"
+      >
+        <Box>
           <Image
             src="/assets/imgs/search/graphism_left.png"
             pos="absolute"
-            w="414px"
-            h="551px"
+            w={{ base: '114px', sm: '214px', lg: '414px' }}
+            h={{ base: '251px', sm: '351px', lg: '551px' }}
             left={0}
             top="-10px"
           />
@@ -51,15 +51,18 @@ export default function Search(props: SearchProps) {
           <Image
             src="/assets/imgs/search/graphism_right.png"
             pos="absolute"
-            w="414px"
-            h="551px"
+            w={{ base: '114px', sm: '214px', lg: '414px' }}
+            h={{ base: '251px', sm: '351px', lg: '551px' }}
             right={0}
             top="50px"
           />
+        </Box>
 
+        <Flex align="center" direction="column" zIndex={1000}>
           <Text
             as={'h1' as any}
-            fontSize={'51px'}
+            textAlign="center"
+            fontSize={{ base: '30px', xs: '41px', md: '51px' }}
             letterSpacing={'-1px'}
             fontWeight={800}
             color="white"
@@ -82,12 +85,12 @@ export default function Search(props: SearchProps) {
             Resultados Encontrados
           </Text>
         </Flex>
+      </Flex>
 
-        <Flex direction="column" gap="70px" bg="brown.100">
-          <SectionPages content={props.results.pages} />
-          <SectionProducts content={props.results.products} />
-          <SectionPosts content={props.results.posts} />
-        </Flex>
+      <Flex direction="column" gap="70px" bg="brown.100" pb="145px">
+        <SectionPages content={props.results.pages} />
+        <SectionProducts content={props.results.products} />
+        <SectionPosts content={props.results.posts} />
       </Flex>
     </Box>
   )
