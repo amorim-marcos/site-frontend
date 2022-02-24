@@ -2,133 +2,98 @@ import { Flex, Box, Text, Image, Button } from '@chakra-ui/react'
 
 export const SectionPages = (props: { content: unknown[] }) => (
   <Flex
-    direction="column"
-    px={{ sm: '25px', xl: '50px', '2xl': '120px' }}
-    pt="84px"
-    gap="20px"
+    bg="#FFFBF4"
+    w="100%"
+    direction={'column'}
+    borderTop={'3px solid'}
+    borderColor="green.600"
   >
-    <Flex
-      h="40px"
-      align="center"
-      justify="space-between"
-      px={{ base: '10px', lg: '0px' }}
-    >
-      <Text
-        as={'h2' as any}
-        fontSize={{ base: '22px', xl: '30px' }}
-        fontWeight={800}
-        color="green.900"
-        pb={{ base: '2px', xl: '20px' }}
-      >
-        Páginas
-      </Text>
-
-      <Text
-        as={'h3' as any}
-        color="green.900"
-        letterSpacing="-0.4px"
-        fontSize={{ base: '15px', xl: '20px' }}
-        fontWeight={'regular'}
-      >
-        {props.content.length}{' '}
-        {props.content.length > 1 ? 'páginas encontradas' : 'página encontrada'}
-      </Text>
-    </Flex>
-
-    <Flex
-      bg="#FFFBF4"
-      w="100%"
-      direction={'column'}
-      borderTop={'3px solid'}
-      borderColor="green.600"
-    >
-      {props.content.map((item: any) =>
-        item.id.includes('berneck-teca') ? (
+    {props.content.map((item: any) =>
+      item.id.includes('berneck-teca') ? (
+        <Page
+          key={item.id}
+          image={'/assets/imgs/search/teca_page.png'}
+          content={{
+            title: item.header_subtitle,
+            description: item.description
+          }}
+        />
+      ) : item.id.includes('berneck-pinus') ? (
+        <Page
+          key={item.id}
+          image={'/assets/imgs/search/pinus_page.png'}
+          content={{
+            title: item.header_subtitle,
+            description: item.description
+          }}
+        />
+      ) : item.id.includes('forest-division') ? (
+        <Page
+          key={item.id}
+          image={'/assets/imgs/divisao-florestal-1x.jpg'}
+          content={{
+            title: 'Divisão Florestal',
+            description: item.header_text
+          }}
+        />
+      ) : item.id.includes('hdf-berneck') ? (
+        <Page
+          key={item.id}
+          image={'/assets/imgs/search/hdf_page.png'}
+          content={{
+            title: 'HDF Berneck©',
+            description: item.hdf_berneck.description
+          }}
+        />
+      ) : item.id.includes('mdf-berneck') ? (
+        <Page
+          key={item.id}
+          image={'/assets/imgs/search/mdf_page.png'}
+          content={{
+            title: 'MDF Berneck©',
+            description: item.mdf_berneck.description
+          }}
+        />
+      ) : item.id.includes('mdp-berneck') ? (
+        <Page
+          key={item.id}
+          image={'/assets/imgs/search/mdp_page.png'}
+          content={{
+            title: 'MDP Berneck©',
+            description: item.mdp_berneck.description
+          }}
+        />
+      ) : item.id.includes('our-commitment') ? (
+        <Page
+          key={item.id}
+          image={'/assets/imgs/nosso-compromisso-1x.jpg'}
+          content={{
+            title: 'Nosso Compromisso',
+            description: item.header_text
+          }}
+        />
+      ) : item.id.includes('our-trajectory') ? (
+        <Page
+          key={item.id}
+          image={'/assets/imgs/foto_fabrica@2x.png'}
+          content={{
+            title: 'Nossa Trajetória',
+            description: item.year[item.year.length - 1].description
+          }}
+        />
+      ) : (
+        item.id.includes('who-we-are') && (
           <Page
             key={item.id}
-            image={'/assets/imgs/search/teca_page.png'}
+            image={'/assets/imgs/capa_somos_berneck.png'}
             content={{
-              title: item.header_subtitle,
-              description: item.description
-            }}
-          />
-        ) : item.id.includes('berneck-pinus') ? (
-          <Page
-            key={item.id}
-            image={'/assets/imgs/search/pinus_page.png'}
-            content={{
-              title: item.header_subtitle,
-              description: item.description
-            }}
-          />
-        ) : item.id.includes('forest-division') ? (
-          <Page
-            key={item.id}
-            image={'/assets/imgs/divisao-florestal-1x.jpg'}
-            content={{
-              title: 'Divisão Florestal',
+              title: 'Quem Somos',
               description: item.header_text
             }}
           />
-        ) : item.id.includes('hdf-berneck') ? (
-          <Page
-            key={item.id}
-            image={'/assets/imgs/search/hdf_page.png'}
-            content={{
-              title: 'HDF Berneck©',
-              description: item.hdf_berneck.description
-            }}
-          />
-        ) : item.id.includes('mdf-berneck') ? (
-          <Page
-            key={item.id}
-            image={'/assets/imgs/search/mdf_page.png'}
-            content={{
-              title: 'MDF Berneck©',
-              description: item.mdf_berneck.description
-            }}
-          />
-        ) : item.id.includes('mdp-berneck') ? (
-          <Page
-            key={item.id}
-            image={'/assets/imgs/search/mdp_page.png'}
-            content={{
-              title: 'MDP Berneck©',
-              description: item.mdp_berneck.description
-            }}
-          />
-        ) : item.id.includes('our-commitment') ? (
-          <Page
-            key={item.id}
-            image={'/assets/imgs/nosso-compromisso-1x.jpg'}
-            content={{
-              title: 'Nosso Compromisso',
-              description: item.header_text
-            }}
-          />
-        ) : item.id.includes('our-trajectory') ? (
-          <Page
-            key={item.id}
-            image={'/assets/imgs/foto_fabrica@2x.png'}
-            content={{
-              title: 'Nossa Trajetória',
-              description: item.year[item.year.length - 1].description
-            }}
-          />
-        ) : (
-          item.id.includes('who-we-are') && (
-            <Page
-              key={item.id}
-              image={'/assets/imgs/capa_somos_berneck.png'}
-              content={{
-                title: 'Quem Somos',
-                description: item.header_text
-              }}
-            />
-          )
         )
-      )}
-    </Flex>
+      )
+    )}
   </Flex>
 )
 
@@ -164,7 +129,7 @@ const Page = (props: {
 
         <Flex direction="column">
           <Text
-            as={'h1' as any}
+            as={'h1'}
             color="gray.300"
             letterSpacing="-0.6px"
             fontSize={{ base: '22px', xl: '29px' }}
@@ -174,7 +139,7 @@ const Page = (props: {
           </Text>
 
           <Text
-            as={'h1' as any}
+            as={'h1'}
             color="gray.300"
             letterSpacing="-0.5px"
             fontSize={{ base: '18px', xl: '25px' }}

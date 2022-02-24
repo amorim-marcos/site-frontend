@@ -1,4 +1,6 @@
+import { ReactNode } from 'react'
 import { Box, Image, Text, Flex } from '@chakra-ui/react'
+
 import Pagebar from '@components/Pagebar'
 
 import { SectionPages, SectionPosts, SectionProducts } from './sections'
@@ -60,7 +62,7 @@ export default function Search(props: SearchProps) {
 
         <Flex align="center" direction="column" zIndex={1000}>
           <Text
-            as={'h1' as any}
+            as={'h1'}
             textAlign="center"
             fontSize={{ base: '30px', xs: '41px', md: '51px' }}
             letterSpacing={'-1px'}
@@ -73,7 +75,7 @@ export default function Search(props: SearchProps) {
           <Box mt="24px" border="3px solid" w="87px" color="green.600" />
 
           <Text
-            as={'h3' as any}
+            as={'h3'}
             pt="42px"
             color="green.800"
             fontSize={'15px'}
@@ -88,10 +90,66 @@ export default function Search(props: SearchProps) {
       </Flex>
 
       <Flex direction="column" gap="70px" bg="brown.100" pb="145px">
-        <SectionPages content={props.results.pages} />
-        <SectionProducts content={props.results.products} />
-        <SectionPosts content={props.results.posts} />
+        <Section title="Páginas" contentLen={props.results.pages.length}>
+          <SectionPages content={props.results.pages} />
+        </Section>
+
+        <Section
+          title="BPs BERNECK®"
+          contentLen={props.results.products.length}
+        >
+          <SectionProducts content={props.results.products} />
+        </Section>
+
+        <Section title="Conteúdos" contentLen={props.results.posts.length}>
+          <SectionPosts content={props.results.posts} />
+        </Section>
       </Flex>
     </Box>
   )
 }
+
+export const Section = (props: {
+  title: string
+  contentLen: number
+  children: ReactNode
+}) => (
+  <Flex
+    direction="column"
+    px={{ sm: '25px', xl: '50px', '2xl': '120px' }}
+    pt="84px"
+    gap={{ base: '35px', md: '20px' }}
+  >
+    <Flex
+      h="40px"
+      align="center"
+      justify="space-between"
+      direction={{ base: 'column', md: 'row' }}
+      gap={{ base: '5px', md: '0px' }}
+      px={{ base: '10px', lg: '0px' }}
+    >
+      <Text
+        as={'h2'}
+        fontSize={{ base: '22px', xl: '30px' }}
+        fontWeight={800}
+        color="green.900"
+        pb={{ base: '2px', xl: '20px' }}
+      >
+        {props.title}
+      </Text>
+
+      <Text
+        as={'h3'}
+        color="green.900"
+        letterSpacing="-0.4px"
+        fontSize={{ base: '15px', xl: '20px' }}
+        fontWeight={'regular'}
+      >
+        {props.contentLen}{' '}
+        {props.contentLen > 1 ? 'páginas encontradas' : 'página encontrada'}
+      </Text>
+    </Flex>
+
+    {props.children}
+  </Flex>
+)
