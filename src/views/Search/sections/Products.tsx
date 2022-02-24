@@ -41,7 +41,7 @@ export const SectionProducts = (props: { content: unknown[] }) => (
           </Text>
 
           <Text
-            as={'h1'}
+            as={'h2'}
             color="gray.300"
             letterSpacing="-0.56px"
             fontSize={'14px'}
