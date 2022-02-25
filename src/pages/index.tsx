@@ -8,22 +8,39 @@ export default function HomePage(props: HomeProps) {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale
-  let page_content
+  let highlights
+  let latestPosts
 
   let res
 
   try {
     res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/posts?_locale=${locale}`
+      process.env.NEXT_PUBLIC_API_URL + `/posts/latest?_locale=${locale}`
     )
-    page_content = await res.json()
+    latestPosts = await res.json()
+
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/posts/highlights?_locale=${locale}`
+    )
+    highlights = await res.json()
   } catch (e) {
-    // if locale not working, get default
-    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts`)
-    page_content = await res.json()
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/latest`)
+    latestPosts = await res.json()
+
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/highlights`)
+    highlights = await res.json()
   }
 
-  page_content = page_content.map((item: { cover: { url: string } }) => {
+  highlights = highlights.map((item: { cover: { url: string } }) => {
+    return {
+      ...item,
+      cover: {
+        url: process.env.NEXT_PUBLIC_API_URL + item.cover.url
+      }
+    }
+  })
+
+  latestPosts = latestPosts.map((item: { cover: { url: string } }) => {
     return {
       ...item,
       cover: {
@@ -34,7 +51,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      posts: page_content.reverse()
+      highlights,
+      latest: latestPosts
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

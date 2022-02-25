@@ -23,24 +23,27 @@ import { SectionBanners } from './sections/SectionBanners'
 import { Connect } from 'views/Canal-BNK/sections'
 import { useRouter } from 'next/router'
 
-export type HomeProps = {
-  posts: {
+type PostProps = {
+  id: number
+  title: string
+  content: string
+  category: {
     id: number
-    title: string
-    content: string
-    category: {
-      id: number
-      name: string
-    }
-    cover: {
-      name: string
-      url: string
-    }
-    tags: {
-      id: number
-      tag: string
-    }[]
+    name: string
+  }
+  cover: {
+    name: string
+    url: string
+  }
+  tags: {
+    id: number
+    tag: string
   }[]
+}
+
+export type HomeProps = {
+  highlights: PostProps[]
+  latest: PostProps[]
 }
 
 export default function Home(props: HomeProps) {
@@ -48,52 +51,30 @@ export default function Home(props: HomeProps) {
   return (
     <Box maxWidth="1920px" marginX="auto" bg="white.100">
       {/* INICIO BANNER CAROUSEL */}
-      {props.posts && props.posts.length >= 3 && (
+      {props.highlights && props.highlights.length >= 3 && (
         <HomeBanner
-          items={[
-            {
-              imageUrl: props.posts[0].cover.url,
-              category: props.posts[0].category.name,
-              title: props.posts[0].title
-            },
-            {
-              imageUrl: props.posts[1].cover.url,
-              category: props.posts[1].category.name,
-              title: props.posts[1].title
-            },
-            {
-              imageUrl: props.posts[2].cover.url,
-              category: props.posts[2].category.name,
-              title: props.posts[2].title
+          items={props.highlights.map((item) => {
+            return {
+              imageUrl: item.cover.url,
+              category: item.category.name,
+              title: item.title
             }
-          ]}
+          })}
         />
       )}
       {/* FIM BANNER CAROUSEL */}
 
       {/* INICIO SECTION CANAL BNK */}
-      {props.posts.length >= 6 && (
+      {props.latest.length && (
         <SectionChannelBNK
-          items={[
-            {
-              category: props.posts[3].category.name,
-              title: props.posts[3].title,
-              urlImage: props.posts[3].cover.url,
-              color: 'brown.150'
-            },
-            {
-              category: props.posts[4].category.name,
-              title: props.posts[4].title,
-              urlImage: props.posts[4].cover.url,
-              color: 'brown.150'
-            },
-            {
-              category: props.posts[5].category.name,
-              title: props.posts[5].title,
-              urlImage: props.posts[5].cover.url,
+          items={props.latest.map((item, i) => {
+            return {
+              category: item.category.name,
+              title: item.title,
+              urlImage: item.cover.url,
               color: 'brown.150'
             }
-          ]}
+          })}
         />
       )}
       {/* FIM SECTION CANAL BNK */}
