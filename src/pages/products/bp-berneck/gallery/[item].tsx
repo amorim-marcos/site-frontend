@@ -1,66 +1,120 @@
+import { GetServerSideProps } from 'next'
+
+import { strapiClient } from 'services'
 import { EnvView } from 'views/EnvGallery/EnvView'
 
-export default function GalleryItem() {
-  return (
-    <EnvView
-      otherEnvs={[
-        {
-          id: 0,
-          imgSrc: '/img/env-gallery.png',
-          title: 'Cozinha',
-          subTitle: 'Mostra Artefacto Curitiba'
-        },
-        {
-          id: 1,
-          imgSrc: '/img/env-gallery.png',
-          title: 'Sala de estar',
-          subTitle: 'Vitrine Artefacto Curitiba'
-        },
-        {
-          id: 2,
-          imgSrc: '/img/env-gallery.png',
-          title: 'Toilette Eu, Tu, Eles',
-          subTitle: 'Casa Cor PR'
-        },
-        {
-          id: 3,
-          imgSrc: '/img/env-gallery.png',
-          title: 'Ócio criativo',
-          subTitle: 'Mostra de Decoração: Morar Mais por Menos'
-        }
-      ]}
-      imgs={[
-        {
-          imgSrc: '/img/bp-gallery/env2.png',
-          id: 0
-        },
-        {
-          imgSrc: '/img/bp-gallery/env1.png',
-          id: 1
-        }
-      ]}
-      tableContent={[
-        {
-          column1: 'Ano',
-          column2: '2021'
-        },
-        {
-          column1: 'Ambiente',
-          column2: 'Cozinha'
-        },
-        {
-          column1: 'Estilo',
-          column2: 'Aconchegante, Clássico, Moderno, Sofisticado'
-        },
-        {
-          column1: 'Arquiteto',
-          column2: 'Fernanda Gonçalves'
-        },
-        {
-          column1: 'Fotógrafo',
-          column2: 'Fernanda Gonçalves'
-        }
-      ]}
-    />
-  )
+export interface GalleryItemProps {
+  env: {
+    id: number
+    imgSrc: string
+    title: string
+    subTitle: string
+    panels: {
+      id: string
+      name: string
+      imgSrc: string
+      product_texture: string
+    }[]
+  }
+  otherEnvs: {
+    id: number
+    imgSrc: string
+    title: string
+    subTitle: string
+  }[]
+  imgs: {
+    imgSrc: string
+    id: number
+  }[]
+  tableContent: {
+    column1: string
+    column2: string
+  }[]
+}
+
+export default function GalleryItem(props: GalleryItemProps) {
+  return <EnvView {...props} />
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { item } = ctx.query
+  const url = process.env.NEXT_PUBLIC_API_URL
+
+  let envFetch = await strapiClient({
+    defaultOnEmpty: true,
+    locale: ctx.locale,
+    resource: `ambients?url_code=${item}`
+  })
+
+  const otherEnvsFetch = await strapiClient({
+    defaultOnEmpty: true,
+    locale: ctx.locale,
+    resource: 'ambients'
+  })
+
+  envFetch = envFetch[0]
+  const env: GalleryItemProps['env'] = {
+    id: envFetch.id,
+    imgSrc: envFetch.gallery_of_images.map((img: any) => `${url}${img.url}`),
+    title: envFetch.ambient_type.type,
+    subTitle: envFetch.place,
+    panels: envFetch.products.map((product: any) => {
+      return {
+        id: product.id,
+        name: product.name,
+        imgSrc: `${url}${product.pattern_image.url}`,
+        product_texture: product.product_texture
+      }
+    })
+  }
+
+  const otherEnvs: GalleryItemProps['otherEnvs'] = otherEnvsFetch
+    .filter((env: any) => env.id !== envFetch.id)
+    .map((env: any) => {
+      return {
+        id: env.id,
+        imgSrc: `${url}${env.gallery_of_images[0].url}`,
+        title: env.ambient_type.type,
+        subTitle: env.place
+      }
+    })
+
+  const imgs = envFetch.gallery_of_images.map((img: any) => {
+    return {
+      id: img.id,
+      imgSrc: `${url}${img.url}`
+    }
+  })
+
+  const tableContent = [
+    {
+      column1: 'Ano',
+      column2: envFetch.informations.year
+    },
+    {
+      column1: 'Ambiente',
+      column2: envFetch.ambient_type.type
+    },
+    {
+      column1: 'Estilo',
+      column2: envFetch.informations.style
+    },
+    {
+      column1: 'Arquiteto',
+      column2: envFetch.informations.architect
+    },
+    {
+      column1: 'Fotógrafo',
+      column2: envFetch.informations.photographer
+    }
+  ]
+
+  return {
+    props: {
+      env,
+      otherEnvs,
+      imgs,
+      tableContent
+    }
+  }
 }

@@ -5,6 +5,17 @@ import ArrowIcon from '@components/Icons/ArrowIcon'
 import Pagebar from '@components/Pagebar'
 
 export type EnvViewProps = {
+  env: {
+    id: number
+    title: string
+    subTitle: string
+    panels: {
+      id: string
+      name: string
+      imgSrc: string
+      product_texture: string
+    }[]
+  }
   otherEnvs: {
     id: number
     imgSrc: string
@@ -13,7 +24,7 @@ export type EnvViewProps = {
   }[]
   imgs: {
     imgSrc: string
-    id: string | number
+    id: number
   }[]
   tableContent: {
     column1: string
@@ -21,7 +32,12 @@ export type EnvViewProps = {
   }[]
 }
 
-export const EnvView = ({ otherEnvs, imgs, tableContent }: EnvViewProps) => {
+export const EnvView = ({
+  env,
+  otherEnvs,
+  imgs,
+  tableContent
+}: EnvViewProps) => {
   return (
     <Box maxWidth={'1920px'} marginX="auto">
       <Pagebar
@@ -50,9 +66,9 @@ export const EnvView = ({ otherEnvs, imgs, tableContent }: EnvViewProps) => {
         padding="5%"
         marginX="auto"
       >
-        <CompletedTitle titleString="Cozinha" alignSelf={'left'} />
+        <CompletedTitle titleString={env.title} alignSelf={'left'} />
         <Text marginY="3%" as="h3" variant={'h3' as any} color="brown.300">
-          Vitrine Artefacto Curitiba
+          {env.subTitle}
         </Text>
 
         <Box bg="white.200" w="100%">
@@ -141,24 +157,45 @@ export const EnvView = ({ otherEnvs, imgs, tableContent }: EnvViewProps) => {
               >
                 Padrões BP BERNECK® utilizados neste ambiente
               </Text>
-              <Flex w="100%">
-                <Box w="25%" h={{ base: '35vw', md: '18vw' }} maxHeight="380px">
-                  <Image
-                    src="/img/bp-gallery/sky.png"
-                    w="100%"
-                    h="100%"
-                    objectFit={'cover'}
-                  />
-                </Box>
+
+              <Flex flexDirection={'row'} w="100%" gap="30px">
+                {env.panels.map((panel: any) => (
+                  <Box key={panel.id}>
+                    <Flex w="100%">
+                      <Box
+                        w="233px"
+                        h={{ base: '35vw', md: '18vw' }}
+                        maxHeight="380px"
+                      >
+                        <Image
+                          src={panel.imgSrc}
+                          w="100%"
+                          h="100%"
+                          objectFit={'cover'}
+                        />
+                      </Box>
+                    </Flex>
+
+                    <Text
+                      variant={'body' as any}
+                      fontWeight={'extrabold'}
+                      color="brown.300"
+                      marginTop={'3%'}
+                    >
+                      {panel.name}
+                    </Text>
+
+                    <Text
+                      variant={'body' as any}
+                      fontWeight={'bold'}
+                      color="brown.300"
+                      marginTop={'3%'}
+                    >
+                      {panel.product_texture}
+                    </Text>
+                  </Box>
+                ))}
               </Flex>
-              <Text
-                variant={'body' as any}
-                fontWeight={'bold'}
-                color="brown.300"
-                marginTop={'3%'}
-              >
-                Sky
-              </Text>
             </Flex>
           </Flex>
         </Box>
