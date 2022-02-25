@@ -72,7 +72,7 @@ export default function Search(props: SearchProps) {
             Resultados para: {props.query}
           </Text>
 
-          <Box mt="24px" border="3px solid" w="87px" color="green.600" />
+          <Box mt="24px" h="3px" w="87px" bg="green.600" />
 
           <Text
             as={'h3'}
@@ -90,20 +90,26 @@ export default function Search(props: SearchProps) {
       </Flex>
 
       <Flex direction="column" gap="70px" bg="brown.100" pb="145px">
-        <Section title="Páginas" contentLen={props.results.pages.length}>
-          <SectionPages content={props.results.pages} />
-        </Section>
+        {props.results.pages.length > 0 && (
+          <Section title="Páginas" contentLen={props.results.pages.length}>
+            <SectionPages content={props.results.pages} />
+          </Section>
+        )}
 
-        <Section
-          title="BPs BERNECK®"
-          contentLen={props.results.products.length}
-        >
-          <SectionProducts content={props.results.products} />
-        </Section>
+        {props.results.products.length > 0 && (
+          <Section
+            title="BPs BERNECK®"
+            contentLen={props.results.products.length}
+          >
+            <SectionProducts content={props.results.products} />
+          </Section>
+        )}
 
-        <Section title="Conteúdos" contentLen={props.results.posts.length}>
-          <SectionPosts content={props.results.posts} />
-        </Section>
+        {props.results.posts.length > 0 && (
+          <Section title="Conteúdos" contentLen={props.results.posts.length}>
+            <SectionPosts content={props.results.posts} />
+          </Section>
+        )}
       </Flex>
     </Box>
   )

@@ -14,6 +14,7 @@ export const SectionProducts = (props: { content: unknown[] }) => {
       borderColor="green.600"
       overflowX="scroll"
       gap="52px"
+      pr="68px"
     >
       {props.content.map((item: any) => (
         <Flex
