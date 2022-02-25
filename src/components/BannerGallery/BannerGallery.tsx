@@ -1,5 +1,5 @@
-import { Heading, Flex, Box, Text, Center, Image } from '@chakra-ui/react'
 import { useState } from 'react'
+import { Flex, Box, Text } from '@chakra-ui/react'
 
 export type BannerGalleryProps = {
   title?: string
@@ -8,6 +8,7 @@ export type BannerGalleryProps = {
 }
 export const BannerGallery = (props: BannerGalleryProps) => {
   const [mouseEnter, setMouseEnter] = useState(false)
+
   return (
     <Box
       onMouseEnter={() => setMouseEnter(true)}
@@ -30,11 +31,7 @@ export const BannerGallery = (props: BannerGalleryProps) => {
         top="0"
         left="0"
       >
-        <Flex
-          // bg="red"
-          w="100%"
-          alignItems={'flex-end'}
-        >
+        <Flex w="100%" alignItems={'flex-end'}>
           <Flex
             bg={props.bgColor}
             borderTopRightRadius={'20px'}
@@ -45,7 +42,7 @@ export const BannerGallery = (props: BannerGalleryProps) => {
             opacity={mouseEnter ? '0' : '1'}
             marginBottom={mouseEnter ? '-30px' : '0'}
           >
-            <Text as="h4" variant={'h4' as any} color={'white'}>
+            <Text as="h4" variant={'h4'} color={'white'}>
               {props.title}
             </Text>
           </Flex>
