@@ -3,9 +3,11 @@ export interface strapiClientProps {
   resource: string
 }
 
-export async function strapiClient(props: strapiClientProps): Promise<unknown> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function strapiClient(props: strapiClientProps): Promise<any> {
   const { locale, resource } = props
-  const url = `${process.env.NEXT_PUBLIC_API_URL}${resource}`
+
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/${resource}`
   let content
 
   try {
