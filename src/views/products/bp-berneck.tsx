@@ -14,53 +14,11 @@ import CompletedTitle from '@components/CompletedTitle'
 import BannerProducts from '@components/BannerProducts'
 import BannerCollections from '@components/BannerCollections'
 
+import type { Gallery } from 'types/data'
+
 export type BpBerneckViewProps = {
-  name: string
-  imageSrc: string
+  galleries?: Gallery[]
 }
-
-const items = [
-  {
-    title: 'Cozinhas',
-    bgColor: 'green.250',
-    backgroundImage: '../img/Imagem70.png',
-    id: 0
-  },
-  {
-    title: 'Quartos',
-    bgColor: 'brown.200',
-    backgroundImage: '../img/Imagem70.png',
-    id: 1
-  },
-
-  {
-    title: 'Quartos2',
-    bgColor: 'brown.200',
-    backgroundImage: '../img/Imagem70.png',
-    id: 2
-  },
-
-  {
-    title: 'Quartos3',
-    bgColor: 'brown.200',
-    backgroundImage: '../img/Imagem70.png',
-    id: 3
-  },
-
-  {
-    title: 'Quartos4',
-    bgColor: 'brown.200',
-    backgroundImage: '../img/Imagem70.png',
-    id: 4
-  },
-
-  {
-    title: 'Quartos5',
-    bgColor: 'brown.200',
-    backgroundImage: '../img/Imagem70.png',
-    id: 5
-  }
-]
 
 export default function BpBerneckView(props: BpBerneckViewProps) {
   const { isMobile } = useMobile(768)
@@ -221,30 +179,33 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             </Flex>
           </Flex>
         </Flex>
-        <CarouselMultiElements numberOfEvidenceElements={isMobile ? 1 : 4}>
-          {items.map((i) => {
-            return (
-              <Box
-                key={i.id}
-                w="100%"
-                h={{
-                  base: '100vw',
 
-                  md: '325px',
-                  lg: '406px',
-                  xl: '488px',
-                  '2xl': '610px'
-                }}
-              >
-                <BannerGallery
-                  title={i.title}
-                  bgColor={i.bgColor}
-                  backgroundImage={i.backgroundImage}
-                />
-              </Box>
-            )
-          })}
-        </CarouselMultiElements>
+        {props.galleries && props.galleries.length > 0 && (
+          <CarouselMultiElements numberOfEvidenceElements={isMobile ? 1 : 4}>
+            {props.galleries?.map((i) => {
+              return (
+                <Box
+                  key={i.id}
+                  w="100%"
+                  h={{
+                    base: '100vw',
+
+                    md: '325px',
+                    lg: '406px',
+                    xl: '488px',
+                    '2xl': '610px'
+                  }}
+                >
+                  <BannerGallery
+                    title={i.title}
+                    bgColor={i.bgColor}
+                    backgroundImage={i.backgroundImage}
+                  />
+                </Box>
+              )
+            })}
+          </CarouselMultiElements>
+        )}
       </Flex>
 
       {/* FIM Galeria de Ambientes */}
