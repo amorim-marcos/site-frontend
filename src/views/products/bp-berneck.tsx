@@ -1,16 +1,18 @@
+import { useRouter } from 'next/router'
+
 import { Flex, Text, Box, Image, Grid, GridItem } from '@chakra-ui/react'
+
+import useMobile from 'hooks/useMobile'
+
+import { Arrow } from '@components/Icons'
 import Pagebar from '@components/Pagebar'
 import Carousel from '@components/Carousel'
-import BannerProducts from '@components/BannerProducts'
-import CompletedTitle from '@components/CompletedTitle'
-import ArrowIcon from '@components/Icons/ArrowIcon'
-import BannerGallery from '@components/BannerGallery'
-import PatternInfoPhoto from '@components/PatternInfoPhoto'
-import BannerCollections from '@components/BannerCollections'
-import { useState } from 'react'
 import CarouselMultiElements from '@components/CarouselMultiElements'
-import useMobile from 'hooks/useMobile'
-import { useRouter } from 'next/router'
+
+import BannerGallery from '@components/BannerGallery'
+import CompletedTitle from '@components/CompletedTitle'
+import BannerProducts from '@components/BannerProducts'
+import BannerCollections from '@components/BannerCollections'
 
 export type BpBerneckViewProps = {
   name: string
@@ -212,7 +214,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               alignItems={'flex-end'}
               direction={'column'}
             >
-              <ArrowIcon
+              <Arrow
                 width={{ base: '30px', md: '40px', lg: '32px' }}
                 stroke="green.700"
               />
