@@ -87,6 +87,7 @@ export const PostBody = ({
           {/* Title and category */}
           <Flex
             maxWidth={{ base: '100%' }}
+            width="100%"
             flexDirection="column"
             paddingLeft={{ base: '0', md: '3%' }}
           >
