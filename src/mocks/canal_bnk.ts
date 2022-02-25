@@ -12,7 +12,8 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   },
   {
     title: 'Aposte na biofilia e potencialize o bem-estar',
@@ -25,7 +26,8 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   },
   {
     title: 'MDP, MDF ou HDF: qual a melhor escolha?',
@@ -38,7 +40,8 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   },
   {
     title: 'BERNECK® Talks traz novo ciclo de conversas no instagram0',
@@ -51,7 +54,8 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   },
   {
     title: 'MDP, MDF ou HDF: qual a melhor escolha?',
@@ -64,7 +68,8 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   },
   {
     title: 'Aposte na biofilia e potencialize o bem-estar',
@@ -77,7 +82,8 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   },
   {
     title: 'Aposte na biofilia e potencialize o bem-estar',
@@ -90,7 +96,8 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   },
   {
     title: 'Aposte na biofilia e potencialize o bem-estar',
@@ -103,7 +110,8 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   },
   {
     title: 'MDP, MDF ou HDF: qual a melhor escolha?',
@@ -116,7 +124,8 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   },
   {
     title: 'MDP, MDF ou HDF: qual a melhor escolha?',
@@ -129,7 +138,8 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   },
   {
     title: 'MDP, MDF ou HDF: qual a melhor escolha?',
@@ -142,7 +152,8 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   },
   {
     title: 'BERNECK® Talks traz novo ciclo de conversas no instagram0',
@@ -155,7 +166,8 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   },
   {
     title: 'BERNECK® Talks traz novo ciclo de conversas no instagram0',
@@ -168,7 +180,8 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   },
   {
     title: 'BERNECK® Talks traz novo ciclo de conversas no instagram0',
@@ -181,6 +194,7 @@ export const POSTS: Post[] = [
       }
     ],
     cover: '/img/foto_matriz.png',
-    date: '2020-10-30'
+    date: '2020-10-30',
+    url_code: ''
   }
 ]

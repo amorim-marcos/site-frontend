@@ -26,7 +26,9 @@ export const PostRelationalContent = ({
       <Flex
         overflowX={{ base: 'scroll', md: 'visible' }}
         alignItems="center"
-        justifyContent={items.length >= 4 ? 'space-between' : 'flex-start'}
+        justifyContent={
+          !!items && items.length >= 4 ? 'space-between' : 'flex-start'
+        }
       >
         {items &&
           items.map((item, i) => {

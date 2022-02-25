@@ -62,15 +62,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
       downloadItems.forEach((element: DownloadsItemProps) => {
         if (element.download_type) {
           if (element.download_type.type === i.type) {
-            list.push({
-              ...element,
-              image: {
-                url: process.env.NEXT_PUBLIC_API_URL + element.image.url
-              },
-              file: {
-                url: process.env.NEXT_PUBLIC_API_URL + element.file.url
-              }
-            })
+            if (element.image && element.file)
+              list.push({
+                ...element,
+                image: {
+                  url: process.env.NEXT_PUBLIC_API_URL + element.image.url
+                },
+                file: {
+                  url: process.env.NEXT_PUBLIC_API_URL + element.file.url
+                }
+              })
           }
         }
       })
