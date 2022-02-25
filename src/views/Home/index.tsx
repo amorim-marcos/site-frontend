@@ -65,7 +65,7 @@ export default function Home(props: HomeProps) {
       {/* FIM BANNER CAROUSEL */}
 
       {/* INICIO SECTION CANAL BNK */}
-      {props.latest.length && (
+      {props.latest.length === 3 && (
         <SectionChannelBNK
           items={props.latest.map((item, i) => {
             return {
