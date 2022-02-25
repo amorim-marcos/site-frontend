@@ -45,6 +45,7 @@ export type Wood = { thickness: string; size: string }
 export type BPCatalogItemProps = {
   texture: {
     img: string
+    icon: string
     name: string
     description: string
   }
@@ -52,6 +53,8 @@ export type BPCatalogItemProps = {
     name: string
     description: string
     about: string
+    urlVideo: string
+    urlEbook: string
     anothers: {
       name: string
       img: string
@@ -100,6 +103,9 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
         textureDescription={props.texture.description}
       />
       <Inspire
+        urlVideo={props.pattern.urlVideo}
+        urlEbook={props.pattern.urlEbook}
+        textureIcon={props.texture.icon}
         patternName={props.pattern.name}
         microDescription={props.pattern.description}
         anotherTextures={props.pattern.anothers}
@@ -181,12 +187,16 @@ const Intro = (props: {
 )
 
 const Inspire = (props: {
+  textureIcon: string
+  urlVideo: string
+  urlEbook: string
   microDescription: string
   anotherTextures: { name: string; img: string }[]
   patternDescription: string
   patternName: string
 }) => {
   const [curr, setCurr] = useState(0)
+  const router = useRouter()
 
   const switchTo = (act: 'next' | 'prev') => {
     const count = props.anotherTextures.length
@@ -206,7 +216,7 @@ const Inspire = (props: {
         w="fit-content"
       >
         <Image
-          src="/bps/patterns/azul_vel.jpg"
+          src={props.textureIcon}
           borderRadius="100%"
           boxSize={{ base: '100px', '2xl': '130px' }}
           zIndex={10}
@@ -406,14 +416,14 @@ const Inspire = (props: {
           >
             <TextureContentButton
               title="Assista ao vídeo"
-              onClick={() => alert('video')}
+              onClick={() => props.urlVideo && router.push(props.urlVideo)}
             >
               <PlayIcon />
             </TextureContentButton>
 
             <TextureContentButton
               title="Confira o ebook"
-              onClick={() => alert('ebook')}
+              onClick={() => props.urlEbook && router.push(props.urlEbook)}
             >
               <ReportsIcon
                 stroke1="#6AA353"
