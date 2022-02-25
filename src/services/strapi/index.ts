@@ -1,6 +1,7 @@
 export interface strapiClientProps {
   locale?: string
   resource: string
+  defaultOnEmpty?: boolean
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,11 +12,16 @@ export async function strapiClient(props: strapiClientProps): Promise<any> {
   let content
 
   try {
-    const res = await fetch(`${url}?_locale=${locale}`)
+    const res = locale
+      ? await fetch(`${url}?_locale=${locale}`)
+      : await fetch(url)
+
     content = await res.json()
+
+    if (props.defaultOnEmpty && content.length === 0)
+      content = await fetch(url).then((res) => res.json())
   } catch (e) {
-    const res = await fetch(`${url}`)
-    content = await res.json()
+    content = await fetch(url).then((res) => res.json())
   }
 
   return content
