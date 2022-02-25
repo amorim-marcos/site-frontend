@@ -40,18 +40,18 @@ type BPFilterProps = ButtonProps & {
 const BPFilter = ({name, texture, pattern_image, isSelected = false, toggleSelect, ...props}: BPFilterProps) => {
     const [displayInfo, setDisplayInfo] = React.useState(false)
     const [selected, setSelected] = React.useState(false)
-    
+
     React.useEffect(() => {
         setSelected(isSelected)
     }, [isSelected])
 
     return (
-        <Button 
+        <Button
             zIndex="5"
             onClick={(e) => { if(toggleSelect) toggleSelect(selected)}}
             onMouseEnter={() => setDisplayInfo(true) }
             onMouseLeave={() => setDisplayInfo(false)}
-            height={{base: "43px", md:"55px"}} 
+            height={{base: "43px", md:"55px"}}
             {...props}
         >
             <Box boxShadow={(selected) ? "0px 0px 3px green" : "none"} position="absolute" top="0" left="0" zIndex="1" width="100%" height="100%" borderRadius="5px" padding="0" margin="0" backgroundImage={`url(${pattern_image})`} backgroundRepeat="repeat" backgroundSize="cover"></Box>
@@ -84,17 +84,17 @@ const FilterCheckbox = ({title, code, isChecked = false, onCheck = () => {}, ...
     }, [isChecked])
 
     return (
-        <Button 
-            background={(checked) ? "green.400" : "green.300"} 
+        <Button
+            background={(checked) ? "green.400" : "green.300"}
             _hover={{}}
             // @ts-ignore
-            onClick={() => { if(onCheck) onCheck(checked, value)}} 
-            position="relative" color="green.900" justifyContent="start" variant="link" 
+            onClick={() => { if(onCheck) onCheck(checked, value)}}
+            position="relative" color="green.900" justifyContent="start" variant="link"
             borderRadius="5px" height={{base: "38px" , md: "60px"}} minW={{base: "auto", md: "250px"}} {...props} padding={{base: "5px", md: "28px"}} overflow="hidden"
         >
-            <Checkbox 
+            <Checkbox
                 display={{base: "none", md: "inherit"}}
-                onClickCapture={(e) => { e.preventDefault(); e.stopPropagation(); if(onCheck) onCheck(checked, value)}} 
+                onClickCapture={(e) => { e.preventDefault(); e.stopPropagation(); if(onCheck) onCheck(checked, value)}}
                 padding="0"
                 iconColor='green.600'
                 border="1px solid"
@@ -102,8 +102,8 @@ const FilterCheckbox = ({title, code, isChecked = false, onCheck = () => {}, ...
                 borderRadius="3px"
                 colorScheme="white.100"
                 isChecked={checked}
-                zIndex="2" 
-                mr="5px" 
+                zIndex="2"
+                mr="5px"
             />
             <Text fontWeight="600" fontSize={{ base: "15px" , md: "19px" }} color="green.900" zIndex="2">{title}</Text>
         </Button>
@@ -118,7 +118,7 @@ export type Filters = {
     "nameSearched": string,
     "bps": Array<string>,
     "ambients": Array<string>,
-    "styles": Array<string>    
+    "styles": Array<string>
 }
 
 const initialFilters:Filters = {
@@ -151,27 +151,27 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
 
     return (
         <Box background="white.200" height="100%">
-            <Flex 
+            <Flex
                 padding={{base: "25px"}}
                 justifyContent="space-between"
-                alignItems="center" 
+                alignItems="center"
                 minH="80px"
             >
-                <Button 
-                    zIndex="10" onClick={() => { setDisplayFilters(!displayFilters); setOpenSearchBar(false); }} 
-                    variant="link" backgroundColor="none" 
-                    
+                <Button
+                    zIndex="10" onClick={() => { setDisplayFilters(!displayFilters); setOpenSearchBar(false); }}
+                    variant="link" backgroundColor="none"
+
                 >
                     {(displayFilters) ? <CloseIcon mr="16px" w="22px" h="22px" color="#8BB879" />: <FiltersIcon mr="16px" />}
                     <Text fontSize="17px">{ (!displayFilters) ? "Filtrar Resultados" : "Esconder filtros" }</Text>
                     <Arrow display={{base: "none", md: "normal"}} visibility={(displayFilters) ? "hidden" : "visible"} ml="10px" direction="right" width="3" height="6" color='gray.300' />
                 </Button>
                 {
-                    !displayFilters && 
+                    !displayFilters &&
                     <Box zIndex="11" right="0">
                         {openSearchBar ? (
-                            <CloseIcon 
-                                w="30px" h="30px" color="#8BB879" 
+                            <CloseIcon
+                                w="30px" h="30px" color="#8BB879"
                                 onClick={() => setOpenSearchBar(false)}
                                 cursor="pointer"
                             />
@@ -187,12 +187,12 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
 
             </Flex>
             {
-                displayFilters && 
+                displayFilters &&
                 <Box margin="0" width="100%">
                     <Flex  direction="column">
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
                         <Box width="100%" paddingLeft="20px" paddingRight="20px">
-                            <Button 
+                            <Button
                                 onClick={() => changeFilterPanel('bps')}
                                 variant="link"
                                 color="gray.300"
@@ -204,46 +204,46 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                             >
                                 <Text color='gray.300' mr="10px">BP BERNECK®</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'bps') ? "down" : "up"} width="3" height="6" color="gray.200" />
-                            </Button> 
+                            </Button>
                             <Box display={(currentFilterPanel != 'bps') ? 'none' : 'normal'}  top="0" left="0" width="100%" height="100%" paddingBottom="25px">
-                                <Grid  
+                                <Grid
                                     templateRows="repeat(auto, 1fr)"
                                     templateColumns="repeat(3, 1fr)"
                                     gridGap="10px"
                                 >
                                     {
-                                        ( (bps && bps.length <= TOTAL_BPS_SHOW_FIRST) || seeMoreBps) 
-                                        ? bps.map((bp) => 
+                                        ( (bps && bps.length <= TOTAL_BPS_SHOW_FIRST) || seeMoreBps)
+                                        ? bps.map((bp) =>
                                             <GridItem>
-                                                <BPFilter 
+                                                <BPFilter
                                                     isSelected={filters["bps"].includes(bp.name)}
-                                                    toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
+                                                    toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}}
                                                     mt="10px"
                                                     w="100%"
-                                                    name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
-                                                /> 
+                                                    name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image}
+                                                />
                                             </GridItem>
                                         )
-                                        : bps.slice(0, TOTAL_BPS_SHOW_FIRST).map((bp) => 
+                                        : bps.slice(0, TOTAL_BPS_SHOW_FIRST).map((bp) =>
                                             <GridItem>
-                                                <BPFilter 
+                                                <BPFilter
                                                     isSelected={filters["bps"].includes(bp.name)}
-                                                    toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
+                                                    toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}}
                                                     mt="10px"
                                                     w="100%"
-                                                    name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
-                                                /> 
+                                                    name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image}
+                                                />
                                             </GridItem>
                                         )
-                                    }   
-                                </Grid>    
+                                    }
+                                </Grid>
                                 {
                                     (seeMoreBps)
-                                    ? <Button 
-                                        mt="20px" w="100%" 
+                                    ? <Button
+                                        mt="20px" w="100%"
                                         bg="white.100"
                                         color="gray.300"
-                                        variant={"filters" as any} 
+                                        variant={"filters" as any}
                                         _hover={{
                                             bg: 'white.100'
                                         }}
@@ -251,24 +251,24 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                         >
                                             Ver menos
                                         </Button>
-                                    : (bps.length >= TOTAL_BPS_SHOW_FIRST) && 
-                                        <Button 
-                                        mt="20px" w="100%" 
+                                    : (bps.length >= TOTAL_BPS_SHOW_FIRST) &&
+                                        <Button
+                                        mt="20px" w="100%"
                                         bg="white.100"
                                         color="gray.300"
-                                        variant={"filters" as any} 
+                                        variant={"filters" as any}
                                         _hover={{
                                             bg: 'white.100'
                                         }}
                                         onClick={() => setSeeMoreBps(true)}>
                                             Ver mais
                                         </Button>
-                                }                             
+                                }
                             </Box>
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
                         <Box width="100%" paddingLeft="20px" paddingRight="20px">
-                            <Button 
+                            <Button
                                 onClick={() => changeFilterPanel('ambients')}
                                 variant="link"
                                 color="gray.300"
@@ -280,7 +280,7 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                             >
                                 <Text color='gray.300' mr="10px">AMBIENTE</Text>
                                 <Arrow position="absolute" right="0" direction={(currentFilterPanel == 'ambients') ? "down" : "up"} width="3" height="6" color="gray.200" />
-                            </Button> 
+                            </Button>
                             <Box display={(currentFilterPanel != 'ambients') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%" paddingBottom="25px">
                                 <Grid
                                    templateRows="repeat(auto, 1fr)"
@@ -288,25 +288,25 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                    gridGap="5px"
                                 >
                                         {
-                                            filtersCheckboxes["ambients"].map((filter) => 
+                                            filtersCheckboxes["ambients"].map((filter) =>
                                                 <GridItem>
-                                                    <FilterCheckbox 
+                                                    <FilterCheckbox
                                                         isChecked={filters["ambients"].includes(filter.code)}
                                                         onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("ambients", value) : removeFilter("ambients", value) }}
-                                                        title={filter.title} code={filter.code} 
+                                                        title={filter.title} code={filter.code}
                                                         w="100%"
-                                                        mt="10px" 
+                                                        mt="10px"
                                                     />
                                                 </GridItem>
                                             )
                                         }
-                                    
+
                                 </Grid>
                             </Box>
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
                         <Box width="100%" paddingLeft="20px" paddingRight="20px" >
-                            <Button 
+                            <Button
                                 onClick={() => changeFilterPanel('styles')}
                                 variant="link"
                                 color="gray.300"
@@ -326,25 +326,25 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                                    gridGap="5px"
                                 >
                                         {
-                                            filtersCheckboxes["styles"].map((filter) => 
+                                            filtersCheckboxes["styles"].map((filter) =>
                                                 <GridItem>
-                                                    <FilterCheckbox 
+                                                    <FilterCheckbox
                                                         isChecked={filters["styles"].includes(filter.code)}
                                                         onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("styles", value) : removeFilter("styles", value) }}
-                                                        title={filter.title} code={filter.code} 
-                                                        mt="10px" 
+                                                        title={filter.title} code={filter.code}
+                                                        mt="10px"
                                                         w="100%"
                                                     />
                                                 </GridItem>
                                             )
                                         }
                                 </Grid>
-                            </Box>   
+                            </Box>
                         </Box>
                         <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
                     </Flex>
-                    
-                </Box>                      
+
+                </Box>
             }
             {
                 ( displayFilters && currentFilterPanel != "none") && <Button zIndex="11" w="100%" position="fixed" bottom="0" variant={"filters" as any} mr="30px" onClick={() => { setFilteredEnvs(applyFilters(filters, envs)); setDisplayFilters(false) }}>Filtrar</Button>
@@ -397,20 +397,20 @@ const FiltersAccordion = ({ displayFilters, setDisplayFilters, changeFilterPanel
                 </Flex>
             )}
             {
-                ( !displayFilters && !filtersEmpty ) && 
+                ( !displayFilters && !filtersEmpty ) &&
                 <>
                     <Box background="white.100" width="100%" height="3px" bottom="-3px" left="0"/>
-                    <Flex 
+                    <Flex
                         paddingLeft={{base: "20px", md: "30px"}}
                         justifyContent="center"
-                        alignItems="center" 
+                        alignItems="center"
                         minH="50px"
-                    >   
-                        <Button 
+                    >
+                        <Button
                             zIndex="10"
                             onClick={() => { setFilters(JSON.parse(JSON.stringify(initialFilters))); setFilteredEnvs(applyFilters(initialFilters, envs)) }}
                             variant="link"
-                            backgroundColor="none"    
+                            backgroundColor="none"
                         >
                             Limpar filtros
                         </Button>
@@ -435,7 +435,7 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                 </Button>
             </Box>
             {
-                displayFilters && 
+                displayFilters &&
                 <Box margin="0" paddingTop="30px">
                     <Box>
                         <Flex position="relative" direction="column">
@@ -444,7 +444,7 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                             </Center>
                             <Center mb="20px">
                                 <Flex justifyContent="space-between">
-                                    <Button 
+                                    <Button
                                         onClick={() => changeFilterPanel('bps')}
                                         variant="link"
                                         color="gray.300"
@@ -457,8 +457,8 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                     >
                                         <Text color='gray.300' mr="10px">BP BERNECK®</Text>
                                         <Arrow direction={(currentFilterPanel == 'bps') ? "down" : "up"} width="3" height="6" color="gray.200" />
-                                    </Button> 
-                                    <Button 
+                                    </Button>
+                                    <Button
                                         onClick={() => changeFilterPanel('ambients')}
                                         variant="link"
                                         color="gray.300"
@@ -471,8 +471,8 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                     >
                                         <Text color='gray.300' mr="10px">AMBIENTE</Text>
                                         <Arrow direction={(currentFilterPanel == 'ambients') ? "down" : "up"} width="3" height="6" color="gray.200" />
-                                    </Button>  
-                                    <Button 
+                                    </Button>
+                                    <Button
                                         onClick={() => changeFilterPanel('styles')}
                                         variant="link"
                                         color="gray.300"
@@ -485,19 +485,19 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                     >
                                         <Text color='gray.300' mr="10px">ESTILO</Text>
                                         <Arrow direction={(currentFilterPanel == 'styles') ? "down" : "up"} width="3" height="6" color="gray.200" />
-                                    </Button>   
+                                    </Button>
                                 </Flex>
                             </Center>
                             <Center position="relative" display={(currentFilterPanel == 'none') ? 'none' : 'normal'} flex={1} minH="100px">
                                 <Box display={(currentFilterPanel != 'bps') ? 'none' : 'normal'} top="0" left="0" width="100%" height="100%">
                                     <Flex alignItems="flex-start" wrap="wrap">
-                                        {bps && bps.map((bp) => 
-                                            <BPFilter 
+                                        {bps && bps.map((bp) =>
+                                            <BPFilter
                                                 isSelected={filters["bps"].includes(bp.name)}
-                                                toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}} 
-                                                mr="15px" mt="10px" 
-                                                name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image} 
-                                            /> 
+                                                toggleSelect={(selected:boolean) => { (!selected) ? appendFilter("bps", bp.name) : removeFilter("bps", bp.name)}}
+                                                mr="15px" mt="10px"
+                                                name={bp.name} texture={bp.product_texture} pattern_image={bp.pattern_image}
+                                            />
                                         )}
                                     </Flex>
                                 </Box>
@@ -505,12 +505,12 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                     <Center>
                                         <Flex justifyContent="flex-start" wrap="wrap">
                                             {
-                                                filtersCheckboxes["ambients"].map((filter) => 
-                                                <FilterCheckbox 
+                                                filtersCheckboxes["ambients"].map((filter) =>
+                                                <FilterCheckbox
                                                     isChecked={filters["ambients"].includes(filter.code)}
                                                     onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("ambients", value) : removeFilter("ambients", value) }}
-                                                    title={filter.title} code={filter.code} 
-                                                    mr="15px" mt="10px" 
+                                                    title={filter.title} code={filter.code}
+                                                    mr="15px" mt="10px"
                                                 />)
                                             }
                                         </Flex>
@@ -520,12 +520,12 @@ const FiltersTabs = ({ displayFilters, setDisplayFilters, changeFilterPanel, cur
                                     <Center>
                                         <Flex justifyContent="flex-start" wrap="wrap">
                                             {
-                                                filtersCheckboxes["styles"].map((filter) => 
-                                                    <FilterCheckbox 
+                                                filtersCheckboxes["styles"].map((filter) =>
+                                                    <FilterCheckbox
                                                         isChecked={filters["styles"].includes(filter.code)}
                                                         onCheck={(isChecked:boolean, value:any) => { (!isChecked) ? appendFilter("styles", value) : removeFilter("styles", value) }}
-                                                        title={filter.title} code={filter.code} 
-                                                        mr="15px" mt="10px" 
+                                                        title={filter.title} code={filter.code}
+                                                        mr="15px" mt="10px"
                                                     />)
                                             }
                                         </Flex>
@@ -615,7 +615,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
             setCurrentFilterPanel('none')
         }else{
             setCurrentFilterPanel(newFilterPanel)
-        } 
+        }
     }
 
     function appendFilter(type:ValidFilterNames, value:string){
@@ -648,7 +648,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
 
     function applyFilters(filters:any, originalEnvs:Array<any>){
         let filteredEnvs = originalEnvs
-        
+
         // search
         if(filters["nameSearched"] && filters["nameSearched"] !== ""){
             filteredEnvs = filteredEnvs.filter((env:any) => {
@@ -668,21 +668,21 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                     return false
                 }
                 return false
-            })             
+            })
         }
 
         // ambients
         if(filters["ambients"].length > 0){
             filteredEnvs = filteredEnvs.filter((env:any) => {
                 return filters["ambients"].includes(env.ambient)
-            })            
+            })
         }
 
         // styles
         if(filters["styles"].length > 0){
             filteredEnvs = filteredEnvs.filter((env:any) => {
                 return filters["styles"].includes(env.style)
-            })            
+            })
         }
 
         return filteredEnvs.slice()
@@ -707,7 +707,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                 {
                     title: 'BP BERNECK®',
                     url: '/produtos/bp-berneck'
-                },                
+                },
                 {
                     title: 'Galeria de Ambientes',
                     url: '/produtos/bp-berneck/gallery'
@@ -718,34 +718,34 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
             <Container zIndex="30" position={(isMobile && displayFilters) ? "absolute" : "relative"} mb={(displayFilters) ? { base: "40px", md: "100px"} : { base: "5px", md: "15px"}} minW="100%" minH={{ base: "0" , md: "50px"}} height={(isMobile && displayFilters) ? "100%" : "auto"} paddingInline="0">
                 {
                     (
-                        (isMobile) 
-                        ? <FiltersAccordion 
+                        (isMobile)
+                        ? <FiltersAccordion
                             displayFilters={displayFilters}
                             setDisplayFilters={setDisplayFilters}
-                            changeFilterPanel={changeFilterPanel} 
+                            changeFilterPanel={changeFilterPanel}
                             currentFilterPanel={currentFilterPanel}
-                            appendFilter={appendFilter} 
-                            removeFilter={removeFilter} 
-                            setFilters={setFilters} 
-                            setFilteredEnvs={setFilteredEnvs} 
-                            applyFilters={applyFilters} 
-                            bps={availableBps} 
-                            envs={envs} 
+                            appendFilter={appendFilter}
+                            removeFilter={removeFilter}
+                            setFilters={setFilters}
+                            setFilteredEnvs={setFilteredEnvs}
+                            applyFilters={applyFilters}
+                            bps={availableBps}
+                            envs={envs}
                             filters={filters}
                             filtersEmpty={filtersEmpty}
                         />
-                        : <FiltersTabs 
+                        : <FiltersTabs
                             displayFilters={displayFilters}
                             setDisplayFilters={setDisplayFilters}
-                            changeFilterPanel={changeFilterPanel} 
+                            changeFilterPanel={changeFilterPanel}
                             currentFilterPanel={currentFilterPanel}
-                            appendFilter={appendFilter} 
-                            removeFilter={removeFilter} 
-                            setFilters={setFilters} 
-                            setFilteredEnvs={setFilteredEnvs} 
-                            applyFilters={applyFilters} 
-                            bps={availableBps} 
-                            envs={envs} 
+                            appendFilter={appendFilter}
+                            removeFilter={removeFilter}
+                            setFilters={setFilters}
+                            setFilteredEnvs={setFilteredEnvs}
+                            applyFilters={applyFilters}
+                            bps={availableBps}
+                            envs={envs}
                             filters={filters}
                             filtersEmpty={filtersEmpty}
                         />
@@ -765,7 +765,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                         {
                             filteredEnvs && filteredEnvs.map((env) => (
                                 <GridItem mt="60px">
-                                    <Env href="/products/bp-berneck/gallery/item" type={env.type} name={env.name} image_url={env.image_url} />      
+                                    <Env href={`/products/bp-berneck/gallery/${env.url_code}`} type={env.type} name={env.name} image_url={env.image_url} />
                                 </GridItem>
                             ))
                         }
