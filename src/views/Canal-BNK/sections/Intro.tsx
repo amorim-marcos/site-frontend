@@ -7,7 +7,8 @@ import {
   Text,
   Button,
   ButtonProps,
-  FlexProps
+  FlexProps,
+  Link
 } from '@chakra-ui/react'
 
 import { Arrow } from '@components/Icons'
@@ -275,7 +276,7 @@ export const Intro = (props: { posts: IPost[] }) => {
             >
               <SmallPost post={props.posts[1]} category={category} />
               <SmallPost post={props.posts[2]} category={category} />
-              <SmallPost post={props.posts[3]} category={category} />
+              <SmallPost post={props.posts[2]} category={category} />
             </Flex>
           </Flex>
         </Section>

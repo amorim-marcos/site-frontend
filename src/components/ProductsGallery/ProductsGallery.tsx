@@ -37,7 +37,7 @@ export const ProductsGallery = ({
               subtitleColor={p.subtitleColor}
               bgColor={p.bgColor}
               srcImg={p.srcImg}
-              onClick={() => alert('Ir para BP')}
+              onClick={p.onClick}
               bannerSize={p.bannerSize}
             />
           </Box>
