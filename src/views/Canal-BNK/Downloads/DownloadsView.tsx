@@ -2,7 +2,6 @@ import { Flex, Text, Image, Box } from '@chakra-ui/react'
 import CompletedTitle from '@components/CompletedTitle'
 import DownloadSection from '@components/DownloadSection'
 import { SectionPackBpDownloads } from '@components/SectionPackBpDownloads/SectionPackBpDownloads'
-import useMobile from 'hooks/useMobile'
 
 export type DownloadItem = {
   id: number
@@ -31,8 +30,6 @@ export type DownloadsViewProps = {
 }
 
 export const DownlodasView = ({ items }: DownloadsViewProps) => {
-  const { isMobile, width } = useMobile(568)
-
   return (
     <Flex flexDir="column" maxWidth="1920px" marginX="auto">
       {/* Downloads Header */}
@@ -128,7 +125,7 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
 
         {items.map((i, j) => {
           return (
-            j > 2 && (
+            j >= 2 && (
               <Box key={j}>
                 <DownloadSection
                   title={i.type}

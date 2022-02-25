@@ -57,6 +57,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }[]
       title: string
       published_at: string
+      url_code: string
     }) => {
       const post: Post = {
         category: {
@@ -70,7 +71,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           Tag: j.tag
         })),
         title: item.title,
-        date: item.published_at
+        date: item.published_at,
+        url_code: item.url_code
       }
       return post
     }

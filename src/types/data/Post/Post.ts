@@ -8,4 +8,5 @@ export type Post = {
   tags: Tag[]
   cover: string
   date: Date | string
+  url_code: string
 }

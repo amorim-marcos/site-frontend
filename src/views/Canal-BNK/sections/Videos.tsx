@@ -45,33 +45,36 @@ const PLAYLISTS = {
   }
 }
 
-export const Videos = () => {
-  /*const { categories, currentCategory } = useContext(CategoryContext)
+export const Videos = (props: {
+  videos: { id: number; title: string; url: string }[]
+}) => {
+  // const { categories, currentCategory } = useContext(CategoryContext)
   const [videos, setVideos] = useState<IVideos[]>([])
+  const { currentCategory } = useContext(CategoryContext)
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetch(
-        `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&maxResults=${4}&playlistId=${
-          PLAYLISTS[category].id
-        }&key=${process.env.YOUTUBE_API_KEY}`
+        `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&maxResults=${4}&playlistId=${'AL_3OsEsnQc'}&key=${
+          process.env.YOUTUBE_API_KEY
+        }`
       )
       const data = await result.json()
       setVideos(data.items)
     }
 
     fetchData()
-  }, [category])
+  }, [props])
 
   return (
     <Section
       title="Vídeos"
       seeMore={{
         text: 'Veja mais vídeos',
-        link: PLAYLISTS[category].url
+        link: '/'
       }}
       bg={
-        category === 'all' || category === 'feedstock'
+        currentCategory === -1 || currentCategory === 0
           ? 'gray.150'
           : 'brown.100'
       }
@@ -92,7 +95,7 @@ export const Videos = () => {
         overflowX={{ base: 'scroll', lg: 'hidden' }}
         overflowY="hidden"
       >
-        {videos?.map(({ id, snippet }) => {
+        {/* {videos?.map(({ id, snippet }) => {
           return (
             <Link
               key={id}
@@ -138,9 +141,9 @@ export const Videos = () => {
               </Flex>
             </Link>
           )
-        })}
+        })} */}
       </Flex>
     </Section>
-  )*/
-  return <h1>Videos sections</h1>
+  )
+  // return <h1>Videos sections</h1>
 }

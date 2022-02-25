@@ -12,12 +12,16 @@ export type PostBodyProps = {
   publishDate?: string
   postTitle?: string
   postContent?: string
+  tags?: {
+    name: string
+  }[]
 }
 export const PostBody = ({
   category,
   publishDate,
   postTitle,
-  postContent
+  postContent,
+  tags
 }: PostBodyProps) => {
   const [content, setContent] = useState('<h1>Hello world</h1>')
   useEffect(() => {
@@ -52,10 +56,12 @@ export const PostBody = ({
         w="100%"
         alignItems={'center'}
         position={'relative'}
+        justifyContent="space-between"
       >
         <Flex
           flexDirection={{ base: 'column-reverse', md: 'row' }}
           alignItems={{ base: 'flex-start', md: 'center' }}
+          w="100%"
         >
           {/* Social Media */}
           <Flex
@@ -139,12 +145,10 @@ export const PostBody = ({
         marginLeft={{ base: '0', md: '12%', xl: '10%' }}
         wrap="wrap"
       >
-        <TagItem tag="materiais de construção" />
-        <TagItem tag="decoração" />
-        <TagItem tag="nova fábrica" />
-        <TagItem tag="painéis de madeira" />
-        <TagItem tag="valor 1000" />
-        <TagItem tag="valor econômico" />
+        {tags &&
+          tags.map((item, i) => {
+            return <TagItem key={i} tag={item.name} />
+          })}
       </Flex>
 
       {/* End of tags section */}

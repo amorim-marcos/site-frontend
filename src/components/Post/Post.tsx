@@ -112,8 +112,11 @@ export const Post = (props: PostProps) => {
           : 'column-reverse'
       }
       role="group"
-      onClick={() => router.push(`/${post?.category.name}/${post?.title}`)}
+      onClick={() =>
+        router.push(`/canal-bnk/${post?.category.id}/${post?.url_code}`)
+      }
       {...rest}
+      cursor="pointer"
     >
       <Box
         w={imgPos === 'top' || imgPos === 'bottom' ? '100%' : '40%'}
