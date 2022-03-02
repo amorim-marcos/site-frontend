@@ -226,16 +226,3 @@ export default function Home(props: HomeProps) {
     </Box>
   )
 }
-
-// const PanelImage = (props: { imageSrc: string }) => (
-//   <Flex h="100%" justifyContent="center" alignItems="center" pos="relative">
-//     <Image
-//       h="100%"
-//       src={props.imageSrc}
-//       cursor={{ md: 'pointer' }}
-//       objectFit="cover"
-//       userSelect="none"
-//       draggable="false"
-//     />
-//   </Flex>
-// )
