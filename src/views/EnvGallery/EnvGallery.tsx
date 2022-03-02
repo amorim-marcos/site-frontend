@@ -1043,39 +1043,23 @@ export const EnvGallery = ({ envs, availableBps }: EnvGalleryProps) => {
   const { isMobile } = useMobile(1024)
 
   function changeFilterPanel(newFilterPanel: FilterPanelName) {
-    if (currentFilterPanel == newFilterPanel) {
-      setCurrentFilterPanel('none')
-    } else {
-      setCurrentFilterPanel(newFilterPanel)
-    }
+    setCurrentFilterPanel(
+      currentFilterPanel == newFilterPanel ? 'none' : newFilterPanel
+    )
   }
 
   function appendFilter(type: ValidFilterNames, value: string) {
-    const filtersArray = filters[type]
-
-    filtersArray.push(value)
-
-    const newFilters: Filters = { ...filters }
-
-    newFilters[type] = filtersArray
-
-    setFilters(newFilters)
+    setFilters((f: any) => ({
+      ...f,
+      [type]: [...f[type], value]
+    }))
   }
 
   function removeFilter(type: ValidFilterNames, value: string) {
-    const filtersArray = filters[type]
-
-    const index = filtersArray.indexOf(value)
-
-    if (index > -1) {
-      filtersArray.splice(index, 1)
-    }
-
-    const newFilters = { ...filters }
-
-    newFilters[type] = filtersArray
-
-    setFilters(newFilters)
+    setFilters((f: any) => ({
+      ...f,
+      [type]: f[type].filter((v: string) => v != value)
+    }))
   }
 
   function applyFilters(filters: any, originalEnvs: Array<any>) {
@@ -1093,15 +1077,7 @@ export const EnvGallery = ({ envs, availableBps }: EnvGalleryProps) => {
     // bps
     if (filters['bps'].length > 0) {
       filteredEnvs = filteredEnvs.filter((env: any) => {
-        if (env.bps && env.bps.length > 0) {
-          for (const bp of env.bps) {
-            if (filters['bps'].includes(bp)) {
-              return true
-            }
-          }
-          return false
-        }
-        return false
+        return env?.bps?.some((bp: any) => filters['bps'].includes(bp))
       })
     }
 
