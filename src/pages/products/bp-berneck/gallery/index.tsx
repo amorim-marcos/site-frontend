@@ -10,7 +10,7 @@ export interface GalleryProps {
     type: string
     name: string
     image_url: string
-    url_code: string
+    bps: string[]
   }[]
   availableBps: {
     name: string
@@ -46,6 +46,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       id: gallery.id,
       name: gallery.place,
+      bps: gallery.products.map((product: any) => product.name),
       type: gallery.ambient_type.type,
       url_code: gallery.url_code,
       image_url: `${url}${gallery.gallery_of_images[0].url}`
