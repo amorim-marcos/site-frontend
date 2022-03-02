@@ -1051,11 +1051,11 @@ export const EnvGallery = ({ envs, availableBps }: EnvGalleryProps) => {
   }
 
   function appendFilter(type: ValidFilterNames, value: string) {
-    let filtersArray = filters[type]
+    const filtersArray = filters[type]
 
     filtersArray.push(value)
 
-    let newFilters: Filters = { ...filters }
+    const newFilters: Filters = { ...filters }
 
     newFilters[type] = filtersArray
 
@@ -1063,15 +1063,15 @@ export const EnvGallery = ({ envs, availableBps }: EnvGalleryProps) => {
   }
 
   function removeFilter(type: ValidFilterNames, value: string) {
-    let filtersArray = filters[type]
+    const filtersArray = filters[type]
 
-    let index = filtersArray.indexOf(value)
+    const index = filtersArray.indexOf(value)
 
     if (index > -1) {
       filtersArray.splice(index, 1)
     }
 
-    let newFilters = { ...filters }
+    const newFilters = { ...filters }
 
     newFilters[type] = filtersArray
 
@@ -1094,7 +1094,7 @@ export const EnvGallery = ({ envs, availableBps }: EnvGalleryProps) => {
     if (filters['bps'].length > 0) {
       filteredEnvs = filteredEnvs.filter((env: any) => {
         if (env.bps && env.bps.length > 0) {
-          for (let bp of env.bps) {
+          for (const bp of env.bps) {
             if (filters['bps'].includes(bp)) {
               return true
             }
