@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import React from 'react'
 
 import {
@@ -208,6 +209,7 @@ const FilterCheckbox = ({
     <Button
       background={checked ? 'green.400' : 'green.300'}
       _hover={{}}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       onClick={() => {
         if (onCheck) onCheck(checked, value)
