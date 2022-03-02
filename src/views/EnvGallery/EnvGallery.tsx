@@ -410,7 +410,7 @@ const FiltersAccordion = ({
                 >
                   {(bps && bps.length <= TOTAL_BPS_SHOW_FIRST) || seeMoreBps
                     ? bps.map((bp) => (
-                        <GridItem>
+                        <GridItem key={bp.id}>
                           <BPFilter
                             isSelected={filters['bps'].includes(bp.name)}
                             toggleSelect={(selected: boolean) => {
@@ -427,7 +427,7 @@ const FiltersAccordion = ({
                         </GridItem>
                       ))
                     : bps.slice(0, TOTAL_BPS_SHOW_FIRST).map((bp) => (
-                        <GridItem>
+                        <GridItem key={bp.id}>
                           <BPFilter
                             isSelected={filters['bps'].includes(bp.name)}
                             toggleSelect={(selected: boolean) => {
@@ -524,7 +524,7 @@ const FiltersAccordion = ({
                   gridGap="5px"
                 >
                   {filtersCheckboxes['ambients'].map((filter) => (
-                    <GridItem>
+                    <GridItem key={filter.code}>
                       <FilterCheckbox
                         isChecked={filters['ambients'].includes(filter.code)}
                         onCheck={(isChecked: boolean, value: any) => {
@@ -589,7 +589,7 @@ const FiltersAccordion = ({
                   gridGap="5px"
                 >
                   {filtersCheckboxes['styles'].map((filter) => (
-                    <GridItem>
+                    <GridItem key={filter.code}>
                       <FilterCheckbox
                         isChecked={filters['styles'].includes(filter.code)}
                         onCheck={(isChecked: boolean, value: any) => {
@@ -869,6 +869,7 @@ const FiltersTabs = ({
                     {bps &&
                       bps.map((bp) => (
                         <BPFilter
+                          key={bp.id}
                           isSelected={filters['bps'].includes(bp.name)}
                           toggleSelect={(selected: boolean) => {
                             !selected
@@ -895,6 +896,7 @@ const FiltersTabs = ({
                     <Flex justifyContent="flex-start" wrap="wrap">
                       {filtersCheckboxes['ambients'].map((filter) => (
                         <FilterCheckbox
+                          key={filter.code}
                           isChecked={filters['ambients'].includes(filter.code)}
                           onCheck={(isChecked: boolean, value: any) => {
                             !isChecked
@@ -921,6 +923,7 @@ const FiltersTabs = ({
                     <Flex justifyContent="flex-start" wrap="wrap">
                       {filtersCheckboxes['styles'].map((filter) => (
                         <FilterCheckbox
+                          key={filter.code}
                           isChecked={filters['styles'].includes(filter.code)}
                           onCheck={(isChecked: boolean, value: any) => {
                             !isChecked
@@ -1233,7 +1236,7 @@ export const EnvGallery = ({ envs, availableBps }: EnvGalleryProps) => {
             >
               {filteredEnvs &&
                 filteredEnvs.map((env) => (
-                  <GridItem mt="60px">
+                  <GridItem key={env.id} mt="60px">
                     <Env
                       href={`/products/bp-berneck/gallery/${env.url_code}`}
                       type={env.type}
