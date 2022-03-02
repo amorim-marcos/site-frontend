@@ -114,9 +114,7 @@ const BPFilter = ({
   return (
     <Button
       zIndex="5"
-      onClick={(e) => {
-        if (toggleSelect) toggleSelect(selected)
-      }}
+      onClick={() => toggleSelect && toggleSelect(selected)}
       onMouseEnter={() => setDisplayInfo(true)}
       onMouseLeave={() => setDisplayInfo(false)}
       height={{ base: '43px', md: '55px' }}
@@ -196,11 +194,10 @@ const FilterCheckbox = ({
   title,
   code,
   isChecked = false,
-  onCheck = () => {},
+  onCheck,
   ...props
 }: FilterCheckBoxProps) => {
   const [checked, setChecked] = React.useState(isChecked)
-  const [value, setValue] = React.useState(code)
 
   React.useEffect(() => {
     setChecked(isChecked)
@@ -212,9 +209,7 @@ const FilterCheckbox = ({
       _hover={{}}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      onClick={() => {
-        if (onCheck) onCheck(checked, value)
-      }}
+      onClick={() => onCheck && onCheck(checked, code)}
       position="relative"
       color="green.900"
       justifyContent="start"
@@ -231,7 +226,7 @@ const FilterCheckbox = ({
         onClickCapture={(e) => {
           e.preventDefault()
           e.stopPropagation()
-          if (onCheck) onCheck(checked, value)
+          if (onCheck) onCheck(checked, code)
         }}
         padding="0"
         iconColor="green.600"
