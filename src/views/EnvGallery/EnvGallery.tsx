@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {
   Container,
   Box,
@@ -9,21 +10,18 @@ import {
   Text,
   Image,
   Button,
-  Select,
   Input,
   Center,
   Checkbox,
   BoxProps,
   LinkProps,
-  ButtonProps,
-  CloseButton
+  ButtonProps
 } from '@chakra-ui/react'
+
 import Pagebar from '@components/Pagebar'
-import Arrow from '@components/Arrow'
-import FiltersIcon from '@components/Icons/FiltersIcon'
-import SearchIcon from '@components/Icons/SearchIcon'
+import { Arrow, SearchIcon, FiltersIcon, CloseIcon } from '@components/Icons'
+
 import { colors } from 'theme/colors'
-import CloseIcon from '@components/Icons/CloseIcon'
 import useMobile from 'hooks/useMobile'
 
 export type EnvProps = LinkProps & {
