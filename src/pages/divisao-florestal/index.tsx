@@ -1,0 +1,62 @@
+import { GetStaticProps } from 'next'
+import { ForestsView, ForestsViewProps } from 'views/Forests/Forests'
+
+export type FlorestalDivisionPageProps = ForestsViewProps
+
+export default function FlorestalDivisionPage(
+  props: FlorestalDivisionPageProps
+) {
+  console.log(props.page_content)
+  return <ForestsView page_content={props.page_content} />
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const locale = context.locale
+  let page_content
+  let res
+
+  try {
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/forest-division?_locale=${locale}`
+    )
+    page_content = await res.json()
+  } catch (e) {
+    // if locale not working, get default
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/forest-division`)
+    page_content = await res.json()
+  }
+
+  page_content.public_resume = page_content.public_resume.map(
+    (item: { public_resume_file: { url: string } }) => {
+      return {
+        ...item,
+        public_resume_file: {
+          ...item.public_resume_file,
+          url: process.env.NEXT_PUBLIC_API_URL + item.public_resume_file.url
+        }
+      }
+    }
+  )
+
+  page_content.forest_production_highlights =
+    page_content.forest_production_highlights.map(
+      (item: { image: { url: string } }) => {
+        return {
+          ...item,
+          image: {
+            ...item.image,
+            url: process.env.NEXT_PUBLIC_API_URL + item.image.url
+          }
+        }
+      }
+    )
+
+  return {
+    props: {
+      page_content
+    },
+    revalidate: parseInt(
+      process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'
+    )
+  }
+}
