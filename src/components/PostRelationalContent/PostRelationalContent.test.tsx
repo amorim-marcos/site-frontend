@@ -4,6 +4,6 @@ import PostRelationalContent from '.'
 
 describe('<PostRelationalContent />', () => {
   it('should render the component', () => {
-    const { container } = render(<PostRelationalContent />)
+    const { container } = render(<PostRelationalContent items={[]} />)
   })
 })

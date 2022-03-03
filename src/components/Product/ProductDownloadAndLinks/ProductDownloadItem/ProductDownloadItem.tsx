@@ -22,6 +22,7 @@ export const ProductDownloadItem = ({
 }: ProductDownloadItemProps) => {
   return (
     <Flex
+      cursor={'pointer'}
       padding={{ base: '10px', sm: '0' }}
       h={{
         base: '100px',

@@ -121,7 +121,7 @@ export const ProductHeader = ({
             '2xl': '20px'
           }}
           color="green.900"
-          width={{ base: '100%', sm: '45%' }}
+          width={{ base: '100%', sm: '65%' }}
           zIndex="docked"
         >
           {description}

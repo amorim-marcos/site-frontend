@@ -1,6 +1,12 @@
 import Product from '../../components/Product'
+import { ProductProps } from './hdf-berneck'
 
-export default function Mdp() {
+export type MdpBerneckViewProps = {
+  mdp: ProductProps
+  mdp_plus: ProductProps
+}
+
+export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
   return (
     <div>
       <Product
@@ -17,31 +23,21 @@ export default function Mdp() {
         imgMarginRight="0px"
         secondaryBackground="#F3E9DA"
         downloadAndLinks={{
-          datasheet: true,
+          datasheetUrl: mdp.technical_sheet,
           whereBuy: true,
           qualityCertificate: true
         }}
         header={{
-          title: 'MDP BERNECK®',
+          title: mdp.title,
           headerBgColor: '#E0CBA5',
-          subtitle: 'Painel de Partículas de Média Densidade',
-          description:
-            'Destaca-se pela coloração bem clara e homogênea, superfície lisa e camada interna bem compactada, assegurada pela perfeita distribuição das partículas'
+          subtitle: mdp.subTitle,
+          description: mdp.subTitleDescription
         }}
         body={{
-          description:
-            'O MDP BERNECK é formado por partículas de madeira de média densidade, Medium Density Particleboard. É produzido em prensas contínuas de ultima geração. É um dos produtos mais tecnológicos e econômicos para produção de móveis de linhas retas. Destaca-se por sua coloração clara e homogenia e pela menor absorção superficial por ter a camada externa com alta densidade e uniformidade, assegurada pela perfeita distribuição das partículas de madeira.',
-          usesAndApplications:
-            'Especialmente indicado para os processos de pintura e impressão, que exigem superfícies uniformes e de baixa absorção e para o revestimento com qualquer material (BPs, laminados de PVC, laminados de Alta Pressão (AP), lâminas de madeira, lâminas pré-compostas, etc.). Proporciona excelente resultado em móveis para dormitórios, escritórios, cozinhas, além de eletro-eletrônicos, construção civil, painéis para decoração, entre outros.',
-          finishes: [
-            '• Natural (sem revestimento)',
-            '• Revestido com laminado de baixa pressão BP BERNECK®'
-          ],
-          dimensions: {
-            thickness: '12 / 15 / 18 / 25',
-            length: '2750',
-            width: '1850 a 2200'
-          },
+          description: mdp.description,
+          usesAndApplications: mdp.usesAndApplications,
+          finishes: mdp.finishes,
+          dimensions: mdp.dimensions,
           backgroundColor: '#FCFCFC',
           productWithBP: {
             backgroundColor: '#FBF6F0',
@@ -72,34 +68,21 @@ export default function Mdp() {
         secondaryBackground="#F5F6F4"
         plusProduct
         downloadAndLinks={{
-          qualityCertificate: false
+          qualityCertificate: false,
+          datasheetUrl: mdp_plus.technical_sheet
         }}
         header={{
           plusIndicator: true,
-          title: 'MDP PLUS BERNECK®',
+          title: mdp_plus.title,
           headerBgColor: '#ACCC9F',
-          subtitle: 'É Plus porque tem mais proteção à umidade',
-          description:
-            'A qualidade do MDP BERNECK® aliada à máxima proteção contra umidade e cupins.'
+          subtitle: mdp_plus.subTitle,
+          description: mdp_plus.subTitleDescription
         }}
         body={{
-          moreTechnologyQualityProtection: [
-            'O MDP BERNECK é formado por partículas de madeira de média densidade, Medium Density Particleboard. É produzido em prensas contínuas de última geração. É um dos produtos mais tecnológicos e econômicos para produção de móveis que não necessitem de trabalhos de baixo relevo. ',
-            'O MDP PLUS é um produto inovador! Além de ser um painel de madeira com maior resistência à umidade, ele traz inúmeras vantagens: leveza, custo competitivo e desempenho superior quando comparado às demais opções do mercado.',
-            'Possui a coloração esverdeada no miolo como identificação internacional do produto com maior resistência à umidade, diferenciando-o dos painéis Standard. Essa pigmentação pode variar a cada lote de produção e não está associada ao princípio ativo de hidro resistência, ou seja, não é à prova d’água.',
-            'Vale inovar nos projetos com MDP Plus. Um ótimo investimento, com incomparável custo benefício'
-          ],
-          usesAndApplications:
-            'Indicado para móveis de cozinhas, banheiros, lavanderias e ambientes comerciais.',
-          finishes: [
-            '• Natural (sem revestimento)',
-            '• Revestido com laminado de baixa pressão BP BERNECK®'
-          ],
-          dimensions: {
-            thickness: '12 / 15 / 18 / 25',
-            length: '2750',
-            width: '1850'
-          },
+          moreTechnologyQualityProtection: mdp_plus.description,
+          usesAndApplications: mdp_plus.usesAndApplications,
+          finishes: mdp_plus.finishes,
+          dimensions: mdp_plus.dimensions,
           backgroundColor: '#E8E8E8',
           productWithBP: {
             title: 'MDP PLUS BERNECK® com BP',

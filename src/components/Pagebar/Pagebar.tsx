@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import { useRouter } from 'next/router'
 
 import {
@@ -13,6 +14,8 @@ import { HouseIcon, Arrow } from '@components/Icons'
 import { PagebarGrafism } from './PagebarGrafism/PagebarGrafism'
 import { useTranslation } from 'react-i18next'
 
+import { CategoryContext } from 'views/Canal-BNK/index'
+
 export type Path = {
   title: string
   url: string
@@ -22,6 +25,8 @@ export type PagebarProps = {
   paths?: Array<Path>
 }
 export const Pagebar = ({ paths }: PagebarProps) => {
+  const { seeOnlyPosts, setSeeOnlyPosts } = useContext(CategoryContext)
+  const router = useRouter()
   const pagebar = useTranslation('pagebar')
   const router = useRouter()
 
@@ -118,10 +123,7 @@ export const Pagebar = ({ paths }: PagebarProps) => {
           {paths &&
             paths.map((s, i) => {
               return (
-                <BreadcrumbItem
-                  key={s.title}
-                  isCurrentPage={i === paths.length - 1}
-                >
+                <BreadcrumbItem key={i} isCurrentPage={i === paths.length - 1}>
                   <BreadcrumbLink color="white.100" href={s.url}>
                     <Text
                       color="white.100"
@@ -147,7 +149,18 @@ export const Pagebar = ({ paths }: PagebarProps) => {
             })}
         </Breadcrumb>
 
-        <Flex _hover={{ opacity: '0.6' }} alignItems="center" marginLeft="auto">
+        <Flex
+          _hover={{ opacity: '0.6' }}
+          onClick={() => {
+            if (seeOnlyPosts) {
+              setSeeOnlyPosts(false)
+            } else {
+              router.back()
+            }
+          }}
+          alignItems="center"
+          marginLeft="auto"
+        >
           <Box
             transform="rotate(180deg)"
             marginRight={{

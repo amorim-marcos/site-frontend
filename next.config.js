@@ -15,7 +15,8 @@ module.exports = withPWA({
     MEILI_API_KEY: process.env.MEILI_API_KEY
   },
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'es', 'pt-BR', 'zn-CN']
+    defaultLocale: 'pt-BR',
+    locales: ['pt-BR']
+    // locales: ['en', 'es', 'pt-BR', 'zn-CN']
   }
 })

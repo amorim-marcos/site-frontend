@@ -99,7 +99,7 @@ export const PlusTestInfo = ({
 
           <Box>
             {extraInfoBody &&
-              extraInfoBody.map((e) => <ItemCite key={e} text={e} />)}
+              extraInfoBody.map((e, j) => <ItemCite key={j} text={e} />)}
           </Box>
         </Box>
         <Box>{tableInfo && <PlusInfoTable rows={tableInfo.rows} />}</Box>

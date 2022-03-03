@@ -32,7 +32,13 @@ export const Connect = () => {
   useFacebook()
 
   return (
-    <Section title="Conecte-se" bg="green.100" pt="65px">
+    <Section
+      w={{ base: '100vw', lg: 'auto' }}
+      overflow={'scroll'}
+      title="Conecte-se"
+      bg="green.100"
+      pt="65px"
+    >
       <Flex
         data-testid="connect"
         h={{ base: 'fit-content' }}
