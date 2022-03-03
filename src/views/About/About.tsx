@@ -20,6 +20,7 @@ import { EarthIcon } from '@components/Icons'
 import PatternInfo from '@components/PatternInfo'
 import PatternInfoPhoto from '@components/PatternInfoPhoto'
 import { TrajectoryTab } from '@components/TrajectoryCarousel/TrajectoryCarousel'
+import { useRouter } from 'next/router'
 
 const dataTrajetoria = {
   title: 'Nossa Trajetória',
@@ -62,6 +63,8 @@ export type AboutProps = {
 }
 
 export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
+  const router = useRouter()
+
   return (
     <Box maxWidth="1920px" marginX="auto" bg="green.100">
       <Pagebar
@@ -73,16 +76,18 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
         ]}
       />
 
-      <PageSession
-        data={{
-          imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
-          title: 'Quem somos',
-          subtitle: page_content.header_title,
-          text: page_content.header_text
-        }}
-        titleColor="white"
-        subTitleColor="white"
-      />
+      <Box id="quem-somos">
+        <PageSession 
+          data={{
+            imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
+            title: 'Quem somos',
+            subtitle: page_content.header_title,
+            text: page_content.header_text
+          }}
+          titleColor="white"
+          subTitleColor="white"
+        />
+      </Box>
 
       {/* INICIO RAIZES FIRMES PARA CRESCER */}
       <Flex
@@ -272,7 +277,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
 
 
       {/* INICIO TRAJETORIA CAROUSEL */}
-      <Box bg="brown.100">
+      <Box bg="brown.100" id="trajetoria">
         <Flex
           // bg='yellow'
           direction={{
@@ -329,7 +334,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
 
 
       {/* INICIO ONDE ESTAMOS */}
-      <Flex
+      <Flex id="onde-estamos"
         maxWidth="1920px"
         marginX="auto"
         position="relative"
@@ -467,7 +472,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
               <PatternInfo
                 title="DESCUBRA"
                 description="Onde Comprar"
-                onClick={() => alert('Onde Comprar')}
+                onClick={() => router.push('/onde-comprar')}
                 icon={
                   <EarthIcon
                     width={{ base: '60px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
@@ -526,7 +531,7 @@ export const About = ({ page_content, our_trajectory_tabs }:AboutProps) => {
             // alignSelf='center'
           >
               <PatternInfoPhoto 
-                onClick={() => alert('Vai para Nossas Certificações')}
+                onClick={() => router.push('/certificacoes')}
                 imgSrc="/assets/imgs/banner_certificacoes.png"
                 title = "CONHEÇA"
                 description="Nossas certificações"

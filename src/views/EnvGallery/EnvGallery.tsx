@@ -765,7 +765,7 @@ export const EnvGallery = ({ envs, availableBps }:EnvGalleryProps) => {
                         {
                             filteredEnvs && filteredEnvs.map((env) => (
                                 <GridItem mt="60px">
-                                    <Env type={env.type} name={env.name} image_url={env.image_url} />      
+                                    <Env href="/products/bp-berneck/gallery/item" type={env.type} name={env.name} image_url={env.image_url} />      
                                 </GridItem>
                             ))
                         }

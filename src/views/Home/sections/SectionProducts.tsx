@@ -70,20 +70,22 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
             }}
             alignItems={'flex-end'}
           >
-            <Text
-              as="h4"
-              variant={'h4' as any}
-              textAlign={{
-                base: 'right',
-                sm: 'right',
-                lg: 'right',
-                xl: 'right'
-              }}
-              fontWeight={'medium'}
-              color={'green.550'}
-            >
-              Veja todos os produtos
-            </Text>
+            <Box onClick={() => router.push('/products')}>
+              <Text
+                as="h4"
+                variant={'h4' as any}
+                textAlign={{
+                  base: 'right',
+                  sm: 'right',
+                  lg: 'right',
+                  xl: 'right'
+                }}
+                fontWeight={'medium'}
+                color={'green.550'}
+              >
+                Veja todos os produtos
+              </Text>
+            </Box>
           </Flex>
           <Flex
             // bg="yellow"

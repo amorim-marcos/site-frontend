@@ -10,7 +10,9 @@ module.exports = withPWA({
   env: {
     MAPBOX_API_KEY: process.env.MAPBOX_API_KEY,
     FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
-    YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY
+    YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY,
+    MEILI_API_HOST: process.env.MEILI_API_HOST,
+    MEILI_API_KEY: process.env.MEILI_API_KEY
   },
   i18n: {
     defaultLocale: 'pt-BR',

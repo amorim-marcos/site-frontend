@@ -7,7 +7,8 @@ import {
   Text,
   Button,
   ButtonProps,
-  FlexProps
+  FlexProps,
+  Link
 } from '@chakra-ui/react'
 
 import { Arrow } from '@components/Icons'

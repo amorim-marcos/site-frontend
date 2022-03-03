@@ -33,6 +33,7 @@ import {
   UnorderedList
 } from '@chakra-ui/react'
 import PatternCertification from '@components/PatternCertification'
+import { useRouter } from 'next/router'
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/nosso-compromisso-filtro-1x.jpg)',
@@ -65,6 +66,7 @@ const dataCultivamos = {
 }
 
 export const Compromise = () => {
+  const router = useRouter()
   return (
     <Box maxWidth="1920px" marginX="auto" bg="green.100">
       <Pagebar
@@ -265,7 +267,7 @@ export const Compromise = () => {
       {/* FIM VALORES */}
 
       {/* INICIO Cultivamos o meio ambiente */}
-      <Flex
+      <Flex id="meio-ambiente"
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"
@@ -403,7 +405,7 @@ export const Compromise = () => {
                   <PatternInfo
                     title="CONHEÇA"
                     description="Nossas Certificações"
-                    onClick={() => alert('Vai para Nossas Certificações')}
+                    onClick={() => router.push('/certificacoes')}
                     icon={
                       <CertificationsIcon
                         width={{
@@ -780,7 +782,7 @@ export const Compromise = () => {
       {/* FIM Preservação da fauna e da flora */}
 
       {/* INICIO Cultivamos nossa gente */}
-      <Flex
+      <Flex id="nossa-gente"
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"
@@ -872,7 +874,7 @@ export const Compromise = () => {
             <Image src="/assets/imgs/170130-Berneck-58.png" />
 
             <Button
-              onClick={() => alert('trabalhe conosco')}
+              onClick={() => window.open('https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup', '_blank')}
               w={{ base: '90%', sm: '90%', lg: '90%', xl: '90%' }}
               h={{ base: '10%', sm: '10%', lg: '10%', xl: '10%' }}
               padding={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
@@ -1072,7 +1074,7 @@ export const Compromise = () => {
       {/* FIM Confira alguns projetos patrocinados por nós */}
 
       {/* INICIO Cultivamos nossos valores */}
-      <Flex
+      <Flex id="nossos-valores"
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"
@@ -1321,7 +1323,7 @@ export const Compromise = () => {
       {/* FIM Ouvidoria */}
 
       {/* INICIO Nossas práticas de ESG */}
-      <Flex
+      <Flex id="relatorio"
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"

@@ -3,10 +3,12 @@ import Link from 'next/link'
 export type HeaderSecondaryItemProps = {
   title?: string
   href?: string
+  target?: string
 }
 export const HeaderSecondaryItem = ({
   title = 'TopMenuItem',
-  href = '/'
+  href = '/',
+  target = '_self'
 }: HeaderSecondaryItemProps) => {
   return (
     <Flex
@@ -20,22 +22,24 @@ export const HeaderSecondaryItem = ({
       marginLeft={{ base: '0', md: '6%', xl: '7%', '2xl': '8%' }}
     >
       <Link href={href} passHref>
-        <Text
-          _hover={{ color: '#FFF' }}
-          variant={'header-menu-small' as any}
-          color={{ base: 'white.100', md: 'green.200' }}
-          cursor="pointer"
-          whiteSpace="nowrap"
-          fontSize={{
-            base: '10px',
-            md: '9px',
-            lg: '11px',
-            xl: '13px',
-            '2xl': '16.5px'
-          }}
-        >
-          {title}
-        </Text>
+        <a ref={href} target={target}>
+          <Text
+            _hover={{ color: '#FFF' }}
+            variant={'header-menu-small' as any}
+            color={{ base: 'white.100', md: 'green.200' }}
+            cursor="pointer"
+            whiteSpace="nowrap"
+            fontSize={{
+              base: '10px',
+              md: '9px',
+              lg: '11px',
+              xl: '13px',
+              '2xl': '16.5px'
+            }}
+          >
+            {title}
+          </Text>
+        </a>
       </Link>
     </Flex>
   )
