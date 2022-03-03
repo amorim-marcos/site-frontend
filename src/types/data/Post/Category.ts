@@ -1,5 +1,5 @@
 export type Category = {
-  Name: string
+  name: string
+  id: number
+  description: string
 }
-
-export type CategoryLabel = 'all' | 'inspiration' | 'feedstock' | 'world'

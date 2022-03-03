@@ -1,5 +1,4 @@
-import { Flex, Heading, Text, Image, Center, Box } from '@chakra-ui/react'
-import { ResponsiveCss } from 'types/responsive'
+import { Flex, Heading, Text, Image, Center, Box, Link } from '@chakra-ui/react'
 import { GrafismProductWithBP } from './GrafismProductWithBP/GrafismProductWithBP'
 
 export type ProductWithBPProps = {
@@ -116,19 +115,75 @@ export const ProductWithBP = ({
           {description}
         </Text>
         {type === 'centralizedBtn' && (
+          <Link href="/products/plus-berneck">
+            <Center
+              bg={btnColor}
+              _hover={{ bg: btnHoverColor }}
+              h={{
+                base: '40px',
+                sm: '30px',
+                md: '40px',
+                lg: '50px',
+                xl: '60px',
+                '2xl': '78px'
+              }}
+              width={{ base: '90%', sm: '75%' }}
+              marginY={{ base: '15px', sm: '0' }}
+              borderRadius={{
+                base: '12px',
+                sm: '5px',
+                md: '8px',
+                lg: '11px',
+                xl: '14px',
+                '2xl': '17px'
+              }}
+              cursor="pointer"
+              marginTop={{
+                base: '7px',
+                sm: '10px',
+                md: '15px',
+                lg: '20px',
+                xl: '25px',
+                '2xl': '30px'
+              }}
+              padding="10px"
+            >
+              <Heading
+                fontSize={{
+                  base: '10px',
+                  sm: '5px',
+                  md: '7.5px',
+                  lg: '11px',
+                  xl: '14px',
+                  '2xl': '17px'
+                }}
+                color={btnTextColor}
+              >
+                {btnText}
+              </Heading>
+            </Center>
+          </Link>
+        )}
+      </Flex>
+
+      {type === 'bottomBtn' && (
+        <Link href="/products/plus-berneck">
           <Center
+            position={{ base: 'relative', sm: 'absolute' }}
+            bottom={{ base: '0', sm: '-10%' }}
+            left={{ base: '0', sm: '5.7%' }}
             bg={btnColor}
             _hover={{ bg: btnHoverColor }}
+            marginY={{ base: '15px', sm: '0' }}
             h={{
               base: '40px',
               sm: '30px',
-              md: '40px',
-              lg: '50px',
-              xl: '60px',
+              md: '50px',
+              lg: '60px',
+              xl: '70px',
               '2xl': '78px'
             }}
-            width={{ base: '90%', sm: '75%' }}
-            marginY={{ base: '15px', sm: '0' }}
+            width={{ base: '90%', sm: '40%' }}
             borderRadius={{
               base: '12px',
               sm: '5px',
@@ -138,76 +193,24 @@ export const ProductWithBP = ({
               '2xl': '17px'
             }}
             cursor="pointer"
-            marginTop={{
-              base: '7px',
-              sm: '10px',
-              md: '15px',
-              lg: '20px',
-              xl: '25px',
-              '2xl': '30px'
-            }}
+            textAlign="center"
             padding="10px"
           >
             <Heading
               fontSize={{
                 base: '10px',
-                sm: '5px',
-                md: '7.5px',
-                lg: '11px',
-                xl: '14px',
-                '2xl': '17px'
+                sm: '6px',
+                md: '8.5px',
+                lg: '12px',
+                xl: '15px',
+                '2xl': '18px'
               }}
               color={btnTextColor}
             >
               {btnText}
             </Heading>
           </Center>
-        )}
-      </Flex>
-
-      {type === 'bottomBtn' && (
-        <Center
-          position={{ base: 'relative', sm: 'absolute' }}
-          bottom={{ base: '0', sm: '-10%' }}
-          left={{ base: '0', sm: '5.7%' }}
-          bg={btnColor}
-          _hover={{ bg: btnHoverColor }}
-          marginY={{ base: '15px', sm: '0' }}
-          h={{
-            base: '40px',
-            sm: '30px',
-            md: '50px',
-            lg: '60px',
-            xl: '70px',
-            '2xl': '78px'
-          }}
-          width={{ base: '90%', sm: '40%' }}
-          borderRadius={{
-            base: '12px',
-            sm: '5px',
-            md: '8px',
-            lg: '11px',
-            xl: '14px',
-            '2xl': '17px'
-          }}
-          cursor="pointer"
-          textAlign="center"
-          padding="10px"
-        >
-          <Heading
-            fontSize={{
-              base: '10px',
-              sm: '6px',
-              md: '8.5px',
-              lg: '12px',
-              xl: '15px',
-              '2xl': '18px'
-            }}
-            color={btnTextColor}
-          >
-            {btnText}
-          </Heading>
-        </Center>
+        </Link>
       )}
 
       <Image

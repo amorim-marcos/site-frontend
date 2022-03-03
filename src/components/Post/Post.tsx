@@ -5,24 +5,45 @@ import { Flex, Box, Text, Link, FlexProps, TextProps } from '@chakra-ui/react'
 import { Arrow, CalendarIcon, SocialIcon } from '@components/Icons'
 
 import { Post as IPost } from 'types/data'
-import { CategoryLabel } from 'types/data/Post'
+import { Category } from 'types/data/Post'
+import { useContext } from 'react'
+import { CategoryContext } from 'views/Canal-BNK'
 
-export const PANEL_COLOR = {
-  all: 'white',
-  inspiration: '#F0E4D1',
-  feedstock: '#D6DCD5',
-  world: '#89BA81'
+function getPanelColor(i: number) {
+  if (i === 2) {
+    return '#89BA81'
+  }
+
+  if (i === 0) {
+    return '#F0E4D1'
+  }
+
+  if (i === 1) {
+    return '#D6DCD5'
+  }
+
+  return 'white'
 }
 
-export const ACCENT_COLOR = {
-  inspiration: '#E0CBA5',
-  feedstock: '#B9C3B8',
-  world: '#429C2E'
+function getAccentColor(i: number) {
+  if (i === 2) {
+    return '#429C2E'
+  }
+
+  if (i === 0) {
+    return '#E0CBA5'
+  }
+
+  if (i === 1) {
+    return '#B9C3B8'
+  }
+
+  return 'white'
 }
 
 export interface PostProps extends FlexProps {
   post?: IPost
-  categoryPage?: CategoryLabel
+  categoryPage?: Category
   showDate?: boolean
   showPreview?: boolean
   showShareOptions?: boolean
@@ -32,16 +53,10 @@ export interface PostProps extends FlexProps {
   categoryTextProps?: TextProps
 }
 
-const getAccentColor = (categoryName?: string) => {
-  return categoryName === 'INSPIRAÇÃO SOB MEDIDA'
-    ? ACCENT_COLOR['inspiration']
-    : categoryName === 'MATÉRIA-PRIMA: CONHECIMENTO'
-    ? ACCENT_COLOR['feedstock']
-    : ACCENT_COLOR['world']
-}
-
 export const Post = (props: PostProps) => {
   const router = useRouter()
+
+  const { currentCategory, categories } = useContext(CategoryContext)
 
   const {
     post,
@@ -57,22 +72,31 @@ export const Post = (props: PostProps) => {
   } = props
 
   const getSocialIconHoverColor = () => {
-    if (categoryPage === 'all') return getAccentColor(post?.Category.Name)
+    const index = categories.findIndex(
+      (item) => item.name === post?.category.name
+    )
+    if (categoryPage === 'all') return getAccentColor(index)
     else
-      return categoryPage === 'inspiration'
+      return currentCategory === 0
         ? 'brown.200'
-        : categoryPage === 'feedstock'
+        : currentCategory === 1
         ? 'white'
         : 'green.900'
   }
 
   const getCalendarColor = () => {
-    if (categoryPage === 'all') return getAccentColor(post?.Category.Name)
-    else return categoryPage === 'world' ? 'white' : '#595959'
+    const index = categories.findIndex(
+      (item) => item.name === post?.category.name
+    )
+    if (categoryPage === 'all') return getAccentColor(index)
+    else return currentCategory === 2 ? 'white' : '#595959'
   }
 
   const getHoverIndicatorColor = () => {
-    if (categoryPage === 'all') return getAccentColor(post?.Category.Name)
+    const index = categories.findIndex(
+      (item) => item.name === post?.category.name
+    )
+    if (currentCategory === -1) return getAccentColor(index)
     else return 'white'
   }
 
@@ -88,15 +112,18 @@ export const Post = (props: PostProps) => {
           : 'column-reverse'
       }
       role="group"
-      onClick={() => router.push(`/canal-bnk/mundo-berneck/titulo`)}
+      onClick={() =>
+        router.push(`/canal-bnk/${post?.category.id}/${post?.url_code}`)
+      }
       {...rest}
+      cursor="pointer"
     >
       <Box
         w={imgPos === 'top' || imgPos === 'bottom' ? '100%' : '40%'}
         h="100%"
         bgRepeat="no-repeat"
         bgSize="cover"
-        bgImage={`url(${post?.Cover})}`}
+        bgImage={`url(${post?.cover})}`}
       />
 
       <Flex
@@ -107,21 +134,13 @@ export const Post = (props: PostProps) => {
         pt="21px"
         pl={{ base: '24px', lg: '38px' }}
         pr={{ base: '33px', lg: '29px' }}
-        bg={PANEL_COLOR[categoryPage]}
+        bg={getPanelColor(currentCategory)}
       >
         <Flex align="center" justify="space-between">
           <Flex data-testid="post-category" gap="14px" align="center">
             <Box>
               <Arrow
-                color={
-                  categoryPage !== 'all'
-                    ? 'white'
-                    : post?.Category.Name === 'INSPIRAÇÃO SOB MEDIDA'
-                    ? PANEL_COLOR['inspiration']
-                    : post?.Category.Name === 'MATÉRIA-PRIMA: CONHECIMENTO'
-                    ? PANEL_COLOR['feedstock']
-                    : PANEL_COLOR['world']
-                }
+                color={getPanelColor(currentCategory)}
                 width={{ base: '7px', lg: '9px' }}
                 height={{ base: '10px', lg: '13px' }}
               />
@@ -131,7 +150,7 @@ export const Post = (props: PostProps) => {
               as="h2"
               w="100%"
               whiteSpace="normal"
-              color={categoryPage === 'world' ? 'white' : 'gray.350'}
+              color={currentCategory === 2 ? 'white' : 'gray.350'}
               fontSize={{ base: '10px', lg: '14px', xl: '10px', '2xl': '14px' }}
               letterSpacing={
                 imgPos === 'top' || imgPos === 'bottom' ? '2.4px' : '2.1px'
@@ -139,7 +158,7 @@ export const Post = (props: PostProps) => {
               fontWeight="600"
               {...categoryTextProps}
             >
-              {post?.Category.Name}
+              {post?.category.name}
             </Text>
           </Flex>
 
@@ -154,7 +173,7 @@ export const Post = (props: PostProps) => {
                   imgPos === 'top' || imgPos === 'bottom' ? '2.4px' : '2.1px'
                 }
                 fontWeight="mediuem"
-                color={categoryPage === 'world' ? 'white' : 'gray.350'}
+                color={currentCategory === 2 ? 'white' : 'gray.350'}
               >
                 {post?.date && new Date(post?.date).toLocaleDateString()}
               </Text>
@@ -164,7 +183,7 @@ export const Post = (props: PostProps) => {
                   w="29px"
                   h="27px"
                   stroke1={getCalendarColor()}
-                  stroke2={categoryPage === 'world' ? 'white' : '#595959'}
+                  stroke2={currentCategory === 2 ? 'white' : '#595959'}
                 />
               </Box>
             </Flex>
@@ -183,7 +202,7 @@ export const Post = (props: PostProps) => {
             color="green.900"
             {...titleTextProps}
           >
-            {post?.Title}
+            {post?.title}
           </Text>
         </Box>
 
@@ -200,7 +219,7 @@ export const Post = (props: PostProps) => {
             color={'gray.350'}
             {...previewTextProps}
           >
-            {post?.Content}
+            {post?.content}
           </Text>
         )}
 
@@ -211,7 +230,7 @@ export const Post = (props: PostProps) => {
                 media="facebook"
                 width="38px"
                 height="38px"
-                color={categoryPage === 'world' ? 'white' : 'gray.350'}
+                color={currentCategory === 2 ? 'white' : 'gray.350'}
                 hoverColor={getSocialIconHoverColor()}
               />
             </Link>
@@ -221,7 +240,7 @@ export const Post = (props: PostProps) => {
                 media="twitter"
                 width="38px"
                 height="38px"
-                color={categoryPage === 'world' ? 'white' : 'gray.350'}
+                color={currentCategory === 2 ? 'white' : 'gray.350'}
                 hoverColor={getSocialIconHoverColor()}
               />
             </Link>
@@ -231,7 +250,7 @@ export const Post = (props: PostProps) => {
                 media="whatsapp"
                 width="38px"
                 height="38px"
-                color={categoryPage === 'world' ? 'white' : 'gray.350'}
+                color={currentCategory === 2 ? 'white' : 'gray.350'}
                 hoverColor={getSocialIconHoverColor()}
               />
             </Link>

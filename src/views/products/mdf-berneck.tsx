@@ -1,6 +1,12 @@
 import Product from '../../components/Product'
+import { ProductProps } from './hdf-berneck'
 
-export default function Hdf() {
+export type MdfBerneckViewProps = {
+  mdf: ProductProps
+  mdf_plus: ProductProps
+}
+
+export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
   return (
     <div>
       <Product
@@ -24,30 +30,24 @@ export default function Hdf() {
         }}
         secondaryBackground="#F3E9DA"
         downloadAndLinks={{
-          datasheet: true,
+          datasheetUrl: mdf.technical_sheet,
           whereBuy: true,
           qualityCertificate: true
         }}
         header={{
-          title: 'MDF BERNECK®',
+          title: mdf.title,
           headerBgColor: '#E0CBA5',
-          subtitle: 'Painel de Fibra de Média Densidade',
-          description:
-            'Produzido a partir de 9mm. Excelente para os processos de pintura e impressão.'
+          subtitle: mdf.subTitle,
+          description: mdf.subTitleDescription
         }}
         body={{
-          description:
-            'Produzido em prensas contínuas de altíssima tecnologia, o que assegura um painel homogêneo, ótimo para os processos de usinagem e baixo relevo. Por ser produzido com Pinus, que possui fibras longas, possui maleabilidade superior e coloração bem clara, excelente para os processos de pintura e impressão.',
-          usesAndApplications:
-            'O MDF BERNECK® assegura excelente resultado em todos os tipos de móveis para peças com usinagens profundas e trabalhos de baixo relevo, além de embalagens, aplicações na construção civil, artesanatos, etc.',
-          finishes: [
-            '• Natural (sem revestimento) ',
-            '• Revestido com laminado de baixa pressão BP BERNECK®'
-          ],
+          description: mdf.description,
+          usesAndApplications: mdf.usesAndApplications,
+          finishes: mdf.finishes,
           dimensions: {
-            thickness: '9 / 12 / 15 / 18 / 22 / 25',
-            length: '2750',
-            width: '1850 a 2200'
+            thickness: mdf.dimensions.thickness,
+            length: mdf.dimensions.length,
+            width: mdf.dimensions.width
           },
           backgroundColor: '#FCFCFC',
           productWithBP: {
@@ -93,30 +93,21 @@ export default function Hdf() {
           plusIndicator: true,
           title: 'MDF PLUS BERNECK®',
           headerBgColor: '#ACCC9F',
-          subtitle: 'É Plus porque tem mais proteção à umidade',
-          description:
-            'A qualidade do MDF BERNECK® aliada à máxima proteção contra umidade e cupins.'
+          subtitle: mdf_plus.subTitle,
+          description: mdf_plus.subTitleDescription
         }}
         body={{
-          moreTechnologyQualityProtection: [
-            'O MDF PLUS BERNECK é o painel formado por fibras de madeira de média densidade, Medium Density Fiberboard, produzido em prensa contínua com resinas especiais que garantem maior resistência à umidade. O MDF PLUS BERNECK® assegura excelente resultado em todos os tipos de móveis para peças com trabalhos de baixo relevo e ótimas condições para corte e bordas arredondadas para pintura. ',
-            'Possui a coloração esverdeada como identificação internacional do produto com maior resistência à umidade, diferenciando-o dos painéis Standard. Essa pigmentação pode variar a cada lote de produção e não está associada ao princípio ativo de hidro resistência, pois não é à prova d´água.',
-            'Vale inovar nos projetos com MDF PLUS. Um ótimo investimento, com incomparável custo benefício.'
-          ],
-          usesAndApplications:
-            'Indicado para móveis de cozinhas, banheiros, lavanderias e ambientes comerciais.',
-          finishes: [
-            '• Natural (sem revestimento)',
-            '• Revestido com laminado de baixa pressão BP BERNECK®'
-          ],
+          moreTechnologyQualityProtection: mdf_plus.description,
+          usesAndApplications: mdf_plus.usesAndApplications,
+          finishes: mdf_plus.finishes,
           dimensions: {
-            thickness: '9 / 12 / 15 / 18 / 25',
-            length: '2750',
-            width: '1850'
+            thickness: mdf_plus.dimensions.thickness,
+            length: mdf_plus.dimensions.length,
+            width: mdf_plus.dimensions.width
           },
           backgroundColor: '#E8E8E8',
           productWithBP: {
-            title: 'MDF PLUS BERNECK® com BP',
+            title: mdf.title,
             description:
               'Inove nos projetos com os acabamentos BP em MDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
             btnText: 'Conheça todos os padrões BP BERNECK em MDF PLUS',

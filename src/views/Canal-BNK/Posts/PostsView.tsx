@@ -2,16 +2,20 @@
 import { Flex, Image, Text } from '@chakra-ui/react'
 import Pagebar from '@components/Pagebar'
 import PostBody from '@components/PostBody'
-import PostRelationalContent from '@components/PostRelationalContent'
+import {
+  PostRelationalContent,
+  PostRelationalContentProps
+} from '@components/PostRelationalContent/PostRelationalContent'
 import React, { useState } from 'react'
 
 import { PostBodyProps } from '@components/PostBody/PostBody'
 
 export type PostViewProps = {
   postBody?: PostBodyProps
+  relationalContent: PostRelationalContentProps
 }
 
-export const PostsView = ({ postBody }: PostViewProps) => {
+export const PostsView = ({ postBody, relationalContent }: PostViewProps) => {
   return (
     <>
       <Pagebar
@@ -101,7 +105,7 @@ export const PostsView = ({ postBody }: PostViewProps) => {
         {/* End of post body section */}
 
         {/* Relational content */}
-        <PostRelationalContent />
+        <PostRelationalContent {...relationalContent} />
         {/* End od relational content */}
       </Flex>
     </>
