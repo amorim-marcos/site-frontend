@@ -40,14 +40,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   })
 
-  latestPosts = latestPosts.map((item: { cover: { url: string } }) => {
-    return {
-      ...item,
-      cover: {
-        url: process.env.NEXT_PUBLIC_API_URL + item.cover.url
+  if (latestPosts.length > 0 && latestPosts[0] !== null) {
+    latestPosts = latestPosts.map((item: { cover: { url: string } }) => {
+      return {
+        ...item,
+        cover: {
+          url: process.env.NEXT_PUBLIC_API_URL + item.cover.url
+        }
       }
-    }
-  })
+    })
+  } else {
+    latestPosts = []
+  }
 
   return {
     props: {

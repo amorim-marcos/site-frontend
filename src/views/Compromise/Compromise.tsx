@@ -1,20 +1,4 @@
-import {
-  Container,
-  Box,
-  Grid,
-  Spacer,
-  Flex,
-  Link,
-  Text,
-  Image,
-  Button,
-  Select,
-  Input,
-  Center,
-  Checkbox,
-  BoxProps,
-  LinkProps
-} from '@chakra-ui/react'
+import { Box, Spacer, Flex, Link, Text, Image, Button } from '@chakra-ui/react'
 import Pagebar from '@components/Pagebar'
 import PageSession from '@components/PageSession'
 import Arrow from '@components/Arrow'
@@ -25,61 +9,79 @@ import Infographic from '@components/Infographic'
 import Infographic2 from '@components/Infographic2'
 import { SynergyIcon } from '@components/Icons'
 import SponsoredProjects from '@components/SponsoredProjects'
-import {
-  List,
-  ListItem,
-  ListIcon,
-  OrderedList,
-  UnorderedList
-} from '@chakra-ui/react'
+import { List, ListItem } from '@chakra-ui/react'
 import PatternCertification from '@components/PatternCertification'
 import { useRouter } from 'next/router'
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/nosso-compromisso-filtro-1x.jpg)',
   title: 'Nosso compromisso',
-  subtitle: '',
-  text: 'Nossa paixão pela madeira e busca incessante por soluções inovadoras firmam nosso compromisso com o desenvolvimento de produtos de madeira premium junto a máxima atenção para cada detalhe do processo produtivo. Fazemos isso adotando as melhores práticas ambientais, sociais e de governança. Em constante evolução para manter nossa operação sustentável nos aspectos econômicos e produtivos, com uma abordagem otimista na gestão de riscos, menores impactos no meio ambiente e direcionados à construir um mundo mais justo e responsável para as pessoas.'
+  subtitle: ''
 }
 
-const dataValores = {
-  title: 'Nossos valores corporativos',
-  list: {
-    item1:
-      'Estar atento às solicitações e às necessidades de nossos clientes e consumidores;',
-    item2: 'Buscar excelência nos produtos que fabricamos;',
-    item3: 'Promover responsabilidade social através de ações e atitudes;',
-    item4: 'Promover a integração e o desenvolvimento do trabalho em equipe;',
-    item5:
-      'Buscar constantemente o desenvolvimento de nossos negócios e da valorização de nossa marca;',
-    item6:
-      'Respeitar a saúde e segurança dos colaboradores, com transparência nas relações, estimulando o desenvolvimento pessoal e profissional, a criatividade e a participação de todos;',
-    item7: 'Liderar pelo exemplo.'
+export type CompromiseViewProps = {
+  page_content: {
+    atmospheric_emissions: number
+    carbon_sequestration: number
+    cogenerated_energy: number
+    collaborators_number: number
+    esg_report_description: string
+    header_text: string
+    page_title: string
+    reused_water: number
+    section1_text: string
+    section1_title: string
+    section2_text: string
+    section2_title: string
+    section3_text: string
+    section3_title: string
+    section4_text: string
+    section4_title: string
+    section5_text: string
+    section5_title: string
+    section6_text: string
+    section6_title: string
+    section7_text: string
+    section7_title: string
+    section8_text: string
+    section8_title: string
+    sustainability_report: {
+      url: string
+    }
+    ethical_code: {
+      url: string
+    }
+    esg_report_file: {
+      url: string
+    }
+    corporative_values: {
+      id: number
+      value: string
+    }[]
   }
 }
 
-const dataCultivamos = {
-  imageUrl: 'url(/assets/imgs/fsc_c_pt.png)',
-  title: 'Cultivamos o meio ambiente',
-  subtitle: '',
-  text: 'Somos pioneiros no Brasil em reflorestamento e responsabilidade ambiental. Fazemos manejo florestal sustentável, tratamento de efluentes, controle de poluição, gerenciamento de resíduos sólidos, líquidos e gasosos, campanhas permanentes de educação ambiental, cultivo mínimo nas florestas, entre outras tantas ações que a BERNECK® realiza em compromisso à preservação do meio ambiente. Plantamos mais de 7 milhões de árvores por ano. Toda a nossa madeira é proveniente de florestas plantadas, preservando as florestas nativas e garantindo o emprego e a renda no campo para milhares de famílias. Todos os processos dessa produção são acompanhados no detalhe, desde a escolha das sementes, plantio, cultivo, colheita, até a industrialização de nossos produtos. Foi assim que nos certificamos em Manejo Florestal pelo FSC®, sistema de certificação internacional que reconhece florestas manejadas de forma ambientalmente responsável, socialmente benéfico e economicamente viável.'
-}
-
-export const Compromise = () => {
+export const Compromise = ({ page_content }: CompromiseViewProps) => {
   const router = useRouter()
+  console.log(page_content)
   return (
     <Box maxWidth="1920px" marginX="auto" bg="green.100">
       <Pagebar
         paths={[
           {
-            title: 'Nosso compromisso',
+            title: page_content.page_title,
             url: 'nosso-compromisso'
           }
         ]}
       />
 
       <PageSession
-        data={dataPageSession}
+        data={{
+          imageUrl: dataPageSession.imageUrl,
+          subtitle: dataPageSession.subtitle,
+          text: page_content.header_text,
+          title: dataPageSession.title
+        }}
         titleColor="white"
         subTitleColor="white"
       />
@@ -143,8 +145,11 @@ export const Compromise = () => {
               >
                 Conheça:
               </Text>
+
               <Button
-                onClick={() => alert('Etica')}
+                onClick={() =>
+                  window.open(page_content.ethical_code.url, '_blank')
+                }
                 w={{ base: '100%', sm: '70%', lg: '100%', xl: '80%' }}
                 h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%' }}
                 padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%' }}
@@ -179,87 +184,49 @@ export const Compromise = () => {
               color="green.550"
               marginBottom={{ base: '5%', sm: '2%', lg: '5%', xl: '5%' }}
             >
-              {dataValores.title}
+              Nossos valores corporativos
             </Text>
 
             <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5' }}>
-              {/* {dataValores.list.map((item) => ( */}
-              <ListItem>
-                <Arrow
-                  width={{ base: '7px', sm: '10px', lg: '10px', xl: '10px' }}
-                  height={{ base: '15px', sm: '16px', lg: '20px', xl: '20px' }}
-                  direction="right"
-                  color="brown.250"
-                />
-                <Text
-                  fontFamily="body"
-                  marginTop={{
-                    base: '-16px',
-                    sm: '-16px',
-                    lg: '-22px',
-                    xl: '-27px'
-                  }}
-                  marginLeft={{
-                    base: '12px',
-                    sm: '16px',
-                    lg: '18px',
-                    xl: '20px'
-                  }}
-                >
-                  {dataValores.list.item1}
-                </Text>
-              </ListItem>
-              <ListItem>
-                <Arrow
-                  width={{ base: '7px', sm: '10px', lg: '10px', xl: '10px' }}
-                  height={{ base: '15px', sm: '16px', lg: '20px', xl: '20px' }}
-                  direction="right"
-                  color="brown.250"
-                />
-                <Text
-                  fontFamily="body"
-                  marginTop={{
-                    base: '-16px',
-                    sm: '-16px',
-                    lg: '-22px',
-                    xl: '-27px'
-                  }}
-                  marginLeft={{
-                    base: '12px',
-                    sm: '16px',
-                    lg: '18px',
-                    xl: '20px'
-                  }}
-                >
-                  {dataValores.list.item1}
-                </Text>
-              </ListItem>
-              <ListItem>
-                <Arrow
-                  width={{ base: '7px', sm: '10px', lg: '10px', xl: '10px' }}
-                  height={{ base: '15px', sm: '16px', lg: '20px', xl: '20px' }}
-                  direction="right"
-                  color="brown.250"
-                />
-                <Text
-                  fontFamily="body"
-                  marginTop={{
-                    base: '-16px',
-                    sm: '-16px',
-                    lg: '-22px',
-                    xl: '-27px'
-                  }}
-                  marginLeft={{
-                    base: '12px',
-                    sm: '16px',
-                    lg: '18px',
-                    xl: '20px'
-                  }}
-                >
-                  {dataValores.list.item1}
-                </Text>
-              </ListItem>
-              {/* ))} */}
+              {page_content.corporative_values.map((item, i) => {
+                return (
+                  <ListItem key={i}>
+                    <Arrow
+                      width={{
+                        base: '7px',
+                        sm: '10px',
+                        lg: '10px',
+                        xl: '10px'
+                      }}
+                      height={{
+                        base: '15px',
+                        sm: '16px',
+                        lg: '20px',
+                        xl: '20px'
+                      }}
+                      direction="right"
+                      color="brown.250"
+                    />
+                    <Text
+                      fontFamily="body"
+                      marginTop={{
+                        base: '-16px',
+                        sm: '-16px',
+                        lg: '-22px',
+                        xl: '-27px'
+                      }}
+                      marginLeft={{
+                        base: '12px',
+                        sm: '16px',
+                        lg: '18px',
+                        xl: '20px'
+                      }}
+                    >
+                      {item.value}
+                    </Text>
+                  </ListItem>
+                )
+              })}
             </List>
           </Box>
         </Flex>
@@ -267,7 +234,8 @@ export const Compromise = () => {
       {/* FIM VALORES */}
 
       {/* INICIO Cultivamos o meio ambiente */}
-      <Flex id="meio-ambiente"
+      <Flex
+        id="meio-ambiente"
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"
@@ -294,7 +262,7 @@ export const Compromise = () => {
             }}
           >
             <CompletedTitle
-              titleString={dataCultivamos.title}
+              titleString={page_content.section1_title}
               textAlign={{
                 base: 'center',
                 sm: 'center',
@@ -309,7 +277,7 @@ export const Compromise = () => {
               }}
             />
             <Text marginTop={{ base: '10%', sm: '8%', lg: '3%', xl: '3%' }}>
-              {dataCultivamos.text}
+              {page_content.section1_text}
             </Text>
           </Box>
 
@@ -481,7 +449,7 @@ export const Compromise = () => {
                 titleSuperscript1Color="green.400"
                 titleSuperscript2Text="mais de"
                 titleSuperscript2Color="green.200"
-                content1Text="3,2"
+                content1Text={page_content.carbon_sequestration.toString()}
                 content1Color="white"
                 content2Text="milhões de tCO₂e"
                 content2Color="white"
@@ -492,7 +460,7 @@ export const Compromise = () => {
                 titleSuperscript1Color="green.400"
                 titleSuperscript2Text="Cerca de"
                 titleSuperscript2Color="green.200"
-                content1Text="81,5"
+                content1Text={page_content.atmospheric_emissions.toString()}
                 content1Color="white"
                 content2Text="milhões de tCO₂e"
                 content2Color="white"
@@ -517,29 +485,14 @@ export const Compromise = () => {
               color="green.400"
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
             >
-              Compromisso com o planeta
+              {page_content.section2_title}
             </Text>
             <Text
               color="white.100"
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
               marginTop={{ base: '3%', sm: '2%', lg: '3%', xl: '3%' }}
             >
-              Nossos programas florestais atuam na proteção dos mananciais, na
-              restauração das matas ciliares e plantação de florestas junto às
-              reservas nativas que mantemos. Eles contribuem para a regulação
-              dos ciclos hidrológicos, controle de erosão e da qualidade dos
-              solos, conservação da biodiversidade, captação ou sequestro de
-              carbono e outras medidas fundamentais para reduzir os efeitos das
-              mudanças climáticas no mundo. Como uma empresa ambientalmente
-              responsável, calculamos as emissões atmosféricas em todas as
-              operações executadas pela BERNECK®. Compilamos estas informações
-              nos Inventários de Gases de Efeito Estufa - GEE que colaboram na
-              elaboração de estratégias, planos e metas para a redução das
-              emissões e intervenção positiva nas mudanças climáticas. Em
-              contrapartida, nossos mais de 64,5 mil hectares de plantios
-              florestais contribuem ativamente para a retirada de carbono do
-              ambiente pelas árvores, superando – e muito – nossas emissões de
-              CO₂.
+              {page_content.section2_text}
             </Text>
           </Box>
         </Flex>
@@ -588,29 +541,10 @@ export const Compromise = () => {
               color="green.550"
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
             >
-              Economia de recursos naturais
+              {page_content.section3_title}
             </Text>
             <Text marginTop={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}>
-              Em nossas unidades industriais Araucária e Curitibanos, os
-              resíduos do processo de produção – a casca do Pinus e o pó da
-              madeira gerado nos processos de classificação, moagem e lixamento
-              – que seriam descartadas no meio ambiente, são utilizados para a
-              produção de calor e vapor através da queima de biomassa. Esta
-              energia limpa e renovável corresponde a aproximadamente 60% da
-              energia utilizada em nossos processos industriais, poupando
-              recursos naturais e diminuindo os custos de produção. As unidades
-              industriais foram inteiramente planejadas para realizar a captação
-              e canalização da água da chuva, que é direcionada para nossas
-              lagoas e reservatórios. Estas práticas somadas às estações de
-              Tratamento de Efluentes e Tratamento de Produtos Químicos,
-              neutralizam e permitem a reutilização de resíduos orgânicos
-              líquidos e condensados de produto em diversos processos, que
-              reduzem um total de 30% da água utilizada nas fábricas. Além da
-              co-geração de energia e do reaproveitamento da água, todos os
-              produtos sólidos descartáveis – como papéis, plásticos, ferrosos,
-              não ferrosos, lâmpadas, baterias – têm coleta e armazenamento
-              interno controlado, e são destinados a empresas cadastradas e
-              licenciadas pelos órgãos ambientais para reciclar estes materiais.
+              {page_content.section3_text}
             </Text>
           </Flex>
           {/* BOX 2 */}
@@ -643,7 +577,7 @@ export const Compromise = () => {
                   titleSuperscript2Text="Co-geramos"
                   content1DisplayIcon="yes"
                   content1IconName="energy"
-                  content2Text="60"
+                  content2Text={page_content.cogenerated_energy.toString()}
                   content4Text="%"
                   titleSubscript1Text="da Energia Utilizada"
                 ></Infographic>
@@ -651,7 +585,7 @@ export const Compromise = () => {
                   titleSuperscript2Text="Reaproveitamos"
                   content1DisplayIcon="yes"
                   content1IconName="water"
-                  content2Text="30"
+                  content2Text={page_content.reused_water}
                   content4Text="%"
                   titleSubscript1Text="da Água Utilizada"
                 ></Infographic>
@@ -689,7 +623,12 @@ export const Compromise = () => {
                     da BERNECK®:
                   </Text>
                   <Button
-                    onClick={() => alert('Iniciativas')}
+                    onClick={() =>
+                      window.open(
+                        page_content.sustainability_report.url,
+                        '_blank'
+                      )
+                    }
                     w={{ base: '100%', sm: '70%', lg: '100%', xl: '80%' }}
                     h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%' }}
                     padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%' }}
@@ -755,26 +694,10 @@ export const Compromise = () => {
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
               marginTop={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
             >
-              Preservação da fauna e da flora
+              {page_content.section4_title}
             </Text>
             <Text marginTop={{ base: '3%', sm: '3%', lg: '5%', xl: '5%' }}>
-              Nossas florestas plantadas são adjacentes às áreas de preservação
-              florestal, onde há plena e completa preservação da Flora e Fauna.
-              Por sermos uma empresa comprometida com o meio ambiente, atuamos
-              na redução do uso de produtos químicos no processo produtivo,
-              adoção do cultivo mínimo, sem utilizar o fogo, fertilizantes ou
-              qualquer tipo de tratamento para o preparo dos terrenos,
-              utilização de galhos e raízes descartados da indústria para
-              reposição de nutrientes do solo, entre outras tantas ações que a
-              BERNECK® executa em benefício da regeneração e manutenção das
-              áreas de preservação. Atuamos no Controle de Processos Erosivos,
-              Recuperação de Áreas Degradadas, Salvamento e Resgate de Fauna, e
-              outros 14 programas ambientais executados conforme orienta os
-              diplomas legais vigentes, respeitando e protegendo a Flora e a
-              Fauna. Monitoramos mais de 250 espécies animais circulantes em
-              nossas áreas plantadas e nativas no Paraná e Santa Catarina.
-              Práticas que inibem a ocorrência de caça e pesca, e contribuem
-              para a preservação de espécies raras ou ameaçadas de extinção.
+              {page_content.section4_text}
             </Text>
           </Box>
         </Flex>
@@ -782,7 +705,8 @@ export const Compromise = () => {
       {/* FIM Preservação da fauna e da flora */}
 
       {/* INICIO Cultivamos nossa gente */}
-      <Flex id="nossa-gente"
+      <Flex
+        id="nossa-gente"
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"
@@ -809,7 +733,7 @@ export const Compromise = () => {
             }}
           >
             <CompletedTitle
-              titleString="Cultivamos nossa gente"
+              titleString={page_content.section5_title}
               textAlign={{
                 base: 'center',
                 sm: 'center',
@@ -824,18 +748,7 @@ export const Compromise = () => {
               }}
             />
             <Text marginTop={{ base: '10%', sm: '10%', lg: '5%', xl: '5%' }}>
-              Temos orgulho dos nossos mais de 7,5 mil colaboradores diretos e
-              indiretos da BERNECK®. São inúmeras histórias de vida que tornam a
-              nossa empresa comprometida com a sociedade de forma
-              verdadeiramente responsável. Somos uma empresa familiar e, de
-              família para família, acreditamos no desenvolvimento técnico e
-              humano dos nossos colaboradores. São cerca de 3 mil funcionários
-              diretos no Paraná, Santa Catarina e Mato Grosso que realizam
-              treinamentos e capacitações por meios dos programas de trainee,
-              desenvolvimento de lideranças e bolsa auxílio para financiamento
-              de cursos técnicos, de graduação e de pós-graduação. Incentivamos
-              o desenvolvimento constante dos nossos colaboradores e acreditamos
-              que crescemos juntos, olhando para a mesma direção.
+              {page_content.section5_text}
             </Text>
             <Box
               // bg='blue'
@@ -845,7 +758,7 @@ export const Compromise = () => {
             >
               <Infographic
                 content1Text="+"
-                content2Text="7,5"
+                content2Text={page_content.collaborators_number}
                 content3Text="Mil"
                 // content4Text = 'Colaboradores diretos e indiretos'
                 // fontSize = {{ base: '12px', sm: '16px', lg: '24px', xl: '18px'}}
@@ -874,7 +787,12 @@ export const Compromise = () => {
             <Image src="/assets/imgs/170130-Berneck-58.png" />
 
             <Button
-              onClick={() => window.open('https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup', '_blank')}
+              onClick={() =>
+                window.open(
+                  'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup',
+                  '_blank'
+                )
+              }
               w={{ base: '90%', sm: '90%', lg: '90%', xl: '90%' }}
               h={{ base: '10%', sm: '10%', lg: '10%', xl: '10%' }}
               padding={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
@@ -951,28 +869,12 @@ export const Compromise = () => {
               variant={'h3' as any}
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
             >
-              Compromisso com a sociedade
+              {page_content.section6_title}
             </Text>
             <Text
               marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px' }}
             >
-              Nossas florestas plantadas são adjacentes às áreas de preservação
-              florestal, onde há plena e completa preservação da Flora e Fauna.
-              Por sermos uma empresa comprometida com o meio ambiente, atuamos
-              na redução do uso de produtos químicos no processo produtivo,
-              adoção do cultivo mínimo, sem utilizar o fogo, fertilizantes ou
-              qualquer tipo de tratamento para o preparo dos terrenos,
-              utilização de galhos e raízes descartados da indústria para
-              reposição de nutrientes do solo, entre outras tantas ações que a
-              BERNECK® executa em benefício da regeneração e manutenção das
-              áreas de preservação. Atuamos no Controle de Processos Erosivos,
-              Recuperação de Áreas Degradadas, Salvamento e Resgate de Fauna, e
-              outros 14 programas ambientais executados conforme orienta os
-              diplomas legais vigentes, respeitando e protegendo a Flora e a
-              Fauna. Monitoramos mais de 250 espécies animais circulantes em
-              nossas áreas plantadas e nativas no Paraná e Santa Catarina.
-              Práticas que inibem a ocorrência de caça e pesca, e contribuem
-              para a preservação de espécies raras ou ameaçadas de extinção.
+              {page_content.section6_text}
             </Text>
           </Box>
         </Flex>
@@ -1074,7 +976,8 @@ export const Compromise = () => {
       {/* FIM Confira alguns projetos patrocinados por nós */}
 
       {/* INICIO Cultivamos nossos valores */}
-      <Flex id="nossos-valores"
+      <Flex
+        id="nossos-valores"
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"
@@ -1114,7 +1017,7 @@ export const Compromise = () => {
             flex="1"
           >
             <CompletedTitle
-              titleString="Cultivamos nossos valores"
+              titleString={page_content.section7_title}
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
               alignSelf={{
                 base: 'flex-start',
@@ -1124,19 +1027,7 @@ export const Compromise = () => {
               }}
             />
             <Text marginTop={{ base: '8%', sm: '2%', lg: '3%', xl: '3%' }}>
-              E por valorizar as pessoas, a BERNECK® aposta também em um
-              programa de Governança e Compliance. Somos uma empresa de alta
-              performance, com uma gestão alinhada, competente e, sobretudo,
-              transparente. Nossos valores familiares transcendem gerações e
-              colaboradores, por acreditarmos na união, na clareza e na
-              transparência em tudo o que fazemos. Nossas práticas
-              socioambientais se baseiam em princípios éticos e de preocupação
-              com o todo. Desde a semente plantada na terra, que quase duas
-              décadas depois se transformará na matéria-prima para os painéis
-              revestidos, todos os nossos processos são desenvolvidos para serem
-              sustentáveis. Feitos para deixar o mínimo impacto ambiental e
-              oferecer soluções inovadoras sempre. De família para família, da
-              nossa casa para o seu ambiente.
+              {page_content.section7_text}
             </Text>
           </Box>
         </Flex>
@@ -1181,28 +1072,12 @@ export const Compromise = () => {
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
               color="green.550"
             >
-              Compromisso com a conduta corporativa
+              {page_content.section8_title}
             </Text>
             <Text
               marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px' }}
             >
-              De geração em geração, iniciamos um novo capítulo em direção ao
-              futuro e à continuidade da BERNECK®. A terceira geração – atual
-              liderança – é composta por um novo modelo de gestão compartilhado
-              entre os três irmãos Daniel, Gloria e Graça Berneck, apoiados pelo
-              Conselho da Família, Conselho de Sócios e Conselho Consultivo –
-              constituído por três conselheiros e pelo presidente da segunda
-              geração, Gilson Berneck. O processo de sucessão é favorecido pelo
-              programa de Governança Familiar com seus protocolos e diretrizes,
-              sempre com foco na continuidade do negócio. Nossa governança
-              interna também conta com um sistema integrado de gestão
-              empresarial. Todas as nossas unidades administrativas, industriais
-              e florestais do Paraná e de Santa Catarina estão 100% incorporadas
-              e online pelo programa. Através dele, gerenciamos tudo o que
-              acontece nas fábricas, nas florestas e nos departamentos
-              administrativos e comerciais, trazendo mais segurança e
-              transparência para toda nossa cadeia de produção, elevando ainda
-              mais nossa cultura organizacional.
+              {page_content.section8_text}
             </Text>
           </Box>
           {/* BOX 2 */}
@@ -1323,7 +1198,8 @@ export const Compromise = () => {
       {/* FIM Ouvidoria */}
 
       {/* INICIO Nossas práticas de ESG */}
-      <Flex id="relatorio"
+      <Flex
+        id="relatorio"
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"
@@ -1381,13 +1257,7 @@ export const Compromise = () => {
                 }}
               />
               <Text marginTop={{ base: '5%', sm: '2%', lg: '3%', xl: '3%' }}>
-                Nossas práticas de ESG – Environmental, Social and Governance
-                (Ambiental, Social e Governança) incorporam questões destas três
-                áreas, indo além das tradicionais métricas
-                econômico-financeiras. O Relatório ESG marca nossa visão sobre o
-                tema, iniciativas conectadas e indicadores que comprovam nossa
-                atuação na conservação do meio ambiente, relação com a
-                comunidade e conduta corporativa.
+                {page_content.esg_report_description}
               </Text>
             </Box>
             {/* BOX 2 */}
@@ -1410,13 +1280,15 @@ export const Compromise = () => {
               justifyContent={'center'}
               justifyItems={'center'}
             >
-              <PatternCertification
-                title="Relatório ESG"
-                titleInitialColor="green.800"
-                iconName="reports"
-                iconInitialColor1="#004934"
-                iconInitialColor2="#004934"
-              />
+              <Link href={page_content.esg_report_file.url} isExternal>
+                <PatternCertification
+                  title="Relatório ESG"
+                  titleInitialColor="green.800"
+                  iconName="reports"
+                  iconInitialColor1="#004934"
+                  iconInitialColor2="#004934"
+                />
+              </Link>
             </Box>
           </Box>
         </Flex>

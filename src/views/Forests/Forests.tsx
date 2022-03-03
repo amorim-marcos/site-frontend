@@ -69,7 +69,7 @@ export const ForestsView = (props: ForestsViewProps) => {
       <Pagebar
         paths={[
           {
-            title: 'Divisão florestal',
+            title: props.page_content.page_title,
             url: 'divisao-florestal'
           }
         ]}

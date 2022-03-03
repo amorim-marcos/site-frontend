@@ -6,7 +6,6 @@ export type FlorestalDivisionPageProps = ForestsViewProps
 export default function FlorestalDivisionPage(
   props: FlorestalDivisionPageProps
 ) {
-  console.log(props.page_content)
   return <ForestsView page_content={props.page_content} />
 }
 
