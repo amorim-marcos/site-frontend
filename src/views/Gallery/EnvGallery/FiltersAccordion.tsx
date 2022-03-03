@@ -36,6 +36,7 @@ export type FiltersSelectProps = {
   changeFilterPanel: Function
   appendFilter: Function
   removeFilter: Function
+  resetFilters: Function
   setFilters: Function
   setFilteredEnvs: Function
   applyFilters: Function
@@ -55,6 +56,7 @@ export const FiltersAccordion = ({
   currentFilterPanel,
   appendFilter,
   removeFilter,
+  resetFilters,
   setFilters,
   setFilteredEnvs,
   applyFilters,
@@ -459,10 +461,7 @@ export const FiltersAccordion = ({
           >
             <Button
               zIndex="10"
-              onClick={() => {
-                setFilters(JSON.parse(JSON.stringify(initialFilters)))
-                setFilteredEnvs(applyFilters(initialFilters, envs))
-              }}
+              onClick={() => resetFilters()}
               variant="link"
               backgroundColor="none"
             >

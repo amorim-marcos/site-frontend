@@ -28,6 +28,7 @@ export type FiltersSelectProps = {
   changeFilterPanel: Function
   appendFilter: Function
   removeFilter: Function
+  resetFilters: Function
   setFilters: Function
   setFilteredEnvs: Function
   applyFilters: Function
@@ -47,6 +48,7 @@ export const FiltersTabs = ({
   currentFilterPanel,
   appendFilter,
   removeFilter,
+  resetFilters,
   setFilters,
   setFilteredEnvs,
   applyFilters,
@@ -275,10 +277,7 @@ export const FiltersTabs = ({
                   {!filtersEmpty && (
                     <Button
                       variant={'filters' as any}
-                      onClick={() => {
-                        setFilters(JSON.parse(JSON.stringify(initialFilters)))
-                        setFilteredEnvs(applyFilters(initialFilters, envs))
-                      }}
+                      onClick={() => resetFilters()}
                     >
                       Limpar filtros
                     </Button>

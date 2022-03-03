@@ -111,6 +111,18 @@ export const EnvGallery = ({
     return filteredEnvs.slice()
   }
 
+  function resetFilters() {
+    const cleanedFilters = {
+      nameSearched: '',
+      bps: [],
+      ambients: [],
+      styles: []
+    }
+
+    setFilters(cleanedFilters)
+    setFilteredEnvs(applyFilters(cleanedFilters, envs))
+  }
+
   useEffect(() => {
     if (
       initialFilters.ambients.length !== 0 ||
@@ -119,6 +131,13 @@ export const EnvGallery = ({
       initialFilters.nameSearched !== ''
     ) {
       setFilteredEnvs(applyFilters(initialFilters, envs))
+
+      initialFilters.ambients.length !== 0
+        ? setCurrentFilterPanel('ambients')
+        : initialFilters.styles.length !== 0
+        ? setCurrentFilterPanel('styles')
+        : initialFilters.bps.length !== 0
+
       setDisplayFilters(true)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -185,6 +204,7 @@ export const EnvGallery = ({
               currentFilterPanel={currentFilterPanel}
               appendFilter={appendFilter}
               removeFilter={removeFilter}
+              resetFilters={resetFilters}
               setFilters={setFilters}
               setFilteredEnvs={setFilteredEnvs}
               applyFilters={applyFilters}
@@ -203,6 +223,7 @@ export const EnvGallery = ({
               currentFilterPanel={currentFilterPanel}
               appendFilter={appendFilter}
               removeFilter={removeFilter}
+              resetFilters={resetFilters}
               setFilters={setFilters}
               setFilteredEnvs={setFilteredEnvs}
               applyFilters={applyFilters}
