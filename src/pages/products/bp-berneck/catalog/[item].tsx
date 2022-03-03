@@ -2,7 +2,6 @@ import { GetServerSideProps } from 'next'
 
 import { strapiClient } from 'services'
 import { BPCatalogItem } from 'views/BPCatalog'
-import { Wood } from 'views/BPCatalog/BPCatalogItem'
 
 export interface CatalogItemProps {
   texture: {
@@ -22,10 +21,25 @@ export interface CatalogItemProps {
       img: string
     }[]
   }
-  mdp: Wood
-  mdf: Wood
-  next: string
-  prev: string
+  uses_and_applications: string
+  in_ambients: {
+    id: number
+    image_url: string
+  }[]
+  available_at: {
+    id: number
+    panel_type: string
+    thickness: string
+    dimensions: string
+  }[]
+  next: {
+    name: string
+    url_code: string
+  }
+  prev: {
+    name: string
+    url_code: string
+  }
 }
 
 export default function CatalogItem(props: CatalogItemProps) {
@@ -36,13 +50,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { item } = ctx.query
   const url = process.env.NEXT_PUBLIC_API_URL
 
-  let productFetch = await strapiClient({
+  const productFetch = await strapiClient({
     defaultOnEmpty: true,
     locale: ctx.locale,
-    resource: `products?url_code=${item}`
+    resource: `products/${item}`
   })
-
-  productFetch = productFetch[0]
 
   return {
     props: {
@@ -65,10 +77,29 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
           }
         })
       },
-      mdp: { thickness: '12 / 15 / 18 / 25', size: '2,75 x 1,85' },
-      mdf: { thickness: '6 / 9 / 15 / 18 / 25', size: '2,75 x 1,85' },
-      next: 'SOLANUM',
-      prev: 'VERTI'
-    }
+      available_at: productFetch.available_at.map((item: any) => {
+        return {
+          ...item,
+          panel_type: item.panel_type.name
+        }
+      }),
+      in_ambients: productFetch.in_ambients
+        .filter((item: any) => item.gallery_of_images.length > 0)
+        .map((item: any) => {
+          return {
+            id: item.id,
+            image_url: `${url}${item.gallery_of_images[0].url}`
+          }
+        }),
+      uses_and_applications: productFetch.uses_and_applications,
+      prev: {
+        name: productFetch.prev.name,
+        url_code: productFetch.prev.url_code
+      },
+      next: {
+        name: productFetch.next.name,
+        url_code: productFetch.next.url_code
+      }
+    } as CatalogItemProps
   }
 }
