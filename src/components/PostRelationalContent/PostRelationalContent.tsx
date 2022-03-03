@@ -2,10 +2,15 @@ import { Flex, Text } from '@chakra-ui/react'
 import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
 
 export type PostRelationalContentProps = {
-  title?: string
+  items: {
+    category: string
+    urlImage: string
+    color: string
+    title: string
+  }[]
 }
 export const PostRelationalContent = ({
-  title
+  items
 }: PostRelationalContentProps) => {
   return (
     <Flex
@@ -21,35 +26,28 @@ export const PostRelationalContent = ({
       <Flex
         overflowX={{ base: 'scroll', md: 'visible' }}
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent={
+          !!items && items.length >= 4 ? 'space-between' : 'flex-start'
+        }
       >
-        <ChannelBnkRelationalItem
-          category="INSPIRAÇÃO SOB MEDIDA"
-          urlImage="https://casaclaudia.abril.com.br/wp-content/uploads/2017/06/sala31.jpg"
-          color="brown.150"
-          title="Como usar o círculo cromático para combinar padrões BP"
-        />
-
-        <ChannelBnkRelationalItem
-          category="INSPIRAÇÃO SOB MEDIDA"
-          urlImage="https://casaclaudia.abril.com.br/wp-content/uploads/2017/06/sala31.jpg"
-          color="green.600"
-          title="Como usar o círculo cromático para combinar padrões BP"
-        />
-
-        <ChannelBnkRelationalItem
-          category="INSPIRAÇÃO SOB MEDIDA"
-          urlImage="https://casaclaudia.abril.com.br/wp-content/uploads/2017/06/sala31.jpg"
-          color="brown.150"
-          title="Como usar o círculo cromático para combinar padrões BP"
-        />
-
-        <ChannelBnkRelationalItem
-          category="INSPIRAÇÃO SOB MEDIDA"
-          urlImage="https://casaclaudia.abril.com.br/wp-content/uploads/2017/06/sala31.jpg"
-          color="brown.150"
-          title="Como usar o círculo cromático para combinar padrões BP"
-        />
+        {items &&
+          items.map((item, i) => {
+            return (
+              i < 4 && (
+                <ChannelBnkRelationalItem
+                  key={i}
+                  category={item.category}
+                  urlImage={item.urlImage}
+                  color={item.color}
+                  title={item.title}
+                  marginRight={{
+                    base: '40px',
+                    md: items.length >= 4 ? '0' : '3%'
+                  }}
+                />
+              )
+            )
+          })}
       </Flex>
     </Flex>
   )

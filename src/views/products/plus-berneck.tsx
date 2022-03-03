@@ -1,8 +1,31 @@
 import PlusPanelsPresentation from '@components/PlusPanelsPresentation'
 import PlusTestInfo from '@components/PlusTestInfo'
 import Product from '../../components/Product'
+import { useRouter } from 'next/router'
 
-export default function PlusBerneckView() {
+export type PlusBerneckViewProps = {
+  title: string
+  subtitle: string
+  subtitleDescription: string
+  description: string
+  qualityStandards: string
+  abnt: string
+  section2Title: string
+  section2Text: string
+  testPoints: string[]
+  importantPoints: string[]
+  body_proof: {
+    absorbed_water: number
+    absorption: number
+    id: number
+    item: string
+    swelling: number
+    thickness_increase: number
+  }[]
+}
+
+export default function PlusBerneckView(props: PlusBerneckViewProps) {
+  const router = useRouter()
   return (
     <div>
       <Product
@@ -31,79 +54,44 @@ export default function PlusBerneckView() {
         secondaryBackground="#F5F6F4"
         plusProduct
         header={{
-          title: 'Painéis PLUS BERNECK®',
+          title: props.title,
           headerBgColor: '#ACCC9F',
-          subtitle: 'É Plus porque tem mais proteção à umidade',
-          description:
-            'Os painéis da Linha PLUS BERNECK® são indicados para fabricação de móveis a serem aplicados em ambientes como cozinhas, banheiros e lavanderias.'
+          subtitle: props.subtitle,
+          description: props.subtitleDescription
         }}
         body={{
-          moreTechnologyQualityProtection:
-            'Há quase 70 anos, a BERNECK® é a marca da madeira e das grandes soluções para seus projetos. Agora ainda mais, com toda a qualidade e maior resistência que a linha PLUS BERNECK® oferece.',
-          qualityStandards:
-            'Os produtos da linha PLUS BERNECK® seguem as normas ABNT NBR 14.810 e ABNT NBR 15.316 (V313) e registram indicadores superiores aos estabelecidos pela normativa.',
+          moreTechnologyQualityProtection: props.description,
+          qualityStandards: props.qualityStandards,
           backgroundColor: '#FFF',
-          abntInfo: '• ABNT NBR 15.316 • ABNT NBR 14.810'
+          abntInfo: props.abnt
         }}
       />
 
-      <PlusTestInfo
-        title={'Fizemos o teste. Está comprovado e aprovado.'}
-        description="Para ilustrar melhor as características dos produtos PLUS BERNECK®,
-        fizemos um teste com o objetivo de avaliar como os painéis reagem à
-        absorção de umidade e ao ganho de espessura, comparando-os com os
-        painéis standard."
-        testSteps={{
-          first:
-            ' Pesamos e medimos a espessura dos corpos de prova: amostras de 15mm de MDF e MDP Standard, e MDF e MDP Plus, todas sem revestimento.',
-          second:
-            'Acondicionamos as amostras por 16 dias em estufa com temperatura constante de 25ºC e umidade relativa do ar de 90%.',
-          third:
-            'Após este período, novamente pesamos e medidos a espessura dos corpos de prova.'
-        }}
-        extraInfoTitle="Muito importante"
-        extraInfoBody={[
-          'Utilize a linha BERNECK PLUS em áreas que não tenham contato direto com água.',
-          'É indispensável proteger todas as faces e bordas do painel contra ação da umidade, inclusive as não aparentes, pois este produto não é isento a mofo.',
-          'Ambientes com focos de cupim devem ser tratados antes da instalação de qualquer móvel, inclusive os com a linha PLUS BERNECK®.'
-        ]}
-        tableInfo={{
-          rows: [
-            {
-              column1: 'MDF STD',
-              column2: '47,0 g',
-              column3: '13,10 %',
-              column4: '0,94 mm',
-              column5: '6,40 %',
-              plus: false
-            },
-            {
-              column1: 'MDP STD',
-              column2: '25,7 g',
-              column3: '7,40 %',
-              column4: '0,74 mm',
-              column5: '4,90 %',
-              plus: false
-            },
-            {
-              column1: 'MDF PLUS BERNECK',
-              column2: '17,5 g',
-              column3: '5,90 %',
-              column4: '0,61 mm',
-              column5: '0,61 mm',
-              plus: true
-            },
-            {
-              column1: 'MDP PLUS BERNECK',
-              column2: '5,0 g',
-              column3: '1,40 %',
-              column4: '0,57 mm',
-              column5: '0,57 mm',
-              plus: true
-            }
-          ]
-        }}
-      />
+      {props.testPoints.length >= 3 && (
+        <PlusTestInfo
+          title={props.section2Title}
+          description={props.section2Text}
+          testSteps={{
+            first: props.testPoints[0],
+            second: props.testPoints[1],
+            third: props.testPoints[2]
+          }}
+          extraInfoTitle="Muito importante"
+          extraInfoBody={props.importantPoints}
+          tableInfo={{
+            rows: props.body_proof.map((item) => {
+              return {
+                column1: item.item.toString(),
+                column2: item.absorbed_water.toString() + 'g',
+                column3: item.absorption.toString(),
+                column4: item.thickness_increase.toString(),
+                column5: item.swelling.toString(),
+                plus: item.item.includes('plus') || item.item.includes('PLUS')
+              }
+            })
+          }}
+        />
+      )}
       <PlusPanelsPresentation
         title="Conheça os painéis PLUS BERNECK®"
         products={{
@@ -141,7 +129,8 @@ export default function PlusBerneckView() {
               _hover: {
                 top: '-1.5%',
                 right: '-330px'
-              }
+              },
+              onClick: () => router.push('/products/hdf-berneck')
             }
           },
           second: {
@@ -178,7 +167,8 @@ export default function PlusBerneckView() {
               _hover: {
                 top: '-100px',
                 right: '-30px'
-              }
+              },
+              onClick: () => router.push('/products/mdf-berneck')
             }
           },
           third: {
@@ -211,7 +201,8 @@ export default function PlusBerneckView() {
               _hover: {
                 top: '-20px',
                 right: '-1px'
-              }
+              },
+              onClick: () => router.push('/products/mdp-berneck')
             }
           }
         }}

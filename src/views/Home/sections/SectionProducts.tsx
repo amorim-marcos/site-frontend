@@ -1,17 +1,5 @@
-import {
-  Box,
-  GridItem,
-  Grid,
-  Flex,
-  Text,
-  Image,
-  Button,
-  Link
-} from '@chakra-ui/react'
+import { Box, Text, Flex } from '@chakra-ui/react'
 
-import BannerProducts from '@components/BannerProducts'
-import CarouselMultiElements from '@components/CarouselMultiElements'
-import CarouselMutiElements from '@components/CarouselMultiElements'
 import CompletedTitle from '@components/CompletedTitle'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import { Contactusicon } from '@components/Icons/Contactusicon/Contactusicon'
@@ -19,17 +7,12 @@ import EarthIcon from '@components/Icons/EarthIcon'
 import PatternInfo from '@components/PatternInfo'
 import ProductsGallery from '@components/ProductsGallery'
 import { ProductsGalleryProps } from '@components/ProductsGallery/ProductsGallery'
-import useMobile from 'hooks/useMobile'
-import { useState } from 'react'
 import { useRouter } from 'next/router'
-
-const vet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 export type SectionsProductsProps = ProductsGalleryProps
 
 export const SectionProducts = ({ products }: SectionsProductsProps) => {
   const router = useRouter()
-
   return (
     <Flex
       maxWidth="1920px"
@@ -87,9 +70,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
             }}
             alignItems={'flex-end'}
           >
-            <Link
-              onClick={() => router.push('/products')}
-            >
+            <Box onClick={() => router.push('/products')}>
               <Text
                 as="h4"
                 variant={'h4' as any}
@@ -104,7 +85,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
               >
                 Veja todos os produtos
               </Text>
-            </Link>
+            </Box>
           </Flex>
           <Flex
             // bg="yellow"

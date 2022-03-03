@@ -1,133 +1,171 @@
-import { Box, Button, Flex, FlexProps, FormControl, Input, Text } from "@chakra-ui/react"
-import FormInput from "@components/FormInput"
-import FormSelect from "@components/FormSelect"
-import FormTextArea from "@components/FormTextArea"
-import ContactChannelFormLabel from "./ContactChannelFormLabel"
-import ContactChannelInfoInput from "./ContactChannelInfoInput"
+import {
+  Box,
+  Button,
+  Flex,
+  FlexProps,
+  FormControl,
+  Input,
+  Text
+} from '@chakra-ui/react'
+import FormInput from '@components/FormInput'
+import FormSelect from '@components/FormSelect'
+import FormTextArea from '@components/FormTextArea'
+import ContactChannelFormLabel from './ContactChannelFormLabel'
+import ContactChannelInfoInput from './ContactChannelInfoInput'
 
 export type ContactChannelFormProps = FlexProps & {
-  channel_name: string,
+  channel_name: string
   service_code: string
 }
-export const ContactChannelForm = ({ channel_name, service_code, ...props}: ContactChannelFormProps) => {
+export const ContactChannelForm = ({
+  channel_name,
+  service_code,
+  ...props
+}: ContactChannelFormProps) => {
   return (
     <Flex width="full" flexDirection="column" {...props}>
       <form>
         <Box flex="1">
           <FormControl
-            as='fieldset'
+            as="fieldset"
             _focusWithin={{
               label: {
-                visibility: "visible"
+                visibility: 'visible'
               }
             }}
             isRequired
           >
-            <ContactChannelFormLabel visibility="hidden" htmlFor="name">*Nome</ContactChannelFormLabel>
+            <ContactChannelFormLabel visibility="hidden" htmlFor="name">
+              *Nome
+            </ContactChannelFormLabel>
             <FormInput name="name" placeholder="*Nome" />
-          </FormControl>   
+          </FormControl>
         </Box>
         <Box mt="12px" flex="1">
           <FormControl
-            as='fieldset'
+            as="fieldset"
             _focusWithin={{
               label: {
-                visibility: "visible"
+                visibility: 'visible'
               }
             }}
             isRequired
           >
-            <ContactChannelFormLabel visibility="hidden" htmlFor="email">*E-mail</ContactChannelFormLabel>
+            <ContactChannelFormLabel visibility="hidden" htmlFor="email">
+              *E-mail
+            </ContactChannelFormLabel>
             <FormInput type="email" name="email" placeholder="*E-mail" />
-          </FormControl>   
+          </FormControl>
         </Box>
         <Box mt="12px" flex="1">
           <FormControl
-            as='fieldset'
+            as="fieldset"
             _focusWithin={{
               label: {
-                visibility: "visible"
+                visibility: 'visible'
               }
             }}
             isRequired
           >
-            <ContactChannelFormLabel visibility="hidden" htmlFor="tel">*Telefone</ContactChannelFormLabel>
+            <ContactChannelFormLabel visibility="hidden" htmlFor="tel">
+              *Telefone
+            </ContactChannelFormLabel>
             <FormInput type="tel" name="tel" placeholder="*Telefone" />
-          </FormControl>   
-        </Box>       
-        <Flex flexDirection={{base: "column", md: "row"}} flex="1" mt="12px">
+          </FormControl>
+        </Box>
+        <Flex flexDirection={{ base: 'column', md: 'row' }} flex="1" mt="12px">
           <FormControl
-            as='fieldset'
-
+            as="fieldset"
             mr="20px"
-
             _focusWithin={{
               label: {
-                visibility: "visible"
+                visibility: 'visible'
               }
             }}
             isRequired
           >
-            <ContactChannelFormLabel visibility="hidden" htmlFor="city">*Cidade</ContactChannelFormLabel>
+            <ContactChannelFormLabel visibility="hidden" htmlFor="city">
+              *Cidade
+            </ContactChannelFormLabel>
             <FormInput name="city" placeholder="*Cidade" />
-          </FormControl>   
+          </FormControl>
 
           <FormControl
-            as='fieldset'
+            as="fieldset"
             _focusWithin={{
               label: {
-                visibility: "visible"
+                visibility: 'visible'
               }
             }}
             isRequired
           >
-            <ContactChannelFormLabel visibility="hidden" htmlFor="state">*Estado</ContactChannelFormLabel>
+            <ContactChannelFormLabel visibility="hidden" htmlFor="state">
+              *Estado
+            </ContactChannelFormLabel>
             <FormSelect name="state">
-              <option disabled selected value="">*Estado</option>
-              {brazilianStates.map((state)=> <option value={state.code}>{state.name} [{state.code}]</option>)}
+              <option disabled selected value="">
+                *Estado
+              </option>
+              {brazilianStates.map((state, i) => (
+                <option key={i} value={state.code}>
+                  {state.name} [{state.code}]
+                </option>
+              ))}
             </FormSelect>
-          </FormControl>   
-        </Flex> 
+          </FormControl>
+        </Flex>
         <Box mt="12px" flex="1">
           <FormControl
-            as='fieldset'
+            as="fieldset"
             _focusWithin={{
               label: {
-                visibility: "visible"
+                visibility: 'visible'
               }
             }}
           >
-            <ContactChannelFormLabel visibility="hidden" htmlFor="enterprise">Empresa</ContactChannelFormLabel>
+            <ContactChannelFormLabel visibility="hidden" htmlFor="enterprise">
+              Empresa
+            </ContactChannelFormLabel>
             <FormInput name="enterprise" placeholder="Empresa" />
-          </FormControl>   
-        </Box> 
+          </FormControl>
+        </Box>
         <Box mt="12px" flex="1">
-          <FormControl
-            as='fieldset'
-          >
-            <ContactChannelFormLabel visibility="hidden" htmlFor="service">Tipo de Canal de Contato</ContactChannelFormLabel>
+          <FormControl as="fieldset">
+            <ContactChannelFormLabel visibility="hidden" htmlFor="service">
+              Tipo de Canal de Contato
+            </ContactChannelFormLabel>
             <ContactChannelInfoInput value={channel_name} />
             <Input type="hidden" name="service" value={service_code} />
-          </FormControl>   
-        </Box> 
+          </FormControl>
+        </Box>
         <Box mt="12px" flex="1">
           <FormControl
-            as='fieldset'
+            as="fieldset"
             _focusWithin={{
               label: {
-                visibility: "visible"
+                visibility: 'visible'
               }
             }}
           >
-            <ContactChannelFormLabel visibility="hidden" htmlFor="message">Mensagem</ContactChannelFormLabel>
+            <ContactChannelFormLabel visibility="hidden" htmlFor="message">
+              Mensagem
+            </ContactChannelFormLabel>
             <FormTextArea name="message" placeholder="Mensagem"></FormTextArea>
-          </FormControl>   
-        </Box> 
+          </FormControl>
+        </Box>
         <Flex mt="5px">
-            <Text variant={"body" as any} color="gray.300">*Campos obrigatórios</Text>
+          <Text variant={'body' as any} color="gray.300">
+            *Campos obrigatórios
+          </Text>
         </Flex>
         <Flex mt="12px">
-            <Button type="submit" w={{base: "100%", lg: "240px"}} marginLeft={{ base: "normal", lg:"auto"}}>ENVIAR</Button>
+          <Button
+            type="submit"
+            w={{ base: '100%', lg: '240px' }}
+            marginLeft={{ base: 'normal', lg: 'auto' }}
+          >
+            ENVIAR
+          </Button>
         </Flex>
       </form>
     </Flex>
@@ -136,111 +174,111 @@ export const ContactChannelForm = ({ channel_name, service_code, ...props}: Cont
 
 const brazilianStates = [
   {
-    name: "Acre",
-    code: "AC"
+    name: 'Acre',
+    code: 'AC'
   },
   {
-    name: "Alagoas",
-    code: "AC"
+    name: 'Alagoas',
+    code: 'AC'
   },
   {
-    name: "Acre",
-    code: "AL"
+    name: 'Acre',
+    code: 'AL'
   },
   {
-    name: "Amapá",
-    code: "AP"
+    name: 'Amapá',
+    code: 'AP'
   },
   {
-    name: "Amazonas",
-    code: "AM"
+    name: 'Amazonas',
+    code: 'AM'
   },
   {
-    name: "Bahia",
-    code: "BA"
+    name: 'Bahia',
+    code: 'BA'
   },
   {
-    name: "Acre",
-    code: "AC"
+    name: 'Acre',
+    code: 'AC'
   },
   {
-    name: "Ceará",
-    code: "CE"
+    name: 'Ceará',
+    code: 'CE'
   },
   {
-    name: "Distrito Federal",
-    code: "DF"
+    name: 'Distrito Federal',
+    code: 'DF'
   },
   {
-    name: "Espírito Santo",
-    code: "ES"
+    name: 'Espírito Santo',
+    code: 'ES'
   },
   {
-    name: "Goiás",
-    code: "GO"
+    name: 'Goiás',
+    code: 'GO'
   },
   {
-    name: "Maranhão",
-    code: "MA"
+    name: 'Maranhão',
+    code: 'MA'
   },
   {
-    name: "Mato Grosso",
-    code: "MT"
+    name: 'Mato Grosso',
+    code: 'MT'
   },
   {
-    name: "Mato Grosso do Sul",
-    code: "MS"
+    name: 'Mato Grosso do Sul',
+    code: 'MS'
   },
   {
-    name: "Minas Gerais",
-    code: "MG"
+    name: 'Minas Gerais',
+    code: 'MG'
   },
   {
-    name: "Pará",
-    code: "PA"
+    name: 'Pará',
+    code: 'PA'
   },
   {
-    name: "Paraíba",
-    code: "PB"
+    name: 'Paraíba',
+    code: 'PB'
   },
   {
-    name: "Paraná",
-    code: "PR"
+    name: 'Paraná',
+    code: 'PR'
   },
   {
-    name: "Pernambuco",
-    code: "PE"
+    name: 'Pernambuco',
+    code: 'PE'
   },
   {
-    name: "Piaí",
-    code: "PI"
+    name: 'Piaí',
+    code: 'PI'
   },
   {
-    name: "Rio de Janeiro",
-    code: "RJ"
+    name: 'Rio de Janeiro',
+    code: 'RJ'
   },
   {
-    name: "Rio Grande do Norte",
-    code: "RN"
+    name: 'Rio Grande do Norte',
+    code: 'RN'
   },
   {
-    name: "Rio Grande do Sul",
-    code: "RS"
+    name: 'Rio Grande do Sul',
+    code: 'RS'
   },
   {
-    name: "Roraima",
-    code: "RR"
+    name: 'Roraima',
+    code: 'RR'
   },
   {
-    name: "Santa Catarina",
-    code: "SC"
+    name: 'Santa Catarina',
+    code: 'SC'
   },
   {
-    name: "São Paulo",
-    code: "SP"
+    name: 'São Paulo',
+    code: 'SP'
   },
   {
-    name: "Tocantins",
-    code: "TO"
-  } 
+    name: 'Tocantins',
+    code: 'TO'
+  }
 ]

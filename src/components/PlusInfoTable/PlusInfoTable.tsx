@@ -106,9 +106,9 @@ export const PlusInfoTable = ({ rows }: PlusInfoTableProps) => {
           </Flex>
         </Flex>
         {rows &&
-          rows.map((r) => {
+          rows.map((r, j) => {
             return (
-              <Flex key={r.column1}>
+              <Flex key={j}>
                 <Box
                   {...tableFirstItem}
                   w={firstItemWidth}

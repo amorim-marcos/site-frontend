@@ -6,4 +6,4 @@ export default {
   component: QualityPinus
 } as Meta
 
-export const Default: Story = () => <QualityPinus />
+export const Default: Story = () => <QualityPinus items={[]} />

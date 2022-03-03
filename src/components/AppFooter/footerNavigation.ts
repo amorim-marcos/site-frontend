@@ -15,7 +15,10 @@ export const footerNavigation = {
     items: [
       { titleKey: 'column2Subitem1', href: '/nosso-compromisso#meio-ambiente' },
       { titleKey: 'column2Subitem2', href: '/nosso-compromisso#nossa-gente' },
-      { titleKey: 'column2Subitem3', href: '/nosso-compromisso#nossos-valores' },
+      {
+        titleKey: 'column2Subitem3',
+        href: '/nosso-compromisso#nossos-valores'
+      },
       { titleKey: 'column2Subitem4', href: '/nosso-compromisso#relatorio' }
     ]
   },
@@ -49,7 +52,10 @@ export const footerNavigation = {
       // { titleKey: 'column4Subitem1', href: '#' },
       { titleKey: '', href: '', empty: true },
       { titleKey: 'column5Subitem1', href: '/contact' },
-      { titleKey: 'column5Subitem3', href: 'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup' },
+      {
+        titleKey: 'column5Subitem3',
+        href: 'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup'
+      },
       { titleKey: 'column5Subitem4', href: '/onde-comprar' },
       { titleKey: 'column5Subitem5', href: 'http://portalcrm.berneck.com.br/' }
     ]

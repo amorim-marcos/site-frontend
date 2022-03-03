@@ -120,17 +120,18 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
         paddingLeft={{ base: '20px', md: '0' }}
       >
         <Flex>
-          <ArrowIcon
-            width={{
-              base: '20px',
-
-              md: '10px',
-              lg: '13px',
-              xl: '16px',
-              '2xl': '20px'
-            }}
-            stroke="green.600"
-          />
+          <Box marginTop="0px">
+            <ArrowIcon
+              width={{
+                base: '20px',
+                md: '10px',
+                lg: '14px',
+                xl: '16px',
+                '2xl': '20px'
+              }}
+              stroke="green.600"
+            />
+          </Box>
           <Flex marginLeft={'2%'} flexDirection={'column'}>
             <Text
               marginBottom={'2%'}
@@ -146,18 +147,21 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
             >
               {items[currentItem].category}
             </Text>
-            <Box opacity={opacity ? '1' : '0'} transition={'0.4s'}>
+            <Box
+              opacity={opacity ? '1' : '0'}
+              transition={'0.4s'}
+              maxWidth={{
+                base: '90vw',
+                md: '550px',
+                lg: '650px',
+                xl: '750px',
+                '2xl': '850px'
+              }}
+              w="100vw"
+              height={{ md: '18vw' }}
+              maxHeight={{ md: '384px' }}
+            >
               <Text
-                maxWidth={{
-                  base: '95vw',
-
-                  md: '421px',
-                  lg: '526px',
-                  xl: '632px',
-                  '2xl': '790px'
-                }}
-                height={{ md: '18vw' }}
-                maxHeight={{ md: '384px' }}
                 as="h1"
                 variant={'h1' as any}
                 color="green.900"
@@ -169,6 +173,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                   xl: '54px',
                   '2xl': '68px'
                 }}
+                maxHeight={'100%'}
                 marginLeft={{ base: '-30px', md: '0' }}
               >
                 {items[currentItem].title}
@@ -199,6 +204,7 @@ const Indicator = ({ items, currentItem }: IndicatorProps) => {
       {items.map((item, i) => {
         return i === currentItem ? (
           <Box
+            key={i}
             margin="5px"
             border="1px solid"
             borderColor={'brown.300'}
@@ -221,6 +227,7 @@ const Indicator = ({ items, currentItem }: IndicatorProps) => {
           />
         ) : (
           <Box
+            key={i}
             margin="5px"
             w={{
               base: '20px',

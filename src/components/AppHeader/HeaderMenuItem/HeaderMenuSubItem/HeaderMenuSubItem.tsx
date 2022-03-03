@@ -18,45 +18,35 @@ export const HeaderMenuSubItem = ({
   subItems,
   onClick
 }: HeaderMenuSubItemProps) => {
-  const { isMobile } = useMobile(568)
   return (
     <Flex onClick={onClick} flexDir="column">
       <Link href={href} passHref>
         <Flex
           paddingLeft={{
             base: '15px',
-            sm: '5px',
             md: '12px',
             lg: '15px',
             xl: '20px',
             '2xl': '25px'
           }}
           cursor="pointer"
-          {...(!isMobile && {
-            _hover: {
-              bg: subItems ? 'green.800' : '#79B928'
-            }
-          })}
+          _hover={{ md: { bg: subItems ? 'green.800' : '#79B928' } }}
           alignItems="center"
           h={{
             base: '60px',
-            sm: '20px',
             md: '30px',
             lg: '35px',
             xl: '40px',
             '2xl': '50px'
           }}
-          w={{ base: '100%', sm: '100%' }}
-          bg={isMobile ? 'green.700' : 'green.800'}
-          {...(isMobile && {
-            borderBottom: '2px solid',
-            borderBottomColor: 'green.800'
-          })}
+          w={{ base: '100%', md: '100%' }}
+          bg={{ base: 'green.700', md: 'green.800' }}
+          borderBottom={{ base: '2px solid', md: 'none' }}
+          borderBottomColor={{ base: 'green.800', md: 'none' }}
         >
           <Text
             fontSize={{
               base: '14px',
-              sm: '6.3px',
               md: '8.3px',
               lg: '10px',
               xl: '13px',
@@ -71,13 +61,12 @@ export const HeaderMenuSubItem = ({
         </Flex>
       </Link>
       <Box>
-        {subItems?.map((i) => {
+        {subItems?.map((i, j) => {
           return (
-            <Link passHref href={i.href || '/'} key={i.title}>
+            <Link key={j} passHref href={i.href || '/'}>
               <Flex
                 paddingLeft={{
                   base: '15px',
-                  sm: '5px',
                   md: '12px',
                   lg: '15px',
                   xl: '20px',
@@ -88,7 +77,6 @@ export const HeaderMenuSubItem = ({
                 alignItems="center"
                 h={{
                   base: '40px',
-                  sm: '20px',
                   md: '30px',
                   lg: '35px',
                   xl: '40px',
@@ -100,7 +88,6 @@ export const HeaderMenuSubItem = ({
                 <Text
                   fontSize={{
                     base: '14px',
-                    sm: '6.3px',
                     md: '8.3px',
                     lg: '10px',
                     xl: '13px',

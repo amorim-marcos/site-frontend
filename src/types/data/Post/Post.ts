@@ -2,10 +2,11 @@ import { Category } from './Category'
 import { Tag } from './Tag'
 
 export type Post = {
-  Title: string
-  Content: string
-  Category: Category
-  Tags: Tag[]
-  Cover: string
+  title: string
+  content: string
+  category: Category
+  tags: Tag[]
+  cover: string
   date: Date | string
+  url_code: string
 }

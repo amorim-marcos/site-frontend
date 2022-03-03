@@ -32,7 +32,7 @@ export const ProductText = ({
     <>
       {content?.map((p, i) => (
         <Text
-          key={p}
+          key={i}
           {...TextSyle}
           marginBottom={
             i !== content.length - 1 && paragraph

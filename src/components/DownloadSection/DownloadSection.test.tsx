@@ -4,6 +4,8 @@ import DownloadSection from '.'
 
 describe('<DownloadSection />', () => {
   it('should render the component', () => {
-    renderWithTheme(<DownloadSection grafism="type1" items={[]} />)
+    renderWithTheme(
+      <DownloadSection grafism="type1" items={[]} title="" description="" />
+    )
   })
 })

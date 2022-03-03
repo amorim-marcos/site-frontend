@@ -27,7 +27,16 @@ export const ChannelBnkRelationalItem = ({
       {...props}
       cursor="pointer"
     >
-      <Box h="50%" w="100%" overflow="hidden">
+      <Box
+        h={{
+          base: '200px',
+          sm: '250px',
+          md: '150px',
+          lg: '200px',
+          '2xl': '300px'
+        }}
+        w="100%"
+      >
         <Image h="100%" w="100%" objectFit="cover" src={urlImage} />
       </Box>
       <Flex
@@ -35,6 +44,7 @@ export const ChannelBnkRelationalItem = ({
         bg="white.100"
         flexDirection="column"
         justifyContent="space-between"
+        h="50%"
       >
         <Flex padding="8%" flexDirection="column">
           <Flex alignItems="center">
