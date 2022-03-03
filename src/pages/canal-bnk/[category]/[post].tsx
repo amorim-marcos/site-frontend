@@ -9,7 +9,6 @@ export type PostPageProps = {
 }
 
 export default function PostPage(props: PostPageProps) {
-  console.log(props)
   return (
     <PostsView
       postBody={{

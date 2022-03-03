@@ -63,7 +63,6 @@ export type CompromiseViewProps = {
 
 export const Compromise = ({ page_content }: CompromiseViewProps) => {
   const router = useRouter()
-  console.log(page_content)
   return (
     <Box maxWidth="1920px" marginX="auto" bg="green.100">
       <Pagebar
