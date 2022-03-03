@@ -3,4 +3,8 @@ export interface Gallery {
   title: string
   bgColor: string
   backgroundImage: string
+  ambientType: {
+    name: string
+    code: string
+  }
 }

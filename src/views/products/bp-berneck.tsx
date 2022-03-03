@@ -39,8 +39,6 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
       <Flex
         maxWidth="1920px"
         marginX="auto"
-        // alignItems="center"
-        // justifyContent="center"
         position="relative"
         zIndex="base"
         overflowY="hidden"
@@ -195,6 +193,11 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
                     xl: '488px',
                     '2xl': '610px'
                   }}
+                  onClick={() =>
+                    router.push(
+                      `/products/bp-berneck/gallery?ambients=${i.ambientType.code}`
+                    )
+                  }
                 >
                   <BannerGallery
                     title={i.title}

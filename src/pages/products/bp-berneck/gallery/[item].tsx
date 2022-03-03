@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next'
 
 import { strapiClient } from 'services'
-import { EnvView } from 'views/EnvGallery/EnvView'
+import { EnvView } from 'views/Gallery/EnvView'
 
 export interface GalleryItemProps {
   env: {

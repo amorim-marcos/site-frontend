@@ -15,11 +15,22 @@ import {
 import { CloseIcon, SearchIcon, Arrow, FiltersIcon } from '@components/Icons'
 import { colors } from 'theme/colors'
 
-import { filtersCheckboxes, initialFilters } from '.'
+import { Filters } from '.'
 import { FilterCheckbox } from './FilterCheckbox'
 import { BPFilter } from './BPFilter'
 
 export type FiltersSelectProps = {
+  filtersContext: {
+    ambients: {
+      title: string
+      code: string
+    }[]
+    styles: {
+      title: string
+      code: string
+    }[]
+  }
+  initialFilters: Filters
   displayFilters: boolean
   setDisplayFilters: Function
   changeFilterPanel: Function
@@ -36,6 +47,8 @@ export type FiltersSelectProps = {
 }
 
 export const FiltersAccordion = ({
+  filtersContext,
+  initialFilters,
   displayFilters,
   setDisplayFilters,
   changeFilterPanel,
@@ -270,7 +283,7 @@ export const FiltersAccordion = ({
                   }}
                   gridGap="5px"
                 >
-                  {filtersCheckboxes['ambients'].map((filter) => (
+                  {filtersContext['ambients'].map((filter) => (
                     <GridItem key={filter.code}>
                       <FilterCheckbox
                         isChecked={filters['ambients'].includes(filter.code)}
@@ -335,7 +348,7 @@ export const FiltersAccordion = ({
                   }}
                   gridGap="5px"
                 >
-                  {filtersCheckboxes['styles'].map((filter) => (
+                  {filtersContext['styles'].map((filter) => (
                     <GridItem key={filter.code}>
                       <FilterCheckbox
                         isChecked={filters['styles'].includes(filter.code)}

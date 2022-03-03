@@ -16,7 +16,7 @@ export default function BpBerneck(props: BpBerneckProps) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const url = process.env.NEXT_PUBLIC_API_URL
 
-  const galleries = await strapiClient({
+  const galleries: Gallery[] = await strapiClient({
     resource: 'highlighted-ambient-types'
   })
 
@@ -26,7 +26,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
       id: i,
       title: gallery.ambient_type.type,
       bgColor: gallery.color,
-      backgroundImage: `${url}${gallery.image.url}`
+      backgroundImage: `${url}${gallery.image.url}`,
+      ambientType: {
+        name: gallery.ambient_type.type,
+        code: gallery.ambient_type.url_code
+      }
     }
   })
 

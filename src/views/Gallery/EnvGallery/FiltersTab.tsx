@@ -7,11 +7,22 @@ import { Box, Flex, Input, Button, Text, Center } from '@chakra-ui/react'
 import { CloseIcon, SearchIcon, Arrow, FiltersIcon } from '@components/Icons'
 import { colors } from 'theme/colors'
 
-import { filtersCheckboxes, initialFilters } from '.'
+import { Filters } from '.'
 import { FilterCheckbox } from './FilterCheckbox'
 import { BPFilter } from './BPFilter'
 
 export type FiltersSelectProps = {
+  filtersContext: {
+    ambients: {
+      title: string
+      code: string
+    }[]
+    styles: {
+      title: string
+      code: string
+    }[]
+  }
+  initialFilters: Filters
   displayFilters: boolean
   setDisplayFilters: Function
   changeFilterPanel: Function
@@ -28,6 +39,8 @@ export type FiltersSelectProps = {
 }
 
 export const FiltersTabs = ({
+  filtersContext,
+  initialFilters,
   displayFilters,
   setDisplayFilters,
   changeFilterPanel,
@@ -206,7 +219,7 @@ export const FiltersTabs = ({
                 >
                   <Center>
                     <Flex justifyContent="flex-start" wrap="wrap">
-                      {filtersCheckboxes['ambients'].map((filter) => (
+                      {filtersContext['ambients'].map((filter) => (
                         <FilterCheckbox
                           key={filter.code}
                           isChecked={filters['ambients'].includes(filter.code)}
@@ -233,7 +246,7 @@ export const FiltersTabs = ({
                 >
                   <Center>
                     <Flex justifyContent="flex-start" wrap="wrap">
-                      {filtersCheckboxes['styles'].map((filter) => (
+                      {filtersContext['styles'].map((filter) => (
                         <FilterCheckbox
                           key={filter.code}
                           isChecked={filters['styles'].includes(filter.code)}

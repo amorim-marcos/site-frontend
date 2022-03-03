@@ -2,9 +2,19 @@
 import { GetServerSideProps } from 'next'
 
 import { strapiClient } from 'services'
-import EnvGallery from 'views/EnvGallery'
+import EnvGallery from 'views/Gallery'
 
 export interface GalleryProps {
+  filtersContext: {
+    ambients: {
+      title: string
+      code: string
+    }[]
+    styles: {
+      title: string
+      code: string
+    }[]
+  }
   envs: {
     id: number
     type: string
@@ -28,9 +38,17 @@ export default function Gallery(props: GalleryProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const queryAmbients = ctx.query.ambients
   const url = process.env.NEXT_PUBLIC_API_URL
 
-  let galleries: GalleryProps['envs'] = await strapiClient({
+  let ambientTypes: GalleryProps['filtersContext']['ambients'] =
+    await strapiClient({
+      defaultOnEmpty: true,
+      locale: ctx.locale,
+      resource: 'ambient-types'
+    })
+
+  let envs: GalleryProps['envs'] = await strapiClient({
     defaultOnEmpty: true,
     locale: ctx.locale,
     resource: 'ambients'
@@ -42,12 +60,19 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     resource: 'products'
   })
 
-  galleries = galleries.map((gallery: any) => {
+  ambientTypes = ambientTypes.map((a: any) => {
+    return {
+      title: a.type,
+      code: a.url_code
+    }
+  })
+
+  envs = envs.map((gallery: any) => {
     return {
       id: gallery.id,
       name: gallery.place,
       bps: gallery.products.map((product: any) => product.name),
-      type: gallery.ambient_type.type,
+      type: gallery.ambient_type.url_code,
       url_code: gallery.url_code,
       image_url: `${url}${gallery.gallery_of_images[0].url}`
     }
@@ -63,15 +88,74 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         ? new Date(bp.launch).toISOString().split('T')[0]
         : new Date().toISOString().split('T')[0],
       scale: bp.scale ?? 0,
-      coloration: bp.product_coloration,
+      coloration: bp.product_coloration ?? '',
       collections: bp.product_collections
     }
   })
 
+  const initialFilters = {
+    nameSearched: '',
+    bps: [],
+    ambients: queryAmbients ? String(queryAmbients).split(',') : [],
+    styles: []
+  }
+
   return {
     props: {
-      envs: galleries,
-      availableBps: availableBps
+      filtersContext: {
+        styles: styles,
+        ambients: ambientTypes
+      },
+      envs,
+      availableBps,
+      initialFilters
     }
   }
 }
+
+const styles = [
+  {
+    title: 'Aconchegante',
+    code: 'Aconchegante'
+  },
+  {
+    title: 'Clássico',
+    code: 'classico'
+  },
+  {
+    title: 'Contemporâneo',
+    code: 'contemporaneo'
+  },
+  {
+    title: 'Escandinavo',
+    code: 'escandinavo'
+  },
+  {
+    title: 'Industrial',
+    code: 'industrial'
+  },
+  {
+    title: 'Lúdico',
+    code: 'lúdico'
+  },
+  {
+    title: 'Moderno',
+    code: 'moderno'
+  },
+  {
+    title: 'Natural',
+    code: 'natural'
+  },
+  {
+    title: 'Sóbrio',
+    code: 'sobrio'
+  },
+  {
+    title: 'Sofisticado',
+    code: 'sofisticado'
+  },
+  {
+    title: 'Urbano',
+    code: 'urbano'
+  }
+]

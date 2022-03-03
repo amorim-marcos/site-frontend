@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Container, Grid, GridItem, Center } from '@chakra-ui/react'
 
@@ -21,26 +21,38 @@ export type Filters = {
   styles: Array<string>
 }
 
-export const initialFilters: Filters = {
-  nameSearched: '',
-  bps: [],
-  ambients: [],
-  styles: []
-}
-
 export type EnvGalleryProps = {
   envs: Array<any>
   availableBps: Array<any>
+  initialFilters?: Filters
+  filtersContext: {
+    ambients: {
+      title: string
+      code: string
+    }[]
+    styles: {
+      title: string
+      code: string
+    }[]
+  }
 }
 
-export const EnvGallery = ({ envs, availableBps }: EnvGalleryProps) => {
-  const [displayFilters, setDisplayFilters] = React.useState(false)
-  const [currentFilterPanel, setCurrentFilterPanel] = React.useState('none')
-  const [filteredEnvs, setFilteredEnvs] = React.useState(envs)
-  const [filters, setFilters] = React.useState(
-    JSON.parse(JSON.stringify(initialFilters))
-  )
-  const [filtersEmpty, setFiltersEmpty] = React.useState(true)
+export const EnvGallery = ({
+  envs,
+  availableBps,
+  filtersContext,
+  initialFilters = {
+    nameSearched: '',
+    bps: [],
+    ambients: [],
+    styles: []
+  }
+}: EnvGalleryProps) => {
+  const [currentFilterPanel, setCurrentFilterPanel] = useState('none')
+  const [displayFilters, setDisplayFilters] = useState(false)
+  const [filteredEnvs, setFilteredEnvs] = useState(envs)
+  const [filters, setFilters] = useState(initialFilters)
+  const [filtersEmpty, setFiltersEmpty] = useState(true)
   const { isMobile } = useMobile(1024)
 
   function changeFilterPanel(newFilterPanel: FilterPanelName) {
@@ -85,7 +97,7 @@ export const EnvGallery = ({ envs, availableBps }: EnvGalleryProps) => {
     // ambients
     if (filters['ambients'].length > 0) {
       filteredEnvs = filteredEnvs.filter((env: any) => {
-        return filters['ambients'].includes(env.ambient)
+        return filters['ambients'].includes(env.type)
       })
     }
 
@@ -99,7 +111,20 @@ export const EnvGallery = ({ envs, availableBps }: EnvGalleryProps) => {
     return filteredEnvs.slice()
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
+    if (
+      initialFilters.ambients.length !== 0 ||
+      initialFilters.bps.length !== 0 ||
+      initialFilters.styles.length !== 0 ||
+      initialFilters.nameSearched !== ''
+    ) {
+      setFilteredEnvs(applyFilters(initialFilters, envs))
+      setDisplayFilters(true)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialFilters])
+
+  useEffect(() => {
     if (
       filters.ambients.length == 0 &&
       filters.bps.length == 0 &&
@@ -152,6 +177,8 @@ export const EnvGallery = ({ envs, availableBps }: EnvGalleryProps) => {
         >
           {isMobile ? (
             <FiltersAccordion
+              initialFilters={initialFilters}
+              filtersContext={filtersContext}
               displayFilters={displayFilters}
               setDisplayFilters={setDisplayFilters}
               changeFilterPanel={changeFilterPanel}
@@ -168,6 +195,8 @@ export const EnvGallery = ({ envs, availableBps }: EnvGalleryProps) => {
             />
           ) : (
             <FiltersTabs
+              initialFilters={initialFilters}
+              filtersContext={filtersContext}
               displayFilters={displayFilters}
               setDisplayFilters={setDisplayFilters}
               changeFilterPanel={changeFilterPanel}
