@@ -98,8 +98,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       title: panel.name,
       code: panel.id,
-      background_image: '/bps/filters_masks/origens.png'
-      // background_image: `${url}${panel.background_image_small.url}`
+      background_image: `${url}${panel.background_image_small.url}`
     }
   })
 
