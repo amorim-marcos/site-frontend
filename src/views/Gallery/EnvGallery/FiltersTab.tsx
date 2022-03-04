@@ -7,7 +7,6 @@ import { Box, Flex, Input, Button, Text, Center } from '@chakra-ui/react'
 import { CloseIcon, SearchIcon, Arrow, FiltersIcon } from '@components/Icons'
 import { colors } from 'theme/colors'
 
-import { Filters } from '.'
 import { FilterCheckbox } from './FilterCheckbox'
 import { BPFilter } from './BPFilter'
 
@@ -22,7 +21,6 @@ export type FiltersSelectProps = {
       code: string
     }[]
   }
-  initialFilters: Filters
   displayFilters: boolean
   setDisplayFilters: Function
   changeFilterPanel: Function
@@ -41,7 +39,6 @@ export type FiltersSelectProps = {
 
 export const FiltersTabs = ({
   filtersContext,
-  initialFilters,
   displayFilters,
   setDisplayFilters,
   changeFilterPanel,

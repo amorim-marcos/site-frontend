@@ -196,7 +196,6 @@ export const EnvGallery = ({
         >
           {isMobile ? (
             <FiltersAccordion
-              initialFilters={initialFilters}
               filtersContext={filtersContext}
               displayFilters={displayFilters}
               setDisplayFilters={setDisplayFilters}
@@ -215,7 +214,6 @@ export const EnvGallery = ({
             />
           ) : (
             <FiltersTabs
-              initialFilters={initialFilters}
               filtersContext={filtersContext}
               displayFilters={displayFilters}
               setDisplayFilters={setDisplayFilters}
