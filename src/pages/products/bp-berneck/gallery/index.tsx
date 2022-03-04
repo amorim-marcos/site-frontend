@@ -18,7 +18,7 @@ export interface GalleryProps {
   envs: {
     id: number
     type: string
-    style: number
+    style: string
     name: string
     image_url: string
     bps: string[]
@@ -88,7 +88,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       name: gallery.place,
       bps: gallery.products.map((product: any) => product.name),
       type: gallery.ambient_type.url_code,
-      style: gallery.ambient_styles[0].id,
+      style: String(gallery.ambient_styles[0].id),
       url_code: gallery.url_code,
       image_url: `${url}${gallery.gallery_of_images[0].url}`
     }
