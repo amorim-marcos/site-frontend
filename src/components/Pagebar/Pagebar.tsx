@@ -26,7 +26,6 @@ export type PagebarProps = {
 }
 export const Pagebar = ({ paths }: PagebarProps) => {
   const { seeOnlyPosts, setSeeOnlyPosts } = useContext(CategoryContext)
-  const router = useRouter()
   const pagebar = useTranslation('pagebar')
   const router = useRouter()
 
