@@ -18,6 +18,7 @@ export interface GalleryProps {
   envs: {
     id: number
     type: string
+    style: number
     name: string
     image_url: string
     bps: string[]
@@ -41,11 +42,18 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const queryAmbients = ctx.query.ambients
   const url = process.env.NEXT_PUBLIC_API_URL
 
-  let ambientTypes: GalleryProps['filtersContext']['ambients'] =
+  let ambientTypes: GalleryProps['filtersContext']['styles'] =
     await strapiClient({
       defaultOnEmpty: true,
       locale: ctx.locale,
       resource: 'ambient-types'
+    })
+
+  let ambientStyles: GalleryProps['filtersContext']['ambients'] =
+    await strapiClient({
+      defaultOnEmpty: true,
+      locale: ctx.locale,
+      resource: 'ambient-styles'
     })
 
   let envs: GalleryProps['envs'] = await strapiClient({
@@ -67,12 +75,20 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   })
 
+  ambientStyles = ambientStyles.map((a: any) => {
+    return {
+      title: a.style,
+      code: String(a.id)
+    }
+  })
+
   envs = envs.map((gallery: any) => {
     return {
       id: gallery.id,
       name: gallery.place,
       bps: gallery.products.map((product: any) => product.name),
       type: gallery.ambient_type.url_code,
+      style: gallery.ambient_styles[0].id,
       url_code: gallery.url_code,
       image_url: `${url}${gallery.gallery_of_images[0].url}`
     }
@@ -103,7 +119,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return {
     props: {
       filtersContext: {
-        styles: styles,
+        styles: ambientStyles,
         ambients: ambientTypes
       },
       envs,
@@ -112,50 +128,3 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   }
 }
-
-const styles = [
-  {
-    title: 'Aconchegante',
-    code: 'Aconchegante'
-  },
-  {
-    title: 'Clássico',
-    code: 'classico'
-  },
-  {
-    title: 'Contemporâneo',
-    code: 'contemporaneo'
-  },
-  {
-    title: 'Escandinavo',
-    code: 'escandinavo'
-  },
-  {
-    title: 'Industrial',
-    code: 'industrial'
-  },
-  {
-    title: 'Lúdico',
-    code: 'lúdico'
-  },
-  {
-    title: 'Moderno',
-    code: 'moderno'
-  },
-  {
-    title: 'Natural',
-    code: 'natural'
-  },
-  {
-    title: 'Sóbrio',
-    code: 'sobrio'
-  },
-  {
-    title: 'Sofisticado',
-    code: 'sofisticado'
-  },
-  {
-    title: 'Urbano',
-    code: 'urbano'
-  }
-]
