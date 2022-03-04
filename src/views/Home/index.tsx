@@ -51,7 +51,7 @@ export default function Home(props: HomeProps) {
   return (
     <Box maxWidth="1920px" marginX="auto" bg="white.100">
       {/* INICIO BANNER CAROUSEL */}
-      {props.highlights && props.highlights.length >= 3 && (
+      {props.highlights && props.highlights.length > 0 && (
         <HomeBanner
           items={props.highlights.map((item) => {
             return {
@@ -65,7 +65,7 @@ export default function Home(props: HomeProps) {
       {/* FIM BANNER CAROUSEL */}
 
       {/* INICIO SECTION CANAL BNK */}
-      {props.latest.length === 3 && (
+      {props.latest.length > 0 && (
         <SectionChannelBNK
           items={props.latest.map((item, i) => {
             return {
