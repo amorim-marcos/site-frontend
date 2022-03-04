@@ -1,4 +1,5 @@
 import { ReactNode, useState } from 'react'
+
 import {
   Box,
   Flex,
@@ -45,6 +46,7 @@ export type Wood = { thickness: string; size: string }
 export type BPCatalogItemProps = {
   texture: {
     img: string
+    icon: string
     name: string
     description: string
   }
@@ -52,15 +54,32 @@ export type BPCatalogItemProps = {
     name: string
     description: string
     about: string
+    urlVideo: string
+    urlEbook: string
     anothers: {
       name: string
       img: string
     }[]
   }
-  mdp: Wood
-  mdf: Wood
-  next: string
-  prev: string
+  uses_and_applications: string
+  in_ambients: {
+    id: number
+    image_url: string
+  }[]
+  available_at: {
+    id: number
+    panel_type: string
+    thickness: string
+    dimensions: string
+  }[]
+  next: {
+    name: string
+    url_code: string
+  }
+  prev: {
+    name: string
+    url_code: string
+  }
 }
 
 export const BPCatalogItem = (props: BPCatalogItemProps) => {
@@ -100,16 +119,20 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
         textureDescription={props.texture.description}
       />
       <Inspire
+        urlVideo={props.pattern.urlVideo}
+        urlEbook={props.pattern.urlEbook}
+        textureIcon={props.texture.icon}
         patternName={props.pattern.name}
         microDescription={props.pattern.description}
         anotherTextures={props.pattern.anothers}
         patternDescription={props.pattern.about}
+        in_ambients={props.in_ambients}
       />
       <TextureProperties
         texture={props.texture.img}
         textureName={props.texture.name}
-        mdp={props.mdp}
-        mdf={props.mdf}
+        uses_and_applications={props.uses_and_applications}
+        available_at={props.available_at}
         handleDownload={onOpen}
       />
 
@@ -181,15 +204,20 @@ const Intro = (props: {
 )
 
 const Inspire = (props: {
+  textureIcon: string
+  urlVideo: string
+  urlEbook: string
   microDescription: string
   anotherTextures: { name: string; img: string }[]
   patternDescription: string
   patternName: string
+  in_ambients: { id: number; image_url: string }[]
 }) => {
   const [curr, setCurr] = useState(0)
+  const router = useRouter()
 
   const switchTo = (act: 'next' | 'prev') => {
-    const count = props.anotherTextures.length
+    const count = props.in_ambients.length
 
     act === 'next'
       ? setCurr(curr < count - 1 ? curr + 1 : curr)
@@ -206,7 +234,7 @@ const Inspire = (props: {
         w="fit-content"
       >
         <Image
-          src="/bps/patterns/azul_vel.jpg"
+          src={props.textureIcon}
           borderRadius="100%"
           boxSize={{ base: '100px', '2xl': '130px' }}
           zIndex={10}
@@ -347,7 +375,7 @@ const Inspire = (props: {
           </Text>
 
           <Image
-            src="/assets/imgs/foto_fabrica.png"
+            src={props.in_ambients[curr].image_url}
             w={{ base: '320px', xs: '100%', sm: '846px' }}
             h={{ base: '321px', sm: '562px' }}
             objectFit={{ base: 'scale-down', xs: 'cover' }}
@@ -406,14 +434,14 @@ const Inspire = (props: {
           >
             <TextureContentButton
               title="Assista ao vídeo"
-              onClick={() => alert('video')}
+              onClick={() => props.urlVideo && router.push(props.urlVideo)}
             >
               <PlayIcon />
             </TextureContentButton>
 
             <TextureContentButton
               title="Confira o ebook"
-              onClick={() => alert('ebook')}
+              onClick={() => props.urlEbook && router.push(props.urlEbook)}
             >
               <ReportsIcon
                 stroke1="#6AA353"
@@ -432,259 +460,250 @@ const Inspire = (props: {
 const TextureProperties = (props: {
   texture: string
   textureName: string
-  mdp: Wood
-  mdf: Wood
+  uses_and_applications: string
+  available_at: {
+    id: number
+    panel_type: string
+    thickness: string
+    dimensions: string
+  }[]
   handleDownload: () => void
-}) => (
-  <Flex
-    align="center"
-    justify="center"
-    gap={{ base: '60px', '2xl': '102px' }}
-    wrap="wrap"
-  >
+}) => {
+  const router = useRouter()
+  return (
     <Flex
-      data-testid="texture-assets"
-      direction="column"
-      gap={{ base: '63px', '2xl': '93px' }}
-      w={{ base: '100%', xl: '50%', '2xl': 'inherit' }}
-      mt={{ '2xl': '54px' }}
-      align={{ base: 'center', '2xl': 'flex-start' }}
-      justify={{ base: 'center', '2xl': 'inherit' }}
+      align="center"
+      justify="center"
+      gap={{ base: '60px', '2xl': '102px' }}
+      wrap="wrap"
     >
       <Flex
-        data-testid="download-pattern"
-        align="center"
-        justify={{ base: 'center', sm: 'flex-start' }}
-        gap="27px"
-        cursor="pointer"
-        wrap={{ base: 'wrap', sm: 'nowrap' }}
-        onClick={props.handleDownload}
+        data-testid="texture-assets"
+        direction="column"
+        gap={{ base: '63px', '2xl': '93px' }}
+        w={{ base: '100%', xl: '50%', '2xl': 'inherit' }}
+        mt={{ '2xl': '54px' }}
+        align={{ base: 'center', '2xl': 'flex-start' }}
+        justify={{ base: 'center', '2xl': 'inherit' }}
       >
-        <Image
-          src={props.texture}
-          w={{ base: '128px', '2xl': '148px' }}
-          h={{ base: '128px', '2xl': '148px' }}
-          border="7px solid"
-          borderRadius="100%"
-          borderColor="gray.150"
-        />
+        <Flex
+          data-testid="download-pattern"
+          align="center"
+          justify={{ base: 'center', sm: 'flex-start' }}
+          gap="27px"
+          cursor="pointer"
+          wrap={{ base: 'wrap', sm: 'nowrap' }}
+          onClick={props.handleDownload}
+        >
+          <Image
+            src={props.texture}
+            w={{ base: '128px', '2xl': '148px' }}
+            h={{ base: '128px', '2xl': '148px' }}
+            border="7px solid"
+            borderRadius="100%"
+            borderColor="gray.150"
+          />
 
-        <Flex direction="column">
-          <Text
-            fontSize={{ base: '20px', '2xl': '23px' }}
-            fontWeight="medium"
-            letterSpacing="-0.45px"
-            color="green.200"
-          >
-            FAÇA O DOWNLOAD
-          </Text>
-          <Text
-            fontSize={{ base: '31px', '2xl': '34px' }}
-            fontWeight="bold"
-            letterSpacing="-0.68px"
-            color="gray.300"
-          >
-            Padrão {props.textureName}
-          </Text>
+          <Flex direction="column">
+            <Text
+              fontSize={{ base: '20px', '2xl': '23px' }}
+              fontWeight="medium"
+              letterSpacing="-0.45px"
+              color="green.200"
+            >
+              FAÇA O DOWNLOAD
+            </Text>
+            <Text
+              fontSize={{ base: '31px', '2xl': '34px' }}
+              fontWeight="bold"
+              letterSpacing="-0.68px"
+              color="gray.300"
+            >
+              Padrão {props.textureName}
+            </Text>
+          </Flex>
+        </Flex>
+
+        <Flex
+          data-testid="pattern-info"
+          direction="column"
+          gap="30px"
+          w={{ base: '100%', '2xl': 'inherit' }}
+          px="20px"
+          align={{ base: 'center', '2xl': 'inherit' }}
+          justify={{ base: 'center', '2xl': 'inherit' }}
+        >
+          <PatternInfo
+            title="CONFIRA"
+            description="Certificado de Qualidade"
+            onClick={() => router.push('/certificacoes')}
+            icon={
+              <CertificationsIcon
+                width={{ base: '31px', sm: '41px', '2xl': '61px' }}
+                height={{ base: '56px', sm: '66px', '2xl': '86px' }}
+              />
+            }
+            graphism={
+              <Image
+                src="/img/grafismo_button_left.svg"
+                filter={'brightness(0.65)'}
+                pos="absolute"
+                left={0}
+                objectFit="cover"
+                h="100%"
+              />
+            }
+          />
+
+          <PatternInfo
+            title="DESCUBRA"
+            description="Onde Comprar"
+            onClick={() => router.push('/onde-comprar')}
+            icon={
+              <EarthIcon
+                width={{ base: '40px', sm: '58px', '2xl': '78px' }}
+                height={{ base: '40px', sm: '58px', '2xl': '78px' }}
+              />
+            }
+            graphism={
+              <Image
+                src="/img/grafismo_button_right.svg"
+                filter={'brightness(0.65)'}
+                pos="absolute"
+                right={0}
+                objectFit="cover"
+                h="100%"
+              />
+            }
+          />
         </Flex>
       </Flex>
 
-      <Flex
-        data-testid="pattern-info"
-        direction="column"
-        gap="30px"
-        w={{ base: '100%', '2xl': 'inherit' }}
-        px="20px"
-        align={{ base: 'center', '2xl': 'inherit' }}
-        justify={{ base: 'center', '2xl': 'inherit' }}
+      <Accordion
+        id="texture-props"
+        w={{ base: '90%', xl: '580px', '2xl': '845px' }}
+        defaultIndex={0}
       >
-        <PatternInfo
-          title="CONFIRA"
-          description="Certificado de Qualidade"
-          onClick={() => alert('certificado')}
-          icon={
-            <CertificationsIcon
-              width={{ base: '31px', sm: '41px', '2xl': '61px' }}
-              height={{ base: '56px', sm: '66px', '2xl': '86px' }}
-            />
-          }
-          graphism={
-            <Image
-              src="/img/grafismo_button_left.svg"
-              filter={'brightness(0.65)'}
-              pos="absolute"
-              left={0}
-              objectFit="cover"
-              h="100%"
-            />
-          }
-        />
+        <AccordionItem>
+          <AccordionButtonBp title="DISPONÍVEL EM" />
+          <AccordionPanelBp>
+            <Flex direction="column">
+              {props.available_at.map((item) => (
+                <Box pb="40px" key={item.id}>
+                  <Text
+                    fontSize={{ base: '16px', '2xl': '19px' }}
+                    fontWeight="bold"
+                    letterSpacing="-0.37px"
+                    color="gray.300"
+                  >
+                    {item.panel_type}
+                  </Text>
+                  <Table variant="simple">
+                    <Tbody>
+                      <Tr>
+                        <TdGreen>Espessuras (mm)</TdGreen>
+                        <TdGreen>{item.thickness}</TdGreen>
+                      </Tr>
+                      <Tr>
+                        <TdGreen>Dimensão (m)</TdGreen>
+                        <TdGreen>{item.dimensions}</TdGreen>
+                      </Tr>
+                    </Tbody>
+                  </Table>
+                </Box>
+              ))}
 
-        <PatternInfo
-          title="DESCUBRA"
-          description="Onde Comprar"
-          onClick={() => alert('Local')}
-          icon={
-            <EarthIcon
-              width={{ base: '40px', sm: '58px', '2xl': '78px' }}
-              height={{ base: '40px', sm: '58px', '2xl': '78px' }}
-            />
-          }
-          graphism={
-            <Image
-              src="/img/grafismo_button_right.svg"
-              filter={'brightness(0.65)'}
-              pos="absolute"
-              right={0}
-              objectFit="cover"
-              h="100%"
-            />
-          }
-        />
-      </Flex>
-    </Flex>
-
-    <Accordion
-      id="texture-props"
-      w={{ base: '90%', xl: '580px', '2xl': '845px' }}
-      defaultIndex={0}
-    >
-      <AccordionItem>
-        <AccordionButtonBp title="DISPONÍVEL EM" />
-        <AccordionPanelBp>
-          <Flex direction="column">
-            <Box pb="40px">
               <Text
-                fontSize={{ base: '16px', '2xl': '19px' }}
-                fontWeight="bold"
-                letterSpacing="-0.37px"
-                color="gray.300"
+                fontSize="16px"
+                fontWeight="medium"
+                letterSpacing="-0.32px"
+                color="green.200"
               >
-                MDP BERNECK®
+                *Outras dimensões sob consulta
               </Text>
-              <Table variant="simple">
-                <Tbody>
-                  <Tr>
-                    <TdGreen>Espessuras (mm)</TdGreen>
-                    <TdGreen>{props.mdp.thickness}</TdGreen>
-                  </Tr>
-                  <Tr>
-                    <TdGreen>Dimensão (m)</TdGreen>
-                    <TdGreen>{props.mdp.size}</TdGreen>
-                  </Tr>
-                </Tbody>
-              </Table>
-            </Box>
+            </Flex>
+          </AccordionPanelBp>
+        </AccordionItem>
 
-            <Box pb="13px">
-              <Text
-                fontSize={{ base: '16px', '2xl': '19px' }}
-                fontWeight="bold"
-                letterSpacing="-0.37px"
-                color="gray.300"
-              >
-                MDF BERNECK®
-              </Text>
-              <Table variant="simple">
-                <Tbody>
-                  <Tr>
-                    <TdGreen>Espessuras (mm)</TdGreen>
-                    <TdGreen>{props.mdf.thickness}</TdGreen>
-                  </Tr>
-                  <Tr>
-                    <TdGreen>Dimensão (m)</TdGreen>
-                    <TdGreen>{props.mdf.size}</TdGreen>
-                  </Tr>
-                </Tbody>
-              </Table>
-            </Box>
-
-            <Text
-              fontSize="16px"
-              fontWeight="medium"
-              letterSpacing="-0.32px"
-              color="green.200"
-            >
-              *Outras dimensões sob consulta
-            </Text>
-          </Flex>
-        </AccordionPanelBp>
-      </AccordionItem>
-
-      <AccordionItem>
-        <AccordionButtonBp title="SOBRE O BP BERNECK®" />
-        <AccordionPanelBp>
-          <Text
-            fontSize={{ base: '17px', '2xl': '20px' }}
-            letterSpacing="-0.4px"
-            color="gray.300"
-            pb="14px"
-          >
-            Nossos <b>painéis BP BERNECK®</b> são revestidos com laminado
-            melamínico decorativo – em uma ou duas faces – com ótimo efeito
-            decorativo e excelente resistência superficial, a risco e abrasão.
-            As cores e texturas foram desenvolvidas em sintonia com as
-            tendências do design mundial, que proporcionam infinitas
-            possibilidades de combinação.
-          </Text>
-
-          <Text
-            fontSize={{ base: '17px', '2xl': '20px' }}
-            letterSpacing="-0.4px"
-            color="gray.300"
-          >
-            Os painéis possuem superfície fechada reduzindo a proliferação de
-            micro organismos, ideal para ambientes que requeiram fácil
-            higienização. As dimensões padronizadas, aliadas a praticidade de um
-            painel acabado, permitem a simplificação do processo de produção de
-            móveis.
-          </Text>
-
-          <Flex align="center" padding="20px 0 10px" gap="12px">
-            <TapIcon />
+        <AccordionItem>
+          <AccordionButtonBp title="SOBRE O BP BERNECK®" />
+          <AccordionPanelBp>
             <Text
               fontSize={{ base: '17px', '2xl': '20px' }}
               letterSpacing="-0.4px"
-              fontWeight="600"
-              color="#8a8a8a"
+              color="gray.300"
+              pb="14px"
             >
-              Fitas de borda
+              Nossos <b>painéis BP BERNECK®</b> são revestidos com laminado
+              melamínico decorativo – em uma ou duas faces – com ótimo efeito
+              decorativo e excelente resistência superficial, a risco e abrasão.
+              As cores e texturas foram desenvolvidas em sintonia com as
+              tendências do design mundial, que proporcionam infinitas
+              possibilidades de combinação.
             </Text>
-          </Flex>
 
-          <Text
+            <Text
+              fontSize={{ base: '17px', '2xl': '20px' }}
+              letterSpacing="-0.4px"
+              color="gray.300"
+            >
+              Os painéis possuem superfície fechada reduzindo a proliferação de
+              micro organismos, ideal para ambientes que requeiram fácil
+              higienização. As dimensões padronizadas, aliadas a praticidade de
+              um painel acabado, permitem a simplificação do processo de
+              produção de móveis.
+            </Text>
+
+            <Flex align="center" padding="20px 0 10px" gap="12px">
+              <TapIcon />
+              <Text
+                fontSize={{ base: '17px', '2xl': '20px' }}
+                letterSpacing="-0.4px"
+                fontWeight="600"
+                color="#8a8a8a"
+              >
+                Fitas de borda
+              </Text>
+            </Flex>
+
+            <Text
+              fontSize={{ base: '17px', '2xl': '20px' }}
+              letterSpacing="-0.4px"
+              color="gray.250"
+            >
+              Todos os padrões possuem fitas de borda desenvolvidas em parceria
+              com os melhores fornecedores do mercado. É importante que todas as
+              bordas do painel estejam seladas, para garantir qualidade superior
+              e durabilidade.
+            </Text>
+          </AccordionPanelBp>
+        </AccordionItem>
+
+        <AccordionItem>
+          <AccordionButtonBp title="USOS E APLICAÇÕES" />
+          <AccordionPanelBp
             fontSize={{ base: '17px', '2xl': '20px' }}
             letterSpacing="-0.4px"
-            color="gray.250"
+            color="gray.300"
           >
-            Todos os padrões possuem fitas de borda desenvolvidas em parceria
-            com os melhores fornecedores do mercado. É importante que todas as
-            bordas do painel estejam seladas, para garantir qualidade superior e
-            durabilidade.
-          </Text>
-        </AccordionPanelBp>
-      </AccordionItem>
+            {props.uses_and_applications}
+          </AccordionPanelBp>
+        </AccordionItem>
+      </Accordion>
+    </Flex>
+  )
+}
 
-      <AccordionItem>
-        <AccordionButtonBp title="USOS E APLICAÇÕES" />
-        <AccordionPanelBp
-          fontSize={{ base: '17px', '2xl': '20px' }}
-          letterSpacing="-0.4px"
-          color="gray.300"
-        >
-          Para uso exclusivo interno, proporciona excelente resultado em móveis
-          para cozinha, escritório, quarto, banheiro, estar, personalização de
-          lojas, painéis para decoração em geral, além de divisórias, lambris,
-          forros, gabinetes industriais, entre outros. Seu uso pode ser tanto
-          residencial, quanto comercial e não requer trabalho adicional de
-          acabamento.
-        </AccordionPanelBp>
-      </AccordionItem>
-    </Accordion>
-  </Flex>
-)
-
-const PageNavegation = (props: { next: string; prev: string }) => {
+const PageNavegation = (props: {
+  next: {
+    name: string
+    url_code: string
+  }
+  prev: {
+    name: string
+    url_code: string
+  }
+}) => {
   const router = useRouter()
 
   return (
@@ -704,7 +723,7 @@ const PageNavegation = (props: { next: string; prev: string }) => {
         borderTopRightRadius={{ base: '0', sm: '26px' }}
         cursor="pointer"
         onClick={() =>
-          router.push(`/products/bp-berneck/catalog/${props.prev}`)
+          router.push(`/products/bp-berneck/catalog/${props.prev.url_code}`)
         }
         transition="all 0.2s ease-in-out"
         _hover={{ filter: 'brightness(0.8)' }}
@@ -731,7 +750,7 @@ const PageNavegation = (props: { next: string; prev: string }) => {
             letterSpacing="-0.36px"
             color="gray.300"
           >
-            {props.prev}
+            {props.prev.name}
           </Text>
         </Box>
       </Flex>
@@ -747,7 +766,7 @@ const PageNavegation = (props: { next: string; prev: string }) => {
         borderTopLeftRadius={{ base: '0', sm: '26px' }}
         cursor="pointer"
         onClick={() =>
-          router.push(`/products/bp-berneck/catalog/${props.next}`)
+          router.push(`/products/bp-berneck/catalog/${props.next.url_code}`)
         }
         transition="all 0.2s ease-in-out"
         _hover={{ filter: 'brightness(0.8)' }}
@@ -768,7 +787,7 @@ const PageNavegation = (props: { next: string; prev: string }) => {
             letterSpacing="-0.36px"
             color="gray.300"
           >
-            {props.next}
+            {props.next.name}
           </Text>
         </Flex>
 
