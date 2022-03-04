@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-types */
 import React from 'react'
+
 import {
   Container,
   Box,
@@ -16,24 +19,28 @@ import {
   BoxProps,
   LinkProps
 } from '@chakra-ui/react'
-import Arrow from '@components/Arrow'
-import FiltersIcon from '@components/Icons/FiltersIcon'
-import BigGridIcon from '@components/Icons/BigGridIcon'
-import MidGridIcon from '@components/Icons/MidGridIcon'
-import SmallGridIcon from '@components/Icons/SmallGridIcon'
-import SearchIcon from '@components/Icons/SearchIcon'
-import SunIcon from '@components/Icons/SunIcon'
-import MoonIcon from '@components/Icons/MoonIcon'
-import FiltersDarkModeIcon from '@components/Icons/FiltersDarkModeIcon'
-import Pagebar from '@components/Pagebar'
-import { colors } from 'theme/colors'
-import BpPatternImage from '@components/BpPatternImage'
-import useMobile from 'hooks/useMobile'
-import CloseIcon from '@components/Icons/CloseIcon'
-import { useRouter } from 'next/router'
 
-export type BP = {
-  id: number
+import {
+  Arrow,
+  FiltersIcon,
+  BigGridIcon,
+  MidGridIcon,
+  SmallGridIcon,
+  SearchIcon,
+  SunIcon,
+  MoonIcon,
+  FiltersDarkModeIcon,
+  CloseIcon
+} from '@components/Icons'
+
+import Pagebar from '@components/Pagebar'
+import BpPatternImage from '@components/BpPatternImage'
+
+import { colors } from 'theme/colors'
+import useMobile from 'hooks/useMobile'
+
+export interface BP {
+  id: any
   name: string
   url_code: string
   product_texture: string
@@ -99,18 +106,19 @@ const FilterCheckbox = ({
   ...props
 }: FilterCheckBoxProps) => {
   const [checked, setChecked] = React.useState(false)
-  const [value, setValue] = React.useState(code)
+  const [value] = React.useState(code)
 
   React.useEffect(() => {
     setChecked(isChecked)
   }, [isChecked])
 
   return (
-    // @ts-ignore
     <Button
       background="transparent"
       zIndex="3"
-      onClick={(e) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      onClick={() => {
         if (onCheck) onCheck(checked, value)
       }}
       position="relative"
@@ -209,8 +217,7 @@ const FiltersAccordion = ({
   setFilteredBps,
   applyFilters,
   filters,
-  filtersEmpty,
-  filteredBpsLength
+  filtersEmpty
 }: FiltersSelectProps) => {
   const [openSearchBar, setOpenSearchBar] = React.useState(false)
 
@@ -382,6 +389,7 @@ const FiltersAccordion = ({
                 >
                   {collections.map((filter) => (
                     <FilterCheckbox
+                      key={filter.code}
                       minW={{ base: '100%', sm: '48%' }}
                       mr={{ base: 0, sm: '2%' }}
                       mb="10px"
@@ -446,6 +454,7 @@ const FiltersAccordion = ({
                 >
                   {colorations.map((filter) => (
                     <FilterCheckbox
+                      key={filter.code}
                       minW={{ base: '100%', sm: '48%' }}
                       mr={{ base: 0, sm: '2%' }}
                       mb="10px"
@@ -834,6 +843,7 @@ const FiltersTabs = ({
                   <Flex justifyContent="center" wrap="wrap">
                     {collections.map((filter) => (
                       <FilterCheckbox
+                        key={filter.code}
                         isChecked={filters['collections'].includes(filter.code)}
                         onCheck={(isChecked: boolean, value: any) => {
                           !isChecked
@@ -861,6 +871,7 @@ const FiltersTabs = ({
                   <Flex justifyContent="center" wrap="wrap">
                     {colorations.map((filter) => (
                       <FilterCheckbox
+                        key={filter.code}
                         isChecked={filters['colorations'].includes(filter.code)}
                         onCheck={(isChecked: boolean, value: any) => {
                           !isChecked
@@ -1106,7 +1117,6 @@ export const BPCatalog = ({ bps }: BPCatalogProps) => {
   const [filtersEmpty, setFiltersEmpty] = React.useState(true)
 
   const { isMobile } = useMobile(1024)
-  const router = useRouter()
 
   function changeGridSize(newGridSize: GridSize) {
     setGridSize(newGridSize)
@@ -1121,11 +1131,11 @@ export const BPCatalog = ({ bps }: BPCatalogProps) => {
   }
 
   function appendFilter(type: ValidFilterNames, value: string) {
-    let filtersArray = filters[type]
+    const filtersArray = filters[type]
 
     filtersArray.push(value)
 
-    let newFilters: Filters = { ...filters }
+    const newFilters: Filters = { ...filters }
 
     newFilters[type] = filtersArray
 
@@ -1133,15 +1143,15 @@ export const BPCatalog = ({ bps }: BPCatalogProps) => {
   }
 
   function removeFilter(type: ValidFilterNames, value: string) {
-    let filtersArray = filters[type]
+    const filtersArray = filters[type]
 
-    let index = filtersArray.indexOf(value)
+    const index = filtersArray.indexOf(value)
 
     if (index > -1) {
       filtersArray.splice(index, 1)
     }
 
-    let newFilters = { ...filters }
+    const newFilters = { ...filters }
 
     newFilters[type] = filtersArray
 
@@ -1164,7 +1174,7 @@ export const BPCatalog = ({ bps }: BPCatalogProps) => {
     if (filters['panels'].length > 0) {
       filteredBps = filteredBps.filter((bp: any) => {
         if (bp.panels && bp.panels.length > 0) {
-          for (let panel of bp.panels) {
+          for (const panel of bp.panels) {
             if (filters['panels'].includes(panel)) {
               return true
             }
@@ -1179,7 +1189,7 @@ export const BPCatalog = ({ bps }: BPCatalogProps) => {
     if (filters['collections'].length > 0) {
       filteredBps = filteredBps.filter((bp: any) => {
         if (bp.collections && bp.collections.length > 0) {
-          for (let collection of bp.collections) {
+          for (const collection of bp.collections) {
             if (filters['collections'].includes(collection)) {
               return true
             }
@@ -1201,8 +1211,8 @@ export const BPCatalog = ({ bps }: BPCatalogProps) => {
     switch (filters['orderBy']) {
       case 'launch':
         filteredBps.sort((a, b) => {
-          let dateA = new Date(a['launch'])
-          let dateB = new Date(b['launch'])
+          const dateA = new Date(a['launch'])
+          const dateB = new Date(b['launch'])
           if (dateA > dateB) {
             return 1
           } else if (dateA < dateB) {
@@ -1379,6 +1389,8 @@ export const BPCatalog = ({ bps }: BPCatalogProps) => {
               filteredBps.map((bp) => (
                 <GridItem key={bp.id}>
                   <BP
+                    id={String(bp.id)}
+                    url_code={bp.url_code}
                     href={`/products/bp-berneck/catalog/${bp.url_code}`}
                     color={darkMode ? 'white.100' : 'gray.400'}
                     name={bp.name}
