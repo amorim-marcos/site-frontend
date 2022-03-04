@@ -1,3 +1,6 @@
+import { useContext } from 'react'
+import { useRouter } from 'next/router'
+
 import {
   Flex,
   Text,
@@ -6,13 +9,11 @@ import {
   BreadcrumbItem,
   BreadcrumbLink
 } from '@chakra-ui/react'
-import HouseIcon from '@components/Icons/HouseIcon'
-import Link from 'next/link'
+
+import { HouseIcon, Arrow } from '@components/Icons'
 import { PagebarGrafism } from './PagebarGrafism/PagebarGrafism'
 import { useTranslation } from 'react-i18next'
-import ArrowIcon from '@components/Icons/ArrowIcon'
-import { useRouter } from 'next/router'
-import { useContext } from 'react'
+
 import { CategoryContext } from 'views/Canal-BNK/index'
 
 export type Path = {
@@ -25,8 +26,9 @@ export type PagebarProps = {
 }
 export const Pagebar = ({ paths }: PagebarProps) => {
   const { seeOnlyPosts, setSeeOnlyPosts } = useContext(CategoryContext)
-  const router = useRouter()
   const pagebar = useTranslation('pagebar')
+  const router = useRouter()
+
   return (
     <Flex
       display={{ base: 'none', sm: 'flex' }}
@@ -63,20 +65,19 @@ export const Pagebar = ({ paths }: PagebarProps) => {
           '2xl': '120px'
         }}
       >
-        <Link passHref href="/">
-          <HouseIcon
-            data-testid="house-icon"
-            width={{
-              base: '26px',
-              sm: '13px',
-              md: '16px',
-              lg: '19px',
-              xl: '22px',
-              '2xl': '26px'
-            }}
-            color="white.100"
-          />
-        </Link>
+        <HouseIcon
+          onClick={() => router.push('/')}
+          data-testid="house-icon"
+          width={{
+            base: '26px',
+            sm: '13px',
+            md: '16px',
+            lg: '19px',
+            xl: '22px',
+            '2xl': '26px'
+          }}
+          color="white.100"
+        />
       </Box>
       <Box position="absolute" left="0" zIndex="base">
         <PagebarGrafism
@@ -104,7 +105,7 @@ export const Pagebar = ({ paths }: PagebarProps) => {
                 '2xl': '10px'
               }}
             >
-              <ArrowIcon
+              <Arrow
                 width={{
                   base: '14px',
                   sm: '6px',
@@ -113,7 +114,7 @@ export const Pagebar = ({ paths }: PagebarProps) => {
                   xl: '12px',
                   '2xl': '14px'
                 }}
-                stroke="white.100"
+                color="white.100"
               />
             </Box>
           }
@@ -170,7 +171,7 @@ export const Pagebar = ({ paths }: PagebarProps) => {
               '2xl': '10px'
             }}
           >
-            <ArrowIcon
+            <Arrow
               width={{
                 base: '14px',
                 sm: '6px',
@@ -179,7 +180,7 @@ export const Pagebar = ({ paths }: PagebarProps) => {
                 xl: '12px',
                 '2xl': '15px'
               }}
-              stroke="green.800"
+              color="green.800"
             />
           </Box>
           <Text

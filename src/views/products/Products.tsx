@@ -1,18 +1,12 @@
-import {
-  Box,
-  GridItem,
-  Grid,
-  Flex,
-  Container,
-  Wrap,
-  Heading,
-  Spacer
-} from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+
+import { Box, GridItem, Grid, Flex } from '@chakra-ui/react'
+
+import useMobile from 'hooks/useMobile'
+
 import Pagebar from '@components/Pagebar'
 import CompletedTitle from '@components/CompletedTitle'
 import BannerProducts from '@components/BannerProducts'
-import useMobile from 'hooks/useMobile'
-import { useRouter } from 'next/router'
 
 export const Products = () => {
   const { isMobile, width } = useMobile(1024)

@@ -1,64 +1,24 @@
-import { Flex, Text, Box, Image, Grid, GridItem } from '@chakra-ui/react'
-import Pagebar from '@components/Pagebar'
-import Carousel from '@components/Carousel'
-import BannerProducts from '@components/BannerProducts'
-import CompletedTitle from '@components/CompletedTitle'
-import ArrowIcon from '@components/Icons/ArrowIcon'
-import BannerGallery from '@components/BannerGallery'
-import PatternInfoPhoto from '@components/PatternInfoPhoto'
-import BannerCollections from '@components/BannerCollections'
-import { useState } from 'react'
-import CarouselMultiElements from '@components/CarouselMultiElements'
-import useMobile from 'hooks/useMobile'
 import { useRouter } from 'next/router'
 
+import { Flex, Text, Box, Image, Grid, GridItem } from '@chakra-ui/react'
+
+import useMobile from 'hooks/useMobile'
+
+import { Arrow } from '@components/Icons'
+import Pagebar from '@components/Pagebar'
+import Carousel from '@components/Carousel'
+import CarouselMultiElements from '@components/CarouselMultiElements'
+
+import BannerGallery from '@components/BannerGallery'
+import CompletedTitle from '@components/CompletedTitle'
+import BannerProducts from '@components/BannerProducts'
+import BannerCollections from '@components/BannerCollections'
+
+import type { Gallery } from 'types/data'
+
 export type BpBerneckViewProps = {
-  name: string
-  imageSrc: string
+  galleries?: Gallery[]
 }
-
-const items = [
-  {
-    title: 'Cozinhas',
-    bgColor: 'green.250',
-    backgroundImage: '../img/Imagem70.png',
-    id: 0
-  },
-  {
-    title: 'Quartos',
-    bgColor: 'brown.200',
-    backgroundImage: '../img/Imagem70.png',
-    id: 1
-  },
-
-  {
-    title: 'Quartos2',
-    bgColor: 'brown.200',
-    backgroundImage: '../img/Imagem70.png',
-    id: 2
-  },
-
-  {
-    title: 'Quartos3',
-    bgColor: 'brown.200',
-    backgroundImage: '../img/Imagem70.png',
-    id: 3
-  },
-
-  {
-    title: 'Quartos4',
-    bgColor: 'brown.200',
-    backgroundImage: '../img/Imagem70.png',
-    id: 4
-  },
-
-  {
-    title: 'Quartos5',
-    bgColor: 'brown.200',
-    backgroundImage: '../img/Imagem70.png',
-    id: 5
-  }
-]
 
 export default function BpBerneckView(props: BpBerneckViewProps) {
   const { isMobile } = useMobile(768)
@@ -79,8 +39,6 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
       <Flex
         maxWidth="1920px"
         marginX="auto"
-        // alignItems="center"
-        // justifyContent="center"
         position="relative"
         zIndex="base"
         overflowY="hidden"
@@ -212,38 +170,45 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               alignItems={'flex-end'}
               direction={'column'}
             >
-              <ArrowIcon
+              <Arrow
                 width={{ base: '30px', md: '40px', lg: '32px' }}
                 stroke="green.700"
               />
             </Flex>
           </Flex>
         </Flex>
-        <CarouselMultiElements numberOfEvidenceElements={isMobile ? 1 : 4}>
-          {items.map((i) => {
-            return (
-              <Box
-                key={i.id}
-                onClick={() => router.push('/products/bp-berneck/gallery/item')}
-                w="100%"
-                h={{
-                  base: '100vw',
 
-                  md: '325px',
-                  lg: '406px',
-                  xl: '488px',
-                  '2xl': '610px'
-                }}
-              >
-                <BannerGallery
-                  title={i.title}
-                  bgColor={i.bgColor}
-                  backgroundImage={i.backgroundImage}
-                />
-              </Box>
-            )
-          })}
-        </CarouselMultiElements>
+        {props.galleries && props.galleries.length > 0 && (
+          <CarouselMultiElements numberOfEvidenceElements={isMobile ? 1 : 4}>
+            {props.galleries?.map((i) => {
+              return (
+                <Box
+                  key={i.id}
+                  w="100%"
+                  h={{
+                    base: '100vw',
+
+                    md: '325px',
+                    lg: '406px',
+                    xl: '488px',
+                    '2xl': '610px'
+                  }}
+                  onClick={() =>
+                    router.push(
+                      `/products/bp-berneck/gallery?ambients=${i.ambientType.code}`
+                    )
+                  }
+                >
+                  <BannerGallery
+                    title={i.title}
+                    bgColor={i.bgColor}
+                    backgroundImage={i.backgroundImage}
+                  />
+                </Box>
+              )
+            })}
+          </CarouselMultiElements>
+        )}
       </Flex>
 
       {/* FIM Galeria de Ambientes */}
