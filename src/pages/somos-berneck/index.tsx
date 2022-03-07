@@ -88,6 +88,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
       state: string
       country: string
       inauguration_soon: string
+      image: {
+        url: string
+      }
     }) => {
       return {
         name: item.name,
@@ -103,7 +106,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         state: item.state,
         country: item.country,
         inaugurationSoon: item.inauguration_soon,
-        image: 'img/foto_matriz.png'
+        image: process.env.NEXT_PUBLIC_API_URL + item.image.url
       }
     }
   )
