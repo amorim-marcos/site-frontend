@@ -37,6 +37,14 @@ export type CertificationViewProps = {
       }
     }[]
   }[]
+  page_content: {
+    page_title: string
+    header_text: string
+    quality_norm_text: string
+    quality_norms: {
+      norm: string
+    }[]
+  }
 }
 
 export const Certification = (props: CertificationViewProps) => (
@@ -53,9 +61,9 @@ export const Certification = (props: CertificationViewProps) => (
     <PageSession
       data={{
         imageUrl: 'url(/assets/imgs/escurecida.png)',
-        title: 'Certificações',
+        title: props.page_content.page_title,
         subtitle: '',
-        text: 'Manejo florestal, qualidade produtiva, controle de fabricação. Para nós, qualidade e desenvolvimento responsável são mais do que objetivos a serem alcançados, são práticas incorporadas em nosso dia a dia.'
+        text: props.page_content.header_text
       }}
       titleColor="green.900"
       subTitleColor="brown.350"
@@ -359,11 +367,7 @@ export const Certification = (props: CertificationViewProps) => (
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
               marginTop={{ base: '8px', sm: '8px', lg: '10px', xl: '20px' }}
             >
-              As certificações CARB2 (California Air Resources Board) e EPA
-              (Environmental Protection Agency) fazem parte de um processo
-              voluntário de certificação de produtos para o mercado norte
-              americano. A BERNECK é certificada pela empresa Benchmark para os
-              produtos MDP (PB), MDF e HDF (T-MDF).
+              {props.page_content.quality_norm_text}
             </Text>
           </Flex>
           <Flex
@@ -396,96 +400,34 @@ export const Certification = (props: CertificationViewProps) => (
               flex="1"
             >
               <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5' }}>
-                {/* {dataValores.list.map((item) => ( */}
-                <ListItem>
-                  <ListIcon as={CheckIcon} color="green.500" />
-                  <Text
-                    as={'h5'}
-                    variant={'h5' as any}
-                    fontWeight={'bold'}
-                    marginTop={{
-                      base: '-20px',
-                      sm: '-20px',
-                      lg: '-22px',
-                      xl: '-25px'
-                    }}
-                    marginLeft={{
-                      base: '25px',
-                      sm: '25px',
-                      lg: '25px',
-                      xl: '25px'
-                    }}
-                  >
-                    ABNT NBR 15.316
-                  </Text>
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} color="green.500" />
-                  <Text
-                    as={'h5'}
-                    variant={'h5' as any}
-                    fontWeight={'bold'}
-                    marginTop={{
-                      base: '-20px',
-                      sm: '-20px',
-                      lg: '-22px',
-                      xl: '-25px'
-                    }}
-                    marginLeft={{
-                      base: '25px',
-                      sm: '25px',
-                      lg: '25px',
-                      xl: '25px'
-                    }}
-                  >
-                    ABNT NBR 14.810
-                  </Text>
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} color="green.500" />
-                  <Text
-                    as={'h5'}
-                    variant={'h5' as any}
-                    fontWeight={'bold'}
-                    marginTop={{
-                      base: '-20px',
-                      sm: '-20px',
-                      lg: '-22px',
-                      xl: '-25px'
-                    }}
-                    marginLeft={{
-                      base: '25px',
-                      sm: '25px',
-                      lg: '25px',
-                      xl: '25px'
-                    }}
-                  >
-                    AS/NZD 1859.1
-                  </Text>
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} color="green.500" />
-                  <Text
-                    as={'h5'}
-                    variant={'h5' as any}
-                    fontWeight={'bold'}
-                    marginTop={{
-                      base: '-20px',
-                      sm: '-20px',
-                      lg: '-22px',
-                      xl: '-25px'
-                    }}
-                    marginLeft={{
-                      base: '25px',
-                      sm: '25px',
-                      lg: '25px',
-                      xl: '25px'
-                    }}
-                  >
-                    EN 13.986
-                  </Text>
-                </ListItem>
-                {/* ))} */}
+                {props.page_content.quality_norms.map((item, i) => {
+                  return (
+                    i <= props.page_content.quality_norms.length / 2 && (
+                      <ListItem key={i}>
+                        <ListIcon as={CheckIcon} color="green.500" />
+                        <Text
+                          as={'h5'}
+                          variant={'h5' as any}
+                          fontWeight={'bold'}
+                          marginTop={{
+                            base: '-20px',
+                            sm: '-20px',
+                            lg: '-22px',
+                            xl: '-25px'
+                          }}
+                          marginLeft={{
+                            base: '25px',
+                            sm: '25px',
+                            lg: '25px',
+                            xl: '25px'
+                          }}
+                        >
+                          {item.norm}
+                        </Text>
+                      </ListItem>
+                    )
+                  )
+                })}
               </List>
             </Flex>
             <Flex
@@ -495,96 +437,34 @@ export const Certification = (props: CertificationViewProps) => (
               // ml={{ base: '0%', sm: '5%'}}
             >
               <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5' }}>
-                {/* {dataValores.list.map((item) => ( */}
-                <ListItem>
-                  <ListIcon as={CheckIcon} color="green.500" />
-                  <Text
-                    as={'h5'}
-                    variant={'h5' as any}
-                    fontWeight={'bold'}
-                    marginTop={{
-                      base: '-20px',
-                      sm: '-20px',
-                      lg: '-22px',
-                      xl: '-25px'
-                    }}
-                    marginLeft={{
-                      base: '25px',
-                      sm: '25px',
-                      lg: '25px',
-                      xl: '25px'
-                    }}
-                  >
-                    ABNT NBR 15.316
-                  </Text>
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} color="green.500" />
-                  <Text
-                    as={'h5'}
-                    variant={'h5' as any}
-                    fontWeight={'bold'}
-                    marginTop={{
-                      base: '-20px',
-                      sm: '-20px',
-                      lg: '-22px',
-                      xl: '-25px'
-                    }}
-                    marginLeft={{
-                      base: '25px',
-                      sm: '25px',
-                      lg: '25px',
-                      xl: '25px'
-                    }}
-                  >
-                    ABNT NBR 14.810
-                  </Text>
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} color="green.500" />
-                  <Text
-                    as={'h5'}
-                    variant={'h5' as any}
-                    fontWeight={'bold'}
-                    marginTop={{
-                      base: '-20px',
-                      sm: '-20px',
-                      lg: '-22px',
-                      xl: '-25px'
-                    }}
-                    marginLeft={{
-                      base: '25px',
-                      sm: '25px',
-                      lg: '25px',
-                      xl: '25px'
-                    }}
-                  >
-                    AS/NZD 1859.1
-                  </Text>
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={CheckIcon} color="green.500" />
-                  <Text
-                    as={'h5'}
-                    variant={'h5' as any}
-                    fontWeight={'bold'}
-                    marginTop={{
-                      base: '-20px',
-                      sm: '-20px',
-                      lg: '-22px',
-                      xl: '-25px'
-                    }}
-                    marginLeft={{
-                      base: '25px',
-                      sm: '25px',
-                      lg: '25px',
-                      xl: '25px'
-                    }}
-                  >
-                    EN 13.986
-                  </Text>
-                </ListItem>
-                {/* ))} */}
+                {props.page_content.quality_norms.map((item, i) => {
+                  return (
+                    i > props.page_content.quality_norms.length / 2 && (
+                      <ListItem key={i}>
+                        <ListIcon as={CheckIcon} color="green.500" />
+                        <Text
+                          as={'h5'}
+                          variant={'h5' as any}
+                          fontWeight={'bold'}
+                          marginTop={{
+                            base: '-20px',
+                            sm: '-20px',
+                            lg: '-22px',
+                            xl: '-25px'
+                          }}
+                          marginLeft={{
+                            base: '25px',
+                            sm: '25px',
+                            lg: '25px',
+                            xl: '25px'
+                          }}
+                        >
+                          {item.norm}
+                        </Text>
+                      </ListItem>
+                    )
+                  )
+                })}
               </List>
             </Flex>
           </Flex>

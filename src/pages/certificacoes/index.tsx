@@ -8,7 +8,6 @@ import DOMPurify from 'isomorphic-dompurify'
 export type CertificatePageProps = CertificationViewProps
 
 export default function CertificatesPage(props: CertificatePageProps) {
-  console.log(props)
   return <Certification {...props} />
 }
 
@@ -16,6 +15,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale
   let productsCertificates
   let forestCertificate
+  let page_content
   let res
 
   try {
@@ -30,6 +30,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
         `/forest-certification?_locale=${locale}`
     )
     forestCertificate = await res.json()
+
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/certifications?_locale=${locale}`
+    )
+    page_content = await res.json()
   } catch (e) {
     // if locale not working, get default
     res = await fetch(
@@ -39,6 +44,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/forest-certification`)
     forestCertificate = await res.json()
+
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/certifications`)
+    page_content = await res.json()
   }
 
   forestCertificate.description = DOMPurify.sanitize(
@@ -77,7 +85,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       productsCertificates,
-      forestCertificate
+      forestCertificate,
+      page_content
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'
