@@ -1,7 +1,10 @@
+import { useRouter } from 'next/router'
+
 import { Flex, Box, Text, Image } from '@chakra-ui/react'
+
 import CarouselMultiElements from '@components/CarouselMultiElements'
 import CompletedTitle from '@components/CompletedTitle'
-import ArrowIcon from '@components/Icons/ArrowIcon'
+import { Arrow } from '@components/Icons'
 import Pagebar from '@components/Pagebar'
 
 export type EnvViewProps = {
@@ -18,6 +21,7 @@ export type EnvViewProps = {
   }
   otherEnvs: {
     id: number
+    url_code: string
     imgSrc: string
     title: string
     subTitle: string
@@ -38,6 +42,8 @@ export const EnvView = ({
   imgs,
   tableContent
 }: EnvViewProps) => {
+  const router = useRouter()
+
   return (
     <Box maxWidth={'1920px'} marginX="auto">
       <Pagebar
@@ -220,8 +226,8 @@ export const EnvView = ({
             >
               Veja mais ambientes
             </Text>
-            <ArrowIcon
-              stroke={'green.500'}
+            <Arrow
+              color={'green.500'}
               width={{
                 base: '18px',
                 sm: '13px',
@@ -246,6 +252,9 @@ export const EnvView = ({
                 flexDirection={'column'}
                 _hover={{ opacity: '0.9' }}
                 cursor={'pointer'}
+                onClick={() =>
+                  router.push(`/products/bp-berneck/gallery/${item.url_code}`)
+                }
               >
                 <Image
                   w="100%"

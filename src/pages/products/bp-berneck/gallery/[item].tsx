@@ -18,6 +18,7 @@ export interface GalleryItemProps {
   }
   otherEnvs: {
     id: number
+    url_code: string
     imgSrc: string
     title: string
     subTitle: string
@@ -53,6 +54,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   })
 
   envFetch = envFetch[0]
+
   const env: GalleryItemProps['env'] = {
     id: envFetch.id,
     imgSrc: envFetch.gallery_of_images.map((img: any) => `${url}${img.url}`),
@@ -73,6 +75,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     .map((env: any) => {
       return {
         id: env.id,
+        url_code: env.url_code,
         imgSrc: `${url}${env.gallery_of_images[0].url}`,
         title: env.ambient_type.type,
         subTitle: env.place
@@ -97,7 +100,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     },
     {
       column1: 'Estilo',
-      column2: envFetch.informations.style
+      column2: envFetch.ambient_styles.map((i: any) => i.style).join(', ')
     },
     {
       column1: 'Arquiteto',
