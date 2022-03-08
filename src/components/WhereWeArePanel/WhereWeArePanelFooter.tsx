@@ -29,9 +29,9 @@ const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
     </Flex>
 
     {!props.inaugurationSoon && (
-      <Flex 
-        id="buttons" 
-        gap={{ base: '15px', md: '24px' }} 
+      <Flex
+        id="buttons"
+        gap={{ base: '15px', md: '24px' }}
         alignItems="center"
         // bg="blue"
       >
@@ -47,15 +47,13 @@ const WhereWeArePanelFooter = (props: WhereWeArePanelFooterProps) => (
     )}
 
     {props.inaugurationSoon && (
-      <Flex 
-        id="buttons" 
-        // gap={{ base: '15px', md: '24px' }} 
+      <Flex
+        id="buttons"
+        // gap={{ base: '15px', md: '24px' }}
         alignItems="center"
         // bg="blue"
         h={{ base: '15px', md: '40px' }}
-      >
-        
-      </Flex>
+      ></Flex>
     )}
   </Flex>
 )

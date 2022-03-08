@@ -172,7 +172,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             >
               <Arrow
                 width={{ base: '30px', md: '40px', lg: '32px' }}
-                stroke="green.700"
+                color="green.700"
               />
             </Flex>
           </Flex>

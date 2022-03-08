@@ -1,0 +1,219 @@
+import { useRouter } from 'next/router'
+
+import { Box, Flex, Text, useDisclosure } from '@chakra-ui/react'
+
+import { Arrow } from '@components/Icons'
+import Pagebar from '@components/Pagebar'
+
+import { Intro, Inspire, Properties } from './sections'
+import { DownloadModal } from './DownloadModal'
+
+export interface BPCatalogItemProps {
+  complete_name: string
+  url_code: string
+  name: string
+  description: string
+  img: string
+  assets: string
+  presentation: string
+  uses_and_applications: string
+  video_url: string
+  ebook_url: string
+  texture: {
+    name: string
+    icon: string
+    description: string
+    top_menu_image: string
+  }
+  combine_with: {
+    name: string
+    img: string
+  }[]
+  in_ambients: {
+    id: number
+    image_url: string
+  }[]
+  available_at: {
+    id: number
+    panel_type: string
+    thickness: string
+    dimensions: string
+  }[]
+  next: {
+    name: string
+    url_code: string
+  }
+  prev: {
+    name: string
+    url_code: string
+  }
+}
+
+export const BPCatalogItem = (props: BPCatalogItemProps) => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  return (
+    <Box pos="relative">
+      <Pagebar
+        paths={[
+          {
+            title: 'Produtos',
+            url: '/products'
+          },
+          {
+            title: 'BP BERNECK®',
+            url: '/products/bp-berneck'
+          },
+          {
+            title: 'Catálogo BP',
+            url: '/products/bp-berneck/catalog'
+          },
+          {
+            title: props.complete_name,
+            url: `'/products/bp-berneck/catalog$${props.url_code}'`
+          }
+        ]}
+      />
+      <DownloadModal
+        productName={props.complete_name}
+        productImg={props.texture.icon}
+        isOpen={isOpen}
+        assetsUrl={props.assets}
+        onClose={onClose}
+      />
+      <Intro
+        productName={props.complete_name}
+        productImgBg={props.img}
+        productDescription={props.description}
+        textureTopMenuImg={props.texture.top_menu_image}
+      />
+      <Inspire
+        textureName={props.texture.name}
+        textureIcon={props.texture.icon}
+        textureDescription={props.texture.description}
+        productPresentation={props.presentation}
+        urlVideo={props.video_url}
+        urlEbook={props.ebook_url}
+        combine_with={props.combine_with}
+        in_ambients={props.in_ambients}
+      />
+      <Properties
+        productName={props.complete_name}
+        textureImg={props.texture.icon}
+        uses_and_applications={props.uses_and_applications}
+        available_at={props.available_at}
+        handleDownload={onOpen}
+      />
+
+      <PageNavegation next={props.next} prev={props.prev} />
+    </Box>
+  )
+}
+
+const PageNavegation = (props: {
+  next: {
+    name: string
+    url_code: string
+  }
+  prev: {
+    name: string
+    url_code: string
+  }
+}) => {
+  const router = useRouter()
+
+  return (
+    <Flex
+      w="100%"
+      pt={{ base: '100px', '2xl': '140px' }}
+      justify="space-between"
+    >
+      <Flex
+        w={{ base: 'fit-content', sm: '296px' }}
+        h={{ base: '90px', sm: '113px' }}
+        padding={{ base: '15px', sm: '0px' }}
+        gap="23px"
+        align="center"
+        justify="center"
+        boxShadow="0px 0px 30px #00000029"
+        borderTopRightRadius={{ base: '0', sm: '26px' }}
+        cursor="pointer"
+        onClick={() =>
+          router.push(`/products/bp-berneck/catalog/${props.prev.url_code}`)
+        }
+        transition="all 0.2s ease-in-out"
+        _hover={{ filter: 'brightness(0.8)' }}
+      >
+        <Arrow
+          direction="left"
+          width={{ base: '20px', sm: '30px' }}
+          height={{ base: '30px', sm: '40px' }}
+          color="green.200"
+        />
+        <Box>
+          <Text
+            fontSize={{ base: '20px', sm: '23px' }}
+            fontWeight="bold"
+            letterSpacing="-0.46px"
+            color="gray.300"
+          >
+            Anterior
+          </Text>
+
+          <Text
+            fontSize={{ base: '16px', sm: '18px' }}
+            fontWeight="medium"
+            letterSpacing="-0.36px"
+            color="gray.300"
+          >
+            {props.prev.name}
+          </Text>
+        </Box>
+      </Flex>
+
+      <Flex
+        w={{ base: 'fit-content', sm: '296px' }}
+        h={{ base: '90px', sm: '113px' }}
+        padding={{ base: '15px', sm: '0px' }}
+        gap="23px"
+        align="center"
+        justify="center"
+        boxShadow="0px 0px 30px #00000029"
+        borderTopLeftRadius={{ base: '0', sm: '26px' }}
+        cursor="pointer"
+        onClick={() =>
+          router.push(`/products/bp-berneck/catalog/${props.next.url_code}`)
+        }
+        transition="all 0.2s ease-in-out"
+        _hover={{ filter: 'brightness(0.8)' }}
+      >
+        <Flex direction="column" align="flex-end">
+          <Text
+            fontSize={{ base: '20px', sm: '23px' }}
+            fontWeight="bold"
+            letterSpacing="-0.46px"
+            color="gray.300"
+          >
+            Próximo
+          </Text>
+
+          <Text
+            fontSize={{ base: '16px', sm: '18px' }}
+            fontWeight="medium"
+            letterSpacing="-0.36px"
+            color="gray.300"
+          >
+            {props.next.name}
+          </Text>
+        </Flex>
+
+        <Arrow
+          direction="right"
+          width={{ base: '20px', sm: '30px' }}
+          height={{ base: '30px', sm: '40px' }}
+          color="green.200"
+        />
+      </Flex>
+    </Flex>
+  )
+}

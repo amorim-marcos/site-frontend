@@ -142,7 +142,7 @@ export const FiltersAccordion = ({
                 justifyContent="start"
                 alignItems="center"
               >
-                <Text color="gray.300" mr="10px">
+                <Text color="gray.300" mr="10px" fontWeight={600}>
                   BP BERNECK®
                 </Text>
                 <Arrow
@@ -254,7 +254,7 @@ export const FiltersAccordion = ({
                 justifyContent="start"
                 alignItems="center"
               >
-                <Text color="gray.300" mr="10px">
+                <Text color="gray.300" mr="10px" fontWeight={600}>
                   AMBIENTE
                 </Text>
                 <Arrow
@@ -319,7 +319,7 @@ export const FiltersAccordion = ({
                 justifyContent="start"
                 alignItems="center"
               >
-                <Text color="gray.300" mr="10px">
+                <Text color="gray.300" mr="10px" fontWeight={600}>
                   ESTILO
                 </Text>
                 <Arrow

@@ -1,7 +1,8 @@
 import { ReactNode } from 'react'
-import { Box, Flex, Image } from '@chakra-ui/react'
+import { Box, Flex, Image, Text } from '@chakra-ui/react'
 import { ResponsiveCss } from 'types/responsive'
 import CloseIcon from '@components/Icons/CloseIcon'
+import ArrowIcon from '@components/Icons/ArrowIcon'
 
 export type WhereWeArePanelInfoProps = {
   structure: string
@@ -34,8 +35,20 @@ const WhereWeArePanelInfo = (props: WhereWeArePanelInfoProps) => (
         lg: '30px 35px',
         xl: '20px 25px'
       }}
+      w="100%"
     >
-      <Section title="ESTRUTURA">
+      <Section2 bodyText={props.structure} title="ESTRUTURA" />
+
+      <Section2 bodyText={props.localization} title="LOCALIZAÇÃO" />
+
+      <Section2 bodyText={props.phones} title="TELEFONES" />
+
+      <Section2
+        bodyText={props.airportDistance}
+        title="DISTÂNCIA DO AEROPORTO"
+      />
+
+      {/* <Section title="ESTRUTURA">
         <SectionContent content={props.structure} />
       </Section>
 
@@ -49,13 +62,30 @@ const WhereWeArePanelInfo = (props: WhereWeArePanelInfoProps) => (
 
       <Section title="DISTÂNCIA DO AEROPORTO">
         <SectionContent content={props.airportDistance} />
-      </Section>
+      </Section> */}
     </Flex>
   </>
 )
 
+const Section2 = (props: { title: string; bodyText: string }) => {
+  return (
+    <Flex flexDirection={'column'}>
+      <Flex alignItems={'center'}>
+        <ArrowIcon width={'12px'} stroke="green.600" />
+        <Text ml="5px" variant={'body' as any} color="green.600">
+          {props.title}
+        </Text>
+      </Flex>
+      <Text variant={'body' as any}>{props.bodyText}</Text>
+    </Flex>
+  )
+}
+
 const Section = (props: { title: string; children: ReactNode }) => (
-  <Flex direction="column" gap={{ md: '4px', xl: '7px' }}>
+  <Flex
+    direction="column"
+    // gap={{ md: '4px', xl: '7px' }}
+  >
     <SectionTitle title={props.title} />
     {props.children}
   </Flex>
@@ -100,8 +130,6 @@ const SectionContent = (props: { content: string }) => (
       base: '12px',
       sm: '13px',
       md: '18px'
-      // xl: '18px',
-      // '2xl': '18px'
     }}
   >
     {props.content}

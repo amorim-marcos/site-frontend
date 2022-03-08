@@ -15,7 +15,7 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
   return (
     <Box>
       {isMobile ? (
-        <Flex as={'carousel' as any} px={{ base: '20px' }} justify="center">
+        <Flex as={'carousel' as any} justify="center">
           <Carousel>
             {panels.map((item, i) => (
               <WhereWeArePanel key={i} {...item} />
@@ -27,7 +27,7 @@ export const WhereWeAre = ({ panels = mockPanels }: WhereWeAreProps) => {
           w="100%"
           wrap="wrap"
           gap="54px"
-          // justify="center"
+          justify="center"
           // bg="red"
         >
           {panels.map((item, i) => (

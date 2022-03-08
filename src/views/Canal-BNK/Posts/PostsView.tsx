@@ -13,9 +13,15 @@ import { PostBodyProps } from '@components/PostBody/PostBody'
 export type PostViewProps = {
   postBody?: PostBodyProps
   relationalContent: PostRelationalContentProps
+  coverImageUrl: string
 }
 
-export const PostsView = ({ postBody, relationalContent }: PostViewProps) => {
+export const PostsView = ({
+  postBody,
+  relationalContent,
+  coverImageUrl
+}: PostViewProps) => {
+  console.log(postBody)
   return (
     <>
       <Pagebar
@@ -64,7 +70,7 @@ export const PostsView = ({ postBody, relationalContent }: PostViewProps) => {
             '2xl': '1526px'
           }}
           objectFit="cover"
-          src="/img/post_cover.png"
+          src={coverImageUrl}
         />
         {/* Header Image end */}
 
