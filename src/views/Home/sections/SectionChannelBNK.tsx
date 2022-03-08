@@ -43,9 +43,10 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
         </Text>
       </Flex>
       <Flex
-        justifyContent={{ md: 'space-evenly' }}
+        justifyContent={{ md: 'flex-start' }}
         overflowX={{ base: 'scroll', md: 'hidden' }}
         w={{ base: '100vw', md: '75%' }}
+        gap="5%"
         paddingLeft={{ base: '5%', md: '0' }}
         css={{
           '-webkit-scrollbar': {
@@ -56,7 +57,7 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
         }}
       >
         {props.items &&
-          props.items.length === 3 &&
+          props.items.length > 0 &&
           props.items.map((item, j) => {
             return (
               <ChannelBnkRelationalItem

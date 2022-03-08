@@ -55,12 +55,12 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
         base: '90vw',
         md: '720px',
         lg: '810px',
-        xl: '40%'
+        xl: '46%'
       }}
       pos="relative"
       direction="column"
       userSelect="none"
-      // mb={{ sm: '0', md: '70px' }}
+      // overflow={'hidden'}
     >
       <PanelImage
         image={props.image}
@@ -69,24 +69,13 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
 
       <Flex
         data-testid="panel-overlay"
-        h={
-          showOverlay
-            ? {
-                base: '330px', //'0px',
-                sm: '340px', //'568px',
-                md: '400px', //'768px',
-                lg: '436px', //'1024px',
-                xl: '300px', //'1280px',
-                '2xl': '436px' //'1536px'
-              }
-            : 0
-        }
-        bottom={{
-          base: '115px', //'0px',
-          sm: '105px', //'568px',
-          md: '10px', //'768px',
-          lg: '-1px' //'1024px',
+        h={{
+          base: 'calc(100% - 115px)',
+          sm: 'calc(100% - 105px)',
+          md: 'calc(100% - 70px)',
+          lg: 'calc(100% - 85px)'
         }}
+        top="0"
         w="100%"
         pos="absolute"
         bgColor="white"

@@ -1,1 +1,1 @@
-export { Forests as default } from './Forests'
+export { ForestsView as default } from './Forests'
