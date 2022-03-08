@@ -57,7 +57,7 @@ export const Env = ({ type, name, image_url, ...props }: EnvProps) => {
         >
           {type}
         </Text>
-        <Text width="100%" flex={1} fontSize={{ base: '17px', lg: '28px' }}>
+        <Text width="100%" flex={1} fontSize={{ base: '17px', lg: '20px' }}>
           {name}
         </Text>
       </Flex>
