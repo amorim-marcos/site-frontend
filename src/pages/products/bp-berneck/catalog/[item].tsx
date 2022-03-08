@@ -21,6 +21,7 @@ export interface CatalogItemProps {
       img: string
     }[]
   }
+  assets: string
   uses_and_applications: string
   in_ambients: {
     id: number
@@ -55,6 +56,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     locale: ctx.locale,
     resource: `products/${item}`
   })
+
+  console.log(productFetch)
 
   return {
     props: {
@@ -91,6 +94,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             image_url: `${url}${item.gallery_of_images[0].url}`
           }
         }),
+      assets: `${url}${productFetch.assets.url}`,
       uses_and_applications: productFetch.uses_and_applications,
       prev: {
         name: productFetch.prev.name,

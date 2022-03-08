@@ -61,6 +61,7 @@ export type BPCatalogItemProps = {
       img: string
     }[]
   }
+  assets: string
   uses_and_applications: string
   in_ambients: {
     id: number
@@ -111,6 +112,7 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
         textureName={props.texture.name}
         textureImg={props.texture.img}
         isOpen={isOpen}
+        assetsUrl={props.assets}
         onClose={onClose}
       />
       <Intro
@@ -806,6 +808,7 @@ const DownloadModal = (props: {
   textureName: string
   textureImg: string
   isOpen: boolean
+  assetsUrl: string
   onClose: () => void
 }) => (
   <Modal isOpen={props.isOpen} onClose={props.onClose}>
@@ -840,7 +843,7 @@ const DownloadModal = (props: {
           w={{ base: '100%', sm: '538px' }}
           h={{ base: '420px', sm: '620px' }}
         />
-        <ChakraLink href={props.textureImg} download>
+        <ChakraLink href={props.assetsUrl} download>
           <DownloadIcon
             pos="absolute"
             bottom="34px"
