@@ -4,12 +4,12 @@ import React from 'react'
 import { Box, Flex, Link, Text, Image, LinkProps } from '@chakra-ui/react'
 
 export type EnvProps = LinkProps & {
-  type: string
-  name: string
+  title: string
+  place: string
   image_url: string
 }
 
-export const Env = ({ type, name, image_url, ...props }: EnvProps) => {
+export const Env = ({ title, place, image_url, ...props }: EnvProps) => {
   return (
     <Link {...props}>
       <Flex
@@ -55,10 +55,10 @@ export const Env = ({ type, name, image_url, ...props }: EnvProps) => {
           fontSize={{ base: '23px', lg: '31px' }}
           variant={'body-bold' as any}
         >
-          {type}
+          {title}
         </Text>
         <Text width="100%" flex={1} fontSize={{ base: '17px', lg: '20px' }}>
-          {name}
+          {place}
         </Text>
       </Flex>
     </Link>
