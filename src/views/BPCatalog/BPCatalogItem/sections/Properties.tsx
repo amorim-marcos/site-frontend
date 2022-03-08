@@ -23,8 +23,8 @@ import {
 import { CertificationsIcon, EarthIcon, TapIcon } from '@components/Icons'
 
 export interface PropertiesProps {
+  productName: string
   textureImg: string
-  textureName: string
   uses_and_applications: string
   available_at: {
     id: number
@@ -87,7 +87,7 @@ export const Properties = (props: PropertiesProps) => {
               letterSpacing="-0.68px"
               color="gray.300"
             >
-              Padrão {props.textureName}
+              Padrão {props.productName}
             </Text>
           </Flex>
         </Flex>

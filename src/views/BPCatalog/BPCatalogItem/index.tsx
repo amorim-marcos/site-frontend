@@ -9,6 +9,7 @@ import { Intro, Inspire, Properties } from './sections'
 import { DownloadModal } from './DownloadModal'
 
 export interface BPCatalogItemProps {
+  complete_name: string
   url_code: string
   name: string
   description: string
@@ -68,29 +69,25 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
             url: '/products/bp-berneck/catalog'
           },
           {
-            title: props.name,
-            // title: props.complete_name,
+            title: props.complete_name,
             url: `'/products/bp-berneck/catalog$${props.url_code}'`
           }
         ]}
       />
       <DownloadModal
-        // productName={props.complete_name}
-        productName={props.name}
+        productName={props.complete_name}
         productImg={props.texture.icon}
         isOpen={isOpen}
         assetsUrl={props.assets}
         onClose={onClose}
       />
       <Intro
-        // productName={props.complete_name}
-        productName={props.name}
+        productName={props.complete_name}
         productImgBg={props.img}
         productDescription={props.description}
         textureTopMenuImg={props.texture.top_menu_image}
       />
       <Inspire
-        // productName={props.complete_name}
         textureName={props.texture.name}
         textureIcon={props.texture.icon}
         textureDescription={props.texture.description}
@@ -101,7 +98,7 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
         in_ambients={props.in_ambients}
       />
       <Properties
-        textureName={props.texture.name}
+        productName={props.complete_name}
         textureImg={props.texture.icon}
         uses_and_applications={props.uses_and_applications}
         available_at={props.available_at}

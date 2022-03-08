@@ -6,6 +6,7 @@ import { BPCatalogItem } from 'views/BPCatalog'
 
 export interface CatalogItemProps {
   url_code: string
+  complete_name: string
   name: string
   description: string
   img: string
@@ -60,6 +61,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: {
+      complete_name: productFetch.complete_name,
       url_code: productFetch.url_code,
       name: productFetch.name,
       description: productFetch.description,
@@ -76,7 +78,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         top_menu_image: `${url}${productFetch.product_texture.top_menu_image.url}`
       },
       combine_with: productFetch.combine_with.map((item: any) => ({
-        name: item.name,
+        name: item.complete_name,
         img: `${url}${item.background_image.url}`
       })),
       available_at: productFetch.available_at.map((item: any) => ({
@@ -90,11 +92,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
           image_url: `${url}${item.gallery_of_images[0].url}`
         })),
       prev: {
-        name: productFetch.prev.name,
+        name: productFetch.prev.complete_name,
         url_code: productFetch.prev.url_code
       },
       next: {
-        name: productFetch.next.name,
+        name: productFetch.next.complete_name,
         url_code: productFetch.next.url_code
       }
     } as CatalogItemProps
