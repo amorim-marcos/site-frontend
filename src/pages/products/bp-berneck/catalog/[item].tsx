@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetServerSideProps } from 'next'
 
 import { strapiClient } from 'services'
@@ -56,8 +57,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     locale: ctx.locale,
     resource: `products/${item}`
   })
-
-  console.log(productFetch)
 
   return {
     props: {
