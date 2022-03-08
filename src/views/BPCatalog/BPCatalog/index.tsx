@@ -37,6 +37,7 @@ export type BPCatalogProps = {
   bps: {
     id: any
     name: string
+    complete_name: string
     product_texture: string
     pattern_image: string
     url_code: string

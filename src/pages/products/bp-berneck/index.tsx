@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetServerSideProps } from 'next'
 
 import { strapiClient } from 'services'
@@ -16,12 +17,11 @@ export default function BpBerneck(props: BpBerneckProps) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const url = process.env.NEXT_PUBLIC_API_URL
 
-  const galleries: Gallery[] = await strapiClient({
+  let galleries: Gallery[] = await strapiClient({
     resource: 'highlighted-ambient-types'
   })
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const data = galleries.map((gallery: any, i: number) => {
+  galleries = galleries.map((gallery: any, i: number) => {
     return {
       id: i,
       title: gallery.ambient_type.type,
@@ -35,6 +35,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   })
 
   return {
-    props: { galleries: data }
+    props: { galleries }
   }
 }

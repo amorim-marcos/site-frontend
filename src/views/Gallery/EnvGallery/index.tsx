@@ -260,8 +260,8 @@ export const EnvGallery = ({
                   <GridItem key={env.id} mt="60px">
                     <Env
                       href={`/products/bp-berneck/gallery/${env.url_code}`}
-                      type={env.type}
-                      name={env.name}
+                      title={env.title}
+                      place={env.name}
                       image_url={env.image_url}
                     />
                   </GridItem>

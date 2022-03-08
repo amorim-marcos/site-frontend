@@ -116,7 +116,7 @@ export const FiltersTabs = ({
                     borderBottomWidth={{ base: '4px' }}
                     fontSize="22px"
                   >
-                    <Text color="gray.300" mr="10px">
+                    <Text color="gray.300" mr="10px" fontWeight={600}>
                       BP BERNECK®
                     </Text>
                     <Arrow
@@ -139,7 +139,7 @@ export const FiltersTabs = ({
                     borderBottomWidth={{ base: '4px' }}
                     fontSize="22px"
                   >
-                    <Text color="gray.300" mr="10px">
+                    <Text color="gray.300" mr="10px" fontWeight={600}>
                       AMBIENTE
                     </Text>
                     <Arrow
@@ -164,7 +164,7 @@ export const FiltersTabs = ({
                     borderBottomWidth={{ base: '4px' }}
                     fontSize="22px"
                   >
-                    <Text color="gray.300" mr="10px">
+                    <Text color="gray.300" mr="10px" fontWeight={600}>
                       ESTILO
                     </Text>
                     <Arrow
