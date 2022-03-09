@@ -1,17 +1,23 @@
 import { Image, Flex, Box, Text, Button, useInterval } from '@chakra-ui/react'
 import ArrowIcon from '@components/Icons/ArrowIcon'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 export type HomeBannerProps = {
   items: {
     imageUrl: string
-    category: string
+    category: {
+      name: string
+      id: number
+    }
     title: string
+    url_code: string
   }[]
 }
 export const HomeBanner = ({ items }: HomeBannerProps) => {
   const [opacity, setOpacity] = useState(true)
   const [currentItem, setCurrentItem] = useState(0)
+  const router = useRouter()
 
   function next() {
     let newIndex = 0
@@ -27,7 +33,14 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
     }, 400)
   }
 
+  function navigateToThePost() {
+    router.push(
+      `canal-bnk/${items[currentItem].category.id}/${items[currentItem].url_code}`
+    )
+  }
+
   useInterval(next, 3000)
+
   return items.length <= 0 ? (
     <h1>No items passed</h1>
   ) : (
@@ -57,7 +70,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
         position={'absolute'}
         top="10%"
         left="-4%"
-        onClick={next}
+        onClick={navigateToThePost}
         w="12vw"
         maxWidth={'231px'}
         cursor={'pointer'}
@@ -73,7 +86,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
         w={{ base: '100vw', md: '34vw' }}
         maxWidth={'655px'}
         zIndex={'docked'}
-        onClick={next}
+        onClick={navigateToThePost}
         cursor={'pointer'}
       />
       <Box
@@ -88,7 +101,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
         bg="#c2d898"
         opacity={opacity ? '1' : '0'}
         transition={'0.4s'}
-        onClick={next}
+        onClick={navigateToThePost}
         cursor={'pointer'}
       >
         <Box
@@ -101,6 +114,8 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
             base: 'none',
             md: 'linear-gradient(90deg, rgba(241,224,196,0.76234243697479) 0%, rgba(255,255,255,0) 100%)'
           }}
+          cursor="pointer"
+          onClick={navigateToThePost}
         ></Box>
 
         <Image
@@ -108,6 +123,8 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
           objectFit={'cover'}
           w="100%"
           h="100%"
+          onClick={navigateToThePost}
+          cursor="pointer"
         />
       </Box>
 
@@ -132,7 +149,12 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
               stroke="green.600"
             />
           </Box>
-          <Flex marginLeft={'2%'} flexDirection={'column'}>
+          <Flex
+            onClick={navigateToThePost}
+            marginLeft={'2%'}
+            flexDirection={'column'}
+            cursor="pointer"
+          >
             <Text
               marginBottom={'2%'}
               variant={'canal-bnk-menu' as any}
@@ -145,7 +167,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                 '2xl': '20px'
               }}
             >
-              {items[currentItem].category}
+              {items[currentItem].category.name}
             </Text>
             <Box
               opacity={opacity ? '1' : '0'}
@@ -192,7 +214,10 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
 type IndicatorProps = {
   items: {
     imageUrl: string
-    category: string
+    category: {
+      name: string
+      id: number
+    }
     title: string
   }[]
   currentItem: number

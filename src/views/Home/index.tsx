@@ -39,6 +39,7 @@ type PostProps = {
     id: number
     tag: string
   }[]
+  url_code: string
 }
 
 export type HomeProps = {
@@ -56,8 +57,12 @@ export default function Home(props: HomeProps) {
           items={props.highlights.map((item) => {
             return {
               imageUrl: item.cover.url,
-              category: item.category.name,
-              title: item.title
+              category: {
+                id: item.category.id,
+                name: item.category.name
+              },
+              title: item.title,
+              url_code: item.url_code
             }
           })}
         />
