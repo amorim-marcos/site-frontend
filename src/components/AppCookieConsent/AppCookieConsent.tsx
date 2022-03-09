@@ -26,6 +26,8 @@ export const AppCookieConsent = () => {
         buttonText="PROSSEGUIR"
         debug
         ButtonComponent={ConsentButton}
+        cookieName="cookieAccepted"
+        expires={30}
       >
         <Text variant={'body' as any}>
           O site da Berneck S.A utiliza cookies para uma experiência mais
