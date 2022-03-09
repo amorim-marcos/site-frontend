@@ -24,7 +24,6 @@ export const AppCookieConsent = () => {
           height: '60px'
         }}
         buttonText="PROSSEGUIR"
-        debug
         ButtonComponent={ConsentButton}
         cookieName="cookieAccepted"
         expires={30}
