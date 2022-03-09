@@ -1,7 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useRouter } from 'next/router'
+
 import { Flex, Box, Text, Image } from '@chakra-ui/react'
+
 import CarouselMultiElements from '@components/CarouselMultiElements'
 import CompletedTitle from '@components/CompletedTitle'
-import ArrowIcon from '@components/Icons/ArrowIcon'
+import { Arrow } from '@components/Icons'
 import Pagebar from '@components/Pagebar'
 
 export type EnvViewProps = {
@@ -18,6 +22,7 @@ export type EnvViewProps = {
   }
   otherEnvs: {
     id: number
+    url_code: string
     imgSrc: string
     title: string
     subTitle: string
@@ -38,6 +43,8 @@ export const EnvView = ({
   imgs,
   tableContent
 }: EnvViewProps) => {
+  const router = useRouter()
+
   return (
     <Box maxWidth={'1920px'} marginX="auto">
       <Pagebar
@@ -67,7 +74,7 @@ export const EnvView = ({
         marginX="auto"
       >
         <CompletedTitle titleString={env.title} alignSelf={'left'} />
-        <Text marginY="3%" as="h3" variant={'h3' as any} color="brown.300">
+        <Text marginY="3%" as="h3" variant="h3" color="brown.300">
           {env.subTitle}
         </Text>
 
@@ -121,11 +128,7 @@ export const EnvView = ({
                         }}
                         alignItems="center"
                       >
-                        <Text
-                          variant={'body' as any}
-                          fontWeight="bold"
-                          color="gray.250"
-                        >
+                        <Text variant="body" fontWeight="bold" color="gray.250">
                           {item.column1}
                         </Text>
                       </Flex>
@@ -139,7 +142,7 @@ export const EnvView = ({
                         alignItems="center"
                         w="full"
                       >
-                        <Text variant={'body' as any} color="gray.250">
+                        <Text variant="body" color="gray.250">
                           {item.column2}
                         </Text>
                       </Flex>
@@ -150,7 +153,7 @@ export const EnvView = ({
             </Flex>
             <Flex flexDirection={'column'} w={{ base: '100%', md: '50%' }}>
               <Text
-                variant={'body' as any}
+                variant="body"
                 fontWeight={'bold'}
                 color="brown.300"
                 marginBottom={'3%'}
@@ -177,7 +180,7 @@ export const EnvView = ({
                     </Flex>
 
                     <Text
-                      variant={'body' as any}
+                      variant="body"
                       fontWeight={'extrabold'}
                       color="brown.300"
                       marginTop={'3%'}
@@ -186,7 +189,7 @@ export const EnvView = ({
                     </Text>
 
                     <Text
-                      variant={'body' as any}
+                      variant="body"
                       fontWeight={'bold'}
                       color="brown.300"
                       marginTop={'3%'}
@@ -203,7 +206,7 @@ export const EnvView = ({
       {/* Other Envs */}
       <Flex flexDirection={'column'} padding={'5%'} bg="brown.100" w="100%">
         <Flex w="100%" alignItems={'center'} justifyContent={'space-between'}>
-          <Text marginY="3%" as="h3" variant={'h3' as any} color="brown.300">
+          <Text marginY="3%" as="h3" variant="h3" color="brown.300">
             Outros ambientes
           </Text>
           <Flex
@@ -213,15 +216,15 @@ export const EnvView = ({
             onClick={() => alert('ir para galeria')}
           >
             <Text
-              variant={'body' as any}
+              variant="body"
               color="green.600"
               marginRight={'4%'}
               whiteSpace={'nowrap'}
             >
               Veja mais ambientes
             </Text>
-            <ArrowIcon
-              stroke={'green.500'}
+            <Arrow
+              color={'green.500'}
               width={{
                 base: '18px',
                 sm: '13px',
@@ -238,42 +241,38 @@ export const EnvView = ({
           flexDirection={{ base: 'column', md: 'row' }}
           justifyContent={'space-between'}
         >
-          {otherEnvs.map((item) => {
-            return (
-              <Flex
-                w={{ base: '100%', md: '23%' }}
-                key={item.id}
-                flexDirection={'column'}
-                _hover={{ opacity: '0.9' }}
-                cursor={'pointer'}
-              >
-                <Image
-                  w="100%"
-                  objectFit={'cover'}
-                  maxHeight={'80%'}
-                  src={item.imgSrc}
-                />
-                <Text
-                  marginTop="3%"
-                  as="h3"
-                  variant={'h3' as any}
-                  color="brown.300"
-                >
-                  {item.title}
-                </Text>
+          {otherEnvs.map((item) => (
+            <Flex
+              w={{ base: '100%', md: '23%' }}
+              key={item.id}
+              flexDirection={'column'}
+              _hover={{ opacity: '0.9' }}
+              cursor={'pointer'}
+              onClick={() =>
+                router.push(`/products/bp-berneck/gallery/${item.url_code}`)
+              }
+            >
+              <Image
+                w="100%"
+                objectFit={'cover'}
+                maxHeight={'80%'}
+                src={item.imgSrc}
+              />
+              <Text marginTop="3%" as="h3" variant="h3" color="brown.300">
+                {item.title}
+              </Text>
 
-                <Text
-                  as="body"
-                  bg="none"
-                  variant={'body' as any}
-                  color="brown.300"
-                  marginBottom={{ base: '10%', md: '0' }}
-                >
-                  {item.subTitle}
-                </Text>
-              </Flex>
-            )
-          })}
+              <Text
+                as="body"
+                bg="none"
+                variant="body"
+                color="brown.300"
+                marginBottom={{ base: '10%', md: '0' }}
+              >
+                {item.subTitle}
+              </Text>
+            </Flex>
+          ))}
         </Flex>
       </Flex>
     </Box>

@@ -31,28 +31,40 @@ export const getStaticProps: GetStaticProps = async (context) => {
     highlights = await res.json()
   }
 
-  highlights = highlights.map((item: { cover: { url: string } }) => {
-    return {
-      ...item,
-      cover: {
-        url: process.env.NEXT_PUBLIC_API_URL + item.cover.url
-      }
-    }
-  })
+  const highlightsTreated: object[] = []
 
-  latestPosts = latestPosts.map((item: { cover: { url: string } }) => {
-    return {
-      ...item,
-      cover: {
-        url: process.env.NEXT_PUBLIC_API_URL + item.cover.url
+  highlights.forEach(
+    (item: { cover: { url: string }; category: { name: string } }) => {
+      if (item !== null && item.category !== null) {
+        highlightsTreated.push({
+          ...item,
+          cover: {
+            url: process.env.NEXT_PUBLIC_API_URL + item.cover.url
+          }
+        })
       }
     }
-  })
+  )
+
+  const latestTreated: object[] = []
+
+  if (latestPosts.length > 0) {
+    latestPosts.forEach((item: { cover: { url: string } }) => {
+      if (item !== null) {
+        latestTreated.push({
+          ...item,
+          cover: {
+            url: process.env.NEXT_PUBLIC_API_URL + item.cover.url
+          }
+        })
+      }
+    })
+  }
 
   return {
     props: {
-      highlights,
-      latest: latestPosts
+      highlights: highlightsTreated,
+      latest: latestTreated
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

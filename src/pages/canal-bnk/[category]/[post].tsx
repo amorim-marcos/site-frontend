@@ -9,7 +9,6 @@ export type PostPageProps = {
 }
 
 export default function PostPage(props: PostPageProps) {
-  console.log(props)
   return (
     <PostsView
       postBody={{
@@ -19,6 +18,7 @@ export default function PostPage(props: PostPageProps) {
         postContent: props.currentPost.content,
         tags: props.currentPost.tags.map((item) => ({ name: item.Tag }))
       }}
+      coverImageUrl={props.currentPost.cover}
       relationalContent={{
         items: props.posts.map((item) => {
           return {
