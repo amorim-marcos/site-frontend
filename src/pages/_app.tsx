@@ -1,6 +1,6 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, Flex } from '@chakra-ui/react'
 import { theme } from 'theme/theme'
 
 import AppHeader from 'components/AppHeader'
@@ -9,6 +9,7 @@ import { appWithI18Next } from 'ni18n'
 import { ni18nConfig } from '../../ni18n.config'
 
 import 'leaflet/dist/leaflet.css'
+import AppCookieConsent from '@components/AppCookieConsent'
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -27,6 +28,7 @@ function App({ Component, pageProps }: AppProps) {
       <AppHeader />
       <Component {...pageProps} />
       <AppFooter />
+      <AppCookieConsent />
     </ChakraProvider>
   )
 }

@@ -6,10 +6,11 @@ import { Grafism } from './Grafism/Grafism'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import { footerNavigation } from './footerNavigation'
-import useMobile from 'hooks/useMobile'
+import { useRouter } from 'next/router'
 
 export const AppFooter = () => {
   const footer = useTranslation('footer')
+  const router = useRouter()
   return (
     <Flex
       aria-label="footer-container"
@@ -199,6 +200,9 @@ export const AppFooter = () => {
             '2xl': '14px'
           }}
           color="green.600"
+          cursor={'pointer'}
+          _hover={{ opacity: '0.9' }}
+          onClick={() => router.push('politica-de-privacidade')}
         >
           Termos de Uso e Política de Privacidade
         </Text>

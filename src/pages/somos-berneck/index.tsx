@@ -15,7 +15,6 @@ export default function AboutPage({
   our_trajectory_tabs,
   whereWeAreData
 }: AboutPageProps) {
-  console.log(whereWeAreData)
   return (
     <About
       page_content={page_content}
