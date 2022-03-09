@@ -14,21 +14,63 @@ export const Privacy = () => (
         }
       ]}
     />
-    <Flex flexDirection={'column'} maxWidth="1920px" marginX="auto" w="100%">
-      <Box padding={'5%'} w="100%" bg="green.400">
-        <Flex
+    <Flex
+      position={'relative'}
+      flexDirection={'column'}
+      maxWidth="1920px"
+      marginX="auto"
+      w="100%"
+    >
+      <Flex
+        padding={'5%'}
+        w="100%"
+        bg="green.400"
+        position={'relative'}
+        overflow="hidden"
+      >
+        <Box
+          position={'absolute'}
+          w="100%"
+          h="100%"
+          top="0"
+          left="0"
+          zIndex={'base'}
+        >
+          <Image
+            src="/img/useTerms/grafidireita.svg"
+            position={'absolute'}
+            right={{ base: '-30%', sm: '0' }}
+            bottom="0"
+            maxWidth={'385px'}
+            w={{ base: 'auto', sm: '20vw' }}
+            h={{ base: '100%', sm: 'auto' }}
+          />
+          <Image
+            src="/img/useTerms/grafiesquerda.svg"
+            position={'absolute'}
+            left={{ base: '-30%', sm: '0' }}
+            top="0"
+            maxWidth={'395px'}
+            w={{ base: 'auto' }}
+            h={{ base: '100%' }}
+          />
+        </Box>
+        <Box
+          zIndex={'dropdown'}
           w={{ md: '453px', lg: '566px', xl: '680px', '2xl': '850px' }}
           marginX="auto"
           justifyContent={'center'}
           alignItems="center"
+          margin="auto"
         >
           <CompletedTitle
             textAlign={'center'}
             titleString="Política de privacidade e termos de uso"
             titleColor={'white.100'}
+            zIndex={'dropdown'}
           />
-        </Flex>
-      </Box>
+        </Box>
+      </Flex>
 
       <Flex
         bg="#F5F6F4"
