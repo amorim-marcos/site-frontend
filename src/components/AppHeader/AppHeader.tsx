@@ -88,10 +88,10 @@ export const AppHeader = () => {
               href={menuNavigation.whereBuy.href}
               title={header.t(menuNavigation.whereBuy.key)}
             />
-            <HeaderSecondaryItem
+            {/* <HeaderSecondaryItem
               href={menuNavigation.restrictAccess.href}
               title={header.t(menuNavigation.restrictAccess.key)}
-            />
+            /> */}
           </Flex>
         </Flex>
         <Flex
@@ -228,10 +228,10 @@ export const AppHeader = () => {
                 href={menuNavigation.whereBuy.href}
                 title={header.t(menuNavigation.whereBuy.key)}
               />
-              <HeaderSecondaryItem
+              {/* <HeaderSecondaryItem
                 href={menuNavigation.restrictAccess.href}
                 title={header.t(menuNavigation.restrictAccess.key)}
-              />
+              /> */}
             </Box>
 
             <Flex
