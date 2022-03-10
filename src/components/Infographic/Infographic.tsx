@@ -82,8 +82,8 @@ export const Infographic = ({
     display='flex'
     justifyContent='center'
     // bg="blackAlpha.600"
-    margin='3%'
-    maxWidth="400px"
+    margin='2% 0%'
+    maxWidth="420px"
     // maxHeight={"auto"}
     data-testid="infographic"
   >
@@ -106,7 +106,8 @@ export const Infographic = ({
           // bg='black'
         >
           <Text
-              variant={'h3' as any}
+              variant={'h1' as any}
+              fontSize={{ base: '14px', sm: '16px', lg: '20px', xl: '30px'}}
               color={titleSuperscript1Color}
               letterSpacing = '-0.94px'
             >{titleSuperscript1Text}</Text>
@@ -119,6 +120,7 @@ export const Infographic = ({
         >
           <Text 
               variant = {'h4' as any}
+              fontSize={{ base: '16px', sm: '18px', lg: '20px', xl: '30px'}}
               color = {titleSuperscript2Color}
               textAlign = 'center'
             >{titleSuperscript2Text}</Text>
@@ -156,7 +158,7 @@ export const Infographic = ({
                       <Box marginRight='5px'>
                         {(content1IconName === 'energy' &&
                           <EnergyIcon 
-                            height = {{ base: '40px', sm: '40px', lg: '50px', xl: '55px'}}
+                            height = {{ base: '30px', sm: '40px', lg: '40px', xl: '65px'}}
                             width = {{ base: '30px', sm: '30px', lg: '40px', xl: '60px'}}
                           />)
                           || (content1IconName === 'water' &&
@@ -241,8 +243,8 @@ export const Infographic = ({
                     variant={'h1' as any}
                     color={content4Color}
                     // bg='pink'
-                    // fontSize={{ base: '20px', sm: '30px', lg: '40px', xl: '70px'}}
-                    fontSize = {fontSize}
+                    fontSize={{ base: '18px', sm: '30px', lg: '40px', xl: '70px'}}
+                    // fontSize = {fontSize}
                     marginBottom={{ base: '10px', sm: '5px', lg: '-10px', xl: '-16px'}}
                   >{content4Text}</Text>
               </Box>
@@ -263,6 +265,7 @@ export const Infographic = ({
               variant={'h3' as any}
               color={titleSubscript1Color}
               letterSpacing = '-0.94px'
+              fontSize={{ base: '16px', sm: '18px', lg: '20px', xl: '30px'}}
               textAlign='center'
               maxWidth={{ base: '220px', sm: '200px', lg: '250px', xl: '300px'}}
               // fontSize={{ base: '10px', sm: '16px', lg: '18px', xl: '30px'}}

@@ -422,8 +422,8 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           alignItems={'center'}
         >
           {/* BOX 1 */}
-          <Box
-            // bg='pink'
+          <Flex
+            // bg='black'
             flex="1"
             margin={{
               base: '5% 0% 5% 0%',
@@ -446,7 +446,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               <Infographic2
                 titleSuperscript1Text="Sequestro de Carbono"
                 titleSuperscript1Color="green.400"
-                titleSuperscript2Text="mais de"
+                titleSuperscript2Text="Mais de"
                 titleSuperscript2Color="green.200"
                 content1Text={page_content.carbon_sequestration.toString()}
                 content1Color="white"
@@ -466,11 +466,11 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 iconName="EmissionIcon"
               />
             </Flex>
-          </Box>
+          </Flex>
           {/* BOX 2 */}
           <Box
             margin={{
-              base: '0% 8% 10% 5%',
+              base: '0% 5% 10% 5%',
               sm: '3% 5% 8% 5%',
               lg: '8% 7% 8% 0%',
               xl: '5% 5% 5% 2%'
@@ -498,6 +498,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       </Flex>
       {/* FIM Compromisso com o planeta */}
 
+
       {/* INICIO Economia de recursos naturais*/}
       <Flex
         maxWidth="1920px"
@@ -515,6 +516,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       >
         <Flex
           // bg='blue'
+          alignItems={'center'}
           direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
         >
           {/* BOX 1 */}
@@ -570,7 +572,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               {/* LINHA 1 */}
               <Flex
               // bg='blue'
-              // alignItems={"center"}
+              alignItems={"center"}
               >
                 <Infographic
                   titleSuperscript2Text="Co-geramos"
@@ -649,6 +651,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
         </Flex>
       </Flex>
       {/* FIM Economia de recursos naturais */}
+
 
       {/* INICIO Preservação da fauna e da flora */}
       <Flex
@@ -927,6 +930,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               <Text
                 as="h4"
                 variant={'h4' as any}
+                fontSize = {{ base: '14px', sm: '12px', lg: '16px', xl: '20px' }}
                 fontWeight="semibold"
                 color="green.900"
                 textAlign={{
@@ -946,7 +950,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           {/* BOX 2 */}
           <Box
             margin={{
-              base: '2% 5% 5% 5%',
+              base: '2% 5% 30% 5%',
               sm: '2% 5% 5% 5%',
               lg: '2% 5% 5% 5%',
               xl: '2% 5% 5% 5%'
@@ -1136,6 +1140,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
             <Text
               as="h3"
               variant={'h3' as any}
+
               textAlign={{
                 base: 'center',
                 sm: 'center',
@@ -1167,9 +1172,9 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           {/* BOX 2 */}
           <Box
             margin={{
-              base: '0% 5% 10% 5%',
+              base: '0% 5% 10% 0%',
               sm: '0% 5% 10% 5%',
-              lg: '5% 5% 5% 5%',
+              lg: '0% 5% 5% 0%',
               xl: '0% 5% 5% 2%'
             }}
             // bg='gray'
@@ -1177,7 +1182,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           >
             <Button
               onClick={() => alert('Quero fazer uma denúncia anônima')}
-              w={{ base: '100%', sm: '100%', lg: '100%', xl: '100%' }}
+              w={{ base: '110%', sm: '120%', lg: '130%', xl: '120%' }}
               h={{ base: '30%', sm: '30%', lg: '30%', xl: '40%' }}
               padding={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
             >
