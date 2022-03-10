@@ -106,7 +106,11 @@ export const BannerProducts = ({
             flex="1"
             w={sizeType === 'rectangle' ? '50%' : '100%'}
           >
-            <Text as="h1" variant={'h1' as any} color={titleColor}>
+            <Text as="h1" 
+              variant={'h1' as any}
+              color={titleColor}
+              lineHeight={{ base: '35px', sm: '35px', lg: '40px', xl: '50px' }}
+            >
               {title}
             </Text>
           </Flex>

@@ -138,7 +138,6 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
               variant={'canal-bnk-menu' as any}
               fontSize={{
                 base: '20px',
-
                 md: '10px',
                 lg: '13px',
                 xl: '16px',
@@ -166,17 +165,22 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                 variant={'h1' as any}
                 color="green.900"
                 fontSize={{
-                  base: '42px',
-
+                  base: '30px',
                   md: '36px',
                   lg: '45px',
                   xl: '54px',
                   '2xl': '68px'
                 }}
+                lineHeight ={{
+                  base: '35px',
+                  md: '40px',
+                  lg: '50px',
+                  xl: '80px'
+                }}
                 maxHeight={'100%'}
                 marginLeft={{ base: '-30px', md: '0' }}
               >
-                {items[currentItem].title}
+                {(items[currentItem].title.length > 42)? items[currentItem].title.substring(0,42) + "..." : items[currentItem].title}
               </Text>
             </Box>
           </Flex>
