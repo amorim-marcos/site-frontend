@@ -12,7 +12,7 @@ export type HighlightBoxPanelProps = {
 export const HighlightBoxPanel = ( props: HighlightBoxPanelProps ) => {
   return (
     <Flex
-      w={{ base: '95%', md: '95%', lg: '95%', xl: '30%' }}
+      w={{ base: '95%', md: '80%', lg: '45%', xl: '30%' }}
       pos="relative"
       direction="column"
       userSelect="none"
@@ -35,12 +35,18 @@ export const HighlightBoxPanel = ( props: HighlightBoxPanelProps ) => {
 const PanelImage = (props: { image: string }) => (
   <Flex 
     h={"100%"}
+    // w={"100%"}
     justifyContent="center" 
     alignItems="center" 
     pos="relative"
+    // backgroundImage={props.image}
+    // backgroundPosition="center"
+    // backgroundRepeat="no-repeat"
+    // backgroundSize={'cover'}
   >
       <Image
         h={"100%"}
+        w={"100%"}
         src={props.image}
         objectFit="cover"
         userSelect="none"

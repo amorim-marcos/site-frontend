@@ -468,7 +468,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                   flex={2}
                   // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
                 >
-                  <Image src="/assets/imgs/IMG_0618.png" />
+                  <Image src="/assets/imgs/tamandua.png" />
                 </Flex>
                 <Flex
                   // bg='gray.400'
@@ -568,7 +568,7 @@ export const ForestsView = (props: ForestsViewProps) => {
               }}
             />
             <Text marginTop={{ base: '10%', sm: '5%', lg: '4%', xl: '4%' }}>
-              {props.page_content.section4_title}
+              {props.page_content.section4_text}
             </Text>
           </Box>
 
@@ -864,7 +864,7 @@ export const ForestsView = (props: ForestsViewProps) => {
             // bg='yellow'
             flex="1"
           >
-            <Image src="/assets/imgs/170130-Berneck-58.png" />
+            <Image src="/assets/imgs/fornecedor_florestal.png" />
             <Button
               onClick={() => router.push('/contact')}
               w={{ base: '90%', sm: '70%', lg: '90%', xl: '70%' }}

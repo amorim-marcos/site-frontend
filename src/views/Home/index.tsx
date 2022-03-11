@@ -202,7 +202,7 @@ export default function Home(props: HomeProps) {
       {/* INICIO dos banners */}
       <SectionBanners
         banner1={{
-          onClick: () => router.push('/somos-berneck'),
+          onClick: () => router.push('/nosso-compromisso'),
           imgSrc: '/assets/imgs/banner_compromisso.jpg',
           title: 'CONHEÇA',
           description: 'Nosso compromisso',

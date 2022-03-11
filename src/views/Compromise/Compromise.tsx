@@ -304,7 +304,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
             >
               {/* COLUNA 1 */}
               <Box
-                bg="gray.100"
+                bg="green.100"
                 flex="2"
                 marginBottom={{ base: '2%', sm: '2%', lg: '3%', xl: '5%' }}
               >
@@ -795,15 +795,16 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                   '_blank'
                 )
               }
-              w={{ base: '90%', sm: '90%', lg: '90%', xl: '90%' }}
-              h={{ base: '10%', sm: '10%', lg: '10%', xl: '10%' }}
-              padding={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
+              w={{ base: '90%', sm: '70%', lg: '80%', xl: '90%' }}
+              h={{ base: '10%', sm: '6%', lg: '10%', xl: '10%' }}
+              padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%' }}
               marginTop={{
                 base: '-15px',
                 sm: '-20px',
-                lg: '-40px',
+                lg: '-20px',
                 xl: '-20px'
               }}
+              colorScheme = {'#59993F'}
             >
               <Text
                 as="h5"
@@ -830,7 +831,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
         zIndex="base"
         overflowY="hidden"
         overflowX="hidden"
-        bg="green.150"
+        bg="green.1000"
         backgroundImage="/assets/imgs/grafismos_fundo2.png"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
@@ -870,11 +871,13 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               as="h3"
               variant={'h3' as any}
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+              color = {'#144835'}
             >
               {page_content.section6_title}
             </Text>
             <Text
               marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px' }}
+              color = {'#143127'}
             >
               {page_content.section6_text}
             </Text>
@@ -893,7 +896,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
         zIndex="base"
         overflowY="hidden"
         overflowX="hidden"
-        bg="gray.100"
+        bg="gray.450"
       >
         <Flex
           // bg='blue'
@@ -906,7 +909,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
         >
           {/* BOX 1 */}
           <Box
-            bg="gray.150"
+            bg="gray.500"
             flex="1"
             margin={{
               base: '3% 5% 0% 5%',
@@ -951,8 +954,8 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           <Box
             margin={{
               base: '2% 5% 30% 5%',
-              sm: '2% 5% 5% 5%',
-              lg: '2% 5% 5% 5%',
+              sm: '2% 5% 15% 5%',
+              lg: '5% 5% 10% 5%',
               xl: '2% 5% 5% 5%'
             }}
             // bg='yellow'
@@ -1111,7 +1114,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
         zIndex="base"
         overflowY="hidden"
         overflowX="hidden"
-        bg="gray.200"
+        bg="gray.150"
       >
         <Flex
           // bg='blue'
@@ -1272,7 +1275,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 lg: '2% 2% 8% 0%',
                 xl: '5% 0% 5% 0%'
               }}
-              padding={{ base: '10%', sm: '10%', lg: '10%', xl: '5%' }}
+              padding={{ base: '7%', sm: '7%', lg: '2%', xl: '2%' }}
               // bg='blue'
               flex="1"
               backgroundImage="/assets/imgs/fundo_relatorio.svg"

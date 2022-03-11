@@ -74,7 +74,7 @@ export const About = ({
         position="relative"
         zIndex="base"
         overflow="hidden"
-        bg="green.200"
+        bg="green.150"
       >
         <Flex direction={{ base: 'column', lg: 'row' }}>
           <Box
