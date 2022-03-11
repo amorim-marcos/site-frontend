@@ -109,12 +109,13 @@ export const About = ({
           >
             <Image
               src={'/assets/imgs/foto_fabrica.png'}
-              w={{ base: '100%', sm: '100%', lg: '500px', xl: '500px' }}
+              w={{ base: '300px', sm: '400px', lg: '2000px', xl: '3000px' }}
             />
           </Box>
         </Flex>
       </Flex>
       {/* FIM RAIZES FIRMES PARA CRESCER */}
+
 
       {/* INICIO PARA O MADEIRAS MUNDO */}
       <Flex
@@ -152,7 +153,7 @@ export const About = ({
                 sm: 'row'
               }}
               justifyItems="center"
-              justifyContent="flex-end"
+              justifyContent={{ base: 'center', sm: 'center', lg: 'flex-end', xl: 'flex-end' }}
             >
               {/* BOX 1 */}
               <Box w={{ base: '80%', sm: '40%', lg: '100%' }}>
@@ -164,12 +165,12 @@ export const About = ({
               </Box>
               {/* BOX 2 */}
               <Box
-                // bg='blue.100'
-                flex={{ base: '3', xl: '1' }}
+                // bg='red.100'
+                flex={{ base: '2', xl: '1' }}
                 position={'absolute'}
                 alignSelf={'center'}
                 margin={{
-                  base: '20% 0%',
+                  base: '30px 0% 0px 0%',
                   sm: '0% 0%'
                 }}
               >
@@ -280,7 +281,7 @@ export const About = ({
         <Flex
           direction="column"
           // bg='pink'
-          marginBottom={{ base: '40%', sm: '20%', lg: '10%', xl: '5%' }}
+          marginBottom={{ base: '50%', sm: '35%', lg: '25%', xl: '5%' }}
           padding="5%"
         >
           {/* FLEX 1 - BOX 1 */}
@@ -342,6 +343,7 @@ export const About = ({
         </Flex>
       </Flex>
       {/* FIM ONDE ESTAMOS */}
+
 
       {/* INICIO REVENDEDORES */}
       <Flex
@@ -466,7 +468,7 @@ export const About = ({
             </Text>
           </Box>
           <Box
-            w="40%"
+            w={{ base: '100%', lg: '40%' }}
             margin={{
               base: '3% 0% 0% 0%',
               sm: '3% 0% 0% 0%',

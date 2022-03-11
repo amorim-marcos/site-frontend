@@ -76,7 +76,7 @@ export const Text = {
     h4: {
       color: 'green.700',
       fontSize: {
-        base: '25px',
+        base: '16px',
         md: '16px',
         lg: '18px',
         xl: '20px',

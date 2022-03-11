@@ -19,7 +19,7 @@ export const WaterIcon = ({
     <Box w={width} h={height}>
      <svg 
         height="100%"
-        viewBox="0 0 32.985 48.772" 
+        viewBox="0 0 35 50" 
         width="100%"
         xmlns="http://www.w3.org/2000/svg"
         data-testid="water-icon"

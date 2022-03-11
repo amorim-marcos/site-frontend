@@ -7,6 +7,7 @@ import Pagebar from "@components/Pagebar"
 import PatternInfo from "@components/PatternInfo"
 import useMobile from "hooks/useMobile"
 import React from "react"
+import { useRouter } from 'next/router'
 
 export type ContactChannelData = {
   name: string,
@@ -21,6 +22,8 @@ export type ContactViewProps = {
 }
 
 export const Contact = ({ contact_channels }:ContactViewProps) => {
+  const router = useRouter()
+
   const [contact_channel, setContactChannel] = React.useState<ContactChannelData | null>(null)
   const { isMobile } = useMobile(1024)
   const [showAllAreas, setShowAllAreas] = React.useState<Boolean>(true)
@@ -213,7 +216,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
               <PatternInfo
                   title="DESCUBRA"
                   description="Onde Comprar"
-                  onClick={() => alert('Vai para Onde Comprar')}
+                  onClick={() => router.push('/onde-comprar')}
                   icon={
                     <EarthIcon
                       width={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
@@ -226,7 +229,7 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
               <PatternInfo
                   title="Solicite Nosso"
                   description="Mostruário"
-                  onClick={() => alert('Vai para Solicitar Mostruário')}
+                  onClick={() => router.push('/contact')}
                   icon={
                     <BagIcon
                       width={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}
@@ -239,7 +242,12 @@ export const Contact = ({ contact_channels }:ContactViewProps) => {
               <PatternInfo
                   title="Confira Nossas"
                   description="Vagas abertas"
-                  onClick={() => alert('Vai para Onde Comprar')}
+                  onClick={() =>
+                    window.open(
+                      'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup',
+                      '_blank'
+                    )
+                  }
                   icon={
                     <BadgeIcon
                       width={{ base: '30px', xs: '30px', sm: '58px', lg: '70px', xl: '80px' }}

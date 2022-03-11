@@ -203,14 +203,14 @@ export default function Home(props: HomeProps) {
       <SectionBanners
         banner1={{
           onClick: () => router.push('/somos-berneck'),
-          imgSrc: '/assets/imgs/cultivamos_nossos_valores.png',
+          imgSrc: '/assets/imgs/banner_compromisso.jpg',
           title: 'CONHEÇA',
           description: 'Nosso compromisso',
           titleColor: 'green.600',
           descriptionColor: 'white'
         }}
         banner2={{
-          onClick: () => router.push('/somos-berneck'),
+          onClick: () => router.push('/divisao-florestal'),
           imgSrc: '/img/reflorestamento.jpeg',
           title: 'CONHEÇA',
           description: 'Divisão Florestal',
