@@ -11,7 +11,7 @@ export const footerNavigation = {
   },
   column2: {
     titleKey: 'column2Title',
-    href: '#',
+    href: '/nosso-compromisso',
     items: [
       { titleKey: 'column2Subitem1', href: '/nosso-compromisso#meio-ambiente' },
       { titleKey: 'column2Subitem2', href: '/nosso-compromisso#nossa-gente' },

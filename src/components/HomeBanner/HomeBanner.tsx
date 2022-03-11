@@ -123,7 +123,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
           <Box marginTop="0px">
             <ArrowIcon
               width={{
-                base: '20px',
+                base: '12px',
                 md: '10px',
                 lg: '14px',
                 xl: '16px',
@@ -137,7 +137,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
               marginBottom={'2%'}
               variant={'canal-bnk-menu' as any}
               fontSize={{
-                base: '20px',
+                base: '12px',
                 md: '10px',
                 lg: '13px',
                 xl: '16px',
@@ -147,14 +147,14 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
               {items[currentItem].category}
             </Text>
             <Box
+              // background={"red"}
               opacity={opacity ? '1' : '0'}
               transition={'0.4s'}
               maxWidth={{
                 base: '90vw',
-                md: '550px',
-                lg: '650px',
-                xl: '750px',
-                '2xl': '850px'
+                md: '350px',
+                lg: '450px',
+                xl: '750px'
               }}
               w="100vw"
               height={{ md: '18vw' }}
@@ -164,18 +164,19 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                 as="h1"
                 variant={'h1' as any}
                 color="green.900"
+                fontWeight= 'bold'
                 fontSize={{
                   base: '30px',
-                  md: '36px',
+                  md: '32px',
                   lg: '45px',
                   xl: '54px',
                   '2xl': '68px'
                 }}
                 lineHeight ={{
                   base: '35px',
-                  md: '40px',
-                  lg: '50px',
-                  xl: '80px'
+                  md: '33px',
+                  lg: '45px',
+                  xl: '75px'
                 }}
                 maxHeight={'100%'}
                 marginLeft={{ base: '-30px', md: '0' }}
@@ -209,7 +210,11 @@ const Indicator = ({ items, currentItem }: IndicatorProps) => {
         return i === currentItem ? (
           <Box
             key={i}
-            margin="5px"
+            marginTop={{
+              base: '-10px',
+              lg: '-25px'
+            }}
+            marginLeft = {"5px"}
             border="1px solid"
             borderColor={'brown.300'}
             w={{
@@ -232,7 +237,11 @@ const Indicator = ({ items, currentItem }: IndicatorProps) => {
         ) : (
           <Box
             key={i}
-            margin="5px"
+            marginTop={{
+              base: '-10px',
+              lg: '-25px'
+            }}
+            marginLeft = {"5px"}
             w={{
               base: '20px',
               md: '10px',

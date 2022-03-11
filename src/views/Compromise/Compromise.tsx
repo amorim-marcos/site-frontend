@@ -1181,7 +1181,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
             flex="1"
           >
             <Button
-              onClick={() => alert('Quero fazer uma denúncia anônima')}
+              onClick={() => router.push('/contact')}
               w={{ base: '110%', sm: '120%', lg: '130%', xl: '120%' }}
               h={{ base: '30%', sm: '30%', lg: '30%', xl: '40%' }}
               padding={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
