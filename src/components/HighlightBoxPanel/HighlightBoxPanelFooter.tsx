@@ -18,7 +18,7 @@ const HighlightBoxPanelFooter = (props: HighlightBoxPanelProps) => (
     <Flex 
       // alignItems="flex-start"
       marginLeft={{ base: '3%', sm: '5%', lg: '4%', xl: '3%'}}
-      marginTop={{ base: '3%', sm: '3.5%', lg: '4%', xl: '3%'}}
+      marginTop={{ base: '4%', sm: '3.5%', lg: '4%', xl: '3%'}}
       // bg="red"
       flex="1"
     >
@@ -40,7 +40,7 @@ const HighlightBoxPanelFooter = (props: HighlightBoxPanelProps) => (
 const Title = (props: { title: string }) => (
   <Text
     variant={"h4" as any}
-    fontSize = {{ base: '14px', sm: '12px', lg: '16px', xl: '20px' }}
+    fontSize = {{ base: '15px', sm: '16px', lg: '16px', xl: '20px' }}
     whiteSpace="pre"
     letterSpacing="-0.46px"
     color={"green.600"}
@@ -52,7 +52,7 @@ const Title = (props: { title: string }) => (
 const SubTitle = (props: { subtitle: string }) => (
   <Text
     variant={"h5" as any}
-    fontSize = {{ base: '12px', sm: '10px', lg: '14px', xl: '18px' }}
+    fontSize = {{ base: '12px', sm: '12px', lg: '14px', xl: '17px' }}
     color="white"
     letterSpacing="-0.36px"
   >

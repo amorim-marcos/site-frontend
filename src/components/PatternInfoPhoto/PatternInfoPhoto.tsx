@@ -26,7 +26,7 @@ export const PatternInfoPhoto = (props: PatternInfoPhotoProps) => {
       }}
       overflowY="hidden"
       overflowX="hidden"
-      bg="tomato"
+      // bg="tomato"
       padding={{ base: '5%' }}
       h={{
         base: '200px',
