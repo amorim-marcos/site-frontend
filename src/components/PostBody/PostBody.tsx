@@ -9,6 +9,7 @@ import DOMPurify from 'dompurify'
 
 export type PostBodyProps = {
   category?: string
+  categoryColor?: string
   publishDate?: string
   postTitle?: string
   postContent?: string
@@ -18,6 +19,7 @@ export type PostBodyProps = {
 }
 export const PostBody = ({
   category,
+  categoryColor,
   publishDate,
   postTitle,
   postContent,
@@ -92,7 +94,7 @@ export const PostBody = ({
             paddingLeft={{ base: '0', md: '3%' }}
           >
             <Flex marginBottom={{ base: '15px', md: '0' }} alignItems="center">
-              <ArrowIcon width="10px" stroke="green.600" />
+              <ArrowIcon width="10px" stroke={categoryColor} />
               <Text marginLeft={'2%'} variant={'body' as any}>
                 {category}
               </Text>
@@ -101,6 +103,7 @@ export const PostBody = ({
               titleString={postTitle}
               textAlign="left"
               alignSelf="left"
+              boxColorBottom={categoryColor}
             />
           </Flex>
           {/* End of title and category */}

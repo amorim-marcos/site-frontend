@@ -13,6 +13,7 @@ export default function PostPage(props: PostPageProps) {
     <PostsView
       postBody={{
         category: props.currentPost.category.name,
+        categoryColor: props.currentPost.category.color,
         publishDate: props.currentPost.date as string,
         postTitle: props.currentPost.title,
         postContent: props.currentPost.content,
@@ -24,7 +25,7 @@ export default function PostPage(props: PostPageProps) {
           return {
             category: item.category.name,
             urlImage: item.cover,
-            color: 'brown.150',
+            color: item.category.color,
             title: item.title
           }
         })
