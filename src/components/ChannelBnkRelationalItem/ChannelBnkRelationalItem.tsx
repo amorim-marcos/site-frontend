@@ -62,16 +62,51 @@ export const ChannelBnkRelationalItem = ({
         h="50%"
       >
         <Flex padding="8%" flexDirection="column">
-          <Flex alignItems="center">
-            <ArrowIcon stroke={color} width="5%" />
-            <Text marginLeft="3%" color="gray.400">
+          <Flex 
+            alignItems="flex-start"
+            justifyContent={"flex-start"}
+            // bg = "red"
+          >
+            <ArrowIcon 
+              stroke={color} 
+              width = {{
+                base: '5%',
+                md: '8%',
+                lg: '10%',
+                xl: '5%'
+              }}
+            />
+            <Text as="h5" 
+              variant={'h5' as any}
+              marginLeft="3%" 
+              color="gray.400"
+              marginTop = {{
+                base: '-4px',
+                md: '-5px',
+                lg: '-4px',
+                xl: '-4px'
+              }}
+            >
               {categoryTitle}
             </Text>
           </Flex>
           <Text
-            marginTop="8%"
+            marginTop= {{
+              base: '10px',
+              sm: '15px',
+              md: '10px',
+              lg: '18px',
+              xl: '20px'
+            }}
             variant={'breadcrumbs-selected' as any}
             color="green.800"
+            lineHeight = {{
+              base: '14px',
+              sm: '18px',
+              md: '20px',
+              lg: '25px',
+              xl: '30px'
+            }}
           >
             {title}
           </Text>
