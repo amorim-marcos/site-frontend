@@ -21,7 +21,6 @@ export const PostsView = ({
   relationalContent,
   coverImageUrl
 }: PostViewProps) => {
-  console.log(postBody)
   return (
     <>
       <Pagebar
