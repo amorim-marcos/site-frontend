@@ -7,6 +7,7 @@ export type HomeBannerProps = {
     imageUrl: string
     category: string
     title: string
+    color: string
   }[]
 }
 export const HomeBanner = ({ items }: HomeBannerProps) => {
@@ -129,7 +130,8 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                 xl: '16px',
                 '2xl': '20px'
               }}
-              stroke="green.600"
+              // stroke="green.600"
+              stroke =  {items[currentItem].color}
             />
           </Box>
           <Flex marginLeft={'2%'} flexDirection={'column'}>

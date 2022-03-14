@@ -30,6 +30,7 @@ type PostProps = {
   category: {
     id: number
     name: string
+    color: string
   }
   cover: {
     name: string
@@ -41,13 +42,19 @@ type PostProps = {
   }[]
 }
 
+
+
 export type HomeProps = {
   highlights: PostProps[]
   latest: PostProps[]
 }
 
+
+
 export default function Home(props: HomeProps) {
   const router = useRouter()
+
+
   return (
     <Box maxWidth="1920px" marginX="auto" bg="white.100">
       {/* INICIO BANNER CAROUSEL */}
@@ -57,6 +64,7 @@ export default function Home(props: HomeProps) {
             return {
               imageUrl: item.cover.url,
               category: item.category.name,
+              color: item.category.color,
               title: item.title
             }
           })}
@@ -72,7 +80,7 @@ export default function Home(props: HomeProps) {
               category: item.category.name,
               title: item.title,
               urlImage: item.cover.url,
-              color: 'brown.150'
+              color: item.category.color
             }
           })}
         />
