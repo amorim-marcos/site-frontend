@@ -36,6 +36,7 @@ export const initialFilters: Filters = {
 export type BPCatalogProps = {
   bps: {
     id: any
+    scale: number
     name: string
     complete_name: string
     product_texture: string
