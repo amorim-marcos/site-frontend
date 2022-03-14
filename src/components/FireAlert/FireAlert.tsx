@@ -68,11 +68,11 @@ export const FireAlert = ({
                 w={{ base: '60%', sm: '60%', lg: '60%', xl: '60%'}}
                 h={{ base: '10%', sm: '610%', lg: '10%', xl: '10%'}}
               >
-                <CloseIcon
+                {/* <CloseIcon
                   width={{ base: '16px', sm: '19px', lg: '20px', xl: '20px' }}
                   height={{ base: '16px', sm: '19px', lg: '20px', xl: '20px' }}
                   color={"white"}
-                />
+                /> */}
               </Button>
             </Flex>
       

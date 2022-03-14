@@ -6,13 +6,15 @@ export type CompletedTitleProps = BoxProps &
     // Title
     titleColor?: string
     titleString?: string
+    boxColorBottom?: string
   }
 export const CompletedTitle = ({
   // Heading1
   titleColor = 'green.800',
   titleString = 'BERNECK',
   alignSelf = 'center',
-  textAlign = 'left'
+  textAlign = 'left',
+  boxColorBottom = 'green.600'
 }: CompletedTitleProps) => {
   return (
     <Box>
@@ -51,7 +53,8 @@ export const CompletedTitle = ({
               marginTop={{ base: '3px', sm: '10px', lg: '20px', xl: '20px' }}
               h="3px"
               w={{ base: '60px', sm: '70px', lg: '80px', xl: '90px' }}
-              bg="green.600"
+              // bg="green.600"
+              bg = {boxColorBottom}
               borderRadius="20px"
             />
           </Flex>

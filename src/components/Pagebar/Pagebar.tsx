@@ -34,7 +34,7 @@ export const Pagebar = ({ paths }: PagebarProps) => {
       display={{ base: 'none', sm: 'flex' }}
       alignItems="center"
       justifyContent="space-between"
-      bg="green.500"
+      bg="green.950"
       maxWidth="1920px"
       aria-label="pagebar-container"
       marginX="auto"

@@ -135,12 +135,13 @@ export const Post = (props: PostProps) => {
         pl={{ base: '24px', lg: '38px' }}
         pr={{ base: '33px', lg: '29px' }}
         bg={getPanelColor(currentCategory)}
+        // bg = "red"
       >
         <Flex align="center" justify="space-between">
           <Flex data-testid="post-category" gap="14px" align="center">
             <Box>
               <Arrow
-                color={getPanelColor(currentCategory)}
+                color={getHoverIndicatorColor()}
                 width={{ base: '7px', lg: '9px' }}
                 height={{ base: '10px', lg: '13px' }}
               />

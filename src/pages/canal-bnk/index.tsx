@@ -50,6 +50,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         name: string
         id: number
         description: string
+        color: string
       }
       content: string
       tags: {
@@ -63,7 +64,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         category: {
           name: item.category.name,
           id: item.category.id,
-          description: item.category.description
+          description: item.category.description,
+          color: item.category.color
         },
         content: DOMPurify.sanitize(item.content),
         cover: process.env.NEXT_PUBLIC_API_URL + item.cover.url,

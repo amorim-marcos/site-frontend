@@ -2,7 +2,7 @@ export const Heading = {
   variants: {
     h1: {
       color: 'green.800',
-      fontSize: '70px',
+      fontSize: { base: '20px', sm: '40px', lg: '50px', xl: '70px' },
       fontWeight: 700
     },
     h2: {

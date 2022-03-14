@@ -80,7 +80,7 @@ function CanalBNKFC(props: CanalBNKProps) {
       {currentCategory !== -1 ? (
         <Pagebar
           paths={[
-            { title: 'Canal Bnk', url: '/canal-bnk' },
+            { title: 'Canal BNK', url: '/canal-bnk' },
             {
               title: categories[currentCategory].name,
               url: '/canal-bnk'
@@ -88,7 +88,7 @@ function CanalBNKFC(props: CanalBNKProps) {
           ]}
         />
       ) : (
-        <Pagebar paths={[{ title: 'Canal Bnk', url: '/canal-bnk' }]} />
+        <Pagebar paths={[{ title: 'Canal BNK', url: '/canal-bnk' }]} />
       )}
 
       <Intro

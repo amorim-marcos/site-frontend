@@ -106,9 +106,27 @@ export const BannerProducts = ({
             flex="1"
             w={sizeType === 'rectangle' ? '50%' : '100%'}
           >
-            <Text as="h1" variant={'h1' as any} color={titleColor}>
+            <Text as="h1" 
+              variant={'h1' as any}
+              color={titleColor}
+              lineHeight={{ base: '35px', sm: '35px', lg: '40px', xl: '50px' }}
+            >
               {title}
             </Text>
+
+              {/* <Flex
+                bg="red"
+                alignItems={'flex-end'}
+              >
+                <Text as="h3" 
+                  variant={'h3' as any}
+                  color={titleColor}
+                  // lineHeight={{ base: '35px', sm: '35px', lg: '40px', xl: '50px' }}
+                >
+                  ®
+                </Text>
+              </Flex> */}
+
           </Flex>
           <Flex
             // bg="white"

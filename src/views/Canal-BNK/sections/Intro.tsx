@@ -128,7 +128,11 @@ export const Intro = (props: { posts: IPost[] }) => {
               // pb="42px"
             />
 
-            <Box w={'100%'} marginTop="50px">
+            <Box 
+              w={'100%'} 
+              marginTop="50px"
+              // bg = "red"
+            >
               {!seeOnlyPosts && (
                 <Text
                   as="h1"
@@ -299,12 +303,13 @@ export const Intro = (props: { posts: IPost[] }) => {
               <Flex
                 data-testid="intro-content-more"
                 direction={{ lg: 'column' }}
-                gap="44px"
+                gap="40px"
                 whiteSpace="nowrap"
                 w={{ base: '90%', lg: 'auto' }}
                 overflowX={{ base: 'scroll', lg: 'hidden' }}
-                overflowY="hidden"
+                // overflowY="hidden"
                 align="center"
+                // bg = "red"
               >
                 {props.posts.length > 1 && <SmallPost post={props.posts[1]} />}
                 {props.posts.length > 2 && <SmallPost post={props.posts[2]} />}

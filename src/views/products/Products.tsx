@@ -17,7 +17,7 @@ export const Products = () => {
       <Pagebar
         paths={[
           {
-            title: 'Produtos BERNECK®',
+            title: 'Produtos',
             url: 'products'
           }
         ]}

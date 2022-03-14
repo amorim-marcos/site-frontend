@@ -30,6 +30,7 @@ type PostProps = {
   category: {
     id: number
     name: string
+    color: string
   }
   cover: {
     name: string
@@ -42,13 +43,19 @@ type PostProps = {
   url_code: string
 }
 
+
+
 export type HomeProps = {
   highlights: PostProps[]
   latest: PostProps[]
 }
 
+
+
 export default function Home(props: HomeProps) {
   const router = useRouter()
+
+
   return (
     <Box maxWidth="1920px" marginX="auto" bg="white.100">
       {/* INICIO BANNER CAROUSEL */}
@@ -59,10 +66,11 @@ export default function Home(props: HomeProps) {
               imageUrl: item.cover.url,
               category: {
                 id: item.category.id,
-                name: item.category.name
+                name: item.category.name,
               },
               title: item.title,
-              url_code: item.url_code
+              url_code: item.url_code,
+              color: item.category.color
             }
           })}
         />
@@ -77,7 +85,7 @@ export default function Home(props: HomeProps) {
               category: item.category.name,
               title: item.title,
               urlImage: item.cover.url,
-              color: 'brown.150'
+              color: item.category.color
             }
           })}
         />
@@ -207,15 +215,15 @@ export default function Home(props: HomeProps) {
       {/* INICIO dos banners */}
       <SectionBanners
         banner1={{
-          onClick: () => router.push('/somos-berneck'),
-          imgSrc: '/assets/imgs/cultivamos_nossos_valores.png',
+          onClick: () => router.push('/nosso-compromisso'),
+          imgSrc: '/assets/imgs/banner_compromisso.jpg',
           title: 'CONHEÇA',
           description: 'Nosso compromisso',
           titleColor: 'green.600',
           descriptionColor: 'white'
         }}
         banner2={{
-          onClick: () => router.push('/somos-berneck'),
+          onClick: () => router.push('/divisao-florestal'),
           imgSrc: '/img/reflorestamento.jpeg',
           title: 'CONHEÇA',
           description: 'Divisão Florestal',

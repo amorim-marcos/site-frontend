@@ -38,6 +38,9 @@ export type ForestsViewProps = {
     section6_text: string
     section6_title: string
     value_chain_counties: number
+    states: number
+    pinus_cultivation: number
+    planted_trees: number
     monitored_animals: number
     monitored_animals_and_farms_text: string
     monitored_farms: number
@@ -226,9 +229,9 @@ export const ForestsView = (props: ForestsViewProps) => {
               <Infographic
                 content3Text="mil hectares"
                 content1DisplayIcon="yes"
-                content1IconName="trees"
-                content2Text={props.page_content.planted_forests.toString()}
-                titleSubscript1Text="Florestas Plantadas para Produção"
+                content1IconName="pinus"
+                content2Text={props.page_content.pinus_cultivation.toString()}
+                titleSubscript1Text="Cultivo Florestal do Pinus"
               />
             </Flex>
             <Flex
@@ -239,9 +242,9 @@ export const ForestsView = (props: ForestsViewProps) => {
               <Infographic
                 content3Text="mil hectares"
                 content1DisplayIcon="yes"
-                content1IconName="forest"
+                content1IconName="trees"
                 content2Text={props.page_content.preserved_native_forests.toString()}
-                titleSubscript1Text="Preservação de Florestas Nativas"
+                titleSubscript1Text="Florestas Efetivamente Plantadas"
               />
             </Flex>
             <Flex
@@ -250,11 +253,11 @@ export const ForestsView = (props: ForestsViewProps) => {
               height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px' }}
             >
               <Infographic
-                content3Text="municípios"
+                content3Text="mil hectares"
                 content1DisplayIcon="yes"
-                content1IconName="house"
-                content2Text={props.page_content.value_chain_counties.toString()}
-                titleSubscript1Text="Cadeia de Valor"
+                content1IconName="forest"
+                content2Text={props.page_content.planted_forests.toString()}
+                titleSubscript1Text="Preservação de Florestas Naturais"
               />
             </Flex>
             <Flex
@@ -263,27 +266,27 @@ export const ForestsView = (props: ForestsViewProps) => {
               height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px' }}
             >
               <Infographic
-                content3Text="mil funcionários"
+                content3Text="milhões por ano"
                 content1DisplayIcon="yes"
-                content1IconName="employees"
-                content2Text={props.page_content.community_development.toString()}
-                titleSubscript1Text="Desenvolvimento da Comunidade"
+                content1IconName="mudas"
+                content2Text={props.page_content.planted_trees.toString()}
+                titleSubscript1Text="Árvores Plantadas"
               />
             </Flex>
-            {/* <Flex
+            <Flex
               // bg="blue.100"
               width={{ base: '320px', sm: '250px', lg: '300px', xl: '30%' }}
               height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px' }}
             >
               <Infographic
-                content3Text="mil hectares"
+                content3Text="estados"
                 content1DisplayIcon="yes"
-                content1IconName="synergy"
-                content2Text="92"
-                titleSubscript1Text="Preservação de Florestas Nativas"
+                content1IconName="earth"
+                content2Text={props.page_content.states.toString()}
+                titleSubscript1Text="PR, SC, RS e SP"
               />
-            </Flex> */}
-            {/* <Flex
+            </Flex>
+            <Flex
               // bg="purple.100"
               width={{ base: '320px', sm: '250px', lg: '300px', xl: '30%' }}
               height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px' }}
@@ -291,11 +294,11 @@ export const ForestsView = (props: ForestsViewProps) => {
               <Infographic
                 content3Text="municípios"
                 content1DisplayIcon="yes"
-                content1IconName="earth"
-                content2Text="154"
-                titleSubscript1Text="Teste com texto mais comprido"
+                content1IconName="house"
+                content2Text={props.page_content.value_chain_counties.toString()}
+                titleSubscript1Text="Cadeia de Suprimentos"
               />
-            </Flex> */}
+            </Flex>
           </Flex>
         </Flex>
       </Flex>
@@ -468,7 +471,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                   flex={2}
                   // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
                 >
-                  <Image src="/assets/imgs/IMG_0618.png" />
+                  <Image src="/assets/imgs/tamandua.png" />
                 </Flex>
                 <Flex
                   // bg='gray.400'
@@ -568,7 +571,7 @@ export const ForestsView = (props: ForestsViewProps) => {
               }}
             />
             <Text marginTop={{ base: '10%', sm: '5%', lg: '4%', xl: '4%' }}>
-              {props.page_content.section4_title}
+              {props.page_content.section4_text}
             </Text>
           </Box>
 
@@ -864,9 +867,9 @@ export const ForestsView = (props: ForestsViewProps) => {
             // bg='yellow'
             flex="1"
           >
-            <Image src="/assets/imgs/170130-Berneck-58.png" />
+            <Image src="/assets/imgs/fornecedor_florestal.png" />
             <Button
-              onClick={() => alert('seja um fornecedor florestal')}
+              onClick={() => router.push('/contact')}
               w={{ base: '90%', sm: '70%', lg: '90%', xl: '70%' }}
               h={{ base: '100%', sm: '70%', lg: '15%', xl: '10%' }}
               padding={{ base: '4%', sm: '3%', lg: '5%', xl: '5%' }}
@@ -949,7 +952,7 @@ export const ForestsView = (props: ForestsViewProps) => {
             </Text>
           </Box>
           {/* BOX 2 */}
-          <Box
+          <Flex
             margin={{
               base: '0% 5% 5% 5%',
               sm: '0% 5% 5% 5%',
@@ -967,6 +970,8 @@ export const ForestsView = (props: ForestsViewProps) => {
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             backgroundSize={'cover'}
+            alignItems='center'
+            justifyContent='center'
           >
             {props.page_content.public_resume.map((item, i) => {
               return (
@@ -981,7 +986,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                 </Link>
               )
             })}
-          </Box>
+          </Flex>
         </Flex>
       </Flex>
       {/* FIM Resumo público de Manejo Florestal */}
