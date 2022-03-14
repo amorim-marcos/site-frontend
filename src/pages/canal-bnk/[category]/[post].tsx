@@ -55,7 +55,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         category: {
           name: item.category.name,
           id: item.category.id,
-          description: item.category.description
+          description: item.category.description,
+          color: item.category.color
         },
         content: DOMPurify.sanitize(item.content),
         cover: process.env.NEXT_PUBLIC_API_URL + item.cover.url,
@@ -73,7 +74,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     category: {
       name: currentPost.category.name,
       id: currentPost.category.id,
-      description: currentPost.category.description
+      description: currentPost.category.description,
+      color: currentPost.category.color
     },
     content: DOMPurify.sanitize(currentPost.content),
     cover: process.env.NEXT_PUBLIC_API_URL + currentPost.cover.url,
@@ -96,6 +98,7 @@ type PostResponse = {
     name: string
     id: number
     description: string
+    color: string
   }
   content: string
   tags: {
