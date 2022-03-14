@@ -3,10 +3,14 @@ import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
 
 export type PostRelationalContentProps = {
   items: {
-    category: string
+    category: {
+      id: number,
+      name: string,
+      color: string
+    },
     urlImage: string
-    color: string
     title: string
+    url_code: string
   }[]
 }
 export const PostRelationalContent = ({
@@ -36,14 +40,16 @@ export const PostRelationalContent = ({
               i < 4 && (
                 <ChannelBnkRelationalItem
                   key={i}
-                  category={item.category}
+                  categoryTitle = {item.category.name}
+                  categoryId = {item.category.id}
+                  color={item.category.color}
                   urlImage={item.urlImage}
-                  color={item.color}
                   title={item.title}
                   marginRight={{
                     base: '40px',
                     md: items.length >= 4 ? '0' : '3%'
                   }}
+                  url_code = {item.url_code}
                 />
               )
             )

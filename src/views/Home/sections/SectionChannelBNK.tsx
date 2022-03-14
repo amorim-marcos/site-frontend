@@ -3,9 +3,13 @@ import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
 
 export type SectionChannelBNKProps = {
   items: {
-    category: string
+    category: {
+      id: number,
+      name: string,
+      color: string
+    },
+    url_code: string
     urlImage: string
-    color: string
     title: string
   }[]
 }
@@ -62,9 +66,11 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
             return (
               <ChannelBnkRelationalItem
                 key={j}
-                category={item.category}
+                categoryTitle = {item.category.name}
+                categoryId = {item.category.id}
+                color={item.category.color}
+                url_code={item.url_code}
                 urlImage={item.urlImage}
-                color={item.color}
                 title={item.title}
                 w="28%"
               />

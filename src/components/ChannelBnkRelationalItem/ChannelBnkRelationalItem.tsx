@@ -1,21 +1,35 @@
 import { Image, Flex, FlexProps, Box, Text } from '@chakra-ui/react'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { StringIfPlural } from 'react-i18next'
 
 export interface ChannelBnkRelationalItemProps extends FlexProps {
-  category: string
+  categoryTitle: string 
+  categoryId: number
+  url_code: string
   title: string
   color: string
   urlImage: string
 }
 export const ChannelBnkRelationalItem = ({
-  category,
+  categoryTitle,
+  categoryId,
+  url_code,
   urlImage,
   title,
   color,
   ...props
 }: ChannelBnkRelationalItemProps) => {
   const [mouseDown, setMouseDown] = useState(false)
+  const router = useRouter()
+
+  function navigateToThePost() {
+    router.push(
+      `/canal-bnk/${categoryId}/${url_code}`
+    )
+  }
+
   return (
     <Flex
       onMouseEnter={() => setMouseDown(true)}
@@ -26,6 +40,7 @@ export const ChannelBnkRelationalItem = ({
       minWidth={{ base: '60vw', sm: '50vw', md: '0' }}
       {...props}
       cursor="pointer"
+      onClick={navigateToThePost}
     >
       <Box
         h={{
@@ -50,7 +65,7 @@ export const ChannelBnkRelationalItem = ({
           <Flex alignItems="center">
             <ArrowIcon stroke={color} width="5%" />
             <Text marginLeft="3%" color="gray.400">
-              {category}
+              {categoryTitle}
             </Text>
           </Flex>
           <Text

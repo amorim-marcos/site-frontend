@@ -23,9 +23,13 @@ export default function PostPage(props: PostPageProps) {
       relationalContent={{
         items: props.posts.map((item) => {
           return {
-            category: item.category.name,
+            category: {
+              id: item.category.id,
+              name: item.category.name,
+              color: item.category.color,
+            },
+            url_code: item.url_code,
             urlImage: item.cover,
-            color: item.category.color,
             title: item.title
           }
         })
