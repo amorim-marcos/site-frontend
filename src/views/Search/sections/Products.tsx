@@ -25,7 +25,9 @@ export const SectionProducts = (props: { content: unknown[] }) => {
           role="group"
           padding="33px 33px 28px"
           direction="column"
-          onClick={() => router.push(`/products/bp-berneck/catalog/${item.id}`)}
+          onClick={() =>
+            router.push(`/products/bp-berneck/catalog/${item.url_code}`)
+          }
         >
           <BpPatternImage
             image_url={`${process.env.NEXT_PUBLIC_API_URL}${item.pattern_image.url}`}

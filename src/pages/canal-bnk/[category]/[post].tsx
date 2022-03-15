@@ -35,6 +35,7 @@ export default function PostPage(props: PostPageProps) {
         })
       }}
       backgroundColor="brown.100"
+      postCategory={props.currentPost.category}
     />
   )
 }
