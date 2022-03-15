@@ -161,6 +161,7 @@ export const PostBody = ({
 }
 
 export const TagItem = ({ tag = 'tag' }) => {
+  const [hover, setHover] = useState(false)
   return (
     <Box
       marginRight="2%"
@@ -168,8 +169,13 @@ export const TagItem = ({ tag = 'tag' }) => {
       padding="2%"
       bg="white.100"
       borderRadius="20px"
+      cursor="pointer"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
-      <Text variant={'body' as any}>{tag}</Text>
+      <Text variant={'body' as any} color={hover ? 'green.600' : 'green.900'}>
+        {tag}
+      </Text>
     </Box>
   )
 }
