@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { smartString } from 'utils/utils'
 
 export interface ChannelBnkRelationalItemProps extends FlexProps {
-  categoryTitle: string 
+  categoryTitle: string
   categoryId: number
   url_code: string
   title: string
@@ -25,9 +25,7 @@ export const ChannelBnkRelationalItem = ({
   const router = useRouter()
 
   function navigateToThePost() {
-    router.push(
-      `/canal-bnk/${categoryId}/${url_code}`
-    )
+    router.push(`/canal-bnk/${categoryId}/${url_code}`)
   }
 
   return (
@@ -62,43 +60,42 @@ export const ChannelBnkRelationalItem = ({
         h="50%"
       >
         <Flex padding="8%" flexDirection="column">
-          <Flex 
+          <Flex
             alignItems="flex-start"
-            justifyContent={"flex-start"}
+            justifyContent={'flex-start'}
             // bg = "red"
           >
-            <ArrowIcon 
-              stroke={color} 
-              width = {{
-                base: '8px',
-                md: '10px',
-                lg: '10px',
-                xl: '11px'
+            <ArrowIcon
+              stroke={color}
+              width={{
+                base: '5%',
+                md: '8%',
+                lg: '10%',
+                xl: '5%'
               }}
             />
-            <Text as="h5" 
+            <Text
+              as="h5"
               variant={'h5' as any}
-              marginLeft="3%" 
+              marginLeft="3%"
               color="gray.400"
-              marginTop = {{
+              marginTop={{
                 base: '-4px',
                 md: '-5px',
                 lg: '-4px',
                 xl: '-3px'
               }}
-              letterSpacing= {{
+              letterSpacing={{
                 base: '2px',
                 xl: '3px'
               }}
-              fontSize = {{ base: '12px', sm: '12px', lg: '13px', xl: '14px' }}
+              fontSize={{ base: '12px', sm: '12px', lg: '13px', xl: '14px' }}
             >
               {categoryTitle}
             </Text>
           </Flex>
           <Text
-            as="h4" 
-            variant={'h4' as any}
-            marginTop= {{
+            marginTop={{
               base: '10px',
               sm: '15px',
               md: '10px',
@@ -106,12 +103,12 @@ export const ChannelBnkRelationalItem = ({
               xl: '20px'
             }}
             color="green.800"
-            lineHeight = {{
-              base: '18px',
-              sm: '20px',
-              md: '18px',
-              lg: '22px',
-              xl: '25px'
+            lineHeight={{
+              base: '14px',
+              sm: '18px',
+              md: '20px',
+              lg: '25px',
+              xl: '30px'
             }}
           >
             {smartString(title, 40)}
