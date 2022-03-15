@@ -6,7 +6,9 @@ describe('<ChannelBnkRelationalItem />', () => {
   it('should render the component', () => {
     const { container } = render(
       <ChannelBnkRelationalItem
-        category="category"
+        categoryId={0}
+        url_code="url"
+        categoryTitle="title"
         title="title"
         color="red"
         urlImage="/"
