@@ -26,7 +26,7 @@ export default function PostPage(props: PostPageProps) {
             category: {
               id: item.category.id,
               name: item.category.name,
-              color: item.category.color,
+              color: item.category.color
             },
             url_code: item.url_code,
             urlImage: item.cover,
@@ -34,6 +34,7 @@ export default function PostPage(props: PostPageProps) {
           }
         })
       }}
+      backgroundColor="brown.100"
     />
   )
 }

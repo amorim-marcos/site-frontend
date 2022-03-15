@@ -1,5 +1,6 @@
 import { Heading, Flex, Box, Text, BoxProps, TextProps } from '@chakra-ui/react'
 import React, { ReactNode } from 'react'
+import { ResponsiveCss } from 'types/responsive'
 
 export type CompletedTitleProps = BoxProps &
   TextProps & {
@@ -7,6 +8,7 @@ export type CompletedTitleProps = BoxProps &
     titleColor?: string
     titleString?: string
     boxColorBottom?: string
+    titleFontSize?: ResponsiveCss
   }
 export const CompletedTitle = ({
   // Heading1
@@ -14,7 +16,8 @@ export const CompletedTitle = ({
   titleString = 'BERNECK',
   alignSelf = 'center',
   textAlign = 'left',
-  boxColorBottom = 'green.600'
+  boxColorBottom = 'green.600',
+  titleFontSize
 }: CompletedTitleProps) => {
   return (
     <Box>
@@ -40,6 +43,7 @@ export const CompletedTitle = ({
               variant={'h1' as any}
               color={titleColor}
               textAlign={textAlign}
+              fontSize={titleFontSize}
             >
               {titleString}
             </Text>
@@ -54,7 +58,7 @@ export const CompletedTitle = ({
               h="3px"
               w={{ base: '60px', sm: '70px', lg: '80px', xl: '90px' }}
               // bg="green.600"
-              bg = {boxColorBottom}
+              bg={boxColorBottom}
               borderRadius="20px"
             />
           </Flex>

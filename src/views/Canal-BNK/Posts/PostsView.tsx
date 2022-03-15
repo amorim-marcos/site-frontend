@@ -14,12 +14,14 @@ export type PostViewProps = {
   postBody?: PostBodyProps
   relationalContent: PostRelationalContentProps
   coverImageUrl: string
+  backgroundColor: string
 }
 
 export const PostsView = ({
   postBody,
   relationalContent,
-  coverImageUrl
+  coverImageUrl,
+  backgroundColor
 }: PostViewProps) => {
   return (
     <>
@@ -44,7 +46,7 @@ export const PostsView = ({
         alignItems="center"
         maxWidth="1920px"
         marginX="auto"
-        bg="brown.100"
+        bg={backgroundColor}
         position="relative"
         overflow="hidden"
       >
