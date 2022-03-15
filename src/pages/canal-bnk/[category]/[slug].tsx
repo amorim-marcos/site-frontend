@@ -39,11 +39,11 @@ export default function PostPage(props: PostPageProps) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const postSlug = context.params?.post
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { slug } = ctx.query
   let res
 
-  res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/${postSlug}`)
+  res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/${slug}`)
   const currentPost = (await res.json()) as PostResponse
 
   res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts`)
@@ -52,8 +52,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const data: Post[] = allPosts
     .filter(
       (item: PostResponse) =>
-        item.url_code !== postSlug &&
-        item.category.id === currentPost.category.id
+        item.url_code !== slug && item.category.id === currentPost.category.id
     )
     .map((item: PostResponse) => {
       const post: Post = {
