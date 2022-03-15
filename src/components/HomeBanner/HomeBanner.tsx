@@ -172,6 +172,10 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
               as="h5" 
               variant={'h5' as any}
               textColor = {"black"}
+              letterSpacing= {{
+                base: '2px',
+                xl: '3px'
+              }}
             >
               {items[currentItem].category.name}
             </Text>

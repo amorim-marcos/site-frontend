@@ -100,10 +100,6 @@ export const Intro = (props: { posts: IPost[] }) => {
         <Flex
           data-testid="intro-header"
           w="100%"
-          // pt="67px"
-          // px={{ base: '10px', sm: '30px', lg: '0' }}
-          // pl={{ lg: '88px' }}
-          // pos="relative"
           justifyContent="space-between"
           zIndex={100}
           direction={{ base: 'column', lg: 'row' }}
@@ -195,11 +191,7 @@ export const Intro = (props: { posts: IPost[] }) => {
             width={{ base: '100%', lg: '70%', '2xl': '80%' }}
             wrap={{ base: 'nowrap', lg: 'wrap' }}
             justify="end"
-            // pos={{ lg: 'absolute' }}
-            // top={{ lg: '30%' }}
-            // right={{ lg: '88px' }}
-            gap="32px"
-            // pt={{ base: '27px', lg: '0' }}
+            gap={{ base: '10px', lg: '16px', xl: '22px' }}
             direction={{
               base: 'column',
               lg: 'row'
@@ -207,6 +199,7 @@ export const Intro = (props: { posts: IPost[] }) => {
             marginTop={{ base: '40px', lg: '0' }}
             alignItems={{ base: 'center', lg: 'flex-start' }}
             height={{ base: 'auto', lg: '150px' }}
+            // bg="blue"
           >
             <NavButton
               hideArrow
@@ -410,18 +403,31 @@ export const NavButton = (props: NavButtonProps) => {
         w="100%"
         px={{ base: '21px', lg: '37px' }}
         py={{ base: '17px', lg: '21px' }}
+        // bg="pink"
       >
         <Text
-          fontSize={{ base: '11px', sm: '14px', '2xl': '14px' }}
-          letterSpacing="2.4px"
-          fontWeight={600}
-          pt="2px"
+          as="h5" 
+          variant={'h5' as any}
+          textColor = {"black"}
+          letterSpacing= {{
+            base: '2px',
+            xl: '3px'
+          }}
+          fontSize = {{ base: '9px', sm: '13px', lg: '14px', xl: '16px' }}
         >
           {children}
         </Text>
 
         {!hideArrow && (
-          <Arrow color={borderColor as string} width="15px" height="21px" />
+          <Arrow 
+            color={borderColor as string} 
+            width = {{
+              base: '8px',
+              md: '10px',
+              lg: '10px',
+              xl: '12px'
+            }} 
+            height="21px" />
         )}
       </Flex>
     </Button>
