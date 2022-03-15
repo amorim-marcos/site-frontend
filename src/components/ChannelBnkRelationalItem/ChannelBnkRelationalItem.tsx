@@ -2,7 +2,6 @@ import { Image, Flex, FlexProps, Box, Text } from '@chakra-ui/react'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { StringIfPlural } from 'react-i18next'
 import { smartString } from 'utils/utils'
 
 export interface ChannelBnkRelationalItemProps extends FlexProps {
