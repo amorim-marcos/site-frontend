@@ -1,21 +1,35 @@
 import { Image, Flex, FlexProps, Box, Text } from '@chakra-ui/react'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { StringIfPlural } from 'react-i18next'
 
 export interface ChannelBnkRelationalItemProps extends FlexProps {
-  category: string
+  categoryTitle: string 
+  categoryId: number
+  url_code: string
   title: string
   color: string
   urlImage: string
 }
 export const ChannelBnkRelationalItem = ({
-  category,
+  categoryTitle,
+  categoryId,
+  url_code,
   urlImage,
   title,
   color,
   ...props
 }: ChannelBnkRelationalItemProps) => {
   const [mouseDown, setMouseDown] = useState(false)
+  const router = useRouter()
+
+  function navigateToThePost() {
+    router.push(
+      `/canal-bnk/${categoryId}/${url_code}`
+    )
+  }
+
   return (
     <Flex
       onMouseEnter={() => setMouseDown(true)}
@@ -26,6 +40,7 @@ export const ChannelBnkRelationalItem = ({
       minWidth={{ base: '60vw', sm: '50vw', md: '0' }}
       {...props}
       cursor="pointer"
+      onClick={navigateToThePost}
     >
       <Box
         h={{
@@ -47,16 +62,51 @@ export const ChannelBnkRelationalItem = ({
         h="50%"
       >
         <Flex padding="8%" flexDirection="column">
-          <Flex alignItems="center">
-            <ArrowIcon stroke={color} width="5%" />
-            <Text marginLeft="3%" color="gray.400">
-              {category}
+          <Flex 
+            alignItems="flex-start"
+            justifyContent={"flex-start"}
+            // bg = "red"
+          >
+            <ArrowIcon 
+              stroke={color} 
+              width = {{
+                base: '5%',
+                md: '8%',
+                lg: '10%',
+                xl: '5%'
+              }}
+            />
+            <Text as="h5" 
+              variant={'h5' as any}
+              marginLeft="3%" 
+              color="gray.400"
+              marginTop = {{
+                base: '-4px',
+                md: '-5px',
+                lg: '-4px',
+                xl: '-4px'
+              }}
+            >
+              {categoryTitle}
             </Text>
           </Flex>
           <Text
-            marginTop="8%"
+            marginTop= {{
+              base: '10px',
+              sm: '15px',
+              md: '10px',
+              lg: '18px',
+              xl: '20px'
+            }}
             variant={'breadcrumbs-selected' as any}
             color="green.800"
+            lineHeight = {{
+              base: '14px',
+              sm: '18px',
+              md: '20px',
+              lg: '25px',
+              xl: '30px'
+            }}
           >
             {title}
           </Text>

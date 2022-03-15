@@ -82,10 +82,14 @@ export default function Home(props: HomeProps) {
         <SectionChannelBNK
           items={props.latest.map((item, i) => {
             return {
-              category: item.category.name,
+              category: {
+                id: item.category.id,
+                name: item.category.name,
+                color: item.category.color,
+              },
               title: item.title,
               urlImage: item.cover.url,
-              color: item.category.color
+              url_code: item.url_code,
             }
           })}
         />
