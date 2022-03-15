@@ -23,8 +23,12 @@ export type Path = {
 
 export type PagebarProps = {
   paths?: Array<Path>
+  disconsiderCurrentPage?: boolean
 }
-export const Pagebar = ({ paths }: PagebarProps) => {
+export const Pagebar = ({
+  paths,
+  disconsiderCurrentPage = true
+}: PagebarProps) => {
   const { seeOnlyPosts, setSeeOnlyPosts } = useContext(CategoryContext)
   const pagebar = useTranslation('pagebar')
   const router = useRouter()
@@ -122,7 +126,12 @@ export const Pagebar = ({ paths }: PagebarProps) => {
           {paths &&
             paths.map((s, i) => {
               return (
-                <BreadcrumbItem key={i} isCurrentPage={i === paths.length - 1}>
+                <BreadcrumbItem
+                  key={i}
+                  isCurrentPage={
+                    disconsiderCurrentPage && i === paths.length - 1
+                  }
+                >
                   <BreadcrumbLink color="white.100" href={s.url}>
                     <Text
                       color="white.100"

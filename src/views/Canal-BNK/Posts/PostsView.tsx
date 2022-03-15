@@ -9,19 +9,22 @@ import {
 import React, { useState } from 'react'
 
 import { PostBodyProps } from '@components/PostBody/PostBody'
+import { Category } from 'types/data/Post'
 
 export type PostViewProps = {
   postBody?: PostBodyProps
   relationalContent: PostRelationalContentProps
   coverImageUrl: string
   backgroundColor: string
+  postCategory: Category
 }
 
 export const PostsView = ({
   postBody,
   relationalContent,
   coverImageUrl,
-  backgroundColor
+  backgroundColor,
+  postCategory
 }: PostViewProps) => {
   return (
     <>
@@ -29,17 +32,14 @@ export const PostsView = ({
         paths={[
           {
             title: 'Canal BNK',
-            url: '/'
+            url: '/canal-bnk'
           },
           {
             title: 'Mundo Berneck',
-            url: '/'
-          },
-          {
-            title: 'BERNECK® é destaque no prêmio Valor 1000',
-            url: '/'
+            url: `/canal-bnk/${postCategory.id}`
           }
         ]}
+        disconsiderCurrentPage={false}
       />
       <Flex
         flexDirection="column"
