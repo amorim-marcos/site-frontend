@@ -20,9 +20,7 @@ import { CategoryContext } from '..'
 import { Post as IPost } from 'types/data'
 import { Section } from './Section'
 import { Category } from 'types/data/Post/Category'
-import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
-import { useRouter } from 'next/router'
-import { smartString } from 'utils/utils'
+
 
 export const PANEL_COLOR = {
   all: 'white',
@@ -32,16 +30,6 @@ export const PANEL_COLOR = {
 }
 
 export const Intro = (props: { posts: IPost[] }) => {
-
-  const [mouseDown, setMouseDown] = useState(false)
-  const router = useRouter()
-
-  function navigateToThePost(categoryId: number, url_code: string) {
-    router.push(
-      `/canal-bnk/${categoryId}/${url_code}`
-    )
-  }
-
   const {
     currentCategory,
     changeCurrentCategory,
@@ -300,61 +288,30 @@ export const Intro = (props: { posts: IPost[] }) => {
               align="center"
               justify="center"
               direction={{ base: 'column', xl: 'row' }}
-              // zIndex={10}
-              // w="100%"
-              // pt="58px"
-              // pb={{ lg: '120px' }}
-              // gap={{ base: '47px', lg: '44px' }}
+              zIndex={10}
+              w="100%"
+              pt="58px"
+              pb={{ lg: '120px' }}
+              gap={{ base: '47px', lg: '44px' }}
             >
               {props.posts.length > 0 && <HeroPost post={props.posts[0]} />}
 
-
               <Flex
-                overflowX={{ base: 'scroll', md: 'visible' }}
-                alignItems="center"
-                direction={{ base: 'column', xl: 'row' }}
-                justifyContent={'space-between'}
-                bg="blue"
+                data-testid="intro-content-more"
+                direction={{ lg: 'column' }}
+                gap="40px"
+                whiteSpace="nowrap"
+                w={{ base: '90%', lg: 'auto' }}
+                overflowX={{ base: 'scroll', lg: 'hidden' }}
+                // overflowY="hidden"
+                align="center"
+                bg = "red"
               >
+                {props.posts.length > 1 && <SmallPost post={props.posts[1]} />}
+                {props.posts.length > 2 && <SmallPost post={props.posts[2]} />}
+                {props.posts.length > 3 && <SmallPost post={props.posts[3]} />}
 
-                {props.posts.length > 1 &&
-                  <Flex
-                    onMouseEnter={() => setMouseDown(true)}
-                    onMouseLeave={() => setMouseDown(false)}
-                    cursor="pointer"
-                    // onClick={navigateToThePost( props.posts[1].category.id, props.posts[1].url_code )}
-                  >
-                    <ChannelBnkRelationalItem
-                        categoryTitle = {props.posts[1].category.name}
-                        categoryId= {props.posts[1].category.id}
-                        url_code= {props.posts[1].url_code}
-                        title= {props.posts[1].title}
-                        color= {props.posts[1].category.color}
-                        urlImage= {props.posts[1].cover}
-                    />
-                  </Flex>
-                  }
-                {props.posts.length > 2 &&
-                  <ChannelBnkRelationalItem
-                    categoryTitle = {props.posts[2].category.name}
-                    categoryId= {props.posts[2].category.id}
-                    url_code= {props.posts[2].url_code}
-                    title= {props.posts[2].title}
-                    color= {props.posts[2].category.color}
-                    urlImage= {props.posts[2].cover}
-                  />
-                }
-                {props.posts.length > 3 &&
-                  <ChannelBnkRelationalItem
-                    categoryTitle = {props.posts[3].category.name}
-                    categoryId= {props.posts[3].category.id}
-                    url_code= {props.posts[3].url_code}
-                    title= {props.posts[3].title}
-                    color= {props.posts[3].category.color}
-                    urlImage= {props.posts[3].cover}
-                  />
-                }
-
+              
               </Flex>
             </Flex>
           )}
