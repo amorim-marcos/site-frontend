@@ -308,9 +308,11 @@ export const AppHeader = () => {
               borderBottomWidth={{ base: '1px' }}
             >
               <Input
+                autoFocus
                 value={searchQuery}
                 onChange={handleChange}
                 placeholder="Digite sua busca"
+                _placeholder={{ color: 'white.100' }}
                 border="none"
                 outline="none"
                 _active={{ border: 'none', outline: 'none' }}
