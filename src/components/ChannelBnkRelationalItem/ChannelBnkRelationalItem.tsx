@@ -2,6 +2,7 @@ import { Image, Flex, FlexProps, Box, Text } from '@chakra-ui/react'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { smartString } from 'utils/utils'
 
 export interface ChannelBnkRelationalItemProps extends FlexProps {
   categoryTitle: string 
@@ -69,10 +70,10 @@ export const ChannelBnkRelationalItem = ({
             <ArrowIcon 
               stroke={color} 
               width = {{
-                base: '5%',
-                md: '8%',
-                lg: '10%',
-                xl: '5%'
+                base: '8px',
+                md: '10px',
+                lg: '10px',
+                xl: '12px'
               }}
             />
             <Text as="h5" 
@@ -83,13 +84,15 @@ export const ChannelBnkRelationalItem = ({
                 base: '-4px',
                 md: '-5px',
                 lg: '-4px',
-                xl: '-4px'
+                xl: '-3px'
               }}
             >
               {categoryTitle}
             </Text>
           </Flex>
           <Text
+            as="h4" 
+            variant={'h4' as any}
             marginTop= {{
               base: '10px',
               sm: '15px',
@@ -97,17 +100,16 @@ export const ChannelBnkRelationalItem = ({
               lg: '18px',
               xl: '20px'
             }}
-            variant={'breadcrumbs-selected' as any}
             color="green.800"
             lineHeight = {{
-              base: '14px',
-              sm: '18px',
-              md: '20px',
-              lg: '25px',
-              xl: '30px'
+              base: '18px',
+              sm: '20px',
+              md: '18px',
+              lg: '22px',
+              xl: '25px'
             }}
           >
-            {title}
+            {smartString(title, 40)}
           </Text>
         </Flex>
         <Box
