@@ -211,7 +211,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                   xl: '55px'
                 }}
                 maxHeight={'100%'}
-                marginLeft={{ base: '-30px', md: '0' }}
+                marginLeft={{ base: '-10px', md: '0' }}
               >
                 {smartString(items[currentItem].title, 45)}
               </Text>

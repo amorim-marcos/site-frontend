@@ -130,33 +130,40 @@ export const Post = (props: PostProps) => {
         w={imgPos === 'top' || imgPos === 'bottom' ? rest.w : '54%'}
         direction="column"
         pos="relative"
-        gap="18px"
-        pt="21px"
-        pl={{ base: '24px', lg: '38px' }}
-        pr={{ base: '33px', lg: '29px' }}
+        // gap="18px"
+        // pt="21px"
+        // pl={{ base: '24px', lg: '38px' }}
+        // pr={{ base: '33px', lg: '29px' }}
         bg={getPanelColor(currentCategory)}
-        // bg = "red"
       >
-        <Flex align="center" justify="space-between">
-          <Flex data-testid="post-category" gap="14px" align="center">
+        <Flex 
+          align="center" 
+          justify="space-between"
+        >
+          <Flex 
+              data-testid="post-category" 
+              // gap={{ base: '5px', lg: '14px' }}
+              align="center">
             <Box>
               <Arrow
                 color={getHoverIndicatorColor()}
-                width={{ base: '7px', lg: '9px' }}
-                height={{ base: '10px', lg: '13px' }}
+                width = {{
+                  base: '8px',
+                  md: '10px',
+                  lg: '10px',
+                  xl: '12px'
+                }}
               />
             </Box>
 
-            <Text
-              as="h2"
-              w="100%"
-              whiteSpace="normal"
-              color={currentCategory === 2 ? 'white' : 'gray.350'}
-              fontSize={{ base: '10px', lg: '14px', xl: '10px', '2xl': '14px' }}
-              letterSpacing={
-                imgPos === 'top' || imgPos === 'bottom' ? '2.4px' : '2.1px'
-              }
-              fontWeight="600"
+            <Text as="h5" 
+              variant={'h5' as any}
+              textColor = {"black"}
+              letterSpacing= {{
+                base: '2px',
+                xl: '3px'
+              }}
+              // color={currentCategory === 2 ? 'white' : 'gray.350'}
               {...categoryTextProps}
             >
               {post?.category.name}

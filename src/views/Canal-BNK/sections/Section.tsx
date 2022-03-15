@@ -95,7 +95,7 @@ const SeeMore = (props: SeeMoreProps) => {
       align="center"
       justify="center"
       gap="14px"
-      marginRight={{ base: '22px', md: '30px', lg: '-65px', xl: '-25px' }}
+      marginRight={{ base: '22px', md: '30px', lg: '-65px', xl: '-18px' }}
       marginTop={{ base: '15px', md: '10px', lg: '20px' , xl: '25px' }}
       // bg="black"
     >

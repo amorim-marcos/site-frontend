@@ -20,6 +20,9 @@ import { CategoryContext } from '..'
 import { Post as IPost } from 'types/data'
 import { Section } from './Section'
 import { Category } from 'types/data/Post/Category'
+import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
+import { useRouter } from 'next/router'
+import { smartString } from 'utils/utils'
 
 export const PANEL_COLOR = {
   all: 'white',
@@ -29,6 +32,16 @@ export const PANEL_COLOR = {
 }
 
 export const Intro = (props: { posts: IPost[] }) => {
+
+  const [mouseDown, setMouseDown] = useState(false)
+  const router = useRouter()
+
+  function navigateToThePost(categoryId: number, url_code: string) {
+    router.push(
+      `/canal-bnk/${categoryId}/${url_code}`
+    )
+  }
+
   const {
     currentCategory,
     changeCurrentCategory,
@@ -93,7 +106,7 @@ export const Intro = (props: { posts: IPost[] }) => {
       />
 
       <Flex
-        w="100%"
+        // w="100%"
         direction="column"
         align={{ base: 'center', lg: 'inherit' }}
       >
@@ -103,12 +116,14 @@ export const Intro = (props: { posts: IPost[] }) => {
           justifyContent="space-between"
           zIndex={100}
           direction={{ base: 'column', lg: 'row' }}
-          padding={'5% 5% 0 5%'}
+          padding={{ base: '5% 5% 0 5%', xl: '5% 5% 0 5%' }}
+          // bg="yellow"
         >
           <Flex
             direction="column"
             alignSelf={{ base: 'flex-start' }}
             w={{ lg: '30%', '2xl': '23%' }}
+            // bg="tomato"
           >
             <Image
               src={
@@ -126,16 +141,16 @@ export const Intro = (props: { posts: IPost[] }) => {
 
             <Box 
               w={'100%'} 
-              marginTop="50px"
+              marginTop={{ base: '20px', lg: '30px', xl: '40px' }}
               // bg = "red"
             >
               {!seeOnlyPosts && (
                 <Text
                   as="h1"
-                  w="100%"
+                  // w="100%"
                   fontWeight={800}
-                  fontSize="21px"
-                  letterSpacing="2.1px"
+                  // fontSize="21px"
+                  // letterSpacing="2.1px"
                   color={
                     currentCategory === -1
                       ? '#436D5D'
@@ -153,8 +168,8 @@ export const Intro = (props: { posts: IPost[] }) => {
               {!seeOnlyPosts && (
                 <Text
                   as="h2"
-                  width={{ base: '100%', lg: '130%' }}
-                  fontSize="20px"
+                  // width={{ base: '100%', lg: '130%' }}
+                  fontSize={{ base: '16px', lg: '20px' }}
                   letterSpacing="-0.4px"
                   color={
                     currentCategory === -1
@@ -191,12 +206,12 @@ export const Intro = (props: { posts: IPost[] }) => {
             width={{ base: '100%', lg: '70%', '2xl': '80%' }}
             wrap={{ base: 'nowrap', lg: 'wrap' }}
             justify="end"
-            gap={{ base: '10px', lg: '16px', xl: '22px' }}
+            gap={{ base: '8px', lg: '16px', xl: '22px' }}
             direction={{
               base: 'column',
               lg: 'row'
             }}
-            marginTop={{ base: '40px', lg: '0' }}
+            marginTop={{ base: '30px', lg: '0' }}
             alignItems={{ base: 'center', lg: 'flex-start' }}
             height={{ base: 'auto', lg: '150px' }}
             // bg="blue"
@@ -285,28 +300,61 @@ export const Intro = (props: { posts: IPost[] }) => {
               align="center"
               justify="center"
               direction={{ base: 'column', xl: 'row' }}
-              zIndex={10}
-              w="100%"
-              pt="58px"
-              pb={{ lg: '120px' }}
-              gap={{ base: '47px', lg: '44px' }}
+              // zIndex={10}
+              // w="100%"
+              // pt="58px"
+              // pb={{ lg: '120px' }}
+              // gap={{ base: '47px', lg: '44px' }}
             >
               {props.posts.length > 0 && <HeroPost post={props.posts[0]} />}
 
+
               <Flex
-                data-testid="intro-content-more"
-                direction={{ lg: 'column' }}
-                gap="40px"
-                whiteSpace="nowrap"
-                w={{ base: '90%', lg: 'auto' }}
-                overflowX={{ base: 'scroll', lg: 'hidden' }}
-                // overflowY="hidden"
-                align="center"
-                // bg = "red"
+                overflowX={{ base: 'scroll', md: 'visible' }}
+                alignItems="center"
+                direction={{ base: 'column', xl: 'row' }}
+                justifyContent={'space-between'}
+                bg="blue"
               >
-                {props.posts.length > 1 && <SmallPost post={props.posts[1]} />}
-                {props.posts.length > 2 && <SmallPost post={props.posts[2]} />}
-                {props.posts.length > 3 && <SmallPost post={props.posts[3]} />}
+
+                {props.posts.length > 1 &&
+                  <Flex
+                    onMouseEnter={() => setMouseDown(true)}
+                    onMouseLeave={() => setMouseDown(false)}
+                    cursor="pointer"
+                    // onClick={navigateToThePost( props.posts[1].category.id, props.posts[1].url_code )}
+                  >
+                    <ChannelBnkRelationalItem
+                        categoryTitle = {props.posts[1].category.name}
+                        categoryId= {props.posts[1].category.id}
+                        url_code= {props.posts[1].url_code}
+                        title= {props.posts[1].title}
+                        color= {props.posts[1].category.color}
+                        urlImage= {props.posts[1].cover}
+                    />
+                  </Flex>
+                  }
+                {props.posts.length > 2 &&
+                  <ChannelBnkRelationalItem
+                    categoryTitle = {props.posts[2].category.name}
+                    categoryId= {props.posts[2].category.id}
+                    url_code= {props.posts[2].url_code}
+                    title= {props.posts[2].title}
+                    color= {props.posts[2].category.color}
+                    urlImage= {props.posts[2].cover}
+                  />
+                }
+                {props.posts.length > 3 &&
+                  <ChannelBnkRelationalItem
+                    categoryTitle = {props.posts[3].category.name}
+                    categoryId= {props.posts[3].category.id}
+                    url_code= {props.posts[3].url_code}
+                    title= {props.posts[3].title}
+                    color= {props.posts[3].category.color}
+                    urlImage= {props.posts[3].cover}
+                  />
+                }
+
               </Flex>
             </Flex>
           )}
