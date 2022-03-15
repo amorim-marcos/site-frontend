@@ -2,6 +2,7 @@ import { Image, Flex, Box, Text, Button, useInterval } from '@chakra-ui/react'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { smartString } from 'utils/utils'
 
 export type HomeBannerProps = {
   items: {
@@ -140,33 +141,37 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
         <Flex>
           <Box marginTop="0px">
             <ArrowIcon
-              width={{
-                base: '12px',
+              width = {{
+                base: '8px',
                 md: '10px',
-                lg: '14px',
-                xl: '16px',
-                '2xl': '20px'
+                lg: '10px',
+                xl: '12px'
               }}
-              // stroke="green.600"
-              stroke =  {items[currentItem].color}
+              stroke = {items[currentItem].color}
             />
           </Box>
           <Flex
             onClick={navigateToThePost}
-            marginLeft={'2%'}
+            marginLeft={{
+                base: '8px',
+                md: '10px',
+                lg: '10px',
+                xl: '12px'
+              }}
             flexDirection={'column'}
             cursor="pointer"
+            // bg={"blue"}
           >
             <Text
-              marginBottom={'2%'}
-              variant={'canal-bnk-menu' as any}
-              fontSize={{
-                base: '12px',
-                md: '10px',
-                lg: '13px',
-                xl: '16px',
-                '2xl': '20px'
+              marginTop={{
+                base: '-3.5px',
+                md: '-3px',
+                lg: '-2px',
+                xl: '-2px'
               }}
+              as="h5" 
+              variant={'h5' as any}
+              textColor = {"black"}
             >
               {items[currentItem].category.name}
             </Text>
@@ -183,29 +188,28 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
               w="100vw"
               height={{ md: '18vw' }}
               maxHeight={{ md: '384px' }}
+              marginTop={{
+                base: '12px',
+                md: '10px',
+                lg: '13px',
+                xl: '16px'
+              }}
             >
               <Text
                 as="h1"
                 variant={'h1' as any}
                 color="green.900"
                 fontWeight= 'bold'
-                fontSize={{
-                  base: '30px',
-                  md: '32px',
-                  lg: '45px',
-                  xl: '54px',
-                  '2xl': '68px'
-                }}
                 lineHeight ={{
-                  base: '35px',
+                  base: '38px',
                   md: '33px',
                   lg: '45px',
-                  xl: '75px'
+                  xl: '55px'
                 }}
                 maxHeight={'100%'}
                 marginLeft={{ base: '-30px', md: '0' }}
               >
-                {(items[currentItem].title.length > 42)? items[currentItem].title.substring(0,42) + "..." : items[currentItem].title}
+                {smartString(items[currentItem].title, 45)}
               </Text>
             </Box>
           </Flex>
