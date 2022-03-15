@@ -35,7 +35,7 @@ export const ChannelBnkRelationalItem = ({
       onMouseEnter={() => setMouseDown(true)}
       onMouseLeave={() => setMouseDown(false)}
       flexDirection="column"
-      marginRight={{ base: '40px', md: '0' }}
+      marginRight={{ base: '10px', md: '0px' }}
       w={{ base: '60vw', md: '22%' }}
       minWidth={{ base: '60vw', sm: '50vw', md: '0' }}
       {...props}
@@ -73,7 +73,7 @@ export const ChannelBnkRelationalItem = ({
                 base: '8px',
                 md: '10px',
                 lg: '10px',
-                xl: '12px'
+                xl: '11px'
               }}
             />
             <Text as="h5" 
@@ -86,6 +86,11 @@ export const ChannelBnkRelationalItem = ({
                 lg: '-4px',
                 xl: '-3px'
               }}
+              letterSpacing= {{
+                base: '2px',
+                xl: '3px'
+              }}
+              fontSize = {{ base: '12px', sm: '12px', lg: '13px', xl: '14px' }}
             >
               {categoryTitle}
             </Text>
