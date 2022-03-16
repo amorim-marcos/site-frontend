@@ -51,7 +51,7 @@ export default class MyDocument extends Document {
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossOrigin="anonymous"
           />
-
+          <script async src="/static/replaceTrademark.js" />
           <script async defer src="https://assets.pinterest.com/js/pinit.js" />
         </Head>
         <body>
