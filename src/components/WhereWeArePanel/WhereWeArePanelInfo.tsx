@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
 import { Box, Flex, Image, Text } from '@chakra-ui/react'
+
+import { CloseIcon, Arrow } from '@components/Icons'
 import { ResponsiveCss } from 'types/responsive'
-import CloseIcon from '@components/Icons/CloseIcon'
-import ArrowIcon from '@components/Icons/ArrowIcon'
 
 export type WhereWeArePanelInfoProps = {
   structure: string
@@ -71,7 +71,7 @@ const Section2 = (props: { title: string; bodyText: string }) => {
   return (
     <Flex flexDirection={'column'}>
       <Flex alignItems={'center'}>
-        <ArrowIcon width={'12px'} stroke="green.600" />
+        <Arrow width="12px" stroke="green.600" />
         <Text ml="5px" variant={'body' as any} color="green.600">
           {props.title}
         </Text>
@@ -118,6 +118,7 @@ const SectionText = (props: {
 const SectionTitle = (props: { title: string }) => (
   <SectionText color="green.600" fontWeight="medium">
     <Flex align="center" direction="row" gap="7px">
+      <Arrow />
       <Image h="7px" w="9px" src="icon/icon_arrow_right.svg" />
       {props.title}
     </Flex>
