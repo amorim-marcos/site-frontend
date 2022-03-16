@@ -44,6 +44,14 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap"
             rel="stylesheet"
           />
+
+          <script
+            async
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossOrigin="anonymous"
+          />
+          <script async src="/static/replaceTrademark.js" />
           <script async defer src="https://assets.pinterest.com/js/pinit.js" />
         </Head>
         <body>

@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import parser from 'react-html-parser'
 import { Wrapper } from './styles'
 import DOMPurify from 'dompurify'
+import { colors } from '../../theme/colors'
 
 export type PostBodyProps = {
   category?: string
@@ -104,6 +105,8 @@ export const PostBody = ({
               textAlign="left"
               alignSelf="left"
               boxColorBottom={categoryColor}
+              titleFontSize={{ base: '24px', md: '30px', lg: '37px' }}
+              titleColor={colors.green[900]}
             />
           </Flex>
           {/* End of title and category */}
@@ -135,7 +138,7 @@ export const PostBody = ({
       {/* Post content */}
       <Box
         marginTop="3%"
-        w={{ base: '100%', md: '80%', xl: '50%' }}
+        w={{ base: '100%', md: '80%', xl: '60%' }}
         marginLeft={{ base: '0', md: '12%', xl: '10%' }}
       >
         <Wrapper>{content && parser(content)}</Wrapper>
@@ -161,6 +164,7 @@ export const PostBody = ({
 }
 
 export const TagItem = ({ tag = 'tag' }) => {
+  const [hover, setHover] = useState(false)
   return (
     <Box
       marginRight="2%"
@@ -168,8 +172,13 @@ export const TagItem = ({ tag = 'tag' }) => {
       padding="2%"
       bg="white.100"
       borderRadius="20px"
+      cursor="pointer"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
-      <Text variant={'body' as any}>{tag}</Text>
+      <Text variant={'body' as any} color={hover ? 'green.600' : 'green.900'}>
+        {tag}
+      </Text>
     </Box>
   )
 }

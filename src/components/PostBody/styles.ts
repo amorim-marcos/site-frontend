@@ -4,15 +4,22 @@ export const Wrapper = styled.main`
   @media (min-width: 0px) {
     //base
 
+    a {
+      color: #665e5a;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
     p {
       font-size: 14px;
+      color: #665e5a;
     }
 
     h1 {
       font-size: 34px;
       font-weight: 800;
       color: #004934;
-      font-size: 32px;
+      font-size: 28px;
     }
 
     h2 {
