@@ -90,9 +90,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     title: currentPost.title,
     date:
       // new Date(currentPost.published_at).toLocaleDateString(),
-      currentPost.publcation_date
+      currentPost.publication_date
         ? new Date(
-            currentPost.publcation_date + 'T10:00:00.000Z'
+            currentPost.publication_date + 'T10:00:00.000Z'
           ).toLocaleDateString()
         : new Date(currentPost.published_at).toLocaleDateString(),
     url_code: currentPost.url_code
@@ -117,6 +117,6 @@ type PostResponse = {
   }[]
   title: string
   published_at: string
-  publcation_date: string
+  publication_date: string
   url_code: string
 }
