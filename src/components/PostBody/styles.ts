@@ -18,23 +18,23 @@ export const Wrapper = styled.main`
     h1 {
       font-size: 34px;
       font-weight: 800;
-      color: #004934;
+      color: #59993f;
       font-size: 28px;
     }
 
     h2 {
-      color: #429c2e;
+      color: #59993f;
       font-weight: 600;
       font-size: 32px;
     }
 
     h3 {
-      color: #0a6c3b;
+      color: #59993f;
       font-weight: 800;
     }
 
     h4 {
-      color: #0a6c3b;
+      color: #59993f;
       font-weight: 700;
     }
   }
