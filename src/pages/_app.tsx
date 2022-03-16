@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import Script from 'next/script'
 
 import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from 'theme/theme'
@@ -26,6 +27,8 @@ function App({ Component, pageProps }: AppProps) {
           content="A simple project starter to work with TypeScript, React, NextJS and Styled Components"
         />
       </Head>
+
+      <Script strategy="beforeInteractive" src="/static/replaceTrademark.js" />
 
       <AppHeader />
       <Component {...pageProps} />
