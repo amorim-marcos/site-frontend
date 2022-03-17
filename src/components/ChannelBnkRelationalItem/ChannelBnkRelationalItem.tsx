@@ -119,10 +119,10 @@ export const ChannelBnkRelationalItem = ({
             <ArrowIcon
               stroke={getAccentColor(categoryId, currentCategory)}
               width = {{
-                base: '8px',
-                md: '10px',
+                base: '7px',
+                md: '9px',
                 lg: '10px',
-                xl: '12px'
+                xl: '9px'
               }}
             />
             <Text
@@ -131,16 +131,16 @@ export const ChannelBnkRelationalItem = ({
               marginLeft="3%"
               color="gray.400"
               marginTop={{
-                base: '-4px',
-                md: '-5px',
-                lg: '-4px',
+                base: '-3.5px',
+                md: '-3px',
+                lg: '-2px',
                 xl: '-3px'
               }}
               letterSpacing={{
                 base: '2px',
-                xl: '3px'
+                xl: '2px'
               }}
-              fontSize={{ base: '12px', sm: '12px', lg: '13px', xl: '14px' }}
+              fontSize= {{ base: '11px', sm: '11px', lg: '11px', xl: '12px' }}
             >
               {categoryTitle}
             </Text>
