@@ -66,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       name: productFetch.name,
       description: productFetch.description,
       img: `${url}${productFetch.background_image.url}`,
-      assets: `${url}${productFetch.assets.url}`,
+      assets: `${url}${productFetch.assets?.url}`,
       presentation: productFetch.presentation,
       uses_and_applications: productFetch.uses_and_applications,
       video_url: productFetch.video_url,
