@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       product_texture: product.product_texture.name,
       pattern_image: `${url}${product.pattern_image.url}`,
       collections: product.product_collections.map((i: any) => i.id),
-      coloration: product.product_coloration.id,
+      coloration: product.product_coloration?.id,
       panelTypes: product.available_at.map((i: any) => i.panel_type.id)
     }
   })
