@@ -5,9 +5,11 @@ export const Wrapper = styled.main`
     //base
 
     a {
-      color: #665e5a;
+      color: #59993f;
       text-decoration: underline;
-      font-weight: bold;
+    }
+    a:hover {
+      color: #133128;
     }
 
     p {
