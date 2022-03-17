@@ -142,10 +142,10 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
           <Box marginTop="0px">
             <ArrowIcon
               width = {{
-                base: '8px',
-                md: '10px',
+                base: '7px',
+                md: '9px',
                 lg: '10px',
-                xl: '12px'
+                xl: '10px'
               }}
               stroke = {items[currentItem].color}
             />
@@ -156,7 +156,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                 base: '8px',
                 md: '10px',
                 lg: '10px',
-                xl: '12px'
+                xl: '8px'
               }}
             flexDirection={'column'}
             cursor="pointer"
@@ -167,14 +167,15 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                 base: '-3.5px',
                 md: '-3px',
                 lg: '-2px',
-                xl: '-2px'
+                xl: '-3px'
               }}
               as="h5" 
               variant={'h5' as any}
               textColor = {"black"}
+              fontSize = {{ base: '11px', sm: '11px', lg: '11px', xl: '14px' }}
               letterSpacing= {{
                 base: '2px',
-                xl: '3px'
+                xl: '2px'
               }}
             >
               {items[currentItem].category.name}
@@ -185,9 +186,9 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
               transition={'0.4s'}
               maxWidth={{
                 base: '90vw',
-                md: '350px',
-                lg: '450px',
-                xl: '750px'
+                md: '450px',
+                lg: '600px',
+                xl: '850px'
               }}
               w="100vw"
               height={{ md: '18vw' }}
@@ -195,8 +196,8 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
               marginTop={{
                 base: '12px',
                 md: '10px',
-                lg: '13px',
-                xl: '16px'
+                lg: '8px',
+                xl: '10px'
               }}
             >
               <Text
@@ -205,15 +206,17 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                 color="green.900"
                 fontWeight= 'bold'
                 lineHeight ={{
-                  base: '38px',
-                  md: '33px',
-                  lg: '45px',
-                  xl: '55px'
+                  base: '26px',
+                  sm: '35px',
+                  md: '28px',
+                  lg: '36px',
+                  xl: '45px'
                 }}
+                fontSize = {{ base: '22px', sm: '30px', md: '26px', lg: '32px', xl: '40px' }}
                 maxHeight={'100%'}
                 marginLeft={{ base: '-10px', md: '0' }}
               >
-                {smartString(items[currentItem].title, 45)}
+                {smartString(items[currentItem].title, 150)}
               </Text>
             </Box>
           </Flex>
