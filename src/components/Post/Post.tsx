@@ -1,13 +1,13 @@
-import { useRouter } from 'next/router'
-
-import { Flex, Box, Text, Link, FlexProps, TextProps } from '@chakra-ui/react'
-
+import { Flex, Box, Text, Link, FlexProps, TextProps, Image } from '@chakra-ui/react'
 import { Arrow, CalendarIcon, SocialIcon } from '@components/Icons'
-
 import { Post as IPost } from 'types/data'
 import { Category } from 'types/data/Post'
 import { useContext } from 'react'
 import { CategoryContext } from 'views/Canal-BNK'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { smartDate } from 'utils/utils'
+
 
 function getPanelColor(i: number) {
   if (i === 2) {
@@ -55,6 +55,7 @@ export interface PostProps extends FlexProps {
 
 export const Post = (props: PostProps) => {
   const router = useRouter()
+  const [mouseDown, setMouseDown] = useState(false)
 
   const { currentCategory, categories } = useContext(CategoryContext)
 
@@ -101,85 +102,119 @@ export const Post = (props: PostProps) => {
   }
 
   return (
-    <Flex
-      direction={
-        imgPos === 'top'
-          ? 'column'
-          : imgPos === 'left'
-          ? 'row'
-          : imgPos === 'right'
-          ? 'row-reverse'
-          : 'column-reverse'
-      }
-      role="group"
-      onClick={() =>
-        router.push(`/canal-bnk/${post?.category.id}/${post?.url_code}`)
-      }
-      {...rest}
-      cursor="pointer"
-    >
-      <Box
-        w={imgPos === 'top' || imgPos === 'bottom' ? '100%' : '40%'}
-        h="100%"
-        bgRepeat="no-repeat"
-        bgSize="cover"
-        bgImage={`url(${post?.cover})}`}
-      />
+  <Flex
+    direction={
+      imgPos === 'top'
+        ? 'column'
+        : imgPos === 'left'
+        ? 'row'
+        : imgPos === 'right'
+        ? 'row-reverse'
+        : 'column-reverse'
+    }
+    role="group"
+    onClick={() =>
+      router.push(`/canal-bnk/${post?.category.id}/${post?.url_code}`)
+    }
+    cursor="pointer"
+    //bg="tomato"
+    {...rest}
+    margin={"5%"}
+    w={"90%"}
+    onMouseEnter={() => setMouseDown(true)}
+    onMouseLeave={() => setMouseDown(false)}
+  >
 
-      <Flex
-        w={imgPos === 'top' || imgPos === 'bottom' ? rest.w : '54%'}
-        direction="column"
-        pos="relative"
-        gap="18px"
-        pt="21px"
-        pl={{ base: '24px', lg: '38px' }}
-        pr={{ base: '33px', lg: '29px' }}
-        bg={getPanelColor(currentCategory)}
-        // bg = "red"
-      >
-        <Flex align="center" justify="space-between">
-          <Flex data-testid="post-category" gap="14px" align="center">
-            <Box>
+   {/* box imagem cover */}
+    <Flex
+      flex= "1"
+      // bg="black"
+    >
+      <Image  
+        src={post?.cover}
+        w={"100%"}
+      />
+    </Flex>
+
+    {/* box content */}
+    <Flex
+      // w={'60%'}
+      direction="column"
+      flex= "1"
+      bg={getPanelColor(currentCategory)}
+    >
+
+        <Flex 
+          // bg="yellow"
+          flex="1"
+          direction={{ base: 'column', md: 'row' }}
+          justifyContent={{ base: 'start', md: 'end' }}
+          alignContent={{ base: 'start', md: 'end' }}
+        >
+            <Flex 
+              data-testid="post-category" 
+              margin = {{ base: '5px 0px 5px 10px', lg: '10px 0px 7px 15px', xl: '10px 0px 10px 20px' }}
+              align="start"
+              flex="1"
+              // bg="tomato"
+            >
               <Arrow
                 color={getHoverIndicatorColor()}
-                width={{ base: '7px', lg: '9px' }}
-                height={{ base: '10px', lg: '13px' }}
-              />
-            </Box>
-
-            <Text
-              as="h2"
-              w="100%"
-              whiteSpace="normal"
-              color={currentCategory === 2 ? 'white' : 'gray.350'}
-              fontSize={{ base: '10px', lg: '14px', xl: '10px', '2xl': '14px' }}
-              letterSpacing={
-                imgPos === 'top' || imgPos === 'bottom' ? '2.4px' : '2.1px'
-              }
-              fontWeight="600"
-              {...categoryTextProps}
-            >
-              {post?.category.name}
-            </Text>
-          </Flex>
-
-          {showDate && (
-            <Flex gap="12px" align="center" pr="3px" w="fit-content">
-              <Text
-                fontSize={{
-                  base: '12px',
-                  lg: imgPos === 'top' || imgPos === 'bottom' ? '16px' : '14px'
+                width = {{
+                  base: '8px',
+                  md: '10px',
+                  lg: '10px',
+                  xl: '12px'
                 }}
-                letterSpacing={
-                  imgPos === 'top' || imgPos === 'bottom' ? '2.4px' : '2.1px'
-                }
-                fontWeight="mediuem"
+              />
+              <Text as="h5" 
+                variant={'h5' as any}
+                textColor = {"black"}
+                letterSpacing= {{
+                  base: '2px',
+                  xl: '3px'
+                }}
+                fontSize = {{ base: '11px', sm: '13px', lg: '14px', xl: '16px' }}
+                marginLeft = {{ base: '5px', lg: '5px' }}
+                marginTop = {{ base: '-2px', lg: '-3px' }}
+              >{post?.category.name}</Text>
+            </Flex>
+
+          
+            {/* showDate at list */}
+            {showDate && (
+            <Flex 
+              gap="12px" 
+              align="center"
+              justifyContent={{ base: 'start', md: 'end' }}
+              alignContent={{ base: 'start', md: 'end' }}
+              flex="1"
+              // bg="pink"
+              margin = {{ base: '0px 0px 0px 10px', md: '0px 15px 0px 15px', xl: '0px 20px 0px 20px' }}
+            >
+              <Text as="h5" 
+                variant={'h5' as any}
+                // textColor = {"black"}
+                fontSize = {{ base: '11px', sm: '13px', lg: '14px', xl: '16px' }}
+                letterSpacing= {{
+                  base: '2px',
+                  xl: '3px'
+                }}
+                lineHeight ={{
+                  base: '38px',
+                  md: '33px',
+                  lg: '45px',
+                  xl: '55px'
+                }}
                 color={currentCategory === 2 ? 'white' : 'gray.350'}
               >
-                {post?.date && new Date(post?.date).toLocaleDateString()}
+                {/* {post?.date && new Date(post?.date).toLocaleDateString()} */}
+                {smartDate(post?.date, 'PT-BR')}
               </Text>
 
-              <Box pb="3px">
+              <Box 
+                // pb="3px"
+              >
                 <CalendarIcon
                   w="29px"
                   h="27px"
@@ -187,27 +222,39 @@ export const Post = (props: PostProps) => {
                   stroke2={currentCategory === 2 ? 'white' : '#595959'}
                 />
               </Box>
+            
             </Flex>
           )}
+
+          
         </Flex>
 
-        <Box pb={showShareOptions ? '18px' : '45px'}>
+        {/* Title Post */}
+        <Flex 
+          pb={showShareOptions ? '18px' : '45px'}
+          // bg= "blue"
+          flex = "1"
+          margin = {{ base: '10px', lg: '10px', xl: '20px' }}
+         
+        >
           <Text
-            as="h1"
-            whiteSpace="normal"
-            fontSize={{ base: '17px', lg: '23px', xl: '20px', '2xl': '23px' }}
-            fontWeight="bold"
-            letterSpacing={
-              imgPos === 'top' || imgPos === 'bottom' ? '-0.58px' : '-0.46px'
-            }
+            as="h3"
+            variant={'h3' as any}
             color="green.900"
-            {...titleTextProps}
+            fontWeight= 'bold'
+            lineHeight ={{
+              base: '22px',
+              md: '33px',
+              lg: '35px',
+              xl: '38px'
+            }}
           >
             {post?.title}
           </Text>
-        </Box>
+        </Flex>
 
-        {showPreview && (
+
+        {/* {showPreview && (
           <Text
             h="107px"
             mt="-33px"
@@ -218,14 +265,18 @@ export const Post = (props: PostProps) => {
             fontSize="17px"
             letterSpacing="-0.34px"
             color={'gray.350'}
-            {...previewTextProps}
           >
             {post?.content}
           </Text>
-        )}
+        )} */}
 
+
+        {/* Share Buttons Icons */}
         {showShareOptions && (
-          <Flex gap="30px" pb="38px">
+          <Flex 
+            gap={{ base: '10px', lg: '30px' }}
+            margin = {{ base: '0px 0px 10px 10px', md: '10px', lg: '15px', xl: '20px' }}
+          >
             <Link onClick={() => alert('/')}>
               <SocialIcon
                 media="facebook"
@@ -258,20 +309,30 @@ export const Post = (props: PostProps) => {
           </Flex>
         )}
 
-        <Box
-          data-testid="post-hover-indicator"
-          h="6px"
-          left="38px"
-          pos="absolute"
-          bg={getHoverIndicatorColor()}
-          w={imgPos === 'left' || imgPos === 'right' ? '50%' : '20%'}
-          bottom={imgPos !== 'bottom' ? '-3px' : 'calc(100% - 3px)'}
-          transition={`all 0.3s ease-in-out`}
-          _groupHover={{
-            w: imgPos === 'left' || imgPos === 'right' ? '82%' : '46%'
-          }}
-        />
-      </Flex>
+        <Flex
+          // bg="gray.200"
+          flex="1"
+        >
+          {/* Box hover-indicator */}
+          <Box
+            transition={'0.5s'}
+            width={mouseDown ? '80%' : '50%'}
+            borderBottom="solid"
+            borderBottomWidth={{
+              base: '3px',
+              sm: '4px',
+              md: '3px',
+              lg: '4px',
+              xl: '5px',
+              '2xl': '6px'
+            }}
+            borderBottomColor={getCalendarColor()}
+            marginLeft="10%"
+          />
+        </Flex>
+    
     </Flex>
+    
+  </Flex>
   )
 }
