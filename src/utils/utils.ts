@@ -20,26 +20,29 @@ export function smartString(
   }
 
   export function smartDate(
-    data: Date | string,
+    data: Date | string | undefined,
     locale: string
   ) {
+      if(data){
         let dia, diaF, mes, mesF, anoF;
         var dataF = new Date(data)
 
         switch (locale) {
-        case 'PT-BR':
-            dia  = dataF.getDate().toString(),
-            diaF = (dia.length == 1) ? '0' + dia : dia,
-            mes  = (dataF.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
-            mesF = (mes.length == 1) ? '0'+mes : mes,
-            anoF = dataF.getFullYear();
-            return diaF+"/"+mesF+"/"+anoF;
-          break;
-        case 'EN':
-            return dataF
+          case 'PT-BR':
+              dia  = dataF.getDate().toString(),
+              diaF = (dia.length == 1) ? '0' + dia : dia,
+              mes  = (dataF.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+              mesF = (mes.length == 1) ? '0'+mes : mes,
+              anoF = dataF.getFullYear();
+              return diaF+"/"+mesF+"/"+anoF;
             break;
-        default:
-            return dataF
+          case 'EN':
+              return dataF
+              break;
+          default:
+              return dataF
+        }
+      }else{
+        return null
       }
-    
-  }
+}
