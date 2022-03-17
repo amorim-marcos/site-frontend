@@ -287,7 +287,7 @@ export const Intro = (props: { posts: IPost[] }) => {
             >
               <Flex
                 // bg = "black"
-                flex={{ base: '1', md: '1.2' }}
+                flex={{ base: '1', md: '2' }}
                 justifyContent={{ md: 'space-between' }}
               >
                 {props.posts.length > 0 && <HeroPost post={props.posts[0]} />}
