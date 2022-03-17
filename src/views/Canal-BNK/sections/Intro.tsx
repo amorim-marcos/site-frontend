@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react'
-
 import {
   Flex,
   Box,
@@ -13,14 +12,12 @@ import {
 
 import { Arrow } from '@components/Icons'
 import Post from '@components/Post'
+import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
 
 import useMobile from 'hooks/useMobile'
 import { CategoryContext } from '..'
-
 import { Post as IPost } from 'types/data'
 import { Section } from './Section'
-import { Category } from 'types/data/Post/Category'
-
 
 export const PANEL_COLOR = {
   all: 'white',
@@ -97,6 +94,7 @@ export const Intro = (props: { posts: IPost[] }) => {
         // w="100%"
         direction="column"
         align={{ base: 'center', lg: 'inherit' }}
+        // bg="red"
       >
         <Flex
           data-testid="intro-header"
@@ -202,7 +200,7 @@ export const Intro = (props: { posts: IPost[] }) => {
             marginTop={{ base: '30px', lg: '0' }}
             alignItems={{ base: 'center', lg: 'flex-start' }}
             height={{ base: 'auto', lg: '150px' }}
-            // bg="blue"
+            // bg="yellow"
           >
             <NavButton
               hideArrow
@@ -284,32 +282,75 @@ export const Intro = (props: { posts: IPost[] }) => {
         >
           {!seeOnlyPosts && (
             <Flex
-              data-testid="intro-content"
-              align="center"
-              justify="center"
-              direction={{ base: 'column', xl: 'row' }}
-              zIndex={10}
-              w="100%"
-              pt="58px"
-              pb={{ lg: '120px' }}
-              gap={{ base: '47px', lg: '44px' }}
+              direction={{ base: 'column', md: 'row' }}
+              // bg = "blue"
             >
-              {props.posts.length > 0 && <HeroPost post={props.posts[0]} />}
-
               <Flex
-                data-testid="intro-content-more"
-                direction={{ lg: 'column' }}
-                gap="40px"
-                whiteSpace="nowrap"
-                w={{ base: '90%', lg: 'auto' }}
-                overflowX={{ base: 'scroll', lg: 'hidden' }}
-                // overflowY="hidden"
-                align="center"
-                bg = "red"
+                // bg = "black"
+                flex={{ base: '1', md: '1.2' }}
+                justifyContent={{ md: 'space-between' }}
               >
-                {props.posts.length > 1 && <SmallPost post={props.posts[1]} />}
-                {props.posts.length > 2 && <SmallPost post={props.posts[2]} />}
-                {props.posts.length > 3 && <SmallPost post={props.posts[3]} />}
+                {props.posts.length > 0 && <HeroPost post={props.posts[0]} />}
+              </Flex>
+              
+              <Flex
+                // bg = "green"
+                flex={{ base: '1', md: '1' }}
+                flexDirection={{ base: 'row', md: 'column' }}
+                justifyContent={{ md: 'space-between' }}
+                overflowX={{ base: 'scroll', md: 'hidden' }}
+                overflowY={{ base: 'hidden', md: 'hidden' }}
+                w={{ base: '100vw', md: '100%' }}
+                gap={{ base: '5%', md: '2%' }}
+                paddingBottom={{ base: '2%', md: '1%' , lg: '3%'}}
+                margin={{ base: '5% 10% 5% 5%', md: '3% 3% 3% 0' }}
+                css={{
+                  '-webkit-scrollbar': {
+                    display: 'none'
+                  },
+                  '-ms-overflow-style': 'none',
+                  'scrollbar-width': 'none'
+                }}
+              >
+              
+                  {/* INICIO SECTION CANAL BNK */}
+                  {props.posts.length > 1 && (
+                    <ChannelBnkRelationalItem
+                      categoryTitle = {props.posts[1].category.name}
+                      categoryId = {props.posts[1].category.id}
+                      url_code = {props.posts[1].url_code}
+                      urlImage = {props.posts[1].cover}
+                      title = {props.posts[1].title}
+                      color = {props.posts[1].category.color}
+                      showInvert
+                      currentCategory = {currentCategory}
+                    />
+                  )}
+                  {props.posts.length > 2 && (
+                    <ChannelBnkRelationalItem
+                      categoryTitle = {props.posts[2].category.name}
+                      categoryId = {props.posts[2].category.id}
+                      url_code = {props.posts[2].url_code}
+                      urlImage = {props.posts[2].cover}
+                      title = {props.posts[2].title}
+                      color = {props.posts[2].category.color}
+                      showInvert
+                      currentCategory = {currentCategory}
+                    />
+                  )}
+                  {props.posts.length > 3 && (
+                    <ChannelBnkRelationalItem
+                      categoryTitle = {props.posts[3].category.name}
+                      categoryId = {props.posts[3].category.id}
+                      url_code = {props.posts[3].url_code}
+                      urlImage = {props.posts[3].cover}
+                      title = {props.posts[3].title}
+                      color = {props.posts[3].category.color}
+                      showInvert
+                      
+                    />
+                  )}
+                  {/* FIM SECTION CANAL BNK */}
 
               
               </Flex>
@@ -318,11 +359,11 @@ export const Intro = (props: { posts: IPost[] }) => {
 
           {seeOnlyPosts && (
             <Flex
-              gap="58px"
-              paddingBottom="200px"
+              //gap="58px"
+             // paddingBottom="200px"
               direction="column"
               align="center"
-              w="100%"
+              // w="100%"
             >
               {props.posts?.map((post, j) => (
                 <Post
@@ -331,7 +372,7 @@ export const Intro = (props: { posts: IPost[] }) => {
                   showPreview
                   key={j}
                   post={post}
-                  h="821px"
+                  //h="821px"
                   w={{ base: '100%', xl: '1014px' }}
                 />
               ))}
@@ -346,12 +387,10 @@ export const Intro = (props: { posts: IPost[] }) => {
 const HeroPost = (props: { post: IPost }) => {
   return (
     <Post
-      h={{ base: '376px', md: '661px' }}
       w={{
-        base: '90%',
-        lg: '980px',
+        base: '92%',
+        lg: '90%',
         xl: '550px',
-        '2xl': '1013px'
       }}
       post={props.post}
     />
@@ -363,14 +402,14 @@ const SmallPost = (props: { post: IPost }) => {
 
   return (
     <Post
-      h={{ base: '376px', lg: '190px' }}
-      w={{
-        base: '250px',
-        md: '400px',
-        lg: '980px',
-        xl: '500px',
-        '2xl': '684px'
-      }}
+      //h={{ base: '376px', lg: '190px' }}
+      // w={{
+      //   base: '250px',
+      //   md: '400px',
+      //   lg: '980px',
+      //   xl: '500px',
+      //   '2xl': '684px'
+      // }}
       imgPos={isMobile ? 'top' : 'left'}
       post={props.post}
     />
