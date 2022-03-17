@@ -259,7 +259,7 @@ export const Certification = (props: CertificationViewProps) => (
       zIndex="base"
       overflowY="hidden"
       overflowX="hidden"
-      bg="green.100"
+      bg="green.150"
     >
       <Flex
         // bg='blue'
@@ -292,7 +292,7 @@ export const Certification = (props: CertificationViewProps) => (
               key={i}
               m="5%"
               mb="0"
-              bg="gray.100"
+              bg="green.100"
               flex="1"
               direction={
                 i % 2 === 0
@@ -393,7 +393,7 @@ export const Certification = (props: CertificationViewProps) => (
           mt={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
           mb={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
           mr={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
-          bg="gray.100"
+          bg="green.100"
           flex="1"
           direction={{
             base: 'column',
