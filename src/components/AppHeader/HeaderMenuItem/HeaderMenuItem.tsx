@@ -2,6 +2,7 @@ import { Text, Center, Flex, Box } from '@chakra-ui/react'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import useMobile from 'hooks/useMobile'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { HeaderMenuSubItem } from './HeaderMenuSubItem/HeaderMenuSubItem'
 
@@ -29,6 +30,7 @@ export const HeaderMenuItem = ({
 }: HeaderMenuItemProps) => {
   const [open, setOpen] = useState(false)
   const { isMobile } = useMobile(568)
+  const router = useRouter()
 
   return (
     <Center
@@ -140,7 +142,7 @@ export const HeaderMenuItem = ({
           h="60px"
           bg="green.800"
           alignItems="center"
-          onClick={() => setOpen(false)}
+          // onClick={() => setOpen(false)}
         >
           <Text
             fontSize={{
@@ -152,10 +154,15 @@ export const HeaderMenuItem = ({
             }}
             color="white.100"
             variant={'header-menu' as any}
+            onClick={() => {
+              setOpen(false)
+              closeMenuMobile()
+              router.push(href)
+            }}
           >
             {title}
           </Text>
-          <Box transform="rotate(180deg)">
+          <Box onClick={() => setOpen(false)} transform="rotate(180deg)">
             <ArrowIcon stroke="#FFF" width="10px" />
           </Box>
         </Flex>
