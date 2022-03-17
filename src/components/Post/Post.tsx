@@ -153,7 +153,7 @@ export const Post = (props: PostProps) => {
         >
             <Flex 
               data-testid="post-category" 
-              margin = {{ base: '5px 0px 5px 10px', lg: '10px 0px 7px 15px', xl: '10px 0px 10px 20px' }}
+              margin = {{ base: '5px 0px 5px 10px', lg: '10px 0px 7px 15px', xl: '20px 0px 10px 20px' }}
               align="start"
               flex="1"
               // bg="tomato"
@@ -235,7 +235,6 @@ export const Post = (props: PostProps) => {
           // bg= "blue"
           flex = "1"
           margin = {{ base: '10px', lg: '10px', xl: '20px' }}
-         
         >
           <Text
             as="h3"

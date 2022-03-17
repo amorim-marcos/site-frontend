@@ -163,7 +163,7 @@ export const ChannelBnkRelationalItem = ({
               xl: '25px'
             }}
           >
-            {smartString(title, 40)}
+            { (showInvert) ? smartString(title, 60) : smartString(title, 40) }
           </Text>
         </Flex>
         <Box
