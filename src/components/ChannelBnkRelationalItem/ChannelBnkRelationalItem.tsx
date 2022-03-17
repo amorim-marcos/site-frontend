@@ -34,7 +34,7 @@ export const ChannelBnkRelationalItem = ({
     router.push(`/canal-bnk/${categoryId}/${url_code}`)
   }
 
-  function getBetterStrSize(tam: number | undefined, showInvert: boolean) {
+  function getBetterStrSize(tam: number | undefined, showInvert: boolean | undefined) {
     
     // alert("tam-"+tam)
     if(tam){
@@ -192,7 +192,7 @@ export const ChannelBnkRelationalItem = ({
               xl: '25px'
             }}
           >
-            {smartString( title, getBetterStrSize(useWindowDimensionsLocal.width), showInvert ) }
+            {smartString( title, getBetterStrSize(useWindowDimensionsLocal.width, showInvert )) }
           </Text>
         </Flex>
         <Box
