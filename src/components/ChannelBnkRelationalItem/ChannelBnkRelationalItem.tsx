@@ -46,12 +46,13 @@ export const ChannelBnkRelationalItem = ({
         case (568 < tam && tam <= 768):
           return 38; break;
         case (768 < tam && tam <= 1024):
-          return 80; break;
+          return 70; break;
         case (1024 < tam && tam <= 1280):
             return 70; break;
-        case (1280 < tam):
-          return (showInvert)? 80: 150;
-          break;
+        case (1280 < tam && tam < 1536):
+            return (showInvert)? 70: 90; break;
+        case (1536 <= tam):
+          return 150;break;
       }
     }else{
       return 10;
@@ -189,7 +190,7 @@ export const ChannelBnkRelationalItem = ({
               sm: '18px',
               md: '20px',
               lg: '22px',
-              xl: '25px'
+              xl: '28px'
             }}
           >
             {smartString( title, getBetterStrSize(useWindowDimensionsLocal.width, showInvert )) }
