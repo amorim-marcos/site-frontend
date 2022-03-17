@@ -1,9 +1,8 @@
-import { Flex, Grid, Text, Box, Image } from '@chakra-ui/react'
+import { Flex, Grid, Text, Box, Image, Link } from '@chakra-ui/react'
 import LogoBerneck from '../LogoBerneck'
 import SocialIcon from '@components/Icons/SocialIcon'
 import { FooterList } from './FooterList/FooterList'
 import { Grafism } from './Grafism/Grafism'
-import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import { footerNavigation } from './footerNavigation'
 import { useRouter } from 'next/router'
@@ -60,31 +59,37 @@ export const AppFooter = () => {
               justifyContent={{ base: 'space-around', md: 'flex-end' }}
               marginY={{ base: '30px', md: 'none' }}
             >
-              <SocialIcon
-                marginLeft={socialIconMarginLeft}
-                width={socialIconWidth}
-                media="facebook"
-              />
-              <SocialIcon
-                marginLeft={socialIconMarginLeft}
-                width={socialIconWidth}
-                media="instagram"
-              />
-              <SocialIcon
-                marginLeft={socialIconMarginLeft}
-                width={socialIconWidth}
-                media="linkedin"
-              />
-              <SocialIcon
-                marginLeft={socialIconMarginLeft}
-                width={socialIconWidth}
-                media="youtube"
-              />
-              <SocialIcon
-                marginLeft={socialIconMarginLeft}
-                width={socialIconWidth}
-                media="pinterest"
-              />
+              
+                <SocialIcon
+                  marginLeft={socialIconMarginLeft}
+                  width={socialIconWidth}
+                  media="facebook"
+                  href='https://www.facebook.com/BerneckSA'
+                />
+                <SocialIcon
+                  marginLeft={socialIconMarginLeft}
+                  width={socialIconWidth}
+                  media="instagram"
+                  href='https://www.instagram.com/berneckoficial'
+                />
+                <SocialIcon
+                  marginLeft={socialIconMarginLeft}
+                  width={socialIconWidth}
+                  media="linkedin"
+                  href='https://www.linkedin.com/company/berneck-s.a.-pain-is-e-serrados'
+                />
+                <SocialIcon
+                  marginLeft={socialIconMarginLeft}
+                  width={socialIconWidth}
+                  media="youtube"
+                  href=' https://www.youtube.com/Berneckoficial'
+                />
+                <SocialIcon
+                  marginLeft={socialIconMarginLeft}
+                  width={socialIconWidth}
+                  media="pinterest"
+                  href='https://br.pinterest.com/berneckoficial'
+                />
             </Flex>
           </Flex>
 
@@ -190,7 +195,7 @@ export const AppFooter = () => {
             }}
             color="green.300"
           >
-            © 2021 BERNECK . Todos os direitos reservados.
+            © 2022 BERNECK . Todos os direitos reservados.
           </Text>
           <Text
             fontSize={{
@@ -207,7 +212,7 @@ export const AppFooter = () => {
           >
             Termos de Uso e Política de Privacidade
           </Text>
-          <Link passHref href="http://www.commcepta.com.br/">
+          <Link href="http://www.commcepta.com.br/" isExternal>
             <Image
               cursor="pointer"
               height={{

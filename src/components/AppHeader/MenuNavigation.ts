@@ -129,15 +129,15 @@ export const menuNavigation = {
     subItems: [
       {
         key: 'btn9_subItem1',
-        href: '/canal-bnk'
+        href: '/canal-bnk/1/'
       },
       {
         key: 'btn9_subItem2',
-        href: '/canal-bnk'
+        href: '/canal-bnk/2/'
       },
       {
         key: 'btn9_subItem3',
-        href: '/canal-bnk'
+        href: '/canal-bnk/3/'
       },
       {
         key: 'btn9_subItem4',
