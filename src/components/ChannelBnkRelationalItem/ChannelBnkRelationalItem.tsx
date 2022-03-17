@@ -3,6 +3,7 @@ import ArrowIcon from '@components/Icons/ArrowIcon'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { smartString } from 'utils/utils'
+import useWindowDimensions from 'hooks/useWindow'
 
 export interface ChannelBnkRelationalItemProps extends FlexProps {
   categoryTitle: string
@@ -27,9 +28,37 @@ export const ChannelBnkRelationalItem = ({
 }: ChannelBnkRelationalItemProps) => {
   const [mouseDown, setMouseDown] = useState(false)
   const router = useRouter()
+  const useWindowDimensionsLocal = useWindowDimensions()
 
   function navigateToThePost() {
     router.push(`/canal-bnk/${categoryId}/${url_code}`)
+  }
+
+  function getBetterStrSize(tam: number | undefined, showInvert: boolean) {
+    
+    // alert("tam-"+tam)
+    if(tam){
+      switch (true) {
+        case (0 < tam && tam <= 320): 
+          return 150; break;
+        case (320 < tam && tam <= 568):
+          return 150; break;
+        case (568 < tam && tam <= 768):
+          return 38; break;
+        case (768 < tam && tam <= 1024):
+          return 80; break;
+        case (1024 < tam && tam <= 1280):
+            return 70; break;
+        case (1280 < tam):
+          return (showInvert)? 80: 150;
+          break;
+      }
+    }else{
+      return 10;
+    }
+      
+
+    return 30;
   }
 
   function getPanelColor(i: number, currentCategory: number) {
@@ -163,7 +192,7 @@ export const ChannelBnkRelationalItem = ({
               xl: '25px'
             }}
           >
-            { (showInvert) ? smartString(title, 60) : smartString(title, 40) }
+            {smartString( title, getBetterStrSize(useWindowDimensionsLocal.width), showInvert ) }
           </Text>
         </Flex>
         <Box
