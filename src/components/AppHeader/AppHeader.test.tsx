@@ -8,7 +8,7 @@ describe('<AppHeader />', () => {
     renderWithTheme(<AppHeader />)
 
     expect(screen.getByTestId('header-container')).toHaveStyle({
-      position: 'relative'
+      position: 'fixed'
     })
   })
 
@@ -16,7 +16,7 @@ describe('<AppHeader />', () => {
     renderWithTheme(<AppHeader />)
 
     expect(screen.getByTestId('header-container')).toHaveStyle({
-      maxWidth: '1920px'
+      width: '100%'
     })
   })
 })
