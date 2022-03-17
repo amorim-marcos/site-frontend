@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app'
+import Script from 'next/script'
 
 import MyHead from './_head'
 
@@ -17,6 +18,8 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <MyHead />
+
+      <Script strategy="beforeInteractive" src="/static/replaceTrademark.js" />
 
       <AppHeader />
       <Component {...pageProps} />

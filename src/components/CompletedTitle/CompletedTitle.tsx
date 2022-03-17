@@ -9,6 +9,7 @@ export type CompletedTitleProps = BoxProps &
     titleString?: string
     boxColorBottom?: string
     titleFontSize?: ResponsiveCss
+    titleLineHeight?: ResponsiveCss
   }
 export const CompletedTitle = ({
   // Heading1
@@ -17,7 +18,8 @@ export const CompletedTitle = ({
   alignSelf = 'center',
   textAlign = 'left',
   boxColorBottom = 'green.600',
-  titleFontSize
+  titleFontSize,
+  titleLineHeight
 }: CompletedTitleProps) => {
   return (
     <Box>
@@ -44,6 +46,7 @@ export const CompletedTitle = ({
               color={titleColor}
               textAlign={textAlign}
               fontSize={titleFontSize}
+              lineHeight={titleLineHeight}
             >
               {titleString}
             </Text>
