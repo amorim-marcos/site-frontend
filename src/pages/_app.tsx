@@ -19,6 +19,11 @@ function App({ Component, pageProps }: AppProps) {
     <ChakraProvider theme={theme}>
       <MyHead />
 
+      <Script
+        crossOrigin="anonymous"
+        strategy="beforeInteractive"
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+      />
       <Script strategy="beforeInteractive" src="/static/replaceTrademark.js" />
 
       <AppHeader />
