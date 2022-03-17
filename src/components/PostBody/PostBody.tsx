@@ -90,7 +90,7 @@ export const PostBody = ({
           {/* Title and category */}
           <Flex
             maxWidth={{ base: '100%' }}
-            width="100%"
+            width="70%"
             flexDirection="column"
             paddingLeft={{ base: '0', md: '3%' }}
           >
@@ -107,6 +107,7 @@ export const PostBody = ({
               boxColorBottom={categoryColor}
               titleFontSize={{ base: '24px', md: '30px', lg: '37px' }}
               titleColor={colors.green[900]}
+              titleLineHeight="1.3"
             />
           </Flex>
           {/* End of title and category */}
