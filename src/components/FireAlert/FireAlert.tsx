@@ -1,5 +1,5 @@
 import { Heading, Flex, Box, Text, LayoutProps, Button } from "@chakra-ui/react"
-import { EarthIcon  } from '@components/Icons'
+import { AttentionIcon  } from '@components/Icons'
 import CloseIcon from "@components/Icons/CloseIcon"
 
 export type FireAlertProps = LayoutProps & {
@@ -35,9 +35,11 @@ export const FireAlert = ({
                 alignItems={'center'}
                 justifyContent={'center'}
             >
-              <EarthIcon
+              <AttentionIcon
                 width={{ base: '30px', xs: '36px', sm: '40px', lg: '35px', xl: '40px' }}
                 height={{ base: '30px', xs: '36px', sm: '40px', lg: '35px', xl: '40px' }}
+                color='#FFF'
+                fillColor = '#7F5A42'
               />
             </Flex>
             {/* BOX 2 */}
@@ -48,10 +50,11 @@ export const FireAlert = ({
                 margin = {{ base: '2%', sm: '2%', lg: '1%', xl: '1%'}}
                 
             >
-              <Text as='h4'
-                  variant = {"h4" as any}
+              <Text as='h5'
+                  variant = {"h5" as any}
                   color={"white"}
                   textAlign={{ base: 'center', sm: 'left'}}
+                  fontWeight = 'normal'
               >{title}</Text>
 
             </Flex>
