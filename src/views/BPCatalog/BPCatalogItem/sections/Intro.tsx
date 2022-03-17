@@ -13,7 +13,7 @@ export interface IntroProps {
 export const Intro = (props: IntroProps) => (
   <Flex
     w="100%"
-    h="797px"
+    minHeight="797px"
     bgImg={props.productImgBg}
     bgRepeat="repeat"
     pl={{ '2xl': '205px' }}
@@ -47,6 +47,7 @@ export const Intro = (props: IntroProps) => (
       padding={{ base: '50px', sm: '78px 71px 60px 75px' }}
       bg="green.100"
       pos="relative"
+      overflow={'hidden'}
     >
       <Text
         // fontSize={{ base: '50px', '2xl': '53px' }}

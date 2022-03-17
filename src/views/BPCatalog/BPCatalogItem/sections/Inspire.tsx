@@ -255,14 +255,18 @@ export const Inspire = (props: InspireProps) => {
           >
             <TextureContentButton
               title="Assista ao vídeo"
-              onClick={() => props.urlVideo && router.push(props.urlVideo)}
+              onClick={() =>
+                props.urlVideo && window.open(props.urlVideo, '_blank')
+              }
             >
               <PlayIcon />
             </TextureContentButton>
 
             <TextureContentButton
               title="Confira o ebook"
-              onClick={() => props.urlEbook && router.push(props.urlEbook)}
+              onClick={() =>
+                props.urlEbook && window.open(props.urlEbook, '_blank')
+              }
             >
               <ReportsIcon
                 stroke1="#6AA353"

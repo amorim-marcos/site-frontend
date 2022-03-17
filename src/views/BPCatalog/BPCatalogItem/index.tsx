@@ -76,22 +76,22 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
       />
       <DownloadModal
         productName={props.complete_name}
-        productImg={props.texture.icon}
+        productImg={props.img}
         isOpen={isOpen}
         assetsUrl={props.assets}
         onClose={onClose}
       />
       <Intro
-        productName={props.complete_name}
+        productName={props.name}
         productImgBg={props.img}
-        productDescription={props.description}
+        productDescription={props.presentation}
         textureTopMenuImg={props.texture.top_menu_image}
       />
       <Inspire
         textureName={props.texture.name}
         textureIcon={props.texture.icon}
         textureDescription={props.texture.description}
-        productPresentation={props.presentation}
+        productPresentation={props.description}
         urlVideo={props.video_url}
         urlEbook={props.ebook_url}
         combine_with={props.combine_with}
@@ -99,7 +99,7 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
       />
       <Properties
         productName={props.complete_name}
-        textureImg={props.texture.icon}
+        textureImg={props.img}
         uses_and_applications={props.uses_and_applications}
         available_at={props.available_at}
         handleDownload={onOpen}
