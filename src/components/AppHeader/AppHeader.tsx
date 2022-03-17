@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { Flex, Box, Container, Input, CloseButton } from '@chakra-ui/react'
-import { IoMdClose, IoMdMenu } from 'react-icons/io'
+import { IoMdMenu } from 'react-icons/io'
 import { useTranslation } from 'react-i18next'
 
 import LogoBerneck from '@components/LogoBerneck'
@@ -11,6 +11,7 @@ import { HeaderMenuItem } from './HeaderMenuItem/HeaderMenuItem'
 import { HeaderSecondaryItem } from './HeaderSecondaryItem/HeaderSecondaryItem'
 import { LanguageSelector } from './LanguageSelector/LanguageSelector'
 import { menuNavigation } from './MenuNavigation'
+import { IoMdClose } from 'react-icons/io'
 
 import { colors } from '../../theme/colors'
 
@@ -19,6 +20,7 @@ export type AppHeaderProps = null
 export const AppHeader = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [openSearchBar, setOpenSearchBar] = useState(false)
+  const [visibilitySearchBar, setvisibilityOpenSearchBar] = useState(false)
   const [menuMobileOpen, setMenuMobileOpen] = useState(false)
   const router = useRouter()
 
@@ -30,6 +32,19 @@ export const AppHeader = () => {
     e.preventDefault()
     router.push('/search/' + searchQuery)
   }
+
+  function toggleSearchBar() {
+    if (openSearchBar) {
+      setvisibilityOpenSearchBar(false)
+      setTimeout(() => setOpenSearchBar(false), 800)
+    } else {
+      setOpenSearchBar(!openSearchBar)
+    }
+  }
+
+  useEffect(() => {
+    setvisibilityOpenSearchBar(openSearchBar)
+  }, [openSearchBar])
 
   const header = useTranslation('header')
   return (
@@ -52,6 +67,7 @@ export const AppHeader = () => {
         left="0"
         w="100%"
         zIndex={'banner'}
+        transition="0.5s"
       >
         <Box
           zIndex="modal"
@@ -257,35 +273,38 @@ export const AppHeader = () => {
                     justifyContent="center"
                   >
                     {openSearchBar ? (
-                      <CloseButton
-                        h={{
-                          base: '20px',
-                          md: '30px',
-                          xl: '40px',
-                          '2xl': '50px'
-                        }}
-                        w={{
-                          base: '20px',
-                          md: '30px',
-                          xl: '40px',
-                          '2xl': '50px'
-                        }}
+                      <Flex
+                        transition="0.8s"
+                        alignItems={'center'}
+                        justifyContent="center"
+                        w={{ md: '35px', xl: '45px', '2xl': '55px' }}
+                        h={{ md: '35px', xl: '45px', '2xl': '55px' }}
+                        borderRadius={{ md: '35px', xl: '45px', '2xl': '55px' }}
                         bg="green.600"
-                        borderRadius="50%"
-                        size="sm"
                         color="white.100"
-                        onClick={() => setOpenSearchBar(false)}
-                      />
+                        _hover={{ bg: 'green.750' }}
+                        cursor="pointer"
+                        fontSize={{ md: '25px', xl: '40px' }}
+                        opacity={visibilitySearchBar ? '1' : '0'}
+                      >
+                        <IoMdClose onClick={toggleSearchBar} />
+                      </Flex>
                     ) : (
-                      <SearchIcon
-                        width={{
-                          base: '10px',
-                          md: '18px',
-                          xl: '28px',
-                          '2xl': '35px'
-                        }}
-                        onClick={() => setOpenSearchBar(true)}
-                      />
+                      <Box
+                        transition={'0.5s'}
+                        opacity={!visibilitySearchBar ? '1' : '0'}
+                        marginX="7px"
+                      >
+                        <SearchIcon
+                          width={{
+                            base: '10px',
+                            md: '18px',
+                            xl: '28px',
+                            '2xl': '35px'
+                          }}
+                          onClick={() => setOpenSearchBar(true)}
+                        />
+                      </Box>
                     )}
                   </Flex>
                 </Flex>
@@ -296,6 +315,8 @@ export const AppHeader = () => {
 
         {openSearchBar ? (
           <Flex
+            transition={'0.5s'}
+            opacity={visibilitySearchBar ? '1' : '0'}
             height={{
               base: '35px',
               md: '50px',

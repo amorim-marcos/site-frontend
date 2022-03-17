@@ -35,7 +35,7 @@ export const PostsView = ({
             url: '/canal-bnk'
           },
           {
-            title: 'Mundo Berneck',
+            title: postCategory.name,
             url: `/canal-bnk/${postCategory.id}`
           }
         ]}
