@@ -610,11 +610,11 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                   direction="column"
                   alignItems="center"
                   padding={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
-                  backgroundImage="/assets/imgs/fundo_relatorio.svg"
-                  backgroundPosition="center"
-                  backgroundRepeat="no-repeat"
+                  // backgroundImage="/assets/imgs/fundo_relatorio.svg"
+                  // backgroundPosition="center"
+                  // backgroundRepeat="no-repeat"
                 >
-                  <Text
+                  {/* <Text
                     fontFamily="body"
                     color="green.900"
                     textAlign="center"
@@ -643,7 +643,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                     >
                       Relatório de Sustentabilidade
                     </Text>
-                  </Button>
+                  </Button> */}
                 </Flex>
               </Box>
             </Flex>
@@ -1215,7 +1215,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
         zIndex="base"
         overflowY="hidden"
         overflowX="hidden"
-        bg="green.100"
+        bg="green.1000"
         backgroundImage="/assets/imgs/grafismos_fundo2.png"
         backgroundPosition="-900px top"
         backgroundRepeat="no-repeat"
@@ -1254,7 +1254,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
             {/* BOX 1 */}
             <Box flex="1">
               <CompletedTitle
-                titleString="Relatório ESG – BERNECK®"
+                titleString="ESG"
                 textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
                 alignSelf={{
                   base: 'flex-start',
@@ -1268,7 +1268,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               </Text>
             </Box>
             {/* BOX 2 */}
-            <Box
+            {/* <Box
               margin={{
                 base: '5% 0% 5% 0%',
                 sm: '5% 0% 5% 0%',
@@ -1296,7 +1296,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                   iconInitialColor2="#004934"
                 />
               </Link>
-            </Box>
+            </Box> */}
           </Box>
         </Flex>
       </Flex>
