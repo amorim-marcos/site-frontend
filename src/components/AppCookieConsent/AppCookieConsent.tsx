@@ -10,10 +10,7 @@ export const AppCookieConsent = () => {
           padding: '0 3%',
           fontSize: '90%',
           alignItems: 'center',
-          justifyContent: 'center',
-          maxWidth: '1920px',
-          left: 'auto',
-          right: 'auto'
+          justifyContent: 'center'
         }}
         buttonStyle={{
           background: '#59993F',
