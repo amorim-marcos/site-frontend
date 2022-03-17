@@ -53,7 +53,7 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <Box pos="relative">
+    <Box pos="relative" maxWidth={'1920px'} marginX="auto">
       <Pagebar
         paths={[
           {
@@ -146,13 +146,13 @@ const PageNavegation = (props: {
       >
         <Arrow
           direction="left"
-          width={{ base: '20px', sm: '30px' }}
-          height={{ base: '30px', sm: '40px' }}
+          width={{ base: '15px', xs: '20px', md: '30px' }}
+          // height={{ base: '30px', sm: '40px' }}
           color="green.200"
         />
         <Box>
           <Text
-            fontSize={{ base: '20px', sm: '23px' }}
+            fontSize={{ base: '15px', sm: '20px', md: '23px' }}
             fontWeight="bold"
             letterSpacing="-0.46px"
             color="gray.300"
@@ -161,7 +161,7 @@ const PageNavegation = (props: {
           </Text>
 
           <Text
-            fontSize={{ base: '16px', sm: '18px' }}
+            fontSize={{ base: '9px', xs: '12px', sm: '16px', md: '18px' }}
             fontWeight="medium"
             letterSpacing="-0.36px"
             color="gray.300"
@@ -189,7 +189,7 @@ const PageNavegation = (props: {
       >
         <Flex direction="column" align="flex-end">
           <Text
-            fontSize={{ base: '20px', sm: '23px' }}
+            fontSize={{ base: '15px', sm: '20px', md: '23px' }}
             fontWeight="bold"
             letterSpacing="-0.46px"
             color="gray.300"
@@ -198,7 +198,7 @@ const PageNavegation = (props: {
           </Text>
 
           <Text
-            fontSize={{ base: '16px', sm: '18px' }}
+            fontSize={{ base: '9px', xs: '12px', sm: '16px', md: '18px' }}
             fontWeight="medium"
             letterSpacing="-0.36px"
             color="gray.300"
@@ -209,8 +209,8 @@ const PageNavegation = (props: {
 
         <Arrow
           direction="right"
-          width={{ base: '20px', sm: '30px' }}
-          height={{ base: '30px', sm: '40px' }}
+          width={{ base: '15px', xs: '20px', md: '30px' }}
+          // height={{ base: '30px', sm: '40px' }}
           color="green.200"
         />
       </Flex>

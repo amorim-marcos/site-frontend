@@ -46,7 +46,7 @@ export const Inspire = (props: InspireProps) => {
 
         <Flex>
           <Text
-            bg="green.600"
+            bg="green.650"
             w={{ base: 'fit-content', sm: '185px' }}
             padding={{ base: '10px 20px', sm: 0 }}
             h="40px"
