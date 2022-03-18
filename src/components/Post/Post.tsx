@@ -270,13 +270,12 @@ export const Post = (props: PostProps) => {
         {/* Share Buttons Icons */}
         {showShareOptions && (
           <Flex 
-            gap={{ base: '10px', lg: '30px' }}
+            gap={{ base: '20px', lg: '30px' }}
             margin = {{ base: '0px 0px 10px 10px', md: '10px', lg: '15px', xl: '20px' }}
           >
              <FacebookShareButton
               url={
-                process.env.NEXT_PUBLIC_APP_URL +
-                `/canal-bnk/${post?.category.id}/${post?.url_code}`
+                `https://www.berneck.com.br/canal-bnk/${post?.category.id}/${post?.url_code}`
               }
               quote={post?.title}
             >
@@ -291,8 +290,7 @@ export const Post = (props: PostProps) => {
 
             <TwitterShareButton
               url={
-                process.env.NEXT_PUBLIC_APP_URL +
-                `/canal-bnk/${post?.category.id}/${post?.url_code}`
+                `https://www.berneck.com.br/canal-bnk/${post?.category.id}/${post?.url_code}`
               }
             >
               <SocialIcon

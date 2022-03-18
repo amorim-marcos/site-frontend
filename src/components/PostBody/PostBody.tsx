@@ -61,11 +61,11 @@ export const PostBody = ({
           <Flex
             marginX={{ base: '0', md: '2%' }}
             flexDirection={{ base: 'row', md: 'column' }}
+            gap={{ base: '10px', lg: '0px' }}
           >
             <FacebookShareButton
               url={
-                process.env.NEXT_PUBLIC_APP_URL +
-                `/canal-bnk/${category?.id}/${postSlug}`
+                `https://www.berneck.com.br/canal-bnk/${category?.id}/${postSlug}`
               }
               quote={postTitle}
             >
@@ -73,22 +73,21 @@ export const PostBody = ({
                 media="facebook"
                 marginY={{ base: '20%', md: '40%' }}
                 color="brown.350"
-                width={{ base: '70px', md: '40px' }}
+                width={{ base: '45px', md: '40px' }}
                 marginRight={{ base: '15%' }}
                 hoverColor={category?.color}
               />
             </FacebookShareButton>
             <TwitterShareButton
               url={
-                process.env.NEXT_PUBLIC_APP_URL +
-                `/canal-bnk/${category?.id}/${postSlug}`
+                `https://www.berneck.com.br/canal-bnk/${category?.id}/${postSlug}`
               }
             >
               <SocialIcon
                 media="twitter"
                 marginY={{ base: '20%', md: '40%' }}
                 color="brown.350"
-                width={{ base: '70px', md: '40px' }}
+                width={{ base: '45px', md: '40px' }}
                 hoverColor={category?.color}
               />
             </TwitterShareButton>
