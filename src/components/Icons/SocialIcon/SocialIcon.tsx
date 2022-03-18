@@ -1,5 +1,4 @@
-import { Box, BoxProps } from '@chakra-ui/react'
-import Link from 'next/link'
+import { Box, BoxProps, Link } from '@chakra-ui/react'
 
 export interface SocialIconProps extends BoxProps {
   media:
@@ -24,7 +23,7 @@ export const SocialIcon = ({
   ...props
 }: SocialIconProps) => {
   return (
-    <Link passHref href={href}>
+    <Link href={href} isExternal>
       <Box
         {...props}
         cursor="pointer"

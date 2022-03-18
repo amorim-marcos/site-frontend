@@ -14,7 +14,11 @@ export const Section = (props: SectionProps) => {
   const { title, seeMore, children, ...rest } = props
 
   return (
-    <Flex direction="column" pb={{ base: '58px', lg: '0' }} {...rest}>
+    <Flex 
+      // bg="tomato"
+      direction="column" 
+      pb={{ base: '58px', lg: '0' }} 
+      {...rest}>
       <Flex
         align="center"
         justify={{ base: 'center', lg: 'space-between' }}
@@ -91,6 +95,9 @@ const SeeMore = (props: SeeMoreProps) => {
       align="center"
       justify="center"
       gap="14px"
+      marginRight={{ base: '22px', md: '30px', lg: '-65px', xl: '-18px' }}
+      marginTop={{ base: '15px', md: '10px', lg: '20px' , xl: '25px' }}
+      // bg="black"
     >
       <Link
         letterSpacing="-0.4px"

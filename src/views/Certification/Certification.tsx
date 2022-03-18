@@ -58,7 +58,7 @@ export const Certification = (props: CertificationViewProps) => (
       ]}
     />
 
-    <PageSession
+    {/* <PageSession
       data={{
         imageUrl: 'url(/assets/imgs/escurecida.png)',
         title: props.page_content.page_title,
@@ -70,7 +70,69 @@ export const Certification = (props: CertificationViewProps) => (
       viewGrafismo="flex"
       GrafismLeftStroke="#E0CBA5"
       GrafismLeftOpacity="0.2"
-    />
+    /> */}
+    {/* Downloads Header */}
+    <Flex
+        flexDir="column"
+        width="100%"
+        bg="brown.100"
+        paddingX="5%"
+        paddingY={{ base: '20px', md: '0' }}
+        height={{ base: 'auto', md: '25vw' }}
+        maxHeight="298px"
+        position="relative"
+        justifyContent="center"
+        overflow="hidden"
+        alignItems={{ base: 'center', md: 'flex-start' }}
+      >
+        <Box display={{ base: 'none', md: 'block' }}>
+          <CompletedTitle
+            titleString= {props.page_content.page_title}
+            textAlign="left"
+            alignSelf="left"
+            zIndex="docked"
+          />
+        </Box>
+
+        <Box display={{ base: 'block', md: 'none' }}>
+          <CompletedTitle
+            titleString= {props.page_content.page_title}
+            textAlign="center"
+            alignSelf="center"
+            zIndex="docked"
+          />
+        </Box>
+        <Text
+          variant={'body' as any}
+          w={{ base: '100%', md: '50%' }}
+          marginTop={{ base: '1%', xl: '3%' }}
+          color="brown.300"
+        >
+          {props.page_content.header_text}
+        </Text>
+        <Box
+          h="100%"
+          position={'absolute'}
+          top="0"
+          left={{ base: '55%', md: '60%' }}
+          overflow="hidden"
+          // bg="red"
+        >
+          <Box 
+            w="100vw" 
+            h="100%" 
+            justifyContent="left"
+          >
+            <Image
+              src="/img/banner_certificacoes.png"
+              width={'auto'}
+              height={'100%'}
+              display={{ base: 'none', md: 'block' }}
+            />
+          </Box>
+        </Box>
+      </Flex>
+      {/* End Downloads Header */}
 
     {/* INICIO Florestas Certificadas */}
     <Flex
@@ -197,7 +259,7 @@ export const Certification = (props: CertificationViewProps) => (
       zIndex="base"
       overflowY="hidden"
       overflowX="hidden"
-      bg="green.100"
+      bg="green.150"
     >
       <Flex
         // bg='blue'
@@ -230,7 +292,7 @@ export const Certification = (props: CertificationViewProps) => (
               key={i}
               m="5%"
               mb="0"
-              bg="gray.100"
+              bg="green.100"
               flex="1"
               direction={
                 i % 2 === 0
@@ -331,7 +393,7 @@ export const Certification = (props: CertificationViewProps) => (
           mt={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
           mb={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
           mr={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
-          bg="gray.100"
+          bg="green.100"
           flex="1"
           direction={{
             base: 'column',

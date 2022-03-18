@@ -1,4 +1,4 @@
-import { Flex, Box, Text, Image } from '@chakra-ui/react'
+import { Flex, Box, Text, Image, Link } from '@chakra-ui/react'
 import CompletedTitle from '@components/CompletedTitle'
 import { SocialIcon } from '@components/Icons'
 import ArrowIcon from '@components/Icons/ArrowIcon'
@@ -71,13 +71,15 @@ export const PostBody = ({
             marginX={{ base: '0', md: '2%' }}
             flexDirection={{ base: 'row', md: 'column' }}
           >
-            <SocialIcon
-              media="facebook"
-              marginY={{ base: '20%', md: '40%' }}
-              color="brown.350"
-              width={{ base: '70px', md: '40px' }}
-              marginRight={{ base: '15%' }}
-            />
+            <Link onClick={() => alert('/')}>
+              <SocialIcon
+                media="facebook"
+                marginY={{ base: '20%', md: '40%' }}
+                color="brown.350"
+                width={{ base: '70px', md: '40px' }}
+                marginRight={{ base: '15%' }}
+              />
+            </Link>
             <SocialIcon
               media="twitter"
               marginY={{ base: '20%', md: '40%' }}
