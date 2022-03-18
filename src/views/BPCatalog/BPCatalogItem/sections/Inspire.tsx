@@ -12,7 +12,7 @@ export interface InspireProps {
   productPresentation: string
   urlVideo: string
   urlEbook: string
-  combine_with: { name: string; img: string }[]
+  combine_with: { name: string; href:string; img: string }[]
   in_ambients: { id: number; image_url: string }[]
 }
 
