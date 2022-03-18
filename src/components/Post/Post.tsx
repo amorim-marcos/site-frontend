@@ -218,7 +218,7 @@ export const Post = (props: PostProps) => {
                 <CalendarIcon
                   w="29px"
                   h="27px"
-                  stroke1={getCalendarColor()}
+                  stroke1={getHoverIndicatorColor()}
                   stroke2={currentCategory === 2 ? 'white' : '#595959'}
                 />
               </Box>
@@ -325,7 +325,7 @@ export const Post = (props: PostProps) => {
               xl: '5px',
               '2xl': '6px'
             }}
-            borderBottomColor={getCalendarColor()}
+            borderBottomColor={getHoverIndicatorColor()}
             marginLeft="10%"
           />
         </Flex>
