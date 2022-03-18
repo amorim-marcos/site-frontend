@@ -87,6 +87,7 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
         productImgBg={props.bg_img}
         productDescription={props.presentation}
         textureTopMenuImg={props.texture.top_menu_image}
+        handleDownload={onOpen}
       />
       <Inspire
         textureName={props.texture.name}
