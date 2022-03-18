@@ -13,6 +13,7 @@ export interface BPCatalogItemProps {
   url_code: string
   name: string
   description: string
+  bg_img: string
   img: string
   assets: string
   presentation: string
@@ -83,7 +84,7 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
       />
       <Intro
         productName={props.name}
-        productImgBg={props.img}
+        productImgBg={props.bg_img}
         productDescription={props.presentation}
         textureTopMenuImg={props.texture.top_menu_image}
       />

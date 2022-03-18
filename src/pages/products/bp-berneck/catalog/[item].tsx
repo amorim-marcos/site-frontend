@@ -10,6 +10,7 @@ export interface CatalogItemProps {
   name: string
   description: string
   img: string
+  bg_img: string
   assets: string
   presentation: string
   uses_and_applications: string
@@ -65,7 +66,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       url_code: productFetch.url_code,
       name: productFetch.name,
       description: productFetch.description,
-      img: `${url}${productFetch.background_image.url}`,
+      img: `${url}${productFetch.pattern_image.url}`,
+      bg_img: `${url}${productFetch.background_image.url}`,
       assets: `${url}${productFetch.assets?.url}`,
       presentation: productFetch.presentation,
       uses_and_applications: productFetch.uses_and_applications,
@@ -79,7 +81,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       },
       combine_with: productFetch.combine_with.map((item: any) => ({
         name: item.complete_name,
-        img: `${url}${item.background_image.url}`
+        img: `${url}${item.pattern_image.url}`
       })),
       available_at: productFetch.available_at.map((item: any) => ({
         ...item,
