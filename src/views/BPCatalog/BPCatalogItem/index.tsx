@@ -53,7 +53,7 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <Box pos="relative">
+    <Box pos="relative" maxWidth={'1920px'} marginX="auto" overflow={'hidden'}>
       <Pagebar
         paths={[
           {
@@ -76,22 +76,22 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
       />
       <DownloadModal
         productName={props.complete_name}
-        productImg={props.texture.icon}
+        productImg={props.img}
         isOpen={isOpen}
         assetsUrl={props.assets}
         onClose={onClose}
       />
       <Intro
-        productName={props.complete_name}
+        productName={props.name}
         productImgBg={props.img}
-        productDescription={props.description}
+        productDescription={props.presentation}
         textureTopMenuImg={props.texture.top_menu_image}
       />
       <Inspire
         textureName={props.texture.name}
         textureIcon={props.texture.icon}
         textureDescription={props.texture.description}
-        productPresentation={props.presentation}
+        productPresentation={props.description}
         urlVideo={props.video_url}
         urlEbook={props.ebook_url}
         combine_with={props.combine_with}
@@ -99,7 +99,7 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
       />
       <Properties
         productName={props.complete_name}
-        textureImg={props.texture.icon}
+        textureImg={props.img}
         uses_and_applications={props.uses_and_applications}
         available_at={props.available_at}
         handleDownload={onOpen}
@@ -146,13 +146,13 @@ const PageNavegation = (props: {
       >
         <Arrow
           direction="left"
-          width={{ base: '20px', sm: '30px' }}
-          height={{ base: '30px', sm: '40px' }}
+          width={{ base: '15px', xs: '20px', md: '30px' }}
+          // height={{ base: '30px', sm: '40px' }}
           color="green.200"
         />
         <Box>
           <Text
-            fontSize={{ base: '20px', sm: '23px' }}
+            fontSize={{ base: '15px', sm: '20px', md: '23px' }}
             fontWeight="bold"
             letterSpacing="-0.46px"
             color="gray.300"
@@ -161,7 +161,7 @@ const PageNavegation = (props: {
           </Text>
 
           <Text
-            fontSize={{ base: '16px', sm: '18px' }}
+            fontSize={{ base: '9px', xs: '12px', sm: '16px', md: '18px' }}
             fontWeight="medium"
             letterSpacing="-0.36px"
             color="gray.300"
@@ -189,7 +189,7 @@ const PageNavegation = (props: {
       >
         <Flex direction="column" align="flex-end">
           <Text
-            fontSize={{ base: '20px', sm: '23px' }}
+            fontSize={{ base: '15px', sm: '20px', md: '23px' }}
             fontWeight="bold"
             letterSpacing="-0.46px"
             color="gray.300"
@@ -198,7 +198,7 @@ const PageNavegation = (props: {
           </Text>
 
           <Text
-            fontSize={{ base: '16px', sm: '18px' }}
+            fontSize={{ base: '9px', xs: '12px', sm: '16px', md: '18px' }}
             fontWeight="medium"
             letterSpacing="-0.36px"
             color="gray.300"
@@ -209,8 +209,8 @@ const PageNavegation = (props: {
 
         <Arrow
           direction="right"
-          width={{ base: '20px', sm: '30px' }}
-          height={{ base: '30px', sm: '40px' }}
+          width={{ base: '15px', xs: '20px', md: '30px' }}
+          // height={{ base: '30px', sm: '40px' }}
           color="green.200"
         />
       </Flex>

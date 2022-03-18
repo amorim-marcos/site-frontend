@@ -66,7 +66,7 @@ export type BPCatalogProps = {
 }
 
 export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
-  const [displayFilters, setDisplayFilters] = useState(false)
+  const [displayFilters, setDisplayFilters] = useState(true)
   const [darkMode, setDarkMode] = useState(false)
   const [gridSize, setGridSize] = useState('big')
   const [gridColumnsMode, setGridColumnsMode] = useState('repeat(3, 1fr)')

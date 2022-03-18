@@ -13,21 +13,32 @@ export interface IntroProps {
 export const Intro = (props: IntroProps) => (
   <Flex
     w="100%"
-    h="797px"
+    minHeight="797px"
     bgImg={props.productImgBg}
+    bgSize="40%"
     bgRepeat="repeat"
     pl={{ '2xl': '205px' }}
     align="center"
     justify={{ base: 'center', '2xl': 'inherit' }}
     pos="relative"
   >
-    <Image
-      src={props.textureTopMenuImg}
+    <Box
       pos="absolute"
-      boxSize={['642px', '538px']}
+      // border="1px solid red"
       top="0"
       right="0"
-    />
+      w={{ base: '100vw', sm: '410px' }}
+      h="538px"
+    >
+      <Image
+        src={props.textureTopMenuImg}
+        w="100%"
+        h="100%"
+        objectFit={'cover'}
+        objectPosition={{ base: 'none', sm: 'right' }}
+        // boxSize={['642px', '538px']}
+      />
+    </Box>
 
     <Flex
       data-testid="texture-attr"
@@ -37,9 +48,11 @@ export const Intro = (props: IntroProps) => (
       padding={{ base: '50px', sm: '78px 71px 60px 75px' }}
       bg="green.100"
       pos="relative"
+      overflow={'hidden'}
     >
       <Text
-        fontSize={{ base: '50px', '2xl': '53px' }}
+        // fontSize={{ base: '50px', '2xl': '53px' }}
+        variant={'h2' as any}
         fontWeight={800}
         letterSpacing="-1.06px"
         color="green.900"
