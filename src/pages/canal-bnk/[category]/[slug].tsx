@@ -17,7 +17,9 @@ export default function PostPage(props: PostPageProps) {
         publishDate: props.currentPost.date as string,
         postTitle: props.currentPost.title,
         postContent: props.currentPost.content,
-        tags: props.currentPost.tags.map((item) => ({ name: item.Tag }))
+        tags: props.currentPost.tags.map((item) => ({ name: item.Tag })),
+        categoryId: props.currentPost.category.id,
+        postSlug: props.currentPost.url_code
       }}
       coverImageUrl={props.currentPost.cover}
       relationalContent={{

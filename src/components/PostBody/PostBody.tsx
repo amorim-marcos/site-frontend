@@ -7,6 +7,8 @@ import parser from 'react-html-parser'
 import { Wrapper } from './styles'
 import DOMPurify from 'dompurify'
 import { colors } from '../../theme/colors'
+import { useRouter } from 'next/router'
+import { FacebookShareButton, TwitterShareButton } from 'react-share'
 
 export type PostBodyProps = {
   category?: string
@@ -17,6 +19,8 @@ export type PostBodyProps = {
   tags?: {
     name: string
   }[]
+  categoryId: number
+  postSlug: string
 }
 export const PostBody = ({
   category,
@@ -24,8 +28,11 @@ export const PostBody = ({
   publishDate,
   postTitle,
   postContent,
-  tags
+  tags,
+  categoryId,
+  postSlug
 }: PostBodyProps) => {
+  const router = useRouter()
   const [content, setContent] = useState('<h1>Hello world</h1>')
   useEffect(() => {
     if (!!postContent && postContent?.length > 0) {
@@ -71,7 +78,13 @@ export const PostBody = ({
             marginX={{ base: '0', md: '2%' }}
             flexDirection={{ base: 'row', md: 'column' }}
           >
-            <Link onClick={() => alert('/')}>
+            <FacebookShareButton
+              url={
+                process.env.NEXT_PUBLIC_APP_URL +
+                `/canal-bnk/${categoryId}/${postSlug}`
+              }
+              quote={postTitle}
+            >
               <SocialIcon
                 media="facebook"
                 marginY={{ base: '20%', md: '40%' }}
@@ -79,13 +92,20 @@ export const PostBody = ({
                 width={{ base: '70px', md: '40px' }}
                 marginRight={{ base: '15%' }}
               />
-            </Link>
-            <SocialIcon
-              media="twitter"
-              marginY={{ base: '20%', md: '40%' }}
-              color="brown.350"
-              width={{ base: '70px', md: '40px' }}
-            />
+            </FacebookShareButton>
+            <TwitterShareButton
+              url={
+                process.env.NEXT_PUBLIC_APP_URL +
+                `/canal-bnk/${categoryId}/${postSlug}`
+              }
+            >
+              <SocialIcon
+                media="twitter"
+                marginY={{ base: '20%', md: '40%' }}
+                color="brown.350"
+                width={{ base: '70px', md: '40px' }}
+              />
+            </TwitterShareButton>
           </Flex>
           {/* End Social media */}
 

@@ -12,7 +12,7 @@ import { PostBodyProps } from '@components/PostBody/PostBody'
 import { Category } from 'types/data/Post'
 
 export type PostViewProps = {
-  postBody?: PostBodyProps
+  postBody: PostBodyProps
   relationalContent: PostRelationalContentProps
   coverImageUrl: string
   backgroundColor: string
