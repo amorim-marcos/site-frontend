@@ -24,6 +24,7 @@ export interface CatalogItemProps {
   }
   combine_with: {
     name: string
+    href: string
     img: string
   }[]
   in_ambients: {
@@ -81,6 +82,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       },
       combine_with: productFetch.combine_with.map((item: any) => ({
         name: item.complete_name,
+        href: `/products/bp-berneck/catalog/${item.url_code}`,
         img: `${url}${item.pattern_image.url}`
       })),
       available_at: productFetch.available_at.map((item: any) => ({
