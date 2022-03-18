@@ -65,7 +65,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
           description: item.category.description,
           color: item.category.color
         },
-        content: DOMPurify.sanitize(item.content),
+        content: DOMPurify.sanitize(item.content).replace(
+          '/uploads',
+          `${process.env.NEXT_PUBLIC_API_URL}/uploads`
+        ),
         cover: process.env.NEXT_PUBLIC_API_URL + item.cover.url,
         tags: item.tags.map((j) => ({
           Tag: j.tag

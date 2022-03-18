@@ -32,18 +32,6 @@ export const PostBody = ({
   categoryId,
   postSlug
 }: PostBodyProps) => {
-  const router = useRouter()
-  const [content, setContent] = useState('<h1>Hello world</h1>')
-  useEffect(() => {
-    if (!!postContent && postContent?.length > 0) {
-      const dirty = postContent?.replace(
-        '/uploads',
-        `${process.env.NEXT_PUBLIC_API_URL}/uploads`
-      )
-      const clean = DOMPurify.sanitize(dirty)
-      setContent(clean)
-    }
-  }, [postContent])
   return (
     <Flex
       flexDirection="column"
@@ -164,7 +152,7 @@ export const PostBody = ({
         w={{ base: '100%', md: '80%', xl: '60%' }}
         marginLeft={{ base: '0', md: '12%', xl: '10%' }}
       >
-        <Wrapper>{content && parser(content)}</Wrapper>
+        <Wrapper>{postContent && parser(postContent)}</Wrapper>
       </Box>
       {/* End of post content */}
 
