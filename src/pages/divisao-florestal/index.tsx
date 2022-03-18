@@ -6,12 +6,18 @@ export type FlorestalDivisionPageProps = ForestsViewProps
 export default function FlorestalDivisionPage(
   props: FlorestalDivisionPageProps
 ) {
-  return <ForestsView page_content={props.page_content} />
+  return (
+    <ForestsView
+      page_content={props.page_content}
+      fireWarningText={props.fireWarningText}
+    />
+  )
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale
   let page_content
+  let fireWarning
   let res
 
   try {
@@ -19,10 +25,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
       process.env.NEXT_PUBLIC_API_URL + `/forest-division?_locale=${locale}`
     )
     page_content = await res.json()
+
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/fire-warning?_locale=${locale}`
+    )
+    fireWarning = await res.json()
   } catch (e) {
     // if locale not working, get default
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/forest-division`)
     page_content = await res.json()
+
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/fire-warning`)
+    fireWarning = await res.json()
   }
 
   page_content.public_resume = page_content.public_resume.map(
@@ -52,7 +66,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      page_content
+      page_content,
+      fireWarning: fireWarning.warning_text
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

@@ -17,12 +17,6 @@ const dataPageSession = {
   subtitle: ''
 }
 
-const bannerIcendio = {
-  title:
-    'Em caso de incêndio em nossas florestas e entornos, ligue para 41 2109-3855 [PR] | 41 2109-3856 [PR] | 49 3245-9015 [SC] | 49 3245-9186 [SC]',
-  display: 'flex'
-}
-
 export type ForestsViewProps = {
   page_content: {
     section1_text: string
@@ -63,6 +57,7 @@ export type ForestsViewProps = {
       }
     }[]
   }
+  fireWarningText: string
 }
 
 export const ForestsView = (props: ForestsViewProps) => {
@@ -78,7 +73,7 @@ export const ForestsView = (props: ForestsViewProps) => {
         ]}
       />
 
-      <FireAlert title={bannerIcendio.title} display={bannerIcendio.display} />
+      <FireAlert title={props.fireWarningText} display={'flex'} />
 
       <PageSession
         data={{
@@ -970,8 +965,8 @@ export const ForestsView = (props: ForestsViewProps) => {
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             backgroundSize={'cover'}
-            alignItems='center'
-            justifyContent='center'
+            alignItems="center"
+            justifyContent="center"
           >
             {props.page_content.public_resume.map((item, i) => {
               return (
