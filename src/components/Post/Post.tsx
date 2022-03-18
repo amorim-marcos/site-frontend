@@ -7,7 +7,9 @@ import { CategoryContext } from 'views/Canal-BNK'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { smartDate } from 'utils/utils'
-
+import { FacebookShareButton, TwitterShareButton } from 'react-share'
+import parser from 'react-html-parser'
+import { Wrapper } from '@components/PostBody/styles'
 
 function getPanelColor(i: number) {
   if (i === 2) {
@@ -77,12 +79,7 @@ export const Post = (props: PostProps) => {
       (item) => item.name === post?.category.name
     )
     if (categoryPage === 'all') return getAccentColor(index)
-    else
-      return currentCategory === 0
-        ? 'brown.200'
-        : currentCategory === 1
-        ? 'white'
-        : 'green.900'
+    else return currentCategory === 2 ? 'white' : '#595959'
   }
 
   const getCalendarColor = () => {
@@ -265,7 +262,7 @@ export const Post = (props: PostProps) => {
             letterSpacing="-0.34px"
             color={'gray.350'}
           >
-            {post?.content}
+            <Wrapper>{post?.content && parser(post?.content)}</Wrapper>
           </Text>
         )} */}
 
@@ -276,7 +273,13 @@ export const Post = (props: PostProps) => {
             gap={{ base: '10px', lg: '30px' }}
             margin = {{ base: '0px 0px 10px 10px', md: '10px', lg: '15px', xl: '20px' }}
           >
-            <Link onClick={() => alert('/')}>
+             <FacebookShareButton
+              url={
+                process.env.NEXT_PUBLIC_APP_URL +
+                `/canal-bnk/${post?.category.id}/${post?.url_code}`
+              }
+              quote={post?.title}
+            >
               <SocialIcon
                 media="facebook"
                 width="38px"
@@ -284,9 +287,14 @@ export const Post = (props: PostProps) => {
                 color={currentCategory === 2 ? 'white' : 'gray.350'}
                 hoverColor={getSocialIconHoverColor()}
               />
-            </Link>
+            </FacebookShareButton>
 
-            <Link onClick={() => alert('/')}>
+            <TwitterShareButton
+              url={
+                process.env.NEXT_PUBLIC_APP_URL +
+                `/canal-bnk/${post?.category.id}/${post?.url_code}`
+              }
+            >
               <SocialIcon
                 media="twitter"
                 width="38px"
@@ -294,9 +302,9 @@ export const Post = (props: PostProps) => {
                 color={currentCategory === 2 ? 'white' : 'gray.350'}
                 hoverColor={getSocialIconHoverColor()}
               />
-            </Link>
+            </TwitterShareButton>
 
-            <Link onClick={() => alert('/')}>
+            {/* <Link onClick={() => alert('/')}>
               <SocialIcon
                 media="whatsapp"
                 width="38px"
@@ -304,7 +312,7 @@ export const Post = (props: PostProps) => {
                 color={currentCategory === 2 ? 'white' : 'gray.350'}
                 hoverColor={getSocialIconHoverColor()}
               />
-            </Link>
+            </Link> */}
           </Flex>
         )}
 

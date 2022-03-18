@@ -8,6 +8,7 @@ import { Wrapper } from './styles'
 import { colors } from '../../theme/colors'
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
 import { Category } from 'types/data/Post'
+import { smartDate } from 'utils/utils'
 
 export type PostBodyProps = {
   category?: Category
@@ -74,6 +75,7 @@ export const PostBody = ({
                 color="brown.350"
                 width={{ base: '70px', md: '40px' }}
                 marginRight={{ base: '15%' }}
+                hoverColor={category?.color}
               />
             </FacebookShareButton>
             <TwitterShareButton
@@ -87,6 +89,7 @@ export const PostBody = ({
                 marginY={{ base: '20%', md: '40%' }}
                 color="brown.350"
                 width={{ base: '70px', md: '40px' }}
+                hoverColor={category?.color}
               />
             </TwitterShareButton>
           </Flex>
@@ -139,7 +142,7 @@ export const PostBody = ({
             stroke1={category?.color}
           />
           <Text color="gray.350" variant={'body' as any}>
-            {publishDate}
+            {smartDate(publishDate, 'PT-BR')}
           </Text>
         </Flex>
         {/* End of date publish */}
