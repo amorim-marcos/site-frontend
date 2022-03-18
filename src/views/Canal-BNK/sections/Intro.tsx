@@ -273,7 +273,7 @@ export const Intro = (props: { posts: IPost[] }) => {
               onClick: () => setSeeOnlyPosts(true),
               textColor:
                 currentCategory === -1
-                  ? 'green.600'
+                  ? 'green.550'
                   : currentCategory === 0
                   ? 'brown.300'
                   : 'white.100'

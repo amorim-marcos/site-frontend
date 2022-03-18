@@ -7,6 +7,7 @@ import EarthIcon from '@components/Icons/EarthIcon'
 import PatternInfo from '@components/PatternInfo'
 import ProductsGallery from '@components/ProductsGallery'
 import { ProductsGalleryProps } from '@components/ProductsGallery/ProductsGallery'
+import SeeMore from '@components/SeeMore'
 import { useRouter } from 'next/router'
 
 export type SectionsProductsProps = ProductsGalleryProps
@@ -70,37 +71,12 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
             }}
             alignItems={'flex-end'}
           >
-            <Box onClick={() => router.push('/products')}>
-              <Text
-                as="h4"
-                variant={'h4' as any}
-                textAlign={{
-                  base: 'right',
-                  sm: 'right',
-                  lg: 'right',
-                  xl: 'right'
-                }}
-                fontWeight={'medium'}
-                color={'green.550'}
-              >
-                Veja todos os produtos
-              </Text>
-            </Box>
+           <SeeMore
+            text = "Veja todos os produtos"
+            link = "/products"
+           />
           </Flex>
-          <Flex
-            // bg="yellow"
-            // flex="1"
-            p={{ base: '5px', sm: '5px', lg: '5px', xl: '10px' }}
-            alignItems={'flex-end'}
-            direction={{
-              base: 'column'
-            }}
-          >
-            <ArrowIcon
-              width={{ base: '10px', md: '10px', lg: '12px', xl: '12px' }}
-              stroke="#6DB416"
-            />
-          </Flex>
+          
           {/* FIM FLEX INTERNO */}
         </Flex>
       </Flex>
