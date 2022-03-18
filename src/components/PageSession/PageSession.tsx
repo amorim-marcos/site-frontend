@@ -1,15 +1,5 @@
-import React, { ReactNode } from 'react'
-import {
-  Box,
-  Image,
-  Text,
-  Flex,
-  Container,
-  Wrap,
-  Heading,
-  Spacer
-} from '@chakra-ui/react'
-import { Wrapper } from '@components/LeafletMaps/styles'
+import React from 'react'
+import { Box, Text, Flex } from '@chakra-ui/react'
 
 import CompletedTitle from '@components/CompletedTitle'
 import GrafismLeft from '@components/GrafismLeft'

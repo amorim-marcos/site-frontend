@@ -83,6 +83,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
         phones: string
         airport_distance: string
       }
+      latitude: string
+      longitude: string
       google_maps_url: string
       state: string
       country: string
@@ -100,7 +102,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
           phones: item.our_place_information.phones,
           airportDistance: item.our_place_information.airport_distance
         },
-        coords: [0, 0],
+        coords: {
+          lat: Number(item.latitude),
+          lng: Number(item.longitude)
+        },
         googleMapsURL: item.google_maps_url,
         state: item.state,
         country: item.country,

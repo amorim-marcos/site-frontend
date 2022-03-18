@@ -11,7 +11,6 @@ import AppFooter from 'components/AppFooter'
 import { appWithI18Next } from 'ni18n'
 import { ni18nConfig } from '../../ni18n.config'
 
-import 'leaflet/dist/leaflet.css'
 import AppCookieConsent from '@components/AppCookieConsent'
 
 function App({ Component, pageProps }: AppProps) {

@@ -8,6 +8,7 @@ module.exports = withPWA({
     disable: !isProd
   },
   env: {
+    GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
     MAPBOX_API_KEY: process.env.MAPBOX_API_KEY,
     FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID,
     YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY,

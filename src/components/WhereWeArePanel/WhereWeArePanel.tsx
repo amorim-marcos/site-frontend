@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Flex, Image, Text } from '@chakra-ui/react'
 
-import LeafletMaps from '@components/LeafletMaps'
+import GoogleMap from '@components/GoogleMap'
 
 import WhereWeArePanelInfo from './WhereWeArePanelInfo'
 import WhereWeArePanelFooter from './WhereWeArePanelFooter'
@@ -17,7 +17,10 @@ export type WhereWeArePanelProps = {
   name: string
   city: string
   ourPlaceInformation: IOurPlaceInformation
-  coords: [number, number]
+  coords: {
+    lat: number
+    lng: number
+  }
   googleMapsURL: string
   state: string
   country: string
@@ -32,7 +35,7 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
     switch (showOverlay) {
       case 'map':
         return (
-          <LeafletMaps
+          <GoogleMap
             center={props.coords}
             onClick={() => window.open(props.googleMapsURL, '_blank')}
           />
@@ -60,7 +63,6 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
       pos="relative"
       direction="column"
       userSelect="none"
-      // overflow={'hidden'}
     >
       <PanelImage
         image={props.image}
@@ -110,7 +112,7 @@ const PanelImage = (props: { image: string; inaugurationSoon?: boolean }) => (
       objectFit="cover"
       userSelect="none"
       draggable="false"
-      // filter={props.inaugurationSoon ? 'blur(7px)' : 'none'} // @ActiveInProd
+      filter={props.inaugurationSoon ? 'blur(7px)' : 'none'}
     />
 
     {props.inaugurationSoon && (
