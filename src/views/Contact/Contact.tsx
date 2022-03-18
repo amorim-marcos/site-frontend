@@ -43,6 +43,7 @@ export const Contact = ({
   if (typeof window !== 'undefined') {
     // @ts-ignore
     React.useEffect(() => {
+      // @ts-ignore
       if (channelsParentRef && channelsParentRef.current) {
         // @ts-ignore
         const h = channelsParentRef.current.clientHeight
@@ -58,6 +59,7 @@ export const Contact = ({
       // @ts-ignore
       if (
         !channelsParentRef.current ||
+        // @ts-ignore
         !channelsParentRef.current.clientWidth
       ) {
         return true
@@ -215,6 +217,7 @@ export const Contact = ({
             >
               {contact_channels.map((channel, index) => (
                 <ContactChannelSelectButton
+                  key={index}
                   onFinishRender={function (width, height) {
                     bgArray[index.toString()] = { width, height, x: 0, y: 0 }
                     setBgArray({ ...bgArray })
