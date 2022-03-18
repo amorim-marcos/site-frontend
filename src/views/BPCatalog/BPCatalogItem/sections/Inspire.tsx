@@ -160,7 +160,7 @@ export const Inspire = (props: InspireProps) => {
         pl={{ '2xl': '88px' }}
         pos="relative"
         mt={{ '2xl': '-580px' }}
-        wrap="wrap"
+        wrap={{ base: 'wrap', '2xl': 'nowrap' }}
         w={{
           base: '100%',
           '2xl': 'inherit'
@@ -210,7 +210,7 @@ export const Inspire = (props: InspireProps) => {
               alignSelf={{ base: 'flex-start', sm: 'center', lg: 'flex-end' }}
               mr={{ lg: '160px', xl: '270px', '2xl': '50px' }}
               mt={{ base: '-5px', sm: '-38px' }}
-              w={{ base: '100%', lg: '154px' }}
+              w={{ base: '154px' }}
             >
               <ArrowButton onClick={() => switchTo('prev')} direction="left" />
               <ArrowButton onClick={() => switchTo('next')} direction="right" />
@@ -227,7 +227,7 @@ export const Inspire = (props: InspireProps) => {
         <Flex
           data-testid="texture-description"
           mt={{ base: '50px', '2xl': '165px' }}
-          w={{ base: '840px', xl: '100%', '2xl': '840px' }}
+          w={{ base: '100%', xl: '100%', '2xl': '840px' }}
           h={{ '2xl': '633px' }}
           padding={{
             base: '40px 20px',

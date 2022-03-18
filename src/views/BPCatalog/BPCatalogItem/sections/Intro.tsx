@@ -15,6 +15,7 @@ export const Intro = (props: IntroProps) => (
     w="100%"
     minHeight="797px"
     bgImg={props.productImgBg}
+    bgSize="40%"
     bgRepeat="repeat"
     pl={{ '2xl': '205px' }}
     align="center"

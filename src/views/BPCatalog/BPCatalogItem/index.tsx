@@ -53,7 +53,7 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <Box pos="relative" maxWidth={'1920px'} marginX="auto">
+    <Box pos="relative" maxWidth={'1920px'} marginX="auto" overflow={'hidden'}>
       <Pagebar
         paths={[
           {
