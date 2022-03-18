@@ -1,8 +1,14 @@
+import { GetStaticProps } from 'next'
 import Contact from 'views/Contact'
 import { ContactChannelData } from 'views/Contact/Contact'
 
-export default function ContactPage() {
-  return <Contact contact_channels={mockContactChannels} />
+export default function ContactPage(props: { fireWarning: string }) {
+  return (
+    <Contact
+      contact_channels={mockContactChannels}
+      fireWarning={props.fireWarning}
+    />
+  )
 }
 
 const mockContactChannels: Array<ContactChannelData> = [
@@ -106,3 +112,29 @@ const mockContactChannels: Array<ContactChannelData> = [
     service_code: 'OTH'
   }
 ]
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const locale = context.locale
+  let fireWarning
+  let res
+
+  try {
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/fire-warning?_locale=${locale}`
+    )
+    fireWarning = await res.json()
+  } catch (e) {
+    // if locale not working, get default
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/fire-warning`)
+    fireWarning = await res.json()
+  }
+
+  return {
+    props: {
+      fireWarning: fireWarning.warning_text
+    },
+    revalidate: parseInt(
+      process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'
+    )
+  }
+}
