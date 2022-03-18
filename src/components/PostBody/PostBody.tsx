@@ -1,42 +1,32 @@
-import { Flex, Box, Text, Image, Link } from '@chakra-ui/react'
+import { Flex, Box, Text, Image } from '@chakra-ui/react'
 import CompletedTitle from '@components/CompletedTitle'
-import { SocialIcon } from '@components/Icons'
+import { CalendarIcon, SocialIcon } from '@components/Icons'
 import ArrowIcon from '@components/Icons/ArrowIcon'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import parser from 'react-html-parser'
 import { Wrapper } from './styles'
-import DOMPurify from 'dompurify'
 import { colors } from '../../theme/colors'
+import { FacebookShareButton, TwitterShareButton } from 'react-share'
+import { Category } from 'types/data/Post'
 
 export type PostBodyProps = {
-  category?: string
-  categoryColor?: string
-  publishDate?: string
+  category?: Category
+  publishDate?: string | Date
   postTitle?: string
   postContent?: string
   tags?: {
     name: string
   }[]
+  postSlug: string
 }
 export const PostBody = ({
   category,
-  categoryColor,
   publishDate,
   postTitle,
   postContent,
-  tags
+  tags,
+  postSlug
 }: PostBodyProps) => {
-  const [content, setContent] = useState('<h1>Hello world</h1>')
-  useEffect(() => {
-    if (!!postContent && postContent?.length > 0) {
-      const dirty = postContent?.replace(
-        '/uploads',
-        `${process.env.NEXT_PUBLIC_API_URL}/uploads`
-      )
-      const clean = DOMPurify.sanitize(dirty)
-      setContent(clean)
-    }
-  }, [postContent])
   return (
     <Flex
       flexDirection="column"
@@ -71,7 +61,13 @@ export const PostBody = ({
             marginX={{ base: '0', md: '2%' }}
             flexDirection={{ base: 'row', md: 'column' }}
           >
-            <Link onClick={() => alert('/')}>
+            <FacebookShareButton
+              url={
+                process.env.NEXT_PUBLIC_APP_URL +
+                `/canal-bnk/${category?.id}/${postSlug}`
+              }
+              quote={postTitle}
+            >
               <SocialIcon
                 media="facebook"
                 marginY={{ base: '20%', md: '40%' }}
@@ -79,13 +75,20 @@ export const PostBody = ({
                 width={{ base: '70px', md: '40px' }}
                 marginRight={{ base: '15%' }}
               />
-            </Link>
-            <SocialIcon
-              media="twitter"
-              marginY={{ base: '20%', md: '40%' }}
-              color="brown.350"
-              width={{ base: '70px', md: '40px' }}
-            />
+            </FacebookShareButton>
+            <TwitterShareButton
+              url={
+                process.env.NEXT_PUBLIC_APP_URL +
+                `/canal-bnk/${category?.id}/${postSlug}`
+              }
+            >
+              <SocialIcon
+                media="twitter"
+                marginY={{ base: '20%', md: '40%' }}
+                color="brown.350"
+                width={{ base: '70px', md: '40px' }}
+              />
+            </TwitterShareButton>
           </Flex>
           {/* End Social media */}
 
@@ -97,16 +100,16 @@ export const PostBody = ({
             paddingLeft={{ base: '0', md: '3%' }}
           >
             <Flex marginBottom={{ base: '15px', md: '0' }} alignItems="center">
-              <ArrowIcon width="10px" stroke={categoryColor} />
+              <ArrowIcon width="10px" stroke={category?.color} />
               <Text marginLeft={'2%'} variant={'body' as any}>
-                {category}
+                {category?.name}
               </Text>
             </Flex>
             <CompletedTitle
               titleString={postTitle}
               textAlign="left"
               alignSelf="left"
-              boxColorBottom={categoryColor}
+              boxColorBottom={category?.color}
               titleFontSize={{ base: '24px', md: '30px', lg: '37px' }}
               titleColor={colors.green[900]}
               titleLineHeight="1.3"
@@ -124,11 +127,16 @@ export const PostBody = ({
           bottom={{ base: '8%', md: '0' }}
           right={{ base: '0', md: '0' }}
         >
-          <Image
+          {/* <Image
             marginRight="15px"
             src="/img/calendario.png"
             w="30px"
             height="30px"
+          /> */}
+          <CalendarIcon
+            width={'30px'}
+            marginRight="15px"
+            stroke1={category?.color}
           />
           <Text color="gray.350" variant={'body' as any}>
             {publishDate}
@@ -144,7 +152,7 @@ export const PostBody = ({
         w={{ base: '100%', md: '80%', xl: '60%' }}
         marginLeft={{ base: '0', md: '12%', xl: '10%' }}
       >
-        <Wrapper>{content && parser(content)}</Wrapper>
+        <Wrapper>{postContent && parser(postContent)}</Wrapper>
       </Box>
       {/* End of post content */}
 
