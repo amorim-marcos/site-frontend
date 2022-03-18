@@ -5,8 +5,8 @@ import { Flex, Box, Text, Image } from '@chakra-ui/react'
 
 import CarouselMultiElements from '@components/CarouselMultiElements'
 import CompletedTitle from '@components/CompletedTitle'
-import { Arrow } from '@components/Icons'
 import Pagebar from '@components/Pagebar'
+import SeeMore from '@components/SeeMore'
 
 export type EnvViewProps = {
   env: {
@@ -209,31 +209,10 @@ export const EnvView = ({
           <Text marginY="3%" as="h3" variant="h3" color="brown.300">
             Outros ambientes
           </Text>
-          <Flex
-            alignItems={'center'}
-            _hover={{ opacity: '0.6' }}
-            cursor={'pointer'}
-            onClick={() => alert('ir para galeria')}
-          >
-            <Text
-              variant="body"
-              color="green.600"
-              marginRight={'4%'}
-              whiteSpace={'nowrap'}
-            >
-              Veja mais ambientes
-            </Text>
-            <Arrow
-              color={'green.500'}
-              width={{
-                base: '18px',
-                sm: '13px',
-                md: '15px',
-                lg: '18px',
-                xl: '20px'
-              }}
-            />
-          </Flex>
+          <SeeMore
+            text = "Veja mais ambientes"
+            link = "/products/bp-berneck/gallery"
+           />
         </Flex>
 
         <Flex
