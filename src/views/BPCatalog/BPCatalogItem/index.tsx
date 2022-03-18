@@ -28,6 +28,7 @@ export interface BPCatalogItemProps {
   }
   combine_with: {
     name: string
+    href: string
     img: string
   }[]
   in_ambients: {
