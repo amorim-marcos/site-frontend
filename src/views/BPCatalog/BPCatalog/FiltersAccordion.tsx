@@ -299,6 +299,7 @@ export const FiltersAccordion = ({
                 >
                   {colorations.map((filter) => (
                     <FilterCheckbox
+                      color="white.100"
                       key={filter.code}
                       minW={{ base: '100%', sm: '48%' }}
                       mr={{ base: 0, sm: '2%' }}

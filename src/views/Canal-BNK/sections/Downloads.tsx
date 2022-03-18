@@ -20,6 +20,7 @@ export const Downloads = () => {
         link: '/canal-bnk/downloads'
       }}
       py={{ base: '54px', lg: '100px' }}
+      overflow="hidden"
     >
       {!isMobile &&
         (currentCategory === -1 ? (

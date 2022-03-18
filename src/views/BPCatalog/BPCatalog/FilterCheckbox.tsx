@@ -67,7 +67,6 @@ export const FilterCheckbox = ({
       <Text
         fontWeight="600"
         fontSize={{ base: '17px', md: '19px' }}
-        color="green.900"
         zIndex="2"
       >
         {title}

@@ -266,6 +266,7 @@ export const FiltersTabs = ({
                   <Flex justifyContent="center" wrap="wrap">
                     {colorations.map((filter) => (
                       <FilterCheckbox
+                        color="white.100"
                         key={filter.code}
                         isChecked={filters['colorations'].includes(filter.code)}
                         onCheck={(isChecked: boolean, value: any) => {

@@ -39,17 +39,17 @@ export const ChannelBnkRelationalItem = ({
     // alert("tam-"+tam)
     if(tam){
       switch (true) {
-        case (0 < tam && tam <= 320): 
+        case (0 < tam && tam < 320): 
           return 150; break;
-        case (320 < tam && tam <= 568):
+        case (320 <= tam && tam < 568):
           return 150; break;
-        case (568 < tam && tam <= 768):
+        case (568 <= tam && tam < 768):
           return 38; break;
-        case (768 < tam && tam <= 1024):
-          return 70; break;
-        case (1024 < tam && tam <= 1280):
+        case (768 <= tam && tam < 1024):
+          return 38; break;
+        case (1024 <= tam && tam < 1280):
             return 70; break;
-        case (1280 < tam && tam < 1536):
+        case (1280 <= tam && tam < 1536):
             return (showInvert)? 70: 90; break;
         case (1536 <= tam):
           return 150;break;
@@ -208,7 +208,7 @@ export const ChannelBnkRelationalItem = ({
             xl: '5px',
             '2xl': '6px'
           }}
-          borderBottomColor={color}
+          borderBottomColor={getAccentColor(categoryId, currentCategory)}
           marginLeft="10%"
         />
       </Flex>
