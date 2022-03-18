@@ -1,0 +1,111 @@
+import { Flex, Text } from '@chakra-ui/react'
+import LocationIcon from '@components/Icons/LocationIcon'
+import QualityCertificateIcon from '@components/Icons/QualityCertificateIcon'
+import { DatasheetIcon } from '../../../Icons/DatasheetIcon/DatasheetIcon'
+
+export type ProductDownloadItemProps = {
+  text?: string
+  textColor?: string
+  hoverColor?: string
+  onClick?: () => void
+  iconName?: 'datasheet' | 'location' | 'qualityCertificate'
+  backgroundColor?: string
+}
+
+export const ProductDownloadItem = ({
+  hoverColor,
+  textColor = '#665E5A',
+  text = 'Ficha técnica',
+  onClick,
+  iconName = 'datasheet',
+  backgroundColor = '#FFF'
+}: ProductDownloadItemProps) => {
+  return (
+    <Flex
+      cursor={'pointer'}
+      padding={{ base: '10px', sm: '0' }}
+      h={{
+        base: '100px',
+        sm: '50px',
+        md: '65px',
+        lg: '85px',
+        xl: '100px',
+        '2xl': '136px'
+      }}
+      w={{
+        base: '100vw',
+        sm: '98px',
+        md: '125px',
+        lg: '165px',
+        xl: '216px',
+        '2xl': '270px'
+      }}
+      onClick={onClick}
+      justifyContent="center"
+      alignItems="center"
+      backgroundColor={backgroundColor}
+      marginBottom={{ base: '15px', sm: '0px' }}
+    >
+      {iconName === 'datasheet' ? (
+        <DatasheetIcon
+          width={{
+            base: '30px',
+            sm: '8px',
+            md: '13px',
+            lg: '15px',
+            xl: '20px',
+            '2xl': '30px'
+          }}
+          stroke={textColor}
+        />
+      ) : iconName === 'location' ? (
+        <LocationIcon
+          width={{
+            base: '30px',
+            sm: '8px',
+            md: '13px',
+            lg: '15px',
+            xl: '20px',
+            '2xl': '30px'
+          }}
+          stroke={textColor}
+        />
+      ) : (
+        <QualityCertificateIcon
+          width={{
+            base: '30px',
+            sm: '8px',
+            md: '13px',
+            lg: '15px',
+            xl: '20px',
+            '2xl': '30px'
+          }}
+          stroke={textColor}
+        />
+      )}
+      <Text
+        _hover={{ color: hoverColor }}
+        color={textColor}
+        fontSize={{
+          base: '16px',
+          sm: '8px',
+          md: '10px',
+          lg: '14px',
+          xl: '16px',
+          '2xl': '20px'
+        }}
+        fontWeight="bold"
+        marginLeft={{
+          base: '15px',
+          sm: '7px',
+          md: '9px',
+          lg: '11px',
+          xl: '13px',
+          '2xl': '15px'
+        }}
+      >
+        {text}
+      </Text>
+    </Flex>
+  )
+}

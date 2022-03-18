@@ -1,0 +1,19 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Running pre-push hook..."
+
+echo "Running type checking..."
+npx tsc --pretty --noEmit
+
+echo "No issues with type checking."
+
+echo "Running tests..."
+npm run test 
+
+echo "All tests passed."
+
+echo "Running build..."
+npm run build
+
+echo "Successful build. Branch is ready to be pushed."
