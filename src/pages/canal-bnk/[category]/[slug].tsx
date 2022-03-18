@@ -2,6 +2,7 @@ import { PostsView } from 'views/Canal-BNK/Posts/PostsView'
 import { Post } from '../../../types/data/Post/Post'
 import { GetServerSideProps } from 'next'
 import DOMPurify from 'isomorphic-dompurify'
+import { smartDate } from 'utils/utils'
 
 export type PostPageProps = {
   posts: Post[]
@@ -12,13 +13,11 @@ export default function PostPage(props: PostPageProps) {
   return (
     <PostsView
       postBody={{
-        category: props.currentPost.category.name,
-        categoryColor: props.currentPost.category.color,
-        publishDate: props.currentPost.date as string,
+        category: props.currentPost.category,
+        publishDate: props.currentPost.date,
         postTitle: props.currentPost.title,
         postContent: props.currentPost.content,
         tags: props.currentPost.tags.map((item) => ({ name: item.Tag })),
-        categoryId: props.currentPost.category.id,
         postSlug: props.currentPost.url_code
       }}
       coverImageUrl={props.currentPost.cover}
@@ -93,13 +92,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       Tag: j.tag
     })),
     title: currentPost.title,
-    date:
-      // new Date(currentPost.published_at).toLocaleDateString(),
-      currentPost.publication_date
-        ? new Date(
-            currentPost.publication_date + 'T10:00:00.000Z'
-          ).toLocaleDateString()
-        : new Date(currentPost.published_at).toLocaleDateString(),
+    date: currentPost.publication_date
+      ? getCorrectDate(currentPost.publication_date, ctx.locale || 'pt-BR')
+      : getCorrectDate(currentPost.published_at, ctx.locale || 'pt-BR'),
     url_code: currentPost.url_code
   }
 
@@ -124,4 +119,14 @@ type PostResponse = {
   published_at: string
   publication_date: string
   url_code: string
+}
+
+function getCorrectDate(a: string | Date, locale: string) {
+  const r = smartDate(a, locale)
+
+  if (typeof r === 'string') {
+    return r
+  }
+
+  return r === null ? '' : r.toLocaleDateString()
 }

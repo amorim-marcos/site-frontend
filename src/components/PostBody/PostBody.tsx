@@ -1,35 +1,30 @@
-import { Flex, Box, Text, Image, Link } from '@chakra-ui/react'
+import { Flex, Box, Text, Image } from '@chakra-ui/react'
 import CompletedTitle from '@components/CompletedTitle'
-import { SocialIcon } from '@components/Icons'
+import { CalendarIcon, SocialIcon } from '@components/Icons'
 import ArrowIcon from '@components/Icons/ArrowIcon'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import parser from 'react-html-parser'
 import { Wrapper } from './styles'
-import DOMPurify from 'dompurify'
 import { colors } from '../../theme/colors'
-import { useRouter } from 'next/router'
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
+import { Category } from 'types/data/Post'
 
 export type PostBodyProps = {
-  category?: string
-  categoryColor?: string
-  publishDate?: string
+  category?: Category
+  publishDate?: string | Date
   postTitle?: string
   postContent?: string
   tags?: {
     name: string
   }[]
-  categoryId: number
   postSlug: string
 }
 export const PostBody = ({
   category,
-  categoryColor,
   publishDate,
   postTitle,
   postContent,
   tags,
-  categoryId,
   postSlug
 }: PostBodyProps) => {
   return (
@@ -69,7 +64,7 @@ export const PostBody = ({
             <FacebookShareButton
               url={
                 process.env.NEXT_PUBLIC_APP_URL +
-                `/canal-bnk/${categoryId}/${postSlug}`
+                `/canal-bnk/${category?.id}/${postSlug}`
               }
               quote={postTitle}
             >
@@ -84,7 +79,7 @@ export const PostBody = ({
             <TwitterShareButton
               url={
                 process.env.NEXT_PUBLIC_APP_URL +
-                `/canal-bnk/${categoryId}/${postSlug}`
+                `/canal-bnk/${category?.id}/${postSlug}`
               }
             >
               <SocialIcon
@@ -105,16 +100,16 @@ export const PostBody = ({
             paddingLeft={{ base: '0', md: '3%' }}
           >
             <Flex marginBottom={{ base: '15px', md: '0' }} alignItems="center">
-              <ArrowIcon width="10px" stroke={categoryColor} />
+              <ArrowIcon width="10px" stroke={category?.color} />
               <Text marginLeft={'2%'} variant={'body' as any}>
-                {category}
+                {category?.name}
               </Text>
             </Flex>
             <CompletedTitle
               titleString={postTitle}
               textAlign="left"
               alignSelf="left"
-              boxColorBottom={categoryColor}
+              boxColorBottom={category?.color}
               titleFontSize={{ base: '24px', md: '30px', lg: '37px' }}
               titleColor={colors.green[900]}
               titleLineHeight="1.3"
@@ -132,11 +127,16 @@ export const PostBody = ({
           bottom={{ base: '8%', md: '0' }}
           right={{ base: '0', md: '0' }}
         >
-          <Image
+          {/* <Image
             marginRight="15px"
             src="/img/calendario.png"
             w="30px"
             height="30px"
+          /> */}
+          <CalendarIcon
+            width={'30px'}
+            marginRight="15px"
+            stroke1={category?.color}
           />
           <Text color="gray.350" variant={'body' as any}>
             {publishDate}
