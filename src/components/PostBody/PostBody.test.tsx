@@ -5,7 +5,15 @@ import PostBody from '.'
 describe('<PostBody />', () => {
   it('should render the component', () => {
     const { container } = render(
-      <PostBody categoryId={0} postSlug="" category="" categoryColor="" />
+      <PostBody
+        postSlug=""
+        category={{
+          color: '',
+          description: '',
+          id: 0,
+          name: ''
+        }}
+      />
     )
   })
 })
