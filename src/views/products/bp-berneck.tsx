@@ -93,6 +93,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           bg="papayawhip"
         >
           <BannerCollections
+            onClick={() => window.location.href = `/products/bp-berneck/catalog?collection=nomade`}
             title="Conheça"
             titleColor="brown.300"
             imgSrc="../img/banner_nomade.png"
@@ -105,6 +106,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           bg="blue"
         >
           <BannerCollections
+            onClick={() => window.location.href = `/products/bp-berneck/catalog?collection=origens`}
             title="Conheça"
             titleColor="green.700"
             imgSrc="../img/banner_origens.png"

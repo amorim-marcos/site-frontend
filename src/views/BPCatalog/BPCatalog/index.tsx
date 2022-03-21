@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import React, { useEffect, useState } from 'react'
 
-import { Container, Grid, GridItem } from '@chakra-ui/react'
+import { Container, filter, Grid, GridItem } from '@chakra-ui/react'
 
 import Pagebar from '@components/Pagebar'
 import useMobile from 'hooks/useMobile'
@@ -10,13 +10,14 @@ import useMobile from 'hooks/useMobile'
 import { FiltersAccordion } from './FiltersAccordion'
 import { FiltersTabs } from './FiltersTabs'
 import { BP } from './BP'
+import { useRouter } from 'next/router'
 
 export type Filters = {
   orderBy: string
   nameSearched: string
-  panels: Array<string>
-  collections: Array<string>
-  colorations: Array<string>
+  panels: Array<number|string>
+  collections: Array<number|string>
+  colorations: Array<number|string>
 }
 
 export type ValidFilterNames = 'panels' | 'collections' | 'colorations'
@@ -72,11 +73,17 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   const [gridSize, setGridSize] = useState('big')
   const [gridColumnsMode, setGridColumnsMode] = useState('repeat(3, 1fr)')
   const [currentFilterPanel, setCurrentFilterPanel] = useState('none')
-  const [filters, setFilters] = useState(initialFilters)
   const [filteredBps, setFilteredBps] = useState(bps)
   const [filtersEmpty, setFiltersEmpty] = useState(true)
 
   const { isMobile } = useMobile(1024)
+
+  const router = useRouter()
+
+  const queryCollection = router.query.collection
+
+  const [filters, setFilters] = useState(initialFilters)
+
 
   function changeGridSize(newGridSize: GridSize) {
     setGridSize(newGridSize)
@@ -167,6 +174,19 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }
 
   useEffect(() => {
+    for(var collection of filtersContext.collections){
+      let normalizedTitle = collection.title.normalize("NFD").replace(/[^\w ]/g, "").split(' ').join('-').toLowerCase()
+  
+      if(queryCollection == normalizedTitle && !initialFilters["collections"].includes(collection.code.toString())){
+        filters["collections"].push(collection.code)
+        break
+      }
+    }
+    setFilters(filters)
+    setFilteredBps(applyFilters(filters, bps))
+  }, [])
+
+  useEffect(() => {
     switch (gridSize) {
       case 'big':
         setGridColumnsMode('repeat(3, 1fr)')
@@ -187,6 +207,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }, [gridSize])
 
   useEffect(() => {
+    console.log(filters)
     setFiltersEmpty(
       filters.panels.length == 0 &&
         filters.collections.length == 0 &&
