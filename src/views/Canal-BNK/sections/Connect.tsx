@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import {
   Box,
   Button,
@@ -16,8 +16,15 @@ import useMobile from 'hooks/useMobile'
 import { Section } from './Section'
 import { breakpoints } from 'theme/breakpoints'
 
+interface IVideo {
+  id: {
+    kind: string
+  }
+}
+
 export const Connect = () => {
   const { isMobile, width } = useMobile(568)
+  const [lastVideo, setLastVideo] = useState<IVideo>()
 
   const [bpXs, bpLg, bp2xl] = useMediaQuery([
     `(max-width: ${breakpoints.xs})`,
@@ -28,6 +35,20 @@ export const Connect = () => {
   const getWidth = () => {
     return bpXs ? '300px' : bpLg ? '500px' : bp2xl ? '300px' : '397px'
   }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${process.env.YOUTUBE_CHANNEL_ID}&maxResults=1&order=date&type=video&key=${process.env.YOUTUBE_API_KEY}`
+      )
+      const data = await result.json()
+
+      console.log(data)
+      setLastVideo(data.items[0].id.videoId)
+    }
+
+    fetchData()
+  }, [])
 
   useFacebook()
 
@@ -132,15 +153,8 @@ export const Connect = () => {
             <Flex w="100%" direction="column" gap="30px">
               {width && (
                 <iframe
-                  src="https://www.linkedin.com/embed/feed/update/urn:li:share:6888885113761873920"
-                  height="445px"
-                  width={getWidth()}
-                />
-              )}
-              {!isMobile && width && (
-                <iframe
                   src="https://www.linkedin.com/embed/feed/update/urn:li:share:6868626499726012417"
-                  height="445px"
+                  height={isMobile ? '572px' : '920px'}
                   width={getWidth()}
                 />
               )}
@@ -168,7 +182,7 @@ export const Connect = () => {
                   as="iframe"
                   width={getWidth()}
                   height={isMobile ? '218px' : '224px'}
-                  src="https://www.youtube.com/embed?listType=user_uploads&list=Berneckoficial" // Berneckoficial
+                  src={`https://www.youtube.com/embed/${lastVideo}`}
                   frameBorder="0"
                   allowFullScreen
                 />
