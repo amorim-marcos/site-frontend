@@ -47,6 +47,7 @@ export const BannerProducts = ({
       onClick={onClick}
     >
       <Box
+        // border="1px solid red"
         position={'absolute'}
         right={
           sizeType === 'rectangle'
@@ -68,10 +69,10 @@ export const BannerProducts = ({
         }
         transition={'0.5s'}
         zIndex="base"
-        h={sizeType === 'square' ? '100%' : '130%'}
+        h={sizeType === 'square' ? '90%' : '130%'}
         w={
           sizeType === 'square'
-            ? { base: '100%', lg: '100%' }
+            ? { base: '90%', lg: '90%' }
             : { base: '63%', lg: '63%' }
         }
         background={`url(${srcImg})`}
@@ -106,7 +107,8 @@ export const BannerProducts = ({
             flex="1"
             w={sizeType === 'rectangle' ? '50%' : '100%'}
           >
-            <Text as="h1" 
+            <Text
+              as="h1"
               variant={'h1' as any}
               color={titleColor}
               lineHeight={{ base: '35px', sm: '35px', lg: '40px', xl: '50px' }}
@@ -114,7 +116,7 @@ export const BannerProducts = ({
               {title}
             </Text>
 
-              {/* <Flex
+            {/* <Flex
                 bg="red"
                 alignItems={'flex-end'}
               >
@@ -126,7 +128,6 @@ export const BannerProducts = ({
                   ®
                 </Text>
               </Flex> */}
-
           </Flex>
           <Flex
             // bg="white"

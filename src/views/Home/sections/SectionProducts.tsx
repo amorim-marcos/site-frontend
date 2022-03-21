@@ -71,12 +71,9 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
             }}
             alignItems={'flex-end'}
           >
-           <SeeMore
-            text = "Veja todos os produtos"
-            link = "/products"
-           />
+            <SeeMore text="Veja todos os produtos" link="/products" />
           </Flex>
-          
+
           {/* FIM FLEX INTERNO */}
         </Flex>
       </Flex>
