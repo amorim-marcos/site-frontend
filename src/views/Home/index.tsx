@@ -43,22 +43,16 @@ type PostProps = {
   url_code: string
 }
 
-
-
 export type HomeProps = {
   highlights: PostProps[]
   latest: PostProps[]
 }
 
-
-
 export default function Home(props: HomeProps) {
   const router = useRouter()
 
-
   return (
     <Box maxWidth="1920px" marginX="auto" bg="white.100">
-      
       {/* INICIO BANNER CAROUSEL */}
       {props.highlights && props.highlights.length > 0 && (
         <HomeBanner
@@ -67,7 +61,7 @@ export default function Home(props: HomeProps) {
               imageUrl: item.cover.url,
               category: {
                 id: item.category.id,
-                name: item.category.name,
+                name: item.category.name
               },
               title: item.title,
               url_code: item.url_code,
@@ -86,11 +80,11 @@ export default function Home(props: HomeProps) {
               category: {
                 id: item.category.id,
                 name: item.category.name,
-                color: item.category.color,
+                color: item.category.color
               },
               title: item.title,
               urlImage: item.cover.url,
-              url_code: item.url_code,
+              url_code: item.url_code
             }
           })}
         />
@@ -106,7 +100,7 @@ export default function Home(props: HomeProps) {
             subtitle: 'Laminado Melamínico Decorativo',
             subtitleColor: 'brown.200',
             bgColor: 'brown.300',
-            srcImg: 'img/mdf.png',
+            srcImg: 'img/bp-berneck.png',
             onClick: () => alert('Ir para BP'),
             bannerSize: {
               base: '100px',
@@ -134,9 +128,9 @@ export default function Home(props: HomeProps) {
           },
           {
             title: 'HDF BERNECK®',
-            titleColor: 'gray.400',
+            titleColor: 'green.900',
             subtitle: 'Painel de Fibra de Alta Densidade',
-            subtitleColor: 'gray.400',
+            subtitleColor: 'gray.300',
             bgColor: 'brown.200',
             srcImg: '/img/hdf.png',
             onClick: () => alert('Ir para Produto'),
@@ -150,10 +144,10 @@ export default function Home(props: HomeProps) {
           },
           {
             title: 'MDF BERNECK®',
-            titleColor: 'white',
+            titleColor: 'green.900',
             subtitle: 'Laminado Melamínico Decorativo',
-            subtitleColor: 'brown.200',
-            bgColor: 'brown.300',
+            subtitleColor: 'gray.300',
+            bgColor: 'brown.200',
             srcImg: '/img/mdf.png',
             onClick: () => alert('Ir para BP'),
             bannerSize: {
@@ -166,10 +160,10 @@ export default function Home(props: HomeProps) {
           },
           {
             title: 'MDP BERNECK®',
-            titleColor: 'white',
+            titleColor: 'green.900',
             subtitle: 'Linha de Painéis com Resistência Extra à Umidade',
-            subtitleColor: 'brown.350',
-            bgColor: '#E0CBA5',
+            subtitleColor: 'gray.300',
+            bgColor: 'brown.200',
             srcImg: '/img/mdp.png',
             onClick: () => alert('Ir para Produto'),
             bannerSize: {
