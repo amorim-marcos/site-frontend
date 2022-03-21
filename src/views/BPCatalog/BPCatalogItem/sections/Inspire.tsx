@@ -70,8 +70,14 @@ export const Inspire = (props: InspireProps) => {
             fontSize="18px"
             letterSpacing="0px"
             color="gray.300"
-            top={{ base: '130px', lg: '75px' }}
-            left={{ base: '-18%', lg: '110px', '2xl': '145px' }}
+            top={{ base: '75px' }}
+            left={{
+              base: '-18%',
+              sm: '60%',
+              md: '0px',
+              lg: '110px',
+              '2xl': '145px'
+            }}
             textAlign={{ base: 'center', '2xl': 'left' }}
             whiteSpace={{ base: 'normal', '2xl': 'pre-wrap' }}
           >
@@ -166,7 +172,7 @@ export const Inspire = (props: InspireProps) => {
           '2xl': 'inherit'
         }}
         _before={{
-          backgroundColor: '#D6DCD5',
+          backgroundColor: { base: 'white.100', md: '#D6DCD5' },
           position: 'absolute',
           content: '""',
           right: 0,
@@ -175,6 +181,7 @@ export const Inspire = (props: InspireProps) => {
           w: { base: '1440px', xl: '100%', '2xl': '1440px' },
           zIndex: '-1'
         }}
+        justifyContent={'center'}
       >
         {props.in_ambients.length ? (
           <Flex
@@ -218,10 +225,17 @@ export const Inspire = (props: InspireProps) => {
           </Flex>
         ) : (
           <Box
-            pt={{ base: '110px', '2xl': '208px' }}
+            mt={{ base: '110px', '2xl': '300px' }}
             w={{ base: '320px', xs: '100%', sm: '846px' }}
             h={{ base: '321px', sm: '562px' }}
-          />
+          >
+            <Image
+              w="100%"
+              h="100%"
+              objectFit={'cover'}
+              src="/img/conheca_galeria.jpg"
+            />
+          </Box>
         )}
 
         <Flex
