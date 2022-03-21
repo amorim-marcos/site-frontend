@@ -99,7 +99,7 @@ export const Inspire = (props: InspireProps) => {
           direction="column"
           w={{ base: '100%', '2xl': 'fit-content' }}
           align={{ base: 'center', '2xl': 'inherit' }}
-          top={{ base: '80px', sm: '25px', '2xl': '-330px' }}
+          top={{ base: '0px', sm: '25px', '2xl': '-330px' }}
           left={{ '2xl': '52%' }}
         >
           <Box>
@@ -135,7 +135,7 @@ export const Inspire = (props: InspireProps) => {
                   <Link href={texture.href}>
                     <Image
                       src={texture.img}
-                      w={{ base: '100vw', sm: '211px' }}
+                      w={{ base: '100vw', sm: '214px' }}
                       h={{ base: '120px', sm: '350px' }}
                     />
                   </Link>
@@ -172,9 +172,14 @@ export const Inspire = (props: InspireProps) => {
       )}
 
       <Flex
+        bg={{ base: '#D6DCD5', '2xl': 'none' }}
         pl={{ '2xl': '88px' }}
         pos="relative"
-        mt={{ '2xl': '-580px' }}
+        mt={{
+          base: props.combine_with.length > 0 ? '100px' : '0px',
+          '2xl': '-580px'
+        }}
+        mb={{ base: '50px', '2xl': 'none' }}
         wrap={{ base: 'wrap', '2xl': 'nowrap' }}
         w={{
           base: '100%',
