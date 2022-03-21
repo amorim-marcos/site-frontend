@@ -12,7 +12,7 @@ export interface InspireProps {
   productPresentation: string
   urlVideo: string
   urlEbook: string
-  combine_with: { name: string; href:string; img: string }[]
+  combine_with: { name: string; href: string; img: string }[]
   in_ambients: { id: number; image_url: string }[]
 }
 
@@ -35,7 +35,9 @@ export const Inspire = (props: InspireProps) => {
         pos="relative"
         left={{ base: '15%', '2xl': '140px' }}
         top="-65px"
-        w="fit-content"
+        // w="fit-content"
+
+        w={{ base: '80%', md: '100%' }}
       >
         <Image
           src={props.textureIcon}
@@ -44,11 +46,11 @@ export const Inspire = (props: InspireProps) => {
           zIndex={10}
         />
 
-        <Flex>
+        <Flex flexDirection={'column'}>
           <Text
             bg="green.650"
-            w={{ base: 'fit-content', sm: '185px' }}
-            padding={{ base: '10px 20px', sm: 0 }}
+            w={{ base: '185px' }}
+            // padding={{ base: '10px 20px', sm: 0 }}
             h="40px"
             pt={{ base: '3px' }}
             borderTopRightRadius="22px"
@@ -57,29 +59,33 @@ export const Inspire = (props: InspireProps) => {
             fontWeight="bold"
             letterSpacing="-0.26px"
             textAlign="center"
-            pos="absolute"
-            top="25px"
-            left={{ base: '90px', '2xl': '110px' }}
+            // pos="absolute"
+            marginTop="25px"
+            // marginLeft={{ base: '90px', '2xl': '110px' }}
+            marginLeft={{ base: '-30px' }}
           >
             {props.textureName}
           </Text>
 
           <Text
-            w={{ base: '80vw', lg: '532px', '2xl': '532px' }}
-            pos="absolute"
+            // w={{ base: '80vw', lg: '532px', '2xl': '532px' }}
+            // pos="absolute"
             fontSize="18px"
             letterSpacing="0px"
             color="gray.300"
-            top={{ base: '75px' }}
-            left={{
-              base: '-18%',
-              sm: '60%',
-              md: '0px',
-              lg: '110px',
-              '2xl': '145px'
-            }}
-            textAlign={{ base: 'center', '2xl': 'left' }}
-            whiteSpace={{ base: 'normal', '2xl': 'pre-wrap' }}
+            // top={{ base: '120px', sm: '75px' }}
+            // left={{
+            //   base: '-18%',
+            //   sm: '-50px',
+            //   md: '-50px',
+            //   lg: '110px',
+            //   '2xl': '145px'
+            // }}
+            marginLeft={'10px'}
+            whiteSpace={'pre-wrap'}
+            marginTop="10px"
+            // textAlign={{ base: 'center', '2xl': 'left' }}
+            // whiteSpace={{ base: 'normal', '2xl': 'pre-wrap' }}
           >
             {props.textureDescription}
           </Text>
@@ -161,6 +167,7 @@ export const Inspire = (props: InspireProps) => {
           w={{ base: '100%', '2xl': 'fit-content' }}
           top={{ base: '80px', sm: '25px', '2xl': '-330px' }}
           left={{ '2xl': '52%' }}
+          display={{ base: 'none', '2xl': 'block' }}
         />
       )}
 
@@ -230,6 +237,8 @@ export const Inspire = (props: InspireProps) => {
             mt={{ base: '110px', '2xl': '300px' }}
             w={{ base: '320px', xs: '100%', sm: '846px' }}
             h={{ base: '321px', sm: '562px' }}
+            cursor="pointer"
+            onClick={() => router.push('/products/bp-berneck/gallery')}
           >
             <Image
               w="100%"
