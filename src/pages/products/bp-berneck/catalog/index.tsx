@@ -8,6 +8,7 @@ export interface BpBerneckProps {
   bps: {
     id: any
     scale: number
+    launch: string
     name: string
     complete_name: string
     product_texture: string
@@ -71,6 +72,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       id: product.id,
       scale: product.scale,
+      launch: product.launch,
       name: product.name,
       complete_name: product.complete_name,
       url_code: product.url_code,
