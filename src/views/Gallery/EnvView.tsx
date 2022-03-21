@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRouter } from 'next/router'
 
-import { Flex, Box, Text, Image } from '@chakra-ui/react'
+import { Flex, Box, Text, Image, Grid, GridItem } from '@chakra-ui/react'
 
 import CarouselMultiElements from '@components/CarouselMultiElements'
 import CompletedTitle from '@components/CompletedTitle'
 import Pagebar from '@components/Pagebar'
 import SeeMore from '@components/SeeMore'
+import { Env } from './EnvGallery/Env'
 
 export type EnvViewProps = {
   env: {
@@ -46,7 +47,10 @@ export const EnvView = ({
   const router = useRouter()
 
   return (
-    <Box maxWidth={'1920px'} marginX="auto">
+    <Box 
+      maxWidth={'1920px'} 
+      marginX="auto"
+    >
       <Pagebar
         paths={[
           {
@@ -60,10 +64,6 @@ export const EnvView = ({
           {
             title: 'Galeria de Ambientes',
             url: '/'
-          },
-          {
-            title: 'Cozinha',
-            url: '/'
           }
         ]}
       />
@@ -73,8 +73,16 @@ export const EnvView = ({
         padding="5%"
         marginX="auto"
       >
-        <CompletedTitle titleString={env.title} alignSelf={'left'} />
-        <Text marginY="3%" as="h3" variant="h3" color="brown.300">
+        <CompletedTitle 
+          titleString={env.title} 
+          alignSelf={'left'} 
+        />
+          <Text as={'h3'}
+            variant={'h3'}
+            fontWeight = 'extrabold'
+            color={"gray.300"}
+            marginY={"3%"}
+          >
           {env.subTitle}
         </Text>
 
@@ -153,9 +161,9 @@ export const EnvView = ({
             </Flex>
             <Flex flexDirection={'column'} w={{ base: '100%', md: '50%' }}>
               <Text
-                variant="body"
+                variant="h5"
                 fontWeight={'bold'}
-                color="brown.300"
+                color="gray.300"
                 marginBottom={'3%'}
               >
                 Padrões BP BERNECK® utilizados neste ambiente
@@ -182,7 +190,7 @@ export const EnvView = ({
                     <Text
                       variant="body"
                       fontWeight={'extrabold'}
-                      color="brown.300"
+                      color="gray.300"
                       marginTop={'3%'}
                     >
                       {panel.name}
@@ -191,10 +199,10 @@ export const EnvView = ({
                     <Text
                       variant="body"
                       fontWeight={'bold'}
-                      color="brown.300"
+                      color="gray.300"
                       marginTop={'3%'}
                     >
-                      {panel.product_texture}
+                      {/* {panel.product_texture} */}
                     </Text>
                   </Box>
                 ))}
@@ -206,7 +214,7 @@ export const EnvView = ({
       {/* Other Envs */}
       <Flex flexDirection={'column'} padding={'5%'} bg="brown.100" w="100%">
         <Flex w="100%" alignItems={'center'} justifyContent={'space-between'}>
-          <Text marginY="3%" as="h3" variant="h3" color="brown.300">
+          <Text marginY="3%" as="h3" variant="h3" color="gray.300">
             Outros ambientes
           </Text>
           <SeeMore
@@ -220,38 +228,43 @@ export const EnvView = ({
           flexDirection={{ base: 'column', md: 'row' }}
           justifyContent={'space-between'}
         >
-          {otherEnvs.map((item) => (
-            <Flex
-              w={{ base: '100%', md: '23%' }}
-              key={item.id}
-              flexDirection={'column'}
-              _hover={{ opacity: '0.9' }}
-              cursor={'pointer'}
-              onClick={() =>
-                router.push(`/products/bp-berneck/gallery/${item.url_code}`)
-              }
+          <Grid
+              width="100%"
+              overflow="hidden"
+              templateRows="repeat(auto, 1fr)"
+              templateColumns={{
+                base: 'repeat(1, 1fr)',
+                md: 'repeat(2, 1fr)',
+                xl: 'repeat(4, 1fr)'
+              }}
+              gridGap={{
+                base: 'none',
+                sm: '10px',
+                md: '30px',
+                xl: '20px'
+              }}
+              // justifyItems="center"
+              // bg="pink"
             >
-              <Image
-                w="100%"
-                objectFit={'cover'}
-                maxHeight={'80%'}
-                src={item.imgSrc}
-              />
-              <Text marginTop="3%" as="h3" variant="h3" color="brown.300">
-                {item.title}
-              </Text>
-
-              <Text
-                as="body"
-                bg="none"
-                variant="body"
-                color="brown.300"
-                marginBottom={{ base: '10%', md: '0' }}
+              
+          {otherEnvs.map((item) => (
+             <GridItem 
+                key={item.id} 
+                // bg="red"
+                // gap={"10px"}
               >
-                {item.subTitle}
-              </Text>
-            </Flex>
+                <Env
+                  href={`/products/bp-berneck/gallery/${item.url_code}`}
+                  title={item.title}
+                  place={item.subTitle}
+                  image_url={item.imgSrc}
+                  others
+                />
+              </GridItem>
+
           ))}
+
+</Grid>
         </Flex>
       </Flex>
     </Box>

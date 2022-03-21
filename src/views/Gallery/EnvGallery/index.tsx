@@ -257,7 +257,7 @@ export const EnvGallery = ({
               // bg="pink"
             >
               {filteredEnvs &&
-                filteredEnvs.map((env) => (
+                filteredEnvs.map((env) => ( 
                   <GridItem 
                     key={env.id} 
                     mt="20px"
