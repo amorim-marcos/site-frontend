@@ -101,7 +101,7 @@ function CanalBNKFC(props: CanalBNKProps) {
               )
         }
       />
-      <Videos videos={[]} />
+      <Videos />
       {!seeOnlyPosts && (
         <>
           <Downloads />
