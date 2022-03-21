@@ -57,11 +57,15 @@ export const FiltersTabs = ({
   const [searchSelected, setSearchSelected] = React.useState(false)
 
   return (
-    <Box background="white.200" minH="80px">
+    <Box 
+      background="white.200" 
+      minH="80px"
+    >
       <Box
         position={{ base: 'relative', md: 'absolute' }}
         paddingTop="30px"
         left={{ base: '20px', md: '30px' }}
+       
       >
         <Button
           zIndex="10"
@@ -89,7 +93,11 @@ export const FiltersTabs = ({
         </Button>
       </Box>
       {displayFilters && (
-        <Box margin="0" paddingTop="30px">
+        <Box 
+          margin="0" 
+          paddingTop="30px"
+          // bg="red"
+        >
           <Box>
             <Flex position="relative" direction="column">
               <Center>
