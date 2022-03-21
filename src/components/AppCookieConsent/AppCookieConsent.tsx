@@ -25,13 +25,18 @@ export const AppCookieConsent = () => {
         cookieName="cookieAccepted"
         expires={30}
       >
-        <Text variant={'body' as any}>
+        <Text variant={'body' as any} color="#FFFFFF">
           O site da Berneck S.A utiliza cookies para uma experiência mais
           satisfatória e personalizada.
           <br />
           Ao navegar neste ambiente digital você estará sujeito à coleta dos
           cookies descritos na{' '}
-          <Link color={'green.600'} href="/politica-de-privacidade">
+          <Link
+            color={'#ACCC9F'}
+            _hover={{ color: '#59993F' }}
+            textDecoration="underline"
+            href="/politica-de-privacidade"
+          >
             Política de Privacidade.
           </Link>
         </Text>
