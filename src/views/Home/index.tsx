@@ -43,22 +43,16 @@ type PostProps = {
   url_code: string
 }
 
-
-
 export type HomeProps = {
   highlights: PostProps[]
   latest: PostProps[]
 }
 
-
-
 export default function Home(props: HomeProps) {
   const router = useRouter()
 
-
   return (
     <Box maxWidth="1920px" marginX="auto" bg="white.100">
-      
       {/* INICIO BANNER CAROUSEL */}
       {props.highlights && props.highlights.length > 0 && (
         <HomeBanner
@@ -67,7 +61,7 @@ export default function Home(props: HomeProps) {
               imageUrl: item.cover.url,
               category: {
                 id: item.category.id,
-                name: item.category.name,
+                name: item.category.name
               },
               title: item.title,
               url_code: item.url_code,
@@ -86,11 +80,11 @@ export default function Home(props: HomeProps) {
               category: {
                 id: item.category.id,
                 name: item.category.name,
-                color: item.category.color,
+                color: item.category.color
               },
               title: item.title,
               urlImage: item.cover.url,
-              url_code: item.url_code,
+              url_code: item.url_code
             }
           })}
         />
@@ -229,7 +223,7 @@ export default function Home(props: HomeProps) {
         }}
         banner2={{
           onClick: () => router.push('/divisao-florestal'),
-          imgSrc: '/img/reflorestamento.jpeg',
+          imgSrc: '/img/conheca_divisao_florestal.png',
           title: 'CONHEÇA',
           description: 'Divisão Florestal',
           titleColor: 'green.600',
