@@ -250,14 +250,18 @@ export const EnvGallery = ({
                 base: 'none',
                 sm: '10px',
                 md: '30px',
-                xl: '10px',
-                '2xl': '30px'
+                xl: '30px',
+                '2xl': '40px'
               }}
               justifyItems="center"
+              // bg="pink"
             >
               {filteredEnvs &&
                 filteredEnvs.map((env) => (
-                  <GridItem key={env.id} mt="60px">
+                  <GridItem 
+                    key={env.id} 
+                    mt="20px"
+                  >
                     <Env
                       href={`/products/bp-berneck/gallery/${env.url_code}`}
                       title={env.title}

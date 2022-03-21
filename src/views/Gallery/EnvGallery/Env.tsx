@@ -12,55 +12,59 @@ export type EnvProps = LinkProps & {
 export const Env = ({ title, place, image_url, ...props }: EnvProps) => {
   return (
     <Link {...props}>
+      
       <Flex
         direction="column"
-        width={{
-          base: '184px',
-          xs: '367px',
-          sm: '508px',
-          md: '367px',
-          '2xl': '508px'
-        }}
       >
-        <Box
-          overflow="hidden"
-          width={{
-            base: '184px',
-            xs: '367px',
-            sm: '508px',
-            md: '367px',
-            '2xl': '508px'
-          }}
-          height={{
-            base: '137px',
-            xs: '274px',
-            sm: '369px',
-            md: '274px',
-            '2xl': '369px'
-          }}
+        <Flex
+          flex={"1"}
+          bg="grey"
+          height={{ base: '100%', sm: '100%' , lg: '100%' }}
+          maxHeight={{ base: '150px', sm: '300px' , md: '220px', '2xl': '350px' }}
+          maxWidth={{ base: '300px', sm: '500px', md: '600px' }}
         >
           <Image
             objectFit="cover"
             objectPosition="center"
-            width="100%"
-            height="100%"
-            overflow="hidden"
-            flex={1}
             src={image_url}
           />
-        </Box>
-        <Text
-          width="100%"
-          flex={1}
-          fontSize={{ base: '23px', lg: '31px' }}
-          variant={'body-bold' as any}
+        </Flex>
+       
+        <Flex
+          flex={"1"}
+          // bg="azure"
+          direction="column"
+          maxWidth={{ base: '300px', sm: '500px', md: '600px' }}
+          margin={{ base: "3% 3% 1% 3%", sm: '3% 3% 1% 3%', md: '3% 3% 1% 3%' }}
         >
-          {title}
-        </Text>
-        <Text width="100%" flex={1} fontSize={{ base: '17px', lg: '20px' }}>
-          {place}
-        </Text>
+          <Flex
+            // bg="blue"
+            flex={"2"}
+          >
+            <Text as={'h2'}
+              fontWeight = 'bold'
+              color={"gray.300"}
+            >
+              {title}
+            </Text>
+           </Flex>
+
+          <Flex
+            // bg="yellow"
+            flex={"1"}
+          >
+            <Text as={'h3'}
+              fontWeight = 'medium'
+              color={"gray.300"}
+            >
+              {place}
+            </Text>
+          </Flex>
+
+        </Flex>
+
       </Flex>
+
     </Link>
   )
 }
