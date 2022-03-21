@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import { Box, Flex, Image, Text } from '@chakra-ui/react'
+import { Box, Flex, Image, Link, Text } from '@chakra-ui/react'
 
 import { ReportsIcon, PlayIcon, Arrow } from '@components/Icons'
 
@@ -12,7 +12,7 @@ export interface InspireProps {
   productPresentation: string
   urlVideo: string
   urlEbook: string
-  combine_with: { name: string; img: string }[]
+  combine_with: { name: string; href:string; img: string }[]
   in_ambients: { id: number; image_url: string }[]
 }
 
@@ -126,11 +126,13 @@ export const Inspire = (props: InspireProps) => {
                   pos="relative"
                   gap={{ sm: '9px' }}
                 >
-                  <Image
-                    src={texture.img}
-                    w={{ base: '100vw', sm: '211px' }}
-                    h={{ base: '120px', sm: '350px' }}
-                  />
+                  <Link href={texture.href}>
+                    <Image
+                      src={texture.img}
+                      w={{ base: '100vw', sm: '211px' }}
+                      h={{ base: '120px', sm: '350px' }}
+                    />
+                  </Link>
                   <Text
                     fontSize="20px"
                     letterSpacing="0px"

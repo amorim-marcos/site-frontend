@@ -7,7 +7,8 @@ export interface IntroProps {
   productName: string
   productImgBg: string
   productDescription: string
-  textureTopMenuImg: string
+  textureTopMenuImg: string,
+  handleDownload: () => void
 }
 
 export const Intro = (props: IntroProps) => (
@@ -72,10 +73,8 @@ export const Intro = (props: IntroProps) => (
 
       <Box h="3px" w="87px" bg="green.600" />
 
-      <Box cursor="pointer" pos="absolute" bottom="29px" right="29px">
-        <Link to="texture-props" smooth offset={-80}>
-          <ZoomInIcon />
-        </Link>
+      <Box cursor="pointer" pos="absolute" bottom="29px" right="29px" onClick={props.handleDownload}>
+        <ZoomInIcon />
       </Box>
     </Flex>
   </Flex>
