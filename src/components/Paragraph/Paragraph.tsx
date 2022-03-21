@@ -1,4 +1,3 @@
-import DOMPurify from 'isomorphic-dompurify'
 import parser from 'react-html-parser'
 export type ParagraphProps = {
   children: string
@@ -6,7 +5,7 @@ export type ParagraphProps = {
 
 export const Paragraph = (props: ParagraphProps) => {
   return props.children.replaceAll ? (
-    <>{parser(DOMPurify.sanitize(props.children.replaceAll('\n', '<br>')))}</>
+    <>{parser(props.children.replaceAll('\n', '<br>'))}</>
   ) : (
     <p></p>
   )
