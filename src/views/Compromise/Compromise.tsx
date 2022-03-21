@@ -498,7 +498,6 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       </Flex>
       {/* FIM Compromisso com o planeta */}
 
-
       {/* INICIO Economia de recursos naturais*/}
       <Flex
         maxWidth="1920px"
@@ -571,8 +570,8 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
             >
               {/* LINHA 1 */}
               <Flex
-              // bg='blue'
-              alignItems={"center"}
+                // bg='blue'
+                alignItems={'center'}
               >
                 <Infographic
                   titleSuperscript2Text="Co-geramos"
@@ -651,7 +650,6 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
         </Flex>
       </Flex>
       {/* FIM Economia de recursos naturais */}
-
 
       {/* INICIO Preservação da fauna e da flora */}
       <Flex
@@ -804,7 +802,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 lg: '-20px',
                 xl: '-20px'
               }}
-              colorScheme = {'#59993F'}
+              colorScheme={'#59993F'}
             >
               <Text
                 as="h5"
@@ -871,13 +869,13 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               as="h3"
               variant={'h3' as any}
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-              color = {'#144835'}
+              color={'#144835'}
             >
               {page_content.section6_title}
             </Text>
             <Text
               marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px' }}
-              color = {'#143127'}
+              color={'#143127'}
             >
               {page_content.section6_text}
             </Text>
@@ -906,6 +904,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
             lg: 'column',
             xl: 'column'
           }}
+          // border="1px solid red"
         >
           {/* BOX 1 */}
           <Box
@@ -933,7 +932,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               <Text
                 as="h4"
                 variant={'h4' as any}
-                fontSize = {{ base: '14px', sm: '12px', lg: '16px', xl: '20px' }}
+                fontSize={{ base: '14px', sm: '12px', lg: '16px', xl: '20px' }}
                 fontWeight="semibold"
                 color="green.900"
                 textAlign={{
@@ -1143,7 +1142,6 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
             <Text
               as="h3"
               variant={'h3' as any}
-
               textAlign={{
                 base: 'center',
                 sm: 'center',
