@@ -44,23 +44,24 @@ export const mockPanelObj: HighlightBoxPanelProps = {
 }
 
 export const mockPanels: HighlightBoxPanelProps[] = [
-  mockPanelObj,
   {
-    ...mockPanelObj,
+    title: 'Música no Bairro',
+    subtitle: 'Alm. Tamandaré, PR | Projeto Cultural',
+    image: '/img/patrocinados/musica_bairro.png'
+  },
+  {
     title: 'Escolinha ADPB',
-    subtitle: 'Lages, SC | Projeto Desportivo',
-    image: 'img/escolinha adpb.png'
+    subtitle: 'Lages, SC | Projeto Desportivo ',
+    image: 'img/patrocinados/escolinha_adpb.png'
   },
   {
-    ...mockPanelObj,
     title: 'APAE',
-    subtitle: 'Projeto Social • Crianças e Adolescentes',
-    image: 'img/musica no bairro.png'
+    subtitle: ' Brasnorte, MT | Projeto Social',
+    image: 'img/patrocinados/apae.png'
   },
   {
-    ...mockPanelObj,
     title: 'Fundo Municipal do Idoso',
     subtitle: 'Joinville, SC | Projeto Social • Idosos',
-    image: 'img/musica no bairro.png'
+    image: 'img/patrocinados/fundo_municipal_do_idoso.png'
   }
 ]
