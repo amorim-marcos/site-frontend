@@ -56,7 +56,7 @@ export const mockPanels: HighlightBoxPanelProps[] = [
   },
   {
     title: 'APAE',
-    subtitle: ' Brasnorte, MT | Projeto Social',
+    subtitle: ' Brasnorte, MT | Projeto Social - Crianças',
     image: 'img/patrocinados/apae.png'
   },
   {
