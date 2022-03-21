@@ -207,7 +207,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }, [gridSize])
 
   useEffect(() => {
-    console.log(filters)
     setFiltersEmpty(
       filters.panels.length == 0 &&
         filters.collections.length == 0 &&
@@ -217,7 +216,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }, [filters])
 
   useEffect(() => {
-    setGridSize(isMobile ? 'mobile-big' : 'big')
+    setGridSize(isMobile ? 'mobile-medium' : 'medium')
   }, [isMobile])
 
   return (
