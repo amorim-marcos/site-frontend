@@ -223,7 +223,7 @@ export default function Home(props: HomeProps) {
         }}
         banner2={{
           onClick: () => router.push('/divisao-florestal'),
-          imgSrc: '/img/reflorestamento.jpeg',
+          imgSrc: '/img/conheca_divisao_florestal.png',
           title: 'CONHEÇA',
           description: 'Divisão Florestal',
           titleColor: 'green.600',
