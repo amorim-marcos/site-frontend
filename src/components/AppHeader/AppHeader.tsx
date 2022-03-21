@@ -225,7 +225,8 @@ export const AppHeader = () => {
                         href: i.href,
                         subItems: i.subItems.map((i) => ({
                           title: header.t(i.key),
-                          href: i.href
+                          href: i.href,
+                          arrow: i.arrow
                         }))
                       }))}
                       href={menuNavigation.products.href}

@@ -1,4 +1,6 @@
 import { Text, Flex, Box } from '@chakra-ui/react'
+import Arrow from '@components/Arrow'
+import ArrowIcon from '@components/Icons/ArrowIcon'
 import Link from 'next/link'
 import useMobile from '../../../../hooks/useMobile'
 
@@ -8,6 +10,7 @@ export type HeaderMenuSubItemProps = {
   subItems?: {
     title?: string
     href?: string
+    arrow?: boolean
   }[]
   onClick?: () => void
 }
@@ -85,7 +88,19 @@ export const HeaderMenuSubItem = ({
                 w="100%"
                 bg="green.700"
               >
+                { i.arrow && 
+                  <ArrowIcon 
+                    stroke="#CCD3CA"
+                    w={{
+                      base: '12px',
+                      md: '7px',
+                      lg: '9px',
+                      xl: '12px',
+                      '2xl': '10px'
+                    }} 
+                  /> }
                 <Text
+                  ml={(i.arrow) ? "10px" :  "0" }
                   fontSize={{
                     base: '14px',
                     md: '8.3px',
