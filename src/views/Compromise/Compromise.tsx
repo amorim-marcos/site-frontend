@@ -1113,7 +1113,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       {/* FIM Compromisso com a conduta corporativa */}
 
       {/* INICIO Ouvidoria */}
-      <Flex
+      {/* <Flex
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"
@@ -1137,7 +1137,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           justifyItems={'center'}
           justifyContent={'center'}
         >
-          {/* BOX 1 */}
+
           <Box
             margin={{
               base: '8% 5% 8% 5%',
@@ -1179,7 +1179,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               forma de intimidação, exposição ou desrespeito.
             </Text>
           </Box>
-          {/* BOX 2 */}
+
           <Box
             margin={{
               base: '0% 5% 10% 0%',
@@ -1208,7 +1208,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
             </Button>
           </Box>
         </Flex>
-      </Flex>
+      </Flex> */}
       {/* FIM Ouvidoria */}
 
       {/* INICIO Nossas práticas de ESG */}
