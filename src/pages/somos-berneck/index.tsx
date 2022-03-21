@@ -106,7 +106,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           lat: Number(item.latitude),
           lng: Number(item.longitude)
         },
-        googleMapsURL: item.google_maps_url,
+        googleMapsURL: item.google_maps_url ?? null,
         state: item.state,
         country: item.country,
         inaugurationSoon: item.inauguration_soon,
