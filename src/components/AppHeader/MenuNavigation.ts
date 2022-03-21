@@ -83,11 +83,13 @@ export const menuNavigation = {
           },
           {
             key: 'btn8_subItem21',
-            href: '/products/bp-berneck/catalog'
+            href: '/products/bp-berneck/catalog',
+            arrow: true
           },
           {
             key: 'btn8_subItem22',
-            href: '/products/bp-berneck/gallery'
+            href: '/products/bp-berneck/gallery',
+            arrow: true
           },
           {
             key: 'btn8_subItem3',
