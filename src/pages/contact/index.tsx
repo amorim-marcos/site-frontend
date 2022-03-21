@@ -14,7 +14,6 @@ export type ContactPageProps = {
 }
 
 export default function ContactPage(props: ContactPageProps) {
-  console.log(props)
   return (
     <Contact
       contact_channels={props.contact_channels.map((item) => ({
