@@ -100,7 +100,7 @@ export const Products = () => {
             subtitle="Laminado Melamínico Decorativo"
             subtitleColor="brown.200"
             bgColor="brown.300"
-            srcImg="img/mdf.png"
+            srcImg="img/bp-berneck.png"
             onClick={() => router.push('/products/bp-berneck')}
             bannerSize={{ base: '30px', sm: '20px', lg: '30px', xl: '35 px' }}
             sizeType={!!width && width <= 568 ? 'square' : 'rectangle'}

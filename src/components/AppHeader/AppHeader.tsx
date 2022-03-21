@@ -109,6 +109,7 @@ export const AppHeader = () => {
                   <HeaderSecondaryItem
                     href={menuNavigation.workWithUs.href}
                     title={header.t(menuNavigation.workWithUs.key)}
+                    isExternal={true}
                   />
                   <HeaderSecondaryItem
                     href={menuNavigation.whereBuy.href}
@@ -257,6 +258,7 @@ export const AppHeader = () => {
                     <HeaderSecondaryItem
                       href={menuNavigation.workWithUs.href}
                       title={header.t(menuNavigation.workWithUs.key)}
+                      isExternal={true}
                     />
                     <HeaderSecondaryItem
                       href={menuNavigation.whereBuy.href}

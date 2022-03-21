@@ -8,9 +8,31 @@ import { SectionPages, SectionPosts, SectionProducts } from './sections'
 export interface SearchProps {
   query: string
   results: {
-    pages: unknown[]
-    products: unknown[]
-    posts: unknown[]
+    pages: {
+      id: string
+      header_text?: string
+      header_subtitle?: string
+      description?: string
+      hdf_berneck?: string
+      mdf_berneck?: string
+      mdp_berneck?: string
+      year_description?: string
+    }[]
+    products: {
+      id: number
+      name: string
+      url_code: string
+      pattern_image_url: string
+      product_collections_name: string
+    }[]
+    posts: {
+      id: number
+      title: string
+      content: string
+      category: string
+      url_code: string
+      cover_url: string
+    }[]
   }
 }
 
