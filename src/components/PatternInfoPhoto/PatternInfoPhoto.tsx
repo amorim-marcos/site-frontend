@@ -9,8 +9,17 @@ export type PatternInfoPhotoProps = {
   descriptionColor: string
   imgSrc: string
   onClick?: () => void
+  grafism?: boolean
 }
-export const PatternInfoPhoto = (props: PatternInfoPhotoProps) => {
+export const PatternInfoPhoto = ({
+  onClick,
+  imgSrc,
+  grafism = true,
+  title,
+  titleColor,
+  description,
+  descriptionColor
+}: PatternInfoPhotoProps) => {
   const [mouseEnter, setMouseEnter] = useState(false)
   return (
     <Flex
@@ -20,7 +29,7 @@ export const PatternInfoPhoto = (props: PatternInfoPhotoProps) => {
       cursor="pointer"
       pos="relative"
       zIndex="base"
-      onClick={props.onClick}
+      onClick={onClick}
       _hover={{
         filter: 'brightness(90%)'
       }}
@@ -40,20 +49,22 @@ export const PatternInfoPhoto = (props: PatternInfoPhotoProps) => {
         position={'absolute'}
         top="0"
         left="0"
-        src={props.imgSrc}
+        src={imgSrc}
         objectFit={'cover'}
         width={'100%'}
         height={'100%'}
       />
-      <Image
-        position={'absolute'}
-        zIndex="base"
-        src="/img/home_grafismo_banner.svg"
-        right="0"
-        top="0"
-        w={{ base: '30vw', lg: '18vw' }}
-        maxWidth={'350px'}
-      />
+      {grafism && (
+        <Image
+          position={'absolute'}
+          zIndex="base"
+          src="/img/home_grafismo_banner.svg"
+          right="0"
+          top="0"
+          w={{ base: '30vw', lg: '18vw' }}
+          maxWidth={'350px'}
+        />
+      )}
 
       <Flex
         flexDirection={'column'}
@@ -65,9 +76,9 @@ export const PatternInfoPhoto = (props: PatternInfoPhotoProps) => {
           as="h4"
           variant={'h4' as any}
           fontWeight={'medium'}
-          color={props.titleColor}
+          color={titleColor}
         >
-          {props.title}
+          {title}
         </Text>
 
         <Text
@@ -75,9 +86,9 @@ export const PatternInfoPhoto = (props: PatternInfoPhotoProps) => {
           variant={'h2' as any}
           fontWeight="extrabold"
           letterSpacing="-0.68px"
-          color={props.descriptionColor}
+          color={descriptionColor}
         >
-          {props.description}
+          {description}
         </Text>
       </Flex>
 
@@ -87,6 +98,7 @@ export const PatternInfoPhoto = (props: PatternInfoPhotoProps) => {
         left="0"
         w="100%"
         h="100%"
+        opacity={'0.4'}
         bg={
           mouseEnter
             ? 'linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(19,49,40,0.8547794117647058) 100%)'

@@ -116,7 +116,6 @@ export const About = ({
       </Flex>
       {/* FIM RAIZES FIRMES PARA CRESCER */}
 
-
       {/* INICIO PARA O MADEIRAS MUNDO */}
       <Flex
         maxWidth="1920px"
@@ -153,7 +152,12 @@ export const About = ({
                 sm: 'row'
               }}
               justifyItems="center"
-              justifyContent={{ base: 'center', sm: 'center', lg: 'flex-end', xl: 'flex-end' }}
+              justifyContent={{
+                base: 'center',
+                sm: 'center',
+                lg: 'flex-end',
+                xl: 'flex-end'
+              }}
             >
               {/* BOX 1 */}
               <Box w={{ base: '80%', sm: '40%', lg: '100%' }}>
@@ -344,7 +348,6 @@ export const About = ({
       </Flex>
       {/* FIM ONDE ESTAMOS */}
 
-
       {/* INICIO REVENDEDORES */}
       <Flex
         maxWidth="1920px"
@@ -468,7 +471,7 @@ export const About = ({
             </Text>
           </Box>
           <Box
-            w={{ base: '100%', lg: '40%' }}
+            w={{ base: '100%', lg: '50%' }}
             margin={{
               base: '3% 0% 0% 0%',
               sm: '3% 0% 0% 0%',
@@ -478,11 +481,12 @@ export const About = ({
           >
             <PatternInfoPhoto
               onClick={() => router.push('/certificacoes')}
-              imgSrc="/assets/imgs/banner_certificacoes.png"
+              imgSrc="/img/banner_certificacoes_about.png"
               title="CONHEÇA"
               description="Nossas certificações"
               titleColor="green.900"
               descriptionColor="white"
+              grafism={false}
             />
           </Box>
         </Flex>
