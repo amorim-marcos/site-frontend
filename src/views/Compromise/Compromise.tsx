@@ -465,6 +465,15 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 content2Color="white"
                 iconName="EmissionIcon"
               />
+              <Text
+                pt="17.3px"
+                color="green.250"
+                fontSize="16px"
+                fontWeight={500}
+                letterSpacing="-0.32px"
+              >
+                (Dados do inventário de GEE de 2019)
+              </Text>
             </Flex>
           </Flex>
           {/* BOX 2 */}
