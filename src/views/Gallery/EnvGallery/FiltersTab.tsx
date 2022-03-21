@@ -99,7 +99,11 @@ export const FiltersTabs = ({
           // bg="red"
         >
           <Box>
-            <Flex position="relative" direction="column">
+            <Flex 
+              position="relative" 
+              direction="column"
+           
+            >
               <Center>
                 <Box
                   position="absolute"
@@ -109,8 +113,13 @@ export const FiltersTabs = ({
                   bottom="-3px"
                 />
               </Center>
-              <Center mb="20px">
-                <Flex justifyContent="space-between">
+              <Center 
+                mb="20px"
+              >
+                <Flex 
+                  justifyContent="space-between"
+                  // bg="yellow"
+                >
                   <Button
                     onClick={() => changeFilterPanel('bps')}
                     variant="link"
@@ -196,6 +205,7 @@ export const FiltersTabs = ({
                   left="0"
                   width="100%"
                   height="100%"
+                  // bg="yellow"
                 >
                   <Flex alignItems="flex-start" wrap="wrap">
                     {bps &&
@@ -225,7 +235,11 @@ export const FiltersTabs = ({
                   height="100%"
                 >
                   <Center>
-                    <Flex justifyContent="flex-start" wrap="wrap">
+                    <Flex 
+                      justifyContent="flex-start" 
+                      wrap="wrap"
+                          //  bg="yellow"
+                    >
                       {filtersContext['ambients'].map((filter) => (
                         <FilterCheckbox
                           key={filter.code}

@@ -7,9 +7,10 @@ export type EnvProps = LinkProps & {
   title: string
   place: string
   image_url: string
+  others?: boolean
 }
 
-export const Env = ({ title, place, image_url, ...props }: EnvProps) => {
+export const Env = ({ title, place, image_url, others, ...props }: EnvProps) => {
   return (
     <Link {...props}>
       
@@ -18,10 +19,10 @@ export const Env = ({ title, place, image_url, ...props }: EnvProps) => {
       >
         <Flex
           flex={"1"}
-          bg="grey"
-          height={{ base: '100%', sm: '100%' , lg: '100%' }}
-          maxHeight={{ base: '150px', sm: '300px' , md: '220px', '2xl': '350px' }}
-          maxWidth={{ base: '300px', sm: '500px', md: '600px' }}
+          // bg="grey"
+          height={{ base: '100%' }}
+          maxHeight={{ base: (others)? '150px': '100px', sm: '300px' , md: '220px', xl: (others)? '180px': '220px' , '2xl': (others)? '200px': '300px' }}
+          maxWidth={{ base: '300px', sm: '500px', md: (others)? '400px': '600px' }}
         >
           <Image
             objectFit="cover"
@@ -34,14 +35,15 @@ export const Env = ({ title, place, image_url, ...props }: EnvProps) => {
           flex={"1"}
           // bg="azure"
           direction="column"
-          maxWidth={{ base: '300px', sm: '500px', md: '600px' }}
-          margin={{ base: "3% 3% 1% 3%", sm: '3% 3% 1% 3%', md: '3% 3% 1% 3%' }}
+          maxWidth={{ base: '300px', sm: '500px', md: (others)? '400px': '600px' }}
+          margin={{ base: "2% 0% 1% 0%", sm: '2% 0% 1% 0%', md: '2% 0% 1% 0%' }}
         >
           <Flex
             // bg="blue"
             flex={"2"}
           >
-            <Text as={'h2'}
+            <Text as={'h4'}
+              variant={'h4'}
               fontWeight = 'bold'
               color={"gray.300"}
             >
@@ -53,7 +55,8 @@ export const Env = ({ title, place, image_url, ...props }: EnvProps) => {
             // bg="yellow"
             flex={"1"}
           >
-            <Text as={'h3'}
+            <Text as={'h5'}
+              variant={'h5'}
               fontWeight = 'medium'
               color={"gray.300"}
             >
