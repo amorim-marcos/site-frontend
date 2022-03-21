@@ -1,7 +1,18 @@
 import { useRouter } from 'next/router'
 import { Flex, Box, Text, Image, Button } from '@chakra-ui/react'
 
-export const SectionPages = (props: { content: unknown[] }) => {
+export const SectionPages = (props: {
+  content: {
+    id: string
+    header_text?: string
+    header_subtitle?: string
+    description?: string
+    hdf_berneck?: string
+    mdf_berneck?: string
+    mdp_berneck?: string
+    year_description?: string
+  }[]
+}) => {
   const router = useRouter()
 
   return (
@@ -50,7 +61,7 @@ export const SectionPages = (props: { content: unknown[] }) => {
             image={'/assets/imgs/search/hdf_page.png'}
             content={{
               title: 'HDF Berneck©',
-              description: item.hdf_berneck.description
+              description: item.hdf_berneck
             }}
           />
         ) : item.id.includes('mdf-berneck') ? (
@@ -60,7 +71,7 @@ export const SectionPages = (props: { content: unknown[] }) => {
             image={'/assets/imgs/search/mdf_page.png'}
             content={{
               title: 'MDF Berneck©',
-              description: item.mdf_berneck.description
+              description: item.mdf_berneck
             }}
           />
         ) : item.id.includes('mdp-berneck') ? (
@@ -70,7 +81,7 @@ export const SectionPages = (props: { content: unknown[] }) => {
             image={'/assets/imgs/search/mdp_page.png'}
             content={{
               title: 'MDP Berneck©',
-              description: item.mdp_berneck.description
+              description: item.mdp_berneck
             }}
           />
         ) : item.id.includes('our-commitment') ? (
@@ -92,7 +103,7 @@ export const SectionPages = (props: { content: unknown[] }) => {
             image={'/assets/imgs/foto_fabrica@2x.png'}
             content={{
               title: 'Nossa Trajetória',
-              description: item.year[item.year.length - 1].description
+              description: item.year_description
             }}
           />
         ) : (

@@ -3,7 +3,15 @@ import { Flex, Box, Text } from '@chakra-ui/react'
 
 import BpPatternImage from '@components/BpPatternImage'
 
-export const SectionProducts = (props: { content: unknown[] }) => {
+export const SectionProducts = (props: {
+  content: {
+    id: number
+    name: string
+    url_code: string
+    pattern_image_url: string
+    product_collections_name: string
+  }[]
+}) => {
   const router = useRouter()
 
   return (
@@ -30,7 +38,7 @@ export const SectionProducts = (props: { content: unknown[] }) => {
           }
         >
           <BpPatternImage
-            image_url={`${process.env.NEXT_PUBLIC_API_URL}${item.pattern_image.url}`}
+            image_url={item.pattern_image_url}
             w="233px"
             h="386px"
             transition={'all .2s ease-in-out'}
@@ -56,7 +64,7 @@ export const SectionProducts = (props: { content: unknown[] }) => {
               fontSize={'14px'}
               fontWeight={'medium'}
             >
-              {item.product_collections[0].name}
+              {item.product_collections_name}
             </Text>
           </Box>
         </Flex>

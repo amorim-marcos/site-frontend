@@ -6,9 +6,31 @@ import Search from 'views/Search'
 export interface SearchProps {
   query: string
   results: {
-    pages: unknown[]
-    products: unknown[]
-    posts: unknown[]
+    pages: {
+      id: string
+      header_text?: string
+      header_subtitle?: string
+      description?: string
+      hdf_berneck?: string
+      mdf_berneck?: string
+      mdp_berneck?: string
+      year_description?: string
+    }[]
+    products: {
+      id: number
+      name: string
+      url_code: string
+      pattern_image_url: string
+      product_collections_name: string
+    }[]
+    posts: {
+      id: number
+      title: string
+      content: string
+      category: string
+      url_code: string
+      cover_url: string
+    }[]
   }
 }
 
@@ -18,24 +40,57 @@ export default function SearchPage(props: SearchProps) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { slug = '*' } = ctx.query
+  const url = process.env.NEXT_PUBLIC_API_URL
+  let res
 
-  const pages = await meiliSearch({ index: 'pages', query: slug as string })
-  const products = await meiliSearch({
+  res = await meiliSearch({ index: 'pages', query: slug as string })
+
+  const pages: SearchProps['results']['pages'] = res.hits.map((item) => ({
+    id: item.id,
+    header_text: item.header_text ?? null,
+    header_subtitle: item.header_subtitle ?? null,
+    description: item.description ?? null,
+    hdf_berneck: item.hdf_berneck?.description ?? null,
+    mdf_berneck: item.mdf_berneck?.description ?? null,
+    mdp_berneck: item.mdp_berneck?.description ?? null,
+    year_description: item.year?.slice(-1)[0].description ?? null
+  }))
+
+  res = await meiliSearch({
     index: 'products',
     query: slug as string
   })
-  const posts = await meiliSearch({ index: 'posts', query: slug as string })
 
-  const results = {
-    pages: pages.hits,
-    products: products.hits,
-    posts: posts.hits
-  }
+  const products: SearchProps['results']['products'] = res.hits.map((item) => ({
+    id: item.id,
+    name: item.name,
+    url_code: item.url_code,
+    pattern_image_url: `${url}${item.pattern_image.url}`,
+    product_collections_name: item.product_collections[0]?.name
+  }))
+
+  res = await meiliSearch({
+    index: 'posts',
+    query: slug as string
+  })
+
+  const posts: SearchProps['results']['posts'] = res.hits.map((item) => ({
+    id: item.id,
+    title: item.title,
+    content: item.content,
+    category: item.category.name,
+    url_code: item.url_code,
+    cover_url: `${url}${item.cover.url}`
+  }))
+
+  console.log(posts)
+  console.log(pages)
+  console.log(products)
 
   return {
     props: {
       query: slug,
-      results
+      results: { pages, products, posts }
     }
   }
 }
