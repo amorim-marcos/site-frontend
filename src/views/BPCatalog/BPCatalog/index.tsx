@@ -124,7 +124,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     // panels
     if (filters['panels'].length > 0) {
       filteredBps = filteredBps.filter((bp: any) => {
-        return bp.panels.some((panel: any) => filters['panels'].includes(panel))
+        return bp.panelTypes.some((panel: any) => filters['panels'].includes(panel))
       })
     }
 
@@ -207,7 +207,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }, [gridSize])
 
   useEffect(() => {
-    console.log(filters)
     setFiltersEmpty(
       filters.panels.length == 0 &&
         filters.collections.length == 0 &&
@@ -217,7 +216,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }, [filters])
 
   useEffect(() => {
-    setGridSize(isMobile ? 'mobile-big' : 'big')
+    setGridSize(isMobile ? 'mobile-medium' : 'medium')
   }, [isMobile])
 
   return (
