@@ -97,7 +97,7 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
         {items.map((i, j) => {
           return (
             j < 2 && (
-              <Box key={j}>
+              <Box key={j} id={i.type.normalize("NFD").replace(/[^\w ]/g, "").split(' ').join('-').toLowerCase()}>
                 <DownloadSection
                   title={i.type}
                   description={i.description}
@@ -121,13 +121,13 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
             )
           )
         })}
-
+        
         <SectionPackBpDownloads />
 
         {items.map((i, j) => {
           return (
             j >= 2 && (
-              <Box key={j}>
+              <Box key={j} id={i.type.normalize("NFD").replace(/[^\w ]/g, "").split(' ').join('-').toLowerCase()}>
                 <DownloadSection
                   title={i.type}
                   description={i.description}

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 
-import { Flex, Text, Box, Image, Grid, GridItem } from '@chakra-ui/react'
+import { Flex, Text, Box, Image, Grid, GridItem, Link } from '@chakra-ui/react'
 
 import useMobile from 'hooks/useMobile'
 
@@ -225,6 +225,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             srcImg: '/assets/imgs/pagina_capa_bp/pack_padroes_bp.png',
             id: 1,
             title: 'Pack de Padrões BP BERNECK',
+            anchorId: "pack-bp-downloads",
             subtTitle: 'FAÇA O DOWNLOAD',
             subTitleColor: 'green.800'
           },
@@ -232,6 +233,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             srcImg: '/assets/imgs/pagina_capa_bp/revista_inspirare.png',
             id: 2,
             title: 'Revista Inspirare BNK',
+            anchorId: "revista-inspirare-bnk",
             subtTitle: 'CONHEÇA MAIS',
             subTitleColor: 'white.100'
           },
@@ -239,53 +241,55 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             srcImg: '/assets/imgs/pagina_capa_bp/materiais_suporte.png',
             id: 3,
             title: 'Materiais de Suporte',
+            anchorId: "materiais-de-suporte",
             subtTitle: 'CONHEÇA MAIS',
             subTitleColor: 'white.100'
           }
         ].map((i) => {
           return (
-            <Flex
-              w={{ base: '100%', md: '30%' }}
-              h={{
-                base: '100vw',
-                md: '225px',
-                lg: '282px',
-                xl: '338px',
-                '2xl': '423px'
-              }}
-              key={i.id}
-              flexDirection={'column'}
-              justifyContent={'flex-end'}
-              padding="2%"
-              background={`url(${i.srcImg})`}
-              backgroundSize={'cover'}
-              cursor={'pointer'}
-              position={'relative'}
-              marginY={{ base: '5%', md: '0' }}
-            >
-              <Text
-                zIndex={'docked'}
-                color={i.subTitleColor}
-                variant={'larger-body' as any}
-              >
-                {i.subtTitle}
-              </Text>
-              <Text zIndex={'docked'} as="h3" variant={'h3' as any}>
-                {i.title}
-              </Text>
-              <Box
-                position={'absolute'}
-                top="0"
-                left="0"
-                w="100%"
-                h="100%"
-                transition={'0.5s'}
-                zIndex={'base'}
-                _hover={{
-                  bg: 'linear-gradient(180deg, rgba(255,255,255,0) 48%, rgba(172,204,159,0.7959558823529411) 100%)'
+              <Flex
+                onClick={() => window.location.href = `/canal-bnk/downloads/#${i.anchorId}`}
+                w={{ base: '100%', md: '30%' }}
+                h={{
+                  base: '100vw',
+                  md: '225px',
+                  lg: '282px',
+                  xl: '338px',
+                  '2xl': '423px'
                 }}
-              />
-            </Flex>
+                key={i.id}
+                flexDirection={'column'}
+                justifyContent={'flex-end'}
+                padding="2%"
+                background={`url(${i.srcImg})`}
+                backgroundSize={'cover'}
+                cursor={'pointer'}
+                position={'relative'}
+                marginY={{ base: '5%', md: '0' }}
+              >
+                <Text
+                  zIndex={'docked'}
+                  color={i.subTitleColor}
+                  variant={'larger-body' as any}
+                >
+                  {i.subtTitle}
+                </Text>
+                <Text zIndex={'docked'} as="h3" variant={'h3' as any}>
+                  {i.title}
+                </Text>
+                <Box
+                  position={'absolute'}
+                  top="0"
+                  left="0"
+                  w="100%"
+                  h="100%"
+                  transition={'0.5s'}
+                  zIndex={'base'}
+                  _hover={{
+                    bg: 'linear-gradient(180deg, rgba(255,255,255,0) 48%, rgba(172,204,159,0.7959558823529411) 100%)'
+                  }}
+                />
+              </Flex>
           )
         })}
       </Flex>
