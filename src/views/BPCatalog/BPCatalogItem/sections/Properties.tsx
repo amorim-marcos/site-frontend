@@ -72,7 +72,7 @@ export const Properties = (props: PropertiesProps) => {
             borderColor="gray.150"
           />
 
-          <Flex direction="column">
+          <Flex w={{ base: '80%', sm: 'auto' }} direction="column">
             <Text
               fontSize={{ base: '20px', '2xl': '23px' }}
               fontWeight="medium"
