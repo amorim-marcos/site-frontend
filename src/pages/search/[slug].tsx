@@ -83,10 +83,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     cover_url: `${url}${item.cover.url}`
   }))
 
-  console.log(posts)
-  console.log(pages)
-  console.log(products)
-
   return {
     props: {
       query: slug,
