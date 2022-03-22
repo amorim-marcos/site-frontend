@@ -598,15 +598,15 @@ export const ForestsView = (props: ForestsViewProps) => {
           justifyContent={'flex-end'}
           position={'absolute'}
           width={{
-            base: "50%",
-            md: "45%",
-            lg: "30%",
-            '2xl': "100%"
+            base: '50%',
+            md: '45%',
+            lg: '30%',
+            '2xl': '100%'
           }}
           bottom={{
-            base: "-30px",
-            md: "-30px",
-            lg: "-30px"
+            base: '-30px',
+            md: '-30px',
+            lg: '-30px'
           }}
           right={{
             base: 0
@@ -809,7 +809,7 @@ export const ForestsView = (props: ForestsViewProps) => {
         zIndex="base"
         overflowY="hidden"
         overflowX="hidden"
-        bg="white.100"
+        bg="green.100"
       >
         <Flex
           // bg='blue'
@@ -911,20 +911,25 @@ export const ForestsView = (props: ForestsViewProps) => {
         zIndex="base"
         overflowY="hidden"
         overflowX="hidden"
-        bg="green.100"
-        backgroundImage="/assets/imgs/grafismos_fundo2.png"
-        backgroundPosition="top"
+        bg="white.100"
+        backgroundImage="/img/grafismo_resumo_publico.svg"
+        backgroundPosition="left top"
+        backgroundBlendMode={'multiply'}
+        backgroundSize={{ base: '100% auto', xl: '40% auto' }}
         backgroundRepeat="no-repeat"
       >
         <Flex
           // bg='blue'
-          direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'row' }}
+          direction={{ base: 'column', xl: 'row' }}
+          alignItems={'center'}
+          justifyContent="space-between"
+          w="100%"
           // alignItems={"center"}
         >
           {/* BOX 1 */}
           <Box
             // bg='pink'
-            flex="1"
+            w={{ base: '70%', xl: '45%' }}
             // justifyItems={"center"}
             margin={{
               base: '8% 5% 3% 5%',
@@ -947,6 +952,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                 lg: 'center',
                 xl: 'flex-start'
               }}
+              titleLineHeight="1.3"
             />
             <Text
               marginTop={{ base: '10%', sm: '5%', lg: '4%', xl: '4%' }}
@@ -957,6 +963,7 @@ export const ForestsView = (props: ForestsViewProps) => {
             </Text>
           </Box>
           {/* BOX 2 */}
+
           <Flex
             margin={{
               base: '0% 5% 5% 5%',
@@ -964,31 +971,32 @@ export const ForestsView = (props: ForestsViewProps) => {
               lg: '2% 2% 8% 0%',
               xl: '5% 5% 5% 0%'
             }}
-            padding={{ base: '10%', sm: '10%', lg: '10%', xl: '2%' }}
+            // padding={{ base: '10%', sm: '10%', lg: '10%', xl: '2%' }}
+            padding="2%"
             // bg='blue'
-            flex="1"
+            w={{ base: '90%', lg: '50%' }}
             position="relative"
             zIndex="base"
             overflowY="hidden"
             overflowX="hidden"
-            backgroundImage="/assets/imgs/fundo_relatorio.svg"
+            backgroundImage="/img/fundo_resumo_publico.svg"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             backgroundSize={'cover'}
             alignItems="center"
             justifyContent="center"
+            flexDirection={'column'}
           >
             {props.page_content.public_resume.map((item, i) => {
               return (
-                <Link href={item.public_resume_file.url} key={i} isExternal>
-                  <PatternCertification
-                    title={item.public_resume_name}
-                    titleInitialColor="green.800"
-                    iconName="reports"
-                    iconInitialColor1="#004934"
-                    iconInitialColor2="#004934"
-                  />
-                </Link>
+                <PatternCertification
+                  key={i}
+                  title={item.public_resume_name}
+                  titleInitialColor="green.800"
+                  iconName="reports"
+                  iconInitialColor1="#004934"
+                  iconInitialColor2="#004934"
+                />
               )
             })}
           </Flex>
@@ -998,3 +1006,7 @@ export const ForestsView = (props: ForestsViewProps) => {
     </Box>
   )
 }
+
+/*
+
+{/* <Link href={item.public_resume_file.url} key={i} isExternal> */
