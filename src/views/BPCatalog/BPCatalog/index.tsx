@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import React, { useEffect, useState } from 'react'
 
-import { Container, filter, Grid, GridItem } from '@chakra-ui/react'
+import { Button, Container, filter, Grid, GridItem } from '@chakra-ui/react'
 
 import Pagebar from '@components/Pagebar'
 import useMobile from 'hooks/useMobile'
@@ -15,9 +15,9 @@ import { useRouter } from 'next/router'
 export type Filters = {
   orderBy: string
   nameSearched: string
-  panels: Array<number|string>
-  collections: Array<number|string>
-  colorations: Array<number|string>
+  panels: Array<number | string>
+  collections: Array<number | string>
+  colorations: Array<number | string>
 }
 
 export type ValidFilterNames = 'panels' | 'collections' | 'colorations'
@@ -84,7 +84,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   const [filters, setFilters] = useState(initialFilters)
 
-
   function changeGridSize(newGridSize: GridSize) {
     setGridSize(newGridSize)
   }
@@ -124,7 +123,9 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     // panels
     if (filters['panels'].length > 0) {
       filteredBps = filteredBps.filter((bp: any) => {
-        return bp.panelTypes.some((panel: any) => filters['panels'].includes(panel))
+        return bp.panelTypes.some((panel: any) =>
+          filters['panels'].includes(panel)
+        )
       })
     }
 
@@ -174,11 +175,19 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }
 
   useEffect(() => {
-    for(var collection of filtersContext.collections){
-      let normalizedTitle = collection.title.normalize("NFD").replace(/[^\w ]/g, "").split(' ').join('-').toLowerCase()
-  
-      if(queryCollection == normalizedTitle && !initialFilters["collections"].includes(collection.code.toString())){
-        filters["collections"].push(collection.code)
+    for (const collection of filtersContext.collections) {
+      const normalizedTitle = collection.title
+        .normalize('NFD')
+        .replace(/[^\w ]/g, '')
+        .split(' ')
+        .join('-')
+        .toLowerCase()
+
+      if (
+        queryCollection == normalizedTitle &&
+        !initialFilters['collections'].includes(collection.code.toString())
+      ) {
+        filters['collections'].push(collection.code)
         break
       }
     }
@@ -218,6 +227,28 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   useEffect(() => {
     setGridSize(isMobile ? 'mobile-medium' : 'medium')
   }, [isMobile])
+
+  useEffect(() => {
+    if (router.query.panel) {
+      const itemFilter = filtersContext.panels.find(
+        (item) => item.title === router.query.panel
+      )
+      if (typeof itemFilter !== 'undefined') {
+        appendFilter('panels', itemFilter.code as any)
+
+        setFilteredBps(
+          applyFilters(
+            {
+              ...filters,
+              ['panels']: [itemFilter.code as any]
+            },
+            bps
+          )
+        )
+        changeFilterPanel('panels')
+      }
+    }
+  }, [router.query])
 
   return (
     <>

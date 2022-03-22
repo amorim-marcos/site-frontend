@@ -124,7 +124,15 @@ export const ProductBody = ({
             }}
           >
             <Text variant={'productTitle' as any}>{product.t('Finishes')}</Text>
-            <ProductText content={finishes} />
+            {typeof finishes === 'string' ? (
+              '• ' + finishes
+            ) : (
+              <>
+                {finishes.map((item, i) => {
+                  return <Text key={i}>{'• ' + item}</Text>
+                })}
+              </>
+            )}
           </Box>
         )}
 

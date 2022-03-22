@@ -54,6 +54,7 @@ export const Product = ({
       position="relative"
       marginX="auto"
       maxWidth="1920px"
+      id={plusProduct ? 'plus' : 'product'}
     >
       <GrafismProduct {...grafismProps} />
 

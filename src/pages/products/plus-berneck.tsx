@@ -29,13 +29,14 @@ export type PlusBerneckPageProps = {
     important_points: {
       point_text: string
     }[]
+    page_title: string
   }
 }
 
 export default function PlusBerneckPage(props: PlusBerneckPageProps) {
   return (
     <PlusBerneckView
-      title="Painéis PLUS BERNECK®"
+      title={props.page_content.page_title}
       description={props.page_content.section1_text}
       subtitle={props.page_content.header_subtitle}
       subtitleDescription={props.page_content.header_text}

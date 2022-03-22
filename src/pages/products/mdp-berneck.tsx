@@ -13,7 +13,7 @@ export default function MdpBerneckPage(props: MdpBerneckPageProps) {
   return (
     <MdpBerneckView
       mdp={{
-        title: 'MDP Berneck',
+        title: props.page_content.mdp_berneck.page_title,
         subTitle: props.page_content.mdp_berneck.subtitle,
         description: props.page_content.mdp_berneck.description,
         finishes: props.page_content.mdp_berneck.finishes.map((f) => {
@@ -33,7 +33,7 @@ export default function MdpBerneckPage(props: MdpBerneckPageProps) {
           props.page_content.mdp_berneck.technical_sheet.url
       }}
       mdp_plus={{
-        title: 'MDP PLUS BERNECK®',
+        title: props.page_content.mdp_berneck_plus.page_title,
         description: props.page_content.mdp_berneck_plus.description,
         subTitle: props.page_content.mdp_berneck_plus.subtitle,
         finishes: props.page_content.mdp_berneck_plus.finishes.map((f) => {

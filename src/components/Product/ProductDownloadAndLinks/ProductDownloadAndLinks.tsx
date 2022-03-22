@@ -54,7 +54,7 @@ export const ProductDownloadAndLinks = ({
         </Link>
       )}
       {qualityCertificate && (
-        <Link href="/somos-berneck">
+        <Link href="/certificacoes">
           <ProductDownloadItem
             iconName="qualityCertificate"
             text={product.t('qualityCertificate')}

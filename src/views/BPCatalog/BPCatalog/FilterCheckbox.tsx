@@ -64,11 +64,7 @@ export const FilterCheckbox = ({
         zIndex="2"
         mr="5px"
       />
-      <Text
-        fontWeight="600"
-        fontSize={{ base: '17px', md: '19px' }}
-        zIndex="2"
-      >
+      <Text fontWeight="600" fontSize={{ base: '17px', md: '19px' }} zIndex="2">
         {title}
       </Text>
       <Image

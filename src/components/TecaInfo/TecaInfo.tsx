@@ -81,6 +81,7 @@ export const TecaInfo = ({
                 xl: '610px',
                 '2xl': '710px'
               }}
+              widthFirst
             />
           </Box>
         )}

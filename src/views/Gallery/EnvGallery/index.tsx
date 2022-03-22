@@ -257,11 +257,8 @@ export const EnvGallery = ({
               // bg="pink"
             >
               {filteredEnvs &&
-                filteredEnvs.map((env) => ( 
-                  <GridItem 
-                    key={env.id} 
-                    mt="20px"
-                  >
+                filteredEnvs.map((env) => (
+                  <GridItem key={env.id} mt="20px">
                     <Env
                       href={`/products/bp-berneck/gallery/${env.url_code}`}
                       title={env.title}

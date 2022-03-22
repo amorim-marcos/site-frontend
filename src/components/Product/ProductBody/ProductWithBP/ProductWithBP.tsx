@@ -13,6 +13,7 @@ export type ProductWithBPProps = {
   btnText?: string
   type?: 'centralizedBtn' | 'bottomBtn'
   grafismColor?: string
+  href?: string
 }
 
 function arrowDistance(type: 'centralizedBtn' | 'bottomBtn') {
@@ -34,7 +35,8 @@ export const ProductWithBP = ({
   btnTextColor = '#FFF',
   btnText = 'Btn text',
   type = 'bottomBtn',
-  grafismColor = '#dfdbd9'
+  grafismColor = '#dfdbd9',
+  href = '/products/plus-berneck'
 }: ProductWithBPProps) => {
   return (
     <Flex
@@ -115,7 +117,7 @@ export const ProductWithBP = ({
           {description}
         </Text>
         {type === 'centralizedBtn' && (
-          <Link href="/products/plus-berneck">
+          <Link href={href}>
             <Center
               bg={btnColor}
               _hover={{ bg: btnHoverColor }}
@@ -167,7 +169,7 @@ export const ProductWithBP = ({
       </Flex>
 
       {type === 'bottomBtn' && (
-        <Link href="/products/plus-berneck">
+        <Link href={href}>
           <Center
             position={{ base: 'relative', sm: 'absolute' }}
             bottom={{ base: '0', sm: '-10%' }}

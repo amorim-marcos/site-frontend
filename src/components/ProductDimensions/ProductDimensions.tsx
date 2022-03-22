@@ -7,6 +7,7 @@ export type ProductDimensionsProps = {
   tableBackgroundColor?: string
   dimensions: DimensionsProps
   tableWidth?: ResponsiveCss
+  widthFirst?: boolean
 }
 
 export type DimensionsProps = {
@@ -26,7 +27,8 @@ export const ProductDimensions = ({
     lg: '350px',
     xl: '400px',
     '2xl': '450px'
-  }
+  },
+  widthFirst = false
 }: ProductDimensionsProps) => {
   const product = useTranslation('product')
 
@@ -60,18 +62,18 @@ export const ProductDimensions = ({
             </Tr>
             <Tr>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                {product.t('length')}
+                {widthFirst ? product.t('width') : product.t('length')}
               </Td>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                {dimensions?.length}
+                {widthFirst ? dimensions?.width : dimensions?.length}
               </Td>
             </Tr>
             <Tr>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                {product.t('width')}
+                {!widthFirst ? product.t('width') : product.t('length')}
               </Td>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                {dimensions?.width}
+                {!widthFirst ? dimensions?.width : dimensions?.length}
               </Td>
             </Tr>
           </Tbody>

@@ -1,3 +1,5 @@
+import { Box } from '@chakra-ui/react'
+import Pagebar from '@components/Pagebar'
 import Product from '../../components/Product'
 import { ProductProps } from './hdf-berneck'
 
@@ -8,7 +10,19 @@ export type MdpBerneckViewProps = {
 
 export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
   return (
-    <div>
+    <Box>
+      <Pagebar
+        paths={[
+          {
+            title: 'Produtos',
+            url: '/products'
+          },
+          {
+            title: mdp.title,
+            url: '/products/mdp-berneck'
+          }
+        ]}
+      />
       <Product
         grafismProps={{
           grafism: 'type1'
@@ -47,7 +61,8 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
             type: 'centralizedBtn',
             description:
               'A combinação das qualidades do MDP com a variedade de acabamentos do BP fornecem inúmeras possibilidades de utilização. Encontre a melhor para a sua aplicação.',
-            title: 'MDP BERNECK® com BP'
+            title: 'MDP BERNECK® com BP',
+            href: '/products/bp-berneck/catalog?panel=MDP'
           }
         }}
       />
@@ -89,10 +104,11 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
             description:
               'Inove nos projetos com os acabamentos BP em MDP PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
             btnText: 'Conheça todos os padrões BP BERNECK em MDP PLUS',
-            imgSrc: '/img/mdp_plus_bp.png'
+            imgSrc: '/img/mdp_plus_bp.png',
+            href: '/products/bp-berneck/catalog?panel=MDP PLUS'
           }
         }}
       />
-    </div>
+    </Box>
   )
 }
