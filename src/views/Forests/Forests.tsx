@@ -529,8 +529,8 @@ export const ForestsView = (props: ForestsViewProps) => {
         justifyContent="center"
         position="relative"
         zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
+        overflowY="visible"
+        overflowX="visible"
         bg="white.100"
         backgroundImage="/assets/imgs/grafismos_fundo2.png"
         backgroundPosition="center"
@@ -588,28 +588,35 @@ export const ForestsView = (props: ForestsViewProps) => {
             <Image src="/assets/imgs/IMG_0618.png" />
           </Box>
         </Flex>
+        {/* MADEIRA FLYANTE */}
+        <Flex
+          marginX="auto"
+          zIndex={10}
+          overflowY="visible"
+          overflowX="hidden"
+          // bg='blue'
+          justifyContent={'flex-end'}
+          position={'absolute'}
+          width={{
+            base: "50%",
+            md: "45%",
+            lg: "30%",
+            '2xl': "100%"
+          }}
+          bottom={{
+            base: "-30px",
+            md: "-30px",
+            lg: "-30px"
+          }}
+          right={{
+            base: 0
+          }}
+        >
+          <Image src="/assets/imgs/madeiras.png" />
+        </Flex>
+        {/* MADEIRA FLYANTE */}
       </Flex>
       {/* FIM Produção Florestal */}
-
-      {/* MADEIRA FLYANTE */}
-      <Flex
-        marginX="auto"
-        zIndex={10}
-        overflowY="hidden"
-        overflowX="hidden"
-        // bg='blue'
-        justifyContent={'flex-end'}
-        position={'absolute'}
-        margin={{
-          base: '-30% 0% 0% 40%',
-          sm: '-22% -0% 5% 55%',
-          lg: '-22% 0% 5% 65%',
-          xl: '-15% 0% 5% 70%'
-        }}
-      >
-        <Image src="/assets/imgs/madeiras.png" />
-      </Flex>
-      {/* MADEIRA FLYANTE */}
 
       {/* INICIO Do plantio à colheita */}
       <Flex
@@ -617,9 +624,9 @@ export const ForestsView = (props: ForestsViewProps) => {
         marginX="auto"
         alignItems="center"
         justifyContent="center"
-        position="relative"
+        // position="relative"
         zIndex="base"
-        overflowY="hidden"
+        overflowY="visible"
         overflowX="hidden"
         bg="brown.100"
       >
