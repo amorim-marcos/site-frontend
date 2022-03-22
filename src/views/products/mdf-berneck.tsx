@@ -73,7 +73,8 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
               'A combinação das qualidades do MDF com a variedade de acabamentos do BP fornecem inúmeras possibilidades de utilização. Encontre a melhor para a sua aplicação.',
             btnText: 'Conheça todos os padrões BP BERNECK em MDF',
             btnColor: '#D8C39F',
-            grafismColor: '#D8C39F'
+            grafismColor: '#D8C39F',
+            href: '/products/bp-berneck/catalog?panel=MDF'
           }
         }}
       />
@@ -125,7 +126,8 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
             description:
               'Inove nos projetos com os acabamentos BP em MDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
             btnText: 'Conheça todos os padrões BP BERNECK em MDF PLUS',
-            imgSrc: '/img/mdf_plus_bp.png'
+            imgSrc: '/img/mdf_plus_bp.png',
+            href: '/products/bp-berneck/catalog?panel=MDF PLUS'
           }
         }}
         downloadAndLinks={{
