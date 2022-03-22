@@ -30,6 +30,7 @@ export type BerneckPinusPageProps = {
     standard_humity: string
     technical_sheet: string
     uses_and_applications: string
+    page_title: string
   }
 }
 
@@ -37,7 +38,7 @@ export default function BerneckPinus(props: BerneckPinusPageProps) {
   return (
     <BerneckPinusView
       pinus={{
-        title: 'Berneck Pinus',
+        title: props.page_content.page_title,
         subTitle: props.page_content.header_subtitle,
         description: props.page_content.header_subtitle_description,
 

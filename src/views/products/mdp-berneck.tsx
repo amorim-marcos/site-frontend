@@ -1,3 +1,5 @@
+import { Box } from '@chakra-ui/react'
+import Pagebar from '@components/Pagebar'
 import Product from '../../components/Product'
 import { ProductProps } from './hdf-berneck'
 
@@ -8,7 +10,19 @@ export type MdpBerneckViewProps = {
 
 export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
   return (
-    <div>
+    <Box>
+      <Pagebar
+        paths={[
+          {
+            title: 'Produtos',
+            url: '/products'
+          },
+          {
+            title: mdp.title,
+            url: '/products/mdp-berneck'
+          }
+        ]}
+      />
       <Product
         grafismProps={{
           grafism: 'type1'
@@ -93,6 +107,6 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
           }
         }}
       />
-    </div>
+    </Box>
   )
 }

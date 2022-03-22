@@ -2,6 +2,8 @@ import PlusPanelsPresentation from '@components/PlusPanelsPresentation'
 import PlusTestInfo from '@components/PlusTestInfo'
 import Product from '../../components/Product'
 import { useRouter } from 'next/router'
+import { Box } from '@chakra-ui/react'
+import Pagebar from '@components/Pagebar'
 
 export type PlusBerneckViewProps = {
   title: string
@@ -27,7 +29,19 @@ export type PlusBerneckViewProps = {
 export default function PlusBerneckView(props: PlusBerneckViewProps) {
   const router = useRouter()
   return (
-    <div>
+    <Box>
+      <Pagebar
+        paths={[
+          {
+            title: 'Produtos',
+            url: '/products'
+          },
+          {
+            title: props.title,
+            url: '/products/plus-berneck'
+          }
+        ]}
+      />
       <Product
         grafismProps={{
           grafism: 'type1'
@@ -130,7 +144,7 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
                 top: '-1.5%',
                 right: '-330px'
               },
-              onClick: () => router.push('/products/hdf-berneck')
+              onClick: () => router.push('/products/hdf-berneck#plus')
             }
           },
           second: {
@@ -168,7 +182,7 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
                 top: '-100px',
                 right: '-30px'
               },
-              onClick: () => router.push('/products/mdf-berneck')
+              onClick: () => router.push('/products/mdf-berneck#plus')
             }
           },
           third: {
@@ -202,11 +216,11 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
                 top: '-20px',
                 right: '-1px'
               },
-              onClick: () => router.push('/products/mdp-berneck')
+              onClick: () => router.push('/products/mdp-berneck#plus')
             }
           }
         }}
       />
-    </div>
+    </Box>
   )
 }

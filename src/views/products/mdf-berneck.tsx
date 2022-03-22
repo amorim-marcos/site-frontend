@@ -1,3 +1,5 @@
+import { Box } from '@chakra-ui/react'
+import Pagebar from '@components/Pagebar'
 import Product from '../../components/Product'
 import { ProductProps } from './hdf-berneck'
 
@@ -8,7 +10,19 @@ export type MdfBerneckViewProps = {
 
 export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
   return (
-    <div>
+    <Box>
+      <Pagebar
+        paths={[
+          {
+            title: 'Produtos',
+            url: '/products'
+          },
+          {
+            title: mdf.title,
+            url: '/products/mdp-berneck'
+          }
+        ]}
+      />
       <Product
         grafismProps={{
           grafism: 'type1'
@@ -69,8 +83,8 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
           grafism: 'type2'
         }}
         imgSrc="/img/mdf_plus.png"
-        imgWidth={{ base: '100vw', sm: '60vw' }}
-        imgMaxWidth="1151px"
+        imgWidth={{ base: '100vw', sm: '50vw' }}
+        imgMaxWidth="1051px"
         imgMarginTop={{
           base: '-30%',
           sm: '10px',
@@ -91,7 +105,7 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
         plusProduct
         header={{
           plusIndicator: true,
-          title: 'MDF PLUS BERNECK®',
+          title: mdf_plus.title,
           headerBgColor: '#ACCC9F',
           subtitle: mdf_plus.subTitle,
           description: mdf_plus.subTitleDescription
@@ -107,7 +121,7 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
           },
           backgroundColor: '#E8E8E8',
           productWithBP: {
-            title: mdf.title,
+            title: 'MDF PLUS BERNECK® com BP',
             description:
               'Inove nos projetos com os acabamentos BP em MDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
             btnText: 'Conheça todos os padrões BP BERNECK em MDF PLUS',
@@ -118,6 +132,6 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
           qualityCertificate: false
         }}
       />
-    </div>
+    </Box>
   )
 }

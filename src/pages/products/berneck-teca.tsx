@@ -13,13 +13,14 @@ export type BerneckTecaPageProps = {
     _length: string
     _width: string
     thickness: string
+    page_title: string
   }
 }
 
 export default function BerneckTecaPage({
   page_content
 }: BerneckTecaPageProps) {
-  return <BerneckTecaView title="BERNECK® TECA" {...page_content} />
+  return <BerneckTecaView title={page_content.page_title} {...page_content} />
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {

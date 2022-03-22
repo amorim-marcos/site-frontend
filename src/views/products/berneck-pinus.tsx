@@ -1,3 +1,5 @@
+import { Box } from '@chakra-ui/react'
+import Pagebar from '@components/Pagebar'
 import {
   QualityPinus,
   QualityPinusProps
@@ -26,7 +28,19 @@ export default function BerneckPinusView({
   qualityPinus
 }: BerneckPinusViewProps) {
   return (
-    <div>
+    <Box>
+      <Pagebar
+        paths={[
+          {
+            title: 'Produtos',
+            url: '/products'
+          },
+          {
+            title: pinus.title,
+            url: '/products/berneck-pinus'
+          }
+        ]}
+      />
       <Product
         grafismProps={{
           grafism: 'type3',
@@ -65,6 +79,6 @@ export default function BerneckPinusView({
         }}
       />
       <QualityPinus items={qualityPinus.items} />
-    </div>
+    </Box>
   )
 }

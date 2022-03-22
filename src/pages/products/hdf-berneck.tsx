@@ -17,6 +17,7 @@ export type ProductProps = {
   _length: string
   _width: string
   uses_and_applications: string
+  page_title: string
 }
 
 export type HdfBerneckPageProps = {
@@ -30,7 +31,7 @@ export default function HdfBerneckPage(props: HdfBerneckPageProps) {
   return (
     <HdfBerneckView
       hdf={{
-        title: 'HDF Berneck',
+        title: props.page_content.hdf_berneck.page_title,
         subTitle: props.page_content.hdf_berneck.subtitle,
         description: props.page_content.hdf_berneck.description,
         finishes: props.page_content.hdf_berneck.finishes.map((f) => {
@@ -50,7 +51,7 @@ export default function HdfBerneckPage(props: HdfBerneckPageProps) {
           props.page_content.hdf_berneck.technical_sheet.url
       }}
       hdf_plus={{
-        title: 'HDF PLUS BERNECK®',
+        title: props.page_content.hdf_berneck_plus.page_title,
         description: props.page_content.hdf_berneck_plus.description,
         subTitle: props.page_content.hdf_berneck_plus.subtitle,
         finishes: props.page_content.hdf_berneck_plus.finishes.map((f) => {
