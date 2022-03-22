@@ -72,6 +72,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const otherEnvs: GalleryItemProps['otherEnvs'] = otherEnvsFetch
     .filter((env: any) => env.id !== envFetch.id)
+    .slice(0, 4)
     .map((env: any) => {
       return {
         id: env.id,

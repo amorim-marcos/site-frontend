@@ -5,6 +5,7 @@ export const SectionPackBpDownloads = () => {
   const { isMobile, width } = useMobile(568)
   return (
     <Flex
+      id="pack-bp-downloads"
       w="100%"
       marginBottom={{ base: '400px', md: '10%' }}
       justifyContent="center"
@@ -55,7 +56,7 @@ export const SectionPackBpDownloads = () => {
           alignItems="center"
           textAlign={'center'}
         >
-          <Text as="h3" variant={'h3' as any}>
+          <Text  as="h3" variant={'h3' as any}>
             Pack de Padrões BP BERNECK®
           </Text>
           <Text

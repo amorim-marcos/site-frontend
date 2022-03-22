@@ -43,7 +43,6 @@ export const Connect = () => {
       )
       const data = await result.json()
 
-      console.log(data)
       setLastVideo(data.items[0].id.videoId)
     }
 

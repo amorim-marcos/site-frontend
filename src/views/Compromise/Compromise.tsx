@@ -448,7 +448,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 titleSuperscript1Color="green.400"
                 titleSuperscript2Text="Mais de"
                 titleSuperscript2Color="green.200"
-                content1Text={page_content.carbon_sequestration.toString()}
+                content1Text={page_content.carbon_sequestration.toLocaleString('en-US', {maximumFractionDigits: 1}).replace(".",",")}
                 content1Color="white"
                 content2Text="milhões de tCO₂e"
                 content2Color="white"
@@ -459,12 +459,21 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 titleSuperscript1Color="green.400"
                 titleSuperscript2Text="Cerca de"
                 titleSuperscript2Color="green.200"
-                content1Text={page_content.atmospheric_emissions.toString()}
+                content1Text={page_content.atmospheric_emissions.toString().toLocaleString('en-US', {maximumFractionDigits: 1}).replace(".",",")}
                 content1Color="white"
                 content2Text="milhões de tCO₂e"
                 content2Color="white"
                 iconName="EmissionIcon"
               />
+              <Text
+                pt="17.3px"
+                color="green.250"
+                fontSize="16px"
+                fontWeight={500}
+                letterSpacing="-0.32px"
+              >
+                (Dados do inventário de GEE de 2019)
+              </Text>
             </Flex>
           </Flex>
           {/* BOX 2 */}
@@ -758,7 +767,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
             >
               <Infographic
                 content1Text="+"
-                content2Text={page_content.collaborators_number}
+                content2Text={(page_content.collaborators_number / 1000).toLocaleString('en-US', {maximumFractionDigits: 1}).replace(".",",")}
                 content3Text="Mil"
                 // content4Text = 'Colaboradores diretos e indiretos'
                 // fontSize = {{ base: '12px', sm: '16px', lg: '24px', xl: '18px'}}
@@ -1104,7 +1113,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       {/* FIM Compromisso com a conduta corporativa */}
 
       {/* INICIO Ouvidoria */}
-      <Flex
+      {/* <Flex
         maxWidth="1920px"
         marginX="auto"
         alignItems="center"
@@ -1128,7 +1137,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           justifyItems={'center'}
           justifyContent={'center'}
         >
-          {/* BOX 1 */}
+
           <Box
             margin={{
               base: '8% 5% 8% 5%',
@@ -1170,7 +1179,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               forma de intimidação, exposição ou desrespeito.
             </Text>
           </Box>
-          {/* BOX 2 */}
+
           <Box
             margin={{
               base: '0% 5% 10% 0%',
@@ -1199,7 +1208,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
             </Button>
           </Box>
         </Flex>
-      </Flex>
+      </Flex> */}
       {/* FIM Ouvidoria */}
 
       {/* INICIO Nossas práticas de ESG */}

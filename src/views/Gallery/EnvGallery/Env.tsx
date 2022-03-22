@@ -7,60 +7,67 @@ export type EnvProps = LinkProps & {
   title: string
   place: string
   image_url: string
+  others?: boolean
 }
 
-export const Env = ({ title, place, image_url, ...props }: EnvProps) => {
+export const Env = ({ title, place, image_url, others, ...props }: EnvProps) => {
   return (
     <Link {...props}>
+      
       <Flex
         direction="column"
-        width={{
-          base: '184px',
-          xs: '367px',
-          sm: '508px',
-          md: '367px',
-          '2xl': '508px'
-        }}
       >
-        <Box
-          overflow="hidden"
-          width={{
-            base: '184px',
-            xs: '367px',
-            sm: '508px',
-            md: '367px',
-            '2xl': '508px'
-          }}
-          height={{
-            base: '137px',
-            xs: '274px',
-            sm: '369px',
-            md: '274px',
-            '2xl': '369px'
-          }}
+        <Flex
+          flex={"1"}
+          // bg="grey"
+          height={{ base: '100%' }}
+          maxHeight={{ base: (others)? '150px': '100px', sm: '300px' , md: '220px', xl: (others)? '180px': '220px' , '2xl': (others)? '200px': '300px' }}
+          maxWidth={{ base: '300px', sm: '500px', md: (others)? '400px': '600px' }}
         >
           <Image
             objectFit="cover"
             objectPosition="center"
-            width="100%"
-            height="100%"
-            overflow="hidden"
-            flex={1}
             src={image_url}
           />
-        </Box>
-        <Text
-          width="100%"
-          flex={1}
-          fontSize={{ base: '23px', lg: '31px' }}
-          variant={'body-bold' as any}
+        </Flex>
+       
+        <Flex
+          flex={"1"}
+          // bg="azure"
+          direction="column"
+          maxWidth={{ base: '300px', sm: '500px', md: (others)? '400px': '600px' }}
+          margin={{ base: "2% 0% 1% 0%", sm: '2% 0% 1% 0%', md: '2% 0% 1% 0%' }}
         >
-          {title}
-        </Text>
-        <Text width="100%" flex={1} fontSize={{ base: '17px', lg: '20px' }}>
-          {place}
-        </Text>
+          <Flex
+            // bg="blue"
+            flex={"2"}
+          >
+            <Text as={'h4'}
+              variant={'h4'}
+              fontWeight = 'bold'
+              color={"gray.300"}
+            >
+              {title}
+            </Text>
+           </Flex>
+
+          <Flex
+            // bg="yellow"
+            flex={"1"}
+          >
+            <Text as={'h5'}
+              variant={'h5'}
+              fontWeight = 'medium'
+              color={"gray.300"}
+            >
+              {place}
+            </Text>
+          </Flex>
+
+        </Flex>
+
       </Flex>
+
     </Link>
   )
 }
