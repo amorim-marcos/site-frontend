@@ -689,19 +689,17 @@ export const ForestsView = (props: ForestsViewProps) => {
         zIndex="base"
         overflowY="hidden"
         overflowX="hidden"
-        bg="gray.100"
-        backgroundImage="/assets/imgs/grafismos_fundo2.png"
+        bg="#D6DCD5"
+        backgroundImage="/assets/imgs/grafismo_fundo_forest3.svg"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
       >
         <Flex
           // bg='blue'
           direction={{
-            base: 'column',
-            sm: 'column',
-            lg: 'column',
-            xl: 'column'
+            base: 'column'
           }}
+          w="100%"
         >
           {/* BOX 1 */}
           <Box
@@ -710,8 +708,8 @@ export const ForestsView = (props: ForestsViewProps) => {
             margin={{
               base: '8% 5% 0% 5%',
               sm: '8% 5% 0% 5%',
-              lg: '5% 2% 5% 5%',
-              xl: '5% 2% 5% 5%'
+              lg: '5% 2% 2% 5%',
+              xl: '5% 2% 2% 5%'
             }}
           >
             <CompletedTitle
@@ -735,23 +733,22 @@ export const ForestsView = (props: ForestsViewProps) => {
             margin={{
               base: '3% 0% 5% 0%',
               sm: '3% 0% 5% 0%',
-              lg: '1% 5% 5% 5%',
-              xl: '1% 0% 5% 0%'
+              lg: '0% 0% 5% 0%'
             }}
-            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+            paddingX="4%"
+            direction={{ base: 'column', lg: 'row' }}
             alignItems={'center'}
             // bg='tomato'
-            flex="1"
+            // flex="1"
+            w="100%"
           >
             <Flex
-              flex="1"
-              // bg='yellow'
+              w={{ base: '100%', lg: '50%' }}
+              // bg="yellow"
               direction={{
-                base: 'column',
-                sm: 'column',
-                lg: 'column',
-                xl: 'column'
+                base: 'column'
               }}
+              alignItems="center"
             >
               {props.page_content.forest_production_highlights.map(
                 (item, i) => {
@@ -769,14 +766,13 @@ export const ForestsView = (props: ForestsViewProps) => {
             </Flex>
 
             <Flex
-              flex="1"
+              // flex="1"
+              w={{ base: '100%', lg: '50%' }}
               // bg='blue'
               direction={{
-                base: 'column',
-                sm: 'column',
-                lg: 'column',
-                xl: 'column'
+                base: 'column'
               }}
+              alignItems="center"
             >
               {props.page_content.forest_production_highlights.map(
                 (item, i) => {
