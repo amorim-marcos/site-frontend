@@ -47,10 +47,7 @@ export const EnvView = ({
   const router = useRouter()
 
   return (
-    <Box 
-      maxWidth={'1920px'} 
-      marginX="auto"
-    >
+    <Box maxWidth={'1920px'} marginX="auto">
       <Pagebar
         paths={[
           {
@@ -73,16 +70,14 @@ export const EnvView = ({
         padding="5%"
         marginX="auto"
       >
-        <CompletedTitle 
-          titleString={env.title} 
-          alignSelf={'left'} 
-        />
-          <Text as={'h3'}
-            variant={'h3'}
-            fontWeight = 'extrabold'
-            color={"gray.300"}
-            marginY={"3%"}
-          >
+        <CompletedTitle titleString={env.title} alignSelf={'left'} />
+        <Text
+          as={'h3'}
+          variant={'h3'}
+          fontWeight="extrabold"
+          color={'gray.300'}
+          marginY={'3%'}
+        >
           {env.subTitle}
         </Text>
 
@@ -218,9 +213,9 @@ export const EnvView = ({
             Outros ambientes
           </Text>
           <SeeMore
-            text = "Veja mais ambientes"
-            link = "/products/bp-berneck/gallery"
-           />
+            text="Veja mais ambientes"
+            link="/products/bp-berneck/gallery"
+          />
         </Flex>
 
         <Flex
@@ -229,27 +224,26 @@ export const EnvView = ({
           justifyContent={'space-between'}
         >
           <Grid
-              width="100%"
-              overflow="hidden"
-              templateRows="repeat(auto, 1fr)"
-              templateColumns={{
-                base: 'repeat(1, 1fr)',
-                md: 'repeat(2, 1fr)',
-                xl: 'repeat(4, 1fr)'
-              }}
-              gridGap={{
-                base: 'none',
-                sm: '10px',
-                md: '30px',
-                xl: '20px'
-              }}
-              // justifyItems="center"
-              // bg="pink"
-            >
-              
-          {otherEnvs.map((item) => (
-             <GridItem 
-                key={item.id} 
+            width="100%"
+            overflow="hidden"
+            templateRows="repeat(auto, 1fr)"
+            templateColumns={{
+              base: 'repeat(1, 1fr)',
+              md: 'repeat(2, 1fr)',
+              xl: 'repeat(4, 1fr)'
+            }}
+            gridGap={{
+              base: 'none',
+              sm: '10px',
+              md: '30px',
+              xl: '20px'
+            }}
+            // justifyItems="center"
+            // bg="pink"
+          >
+            {otherEnvs.map((item) => (
+              <GridItem
+                key={item.id}
                 // bg="red"
                 // gap={"10px"}
               >
@@ -261,10 +255,8 @@ export const EnvView = ({
                   others
                 />
               </GridItem>
-
-          ))}
-
-</Grid>
+            ))}
+          </Grid>
         </Flex>
       </Flex>
     </Box>
