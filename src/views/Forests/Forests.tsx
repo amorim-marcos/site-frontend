@@ -74,7 +74,7 @@ export const ForestsView = (props: ForestsViewProps) => {
         ]}
       />
 
-      <FireAlert title={props.fireWarningText} display={'flex'} />
+      <FireAlert title={props.fireWarningText} />
 
       <PageSession
         data={{
@@ -513,7 +513,7 @@ export const ForestsView = (props: ForestsViewProps) => {
               marginTop={'3%'}
               // textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
             >
-             
+
             </Text> */}
           </Box>
         </Flex>
@@ -851,7 +851,7 @@ export const ForestsView = (props: ForestsViewProps) => {
               marginTop={{ base: '2%', sm: '2%', lg: '3%', xl: '3%' }}
               color={'green.800'}
             >
-              
+
             </Text> */}
           </Box>
           {/* BOX 2 */}
