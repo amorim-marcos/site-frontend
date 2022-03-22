@@ -132,7 +132,7 @@ export const DownloadSection = ({
               background: 'green.600',
               color: 'white.100'
             }}
-            onClick={avanceRight}
+            onClick={avanceLeft}
           >
             <ArrowIcon
               direction="left"
@@ -152,7 +152,7 @@ export const DownloadSection = ({
               background: 'green.600',
               color: 'white.100'
             }}
-            onClick={avanceLeft}
+            onClick={avanceRight}
           >
             <ArrowIcon
               width="40%"
