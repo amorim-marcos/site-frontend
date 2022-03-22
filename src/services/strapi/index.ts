@@ -12,12 +12,12 @@ export async function strapiClient(props: strapiClientProps): Promise<any> {
   const url = `${process.env.NEXT_PUBLIC_API_URL}/${resource}`
   let content
 
-  let limit = (!props.limit) ? "-1" : props.limit
+  const limit = !props.limit ? '-1' : props.limit
 
   try {
     const res = locale
-      ? await fetch(`${url}?_locale=${locale}&_limit=${limit}`)
-      : await fetch(`${url}?_limit=${limit}`)
+      ? await fetch(`${url}&_locale=${locale}&_limit=${limit}`)
+      : await fetch(`${url}&_limit=${limit}`)
 
     content = await res.json()
 
