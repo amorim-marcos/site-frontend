@@ -327,6 +327,8 @@ export const Contact = ({
           >
             <Box flex="1" mr={{ base: 0, lg: '45px' }}>
               <PatternInfo
+                minH={{base: "185px"}}
+                maxH={{base: "185px"}}
                 title="DESCUBRA"
                 description="Onde Comprar"
                 onClick={() => router.push('/onde-comprar')}
@@ -354,8 +356,11 @@ export const Contact = ({
               flex="1"
               mr={{ base: 0, lg: '45px' }}
               mt={{ base: '45px', lg: 0 }}
+              
             >
               <PatternInfo
+                minH={{base: "185px"}}
+                maxH={{base: "185px"}}
                 title="Solicite Nosso"
                 description="Mostruário"
                 onClick={() => router.push('/contact')}
@@ -381,6 +386,8 @@ export const Contact = ({
             </Box>
             <Box flex="1" mt={{ base: '45px', lg: 0 }}>
               <PatternInfo
+                minH={{base: "185px"}}
+                maxH={{base: "185px"}}
                 title="Confira Nossas"
                 description="Vagas abertas"
                 onClick={() =>
