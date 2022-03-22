@@ -1,8 +1,8 @@
-import { Heading, Flex, Box, Text, Center, Image } from '@chakra-ui/react'
+import { Heading, Flex, Box, Text, Center, Image, FlexProps } from '@chakra-ui/react'
 import GrafismLeft from '@components/GrafismLeft'
 import React, { ReactNode } from 'react'
 
-export type PatternInfoProps = {
+export type PatternInfoProps = FlexProps & {
   title?: string
   description?: string
   icon?: ReactNode
@@ -12,7 +12,8 @@ export const PatternInfo = ({
   title = '',
   description = '',
   icon = '',
-  onClick
+  onClick,
+  ...props
 }: PatternInfoProps) => {
   return (
     <Flex
@@ -29,6 +30,7 @@ export const PatternInfo = ({
       overflowY="hidden"
       overflowX="hidden"
       padding={{ base: '5%', sm: '5%', lg: '10%', xl: '3%' }}
+      {...props}
     >
       <Box position={'absolute'} zIndex="base" left="-50px" top="-70px">
         <Image src="/img/grafismo_banner_1.svg" />
