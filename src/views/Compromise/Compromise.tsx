@@ -463,7 +463,6 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 titleSuperscript2Text="Cerca de"
                 titleSuperscript2Color="green.200"
                 content1Text={page_content.atmospheric_emissions
-                  .toString()
                   .toLocaleString('en-US', { maximumFractionDigits: 1 })
                   .replace('.', ',')}
                 content1Color="white"
