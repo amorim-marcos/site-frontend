@@ -1,4 +1,5 @@
 import { Text, TextProps } from '@chakra-ui/react'
+import Paragraph from '@components/Paragraph'
 
 export type ProductTextProps = {
   content: string | Array<string>
@@ -27,7 +28,9 @@ export const ProductText = ({
   paragraph = false
 }: ProductTextProps) => {
   return typeof content === 'string' ? (
-    <Text {...TextSyle}>{content}</Text>
+    <Text {...TextSyle}>
+      <Paragraph>{content}</Paragraph>
+    </Text>
   ) : (
     <>
       {content?.map((p, i) => (
@@ -47,7 +50,7 @@ export const ProductText = ({
               : '0px'
           }
         >
-          {p}
+          <Paragraph>{p}</Paragraph>
         </Text>
       ))}
     </>

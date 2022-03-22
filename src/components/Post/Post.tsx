@@ -1,4 +1,12 @@
-import { Flex, Box, Text, Link, FlexProps, TextProps, Image } from '@chakra-ui/react'
+import {
+  Flex,
+  Box,
+  Text,
+  Link,
+  FlexProps,
+  TextProps,
+  Image
+} from '@chakra-ui/react'
 import { Arrow, CalendarIcon, SocialIcon } from '@components/Icons'
 import { Post as IPost } from 'types/data'
 import { Category } from 'types/data/Post'
@@ -8,7 +16,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { smartDate } from 'utils/utils'
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
-import parser from 'react-html-parser'
+
 import { Wrapper } from '@components/PostBody/styles'
 
 function getPanelColor(i: number) {
@@ -99,105 +107,111 @@ export const Post = (props: PostProps) => {
   }
 
   return (
-  <Flex
-    direction={
-      imgPos === 'top'
-        ? 'column'
-        : imgPos === 'left'
-        ? 'row'
-        : imgPos === 'right'
-        ? 'row-reverse'
-        : 'column-reverse'
-    }
-    role="group"
-    onClick={() =>
-      router.push(`/canal-bnk/${post?.category.id}/${post?.url_code}`)
-    }
-    cursor="pointer"
-    //bg="tomato"
-    {...rest}
-    margin={"5%"}
-    w={"90%"}
-    onMouseEnter={() => setMouseDown(true)}
-    onMouseLeave={() => setMouseDown(false)}
-  >
-
-   {/* box imagem cover */}
     <Flex
-      flex= "1"
-      // bg="black"
+      direction={
+        imgPos === 'top'
+          ? 'column'
+          : imgPos === 'left'
+          ? 'row'
+          : imgPos === 'right'
+          ? 'row-reverse'
+          : 'column-reverse'
+      }
+      role="group"
+      onClick={() =>
+        router.push(`/canal-bnk/${post?.category.id}/${post?.url_code}`)
+      }
+      cursor="pointer"
+      //bg="tomato"
+      {...rest}
+      margin={'5%'}
+      w={'90%'}
+      onMouseEnter={() => setMouseDown(true)}
+      onMouseLeave={() => setMouseDown(false)}
     >
-      <Image  
-        src={post?.cover}
-        w={"100%"}
-      />
-    </Flex>
+      {/* box imagem cover */}
+      <Flex
+        flex="1"
+        // bg="black"
+      >
+        <Image src={post?.cover} w={'100%'} />
+      </Flex>
 
-    {/* box content */}
-    <Flex
-      // w={'60%'}
-      direction="column"
-      flex= "1"
-      bg={getPanelColor(currentCategory)}
-    >
-
-        <Flex 
+      {/* box content */}
+      <Flex
+        // w={'60%'}
+        direction="column"
+        flex="1"
+        bg={getPanelColor(currentCategory)}
+      >
+        <Flex
           // bg="yellow"
           flex="1"
           direction={{ base: 'column', md: 'row' }}
           justifyContent={{ base: 'start', md: 'end' }}
           alignContent={{ base: 'start', md: 'end' }}
         >
-            <Flex 
-              data-testid="post-category" 
-              margin = {{ base: '5px 0px 5px 10px', lg: '10px 0px 7px 15px', xl: '20px 0px 10px 20px' }}
-              align="start"
-              flex="1"
-              // bg="tomato"
+          <Flex
+            data-testid="post-category"
+            margin={{
+              base: '5px 0px 5px 10px',
+              lg: '10px 0px 7px 15px',
+              xl: '20px 0px 10px 20px'
+            }}
+            align="start"
+            flex="1"
+            // bg="tomato"
+          >
+            <Arrow
+              color={getHoverIndicatorColor()}
+              width={{
+                base: '8px',
+                md: '10px',
+                lg: '10px',
+                xl: '12px'
+              }}
+            />
+            <Text
+              as="h5"
+              variant={'h5' as any}
+              textColor={'black'}
+              letterSpacing={{
+                base: '2px',
+                xl: '3px'
+              }}
+              fontSize={{ base: '11px', sm: '13px', lg: '14px', xl: '16px' }}
+              marginLeft={{ base: '5px', lg: '5px' }}
+              marginTop={{ base: '-2px', lg: '-3px' }}
             >
-              <Arrow
-                color={getHoverIndicatorColor()}
-                width = {{
-                  base: '8px',
-                  md: '10px',
-                  lg: '10px',
-                  xl: '12px'
-                }}
-              />
-              <Text as="h5" 
-                variant={'h5' as any}
-                textColor = {"black"}
-                letterSpacing= {{
-                  base: '2px',
-                  xl: '3px'
-                }}
-                fontSize = {{ base: '11px', sm: '13px', lg: '14px', xl: '16px' }}
-                marginLeft = {{ base: '5px', lg: '5px' }}
-                marginTop = {{ base: '-2px', lg: '-3px' }}
-              >{post?.category.name}</Text>
-            </Flex>
+              {post?.category.name}
+            </Text>
+          </Flex>
 
-          
-            {/* showDate at list */}
-            {showDate && (
-            <Flex 
-              gap="12px" 
+          {/* showDate at list */}
+          {showDate && (
+            <Flex
+              gap="12px"
               align="center"
               justifyContent={{ base: 'start', md: 'end' }}
               alignContent={{ base: 'start', md: 'end' }}
               flex="1"
               // bg="pink"
-              margin = {{ base: '0px 0px 0px 10px', md: '0px 15px 0px 15px', xl: '0px 20px 0px 20px' }}
+              margin={{
+                base: '0px 0px 0px 10px',
+                md: '0px 15px 0px 15px',
+                xl: '0px 20px 0px 20px'
+              }}
             >
-              <Text as="h5" 
+              <Text
+                as="h5"
                 variant={'h5' as any}
                 // textColor = {"black"}
-                fontSize = {{ base: '11px', sm: '13px', lg: '14px', xl: '16px' }}
-                letterSpacing= {{
+                fontSize={{ base: '11px', sm: '13px', lg: '14px', xl: '16px' }}
+                letterSpacing={{
                   base: '2px',
                   xl: '3px'
                 }}
-                lineHeight ={{
+                lineHeight={{
                   base: '38px',
                   md: '33px',
                   lg: '45px',
@@ -209,8 +223,8 @@ export const Post = (props: PostProps) => {
                 {smartDate(post?.date, 'PT-BR')}
               </Text>
 
-              <Box 
-                // pb="3px"
+              <Box
+              // pb="3px"
               >
                 <CalendarIcon
                   w="29px"
@@ -219,26 +233,23 @@ export const Post = (props: PostProps) => {
                   stroke2={currentCategory === 2 ? 'white' : '#595959'}
                 />
               </Box>
-            
             </Flex>
           )}
-
-          
         </Flex>
 
         {/* Title Post */}
-        <Flex 
+        <Flex
           pb={showShareOptions ? '18px' : '45px'}
           // bg= "blue"
-          flex = "1"
-          margin = {{ base: '10px', lg: '10px', xl: '20px' }}
+          flex="1"
+          margin={{ base: '10px', lg: '10px', xl: '20px' }}
         >
           <Text
             as="h3"
             variant={'h3' as any}
             color="green.900"
-            fontWeight= 'bold'
-            lineHeight ={{
+            fontWeight="bold"
+            lineHeight={{
               base: '22px',
               md: '33px',
               lg: '35px',
@@ -248,7 +259,6 @@ export const Post = (props: PostProps) => {
             {post?.title}
           </Text>
         </Flex>
-
 
         {/* {showPreview && (
           <Text
@@ -266,17 +276,19 @@ export const Post = (props: PostProps) => {
           </Text>
         )} */}
 
-
         {/* Share Buttons Icons */}
         {showShareOptions && (
-          <Flex 
+          <Flex
             gap={{ base: '20px', lg: '30px' }}
-            margin = {{ base: '0px 0px 10px 10px', md: '10px', lg: '15px', xl: '20px' }}
+            margin={{
+              base: '0px 0px 10px 10px',
+              md: '10px',
+              lg: '15px',
+              xl: '20px'
+            }}
           >
-             <FacebookShareButton
-              url={
-                `https://www.berneck.com.br/canal-bnk/${post?.category.id}/${post?.url_code}`
-              }
+            <FacebookShareButton
+              url={`https://www.berneck.com.br/canal-bnk/${post?.category.id}/${post?.url_code}`}
               quote={post?.title}
             >
               <SocialIcon
@@ -289,9 +301,7 @@ export const Post = (props: PostProps) => {
             </FacebookShareButton>
 
             <TwitterShareButton
-              url={
-                `https://www.berneck.com.br/canal-bnk/${post?.category.id}/${post?.url_code}`
-              }
+              url={`https://www.berneck.com.br/canal-bnk/${post?.category.id}/${post?.url_code}`}
             >
               <SocialIcon
                 media="twitter"
@@ -335,9 +345,7 @@ export const Post = (props: PostProps) => {
             marginLeft="10%"
           />
         </Flex>
-    
+      </Flex>
     </Flex>
-    
-  </Flex>
   )
 }

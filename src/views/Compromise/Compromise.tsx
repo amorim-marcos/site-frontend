@@ -12,6 +12,7 @@ import SponsoredProjects from '@components/SponsoredProjects'
 import { List, ListItem } from '@chakra-ui/react'
 import PatternCertification from '@components/PatternCertification'
 import { useRouter } from 'next/router'
+import Paragraph from '@components/Paragraph'
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/nosso-compromisso-filtro-1x.jpg)',
@@ -276,7 +277,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               }}
             />
             <Text marginTop={{ base: '10%', sm: '8%', lg: '3%', xl: '3%' }}>
-              {page_content.section1_text}
+              <Paragraph>{page_content.section1_text}</Paragraph>
             </Text>
           </Box>
 
@@ -448,7 +449,9 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 titleSuperscript1Color="green.400"
                 titleSuperscript2Text="Mais de"
                 titleSuperscript2Color="green.200"
-                content1Text={page_content.carbon_sequestration.toLocaleString('en-US', {maximumFractionDigits: 1}).replace(".",",")}
+                content1Text={page_content.carbon_sequestration
+                  .toLocaleString('en-US', { maximumFractionDigits: 1 })
+                  .replace('.', ',')}
                 content1Color="white"
                 content2Text="milhões de tCO₂e"
                 content2Color="white"
@@ -459,7 +462,10 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 titleSuperscript1Color="green.400"
                 titleSuperscript2Text="Cerca de"
                 titleSuperscript2Color="green.200"
-                content1Text={page_content.atmospheric_emissions.toString().toLocaleString('en-US', {maximumFractionDigits: 1}).replace(".",",")}
+                content1Text={page_content.atmospheric_emissions
+                  .toString()
+                  .toLocaleString('en-US', { maximumFractionDigits: 1 })
+                  .replace('.', ',')}
                 content1Color="white"
                 content2Text="milhões de tCO₂e"
                 content2Color="white"
@@ -500,7 +506,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
               marginTop={{ base: '3%', sm: '2%', lg: '3%', xl: '3%' }}
             >
-              {page_content.section2_text}
+              <Paragraph>{page_content.section2_text}</Paragraph>
             </Text>
           </Box>
         </Flex>
@@ -553,7 +559,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               {page_content.section3_title}
             </Text>
             <Text marginTop={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}>
-              {page_content.section3_text}
+              <Paragraph>{page_content.section3_text}</Paragraph>
             </Text>
           </Flex>
           {/* BOX 2 */}
@@ -706,7 +712,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               {page_content.section4_title}
             </Text>
             <Text marginTop={{ base: '3%', sm: '3%', lg: '5%', xl: '5%' }}>
-              {page_content.section4_text}
+              <Paragraph>{page_content.section4_text}</Paragraph>
             </Text>
           </Box>
         </Flex>
@@ -757,7 +763,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               }}
             />
             <Text marginTop={{ base: '10%', sm: '10%', lg: '5%', xl: '5%' }}>
-              {page_content.section5_text}
+              <Paragraph>{page_content.section5_text}</Paragraph>
             </Text>
             <Box
               // bg='blue'
@@ -767,7 +773,9 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
             >
               <Infographic
                 content1Text="+"
-                content2Text={(page_content.collaborators_number / 1000).toLocaleString('en-US', {maximumFractionDigits: 1}).replace(".",",")}
+                content2Text={(page_content.collaborators_number / 1000)
+                  .toLocaleString('en-US', { maximumFractionDigits: 1 })
+                  .replace('.', ',')}
                 content3Text="Mil"
                 // content4Text = 'Colaboradores diretos e indiretos'
                 // fontSize = {{ base: '12px', sm: '16px', lg: '24px', xl: '18px'}}
@@ -886,7 +894,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px' }}
               color={'#143127'}
             >
-              {page_content.section6_text}
+              <Paragraph>{page_content.section6_text}</Paragraph>
             </Text>
           </Box>
         </Flex>
@@ -1041,7 +1049,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               }}
             />
             <Text marginTop={{ base: '8%', sm: '2%', lg: '3%', xl: '3%' }}>
-              {page_content.section7_text}
+              <Paragraph>{page_content.section7_text}</Paragraph>
             </Text>
           </Box>
         </Flex>
@@ -1091,7 +1099,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
             <Text
               marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px' }}
             >
-              {page_content.section8_text}
+              <Paragraph>{page_content.section8_text}</Paragraph>
             </Text>
           </Box>
           {/* BOX 2 */}

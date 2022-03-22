@@ -10,6 +10,7 @@ import FeaturedBanner from '@components/FeaturedBanner'
 
 import PatternCertification from '@components/PatternCertification'
 import { useRouter } from 'next/router'
+import Paragraph from '@components/Paragraph'
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/Grupo_1872.png)',
@@ -390,7 +391,7 @@ export const ForestsView = (props: ForestsViewProps) => {
               marginTop={{ base: '10%', sm: '4%', lg: '4%', xl: '4%' }}
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
             >
-              {props.page_content.section2_text}
+              <Paragraph>{props.page_content.section2_text}</Paragraph>
             </Text>
             {/* <Text
               marginTop={'3%'}
@@ -480,7 +481,9 @@ export const ForestsView = (props: ForestsViewProps) => {
                     color={'brown.300'}
                     // textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
                   >
-                    {props.page_content.monitored_animals_and_farms_text}
+                    <Paragraph>
+                      {props.page_content.monitored_animals_and_farms_text}
+                    </Paragraph>
                   </Text>
                 </Flex>
               </Flex>
@@ -566,7 +569,7 @@ export const ForestsView = (props: ForestsViewProps) => {
               }}
             />
             <Text marginTop={{ base: '10%', sm: '5%', lg: '4%', xl: '4%' }}>
-              {props.page_content.section4_text}
+              <Paragraph>{props.page_content.section4_text}</Paragraph>
             </Text>
           </Box>
 
@@ -662,7 +665,7 @@ export const ForestsView = (props: ForestsViewProps) => {
             <Text
               marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px' }}
             >
-              {props.page_content.section5_text}
+              <Paragraph>{props.page_content.section5_text}</Paragraph>
             </Text>
           </Box>
         </Flex>
@@ -835,7 +838,7 @@ export const ForestsView = (props: ForestsViewProps) => {
               marginTop={{ base: '10%', sm: '5%', lg: '4%', xl: '4%' }}
               color={'green.800'}
             >
-              {props.page_content.section6_text}
+              <Paragraph>{props.page_content.section6_text}</Paragraph>
             </Text>
             {/* <Text
               marginTop={{ base: '2%', sm: '2%', lg: '3%', xl: '3%' }}
