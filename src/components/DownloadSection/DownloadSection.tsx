@@ -110,54 +110,57 @@ export const DownloadSection = ({
           )
         })}
       </Flex>
-      <Flex
-        position="absolute"
-        left="0px"
-        right="0px"
-        marginX="auto"
-        w="fit-content"
-        bottom={{ base: '-17px', md: '-25px', lg: '-30px', xl: '-38px' }}
-      >
-        <Button
-          onMouseEnter={() => setHoverBtnControl(true)}
-          onMouseLeave={() => setHoverBtnControl(false)}
-          variant="no-border"
-          background="gray.300"
-          color="gray.150"
-          w={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
-          h={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
-          _hover={{
-            background: 'green.600',
-            color: 'white.100'
-          }}
-          onClick={avanceRight}
+      {
+        ( items.length > 5 || isMobile ) && 
+        <Flex
+          position="absolute"
+          left="0px"
+          right="0px"
+          marginX="auto"
+          w="fit-content"
+          bottom={{ base: '-17px', md: '-25px', lg: '-30px', xl: '-38px' }}
         >
-          <ArrowIcon
-            direction="left"
-            stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
-            width="40%"
-          />
-        </Button>
-        <Button
-          onMouseEnter={() => setHoverBtnControl(true)}
-          onMouseLeave={() => setHoverBtnControl(false)}
-          variant="no-border"
-          background="gray.300"
-          color="gray.150"
-          w={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
-          h={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
-          _hover={{
-            background: 'green.600',
-            color: 'white.100'
-          }}
-          onClick={avanceLeft}
-        >
-          <ArrowIcon
-            width="40%"
-            stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
-          />
-        </Button>
-      </Flex>
+          <Button
+            onMouseEnter={() => setHoverBtnControl(true)}
+            onMouseLeave={() => setHoverBtnControl(false)}
+            variant="no-border"
+            background="gray.300"
+            color="gray.150"
+            w={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
+            h={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
+            _hover={{
+              background: 'green.600',
+              color: 'white.100'
+            }}
+            onClick={avanceRight}
+          >
+            <ArrowIcon
+              direction="left"
+              stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
+              width="40%"
+            />
+          </Button>
+          <Button
+            onMouseEnter={() => setHoverBtnControl(true)}
+            onMouseLeave={() => setHoverBtnControl(false)}
+            variant="no-border"
+            background="gray.300"
+            color="gray.150"
+            w={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
+            h={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
+            _hover={{
+              background: 'green.600',
+              color: 'white.100'
+            }}
+            onClick={avanceLeft}
+          >
+            <ArrowIcon
+              width="40%"
+              stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
+            />
+          </Button>
+        </Flex>
+      }
     </Flex>
   )
 }
