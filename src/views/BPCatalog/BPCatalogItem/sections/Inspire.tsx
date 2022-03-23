@@ -101,6 +101,7 @@ export const Inspire = (props: InspireProps) => {
           align={{ base: 'center', '2xl': 'inherit' }}
           top={{ base: '0px', sm: '25px', '2xl': '-330px' }}
           left={{ '2xl': '52%' }}
+          zIndex="docked"
         >
           <Box>
             <Flex
@@ -137,10 +138,11 @@ export const Inspire = (props: InspireProps) => {
                       src={texture.img}
                       w={{ base: '100vw', sm: '214px' }}
                       h={{ base: '120px', sm: '350px' }}
+                      objectFit="cover"
                     />
                   </Link>
                   <Text
-                    fontSize="20px"
+                    fontSize="17px"
                     letterSpacing="0px"
                     color={{ base: 'gray.400', sm: 'gray.300' }}
                     textAlign={{ base: 'center', '2xl': 'left' }}
@@ -202,7 +204,7 @@ export const Inspire = (props: InspireProps) => {
             data-testid="texture-examples"
             pt={{ base: '110px', '2xl': '208px' }}
             direction="column"
-            align={{ base: 'center', '2xl': 'inherit' }}
+            alignItems={{ base: 'center', '2xl': 'inherit' }}
             w={{
               base: '100vw',
               '2xl': 'inherit'
@@ -228,8 +230,8 @@ export const Inspire = (props: InspireProps) => {
 
             <Flex
               data-testid="examples-control"
-              alignSelf={{ base: 'flex-start', sm: 'center', lg: 'flex-end' }}
-              mr={{ lg: '160px', xl: '270px', '2xl': '50px' }}
+              alignSelf={{ base: 'center', sm: 'center', lg: 'flex-end' }}
+              mr={{ base: '0', lg: '160px', xl: '270px', '2xl': '50px' }}
               mt={{ base: '-5px', sm: '-38px' }}
               w={{ base: '154px' }}
             >
