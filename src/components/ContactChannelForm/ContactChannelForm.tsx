@@ -102,8 +102,8 @@ export const ContactChannelForm = ({
             <ContactChannelFormLabel visibility="hidden" htmlFor="state">
               *Estado
             </ContactChannelFormLabel>
-            <FormSelect name="state">
-              <option disabled selected value="">
+            <FormSelect name="state" defaultValue="*Estado">
+              <option disabled value="*Estado">
                 *Estado
               </option>
               {brazilianStates.map((state, i) => (
