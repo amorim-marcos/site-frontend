@@ -1,14 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/router'
+
 import { Container, Flex, Image, Text, Box, Button } from '@chakra-ui/react'
-import CompletedTitle from '@components/CompletedTitle'
-import ContactChannelForm from '@components/ContactChannelForm'
+
 import ContactChannelSelectButton from '@components/ContactChannelForm/ContactChannelSelectButton'
+import ContactChannelForm from '@components/ContactChannelForm'
+
 import { EarthIcon, BagIcon, BadgeIcon } from '@components/Icons'
 import Pagebar from '@components/Pagebar'
-import PatternInfo from '@components/PatternInfo'
-import useMobile from 'hooks/useMobile'
-import React from 'react'
-import { useRouter } from 'next/router'
 import FireAlert from '@components/FireAlert'
+import CompletedTitle from '@components/CompletedTitle'
+import PatternInfo from '@components/PatternInfo'
+
+import useMobile from 'hooks/useMobile'
 
 export type ContactChannelData = {
   name: string
@@ -28,49 +33,33 @@ export const Contact = ({
   fireWarning
 }: ContactViewProps) => {
   const router = useRouter()
+  const { isMobile, width } = useMobile(1024)
 
   const [contact_channel, setContactChannel] =
-    React.useState<ContactChannelData | null>(null)
-  const { isMobile } = useMobile(1024)
-  const [showAllAreas, setShowAllAreas] = React.useState<boolean>(true)
-  const channelsParentRef = React.useRef(null)
-  const [channelsParentHeight, setHeight] = React.useState<number>(0)
-  const [channelsParentWidth, setWidth] = React.useState<number>(0)
+    useState<ContactChannelData | null>(null)
+  const [showAllAreas, setShowAllAreas] = useState<boolean>(true)
+  const channelsParentRef = useRef<HTMLDivElement>(null)
+  const [, setHeight] = useState<number>(0)
+  const [channelsParentWidth, setWidth] = useState<number>(0)
 
-  const [bgArray, setBgArray] = React.useState<any>({})
-  const [finalBgArray, setFinalBgArray] = React.useState<any>({})
+  const [bgArray, setBgArray] = useState<any>({})
+  const [finalBgArray, setFinalBgArray] = useState<any>({})
 
-  if (typeof window !== 'undefined') {
-    // @ts-ignore
-    React.useEffect(() => {
-      // @ts-ignore
-      if (channelsParentRef && channelsParentRef.current) {
-        // @ts-ignore
-        const h = channelsParentRef.current.clientHeight
-        // @ts-ignore
-        const w = channelsParentRef.current.clientWidth
+  useEffect(() => {
+    const currChannelsParentRef = channelsParentRef?.current
 
-        if (w && h) {
-          setHeight(h)
-          setWidth(w)
-        }
+    if (currChannelsParentRef) {
+      const h = currChannelsParentRef.clientHeight
+      const w = currChannelsParentRef.clientWidth
+
+      if (w && h) {
+        setHeight(h)
+        setWidth(w)
       }
+    }
+  }, [width])
 
-      // @ts-ignore
-      if (
-        !channelsParentRef.current ||
-        // @ts-ignore
-        !channelsParentRef.current.clientWidth
-      ) {
-        return true
-      } else {
-        // @ts-ignore
-        return channelsParentRef.current.clientWidth != channelsParentWidth
-      }
-    })
-  }
-
-  React.useEffect(() => {
+  useEffect(() => {
     if (Object.keys(bgArray).length == contact_channels.length) {
       // Define know values
       const imgW = 1922
@@ -140,7 +129,7 @@ export const Contact = ({
 
       setFinalBgArray({ ...bgArrayCopy })
     }
-  }, [bgArray, channelsParentWidth])
+  }, [bgArray, channelsParentWidth, contact_channels.length])
 
   return (
     <>
