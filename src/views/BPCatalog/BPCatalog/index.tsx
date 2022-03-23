@@ -116,7 +116,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
       filteredBps = filteredBps.filter((bp: any) => {
         return bp.name
           .toLowerCase()
-          .startsWith(filters['nameSearched'].toLowerCase())
+          .includes(filters['nameSearched'].toLowerCase())
       })
     }
 

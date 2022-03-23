@@ -83,7 +83,7 @@ export const EnvGallery = ({
       filteredEnvs = filteredEnvs.filter((env: any) => {
         return env.name
           .toLowerCase()
-          .startsWith(filters['nameSearched'].toLowerCase())
+          .includes(filters['nameSearched'].toLowerCase())
       })
     }
 
