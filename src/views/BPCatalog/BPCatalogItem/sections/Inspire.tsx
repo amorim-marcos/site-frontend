@@ -101,6 +101,7 @@ export const Inspire = (props: InspireProps) => {
           align={{ base: 'center', '2xl': 'inherit' }}
           top={{ base: '0px', sm: '25px', '2xl': '-330px' }}
           left={{ '2xl': '52%' }}
+          zIndex="docked"
         >
           <Box>
             <Flex
@@ -137,10 +138,11 @@ export const Inspire = (props: InspireProps) => {
                       src={texture.img}
                       w={{ base: '100vw', sm: '214px' }}
                       h={{ base: '120px', sm: '350px' }}
+                      objectFit="cover"
                     />
                   </Link>
                   <Text
-                    fontSize="20px"
+                    fontSize="17px"
                     letterSpacing="0px"
                     color={{ base: 'gray.400', sm: 'gray.300' }}
                     textAlign={{ base: 'center', '2xl': 'left' }}

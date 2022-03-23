@@ -83,7 +83,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         top_menu_image: `${url}${productFetch.product_texture.top_menu_image.url}`
       },
       combine_with: productFetch.combine_with.map((item: any) => ({
-        name: item.complete_name,
+        name: item.name,
         href: `/products/bp-berneck/catalog/${item.url_code}`,
         img: `${url}${item.pattern_image.url}`
       })),
