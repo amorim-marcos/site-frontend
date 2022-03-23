@@ -126,7 +126,7 @@ const PageNavegation = (props: {
 }) => {
   const router = useRouter()
 
-  const [fixed, setFixed] = useState(false)
+  const [fixed, setFixed] = useState(true)
   function handleScroll(value: any) {
     if (window) {
       let footerSize = 732
@@ -171,7 +171,7 @@ const PageNavegation = (props: {
       justify="space-between"
       position={fixed ? 'fixed' : 'absolute'}
       bottom={'0'}
-      zIndex={'overlay'}
+      zIndex={'banner'}
       maxWidth="1920px"
     >
       <Flex
@@ -183,7 +183,7 @@ const PageNavegation = (props: {
         align="center"
         justify="center"
         boxShadow="0px 0px 30px #00000029"
-        borderTopRightRadius={{ base: '0', sm: '26px' }}
+        borderTopRightRadius={{ base: '15px', sm: '26px' }}
         cursor="pointer"
         onClick={() =>
           router.push(`/products/bp-berneck/catalog/${props.prev.url_code}`)
@@ -227,7 +227,7 @@ const PageNavegation = (props: {
         align="center"
         justify="center"
         boxShadow="0px 0px 30px #00000029"
-        borderTopLeftRadius={{ base: '0', sm: '26px' }}
+        borderTopLeftRadius={{ base: '15px', sm: '26px' }}
         cursor="pointer"
         onClick={() =>
           router.push(`/products/bp-berneck/catalog/${props.next.url_code}`)
