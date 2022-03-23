@@ -345,6 +345,9 @@ export const FiltersTabs = ({
                     onChange={(e) => {
                       setFilters({ ...filters, nameSearched: e.target.value })
                     }}
+                    onKeyPress={(event) => {
+                      if(event.key === "Enter") setFilteredEnvs(applyFilters(filters, envs))
+                    }}
                   />
                   <Box>
                     <SearchIcon
