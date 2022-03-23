@@ -986,6 +986,9 @@ export const ForestsView = (props: ForestsViewProps) => {
             {props.page_content.public_resume.map((item, i) => {
               return (
                 <PatternCertification
+                  onClick={() =>
+                    window.open(item.public_resume_file.url, '_blank')
+                  }
                   key={i}
                   title={item.public_resume_name}
                   titleInitialColor="green.800"
@@ -1002,7 +1005,3 @@ export const ForestsView = (props: ForestsViewProps) => {
     </Box>
   )
 }
-
-/*
-
-{/* <Link href={item.public_resume_file.url} key={i} isExternal> */

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetServerSideProps } from 'next'
 
 import { strapiClient } from 'services'
@@ -44,7 +45,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   let envFetch = await strapiClient({
     defaultOnEmpty: true,
     locale: ctx.locale,
-    resource: `ambients?url_code=${item}`
+    query: [{ url_code: item }],
+    resource: 'ambients'
   })
 
   const otherEnvsFetch = await strapiClient({
