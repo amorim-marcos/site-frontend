@@ -92,7 +92,7 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
         handleDownload={onOpen}
       />
       <Inspire
-        textureName={props.texture.name}
+        textureName={props.texture.name.toUpperCase()}
         textureIcon={props.texture.icon}
         textureDescription={props.texture.description}
         productPresentation={props.description}

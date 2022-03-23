@@ -409,6 +409,9 @@ export const FiltersTabs = ({
                     onBlur={() => {
                       setSearchSelected(false)
                     }}
+                    onKeyPress={(event) => {
+                      if(event.key === "Enter") setFilteredBps(applyFilters(filters, bps))
+                    }}
                     placeholder="Pesquise pelo nome"
                     _placeholder={{
                       color: darkMode ? 'green.300' : 'gray.300'

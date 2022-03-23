@@ -380,6 +380,9 @@ export const FiltersAccordion = ({
                 onChange={(e) => {
                   setFilters({ ...filters, nameSearched: e.target.value })
                 }}
+                onKeyPress={(event) => {
+                  if(event.key === "Enter") setFilteredBps(applyFilters(filters, bps))
+                }}
               />
               <Box>
                 <SearchIcon
