@@ -30,7 +30,7 @@ export const FeaturedBanner = ({
       w={{ base: '80%', sm: '60%', lg: '95%' }}
       marginX="auto"
       alignItems="center"
-      justifyContent="center"
+      justifyContent={{ base: 'space-between', lg: 'center' }}
       position="relative"
       zIndex="base"
       overflowY="hidden"
@@ -52,39 +52,45 @@ export const FeaturedBanner = ({
         // bg='blue.100'
         direction={reverse(invert) as any}
         alignItems={'center'}
+        justifyContent="space-between"
         w="100%"
-        h="100%"
+        h={{ base: '100%', lg: '100%' }}
       >
         {/* BOX 1 */}
-        <Box
-          height={{ base: '90%', lg: '100%' }}
+        <Flex
+          height={{ base: '200px', lg: '100%' }}
           // bg='pink.100'
-          flex="1"
+          // flex="1"
           overflow={'hidden'}
-          h="100%"
-          w={{ base: '100%', lg: '25%' }}
+          h={{ base: '70%', sm: '85%', lg: '100%' }}
+          w={{ base: '100%', lg: '40%' }}
           transition="0.3s"
           position={'relative'}
-          border="1px solid red"
+
           // justifyItems={"center"}
           // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
         >
-          <Box
+          <Image
             position={'absolute'}
-            marginLeft="auto"
-            marginRight="auto"
+            // marginLeft="auto"
+            // marginRight="auto"
+            margin="auto"
             textAlign={'center'}
             left="0px"
             right="0px"
-            transition={'0.3s'}
-            w="110%"
-            height={'110%'}
-            // w={hover ? '105%' : '100%'}
-            // height={hover ? '105%' : '100%'}
-            backgroundImage={srcImage}
-            backgroundSize={'cover'}
-            backgroundPosition="center center"
-            backgroundRepeat="no-repeat"
+            bottom={'0'}
+            top="0"
+            transition={'0.5s'}
+            // w="110%"
+            // height={'110%'}
+            w={hover ? '110%' : '100%'}
+            height={hover ? '110%' : '100%'}
+            // backgroundImage={srcImage}
+            src={srcImage}
+            objectFit="cover"
+            // backgroundSize={'cover'}
+            // backgroundPosition="center center"
+            // backgroundRepeat="no-repeat"
             // backgroundAttachment="fixed"
           />
           {/* <Image
@@ -95,27 +101,29 @@ export const FeaturedBanner = ({
             objectFit="cover"
             src={srcImage}
           /> */}
-        </Box>
+        </Flex>
         {/* BOX 2 */}
         <Box
-          margin={{
-            base: '5% 5% 5% 5%',
-            sm: '5% 5% 5% 5%',
-            lg: '5% 7% 5% 5%',
-            xl: '5% 5% 5% 5%'
-          }}
+          // margin={{
+          //   base: '5% 5% 5% 5%',
+          //   sm: '5% 5% 5% 5%',
+          //   lg: '5% 7% 5% 5%',
+          //   xl: '5% 5% 5% 5%'
+          // }}
           // bg='tomato.100'
           // flex="1"
           // w="50%"
           // justifyItems={"center"}
           w={{ base: 'auto', lg: '50%' }}
           textAlign={{ base: 'center', lg: 'left' }}
+          // marginLeft={invert ? '7%' : '0'}
+          margin={{ base: 'auto auto', lg: '0 auto' }}
         >
           <Text
             as="h4"
             variant={'h4' as any}
             fontWeight="bold"
-            textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+            textAlign={{ base: 'center', sm: 'left' }}
           >
             {title}
           </Text>
