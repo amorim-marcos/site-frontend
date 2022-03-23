@@ -73,6 +73,7 @@ export const ContactChannelSelectButton = ({
         variant="contact-channel"
         backgroundColor={isActive ? 'brown.250' : 'brown.150'}
         color={isActive ? 'white.100' : 'gray.300'}
+        _focus={{ outline: 'none' }}
         {...props}
       >
         {name}
