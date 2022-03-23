@@ -62,6 +62,20 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     resource: `products/${item}`
   })
 
+  const ambients = productFetch.in_ambients
+  const galleryOfImages: any = []
+
+  if (ambients && ambients.length > 0) {
+    ambients.forEach((item: any) => {
+      item.gallery_of_images.forEach((image: any) => {
+        galleryOfImages.push({
+          id: image.id,
+          image_url: `${url}${image.url}`
+        })
+      })
+    })
+  }
+
   return {
     props: {
       complete_name: productFetch.complete_name,
@@ -91,12 +105,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         ...item,
         panel_type: item.panel_type.name
       })),
-      in_ambients: productFetch.in_ambients
-        .filter((item: any) => item.gallery_of_images.length > 0)
-        .map((item: any) => ({
-          id: item.id,
-          image_url: `${url}${item.gallery_of_images[0].url}`
-        })),
+      in_ambients: galleryOfImages,
       prev: {
         name: productFetch.prev.complete_name,
         url_code: productFetch.prev.url_code
