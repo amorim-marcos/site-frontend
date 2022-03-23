@@ -11,6 +11,7 @@ export interface CatalogItemProps {
   description: string
   img: string
   bg_img: string
+  pattern_image: string
   assets: string
   presentation: string
   uses_and_applications: string
@@ -69,6 +70,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       description: productFetch.description,
       img: `${url}${productFetch.pattern_image.url}`,
       bg_img: `${url}${productFetch.background_image.url}`,
+      pattern_image: `${url}${productFetch.pattern_image.url}`,
       assets: `${url}${productFetch.assets?.url}`,
       presentation: productFetch.presentation,
       uses_and_applications: productFetch.uses_and_applications,

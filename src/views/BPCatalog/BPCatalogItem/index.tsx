@@ -15,6 +15,7 @@ export interface BPCatalogItemProps {
   name: string
   description: string
   bg_img: string
+  pattern_image: string
   img: string
   assets: string
   presentation: string
