@@ -3,12 +3,27 @@ import { useState, useRef, useEffect } from 'react'
 import { Button, ButtonProps } from '@chakra-ui/react'
 import { AttentionIcon } from '@components/Icons'
 
+const colors = {
+  default: {
+    bg: '#E5D8C0',
+    scratchs: '#F4ECDD',
+    text: 'grey.300'
+  },
+  hover: {
+    bg: '#D9C49C',
+    scratchs: '#EDE1CA',
+    text: 'grey.300'
+  },
+  active: {
+    bg: '#D1B78E',
+    scratchs: '#DBCAA8',
+    text: '#FFFFFF'
+  }
+}
+
 export type ContactChannelSelectButtonProps = ButtonProps & {
   name: string
   attention_required?: boolean
-  service_code?: string
-  setChannel?: Function
-  unsetChannel?: Function
   onClick?: (isActive: boolean) => void
   onFinishRender?: (width: number, height: number) => void
   isActive?: boolean
@@ -18,18 +33,11 @@ export type ContactChannelSelectButtonProps = ButtonProps & {
 export const ContactChannelSelectButton = ({
   name,
   attention_required = false,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  service_code,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  setChannel,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  unsetChannel,
   isActive = false,
   bgX = 0,
   bgY = 0,
   onClick,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onFinishRender = () => {},
+  onFinishRender,
   ...props
 }: ContactChannelSelectButtonProps) => {
   const [height, setHeight] = useState<number | null>(0)
@@ -51,7 +59,7 @@ export const ContactChannelSelectButton = ({
 
   useEffect(() => {
     if (width && height && width > 0 && height > 0)
-      onFinishRender(width, height)
+      onFinishRender && onFinishRender(width, height)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width, height])
 
@@ -64,15 +72,15 @@ export const ContactChannelSelectButton = ({
             : 'url(/contact-channels/contact-channel-tab-bg-regular.svg) repeat'
         }
         backgroundPosition={`-${bgX}px -${bgY}px`}
-        _hover={{
-          background:
-            'url(/contact-channels/contact-channel-tab-bg-hover.svg) repeat'
-        }}
         ref={ref}
         onClick={handleOnClick}
         variant="contact-channel"
-        backgroundColor={isActive ? 'brown.250' : 'brown.150'}
-        color={isActive ? 'white.100' : 'gray.300'}
+        backgroundColor={isActive ? colors.active.bg : colors.default.bg}
+        color={isActive ? colors.active.text : colors.default.text}
+        _hover={{
+          color: colors.hover.text,
+          backgroundColor: isActive ? colors.active.bg : colors.hover.bg
+        }}
         _focus={{ outline: 'none' }}
         {...props}
       >
