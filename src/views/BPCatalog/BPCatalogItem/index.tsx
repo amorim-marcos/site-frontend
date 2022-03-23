@@ -7,6 +7,7 @@ import Pagebar from '@components/Pagebar'
 
 import { Intro, Inspire, Properties } from './sections'
 import { DownloadModal } from './DownloadModal'
+import { useEffect, useState } from 'react'
 
 export interface BPCatalogItemProps {
   complete_name: string
@@ -125,13 +126,56 @@ const PageNavegation = (props: {
 }) => {
   const router = useRouter()
 
+  const [fixed, setFixed] = useState(true)
+  function handleScroll(value: any) {
+    if (window) {
+      let footerSize = 732
+
+      if (window.innerWidth < 1536) {
+        footerSize = 670
+      }
+      if (window.innerWidth < 1280) {
+        footerSize = 600
+      }
+      if (window.innerWidth < 1024) {
+        footerSize = 460
+      }
+      if (window.innerWidth < 768) {
+        footerSize = 260
+      }
+
+      const scrollLimit =
+        document.body.scrollHeight - window.innerHeight - footerSize
+      if (window.pageYOffset >= scrollLimit) {
+        setFixed(false)
+      } else {
+        setFixed(true)
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (window) {
+      window.addEventListener('scroll', handleScroll, { passive: true })
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }
+  }, [])
+
   return (
     <Flex
       w="100%"
       pt={{ base: '100px', '2xl': '140px' }}
       justify="space-between"
+      position={fixed ? 'fixed' : 'absolute'}
+      bottom={'0'}
+      zIndex={'banner'}
+      maxWidth="1920px"
     >
       <Flex
+        bg="#FFF"
         w={{ base: 'fit-content', sm: '296px' }}
         h={{ base: '90px', sm: '113px' }}
         padding={{ base: '15px', sm: '0px' }}
@@ -139,7 +183,7 @@ const PageNavegation = (props: {
         align="center"
         justify="center"
         boxShadow="0px 0px 30px #00000029"
-        borderTopRightRadius={{ base: '0', sm: '26px' }}
+        borderTopRightRadius={{ base: '15px', sm: '26px' }}
         cursor="pointer"
         onClick={() =>
           router.push(`/products/bp-berneck/catalog/${props.prev.url_code}`)
@@ -175,6 +219,7 @@ const PageNavegation = (props: {
       </Flex>
 
       <Flex
+        bg="#FFF"
         w={{ base: 'fit-content', sm: '296px' }}
         h={{ base: '90px', sm: '113px' }}
         padding={{ base: '15px', sm: '0px' }}
@@ -182,7 +227,7 @@ const PageNavegation = (props: {
         align="center"
         justify="center"
         boxShadow="0px 0px 30px #00000029"
-        borderTopLeftRadius={{ base: '0', sm: '26px' }}
+        borderTopLeftRadius={{ base: '15px', sm: '26px' }}
         cursor="pointer"
         onClick={() =>
           router.push(`/products/bp-berneck/catalog/${props.next.url_code}`)

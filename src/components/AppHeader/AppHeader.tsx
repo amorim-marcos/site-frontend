@@ -66,7 +66,7 @@ export const AppHeader = () => {
         top="0"
         left="0"
         w="100%"
-        zIndex={'banner'}
+        zIndex={'overlay'}
         transition="0.5s"
       >
         <Box

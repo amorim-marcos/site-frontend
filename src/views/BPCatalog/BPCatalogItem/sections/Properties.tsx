@@ -44,6 +44,7 @@ export const Properties = (props: PropertiesProps) => {
       justify="center"
       gap={{ base: '60px', '2xl': '102px' }}
       wrap="wrap"
+      marginBottom={{ base: '30%', md: '20%', xl: '10%' }}
     >
       <Flex
         data-testid="texture-assets"
