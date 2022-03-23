@@ -32,7 +32,7 @@ export const AppFooter = () => {
           padding="5%"
           overflow="hidden"
           position="relative"
-          height="643px"
+          height={{ base: '360px', md: '643px' }}
           width="100%"
           flexDir="column"
         >
@@ -53,43 +53,41 @@ export const AppFooter = () => {
               }}
             />
             <Flex
-              // border="1px solid pink"
               w={{ base: '100%', md: '30%' }}
               ml={{ base: '0', md: 'auto' }}
               justifyContent={{ base: 'space-around', md: 'flex-end' }}
               marginY={{ base: '30px', md: 'none' }}
             >
-              
-                <SocialIcon
-                  marginLeft={socialIconMarginLeft}
-                  width={socialIconWidth}
-                  media="facebook"
-                  href='https://www.facebook.com/BerneckSA'
-                />
-                <SocialIcon
-                  marginLeft={socialIconMarginLeft}
-                  width={socialIconWidth}
-                  media="instagram"
-                  href='https://www.instagram.com/berneckoficial'
-                />
-                <SocialIcon
-                  marginLeft={socialIconMarginLeft}
-                  width={socialIconWidth}
-                  media="linkedin"
-                  href='https://www.linkedin.com/company/berneck-s.a.-pain-is-e-serrados'
-                />
-                <SocialIcon
-                  marginLeft={socialIconMarginLeft}
-                  width={socialIconWidth}
-                  media="youtube"
-                  href=' https://www.youtube.com/Berneckoficial'
-                />
-                <SocialIcon
-                  marginLeft={socialIconMarginLeft}
-                  width={socialIconWidth}
-                  media="pinterest"
-                  href='https://br.pinterest.com/berneckoficial'
-                />
+              <SocialIcon
+                marginLeft={socialIconMarginLeft}
+                width={socialIconWidth}
+                media="facebook"
+                href="https://www.facebook.com/BerneckSA"
+              />
+              <SocialIcon
+                marginLeft={socialIconMarginLeft}
+                width={socialIconWidth}
+                media="instagram"
+                href="https://www.instagram.com/berneckoficial"
+              />
+              <SocialIcon
+                marginLeft={socialIconMarginLeft}
+                width={socialIconWidth}
+                media="linkedin"
+                href="https://www.linkedin.com/company/berneck-s.a.-pain-is-e-serrados"
+              />
+              <SocialIcon
+                marginLeft={socialIconMarginLeft}
+                width={socialIconWidth}
+                media="youtube"
+                href=" https://www.youtube.com/Berneckoficial"
+              />
+              <SocialIcon
+                marginLeft={socialIconMarginLeft}
+                width={socialIconWidth}
+                media="pinterest"
+                href="https://br.pinterest.com/berneckoficial"
+              />
             </Flex>
           </Flex>
 
@@ -172,17 +170,17 @@ export const AppFooter = () => {
         </Flex>
         <Flex
           w="100%"
-          h={{ base: '230px', md: '100px' }}
+          h={{ base: '100px', md: '100px' }}
           alignItems="center"
           justifyContent={{ base: 'space-evenly', md: 'space-between' }}
-          paddingX="70px"
+          paddingX={{ base: '0', sm: '70px' }}
           position="relative"
           flexDirection={{ base: 'column', md: 'row' }}
         >
           <Text
             width="fit-content"
             position={{ base: 'absolute', md: 'relative' }}
-            top={{ base: '-30px', md: '0' }}
+            top={{ base: '-20px', md: '0' }}
             left={{ base: '0' }}
             right={{ base: '0' }}
             marginX={{ base: 'auto', md: '0' }}
@@ -194,6 +192,7 @@ export const AppFooter = () => {
               '2xl': '14px'
             }}
             color="green.300"
+            textAlign={'center'}
           >
             © 2022 BERNECK . Todos os direitos reservados.
           </Text>
@@ -209,6 +208,7 @@ export const AppFooter = () => {
             cursor={'pointer'}
             _hover={{ opacity: '0.9' }}
             onClick={() => router.push('politica-de-privacidade')}
+            textAlign="center"
           >
             Termos de Uso e Política de Privacidade
           </Text>
@@ -249,7 +249,7 @@ const socialIconWidth = {
 }
 
 const socialIconMarginLeft = {
-  base: '0px',
+  base: '15px',
   lg: '30px',
   xl: '40px',
   '2xl': '50px'
