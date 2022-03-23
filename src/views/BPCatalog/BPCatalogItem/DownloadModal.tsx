@@ -50,6 +50,7 @@ export const DownloadModal = (props: {
           src={props.productImg}
           w={{ base: '100%', sm: '538px' }}
           h={{ base: '420px', sm: '620px' }}
+          objectFit="cover"
         />
         <ChakraLink href={props.assetsUrl} download isExternal>
           <DownloadIcon
