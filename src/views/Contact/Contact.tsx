@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -15,6 +16,7 @@ import PatternInfo from '@components/PatternInfo'
 import { IContactChannel } from 'types/data/ContactChannel'
 
 import { useContactChannels } from './useContactChannels'
+import useMobile from 'hooks/useMobile'
 
 export type ContactViewProps = {
   contact_channels: IContactChannel[]
@@ -25,10 +27,12 @@ export const Contact = ({
   contact_channels,
   fireWarning
 }: ContactViewProps) => {
-  const { isMobile, channelsParentRef, bgArray, setBgArray, finalBgArray } =
-    useContactChannels({
-      contact_channels
-    })
+  const { isMobile, width } = useMobile(1024)
+
+  const { ref, onRender, bgArray } = useContactChannels({
+    currentWidth: width,
+    contact_channels
+  })
 
   const [showAllAreas, setShowAllAreas] = useState<boolean>(true)
   const [contact_channel, setContactChannel] = useState<IContactChannel | null>(
@@ -66,24 +70,23 @@ export const Contact = ({
           mt="55px"
           justifyContent="center"
           paddingBottom={{ base: '40px', lg: '80px' }}
-          ref={channelsParentRef}
+          ref={ref}
         >
           {isMobile && !showAllAreas ? (
             <ContactChannelSelectButton
               alignSelf="center"
-              isActive={contact_channel != null ? true : false}
-              onClick={(isActive) => {
-                if (!isActive) {
-                  setContactChannel(
-                    contact_channel != null
-                      ? contact_channel
-                      : contact_channels[0]
-                  )
-                  setShowAllAreas(false)
-                } else {
-                  setContactChannel(null)
-                  setShowAllAreas(true)
-                }
+              isActive={contact_channel !== null}
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              onClick={(isActive: boolean) => {
+                setContactChannel(
+                  isActive
+                    ? null
+                    : contact_channel !== null
+                    ? contact_channel
+                    : contact_channels[0]
+                )
+                setShowAllAreas(isActive)
               }}
               mr="20px"
               mb="15px"
@@ -114,24 +117,16 @@ export const Contact = ({
               {contact_channels.map((channel, index) => (
                 <ContactChannelSelectButton
                   key={index}
-                  onFinishRender={function (width, height) {
-                    bgArray[index.toString()] = { width, height, x: 0, y: 0 }
-                    setBgArray({ ...bgArray })
-                  }}
+                  onFinishRender={(w, h) => onRender({ w, h })}
                   isActive={
                     contact_channel != null &&
-                    contact_channel.service_code == channel.service_code
-                      ? true
-                      : false
+                    contact_channel.service_code === channel.service_code
                   }
-                  onClick={(isActive) => {
-                    if (!isActive) {
-                      setContactChannel(channel)
-                      setShowAllAreas(false)
-                    } else {
-                      setContactChannel(null)
-                      setShowAllAreas(true)
-                    }
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  onClick={(isActive: boolean) => {
+                    setContactChannel(isActive ? null : channel)
+                    setShowAllAreas(isActive)
                   }}
                   mr="20px"
                   mb="15px"
@@ -139,16 +134,10 @@ export const Contact = ({
                   service_code={channel.service_code}
                   attention_required={channel.attention_required ? true : false}
                   bgX={
-                    finalBgArray[index.toString()] &&
-                    finalBgArray[index.toString()].x
-                      ? finalBgArray[index].x
-                      : 0
+                    bgArray[index] && bgArray[index].x ? bgArray[index].x : 0
                   }
                   bgY={
-                    finalBgArray[index.toString()] &&
-                    finalBgArray[index.toString()].y
-                      ? finalBgArray[index].y
-                      : 0
+                    bgArray[index] && bgArray[index].y ? bgArray[index].y : 0
                   }
                 />
               ))}

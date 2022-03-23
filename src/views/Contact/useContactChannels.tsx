@@ -1,37 +1,40 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { RefObject, useEffect, useRef, useState } from 'react'
 
-import useMobile from 'hooks/useMobile'
-
 import { IContactChannel } from 'types/data/ContactChannel'
 
 export interface IUsecontactChannels {
   isMobile: boolean
-  channelsParentRef: RefObject<HTMLDivElement>
-  bgArray: any[]
-  setBgArray: (bgArray: any) => void
-  finalBgArray: any
+  ref: RefObject<HTMLDivElement>
+  onRender: (props: { w: number; h: number }) => void
+  bgArray: { x: number; y: number }[]
 }
 
 export interface useContactChannelsProps {
+  currentWidth?: number
   contact_channels: IContactChannel[]
 }
 
 export function useContactChannels(props: useContactChannelsProps) {
-  const { isMobile, width } = useMobile(1024)
-
   const channelsParentRef = useRef<HTMLDivElement>(null)
   const [channelsParentWidth, setWidth] = useState<number>(0)
 
-  const [bgArray, setBgArray] = useState<any>({})
-  const [finalBgArray, setFinalBgArray] = useState<any>({})
+  const [bgArray, setBgArray] = useState<any>([])
+  const [finalBgArray, setFinalBgArray] = useState<any>([])
+
+  const onRender = (props: { w: number; h: number }) => {
+    setBgArray((prev: any) => [
+      ...prev,
+      { width: props.w, height: props.h, x: 0, y: 0 }
+    ])
+  }
 
   useEffect(() => {
     const currChannelsParentRef = channelsParentRef?.current
 
     if (currChannelsParentRef && currChannelsParentRef.clientWidth)
       setWidth(currChannelsParentRef.clientWidth)
-  }, [width])
+  }, [props.currentWidth])
 
   useEffect(() => {
     if (Object.keys(bgArray).length == props.contact_channels.length) {
@@ -41,35 +44,29 @@ export function useContactChannels(props: useContactChannelsProps) {
 
       // Now it is fixed values. We should work on resposivity of that values getting for better results.
       const padding = 200
-      const flexWidth: number = channelsParentWidth - padding
+      const flexWidth = channelsParentWidth - padding
       const buttonsH = 58
       const spaceSize = 15
       const marginSize = 20
 
-      const bgArrayCopy = { ...bgArray }
+      const bgArrayCopy = [...bgArray]
 
       // Discover and organize the lines of tabs
-      const lines = []
+      const lines: any[] = []
       let currentLineWidth = 0
-      let currentLineArray: Array<any> = []
-      lines.push(currentLineArray)
+      let currentLineArray: any[] = []
 
-      for (let i = 0; i < Object.keys(bgArray).length; i++) {
-        // If the current tab has a size greater than available space, then pass to next line.
-        if (
-          currentLineWidth + bgArrayCopy[i.toString()]['width'] + marginSize >=
-          flexWidth
-        ) {
-          currentLineWidth = bgArrayCopy[i.toString()]['width'] + marginSize
+      bgArray.forEach((bg: any, i: string) => {
+        if (currentLineWidth + bg.width + marginSize >= flexWidth) {
+          currentLineWidth = bg.width + marginSize
           currentLineArray = []
           lines.push(currentLineArray)
         } else {
-          currentLineWidth =
-            currentLineWidth + bgArrayCopy[i.toString()]['width'] + marginSize
+          currentLineWidth = currentLineWidth + bg.width + marginSize
         }
 
         currentLineArray.push(i)
-      }
+      })
 
       let visitedItems = 0
 
@@ -81,8 +78,7 @@ export function useContactChannels(props: useContactChannelsProps) {
         let lineBoxWidth = 0
 
         for (let i = visitedItems; i < visitedItems + currentLine.length; i++) {
-          lineBoxWidth =
-            lineBoxWidth + bgArrayCopy[i.toString()]['width'] + marginSize
+          lineBoxWidth = lineBoxWidth + bgArrayCopy[i].width + marginSize
         }
 
         // Set up dimensions and limits where tabs will use background.
@@ -93,9 +89,9 @@ export function useContactChannels(props: useContactChannelsProps) {
 
         // Iterate over current line to set up bg positions.
         for (let i = visitedItems; i < visitedItems + currentLine.length; i++) {
-          bgArrayCopy[i.toString()]['x'] = currentX
-          bgArrayCopy[i.toString()]['y'] = currentY
-          currentX = currentX + bgArrayCopy[i.toString()]['width'] + marginSize
+          bgArrayCopy[i].x = currentX
+          bgArrayCopy[i].y = currentY
+          currentX = currentX + bgArrayCopy[i].width + marginSize
         }
 
         visitedItems = visitedItems + currentLine.length
@@ -106,10 +102,8 @@ export function useContactChannels(props: useContactChannelsProps) {
   }, [bgArray, channelsParentWidth, props.contact_channels.length])
 
   return {
-    isMobile,
-    channelsParentRef,
-    bgArray,
-    setBgArray,
-    finalBgArray
+    bgArray: finalBgArray,
+    ref: channelsParentRef,
+    onRender
   }
 }
