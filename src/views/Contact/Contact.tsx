@@ -15,7 +15,7 @@ import PatternInfo from '@components/PatternInfo'
 
 import { IContactChannel } from 'types/data/ContactChannel'
 
-import { useContactChannels } from './useContactChannels'
+import { useBackgroundArray } from './useBackgroundArray'
 import useMobile from 'hooks/useMobile'
 
 export type ContactViewProps = {
@@ -29,7 +29,7 @@ export const Contact = ({
 }: ContactViewProps) => {
   const { isMobile, width } = useMobile(1024)
 
-  const { ref, onRender, bgArray } = useContactChannels({
+  const { ref, onRender, bgArray } = useBackgroundArray({
     currentWidth: width,
     contact_channels
   })

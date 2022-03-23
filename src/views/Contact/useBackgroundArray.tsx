@@ -3,19 +3,19 @@ import { RefObject, useEffect, useRef, useState } from 'react'
 
 import { IContactChannel } from 'types/data/ContactChannel'
 
-export interface IUsecontactChannels {
+export interface IUseBackgroundArray {
   isMobile: boolean
   ref: RefObject<HTMLDivElement>
   onRender: (props: { w: number; h: number }) => void
   bgArray: { x: number; y: number }[]
 }
 
-export interface useContactChannelsProps {
+export interface useBackgroundArrayProps {
   currentWidth?: number
   contact_channels: IContactChannel[]
 }
 
-export function useContactChannels(props: useContactChannelsProps) {
+export function useBackgroundArray(props: useBackgroundArrayProps) {
   const channelsParentRef = useRef<HTMLDivElement>(null)
   const [channelsParentWidth, setWidth] = useState<number>(0)
 
