@@ -6,7 +6,7 @@ import { IContactChannel } from 'types/data/ContactChannel'
 export interface IUseBackgroundArray {
   isMobile: boolean
   ref: RefObject<HTMLDivElement>
-  onRender: (props: { w: number; h: number }) => void
+  onRender: (props: { w: number; h: number; index: number }) => void
   bgArray: { x: number; y: number }[]
 }
 
@@ -22,11 +22,10 @@ export function useBackgroundArray(props: useBackgroundArrayProps) {
   const [bgArray, setBgArray] = useState<any>([])
   const [finalBgArray, setFinalBgArray] = useState<any>([])
 
-  const onRender = (props: { w: number; h: number }) => {
-    setBgArray((prev: any) => [
-      ...prev,
-      { width: props.w, height: props.h, x: 0, y: 0 }
-    ])
+  function onRender(props: { w: number; h: number; index: number }) {
+    bgArray[props.index] = { width: props.w, height: props.h, x: 0, y: 0 }
+
+    setBgArray(bgArray)
   }
 
   useEffect(() => {
@@ -37,7 +36,7 @@ export function useBackgroundArray(props: useBackgroundArrayProps) {
   }, [props.currentWidth])
 
   useEffect(() => {
-    if (Object.keys(bgArray).length == props.contact_channels.length) {
+    if (bgArray.length == props.contact_channels.length) {
       // Define know values
       const imgW = 1922
       const originalFlexWidth = channelsParentWidth
@@ -55,8 +54,11 @@ export function useBackgroundArray(props: useBackgroundArrayProps) {
       const lines: any[] = []
       let currentLineWidth = 0
       let currentLineArray: any[] = []
+      lines.push(currentLineArray)
 
-      bgArray.forEach((bg: any, i: string) => {
+      bgArrayCopy.forEach((bg: any, i: number) => {
+        // If the current tab has a size greater than available space, then pass to next line.
+
         if (currentLineWidth + bg.width + marginSize >= flexWidth) {
           currentLineWidth = bg.width + marginSize
           currentLineArray = []
