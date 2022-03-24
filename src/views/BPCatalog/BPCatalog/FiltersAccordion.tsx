@@ -296,6 +296,7 @@ export const FiltersAccordion = ({
                   width="100%"
                   height="100%"
                   paddingBottom="25px"
+                  mb="50px"
                 >
                   {colorations.map((filter) => (
                     <FilterCheckbox
