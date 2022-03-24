@@ -117,7 +117,7 @@ export const Contact = ({
               {contact_channels.map((channel, index) => (
                 <ContactChannelSelectButton
                   key={index}
-                  onFinishRender={(w, h) => onRender({ w, h })}
+                  onFinishRender={(w, h) => onRender({ w, h, index })}
                   isActive={
                     contact_channel != null && contact_channel.id === channel.id
                   }
