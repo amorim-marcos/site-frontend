@@ -119,8 +119,7 @@ export const Contact = ({
                   key={index}
                   onFinishRender={(w, h) => onRender({ w, h })}
                   isActive={
-                    contact_channel != null &&
-                    contact_channel.service_code === channel.service_code
+                    contact_channel != null && contact_channel.id === channel.id
                   }
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore
