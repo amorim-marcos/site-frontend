@@ -68,7 +68,7 @@ export const FiltersAccordion = ({
 
   return (
     <>
-      <Box backgroundColor={darkMode ? 'gray.400' : 'white.200'} height="100%">
+      <Box backgroundColor={darkMode ? 'gray.400' : 'white.200'} height="150%">
         <Flex
           padding={{ base: '25px' }}
           justifyContent="space-between"
@@ -132,7 +132,7 @@ export const FiltersAccordion = ({
                 bottom="-3px"
                 left="0"
               />
-              <Box width="100%" paddingLeft="20px" paddingRight="20px">
+              <Box width="100%" backgroundColor={darkMode ? 'gray.400' : 'white.200'} paddingLeft="20px" paddingRight="20px">
                 <Button
                   onClick={() => changeFilterPanel('panels')}
                   variant="link"
@@ -193,7 +193,7 @@ export const FiltersAccordion = ({
                 bottom="-3px"
                 left="0"
               />
-              <Box width="100%" paddingLeft="20px" paddingRight="20px">
+              <Box width="100%" backgroundColor={darkMode ? 'gray.400' : 'white.200'} paddingLeft="20px" paddingRight="20px">
                 <Button
                   onClick={() => changeFilterPanel('collections')}
                   variant="link"
@@ -258,7 +258,7 @@ export const FiltersAccordion = ({
                 bottom="-3px"
                 left="0"
               />
-              <Box width="100%" paddingLeft="20px" paddingRight="20px">
+              <Box width="100%" backgroundColor={darkMode ? 'gray.400' : 'white.200'} paddingLeft="20px" paddingRight="20px">
                 <Button
                   onClick={() => changeFilterPanel('colorations')}
                   variant="link"
@@ -296,6 +296,7 @@ export const FiltersAccordion = ({
                   width="100%"
                   height="100%"
                   paddingBottom="25px"
+                  mb="50px"
                 >
                   {colorations.map((filter) => (
                     <FilterCheckbox

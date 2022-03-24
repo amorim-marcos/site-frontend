@@ -67,7 +67,7 @@ export const FiltersAccordion = ({
   const TOTAL_BPS_SHOW_FIRST = 9
 
   return (
-    <Box background="white.200" height="100%">
+    <Box background="white.200" height="150%">
       <Flex
         padding={{ base: '25px' }}
         justifyContent="space-between"
@@ -338,6 +338,7 @@ export const FiltersAccordion = ({
                 width="100%"
                 height="100%"
                 paddingBottom="25px"
+                mb="50px"
               >
                 <Grid
                   templateRows="repeat(auto, 1fr)"
