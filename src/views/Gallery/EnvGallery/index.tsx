@@ -49,7 +49,7 @@ export const EnvGallery = ({
   }
 }: EnvGalleryProps) => {
   const [currentFilterPanel, setCurrentFilterPanel] = useState('none')
-  const [displayFilters, setDisplayFilters] = useState(false)
+  const [displayFilters, setDisplayFilters] = useState(true)
   const [filteredEnvs, setFilteredEnvs] = useState(envs)
   const [filters, setFilters] = useState(initialFilters)
   const [filtersEmpty, setFiltersEmpty] = useState(true)
