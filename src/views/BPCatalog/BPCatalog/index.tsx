@@ -152,7 +152,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
           const dateA = new Date(a['launch'])
           const dateB = new Date(b['launch'])
 
-          return dateA > dateB ? 1 : dateA < dateB ? -1 : 0
+          return dateA < dateB ? 1 : dateA > dateB ? -1 : 0
         })
         break
       case 'name':
