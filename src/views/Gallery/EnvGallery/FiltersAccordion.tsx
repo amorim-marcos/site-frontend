@@ -387,7 +387,7 @@ export const FiltersAccordion = ({
           mr="30px"
           onClick={() => {
             setFilteredEnvs(applyFilters(filters, envs))
-            setDisplayFilters(false)
+            setDisplayFilters(!displayFilters)
           }}
         >
           Filtrar
@@ -431,7 +431,8 @@ export const FiltersAccordion = ({
                 setFilters({ ...filters, nameSearched: e.target.value })
               }}
               onKeyPress={(event) => {
-                if(event.key === "Enter") setFilteredEnvs(applyFilters(filters, envs))
+                if (event.key === 'Enter')
+                  setFilteredEnvs(applyFilters(filters, envs))
               }}
             />
             <Box>

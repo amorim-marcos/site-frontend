@@ -84,8 +84,8 @@ export const CarouselMultiElements = ({
           variant="no-border"
           background="gray.300"
           color="gray.150"
-          w={{ base: '70px', sm: '50px', lg: '60px', xl: '77px' }}
-          h={{ base: '70px', sm: '50px', lg: '60px', xl: '77px' }}
+          w={{ base: '40px', sm: '50px', lg: '60px', xl: '77px' }}
+          h={{ base: '40px', sm: '50px', lg: '60px', xl: '77px' }}
           _hover={{
             background: 'green.600',
             color: 'white.100'
@@ -95,7 +95,7 @@ export const CarouselMultiElements = ({
           <ArrowIcon
             direction="left"
             stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
-            width="40%"
+            width={{ base: '30%', md: '40%' }}
           />
         </Button>
         <Button
@@ -104,8 +104,8 @@ export const CarouselMultiElements = ({
           variant="no-border"
           background="gray.300"
           color="gray.150"
-          w={{ base: '70px', sm: '50px', lg: '60px', xl: '77px' }}
-          h={{ base: '70px', sm: '50px', lg: '60px', xl: '77px' }}
+          w={{ base: '40px', sm: '50px', lg: '60px', xl: '77px' }}
+          h={{ base: '40px', sm: '50px', lg: '60px', xl: '77px' }}
           _hover={{
             background: 'green.600',
             color: 'white.100'
@@ -113,7 +113,7 @@ export const CarouselMultiElements = ({
           onClick={next}
         >
           <ArrowIcon
-            width="40%"
+            width={{ base: '30%', md: '40%' }}
             stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
           />
         </Button>

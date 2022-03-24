@@ -109,9 +109,9 @@ export const EnvView = ({
               w={{ base: '100%', md: '50%' }}
             >
               <Flex w={{ base: '100%', md: '80%' }} flexDirection={'column'}>
-                {tableContent.map((item) => {
+                {tableContent.map((item, i) => {
                   return (
-                    <Flex key={item.column1} w="100%">
+                    <Flex key={i} w="100%">
                       <Flex
                         bg="white.100"
                         padding={{
@@ -164,43 +164,60 @@ export const EnvView = ({
                 Padrões BP BERNECK® utilizados neste ambiente
               </Text>
 
-              <Flex flexDirection={'row'} w="100%" gap="30px">
-                {env.panels.map((panel: any) => (
-                  <Box key={panel.id}>
-                    <Flex w="100%">
-                      <Box
-                        w="233px"
-                        h={{ base: '35vw', md: '18vw' }}
-                        maxHeight="380px"
-                      >
-                        <Image
-                          src={panel.imgSrc}
-                          w="100%"
-                          h="100%"
-                          objectFit={'cover'}
-                        />
+              <Flex
+                flexDirection={'row'}
+                w="100%"
+                // gap={{ base: '5px', lg: '10px' }}
+                justifyContent={{ base: 'center', md: 'start' }}
+                flexDir={{ base: 'column', sm: 'row' }}
+              >
+                {env.panels.map((panel: any, i) => {
+                  return (
+                    i < 4 && (
+                      <Box key={i}>
+                        <Flex w="100%">
+                          <Box
+                            w={{
+                              base: '100%',
+                              sm: '110px',
+                              md: '80px',
+                              lg: '105px',
+                              xl: '130px',
+                              '2xl': '160px'
+                            }}
+                            h={{ base: '100px', sm: '30vw', md: '18vw' }}
+                            maxHeight="380px"
+                          >
+                            <Image
+                              src={panel.imgSrc}
+                              w="100%"
+                              h="100%"
+                              objectFit={'cover'}
+                            />
+                          </Box>
+                        </Flex>
+
+                        <Text
+                          variant="body"
+                          fontWeight={'extrabold'}
+                          color="gray.300"
+                          marginTop={'3%'}
+                        >
+                          {panel.name}
+                        </Text>
+
+                        <Text
+                          variant="body"
+                          fontWeight={'bold'}
+                          color="gray.300"
+                          marginTop={'3%'}
+                        >
+                          {/* {panel.product_texture} */}
+                        </Text>
                       </Box>
-                    </Flex>
-
-                    <Text
-                      variant="body"
-                      fontWeight={'extrabold'}
-                      color="gray.300"
-                      marginTop={'3%'}
-                    >
-                      {panel.name}
-                    </Text>
-
-                    <Text
-                      variant="body"
-                      fontWeight={'bold'}
-                      color="gray.300"
-                      marginTop={'3%'}
-                    >
-                      {/* {panel.product_texture} */}
-                    </Text>
-                  </Box>
-                ))}
+                    )
+                  )
+                })}
               </Flex>
             </Flex>
           </Flex>

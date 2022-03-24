@@ -9,6 +9,7 @@ import { colors } from 'theme/colors'
 
 import { FilterCheckbox } from './FilterCheckbox'
 import { BPFilter } from './BPFilter'
+import { ResponsiveCss } from 'types/responsive'
 
 export type FiltersSelectProps = {
   filtersContext: {
@@ -57,15 +58,11 @@ export const FiltersTabs = ({
   const [searchSelected, setSearchSelected] = React.useState(false)
 
   return (
-    <Box 
-      background="white.200" 
-      minH="80px"
-    >
+    <Box background="white.200" minH="80px">
       <Box
         position={{ base: 'relative', md: 'absolute' }}
         paddingTop="30px"
         left={{ base: '20px', md: '30px' }}
-       
       >
         <Button
           zIndex="10"
@@ -93,104 +90,51 @@ export const FiltersTabs = ({
         </Button>
       </Box>
       {displayFilters && (
-        <Box 
-          margin="0" 
+        <Box
+          margin="0"
           paddingTop="30px"
           // bg="red"
         >
           <Box>
-            <Flex 
-              position="relative" 
-              direction="column"
-           
-            >
+            <Flex position="relative" direction="column">
               <Center>
                 <Box
                   position="absolute"
                   background="green.600"
-                  width="650px"
-                  height="6px"
+                  width={{ base: '400px', xl: '650px' }}
+                  height="5px"
                   bottom="-3px"
                 />
               </Center>
-              <Center 
-                mb="20px"
-              >
-                <Flex 
+              <Center mb="20px">
+                <Flex
                   justifyContent="space-between"
                   // bg="yellow"
                 >
-                  <Button
-                    onClick={() => changeFilterPanel('bps')}
-                    variant="link"
-                    color="gray.300"
-                    w="180px"
-                    h="30px"
-                    borderBottom={
-                      currentFilterPanel == 'bps' ? 'solid' : 'none'
-                    }
-                    borderBottomColor={'green.500'}
-                    borderBottomWidth={{ base: '4px' }}
-                    fontSize="22px"
-                  >
-                    <Text color="gray.300" mr="10px" fontWeight={600}>
-                      BP BERNECK®
-                    </Text>
-                    <Arrow
-                      direction={currentFilterPanel == 'bps' ? 'down' : 'up'}
-                      width="3"
-                      height="6"
-                      color="gray.200"
-                    />
-                  </Button>
-                  <Button
-                    onClick={() => changeFilterPanel('ambients')}
-                    variant="link"
-                    color="gray.300"
-                    w="180px"
-                    h="30px"
-                    borderBottom={
-                      currentFilterPanel == 'ambients' ? 'solid' : 'none'
-                    }
-                    borderBottomColor={'green.500'}
-                    borderBottomWidth={{ base: '4px' }}
-                    fontSize="22px"
-                  >
-                    <Text color="gray.300" mr="10px" fontWeight={600}>
-                      AMBIENTE
-                    </Text>
-                    <Arrow
-                      direction={
-                        currentFilterPanel == 'ambients' ? 'down' : 'up'
-                      }
-                      width="3"
-                      height="6"
-                      color="gray.200"
-                    />
-                  </Button>
-                  <Button
-                    onClick={() => changeFilterPanel('styles')}
-                    variant="link"
-                    color="gray.300"
-                    w="180px"
-                    h="30px"
-                    borderBottom={
-                      currentFilterPanel == 'styles' ? 'solid' : 'none'
-                    }
-                    borderBottomColor={'green.500'}
-                    borderBottomWidth={{ base: '4px' }}
-                    fontSize="22px"
-                  >
-                    <Text color="gray.300" mr="10px" fontWeight={600}>
-                      ESTILO
-                    </Text>
-                    <Arrow
-                      direction={currentFilterPanel == 'styles' ? 'down' : 'up'}
-                      width="3"
-                      height="6"
-                      color="gray.200"
-                    />
-                  </Button>
+                  <FilterBtn
+                    changeFilterPanel={changeFilterPanel}
+                    currentFilterPanel={currentFilterPanel}
+                    title="BP BERNECK®"
+                    filterName={'bps'}
+                  />
+                  <FilterBtn
+                    changeFilterPanel={changeFilterPanel}
+                    currentFilterPanel={currentFilterPanel}
+                    title="AMBIENTE"
+                    filterName={'ambients'}
+                    paddingX={{
+                      base: '0',
+                      md: '50px',
+                      xl: '100px',
+                      '2xl': '130px'
+                    }}
+                  />
+                  <FilterBtn
+                    changeFilterPanel={changeFilterPanel}
+                    currentFilterPanel={currentFilterPanel}
+                    title="ESTILO"
+                    filterName={'styles'}
+                  />
                 </Flex>
               </Center>
               <Center
@@ -235,10 +179,10 @@ export const FiltersTabs = ({
                   height="100%"
                 >
                   <Center>
-                    <Flex 
-                      justifyContent="flex-start" 
+                    <Flex
+                      justifyContent="flex-start"
                       wrap="wrap"
-                          //  bg="yellow"
+                      //  bg="yellow"
                     >
                       {filtersContext['ambients'].map((filter) => (
                         <FilterCheckbox
@@ -303,14 +247,18 @@ export const FiltersTabs = ({
                   )}
                 </Flex>
               </Center>
-              <Box position="absolute" top="0" right="50px">
+              <Box
+                position="absolute"
+                top="0"
+                right={{ base: '0', md: '10px', xl: '30px' }}
+              >
                 <Flex
                   width={{
                     base: '100px',
-                    md: '200px',
-                    lg: '250px',
-                    xl: '300px',
-                    '2xl': '350px'
+                    md: '150px',
+                    lg: '180px',
+                    xl: '220px',
+                    '2xl': '250px'
                   }}
                   borderBottom="solid"
                   borderBottomColor={searchSelected ? 'green.500' : 'gray.300'}
@@ -346,7 +294,8 @@ export const FiltersTabs = ({
                       setFilters({ ...filters, nameSearched: e.target.value })
                     }}
                     onKeyPress={(event) => {
-                      if(event.key === "Enter") setFilteredEnvs(applyFilters(filters, envs))
+                      if (event.key === 'Enter')
+                        setFilteredEnvs(applyFilters(filters, envs))
                     }}
                   />
                   <Box>
@@ -374,5 +323,53 @@ export const FiltersTabs = ({
         </Box>
       )}
     </Box>
+  )
+}
+
+const FilterBtn = ({
+  changeFilterPanel,
+  currentFilterPanel,
+  title,
+  filterName,
+  paddingX
+}: {
+  changeFilterPanel: Function
+  currentFilterPanel: string
+  title: string
+  filterName: string
+  paddingX?: ResponsiveCss
+}) => {
+  return (
+    <Flex
+      onClick={() => changeFilterPanel(filterName)}
+      // variant="link"
+      justifyContent="center"
+      color="gray.300"
+      // w="200px"
+      h="30px"
+      fontSize="22px"
+      _focus={{ outline: 'none' }}
+      // border="1px solid magenta"
+      paddingX={paddingX}
+    >
+      <Flex
+        alignItems={'center'}
+        borderBottom={currentFilterPanel == filterName ? 'solid' : 'none'}
+        borderBottomColor={'green.500'}
+        borderBottomWidth={{ base: '4px' }}
+        paddingX="30px"
+      >
+        <Text color="gray.300" ml="8px" mr="5px" fontWeight={500}>
+          {title}
+        </Text>
+
+        <Arrow
+          direction={currentFilterPanel == filterName ? 'down' : 'up'}
+          width="3"
+          height="6"
+          color="gray.200"
+        />
+      </Flex>
+    </Flex>
   )
 }
