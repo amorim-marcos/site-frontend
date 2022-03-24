@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       page_content,
-      fireWarning: fireWarning.warning_text
+      fireWarningText: fireWarning.warning_text
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'
