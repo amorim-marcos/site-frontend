@@ -290,6 +290,7 @@ export const FiltersTabs = ({
                       '2xl': '16px'
                     }}
                     height={{ base: '30px' }}
+                    value={filters.nameSearched}
                     onChange={(e) => {
                       setFilters({ ...filters, nameSearched: e.target.value })
                     }}
