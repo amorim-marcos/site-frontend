@@ -54,8 +54,11 @@ export function useBackgroundArray(props: useBackgroundArrayProps) {
       const lines: any[] = []
       let currentLineWidth = 0
       let currentLineArray: any[] = []
+      lines.push(currentLineArray)
 
-      bgArray.forEach((bg: any, i: string) => {
+      bgArrayCopy.forEach((bg: any, i: number) => {
+        // If the current tab has a size greater than available space, then pass to next line.
+
         if (currentLineWidth + bg.width + marginSize >= flexWidth) {
           currentLineWidth = bg.width + marginSize
           currentLineArray = []
