@@ -359,7 +359,7 @@ const FilterBtn = ({
         borderBottomWidth={{ base: '4px' }}
         paddingX="30px"
       >
-        <Text color="gray.300" ml="8px" mr="5px" fontWeight={600}>
+        <Text color="gray.300" ml="8px" mr="5px" fontWeight={500}>
           {title}
         </Text>
 
