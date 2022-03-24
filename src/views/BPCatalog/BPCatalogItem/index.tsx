@@ -168,14 +168,16 @@ const PageNavegation = (props: {
   return (
     <Flex
       w="100%"
-      pt={{ base: '100px', '2xl': '140px' }}
+      // pt={{ base: '100px', '2xl': '140px' }}
       justify="space-between"
       maxWidth="1920px"
+      position={fixed ? 'fixed' : 'absolute'}
+      bottom={'0'}
+      zIndex={'banner'}
+      pointerEvents="none"
     >
       <Flex
-        zIndex={'banner'}
-        position={fixed ? 'fixed' : 'absolute'}
-        bottom={'0'}
+        pointerEvents={'fill'}
         bg="#FFF"
         w={{ base: 'fit-content', sm: '296px' }}
         h={{ base: '90px', sm: '113px' }}
@@ -220,10 +222,7 @@ const PageNavegation = (props: {
       </Flex>
 
       <Flex
-        zIndex={'banner'}
-        position={fixed ? 'fixed' : 'absolute'}
-        bottom={'0'}
-        right="0"
+        pointerEvents={'fill'}
         bg="#FFF"
         w={{ base: 'fit-content', sm: '296px' }}
         h={{ base: '90px', sm: '113px' }}
