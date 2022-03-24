@@ -68,7 +68,7 @@ export const FiltersAccordion = ({
 
   return (
     <>
-      <Box backgroundColor={darkMode ? 'gray.400' : 'white.200'} height="100%">
+      <Box backgroundColor={darkMode ? 'gray.400' : 'white.200'} height="150%">
         <Flex
           padding={{ base: '25px' }}
           justifyContent="space-between"
