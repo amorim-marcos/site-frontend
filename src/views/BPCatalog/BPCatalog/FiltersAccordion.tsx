@@ -132,7 +132,7 @@ export const FiltersAccordion = ({
                 bottom="-3px"
                 left="0"
               />
-              <Box width="100%" paddingLeft="20px" paddingRight="20px">
+              <Box width="100%" backgroundColor={darkMode ? 'gray.400' : 'white.200'} paddingLeft="20px" paddingRight="20px">
                 <Button
                   onClick={() => changeFilterPanel('panels')}
                   variant="link"
@@ -193,7 +193,7 @@ export const FiltersAccordion = ({
                 bottom="-3px"
                 left="0"
               />
-              <Box width="100%" paddingLeft="20px" paddingRight="20px">
+              <Box width="100%" backgroundColor={darkMode ? 'gray.400' : 'white.200'} paddingLeft="20px" paddingRight="20px">
                 <Button
                   onClick={() => changeFilterPanel('collections')}
                   variant="link"
@@ -258,7 +258,7 @@ export const FiltersAccordion = ({
                 bottom="-3px"
                 left="0"
               />
-              <Box width="100%" paddingLeft="20px" paddingRight="20px">
+              <Box width="100%" backgroundColor={darkMode ? 'gray.400' : 'white.200'} paddingLeft="20px" paddingRight="20px">
                 <Button
                   onClick={() => changeFilterPanel('colorations')}
                   variant="link"
