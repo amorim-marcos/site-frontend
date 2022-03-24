@@ -7,7 +7,7 @@ export interface IntroProps {
   productName: string
   productImgBg: string
   productDescription: string
-  textureTopMenuImg: string,
+  textureTopMenuImg: string
   handleDownload: () => void
 }
 
@@ -50,6 +50,7 @@ export const Intro = (props: IntroProps) => (
       bg="green.100"
       pos="relative"
       overflow={'hidden'}
+      boxShadow="0px 0px 20px #00000027"
     >
       <Text
         // fontSize={{ base: '50px', '2xl': '53px' }}
@@ -73,7 +74,13 @@ export const Intro = (props: IntroProps) => (
 
       <Box h="3px" w="87px" bg="green.600" />
 
-      <Box cursor="pointer" pos="absolute" bottom="29px" right="29px" onClick={props.handleDownload}>
+      <Box
+        cursor="pointer"
+        pos="absolute"
+        bottom="29px"
+        right="29px"
+        onClick={props.handleDownload}
+      >
         <ZoomInIcon />
       </Box>
     </Flex>
