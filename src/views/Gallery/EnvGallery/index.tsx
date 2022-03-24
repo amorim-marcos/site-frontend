@@ -81,7 +81,7 @@ export const EnvGallery = ({
     // search
     if (filters['nameSearched'] && filters['nameSearched'] !== '') {
       filteredEnvs = filteredEnvs.filter((env: any) => {
-        return env.name
+        return env.title
           .toLowerCase()
           .includes(filters['nameSearched'].toLowerCase())
       })
