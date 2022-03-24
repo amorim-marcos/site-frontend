@@ -41,7 +41,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
     )
   }
 
-  useInterval(next, 3000)
+  useInterval(next, 5000)
 
   return items.length <= 0 ? (
     <h1>No items passed</h1>
@@ -141,23 +141,23 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
         <Flex>
           <Box marginTop="0px">
             <ArrowIcon
-              width = {{
+              width={{
                 base: '7px',
                 md: '9px',
                 lg: '10px',
                 xl: '10px'
               }}
-              stroke = {items[currentItem].color}
+              stroke={items[currentItem].color}
             />
           </Box>
           <Flex
             onClick={navigateToThePost}
             marginLeft={{
-                base: '8px',
-                md: '10px',
-                lg: '10px',
-                xl: '8px'
-              }}
+              base: '8px',
+              md: '10px',
+              lg: '10px',
+              xl: '8px'
+            }}
             flexDirection={'column'}
             cursor="pointer"
             // bg={"blue"}
@@ -169,11 +169,11 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                 lg: '-2px',
                 xl: '-3px'
               }}
-              as="h5" 
+              as="h5"
               variant={'h5' as any}
-              textColor = {"black"}
-              fontSize = {{ base: '11px', sm: '11px', lg: '11px', xl: '14px' }}
-              letterSpacing= {{
+              textColor={'black'}
+              fontSize={{ base: '11px', sm: '11px', lg: '11px', xl: '14px' }}
+              letterSpacing={{
                 base: '2px',
                 xl: '2px'
               }}
@@ -204,15 +204,21 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                 as="h1"
                 variant={'h1' as any}
                 color="green.900"
-                fontWeight= 'bold'
-                lineHeight ={{
+                fontWeight="bold"
+                lineHeight={{
                   base: '26px',
                   sm: '35px',
                   md: '28px',
                   lg: '36px',
                   xl: '45px'
                 }}
-                fontSize = {{ base: '22px', sm: '30px', md: '26px', lg: '32px', xl: '40px' }}
+                fontSize={{
+                  base: '22px',
+                  sm: '30px',
+                  md: '26px',
+                  lg: '32px',
+                  xl: '40px'
+                }}
                 maxHeight={'100%'}
                 marginLeft={{ base: '-10px', md: '0' }}
               >
@@ -252,7 +258,7 @@ const Indicator = ({ items, currentItem }: IndicatorProps) => {
               base: '-10px',
               lg: '-25px'
             }}
-            marginLeft = {"5px"}
+            marginLeft={'5px'}
             border="1px solid"
             borderColor={'brown.300'}
             w={{
@@ -279,7 +285,7 @@ const Indicator = ({ items, currentItem }: IndicatorProps) => {
               base: '-10px',
               lg: '-25px'
             }}
-            marginLeft = {"5px"}
+            marginLeft={'5px'}
             w={{
               base: '20px',
               md: '10px',
