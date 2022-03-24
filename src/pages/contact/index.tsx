@@ -1,30 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetStaticProps } from 'next'
+import { IContactChannel } from 'types/data/ContactChannel'
 import Contact from 'views/Contact'
 
 export type ContactPageProps = {
   fireWarning: string
-  contact_channels: {
-    name: string
-    description: string
-    image: string
-    service_code: string
-    emphasis: boolean
-  }[]
+  contact_channels: IContactChannel[]
 }
 
 export default function ContactPage(props: ContactPageProps) {
-  return (
-    <Contact
-      contact_channels={props.contact_channels.map((item) => ({
-        name: item.name,
-        description: item.description,
-        image: item.image,
-        service_code: item.service_code,
-        attention_required: item.emphasis
-      }))}
-      fireWarning={props.fireWarning}
-    />
-  )
+  return <Contact {...props} />
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -52,14 +37,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
     contact_channels = await res.json()
   }
 
-  contact_channels = contact_channels.map(
-    (item: { image: { url: string } }) => {
-      return {
-        ...item,
-        image: process.env.NEXT_PUBLIC_API_URL + item.image.url
-      }
+  contact_channels = contact_channels.map((item: any) => {
+    return {
+      ...item,
+      attention_required: item.emphasis,
+      image: process.env.NEXT_PUBLIC_API_URL + item.image.url
     }
-  )
+  })
 
   return {
     props: {
