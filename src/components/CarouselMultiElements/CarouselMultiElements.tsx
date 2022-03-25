@@ -1,6 +1,6 @@
-import { Heading, Flex, Box, Text, Center, Button } from '@chakra-ui/react'
-import ArrowIcon from '@components/Icons/ArrowIcon'
-import { json } from 'node:stream/consumers'
+import { Heading, Flex, Box, Text, Center, Button, useMediaQuery } from '@chakra-ui/react'
+import Arrow from '@components/Arrow'
+import useMobile from 'hooks/useMobile'
 import { useState, useEffect } from 'react'
 
 export type CarouselMultiElementsProps = {
@@ -15,6 +15,7 @@ export const CarouselMultiElements = ({
   const [endItem, setEndItem] = useState(numberOfEvidenceElements - 1)
   const [transform, setStranform] = useState(0)
   const [hoverBtnControl, setHoverBtnControl] = useState(false)
+  const { isMobile } = useMobile(568)
 
   function next() {
     if (startItem < children.length - numberOfEvidenceElements) {
@@ -87,16 +88,16 @@ export const CarouselMultiElements = ({
           w={{ base: '40px', sm: '50px', lg: '60px', xl: '77px' }}
           h={{ base: '40px', sm: '50px', lg: '60px', xl: '77px' }}
           _hover={{
-            background: 'green.600',
+            background: 'green.550',
             color: 'white.100'
           }}
           onClick={back}
         >
-          <ArrowIcon
-            direction="left"
-            stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
-            width={{ base: '30%', md: '40%' }}
-          />
+          {
+            isMobile 
+            ? <Arrow width="5" height="5" direction="left" />
+            : <Arrow width="22" height="30" direction="left" />
+          }
         </Button>
         <Button
           onMouseEnter={() => setHoverBtnControl(true)}
@@ -107,15 +108,16 @@ export const CarouselMultiElements = ({
           w={{ base: '40px', sm: '50px', lg: '60px', xl: '77px' }}
           h={{ base: '40px', sm: '50px', lg: '60px', xl: '77px' }}
           _hover={{
-            background: 'green.600',
+            background: 'green.550',
             color: 'white.100'
           }}
           onClick={next}
         >
-          <ArrowIcon
-            width={{ base: '30%', md: '40%' }}
-            stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
-          />
+          {
+            isMobile 
+            ? <Arrow width="5" height="5" direction="right" />
+            : <Arrow width="22" height="30" direction="right" />
+          }
         </Button>
       </Flex>
     </Box>
