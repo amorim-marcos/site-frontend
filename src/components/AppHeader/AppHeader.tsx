@@ -22,6 +22,9 @@ export const AppHeader = () => {
   const [openSearchBar, setOpenSearchBar] = useState(false)
   const [visibilitySearchBar, setvisibilityOpenSearchBar] = useState(false)
   const [menuMobileOpen, setMenuMobileOpen] = useState(false)
+  const header = useTranslation('header')
+  const [fixed, setFixed] = useState(true)
+  const [marginTopHeader, setMarginTopHeader] = useState('51px')
   const router = useRouter()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +49,56 @@ export const AppHeader = () => {
     setvisibilityOpenSearchBar(openSearchBar)
   }, [openSearchBar])
 
-  const header = useTranslation('header')
+  function handleScroll(value: any) {
+    if (window) {
+      let headerLimit = 51
+      let headerExpectedMargin = '51px'
+
+      if (window.innerWidth < 1536) {
+        headerLimit = 40
+        headerExpectedMargin = '40px'
+      }
+      if (window.innerWidth < 1280) {
+        headerLimit = 30
+        headerExpectedMargin = '30px'
+      }
+      if (window.innerWidth < 1024) {
+        headerLimit = 25
+        headerExpectedMargin = '25px'
+      }
+
+      console.log(window.pageYOffset)
+
+      // const scrollLimit =
+      //   document.body.scrollHeight - window.innerHeight
+      if (window.pageYOffset >= headerLimit) {
+        // setFixed(false)
+        // setMarginTopHeader(headerExpectedMargin)
+
+        setMarginTopHeader(`${0}px`)
+        // setFixed(true)
+      } else {
+        let a = window.pageYOffset - headerLimit
+        if (a < 0) {
+          a = 0
+        }
+        setMarginTopHeader(`${headerLimit}px`)
+        // setFixed(false)
+        // setMarginTopHeader('0px')
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (window) {
+      window.addEventListener('scroll', handleScroll, { passive: true })
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }
+  }, [])
+
   return (
     <>
       <Box
@@ -62,9 +114,9 @@ export const AppHeader = () => {
         // maxWidth="1920px"
         bg={'green.900'}
         // position="relative"
-        position="fixed"
-        top="0"
-        left="0"
+        // position="fixed"
+        // top="0"
+        // left="0"
         w="100%"
         zIndex={'overlay'}
         transition="0.5s"
@@ -124,7 +176,15 @@ export const AppHeader = () => {
             </Box>
           </Box>
 
-          <Box w="100%" bg="green.800">
+          <Box
+            w="100%"
+            bg="green.800"
+            // position={fixed ? 'fixed' : 'relative'}
+            position={'fixed'}
+            transition="0.2s"
+            top={marginTopHeader}
+            left="0"
+          >
             <Box w="100%" marginX="auto" maxWidth={'1920px'}>
               <Flex
                 paddingInline={{ base: '4%', xl: '4%', '2xl': '4%' }}
@@ -170,7 +230,7 @@ export const AppHeader = () => {
                 <Flex
                   paddingLeft={{ base: '0', md: '70px' }}
                   justifyContent={{ base: 'flex-start', md: 'flex-end' }}
-                  h={{ base: 'calc(100vh - 75px)', md: '100%' }}
+                  h={{ base: 'calc(100vh)', md: '100%' }}
                   position={{ base: 'absolute', md: 'inherit' }}
                   width={{ base: '100vw', md: '100%' }}
                   top={{ base: '100%', md: '0' }}
@@ -390,7 +450,7 @@ export const AppHeader = () => {
           </Flex>
         ) : null}
       </Box>
-      <Box
+      {/* <Box
         paddingTop={{
           base: '75px',
           md: '88px',
@@ -398,7 +458,7 @@ export const AppHeader = () => {
           xl: '140px',
           '2xl': '172px'
         }}
-      ></Box>
+      ></Box> */}
     </>
   )
 }
