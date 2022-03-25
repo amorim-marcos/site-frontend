@@ -66,6 +66,16 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const galleryOfImages: any = []
 
   if (ambients && ambients.length > 0) {
+    ambients.sort((ambientA:any, ambientB: any) => {
+      if(ambientA.informations.year > ambientB.informations.year){
+        return -1
+      }else if(ambientA.informations.year < ambientB.informations.year){
+        return 1
+      }else{
+        return 0
+      }
+    })
+
     ambients.forEach((item: any) => {
       item.gallery_of_images.forEach((image: any) => {
         galleryOfImages.push({
