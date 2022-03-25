@@ -350,6 +350,7 @@ const FilterBtn = ({
       h="30px"
       fontSize="22px"
       _focus={{ outline: 'none' }}
+      cursor="pointer"
       // border="1px solid magenta"
       paddingX={paddingX}
     >
