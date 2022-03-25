@@ -66,6 +66,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       return {
         id: product.id,
         name: product.name,
+        href: `/products/bp-berneck/catalog/${product.url_code}`,
         imgSrc: `${url}${product.pattern_image.url}`,
         product_texture: product.product_texture
       }
