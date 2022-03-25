@@ -23,7 +23,6 @@ export const AppHeader = () => {
   const [visibilitySearchBar, setvisibilityOpenSearchBar] = useState(false)
   const [menuMobileOpen, setMenuMobileOpen] = useState(false)
   const header = useTranslation('header')
-  const [fixed, setFixed] = useState(true)
   const [marginTopHeader, setMarginTopHeader] = useState('51px')
   const router = useRouter()
 
@@ -52,39 +51,23 @@ export const AppHeader = () => {
   function handleScroll(value: any) {
     if (window) {
       let headerLimit = 51
-      let headerExpectedMargin = '51px'
 
       if (window.innerWidth < 1536) {
         headerLimit = 40
-        headerExpectedMargin = '40px'
       }
       if (window.innerWidth < 1280) {
         headerLimit = 30
-        headerExpectedMargin = '30px'
       }
       if (window.innerWidth < 1024) {
         headerLimit = 25
-        headerExpectedMargin = '25px'
       }
 
       console.log(window.pageYOffset)
 
-      // const scrollLimit =
-      //   document.body.scrollHeight - window.innerHeight
       if (window.pageYOffset >= headerLimit) {
-        // setFixed(false)
-        // setMarginTopHeader(headerExpectedMargin)
-
         setMarginTopHeader(`${0}px`)
-        // setFixed(true)
       } else {
-        let a = window.pageYOffset - headerLimit
-        if (a < 0) {
-          a = 0
-        }
         setMarginTopHeader(`${headerLimit}px`)
-        // setFixed(false)
-        // setMarginTopHeader('0px')
       }
     }
   }
@@ -179,7 +162,6 @@ export const AppHeader = () => {
           <Box
             w="100%"
             bg="green.800"
-            // position={fixed ? 'fixed' : 'relative'}
             position={'fixed'}
             transition="0.2s"
             top={marginTopHeader}
