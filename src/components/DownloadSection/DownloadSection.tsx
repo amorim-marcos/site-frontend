@@ -7,6 +7,7 @@ import {
   FlexProps,
   Link
 } from '@chakra-ui/react'
+import Arrow from '@components/Arrow'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import useMobile from 'hooks/useMobile'
 import { useState } from 'react'
@@ -129,16 +130,16 @@ export const DownloadSection = ({
             w={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
             h={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
             _hover={{
-              background: 'green.600',
+              background: 'green.550',
               color: 'white.100'
             }}
             onClick={avanceLeft}
           >
-            <ArrowIcon
-              direction="left"
-              stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
-              width="40%"
-            />
+            {
+              isMobile 
+              ? <Arrow width="5" height="5" direction="left" />
+              : <Arrow width="22" height="30" direction="left" />
+            }
           </Button>
           <Button
             onMouseEnter={() => setHoverBtnControl(true)}
@@ -149,15 +150,16 @@ export const DownloadSection = ({
             w={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
             h={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
             _hover={{
-              background: 'green.600',
+              background: 'green.550',
               color: 'white.100'
             }}
             onClick={avanceRight}
           >
-            <ArrowIcon
-              width="40%"
-              stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
-            />
+            {
+              isMobile 
+              ? <Arrow width="5" height="5" direction="right" />
+              : <Arrow width="22" height="30" direction="right" />
+            }
           </Button>
         </Flex>
       }
