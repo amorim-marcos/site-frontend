@@ -1,12 +1,18 @@
 import { useRouter } from 'next/router'
 
-import { Flex, Text, Box, Image, Grid, GridItem, Link } from '@chakra-ui/react'
-
+import {
+  Flex,
+  Text,
+  Box,
+  Image,
+  Grid,
+  GridItem,
+  FlexProps,
+  useInterval
+} from '@chakra-ui/react'
 import useMobile from 'hooks/useMobile'
-
 import { Arrow } from '@components/Icons'
 import Pagebar from '@components/Pagebar'
-import Carousel from '@components/Carousel'
 import CarouselMultiElements from '@components/CarouselMultiElements'
 
 import BannerGallery from '@components/BannerGallery'
@@ -15,9 +21,11 @@ import BannerProducts from '@components/BannerProducts'
 import BannerCollections from '@components/BannerCollections'
 
 import type { Gallery } from 'types/data'
+import { useState, useEffect } from 'react'
 
 export type BpBerneckViewProps = {
   galleries?: Gallery[]
+  carrouselImages: string[]
 }
 
 export default function BpBerneckView(props: BpBerneckViewProps) {
@@ -36,26 +44,12 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
       />
 
       {/* INICIO BANNER CAROUSEL */}
-      <Flex
-        maxWidth="1920px"
-        marginX="auto"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="white.100"
-      >
-        <Carousel carouselType="brown">
-          <PanelImage imageSrc="../img/banner_bp.png" />
-          <PanelImage imageSrc="../img/Curitibanos.png" />
-          <PanelImage imageSrc="../img/mdf_plus_bp.png" />
-        </Carousel>
-      </Flex>
+      <CarrouselBP images={props.carrouselImages} />
       {/* FIM BANNER CAROUSEL */}
 
       {/* INICIO BANNER COLECAO */}
       <Grid
-        h={{ base: '600px', sm: '500px', lg: '600px', xl: '600px' }}
+        h={{ base: '900px', sm: '500px', lg: '600px', xl: '600px' }}
         w={{ base: '90%', sm: '93%', lg: '93%', xl: '93%' }}
         margin={{ base: '5%', sm: '3% 3%', lg: '3% 3%', xl: '3% 3%' }}
         templateRows={{
@@ -93,7 +87,9 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           bg="papayawhip"
         >
           <BannerCollections
-            onClick={() => window.location.href = `/products/bp-berneck/catalog?collection=nomade`}
+            onClick={() =>
+              (window.location.href = `/products/bp-berneck/catalog?collection=nomade`)
+            }
             title="Conheça"
             titleColor="brown.300"
             imgSrc="../img/banner_nomade.png"
@@ -106,7 +102,9 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           bg="blue"
         >
           <BannerCollections
-            onClick={() => window.location.href = `/products/bp-berneck/catalog?collection=origens`}
+            onClick={() =>
+              (window.location.href = `/products/bp-berneck/catalog?collection=origens`)
+            }
             title="Conheça"
             titleColor="green.700"
             imgSrc="../img/banner_origens.png"
@@ -129,6 +127,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           paddingX={'5%'}
           w="100%"
           alignItems={'center'}
+          flexDirection={{ base: 'column', xs: 'row' }}
           justifyContent={'space-between'}
         >
           <CompletedTitle
@@ -143,6 +142,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           />
 
           <Flex
+            marginY={{ base: '30px', xs: '0' }}
             cursor={'pointer'}
             _hover={{ opacity: '0.7' }}
             alignItems={'center'}
@@ -163,6 +163,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
                 whiteSpace={'nowrap'}
                 variant={'h4' as any}
                 textAlign={'right'}
+                fontWeight="bold"
               >
                 Galeria de ambientes
               </Text>
@@ -173,7 +174,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               direction={'column'}
             >
               <Arrow
-                width={{ base: '30px', md: '40px', lg: '32px' }}
+                width={{ base: '20px', md: '40px', lg: '32px' }}
                 color="green.700"
               />
             </Flex>
@@ -227,7 +228,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             srcImg: '/assets/imgs/pagina_capa_bp/pack_padroes_bp.png',
             id: 1,
             title: 'Pack de Padrões BP BERNECK',
-            anchorId: "pack-bp-downloads",
+            anchorId: 'pack-bp-downloads',
             subtTitle: 'FAÇA O DOWNLOAD',
             subTitleColor: 'green.800'
           },
@@ -235,7 +236,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             srcImg: '/assets/imgs/pagina_capa_bp/revista_inspirare.png',
             id: 2,
             title: 'Revista Inspirare BNK',
-            anchorId: "revista-inspirare-bnk",
+            anchorId: 'revista-inspirare-bnk',
             subtTitle: 'CONHEÇA MAIS',
             subTitleColor: 'white.100'
           },
@@ -243,55 +244,57 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             srcImg: '/assets/imgs/pagina_capa_bp/materiais_suporte.png',
             id: 3,
             title: 'Materiais de Suporte',
-            anchorId: "materiais-de-suporte",
+            anchorId: 'materiais-de-suporte',
             subtTitle: 'CONHEÇA MAIS',
             subTitleColor: 'white.100'
           }
         ].map((i) => {
           return (
-              <Flex
-                onClick={() => window.location.href = `/canal-bnk/downloads/#${i.anchorId}`}
-                w={{ base: '100%', md: '30%' }}
-                h={{
-                  base: '100vw',
-                  md: '225px',
-                  lg: '282px',
-                  xl: '338px',
-                  '2xl': '423px'
-                }}
-                key={i.id}
-                flexDirection={'column'}
-                justifyContent={'flex-end'}
-                padding="2%"
-                background={`url(${i.srcImg})`}
-                backgroundSize={'cover'}
-                cursor={'pointer'}
-                position={'relative'}
-                marginY={{ base: '5%', md: '0' }}
+            <Flex
+              onClick={() =>
+                (window.location.href = `/canal-bnk/downloads/#${i.anchorId}`)
+              }
+              w={{ base: '100%', md: '30%' }}
+              h={{
+                base: '100vw',
+                md: '225px',
+                lg: '282px',
+                xl: '338px',
+                '2xl': '423px'
+              }}
+              key={i.id}
+              flexDirection={'column'}
+              justifyContent={'flex-end'}
+              padding="2%"
+              background={`url(${i.srcImg})`}
+              backgroundSize={'cover'}
+              cursor={'pointer'}
+              position={'relative'}
+              marginY={{ base: '5%', md: '0' }}
+            >
+              <Text
+                zIndex={'docked'}
+                color={i.subTitleColor}
+                variant={'larger-body' as any}
               >
-                <Text
-                  zIndex={'docked'}
-                  color={i.subTitleColor}
-                  variant={'larger-body' as any}
-                >
-                  {i.subtTitle}
-                </Text>
-                <Text zIndex={'docked'} as="h3" variant={'h3' as any}>
-                  {i.title}
-                </Text>
-                <Box
-                  position={'absolute'}
-                  top="0"
-                  left="0"
-                  w="100%"
-                  h="100%"
-                  transition={'0.5s'}
-                  zIndex={'base'}
-                  _hover={{
-                    bg: 'linear-gradient(180deg, rgba(255,255,255,0) 48%, rgba(172,204,159,0.7959558823529411) 100%)'
-                  }}
-                />
-              </Flex>
+                {i.subtTitle}
+              </Text>
+              <Text zIndex={'docked'} as="h3" variant={'h3' as any}>
+                {i.title}
+              </Text>
+              <Box
+                position={'absolute'}
+                top="0"
+                left="0"
+                w="100%"
+                h="100%"
+                transition={'0.5s'}
+                zIndex={'base'}
+                _hover={{
+                  bg: 'linear-gradient(180deg, rgba(255,255,255,0) 48%, rgba(172,204,159,0.7959558823529411) 100%)'
+                }}
+              />
+            </Flex>
           )
         })}
       </Flex>
@@ -312,3 +315,82 @@ const PanelImage = (props: { imageSrc: string }) => (
     />
   </Flex>
 )
+
+interface CarrouselBPProps extends FlexProps {
+  images: string[]
+}
+
+const CarrouselBP = ({ images }: CarrouselBPProps) => {
+  const [currentImage, setCurrentImage] = useState(0)
+  const [imageVisibility, setImageVisibility] = useState(true)
+
+  function next() {
+    setImageVisibility(false)
+    setTimeout(() => {
+      if (currentImage === images.length - 1) {
+        setCurrentImage(0)
+      } else {
+        setCurrentImage((v) => v + 1)
+      }
+    }, 300)
+  }
+
+  useEffect(() => {
+    setTimeout(() => setImageVisibility(true), 100)
+  }, [currentImage])
+
+  useInterval(next, 5000)
+  return (
+    <Flex
+      maxWidth="1920px"
+      marginX="auto"
+      position="relative"
+      zIndex="base"
+      overflowY="hidden"
+      overflowX="hidden"
+      h={{
+        base: '130vw',
+        md: '405px',
+        lg: '506px',
+        xl: '608px',
+        '2xl': '760px'
+      }}
+      bg="brown.100"
+    >
+      <Flex w="100%" h="100%">
+        <Image
+          opacity={imageVisibility ? '1' : '0'}
+          transition={'0.3s'}
+          w="100%"
+          h="100%"
+          objectFit={'cover'}
+          src={images.length > 0 ? images[currentImage] : ''}
+        />
+      </Flex>
+      <Flex
+        position={'absolute'}
+        bottom="10%"
+        left="10%"
+        gap={{ base: '4px', md: '10px' }}
+      >
+        {images.map((_item, i) => {
+          return (
+            <Box
+              key={i}
+              bg={i === currentImage ? 'brown.300' : 'brown.200'}
+              w={{ base: '15px', md: '25px' }}
+              h={{ base: '15px', md: '25px' }}
+              _hover={{
+                bg: 'brown.400'
+              }}
+              cursor="pointer"
+              onClick={next}
+              border={i === currentImage ? '1px solid' : ''}
+              borderColor={i === currentImage ? 'brown.300' : ''}
+            />
+          )
+        })}
+      </Flex>
+    </Flex>
+  )
+}

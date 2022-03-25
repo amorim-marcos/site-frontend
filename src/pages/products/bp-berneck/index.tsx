@@ -8,6 +8,7 @@ import type { Gallery } from 'types/data'
 
 export interface BpBerneckProps {
   galleries: Gallery[]
+  carrouselImages: string[]
 }
 
 export default function BpBerneck(props: BpBerneckProps) {
@@ -35,6 +36,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
   })
 
   return {
-    props: { galleries }
+    props: {
+      galleries,
+      carrouselImages: ['/img/banner_bp.png', '/img/mdf_plus_bp.png']
+    }
   }
 }
