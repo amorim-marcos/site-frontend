@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRouter } from 'next/router'
 
-import { Flex, Box, Text, Image, Grid, GridItem } from '@chakra-ui/react'
+import { Flex, Box, Text, Image, Grid, GridItem, Link } from '@chakra-ui/react'
 
 import CarouselMultiElements from '@components/CarouselMultiElements'
 import CompletedTitle from '@components/CompletedTitle'
@@ -177,23 +177,17 @@ export const EnvView = ({
                       <Box key={i}>
                         <Flex w="100%">
                           <Box
-                            w={{
-                              base: '100%',
-                              sm: '110px',
-                              md: '80px',
-                              lg: '105px',
-                              xl: '130px',
-                              '2xl': '160px'
-                            }}
-                            h={{ base: '100px', sm: '30vw', md: '18vw' }}
-                            maxHeight="380px"
+                            w={{ base: '80vw', sm: '150px' }}
+                            h={{ base: '120px', sm: '275px' }}
                           >
-                            <Image
-                              src={panel.imgSrc}
-                              w="100%"
-                              h="100%"
-                              objectFit={'cover'}
-                            />
+                            <Link href={panel.href}>
+                              <Image
+                                src={panel.imgSrc}
+                                w="100%"
+                                h="100%"
+                                objectFit={'cover'}
+                              />
+                            </Link>
                           </Box>
                         </Flex>
 
