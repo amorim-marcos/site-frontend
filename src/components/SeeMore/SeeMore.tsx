@@ -1,4 +1,4 @@
-import { Link, Flex, Box, Text, Center, Container } from "@chakra-ui/react"
+import { Link, Flex, Box, Text, Center, Container } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import Arrow from '@components/Arrow'
 
@@ -24,16 +24,20 @@ export const SeeMore = (props: SeeMoreProps) => {
       align="center"
       justify="center"
       gap="14px"
+      cursor="pointer"
       //bg="black"
     >
       <Link
         letterSpacing="-0.4px"
-        fontSize={{  base: '16px',
-            md: '16px',
-            lg: '18px',
-            xl: '20px',
-            '2xl': '24px' }}
+        fontSize={{
+          base: '16px',
+          md: '16px',
+          lg: '18px',
+          xl: '20px',
+          '2xl': '24px'
+        }}
         color={props.textColor ? props.textColor : 'green.550'}
+        whiteSpace="nowrap"
       >
         {props?.text}
       </Link>

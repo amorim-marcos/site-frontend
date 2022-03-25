@@ -10,64 +10,71 @@ export type EnvProps = LinkProps & {
   others?: boolean
 }
 
-export const Env = ({ title, place, image_url, others, ...props }: EnvProps) => {
+export const Env = ({
+  title,
+  place,
+  image_url,
+  others,
+  ...props
+}: EnvProps) => {
   return (
     <Link {...props}>
-      
-      <Flex
-        direction="column"
-      >
+      <Flex direction="column">
         <Flex
-          flex={"1"}
+          flex={'1'}
           // bg="grey"
           height={{ base: '100%' }}
-          maxHeight={{ base: (others)? '150px': '100px', sm: '300px' , md: '220px', xl: (others)? '180px': '220px' , '2xl': (others)? '200px': '300px' }}
-          maxWidth={{ base: '300px', sm: '500px', md: (others)? '400px': '600px' }}
+          maxHeight={{
+            base: others ? '150px' : '100px',
+            sm: '300px',
+            md: '220px',
+            xl: others ? '180px' : '220px',
+            '2xl': others ? '200px' : '300px'
+          }}
+          maxWidth={{
+            base: '300px',
+            sm: '500px',
+            md: others ? '400px' : '600px'
+          }}
         >
-          <Image
-            objectFit="cover"
-            objectPosition="center"
-            src={image_url}
-          />
+          <Image objectFit="cover" objectPosition="center" src={image_url} />
         </Flex>
-       
+
         <Flex
-          flex={"1"}
+          flex={'1'}
           // bg="azure"
           direction="column"
-          maxWidth={{ base: '300px', sm: '500px', md: (others)? '400px': '600px' }}
-          margin={{ base: "2% 0% 1% 0%", sm: '2% 0% 1% 0%', md: '2% 0% 1% 0%' }}
+          maxWidth={{
+            base: '300px',
+            sm: '500px',
+            md: others ? '400px' : '600px'
+          }}
+          margin={{ base: '2% 0% 1% 0%', sm: '2% 0% 1% 0%', md: '2% 0% 1% 0%' }}
         >
           <Flex
             // bg="blue"
-            flex={"2"}
+            flex={'2'}
           >
-            <Text as={'h4'}
-              variant={'h4'}
-              fontWeight = 'bold'
-              color={"gray.300"}
-            >
+            <Text as={'h4'} variant={'h4'} fontWeight="bold" color={'gray.300'}>
               {title}
             </Text>
-           </Flex>
+          </Flex>
 
           <Flex
             // bg="yellow"
-            flex={"1"}
+            flex={'1'}
           >
-            <Text as={'h5'}
+            <Text
+              as={'h5'}
               variant={'h5'}
-              fontWeight = 'medium'
-              color={"gray.300"}
+              fontWeight="medium"
+              color={'gray.300'}
             >
               {place}
             </Text>
           </Flex>
-
         </Flex>
-
       </Flex>
-
     </Link>
   )
 }
