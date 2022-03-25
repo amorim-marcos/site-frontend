@@ -37,6 +37,8 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
         imgMarginRight="0px"
         secondaryBackground="#F3E9DA"
         downloadAndLinks={{
+          textColor: '#665E5A',
+          hoverColor: '#D3A383',
           datasheetUrl: mdp.technical_sheet,
           whereBuy: true,
           qualityCertificate: true
@@ -83,6 +85,8 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
         secondaryBackground="#F5F6F4"
         plusProduct
         downloadAndLinks={{
+          textColor: '#376B5C',
+          hoverColor: '#59993F',
           qualityCertificate: false,
           datasheetUrl: mdp_plus.technical_sheet
         }}

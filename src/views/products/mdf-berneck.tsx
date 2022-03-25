@@ -44,6 +44,8 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
         }}
         secondaryBackground="#F3E9DA"
         downloadAndLinks={{
+          textColor: '#665E5A',
+          hoverColor: '#D3A383',
           datasheetUrl: mdf.technical_sheet,
           whereBuy: true,
           qualityCertificate: true
@@ -131,6 +133,8 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
           }
         }}
         downloadAndLinks={{
+          textColor: '#376B5C',
+          hoverColor: '#59993F',
           qualityCertificate: false
         }}
       />

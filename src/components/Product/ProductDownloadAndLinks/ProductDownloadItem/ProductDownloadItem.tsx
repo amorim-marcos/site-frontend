@@ -1,6 +1,7 @@
 import { Flex, Text } from '@chakra-ui/react'
 import LocationIcon from '@components/Icons/LocationIcon'
 import QualityCertificateIcon from '@components/Icons/QualityCertificateIcon'
+import { useState } from 'react'
 import { DatasheetIcon } from '../../../Icons/DatasheetIcon/DatasheetIcon'
 
 export type ProductDownloadItemProps = {
@@ -20,6 +21,8 @@ export const ProductDownloadItem = ({
   iconName = 'datasheet',
   backgroundColor = '#FFF'
 }: ProductDownloadItemProps) => {
+  const [isHover, setIsHover] = useState(false)
+
   return (
     <Flex
       cursor={'pointer'}
@@ -45,6 +48,8 @@ export const ProductDownloadItem = ({
       alignItems="center"
       backgroundColor={backgroundColor}
       marginBottom={{ base: '15px', sm: '0px' }}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
     >
       {iconName === 'datasheet' ? (
         <DatasheetIcon
@@ -56,7 +61,7 @@ export const ProductDownloadItem = ({
             xl: '20px',
             '2xl': '30px'
           }}
-          stroke={textColor}
+          stroke={isHover ? hoverColor : textColor}
         />
       ) : iconName === 'location' ? (
         <LocationIcon
@@ -68,7 +73,7 @@ export const ProductDownloadItem = ({
             xl: '20px',
             '2xl': '30px'
           }}
-          stroke={textColor}
+          stroke={isHover ? hoverColor : textColor}
         />
       ) : (
         <QualityCertificateIcon
@@ -80,11 +85,10 @@ export const ProductDownloadItem = ({
             xl: '20px',
             '2xl': '30px'
           }}
-          stroke={textColor}
+          stroke={isHover ? hoverColor : textColor}
         />
       )}
       <Text
-        _hover={{ color: hoverColor }}
         color={textColor}
         fontSize={{
           base: '16px',

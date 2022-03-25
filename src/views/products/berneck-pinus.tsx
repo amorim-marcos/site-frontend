@@ -61,6 +61,8 @@ export default function BerneckPinusView({
         }}
         secondaryBackground="#F5F6F4"
         downloadAndLinks={{
+          textColor: '#376B5C',
+          hoverColor: '#59993F',
           whereBuy: true,
           datasheetUrl: pinus.technical_sheet,
           qualityCertificate: false
