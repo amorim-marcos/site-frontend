@@ -56,8 +56,9 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
           dimensions: mdp.dimensions,
           backgroundColor: '#FCFCFC',
           productWithBP: {
-            backgroundColor: '#FBF6F0',
             btnColor: '#D8C39F',
+            btnHoverColor: '#D0B588',
+            backgroundColor: '#FBF6F0',
             btnText: 'Conheça todos os padrões BP BERNECK em MDP',
             imgSrc: '/img/mdp_bp.png',
             type: 'centralizedBtn',
@@ -104,6 +105,8 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
           dimensions: mdp_plus.dimensions,
           backgroundColor: '#E8E8E8',
           productWithBP: {
+            btnColor: 'green.400',
+            btnHoverColor: '#96BC87',
             title: 'MDP PLUS BERNECK® com BP',
             description:
               'Inove nos projetos com os acabamentos BP em MDP PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
