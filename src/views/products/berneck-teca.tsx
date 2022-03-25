@@ -45,6 +45,8 @@ export default function BerneckTecaView(props: BerneckTecaViewProps) {
         }}
         secondaryBackground="#F5F6F4"
         downloadAndLinks={{
+          textColor: '#987257',
+          hoverColor: '#3E1500',
           datasheetUrl: props.technical_sheet,
           whereBuy: true,
           qualityCertificate: false,

@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 
 export type ProductDownloadAndLinksProps = {
+  textColor?: string
+  hoverColor?: string
   qualityCertificate?: boolean
   whereBuy?: boolean
   datasheetUrl?: string
@@ -16,7 +18,9 @@ export const ProductDownloadAndLinks = ({
   whereBuy = true,
   datasheetUrl = '/',
   backgroundColor = '#FEFEFE',
-  plusProduct = false
+  plusProduct = false,
+  textColor = '#665E5A',
+  hoverColor = '#595959'
 }: ProductDownloadAndLinksProps) => {
   const product = useTranslation('product')
   return (
@@ -36,8 +40,10 @@ export const ProductDownloadAndLinks = ({
       position="relative"
     >
       {datasheetUrl && (
-        <Link href={datasheetUrl} isExternal>
+        <Link href={datasheetUrl} _hover={{ outline: 'none' }} isExternal>
           <ProductDownloadItem
+            textColor={textColor}
+            hoverColor={hoverColor}
             iconName="datasheet"
             text={product.t('datasheet')}
             backgroundColor={backgroundColor}
@@ -45,8 +51,10 @@ export const ProductDownloadAndLinks = ({
         </Link>
       )}
       {whereBuy && (
-        <Link href="/onde-comprar">
+        <Link href="/onde-comprar" _hover={{ outline: 'none' }}>
           <ProductDownloadItem
+            textColor={textColor}
+            hoverColor={hoverColor}
             iconName="location"
             text={product.t('whereBuy')}
             backgroundColor={backgroundColor}
@@ -54,8 +62,10 @@ export const ProductDownloadAndLinks = ({
         </Link>
       )}
       {qualityCertificate && (
-        <Link href="/certificacoes">
+        <Link href="/certificacoes" _hover={{ outline: 'none' }}>
           <ProductDownloadItem
+            textColor={textColor}
+            hoverColor={hoverColor}
             iconName="qualityCertificate"
             text={product.t('qualityCertificate')}
             backgroundColor={backgroundColor}

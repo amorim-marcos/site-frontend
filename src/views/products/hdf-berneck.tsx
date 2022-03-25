@@ -60,6 +60,8 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
         }}
         secondaryBackground="#F3E9DA"
         downloadAndLinks={{
+          textColor: '#665E5A',
+          hoverColor: '#D3A383',
           qualityCertificate: true,
           datasheetUrl: hdf.technical_sheet,
           whereBuy: true
@@ -106,6 +108,8 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
           '2xl': '-510'
         }}
         downloadAndLinks={{
+          textColor: '#376B5C',
+          hoverColor: '#59993F',
           qualityCertificate: false,
           datasheetUrl: hdf_plus.technical_sheet
         }}
@@ -129,6 +133,8 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
             width: hdf_plus.dimensions.width
           },
           productWithBP: {
+            btnColor: 'green.400',
+            btnHoverColor: '#96BC87',
             title: 'HDF PLUS BERNECK® com BP',
             description:
               'Inove nos projetos com os acabamentos BP em HDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
