@@ -167,7 +167,7 @@ export const PostBody = ({
       >
         {tags &&
           tags.map((item, i) => {
-            return <TagItem key={i} tag={item.name} />
+            return <TagItem key={i} tag={item.name} hoverColor={category?.color} />
           })}
       </Flex>
 
@@ -176,22 +176,27 @@ export const PostBody = ({
   )
 }
 
-export const TagItem = ({ tag = 'tag' }) => {
-  const [hover, setHover] = useState(false)
-  return (
-    <Box
-      marginRight="2%"
-      marginBottom="3%"
-      padding="2%"
-      bg="white.100"
-      borderRadius="20px"
-      cursor="pointer"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+export const TagItem = ({
+  tag = 'tag',
+  hoverColor
+}: {
+  tag: string
+  hoverColor?: string
+}) => (
+  <Box
+    marginRight="2%"
+    marginBottom="3%"
+    padding="2%"
+    bg="white.100"
+    borderRadius="20px"
+  >
+    <Text
+      userSelect="none"
+      variant={'body'}
+      color={'brown.350'}
+      _hover={{ color: hoverColor }}
     >
-      <Text variant={'body' as any} color={hover ? 'green.600' : 'green.900'}>
-        {tag}
-      </Text>
-    </Box>
-  )
-}
+      {tag}
+    </Text>
+  </Box>
+)
