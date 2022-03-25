@@ -101,7 +101,6 @@ export default function Home(props: HomeProps) {
             subtitleColor: 'brown.200',
             bgColor: 'brown.300',
             srcImg: 'img/bp-berneck.png',
-            onClick: () => alert('Ir para BP'),
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -115,9 +114,8 @@ export default function Home(props: HomeProps) {
             titleColor: 'white',
             subtitle: 'Linha de Painéis com Resistência Extra à Umidade',
             subtitleColor: 'brown.350',
-            bgColor: '#ACCC9F',
+            bgColor: 'green.400',
             srcImg: '/img/plus.png',
-            onClick: () => alert('Ir para Produto'),
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -128,12 +126,11 @@ export default function Home(props: HomeProps) {
           },
           {
             title: 'HDF BERNECK®',
-            titleColor: 'green.900',
+            titleColor: 'gray.400',
             subtitle: 'Painel de Fibra de Alta Densidade',
-            subtitleColor: 'gray.300',
+            subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: '/img/hdf.png',
-            onClick: () => alert('Ir para Produto'),
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -144,12 +141,11 @@ export default function Home(props: HomeProps) {
           },
           {
             title: 'MDF BERNECK®',
-            titleColor: 'green.900',
-            subtitle: 'Laminado Melamínico Decorativo',
-            subtitleColor: 'gray.300',
+            titleColor: 'gray.400',
+            subtitle: 'Painel de Fibra de Média Densidade',
+            subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: '/img/mdf.png',
-            onClick: () => alert('Ir para BP'),
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -160,12 +156,11 @@ export default function Home(props: HomeProps) {
           },
           {
             title: 'MDP BERNECK®',
-            titleColor: 'green.900',
-            subtitle: 'Linha de Painéis com Resistência Extra à Umidade',
-            subtitleColor: 'gray.300',
+            titleColor: 'gray.400',
+            subtitle: 'Painel de Partículas de Média Densidade',
+            subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: '/img/mdp.png',
-            onClick: () => alert('Ir para Produto'),
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -177,11 +172,10 @@ export default function Home(props: HomeProps) {
           {
             title: 'BERNECK TECA®',
             titleColor: 'gray.400',
-            subtitle: 'Painel de Fibra de Alta Densidade',
+            subtitle: 'Madeira Serrada de Teca',
             subtitleColor: 'gray.400',
-            bgColor: '#CFB8A7',
+            bgColor: 'brown.250',
             srcImg: '/img/teca.png',
-            onClick: () => alert('Ir para Produto'),
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -192,12 +186,11 @@ export default function Home(props: HomeProps) {
           },
           {
             title: 'BERNECK PINUS®',
-            titleColor: 'gray.400',
-            subtitle: 'Painel de Fibra de Alta Densidade',
+            titleColor: 'green.900',
+            subtitle: 'Madeira Serrada de Pinus',
             subtitleColor: 'gray.400',
-            bgColor: '#A1B5A8',
+            bgColor: 'green.300',
             srcImg: '/img/pinus.png',
-            onClick: () => alert('Ir para Produto'),
             bannerSize: {
               base: '100px',
               sm: '150px',
