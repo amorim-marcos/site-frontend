@@ -31,6 +31,7 @@ export interface CatalogItemProps {
   in_ambients: {
     id: number
     image_url: string
+    ambient_href: string
   }[]
   available_at: {
     id: number
