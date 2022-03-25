@@ -47,18 +47,66 @@ export const AppHeader = () => {
   }, [openSearchBar])
 
   const header = useTranslation('header')
+
+  const [fixed, setFixed] = useState(true)
+  function handleScroll(value: any) {
+    if (window) {
+      let headerLimit = 51
+
+      if (window.innerWidth < 1536) {
+        headerLimit = 40
+      }
+      if (window.innerWidth < 1280) {
+        headerLimit = 30
+      }
+      if (window.innerWidth < 1024) {
+        headerLimit = 25
+      }
+      if (window.innerWidth < 768) {
+        headerLimit = 25
+      }
+
+      // const scrollLimit =
+      //   document.body.scrollHeight - window.innerHeight - footerSize
+      if (window.pageYOffset <= headerLimit) {
+        setFixed(true)
+      } else {
+        setFixed(false)
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (window) {
+      window.addEventListener('scroll', handleScroll, { passive: true })
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }
+  }, [])
   return (
     <>
       <Box
         data-testid="header-container"
         marginX="auto"
-        h={{
-          base: '75px',
-          md: '88px',
-          lg: '103px',
-          xl: '140px',
-          '2xl': '172px'
-        }}
+        h={
+          fixed
+            ? {
+                base: '75px',
+                md: '88px',
+                lg: '103px',
+                xl: '140px',
+                '2xl': '172px'
+              }
+            : {
+                base: '50px',
+                md: '63px',
+                lg: '73px',
+                xl: '100px',
+                '2xl': '121px'
+              }
+        }
         // maxWidth="1920px"
         bg={'green.900'}
         // position="relative"
@@ -67,7 +115,7 @@ export const AppHeader = () => {
         left="0"
         w="100%"
         zIndex={'overlay'}
-        transition="0.5s"
+        transition="0.2s"
       >
         <Box
           zIndex="modal"
@@ -77,7 +125,23 @@ export const AppHeader = () => {
           marginX="auto"
           flexDirection={'column'}
         >
-          <Box w="100%" bg="green.900">
+          <Box
+            w="100%"
+            transition={'0.3s'}
+            overflow={'hidden'}
+            h={
+              fixed
+                ? {
+                    base: '25px',
+                    md: '25px',
+                    lg: '30px',
+                    xl: '40px',
+                    '2xl': '51px'
+                  }
+                : '0px'
+            }
+            bg="green.900"
+          >
             <Box w="100%" marginX="auto" maxWidth={'1920px'}>
               <Flex
                 paddingX={{ base: '4.5%', md: '3.5%' }}
@@ -170,7 +234,7 @@ export const AppHeader = () => {
                 <Flex
                   paddingLeft={{ base: '0', md: '70px' }}
                   justifyContent={{ base: 'flex-start', md: 'flex-end' }}
-                  h={{ base: 'calc(100vh - 75px)', md: '100%' }}
+                  h={{ base: 'calc(100vh - 50px)', md: '100%' }}
                   position={{ base: 'absolute', md: 'inherit' }}
                   width={{ base: '100vw', md: '100%' }}
                   top={{ base: '100%', md: '0' }}
@@ -391,6 +455,7 @@ export const AppHeader = () => {
         ) : null}
       </Box>
       <Box
+        bg="green.900"
         paddingTop={{
           base: '75px',
           md: '88px',
