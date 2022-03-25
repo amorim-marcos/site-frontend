@@ -80,6 +80,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       item.gallery_of_images.forEach((image: any) => {
         galleryOfImages.push({
           id: image.id,
+          ambient_href: `/products/bp-berneck/gallery/${item.url_code}`,
           image_url: `${url}${image.url}`
         })
       })

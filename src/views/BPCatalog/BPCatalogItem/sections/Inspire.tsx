@@ -13,7 +13,7 @@ export interface InspireProps {
   urlVideo: string
   urlEbook: string
   combine_with: { name: string; href: string; img: string }[]
-  in_ambients: { id: number; image_url: string }[]
+  in_ambients: { id: number; ambient_href: string; image_url: string }[]
 }
 
 export const Inspire = (props: InspireProps) => {
@@ -222,6 +222,8 @@ export const Inspire = (props: InspireProps) => {
             </Text>
 
             <Image
+              onClick={() => router.push(props.in_ambients[curr].ambient_href)}
+              cursor="pointer"
               src={props.in_ambients[curr].image_url}
               w={{ base: '320px', xs: '100%', sm: '846px' }}
               h={{ base: '321px', sm: '562px' }}
