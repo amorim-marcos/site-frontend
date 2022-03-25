@@ -96,7 +96,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const tableContent = [
     {
       column1: 'Ano',
-      column2: envFetch.informations.year
+      column2: envFetch.informations?.year ?? null
     },
     {
       column1: 'Ambiente',
@@ -108,11 +108,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     },
     {
       column1: 'Arquiteto',
-      column2: envFetch.informations.architect
+      column2: envFetch.informations?.architect ?? null
     },
     {
       column1: 'Fotógrafo',
-      column2: envFetch.informations.photographer
+      column2: envFetch.informations?.photographer ?? null
     }
   ]
 
