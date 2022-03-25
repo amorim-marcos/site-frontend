@@ -1,14 +1,16 @@
-import { Flex, Box, Text, Image } from '@chakra-ui/react'
-import CompletedTitle from '@components/CompletedTitle'
-import { CalendarIcon, SocialIcon } from '@components/Icons'
-import ArrowIcon from '@components/Icons/ArrowIcon'
-import { useState } from 'react'
-import parser from 'react-html-parser'
-import { Wrapper } from './styles'
-import { colors } from '../../theme/colors'
+import { Flex, Box, Text } from '@chakra-ui/react'
+
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
+import parser from 'react-html-parser'
+
+import CompletedTitle from '@components/CompletedTitle'
+import { CalendarIcon, SocialIcon, Arrow } from '@components/Icons'
+
 import { Category } from 'types/data/Post'
 import { smartDate } from 'utils/utils'
+
+import { colors } from '../../theme/colors'
+import { Wrapper } from './styles'
 
 export type PostBodyProps = {
   category?: Category
@@ -64,9 +66,7 @@ export const PostBody = ({
             gap={{ base: '10px', lg: '0px' }}
           >
             <FacebookShareButton
-              url={
-                `https://www.berneck.com.br/canal-bnk/${category?.id}/${postSlug}`
-              }
+              url={`https://www.berneck.com.br/canal-bnk/${category?.id}/${postSlug}`}
               quote={postTitle}
             >
               <SocialIcon
@@ -79,9 +79,7 @@ export const PostBody = ({
               />
             </FacebookShareButton>
             <TwitterShareButton
-              url={
-                `https://www.berneck.com.br/canal-bnk/${category?.id}/${postSlug}`
-              }
+              url={`https://www.berneck.com.br/canal-bnk/${category?.id}/${postSlug}`}
             >
               <SocialIcon
                 media="twitter"
@@ -102,8 +100,8 @@ export const PostBody = ({
             paddingLeft={{ base: '0', md: '3%' }}
           >
             <Flex marginBottom={{ base: '15px', md: '0' }} alignItems="center">
-              <ArrowIcon width="10px" stroke={category?.color} />
-              <Text marginLeft={'2%'} variant={'body' as any}>
+              <Arrow width="10px" color={category?.color} />
+              <Text marginLeft={'2%'} variant="body">
                 {category?.name}
               </Text>
             </Flex>
@@ -129,18 +127,12 @@ export const PostBody = ({
           bottom={{ base: '8%', md: '0' }}
           right={{ base: '0', md: '0' }}
         >
-          {/* <Image
-            marginRight="15px"
-            src="/img/calendario.png"
-            w="30px"
-            height="30px"
-          /> */}
           <CalendarIcon
             width={'30px'}
             marginRight="15px"
             stroke1={category?.color}
           />
-          <Text color="gray.350" variant={'body' as any}>
+          <Text color="gray.350" variant="body">
             {smartDate(publishDate, 'PT-BR')}
           </Text>
         </Flex>
@@ -166,9 +158,9 @@ export const PostBody = ({
         wrap="wrap"
       >
         {tags &&
-          tags.map((item, i) => {
-            return <TagItem key={i} tag={item.name} />
-          })}
+          tags.map((item, i) => (
+            <TagItem key={i} tag={item.name} hoverColor={category?.color} />
+          ))}
       </Flex>
 
       {/* End of tags section */}
@@ -176,22 +168,27 @@ export const PostBody = ({
   )
 }
 
-export const TagItem = ({ tag = 'tag' }) => {
-  const [hover, setHover] = useState(false)
-  return (
-    <Box
-      marginRight="2%"
-      marginBottom="3%"
-      padding="2%"
-      bg="white.100"
-      borderRadius="20px"
-      cursor="pointer"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+export const TagItem = ({
+  tag = 'tag',
+  hoverColor
+}: {
+  tag: string
+  hoverColor?: string
+}) => (
+  <Box
+    marginRight="2%"
+    marginBottom="3%"
+    padding="2%"
+    bg="white.100"
+    borderRadius="20px"
+  >
+    <Text
+      userSelect="none"
+      variant={'body'}
+      color={'brown.350'}
+      _hover={{ color: hoverColor }}
     >
-      <Text variant={'body' as any} color={hover ? 'green.600' : 'green.900'}>
-        {tag}
-      </Text>
-    </Box>
-  )
-}
+      {tag}
+    </Text>
+  </Box>
+)
