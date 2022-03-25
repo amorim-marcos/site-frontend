@@ -36,7 +36,7 @@ export const ProductDownloadAndLinks = ({
       position="relative"
     >
       {datasheetUrl && (
-        <Link href={datasheetUrl} isExternal>
+        <Link href={datasheetUrl} _hover={{ outline: 'none' }} isExternal>
           <ProductDownloadItem
             iconName="datasheet"
             text={product.t('datasheet')}
@@ -45,7 +45,7 @@ export const ProductDownloadAndLinks = ({
         </Link>
       )}
       {whereBuy && (
-        <Link href="/onde-comprar">
+        <Link href="/onde-comprar" _hover={{ outline: 'none' }}>
           <ProductDownloadItem
             iconName="location"
             text={product.t('whereBuy')}
@@ -54,7 +54,7 @@ export const ProductDownloadAndLinks = ({
         </Link>
       )}
       {qualityCertificate && (
-        <Link href="/certificacoes">
+        <Link href="/certificacoes" _hover={{ outline: 'none' }}>
           <ProductDownloadItem
             iconName="qualityCertificate"
             text={product.t('qualityCertificate')}
