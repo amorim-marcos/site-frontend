@@ -1,9 +1,10 @@
 import { ReactNode, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import { Box, Flex, Image, Link, Text } from '@chakra-ui/react'
+import { Box, Flex, Image, Link, Text, Button } from '@chakra-ui/react'
 
 import { ReportsIcon, PlayIcon, Arrow } from '@components/Icons'
+import useMobile from 'hooks/useMobile'
 
 export interface InspireProps {
   textureName: string
@@ -19,6 +20,7 @@ export interface InspireProps {
 export const Inspire = (props: InspireProps) => {
   const [curr, setCurr] = useState(0)
   const router = useRouter()
+  const isMobile = useMobile(568)
 
   const switchTo = (act: 'next' | 'prev') => {
     const count = props.in_ambients.length
@@ -237,8 +239,42 @@ export const Inspire = (props: InspireProps) => {
               mt={{ base: '-5px', sm: '-38px' }}
               w={{ base: '154px' }}
             >
-              <ArrowButton onClick={() => switchTo('prev')} direction="left" />
-              <ArrowButton onClick={() => switchTo('next')} direction="right" />
+                    <Button
+                      onClick={() => switchTo('prev')}
+                      variant="no-border"
+                      background="gray.300"
+                      color="gray.150"
+                      w={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
+                      h={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
+                      _hover={{
+                        background: 'green.550',
+                        color: 'white.100'
+                      }}
+                    >
+                      {isMobile ? (
+                        <Arrow width="5" height="5" direction="left" />
+                      ) : (
+                        <Arrow width="22" height="30" direction="left" />
+                      )}
+                    </Button>
+                    <Button
+                      onClick={() => switchTo('next')}
+                      variant="no-border"
+                      background="gray.300"
+                      color="gray.150"
+                      w={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
+                      h={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
+                      _hover={{
+                        background: 'green.550',
+                        color: 'white.100'
+                      }}
+                    >
+                      {isMobile ? (
+                        <Arrow width="5" height="5" direction="right" />
+                      ) : (
+                        <Arrow width="22" height="30" direction="right" />
+                      )}
+                    </Button>
             </Flex>
           </Flex>
         ) : (
