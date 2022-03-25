@@ -20,7 +20,7 @@ export const BP = ({
   ...props
 }: BPProps) => {
   return (
-    <Link {...props}>
+    <Link {...props} _hover={{ outline: 'none' }}>
       <Flex direction="column">
         <BpPatternImage flex={1} image_url={pattern_image} />
         <Text
