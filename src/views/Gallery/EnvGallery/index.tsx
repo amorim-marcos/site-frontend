@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react'
 
-import { Container, Grid, GridItem, Center } from '@chakra-ui/react'
+import { Container, Grid, GridItem, Center, Text, Flex, filter } from '@chakra-ui/react'
 
 import Pagebar from '@components/Pagebar'
 
@@ -179,16 +179,10 @@ export const EnvGallery = ({
         maxW="1920px"
         width="100%"
         paddingInline="0"
-        paddingBottom="300px"
       >
         <Container
           zIndex="30"
           position={isMobile && displayFilters ? 'absolute' : 'relative'}
-          mb={
-            displayFilters
-              ? { base: '40px', md: '100px' }
-              : { base: '5px', md: '15px' }
-          }
           minW="100%"
           minH={{ base: '0', md: '50px' }}
           height={isMobile && displayFilters ? '100%' : 'auto'}
@@ -236,39 +230,74 @@ export const EnvGallery = ({
           display={isMobile && displayFilters ? 'none' : 'normal'}
           minW="100%"
         >
-          <Center>
-            <Grid
-              width="100%"
-              overflow="hidden"
-              templateRows="repeat(auto, 1fr)"
-              templateColumns={{
-                base: 'repeat(1, 1fr)',
-                md: 'repeat(2, 1fr)',
-                xl: 'repeat(3, 1fr)'
-              }}
-              gridGap={{
-                base: 'none',
-                sm: '10px',
-                md: '30px',
-                xl: '30px',
-                '2xl': '40px'
-              }}
-              justifyItems="center"
-              // bg="pink"
-            >
-              {filteredEnvs &&
-                filteredEnvs.map((env) => (
-                  <GridItem key={env.id} mt="20px">
-                    <Env
-                      href={`/products/bp-berneck/gallery/${env.url_code}`}
-                      title={env.title}
-                      place={env.name}
-                      image_url={env.image_url}
-                    />
-                  </GridItem>
-                ))}
-            </Grid>
-          </Center>
+          {
+            ( filteredEnvs && filteredEnvs.length > 0 )
+            ? 
+              <Center
+                paddingBottom="300px"
+                mt={
+                  displayFilters
+                    ? { base: '40px', md: '100px' }
+                    : { base: '5px', md: '15px' }
+                }
+              >
+                <Grid
+                  width="100%"
+                  overflow="hidden"
+                  templateRows="repeat(auto, 1fr)"
+                  templateColumns={{
+                    base: 'repeat(1, 1fr)',
+                    md: 'repeat(2, 1fr)',
+                    xl: 'repeat(3, 1fr)'
+                  }}
+                  gridGap={{
+                    base: 'none',
+                    sm: '10px',
+                    md: '30px',
+                    xl: '30px',
+                    '2xl': '40px'
+                  }}
+                  justifyItems="center"
+                  // bg="pink"
+                >
+                  
+                  {
+                    filteredEnvs.map((env) => (
+                      <GridItem key={env.id} mt="20px">
+                        <Env
+                          href={`/products/bp-berneck/gallery/${env.url_code}`}
+                          title={env.title}
+                          place={env.name}
+                          image_url={env.image_url}
+                        />
+                      </GridItem>
+                    ))
+                  }
+                </Grid>
+              </Center>
+            : 
+              <Flex
+                  minH="600px"
+                  flexDirection="row"
+                  justifyContent="center"
+                  alignItems="center"
+                  alignContent="center"
+              >
+                {
+                  filters["nameSearched"] == "" 
+                  ? <Text 
+                      alignSelf="center" color="gray.300" fontSize={{base:"18px", md:"24px"}} textAlign="center"
+                    >
+                      Os filtros aplicados não retornaram nenhum resultado.
+                    </Text>
+                  : 
+                    <Text alignSelf="center" color="gray.300" fontSize={{base:"18px", md:"24px"}} textAlign="center">
+                      Nenhum resultado encontrado para <i>"{filters["nameSearched"]}"</i>
+                    </Text>
+                }
+                
+              </Flex>
+          }
         </Container>
       </Container>
     </>
