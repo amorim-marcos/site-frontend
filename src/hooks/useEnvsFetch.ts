@@ -1,4 +1,5 @@
 import axios from 'axios'
+import qs from 'qs'
 import { useEffect, useState } from 'react'
 
 export default function useEnvsFetch(pageSize: number) {
@@ -21,13 +22,17 @@ export default function useEnvsFetch(pageSize: number) {
       setLoading(true)
       setError(false)
 
+      const query = qs.stringify({
+        _where: [{ pricing_gte: 20 }, { pricing_lte: 50 }]
+      })
+      console.log(query)
       axios({
         method: 'GET',
         url: process.env.NEXT_PUBLIC_API_URL + '/ambients',
-        params: {
-          _limit: pageSize,
-          _start: envs.length
-        },
+        // params: {
+        //   _limit: pageSize,
+        //   _start: envs.length
+        // },
         cancelToken: new axios.CancelToken((c) => (cancel = c))
       })
         .then((r) => {
@@ -46,7 +51,6 @@ export default function useEnvsFetch(pageSize: number) {
               }
             })
           ])
-          console.log('terminando busca', r.data)
           setLoading(false)
         })
         .catch((e) => {
