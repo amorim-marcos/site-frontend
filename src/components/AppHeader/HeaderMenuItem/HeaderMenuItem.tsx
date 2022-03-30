@@ -39,13 +39,12 @@ export const HeaderMenuItem = ({
       position="relative"
       h={{ base: '9vh', md: '100%' }}
       maxHeight={115}
-      marginX={{ base: '0px', md: '1%', xl: '1%', '2xl': '1%' }}
+      marginX={{ base: '0px', md: '1%', xl: '1%' }}
       paddingX={{
         base: '0px',
         md: '2.6%',
         lg: '2.5%',
-        xl: '2.3%',
-        '2xl': '2.3%'
+        xl: '2.3%'
       }}
       _hover={{
         base: {
@@ -75,8 +74,7 @@ export const HeaderMenuItem = ({
                 base: '10px',
                 md: '8.3px',
                 lg: '10px',
-                xl: '13px',
-                '2xl': '16.5px'
+                xl: '13px'
               }}
               color="#FFF"
               variant={'header-menu' as any}
@@ -105,8 +103,7 @@ export const HeaderMenuItem = ({
             base: '10px',
             md: '8.3px',
             lg: '10px',
-            xl: '13px',
-            '2xl': '16.5px'
+            xl: '13px'
           }}
           color="#FFF"
           variant={'header-menu' as any}
@@ -121,7 +118,7 @@ export const HeaderMenuItem = ({
 
       <Flex
         borderTop="solid #135740"
-        borderTopWidth={{ base: '2px', md: '3px', xl: '4px', '2xl': '6px' }}
+        borderTopWidth={{ base: '2px', md: '3px', xl: '4px' }}
         flexDir="column"
         position={{ base: 'fixed', md: 'absolute' }}
         top={{ base: '90px', md: '100%' }}
@@ -142,15 +139,13 @@ export const HeaderMenuItem = ({
           h="60px"
           bg="green.800"
           alignItems="center"
-          // onClick={() => setOpen(false)}
         >
           <Text
             fontSize={{
               base: '14px',
               md: '8.3px',
               lg: '10px',
-              xl: '13px',
-              '2xl': '16.5px'
+              xl: '13px'
             }}
             color="white.100"
             variant={'header-menu' as any}

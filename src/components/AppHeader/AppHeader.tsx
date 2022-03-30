@@ -90,26 +90,14 @@ export const AppHeader = () => {
       <Box
         data-testid="header-container"
         marginX="auto"
-        h={
-          fixed
-            ? {
-                base: '75px',
-                md: '88px',
-                lg: '103px',
-                xl: '140px',
-                '2xl': '172px'
-              }
-            : {
-                base: '50px',
-                md: '63px',
-                lg: '73px',
-                xl: '100px',
-                '2xl': '121px'
-              }
-        }
+        // h={{
+        //   base: '75px',
+        //   md: '88px',
+        //   lg: '103px',
+        //   xl: '140px'
+        // }}
         // maxWidth="1920px"
-        bg={'green.900'}
-        // position="relative"
+        bg='green.900'
         position="fixed"
         top="0"
         left="0"
@@ -119,7 +107,6 @@ export const AppHeader = () => {
       >
         <Box
           zIndex="modal"
-          // position={{ base: 'fixed', md: 'relative' }}
           position={'relative'}
           padding={0}
           marginX="auto"
@@ -135,8 +122,7 @@ export const AppHeader = () => {
                     base: '25px',
                     md: '25px',
                     lg: '30px',
-                    xl: '40px',
-                    '2xl': '51px'
+                    xl: '40px'
                   }
                 : '0px'
             }
@@ -149,8 +135,7 @@ export const AppHeader = () => {
                   base: '25px',
                   md: '25px',
                   lg: '30px',
-                  xl: '40px',
-                  '2xl': '51px'
+                  xl: '40px'
                 }}
                 justifyContent="space-between"
                 bg="green.900"
@@ -179,10 +164,6 @@ export const AppHeader = () => {
                     href={menuNavigation.whereBuy.href}
                     title={header.t(menuNavigation.whereBuy.key)}
                   />
-                  {/* <HeaderSecondaryItem
-              href={menuNavigation.restrictAccess.href}
-              title={header.t(menuNavigation.restrictAccess.key)}
-            /> */}
                 </Flex>
               </Flex>
             </Box>
@@ -191,13 +172,12 @@ export const AppHeader = () => {
           <Box w="100%" bg="green.800">
             <Box w="100%" marginX="auto" maxWidth={'1920px'}>
               <Flex
-                paddingInline={{ base: '4%', xl: '4%', '2xl': '4%' }}
+                paddingInline={{ base: '4%', xl: '4%' }}
                 h={{
                   base: '50px',
                   md: '60px',
                   lg: '70px',
-                  xl: '95px',
-                  '2xl': '115px'
+                  xl: '95px'
                 }}
                 bg="green.800"
                 alignItems="center"
@@ -224,10 +204,10 @@ export const AppHeader = () => {
                 <LogoBerneck
                   width={{
                     base: '110px',
-                    md: '120px',
-                    lg: '150px',
-                    xl: '180px',
-                    '2xl': '220px'
+                    md: '140px',
+                    lg: '180px',
+                    xl: '230px',
+                    '2xl': '240px'
                   }}
                 />
 
@@ -328,10 +308,6 @@ export const AppHeader = () => {
                       href={menuNavigation.whereBuy.href}
                       title={header.t(menuNavigation.whereBuy.key)}
                     />
-                    {/* <HeaderSecondaryItem
-                href={menuNavigation.restrictAccess.href}
-                title={header.t(menuNavigation.restrictAccess.key)}
-              /> */}
                   </Box>
 
                   <Flex
@@ -344,9 +320,9 @@ export const AppHeader = () => {
                         transition="0.8s"
                         alignItems={'center'}
                         justifyContent="center"
-                        w={{ md: '35px', xl: '45px', '2xl': '55px' }}
-                        h={{ md: '35px', xl: '45px', '2xl': '55px' }}
-                        borderRadius={{ md: '35px', xl: '45px', '2xl': '55px' }}
+                        w={{ md: '35px', xl: '45px' }}
+                        h={{ md: '35px', xl: '45px' }}
+                        borderRadius={{ md: '35px', xl: '45px' }}
                         bg="green.600"
                         color="white.100"
                         _hover={{ bg: 'green.750' }}
@@ -366,8 +342,7 @@ export const AppHeader = () => {
                           width={{
                             base: '10px',
                             md: '18px',
-                            xl: '28px',
-                            '2xl': '35px'
+                            xl: '28px'
                           }}
                           onClick={() => setOpenSearchBar(true)}
                         />
@@ -388,8 +363,7 @@ export const AppHeader = () => {
               base: '35px',
               md: '50px',
               lg: '60px',
-              xl: '80px',
-              '2xl': '100px'
+              xl: '80px'
             }}
             bg="green.900"
             width="100%"
@@ -405,8 +379,7 @@ export const AppHeader = () => {
                   base: '200px',
                   md: '300px',
                   lg: '350px',
-                  xl: '400px',
-                  '2xl': '450px'
+                  xl: '400px'
                 }}
                 borderBottom="solid"
                 borderBottomColor="white.100"
@@ -431,8 +404,7 @@ export const AppHeader = () => {
                     base: '8px',
                     md: '10px',
                     lg: '12px',
-                    xl: '14px',
-                    '2xl': '16px'
+                    xl: '14px'
                   }}
                   height={{ base: '30px' }}
                 />
@@ -443,10 +415,9 @@ export const AppHeader = () => {
                       base: '13px',
                       md: '16px',
                       lg: '23px',
-                      xl: '28px',
-                      '2xl': '35px'
+                      xl: '28px'
                     }}
-                    height={{ base: '25px', md: '10px', '2xl': '0px' }}
+                    height={{ base: '25px', md: '10px' }}
                   />
                 </Box>
               </Flex>
@@ -460,8 +431,7 @@ export const AppHeader = () => {
           base: '75px',
           md: '88px',
           lg: '103px',
-          xl: '140px',
-          '2xl': '172px'
+          xl: '140px'
         }}
       ></Box>
     </>

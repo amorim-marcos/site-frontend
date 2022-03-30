@@ -29,8 +29,7 @@ export const HeaderMenuSubItem = ({
             base: '15px',
             md: '12px',
             lg: '15px',
-            xl: '20px',
-            '2xl': '25px'
+            xl: '20px'
           }}
           cursor="pointer"
           _hover={{ md: { bg: subItems ? 'green.800' : '#79B928' } }}
@@ -39,8 +38,7 @@ export const HeaderMenuSubItem = ({
             base: '60px',
             md: '30px',
             lg: '35px',
-            xl: '40px',
-            '2xl': '50px'
+            xl: '40px'
           }}
           w={{ base: '100%', md: '100%' }}
           bg={{ base: 'green.700', md: 'green.800' }}
@@ -52,8 +50,7 @@ export const HeaderMenuSubItem = ({
               base: '14px',
               md: '8.3px',
               lg: '10px',
-              xl: '13px',
-              '2xl': '16.5px'
+              xl: '13px'
             }}
             color="white.100"
             variant={'header-menu' as any}
@@ -72,8 +69,7 @@ export const HeaderMenuSubItem = ({
                   base: '15px',
                   md: '12px',
                   lg: '15px',
-                  xl: '20px',
-                  '2xl': '25px'
+                  xl: '20px'
                 }}
                 cursor="pointer"
                 _hover={{ bg: '#79B928' }}
@@ -82,8 +78,7 @@ export const HeaderMenuSubItem = ({
                   base: '40px',
                   md: '30px',
                   lg: '35px',
-                  xl: '40px',
-                  '2xl': '50px'
+                  xl: '40px'
                 }}
                 w="100%"
                 bg="green.700"
@@ -95,8 +90,7 @@ export const HeaderMenuSubItem = ({
                       base: '12px',
                       md: '7px',
                       lg: '9px',
-                      xl: '12px',
-                      '2xl': '10px'
+                      xl: '12px'
                     }} 
                   /> }
                 <Text
@@ -105,8 +99,7 @@ export const HeaderMenuSubItem = ({
                     base: '14px',
                     md: '8.3px',
                     lg: '10px',
-                    xl: '13px',
-                    '2xl': '16.5px'
+                    xl: '13px'
                   }}
                   color="white.100"
                   variant={'header-menu-small' as any}

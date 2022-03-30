@@ -43,7 +43,8 @@ export const Connect = () => {
       )
       const data = await result.json()
 
-      setLastVideo(data.items[0].id.videoId)
+      console.log(data);
+      (data.length > 0)? setLastVideo(data.items[0].id.videoId) : null
     }
 
     fetchData()

@@ -26,8 +26,7 @@ export const LanguageSelector = () => {
             sm: '10px',
             md: '14px',
             lg: '18px',
-            xl: '20px',
-            '2xl': '25px'
+            xl: '20px'
           }}
         />
       </Box>
@@ -37,8 +36,7 @@ export const LanguageSelector = () => {
           base: '11px',
           md: '10px',
           lg: '12px',
-          xl: '14px',
-          '2xl': '16.5px'
+          xl: '14px'
         }}
       >
         {header.t('locale')}
@@ -50,7 +48,7 @@ export const LanguageSelector = () => {
         marginLeft="8%"
       >
         <ArrowIcon
-          width={{ base: '5px', md: '5px', lg: '7px', '2xl': '10px' }}
+          width={{ base: '5px', md: '5px', lg: '7px' }}
         />
       </Box>
 
