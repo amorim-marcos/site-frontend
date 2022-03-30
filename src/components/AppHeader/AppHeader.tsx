@@ -90,14 +90,14 @@ export const AppHeader = () => {
       <Box
         data-testid="header-container"
         marginX="auto"
-        h={{
-          base: '75px',
-          md: '88px',
-          lg: '103px',
-          xl: '140px'
-        }}
+        // h={{
+        //   base: '75px',
+        //   md: '88px',
+        //   lg: '103px',
+        //   xl: '140px'
+        // }}
         // maxWidth="1920px"
-        bg={'green.900'}
+        bg='green.900'
         position="fixed"
         top="0"
         left="0"
@@ -122,8 +122,7 @@ export const AppHeader = () => {
                     base: '25px',
                     md: '25px',
                     lg: '30px',
-                    xl: '40px',
-                    '2xl': '51px'
+                    xl: '40px'
                   }
                 : '0px'
             }
