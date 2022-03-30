@@ -59,8 +59,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   let envs: GalleryProps['envs'] = await strapiClient({
     defaultOnEmpty: true,
     locale: ctx.locale,
-    resource: 'ambients',
-    limit: 9
+    resource: 'ambients'
   })
 
   let availableBps: GalleryProps['availableBps'] = await strapiClient({

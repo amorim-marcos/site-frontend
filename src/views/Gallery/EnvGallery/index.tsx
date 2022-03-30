@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Box, Spinner } from '@chakra-ui/react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import {
   Container,
@@ -9,7 +8,7 @@ import {
   Center,
   Text,
   Flex,
-  filter
+  Box
 } from '@chakra-ui/react'
 
 import Pagebar from '@components/Pagebar'
@@ -18,9 +17,6 @@ import useMobile from 'hooks/useMobile'
 import { FiltersAccordion } from './FiltersAccordion'
 import { FiltersTabs } from './FiltersTab'
 import { Env } from './Env'
-import { strapiClient } from 'services'
-import { useRouter } from 'next/router'
-import useEnvsFetch from 'hooks/useEnvsFetch'
 
 export type ValidFilterNames = 'bps' | 'ambients' | 'styles'
 
@@ -48,6 +44,7 @@ export type EnvGalleryProps = {
     }[]
   }
 }
+const pageSize = 9
 
 export const EnvGallery = ({
   envs,
@@ -66,7 +63,7 @@ export const EnvGallery = ({
   const [filters, setFilters] = useState(initialFilters)
   const [filtersEmpty, setFiltersEmpty] = useState(true)
   const { isMobile } = useMobile(1024)
-  const router = useRouter()
+  const [pagination, setPagination] = useState(1)
 
   function changeFilterPanel(newFilterPanel: FilterPanelName) {
     setCurrentFilterPanel(
@@ -169,25 +166,19 @@ export const EnvGallery = ({
     }
   }, [filters])
 
-  const { data, isLoading, setFetchData } = useEnvsFetch(9)
-
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         // console.log('It works!')
-        setFetchData(true)
+        setPagination((p) => p + 1)
       }
     })
     if (ref.current) {
       observer.observe(ref.current)
     }
-  }, [ref, setFetchData])
-
-  useEffect(() => {
-    setFilteredEnvs(data)
-  }, [data])
+  }, [ref])
 
   return (
     <>
@@ -265,7 +256,6 @@ export const EnvGallery = ({
         >
           {filteredEnvs && filteredEnvs.length > 0 ? (
             <Center
-              // paddingBottom="300px"
               mt={
                 displayFilters
                   ? { base: '40px', md: '100px' }
@@ -291,16 +281,20 @@ export const EnvGallery = ({
                 justifyItems="center"
                 // bg="pink"
               >
-                {filteredEnvs.map((env, i) => (
-                  <GridItem key={i} mt="20px">
-                    <Env
-                      href={`/products/bp-berneck/gallery/${env.url_code}`}
-                      title={env.title}
-                      place={env.name}
-                      image_url={env.image_url}
-                    />
-                  </GridItem>
-                ))}
+                {filteredEnvs.map((env, i) => {
+                  return (
+                    i < pagination * pageSize && (
+                      <GridItem key={env.id} mt="20px">
+                        <Env
+                          href={`/products/bp-berneck/gallery/${env.url_code}`}
+                          title={env.title}
+                          place={env.name}
+                          image_url={env.image_url}
+                        />
+                      </GridItem>
+                    )
+                  )
+                })}
               </Grid>
             </Center>
           ) : (
@@ -327,24 +321,14 @@ export const EnvGallery = ({
                   fontSize={{ base: '18px', md: '24px' }}
                   textAlign="center"
                 >
-                  Nenhum resultado encontrado para{' '}
-                  <i>"{filters['nameSearched']}"</i>
+                  Nenhum resultado encontrado para &quot;
+                  {filters['nameSearched']}&quot;
                 </Text>
               )}
             </Flex>
           )}
         </Container>
-        {isLoading && (
-          <Flex
-            marginY="50px"
-            justifyContent={'center'}
-            alignItems={'center'}
-            w="100%"
-          >
-            <Spinner size="xl" />
-          </Flex>
-        )}
-        <Box ref={ref}></Box>
+        <Box marginTop={{ base: '0', md: '300px' }} ref={ref}></Box>
       </Container>
     </>
   )
