@@ -100,7 +100,7 @@ export const Products = () => {
             subtitle="Laminado Melamínico Decorativo"
             subtitleColor="brown.200"
             bgColor="brown.300"
-            srcImg="img/bp-berneck.png"
+            srcImg="/img/bp-berneck.png"
             onClick={() => router.push('/products/bp-berneck')}
             bannerSize={{ base: '30px', sm: '20px', lg: '30px', xl: '35 px' }}
             sizeType={!!width && width <= 568 ? 'square' : 'rectangle'}
@@ -114,7 +114,7 @@ export const Products = () => {
             subtitle="Linha de Painéis com Resistência Extra à Umidade"
             subtitleColor="brown.350"
             bgColor="green.400"
-            srcImg="img/plus.png"
+            srcImg="/img/plus.png"
             onClick={() => router.push('/products/plus-berneck')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
           />
@@ -127,7 +127,7 @@ export const Products = () => {
             subtitle="Painel de Fibra de Alta Densidade"
             subtitleColor="gray.400"
             bgColor="brown.200"
-            srcImg="img/hdf.png"
+            srcImg="/img/hdf.png"
             onClick={() => router.push('/products/hdf-berneck')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
           />
@@ -140,7 +140,7 @@ export const Products = () => {
             subtitle="Painel de Fibra de Média Densidade"
             subtitleColor="gray.400"
             bgColor="brown.200"
-            srcImg="img/mdf.png"
+            srcImg="/img/mdf.png"
             onClick={() => router.push('/products/mdf-berneck')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
           />
@@ -152,7 +152,7 @@ export const Products = () => {
             subtitle="Painel de Partículas de Média Densidade"
             subtitleColor="gray.400"
             bgColor="brown.200"
-            srcImg="img/mdp.png"
+            srcImg="/img/mdp.png"
             onClick={() => router.push('/products/mdp-berneck')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
           />
@@ -165,7 +165,7 @@ export const Products = () => {
             subtitle="Madeira Serrada de Teca"
             subtitleColor="gray.400"
             bgColor="brown.250"
-            srcImg="img/teca.png"
+            srcImg="/img/teca.png"
             onClick={() => router.push('/products/berneck-teca')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
           />
@@ -178,7 +178,7 @@ export const Products = () => {
             subtitle="Madeira Serrada de Pinus"
             subtitleColor="gray.400"
             bgColor="green.300"
-            srcImg="img/pinus.png"
+            srcImg="/img/pinus.png"
             onClick={() => router.push('/products/berneck-pinus')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
             sizeType={isMobile ? 'square' : 'rectangle'}
