@@ -1,15 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react'
 
-import {
-  Container,
-  Grid,
-  GridItem,
-  Center,
-  Text,
-  Flex,
-  filter
-} from '@chakra-ui/react'
+import { Container, Grid, GridItem, Center, Text, Flex } from '@chakra-ui/react'
 
 import Pagebar from '@components/Pagebar'
 
@@ -302,8 +294,8 @@ export const EnvGallery = ({
                   fontSize={{ base: '18px', md: '24px' }}
                   textAlign="center"
                 >
-                  Nenhum resultado encontrado para{' '}
-                  <i>"{filters['nameSearched']}"</i>
+                  Nenhum resultado encontrado para &quot;
+                  {filters['nameSearched']}&quot;
                 </Text>
               )}
             </Flex>

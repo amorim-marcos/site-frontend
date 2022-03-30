@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 
-import { Box, Flex, Link, Text, Image, LinkProps } from '@chakra-ui/react'
+import { Flex, Link, Text, Image, LinkProps } from '@chakra-ui/react'
 
 export type EnvProps = LinkProps & {
   title: string
@@ -18,11 +17,10 @@ export const Env = ({
   ...props
 }: EnvProps) => {
   return (
-    <Link {...props}>
-      <Flex direction="column">
+    <Link {...props} _hover={{ outline: 'none' }}>
+      <Flex direction="column" role="group">
         <Flex
           flex={'1'}
-          // bg="grey"
           height={{ base: '100%' }}
           maxHeight={{
             base: others ? '150px' : '100px',
@@ -36,13 +34,16 @@ export const Env = ({
             sm: '500px',
             md: others ? '400px' : '600px'
           }}
+          transition="all 0.3s ease-in-out"
+          _groupHover={{
+            boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)'
+          }}
         >
           <Image objectFit="cover" objectPosition="center" src={image_url} />
         </Flex>
 
         <Flex
           flex={'1'}
-          // bg="azure"
           direction="column"
           maxWidth={{
             base: '300px',
@@ -51,19 +52,13 @@ export const Env = ({
           }}
           margin={{ base: '2% 0% 1% 0%', sm: '2% 0% 1% 0%', md: '2% 0% 1% 0%' }}
         >
-          <Flex
-            // bg="blue"
-            flex={'2'}
-          >
+          <Flex flex={'2'}>
             <Text as={'h4'} variant={'h4'} fontWeight="bold" color={'gray.300'}>
               {title}
             </Text>
           </Flex>
 
-          <Flex
-            // bg="yellow"
-            flex={'1'}
-          >
+          <Flex flex={'1'}>
             <Text
               as={'h5'}
               variant={'h5'}
