@@ -17,8 +17,8 @@ export const Env = ({
   ...props
 }: EnvProps) => {
   return (
-    <Link {...props}>
-      <Flex direction="column">
+    <Link {...props} _hover={{ outline: 'none' }}>
+      <Flex direction="column" role="group">
         <Flex
           flex={'1'}
           height={{ base: '100%' }}
@@ -33,6 +33,10 @@ export const Env = ({
             base: '300px',
             sm: '500px',
             md: others ? '400px' : '600px'
+          }}
+          transition="all 0.3s ease-in-out"
+          _groupHover={{
+            boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)'
           }}
         >
           <Image objectFit="cover" objectPosition="center" src={image_url} />
