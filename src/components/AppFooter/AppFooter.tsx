@@ -11,51 +11,56 @@ export const AppFooter = () => {
   const footer = useTranslation('footer')
   const router = useRouter()
   return (
-    <Box w="100%" bg="green.900">
+    <Box 
+      w="100%" 
+      bg="green.900"
+
+    >
       <Flex
         aria-label="footer-container"
         data-testid="footer-container"
         flexDir="column"
         maxWidth="1920px"
         marginX="auto"
-        h={{
-          base: '240px',
-          md: '460px',
-          lg: '600px',
-          xl: '670px',
-          '2xl': '732px'
-        }}
+        // h={{
+        //   base: '240px',
+        //   md: '460px',
+        //   lg: '320px',
+        //   xl: '400px'
+        // }}
         bg="green.900"
+        // bg="pink"
         position="relative"
       >
         <Flex
-          padding="5%"
+          padding={{ base: '5%', md: '2%' }}
           overflow="hidden"
           position="relative"
-          height={{ base: '360px', md: '643px' }}
+          // marginTop={{ base: '0', md: '20%' }}
           width="100%"
           flexDir="column"
+          // bg="darkcyan"
         >
           <Flex
             w="100%"
             flexDirection={{ base: 'column', md: 'row' }}
             alignItems={{ base: 'flex-start', md: 'center' }}
             zIndex="docked"
-            marginTop={{ base: '20px', sm: '0' }}
+            marginTop={{ base: '10px', sm: '0' }}
+            // bg={"grey"}
           >
             <LogoBerneck
               width={{
                 base: '110px',
                 md: '120px',
                 lg: '150px',
-                xl: '180px',
-                '2xl': '220px'
+                xl: '180px'
               }}
             />
             <Flex
               w={{ base: '100%', md: '30%' }}
               ml={{ base: '0', md: 'auto' }}
-              justifyContent={{ base: 'space-around', md: 'flex-end' }}
+              justifyContent={{ base: 'space-around', lg: 'flex-end' }}
               marginY={{ base: '30px', md: 'none' }}
             >
               <SocialIcon
@@ -97,10 +102,17 @@ export const AppFooter = () => {
             zIndex="docked"
             marginTop={{
               base: '7%',
-              sm: '10%',
-              lg: '11%',
-              '2xl': '6%'
+              sm: '3%',
+              lg: '3%',
+              xl: '2%'
             }}
+            marginBottom={{
+              base: '7%',
+              sm: '3%',
+              lg: '3%',
+              xl: '2%'
+            }}
+            // bg={'yellow'}
           >
             <FooterList
               key={0}
@@ -170,69 +182,84 @@ export const AppFooter = () => {
         </Flex>
         <Flex
           w="100%"
-          h={{ base: '100px', md: '100px' }}
+          h={{ base: '120px', md: '50px' }}
+          padding={{ base: '1%', md: '0' }}
           alignItems="center"
           justifyContent={{ base: 'space-evenly', md: 'space-between' }}
-          paddingX={{ base: '0', sm: '70px' }}
           position="relative"
           flexDirection={{ base: 'column', md: 'row' }}
+          // bg="darksalmon"
         >
-          <Text
-            width="fit-content"
-            position={{ base: 'absolute', md: 'relative' }}
-            top={{ base: '-20px', md: '0' }}
-            left={{ base: '0' }}
-            right={{ base: '0' }}
-            marginX={{ base: 'auto', md: '0' }}
-            fontSize={{
-              base: '12px',
-              md: '8px',
-              lg: '10px',
-              xl: '12px',
-              '2xl': '14px'
-            }}
-            color="green.300"
-            textAlign={'center'}
+          <Flex 
+           flex="1"
+          //  bg="bisque"
+           alignItems="center"
+          //  justifyContent="center"
+           margin={{ base: '2%' }}
           >
-            © 2022 BERNECK . Todos os direitos reservados.
-          </Text>
-          <Text
-            fontSize={{
-              base: '11px',
-              md: '8px',
-              lg: '10px',
-              xl: '12px',
-              '2xl': '14px'
-            }}
-            color="green.600"
-            cursor={'pointer'}
-            _hover={{ opacity: '0.9' }}
-            onClick={() => router.push('politica-de-privacidade')}
-            textAlign="center"
+            <Text
+              left={{ base: '0' }}
+              right={{ base: '0' }}
+              fontSize={{
+                base: '12px',
+                md: '8px',
+                lg: '10px',
+                xl: '12px'
+              }}
+              color="green.300"
+            >
+              © 2022 BERNECK . Todos os direitos reservados.
+            </Text>
+          </Flex>
+          <Flex 
+           flex="1"
+          //  bg="limegreen"
+           alignItems="center"
+           justifyContent="center"
+          //  padding={{ base: '0', md: '5%' }}
           >
-            Termos de Uso e Política de Privacidade
-          </Text>
-          <Link href="http://www.commcepta.com.br/" isExternal>
-            <Image
-              cursor="pointer"
-              height={{
-                base: '23px',
-                md: '12px',
-                lg: '15px',
-                xl: '18px',
-                '2xl': '23px'
+            <Text
+              fontSize={{
+                base: '11px',
+                md: '8px',
+                lg: '10px',
+                xl: '12px'
               }}
-              width={{
-                base: '116px',
-                md: '61px',
-                lg: '77px',
-                xl: '92px',
-                '2xl': '116px'
-              }}
-              src="/img/logo-commcepta.png"
-              alt="Logo Commcepta"
-            />
-          </Link>
+              color="green.600"
+              cursor={'pointer'}
+              _hover={{ opacity: '0.9' }}
+              onClick={() => router.push('politica-de-privacidade')}
+            >
+              Termos de Uso e Política de Privacidade
+            </Text>
+          </Flex>
+          <Flex 
+           flex="1"
+          //  bg="yellowgreen"
+           alignItems="center"
+           justifyContent="center"
+          //  padding={{ base: '0', md: '5%' }}
+          >
+            <Link href="http://www.commcepta.com.br/" isExternal>
+              <Image
+                cursor="pointer"
+                // height={{
+                //   base: '23px',
+                //   md: '12px',
+                //   lg: '15px',
+                //   xl: '18px'
+                // }}
+                width={{
+                  base: '80px',
+                  md: '61px',
+                  lg: '77px',
+                  xl: '92px'
+                }}
+                src="/img/logo-commcepta.png"
+                alt="Logo Commcepta"
+              />
+            </Link>
+          </Flex>
         </Flex>
       </Flex>
     </Box>
@@ -244,13 +271,11 @@ const socialIconWidth = {
   sm: '40px',
   md: '25px',
   lg: '30px',
-  xl: '35px',
-  '2xl': '42px'
+  xl: '35px'
 }
 
 const socialIconMarginLeft = {
   base: '15px',
   lg: '30px',
-  xl: '40px',
-  '2xl': '50px'
+  xl: '40px'
 }

@@ -37,7 +37,7 @@ export const WhereWeArePanel = (props: WhereWeArePanelProps) => {
         return (
           <GoogleMap
             center={props.coords}
-            onClick={() => window.open(props.googleMapsURL, '_blank')}
+            onClick={() => (props === null )? null: window.open(props.googleMapsURL, '_blank')}
           />
         )
       case 'info':

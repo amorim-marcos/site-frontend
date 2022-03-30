@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           ...item,
           image: {
             ...item.image,
-            url: process.env.NEXT_PUBLIC_API_URL + item.image.url
+            url: (item.image === null )? null: process.env.NEXT_PUBLIC_API_URL + item.image.url
           }
         }
       }
