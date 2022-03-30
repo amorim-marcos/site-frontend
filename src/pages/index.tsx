@@ -35,11 +35,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   highlights.forEach(
     (item: { cover: { url: string }; category: { name: string } }) => {
-      if (item !== null && item.category !== null) {
+      if (item !== null && item.category !== null && item.cover !== null) {
         highlightsTreated.push({
           ...item,
           cover: {
-            url: process.env.NEXT_PUBLIC_API_URL + item.cover.url
+            url: (item.cover === null )? null : process.env.NEXT_PUBLIC_API_URL + item.cover.url
           }
         })
       }
@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         latestTreated.push({
           ...item,
           cover: {
-            url: process.env.NEXT_PUBLIC_API_URL + item.cover.url
+            url: (item.cover === null )? null : process.env.NEXT_PUBLIC_API_URL + item.cover.url
           }
         })
       }

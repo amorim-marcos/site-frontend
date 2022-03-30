@@ -37,12 +37,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     contact_channels = await res.json()
   }
 
-  contact_channels = contact_channels.map((item: any) => {
-    return {
-      ...item,
-      attention_required: item.emphasis,
-      image: process.env.NEXT_PUBLIC_API_URL + item.image.url
-    }
+  contact_channels = contact_channels.map(
+    (item: { image: { url: string } }) => {
+      return {
+        ...item,
+        image: (item.image === null )? null : process.env.NEXT_PUBLIC_API_URL + item.image.url
+      }
   })
 
   return {

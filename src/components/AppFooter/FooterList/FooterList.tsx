@@ -15,7 +15,10 @@ export type FooterListProps = {
 
 export const FooterList = ({ title, items }: FooterListProps) => {
   return (
-    <Box aria-label="footer-list">
+    <Box 
+      aria-label="footer-list"
+      // bg={'red'}
+      >
       <List spacing="10%">
         <ListItem cursor="pointer">
           <Link href={title.href} passHref>
@@ -27,8 +30,7 @@ export const FooterList = ({ title, items }: FooterListProps) => {
                 sm: '8px',
                 md: '10px',
                 lg: '13px',
-                xl: '15px',
-                '2xl': '17px'
+                xl: '14px'
               }}
               color="white.100"
             >
@@ -50,8 +52,7 @@ export const FooterList = ({ title, items }: FooterListProps) => {
                     sm: '7px',
                     md: '9px',
                     lg: '12px',
-                    xl: '14px',
-                    '2xl': '17px'
+                    xl: '13px'
                   }}
                   color="green.200"
                   fontWeight="600"

@@ -29,10 +29,8 @@ export const HeaderSecondaryItem = ({
       borderBottomColor={{ base: 'green.900', md: 'none' }}
       paddingX={{ base: '10px', md: '0' }}
       marginX={{ base: '10px', md: '0' }}
-      marginLeft={{ base: '0', md: '6%', xl: '7%', '2xl': '8%' }}
+      marginLeft={{ base: '0', md: '6%', xl: '7%' }}
     >
-      {/* <Link href={href} isExternal={isExternal}> */}
-      {/* <a ref={href} target={target}> */}
       <Text
         onClick={navigate}
         _hover={{ color: '#FFF' }}
@@ -44,14 +42,11 @@ export const HeaderSecondaryItem = ({
           base: '10px',
           md: '9px',
           lg: '11px',
-          xl: '13px',
-          '2xl': '16.5px'
+          xl: '13px'
         }}
       >
         {title}
       </Text>
-      {/* </a> */}
-      {/* </Link> */}
     </Flex>
   )
 }

@@ -100,7 +100,8 @@ export default function Home(props: HomeProps) {
             subtitle: 'Laminado Melamínico Decorativo',
             subtitleColor: 'brown.200',
             bgColor: 'brown.300',
-            srcImg: 'img/bp-berneck.png',
+            srcImg: 'img/produto_bp_banner.png',
+            onClick: () => alert('Ir para BP'),
             bannerSize: {
               base: '100px',
               sm: '150px',
