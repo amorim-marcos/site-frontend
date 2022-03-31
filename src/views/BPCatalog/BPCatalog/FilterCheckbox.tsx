@@ -56,13 +56,14 @@ export const FilterCheckbox = ({
         }}
         padding="0"
         iconColor="green.600"
-        border="1px solid"
+        bgColor="#FFFFFF73"
         borderColor="green.900"
         borderRadius="3px"
         colorScheme="white.100"
         isChecked={isChecked}
         zIndex="2"
         mr="5px"
+        sx={{ span: { border: '1.2px solid green.900', borderRadius: '3px' } }}
       />
       <Text fontWeight="600" fontSize={{ base: '17px', md: '19px' }} zIndex="2">
         {title}
