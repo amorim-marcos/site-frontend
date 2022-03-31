@@ -55,8 +55,8 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
       maxWidth="1536px"
       marginX="auto"
       position="relative"
-      // overflowY="hidden"
-      // overflowX="hidden"
+      overflowY={{ base: 'hidden', xl: 'visible' }}
+      overflowX={{ base: 'hidden', xl: 'visible' }}
       bg="brown.100"
       h={{ base: 'auto', md: '40vw' }}
       maxHeight={{ base: 'none', md: '750px' }}
@@ -69,7 +69,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
         w="100%"
         display={{ base: 'flex', md: 'none' }}
         marginY="5%"
-        bg="red.100"
+        bg="brown.100"
       >
         <Indicator items={items} currentItem={currentItem} />
       </Flex>

@@ -46,10 +46,12 @@ export const CarouselMultiElements = ({
       <Flex
         alignItems={'center'}
         justifyContent={'flex-start'}
-        maxWidth={'1920px'}
+        maxWidth={'1536px'}
         marginX="auto"
-        padding={{ base: '2%', md: '2% 5%' }}
+        // padding={{ base: '2%', md: '2% 5%' }}
+        padding={{ base: '0%', sm: '5%', xl: '5%', '2xl': '3% 0%' }}
         overflow="hidden"
+        // bg="red"
       >
         <Flex w="100%">
           {children &&

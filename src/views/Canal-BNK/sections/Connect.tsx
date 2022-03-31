@@ -9,11 +9,9 @@ import {
 } from '@chakra-ui/react'
 
 import { SocialIcon } from '@components/Icons'
-
+import CompletedTitle from '@components/CompletedTitle'
 import useFacebook from 'hooks/useFacebook'
 import useMobile from 'hooks/useMobile'
-
-import { Section } from './Section'
 import { breakpoints } from 'theme/breakpoints'
 
 interface IVideo {
@@ -53,21 +51,48 @@ export const Connect = () => {
   useFacebook()
 
   return (
-    <Section
-      w={{ base: '100vw', lg: 'auto' }}
-      overflow={'scroll'}
-      title="Conecte-se"
-      bg="green.100"
-      pt="65px"
+    <Flex
+      bg={'white.200'}
+      flex="1"
+      alignItems={'center'}
+      flexDirection={'column'}
     >
+
       <Flex
+        // bg="gray"
+        w="100%"
+        flex="1"
+        maxWidth="1536px"
+        marginX="auto"
+        position="relative"
+        // marginTop={{ base: '5%', sm: '5%', lg: '5%', xl: '3%' }}
+        // marginLeft={{ base: '5%', sm: '5%', lg: '5%', xl: '5%', '2xl': '15%' }}
+        padding={{ base: '5% 3%', sm: '5%', xl: '5%', '2xl': '3% 0%' }}
+        align={{ base: 'center', lg: 'flex-start' }}
+      >
+        <CompletedTitle
+          titleString="Conecte-se"
+          textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+          alignSelf={{
+            base: 'flex-start',
+            sm: 'flex-start',
+            lg: 'flex-start',
+            xl: 'flex-start'
+          }}
+        />  
+
+      </Flex>
+      <Flex
+        flex="1"
+        // bg="red"
+        maxWidth="1536px"
         data-testid="connect"
         h={{ base: 'fit-content' }}
         w="100%"
-        gap="52px"
-        pt="55px"
+        gap="50px"
+        // pt="55px"
         pb="96px"
-        px={{ sm: '20px', lg: '88px' }}
+        // px={{ sm: '20px', lg: '88px' }}
         justify="center"
         align={{ base: 'center', lg: 'flex-start' }}
         wrap={{ base: 'wrap', '2xl': 'nowrap' }}
@@ -218,7 +243,8 @@ export const Connect = () => {
           </SocialNetwork>
         </Flex>
       </Flex>
-    </Section>
+
+    </Flex>
   )
 }
 
