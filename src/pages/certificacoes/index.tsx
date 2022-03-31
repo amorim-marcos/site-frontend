@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
             ...item2,
             certificate_file: {
               ...item2.certificate_file,
-              url: process.env.NEXT_PUBLIC_API_URL + item2.certificate_file.url
+              url: (item2.certificate_file === null)? null : process.env.NEXT_PUBLIC_API_URL + item2.certificate_file.url
             }
           }
         })

@@ -415,7 +415,7 @@ export const Certification = (props: CertificationViewProps) => (
 
 
 
-        {/* BOX 5 */}
+        {/* BOX 5 - Normas da qualidade */}
         <Flex
           m={{ base: '5%', sm: '5%', lg: '5%', xl: '3% 5%' }}
           // bg="blue"
@@ -428,6 +428,8 @@ export const Certification = (props: CertificationViewProps) => (
             xl: 'row'
           }}
           padding={"5%"}
+          alignItems={{ xl: 'center'}}
+          
         >
           
           {/* CONTROLE DO ICONE */}
@@ -447,8 +449,8 @@ export const Certification = (props: CertificationViewProps) => (
                 // alignContent={"flex-end"}
                 // mt={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
                 zIndex = '1700'
-                paddingRight={"2%"}
-                paddingTop={"2%"}
+                paddingRight={{ base: '2%', sm: '2%', lg: '2%', xl: '2%' }}
+                paddingTop={{ base: '4%', sm: '3%', lg: '3%', xl: '3%' }}
                 
               >
                 <CertificationsIcon
@@ -460,13 +462,13 @@ export const Certification = (props: CertificationViewProps) => (
             </Flex>
 
             <Flex
-              // bg="green.170"
-              bg="goldenrod"
+              bg="green.170"
+              // bg="goldenrod"
               flex="3"
               direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
-              p={{ base: '5%', sm: '5%', lg: '5%', xl: '0% 10% 16% 10%' }}
-              mt={{ base: '5%', sm: '5%', lg: '5%', xl: '-5%' }}
-              zIndex = '1700'
+              p={{ base: '0% 5% 15% 5%', sm: '0% 5% 10% 5%', lg: '0% 10% 12% 10%', xl: '0% 10% 16% 10%' }}
+              // mt={{ base: '5%', sm: '5%', lg: '5%', xl: '-5%' }}
+              
             >
 
            
@@ -486,6 +488,7 @@ export const Certification = (props: CertificationViewProps) => (
                             as={'h5'}
                             variant={'h5' as any}
                             fontWeight={'bold'}
+                            color= 'green.700'
                             marginTop={{
                               base: '-20px',
                               sm: '-20px',
@@ -499,7 +502,7 @@ export const Certification = (props: CertificationViewProps) => (
                               xl: '25px'
                             }}
                           >
-                            {item.norm}
+                            {item.norm + "test"}
                           </Text>
                         </ListItem>
                       )
@@ -510,7 +513,7 @@ export const Certification = (props: CertificationViewProps) => (
               <Flex
                 // bg='red'
                 flex="1"
-                // m={{ base: '5%', sm: '5%', lg: '5%', xl: '%' }}
+                mt={{ base: '3%', sm: '0' }}
               >
                 <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5' }}>
                   {props.page_content.quality_norms.map((item, i) => {
@@ -551,7 +554,7 @@ export const Certification = (props: CertificationViewProps) => (
 
         {/* AREA TEXTO NORMAS */}
         <Flex
-            // margin={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
+            mb={{ base: '4%', md: '0' }}
             // bg='yellowgreen'
             flex="1"
             direction={{ base: 'column' }}

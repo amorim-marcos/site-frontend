@@ -6,12 +6,11 @@ export const Text = {
     },
     body: {
       fontSize: {
-        base: '14px',
-        sm: '17px',
-        md: '11px',
+        base: '13px',
+        sm: '13px',
+        md: '14px',
         lg: '14px',
-        xl: '17px',
-        '2xl': '20px'
+        xl: '17px'
       },
       fontWeight: 'normal'
     },
