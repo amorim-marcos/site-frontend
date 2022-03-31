@@ -15,8 +15,12 @@ export type SectionsProductsProps = ProductsGalleryProps
 export const SectionProducts = ({ products }: SectionsProductsProps) => {
   const router = useRouter()
   return (
+
+  <Flex
+    bg="white"
+  >
     <Flex
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       position="relative"
       zIndex="base"
@@ -164,5 +168,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
         </Box>
       </Flex>
     </Flex>
+  
+  </Flex>
   )
 }

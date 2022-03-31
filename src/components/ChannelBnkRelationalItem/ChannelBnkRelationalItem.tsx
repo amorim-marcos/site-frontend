@@ -52,7 +52,7 @@ export const ChannelBnkRelationalItem = ({
         case (1280 <= tam && tam < 1536):
             return (showInvert)? 70: 90; break;
         case (1536 <= tam):
-          return 150;break;
+          return 90;break;
       }
     }else{
       return 10;
@@ -108,6 +108,7 @@ export const ChannelBnkRelationalItem = ({
       marginRight={{ base: '10px', md: (showInvert) ? '0px' : '0px' }}
       w={{ base: '60vw', md: (showInvert) ? '0' : '22%' }}
       minWidth={{ base: '60vw', sm: '50vw', md: (showInvert) ? '100%' : '0' }}
+      // maxWidth={"270px"}
       {...props}
       cursor="pointer"
       onClick={navigateToThePost}
@@ -117,10 +118,10 @@ export const ChannelBnkRelationalItem = ({
           base: '200px',
           sm: '250px',
           md: '150px',
-          lg: '200px',
-          '2xl': '300px'
+          lg: '200px'
         }}
         w="100%"
+        
         // bg="azure"
       >
       <Image 

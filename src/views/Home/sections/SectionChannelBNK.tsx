@@ -16,11 +16,22 @@ export type SectionChannelBNKProps = {
 
 export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
   return (
+
+  <Flex
+    justifyContent={'center'}
+    paddingY="4%"
+    bg="brown.100"
+    // maxW={'1536px'}
+    // flexDirection={{ base: 'column', md: 'row' }}
+  >
+
     <Flex
-      justifyContent={'center'}
-      paddingY="4%"
+      // justifyContent={'center'}
+      // paddingY="4%"
       bg="brown.100"
-      maxW={'1920px'}
+      maxW={'1536px'}
+      // flex="1"
+      w={'100%'}
       flexDirection={{ base: 'column', md: 'row' }}
     >
       <Flex
@@ -34,11 +45,13 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
       >
         <Image
           w={{ base: '45%', md: '50%' }}
+          maxWidth={"170px"}
           src="/assets/imgs/canal-bnk/Canal_Berneck.svg"
         />
         <Text
           marginTop="5%"
           w={{ md: '50%' }}
+          maxWidth={"180px"}
           as="h4"
           variant={'h4' as any}
           fontWeight={'normal'}
@@ -78,5 +91,7 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
           })}
       </Flex>
     </Flex>
+
+  </Flex>
   )
 }
