@@ -2,7 +2,15 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import React, { useEffect, useState } from 'react'
 
-import { Button, Container, Grid, GridItem, Flex, Text} from '@chakra-ui/react'
+import {
+  Button,
+  Container,
+  Grid,
+  GridItem,
+  Flex,
+  Text,
+  Box
+} from '@chakra-ui/react'
 
 import Pagebar from '@components/Pagebar'
 import useMobile from 'hooks/useMobile'
@@ -334,59 +342,63 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
           display={isMobile && displayFilters ? 'none' : 'normal'}
           minW="100%"
         >
-          {
-            ( filteredBps && filteredBps.length > 0)
-            ? 
-              <Grid
-                mt={
-                  displayFilters
-                    ? { base: '40px', md: '100px' }
-                    : { base: '5px', md: '15px' }
-                }
-                templateRows="repeat(auto, 1fr)"
-                templateColumns={gridColumnsMode}
-                gridGap={{ base: '10px', xl: '30px' }}
-              >
-                {
-                  filteredBps.map((bp) => (
-                    <GridItem key={bp.id}>
-                      <BP
-                        id={bp.id}
-                        name={bp.name}
-                        product_texture={bp.product_texture}
-                        pattern_image={bp.pattern_image}
-                        url_code={bp.url_code}
-                        href={`/products/bp-berneck/catalog/${bp.url_code}`}
-                        color={darkMode ? 'white.100' : 'gray.400'}
-                      />
-                    </GridItem>
-                  ))
-                }
-              </Grid>
-            :
-              <Flex
-                  minH="600px"
-                  flexDirection="row"
-                  justifyContent="center"
-                  alignItems="center"
-                  alignContent="center"
-              >
-                {
-                  filters["nameSearched"] == "" 
-                  ? <Text 
-                      alignSelf="center" color="gray.300" fontSize={{base:"18px", md:"24px"}} textAlign="center"
-                    >
-                      Os filtros aplicados não retornaram nenhum resultado.
-                    </Text>
-                  : 
-                    <Text alignSelf="center" color="gray.300" fontSize={{base:"18px", md:"24px"}} textAlign="center">
-                      Nenhum resultado encontrado para <i>"{filters["nameSearched"]}"</i>
-                    </Text>
-                }
-                
-              </Flex>
-          }
+          {filteredBps && filteredBps.length > 0 ? (
+            <Grid
+              mt={
+                displayFilters
+                  ? { base: '40px', md: '100px' }
+                  : { base: '5px', md: '15px' }
+              }
+              templateRows="repeat(auto, 1fr)"
+              templateColumns={gridColumnsMode}
+              gridGap={{ base: '10px', xl: '30px' }}
+            >
+              {filteredBps.map((bp) => (
+                <GridItem key={bp.id}>
+                  <BP
+                    id={bp.id}
+                    name={bp.name}
+                    product_texture={bp.product_texture}
+                    pattern_image={bp.pattern_image}
+                    url_code={bp.url_code}
+                    href={`/products/bp-berneck/catalog/${bp.url_code}`}
+                    color={darkMode ? 'white.100' : 'gray.400'}
+                  />
+                </GridItem>
+              ))}
+            </Grid>
+          ) : (
+            <Flex
+              minH="600px"
+              flexDirection="row"
+              justifyContent="center"
+              alignItems="center"
+              alignContent="center"
+            >
+              {filters['nameSearched'] == '' ? (
+                <Text
+                  alignSelf="center"
+                  color="gray.300"
+                  fontSize={{ base: '18px', md: '24px' }}
+                  textAlign="center"
+                >
+                  Os filtros aplicados não retornaram nenhum resultado.
+                </Text>
+              ) : (
+                <Text
+                  alignSelf="center"
+                  color="gray.300"
+                  fontSize={{ base: '18px', md: '24px' }}
+                  textAlign="center"
+                >
+                  Nenhum resultado encontrado para{' '}
+                  <i>"{filters['nameSearched']}"</i>
+                </Text>
+              )}
+            </Flex>
+          )}
         </Container>
+        <Box marginTop={{ base: '100px' }}></Box>
       </Container>
     </>
   )
