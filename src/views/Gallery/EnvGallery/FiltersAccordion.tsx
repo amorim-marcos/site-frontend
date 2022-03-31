@@ -80,6 +80,7 @@ export const FiltersAccordion = ({
             setDisplayFilters(!displayFilters)
             setOpenSearchBar(false)
           }}
+          _focus={{ outline: 'none' }}
           variant="link"
           backgroundColor="none"
         >

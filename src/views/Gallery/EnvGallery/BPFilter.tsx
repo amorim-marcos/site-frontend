@@ -34,6 +34,7 @@ export const BPFilter = ({
       onMouseEnter={() => setDisplayInfo(true)}
       onMouseLeave={() => setDisplayInfo(false)}
       height={{ base: '43px', md: '55px' }}
+      _focus={{ outline: 'none' }}
       {...props}
     >
       <Box
