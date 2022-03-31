@@ -60,6 +60,7 @@ export const PatternCertification = ({
       <Box
         // bg='blue'
         margin={{ base: '2%', sm: '3%', lg: '4%' }}
+        whiteSpace="nowrap"
       >
         <Text
           variant={'h4' as any}

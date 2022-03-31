@@ -27,16 +27,17 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}
+      flex="1"
     >
       {/* TITULO */}
       <Flex
-        //bg="gray"
+        // bg="gray"
         flex="1"
         m={{
           base: '5% 2% 0% 2%',
-          sm: '5% 5% 2% 5%',
-          lg: '5% 5% 2% 5%',
-          xl: '5% 5% 2% 5%'
+          sm: '5% 5% 0% 5%',
+          lg: '3% 5% 0% 5%',
+          xl: '5% 5% 0% 5%'
         }}
         direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
       >
@@ -86,6 +87,9 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
         <ProductsGallery numberEvidence={1} products={products} />
       </Box>
       {/* FIM GALERIA PRODUTOS */}
+      
+      
+
       <Flex
         // bg="yellow"
         flex="1"
@@ -100,7 +104,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
         <Box
           flex="1"
           // bg="pink"
-          m={{ base: '0% 0% 2% 0%', sm: '0% 0% 5% 0%', lg: '0%', xl: '0%' }}
+          m={{ base: '0% 0% 2% 0%', sm: '0% 0% 1% 0%', lg: '0%', xl: '0%' }}
         >
           <PatternInfo
             title="DESCUBRA"
@@ -109,16 +113,14 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
             icon={
               <EarthIcon
                 width={{
-                  base: '60px',
-                  xs: '30px',
-                  sm: '58px',
+                  base: '50px',
+                  md: '62px',
                   lg: '70px',
                   xl: '80px'
                 }}
                 height={{
-                  base: '60px',
-                  xs: '30px',
-                  sm: '58px',
+                  base: '50px',
+                  md: '62px',
                   lg: '70px',
                   xl: '80px'
                 }}

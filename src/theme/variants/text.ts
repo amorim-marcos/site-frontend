@@ -6,12 +6,11 @@ export const Text = {
     },
     body: {
       fontSize: {
-        base: '14px',
-        sm: '17px',
-        md: '11px',
+        base: '13px',
+        sm: '13px',
+        md: '14px',
         lg: '14px',
-        xl: '17px',
-        '2xl': '20px'
+        xl: '17px'
       },
       fontWeight: 'normal'
     },
@@ -59,7 +58,7 @@ export const Text = {
     },
     h1: {
       color: 'green.800',
-      fontSize: { base: '34px', sm: '32px', lg: '40px', xl: '42px' },
+      fontSize: { base: '28px', sm: '32px', lg: '32px', xl: '38px' },
       fontWeight: 'extrabold',
       letterSpacing: '-0.84px'
     },
@@ -76,11 +75,11 @@ export const Text = {
     h4: {
       color: 'green.700',
       fontSize: {
-        base: '16px',
+        base: '14px',
         md: '16px',
         lg: '18px',
-        xl: '18px',
-        '2xl': '21px'
+        xl: '17px',
+        '2xl': '19px'
       },
       fontWeight: 'bold',
       letterSpacing: '-0.45px'

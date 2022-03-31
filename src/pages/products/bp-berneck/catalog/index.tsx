@@ -88,7 +88,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       title: collection.name,
       code: collection.id,
-      background_image: `${url}${collection.background_image_small.url}`
+      background_image: (collection.background_image_small === null) ? null : `${url}${collection.background_image_small.url}`
     }
   })
 
@@ -96,7 +96,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       title: coloration.name,
       code: coloration.id,
-      background_image: `${url}${coloration.background_image_small.url}`
+      background_image: (coloration.background_image_small === null) ? null : `${url}${coloration.background_image_small.url}`
     }
   })
 
@@ -104,7 +104,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       title: panel.name,
       code: panel.id,
-      background_image: `${url}${panel.background_image_small.url}`
+      background_image:  (panel.background_image_small === null) ? null : `${url}${panel.background_image_small.url}`
     }
   })
 
