@@ -206,7 +206,8 @@ export const AppHeader = () => {
                     base: '110px',
                     md: '120px',
                     lg: '150px',
-                    xl: '160px'
+                    xl: '160px',
+                    '2xl' : '220px'
                   }}
                 />
 

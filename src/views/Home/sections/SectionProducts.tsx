@@ -24,8 +24,8 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
       marginX="auto"
       position="relative"
       zIndex="base"
-      overflowY="hidden"
-      overflowX="hidden"
+      overflowY={{ base: 'hidden', '2xl': 'visible' }}
+      overflowX={{ base: 'hidden', '2xl': 'visible' }}
       bg="white"
       backgroundImage="/assets/imgs/grafismos_fundo2.png"
       backgroundPosition="center"
@@ -38,10 +38,11 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
         // bg="gray"
         flex="1"
         m={{
-          base: '5% 2% 0% 2%',
+          base: '5% 2% 5% 2%',
           sm: '5% 5% 0% 5%',
           lg: '3% 5% 0% 5%',
-          xl: '5% 5% 0% 5%'
+          xl: '5% 5% 0% 5%',
+          '2xl': '5% 5% 0% 0%'
         }}
         direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
       >
@@ -101,7 +102,8 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
           base: '0% 0% 5% 0%',
           sm: '0% 5% 2% 5%',
           lg: '0% 5% 5% 5%',
-          xl: '0% 5% 5% 5%'
+          xl: '0% 5% 5% 5%',
+          '2xl': '0% 0% 5% 0%'
         }}
         direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
       >

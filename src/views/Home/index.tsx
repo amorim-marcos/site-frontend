@@ -53,8 +53,7 @@ export default function Home(props: HomeProps) {
 
   return (
     <Box 
-      
-      bg="red.100"
+      bg="white.100"
     >
       {/* INICIO BANNER CAROUSEL */}
       {props.highlights && props.highlights.length > 0 && (

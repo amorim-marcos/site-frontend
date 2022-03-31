@@ -46,7 +46,7 @@ export const AppFooter = () => {
             flexDirection={{ base: 'column', md: 'row' }}
             alignItems={{ base: 'center', md: 'center' }}
             zIndex="docked"
-            marginTop={{ base: '20px', sm: '0' }}
+            marginTop={{ base: '20px', md: '0' }}
             // bg={"grey"}
           >
             
@@ -56,7 +56,7 @@ export const AppFooter = () => {
                     md: '110px',
                     lg: '130px',
                     xl: '145px',
-                    '2xl': '150px'
+                    '2xl': '189px'
                   }}
                 />
             <Flex
