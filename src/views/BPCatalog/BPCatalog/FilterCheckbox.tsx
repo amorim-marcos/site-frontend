@@ -47,6 +47,9 @@ export const FilterCheckbox = ({
       {...props}
       padding="28px"
       overflow="hidden"
+      _focus={{ outline: 'none' }}
+      _hover={{ outline: 'none' }}
+      _active={{ outline: 'none' }}
     >
       <Checkbox
         onClickCapture={(e) => {

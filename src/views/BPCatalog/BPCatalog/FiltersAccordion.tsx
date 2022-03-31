@@ -132,7 +132,12 @@ export const FiltersAccordion = ({
                 bottom="-3px"
                 left="0"
               />
-              <Box width="100%" backgroundColor={darkMode ? 'gray.400' : 'white.200'} paddingLeft="20px" paddingRight="20px">
+              <Box
+                width="100%"
+                backgroundColor={darkMode ? 'gray.400' : 'white.200'}
+                paddingLeft="20px"
+                paddingRight="20px"
+              >
                 <Button
                   onClick={() => changeFilterPanel('panels')}
                   variant="link"
@@ -142,6 +147,7 @@ export const FiltersAccordion = ({
                   fontSize="22px"
                   justifyContent="start"
                   alignItems="center"
+                  _focus={{ outline: 'none' }}
                 >
                   <Text
                     fontSize="17px"
@@ -193,7 +199,12 @@ export const FiltersAccordion = ({
                 bottom="-3px"
                 left="0"
               />
-              <Box width="100%" backgroundColor={darkMode ? 'gray.400' : 'white.200'} paddingLeft="20px" paddingRight="20px">
+              <Box
+                width="100%"
+                backgroundColor={darkMode ? 'gray.400' : 'white.200'}
+                paddingLeft="20px"
+                paddingRight="20px"
+              >
                 <Button
                   onClick={() => changeFilterPanel('collections')}
                   variant="link"
@@ -203,6 +214,7 @@ export const FiltersAccordion = ({
                   fontSize="22px"
                   justifyContent="start"
                   alignItems="center"
+                  _focus={{ outline: 'none' }}
                 >
                   <Text
                     fontSize="17px"
@@ -258,7 +270,12 @@ export const FiltersAccordion = ({
                 bottom="-3px"
                 left="0"
               />
-              <Box width="100%" backgroundColor={darkMode ? 'gray.400' : 'white.200'} paddingLeft="20px" paddingRight="20px">
+              <Box
+                width="100%"
+                backgroundColor={darkMode ? 'gray.400' : 'white.200'}
+                paddingLeft="20px"
+                paddingRight="20px"
+              >
                 <Button
                   onClick={() => changeFilterPanel('colorations')}
                   variant="link"
@@ -268,6 +285,7 @@ export const FiltersAccordion = ({
                   fontSize="22px"
                   justifyContent="start"
                   alignItems="center"
+                  _focus={{ outline: 'none' }}
                 >
                   <Text
                     fontSize="17px"
@@ -382,7 +400,8 @@ export const FiltersAccordion = ({
                   setFilters({ ...filters, nameSearched: e.target.value })
                 }}
                 onKeyPress={(event) => {
-                  if(event.key === "Enter") setFilteredBps(applyFilters(filters, bps))
+                  if (event.key === 'Enter')
+                    setFilteredBps(applyFilters(filters, bps))
                 }}
               />
               <Box>
@@ -417,6 +436,8 @@ export const FiltersAccordion = ({
               width="160px"
               fontSize="16px"
               mr="10px"
+              variant="flushed"
+              _focus={{ outline: 'none' }}
             >
               <option value="launch">lançamento</option>
               <option value="name">nome</option>
