@@ -17,7 +17,7 @@ export const SectionBanners = ({ banner1, banner2 }: SectionBannersProps) => {
   >
     <Flex
       justifyContent={'space-between'}
-      maxWidth={'1920px'}
+      maxWidth={'1536px'}
       marginX="auto"
      
       padding="3%"
