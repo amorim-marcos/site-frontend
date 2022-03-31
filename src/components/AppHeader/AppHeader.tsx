@@ -204,10 +204,9 @@ export const AppHeader = () => {
                 <LogoBerneck
                   width={{
                     base: '110px',
-                    md: '140px',
-                    lg: '180px',
-                    xl: '230px',
-                    '2xl': '240px'
+                    md: '120px',
+                    lg: '150px',
+                    xl: '160px'
                   }}
                 />
 

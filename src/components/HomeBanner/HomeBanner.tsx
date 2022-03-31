@@ -47,16 +47,16 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
     <h1>No items passed</h1>
   ) : (
     <Flex
-      maxWidth="1920px"
+      // maxWidth="1920px"
       marginX="auto"
       position="relative"
       overflowY="hidden"
       overflowX="hidden"
       bg="brown.100"
       h={{ base: 'auto', md: '40vw' }}
-      maxHeight={{ base: 'none', md: '770px' }}
+      maxHeight={{ base: 'none', md: '750px' }}
       flexDirection={'column-reverse'}
-      paddingBottom={{ md: '12%' }}
+      paddingBottom={{ md: '10%' }}
     >
       <Flex
         alignItems={'center'}

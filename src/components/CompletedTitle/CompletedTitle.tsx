@@ -57,7 +57,7 @@ export const CompletedTitle = ({
             alignSelf={alignSelf}
           >
             <Box
-              marginTop={{ base: '3px', sm: '10px', lg: '20px', xl: '20px' }}
+              marginTop={{ base: '2px', sm: '4px', lg: '5px', xl: '4px' }}
               h="3px"
               w={{ base: '60px', sm: '70px', lg: '80px', xl: '90px' }}
               // bg="green.600"

@@ -15,12 +15,12 @@ export const SectionBanners = ({ banner1, banner2 }: SectionBannersProps) => {
       justifyContent={'space-between'}
       maxWidth={'1920px'}
       marginX="auto"
-      bg="green.250"
-      padding="5%"
+      bg="green.300"
+      padding="3%"
       flexDirection={{ base: 'column', lg: 'row' }}
     >
       <Box
-        marginBottom={{ base: '5%', lg: '0' }}
+        marginBottom={{ base: '2%', lg: '0' }}
         w={{ base: '100%', lg: '48%' }}
         position={'relative'}
       >

@@ -40,9 +40,9 @@ export const PatternInfoPhoto = ({
       h={{
         base: '200px',
         md: '286px',
-        lg: '233px',
-        xl: '280px',
-        '2xl': '350px'
+        lg: '180px',
+        xl: '230px',
+        '2xl': '280px'
       }}
     >
       <Image

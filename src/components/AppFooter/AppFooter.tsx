@@ -33,7 +33,7 @@ export const AppFooter = () => {
         position="relative"
       >
         <Flex
-          padding={{ base: '5%', md: '2%' }}
+          paddingInline={{ base: '4%', xl: '4%' }}
           overflow="hidden"
           position="relative"
           // marginTop={{ base: '0', md: '20%' }}
@@ -42,21 +42,23 @@ export const AppFooter = () => {
           // bg="darkcyan"
         >
           <Flex
-            w="100%"
+            flex="1"
             flexDirection={{ base: 'column', md: 'row' }}
-            alignItems={{ base: 'flex-start', md: 'center' }}
+            alignItems={{ base: 'center', md: 'center' }}
             zIndex="docked"
-            marginTop={{ base: '10px', sm: '0' }}
+            marginTop={{ base: '20px', sm: '0' }}
             // bg={"grey"}
           >
+            
             <LogoBerneck
-              width={{
-                base: '110px',
-                md: '120px',
-                lg: '150px',
-                xl: '180px'
-              }}
-            />
+                  width={{
+                    base: '110px',
+                    md: '110px',
+                    lg: '130px',
+                    xl: '145px',
+                    '2xl': '150px'
+                  }}
+                />
             <Flex
               w={{ base: '100%', md: '30%' }}
               ml={{ base: '0', md: 'auto' }}
@@ -97,7 +99,9 @@ export const AppFooter = () => {
           </Flex>
 
           <Flex
+            flex="1"
             display={{ base: 'none', md: 'flex' }}
+            // paddingInline={{ base: '4%', xl: '4%' }}
             justifyContent="space-between"
             zIndex="docked"
             marginTop={{
@@ -237,8 +241,8 @@ export const AppFooter = () => {
            flex="1"
           //  bg="yellowgreen"
            alignItems="center"
-           justifyContent="center"
-          //  padding={{ base: '0', md: '5%' }}
+           justifyContent="right"
+          margin={{ base: '2%' }}
           >
             <Link href="http://www.commcepta.com.br/" isExternal>
               <Image
