@@ -46,12 +46,17 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
   return items.length <= 0 ? (
     <h1>No items passed</h1>
   ) : (
+
+  <Box
+    bg="brown.100"
+  >
+
     <Flex
-      // maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       position="relative"
-      overflowY="hidden"
-      overflowX="hidden"
+      // overflowY="hidden"
+      // overflowX="hidden"
       bg="brown.100"
       h={{ base: 'auto', md: '40vw' }}
       maxHeight={{ base: 'none', md: '750px' }}
@@ -64,6 +69,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
         w="100%"
         display={{ base: 'flex', md: 'none' }}
         marginY="5%"
+        bg="red.100"
       >
         <Indicator items={items} currentItem={currentItem} />
       </Flex>
@@ -232,6 +238,8 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
         </Box>
       </Flex>
     </Flex>
+
+  </Box>
   )
 }
 
@@ -306,5 +314,7 @@ const Indicator = ({ items, currentItem }: IndicatorProps) => {
         )
       })}
     </Flex>
+
+    
   )
 }

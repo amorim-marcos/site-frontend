@@ -53,9 +53,8 @@ export default function Home(props: HomeProps) {
 
   return (
     <Box 
-      maxWidth="1920px" 
-      marginX="auto" 
-      bg="white.100"
+      
+      bg="red.100"
     >
       {/* INICIO BANNER CAROUSEL */}
       {props.highlights && props.highlights.length > 0 && (

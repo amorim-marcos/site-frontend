@@ -11,11 +11,15 @@ export type SectionBannersProps = {
 }
 export const SectionBanners = ({ banner1, banner2 }: SectionBannersProps) => {
   return (
+
+  <Box
+    bg="green.300"
+  >
     <Flex
       justifyContent={'space-between'}
       maxWidth={'1920px'}
       marginX="auto"
-      bg="green.300"
+     
       padding="3%"
       flexDirection={{ base: 'column', lg: 'row' }}
     >
@@ -31,5 +35,7 @@ export const SectionBanners = ({ banner1, banner2 }: SectionBannersProps) => {
         <PatternInfoPhoto {...banner2} />
       </Box>
     </Flex>
+  
+  </Box>
   )
 }
