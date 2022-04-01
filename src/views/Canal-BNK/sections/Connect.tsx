@@ -31,7 +31,7 @@ export const Connect = () => {
   ])
 
   const getWidth = () => {
-    return bpXs ? '300px' : bpLg ? '500px' : bp2xl ? '300px' : '397px'
+    return bpXs ? '300px' : bpLg ? '310px' : bp2xl ? '300px' : '397px'
   }
 
   useEffect(() => {
@@ -90,9 +90,9 @@ export const Connect = () => {
         h={{ base: 'fit-content' }}
         w="100%"
         gap="50px"
-        // pt="55px"
+        pt="55px"
         pb="96px"
-        // px={{ sm: '20px', lg: '88px' }}
+        px={{ sm: '20px', lg: '88px' }}
         justify="center"
         align={{ base: 'center', lg: 'flex-start' }}
         wrap={{ base: 'wrap', '2xl': 'nowrap' }}
