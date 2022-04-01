@@ -42,7 +42,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
           sm: '5% 5% 0% 5%',
           lg: '3% 5% 0% 5%',
           xl: '5% 5% 0% 5%',
-          '2xl': '5% 5% 0% 0%'
+          '2xl': '5% 0% 0% 0%'
         }}
         direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
       >

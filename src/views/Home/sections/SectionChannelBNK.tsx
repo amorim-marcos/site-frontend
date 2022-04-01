@@ -23,6 +23,7 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
     bg="brown.100"
     // maxW={'1536px'}
     // flexDirection={{ base: 'column', md: 'row' }}
+    
   >
 
     <Flex
@@ -36,12 +37,13 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
     >
       <Flex
         flexDirection={'column'}
-        alignItems={{ base: 'flex-start', md: 'center' }}
+        alignItems={{ base: 'flex-start', md: 'center', '2xl': 'flex-start' }}
         justifyContent={'center'}
         w={{ base: '100%', md: '25%' }}
         paddingX={{ base: '5%', md: '0' }}
         paddingY={{ base: '10%', md: '0' }}
         paddingTop={{ base: '0', md: '10%' }}
+        // bg="red.100"
       >
         <Image
           w={{ base: '45%', md: '50%' }}
