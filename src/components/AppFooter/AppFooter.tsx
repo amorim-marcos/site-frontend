@@ -20,7 +20,7 @@ export const AppFooter = () => {
         aria-label="footer-container"
         data-testid="footer-container"
         flexDir="column"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         // h={{
         //   base: '240px',
@@ -181,7 +181,7 @@ export const AppFooter = () => {
           </Flex>
 
           <Box zIndex="base" position="absolute" top="-35px" left="0">
-            <Grafism width={{ base: '1024px', md: '1280px', lg: '1920px' }} />
+            <Grafism width={{ base: '1024px', md: '1280px', lg: '1536px' }} />
           </Box>
         </Flex>
         <Flex

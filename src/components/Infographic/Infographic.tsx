@@ -108,8 +108,8 @@ export const Infographic = ({
           // bg='black'
         >
           <Text
-              variant={'h1' as any}
-              fontSize={{ base: '14px', sm: '16px', lg: '20px', xl: '30px'}}
+              variant={'h3' as any}
+              fontSize={{ base: '14px', sm: '16px', lg: '20px', xl: '23px'}}
               color={titleSuperscript1Color}
               letterSpacing = '-0.94px'
             >{titleSuperscript1Text}</Text>
@@ -122,7 +122,7 @@ export const Infographic = ({
         >
           <Text 
               variant = {'h4' as any}
-              fontSize={{ base: '16px', sm: '18px', lg: '20px', xl: '30px'}}
+              fontSize={{ base: '16px', sm: '18px', lg: '18px', xl: '20px'}}
               color = {titleSuperscript2Color}
               textAlign = 'center'
             >{titleSuperscript2Text}</Text>
@@ -152,7 +152,7 @@ export const Infographic = ({
                           variant={'h1' as any}
                           color={content1Color}
                           fontFamily = 'body'
-                          fontSize = {{ base: '40px', sm: '48px', lg: '50px', xl: '90px'}}
+                          fontSize = {{ base: '40px', sm: '48px', lg: '50px', xl: '60px'}}
                         >{content1Text}</Text>
                     }
                     
@@ -160,13 +160,13 @@ export const Infographic = ({
                       <Box marginRight='5px'>
                         {(content1IconName === 'energy' &&
                           <EnergyIcon 
-                            height = {{ base: '30px', sm: '40px', lg: '40px', xl: '65px'}}
-                            width = {{ base: '30px', sm: '30px', lg: '40px', xl: '60px'}}
+                            height = {{ base: '30px', sm: '40px', lg: '40px', xl: '50px'}}
+                            width = {{ base: '30px', sm: '30px', lg: '40px', xl: '50px'}}
                           />)
                           || (content1IconName === 'water' &&
                           <WaterIcon 
-                            height = {{ base: '25px', sm: '35px', lg: '45px', xl: '48px'}}
-                            width = {{ base: '25px', sm: '30px', lg: '40px', xl: '60px'}}
+                            height = {{ base: '25px', sm: '35px', lg: '45px', xl: '40px'}}
+                            width = {{ base: '25px', sm: '30px', lg: '40px', xl: '45px'}}
                           />)
                           || (content1IconName === 'trees' &&
                           <TreesIcon 
@@ -180,8 +180,8 @@ export const Infographic = ({
                           />)
                           || (content1IconName === 'house' &&
                           <HouseWithPath 
-                            height = {{ base: '40px', sm: '100px', lg: '120px', xl: '140px'}}
-                            width = {{ base: '45px', sm: '50px', lg: '60px', xl: '80px'}}
+                            height = {{ base: '40px', sm: '100px', lg: '120px', xl: '120px'}}
+                            width = {{ base: '45px', sm: '50px', lg: '60px', xl: '60px'}}
                           />)
                           || (content1IconName === 'employees' &&
                           <EmployeesIcon 
@@ -190,8 +190,8 @@ export const Infographic = ({
                           />)
                           || (content1IconName === 'earth' &&
                           <EarthIcon 
-                            height = {{ base: '45px', sm: '80px', lg: '120px', xl: '140px'}}
-                            width = {{ base: '26px', sm: '35px', lg: '35px', xl: '60px'}}
+                            height = {{ base: '45px', sm: '80px', lg: '120px', xl: '120px'}}
+                            width = {{ base: '26px', sm: '35px', lg: '35px', xl: '50px'}}
                           />)
                           || (content1IconName === 'synergy' &&
                           <SynergyIcon 
@@ -225,7 +225,7 @@ export const Infographic = ({
                     color={content2Color}
                     letterSpacing = '-0.94px'
                     fontFamily = 'body'
-                    fontSize = {{ base: '40px', sm: '48px', lg: '50px', xl: '90px'}}
+                    fontSize = {{ base: '40px', sm: '48px', lg: '50px', xl: '70px'}}
                     display={content2Display}
                   >{content2Text}</Text>
               
@@ -243,7 +243,7 @@ export const Infographic = ({
                         color={content3Color}
                         letterSpacing = '-0.76px'
                         // bg='red'
-                        fontSize= {{ base: '13px', sm: '14px', lg: '15px', xl: '20px' }}
+                        fontSize= {{ base: '13px', sm: '14px', lg: '15px', xl: '18px' }}
                         maxWidth={{ base: '80px', sm: '90px', lg: '100px', xl: '150px'}}
                       >{content3Text}</Text>
                   </Flex>
@@ -284,7 +284,7 @@ export const Infographic = ({
               variant={'h3' as any}
               color={titleSubscript1Color}
               letterSpacing = '-0.94px'
-              fontSize={{ base: '16px', sm: '18px', lg: '20px', xl: '28px'}}
+              fontSize={{ base: '16px', sm: '18px', lg: '20px', xl: '23px'}}
               textAlign='center'
               fontWeight = 'bold'
               maxWidth={{ base: '220px', sm: '200px', lg: '250px', xl: '300px'}}

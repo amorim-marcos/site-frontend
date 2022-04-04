@@ -186,21 +186,21 @@ export const EnvGallery = ({
         paths={[
           {
             title: 'Produtos',
-            url: 'produtos'
+            url: '/products'
           },
           {
             title: 'BP BERNECK®',
-            url: '/produtos/bp-berneck'
+            url: '/products/bp-berneck'
           },
           {
             title: 'Galeria de Ambientes',
-            url: '/produtos/bp-berneck/gallery'
+            url: '/products/bp-berneck/gallery'
           }
         ]}
       />
       <Container
         backgroundColor="white.100"
-        maxW="1920px"
+        maxW="1536px"
         width="100%"
         paddingInline="0"
       >

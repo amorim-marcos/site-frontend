@@ -53,7 +53,7 @@ export const Product = ({
       overflow="hidden"
       position="relative"
       marginX="auto"
-      maxWidth="1920px"
+      maxWidth="1536px"
       id={plusProduct ? 'plus' : 'product'}
     >
       <GrafismProduct {...grafismProps} />
@@ -63,7 +63,7 @@ export const Product = ({
         <Flex
           direction="column"
           width="100vw"
-          maxWidth="1920px"
+          maxWidth="1536px"
           position={{ base: 'relative', sm: 'absolute' }}
           top="0"
           right="0"

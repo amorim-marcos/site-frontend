@@ -31,7 +31,10 @@ export type DownloadsViewProps = {
 
 export const DownlodasView = ({ items }: DownloadsViewProps) => {
   return (
-    <Flex flexDir="column" maxWidth="1920px" marginX="auto">
+    <Flex 
+      flexDir="column"
+      bg="brown.100"
+    >
       {/* Downloads Header */}
       <Flex
         flexDir="column"
@@ -45,8 +48,12 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
         justifyContent="center"
         overflow="hidden"
         alignItems={{ base: 'center', md: 'flex-start' }}
+        maxWidth="1536px" 
+        marginX="auto"
       >
-        <Box display={{ base: 'none', md: 'block' }}>
+        <Box 
+          display={{ base: 'none', md: 'block' }}
+        >
           <CompletedTitle
             titleString="Downloads"
             textAlign="left"

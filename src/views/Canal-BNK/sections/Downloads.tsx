@@ -21,6 +21,7 @@ export const Downloads = () => {
       }}
       py={{ base: '54px', lg: '100px' }}
       overflow="hidden"
+      maxWidth={"1536px"}
     >
       {!isMobile &&
         (currentCategory === -1 ? (

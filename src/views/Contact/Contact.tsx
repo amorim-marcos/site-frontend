@@ -52,9 +52,18 @@ export const Contact = ({
 
       <FireAlert title={fireWarning} />
 
+  <Box
+    backgroundColor="green.400"
+  >
+    
+    {/* INICIO sobre o que deseja falar? */}
+    <Box
+      bg="brown.100"
+    >
+
       <Container
         backgroundColor="brown.100"
-        maxW="1920px"
+        maxW="1536px"
         paddingInline="0"
         paddingTop="30px"
       >
@@ -64,7 +73,7 @@ export const Contact = ({
             textAlign="center"
           />
         </Flex>
-
+    
         <Flex
           flexDirection="column"
           mt="55px"
@@ -158,9 +167,22 @@ export const Contact = ({
 
         {contact_channel && <ContactChannelSection channel={contact_channel} />}
 
+      </Container>
+
+    </Box>
+    {/* FIM sobre o que deseja falar? */}
+    
+    <Container
+        backgroundColor="green.400"
+        maxW="1536px"
+      >
         <ButtonsSection />
       </Container>
-    </>
+  
+  
+  </Box>
+</>
+    
   )
 }
 
@@ -214,18 +236,20 @@ const ButtonsSection = () => {
   return (
     <Flex
       backgroundColor="green.400"
-      paddingTop={{ base: '50px', lg: '100px' }}
-      paddingBottom={{ base: '50px', lg: '100px' }}
+      padding={{ base: '2% 0%', lg: '4% 0%' }}
+      flex="1"
+      justify={"center"}
     >
       <Flex
-        width="full"
+        // backgroundColor="yellow"
         flexDirection={{ base: 'column', lg: 'row' }}
         paddingLeft={{ base: 0, lg: '80px' }}
         paddingRight={{ base: 0, lg: '80px' }}
+        flex="1"
       >
         <Box flex="1" mr={{ base: 0, lg: '45px' }}>
           <PatternInfo
-            minH={{ base: '185px' }}
+            minH={{ base: '100px' }}
             maxH={{ base: '185px' }}
             title="DESCUBRA"
             description="Onde Comprar"
@@ -252,7 +276,7 @@ const ButtonsSection = () => {
         </Box>
         <Box flex="1" mr={{ base: 0, lg: '45px' }} mt={{ base: '45px', lg: 0 }}>
           <PatternInfo
-            minH={{ base: '185px' }}
+            minH={{ base: '100px' }}
             maxH={{ base: '185px' }}
             title="Solicite Nosso"
             description="Mostruário"
@@ -279,7 +303,7 @@ const ButtonsSection = () => {
         </Box>
         <Box flex="1" mt={{ base: '45px', lg: 0 }}>
           <PatternInfo
-            minH={{ base: '185px' }}
+            minH={{ base: '100px' }}
             maxH={{ base: '185px' }}
             title="Confira Nossas"
             description="Vagas abertas"

@@ -52,7 +52,7 @@ const Title = (props: { title: string }) => (
 const SubTitle = (props: { subtitle: string }) => (
   <Text
     variant={"h5" as any}
-    fontSize = {{ base: '12px', sm: '12px', lg: '14px', xl: '17px' }}
+    fontSize = {{ base: '12px', sm: '12px', lg: '14px', xl: '15px' }}
     color="white"
     letterSpacing="-0.36px"
   >

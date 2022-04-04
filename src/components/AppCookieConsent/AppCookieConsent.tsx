@@ -3,7 +3,7 @@ import CookieConsent from 'react-cookie-consent'
 
 export const AppCookieConsent = () => {
   return (
-    <Box maxWidth={'1920px'} marginX="auto">
+    <Box maxWidth={'1536px'} marginX="auto">
       <CookieConsent
         style={{
           background: '#595959',

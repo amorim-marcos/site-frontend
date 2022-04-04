@@ -137,7 +137,7 @@ export const FiltersTabs = ({
                       PAINÉIS
                     </Text>
                     <Arrow
-                      direction={currentFilterPanel == 'panels' ? 'down' : 'up'}
+                      direction={currentFilterPanel == 'panels' ? 'up' : 'down'}
                       width="3"
                       height="6"
                       color={darkMode ? 'green.200' : 'gray.200'}
@@ -162,7 +162,7 @@ export const FiltersTabs = ({
                     </Text>
                     <Arrow
                       direction={
-                        currentFilterPanel == 'collections' ? 'down' : 'up'
+                        currentFilterPanel == 'collections' ? 'up' : 'down'
                       }
                       width="3"
                       height="6"
@@ -188,7 +188,7 @@ export const FiltersTabs = ({
                     </Text>
                     <Arrow
                       direction={
-                        currentFilterPanel == 'colorations' ? 'down' : 'up'
+                        currentFilterPanel == 'colorations' ? 'up' : 'down'
                       }
                       width="3"
                       height="6"
@@ -335,9 +335,9 @@ export const FiltersTabs = ({
               fontSize="16px"
               _focus={{ outline: 'none' }}
             >
-              <option value="launch">lançamento</option>
-              <option value="name">nome</option>
-              <option value="scale">escala de cor</option>
+              <option value="launch">Lançamento</option>
+              <option value="name">Nome</option>
+              <option value="scale">Escala de cor</option>
             </Select>
 
             <Box position="relative" display="inline-block" mr="30px">

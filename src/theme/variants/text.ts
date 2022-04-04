@@ -64,7 +64,7 @@ export const Text = {
     },
     h2: {
       color: 'green.600',
-      fontSize: { base: '22px', sm: '22px', lg: '30px', xl: '40px' },
+      fontSize: { base: '22px', sm: '22px', lg: '30px', xl: '32px' },
       fontWeight: 'semibold'
     },
     h3: {

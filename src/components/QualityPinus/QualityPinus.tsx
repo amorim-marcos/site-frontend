@@ -41,7 +41,7 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
   return (
     <Flex
       aria-label="qualityPinusContainer"
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       paddingX={{
         base: '6%',
