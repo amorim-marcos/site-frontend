@@ -1,4 +1,4 @@
-import { Flex, Text, LayoutProps, Button } from '@chakra-ui/react'
+import { Flex, Text, LayoutProps, Button, Box } from '@chakra-ui/react'
 import { AlertIcon, CloseIcon } from '@components/Icons'
 import { useState } from 'react'
 
@@ -10,22 +10,27 @@ export const FireAlert = ({ title }: FireAlertProps) => {
   const [hide, setHide] = useState(false)
 
   return (
+
+  <Box
+    bg="brown.400"
+  >
     <Flex
       display={hide ? 'none' : 'flex'}
       data-testid="fire-alert"
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       zIndex="base"
       overflowY="hidden"
       overflowX="hidden"
-      h={{ xl: '70px', '2xl': '83px' }}
+      h={{ xl: '50px' }}
       bg="brown.400"
       align="center"
-      justify="center"
+      justify="start"
       direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
       px="30px"
       py={{ base: '25px', sm: 'auto' }}
       gap={{ base: '15px', sm: '0' }}
+      flex="1"
     >
       <AlertIcon
         mr={{ sm: '15px' }}
@@ -33,15 +38,13 @@ export const FireAlert = ({ title }: FireAlertProps) => {
           base: '30px',
           xs: '36px',
           lg: '30px',
-          xl: '32px',
-          '2xl': '36px'
+          xl: '32px'
         }}
         height={{
           base: '30px',
           xs: '32px',
           md: '26px',
-          xl: '28px',
-          '2xl': '32px'
+          xl: '28px'
         }}
         color="#FFF"
       />
@@ -49,11 +52,11 @@ export const FireAlert = ({ title }: FireAlertProps) => {
       <Text
         as="h5"
         fontSize={{
-          base: '13px',
-          sm: '13px',
-          md: '14px',
-          xl: '16px',
-          '2xl': '23px'
+          base: '11px',
+          sm: '12px',
+          md: '13px',
+          xl: '14px',
+          '2xl': '15px'
         }}
         color={'white'}
         textAlign={{ base: 'center', sm: 'left' }}
@@ -63,7 +66,7 @@ export const FireAlert = ({ title }: FireAlertProps) => {
       </Text>
 
       <Button
-        ml={{ sm: '30px' }}
+        ml={{ sm: '10px' }}
         onClick={() => setHide(true)}
         bgColor={'brown.400'}
         w="fit-content"
@@ -77,5 +80,7 @@ export const FireAlert = ({ title }: FireAlertProps) => {
         />
       </Button>
     </Flex>
+
+  </Box>
   )
 }

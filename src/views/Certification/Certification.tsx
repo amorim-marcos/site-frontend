@@ -48,7 +48,7 @@ export type CertificationViewProps = {
 }
 
 export const Certification = (props: CertificationViewProps) => (
-  <Box maxWidth="1920px" marginX="auto" bg="green.100">
+  <Box>
     <Pagebar
       paths={[
         {
@@ -58,20 +58,11 @@ export const Certification = (props: CertificationViewProps) => (
       ]}
     />
 
-    {/* <PageSession
-      data={{
-        imageUrl: 'url(/assets/imgs/escurecida.png)',
-        title: props.page_content.page_title,
-        subtitle: '',
-        text: props.page_content.header_text
-      }}
-      titleColor="green.900"
-      subTitleColor="brown.350"
-      viewGrafismo="flex"
-      GrafismLeftStroke="#E0CBA5"
-      GrafismLeftOpacity="0.2"
-    /> */}
     {/* Downloads Header */}
+  <Flex
+    bg="brown.100"
+    justifyContent="center"
+  >
     <Flex
         flexDir="column"
         width="100%"
@@ -84,6 +75,7 @@ export const Certification = (props: CertificationViewProps) => (
         justifyContent="center"
         overflow="hidden"
         alignItems={{ base: 'center', md: 'flex-start' }}
+        maxWidth={"1536px"}
       >
         <Box display={{ base: 'none', md: 'block' }}>
           <CompletedTitle
@@ -132,11 +124,14 @@ export const Certification = (props: CertificationViewProps) => (
           </Box>
         </Box>
       </Flex>
-      {/* End Downloads Header */}
+    
+    </Flex>
+    {/* End Downloads Header */}
+
 
     {/* INICIO Florestas Certificadas */}
     <Flex
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       alignItems="center"
       justifyContent="center"
@@ -253,9 +248,13 @@ export const Certification = (props: CertificationViewProps) => (
 
 
 
+
     {/* INICIO Produtos altamente qualificados */}
+  <Box
+     bg="green.170"
+  >
     <Flex
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       // alignItems='center'
       // justifyContent='center'
@@ -585,5 +584,7 @@ export const Certification = (props: CertificationViewProps) => (
 
       </Flex>
     </Flex>
+    </Box>
+
   </Box>
 )

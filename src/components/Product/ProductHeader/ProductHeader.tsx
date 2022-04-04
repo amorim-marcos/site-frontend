@@ -17,10 +17,14 @@ export const ProductHeader = ({
   plusIndicator
 }: ProductHeaderProps) => {
   return (
+ 
+ <Box
+    bg="red"
+ >
     <Flex
       padding="5%"
       flexDirection="column"
-      maxWidth="1920px"
+      maxWidth="1536px"
       bg={headerBgColor}
       align={{ base: 'center', sm: 'flex-start' }}
       paddingBottom={{ base: '30vh', sm: '5%' }}
@@ -61,21 +65,14 @@ export const ProductHeader = ({
             />
           </Box>
         )}
-        <Heading
+        <Text as={"h1"}
+          variant={"h1"}
           zIndex="docked"
           color="white.100"
-          fontSize={{
-            base: '33px',
-            sm: '25px',
-            md: '30px',
-            lg: '35px',
-            xl: '40px',
-            '2xl': '50px'
-          }}
           width={plusIndicator ? { base: '68%', sm: 'auto' } : 'auto'}
         >
           {title}
-        </Heading>
+        </Text>
       </Flex>
 
       <Box
@@ -88,45 +85,31 @@ export const ProductHeader = ({
           sm: '12px',
           md: '14px',
           lg: '16px',
-          xl: '18px',
-          '2xl': '20px'
+          xl: '18px'
         }}
         marginBottom="20px"
       />
       <Flex flexDirection="column">
         <Box>
-          <Heading
-            fontSize={{
-              base: '17px',
-              sm: '11px',
-              md: '14px',
-              lg: '18px',
-              xl: '22px',
-              '2xl': '30px'
-            }}
+         <Text as={"h2"}
+            variant={"h2"}
             color="green.900"
-            zIndex="docked"
+            // zIndex="docked"
             marginBottom={{ base: '15px', sm: '0px' }}
           >
             {subtitle}
-          </Heading>
+          </Text>
         </Box>
         <Text
-          fontSize={{
-            base: '13px',
-            sm: '8px',
-            md: '11px',
-            lg: '14px',
-            xl: '17px',
-            '2xl': '20px'
-          }}
           color="green.900"
           width={{ base: '100%', sm: '65%' }}
-          zIndex="docked"
+          // zIndex="docked"
         >
           {description}
         </Text>
       </Flex>
     </Flex>
+
+  </Box>
   )
 }

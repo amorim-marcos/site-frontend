@@ -44,7 +44,7 @@ export const About = ({
   const router = useRouter()
 
   return (
-    <Box maxWidth="1920px" marginX="auto" bg="green.100">
+    <Box>
       <Pagebar
         paths={[
           {
@@ -67,9 +67,13 @@ export const About = ({
         />
       </Box>
 
-      {/* INICIO RAIZES FIRMES PARA CRESCER */}
+    {/* INICIO RAIZES FIRMES PARA CRESCER */}
+    <Box
+      bg="green.150"
+    >
+      
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         position="relative"
         zIndex="base"
@@ -109,16 +113,18 @@ export const About = ({
           >
             <Image
               src={'/assets/imgs/foto_fabrica.png'}
-              w={{ base: '300px', sm: '400px', lg: '2000px', xl: '3000px' }}
+              w={{ base: '200px', sm: '300px', lg: '2000px', xl: '2000px' }}
             />
           </Box>
         </Flex>
       </Flex>
-      {/* FIM RAIZES FIRMES PARA CRESCER */}
+
+    </Box>
+    {/* FIM RAIZES FIRMES PARA CRESCER */}
 
       {/* INICIO PARA O MADEIRAS MUNDO */}
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -141,7 +147,7 @@ export const About = ({
           <Box
             flex={{ base: '1', sm: '1', md: '1', lg: '1', xl: '1' }}
             margin={{
-              base: '8% 0% 0% 0%',
+              base: '10% 0% 0% 0%',
               lg: '8% 0% 8% 0%'
             }}
           >
@@ -164,7 +170,7 @@ export const About = ({
                 <Image
                   src="/assets/imgs/quem_somos_container.png"
                   w={{ base: '55%', lg: '60%' }}
-                  opacity={{ base: '0.5', sm: '1' }}
+                  opacity={{ base: '0.5', lg: '1' }}
                 />
               </Box>
               {/* BOX 2 */}
@@ -228,20 +234,32 @@ export const About = ({
       </Flex>
       {/* FIM PARA O MADEIRAS MUNDO */}
 
+
       {/* INICIO TRAJETORIA CAROUSEL */}
-      <Box bg="brown.100" id="trajetoria">
+      <Box 
+        bg="brown.100" 
+        id="trajetoria"
+        
+      >
         <Flex
-          // bg='yellow'
-          direction={{ base: 'column' }}
+          maxWidth="1536px"
+          marginX="auto"
           alignItems="center"
-          padding={{ base: '5%' }}
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          direction={{ base: 'column' }}
+          // bg='blue'
+          padding={{ base: '3%', sm: '2%', lg: '2%', xl: '1%' }}
         >
           <Flex
             direction={{ base: 'column' }}
             // bg='pink'
             flex="1"
             alignItems="center"
-            margin={{ base: '8% 5%', sm: '8% 5%', lg: '5% 10%', xl: '5% 10%' }}
+            margin={{ base: '8% 5%', sm: '5% 5%', lg: '5% 10%', xl: '5% 10%' }}
           >
             <CompletedTitle
               titleString={page_content.our_trajectory_title}
@@ -262,8 +280,9 @@ export const About = ({
           <Flex
             justifyContent="center"
             alignItems="center"
-            width="100%"
+            width="90%"
             margin={{ xs: '0', lg: '20px' }}
+            // bg='red'
           >
             <TrajectoryCarousel tabs={our_trajectory_tabs} />
           </Flex>
@@ -274,7 +293,7 @@ export const About = ({
       {/* INICIO ONDE ESTAMOS */}
       <Flex
         id="onde-estamos"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         position="relative"
         zIndex="base"
@@ -348,9 +367,14 @@ export const About = ({
       </Flex>
       {/* FIM ONDE ESTAMOS */}
 
-      {/* INICIO REVENDEDORES */}
+    
+    {/* INICIO REVENDEDORES */}
+    <Box
+      bg="green.200"
+    >
+
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         // alignItems='center'
         // justifyContent='center'
@@ -427,11 +451,13 @@ export const About = ({
           </Box>
         </Flex>
       </Flex>
-      {/* FIM REVENDEDORES */}
+    
+    </Box>
+    {/* FIM REVENDEDORES */}
 
       {/* INICIO CERTIFICADOS */}
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         position="relative"
         zIndex="base"

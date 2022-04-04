@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-import { Flex, Image, Text } from '@chakra-ui/react'
+import { Flex, Image, Box } from '@chakra-ui/react'
 import Pagebar from '@components/Pagebar'
 import PostBody from '@components/PostBody'
 import {
@@ -27,7 +27,9 @@ export const PostsView = ({
   postCategory
 }: PostViewProps) => {
   return (
+    
     <>
+    <Box>
       <Pagebar
         paths={[
           {
@@ -41,15 +43,20 @@ export const PostsView = ({
         ]}
         disconsiderCurrentPage={false}
       />
+    
+    <Box
+      bg={backgroundColor}
+    >
       <Flex
         flexDirection="column"
         alignItems="center"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         bg={backgroundColor}
         position="relative"
         overflow="hidden"
       >
+        
         {/* Header Image */}
         <Image
           zIndex="docked"
@@ -111,10 +118,23 @@ export const PostsView = ({
         <PostBody {...postBody} />
         {/* End of post body section */}
 
-        {/* Relational content */}
-        <PostRelationalContent {...relationalContent} />
-        {/* End od relational content */}
+        
+        
       </Flex>
+    
+    </Box>
+    <Flex
+      flex="1"
+      bg="brown.150"
+      justifyContent={"center"}
+    >
+      {/* Relational content */}
+      <PostRelationalContent {...relationalContent} />
+        {/* End od relational content */}
+
+    </Flex>
+    
+    </Box>
     </>
   )
 }

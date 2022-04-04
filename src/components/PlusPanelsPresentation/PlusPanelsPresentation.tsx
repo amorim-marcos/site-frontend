@@ -16,7 +16,7 @@ export const PlusPanelsPresentation = ({
   return (
     <Box
       aria-label="PlusPanelPrensentationContainer"
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       padding="5%"
     >

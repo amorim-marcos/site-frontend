@@ -58,7 +58,7 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <Box pos="relative" maxWidth={'1920px'} marginX="auto" overflow={'hidden'}>
+    <Box pos="relative" maxWidth={'1536px'} marginX="auto" overflow={'hidden'}>
       <Pagebar
         paths={[
           {
@@ -171,7 +171,7 @@ const PageNavegation = (props: {
       w="100%"
       // pt={{ base: '100px', '2xl': '140px' }}
       justify="space-between"
-      maxWidth="1920px"
+      maxWidth="1536px"
       position={fixed ? 'fixed' : 'absolute'}
       bottom={'0'}
       zIndex={'banner'}

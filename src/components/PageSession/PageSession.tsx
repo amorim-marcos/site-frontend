@@ -51,8 +51,11 @@ export const PageSession = ({
   }
 }: PageSessionProps) => {
   return (
+  <Flex
+    bg='green.900'
+  >
     <Flex
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       alignItems="center"
       justifyContent="center"
@@ -173,5 +176,7 @@ export const PageSession = ({
         </Flex>
       </Box>
     </Flex>
+
+  </Flex>
   )
 }

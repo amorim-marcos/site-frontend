@@ -8,11 +8,11 @@ describe('<PlusPanelsPresentation />', () => {
     renderWithTheme(<PlusPanelsPresentation />)
   })
 
-  it('should render a component with max width of 1920px', () => {
+  it('should render a component with max width of 1536px', () => {
     renderWithTheme(<PlusPanelsPresentation />)
     expect(
       screen.getByLabelText(/PlusPanelPrensentationContainer/i)
-    ).toHaveStyle({ maxWidth: '1920px' })
+    ).toHaveStyle({ maxWidth: '1536px' })
   })
 
   it('should render a component with margin auto horizontally', () => {

@@ -12,7 +12,7 @@ export const Buy = () => {
   const [locationBrasil, setLocationBrasil] = useState(true)
   const { isMobile } = useMobile(568)
   return (
-    <Box maxWidth={'1920px'} marginX="auto">
+    <Box>
       <Pagebar
         paths={[
           {
@@ -23,11 +23,17 @@ export const Buy = () => {
       />
 
       <Flex
-        position={'relative'}
-        w="100%"
+        maxWidth="1536px"
+        marginX="auto"
+        alignItems="start"
+        justifyContent="center"
+        position="relative"
+        zIndex="base"
+        overflowY="hidden"
+        overflowX="hidden"
+        bg="white.100"
         padding="5%"
-        flexDirection={'column'}
-        overflow={'hidden'}
+        flexDirection={"column"}
       >
         <Image
           src="/img/onde-comprar/grafismo.svg"
@@ -58,7 +64,12 @@ export const Buy = () => {
         </Text>
       </Flex>
 
-      <Flex padding="25px 0" w="100%" bg="green.400" justifyContent={'center'}>
+      <Flex 
+        padding="25px 0" 
+        w="100%" 
+        bg="green.400" 
+        justifyContent={'center'}
+      >
         <Flex
           border="1px solid"
           borderColor={'green.600'}

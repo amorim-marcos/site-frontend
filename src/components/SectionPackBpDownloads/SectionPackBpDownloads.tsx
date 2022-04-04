@@ -12,8 +12,8 @@ export const SectionPackBpDownloads = () => {
     >
       <Flex
         bg="#F6EFE3"
-        maxWidth="1920px"
-        minWidth={width && width < 1920 ? '100vw' : '1920px'}
+        maxWidth="1536px"
+        minWidth={width && width < 1536 ? '100vw' : '1536px'}
         h={{ base: 'auto', md: '23vw' }}
         maxHeight="441px"
         position="relative"

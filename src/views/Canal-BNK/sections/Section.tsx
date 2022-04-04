@@ -4,6 +4,7 @@ import useMobile from 'hooks/useMobile'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { CategoryContext } from '..'
+import CompletedTitle from '@components/CompletedTitle'
 
 interface SectionProps extends FlexProps {
   title?: string
@@ -14,37 +15,33 @@ export const Section = (props: SectionProps) => {
   const { title, seeMore, children, ...rest } = props
 
   return (
-    <Flex 
-      // bg="tomato"
-      direction="column" 
-      pb={{ base: '58px', lg: '0' }} 
-      {...rest}>
+  <Flex 
+    // bg="tomato"
+    direction="column"
+    w="100%"
+    pb={{ base: '58px', lg: '0' }} 
+    {...rest}
+  >
+      
       <Flex
         align="center"
         justify={{ base: 'center', lg: 'space-between' }}
         pl={{ lg: '110px' }}
         pr={{ lg: '115px' }}
-        w="100%"
+        
+      
       >
         {title ? (
-          <Flex
-            data-testid="section-title"
-            gap="30px"
-            direction="column"
-            align={{ base: 'center', lg: 'flex-start' }}
-          >
-            <Text
-              as="h2"
-              fontWeight="bold"
-              fontSize={{ base: '42px', lg: '50px' }}
-              letterSpacing="-1px"
-              color="green.800"
-            >
-              {title}
-            </Text>
-
-            <Box border="3px solid" borderColor="green.600" w="87px" />
-          </Flex>
+          <CompletedTitle
+            titleString={title}
+            textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+            alignSelf={{
+              base: 'flex-start',
+              sm: 'flex-start',
+              lg: 'flex-start',
+              xl: 'flex-start'
+            }}
+        />  
         ) : (
           <Box />
         )}
@@ -95,14 +92,20 @@ const SeeMore = (props: SeeMoreProps) => {
       align="center"
       justify="center"
       gap="14px"
-      marginRight={{ base: '22px', md: '30px', lg: '-65px', xl: '-18px' }}
-      marginTop={{ base: '15px', md: '10px', lg: '20px' , xl: '25px' }}
-      // bg="black"
+      cursor="pointer"
+      //bg="black"
     >
       <Link
         letterSpacing="-0.4px"
-        fontSize={{ base: '16px', lg: '20px' }}
+        fontSize={{
+          base: '16px',
+          md: '12px',
+          lg: '14px',
+          xl: '14px',
+          '2xl': '16px'
+        }}
         color={props.textColor ? props.textColor : 'green.550'}
+        whiteSpace="nowrap"
       >
         {props?.text}
       </Link>

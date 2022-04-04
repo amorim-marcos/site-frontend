@@ -91,8 +91,9 @@ export const Videos = () => {
           ? 'gray.150'
           : 'brown.100'
       }
-      py={{ base: '52px', lg: '100px' }}
+      py={{ base: '52px', lg: '50px' }}
       px={{ base: '20px', lg: '0' }}
+      maxWidth={"1536px"}
     >
       <Flex
         w="100%"

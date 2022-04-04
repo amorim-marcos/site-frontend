@@ -3,11 +3,11 @@ import { renderWithTheme } from '../../utils/test/helpers'
 import AppFooter from '.'
 
 describe('<AppFooter />', () => {
-  it('should render a container with max width of 1920px', () => {
+  it('should render a container with max width of 1536px', () => {
     renderWithTheme(<AppFooter />)
 
     expect(screen.getByLabelText(/footer-container/i)).toHaveStyle({
-      maxWidth: '1920px'
+      maxWidth: '1536px'
     })
   })
 

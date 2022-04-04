@@ -12,7 +12,7 @@ describe('<AppHeader />', () => {
   //   })
   // })
 
-  it('should render a container with max width of 1920px', () => {
+  it('should render a container with max width of 1536px', () => {
     renderWithTheme(<AppHeader />)
 
     expect(screen.getByTestId('header-container')).toHaveStyle({

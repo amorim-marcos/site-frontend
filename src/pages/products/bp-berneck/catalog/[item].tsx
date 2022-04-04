@@ -105,8 +105,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       texture: {
         name: productFetch.product_texture.name,
         description: productFetch.product_texture.description,
-        icon: `${url}${productFetch.product_texture.small_icon_image.url}`,
-        top_menu_image: `${url}${productFetch.product_texture.top_menu_image.url}`
+        icon: (productFetch.product_texture.small_icon_image === null) ? null : `${url}${productFetch.product_texture.small_icon_image.url}`,
+        top_menu_image: (productFetch.product_texture.top_menu_image === null) ? null : `${url}${productFetch.product_texture.top_menu_image.url}`
       },
       combine_with: productFetch.combine_with.map((item: any) => ({
         name: item.name,

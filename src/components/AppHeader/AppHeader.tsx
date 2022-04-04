@@ -96,7 +96,7 @@ export const AppHeader = () => {
         //   lg: '103px',
         //   xl: '140px'
         // }}
-        // maxWidth="1920px"
+        // maxWidth="1536px"
         bg='green.900'
         position="fixed"
         top="0"
@@ -128,7 +128,7 @@ export const AppHeader = () => {
             }
             bg="green.900"
           >
-            <Box w="100%" marginX="auto" maxWidth={'1920px'}>
+            <Box w="100%" marginX="auto" maxWidth={'1536px'}>
               <Flex
                 paddingX={{ base: '4.5%', md: '3.5%' }}
                 h={{
@@ -170,7 +170,7 @@ export const AppHeader = () => {
           </Box>
 
           <Box w="100%" bg="green.800">
-            <Box w="100%" marginX="auto" maxWidth={'1920px'}>
+            <Box w="100%" marginX="auto" maxWidth={'1536px'}>
               <Flex
                 paddingInline={{ base: '4%', xl: '4%' }}
                 h={{

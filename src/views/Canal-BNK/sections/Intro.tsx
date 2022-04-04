@@ -36,10 +36,18 @@ export const Intro = (props: { posts: IPost[] }) => {
   } = useContext(CategoryContext)
 
   return (
-    <Box
-      pos="relative"
-      overflow="hidden"
-      w="100%"
+  <Box
+    bg={
+      currentCategory === -1
+        ? 'brown.100'
+        : currentCategory === 0
+        ? 'brown.200'
+        : currentCategory === 1
+        ? 'green.200'
+        : 'green.600'
+    }
+  >
+    <Flex
       bg={
         currentCategory === -1
           ? 'brown.100'
@@ -49,6 +57,14 @@ export const Intro = (props: { posts: IPost[] }) => {
           ? 'green.200'
           : 'green.600'
       }
+      maxWidth="1536px"
+      marginX="auto"
+      alignItems="center"
+      justifyContent="center"
+      position="relative"
+      zIndex="base"
+      overflowY={{ base: 'hidden', '2xl': 'visible' }}
+      overflowX={{ base: 'hidden', '2xl': 'visible' }}
     >
       <Image
         src="/assets/imgs/canal-bnk/grafismo_esquerda.svg"
@@ -380,7 +396,10 @@ export const Intro = (props: { posts: IPost[] }) => {
           )}
         </Section>
       </Flex>
-    </Box>
+
+    </Flex>
+</Box>
+    
   )
 }
 

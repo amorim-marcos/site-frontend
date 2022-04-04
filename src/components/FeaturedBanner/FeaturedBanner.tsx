@@ -42,7 +42,7 @@ export const FeaturedBanner = ({
         lg: '3%',
         xl: '4% 4% 0 4%'
       }}
-      h={{ base: '300px', sm: '400px', lg: '135px', xl: '260px' }}
+      h={{ base: '300px', sm: '400px', lg: '135px', xl: '200px' }}
       onMouseEnter={() => {
         setTimeout(() => setHover(true), 300)
       }}

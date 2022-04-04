@@ -38,7 +38,7 @@ export interface SearchProps {
 
 export default function Search(props: SearchProps) {
   return (
-    <Box maxWidth="1920px" w="100%" h="100%" bg="green.100">
+    <Box maxWidth="1536px" w="100%" h="100%" bg="green.100">
       <Pagebar
         paths={[
           {
