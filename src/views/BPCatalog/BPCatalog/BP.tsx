@@ -34,7 +34,14 @@ export const BP = ({
         <Text
           pt="13px"
           flex={1}
-          fontSize={{ base: '20px', '2xl': '24px' }}
+          fontSize={{
+            base: '20px',
+            sm: '24px',
+            md: '28px',
+            lg: '25px',
+            xl: '26px',
+            '2xl': '28px'
+          }}
           variant={'body-bold' as any}
         >
           {name}

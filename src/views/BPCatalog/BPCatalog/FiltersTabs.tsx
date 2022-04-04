@@ -131,6 +131,7 @@ export const FiltersTabs = ({
                     borderBottomColor={'green.500'}
                     borderBottomWidth={{ base: '4px' }}
                     fontSize="22px"
+                    _focus={{ outline: 'none' }}
                   >
                     <Text color={darkMode ? 'green.300' : 'gray.300'} mr="10px">
                       PAINÉIS
@@ -154,6 +155,7 @@ export const FiltersTabs = ({
                     borderBottomColor={'green.500'}
                     borderBottomWidth={{ base: '4px' }}
                     fontSize="22px"
+                    _focus={{ outline: 'none' }}
                   >
                     <Text color={darkMode ? 'green.300' : 'gray.300'} mr="10px">
                       COLEÇÕES
@@ -179,6 +181,7 @@ export const FiltersTabs = ({
                     borderBottomColor={'green.500'}
                     borderBottomWidth={{ base: '4px' }}
                     fontSize="22px"
+                    _focus={{ outline: 'none' }}
                   >
                     <Text color={darkMode ? 'green.300' : 'gray.300'} mr="10px">
                       COLORAÇÃO
@@ -288,6 +291,7 @@ export const FiltersTabs = ({
                     variant={'filters' as any}
                     mr="30px"
                     onClick={() => setFilteredBps(applyFilters(filters, bps))}
+                    _focus={{ outline: 'none' }}
                   >
                     Filtrar
                   </Button>
@@ -298,6 +302,7 @@ export const FiltersTabs = ({
                         setFilters(JSON.parse(JSON.stringify(initialFilters)))
                         setFilteredBps(applyFilters(initialFilters, bps))
                       }}
+                      _focus={{ outline: 'none' }}
                     >
                       Limpar filtros
                     </Button>
@@ -328,6 +333,7 @@ export const FiltersTabs = ({
               backgroundColor={darkMode ? 'gray.400' : 'white.100'}
               width="160px"
               fontSize="16px"
+              _focus={{ outline: 'none' }}
             >
               <option value="launch">Lançamento</option>
               <option value="name">Nome</option>
@@ -350,6 +356,7 @@ export const FiltersTabs = ({
                   variant="link"
                   display="inline-block"
                   mr="15px"
+                  _focus={{ outline: 'none' }}
                 >
                   <BigGridIcon
                     color={gridSize == 'big' ? 'green.500' : 'gray.200'}
@@ -361,6 +368,7 @@ export const FiltersTabs = ({
                   variant="link"
                   display="inline-block"
                   mr="15px"
+                  _focus={{ outline: 'none' }}
                 >
                   <MidGridIcon
                     color={gridSize == 'medium' ? 'green.500' : 'gray.200'}
@@ -372,6 +380,7 @@ export const FiltersTabs = ({
                   variant="link"
                   display="inline-block"
                   mr="15px"
+                  _focus={{ outline: 'none' }}
                 >
                   <SmallGridIcon
                     color={gridSize == 'small' ? 'green.500' : 'gray.200'}
@@ -410,7 +419,8 @@ export const FiltersTabs = ({
                       setSearchSelected(false)
                     }}
                     onKeyPress={(event) => {
-                      if(event.key === "Enter") setFilteredBps(applyFilters(filters, bps))
+                      if (event.key === 'Enter')
+                        setFilteredBps(applyFilters(filters, bps))
                     }}
                     placeholder="Pesquise pelo nome"
                     _placeholder={{
@@ -479,6 +489,7 @@ export const FiltersTabs = ({
                   variant="link"
                   display="inline-block"
                   mr="15px"
+                  _focus={{ outline: 'none' }}
                 >
                   <FiltersDarkModeIcon activated={darkMode} />
                 </Button>
