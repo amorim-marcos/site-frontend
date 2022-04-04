@@ -117,14 +117,13 @@ export const AppHeader = () => {
             transition={'0.3s'}
             overflow={'hidden'}
             h={
-              fixed
-                ? {
+              {
                     base: '25px',
                     md: '25px',
                     lg: '30px',
                     xl: '40px'
                   }
-                : '0px'
+               
             }
             bg="green.900"
           >
