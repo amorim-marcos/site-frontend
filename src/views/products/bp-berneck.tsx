@@ -97,7 +97,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             bgColor="brown.300"
             srcImg="../img/BPS.png"
             onClick={() => router.push('/products/bp-berneck/catalog')}
-            sizeType="rectangle"
+            sizeType="rectangle-horizontal"
           />
         </GridItem>
         <GridItem
