@@ -79,7 +79,7 @@ export const CarouselMultiElements = ({
         right="0px"
         marginX="auto"
         w="fit-content"
-        bottom={{ base: '-20px', sm: '-25px', lg: '-25px', xl: '-30px' }}
+        bottom={{ base: '-20px', sm: '0px', lg: '5px', xl: '15px' }}
       >
         <Button
           onMouseEnter={() => setHoverBtnControl(true)}
@@ -87,8 +87,8 @@ export const CarouselMultiElements = ({
           variant="no-border"
           background="gray.300"
           color="gray.150"
-          w={{ base: '40px', sm: '50px', lg: '60px', xl: '77px' }}
-          h={{ base: '40px', sm: '50px', lg: '60px', xl: '77px' }}
+          w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+          h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
           _hover={{
             background: 'green.550',
             color: 'white.100'
@@ -107,8 +107,8 @@ export const CarouselMultiElements = ({
           variant="no-border"
           background="gray.300"
           color="gray.150"
-          w={{ base: '40px', sm: '50px', lg: '60px', xl: '77px' }}
-          h={{ base: '40px', sm: '50px', lg: '60px', xl: '77px' }}
+          w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+          h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
           _hover={{
             background: 'green.550',
             color: 'white.100'
