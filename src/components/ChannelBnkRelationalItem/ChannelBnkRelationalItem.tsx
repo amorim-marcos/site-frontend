@@ -134,7 +134,7 @@ export const ChannelBnkRelationalItem = ({
             src={urlImage} />
       </Box>
       
-      
+
       {/* { CARD TEXT  } */}
       <Flex
         bg={getPanelColor(categoryId, currentCategory)}
@@ -145,7 +145,7 @@ export const ChannelBnkRelationalItem = ({
         // bg = "blueviolet"
       >
         <Flex 
-          padding={{ base: '8%', xl: (showInvert) ? '3%' : '5%' , '2xl': '2%'}}
+          padding={{ base: '8%', xl: (showInvert) ? '3%' : '5%' , '2xl': '4%'}}
           flexDirection={{ base: 'column', md: (showInvert) ? 'column' : 'column' }}
           // bg = "blue"
         >
@@ -222,6 +222,7 @@ export const ChannelBnkRelationalItem = ({
           marginLeft="10%"
         />
       </Flex>
+
     </Flex>
   )
 }

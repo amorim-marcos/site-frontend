@@ -212,7 +212,7 @@ export const AppFooter = () => {
               }}
               color="green.300"
             >
-              © 2022 BERNECK . Todos os direitos reservados.
+              ©2022 BERNECK. Todos os direitos reservados.
             </Text>
           </Flex>
           <Flex 
@@ -238,11 +238,11 @@ export const AppFooter = () => {
             </Text>
           </Flex>
           <Flex 
-           flex="1"
-          //  bg="yellowgreen"
-           alignItems="center"
-           justifyContent="right"
-          margin={{ base: '2%' }}
+            flex="1"
+            // bg="yellowgreen"
+            alignItems="center"
+            justifyContent="flex-end"
+            margin={{ base: '2%' }}
           >
             <Link href="http://www.commcepta.com.br/" isExternal>
               <Image
