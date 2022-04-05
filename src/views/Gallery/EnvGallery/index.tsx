@@ -1,7 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-import { Container, Grid, GridItem, Center, Text, Flex } from '@chakra-ui/react'
+import {
+  Container,
+  Grid,
+  GridItem,
+  Center,
+  Text,
+  Flex,
+  Box
+} from '@chakra-ui/react'
 
 import Pagebar from '@components/Pagebar'
 
@@ -36,6 +44,7 @@ export type EnvGalleryProps = {
     }[]
   }
 }
+const pageSize = 9
 
 export const EnvGallery = ({
   envs,
@@ -54,6 +63,7 @@ export const EnvGallery = ({
   const [filters, setFilters] = useState(initialFilters)
   const [filtersEmpty, setFiltersEmpty] = useState(true)
   const { isMobile } = useMobile(1024)
+  const [pagination, setPagination] = useState(1)
 
   function changeFilterPanel(newFilterPanel: FilterPanelName) {
     setCurrentFilterPanel(
@@ -156,6 +166,20 @@ export const EnvGallery = ({
     }
   }, [filters])
 
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        // console.log('It works!')
+        setPagination((p) => p + 1)
+      }
+    })
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+  }, [ref])
+
   return (
     <>
       <Pagebar
@@ -232,7 +256,6 @@ export const EnvGallery = ({
         >
           {filteredEnvs && filteredEnvs.length > 0 ? (
             <Center
-              paddingBottom="300px"
               mt={
                 displayFilters
                   ? { base: '40px', md: '100px' }
@@ -258,16 +281,20 @@ export const EnvGallery = ({
                 justifyItems="center"
                 // bg="pink"
               >
-                {filteredEnvs.map((env) => (
-                  <GridItem key={env.id} mt="20px">
-                    <Env
-                      href={`/products/bp-berneck/gallery/${env.url_code}`}
-                      title={env.title}
-                      place={env.name}
-                      image_url={env.image_url}
-                    />
-                  </GridItem>
-                ))}
+                {filteredEnvs.map((env, i) => {
+                  return (
+                    i < pagination * pageSize && (
+                      <GridItem key={env.id} mt="20px">
+                        <Env
+                          href={`/products/bp-berneck/gallery/${env.url_code}`}
+                          title={env.title}
+                          place={env.name}
+                          image_url={env.image_url}
+                        />
+                      </GridItem>
+                    )
+                  )
+                })}
               </Grid>
             </Center>
           ) : (
@@ -301,6 +328,7 @@ export const EnvGallery = ({
             </Flex>
           )}
         </Container>
+        <Box marginTop={{ base: '0', md: '300px' }} ref={ref}></Box>
       </Container>
     </>
   )
