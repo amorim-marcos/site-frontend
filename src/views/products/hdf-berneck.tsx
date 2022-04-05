@@ -36,6 +36,7 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
           }
         ]}
       />
+    
       <Product
         imgSrc="/img/hdf.png"
         grafismProps={{

@@ -27,7 +27,7 @@ export const PlusTestInfo = ({
     <Box
       aria-label="plusTestinfoContainer"
       bg="#E8E8E8"
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       padding="5%"
     >

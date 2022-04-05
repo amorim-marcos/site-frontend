@@ -8,10 +8,10 @@ describe('<QualityPinus />', () => {
     renderWithTheme(<QualityPinus items={[]} />)
   })
 
-  it('should render a component with max width of 1920px', () => {
+  it('should render a component with max width of 1536px', () => {
     renderWithTheme(<QualityPinus items={[]} />)
     expect(screen.getByLabelText(/qualityPinusContainer/i)).toHaveStyle({
-      maxWidth: '1920px'
+      maxWidth: '1536px'
     })
   })
 

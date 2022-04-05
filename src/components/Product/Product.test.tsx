@@ -8,10 +8,10 @@ describe('<Product />', () => {
     renderWithTheme(<Product />)
   })
 
-  it('should render a component with max width of 1920px', () => {
+  it('should render a component with max width of 1536px', () => {
     renderWithTheme(<Product />)
     expect(screen.getByLabelText(/productContainer/i)).toHaveStyle({
-      maxWidth: '1920px'
+      maxWidth: '1536px'
     })
   })
 

@@ -24,7 +24,7 @@ export const TecaInfo = ({
     <Flex
       padding="4%"
       justifyContent="space-around"
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       flexDirection={{ base: 'column', sm: 'row' }}
     >

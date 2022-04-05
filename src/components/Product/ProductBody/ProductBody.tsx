@@ -51,7 +51,7 @@ export const ProductBody = ({
 
   return (
     <Flex
-      maxWidth="1920px"
+      maxWidth="1536px"
       flexDirection="column"
       bg={backgroundColor}
       paddingBottom={paddingBottom}

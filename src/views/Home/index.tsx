@@ -52,7 +52,9 @@ export default function Home(props: HomeProps) {
   const router = useRouter()
 
   return (
-    <Box maxWidth="1920px" marginX="auto" bg="white.100">
+    <Box 
+      bg="white.100"
+    >
       {/* INICIO BANNER CAROUSEL */}
       {props.highlights && props.highlights.length > 0 && (
         <HomeBanner
@@ -91,6 +93,7 @@ export default function Home(props: HomeProps) {
       )}
       {/* FIM SECTION CANAL BNK */}
 
+      
       {/* INICIO Nossos Produtos */}
       <SectionProducts
         products={[
@@ -106,7 +109,7 @@ export default function Home(props: HomeProps) {
               base: '100px',
               sm: '150px',
               lg: '200px',
-              xl: '300px'
+              xl: '350px'
             },
             urlLink: 'bp-berneck'
           },

@@ -60,7 +60,7 @@ export const TrajectoryCarousel = ({ tabs }: TrajectoryCarouselProps) => {
 
     <Tabs 
       width="100%" 
-      maxW="1760px"
+      maxW="1536px"
       index={tabIndex} 
       onChange={(index) => setTabIndex(index)} 
       variant='unstyled' 

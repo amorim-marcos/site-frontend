@@ -1,4 +1,4 @@
-import { Button, Flex, Image, Text } from '@chakra-ui/react'
+import { Button, Flex, Image, Text, Box } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 export type AppErrorProps = {
@@ -11,11 +11,14 @@ export const AppError = ({
 }: AppErrorProps) => {
   const router = useRouter()
   return (
+  <Box
+    bg="green.400"
+  >
     <Flex
       flexDirection={'column'}
       justifyContent="center"
       alignItems={'center'}
-      maxWidth={'1920px'}
+      maxWidth={'1536px'}
       marginX="auto"
       h="100vh"
       position="relative"
@@ -85,5 +88,6 @@ export const AppError = ({
         </Text>
       </Button>
     </Flex>
+  </Box>
   )
 }

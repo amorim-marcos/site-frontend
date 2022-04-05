@@ -112,7 +112,7 @@ export const Infographic2 = ({
                 display={titleSuperscript1Display}>
                   <Text
                     variant={'h3' as any}
-                    fontSize = {{ base: '16px', sm: '20px', lg: '24px', xl: '30px' }}
+                    fontSize = {{ base: '16px', sm: '20px', lg: '24px', xl: '24px' }}
                     color={titleSuperscript1Color}
                   >{titleSuperscript1Text}</Text>
               </Box>
@@ -134,7 +134,7 @@ export const Infographic2 = ({
                 display='flex' 
                 flex='1' 
                 // bg='yellow'
-                maxH={{ base: '60px', sm: '65px', lg: '70px', xl: '90px'}}
+                maxH={{ base: '60px', sm: '65px', lg: '70px', xl: '70px'}}
                 overflowY="hidden"
                 overflowX="hidden"
                 alignItems={"center"}
@@ -148,7 +148,7 @@ export const Infographic2 = ({
                       variant={'h1' as any}
                       color={content2Color}
                       letterSpacing = '-0.94px'
-                      fontSize = {{ base: '46px', sm: '48px', lg: '50px', xl: '90px'}}
+                      fontSize = {{ base: '46px', sm: '48px', lg: '50px', xl: '70px'}}
                       display={content1Display}
                   >{content1Text}</Text>
                 
@@ -158,7 +158,7 @@ export const Infographic2 = ({
                     flexDirection='column'
                     // bg='blue'
                     alignSelf='flex-start'
-                    marginTop={{ base: '10px', sm: '10px', lg: '10px', xl: '26px'}}
+                    marginTop={{ base: '10px', sm: '10px', lg: '10px', xl: '20px'}}
                     marginLeft='5px'
                   >
                     <Text 

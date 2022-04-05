@@ -64,7 +64,7 @@ export type ForestsViewProps = {
 export const ForestsView = (props: ForestsViewProps) => {
   const router = useRouter()
   return (
-    <Box maxWidth="1920px" marginX="auto" bg="green.100">
+    <Box>
       <Pagebar
         paths={[
           {
@@ -89,7 +89,7 @@ export const ForestsView = (props: ForestsViewProps) => {
 
       {/* INICIO Colhemos o que plantamos */}
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -300,10 +300,14 @@ export const ForestsView = (props: ForestsViewProps) => {
       </Flex>
       {/* FIM Colhemos o que plantamos */}
 
-      {/* INICIO Manejo Florestal */}
+    {/* INICIO Manejo Florestal */}
+    <Box
+      bg="green.200"
+    >
+
       <Flex
         id="manejo"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -400,11 +404,16 @@ export const ForestsView = (props: ForestsViewProps) => {
           </Box>
         </Flex>
       </Flex>
-      {/* FIM Manejo Florestal */}
 
-      {/* INICIO Preservação da biodiversidade */}
+    </Box>
+    {/* FIM Manejo Florestal */}
+
+    {/* INICIO Preservação da biodiversidade */}
+    <Box
+      bg="gray.100"
+    >
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -518,12 +527,18 @@ export const ForestsView = (props: ForestsViewProps) => {
           </Box>
         </Flex>
       </Flex>
-      {/* FIM Preservação da biodiversidade */}
+    
+    </Box>
+    {/* FIM Preservação da biodiversidade */}
 
-      {/* INICIO Produção Florestal */}
+
+    {/* INICIO Produção Florestal */}
+    <Box
+      bg="white.100"
+    >
       <Flex
         id="producao"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -616,11 +631,17 @@ export const ForestsView = (props: ForestsViewProps) => {
         </Flex>
         {/* MADEIRA FLYANTE */}
       </Flex>
-      {/* FIM Produção Florestal */}
+    
+    </Box>
+    {/* FIM Produção Florestal */}
 
-      {/* INICIO Do plantio à colheita */}
+    
+    {/* INICIO Do plantio à colheita */}
+    <Box
+      bg="brown.100"
+    >
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -677,11 +698,17 @@ export const ForestsView = (props: ForestsViewProps) => {
           </Box>
         </Flex>
       </Flex>
-      {/* FIM Do plantio à colheita */}
+    
+    </Box>
+    {/* FIM Do plantio à colheita */}
 
-      {/* INICIO Destaques da produção florestal */}
+
+    {/* INICIO Destaques da produção florestal */}
+    <Box
+      bg="green.1000"
+    >
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -689,7 +716,7 @@ export const ForestsView = (props: ForestsViewProps) => {
         zIndex="base"
         overflowY="hidden"
         overflowX="hidden"
-        bg="#D6DCD5"
+        bg="green.1000"
         backgroundImage="/assets/imgs/grafismo_fundo_forest3.svg"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
@@ -792,12 +819,17 @@ export const ForestsView = (props: ForestsViewProps) => {
           </Flex>
         </Flex>
       </Flex>
-      {/* FIM Destaques da produção florestal */}
 
-      {/* INICIO Fornecedor Florestal */}
+    </Box>
+    {/* FIM Destaques da produção florestal */}
+
+    {/* INICIO Fornecedor Florestal */}
+    <Box
+      bg="green.100"
+    >
       <Flex
         id="fornecedor"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -894,12 +926,14 @@ export const ForestsView = (props: ForestsViewProps) => {
           </Flex>
         </Flex>
       </Flex>
-      {/* FIM Fornecedor Florestal */}
+
+    </Box>
+    {/* FIM Fornecedor Florestal */}
 
       {/* INICIO Resumo público de Manejo Florestal */}
       <Flex
         id="resumo-publico"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         // alignItems='center'
         // justifyContent='center'

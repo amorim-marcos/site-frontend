@@ -8,7 +8,7 @@ import {
 import { Intro, Videos, Downloads, Connect } from './sections'
 import { Post, Category } from 'types/data/Post'
 import Pagebar from '@components/Pagebar'
-import { Box } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import { useEffect } from 'react'
 
 export const CategoryContext = createContext(
@@ -42,7 +42,7 @@ export function CategoryCtxProvider(props: { children: ReactNode }) {
     }
   }, [currentCategory, categories])
   return (
-    <Box maxWidth={'1920px'} marginX="auto">
+    <Box>
       <CategoryContext.Provider
         value={{
           currentCategory,
@@ -101,10 +101,27 @@ function CanalBNKFC(props: CanalBNKProps) {
               )
         }
       />
-      <Videos />
+
+      <Flex
+        bg={
+          currentCategory === -1 || currentCategory === 0
+            ? 'gray.150'
+            : 'brown.100'
+        }
+        flex="1"
+        justify={"center"}
+      >
+        <Videos />
+      </Flex>
       {!seeOnlyPosts && (
         <>
+         <Flex
+          bg="white.100"
+          flex="1"
+          justify={"center"}
+        >
           <Downloads />
+        </Flex>
           <Connect />
         </>
       )}

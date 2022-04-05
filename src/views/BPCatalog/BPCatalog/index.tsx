@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import React, { useEffect, useState } from 'react'
 
-import { Button, Container, Grid, GridItem, Flex, Text} from '@chakra-ui/react'
+import { Box, Container, Grid, GridItem, Flex, Text} from '@chakra-ui/react'
 
 import Pagebar from '@components/Pagebar'
 import useMobile from 'hooks/useMobile'
@@ -256,21 +256,24 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         paths={[
           {
             title: 'Produtos',
-            url: 'produtos'
+            url: '/products'
           },
           {
             title: 'BP BERNECK®',
-            url: '/produtos/bp-berneck'
+            url: '/products/bp-berneck'
           },
           {
             title: 'Catálogo BP',
-            url: '/produtos/bp-berneck/catalog'
+            url: '/products/bp-berneck/catalog'
           }
         ]}
       />
+    <Box
+      backgroundColor={darkMode ? 'gray.400' : 'white.100'}
+    >
       <Container
         backgroundColor={darkMode ? 'gray.400' : 'white.100'}
-        maxW="1920px"
+        maxW="1536px"
         paddingInline="0"
         paddingTop={isMobile ? '0' : '30px'}
       >
@@ -388,6 +391,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
           }
         </Container>
       </Container>
+    </Box>
     </>
   )
 }

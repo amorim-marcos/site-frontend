@@ -47,26 +47,26 @@ export const EnvView = ({
   const router = useRouter()
 
   return (
-    <Box maxWidth={'1920px'} marginX="auto">
+    <Box maxWidth={'1536px'} marginX="auto">
       <Pagebar
         paths={[
           {
             title: 'Produtos',
-            url: '/'
+            url: '/products'
           },
           {
             title: 'BP BERNECK',
-            url: '/'
+            url: '/products/bp-berneck'
           },
           {
             title: 'Galeria de Ambientes',
-            url: '/'
+            url: '/products/bp-berneck/gallery'
           }
         ]}
       />
       <Flex
         flexDirection={'column'}
-        maxWidth={'1920px'}
+        maxWidth={'1536px'}
         padding="5%"
         marginX="auto"
       >

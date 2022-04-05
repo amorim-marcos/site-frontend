@@ -31,10 +31,10 @@ export const SeeMore = (props: SeeMoreProps) => {
         letterSpacing="-0.4px"
         fontSize={{
           base: '16px',
-          md: '16px',
-          lg: '18px',
-          xl: '20px',
-          '2xl': '24px'
+          md: '12px',
+          lg: '14px',
+          xl: '14px',
+          '2xl': '16px'
         }}
         color={props.textColor ? props.textColor : 'green.550'}
         whiteSpace="nowrap"

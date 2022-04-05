@@ -46,10 +46,12 @@ export const CarouselMultiElements = ({
       <Flex
         alignItems={'center'}
         justifyContent={'flex-start'}
-        maxWidth={'1920px'}
+        maxWidth={'1536px'}
         marginX="auto"
-        padding="5%"
+        // padding={{ base: '2%', md: '2% 5%' }}
+        padding={{ base: '0%', sm: '5%', xl: '5%', '2xl': '3% 0%' }}
         overflow="hidden"
+        // bg="red"
       >
         <Flex w="100%">
           {children &&
@@ -77,7 +79,7 @@ export const CarouselMultiElements = ({
         right="0px"
         marginX="auto"
         w="fit-content"
-        bottom={{ base: '-37px', sm: '-25px', lg: '-30px', xl: '-38px' }}
+        bottom={{ base: '-20px', sm: '-25px', lg: '-25px', xl: '-30px' }}
       >
         <Button
           onMouseEnter={() => setHoverBtnControl(true)}

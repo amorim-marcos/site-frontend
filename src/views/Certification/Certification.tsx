@@ -48,7 +48,7 @@ export type CertificationViewProps = {
 }
 
 export const Certification = (props: CertificationViewProps) => (
-  <Box maxWidth="1920px" marginX="auto" bg="green.100">
+  <Box>
     <Pagebar
       paths={[
         {
@@ -58,34 +58,28 @@ export const Certification = (props: CertificationViewProps) => (
       ]}
     />
 
-    {/* <PageSession
-      data={{
-        imageUrl: 'url(/assets/imgs/escurecida.png)',
-        title: props.page_content.page_title,
-        subtitle: '',
-        text: props.page_content.header_text
-      }}
-      titleColor="green.900"
-      subTitleColor="brown.350"
-      viewGrafismo="flex"
-      GrafismLeftStroke="#E0CBA5"
-      GrafismLeftOpacity="0.2"
-    /> */}
     {/* Downloads Header */}
+  <Flex
+    bg="brown.100"
+    justifyContent="center"
+  >
     <Flex
         flexDir="column"
         width="100%"
         bg="brown.100"
-        paddingX="5%"
+        overflow="hidden"
+        paddingX={{ base: '5%', '2xl': '3%' }}
         paddingY={{ base: '20px', md: '0' }}
-        height={{ base: 'auto', md: '25vw' }}
-        maxHeight="298px"
         position="relative"
         justifyContent="center"
-        overflow="hidden"
-        alignItems={{ base: 'center', md: 'flex-start' }}
+        alignItems={{ base: 'center', md: 'start' }}
+        maxWidth={"1536px"}
+        maxHeight="298px"
+        height={{ base: 'auto', md: '25vw' }}
       >
-        <Box display={{ base: 'none', md: 'block' }}>
+        <Box 
+          display={{ base: 'none', md: 'block' }}
+        >
           <CompletedTitle
             titleString= {props.page_content.page_title}
             textAlign="left"
@@ -132,11 +126,14 @@ export const Certification = (props: CertificationViewProps) => (
           </Box>
         </Box>
       </Flex>
-      {/* End Downloads Header */}
+    
+    </Flex>
+    {/* End Downloads Header */}
+
 
     {/* INICIO Florestas Certificadas */}
     <Flex
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       alignItems="center"
       justifyContent="center"
@@ -144,10 +141,12 @@ export const Certification = (props: CertificationViewProps) => (
       zIndex="base"
       overflowY="hidden"
       overflowX="hidden"
+      // bg="red.100"
       bg="white.100"
     >
       <Flex
         // bg='blue'
+        flex="1"
         direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
       >
         {/* BOX 1 */}
@@ -249,9 +248,15 @@ export const Certification = (props: CertificationViewProps) => (
     </Flex>
     {/* FIM Florestas Certificadas*/}
 
+
+
+
     {/* INICIO Produtos altamente qualificados */}
+  <Box
+     bg="green.170"
+  >
     <Flex
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       // alignItems='center'
       // justifyContent='center'
@@ -259,9 +264,10 @@ export const Certification = (props: CertificationViewProps) => (
       zIndex="base"
       overflowY="hidden"
       overflowX="hidden"
-      bg="green.150"
+      bg="green.170"
     >
       <Flex
+        flex="1"
         // bg='blue'
         direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}
         // alignItems={"center"}
@@ -304,122 +310,260 @@ export const Certification = (props: CertificationViewProps) => (
                       xl: 'row-reverse'
                     }
               }
-              alignItems="center"
-              alignContent="center"
-              justifyContent="center"
-              justifyItems="center"
+              // alignItems="center"
+              // alignContent="center"
+              // justifyContent="center"
+              // justifyItems="center"
               padding={'5%'}
             >
-              <Box
+              <Flex
                 // bg='green'
                 flex="1"
-                w="50%"
+                direction={{ base: 'column', lg: 'row' }}
               >
-                <Text
-                  as="h3"
-                  variant={'h3' as any}
-                  textAlign={{
-                    base: 'left',
-                    sm: 'left',
-                    lg: 'left',
-                    xl: 'left'
-                  }}
+                 <Flex
+                  // bg='black'
+                  flex="1"
+                  
                 >
-                  {item.certifier}
-                </Text>
-                <Text
-                  color="green.900"
-                  textAlign={{
-                    base: 'left',
-                    sm: 'left',
-                    lg: 'left',
-                    xl: 'left'
-                  }}
-                  marginTop={{ base: '8px', sm: '8px', lg: '10px', xl: '20px' }}
-                >
-                  {item.description}
-                </Text>
-              </Box>
-              <Box
-                // bg='red'
-                w="50%"
-              >
+                  <Text
+                    as="h3"
+                    variant={'h3' as any}
+                    color="green.800"
+                    textAlign={{
+                      base: 'left',
+                      sm: 'left',
+                      lg: 'left',
+                      xl: 'left'
+                    }}
+                  >
+                    {item.certifier}
+                  </Text>
+                </Flex>
                 <Flex
                   // bg='azure'
-                  w="100%"
-                  justifyContent={'center'}
+                  flex="2"
+                >
+                  <Text
+                    color="brown.350"
+                    fontWeight= 'medium'
+                    textAlign={{
+                      base: 'left',
+                      sm: 'left',
+                      lg: 'left',
+                      xl: 'left'
+                    }}
+                    marginTop={{ base: '8px', sm: '8px', lg: '0px', xl: '0px' }}
+                  >
+                    {item.description}
+                  </Text>
+                </Flex>
+
+
+              </Flex>
+              <Flex
+                // bg='red'
+                flex="1"
+              >
+                <Flex
+                  // bg='tomato'
+                  flex="1"
+                  justifyContent={'left'}
                   direction={{
                     base: 'column',
-                    sm: 'row',
+                    sm: 'column',
                     lg: 'column',
                     xl: 'row'
                   }}
+                  
+                  // alignItems="start"
+                  // alignContent="end"
+                  // justifyItems="start"
                 >
                   {item.certificates.map((c, j) => {
                     return (
-                      <Box
+                      <Flex
+                       
                         onClick={() =>
                           window.open(c.certificate_file.url, '_blank')
                         }
                         key={j}
                         backgroundColor="#EBDDC4"
-                        backgroundImage="/assets/imgs/fundo_relatorio.svg"
-                        backgroundPosition="left"
-                        backgroundRepeat="no-repeat"
-                        backgroundSize={'cover'}
-                        margin={{ base: '1%', lg: '3%', xl: '1%' }}
-                        padding={{ base: '1%' }}
-                        minWidth="250px"
+                        // backgroundImage="/assets/imgs/fundo_relatorio.svg"
+                        // backgroundPosition="left"
+                        // backgroundRepeat="no-repeat"
+                        // backgroundSize={'cover'}
+                        margin={{ base: '2% 0%', lg: '0% 3% 1% 3%', xl: '1%' }}
+                        padding={{ base: '5%' }}
+                        minWidth={{ base: '100px', sm: '220px'}}
+                        h={{ base: '100%', lg: '50%'}}
                       >
                         <PatternCertification
                           title={c.certificate_name}
-                          titleInitialColor="green.800"
+                          titleInitialColor="green.700"
                           iconName="certification"
-                          iconInitialColor1="#004934"
-                          iconInitialColor2="#004934"
+                          iconInitialColor1="#0A6C3B"
+                          iconInitialColor2="#0A6C3B"
                         />
-                      </Box>
+                      </Flex>
                     )
                   })}
                 </Flex>
-              </Box>
+              </Flex>
             </Flex>
           )
         })}
 
-        {/* BOX 5 */}
+
+
+        {/* BOX 5 - Normas da qualidade */}
         <Flex
-          ml={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
-          mt={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
-          mb={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
-          mr={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
+          m={{ base: '5%', sm: '5%', lg: '5%', xl: '3% 5%' }}
+          // bg="blue"
           bg="green.100"
           flex="1"
           direction={{
-            base: 'column',
-            sm: 'column',
-            lg: 'row-reverse',
-            xl: 'row-reverse'
+            base: 'column-reverse',
+            sm: 'column-reverse',
+            lg: 'column-reverse',
+            xl: 'row'
           }}
-          alignItems="center"
-          alignContent="center"
-          justifyContent="center"
-          justifyItems="center"
+          padding={"5%"}
+          alignItems={{ xl: 'center'}}
+          
         >
+          
+          {/* CONTROLE DO ICONE */}
           <Flex
-            margin={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
-            // bg='green'
+            // bg="pink"
             flex="1"
-            direction={{
-              base: 'column',
-              sm: 'column',
-              lg: 'column',
-              xl: 'column'
-            }}
+            flexDirection={{ base: 'column' }}
+            paddingRight={"2%"}
+            m={{ base: '0%', sm: '2% 0%', lg: '2% 0%', xl: '0% 0%' }}
+          >
+
+            <Flex
+                // bg="chocolate"
+                bg="green.170"
+                flex="1"
+                justifyContent={"flex-end"}
+                // alignContent={"flex-end"}
+                // mt={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
+                zIndex = '1700'
+                paddingRight={{ base: '2%', sm: '2%', lg: '2%', xl: '2%' }}
+                paddingTop={{ base: '4%', sm: '3%', lg: '3%', xl: '3%' }}
+                
+              >
+                <CertificationsIcon
+                  height={{ base: '55px', sm: '60px', lg: '70px', xl: '80px' }}
+                  width={{ base: '55px', sm: '60px', lg: '70px', xl: '80px' }}
+                  stroke1={"#004934"}
+                  stroke2={"#6DB416"}
+                />
+            </Flex>
+
+            <Flex
+              bg="green.170"
+              // bg="goldenrod"
+              flex="3"
+              direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
+              p={{ base: '0% 5% 15% 5%', sm: '0% 5% 10% 5%', lg: '0% 10% 12% 10%', xl: '0% 10% 16% 10%' }}
+              // mt={{ base: '5%', sm: '5%', lg: '5%', xl: '-5%' }}
+              
+            >
+
+           
+              <Flex
+               // m={{ base: '5%', sm: '5%', lg: '5%', xl: '10%' }}
+                // p={{ base: '15%', sm: '10%', lg: '5%', xl: '5%' }}
+                // bg='azure'
+                flex="1"
+              >
+                <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5' }}>
+                  {props.page_content.quality_norms.map((item, i) => {
+                    return (
+                      i <= props.page_content.quality_norms.length / 2 && (
+                        <ListItem key={i}>
+                          <ListIcon as={CheckIcon} color="green.500" />
+                          <Text
+                            as={'h5'}
+                            variant={'h5' as any}
+                            fontWeight={'bold'}
+                            color= 'green.700'
+                            marginTop={{
+                              base: '-20px',
+                              sm: '-20px',
+                              lg: '-22px',
+                              xl: '-25px'
+                            }}
+                            marginLeft={{
+                              base: '25px',
+                              sm: '25px',
+                              lg: '25px',
+                              xl: '25px'
+                            }}
+                          >
+                            {item.norm + "test"}
+                          </Text>
+                        </ListItem>
+                      )
+                    )
+                  })}
+                </List>
+              </Flex>
+              <Flex
+                // bg='red'
+                flex="1"
+                mt={{ base: '3%', sm: '0' }}
+              >
+                <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5' }}>
+                  {props.page_content.quality_norms.map((item, i) => {
+                    return (
+                      i > props.page_content.quality_norms.length / 2 && (
+                        <ListItem key={i}>
+                          <ListIcon as={CheckIcon} color="green.500" />
+                          <Text
+                            as={'h5'}
+                            variant={'h5' as any}
+                            fontWeight={'bold'}
+                            marginTop={{
+                              base: '-20px',
+                              sm: '-20px',
+                              lg: '-22px',
+                              xl: '-25px'
+                            }}
+                            marginLeft={{
+                              base: '25px',
+                              sm: '25px',
+                              lg: '25px',
+                              xl: '25px'
+                            }}
+                          >
+                            {item.norm}
+                          </Text>
+                        </ListItem>
+                      )
+                    )
+                  })}
+                </List>
+             </Flex>
+
+          </Flex>
+        
+        </Flex>
+        {/* FIM CONTROLE ICONE */}
+
+        {/* AREA TEXTO NORMAS */}
+        <Flex
+            mb={{ base: '4%', md: '0' }}
+            // bg='yellowgreen'
+            flex="1"
+            direction={{ base: 'column' }}
           >
             <Text
               as="h3"
               variant={'h3' as any}
+              color="green.800"
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
             >
               Normas de qualidade
@@ -432,107 +576,17 @@ export const Certification = (props: CertificationViewProps) => (
               {props.page_content.quality_norm_text}
             </Text>
           </Flex>
-          <Flex
-            m={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
-            p={{ base: '15%', sm: '10%', lg: '5%', xl: '5%' }}
-            bg="green.100"
-            flex="1"
-            direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
-          >
-            <Flex
-              // bg='azure'
-              flex="1"
-              position={'absolute'}
-              m={{
-                base: '-16% 0% 0% 30%',
-                sm: '-10% 0% 0% 40%',
-                lg: '-6% 0% 0% 30%',
-                xl: '-6% 0% 0% 30%'
-              }}
-            >
-              <CertificationsIcon
-                height={{ base: '55px', sm: '60px', lg: '70px', xl: '80px' }}
-                width={{ base: '55px', sm: '60px', lg: '70px', xl: '80px' }}
-                // stroke1={"#004934"}
-                // stroke2={"#004934"}
-              />
-            </Flex>
-            <Flex
-              // bg='azure'
-              flex="1"
-            >
-              <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5' }}>
-                {props.page_content.quality_norms.map((item, i) => {
-                  return (
-                    i <= props.page_content.quality_norms.length / 2 && (
-                      <ListItem key={i}>
-                        <ListIcon as={CheckIcon} color="green.500" />
-                        <Text
-                          as={'h5'}
-                          variant={'h5' as any}
-                          fontWeight={'bold'}
-                          marginTop={{
-                            base: '-20px',
-                            sm: '-20px',
-                            lg: '-22px',
-                            xl: '-25px'
-                          }}
-                          marginLeft={{
-                            base: '25px',
-                            sm: '25px',
-                            lg: '25px',
-                            xl: '25px'
-                          }}
-                        >
-                          {item.norm}
-                        </Text>
-                      </ListItem>
-                    )
-                  )
-                })}
-              </List>
-            </Flex>
-            <Flex
-              // bg='red'
-              flex="1"
-              mt={{ base: '5%', sm: '0%' }}
-              // ml={{ base: '0%', sm: '5%'}}
-            >
-              <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5' }}>
-                {props.page_content.quality_norms.map((item, i) => {
-                  return (
-                    i > props.page_content.quality_norms.length / 2 && (
-                      <ListItem key={i}>
-                        <ListIcon as={CheckIcon} color="green.500" />
-                        <Text
-                          as={'h5'}
-                          variant={'h5' as any}
-                          fontWeight={'bold'}
-                          marginTop={{
-                            base: '-20px',
-                            sm: '-20px',
-                            lg: '-22px',
-                            xl: '-25px'
-                          }}
-                          marginLeft={{
-                            base: '25px',
-                            sm: '25px',
-                            lg: '25px',
-                            xl: '25px'
-                          }}
-                        >
-                          {item.norm}
-                        </Text>
-                      </ListItem>
-                    )
-                  )
-                })}
-              </List>
-            </Flex>
-          </Flex>
+
+          {/* FIM AREA TEXTO NORMAS */}
+        
         </Flex>
         {/* FIM BOX 5 */}
+
+
+
       </Flex>
     </Flex>
+    </Box>
+
   </Box>
 )

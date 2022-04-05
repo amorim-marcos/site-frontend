@@ -15,28 +15,35 @@ export type SectionsProductsProps = ProductsGalleryProps
 export const SectionProducts = ({ products }: SectionsProductsProps) => {
   const router = useRouter()
   return (
+
+  <Flex
+    // bg="red"
+  >
     <Flex
-      maxWidth="1920px"
+      // maxWidth="1536px"
       marginX="auto"
       position="relative"
       zIndex="base"
-      overflowY="hidden"
-      overflowX="hidden"
-      bg="white"
+      overflowY={{ base: 'hidden', '2xl': 'visible' }}
+      overflowX={{ base: 'hidden', '2xl': 'visible' }}
+      // bg="white"
       backgroundImage="/assets/imgs/grafismos_fundo2.png"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}
+      // flex="1"
     >
       {/* TITULO */}
       <Flex
-        //bg="gray"
+        // bg="gray"
+        maxWidth="1536px"
         flex="1"
         m={{
-          base: '5% 2% 0% 2%',
-          sm: '5% 5% 2% 5%',
-          lg: '5% 5% 2% 5%',
-          xl: '5% 5% 2% 5%'
+          base: '5% 2% 5% 2%',
+          sm: '5% 5% 0% 5%',
+          lg: '3% 5% 0% 5%',
+          xl: '5% 5% 0% 5%',
+          '2xl': '5% 0% 0% 0%'
         }}
         direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
       >
@@ -86,6 +93,9 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
         <ProductsGallery numberEvidence={1} products={products} />
       </Box>
       {/* FIM GALERIA PRODUTOS */}
+      
+      
+
       <Flex
         // bg="yellow"
         flex="1"
@@ -93,14 +103,15 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
           base: '0% 0% 5% 0%',
           sm: '0% 5% 2% 5%',
           lg: '0% 5% 5% 5%',
-          xl: '0% 5% 5% 5%'
+          xl: '0% 5% 5% 5%',
+          '2xl': '0% 0% 5% 0%'
         }}
         direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
       >
         <Box
           flex="1"
           // bg="pink"
-          m={{ base: '0% 0% 2% 0%', sm: '0% 0% 5% 0%', lg: '0%', xl: '0%' }}
+          m={{ base: '0% 0% 2% 0%', sm: '0% 0% 1% 0%', lg: '0%', xl: '0%' }}
         >
           <PatternInfo
             title="DESCUBRA"
@@ -109,16 +120,14 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
             icon={
               <EarthIcon
                 width={{
-                  base: '60px',
-                  xs: '30px',
-                  sm: '58px',
+                  base: '50px',
+                  md: '62px',
                   lg: '70px',
                   xl: '80px'
                 }}
                 height={{
-                  base: '60px',
-                  xs: '30px',
-                  sm: '58px',
+                  base: '50px',
+                  md: '62px',
                   lg: '70px',
                   xl: '80px'
                 }}
@@ -162,5 +171,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
         </Box>
       </Flex>
     </Flex>
+  
+  </Flex>
   )
 }

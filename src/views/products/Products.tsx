@@ -13,7 +13,7 @@ export const Products = () => {
   const router = useRouter()
 
   return (
-    <Box maxWidth="1920px" marginX="auto" bg="white.100">
+    <Box>
       <Pagebar
         paths={[
           {
@@ -25,13 +25,13 @@ export const Products = () => {
 
       {/* INICIO TITULO PRODUTOS */}
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         position="relative"
         zIndex="base"
         overflowY="hidden"
         overflowX="hidden"
-        bg="white"
+        // bg="red"
       >
         <Flex
           // bg='gray'
@@ -69,6 +69,15 @@ export const Products = () => {
       {/* FIM TITULO PRODUTOS */}
 
       {/* INICIO BANNERS PRODUTOS */}
+      <Flex
+        maxWidth="1536px"
+        marginX="auto"
+        position="relative"
+        zIndex="base"
+        overflowY="hidden"
+        overflowX="hidden"
+        // bg="blue"
+      >
       <Grid
         h={{
           base: '3900px',
@@ -185,7 +194,9 @@ export const Products = () => {
           />
         </GridItem>
       </Grid>
-      {/* FIM BANNERS PRODUTOS */}
-    </Box>
+    </Flex>
+    {/* FIM BANNERS PRODUTOS */}
+  
+  </Box>
   )
 }

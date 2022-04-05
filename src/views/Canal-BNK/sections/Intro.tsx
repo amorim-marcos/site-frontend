@@ -13,7 +13,6 @@ import {
 import { Arrow } from '@components/Icons'
 import Post from '@components/Post'
 import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
-
 import useMobile from 'hooks/useMobile'
 import { CategoryContext } from '..'
 import { Post as IPost } from 'types/data'
@@ -26,6 +25,22 @@ export const PANEL_COLOR = {
   world: '#89BA81'
 }
 
+function getPanelColor(i: number) {
+  if (i === 2) {
+    return '#89BA81'
+  }
+
+  if (i === 0) {
+    return '#F0E4D1'
+  }
+
+  if (i === 1) {
+    return '#D6DCD5'
+  }
+
+  return 'white'
+}
+
 export const Intro = (props: { posts: IPost[] }) => {
   const {
     currentCategory,
@@ -36,10 +51,19 @@ export const Intro = (props: { posts: IPost[] }) => {
   } = useContext(CategoryContext)
 
   return (
-    <Box
-      pos="relative"
-      overflow="hidden"
-      w="100%"
+  <Box
+    bg={
+      currentCategory === -1
+        ? 'brown.100'
+        : currentCategory === 0
+        ? 'brown.200'
+        : currentCategory === 1
+        ? 'green.200'
+        : 'green.600'
+    }
+  >
+
+    <Flex
       bg={
         currentCategory === -1
           ? 'brown.100'
@@ -49,6 +73,15 @@ export const Intro = (props: { posts: IPost[] }) => {
           ? 'green.200'
           : 'green.600'
       }
+      maxWidth="1536px"
+      marginX="auto"
+      alignItems="center"
+      justifyContent="center"
+      position="relative"
+      zIndex="base"
+      overflowY={{ base: 'hidden', '2xl': 'visible' }}
+      overflowX={{ base: 'hidden', '2xl': 'visible' }}
+      paddingBottom={{ base: '2%', '2xl': '5%' }}
     >
       <Image
         src="/assets/imgs/canal-bnk/grafismo_esquerda.svg"
@@ -102,14 +135,14 @@ export const Intro = (props: { posts: IPost[] }) => {
           justifyContent="space-between"
           zIndex={100}
           direction={{ base: 'column', lg: 'row' }}
-          padding={{ base: '5% 5% 0 5%', xl: '5% 5% 0 5%' }}
+          padding={{ base: '5% 5% 0 5%', md: '5% 3% 0 3%', xl: '5% 5% 0 3%' , '2xl': '5% 0% 0 0%'}}
           // bg="yellow"
         >
           <Flex
             direction="column"
             alignSelf={{ base: 'flex-start' }}
             w={{ lg: '30%', '2xl': '23%' }}
-            // bg="tomato"
+            // bg="yellowgreen"
           >
             <Image
               src={
@@ -121,7 +154,7 @@ export const Intro = (props: { posts: IPost[] }) => {
                   ? '/assets/imgs/canal-bnk/canal_bnk_materia.svg'
                   : '/assets/imgs/canal-bnk/canal_bnk_mundo.svg'
               }
-              w={{ base: '206px', lg: '210px' }}
+              w={{ base: '150px', lg: '210px' }}
               // pb="42px"
             />
 
@@ -200,7 +233,7 @@ export const Intro = (props: { posts: IPost[] }) => {
             marginTop={{ base: '30px', lg: '0' }}
             alignItems={{ base: 'center', lg: 'flex-start' }}
             height={{ base: 'auto', lg: '150px' }}
-            // bg="yellow"
+            // bg="cyan"
           >
             <NavButton
               hideArrow
@@ -280,30 +313,36 @@ export const Intro = (props: { posts: IPost[] }) => {
             }
           })}
         >
+
+
+
+          {/* INICIO SECTION CANAL BNK */}
           {!seeOnlyPosts && (
             <Flex
-              direction={{ base: 'column', md: 'row' }}
+              direction={{ base: 'column', xl: 'row' }}
               // bg = "blue"
             >
               <Flex
-                // bg = "black"
-                flex={{ base: '1', md: '2' }}
-                justifyContent={{ md: 'space-between' }}
+                // bg="purple"
+                flex={{ base: '1', xl: '2' }}
+                // w={{ base: '100vw', xl: '100%' }}
+                maxH={{ xl: '700', '2xl': '650' }}
               >
                 {props.posts.length > 0 && <HeroPost post={props.posts[0]} />}
               </Flex>
               
               <Flex
-                // bg = "green"
-                flex={{ base: '1', md: '1' }}
-                flexDirection={{ base: 'row', md: 'column' }}
-                justifyContent={{ md: 'space-between' }}
-                overflowX={{ base: 'scroll', md: 'hidden' }}
-                overflowY={{ base: 'hidden', md: 'hidden' }}
-                w={{ base: '100vw', md: '100%' }}
-                gap={{ base: '5%', md: '2%' }}
-                paddingBottom={{ base: '2%', md: '1%' , lg: '3%'}}
-                margin={{ base: '5% 10% 5% 5%', md: '3% 3% 3% 0' }}
+                // bg = "blueviolet"
+                flex={{ base: '1' }}
+                flexDirection={{ base: 'row', xl: 'column' }}
+                justifyContent={{ xl: 'space-evenly' }}
+                overflowX={{ base: 'scroll', xl: 'hidden' }}
+                overflowY={{ base: 'hidden', xl: 'scroll' }}
+                w={{ base: '100vw', xl: '100%' }}
+                maxH={"650px"}
+                gap={{ base: '5%', xl: '2%' }}
+                // paddingBottom={{ base: '2%', xl: '2%' , lg: '3%'}}
+                margin={{ base: '5% 10% 5% 5%', md: '3% 0% 3% 3%', xl: '3% 3% 3% 0', '2xl': '0% 0% 0% 0' }}
                 css={{
                   '-webkit-scrollbar': {
                     display: 'none'
@@ -372,33 +411,36 @@ export const Intro = (props: { posts: IPost[] }) => {
                   showPreview
                   key={j}
                   post={post}
-                  //h="821px"
-                  w={{ base: '100%', xl: '1014px' }}
+                  // h="821px"
+                  w={{ base: '100%', xl: '100%' }}
                 />
               ))}
             </Flex>
           )}
         </Section>
       </Flex>
-    </Box>
+
+    </Flex>
+</Box>
+    
   )
 }
 
 const HeroPost = (props: { post: IPost }) => {
   return (
     <Post
-      w={{
-        base: '92%',
-        lg: '90%',
-        xl: '550px',
-      }}
+      // w={{
+      //   base: '92%',
+      //   lg: '90%',
+      //   xl: '50px',
+      // }}
       post={props.post}
     />
   )
 }
 
 const SmallPost = (props: { post: IPost }) => {
-  const { isMobile } = useMobile(1024)
+  const { isMobile } = useMobile(1280)
 
   return (
     <Post

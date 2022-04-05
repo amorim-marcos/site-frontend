@@ -33,7 +33,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
   const router = useRouter()
 
   return (
-    <Box maxWidth="1920px" marginX="auto" bg="white.100">
+    <Box>
       <Pagebar
         paths={[
           {
@@ -43,11 +43,30 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
         ]}
       />
 
-      {/* INICIO BANNER CAROUSEL */}
+    {/* INICIO BANNER CAROUSEL */}
+    <Flex
+        maxWidth="1536px"
+        marginX="auto"
+        position="relative"
+        zIndex="base"
+        overflowY="hidden"
+        overflowX="hidden"
+        // bg="blue"
+      >
       <CarrouselBP images={props.carrouselImages} />
-      {/* FIM BANNER CAROUSEL */}
+    </Flex>
+    {/* FIM BANNER CAROUSEL */}
 
-      {/* INICIO BANNER COLECAO */}
+    {/* INICIO BANNER COLECAO */}
+    <Flex
+      maxWidth="1536px"
+      marginX="auto"
+      position="relative"
+      zIndex="base"
+      overflowY="hidden"
+      overflowX="hidden"
+      // bg="red"
+    >
       <Grid
         h={{ base: '900px', sm: '500px', lg: '600px', xl: '600px' }}
         w={{ base: '90%', sm: '93%', lg: '93%', xl: '93%' }}
@@ -112,6 +131,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           />
         </GridItem>
       </Grid>
+    </Flex>
       {/* FIM BANNER COLECAO */}
 
       {/* INICIO Galeria de Ambientes */}
@@ -119,7 +139,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
       <Flex
         flexDirection={'column'}
         bg="green.200"
-        maxWidth={'1920px'}
+        maxWidth={'1536px'}
         marginX="auto"
         paddingTop={'5%'}
       >
@@ -216,7 +236,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
 
       {/* FIM Galeria de Ambientes */}
       <Flex
-        maxWidth={'1920px'}
+        maxWidth={'1536px'}
         marginX="auto"
         bg="white.100"
         padding="5%"
@@ -342,7 +362,7 @@ const CarrouselBP = ({ images }: CarrouselBPProps) => {
   useInterval(next, 5000)
   return (
     <Flex
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       position="relative"
       zIndex="base"

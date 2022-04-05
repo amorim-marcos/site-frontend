@@ -22,7 +22,7 @@ export const Privacy = (props: { terms: string }) => {
       <Flex
         position={'relative'}
         flexDirection={'column'}
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         w="100%"
       >

@@ -16,29 +16,44 @@ export type SectionChannelBNKProps = {
 
 export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
   return (
+
+  <Flex
+    justifyContent={'center'}
+    paddingY="4%"
+    bg="brown.100"
+    // maxW={'1536px'}
+    // flexDirection={{ base: 'column', md: 'row' }}
+    
+  >
+
     <Flex
-      justifyContent={'center'}
-      paddingY="4%"
+      // justifyContent={'center'}
+      // paddingY="4%"
       bg="brown.100"
-      maxW={'1920px'}
+      maxW={'1536px'}
+      // flex="1"
+      w={'100%'}
       flexDirection={{ base: 'column', md: 'row' }}
     >
       <Flex
         flexDirection={'column'}
-        alignItems={{ base: 'flex-start', md: 'center' }}
+        alignItems={{ base: 'flex-start', md: 'center', '2xl': 'flex-start' }}
         justifyContent={'center'}
         w={{ base: '100%', md: '25%' }}
         paddingX={{ base: '5%', md: '0' }}
         paddingY={{ base: '10%', md: '0' }}
         paddingTop={{ base: '0', md: '10%' }}
+        // bg="red.100"
       >
         <Image
           w={{ base: '45%', md: '50%' }}
+          maxWidth={"170px"}
           src="/assets/imgs/canal-bnk/Canal_Berneck.svg"
         />
         <Text
           marginTop="5%"
           w={{ md: '50%' }}
+          maxWidth={"180px"}
           as="h4"
           variant={'h4' as any}
           fontWeight={'normal'}
@@ -47,8 +62,9 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
         </Text>
       </Flex>
       <Flex
+        // bg="cyan"
         justifyContent={{ md: 'flex-start' }}
-        overflowX={{ base: 'scroll', md: 'hidden' }}
+        overflowX={{ base: 'scroll', xl: 'hidden' }}
         w={{ base: '100vw', md: '75%' }}
         gap="5%"
         paddingLeft={{ base: '5%', md: '0' }}
@@ -78,5 +94,7 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
           })}
       </Flex>
     </Flex>
+
+  </Flex>
   )
 }

@@ -20,7 +20,7 @@ export const AppFooter = () => {
         aria-label="footer-container"
         data-testid="footer-container"
         flexDir="column"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         // h={{
         //   base: '240px',
@@ -33,7 +33,7 @@ export const AppFooter = () => {
         position="relative"
       >
         <Flex
-          padding={{ base: '5%', md: '2%' }}
+          paddingInline={{ base: '4%', xl: '4%' }}
           overflow="hidden"
           position="relative"
           // marginTop={{ base: '0', md: '20%' }}
@@ -42,21 +42,23 @@ export const AppFooter = () => {
           // bg="darkcyan"
         >
           <Flex
-            w="100%"
+            flex="1"
             flexDirection={{ base: 'column', md: 'row' }}
-            alignItems={{ base: 'flex-start', md: 'center' }}
+            alignItems={{ base: 'center', md: 'center' }}
             zIndex="docked"
-            marginTop={{ base: '10px', sm: '0' }}
+            marginTop={{ base: '20px', md: '0' }}
             // bg={"grey"}
           >
+            
             <LogoBerneck
-              width={{
-                base: '110px',
-                md: '120px',
-                lg: '150px',
-                xl: '180px'
-              }}
-            />
+                  width={{
+                    base: '110px',
+                    md: '110px',
+                    lg: '130px',
+                    xl: '145px',
+                    '2xl': '189px'
+                  }}
+                />
             <Flex
               w={{ base: '100%', md: '30%' }}
               ml={{ base: '0', md: 'auto' }}
@@ -97,7 +99,9 @@ export const AppFooter = () => {
           </Flex>
 
           <Flex
+            flex="1"
             display={{ base: 'none', md: 'flex' }}
+            // paddingInline={{ base: '4%', xl: '4%' }}
             justifyContent="space-between"
             zIndex="docked"
             marginTop={{
@@ -177,7 +181,7 @@ export const AppFooter = () => {
           </Flex>
 
           <Box zIndex="base" position="absolute" top="-35px" left="0">
-            <Grafism width={{ base: '1024px', md: '1280px', lg: '1920px' }} />
+            <Grafism width={{ base: '1024px', md: '1280px', lg: '1536px' }} />
           </Box>
         </Flex>
         <Flex
@@ -237,8 +241,8 @@ export const AppFooter = () => {
            flex="1"
           //  bg="yellowgreen"
            alignItems="center"
-           justifyContent="center"
-          //  padding={{ base: '0', md: '5%' }}
+           justifyContent="right"
+          margin={{ base: '2%' }}
           >
             <Link href="http://www.commcepta.com.br/" isExternal>
               <Image

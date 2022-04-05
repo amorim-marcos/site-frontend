@@ -29,7 +29,7 @@ export const PatternInfo = ({
       }}
       overflowY="hidden"
       overflowX="hidden"
-      padding={{ base: '5%', sm: '5%', lg: '10%', xl: '3%' }}
+      padding={{ base: '5%', sm: '5%', lg: '8%', xl: '3%' }}
       {...props}
     >
       <Box position={'absolute'} zIndex="base" left="-50px" top="-70px">
@@ -48,7 +48,7 @@ export const PatternInfo = ({
 
       <Flex
         zIndex={10}
-        padding={{ base: '5%', sm: '2%', lg: '2%', xl: '1%' }}
+        padding={{ base: '4%', sm: '1%', lg: '2%', xl: '1%' }}
         // bg="blue"
         flex="4"
         direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}

@@ -21,13 +21,14 @@ export const ProductsGallery = ({
           <Box
             key={i}
             h={{
-              base: '535px',
+              base: '400px',
               sm: '655px',
-              md: '316px',
-              lg: '403px',
-              xl: '520px',
-              '2xl': '650px'
+              md: '350px',
+              lg: '400px',
+              xl: '420px',
+              '2xl': '460px'
             }}
+            // bg="black"
           >
             <BannerProducts
               title={p.title}

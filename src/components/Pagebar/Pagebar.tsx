@@ -34,80 +34,71 @@ export const Pagebar = ({
   const router = useRouter()
 
   return (
+  <Box
+    bg="green.650"
+  >
     <Flex
       display={{ base: 'none', sm: 'flex' }}
+      maxWidth="1536px"
       alignItems="center"
       justifyContent="space-between"
       bg="green.950"
-      maxWidth="1920px"
       aria-label="pagebar-container"
       marginX="auto"
       h={{
         base: '83px',
-        sm: '40px',
-        md: '50px',
-        lg: '60px',
-        xl: '70px',
-        '2xl': '83px'
+        sm: '35px',
+        md: '40px',
+        lg: '45px',
+        xl: '45px'
       }}
-      paddingLeft={{ base: '8%', sm: '4%', md: '7%', lg: '8%' }}
-      paddingRight={{ base: '4%' }}
+      // paddingLeft={{ base: '8%', sm: '4%', md: '7%', lg: '6%' }}
+      // paddingRight={{ base: '2%', '2xl': '2%'  }}
       position="relative"
       zIndex="base"
     >
-      <Box
-        zIndex="dropdown"
-        cursor="pointer"
-        position="absolute"
-        top="35%"
-        left={{
-          base: '120px',
-          sm: '57px',
-          md: '70px',
-          lg: '84px',
-          xl: '97px',
-          '2xl': '120px'
+
+      <Flex
+        // bg="crimson"
+        flex="1"
+      >
+        <Box 
+          // position="absolute" 
+          left="0" 
+          zIndex="base"
+        >
+          <PagebarGrafism
+            height={{
+              base: '83px',
+              sm: '35px',
+              md: '40px',
+              lg: '45px',
+              xl: '45px'
+            }}
+          />
+        </Box>
+
+      </Flex>
+
+      <Flex 
+        alignItems="left" 
+        zIndex="docked" 
+        // w="100%"
+        // bg="blue"
+        flex="12"
+        marginX={{
+          base: '83px',
+          sm: '2%',
+          md: '1%',
+          lg: '1%',
+          xl: '1%',
+          '2xl': '0'
         }}
       >
-        <HouseIcon
-          onClick={() => router.push('/')}
-          data-testid="house-icon"
-          width={{
-            base: '26px',
-            sm: '13px',
-            md: '16px',
-            lg: '19px',
-            xl: '22px',
-            '2xl': '26px'
-          }}
-          color="white.100"
-        />
-      </Box>
-      <Box position="absolute" left="0" zIndex="base">
-        <PagebarGrafism
-          height={{
-            base: '83px',
-            sm: '40px',
-            md: '50px',
-            lg: '60px',
-            xl: '70px',
-            '2xl': '83px'
-          }}
-        />
-      </Box>
-      <Flex alignItems="center" zIndex="docked" w="100%">
         <Breadcrumb
-          marginLeft="70px"
           separator={
             <Box
-              marginX={{
-                base: '83px',
-                sm: '0px',
-                md: '3px',
-                lg: '6px',
-                xl: '9px',
-                '2xl': '10px'
-              }}
+              
             >
               <Arrow
                 width={{
@@ -115,8 +106,7 @@ export const Pagebar = ({
                   sm: '6px',
                   md: '8px',
                   lg: '10px',
-                  xl: '12px',
-                  '2xl': '14px'
+                  xl: '11px'
                 }}
                 color="white.100"
               />
@@ -137,11 +127,10 @@ export const Pagebar = ({
                       color="white.100"
                       fontSize={{
                         base: '8px',
-                        sm: '12px',
-                        md: '14px',
-                        lg: '16.5px',
-                        xl: '19px',
-                        '2xl': '23.5px'
+                        sm: '11px',
+                        md: '12px',
+                        lg: '13px',
+                        xl: '14px'
                       }}
                       variant={
                         (i === paths.length - 1
@@ -168,15 +157,23 @@ export const Pagebar = ({
           }}
           alignItems="center"
           marginLeft="auto"
+          marginRight={{
+            base: '83px',
+            sm: '5px',
+            md: '8px',
+            lg: '6px',
+            xl: '10px',
+            '2xl': '10px'
+          }}
         >
           <Box
             transform="rotate(180deg)"
             marginRight={{
               base: '83px',
-              sm: '0px',
-              md: '3px',
+              sm: '5px',
+              md: '8px',
               lg: '6px',
-              xl: '9px',
+              xl: '10px',
               '2xl': '10px'
             }}
           >
@@ -186,8 +183,7 @@ export const Pagebar = ({
                 sm: '6px',
                 md: '8px',
                 lg: '10px',
-                xl: '12px',
-                '2xl': '15px'
+                xl: '12px'
               }}
               color="green.800"
             />
@@ -198,17 +194,24 @@ export const Pagebar = ({
             variant={'breadcrumbs' as any}
             fontSize={{
               base: '8px',
-              sm: '12px',
-              md: '14px',
-              lg: '16.5px',
-              xl: '19px',
-              '2xl': '23.5px'
+              sm: '11px',
+              md: '12px',
+              lg: '13px',
+              xl: '14px'
             }}
           >
             {pagebar.t('backBtn')}
           </Text>
         </Flex>
+      
       </Flex>
+
+
     </Flex>
+  
+
+
+  </Box>
+   
   )
 }

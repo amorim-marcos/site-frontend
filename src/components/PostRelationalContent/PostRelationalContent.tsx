@@ -23,7 +23,7 @@ export const PostRelationalContent = ({
         flexDirection="column"
         w="100%"
         padding="5%"
-        maxWidth="1920px"
+        maxWidth="1536px"
         bg="brown.150"
       >
         

@@ -50,9 +50,9 @@ export const ChannelBnkRelationalItem = ({
         case (1024 <= tam && tam < 1280):
             return 70; break;
         case (1280 <= tam && tam < 1536):
-            return (showInvert)? 70: 90; break;
+            return (showInvert)? 70: 80; break;
         case (1536 <= tam):
-          return 150;break;
+          return 70;break;
       }
     }else{
       return 10;
@@ -104,47 +104,57 @@ export const ChannelBnkRelationalItem = ({
     <Flex
       onMouseEnter={() => setMouseDown(true)}
       onMouseLeave={() => setMouseDown(false)}
-      flexDirection={{ base: 'column', md: (showInvert) ? 'row' : 'column' }}
-      marginRight={{ base: '10px', md: (showInvert) ? '0px' : '0px' }}
-      w={{ base: '60vw', md: (showInvert) ? '0' : '22%' }}
-      minWidth={{ base: '60vw', sm: '50vw', md: (showInvert) ? '100%' : '0' }}
+      flexDirection={{ base: 'column', xl: (showInvert) ? 'row' : 'column' }}
+      // marginRight={{ base: '10px', md: (showInvert) ? '0px' : '0px' }}
+      w={{ base: '60vw', xl: (showInvert) ? '0' : '22%' }}
+      minWidth={{ base: '60vw', sm: '50vw', md: '0', xl: (showInvert) ? '100%' : '0' }}
+      maxWidth={{ base: "270px", '2xl': "100%" }}
       {...props}
       cursor="pointer"
       onClick={navigateToThePost}
+      // bg="azure"
     >
+
+      {/* {CARD CHANNEL  } */}
       <Box
         h={{
           base: '200px',
-          sm: '250px',
-          md: '150px',
-          lg: '200px',
-          '2xl': '300px'
+          // sm: '250px',
+          // md: '150px',
+          // lg: '200px'
         }}
         w="100%"
         // bg="azure"
       >
-      <Image 
-        h="100%" 
-        w="100%"
-        objectFit="cover" 
-        src={urlImage} />
+          {/* {IMAGEM CAPA CARD  } */}
+          <Image 
+            h="100%" 
+            w="100%"
+            objectFit="cover" 
+            src={urlImage} />
       </Box>
       
+      
+      {/* { CARD TEXT  } */}
       <Flex
-        w="100%"
         bg={getPanelColor(categoryId, currentCategory)}
         flexDirection={{ base: 'column', md: (showInvert) ? 'column' : 'column' }}
         justifyContent="space-between"
-        h={{ base: '50%', md: (showInvert) ? '100%' : '50%' }}
+        h={{ base: '50%', xl: (showInvert) ? '100%' : '50%' }}
+        w="100%"
+        // bg = "blueviolet"
       >
         <Flex 
-          padding={{ base: '8%', md: (showInvert) ? '5%' : '8%' }}
+          padding={{ base: '8%', xl: (showInvert) ? '3%' : '5%' , '2xl': '2%'}}
           flexDirection={{ base: 'column', md: (showInvert) ? 'column' : 'column' }}
+          // bg = "blue"
         >
           <Flex
             alignItems="flex-start"
             justifyContent={'flex-start'}
             // bg = "red"
+            margin={{ base: '0', xl: (showInvert) ? '12px 0 0 0' : '0%' }}
+            // padding={{ base: '0', xl: (showInvert) ? '2%' : '0%', '2xl': '0' }}
           >
             <ArrowIcon
               stroke={getAccentColor(categoryId, currentCategory)}
@@ -181,8 +191,8 @@ export const ChannelBnkRelationalItem = ({
               base: '10px',
               sm: '15px',
               md: '10px',
-              lg: '18px',
-              xl: '20px'
+              lg: '10px',
+              xl: '10px'
             }}
             color="green.800"
             lineHeight={{

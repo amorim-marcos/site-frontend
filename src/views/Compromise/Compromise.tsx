@@ -65,7 +65,9 @@ export type CompromiseViewProps = {
 export const Compromise = ({ page_content }: CompromiseViewProps) => {
   const router = useRouter()
   return (
-    <Box maxWidth="1920px" marginX="auto" bg="green.100">
+    <Box
+      bg="white"
+    >
       <Pagebar
         paths={[
           {
@@ -86,9 +88,12 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
         subTitleColor="white"
       />
 
-      {/* INICIO VALORES */}
+    {/* INICIO VALORES */}
+    <Box
+      bg="brown.100"
+    >
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -231,12 +236,14 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           </Box>
         </Flex>
       </Flex>
-      {/* FIM VALORES */}
+
+    </Box>
+    {/* FIM VALORES */}
 
       {/* INICIO Cultivamos o meio ambiente */}
       <Flex
         id="meio-ambiente"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -401,9 +408,14 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       </Flex>
       {/* FIM Cultivamos o meio ambiente */}
 
-      {/* INICIO Compromisso com o planeta */}
+
+    {/* INICIO Compromisso com o planeta */}
+    <Box
+      bg="green.900"
+    >
+
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -510,11 +522,16 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           </Box>
         </Flex>
       </Flex>
-      {/* FIM Compromisso com o planeta */}
+    </Box>
+    {/* FIM Compromisso com o planeta */}
 
-      {/* INICIO Economia de recursos naturais*/}
+
+    {/* INICIO Economia de recursos naturais*/}
+    <Box
+      bg="gray.100"
+    >
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -585,7 +602,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               {/* LINHA 1 */}
               <Flex
                 // bg='blue'
-                alignItems={'center'}
+                alignItems={'start'}
               >
                 <Infographic
                   titleSuperscript2Text="Co-geramos"
@@ -663,11 +680,16 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           </Flex>
         </Flex>
       </Flex>
-      {/* FIM Economia de recursos naturais */}
+    
+    </Box>
+    {/* FIM Economia de recursos naturais */}
 
-      {/* INICIO Preservação da fauna e da flora */}
+    {/* INICIO Preservação da fauna e da flora */}
+    <Box
+      bg="brown.150"
+    >
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -716,12 +738,17 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           </Box>
         </Flex>
       </Flex>
-      {/* FIM Preservação da fauna e da flora */}
+    
+    </Box>
+    {/* FIM Preservação da fauna e da flora */}
 
-      {/* INICIO Cultivamos nossa gente */}
+    {/* INICIO Cultivamos nossa gente */}
+    <Box
+      bg="white"
+    >
       <Flex
         id="nossa-gente"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -833,11 +860,16 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           </Flex>
         </Flex>
       </Flex>
-      {/* FIM Cultivamos nossa gente */}
 
-      {/* INICIO Compromisso com a sociedade */}
+    </Box>
+    {/* FIM Cultivamos nossa gente */}
+
+    {/* INICIO Compromisso com a sociedade */}
+    <Box
+      bg="green.1000"
+    >
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -898,11 +930,16 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           </Box>
         </Flex>
       </Flex>
-      {/* FIM Compromisso com a sociedade */}
 
-      {/* INICIO Confira alguns projetos patrocinados por nós */}
+    </Box>
+    {/* FIM Compromisso com a sociedade */}
+
+    {/* INICIO Confira alguns projetos patrocinados por nós */}
+    <Box
+      bg="gray.450"
+    >
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -994,12 +1031,18 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           </Box>
         </Flex>
       </Flex>
-      {/* FIM Confira alguns projetos patrocinados por nós */}
+    
+    </Box>
+    {/* FIM Confira alguns projetos patrocinados por nós */}
 
-      {/* INICIO Cultivamos nossos valores */}
+    
+    {/* INICIO Cultivamos nossos valores */}
+    <Box
+      bg="green.400"
+    >
       <Flex
         id="nossos-valores"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -1053,11 +1096,16 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           </Box>
         </Flex>
       </Flex>
-      {/* FIM Cultivamos nossos valores */}
 
-      {/* INICIO Compromisso com a conduta corporativa */}
+    </Box>
+    {/* FIM Cultivamos nossos valores */}
+
+    {/* INICIO Compromisso com a conduta corporativa */}
+    <Box
+      bg="green.100"
+    >
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -1117,11 +1165,13 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           </Box>
         </Flex>
       </Flex>
-      {/* FIM Compromisso com a conduta corporativa */}
+    
+    </Box>
+    {/* FIM Compromisso com a conduta corporativa */}
 
       {/* INICIO Ouvidoria */}
       {/* <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -1218,10 +1268,14 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       </Flex> */}
       {/* FIM Ouvidoria */}
 
-      {/* INICIO Nossas práticas de ESG */}
+    {/* INICIO Nossas práticas de ESG */}  
+    <Box
+      bg="green.1000"
+    >
+
       <Flex
         id="relatorio"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -1314,7 +1368,11 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           </Box>
         </Flex>
       </Flex>
-      {/* FIM Nossas práticas de ESG */}
+    
     </Box>
+    {/* FIM Nossas práticas de ESG */}
+    
+    </Box>
+  
   )
 }
