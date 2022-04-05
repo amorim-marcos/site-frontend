@@ -2,6 +2,8 @@ import { Heading, Flex, Box, Text, Center, Image } from '@chakra-ui/react'
 import { useState } from 'react'
 import { ResponsiveCss } from 'types/responsive'
 
+type SizeTypes = 'square' | 'rectangle-horizontal' | 'rectangle-vertical'
+
 export type BannerProductsProps = {
   title?: string
   titleColor?: string
@@ -11,8 +13,9 @@ export type BannerProductsProps = {
   srcImg?: string
   bannerSize?: ResponsiveCss
   onClick?: () => void
-  sizeType?: 'square' | 'rectangle'
+  sizeType?: SizeTypes
   urlLink?: string
+  biggerImage?: boolean
 }
 export const BannerProducts = ({
   title,
@@ -23,7 +26,8 @@ export const BannerProducts = ({
   srcImg,
   bannerSize,
   sizeType = 'square',
-  onClick
+  onClick,
+  biggerImage = false
 }: BannerProductsProps) => {
   const [mouseEnter, setMouseEnter] = useState(false)
   return (
@@ -50,16 +54,20 @@ export const BannerProducts = ({
         // border="1px solid red"
         position={'absolute'}
         right={
-          sizeType === 'rectangle'
+          sizeType === 'rectangle-horizontal'
             ? mouseEnter
               ? '-1%'
               : '-5%'
+            : biggerImage
+            ? mouseEnter
+              ? { base: '-1%', lg: '-3%' }
+              : { base: '-5%', lg: '-9%' }
             : mouseEnter
-            ? '-3%'
-            : '-7%'
+            ? { base: '-10%', '2xl': '-17%' }
+            : { base: '-15%', '2xl': '-20%' }
         }
         top={
-          sizeType === 'rectangle'
+          sizeType === 'rectangle-horizontal'
             ? mouseEnter
               ? '-14%'
               : '-17%'
@@ -105,7 +113,7 @@ export const BannerProducts = ({
           <Flex
             // bg="pink"
             flex="1"
-            w={sizeType === 'rectangle' ? '50%' : '100%'}
+            w={sizeType === 'rectangle-horizontal' ? '50%' : '100%'}
           >
             <Text
               as="h1"

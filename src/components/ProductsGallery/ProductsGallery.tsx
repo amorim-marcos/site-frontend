@@ -22,6 +22,7 @@ export const ProductsGallery = ({
             key={i}
             h={{
               base: '400px',
+              xs: '500px',
               sm: '655px',
               md: '350px',
               lg: '400px',
