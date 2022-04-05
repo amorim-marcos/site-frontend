@@ -106,7 +106,7 @@ export default function Home(props: HomeProps) {
               base: '100px',
               sm: '150px',
               lg: '200px',
-              xl: '300px'
+              xl: '350px'
             },
             urlLink: 'bp-berneck'
           },

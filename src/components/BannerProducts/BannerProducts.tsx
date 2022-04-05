@@ -87,7 +87,6 @@ export const BannerProducts = ({
         backgroundRepeat={'no-repeat'}
         backgroundPosition={'center left'}
         backgroundSize={'auto 100%'}
-        // border="1px solid red"
       ></Box>
 
       <Flex
@@ -124,18 +123,6 @@ export const BannerProducts = ({
               {title}
             </Text>
 
-            {/* <Flex
-                bg="red"
-                alignItems={'flex-end'}
-              >
-                <Text as="h3" 
-                  variant={'h3' as any}
-                  color={titleColor}
-                  // lineHeight={{ base: '35px', sm: '35px', lg: '40px', xl: '50px' }}
-                >
-                  ®
-                </Text>
-              </Flex> */}
           </Flex>
           <Flex
             // bg="white"

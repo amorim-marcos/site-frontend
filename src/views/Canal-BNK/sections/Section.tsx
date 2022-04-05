@@ -26,18 +26,18 @@ export const Section = (props: SectionProps) => {
       <Flex
         align="center"
         justify={{ base: 'center', lg: 'space-between' }}
-        pl={{ lg: '110px' }}
-        pr={{ lg: '115px' }}
-        
-      
+        pl={{ lg: '110px', xl: '3%', '2xl': '0px'}}
+        pr={{ lg: '3%', '2xl': '0px' }}
+        mb={{ '2xl': '10px' }}
+        // bg="cyan"
       >
         {title ? (
           <CompletedTitle
             titleString={title}
-            textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+            textAlign={{ base: 'center', sm: 'center', lg: 'left', xl: 'left' }}
             alignSelf={{
-              base: 'flex-start',
-              sm: 'flex-start',
+              base: 'center',
+              sm: 'center',
               lg: 'flex-start',
               xl: 'flex-start'
             }}
@@ -47,7 +47,9 @@ export const Section = (props: SectionProps) => {
         )}
 
         {seeMore && (
-          <Box display={{ base: 'none', lg: 'block' }}>
+          <Box 
+            display={{ base: 'none', lg: 'block' }}
+          >
             <SeeMore {...seeMore} />
           </Box>
         )}
@@ -61,6 +63,7 @@ export const Section = (props: SectionProps) => {
           pt="19px"
           w="100%"
           justify="flex-end"
+          pr={{ base: '2%', '2xl': '0px' }}
         >
           <SeeMore {...seeMore} />
         </Flex>
@@ -93,7 +96,7 @@ const SeeMore = (props: SeeMoreProps) => {
       justify="center"
       gap="14px"
       cursor="pointer"
-      //bg="black"
+      // bg="black"
     >
       <Link
         letterSpacing="-0.4px"

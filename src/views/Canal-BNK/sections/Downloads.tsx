@@ -28,11 +28,15 @@ export const Downloads = () => {
           <Flex
             display={{ base: 'none', md: 'flex' }}
             data-testid="downloads"
-            pt="65px"
+            pt={{ base: '0', lg: '3%' }}
             gap="34px"
             direction="column"
           >
-            <Flex w="100%" gap="34px" px="88px">
+            <Flex 
+              w="100%" 
+              gap="34px" 
+              px={{ base: '0', lg: '3%', '2xl': '0' }}
+            >
               <DownloadColorPanel
                 title="Revista Inspirare BNK"
                 colorPanel="brown"
@@ -50,7 +54,11 @@ export const Downloads = () => {
               />
             </Flex>
 
-            <Flex w="100%" gap="34px" px="88px">
+            <Flex 
+              w="100%" 
+              gap="34px" 
+              px={{ base: '0', lg: '3%', '2xl': '0' }}
+            >
               <DownloadColorPanel
                 title="Relatórios"
                 colorPanel="gray"
@@ -77,7 +85,11 @@ export const Downloads = () => {
               />
             </Flex>
 
-            <Flex w="100%" gap="34px" px="88px">
+            <Flex 
+              w="100%" 
+              gap="34px" 
+              px={{ base: '0', lg: '3%', '2xl': '0' }}
+            >
               <DownloadColorPanel
                 flex={2}
                 title="Pack de Padrões BP BERNECK®"

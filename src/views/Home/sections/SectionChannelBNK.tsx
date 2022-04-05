@@ -62,8 +62,9 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
         </Text>
       </Flex>
       <Flex
+        // bg="cyan"
         justifyContent={{ md: 'flex-start' }}
-        overflowX={{ base: 'scroll', md: 'hidden' }}
+        overflowX={{ base: 'scroll', xl: 'hidden' }}
         w={{ base: '100vw', md: '75%' }}
         gap="5%"
         paddingLeft={{ base: '5%', md: '0' }}

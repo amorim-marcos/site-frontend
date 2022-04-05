@@ -67,17 +67,19 @@ export const Certification = (props: CertificationViewProps) => (
         flexDir="column"
         width="100%"
         bg="brown.100"
-        paddingX="5%"
+        overflow="hidden"
+        paddingX={{ base: '5%', '2xl': '3%' }}
         paddingY={{ base: '20px', md: '0' }}
-        height={{ base: 'auto', md: '25vw' }}
-        maxHeight="298px"
         position="relative"
         justifyContent="center"
-        overflow="hidden"
-        alignItems={{ base: 'center', md: 'flex-start' }}
+        alignItems={{ base: 'center', md: 'start' }}
         maxWidth={"1536px"}
+        maxHeight="298px"
+        height={{ base: 'auto', md: '25vw' }}
       >
-        <Box display={{ base: 'none', md: 'block' }}>
+        <Box 
+          display={{ base: 'none', md: 'block' }}
+        >
           <CompletedTitle
             titleString= {props.page_content.page_title}
             textAlign="left"

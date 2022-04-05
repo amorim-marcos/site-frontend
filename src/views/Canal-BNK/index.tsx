@@ -103,7 +103,11 @@ function CanalBNKFC(props: CanalBNKProps) {
       />
 
       <Flex
-        bg="gray.150"
+        bg={
+          currentCategory === -1 || currentCategory === 0
+            ? 'gray.150'
+            : 'brown.100'
+        }
         flex="1"
         justify={"center"}
       >
