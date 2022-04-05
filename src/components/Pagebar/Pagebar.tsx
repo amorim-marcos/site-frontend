@@ -62,42 +62,6 @@ export const Pagebar = ({
         // bg="crimson"
         flex="1"
       >
-        <Flex
-          zIndex="dropdown"
-          cursor="pointer"
-          position="absolute"
-          top={{
-            base: '30%',
-            xl: '30%'
-          }}
-          left={{
-            base: '10%',
-            sm: '8%',
-            md: '7%',
-            lg: '6%',
-            xl: '5%',
-            '2xl': '4%'
-          }}
-          justifyContent={"end"}
-          justifyItems={"end"}
-          alignContent={"end"}
-          alignItems={"end"}
-        >
-          <HouseIcon
-            onClick={() => router.push('/')}
-            data-testid="house-icon"
-            width={{
-              base: '26px',
-              sm: '16px',
-              md: '18px',
-              lg: '20px',
-              xl: '20px',
-              '2xl': '22px'
-            }}
-            color="white.100"
-          />
-        </Flex>
-
         <Box 
           // position="absolute" 
           left="0" 
@@ -127,7 +91,8 @@ export const Pagebar = ({
           sm: '2%',
           md: '1%',
           lg: '1%',
-          xl: '0'
+          xl: '1%',
+          '2xl': '0'
         }}
       >
         <Breadcrumb
@@ -244,6 +209,9 @@ export const Pagebar = ({
 
     </Flex>
   
+
+
   </Box>
+   
   )
 }

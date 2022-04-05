@@ -17,25 +17,26 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
   return (
 
   <Flex
-    bg="white"
+    // bg="red"
   >
     <Flex
-      maxWidth="1536px"
+      // maxWidth="1536px"
       marginX="auto"
       position="relative"
       zIndex="base"
       overflowY={{ base: 'hidden', '2xl': 'visible' }}
       overflowX={{ base: 'hidden', '2xl': 'visible' }}
-      bg="white"
+      // bg="white"
       backgroundImage="/assets/imgs/grafismos_fundo2.png"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}
-      flex="1"
+      // flex="1"
     >
       {/* TITULO */}
       <Flex
         // bg="gray"
+        maxWidth="1536px"
         flex="1"
         m={{
           base: '5% 2% 5% 2%',

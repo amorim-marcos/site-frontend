@@ -82,6 +82,22 @@ export const Post = (props: PostProps) => {
     ...rest
   } = props
 
+  function getPanelColor(i: number) {
+    if (i === 2) {
+      return '#89BA81'
+    }
+  
+    if (i === 0) {
+      return '#F0E4D1'
+    }
+  
+    if (i === 1) {
+      return '#D6DCD5'
+    }
+  
+    return 'white'
+  }
+
   const getSocialIconHoverColor = () => {
     const index = categories.findIndex(
       (item) => item.name === post?.category.name
@@ -122,39 +138,55 @@ export const Post = (props: PostProps) => {
         router.push(`/canal-bnk/${post?.category.id}/${post?.url_code}`)
       }
       cursor="pointer"
-      //bg="tomato"
+      bg={getPanelColor(currentCategory)}
       {...rest}
-      margin={'5%'}
-      w={'90%'}
+      margin={{ base: '5%', md: '3%', lg: '3.5%', xl: '4.2%', '2xl': (showDate)? '5% 2% 0% 0%' : '0% 2% 0% 0%' }}
+      w={{ base: '90%', '2xl': (showDate)? '70%' : '90%' }}
       onMouseEnter={() => setMouseDown(true)}
       onMouseLeave={() => setMouseDown(false)}
     >
       {/* box imagem cover */}
       <Flex
-        flex="1"
-        // bg="black"
+        flex="10"
+        bg="black"
+        marginX="auto"
+        alignItems="center"
+        justifyContent="center"
+        position="relative"
+        zIndex="base"
+        overflowY="hidden"
+        overflowX="hidden"
+        // maxH={"700px"}
+
       >
-        <Image src={post?.cover} w={'100%'} />
+        <Image 
+          src={post?.cover} 
+          // w={'100%'} 
+          // h={'100%'}
+        />
       </Flex>
 
       {/* box content */}
       <Flex
         // w={'60%'}
+        // bg="yellowgreen"
         direction="column"
         flex="1"
-        bg={getPanelColor(currentCategory)}
+        // bg={getPanelColor(currentCategory)}
+        
       >
         <Flex
-          // bg="yellow"
+          // bg="cyan"
           flex="1"
           direction={{ base: 'column', md: 'row' }}
           justifyContent={{ base: 'start', md: 'end' }}
           alignContent={{ base: 'start', md: 'end' }}
+          
         >
           <Flex
             data-testid="post-category"
             margin={{
-              base: '5px 0px 5px 10px',
+              base: '8px 0px 5px 10px',
               lg: '10px 0px 7px 15px',
               xl: '20px 0px 10px 20px'
             }}
@@ -166,9 +198,9 @@ export const Post = (props: PostProps) => {
               color={getHoverIndicatorColor()}
               width={{
                 base: '8px',
-                md: '10px',
-                lg: '10px',
-                xl: '12px'
+                md: '9px',
+                lg: '9px',
+                xl: '10px'
               }}
             />
             <Text
@@ -179,7 +211,7 @@ export const Post = (props: PostProps) => {
                 base: '2px',
                 xl: '3px'
               }}
-              fontSize={{ base: '11px', sm: '13px', lg: '14px', xl: '16px' }}
+              fontSize={{ base: '11px', sm: '12px', lg: '13px', xl: '13px' }}
               marginLeft={{ base: '5px', lg: '5px' }}
               marginTop={{ base: '-2px', lg: '-3px' }}
             >
@@ -260,21 +292,6 @@ export const Post = (props: PostProps) => {
           </Text>
         </Flex>
 
-        {/* {showPreview && (
-          <Text
-            h="107px"
-            mt="-33px"
-            lineHeight="35px"
-            textOverflow="ellipsis"
-            overflow="hidden"
-            noOfLines={3}
-            fontSize="17px"
-            letterSpacing="-0.34px"
-            color={'gray.350'}
-          >
-            <Wrapper>{post?.content && parser(post?.content)}</Wrapper>
-          </Text>
-        )} */}
 
         {/* Share Buttons Icons */}
         {showShareOptions && (

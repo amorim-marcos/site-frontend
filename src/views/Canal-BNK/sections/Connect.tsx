@@ -67,15 +67,16 @@ export const Connect = () => {
         position="relative"
         // marginTop={{ base: '5%', sm: '5%', lg: '5%', xl: '3%' }}
         // marginLeft={{ base: '5%', sm: '5%', lg: '5%', xl: '5%', '2xl': '15%' }}
-        padding={{ base: '5% 3%', sm: '5%', xl: '5%', '2xl': '3% 0%' }}
+        padding={{ base: '5% 0%', sm: '5%', xl: '5%', '2xl': '3% 0%' }}
         align={{ base: 'center', lg: 'flex-start' }}
+        justifyContent = {{ base: 'center', lg: 'flex-start' }}
       >
         <CompletedTitle
           titleString="Conecte-se"
-          textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+          textAlign={{ base: 'center', sm: 'center', lg: 'left', xl: 'left' }}
           alignSelf={{
-            base: 'flex-start',
-            sm: 'flex-start',
+            base: 'center',
+            sm: 'center',
             lg: 'flex-start',
             xl: 'flex-start'
           }}
