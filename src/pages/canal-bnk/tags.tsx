@@ -37,8 +37,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     queryName = query._tag as string
   }
 
-  console.log('AAA', query)
-
   let page_content
 
   let res
