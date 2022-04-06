@@ -11,6 +11,7 @@ import { smartDate } from 'utils/utils'
 
 import { colors } from '../../theme/colors'
 import { Wrapper } from './styles'
+import { useRouter } from 'next/router'
 
 export type PostBodyProps = {
   category?: Category
@@ -174,21 +175,26 @@ export const TagItem = ({
 }: {
   tag: string
   hoverColor?: string
-}) => (
-  <Box
-    marginRight="2%"
-    marginBottom="3%"
-    padding="2%"
-    bg="white.100"
-    borderRadius="20px"
-  >
-    <Text
-      userSelect="none"
-      variant={'body'}
-      color={'brown.350'}
-      _hover={{ color: hoverColor }}
+}) => {
+  const router = useRouter()
+  return (
+    <Box
+      marginRight="2%"
+      marginBottom="3%"
+      padding="2%"
+      bg="white.100"
+      borderRadius="20px"
+      cursor={'pointer'}
+      onClick={() => router.push(`/canal-bnk/tags?_tag=${tag}`)}
     >
-      {tag}
-    </Text>
-  </Box>
-)
+      <Text
+        userSelect="none"
+        variant={'body'}
+        color={'brown.350'}
+        _hover={{ color: hoverColor }}
+      >
+        {tag}
+      </Text>
+    </Box>
+  )
+}

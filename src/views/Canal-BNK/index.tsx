@@ -22,7 +22,10 @@ export const CategoryContext = createContext(
   }
 )
 
-export function CategoryCtxProvider(props: { children: ReactNode }) {
+export function CategoryCtxProvider(props: {
+  children: ReactNode
+  seeOnlyPostsDefault?: boolean
+}) {
   const [currentCategory, setCurrentCategory] = useState<number>(-1)
   const [categories, setCategories] = useState<Category[]>([])
   const [seeOnlyPosts, setSeeOnlyPosts] = useState(false)
@@ -41,6 +44,10 @@ export function CategoryCtxProvider(props: { children: ReactNode }) {
       setCurrentCategory(-1)
     }
   }, [currentCategory, categories])
+
+  useEffect(() => {
+    setSeeOnlyPosts(props.seeOnlyPostsDefault || false)
+  }, [props.seeOnlyPostsDefault])
   return (
     <Box>
       <CategoryContext.Provider
@@ -109,19 +116,15 @@ function CanalBNKFC(props: CanalBNKProps) {
             : 'brown.100'
         }
         flex="1"
-        justify={"center"}
+        justify={'center'}
       >
         <Videos />
       </Flex>
       {!seeOnlyPosts && (
         <>
-         <Flex
-          bg="white.100"
-          flex="1"
-          justify={"center"}
-        >
-          <Downloads />
-        </Flex>
+          <Flex bg="white.100" flex="1" justify={'center'}>
+            <Downloads />
+          </Flex>
           <Connect />
         </>
       )}
