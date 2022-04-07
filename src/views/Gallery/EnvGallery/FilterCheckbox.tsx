@@ -28,6 +28,7 @@ export const FilterCheckbox = ({
     <Button
       background={checked ? 'green.400' : 'green.300'}
       _hover={{}}
+      _focus={{ outline: 'none' }}
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       onClick={() => onCheck && onCheck(checked, code)}
@@ -51,13 +52,14 @@ export const FilterCheckbox = ({
         }}
         padding="0"
         iconColor="green.600"
-        border="1px solid"
+        bgColor="#FFFFFF73"
         borderColor="green.900"
         borderRadius="3px"
         colorScheme="white.100"
         isChecked={checked}
         zIndex="2"
         mr="5px"
+        sx={{ span: { border: '1.2px solid green.900', borderRadius: '3px' } }}
       />
       <Text
         fontWeight="600"

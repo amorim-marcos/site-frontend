@@ -66,6 +66,7 @@ export const FiltersTabs = ({
       >
         <Button
           zIndex="10"
+          _focus={{ outline: 'none' }}
           onClick={() => setDisplayFilters(!displayFilters)}
           variant="link"
           backgroundColor="none"
@@ -233,6 +234,7 @@ export const FiltersTabs = ({
                   <Button
                     variant={'filters' as any}
                     mr="30px"
+                    _focus={{ outline: 'none' }}
                     onClick={() => setFilteredEnvs(applyFilters(filters, envs))}
                   >
                     Filtrar
@@ -241,6 +243,7 @@ export const FiltersTabs = ({
                     <Button
                       variant={'filters' as any}
                       onClick={() => resetFilters()}
+                      _focus={{ outline: 'none' }}
                     >
                       Limpar filtros
                     </Button>

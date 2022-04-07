@@ -52,9 +52,7 @@ export default function Home(props: HomeProps) {
   const router = useRouter()
 
   return (
-    <Box 
-      bg="white.100"
-    >
+    <Box bg="white.100">
       {/* INICIO BANNER CAROUSEL */}
       {props.highlights && props.highlights.length > 0 && (
         <HomeBanner
@@ -93,7 +91,6 @@ export default function Home(props: HomeProps) {
       )}
       {/* FIM SECTION CANAL BNK */}
 
-      
       {/* INICIO Nossos Produtos */}
       {/* BP | MDP | MDF | HDF | PLUS | PNUS | TECA */}
       <SectionProducts
