@@ -92,6 +92,7 @@ export default function Home(props: HomeProps) {
       {/* FIM SECTION CANAL BNK */}
 
       {/* INICIO Nossos Produtos */}
+      {/* BP | MDP | MDF | HDF | PLUS | PNUS | TECA */}
       <SectionProducts
         products={[
           {
@@ -111,34 +112,19 @@ export default function Home(props: HomeProps) {
             urlLink: 'bp-berneck'
           },
           {
-            title: 'PLUS BERNECK®',
-            titleColor: 'white',
-            subtitle: 'Linha de Painéis com Resistência Extra à Umidade',
-            subtitleColor: 'brown.350',
-            bgColor: 'green.400',
-            srcImg: '/img/plus.png',
-            bannerSize: {
-              base: '100px',
-              sm: '150px',
-              lg: '200px',
-              xl: '300px'
-            },
-            urlLink: 'plus-berneck'
-          },
-          {
-            title: 'HDF BERNECK®',
+            title: 'MDP BERNECK®',
             titleColor: 'gray.400',
-            subtitle: 'Painel de Fibra de Alta Densidade',
+            subtitle: 'Painel de Partículas de Média Densidade',
             subtitleColor: 'gray.400',
             bgColor: 'brown.200',
-            srcImg: '/img/hdf.png',
+            srcImg: '/img/mdp.png',
             bannerSize: {
               base: '100px',
               sm: '150px',
               lg: '200px',
               xl: '300px'
             },
-            urlLink: 'hdf-berneck'
+            urlLink: 'mdp-berneck'
           },
           {
             title: 'MDF BERNECK®',
@@ -156,19 +142,49 @@ export default function Home(props: HomeProps) {
             urlLink: 'mdf-berneck'
           },
           {
-            title: 'MDP BERNECK®',
+            title: 'HDF BERNECK®',
             titleColor: 'gray.400',
-            subtitle: 'Painel de Partículas de Média Densidade',
+            subtitle: 'Painel de Fibra de Alta Densidade',
             subtitleColor: 'gray.400',
             bgColor: 'brown.200',
-            srcImg: '/img/mdp.png',
+            srcImg: '/img/hdf.png',
             bannerSize: {
               base: '100px',
               sm: '150px',
               lg: '200px',
               xl: '300px'
             },
-            urlLink: 'mdp-berneck'
+            urlLink: 'hdf-berneck'
+          },
+          {
+            title: 'PLUS BERNECK®',
+            titleColor: 'white',
+            subtitle: 'Linha de Painéis com Resistência Extra à Umidade',
+            subtitleColor: 'brown.350',
+            bgColor: 'green.400',
+            srcImg: '/img/plus.png',
+            bannerSize: {
+              base: '100px',
+              sm: '150px',
+              lg: '200px',
+              xl: '300px'
+            },
+            urlLink: 'plus-berneck'
+          },
+          {
+            title: 'BERNECK PINUS®',
+            titleColor: 'green.900',
+            subtitle: 'Madeira Serrada de Pinus',
+            subtitleColor: 'gray.400',
+            bgColor: 'green.300',
+            srcImg: '/img/pinus.png',
+            bannerSize: {
+              base: '100px',
+              sm: '150px',
+              lg: '200px',
+              xl: '300px'
+            },
+            urlLink: 'berneck-pinus'
           },
           {
             title: 'BERNECK TECA®',
@@ -185,21 +201,6 @@ export default function Home(props: HomeProps) {
             },
             urlLink: 'berneck-teca'
           },
-          {
-            title: 'BERNECK PINUS®',
-            titleColor: 'green.900',
-            subtitle: 'Madeira Serrada de Pinus',
-            subtitleColor: 'gray.400',
-            bgColor: 'green.300',
-            srcImg: '/img/pinus.png',
-            bannerSize: {
-              base: '100px',
-              sm: '150px',
-              lg: '200px',
-              xl: '300px'
-            },
-            urlLink: 'berneck-pinus'
-          }
         ]}
         numberEvidence={3}
       />

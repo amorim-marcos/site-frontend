@@ -64,47 +64,15 @@ export const Intro = (props: { posts: IPost[] }) => {
         overflowX={{ base: 'hidden', '2xl': 'visible' }}
         paddingBottom={{ base: '2%', '2xl': '5%' }}
       >
-        <Image
-          src="/assets/imgs/canal-bnk/grafismo_esquerda.svg"
-          w="232px"
-          h="618px"
-          pos="absolute"
-          left="-80px"
-          top="300px"
-          opacity={
-            currentCategory === -1 ? 0.6 : currentCategory === 0 ? 0.9 : 0.2
-          }
-          filter={
-            currentCategory === -1
-              ? 'brightness(1) contrast(0.5) sepia(1) grayscale(0.6) hue-rotate(350deg) saturate(1.4)'
-              : currentCategory === 1
-              ? 'brightness(0.5) contrast(0.2) sepia(1) grayscale(0.6) hue-rotate(110deg) saturate(1)'
-              : ''
-          }
-        />
-
-        <Image
-          src="/assets/imgs/canal-bnk/grafismo_direita.svg"
-          w="810px"
-          h="980px"
-          objectFit="cover"
-          overflow="hidden"
-          pos="absolute"
-          right="-150px"
-          top="0"
-          opacity={
-            currentCategory === -1 ? 0.6 : currentCategory === 0 ? 0.9 : 0.2
-          }
-          filter={
-            currentCategory === -1
-              ? 'brightness(1) contrast(0.5) sepia(1) grayscale(0.6) hue-rotate(350deg) saturate(1.4)'
-              : currentCategory === 1
-              ? 'brightness(0.5) contrast(0.2) sepia(1) grayscale(0.6) hue-rotate(110deg) saturate(1)'
-              : ''
-          }
-        />
-
-        <Flex direction="column" align={{ base: 'center', lg: 'inherit' }}>
+        <Flex
+          data-testid="intro-header"
+          w="100%"
+          justifyContent="space-between"
+          zIndex={100}
+          direction={{ base: 'column', lg: 'row' }}
+          padding={{ base: '5% 5% 0 5%', md: '5% 3% 0 3%', xl: '5% 5% 0 3%' , '2xl': '5% 0% 0 3%'}}
+          // bg="yellow"
+        >
           <Flex
             data-testid="intro-header"
             w="100%"
@@ -285,39 +253,124 @@ export const Intro = (props: { posts: IPost[] }) => {
               }
             })}
           >
-            {/* INICIO SECTION CANAL BNK */}
-            {!seeOnlyPosts && (
-              <Flex direction={{ base: 'column', xl: 'row' }}>
-                <Flex
-                  flex={{ base: '1', xl: '2' }}
-                  maxH={{ xl: '700', '2xl': '650' }}
-                >
-                  {props.posts.length > 0 && <HeroPost post={props.posts[0]} />}
-                </Flex>
+            <NavButton
+              hideArrow
+              justify="center"
+              selected={currentCategory === -1}
+              onClick={() => changeCurrentCategory(-1)}
+              color={'green.900'}
+              borderColor={currentCategory === -1 ? 'brown.200' : 'white'}
+            >
+              VER TUDO
+            </NavButton>
 
-                <Flex
-                  flex={{ base: '1' }}
-                  flexDirection={{ base: 'row', xl: 'column' }}
-                  justifyContent={{ xl: 'space-evenly' }}
-                  overflowX={{ base: 'scroll', xl: 'hidden' }}
-                  overflowY={{ base: 'hidden', xl: 'scroll', '2xl': 'hidden' }}
-                  w={{ base: '100vw', xl: '100%' }}
-                  maxH={'650px'}
-                  gap={{ base: '5%', xl: '2%' }}
-                  margin={{
-                    base: '5% 10% 5% 5%',
-                    md: '3% 0% 3% 3%',
-                    xl: '3% 3% 3% 0',
-                    '2xl': '0% 0% 0% 0'
-                  }}
-                  css={{
-                    '-webkit-scrollbar': {
-                      display: 'none'
-                    },
-                    '-ms-overflow-style': 'none',
-                    'scrollbar-width': 'none'
-                  }}
-                >
+            {categories.length > 0 && (
+              <NavButton
+                justify={{ base: 'space-between', lg: 'center' }}
+                selected={currentCategory === 0}
+                onClick={() => changeCurrentCategory(0)}
+                color={currentCategory === 0 ? 'green.900' : 'gray.360'}
+                borderColor={
+                  currentCategory === -1 || currentCategory === 0
+                    ? 'brown.200'
+                    : 'white'
+                }
+              >
+                {categories[0].name}
+              </NavButton>
+            )}
+
+            {categories.length > 1 && (
+              <NavButton
+                justify={{ base: 'space-between', lg: 'center' }}
+                selected={currentCategory === 1}
+                onClick={() => changeCurrentCategory(1)}
+                color={currentCategory === 1 ? 'green.900' : 'gray.360'}
+                borderColor={
+                  currentCategory === -1 || currentCategory === 1
+                    ? 'green.250'
+                    : 'white'
+                }
+              >
+                {categories[1].name}
+              </NavButton>
+            )}
+
+            {categories.length > 2 && (
+              <NavButton
+                justify={{ base: 'space-between', lg: 'center' }}
+                selected={currentCategory === 2}
+                onClick={() => changeCurrentCategory(2)}
+                color={currentCategory === 2 ? 'green.900' : 'gray.360'}
+                borderColor={
+                  currentCategory === -1 || currentCategory === 2
+                    ? 'green.600'
+                    : 'white'
+                }
+              >
+                {categories[2].name}
+              </NavButton>
+            )}
+          </Flex>
+        </Flex>
+
+        <Section
+          w="100%"
+          zIndex={100}
+          {...(!seeOnlyPosts && {
+            seeMore: {
+              text: 'Veja mais conteúdos',
+              link: `/canal-bnk/${currentCategory}`,
+              onClick: () => setSeeOnlyPosts(true),
+              textColor:
+                currentCategory === -1
+                  ? 'green.550'
+                  : currentCategory === 0
+                  ? 'brown.300'
+                  : 'white.100'
+            }
+          })}
+        >
+
+
+
+          {/* INICIO SECTION CANAL BNK */}
+          {!seeOnlyPosts && (
+            <Flex
+              direction={{ base: 'column', xl: 'row' }}
+              // bg = "blue"
+              margin={{'2xl': '0 0 0 3%' }}
+            >
+              <Flex
+                // bg="purple"
+                flex={{ base: '1', xl: '2' }}
+                // w={{ base: '100vw', xl: '100%' }}
+                maxH={{ xl: '700', '2xl': '650' }}
+              >
+                {props.posts.length > 0 && <HeroPost post={props.posts[0]} />}
+              </Flex>
+              
+              <Flex
+                // bg = "blueviolet"
+                flex={{ base: '1' }}
+                flexDirection={{ base: 'row', xl: 'column' }}
+                justifyContent={{ xl: 'space-evenly' }}
+                overflowX={{ base: 'scroll', xl: 'hidden' }}
+                overflowY={{ base: 'hidden', xl: 'scroll' }}
+                w={{ base: '100vw', xl: '100%' }}
+                maxH={"650px"}
+                gap={{ base: '5%', xl: '2%' }}
+                // paddingBottom={{ base: '2%', xl: '2%' , lg: '3%'}}
+                margin={{ base: '5% 10% 5% 5%', md: '3% 0% 3% 3%', xl: '3% 3% 3% 0', '2xl': '0% 0% 0% 0' }}
+                css={{
+                  '-webkit-scrollbar': {
+                    display: 'none'
+                  },
+                  '-ms-overflow-style': 'none',
+                  'scrollbar-width': 'none'
+                }}
+              >
+              
                   {/* INICIO SECTION CANAL BNK */}
                   {props.posts.length > 1 && (
                     <ChannelBnkRelationalItem

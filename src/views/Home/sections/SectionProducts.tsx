@@ -15,7 +15,25 @@ export type SectionsProductsProps = ProductsGalleryProps
 export const SectionProducts = ({ products }: SectionsProductsProps) => {
   const router = useRouter()
   return (
-    <Flex bg="white">
+
+  <Flex
+    // bg="red"
+  >
+    <Flex
+      // maxWidth="1536px"
+      marginX="auto"
+      position="relative"
+      zIndex="base"
+      overflowY={{ base: 'hidden', '2xl': 'visible' }}
+      overflowX={{ base: 'hidden', '2xl': 'visible' }}
+      // bg="red"
+      backgroundImage="/assets/imgs/grafismos_fundo2.png"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}
+      // flex="1"
+    >
+      {/* TITULO */}
       <Flex
         maxWidth="1536px"
         marginX="auto"
@@ -29,6 +47,14 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
         backgroundRepeat="no-repeat"
         direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}
         flex="1"
+        m={{
+          base: '5% 2% 5% 2%',
+          sm: '5% 5% 0% 5%',
+          lg: '3% 5% 0% 5%',
+          xl: '5% 5% 0% 5%',
+          '2xl': '5% 0% 0% 4%'
+        }}
+        direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
       >
         {/* TITULO */}
         <Flex
@@ -80,13 +106,66 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
             {/* FIM FLEX INTERNO */}
           </Flex>
         </Flex>
+      </Flex>
 
-        {/* INICIO GALERIA PRODUTOS */}
-        <Box display={{ base: 'none', md: 'block' }}>
-          <ProductsGallery numberEvidence={3} products={products} />
-        </Box>
-        <Box display={{ base: 'block', md: 'none' }}>
-          <ProductsGallery numberEvidence={1} products={products} />
+      {/* INICIO GALERIA PRODUTOS */}
+      <Box 
+        display={{ base: 'none', md: 'block' }}
+        m={{
+          base: '0% 0% 5% 0%',
+          sm: '0% 0% 3% 0%',
+          lg: '0% 0% 3% 0%',
+          xl: '0% 5% 5% 5%',
+          '2xl': '0% 0% 0% 3%'
+        }}
+      >
+        <ProductsGallery numberEvidence={3} products={products} />
+      </Box>
+      <Box display={{ base: 'block', md: 'none' }}>
+        <ProductsGallery numberEvidence={1} products={products} />
+      </Box>
+      {/* FIM GALERIA PRODUTOS */}
+      
+      
+
+      <Flex
+        // bg="yellow"
+        flex="1"
+        m={{
+          base: '0% 0% 5% 0%',
+          sm: '0% 5% 2% 5%',
+          lg: '0% 5% 5% 5%',
+          xl: '0% 5% 5% 5%',
+          '2xl': '0% 0% 5% 4%'
+        }}
+        direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+      >
+        <Box
+          flex="1"
+          // bg="pink"
+          m={{ base: '0% 0% 2% 0%', sm: '0% 0% 1% 0%', lg: '0%', xl: '0%' }}
+        >
+          <PatternInfo
+            title="DESCUBRA"
+            description="Onde Comprar"
+            onClick={() => router.push('/onde-comprar')}
+            icon={
+              <EarthIcon
+                width={{
+                  base: '50px',
+                  md: '62px',
+                  lg: '70px',
+                  xl: '80px'
+                }}
+                height={{
+                  base: '50px',
+                  md: '62px',
+                  lg: '70px',
+                  xl: '80px'
+                }}
+              />
+            }
+          />
         </Box>
         {/* FIM GALERIA PRODUTOS */}
 

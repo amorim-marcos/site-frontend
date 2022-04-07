@@ -65,9 +65,9 @@ export const Connect = () => {
         maxWidth="1536px"
         marginX="auto"
         position="relative"
-        // marginTop={{ base: '5%', sm: '5%', lg: '5%', xl: '3%' }}
-        // marginLeft={{ base: '5%', sm: '5%', lg: '5%', xl: '5%', '2xl': '15%' }}
-        padding={{ base: '5% 0%', sm: '5%', xl: '5%', '2xl': '3% 0%' }}
+        //padding={{ base: '5% 0%', sm: '5%', xl: '5%', '2xl': '3% 3%' }}
+        py={{ base: '54px', lg: '100px' }}
+        px={{ base: '20px', lg: '5%', '2xl':'2%' }}
         align={{ base: 'center', lg: 'flex-start' }}
         justifyContent = {{ base: 'center', lg: 'flex-start' }}
       >

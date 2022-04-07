@@ -115,16 +115,20 @@ function CanalBNKFC(props: CanalBNKProps) {
             ? 'gray.150'
             : 'brown.100'
         }
-        flex="1"
-        justify={'center'}
+        // flex="1"
+        justify={"center"}
       >
         <Videos />
       </Flex>
       {!seeOnlyPosts && (
         <>
-          <Flex bg="white.100" flex="1" justify={'center'}>
-            <Downloads />
-          </Flex>
+         <Flex
+          bg="white.100"
+          // flex="1"
+          justify={"center"}
+        >
+          <Downloads />
+        </Flex>
           <Connect />
         </>
       )}
