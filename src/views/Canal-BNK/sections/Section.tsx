@@ -26,9 +26,9 @@ export const Section = (props: SectionProps) => {
       <Flex
         align="center"
         justify={{ base: 'center', lg: 'space-between' }}
-        pl={{ lg: '110px', xl: '3%', '2xl': '0px'}}
-        pr={{ lg: '3%', '2xl': '0px' }}
-        mb={{ '2xl': '10px' }}
+        // pl={{ lg: '110px', xl: '3%', '2xl': '0px'}}
+        // pr={{ lg: '3%', '2xl': '0px' }}
+        // mb={{ '2xl': '10px' }}
         // bg="cyan"
       >
         {title ? (

@@ -69,6 +69,7 @@ export const Products = () => {
       {/* FIM TITULO PRODUTOS */}
 
       {/* INICIO BANNERS PRODUTOS */}
+      {/* BP | MDP | MDF | HDF | PLUS | PNUS | TECA */}
       <Flex
         maxWidth="1536px"
         marginX="auto"
@@ -116,28 +117,16 @@ export const Products = () => {
           />
         </GridItem>
 
+       
         <GridItem>
           <BannerProducts
-            title="PLUS BERNECK®"
-            titleColor="white"
-            subtitle="Linha de Painéis com Resistência Extra à Umidade"
-            subtitleColor="brown.350"
-            bgColor="green.400"
-            srcImg="/img/plus.png"
-            onClick={() => router.push('/products/plus-berneck')}
-            bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
-          />
-        </GridItem>
-
-        <GridItem>
-          <BannerProducts
-            title="HDF BERNECK®"
+            title="MDP BERNECK®"
             titleColor="gray.400"
-            subtitle="Painel de Fibra de Alta Densidade"
+            subtitle="Painel de Partículas de Média Densidade"
             subtitleColor="gray.400"
             bgColor="brown.200"
-            srcImg="/img/hdf.png"
-            onClick={() => router.push('/products/hdf-berneck')}
+            srcImg="/img/mdp.png"
+            onClick={() => router.push('/products/mdp-berneck')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
           />
         </GridItem>
@@ -154,28 +143,29 @@ export const Products = () => {
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
           />
         </GridItem>
-        <GridItem>
-          <BannerProducts
-            title="MDP BERNECK®"
-            titleColor="gray.400"
-            subtitle="Painel de Partículas de Média Densidade"
-            subtitleColor="gray.400"
-            bgColor="brown.200"
-            srcImg="/img/mdp.png"
-            onClick={() => router.push('/products/mdp-berneck')}
-            bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
-          />
-        </GridItem>
 
         <GridItem>
           <BannerProducts
-            title="BERNECK® TECA"
+            title="HDF BERNECK®"
             titleColor="gray.400"
-            subtitle="Madeira Serrada de Teca"
+            subtitle="Painel de Fibra de Alta Densidade"
             subtitleColor="gray.400"
-            bgColor="brown.250"
-            srcImg="/img/teca.png"
-            onClick={() => router.push('/products/berneck-teca')}
+            bgColor="brown.200"
+            srcImg="/img/hdf.png"
+            onClick={() => router.push('/products/hdf-berneck')}
+            bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
+          />
+        </GridItem>
+       
+        <GridItem>
+          <BannerProducts
+            title="PLUS BERNECK®"
+            titleColor="white"
+            subtitle="Linha de Painéis com Resistência Extra à Umidade"
+            subtitleColor="brown.350"
+            bgColor="green.400"
+            srcImg="/img/plus.png"
+            onClick={() => router.push('/products/plus-berneck')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
           />
         </GridItem>
@@ -193,6 +183,21 @@ export const Products = () => {
             sizeType={isMobile ? 'square' : 'rectangle'}
           />
         </GridItem>
+        
+        <GridItem>
+          <BannerProducts
+            title="BERNECK® TECA"
+            titleColor="gray.400"
+            subtitle="Madeira Serrada de Teca"
+            subtitleColor="gray.400"
+            bgColor="brown.250"
+            srcImg="/img/teca.png"
+            onClick={() => router.push('/products/berneck-teca')}
+            bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
+          />
+        </GridItem>
+
+       
       </Grid>
     </Flex>
     {/* FIM BANNERS PRODUTOS */}

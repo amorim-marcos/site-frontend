@@ -135,7 +135,7 @@ export const Intro = (props: { posts: IPost[] }) => {
           justifyContent="space-between"
           zIndex={100}
           direction={{ base: 'column', lg: 'row' }}
-          padding={{ base: '5% 5% 0 5%', md: '5% 3% 0 3%', xl: '5% 5% 0 3%' , '2xl': '5% 0% 0 0%'}}
+          padding={{ base: '5% 5% 0 5%', md: '5% 3% 0 3%', xl: '5% 5% 0 3%' , '2xl': '5% 0% 0 3%'}}
           // bg="yellow"
         >
           <Flex
@@ -321,6 +321,7 @@ export const Intro = (props: { posts: IPost[] }) => {
             <Flex
               direction={{ base: 'column', xl: 'row' }}
               // bg = "blue"
+              margin={{'2xl': '0 0 0 3%' }}
             >
               <Flex
                 // bg="purple"

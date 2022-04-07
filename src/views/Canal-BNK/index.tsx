@@ -108,7 +108,7 @@ function CanalBNKFC(props: CanalBNKProps) {
             ? 'gray.150'
             : 'brown.100'
         }
-        flex="1"
+        // flex="1"
         justify={"center"}
       >
         <Videos />
@@ -117,7 +117,7 @@ function CanalBNKFC(props: CanalBNKProps) {
         <>
          <Flex
           bg="white.100"
-          flex="1"
+          // flex="1"
           justify={"center"}
         >
           <Downloads />

@@ -119,7 +119,7 @@ export const DownloadSection = ({
           right="0px"
           marginX="auto"
           w="fit-content"
-          bottom={{ base: '-17px', md: '-25px', lg: '-30px', xl: '-38px' }}
+          bottom={{ base: '-20px', sm: '-20px', lg: '-30px', xl: '-30px' }}
         >
           <Button
             onMouseEnter={() => setHoverBtnControl(true)}
@@ -127,8 +127,8 @@ export const DownloadSection = ({
             variant="no-border"
             background="gray.300"
             color="gray.150"
-            w={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
-            h={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
+            w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+            h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
             _hover={{
               background: 'green.550',
               color: 'white.100'
@@ -147,8 +147,8 @@ export const DownloadSection = ({
             variant="no-border"
             background="gray.300"
             color="gray.150"
-            w={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
-            h={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
+            w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+            h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
             _hover={{
               background: 'green.550',
               color: 'white.100'

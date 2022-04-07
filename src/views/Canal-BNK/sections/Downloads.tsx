@@ -20,6 +20,7 @@ export const Downloads = () => {
         link: '/canal-bnk/downloads'
       }}
       py={{ base: '54px', lg: '100px' }}
+      px={{ base: '20px', lg: '5%', '2xl':'2%' }}
       overflow="hidden"
       maxWidth={"1536px"}
     >

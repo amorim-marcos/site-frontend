@@ -60,7 +60,7 @@ export const Certification = (props: CertificationViewProps) => (
 
     {/* Downloads Header */}
   <Flex
-    bg="brown.100"
+    bg="brown.150"
     justifyContent="center"
   >
     <Flex

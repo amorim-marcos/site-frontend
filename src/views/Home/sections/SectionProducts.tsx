@@ -26,7 +26,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
       zIndex="base"
       overflowY={{ base: 'hidden', '2xl': 'visible' }}
       overflowX={{ base: 'hidden', '2xl': 'visible' }}
-      // bg="white"
+      // bg="red"
       backgroundImage="/assets/imgs/grafismos_fundo2.png"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
@@ -43,7 +43,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
           sm: '5% 5% 0% 5%',
           lg: '3% 5% 0% 5%',
           xl: '5% 5% 0% 5%',
-          '2xl': '5% 0% 0% 0%'
+          '2xl': '5% 0% 0% 4%'
         }}
         direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
       >
@@ -86,7 +86,16 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
       </Flex>
 
       {/* INICIO GALERIA PRODUTOS */}
-      <Box display={{ base: 'none', md: 'block' }}>
+      <Box 
+        display={{ base: 'none', md: 'block' }}
+        m={{
+          base: '0% 0% 5% 0%',
+          sm: '0% 0% 3% 0%',
+          lg: '0% 0% 3% 0%',
+          xl: '0% 5% 5% 5%',
+          '2xl': '0% 0% 0% 3%'
+        }}
+      >
         <ProductsGallery numberEvidence={3} products={products} />
       </Box>
       <Box display={{ base: 'block', md: 'none' }}>
@@ -104,7 +113,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
           sm: '0% 5% 2% 5%',
           lg: '0% 5% 5% 5%',
           xl: '0% 5% 5% 5%',
-          '2xl': '0% 0% 5% 0%'
+          '2xl': '0% 0% 5% 4%'
         }}
         direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
       >
