@@ -33,17 +33,18 @@ export const Intro = (props: { posts: IPost[] }) => {
   } = useContext(CategoryContext)
 
   return (
-    <Box
-      bg={
-        currentCategory === -1
-          ? 'brown.100'
-          : currentCategory === 0
-          ? 'brown.200'
-          : currentCategory === 1
-          ? 'green.200'
-          : 'green.600'
-      }
-    >
+
+  <Box
+    bg={
+      currentCategory === -1
+        ? 'brown.100'
+        : currentCategory === 0
+        ? 'brown.200'
+        : currentCategory === 1
+        ? 'green.200'
+        : 'green.600'
+    }
+  >
       <Flex
         bg={
           currentCategory === -1
@@ -233,7 +234,7 @@ export const Intro = (props: { posts: IPost[] }) => {
                   {categories[2].name}
                 </NavButton>
               )}
-            </Flex>
+            
           </Flex>
 
           <Section
@@ -311,8 +312,9 @@ export const Intro = (props: { posts: IPost[] }) => {
                 {categories[2].name}
               </NavButton>
             )}
-          </Flex>
-        </Flex>
+          </Section>
+        
+      {/* </Flex> */}
 
         <Section
           w="100%"
@@ -408,8 +410,7 @@ export const Intro = (props: { posts: IPost[] }) => {
                     />
                   )}
                   {/* FIM SECTION CANAL BNK */}
-                </Flex>
-              </Flex>
+            </Flex>
             )}
 
             {seeOnlyPosts && (
@@ -426,10 +427,10 @@ export const Intro = (props: { posts: IPost[] }) => {
                 ))}
               </Flex>
             )}
-          </Section>
-        </Flex>
-      </Flex>
-    </Box>
+        </Section>
+      
+  </Flex>
+</Box>
   )
 }
 
