@@ -20,7 +20,7 @@ interface IVideo {
   }
 }
 
-export const Connect = () => {
+export default function Connect() {
   const { isMobile, width } = useMobile(568)
   const [lastVideo, setLastVideo] = useState<IVideo>()
 

@@ -5,9 +5,10 @@ import {
   useContext,
   useState
 } from 'react'
-import { Intro, Videos, Downloads, Connect } from './sections'
-import { Post, Category } from 'types/data/Post'
+import { Intro, Videos, Downloads } from './sections'
 import Pagebar from '@components/Pagebar'
+import Connect from '@components/Connect'
+import { Post, Category } from 'types/data/Post'
 import { Box, Flex } from '@chakra-ui/react'
 import { useEffect } from 'react'
 
