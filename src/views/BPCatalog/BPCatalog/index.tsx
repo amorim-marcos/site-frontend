@@ -175,24 +175,27 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }
 
   useEffect(() => {
-    for (const collection of filtersContext.collections) {
-      const normalizedTitle = collection.title
-        .normalize('NFD')
-        .replace(/[^\w ]/g, '')
-        .split(' ')
-        .join('-')
-        .toLowerCase()
-
-      if (
-        queryCollection == normalizedTitle &&
-        !initialFilters['collections'].includes(collection.code.toString())
-      ) {
-        filters['collections'].push(collection.code)
-        break
+    if(queryCollection){
+      for (const collection of filtersContext.collections) {
+        const normalizedTitle = collection.title
+          .normalize('NFD')
+          .replace(/[^\w ]/g, '')
+          .split(' ')
+          .join('-')
+          .toLowerCase()
+  
+        if (
+          queryCollection == normalizedTitle &&
+          !initialFilters['collections'].includes(collection.code.toString())
+        ) {
+          filters['collections'].push(collection.code)
+          break
+        }
       }
+      setFilters(filters)
+      setFilteredBps(applyFilters(filters, bps)) 
+      changeFilterPanel('collections')
     }
-    setFilters(filters)
-    setFilteredBps(applyFilters(filters, bps))
   }, [])
 
   useEffect(() => {
