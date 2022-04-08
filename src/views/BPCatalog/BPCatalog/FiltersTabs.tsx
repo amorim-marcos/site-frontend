@@ -325,6 +325,7 @@ export const FiltersTabs = ({
                   applyFilters({ ...filters, orderBy: e.target.value }, bps)
                 )
               }}
+              value={filters["orderBy"]}
               mr="30px"
               color={darkMode ? 'green.300' : 'gray.300'}
               position="relative"
@@ -335,9 +336,10 @@ export const FiltersTabs = ({
               fontSize="16px"
               _focus={{ outline: 'none' }}
             >
-              <option value="launch">Lançamento</option>
-              <option value="name">Nome</option>
-              <option value="scale">Escala de cor</option>
+              <option disabled>ordenar por</option>
+              <option value="launch">lançamento</option>
+              <option value="name">nome</option>
+              <option value="scale">escala de cor</option>
             </Select>
 
             <Box position="relative" display="inline-block" mr="30px">
