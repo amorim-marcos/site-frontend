@@ -182,7 +182,7 @@ export const Products = () => {
             srcImg="/img/pinus.png"
             onClick={() => router.push('/products/berneck-pinus')}
             bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
-            sizeType={isMobile ? 'square' : 'rectangle'}
+            sizeType={isMobile ? 'square' : 'rectangle-horizontal'}
           />
         </GridItem>
         

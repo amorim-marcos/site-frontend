@@ -67,7 +67,7 @@ export const Connect = () => {
         position="relative"
         //padding={{ base: '5% 0%', sm: '5%', xl: '5%', '2xl': '3% 3%' }}
         py={{ base: '54px', lg: '100px' }}
-        px={{ base: '20px', lg: '5%', '2xl':'2%' }}
+        px={{ base: '20px', lg: '5%', '2xl':'3%' }}
         align={{ base: 'center', lg: 'flex-start' }}
         justifyContent = {{ base: 'center', lg: 'flex-start' }}
       >

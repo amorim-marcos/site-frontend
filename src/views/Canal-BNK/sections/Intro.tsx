@@ -135,7 +135,7 @@ export const Intro = (props: { posts: IPost[] }) => {
           justifyContent="space-between"
           zIndex={100}
           direction={{ base: 'column', lg: 'row' }}
-          padding={{ base: '5% 5% 0 5%', md: '5% 3% 0 3%', xl: '5% 5% 0 3%' , '2xl': '5% 0% 0 3%'}}
+          padding={{ base: '5% 5% 0 5%', md: '5% 3% 0 5%', xl: '5% 5% 0 3%' , '2xl': '5% 0% 0 5%'}}
           // bg="yellow"
         >
           <Flex
@@ -188,7 +188,7 @@ export const Intro = (props: { posts: IPost[] }) => {
                 <Text
                   as="h2"
                   // width={{ base: '100%', lg: '130%' }}
-                  fontSize={{ base: '16px', lg: '20px' }}
+                  // fontSize={{ base: '16px', lg: '20px' }}
                   letterSpacing="-0.4px"
                   color={
                     currentCategory === -1
@@ -211,7 +211,7 @@ export const Intro = (props: { posts: IPost[] }) => {
                   as="h1"
                   w="75%"
                   fontWeight={800}
-                  fontSize="21px"
+                  // fontSize="21px"
                   letterSpacing="2.1px"
                   color={currentCategory === -1 ? 'green.900' : '#436D5D'}
                 >
@@ -321,7 +321,7 @@ export const Intro = (props: { posts: IPost[] }) => {
             <Flex
               direction={{ base: 'column', xl: 'row' }}
               // bg = "blue"
-              margin={{'2xl': '0 0 0 3%' }}
+              margin={{md: '0 0 0 2%', '2xl': '0 0 0 5%' }}
             >
               <Flex
                 // bg="purple"
@@ -343,7 +343,7 @@ export const Intro = (props: { posts: IPost[] }) => {
                 maxH={"650px"}
                 gap={{ base: '5%', xl: '2%' }}
                 // paddingBottom={{ base: '2%', xl: '2%' , lg: '3%'}}
-                margin={{ base: '5% 10% 5% 5%', md: '3% 0% 3% 3%', xl: '3% 3% 3% 0', '2xl': '0% 0% 0% 0' }}
+                margin={{ base: '5% 10% 5% 5%', md: '3% 0% 3% 3.5%', xl: '3% 3% 3% 0', '2xl': '0% 0% 0% 0' }}
                 css={{
                   '-webkit-scrollbar': {
                     display: 'none'
@@ -471,7 +471,7 @@ export const NavButton = (props: NavButtonProps) => {
   return (
     <Button
       as="button"
-      h="62px"
+      h={{ base: '50px', xl: '62px' }}
       w={{ base: '100%', lg: 'auto' }}
       border="2px solid"
       borderRadius="17px"
@@ -500,7 +500,7 @@ export const NavButton = (props: NavButtonProps) => {
             base: '2px',
             xl: '3px'
           }}
-          fontSize = {{ base: '9px', sm: '13px', lg: '14px', xl: '16px' }}
+          // fontSize = {{ base: '9px', sm: '13px', lg: '14px', xl: '16px' }}
         >
           {children}
         </Text>
