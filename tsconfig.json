@@ -14,7 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "types": ["facebook-js-sdk"],
+    "types": ["facebook-js-sdk", "jest", "@testing-library/jest-dom"],
     "paths": {
       "@components/*": ["components/*"],
       "@modules/*": ["modules/*"]
