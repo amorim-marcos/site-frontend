@@ -318,6 +318,14 @@ export const FiltersTabs = ({
             height="100px"
             background={darkMode ? 'gray.350' : 'gray.100'}
           >
+            <Text
+              color={darkMode ? 'green.300' : 'gray.300'}
+              display="inline-block"
+              fontSize="16px"
+              mr="15px"
+            >
+                  Ordenar por
+            </Text>
             <Select
               onChange={(e) => {
                 setFilters({ ...filters, orderBy: e.target.value })
@@ -325,6 +333,7 @@ export const FiltersTabs = ({
                   applyFilters({ ...filters, orderBy: e.target.value }, bps)
                 )
               }}
+              value={filters["orderBy"]}
               mr="30px"
               color={darkMode ? 'green.300' : 'gray.300'}
               position="relative"
@@ -335,9 +344,9 @@ export const FiltersTabs = ({
               fontSize="16px"
               _focus={{ outline: 'none' }}
             >
-              <option value="launch">Lançamento</option>
-              <option value="name">Nome</option>
-              <option value="scale">Escala de cor</option>
+              <option value="launch">lançamento</option>
+              <option value="name">nome</option>
+              <option value="scale">escala de cor</option>
             </Select>
 
             <Box position="relative" display="inline-block" mr="30px">

@@ -27,7 +27,7 @@ export type FilterPanelName = 'none' | ValidFilterNames
 export type GridSize = 'big' | 'medium' | 'small'
 
 export const initialFilters: Filters = {
-  orderBy: 'launch',
+  orderBy: 'scale',
   nameSearched: '',
   panels: [],
   collections: [],
