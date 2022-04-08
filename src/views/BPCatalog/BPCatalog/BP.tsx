@@ -35,18 +35,18 @@ export const BP = ({
           pt="13px"
           flex={1}
           fontSize={{
-            base: '20px',
-            sm: '24px',
-            md: '28px',
-            lg: '25px',
-            xl: '26px',
-            '2xl': '28px'
+            base: '16px',
+            sm: '20px',
+            md: '24px',
+            lg: '21px',
+            xl: '22px',
+            '2xl': '24px'
           }}
           variant={'body-bold' as any}
         >
           {name}
         </Text>
-        <Text flex={1} fontSize={{ base: '15px', '2xl': '20px' }}>
+        <Text flex={1} fontSize={{ base: '13px', lg: '16px', '2xl': '18px' }}>
           {product_texture}
         </Text>
       </Flex>
