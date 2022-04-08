@@ -20,7 +20,7 @@ interface IVideo {
   }
 }
 
-export const Connect = () => {
+export default function Connect() {
   const { isMobile, width } = useMobile(568)
   const [lastVideo, setLastVideo] = useState<IVideo>()
 
@@ -41,8 +41,7 @@ export const Connect = () => {
       )
       const data = await result.json()
 
-      console.log(data);
-      (data.length > 0)? setLastVideo(data.items[0].id.videoId) : null
+      if (data.items.length > 0) setLastVideo(data.items[0].id.videoId)
     }
 
     fetchData()
@@ -57,7 +56,6 @@ export const Connect = () => {
       alignItems={'center'}
       flexDirection={'column'}
     >
-
       <Flex
         // bg="gray"
         w="100%"
@@ -67,9 +65,9 @@ export const Connect = () => {
         position="relative"
         //padding={{ base: '5% 0%', sm: '5%', xl: '5%', '2xl': '3% 3%' }}
         py={{ base: '54px', lg: '100px' }}
-        px={{ base: '20px', lg: '5%', '2xl':'2%' }}
+        px={{ base: '20px', lg: '5%', '2xl': '2%' }}
         align={{ base: 'center', lg: 'flex-start' }}
-        justifyContent = {{ base: 'center', lg: 'flex-start' }}
+        justifyContent={{ base: 'center', lg: 'flex-start' }}
       >
         <CompletedTitle
           titleString="Conecte-se"
@@ -80,8 +78,7 @@ export const Connect = () => {
             lg: 'flex-start',
             xl: 'flex-start'
           }}
-        />  
-
+        />
       </Flex>
       <Flex
         flex="1"
@@ -244,7 +241,6 @@ export const Connect = () => {
           </SocialNetwork>
         </Flex>
       </Flex>
-
     </Flex>
   )
 }
