@@ -14,6 +14,7 @@ export default function DownloadsPage(props: DonwloadsPageProps) {
 export const getStaticProps: GetStaticProps = async (context) => {
   type DownloadsItemProps = {
     download_type: { type: string }
+    title: string
     id: number
     image: {
       url: string
@@ -75,7 +76,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           }
         }
       })
-      return { items: list, ...i }
+      return { items: list.sort((a,b) => a.title.localeCompare(b.title) * -1), ...i }
     })
   } else {
     page_content = []
