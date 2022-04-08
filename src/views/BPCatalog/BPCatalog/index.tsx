@@ -339,6 +339,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         <Container
           display={isMobile && displayFilters ? 'none' : 'normal'}
           minW="100%"
+          mb="100px"
         >
           {filteredBps && filteredBps.length > 0 ? (
             <Grid
@@ -396,7 +397,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
             </Flex>
           )}
         </Container>
-        <Box marginTop={{ base: '100px' }}></Box>
       </Container>
     </Box>
     </>
