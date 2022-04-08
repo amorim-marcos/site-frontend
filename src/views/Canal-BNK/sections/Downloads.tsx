@@ -20,7 +20,7 @@ export const Downloads = () => {
         link: '/canal-bnk/downloads'
       }}
       py={{ base: '54px', lg: '100px' }}
-      px={{ base: '20px', lg: '5%', '2xl':'2%' }}
+      px={{ base: '20px', lg: '5%', '2xl':'3%' }}
       overflow="hidden"
       maxWidth={"1536px"}
     >
@@ -194,12 +194,13 @@ const DownloadColorPanel = (props: DownloadColorPanelProps) => {
 
   return (
     <Flex
-      h="220px"
+      h={{ base: '200px', lg: '220px' }}
       w={{ base: '100vw', lg: '100%' }}
       pos="relative"
       flex={props.flex ?? 1}
       bg={`url(/assets/imgs/canal-bnk/bg_${props.colorPanel}.png)`}
       {...rest}
+      // bg="red.100"
     >
       <Link h="100%" w="100%" pos="relative" href={url} _hover={{}} download>
         <Image src={graphism} h="100%" pos="absolute" objectFit="cover" />
@@ -221,8 +222,9 @@ const DownloadColorPanel = (props: DownloadColorPanelProps) => {
         />
 
         <Text
-          fontWeight="bold"
-          fontSize={{ base: '33px', lg: '28px', '2xl': '36px' }}
+          as="h2"
+          variant={'h2' as any}
+          fontWeight="extrabold"
           letterSpacing="-0.68px"
           color={colorPanel === 'brown' ? 'white' : 'green.800'}
           zIndex={10}
