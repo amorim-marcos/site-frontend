@@ -1,16 +1,19 @@
 import {
-  createContext,
-  ReactNode,
+  useState,
+  useEffect,
   useCallback,
+  createContext,
   useContext,
-  useState
+  ReactNode
 } from 'react'
-import { Intro, Videos, Downloads } from './sections'
+
+import { Box, Flex } from '@chakra-ui/react'
+
 import Pagebar from '@components/Pagebar'
 import Connect from '@components/Connect'
+import { Intro, Videos, Downloads } from './sections'
+
 import { Post, Category } from 'types/data/Post'
-import { Box, Flex } from '@chakra-ui/react'
-import { useEffect } from 'react'
 
 export const CategoryContext = createContext(
   {} as {
@@ -116,20 +119,15 @@ function CanalBNKFC(props: CanalBNKProps) {
             ? 'gray.150'
             : 'brown.100'
         }
-        // flex="1"
-        justify={"center"}
+        justify={'center'}
       >
         <Videos />
       </Flex>
       {!seeOnlyPosts && (
         <>
-         <Flex
-          bg="white.100"
-          // flex="1"
-          justify={"center"}
-        >
-          <Downloads />
-        </Flex>
+          <Flex bg="white.100" justify={'center'}>
+            <Downloads />
+          </Flex>
           <Connect />
         </>
       )}
