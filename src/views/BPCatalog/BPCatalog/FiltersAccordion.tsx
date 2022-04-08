@@ -440,10 +440,10 @@ export const FiltersAccordion = ({
               variant="flushed"
               _focus={{ outline: 'none' }}
             >
-              <option disabled>ordenar por</option>
-              <option value="launch">lançamento</option>
-              <option value="name">nome</option>
-              <option value="scale">escala de cor</option>
+              <option disabled>Ordenar por</option>
+              <option value="launch">Lançamento</option>
+              <option value="name">Nome</option>
+              <option value="scale">Escala de cor</option>
             </Select>
 
             <Box>
