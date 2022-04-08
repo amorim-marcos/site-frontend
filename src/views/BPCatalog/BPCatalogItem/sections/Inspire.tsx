@@ -35,11 +35,9 @@ export const Inspire = (props: InspireProps) => {
       <Flex
         data-testid="micro-texture"
         pos="relative"
-        left={{ base: '15%', '2xl': '140px' }}
+        left={{ base: '0', lg: '5%', '2xl': '20%' }}
         top="-65px"
-        // w="fit-content"
-
-        w={{ base: '80%', md: '100%' }}
+        w={{ base: '100%', md: '100%', '2xl': '30%' }}
       >
         <Image
           src={props.textureIcon}
@@ -52,7 +50,6 @@ export const Inspire = (props: InspireProps) => {
           <Text
             bg="green.650"
             w={{ base: '185px' }}
-            // padding={{ base: '10px 20px', sm: 0 }}
             h="40px"
             pt={{ base: '3px' }}
             borderTopRightRadius="22px"
@@ -61,33 +58,19 @@ export const Inspire = (props: InspireProps) => {
             fontWeight="bold"
             letterSpacing="-0.26px"
             textAlign="center"
-            // pos="absolute"
             marginTop="25px"
-            // marginLeft={{ base: '90px', '2xl': '110px' }}
             marginLeft={{ base: '-30px' }}
           >
             {props.textureName}
           </Text>
 
-          <Text
-            // w={{ base: '80vw', lg: '532px', '2xl': '532px' }}
-            // pos="absolute"
-            fontSize="18px"
-            letterSpacing="0px"
+          <Text as={'h4'}
+            variant={'h4' as any}
+            fontWeight="normal"
             color="gray.300"
-            // top={{ base: '120px', sm: '75px' }}
-            // left={{
-            //   base: '-18%',
-            //   sm: '-50px',
-            //   md: '-50px',
-            //   lg: '110px',
-            //   '2xl': '145px'
-            // }}
             marginLeft={'10px'}
             whiteSpace={'pre-wrap'}
             marginTop="10px"
-            // textAlign={{ base: 'center', '2xl': 'left' }}
-            // whiteSpace={{ base: 'normal', '2xl': 'pre-wrap' }}
           >
             {props.textureDescription}
           </Text>
@@ -100,10 +83,11 @@ export const Inspire = (props: InspireProps) => {
           pos="relative"
           direction="column"
           w={{ base: '100%', '2xl': 'fit-content' }}
-          align={{ base: 'center', '2xl': 'inherit' }}
-          top={{ base: '0px', sm: '25px', '2xl': '-330px' }}
-          left={{ '2xl': '52%' }}
+          // align={{ base: 'center', lg: 'flex-start' }}
+          top={{ base: '0px', sm: '5%', '2xl': '-330px' }}
+          left={{ lg: '5%', '2xl': '52%' }}
           zIndex="docked"
+          // bg="blue"
         >
           <Box>
             <Flex
@@ -117,7 +101,8 @@ export const Inspire = (props: InspireProps) => {
               justify="center"
             >
               <Text
-                fontSize="20px"
+                as={'h4'}
+                variant={'h4' as any}
                 fontWeight="medium"
                 color="white"
                 letterSpacing="-0.2px"
@@ -144,10 +129,10 @@ export const Inspire = (props: InspireProps) => {
                     />
                   </Link>
                   <Text
-                    fontSize="17px"
-                    letterSpacing="0px"
+                    as={'h5'}
+                    variant={'h5' as any}
                     color={{ base: 'gray.400', sm: 'gray.300' }}
-                    textAlign={{ base: 'center', '2xl': 'left' }}
+                    textAlign={{ base: 'center', lg: 'left' }}
                     pos={{ base: 'absolute', sm: 'relative' }}
                     bg={{ base: 'rgba( 226, 226, 226, 0.55 )', sm: 'none' }}
                     backdropFilter={{ base: 'blur( 4px )', sm: 'none' }}
@@ -180,7 +165,7 @@ export const Inspire = (props: InspireProps) => {
         pl={{ '2xl': '88px' }}
         pos="relative"
         mt={{
-          base: props.combine_with.length > 0 ? '100px' : '0px',
+          base: props.combine_with.length > 0 ? '5%' : '0px',
           '2xl': '-580px'
         }}
         mb={{ base: '50px', '2xl': 'none' }}
@@ -204,21 +189,19 @@ export const Inspire = (props: InspireProps) => {
         {props.in_ambients.length ? (
           <Flex
             data-testid="texture-examples"
-            pt={{ base: '110px', '2xl': '208px' }}
+            pt={{ base: '3%', '2xl': '208px' }}
             direction="column"
-            alignItems={{ base: 'center', '2xl': 'inherit' }}
-            w={{
-              base: '100vw',
-              '2xl': 'inherit'
-            }}
+            // bg="cyan"
+            marginLeft={{'2xl': '17%'}}
           >
             <Text
-              fontSize="37px"
+              as={'h2'}
+              variant={'h2' as any}
               fontWeight={800}
               letterSpacing="-0.74px"
               color="green.700"
               pb="21px"
-              alignSelf={{ base: 'center', '2xl': 'flex-start' }}
+              alignSelf={{ base: 'center', lg: 'flex-start' }}
             >
               Inspire-se
             </Text>
@@ -227,25 +210,29 @@ export const Inspire = (props: InspireProps) => {
               onClick={() => router.push(props.in_ambients[curr].ambient_href)}
               cursor="pointer"
               src={props.in_ambients[curr].image_url}
-              w={{ base: '320px', xs: '100%', sm: '846px' }}
-              h={{ base: '321px', sm: '562px' }}
-              objectFit={{ base: 'scale-down', xs: 'cover' }}
+              // h="100%"
+              // w="100%"
+              // objectFit={'cover'}
+              w={{ base: '320px', xs: '100%', sm: '846px' , lg: '980px'}}
+              h={{ base: '321px', sm: '562px', lg: '650px' }}
+              // objectFit={{ base: 'scale-down', xs: 'cover' }}
             />
 
             <Flex
               data-testid="examples-control"
-              alignSelf={{ base: 'center', sm: 'center', lg: 'flex-end' }}
-              mr={{ base: '0', lg: '160px', xl: '270px', '2xl': '50px' }}
-              mt={{ base: '-5px', sm: '-38px' }}
-              w={{ base: '154px' }}
+              alignSelf={{ base: 'center' }}
+              // mr={{ base: '0', lg: '160px', xl: '270px', '2xl': '50px' }}
+              // mt={{ base: '-5px', sm: '-38px' }}
+              // w={{ base: '154px' }}
+              // bg="tomato"
             >
                     <Button
                       onClick={() => switchTo('prev')}
                       variant="no-border"
                       background="gray.300"
                       color="gray.150"
-                      w={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
-                      h={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
+                      w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+                      h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}  
                       _hover={{
                         background: 'green.550',
                         color: 'white.100'
@@ -262,8 +249,8 @@ export const Inspire = (props: InspireProps) => {
                       variant="no-border"
                       background="gray.300"
                       color="gray.150"
-                      w={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
-                      h={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
+                      w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+                      h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
                       _hover={{
                         background: 'green.550',
                         color: 'white.100'
@@ -279,14 +266,16 @@ export const Inspire = (props: InspireProps) => {
           </Flex>
         ) : (
           <Box
-            mt={{ base: '110px', '2xl': '300px' }}
-            w={{ base: '320px', xs: '100%', sm: '846px' }}
-            h={{ base: '321px', sm: '562px' }}
+            mt={{ base: '5%', '2xl': '12%' }}
+            w={{ base: '90%'}}
+            maxHeight={'600px'}
             cursor="pointer"
             onClick={() => router.push('/products/bp-berneck/gallery')}
+            // bg="violet"
+            marginLeft={{'2xl': '17%'}}
           >
             <Image
-              w="100%"
+              // w="100%"
               h="100%"
               objectFit={'cover'}
               src="/img/conheca_galeria.jpg"
@@ -296,21 +285,19 @@ export const Inspire = (props: InspireProps) => {
 
         <Flex
           data-testid="texture-description"
-          mt={{ base: '50px', '2xl': '165px' }}
-          w={{ base: '100%', xl: '100%', '2xl': '840px' }}
-          h={{ '2xl': '633px' }}
-          padding={{
-            base: '40px 20px',
-            xl: '40px 120px',
-            '2xl': '223px 100px 203px 120px'
-          }}
+          mt={{ base: '5%', '2xl': '18%' }}
+          mr={{ '2xl': '10%' }}
+          padding={{ '2xl': '2%' }}
+          w={{ base: '90%', '2xl': '70%' }}
+          // h={{ '2xl': '633px' }}
           direction="column"
-          right="0"
+          // bg="purple"
         >
           <Text
-            textAlign={{ base: 'center', '2xl': 'left' }}
-            w={{ '2xl': '660px' }}
-            fontSize="20px"
+            as={'h4'}
+            variant={'h4' as any}
+            fontWeight="normal"
+            textAlign={{ base: 'center', xl: 'left' }}
             letterSpacing="0px"
             color="green.900"
           >
@@ -318,33 +305,38 @@ export const Inspire = (props: InspireProps) => {
           </Text>
 
           <Flex
-            pt="52px"
-            gap="116px"
+            padding={{ base: '8%', xl: 'flex-start' }}
+            gap="10%"
             zIndex={1000}
-            justify={{ base: 'center', '2xl': 'flex-start' }}
+            justify={{ base: 'center', xl: 'flex-start' }}
           >
-            <TextureContentButton
-              title="Assista ao vídeo"
-              onClick={() =>
-                props.urlVideo && window.open(props.urlVideo, '_blank')
-              }
-            >
+            {props.urlVideo ? (
+              <TextureContentButton
+                title="Assista ao vídeo"
+                onClick={() =>
+                  props.urlVideo && window.open(props.urlVideo, '_blank')
+                }
+              >
               <PlayIcon />
-            </TextureContentButton>
+              </TextureContentButton>
+            ):(<Box></Box>)}
 
-            <TextureContentButton
-              title="Confira o ebook"
-              onClick={() =>
-                props.urlEbook && window.open(props.urlEbook, '_blank')
-              }
-            >
-              <ReportsIcon
-                stroke1="#6AA353"
-                width="35px"
-                height="35px"
-                transform="scaleY(-1)"
-              />
-            </TextureContentButton>
+            {props.urlEbook ? (   
+              <TextureContentButton
+                title="Confira o ebook"
+                onClick={() =>
+                  props.urlEbook && window.open(props.urlEbook, '_blank')
+                }
+              >
+                <ReportsIcon
+                  stroke1="#6AA353"
+                  width="35px"
+                  height="35px"
+                  transform="scaleY(-1)"
+                />
+              </TextureContentButton>
+           ):(<Box></Box>)}
+
           </Flex>
         </Flex>
       </Flex>
@@ -387,7 +379,7 @@ const TextureContentButton = (props: {
     direction={{ base: 'column-reverse', md: 'row' }}
     align="center"
     color="green.500"
-    fontSize="20px"
+    // fontSize="20px"
     fontWeight="bold"
     letterSpacing="0px"
     gap="14px"
