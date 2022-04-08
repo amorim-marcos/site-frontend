@@ -141,7 +141,7 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
               'Inove nos projetos com os acabamentos BP em HDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
             btnText: 'Conheça todos os padrões BP BERNECK em HDF PLUS',
             imgSrc: '/img/hdf_plus_bp.png',
-            href: '/products/bp-berneck/catalog?panel=HDF PLUS'
+            href: '/products/bp-berneck/catalog?panel=HDF Plus'
           }
         }}
       />

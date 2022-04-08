@@ -111,7 +111,7 @@ export const Videos = () => {
       >
         {videos?.map(({ id, snippet }) => (
           <Link
-            key={id}
+            key={id.videoId}
             href={`https://www.youtube.com/watch?v=${id.videoId}`}
             _hover={{}}
             _focus={{ border: 'none', outline: 0 }}

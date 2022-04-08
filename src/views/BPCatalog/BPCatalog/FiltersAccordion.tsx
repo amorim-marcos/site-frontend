@@ -430,6 +430,7 @@ export const FiltersAccordion = ({
                   applyFilters({ ...filters, orderBy: e.target.value }, bps)
                 )
               }}
+              value={filters["orderBy"]}
               color={darkMode ? 'green.300' : 'gray.300'}
               border="0"
               backgroundColor={darkMode ? 'gray.400' : 'white.100'}
@@ -439,6 +440,7 @@ export const FiltersAccordion = ({
               variant="flushed"
               _focus={{ outline: 'none' }}
             >
+              <option disabled>ordenar por</option>
               <option value="launch">lançamento</option>
               <option value="name">nome</option>
               <option value="scale">escala de cor</option>

@@ -112,7 +112,7 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
               'Inove nos projetos com os acabamentos BP em MDP PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
             btnText: 'Conheça todos os padrões BP BERNECK em MDP PLUS',
             imgSrc: '/img/mdp_plus_bp.png',
-            href: '/products/bp-berneck/catalog?panel=MDP PLUS'
+            href: '/products/bp-berneck/catalog?panel=MDP Plus'
           }
         }}
       />

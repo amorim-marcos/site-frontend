@@ -27,7 +27,7 @@ export type FilterPanelName = 'none' | ValidFilterNames
 export type GridSize = 'big' | 'medium' | 'small'
 
 export const initialFilters: Filters = {
-  orderBy: 'launch',
+  orderBy: 'scale',
   nameSearched: '',
   panels: [],
   collections: [],
@@ -157,9 +157,9 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         break
       case 'name':
         filteredBps.sort((a, b) => {
-          return a['name'].toLowerCase() > b['name'].toLowerCase()
+          return a['name'].normalize("NFD").toLowerCase() > b['name'].normalize("NFD").toLowerCase()
             ? 1
-            : a['name'].toLowerCase() < b['name'].toLowerCase()
+            : a['name'].normalize("NFD").toLowerCase() < b['name'].normalize("NFD").toLowerCase()
             ? -1
             : 0
         })
@@ -175,24 +175,27 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }
 
   useEffect(() => {
-    for (const collection of filtersContext.collections) {
-      const normalizedTitle = collection.title
-        .normalize('NFD')
-        .replace(/[^\w ]/g, '')
-        .split(' ')
-        .join('-')
-        .toLowerCase()
-
-      if (
-        queryCollection == normalizedTitle &&
-        !initialFilters['collections'].includes(collection.code.toString())
-      ) {
-        filters['collections'].push(collection.code)
-        break
+    if(queryCollection){
+      for (const collection of filtersContext.collections) {
+        const normalizedTitle = collection.title
+          .normalize('NFD')
+          .replace(/[^\w ]/g, '')
+          .split(' ')
+          .join('-')
+          .toLowerCase()
+  
+        if (
+          queryCollection == normalizedTitle &&
+          !initialFilters['collections'].includes(collection.code.toString())
+        ) {
+          filters['collections'].push(collection.code)
+          break
+        }
       }
+      setFilters(filters)
+      setFilteredBps(applyFilters(filters, bps)) 
+      changeFilterPanel('collections')
     }
-    setFilters(filters)
-    setFilteredBps(applyFilters(filters, bps))
   }, [])
 
   useEffect(() => {
