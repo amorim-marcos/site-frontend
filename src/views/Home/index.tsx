@@ -20,8 +20,8 @@ import HomeBanner from '@components/HomeBanner'
 import { useState } from 'react'
 import { SectionProducts } from './sections/SectionProducts'
 import { SectionBanners } from './sections/SectionBanners'
-import { Connect } from 'views/Canal-BNK/sections'
 import { useRouter } from 'next/router'
+import Connect from '@components/Connect'
 
 type PostProps = {
   id: number
