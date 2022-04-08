@@ -108,6 +108,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       coloration: bp.product_coloration ?? '',
       collections: bp.product_collections
     }
+  }).sort((a,b) => {
+    return a['scale'] > b['scale'] ? 1 : a['scale'] < b['scale'] ? -1 : 0
   })
 
   const initialFilters = {
