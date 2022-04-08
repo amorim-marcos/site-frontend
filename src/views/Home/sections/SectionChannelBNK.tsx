@@ -43,7 +43,7 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
         paddingX={{ base: '5%', md: '0' }}
         paddingY={{ base: '10%', md: '0' }}
         paddingTop={{ base: '0', md: '10%' }}
-        margin={{ base: '0', md: '0 0 0 4%', lg: '0 0 0 4%' }}
+        margin={{ base: '0', md: '0 0 0 4%', lg: '0 0 0 5%' }}
         // bg="red.100"
       >
         <Image

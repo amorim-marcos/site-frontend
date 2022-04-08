@@ -36,7 +36,7 @@ export const Pagebar = ({
   return (
   <Box
     bg="green.650"
-    bgGradient='linear(to-r, green.650, green.950)'
+    // bgGradient='linear(to-r, green.650, green.950)'
   >
     <Flex
       display={{ base: 'none', sm: 'flex' }}
