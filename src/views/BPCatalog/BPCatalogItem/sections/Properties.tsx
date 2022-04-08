@@ -53,7 +53,7 @@ export const Properties = (props: PropertiesProps) => {
       // justify="center"
       gap={{ base: '5%', '2xl': '5%' }}
       // wrap="wrap"
-      margin={{ base: '0 0 30% 0', md: '0 0 20% 0 ', xl: '0 5% 12% 5%', '2xl': '0 0 12% 0' }}
+      margin={{ base: '0 0 50% 0', md: '0 0 30% 0 ',  lg: '0 0 20% 0 ', xl: '0 5% 20% 5%', '2xl': '0 0 12% 0' }}
       // bg="purple"
       maxWidth="1536px"
     >
@@ -191,15 +191,15 @@ export const Properties = (props: PropertiesProps) => {
             <Flex direction="column">
               {props.available_at.map((item) => (
                 <Box pb="40px" key={item.id}>
-                  <Text
-                    fontSize={{ base: '16px', '2xl': '19px' }}
-                    fontWeight="bold"
+                  <Text as={"body"}
+                    variant={"body"}
+                    // fontWeight="bold"
                     letterSpacing="-0.37px"
                     color="gray.300"
                   >
                     {item.panel_type}
                   </Text>
-                  <Table variant="simple">
+                  <Table variant="body">
                     <Tbody>
                       <Tr>
                         <TdGreen>Espessuras (mm)</TdGreen>
@@ -215,7 +215,8 @@ export const Properties = (props: PropertiesProps) => {
               ))}
 
               <Text
-                fontSize="16px"
+                as={"h5"}
+                variant={"h5"}
                 fontWeight="medium"
                 letterSpacing="-0.32px"
                 color="green.200"
@@ -230,7 +231,11 @@ export const Properties = (props: PropertiesProps) => {
           <AccordionButtonBp title="SOBRE O BP BERNECK®" />
           <AccordionPanelBp>
             <Text
-              fontSize={{ base: '17px', '2xl': '20px' }}
+              fontSize={{  base: '13px',
+              sm: '13px',
+              md: '14px',
+              lg: '14px',
+              xl: '17px' }}
               letterSpacing="-0.4px"
               color="gray.300"
               pb="14px"
@@ -244,7 +249,11 @@ export const Properties = (props: PropertiesProps) => {
             </Text>
 
             <Text
-              fontSize={{ base: '17px', '2xl': '20px' }}
+              fontSize={{  base: '13px',
+              sm: '13px',
+              md: '14px',
+              lg: '14px',
+              xl: '17px' }}
               letterSpacing="-0.4px"
               color="gray.300"
             >
@@ -258,7 +267,11 @@ export const Properties = (props: PropertiesProps) => {
             <Flex align="center" padding="20px 0 10px" gap="12px">
               <TapIcon />
               <Text
-                fontSize={{ base: '17px', '2xl': '20px' }}
+                fontSize={{  base: '13px',
+                sm: '13px',
+                md: '14px',
+                lg: '14px',
+                xl: '17px' }}
                 letterSpacing="-0.4px"
                 fontWeight="600"
                 color="#8a8a8a"
@@ -268,7 +281,11 @@ export const Properties = (props: PropertiesProps) => {
             </Flex>
 
             <Text
-              fontSize={{ base: '17px', '2xl': '20px' }}
+              fontSize={{  base: '13px',
+              sm: '13px',
+              md: '14px',
+              lg: '14px',
+              xl: '17px' }}
               letterSpacing="-0.4px"
               color="gray.250"
             >
@@ -283,7 +300,11 @@ export const Properties = (props: PropertiesProps) => {
         <AccordionItem>
           <AccordionButtonBp title="USOS E APLICAÇÕES" />
           <AccordionPanelBp
-            fontSize={{ base: '17px', '2xl': '20px' }}
+            fontSize={{  base: '13px',
+            sm: '13px',
+            md: '14px',
+            lg: '14px',
+            xl: '17px' }}
             letterSpacing="-0.4px"
             color="gray.300"
           >
