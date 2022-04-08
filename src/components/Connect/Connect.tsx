@@ -34,6 +34,8 @@ export default function Connect() {
     return bpXs ? '300px' : bpLg ? '310px' : bp2xl ? '300px' : '397px'
   }
 
+  useFacebook()
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetch(
@@ -41,13 +43,11 @@ export default function Connect() {
       )
       const data = await result.json()
 
-      if (data.items.length > 0) setLastVideo(data.items[0].id.videoId)
+      if (data.items?.length > 0) setLastVideo(data.items[0].id.videoId)
     }
 
     fetchData()
   }, [])
-
-  useFacebook()
 
   return (
     <Flex
