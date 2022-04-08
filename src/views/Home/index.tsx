@@ -1,27 +1,13 @@
-import {
-  Box,
-  GridItem,
-  Grid,
-  Flex,
-  Text,
-  Image,
-  Button
-} from '@chakra-ui/react'
-import PatternInfoPhoto from '@components/PatternInfoPhoto'
-import Carousel from '@components/Carousel'
-import CompletedTitle from '@components/CompletedTitle'
-import BannerProducts from '@components/BannerProducts'
-import ArrowIcon from '@components/Icons/ArrowIcon'
-import PatternInfo from '@components/PatternInfo'
-import { EarthIcon } from '@components/Icons'
-import Contactusicon from '@components/Icons/Contactusicon'
-import { SectionChannelBNK } from './sections/SectionChannelBNK'
+import { useRouter } from 'next/router'
+
+import { Box } from '@chakra-ui/react'
+
 import HomeBanner from '@components/HomeBanner'
-import { useState } from 'react'
+import Connect from '@components/Connect'
+
+import { SectionChannelBNK } from './sections/SectionChannelBNK'
 import { SectionProducts } from './sections/SectionProducts'
 import { SectionBanners } from './sections/SectionBanners'
-import { useRouter } from 'next/router'
-import Connect from '@components/Connect'
 
 type PostProps = {
   id: number
@@ -200,7 +186,7 @@ export default function Home(props: HomeProps) {
               xl: '300px'
             },
             urlLink: 'berneck-teca'
-          },
+          }
         ]}
         numberEvidence={3}
       />
