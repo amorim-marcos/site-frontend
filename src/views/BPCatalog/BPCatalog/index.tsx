@@ -157,9 +157,9 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         break
       case 'name':
         filteredBps.sort((a, b) => {
-          return a['name'].toLowerCase() > b['name'].toLowerCase()
+          return a['name'].normalize("NFD").toLowerCase() > b['name'].normalize("NFD").toLowerCase()
             ? 1
-            : a['name'].toLowerCase() < b['name'].toLowerCase()
+            : a['name'].normalize("NFD").toLowerCase() < b['name'].normalize("NFD").toLowerCase()
             ? -1
             : 0
         })
