@@ -304,7 +304,7 @@ export const Intro = (props: { posts: IPost[] }) => {
                   flexDirection={{ base: 'row', xl: 'column' }}
                   justifyContent={{ xl: 'space-evenly' }}
                   overflowX={{ base: 'scroll', xl: 'hidden' }}
-                  overflowY={{ base: 'hidden', xl: 'scroll' }}
+                  overflowY={{ base: 'hidden', xl: 'scroll', '2xl': 'hidden' }}
                   w={{ base: '100vw', xl: '100%' }}
                   maxH={'650px'}
                   gap={{ base: '5%', xl: '2%' }}
