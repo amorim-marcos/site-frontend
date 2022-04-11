@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import { ReactNode, useEffect, useState } from 'react'
-import { Box, Button, Flex, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Text, Link } from '@chakra-ui/react'
 
 import { SocialIcon } from '@components/Icons'
 import CompletedTitle from '@components/CompletedTitle'
@@ -123,7 +123,10 @@ export default function Connect() {
                 />
               )}
 
-              <FollowButton text="SIGA-NOS NO INSTAGRAM" link="/" />
+              <FollowButton
+                text="SIGA-NOS NO INSTAGRAM"
+                link="https://www.instagram.com/berneckoficial/"
+              />
             </Flex>
           </SocialNetwork>
 
@@ -147,7 +150,10 @@ export default function Connect() {
                 />
               )}
 
-              <FollowButton text="SIGA-NOS NO LINKEDIN" link="/" />
+              <FollowButton
+                text="SIGA-NOS NO LINKEDIN"
+                link="https://www.linkedin.com/company/berneck-s.a.-pain-is-e-serrados/"
+              />
             </Flex>
           </SocialNetwork>
 
@@ -175,7 +181,10 @@ export default function Connect() {
                 )}
               </SocialNetwork>
 
-              <FollowButton text="INSCREVA-SE EM NOSSO CANAL" link="/" />
+              <FollowButton
+                text="INSCREVA-SE EM NOSSO CANAL"
+                link="https://www.youtube.com/channel/UC-YLSfIYCSIyMHH_6I9G8cw"
+              />
             </Flex>
 
             <SocialNetwork
@@ -230,19 +239,21 @@ const SocialNetwork = (props: {
 )
 
 const FollowButton = (props: { text: string; link: string }) => (
-  <Button
-    w="100%"
-    h={{ base: '76px', lg: '78px' }}
-    color="white"
-    bg="green.600"
-    borderRadius="17px"
-    alignSelf="flex-end"
-    fontSize={{ base: '15px', sm: '18px' }}
-    fontWeight="bold"
-    transition="all 0.2s easy-in-out"
-    _hover={{ bg: 'green.700' }}
-    onClick={() => alert(props.link)}
-  >
-    {props.text}
-  </Button>
+  <Link href={props.link} target="_blank" w="100%">
+    <Button
+      _focus={{ outline: 'none' }}
+      w="100%"
+      h={{ base: '76px', lg: '78px' }}
+      color="white"
+      bg="green.600"
+      borderRadius="17px"
+      alignSelf="flex-end"
+      fontSize={{ base: '15px', sm: '18px' }}
+      fontWeight="bold"
+      transition="all 0.2s easy-in-out"
+      _hover={{ bg: 'green.700' }}
+    >
+      {props.text}
+    </Button>
+  </Link>
 )
