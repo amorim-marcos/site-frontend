@@ -212,7 +212,7 @@ export const AppFooter = () => {
               }}
               color="green.300"
             >
-              ©2022 BERNECK. Todos os direitos reservados.
+              &#9400;2022 BERNECK. Todos os direitos reservados.
             </Text>
           </Flex>
           <Flex 
