@@ -44,8 +44,10 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap"
             rel="stylesheet"
           />
-
-          <script async defer src="https://assets.pinterest.com/js/pinit.js" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swa"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

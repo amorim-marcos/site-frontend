@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 
+type FacebookStatic = fb.FacebookStatic
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const Facebook = require('fb-sdk-wrapper') as fb.FacebookStatic
+const Facebook = require('fb-sdk-wrapper') as FacebookStatic
 
 const useFacebook = () => {
-  const [FB, setFB] = useState<fb.FacebookStatic>()
+  const [FB, setFB] = useState<FacebookStatic>()
 
   useEffect(() => {
     const init = async () => {
@@ -12,14 +14,14 @@ const useFacebook = () => {
       // @ts-ignore
       const fb = await Facebook.load()
 
-      await Facebook.init({
+      Facebook.init({
         appId: process.env.FACEBOOK_APP_ID,
+        status: false,
         xfbml: true,
         autoLogAppEvents: false,
         version: 'v13.0'
       })
 
-      console.log(fb)
       setFB(fb)
     }
 
