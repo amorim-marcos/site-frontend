@@ -38,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       galleries,
-      carrouselImages: ['/img/banner_bp.png', '/img/mdf_plus_bp.png']
+      carrouselImages: ['/img/capa_bp_banner_bp_1.png', '/img/capa_bp_banner_bp_2.png']
     }
   }
 }

@@ -6,13 +6,14 @@ export type BannerCollectionsProps = {
   titleColor: string
   imgSrc: string
   ArrowIconColor: string
+  bgColor: string
   onClick?: () => void
 }
 export const BannerCollections = (props: BannerCollectionsProps) => {
   return (
     <Flex
       data-testid="pattern-info-box-photo"
-      bg="white.100"
+      bg={props.bgColor}
       cursor="pointer"
       pos="relative"
       zIndex="base"
@@ -29,7 +30,7 @@ export const BannerCollections = (props: BannerCollectionsProps) => {
         xl: 'center'
       }}
       backgroundRepeat="no-repeat"
-      // backgroundSize={"contain"}
+      backgroundSize={"contain"}
       w="100%"
       // padding={{ base: '8%', sm: '8%', lg: '10%', xl: '8%'}}
       h="100%"
