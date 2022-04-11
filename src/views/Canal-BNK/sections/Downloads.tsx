@@ -121,7 +121,7 @@ export const Downloads = () => {
 
       {currentCategory === -1 ? (
         <Flex
-          display={{ base: 'flex', md: 'none' }}
+          display={{ base: 'flex', lg: 'none' }}
           data-testid="downloads"
           pt="65px"
           gap="34px"
