@@ -76,6 +76,7 @@ export const FilterCheckbox = ({
         top="0"
         right="0"
         zIndex="1"
+        w="100%"
         src={background_image}
       ></Image>
     </Button>
