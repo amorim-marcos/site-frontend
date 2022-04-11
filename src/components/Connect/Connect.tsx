@@ -1,14 +1,7 @@
 import Head from 'next/head'
 
 import { ReactNode, useEffect, useState } from 'react'
-import {
-  Box,
-  Button,
-  Flex,
-  Text,
-  useMediaQuery,
-  ButtonProps
-} from '@chakra-ui/react'
+import { Box, Button, Flex, Text } from '@chakra-ui/react'
 
 import { SocialIcon } from '@components/Icons'
 import CompletedTitle from '@components/CompletedTitle'
@@ -16,21 +9,9 @@ import CompletedTitle from '@components/CompletedTitle'
 import useFacebook from 'hooks/useFacebook'
 import useMobile from 'hooks/useMobile'
 
-import { breakpoints } from 'theme/breakpoints'
-
 export default function Connect() {
   const { isMobile, width } = useMobile(568)
   const [lastVideo, setLastVideo] = useState<string | null>()
-
-  const [bpXs, bpLg, bp2xl] = useMediaQuery([
-    `(max-width: ${breakpoints.xs})`,
-    `(max-width: ${breakpoints.lg})`,
-    `(max-width: ${breakpoints['2xl']})`
-  ])
-
-  const getWidth = () => {
-    return bpXs ? '300px' : bpLg ? '310px' : bp2xl ? '300px' : '397px'
-  }
 
   useFacebook()
 
@@ -53,19 +34,13 @@ export default function Connect() {
         <script async defer src="https://assets.pinterest.com/js/pinit.js" />
       </Head>
 
-      <Flex
-        bg={'white.200'}
-        flex="1"
-        alignItems={'center'}
-        flexDirection={'column'}
-      >
+      <Flex bg={'white.200'} alignItems={'center'} flexDirection={'column'}>
         <Flex
           w="100%"
-          flex="1"
           maxWidth="1536px"
           marginX="auto"
           position="relative"
-          py={{ base: '54px', lg: '100px' }}
+          pt={{ base: '54px', lg: '100px' }}
           px={{ base: '20px', lg: '5%', '2xl': '3%' }}
           align={{ base: 'center', lg: 'flex-start' }}
           justifyContent={{ base: 'center', lg: 'flex-start' }}
@@ -81,22 +56,21 @@ export default function Connect() {
             }}
           />
         </Flex>
+
         <Flex
-          flex="1"
           maxWidth="1536px"
           data-testid="connect"
-          h={{ base: 'fit-content' }}
           w="100%"
           gap="50px"
           pt="55px"
           pb="96px"
-          px={{ sm: '20px', lg: '88px' }}
+          px={{ base: '20px', lg: '5%', '2xl': '3%' }}
           justify="center"
           align={{ base: 'center', lg: 'flex-start' }}
           wrap={{ base: 'wrap', '2xl': 'nowrap' }}
           direction={{
             base: 'column',
-            lg: 'row'
+            md: 'row'
           }}
         >
           <SocialNetwork
@@ -115,10 +89,8 @@ export default function Connect() {
                 className="fb-page"
                 data-href="https://www.facebook.com/BerneckSA"
                 data-tabs="timeline"
-                data-width={getWidth()}
                 data-height={isMobile ? '867px' : '1007px'}
                 data-adapt-container-width={true}
-                data-lazy={true}
                 data-small-header="true"
                 data-hide-cover="false"
                 data-show-facepile="true"
@@ -137,27 +109,21 @@ export default function Connect() {
               />
             }
           >
-            <Flex direction="column" gap="24px" align="center">
+            <Flex direction="column" gap="24px" align="center" w="100%">
               {width && (
                 <Box
                   className="fb-page"
                   data-href="https://www.facebook.com/BerneckSA"
                   data-tabs="timeline"
-                  data-width={getWidth()}
                   data-height={isMobile ? '572px' : '920px'}
                   data-adapt-container-width={true}
-                  data-lazy={true}
                   data-small-header="true"
                   data-hide-cover="false"
                   data-show-facepile="true"
                 />
               )}
 
-              <FollowButton
-                text="SIGA-NOS NO INSTAGRAM"
-                link="/"
-                w={getWidth()}
-              />
+              <FollowButton text="SIGA-NOS NO INSTAGRAM" link="/" />
             </Flex>
           </SocialNetwork>
 
@@ -173,21 +139,15 @@ export default function Connect() {
             }
           >
             <Flex w="100%" direction="column" gap="24px" align="center">
-              <Flex w="100%" direction="column" gap="30px">
-                {width && (
-                  <iframe
-                    src="https://www.linkedin.com/embed/feed/update/urn:li:share:6868626499726012417"
-                    height={isMobile ? '572px' : '920px'}
-                    width={getWidth()}
-                  />
-                )}
-              </Flex>
+              {width && (
+                <iframe
+                  src="https://www.linkedin.com/embed/feed/update/urn:li:share:6868626499726012417"
+                  height={isMobile ? '572px' : '920px'}
+                  width="100%"
+                />
+              )}
 
-              <FollowButton
-                w={getWidth()}
-                text="SIGA-NOS NO LINKEDIN"
-                link="/"
-              />
+              <FollowButton text="SIGA-NOS NO LINKEDIN" link="/" />
             </Flex>
           </SocialNetwork>
 
@@ -205,10 +165,9 @@ export default function Connect() {
                 }
               >
                 {width && (
-                  <Box
-                    as="iframe"
-                    width={getWidth()}
-                    height={isMobile ? '218px' : '224px'}
+                  <iframe
+                    width="100%"
+                    height={isMobile ? '175px' : '180px'}
                     src={`https://www.youtube.com/embed/${lastVideo}`}
                     frameBorder="0"
                     allowFullScreen
@@ -216,11 +175,7 @@ export default function Connect() {
                 )}
               </SocialNetwork>
 
-              <FollowButton
-                w={getWidth()}
-                text="INSCREVA-SE EM NOSSO CANAL"
-                link="/"
-              />
+              <FollowButton text="INSCREVA-SE EM NOSSO CANAL" link="/" />
             </Flex>
 
             <SocialNetwork
@@ -237,8 +192,7 @@ export default function Connect() {
               <a
                 data-pin-do="embedUser"
                 data-pin-lang="pt"
-                data-pin-board-width="400"
-                data-pin-scale-height={isMobile ? '455px' : '430px'}
+                data-pin-scale-height={isMobile ? '455px' : '470px'}
                 data-pin-scale-width={isMobile ? '388px' : '399px'}
                 href="https://br.pinterest.com/berneckoficial/"
               />
@@ -256,19 +210,14 @@ const SocialNetwork = (props: {
   title: string
 }) => (
   <Flex
-    h="fit-content"
+    h="100%"
+    w={{ xs: '300px', lg: '310px', '2xl': '320px' }}
     direction="column"
     gap="30px"
-    align="center"
+    align="flex-start"
     overflowX={{ base: 'scroll', md: 'hidden' }}
   >
-    <Flex
-      h="51px"
-      gap="18px"
-      alignSelf="flex-start"
-      align="center"
-      justify="flex-start"
-    >
+    <Flex h="51px" gap="18px" alignSelf="space-between" align="center">
       {props.icon}
 
       <Text fontSize="23px" fontWeight={600} color="gray.250">
@@ -280,23 +229,18 @@ const SocialNetwork = (props: {
   </Flex>
 )
 
-const FollowButton = (props: {
-  text: string
-  link: string
-  w: ButtonProps['w']
-}) => (
+const FollowButton = (props: { text: string; link: string }) => (
   <Button
-    bg="green.600"
     w="100%"
     h={{ base: '76px', lg: '78px' }}
+    color="white"
+    bg="green.600"
     borderRadius="17px"
+    alignSelf="flex-end"
     fontSize={{ base: '15px', sm: '18px' }}
     fontWeight="bold"
-    color="white"
     transition="all 0.2s easy-in-out"
-    _hover={{
-      bg: 'green.700'
-    }}
+    _hover={{ bg: 'green.700' }}
     onClick={() => alert(props.link)}
   >
     {props.text}
