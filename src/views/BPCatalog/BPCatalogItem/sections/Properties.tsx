@@ -53,7 +53,7 @@ export const Properties = (props: PropertiesProps) => {
       // justify="center"
       gap={{ base: '5%', '2xl': '5%' }}
       // wrap="wrap"
-      margin={{ base: '0 0 50% 0', md: '0 0 30% 0 ',  lg: '0 0 20% 0 ', xl: '0 5% 20% 5%', '2xl': '0 0 12% 0' }}
+      margin={{ base: '0 0 50% 0', md: '0 0 30% 0 ',  lg: '0 0 20% 5%', xl: '0 5% 20% 5%', '2xl': '0 5% 12% 5%' }}
       // bg="purple"
       maxWidth="1536px"
     >
@@ -83,7 +83,7 @@ export const Properties = (props: PropertiesProps) => {
           cursor="pointer"
           onClick={props.handleDownload}
           // bg="blue"
-          flex="1"
+          // flex="1"
         >
           <Image
             src={props.textureImg}

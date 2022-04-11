@@ -20,7 +20,7 @@ export const Intro = (props: IntroProps) => (
     bgRepeat="repeat"
     align="center"
     justify={{ base: 'center', lg: 'flex-start' }}
-    pl={{ lg: '5%', '2xl': '20%' }}
+    pl={{ lg: '5%', '2xl': '5%' }}
     pos="relative"
   >
     <Box

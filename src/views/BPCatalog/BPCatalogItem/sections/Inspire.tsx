@@ -32,12 +32,14 @@ export const Inspire = (props: InspireProps) => {
 
   return (
     <Box pos="relative">
+
       <Flex
         data-testid="micro-texture"
         pos="relative"
-        left={{ base: '0', lg: '5%', '2xl': '20%' }}
+        left={{ base: '0', lg: '5%', '2xl': '5%' }}
         top="-65px"
         w={{ base: '100%', md: '100%', '2xl': '30%' }}
+        // bg="violet"
       >
         <Image
           src={props.textureIcon}
@@ -46,7 +48,10 @@ export const Inspire = (props: InspireProps) => {
           zIndex={10}
         />
 
-        <Flex flexDirection={'column'}>
+        <Flex 
+          flexDirection={'column'}
+          // bg="pink"
+        >
           <Text
             bg="green.650"
             w={{ base: '185px' }}
@@ -82,10 +87,10 @@ export const Inspire = (props: InspireProps) => {
           data-testid="combine-texture"
           pos="relative"
           direction="column"
-          w={{ base: '100%', '2xl': 'fit-content' }}
-          // align={{ base: 'center', lg: 'flex-start' }}
+          w={{ base: '100%', '2xl': '100%' }}
           top={{ base: '0px', sm: '5%', '2xl': '-330px' }}
-          left={{ lg: '5%', '2xl': '52%' }}
+          alignItems={{ base: 'flex-start', '2xl': 'flex-end' }}
+          padding={{ base: '0', lg: '0 5%', '2xl': '0 5%' }}
           zIndex="docked"
           // bg="blue"
         >
@@ -112,13 +117,18 @@ export const Inspire = (props: InspireProps) => {
               </Text>
             </Flex>
 
-            <Flex direction={{ base: 'column', sm: 'row' }}>
+            <Flex 
+              direction={{ base: 'column', sm: 'row' }}
+              // bg="red"
+              // left={{ '2xl': '52%' }}
+            >
               {props.combine_with?.map((texture) => (
                 <Flex
                   key={texture.name}
                   direction="column"
                   pos="relative"
                   gap={{ sm: '9px' }}
+                  // bg="yellow"
                 >
                   <Link href={texture.href}>
                     <Image
@@ -166,7 +176,7 @@ export const Inspire = (props: InspireProps) => {
         pos="relative"
         mt={{
           base: props.combine_with.length > 0 ? '5%' : '0px',
-          '2xl': '-580px'
+          '2xl': '-550px'
         }}
         mb={{ base: '50px', '2xl': 'none' }}
         wrap={{ base: 'wrap', '2xl': 'nowrap' }}
@@ -266,13 +276,13 @@ export const Inspire = (props: InspireProps) => {
           </Flex>
         ) : (
           <Box
-            mt={{ base: '5%', '2xl': '12%' }}
+            mt={{ base: '5%', '2xl': '15%' }}
             w={{ base: '90%'}}
             maxHeight={'600px'}
             cursor="pointer"
             onClick={() => router.push('/products/bp-berneck/gallery')}
             // bg="violet"
-            marginLeft={{'2xl': '17%'}}
+            // marginLeft={{'2xl': '5%'}}
           >
             <Image
               // w="100%"
@@ -286,6 +296,7 @@ export const Inspire = (props: InspireProps) => {
         <Flex
           data-testid="texture-description"
           mt={{ base: '5%', '2xl': '18%' }}
+          mb={{ base: '0', '2xl': '10%' }}
           mr={{ '2xl': '10%' }}
           padding={{ '2xl': '2%' }}
           w={{ base: '90%', '2xl': '70%' }}
