@@ -92,7 +92,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     props: {
       complete_name: productFetch.complete_name,
       url_code: productFetch.url_code,
-      name: productFetch.name,
+      name: (productFetch.totalWithSameName == 1) ? productFetch.name : productFetch.complete_name,
       description: productFetch.description,
       img: `${url}${productFetch.pattern_image.url}`,
       bg_img: `${url}${productFetch.background_image.url}`,

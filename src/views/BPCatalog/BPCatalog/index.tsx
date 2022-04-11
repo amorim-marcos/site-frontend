@@ -68,15 +68,14 @@ export type BPCatalogProps = {
 }
 
 export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
-  const [displayFilters, setDisplayFilters] = useState(true)
+  const { isMobile } = useMobile(1024)
+  const [displayFilters, setDisplayFilters] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
   const [gridSize, setGridSize] = useState('big')
   const [gridColumnsMode, setGridColumnsMode] = useState('repeat(3, 1fr)')
   const [currentFilterPanel, setCurrentFilterPanel] = useState('none')
   const [filteredBps, setFilteredBps] = useState(bps)
   const [filtersEmpty, setFiltersEmpty] = useState(true)
-
-  const { isMobile } = useMobile(1024)
 
   const router = useRouter()
 
@@ -229,6 +228,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   useEffect(() => {
     setGridSize(isMobile ? 'mobile-medium' : 'medium')
+    setDisplayFilters(isMobile ? false : true)
   }, [isMobile])
 
   useEffect(() => {
@@ -339,6 +339,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         <Container
           display={isMobile && displayFilters ? 'none' : 'normal'}
           minW="100%"
+          mb="100px"
         >
           {filteredBps && filteredBps.length > 0 ? (
             <Grid
@@ -396,7 +397,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
             </Flex>
           )}
         </Container>
-        <Box marginTop={{ base: '100px' }}></Box>
       </Container>
     </Box>
     </>
