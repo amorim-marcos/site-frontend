@@ -40,8 +40,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     page_content = await res.json()
   }
 
-  page_content.technical_sheet =
-    process.env.NEXT_PUBLIC_API_URL + page_content.technical_sheet[0].url
+  page_content.technical_sheet = (page_content.technical_sheet[0]) ? process.env.NEXT_PUBLIC_API_URL + page_content.technical_sheet[0].url : null
 
   page_content.machinability = DOMPurify.sanitize(page_content.machinability)
   return {
