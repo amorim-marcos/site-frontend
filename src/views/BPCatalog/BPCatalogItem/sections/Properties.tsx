@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { useRouter } from 'next/router'
-
+import PatternInfo from '@components/PatternInfo'
 import {
   Box,
   Flex,
@@ -39,30 +39,51 @@ export const Properties = (props: PropertiesProps) => {
   const router = useRouter()
 
   return (
-    <Flex
-      align="center"
-      justify="center"
-      gap={{ base: '60px', '2xl': '102px' }}
-      wrap="wrap"
-      marginBottom={{ base: '30%', md: '20%', xl: '10%' }}
+  
+  <Flex
+    // bg="red"
+    //  align="center"
+    justify="center"
+    flex="1"
     >
+
+    <Flex
+      flex="1"
+      direction={{ base: 'column', 'lg': 'row' }}
+      // justify="center"
+      gap={{ base: '5%', '2xl': '5%' }}
+      // wrap="wrap"
+      margin={{ base: '0 0 50% 0', md: '0 0 30% 0 ',  lg: '0 0 20% 0 ', xl: '0 5% 20% 5%', '2xl': '0 0 12% 0' }}
+      // bg="purple"
+      maxWidth="1536px"
+    >
+
+      {/* NIVEL 1 */}
       <Flex
         data-testid="texture-assets"
         direction="column"
-        gap={{ base: '63px', '2xl': '93px' }}
-        w={{ base: '100%', xl: '50%', '2xl': 'inherit' }}
-        mt={{ '2xl': '54px' }}
-        align={{ base: 'center', '2xl': 'flex-start' }}
-        justify={{ base: 'center', '2xl': 'inherit' }}
+        gap={{ base: '2%', '2xl': '3%' }}
+        // w={{ base: '100%', xl: '50%', '2xl': 'inherit' }}
+        // mt={{ '2xl': '54px' }}
+        // align={{ base: 'center' }}
+        // justify={{ base: 'center', '2xl': 'inherit' }}
+        // bg="yellow"
+        flex="1"
+        // w={"90%"}
       >
+
+         {/* NIVEL 2 */}
         <Flex
           data-testid="download-pattern"
           align="center"
           justify={{ base: 'center', sm: 'flex-start' }}
-          gap="27px"
-          cursor="pointer"
           wrap={{ base: 'wrap', sm: 'nowrap' }}
+          gap={{ base: '27px', sm: '3%' }} 
+          padding={{ base: '3%', sm: '3%' }} 
+          cursor="pointer"
           onClick={props.handleDownload}
+          // bg="blue"
+          flex="1"
         >
           <Image
             src={props.textureImg}
@@ -73,9 +94,14 @@ export const Properties = (props: PropertiesProps) => {
             borderColor="gray.150"
           />
 
-          <Flex w={{ base: '80%', sm: 'auto' }} direction="column">
+          <Flex 
+            w={{ base: '80%', sm: 'auto' }} 
+            direction="column"
+            align={{ base: 'center', sm: 'flex-start' }}
+          >
             <Text
-              fontSize={{ base: '20px', '2xl': '23px' }}
+              as={'h4'}
+              variant={'h4' as any}
               fontWeight="medium"
               letterSpacing="-0.45px"
               color="green.200"
@@ -83,9 +109,11 @@ export const Properties = (props: PropertiesProps) => {
               FAÇA O DOWNLOAD
             </Text>
             <Text
-              fontSize={{ base: '31px', '2xl': '34px' }}
-              fontWeight="bold"
-              letterSpacing="-0.68px"
+              as={'h2'}
+              variant={'h2' as any}
+              fontWeight={800}
+              letterSpacing="-1.06px"
+              pb="24px"
               color="gray.300"
             >
               Padrão {props.productName}
@@ -93,33 +121,31 @@ export const Properties = (props: PropertiesProps) => {
           </Flex>
         </Flex>
 
+
+        {/* NIVEL 2 */}
         <Flex
-          data-testid="pattern-info"
           direction="column"
-          gap="30px"
-          w={{ base: '100%', '2xl': 'inherit' }}
-          px="20px"
-          align={{ base: 'center', '2xl': 'inherit' }}
-          justify={{ base: 'center', '2xl': 'inherit' }}
+          // gap="2%"
+          flex="2"
+          gap={{ base: '2%', '2xl': '3%' }}
+          // bg="blue.300"
         >
           <PatternInfo
-            title="CONFIRA"
-            description="Certificado de Qualidade"
-            onClick={() => router.push('/certificacoes')}
-            icon={
+              title="CONHEÇA"
+              description="Nossas Certificações"
+              onClick={() => router.push('/certificacoes')}
+              icon={
               <CertificationsIcon
-                width={{ base: '31px', sm: '41px', '2xl': '61px' }}
-                height={{ base: '56px', sm: '66px', '2xl': '86px' }}
-              />
-            }
-            graphism={
-              <Image
-                src="/img/grafismo_button_left.svg"
-                filter={'brightness(0.65)'}
-                pos="absolute"
-                left={0}
-                objectFit="cover"
-                h="100%"
+                width={{
+                  base: '50px',
+                  lg: '70px',
+                  xl: '80px'
+                }}
+                height={{
+                  base: '50px',
+                  lg: '70px',
+                  xl: '80px'
+                }}
               />
             }
           />
@@ -130,24 +156,30 @@ export const Properties = (props: PropertiesProps) => {
             onClick={() => router.push('/onde-comprar')}
             icon={
               <EarthIcon
-                width={{ base: '40px', sm: '58px', '2xl': '78px' }}
-                height={{ base: '40px', sm: '58px', '2xl': '78px' }}
-              />
-            }
-            graphism={
-              <Image
-                src="/img/grafismo_button_right.svg"
-                filter={'brightness(0.65)'}
-                pos="absolute"
-                right={0}
-                objectFit="cover"
-                h="100%"
+                width={{
+                  base: '30px',
+                  lg: '50px',
+                  xl: '60px'
+                }}
+                height={{
+                  base: '30px',
+                  lg: '50px',
+                  xl: '60px'
+                }}
               />
             }
           />
         </Flex>
-      </Flex>
 
+
+      </Flex>
+    
+    {/* NIVEL 1 */}
+    <Flex
+      // bg="yellowegreen"
+      margin={{ base: '0', md: '0 2% 0 2% ', lg: '0 2% 0 2%', '2xl': '0' }}
+      flex="1"
+    >
       <Accordion
         id="texture-props"
         w={{ base: '90%', xl: '580px', '2xl': '845px' }}
@@ -159,15 +191,15 @@ export const Properties = (props: PropertiesProps) => {
             <Flex direction="column">
               {props.available_at.map((item) => (
                 <Box pb="40px" key={item.id}>
-                  <Text
-                    fontSize={{ base: '16px', '2xl': '19px' }}
-                    fontWeight="bold"
+                  <Text as={"body"}
+                    variant={"body"}
+                    // fontWeight="bold"
                     letterSpacing="-0.37px"
                     color="gray.300"
                   >
                     {item.panel_type}
                   </Text>
-                  <Table variant="simple">
+                  <Table variant="body">
                     <Tbody>
                       <Tr>
                         <TdGreen>Espessuras (mm)</TdGreen>
@@ -183,7 +215,8 @@ export const Properties = (props: PropertiesProps) => {
               ))}
 
               <Text
-                fontSize="16px"
+                as={"h5"}
+                variant={"h5"}
                 fontWeight="medium"
                 letterSpacing="-0.32px"
                 color="green.200"
@@ -198,7 +231,11 @@ export const Properties = (props: PropertiesProps) => {
           <AccordionButtonBp title="SOBRE O BP BERNECK®" />
           <AccordionPanelBp>
             <Text
-              fontSize={{ base: '17px', '2xl': '20px' }}
+              fontSize={{  base: '13px',
+              sm: '13px',
+              md: '14px',
+              lg: '14px',
+              xl: '17px' }}
               letterSpacing="-0.4px"
               color="gray.300"
               pb="14px"
@@ -212,7 +249,11 @@ export const Properties = (props: PropertiesProps) => {
             </Text>
 
             <Text
-              fontSize={{ base: '17px', '2xl': '20px' }}
+              fontSize={{  base: '13px',
+              sm: '13px',
+              md: '14px',
+              lg: '14px',
+              xl: '17px' }}
               letterSpacing="-0.4px"
               color="gray.300"
             >
@@ -226,7 +267,11 @@ export const Properties = (props: PropertiesProps) => {
             <Flex align="center" padding="20px 0 10px" gap="12px">
               <TapIcon />
               <Text
-                fontSize={{ base: '17px', '2xl': '20px' }}
+                fontSize={{  base: '13px',
+                sm: '13px',
+                md: '14px',
+                lg: '14px',
+                xl: '17px' }}
                 letterSpacing="-0.4px"
                 fontWeight="600"
                 color="#8a8a8a"
@@ -236,7 +281,11 @@ export const Properties = (props: PropertiesProps) => {
             </Flex>
 
             <Text
-              fontSize={{ base: '17px', '2xl': '20px' }}
+              fontSize={{  base: '13px',
+              sm: '13px',
+              md: '14px',
+              lg: '14px',
+              xl: '17px' }}
               letterSpacing="-0.4px"
               color="gray.250"
             >
@@ -251,7 +300,11 @@ export const Properties = (props: PropertiesProps) => {
         <AccordionItem>
           <AccordionButtonBp title="USOS E APLICAÇÕES" />
           <AccordionPanelBp
-            fontSize={{ base: '17px', '2xl': '20px' }}
+            fontSize={{  base: '13px',
+            sm: '13px',
+            md: '14px',
+            lg: '14px',
+            xl: '17px' }}
             letterSpacing="-0.4px"
             color="gray.300"
           >
@@ -259,58 +312,14 @@ export const Properties = (props: PropertiesProps) => {
           </AccordionPanelBp>
         </AccordionItem>
       </Accordion>
+    
     </Flex>
+
+    </Flex>
+
+  </Flex>
   )
 }
-
-const PatternInfo = (props: {
-  title: string
-  description: string
-  icon: ReactNode
-  graphism: ReactNode
-  onClick: () => void
-}) => (
-  <Flex
-    data-testid="pattern-info-box"
-    align="center"
-    bg="green.900"
-    w={{ base: '100%', sm: '85%', xl: '100%', '2xl': '798px' }}
-    h={{ base: '120px', sm: '160px', '2xl': '173px' }}
-    pl={{ base: '5px', sm: '20px', xl: '40px', '2xl': '84px' }}
-    pr={{ base: '5px', sm: '20px', '2xl': '0' }}
-    gap={{ base: '20px', sm: '25px', '2xl': '45px' }}
-    cursor="pointer"
-    pos="relative"
-    onClick={props.onClick}
-    _hover={{
-      filter: 'brightness(1.2)'
-    }}
-  >
-    <Box h="100%">{props.graphism}</Box>
-
-    <Box zIndex={10}>{props.icon}</Box>
-
-    <Box zIndex={10}>
-      <Text
-        fontSize={{ base: '14px', sm: '19px', '2xl': '23px' }}
-        fontWeight="medium"
-        letterSpacing="-0.45px"
-        color="green.600"
-      >
-        {props.title}
-      </Text>
-
-      <Text
-        fontSize={{ base: '22px', sm: '30px', '2xl': '34.2px' }}
-        fontWeight="bold"
-        letterSpacing="-0.68px"
-        color="white"
-      >
-        {props.description}
-      </Text>
-    </Box>
-  </Flex>
-)
 
 interface AccordionButtonBpProps extends AccordionButtonProps {
   title: string
@@ -340,7 +349,11 @@ const AccordionPanelBp = (props: AccordionPanelProps) => (
 const TdGreen = (props: TableCellProps) => (
   <Td
     bg="#D7EABE"
-    fontSize={{ base: '17px', '2xl': '19px' }}
+    fontSize={{  base: '14px',
+                  md: '16px',
+                  lg: '18px',
+                  xl: '17px',
+                  '2xl': '19px' }}
     letterSpacing="-0.37px"
     color="gray.300"
     border="2px solid #F5F6F4"

@@ -58,7 +58,7 @@ export const BPCatalogItem = (props: BPCatalogItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <Box pos="relative" maxWidth={'1536px'} marginX="auto" overflow={'hidden'}>
+    <Box pos="relative" overflow={'hidden'}>
       <Pagebar
         paths={[
           {
@@ -167,6 +167,13 @@ const PageNavegation = (props: {
   }, [])
 
   return (
+
+  <Flex
+    // bg="purple"
+    // w="100%"
+    justify="center"
+  >
+    
     <Flex
       w="100%"
       // pt={{ base: '100px', '2xl': '140px' }}
@@ -176,16 +183,17 @@ const PageNavegation = (props: {
       bottom={'0'}
       zIndex={'banner'}
       pointerEvents="none"
+      // bg="red"
     >
       <Flex
         pointerEvents={'fill'}
-        bg="#FFF"
-        w={{ base: 'fit-content', sm: '296px' }}
+        bg="white"
+        w={{ base: 'fit-content' }}
         h={{ base: '90px', sm: '113px' }}
-        padding={{ base: '15px', sm: '0px' }}
-        gap="23px"
+        padding={{ base: '5%' }}
+        gap={{ base: '10px', lg: '23px' }}
         align="center"
-        justify="center"
+        justify="flex-start"
         boxShadow="0px 0px 30px #00000029"
         borderTopRightRadius={{ base: '15px', sm: '26px' }}
         cursor="pointer"
@@ -203,7 +211,9 @@ const PageNavegation = (props: {
         />
         <Box>
           <Text
-            fontSize={{ base: '15px', sm: '20px', md: '23px' }}
+            // fontSize={{ base: '15px', sm: '20px', md: '23px' }}
+            as={'h4'}
+            variant={'h4' as any}
             fontWeight="bold"
             letterSpacing="-0.46px"
             color="gray.300"
@@ -212,7 +222,8 @@ const PageNavegation = (props: {
           </Text>
 
           <Text
-            fontSize={{ base: '9px', xs: '12px', sm: '16px', md: '18px' }}
+            as={'h4'}
+            variant={'h4' as any}
             fontWeight="medium"
             letterSpacing="-0.36px"
             color="gray.300"
@@ -224,13 +235,13 @@ const PageNavegation = (props: {
 
       <Flex
         pointerEvents={'fill'}
-        bg="#FFF"
-        w={{ base: 'fit-content', sm: '296px' }}
+        bg="white"
+        w={{ base: 'fit-content' }}
         h={{ base: '90px', sm: '113px' }}
-        padding={{ base: '15px', sm: '0px' }}
-        gap="23px"
+        padding={{ base: '5%' }}
+        gap={{ base: '10px', lg: '23px' }}
         align="center"
-        justify="center"
+        justify="flex-start"
         boxShadow="0px 0px 30px #00000029"
         borderTopLeftRadius={{ base: '15px', sm: '26px' }}
         cursor="pointer"
@@ -242,7 +253,8 @@ const PageNavegation = (props: {
       >
         <Flex direction="column" align="flex-end">
           <Text
-            fontSize={{ base: '15px', sm: '20px', md: '23px' }}
+             as={'h4'}
+             variant={'h4' as any}
             fontWeight="bold"
             letterSpacing="-0.46px"
             color="gray.300"
@@ -251,7 +263,8 @@ const PageNavegation = (props: {
           </Text>
 
           <Text
-            fontSize={{ base: '9px', xs: '12px', sm: '16px', md: '18px' }}
+             as={'h4'}
+             variant={'h4' as any}
             fontWeight="medium"
             letterSpacing="-0.36px"
             color="gray.300"
@@ -268,5 +281,7 @@ const PageNavegation = (props: {
         />
       </Flex>
     </Flex>
+
+</Flex>
   )
 }

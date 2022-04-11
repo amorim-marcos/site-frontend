@@ -18,9 +18,9 @@ export const Intro = (props: IntroProps) => (
     bgImg={props.productImgBg}
     bgSize="40%"
     bgRepeat="repeat"
-    pl={{ '2xl': '205px' }}
     align="center"
-    justify={{ base: 'center', '2xl': 'inherit' }}
+    justify={{ base: 'center', lg: 'flex-start' }}
+    pl={{ lg: '5%', '2xl': '20%' }}
     pos="relative"
   >
     <Box
@@ -37,13 +37,12 @@ export const Intro = (props: IntroProps) => (
         h="100%"
         objectFit={'cover'}
         objectPosition={{ base: 'none', sm: 'right' }}
-        // boxSize={['642px', '538px']}
       />
     </Box>
 
     <Flex
       data-testid="texture-attr"
-      h={{ base: 'fit-content', '2xl': '476px' }}
+      h={{ base: 'fit-content' }}
       w={{ base: '100%', sm: '476px' }}
       direction="column"
       padding={{ base: '50px', sm: '78px 71px 60px 75px' }}
@@ -53,7 +52,7 @@ export const Intro = (props: IntroProps) => (
       boxShadow="0px 0px 20px #00000027"
     >
       <Text
-        // fontSize={{ base: '50px', '2xl': '53px' }}
+        as={'h2'}
         variant={'h2' as any}
         fontWeight={800}
         letterSpacing="-1.06px"
