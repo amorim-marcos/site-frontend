@@ -44,17 +44,21 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
       />
 
     {/* INICIO BANNER CAROUSEL */}
-    <Flex
-        maxWidth="1536px"
-        marginX="auto"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        // bg="blue"
-      >
-      <CarrouselBP images={props.carrouselImages} />
-    </Flex>
+    <Box
+      bg="brown.100"
+    >
+      <Flex
+          maxWidth="1536px"
+          marginX="auto"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          // bg="blue"
+        >
+        <CarrouselBP images={props.carrouselImages} />
+      </Flex>
+    </Box>
     {/* FIM BANNER CAROUSEL */}
 
     {/* INICIO BANNER COLECAO */}
@@ -68,9 +72,9 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
       // bg="red"
     >
       <Grid
-        h={{ base: '900px', sm: '500px', lg: '600px', xl: '600px' }}
-        w={{ base: '90%', sm: '93%', lg: '93%', xl: '93%' }}
-        margin={{ base: '5%', sm: '3% 3%', lg: '3% 3%', xl: '3% 3%' }}
+        h={{ base: '700px', sm: '500px', lg: '400px', xl: '500px' }}
+        w={{ base: '100%', xl: '100%' }}
+        margin={{ base: '5% 0', sm: '3% 1%', lg: '3% 3%', xl: '3% 2%' }}
         templateRows={{
           base: 'repeat(4, 1fr)',
           sm: 'repeat(3, 1fr)',
@@ -113,12 +117,13 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             titleColor="brown.300"
             imgSrc="../img/banner_nomade.png"
             ArrowIconColor="#74675D"
+            bgColor = "brown.100"
           />
         </GridItem>
         <GridItem
           rowSpan={1}
           colSpan={{ base: '1', sm: '1', lg: '1', xl: '1' } as any}
-          bg="blue"
+          // bg="blue"
         >
           <BannerCollections
             onClick={() =>
@@ -126,16 +131,19 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             }
             title="Conheça"
             titleColor="green.700"
-            imgSrc="../img/banner_origens.png"
+            imgSrc="../img/banner_origens.jpg"
             ArrowIconColor="#0A6C3B"
+            bgColor = "rgb(231, 231, 231)"
           />
         </GridItem>
       </Grid>
     </Flex>
       {/* FIM BANNER COLECAO */}
 
-      {/* INICIO Galeria de Ambientes */}
 
+
+      {/* INICIO Galeria de Ambientes */}
+      {props.galleries && props.galleries.length > 0 && (
       <Flex
         flexDirection={'column'}
         bg="green.200"
@@ -210,7 +218,6 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
                   w="100%"
                   h={{
                     base: '100vw',
-
                     md: '325px',
                     lg: '406px',
                     xl: '488px',
@@ -233,15 +240,27 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           </CarouselMultiElements>
         )}
       </Flex>
-
+      )}
       {/* FIM Galeria de Ambientes */}
+
+
+
+    {/* INICIO banners */}
+    <Flex
+      justifyContent={{ base: 'center', '2xl': 'center' }}
+    >
+      
       <Flex
         maxWidth={'1536px'}
         marginX="auto"
         bg="white.100"
-        padding="5%"
-        justifyContent={'space-between'}
-        flexDirection={{ base: 'column', md: 'row' }}
+        margin={{ base: '5% 0', sm: '3% 1%', lg: '3% 3%', xl: '3% 2%' , '2xl': '0 0 5% 0' }}
+        justifyContent={{ base: 'space-between', '2xl': 'center' }}
+        gap={{ base: '2%', sm: '3%', lg: '3%', xl: '3%' }}
+        flexDirection={{ base: 'column', sm: 'row' }}
+        // bg="violet"
+        flex="1"
+            
       >
         {[
           {
@@ -250,7 +269,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             title: 'Pack de Padrões BP BERNECK',
             anchorId: 'pack-bp-downloads',
             subtTitle: 'FAÇA O DOWNLOAD',
-            subTitleColor: 'green.800'
+            subTitleColor: 'gray.400'
           },
           {
             srcImg: '/assets/imgs/pagina_capa_bp/revista_inspirare.png',
@@ -276,7 +295,8 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               }
               w={{ base: '100%', md: '30%' }}
               h={{
-                base: '100vw',
+                base: '50vw',
+                sm: '50vw',
                 md: '225px',
                 lg: '282px',
                 xl: '338px',
@@ -295,11 +315,12 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               <Text
                 zIndex={'docked'}
                 color={i.subTitleColor}
-                variant={'larger-body' as any}
+                variant={'h5' as any}
+                fontWeight={'normal'}
               >
                 {i.subtTitle}
               </Text>
-              <Text zIndex={'docked'} as="h3" variant={'h3' as any}>
+              <Text zIndex={'docked'} as="h3" variant={'h3' as any} fontWeight={'bold'}>
                 {i.title}
               </Text>
               <Box
@@ -318,23 +339,27 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           )
         })}
       </Flex>
+    </Flex>
+  {/* FIM banners */}
+
+
     </Box>
   )
 }
 
-const PanelImage = (props: { imageSrc: string }) => (
-  <Flex w="100vw" h={{ base: '100%' }}>
-    <Image
-      h="100%"
-      w="100%"
-      src={props.imageSrc}
-      cursor={{ md: 'pointer' }}
-      objectFit="cover"
-      userSelect="none"
-      draggable="false"
-    />
-  </Flex>
-)
+// const PanelImage = (props: { imageSrc: string }) => (
+//   <Flex w="100vw" h={{ base: '100%' }}>
+//     <Image
+//       h="100%"
+//       w="100%"
+//       src={props.imageSrc}
+//       cursor={{ md: 'pointer' }}
+//       objectFit="cover"
+//       userSelect="none"
+//       draggable="false"
+//     />
+//   </Flex>
+// )
 
 interface CarrouselBPProps extends FlexProps {
   images: string[]
@@ -368,22 +393,25 @@ const CarrouselBP = ({ images }: CarrouselBPProps) => {
       zIndex="base"
       overflowY="hidden"
       overflowX="hidden"
-      h={{
-        base: '130vw',
-        md: '405px',
-        lg: '506px',
-        xl: '608px',
-        '2xl': '760px'
-      }}
-      bg="brown.100"
+      // h={{
+      //   base: '130vw',
+      //   md: '405px',
+      //   lg: '506px',
+      //   xl: '608px',
+      //   '2xl': '760px'
+      // }}
+      bg="green.100"
     >
-      <Flex w="100%" h="100%">
+      <Flex 
+        // w="100%" 
+        // h="100%"
+      >
         <Image
           opacity={imageVisibility ? '1' : '0'}
           transition={'0.3s'}
           w="100%"
           h="100%"
-          objectFit={'cover'}
+          // objectFit={'cover'}
           src={images.length > 0 ? images[currentImage] : ''}
         />
       </Flex>
