@@ -61,7 +61,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     id: envFetch.id,
     imgSrc: envFetch.gallery_of_images.map((img: any) => `${url}${img.url}`),
     title: envFetch.ambient_type.type,
-    subTitle: envFetch.place,
+    subTitle: envFetch.title,
     panels: envFetch.products.map((product: any) => {
       return {
         id: product.id,
@@ -82,7 +82,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         url_code: env.url_code,
         imgSrc: `${url}${env.gallery_of_images[0].url}`,
         title: env.ambient_type.type,
-        subTitle: env.place
+        subTitle: env.title
       }
     })
 

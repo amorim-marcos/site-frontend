@@ -45,7 +45,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
 
     {/* INICIO BANNER CAROUSEL */}
     <Box
-      bg="brown.100"
+      bg="brown.300"
     >
       <Flex
           maxWidth="1536px"
@@ -400,7 +400,7 @@ const CarrouselBP = ({ images }: CarrouselBPProps) => {
       //   xl: '608px',
       //   '2xl': '760px'
       // }}
-      bg="green.100"
+      // bg="green.100"
     >
       <Flex 
         // w="100%" 

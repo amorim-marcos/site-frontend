@@ -59,14 +59,14 @@ export const Env = ({
           </Flex>
 
           <Flex flex={'1'}>
-            <Text
+            {/* <Text
               as={'h5'}
               variant={'h5'}
               fontWeight="medium"
               color={'gray.300'}
             >
               {place}
-            </Text>
+            </Text> */}
           </Flex>
         </Flex>
       </Flex>
