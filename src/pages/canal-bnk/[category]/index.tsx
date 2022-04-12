@@ -58,7 +58,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     posts = allPosts.map((item: { cover: { url: string } }) => {
       return {
         ...item,
-        cover: process.env.NEXT_PUBLIC_API_URL + item.cover.url
+        cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url
       }
     })
   }
