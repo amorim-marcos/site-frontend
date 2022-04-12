@@ -87,13 +87,9 @@ export default function Connect() {
             >
               {width && (
                 <Box
-                  className="fb-page"
-                  data-href="https://www.facebook.com/BerneckSA/"
-                  data-width={isMobile ? '300px' : '420px'}
-                  data-small-header="false"
-                  data-adapt-container-width={true}
-                  data-hide-cover="false"
-                  data-show-facepile="false"
+                  h={isMobile ? '572px' : '920px'}
+                  w="100%"
+                  bgColor="green.200"
                 />
               )}
             </SocialNetwork>
