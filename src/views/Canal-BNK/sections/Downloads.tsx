@@ -20,9 +20,9 @@ export const Downloads = () => {
         link: '/canal-bnk/downloads'
       }}
       py={{ base: '54px', lg: '100px' }}
-      px={{ base: '20px', lg: '5%', '2xl':'3%' }}
+      px={{ base: '20px', lg: '5%', '2xl': '3%' }}
       overflow="hidden"
-      maxWidth={"1536px"}
+      maxWidth={'1536px'}
     >
       {!isMobile &&
         (currentCategory === -1 ? (
@@ -33,11 +33,7 @@ export const Downloads = () => {
             gap="34px"
             direction="column"
           >
-            <Flex 
-              w="100%" 
-              gap="34px" 
-              px={{ base: '0', lg: '3%', '2xl': '0' }}
-            >
+            <Flex w="100%" gap="34px" px={{ base: '0', lg: '3%', '2xl': '0' }}>
               <DownloadColorPanel
                 title="Revista Inspirare BNK"
                 colorPanel="brown"
@@ -55,11 +51,7 @@ export const Downloads = () => {
               />
             </Flex>
 
-            <Flex 
-              w="100%" 
-              gap="34px" 
-              px={{ base: '0', lg: '3%', '2xl': '0' }}
-            >
+            <Flex w="100%" gap="34px" px={{ base: '0', lg: '3%', '2xl': '0' }}>
               <DownloadColorPanel
                 title="Relatórios"
                 colorPanel="gray"
@@ -86,11 +78,7 @@ export const Downloads = () => {
               />
             </Flex>
 
-            <Flex 
-              w="100%" 
-              gap="34px" 
-              px={{ base: '0', lg: '3%', '2xl': '0' }}
-            >
+            <Flex w="100%" gap="34px" px={{ base: '0', lg: '3%', '2xl': '0' }}>
               <DownloadColorPanel
                 flex={2}
                 title="Pack de Padrões BP BERNECK®"
@@ -133,7 +121,7 @@ export const Downloads = () => {
 
       {currentCategory === -1 ? (
         <Flex
-          display={{ base: 'flex', md: 'none' }}
+          display={{ base: 'flex', lg: 'none' }}
           data-testid="downloads"
           pt="65px"
           gap="34px"
@@ -223,7 +211,7 @@ const DownloadColorPanel = (props: DownloadColorPanelProps) => {
 
         <Text
           as="h2"
-          variant={'h2' as any}
+          variant="h2"
           fontWeight="extrabold"
           letterSpacing="-0.68px"
           color={colorPanel === 'brown' ? 'white' : 'green.800'}
