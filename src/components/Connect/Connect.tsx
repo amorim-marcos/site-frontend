@@ -112,14 +112,9 @@ export default function Connect() {
             <Flex direction="column" gap="24px" align="center" w="100%">
               {width && (
                 <Box
-                  className="fb-page"
-                  data-href="https://www.facebook.com/BerneckSA"
-                  data-tabs="timeline"
-                  data-height={isMobile ? '572px' : '920px'}
-                  data-adapt-container-width={true}
-                  data-small-header="true"
-                  data-hide-cover="false"
-                  data-show-facepile="true"
+                  h={isMobile ? '572px' : '920px'}
+                  w="100%"
+                  bgColor="green.200"
                 />
               )}
 
