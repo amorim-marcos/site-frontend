@@ -17,6 +17,8 @@ import useMobile from 'hooks/useMobile'
 import { FiltersAccordion } from './FiltersAccordion'
 import { FiltersTabs } from './FiltersTab'
 import { Env } from './Env'
+import { useRouter } from 'next/router'
+import { env } from 'process'
 
 export type ValidFilterNames = 'bps' | 'ambients' | 'styles'
 
@@ -64,6 +66,7 @@ export const EnvGallery = ({
   const [filtersEmpty, setFiltersEmpty] = useState(true)
   const { isMobile } = useMobile(1024)
   const [pagination, setPagination] = useState(1)
+  const router = useRouter()
 
   function changeFilterPanel(newFilterPanel: FilterPanelName) {
     setCurrentFilterPanel(
@@ -165,6 +168,28 @@ export const EnvGallery = ({
       setFiltersEmpty(false)
     }
   }, [filters])
+
+  useEffect(() => {
+    if (router.query.ambients) {
+      const itemFilter = filtersContext.ambients.find(
+        (item) => item.title === router.query.ambients
+      )
+      if (typeof itemFilter !== 'undefined') {
+        appendFilter('ambients', itemFilter.code as any)
+
+        setFilteredEnvs(
+          applyFilters(
+            {
+              ...filters,
+              ['ambients']: [itemFilter.code as any]
+            },
+            envs
+          )
+        )
+        changeFilterPanel('ambients')
+      }
+    }
+  }, [router.query])
 
   const ref = useRef<HTMLDivElement>(null)
 
