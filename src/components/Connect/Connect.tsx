@@ -73,57 +73,58 @@ export default function Connect() {
             md: 'row'
           }}
         >
-          <SocialNetwork
-            title="FACEBOOK"
-            icon={
-              <SocialIcon
-                media="facebook"
-                width="51px"
-                height="51px"
-                color="#59993F"
-              />
-            }
-          >
-            {width && (
-              <Box
-                className="fb-page"
-                data-href="https://www.facebook.com/BerneckSA"
-                data-tabs="timeline"
-                data-height={isMobile ? '867px' : '1007px'}
-                data-adapt-container-width={true}
-                data-small-header="true"
-                data-hide-cover="false"
-                data-show-facepile="true"
-              />
-            )}
-          </SocialNetwork>
-
-          <SocialNetwork
-            title="INSTAGRAM"
-            icon={
-              <SocialIcon
-                media="instagram"
-                width="51px"
-                height="51px"
-                color="#59993F"
-              />
-            }
-          >
-            <Flex direction="column" gap="24px" align="center" w="100%">
+          <Flex gap="70px" direction="column">
+            <SocialNetwork
+              title="FACEBOOK"
+              icon={
+                <SocialIcon
+                  media="facebook"
+                  width="51px"
+                  height="51px"
+                  color="#59993F"
+                />
+              }
+            >
               {width && (
                 <Box
-                  h={isMobile ? '572px' : '920px'}
-                  w="100%"
-                  bgColor="green.200"
+                  className="fb-page"
+                  data-href="https://www.facebook.com/BerneckSA/"
+                  data-width={isMobile ? '300px' : '420px'}
+                  data-small-header="false"
+                  data-adapt-container-width={true}
+                  data-hide-cover="false"
+                  data-show-facepile="false"
                 />
               )}
+            </SocialNetwork>
 
-              <FollowButton
-                text="SIGA-NOS NO INSTAGRAM"
-                link="https://www.instagram.com/berneckoficial/"
-              />
-            </Flex>
-          </SocialNetwork>
+            <SocialNetwork
+              title="INSTAGRAM"
+              icon={
+                <SocialIcon
+                  media="instagram"
+                  width="51px"
+                  height="51px"
+                  color="#59993F"
+                />
+              }
+            >
+              <Flex direction="column" gap="24px" align="center" w="100%">
+                {width && (
+                  <Box
+                    h={isMobile ? '572px' : '638.5px'}
+                    w="100%"
+                    bgColor="green.200"
+                  />
+                )}
+
+                <FollowButton
+                  text="SIGA-NOS NO INSTAGRAM"
+                  link="https://www.instagram.com/berneckoficial/"
+                />
+              </Flex>
+            </SocialNetwork>
+          </Flex>
 
           <SocialNetwork
             title="LINKEDIN"
@@ -215,7 +216,7 @@ const SocialNetwork = (props: {
 }) => (
   <Flex
     h="100%"
-    w={{ xs: '300px', lg: '310px', '2xl': '320px' }}
+    w={{ xs: '350px', lg: '370px', '2xl': '450px' }}
     direction="column"
     gap="30px"
     align="flex-start"
