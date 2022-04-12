@@ -66,9 +66,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         },
         content: DOMPurify.sanitize(item.content).replace(
           '/uploads',
-          `${process.env.NEXT_PUBLIC_API_URL}/uploads`
+          `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}/uploads`
         ),
-        cover: process.env.NEXT_PUBLIC_API_URL + item.cover.url,
+        cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url,
         tags: item.tags.map((j) => ({
           Tag: j.tag
         })),
@@ -87,7 +87,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       color: currentPost.category.color
     },
     content: DOMPurify.sanitize(currentPost.content),
-    cover: process.env.NEXT_PUBLIC_API_URL + currentPost.cover.url,
+    cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + currentPost.cover.url,
     tags: currentPost.tags.map((j) => ({
       Tag: j.tag
     })),
