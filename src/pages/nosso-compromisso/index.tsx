@@ -25,17 +25,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   if (page_content.sustainability_report) {
     page_content.sustainability_report.url =
-      process.env.NEXT_PUBLIC_API_URL + page_content.sustainability_report.url
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.sustainability_report.url
   }
 
   if (page_content.ethical_code) {
     page_content.ethical_code.url =
-      process.env.NEXT_PUBLIC_API_URL + page_content.ethical_code.url
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.ethical_code.url
   }
 
   if (page_content.esg_report_file) {
     page_content.esg_report_file.url =
-      process.env.NEXT_PUBLIC_API_URL + page_content.esg_report_file.url
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.esg_report_file.url
   }
 
   return {
