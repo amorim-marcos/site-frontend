@@ -47,7 +47,7 @@ export default function HdfBerneckPage(props: HdfBerneckPageProps) {
           thickness: props.page_content.hdf_berneck.thickness
         },
         technical_sheet:
-          process.env.NEXT_PUBLIC_API_URL +
+          process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
           props.page_content.hdf_berneck.technical_sheet.url
       }}
       hdf_plus={{
@@ -67,7 +67,7 @@ export default function HdfBerneckPage(props: HdfBerneckPageProps) {
           thickness: props.page_content.hdf_berneck_plus.thickness
         },
         technical_sheet:
-          process.env.NEXT_PUBLIC_API_URL +
+          process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
           props.page_content.hdf_berneck_plus.technical_sheet.url
       }}
     />

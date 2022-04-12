@@ -29,7 +29,7 @@ export default function MdfBerneckPage(props: MdfBerneckPageProps) {
           thickness: props.page_content.mdf_berneck.thickness
         },
         technical_sheet:
-          process.env.NEXT_PUBLIC_API_URL +
+          process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
           props.page_content.mdf_berneck.technical_sheet.url
       }}
       mdf_plus={{
@@ -49,7 +49,7 @@ export default function MdfBerneckPage(props: MdfBerneckPageProps) {
           thickness: props.page_content.mdf_berneck_plus.thickness
         },
         technical_sheet:
-          process.env.NEXT_PUBLIC_API_URL +
+          process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
           props.page_content.mdf_berneck_plus.technical_sheet.url
       }}
     />
