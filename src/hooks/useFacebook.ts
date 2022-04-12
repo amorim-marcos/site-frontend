@@ -17,6 +17,7 @@ const useFacebook = () => {
       Facebook.init({
         appId: process.env.FACEBOOK_APP_ID,
         status: false,
+        cookie: false,
         xfbml: true,
         autoLogAppEvents: false,
         version: 'v13.0'
