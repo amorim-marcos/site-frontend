@@ -29,7 +29,7 @@ export default function MdpBerneckPage(props: MdpBerneckPageProps) {
           thickness: props.page_content.mdp_berneck.thickness
         },
         technical_sheet:
-          process.env.NEXT_PUBLIC_API_URL +
+          process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
           props.page_content.mdp_berneck.technical_sheet.url
       }}
       mdp_plus={{
@@ -49,7 +49,7 @@ export default function MdpBerneckPage(props: MdpBerneckPageProps) {
           thickness: props.page_content.mdp_berneck_plus.thickness
         },
         technical_sheet:
-          process.env.NEXT_PUBLIC_API_URL +
+          process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
           props.page_content.mdp_berneck_plus.technical_sheet.url
       }}
     />

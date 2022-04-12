@@ -64,9 +64,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             },
             content: DOMPurify.sanitize(item.content).replace(
               '/uploads',
-              `${process.env.NEXT_PUBLIC_API_URL}/uploads`
+              `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}/uploads`
             ),
-            cover: process.env.NEXT_PUBLIC_API_URL + item.cover.url,
+            cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url,
             tags: item.tags.map((j) => ({
               Tag: j.tag
             })),
