@@ -3,8 +3,6 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from '../src/theme/theme'
 import { i18n } from './i18next.js'
 
-import 'leaflet/dist/leaflet.css'
-
 export const parameters = {
   nextRouter: {
     Provider: RouterContext.Provider
