@@ -67,10 +67,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
               list.push({
                 ...element,
                 image: {
-                  url: process.env.NEXT_PUBLIC_API_URL + element.image.url
+                  url: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + element.image.url
                 },
                 file: {
-                  url: process.env.NEXT_PUBLIC_API_URL + element.file.url
+                  url: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + element.file.url
                 }
               })
           }
