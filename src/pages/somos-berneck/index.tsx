@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       content: {
         title: year.title,
         text: year.description,
-        image: process.env.NEXT_PUBLIC_API_URL + year.image.url
+        image: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + year.image.url
       }
     }
   })
@@ -111,7 +111,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         state: item.state,
         country: item.country,
         inaugurationSoon: item.inauguration_soon,
-        image: (item.image === null )? null : process.env.NEXT_PUBLIC_API_URL + item.image.url
+        image: (item.image === null )? null : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.image.url
       }
     }
   )
