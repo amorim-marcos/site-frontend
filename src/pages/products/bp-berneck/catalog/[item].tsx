@@ -55,7 +55,7 @@ export default function CatalogItem(props: CatalogItemProps) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { item } = ctx.query
-  const url = process.env.NEXT_PUBLIC_API_URL
+  const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
   const productFetch = await strapiClient({
     defaultOnEmpty: true,
