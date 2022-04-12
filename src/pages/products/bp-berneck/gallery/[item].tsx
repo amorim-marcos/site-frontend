@@ -40,7 +40,7 @@ export default function GalleryItem(props: GalleryItemProps) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { item } = ctx.query
-  const url = process.env.NEXT_PUBLIC_API_URL
+  const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
   let envFetch = await strapiClient({
     defaultOnEmpty: true,
