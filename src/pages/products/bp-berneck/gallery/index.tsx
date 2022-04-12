@@ -40,7 +40,7 @@ export default function Gallery(props: GalleryProps) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const queryAmbients = ctx.query.ambients
-  const url = process.env.NEXT_PUBLIC_API_URL
+  const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
   let ambientTypes: GalleryProps['filtersContext']['styles'] =
     await strapiClient({
