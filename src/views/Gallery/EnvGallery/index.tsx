@@ -198,6 +198,11 @@ export const EnvGallery = ({
           }
         ]}
       />
+    
+    <Box
+      bg="white.100"
+    >
+
       <Container
         backgroundColor="white.100"
         maxW="1536px"
@@ -288,7 +293,7 @@ export const EnvGallery = ({
                         <Env
                           href={`/products/bp-berneck/gallery/${env.url_code}`}
                           title={env.title}
-                          place={env.name}
+                          place={env.subTitle}
                           image_url={env.image_url}
                         />
                       </GridItem>
@@ -330,6 +335,8 @@ export const EnvGallery = ({
         </Container>
         <Box marginTop={{ base: '0', md: '300px' }} ref={ref}></Box>
       </Container>
+    
+    </Box>
     </>
   )
 }

@@ -31,22 +31,15 @@ export const BP = ({
             transform: 'scale(1.01)'
           }}
         />
-        <Text
-          pt="13px"
-          flex={1}
-          fontSize={{
-            base: '16px',
-            sm: '20px',
-            md: '24px',
-            lg: '21px',
-            xl: '22px',
-            '2xl': '24px'
-          }}
-          variant={'body-bold' as any}
-        >
+         <Text as={'h4'} variant={'h4'} fontWeight="bold" color={'gray.300'}>
           {name}
         </Text>
-        <Text flex={1} fontSize={{ base: '13px', lg: '16px', '2xl': '18px' }}>
+        <Text
+              as={'h5'}
+              variant={'h5'}
+              fontWeight="medium"
+              color={'gray.300'}
+            >
           {product_texture}
         </Text>
       </Flex>

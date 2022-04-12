@@ -47,7 +47,10 @@ export const EnvView = ({
   const router = useRouter()
 
   return (
-    <Box maxWidth={'1536px'} marginX="auto">
+    <Box 
+      marginX="auto"
+      bg="white.200"
+    >
       <Pagebar
         paths={[
           {
@@ -67,11 +70,14 @@ export const EnvView = ({
       <Flex
         flexDirection={'column'}
         maxWidth={'1536px'}
-        padding="5%"
+        mt="2%"
         marginX="auto"
       >
-        <CompletedTitle titleString={env.title} alignSelf={'left'} />
-        <Text
+          <CompletedTitle 
+            titleString={env.subTitle} 
+            alignSelf={'left'}
+          />
+        {/* <Text
           as={'h3'}
           variant={'h3'}
           fontWeight="extrabold"
@@ -79,7 +85,7 @@ export const EnvView = ({
           marginY={'3%'}
         >
           {env.subTitle}
-        </Text>
+        </Text> */}
 
         <Box bg="white.200" w="100%">
           <CarouselMultiElements numberOfEvidenceElements={1}>
