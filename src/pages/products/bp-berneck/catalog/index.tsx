@@ -42,7 +42,7 @@ export default function BpBerneck(props: BpBerneckProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const url = process.env.NEXT_PUBLIC_API_URL
+  const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
   let bps: BpBerneckProps['bps'] = await strapiClient({
     defaultOnEmpty: true,
