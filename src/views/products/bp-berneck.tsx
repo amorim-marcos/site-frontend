@@ -144,9 +144,13 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
 
       {/* INICIO Galeria de Ambientes */}
       {props.galleries && props.galleries.length > 0 && (
+
+    <Box
+      bg="green.1000"
+    >
       <Flex
         flexDirection={'column'}
-        bg="green.200"
+        bg="green.1000"
         maxWidth={'1536px'}
         marginX="auto"
         paddingTop={'5%'}
@@ -240,7 +244,9 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           </CarouselMultiElements>
         )}
       </Flex>
+      </Box>
       )}
+ 
       {/* FIM Galeria de Ambientes */}
 
 
@@ -254,7 +260,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
         maxWidth={'1536px'}
         marginX="auto"
         bg="white.100"
-        margin={{ base: '5% 0', sm: '3% 1%', lg: '3% 3%', xl: '3% 2%' , '2xl': '0 0 5% 0' }}
+        margin={{ base: '5% 0', sm: '3% 1%', lg: '3% 3%', xl: '3% 2%' , '2xl': '5% 0 5% 0' }}
         justifyContent={{ base: 'space-between', '2xl': 'center' }}
         gap={{ base: '2%', sm: '3%', lg: '3%', xl: '3%' }}
         flexDirection={{ base: 'column', sm: 'row' }}
