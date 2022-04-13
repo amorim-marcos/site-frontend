@@ -1,66 +1,30 @@
-import {
-  Flex,
-  Box,
-  Text,
-  Link,
-  FlexProps,
-  TextProps,
-  Image
-} from '@chakra-ui/react'
-import { Arrow, CalendarIcon, SocialIcon } from '@components/Icons'
-import { Post as IPost } from 'types/data'
-import { Category } from 'types/data/Post'
-import { useContext } from 'react'
-import { CategoryContext } from 'views/Canal-BNK'
+import { useState, useContext } from 'react'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
-import { smartDate } from 'utils/utils'
+
+import { Flex, Box, Text, FlexProps, Image } from '@chakra-ui/react'
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
 
-import { Wrapper } from '@components/PostBody/styles'
+import { Arrow, CalendarIcon, SocialIcon } from '@components/Icons'
+import { CategoryContext } from 'views/Canal-BNK'
+
+import { Post as IPost } from 'types/data'
+import { Category } from 'types/data/Post'
+import { smartDate } from 'utils/utils'
 
 function getPanelColor(i: number) {
-  if (i === 2) {
-    return '#89BA81'
-  }
-
-  if (i === 0) {
-    return '#F0E4D1'
-  }
-
-  if (i === 1) {
-    return '#D6DCD5'
-  }
-
-  return 'white'
+  return i <= 2 ? ['#F0E4D1', '#D6DCD5', '#89BA81'][i] : 'white'
 }
 
 function getAccentColor(i: number) {
-  if (i === 2) {
-    return '#429C2E'
-  }
-
-  if (i === 0) {
-    return '#E0CBA5'
-  }
-
-  if (i === 1) {
-    return '#B9C3B8'
-  }
-
-  return 'white'
+  return i <= 2 ? ['#E0CBA5', '#B9C3B8', '#429C2E'][i] : 'white'
 }
 
 export interface PostProps extends FlexProps {
   post?: IPost
   categoryPage?: Category
   showDate?: boolean
-  showPreview?: boolean
   showShareOptions?: boolean
   imgPos?: 'top' | 'left' | 'right' | 'bottom'
-  titleTextProps?: TextProps
-  previewTextProps?: TextProps
-  categoryTextProps?: TextProps
 }
 
 export const Post = (props: PostProps) => {
@@ -74,39 +38,11 @@ export const Post = (props: PostProps) => {
     categoryPage = 'all',
     imgPos = 'top',
     showDate,
-    showPreview,
     showShareOptions,
-    titleTextProps,
-    previewTextProps,
-    categoryTextProps,
     ...rest
   } = props
 
-  function getPanelColor(i: number) {
-    if (i === 2) {
-      return '#89BA81'
-    }
-  
-    if (i === 0) {
-      return '#F0E4D1'
-    }
-  
-    if (i === 1) {
-      return '#D6DCD5'
-    }
-  
-    return 'white'
-  }
-
   const getSocialIconHoverColor = () => {
-    const index = categories.findIndex(
-      (item) => item.name === post?.category.name
-    )
-    if (categoryPage === 'all') return getAccentColor(index)
-    else return currentCategory === 2 ? 'white' : '#595959'
-  }
-
-  const getCalendarColor = () => {
     const index = categories.findIndex(
       (item) => item.name === post?.category.name
     )
@@ -140,8 +76,14 @@ export const Post = (props: PostProps) => {
       cursor="pointer"
       bg={getPanelColor(currentCategory)}
       {...rest}
-      margin={{ base: '5%', md: '3%', lg: '3.5%', xl: '4.2%', '2xl': (showDate)? '5% 2% 0% 0%' : '0% 2% 0% 0%' }}
-      w={{ base: '90%', '2xl': (showDate)? '70%' : '90%' }}
+      margin={{
+        base: '5%',
+        md: '3%',
+        lg: '3.5%',
+        xl: '4.2%',
+        '2xl': showDate ? '5% 2% 0% 0%' : '0% 2% 0% 0%'
+      }}
+      w={{ base: '90%', '2xl': showDate ? '70%' : '90%' }}
       onMouseEnter={() => setMouseDown(true)}
       onMouseLeave={() => setMouseDown(false)}
     >
@@ -156,32 +98,17 @@ export const Post = (props: PostProps) => {
         zIndex="base"
         overflowY="hidden"
         overflowX="hidden"
-        // maxH={"700px"}
-
       >
-        <Image 
-          src={post?.cover} 
-          // w={'100%'} 
-          // h={'100%'}
-        />
+        <Image src={post?.cover} />
       </Flex>
 
       {/* box content */}
-      <Flex
-        // w={'60%'}
-        // bg="yellowgreen"
-        direction="column"
-        flex="1"
-        // bg={getPanelColor(currentCategory)}
-        
-      >
+      <Flex direction="column" flex="1">
         <Flex
-          // bg="cyan"
           flex="1"
           direction={{ base: 'column', md: 'row' }}
           justifyContent={{ base: 'start', md: 'end' }}
           alignContent={{ base: 'start', md: 'end' }}
-          
         >
           <Flex
             data-testid="post-category"
@@ -192,7 +119,6 @@ export const Post = (props: PostProps) => {
             }}
             align="start"
             flex="1"
-            // bg="tomato"
           >
             <Arrow
               color={getHoverIndicatorColor()}
@@ -205,7 +131,7 @@ export const Post = (props: PostProps) => {
             />
             <Text
               as="h5"
-              variant={'h5' as any}
+              variant="h5"
               textColor={'black'}
               letterSpacing={{
                 base: '2px',
@@ -227,7 +153,6 @@ export const Post = (props: PostProps) => {
               justifyContent={{ base: 'start', md: 'end' }}
               alignContent={{ base: 'start', md: 'end' }}
               flex="1"
-              // bg="pink"
               margin={{
                 base: '0px 0px 0px 10px',
                 md: '0px 15px 0px 15px',
@@ -236,8 +161,7 @@ export const Post = (props: PostProps) => {
             >
               <Text
                 as="h5"
-                variant={'h5' as any}
-                // textColor = {"black"}
+                variant="h5"
                 fontSize={{ base: '11px', sm: '13px', lg: '14px', xl: '16px' }}
                 letterSpacing={{
                   base: '2px',
@@ -251,13 +175,10 @@ export const Post = (props: PostProps) => {
                 }}
                 color={currentCategory === 2 ? 'white' : 'gray.350'}
               >
-                {/* {post?.date && new Date(post?.date).toLocaleDateString()} */}
                 {smartDate(post?.date, 'PT-BR')}
               </Text>
 
-              <Box
-              // pb="3px"
-              >
+              <Box>
                 <CalendarIcon
                   w="29px"
                   h="27px"
@@ -272,13 +193,12 @@ export const Post = (props: PostProps) => {
         {/* Title Post */}
         <Flex
           pb={showShareOptions ? '18px' : '45px'}
-          // bg= "blue"
           flex="1"
           margin={{ base: '10px', lg: '10px', xl: '20px' }}
         >
           <Text
             as="h3"
-            variant={'h3' as any}
+            variant="h3"
             color="green.900"
             fontWeight="bold"
             lineHeight={{
@@ -291,7 +211,6 @@ export const Post = (props: PostProps) => {
             {post?.title}
           </Text>
         </Flex>
-
 
         {/* Share Buttons Icons */}
         {showShareOptions && (
@@ -328,23 +247,10 @@ export const Post = (props: PostProps) => {
                 hoverColor={getSocialIconHoverColor()}
               />
             </TwitterShareButton>
-
-            {/* <Link onClick={() => alert('/')}>
-              <SocialIcon
-                media="whatsapp"
-                width="38px"
-                height="38px"
-                color={currentCategory === 2 ? 'white' : 'gray.350'}
-                hoverColor={getSocialIconHoverColor()}
-              />
-            </Link> */}
           </Flex>
         )}
 
-        <Flex
-          // bg="gray.200"
-          flex="1"
-        >
+        <Flex flex="1">
           {/* Box hover-indicator */}
           <Box
             transition={'0.5s'}
