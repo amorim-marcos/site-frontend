@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next'
 import {
-  DownlodasView,
-  DownloadItem
+  DownlodasView
 } from 'views/Canal-BNK/Downloads/DownloadsView'
 
 type DownloadsItemProps = {
@@ -121,7 +120,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           }
         }
       })
-      return { items: list.sort((a,b) => a.title.localeCompare(b.title) * -1), ...i }
+      return { items: list.sort((a,b) => a.title.localeCompare(b.title) * -1), ...i } as DownloadItem
     })
   }
 

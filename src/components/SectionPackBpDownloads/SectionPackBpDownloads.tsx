@@ -1,7 +1,7 @@
 import { Flex, Box, Text, Button, Image, Link } from '@chakra-ui/react'
 import useMobile from 'hooks/useMobile'
 
-type SectionPackBpDownloadsProps = {
+export type SectionPackBpDownloadsProps = {
   title: string,
   text: string,
   download_url: string | null
