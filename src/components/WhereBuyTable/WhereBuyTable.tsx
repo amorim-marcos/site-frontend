@@ -24,7 +24,7 @@ const cellBodyStyle: FlexProps = {
 export const WhereBuyTable = () => {
   const { isMobile } = useMobile(768)
   return (
-    <Flex w="100%" maxWidth={'1536px'} flexDirection={'column'}>
+    <Flex w="100%" maxWidth={'1536px'} flexDirection={'column'} marginX="auto">
       <Flex bg="green.400" w="100%">
         <Flex {...cellStyle} w="10%">
           <Text variant={'body' as any}>PAÍS</Text>
