@@ -3,6 +3,19 @@ import styled from 'styled-components'
 export const Wrapper = styled.main`
   @media (min-width: 0px) {
     //base
+    .video-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 20px 0 20px;
+    }
+
+    iframe {
+      align-self: center;
+      width: 70%;
+      height: 400px;
+    }
 
     a {
       color: #59993f;

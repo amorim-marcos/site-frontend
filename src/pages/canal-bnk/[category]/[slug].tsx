@@ -86,7 +86,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       description: currentPost.category.description,
       color: currentPost.category.color
     },
-    content: DOMPurify.sanitize(currentPost.content),
+    content: DOMPurify.sanitize(currentPost.content, {
+      ADD_TAGS: ['oembed', 'figure'],
+      ADD_ATTR: ['url', 'allow', 'allowfullscreen', 'frameborder', 'scrolling']
+    }),
     cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + currentPost.cover.url,
     tags: currentPost.tags.map((j) => ({
       Tag: j.tag
