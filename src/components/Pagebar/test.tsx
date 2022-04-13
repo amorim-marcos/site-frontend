@@ -10,10 +10,10 @@ describe('<Pagebar />', () => {
     })
   })
 
-  it('should render the house icon', () => {
-    renderWithTheme(<Pagebar />)
-    expect(screen.getByLabelText(/house-icon/i).parentElement).toBeTruthy()
-  })
+  // it('should render the house icon', () => {
+  //   renderWithTheme(<Pagebar />)
+  //   expect(screen.getByLabelText(/house-icon/i).parentElement).toBeTruthy()
+  // })
 
   it('should render the pagebar grafism', () => {
     renderWithTheme(<Pagebar />)

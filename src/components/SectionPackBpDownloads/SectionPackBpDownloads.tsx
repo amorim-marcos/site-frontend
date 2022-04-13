@@ -44,7 +44,7 @@ export const SectionPackBpDownloads = () => {
             right="0"
             top={{ base: '0', md: '0' }}
             src="/img/pack_bp_downlodas.png"
-            flexShrink="0"
+            flexShrink={0}
             objectFit="cover"
           />
         </Box>
@@ -56,7 +56,7 @@ export const SectionPackBpDownloads = () => {
           alignItems="center"
           textAlign={'center'}
         >
-          <Text  as="h3" variant={'h3' as any}>
+          <Text as="h3" variant={'h3' as any}>
             Pack de Padrões BP BERNECK®
           </Text>
           <Text
