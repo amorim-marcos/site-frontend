@@ -1,39 +1,63 @@
 import { GetStaticProps } from 'next'
 import {
-  DownlodasView,
-  DownloadItem
+  DownlodasView
 } from 'views/Canal-BNK/Downloads/DownloadsView'
 
-export type DonwloadsPageProps = {
-  page_content: DownloadItem[]
-}
-export default function DownloadsPage(props: DonwloadsPageProps) {
-  return <DownlodasView items={props.page_content} />
+type DownloadsItemProps = {
+  download_type: { type: string }
+  title: string
+  id: number
+  image: {
+    url: string
+  }
+  file: {
+    url: string
+  }
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  type DownloadsItemProps = {
-    download_type: { type: string }
-    title: string
+export type DownloadItem = {
+  id: number
+  type: string
+  description: string
+  items: {
+    description: string
     id: number
+    title: string
     image: {
       url: string
     }
     file: {
       url: string
     }
-  }
+    download_type: {
+      description: string
+      id: number
+      type: string
+    }
+  }[]
+}
 
-  type PageContentProps = {
-    id: number
-    type: string
-    items: DownloadsItemProps[]
-  }
+type PageContent = {
+  title: string,
+  header_text: string,
+  patterns_pack_title: string,
+  patterns_pack_text: string,
+  patterns_pack_download_url: string | null,
+  sections: DownloadItem[]
+}
 
+export type DonwloadsPageProps = {
+  page_content: PageContent
+}
+export default function DownloadsPage(props: DonwloadsPageProps) {
+  return <DownlodasView page_content={props.page_content} />
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale
   let downloadTypes: { id: number; type: string }[]
   let downloadItems: DownloadsItemProps[]
-
+  let downloadPageContent
   let res
 
   try {
@@ -46,6 +70,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
       process.env.NEXT_PUBLIC_API_URL + `/download-types?_locale=${locale}`
     )
     downloadTypes = await res.json()
+
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/downloads-page?_locale=${locale}`
+    )
+
+    downloadPageContent = await res.json()
+
   } catch (e) {
     // if locale not working, get default
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/downloads`)
@@ -53,12 +84,25 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/download-types`)
     downloadTypes = await res.json()
+
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/downloads-page`
+    )
+
+    downloadPageContent = await res.json()
   }
 
-  let page_content: PageContentProps[]
+  let page_content: PageContent = {
+    title: downloadPageContent.page_title,
+    header_text: downloadPageContent.header_text,
+    patterns_pack_title: downloadPageContent.patterns_pack_title,
+    patterns_pack_text: downloadPageContent.pattern_pack_text,
+    patterns_pack_download_url: (downloadPageContent.patterns_pack_file) ? `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}${downloadPageContent.patterns_pack_file.url}` : null,
+    sections: []
+  }
 
   if (downloadTypes.length) {
-    page_content = downloadTypes.map((i) => {
+    page_content.sections = downloadTypes.map((i) => {
       const list: DownloadsItemProps[] = []
       downloadItems.forEach((element: DownloadsItemProps) => {
         if (element.download_type) {
@@ -76,10 +120,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
           }
         }
       })
-      return { items: list.sort((a,b) => a.title.localeCompare(b.title) * -1), ...i }
+      return { items: list.sort((a,b) => a.title.localeCompare(b.title) * -1), ...i } as DownloadItem
     })
-  } else {
-    page_content = []
   }
 
   return {

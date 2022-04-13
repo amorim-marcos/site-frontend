@@ -1,7 +1,13 @@
-import { Flex, Box, Text, Button, Image } from '@chakra-ui/react'
+import { Flex, Box, Text, Button, Image, Link } from '@chakra-ui/react'
 import useMobile from 'hooks/useMobile'
 
-export const SectionPackBpDownloads = () => {
+export type SectionPackBpDownloadsProps = {
+  title: string,
+  text: string,
+  download_url: string | null
+}
+
+export const SectionPackBpDownloads = ({ title, text, download_url }: SectionPackBpDownloadsProps) => {
   const { isMobile, width } = useMobile(568)
   return (
     <Flex
@@ -56,8 +62,8 @@ export const SectionPackBpDownloads = () => {
           alignItems="center"
           textAlign={'center'}
         >
-          <Text as="h3" variant={'h3' as any}>
-            Pack de Padrões BP BERNECK®
+          <Text  as="h3" variant={'h3' as any}>
+            {title}
           </Text>
           <Text
             w={{ base: '70%', xl: '80%', '2xl': '100%' }}
@@ -65,21 +71,28 @@ export const SectionPackBpDownloads = () => {
             variant={'body' as any}
             textAlign="center"
           >
-            Faça o download do pack de padrões BP BERNECK® para utilizar em seus
-            projetos.
+            {text}
           </Text>
-          <Button
+          <Link
             marginTop="6%"
             bg="green.600"
             color="white.100"
             w="60%"
-            variant="unstyled"
             height={{ base: '50px', md: '20%' }}
+            href={(download_url) ? download_url : "#"}
+            target="_blank"
+            download
+            fontWeight='bold'
+            borderRadius='18px'
+
           >
-            <Text color="white.100" fontWeight="bold" variant={'body' as any}>
-              Pack de Padrões
-            </Text>
-          </Button>
+            <Flex  h="100%" w="100%"             alignItems="center"
+            justifyContent="center">
+              <Text color="white.100" fontWeight="bold" variant={'body' as any} >
+                Pack de Padrões
+              </Text>
+            </Flex>
+          </Link>
         </Flex>
 
         <Box w={{ base: '40%', md: '30%', lg: '25%' }}></Box>
