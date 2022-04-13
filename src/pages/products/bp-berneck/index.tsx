@@ -18,6 +18,10 @@ export default function BpBerneck(props: BpBerneckProps) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
+  let banners = await strapiClient({
+    resource: 'bp-page-banners'
+  })
+  
   let galleries: Gallery[] = await strapiClient({
     resource: 'highlighted-ambient-types'
   })
@@ -38,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       galleries,
-      carrouselImages: ['/img/capa_bp_banner_bp_1.png', '/img/capa_bp_banner_bp_2.png']
+      carrouselImages: banners.map((banner:any) => `${url}${banner.banner_image.url}`)
     }
   }
 }
