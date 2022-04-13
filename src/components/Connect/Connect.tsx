@@ -111,7 +111,7 @@ export default function Connect() {
               <Flex direction="column" gap="24px" align="center" w="100%">
                 {width && (
                   <Box
-                    h={isMobile ? '572px' : '638.5px'}
+                    h={isMobile ? '572px' : '640px'}
                     w="100%"
                     bgColor="green.200"
                   />
