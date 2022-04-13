@@ -64,7 +64,6 @@ export default function Connect() {
           gap="50px"
           pt="55px"
           pb="96px"
-          px={{ base: '20px', lg: '5%', '2xl': '3%' }}
           justify="center"
           align={{ base: 'center', lg: 'flex-start' }}
           wrap={{ base: 'wrap', '2xl': 'nowrap' }}
@@ -216,7 +215,7 @@ const SocialNetwork = (props: {
 }) => (
   <Flex
     h="100%"
-    w={{ xs: '350px', lg: '370px', '2xl': '450px' }}
+    w={{ base: '245px', xs: '300px', lg: '370px', '2xl': '450px' }}
     direction="column"
     gap="30px"
     align="flex-start"
