@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { Container, Flex, Image, Text, Box, Button } from '@chakra-ui/react'
@@ -38,6 +38,20 @@ export const Contact = ({
   const [contact_channel, setContactChannel] = useState<IContactChannel | null>(
     null
   )
+
+  const router = useRouter()
+
+  useEffect(() => {
+    const queryChannel:any = router.query.channel
+    if (queryChannel) {
+      const result = contact_channels.find((contact_channel) => 
+        contact_channel.name.normalize('NFD').replace(/[^\w ]/g, '').split(' ').join('-').toLowerCase() == queryChannel
+      )
+      if(result){
+        setContactChannel(result)
+      }
+    }
+  }, [router.query])
 
   return (
     <>
