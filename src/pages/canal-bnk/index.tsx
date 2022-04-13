@@ -9,6 +9,7 @@ export default function CanalBnk(props: CanalBNKProps) {
     <CanalBNK
       posts={props.posts}
       categories={props.categories}
+      patterns_pack_url={props.patterns_pack_url}
       defaultCategory={-1}
     />
   )
@@ -18,6 +19,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const locale = context.locale
   let page_content
   let categories
+  let downloads_page
 
   let res
 
@@ -31,6 +33,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       process.env.NEXT_PUBLIC_API_URL + `/categories?_locale=${locale}`
     )
     categories = await res.json()
+
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/downloads-page?_locale=${locale}`
+    )
+
+    downloads_page = await res.json()
   } catch (e) {
     // if locale not working, get default
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts`)
@@ -39,7 +47,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/categories`)
 
     categories = await res.json()
+
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/downloads-page`
+    )
+
+    downloads_page = await res.json()
   }
+
+  console.log(downloads_page)
 
   const data: Post[] = page_content.map(
     (item: {
@@ -90,5 +106,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return 0
   })
 
-  return { props: { posts: data, categories } }
+  const patterns_pack_url = (downloads_page.patterns_pack_file) ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + downloads_page.patterns_pack_file.url : null
+
+  return { props: { posts: data, categories, patterns_pack_url } }
 }

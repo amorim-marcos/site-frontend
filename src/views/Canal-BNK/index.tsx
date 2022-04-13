@@ -126,7 +126,7 @@ function CanalBNKFC(props: CanalBNKProps) {
       {!seeOnlyPosts && (
         <>
           <Flex bg="white.100" justify={'center'}>
-            <Downloads />
+            <Downloads patterns_pack_url={props.patterns_pack_url} />
           </Flex>
           <Connect />
         </>
@@ -139,6 +139,7 @@ export interface CanalBNKProps {
   posts: Post[]
   categories: Category[]
   defaultCategory: number
+  patterns_pack_url: string | null
 }
 
 export default function CanalBNK(props: CanalBNKProps) {
