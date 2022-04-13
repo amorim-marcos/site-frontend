@@ -6,9 +6,14 @@ import BpBerneckView from 'views/products/bp-berneck'
 
 import type { Gallery } from 'types/data'
 
+export type BPPageBanner = {
+  link: string,
+  banner_image: string
+}
+
 export interface BpBerneckProps {
   galleries: Gallery[]
-  carrouselImages: string[]
+  banners: BPPageBanner[]
 }
 
 export default function BpBerneck(props: BpBerneckProps) {
