@@ -6,6 +6,7 @@ import { ResponsiveCss } from 'types/responsive'
 import {WaterIcon, EnergyIcon, TreesIcon, ForestIcon, EmployeesIcon, EarthIcon, SynergyIcon, SunIcon, PinusForest, Seeding } from '@components/Icons'
 import HouseWithPath from '@components/Icons/HouseWithPath'
 import MapIcon from '@components/Icons/MapIcon'
+import StateIcon from '@components/Icons/StateIcon'
 import LocationIcon from '@components/Icons/LocationIcon'
 
 export type InfographicProps = {
@@ -177,13 +178,13 @@ export const Infographic = ({
                           />)
                           || (content1IconName === 'forest' &&
                           <ForestIcon 
-                            height = {{ base: '40px', sm: '90px', lg: '120px', xl: '140px'}}
-                            width = {{ base: '40px', sm: '40px', lg: '42px', xl: '55px'}}
+                            height = {{ base: '40px', sm: '90px', lg: '120px', xl: '120px'}}
+                            width = {{ base: '40px', sm: '40px', lg: '42px', xl: '45px'}}
                           />)
                           || (content1IconName === 'house' &&
                           <HouseWithPath 
-                            height = {{ base: '40px', sm: '100px', lg: '120px', xl: '120px'}}
-                            width = {{ base: '45px', sm: '50px', lg: '60px', xl: '60px'}}
+                            height = {{ base: '40px', sm: '100px', lg: '100px', xl: '100px'}}
+                            width = {{ base: '45px', sm: '50px', lg: '50px', xl: '50px'}}
                           />)
                           || (content1IconName === 'employees' &&
                           <EmployeesIcon 
@@ -212,8 +213,8 @@ export const Infographic = ({
                           />) 
                           || (content1IconName === 'map' &&
                           <MapIcon 
-                            height = {{ base: '45px', sm: '80px', lg: '120px', xl: '140px'}}
-                            width = {{ base: '28px', sm: '35px', lg: '45px', xl: '60px'}}
+                            height = {{ base: '45px', sm: '80px', lg: '120px', xl: '120px'}}
+                            width = {{ base: '28px', sm: '35px', lg: '45px', xl: '45px'}}
                           />)
                           || (content1IconName === 'map2' &&
                           <LocationIcon 
@@ -224,6 +225,11 @@ export const Infographic = ({
                           <Seeding 
                             height = {{ base: '45px', sm: '80px', lg: '90px', xl: '100px'}}
                             width = {{ base: '20px', sm: '35px', lg: '35px', xl: '40px'}}
+                          />) 
+                          || (content1IconName === 'estado' &&
+                          <StateIcon 
+                            height = {{ base: '45px', sm: '80px', lg: '90px', xl: '60px'}}
+                            width = {{ base: '20px', sm: '35px', lg: '35px', xl: '60px'}}
                           />)
                         }
 
