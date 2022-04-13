@@ -41,7 +41,7 @@ export const ContactChannelForm = ({
             <FormInput name="name" placeholder="*Nome" />
           </FormControl>
         </Box>
-        <Box mt="12px" flex="1">
+        <Box mt="10px" flex="1">
           <FormControl
             as="fieldset"
             _focusWithin={{
@@ -57,7 +57,7 @@ export const ContactChannelForm = ({
             <FormInput type="email" name="email" placeholder="*E-mail" />
           </FormControl>
         </Box>
-        <Box mt="12px" flex="1">
+        <Box mt="10px" flex="1">
           <FormControl
             as="fieldset"
             _focusWithin={{
@@ -73,7 +73,7 @@ export const ContactChannelForm = ({
             <FormInput type="tel" name="tel" placeholder="*Telefone" />
           </FormControl>
         </Box>
-        <Flex flexDirection={{ base: 'column', md: 'row' }} flex="1" mt="12px">
+        <Flex flexDirection={{ base: 'column', md: 'row' }} flex="1" mt="10px">
           <FormControl
             as="fieldset"
             mr="20px"
@@ -114,7 +114,7 @@ export const ContactChannelForm = ({
             </FormSelect>
           </FormControl>
         </Flex>
-        <Box mt="12px" flex="1">
+        <Box mt="10px" flex="1">
           <FormControl
             as="fieldset"
             _focusWithin={{
@@ -129,7 +129,7 @@ export const ContactChannelForm = ({
             <FormInput name="enterprise" placeholder="Empresa" />
           </FormControl>
         </Box>
-        <Box mt="12px" flex="1">
+        <Box mt="10px" flex="1">
           <FormControl as="fieldset">
             <ContactChannelFormLabel visibility="hidden" htmlFor="service">
               Tipo de Canal de Contato
@@ -138,7 +138,7 @@ export const ContactChannelForm = ({
             <Input type="hidden" name="service" value={service_code} />
           </FormControl>
         </Box>
-        <Box mt="12px" flex="1">
+        <Box mt="10px" flex="1">
           <FormControl
             as="fieldset"
             _focusWithin={{
@@ -158,7 +158,7 @@ export const ContactChannelForm = ({
             *Campos obrigatórios
           </Text>
         </Flex>
-        <Flex mt="12px">
+        <Flex mt="10px">
           <Button
             type="submit"
             w={{ base: '100%', lg: '240px' }}
