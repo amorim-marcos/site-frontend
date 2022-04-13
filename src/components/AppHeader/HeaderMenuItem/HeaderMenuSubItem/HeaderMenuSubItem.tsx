@@ -87,10 +87,10 @@ export const HeaderMenuSubItem = ({
                   <ArrowIcon 
                     stroke="#CCD3CA"
                     w={{
-                      base: '12px',
-                      md: '7px',
-                      lg: '9px',
-                      xl: '12px'
+                      base: '8px',
+                      md: '5px',
+                      lg: '6px',
+                      xl: '8px'
                     }} 
                   /> }
                 <Text
