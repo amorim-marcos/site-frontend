@@ -277,9 +277,9 @@ export const ForestsView = (props: ForestsViewProps) => {
               <Infographic
                 content3Text="estados"
                 content1DisplayIcon="yes"
-                content1IconName="earth"
+                content1IconName="map"
                 content2Text={props.page_content.states.toString()}
-                titleSubscript1Text="PR, SC, RS e SP"
+                titleSubscript1Text="PR, SC, RS, MT e SP"
               />
             </Flex>
             <Flex

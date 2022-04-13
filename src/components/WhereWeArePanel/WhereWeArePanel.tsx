@@ -112,7 +112,7 @@ const PanelImage = (props: { image: string; inaugurationSoon?: boolean }) => (
       objectFit="cover"
       userSelect="none"
       draggable="false"
-      filter={props.inaugurationSoon ? 'blur(7px)' : 'none'}
+      // filter={props.inaugurationSoon ? 'blur(0px)' : 'none'}
     />
 
     {props.inaugurationSoon && (

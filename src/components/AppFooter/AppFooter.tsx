@@ -103,6 +103,8 @@ export const AppFooter = () => {
             display={{ base: 'none', md: 'flex' }}
             // paddingInline={{ base: '4%', xl: '4%' }}
             justifyContent="space-between"
+            justifyItems={"flex-start"}
+            alignContent={"flex-start"}
             zIndex="docked"
             marginTop={{
               base: '7%',
