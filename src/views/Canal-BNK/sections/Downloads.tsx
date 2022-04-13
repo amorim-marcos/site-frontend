@@ -8,7 +8,7 @@ import useMobile from 'hooks/useMobile'
 import { Section } from './Section'
 import { CategoryContext } from '..'
 
-export const Downloads = () => {
+export const Downloads = ({ patterns_pack_url }) => {
   const { currentCategory } = useContext(CategoryContext)
   const { isMobile } = useMobile(1024)
 
@@ -83,7 +83,7 @@ export const Downloads = () => {
                 flex={2}
                 title="Pack de Padrões BP BERNECK®"
                 colorPanel="brown"
-                url="/"
+                url={(patterns_pack_url) ? patterns_pack_url : "#"}
                 img="/assets/imgs/canal-bnk/img_pack_padroes.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_pack_de_padroes.svg"
                 download={true}
