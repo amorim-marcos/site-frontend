@@ -902,7 +902,7 @@ export const ForestsView = (props: ForestsViewProps) => {
           >
             <Image src="/assets/imgs/fornecedor_florestal.png" />
             <Button
-              onClick={() => router.push('/contact')}
+              onClick={() => router.push('/contact?channel=suprimentos-florestais')}
               w={{ base: '90%', sm: '70%', lg: '90%', xl: '70%' }}
               h={{ base: '100%', sm: '70%', lg: '15%', xl: '10%' }}
               padding={{ base: '4%', sm: '3%', lg: '5%', xl: '5%' }}
