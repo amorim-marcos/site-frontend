@@ -18,6 +18,7 @@ import { Section } from './Section'
 
 import { CategoryContext } from '..'
 import { Post as IPost } from 'types/data'
+import { useRouter } from 'next/router'
 
 export const PANEL_COLOR = {
   all: 'white',
@@ -26,7 +27,11 @@ export const PANEL_COLOR = {
   world: '#89BA81'
 }
 
-export const Intro = (props: { posts: IPost[] }) => {
+export const Intro = (props: {
+  posts: IPost[]
+  tagsSearch?: boolean
+  tagName?: string
+}) => {
   const {
     currentCategory,
     changeCurrentCategory,
@@ -34,6 +39,8 @@ export const Intro = (props: { posts: IPost[] }) => {
     seeOnlyPosts,
     setSeeOnlyPosts
   } = useContext(CategoryContext)
+
+  const router = useRouter()
 
   return (
     <Box
@@ -189,7 +196,9 @@ export const Intro = (props: { posts: IPost[] }) => {
                     letterSpacing="2.1px"
                     color={currentCategory === -1 ? 'green.900' : '#436D5D'}
                   >
-                    Todos os conteúdos
+                    {props.tagsSearch && props.tagName
+                      ? `Resultados para: ${props.tagName}`
+                      : 'Todos os conteúdos'}
                   </Text>
                 )}
               </Box>
@@ -197,7 +206,7 @@ export const Intro = (props: { posts: IPost[] }) => {
 
             <Flex
               width={{ base: '100%', lg: '70%', '2xl': '80%' }}
-              wrap={{ base: 'nowrap', lg: 'wrap', '2xl':'nowrap' }}
+              wrap={{ base: 'nowrap', lg: 'wrap', '2xl': 'nowrap' }}
               justify="end"
               gap={{ base: '8px', lg: '16px', xl: '14px' }}
               direction={{
@@ -213,7 +222,13 @@ export const Intro = (props: { posts: IPost[] }) => {
                 hideArrow
                 justify="center"
                 selected={currentCategory === -1}
-                onClick={() => changeCurrentCategory(-1)}
+                onClick={() => {
+                  if (props.tagsSearch) {
+                    router.push('/canal-bnk')
+                  } else {
+                    changeCurrentCategory(-1)
+                  }
+                }}
                 color={'green.900'}
                 borderColor={currentCategory === -1 ? 'brown.200' : 'white'}
               >
@@ -429,7 +444,7 @@ export const NavButton = (props: NavButtonProps) => {
             base: '2px',
             xl: '3px'
           }}
-          fontSize = {{ base: '12px', sm: '12px', lg: '12px', xl: '12px' }}
+          fontSize={{ base: '12px', sm: '12px', lg: '12px', xl: '12px' }}
         >
           {children}
         </Text>
