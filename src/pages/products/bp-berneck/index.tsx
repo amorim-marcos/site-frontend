@@ -6,9 +6,14 @@ import BpBerneckView from 'views/products/bp-berneck'
 
 import type { Gallery } from 'types/data'
 
+export type BPPageBanner = {
+  link: string,
+  banner_image: string
+}
+
 export interface BpBerneckProps {
   galleries: Gallery[]
-  carrouselImages: string[]
+  banners: BPPageBanner[]
 }
 
 export default function BpBerneck(props: BpBerneckProps) {
@@ -17,6 +22,10 @@ export default function BpBerneck(props: BpBerneckProps) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
+
+  let banners = await strapiClient({
+    resource: 'bp-page-banners'
+  })
 
   let galleries: Gallery[] = await strapiClient({
     resource: 'highlighted-ambient-types'
@@ -38,7 +47,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       galleries,
-      carrouselImages: ['/img/capa_bp_banner_bp_1.png', '/img/capa_bp_banner_bp_2.png']
+      banners: banners.map((banner:any) => {
+        return {
+          link: banner.link,
+          banner_image: `${url}${banner.banner_image.url}`
+        }
+      })
     }
   }
 }
