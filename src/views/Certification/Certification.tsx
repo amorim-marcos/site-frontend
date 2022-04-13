@@ -143,6 +143,7 @@ export const Certification = (props: CertificationViewProps) => (
       overflowX="hidden"
       // bg="red.100"
       bg="white.100"
+      id="certificados-florestais"
     >
       <Flex
         // bg='blue'
@@ -254,6 +255,7 @@ export const Certification = (props: CertificationViewProps) => (
     {/* INICIO Produtos altamente qualificados */}
   <Box
      bg="green.170"
+     id="certificados-de-produtos"
   >
     <Flex
       maxWidth="1536px"
