@@ -139,7 +139,7 @@ export interface CanalBNKProps {
   posts: Post[]
   categories: Category[]
   defaultCategory: number
-  patterns_pack_url: string | null
+  patterns_pack_url?: string | null
 }
 
 export default function CanalBNK(props: CanalBNKProps) {
