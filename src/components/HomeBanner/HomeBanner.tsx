@@ -48,7 +48,8 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
   ) : (
 
   <Box
-    bg="brown.100"
+    // bg="brown.100"
+    bg="rgb(246, 239, 227, 90%)"
   >
 
     <Flex

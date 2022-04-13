@@ -19,7 +19,9 @@ export const FooterList = ({ title, items }: FooterListProps) => {
       aria-label="footer-list"
       // bg={'red'}
       >
-      <List spacing="10%">
+      <List 
+        spacing="5"
+      >
         <ListItem cursor="pointer">
           <Link href={title.href} passHref>
             <Text

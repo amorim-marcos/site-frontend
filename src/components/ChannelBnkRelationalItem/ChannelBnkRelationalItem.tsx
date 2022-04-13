@@ -50,9 +50,9 @@ export const ChannelBnkRelationalItem = ({
         case (1024 <= tam && tam < 1280):
             return 70; break;
         case (1280 <= tam && tam < 1536):
-            return (showInvert)? 70: 80; break;
+            return (showInvert)? 35: 80; break;
         case (1536 <= tam):
-          return 70;break;
+          return 35;break;
       }
     }else{
       return 10;
@@ -145,7 +145,7 @@ export const ChannelBnkRelationalItem = ({
         // bg = "blueviolet"
       >
         <Flex 
-          padding={{ base: '8%', xl: (showInvert) ? '3%' : '5%' , '2xl': '4%'}}
+          padding={{ base: '8%', xl: (showInvert) ? '3%' : '5%' , '2xl': '12%'}}
           flexDirection={{ base: 'column', md: (showInvert) ? 'column' : 'column' }}
           // bg = "blue"
         >

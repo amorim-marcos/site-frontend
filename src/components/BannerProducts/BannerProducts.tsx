@@ -118,7 +118,7 @@ export const BannerProducts = ({
               as="h1"
               variant={'h1' as any}
               color={titleColor}
-              lineHeight={{ base: '35px', sm: '35px', lg: '40px', xl: '50px' }}
+              lineHeight={{ base: '35px', sm: '35px', lg: '40px', xl: '40px' }}
             >
               {title}
             </Text>

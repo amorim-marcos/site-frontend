@@ -20,7 +20,8 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
   <Flex
     justifyContent={'center'}
     paddingY="4%"
-    bg="brown.100"
+    // bg="brown.100"
+    bg="rgb(246, 239, 227, 90%)"
     // maxW={'1536px'}
     // flexDirection={{ base: 'column', md: 'row' }}
     
