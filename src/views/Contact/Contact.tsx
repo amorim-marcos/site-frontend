@@ -294,7 +294,7 @@ const ButtonsSection = () => {
             maxH={{ base: '185px' }}
             title="Solicite Nosso"
             description="Mostruário"
-            onClick={() => router.push('/contact')}
+            onClick={() => router.push('/contact?channel=solicitacao-de-mostruario')}
             icon={
               <BagIcon
                 width={{

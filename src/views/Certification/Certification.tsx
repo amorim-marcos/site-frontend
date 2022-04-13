@@ -143,6 +143,7 @@ export const Certification = (props: CertificationViewProps) => (
       overflowX="hidden"
       // bg="red.100"
       bg="white.100"
+      id="certificados-florestais"
     >
       <Flex
         // bg='blue'
@@ -217,7 +218,7 @@ export const Certification = (props: CertificationViewProps) => (
           // bg='pink'
           flex="1"
           justifyItems={'center'}
-          backgroundImage="/assets/imgs/iStock-621469294.png"
+          backgroundImage="/img/imagem_certificados.jpg"
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
           // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
@@ -254,6 +255,7 @@ export const Certification = (props: CertificationViewProps) => (
     {/* INICIO Produtos altamente qualificados */}
   <Box
      bg="green.170"
+     id="certificados-de-produtos"
   >
     <Flex
       maxWidth="1536px"
