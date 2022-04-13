@@ -19,7 +19,7 @@ export default function Tagspage(props: { posts: Post[]; tagName: string }) {
         ]}
       />
       <CategoryCtxProvider seeOnlyPostsDefault>
-        <Intro posts={props.posts} />
+        <Intro posts={props.posts} tagName={props.tagName} tagsSearch />
       </CategoryCtxProvider>
     </Box>
   )

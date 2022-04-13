@@ -67,60 +67,56 @@ export const About = ({
         />
       </Box>
 
-    {/* INICIO RAIZES FIRMES PARA CRESCER */}
-    <Box
-      bg="green.150"
-    >
-      
-      <Flex
-        maxWidth="1536px"
-        marginX="auto"
-        position="relative"
-        zIndex="base"
-        overflow="hidden"
-        bg="green.150"
-      >
-        <Flex direction={{ base: 'column', lg: 'row' }}>
-          <Box
-            margin={{
-              base: '8% 8% 2% 5%',
-              lg: '5%'
-            }}
-            alignSelf="center"
-          >
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              color="green.550"
-              textAlign={{ base: 'left' }}
+      {/* INICIO RAIZES FIRMES PARA CRESCER */}
+      <Box bg="green.150">
+        <Flex
+          maxWidth="1536px"
+          marginX="auto"
+          position="relative"
+          zIndex="base"
+          overflow="hidden"
+          bg="green.150"
+        >
+          <Flex direction={{ base: 'column', lg: 'row' }}>
+            <Box
+              margin={{
+                base: '8% 8% 2% 5%',
+                lg: '5%'
+              }}
+              alignSelf="center"
             >
-              {page_content.section1_title}
-            </Text>
-            <Text
-              color="green.900"
-              textAlign={{ base: 'left' }}
-              marginTop={{ base: '8px', lg: '10px', xl: '20px' }}
+              <Text
+                as="h3"
+                variant={'h3' as any}
+                color="green.550"
+                textAlign={{ base: 'left' }}
+              >
+                {page_content.section1_title}
+              </Text>
+              <Text
+                color="green.900"
+                textAlign={{ base: 'left' }}
+                marginTop={{ base: '8px', lg: '10px', xl: '20px' }}
+              >
+                {page_content.section1_text}
+              </Text>
+            </Box>
+            <Box
+              margin={{
+                base: '5% 8% 10% 5%',
+                sm: '2% 8% 8% 5%',
+                lg: '5%'
+              }}
             >
-              {page_content.section1_text}
-            </Text>
-          </Box>
-          <Box
-            margin={{
-              base: '5% 8% 10% 5%',
-              sm: '2% 8% 8% 5%',
-              lg: '5%'
-            }}
-          >
-            <Image
-              src={'/assets/imgs/foto_fabrica.png'}
-              w={{ base: '200px', sm: '300px', lg: '2000px', xl: '2000px' }}
-            />
-          </Box>
+              <Image
+                src={'/assets/imgs/foto_fabrica.png'}
+                w={{ base: '200px', sm: '300px', lg: '2000px', xl: '2000px' }}
+              />
+            </Box>
+          </Flex>
         </Flex>
-      </Flex>
-
-    </Box>
-    {/* FIM RAIZES FIRMES PARA CRESCER */}
+      </Box>
+      {/* FIM RAIZES FIRMES PARA CRESCER */}
 
       {/* INICIO PARA O MADEIRAS MUNDO */}
       <Flex
@@ -234,13 +230,8 @@ export const About = ({
       </Flex>
       {/* FIM PARA O MADEIRAS MUNDO */}
 
-
       {/* INICIO TRAJETORIA CAROUSEL */}
-      <Box 
-        bg="brown.100" 
-        id="trajetoria"
-        
-      >
+      <Box bg="brown.100" id="trajetoria">
         <Flex
           maxWidth="1536px"
           marginX="auto"
@@ -367,93 +358,88 @@ export const About = ({
       </Flex>
       {/* FIM ONDE ESTAMOS */}
 
-    
-    {/* INICIO REVENDEDORES */}
-    <Box
-      bg="green.200"
-    >
-
-      <Flex
-        maxWidth="1536px"
-        marginX="auto"
-        // alignItems='center'
-        // justifyContent='center'
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="green.200"
-      >
+      {/* INICIO REVENDEDORES */}
+      <Box bg="green.200">
         <Flex
-          // bg='red'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-          width={'100%'}
+          maxWidth="1536px"
+          marginX="auto"
+          // alignItems='center'
+          // justifyContent='center'
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="green.200"
         >
-          <Box
-            // bg='pink'
-            flex="1"
-            margin={{
-              base: '8% 8% 5% 5%',
-              sm: '8% 8% 2% 5%',
-              lg: '5%',
-              xl: '5%'
-            }}
-            // alignSelf='center'
+          <Flex
+            // bg='red'
+            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+            width={'100%'}
           >
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+            <Box
+              // bg='pink'
+              flex="1"
+              margin={{
+                base: '8% 8% 5% 5%',
+                sm: '8% 8% 2% 5%',
+                lg: '5%',
+                xl: '5%'
+              }}
+              // alignSelf='center'
             >
-              Revendedores
-            </Text>
-            <Text
-              color="green.900"
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-              marginTop={{ base: '8px', sm: '8px', lg: '10px', xl: '20px' }}
+              <Text
+                as="h3"
+                variant={'h3' as any}
+                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+              >
+                Revendedores
+              </Text>
+              <Text
+                color="green.900"
+                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+                marginTop={{ base: '8px', sm: '8px', lg: '10px', xl: '20px' }}
+              >
+                {page_content.resellers_description}
+              </Text>
+            </Box>
+            <Box
+              // bg="yellow"
+              flex="1"
+              margin={{
+                base: '3% 0% 0% 0%',
+                sm: '3% 0% 0% 0%',
+                lg: '5%',
+                xl: '5%'
+              }}
             >
-              {page_content.resellers_description}
-            </Text>
-          </Box>
-          <Box
-            // bg="yellow"
-            flex="1"
-            margin={{
-              base: '3% 0% 0% 0%',
-              sm: '3% 0% 0% 0%',
-              lg: '5%',
-              xl: '5%'
-            }}
-          >
-            <PatternInfo
-              title="DESCUBRA"
-              description="Onde Comprar"
-              onClick={() => router.push('/onde-comprar')}
-              icon={
-                <EarthIcon
-                  width={{
-                    base: '60px',
-                    xs: '30px',
-                    sm: '58px',
-                    lg: '70px',
-                    xl: '80px'
-                  }}
-                  height={{
-                    base: '60px',
-                    xs: '30px',
-                    sm: '58px',
-                    lg: '70px',
-                    xl: '80px'
-                  }}
-                />
-              }
-            />
-          </Box>
+              <PatternInfo
+                title="DESCUBRA"
+                description="Onde Comprar"
+                onClick={() => router.push('/onde-comprar')}
+                icon={
+                  <EarthIcon
+                    width={{
+                      base: '60px',
+                      xs: '30px',
+                      sm: '58px',
+                      lg: '70px',
+                      xl: '80px'
+                    }}
+                    height={{
+                      base: '60px',
+                      xs: '30px',
+                      sm: '58px',
+                      lg: '70px',
+                      xl: '80px'
+                    }}
+                  />
+                }
+              />
+            </Box>
+          </Flex>
         </Flex>
-      </Flex>
-    
-    </Box>
-    {/* FIM REVENDEDORES */}
+      </Box>
+      {/* FIM REVENDEDORES */}
 
       {/* INICIO CERTIFICADOS */}
       <Flex

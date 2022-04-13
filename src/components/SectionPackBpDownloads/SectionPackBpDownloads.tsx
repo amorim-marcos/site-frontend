@@ -50,7 +50,7 @@ export const SectionPackBpDownloads = ({ title, text, download_url }: SectionPac
             right="0"
             top={{ base: '0', md: '0' }}
             src="/img/pack_bp_downlodas.png"
-            flexShrink="0"
+            flexShrink={0}
             objectFit="cover"
           />
         </Box>
