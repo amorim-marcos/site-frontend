@@ -416,7 +416,7 @@ export const About = ({
             </Text>
           </Box>
           <Box
-            bg="yellow"
+            // bg="yellow"
             flex="1"
             margin={{
               base: '3% 0% 0% 0%',
@@ -497,7 +497,8 @@ export const About = ({
             </Text>
           </Box>
           <Box
-            w={{ base: '100%', lg: '50%' }}
+            // bg="yellow"
+            flex="1"
             margin={{
               base: '3% 0% 0% 0%',
               sm: '3% 0% 0% 0%',

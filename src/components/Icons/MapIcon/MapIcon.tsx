@@ -5,6 +5,8 @@ export type MapIconProps = {
   primaryColor?: string
   secondaryColor?: string
   boxSize?: ResponsiveCss
+  height?: ResponsiveCss
+  width?: ResponsiveCss
   onClick?: () => void
 }
 
@@ -12,10 +14,12 @@ export const MapIcon = ({
   primaryColor = '#f5f6f4',
   secondaryColor = '#6db416',
   boxSize = ['35px'],
+  height = '47px',
+  width = '67px',
   onClick
 }: MapIconProps) => {
   return (
-    <Box boxSize={boxSize} onClick={onClick}>
+    <Box boxSize={boxSize} onClick={onClick} w={width} h={height}>
       <svg
         id="icon_mapa"
         xmlns="http://www.w3.org/2000/svg"

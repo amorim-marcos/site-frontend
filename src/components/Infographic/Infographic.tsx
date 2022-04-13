@@ -5,6 +5,8 @@ import { ResponsiveCss } from 'types/responsive'
 
 import {WaterIcon, EnergyIcon, TreesIcon, ForestIcon, EmployeesIcon, EarthIcon, SynergyIcon, SunIcon, PinusForest, Seeding } from '@components/Icons'
 import HouseWithPath from '@components/Icons/HouseWithPath'
+import MapIcon from '@components/Icons/MapIcon'
+import LocationIcon from '@components/Icons/LocationIcon'
 
 export type InfographicProps = {
   // SUPERSCRITS TITLES
@@ -207,6 +209,16 @@ export const Infographic = ({
                           <PinusForest 
                             height = {{ base: '45px', sm: '80px', lg: '120px', xl: '140px'}}
                             width = {{ base: '28px', sm: '35px', lg: '45px', xl: '60px'}}
+                          />) 
+                          || (content1IconName === 'map' &&
+                          <MapIcon 
+                            height = {{ base: '45px', sm: '80px', lg: '120px', xl: '140px'}}
+                            width = {{ base: '28px', sm: '35px', lg: '45px', xl: '60px'}}
+                          />)
+                          || (content1IconName === 'map2' &&
+                          <LocationIcon 
+                            // height = {{ base: '45px', sm: '80px', lg: '120px', xl: '140px'}}
+                            width = {{ base: '28px', sm: '35px', lg: '45px', xl: '60px'}}
                           />)
                           || (content1IconName === 'mudas' &&
                           <Seeding 
@@ -288,7 +300,7 @@ export const Infographic = ({
               textAlign='center'
               fontWeight = 'bold'
               maxWidth={{ base: '220px', sm: '200px', lg: '250px', xl: '300px'}}
-              lineHeight = {{ base: '18px', sm: '22px', lg: '25px', xl: '35px'}}
+              lineHeight = {{ base: '18px', sm: '22px', lg: '25px', xl: '25px'}}
             >{titleSubscript1Text}</Text>
         </Flex>
         {/* SUBSCRIPT TITLE --> */}
