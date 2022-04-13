@@ -8,7 +8,11 @@ import useMobile from 'hooks/useMobile'
 import { Section } from './Section'
 import { CategoryContext } from '..'
 
-export const Downloads = ({ patterns_pack_url }) => {
+type DownloadsProps = {
+  patterns_pack_url?: string | null
+}
+
+export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
   const { currentCategory } = useContext(CategoryContext)
   const { isMobile } = useMobile(1024)
 
