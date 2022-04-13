@@ -87,7 +87,6 @@ export default function Home(props: HomeProps) {
             subtitle: 'Laminado Melamínico Decorativo',
             subtitleColor: 'brown.200',
             bgColor: 'brown.300',
-            // srcImg: 'img/produto_bp_banner.png',
             srcImg: '/img/mdp.png',
             onClick: () => alert('Ir para BP'),
             bannerSize: {
@@ -104,7 +103,6 @@ export default function Home(props: HomeProps) {
             subtitle: 'Painel de Partículas de Média Densidade',
             subtitleColor: 'gray.400',
             bgColor: 'brown.200',
-            // srcImg: '/img/mdp.png',
             srcImg: '/img/produto_bp_banner.png',
             bannerSize: {
               base: '100px',
