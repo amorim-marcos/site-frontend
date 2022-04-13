@@ -23,11 +23,7 @@ import BannerCollections from '@components/BannerCollections'
 
 import type { Gallery } from 'types/data'
 import { useState, useEffect } from 'react'
-
-type BPPageBanner = {
-  link: string,
-  banner_image: string
-}
+import { BPPageBanner } from 'pages/products/bp-berneck'
 
 export type BpBerneckViewProps = {
   galleries?: Gallery[]
