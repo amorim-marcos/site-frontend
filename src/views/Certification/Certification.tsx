@@ -218,7 +218,7 @@ export const Certification = (props: CertificationViewProps) => (
           // bg='pink'
           flex="1"
           justifyItems={'center'}
-          backgroundImage="/assets/imgs/iStock-621469294.png"
+          backgroundImage="/img/imagem_certificados.jpg"
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
           // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
