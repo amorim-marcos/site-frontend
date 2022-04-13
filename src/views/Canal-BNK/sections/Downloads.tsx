@@ -37,7 +37,7 @@ export const Downloads = () => {
               <DownloadColorPanel
                 title="Revista Inspirare BNK"
                 colorPanel="brown"
-                url="/"
+                url="/canal-bnk/downloads#revista-inspirare-bnk"
                 img="/assets/imgs/canal-bnk/img_revista_inspirare.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_revista_inspirare.svg"
               />
@@ -45,7 +45,7 @@ export const Downloads = () => {
               <DownloadColorPanel
                 title="Revista Opinus"
                 colorPanel="gray"
-                url="/"
+                url="/canal-bnk/downloads#revista-opinus"
                 img="/assets/imgs/canal-bnk/img_revista_opinus.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_opinus.svg"
               />
@@ -55,7 +55,7 @@ export const Downloads = () => {
               <DownloadColorPanel
                 title="Relatórios"
                 colorPanel="gray"
-                url="/"
+                url="/canal-bnk/downloads#relatorios"
                 img="/assets/imgs/canal-bnk/img_relatorios.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_relatorios.svg"
               />
@@ -64,7 +64,7 @@ export const Downloads = () => {
                 flex={2}
                 title="Materiais de Suporte"
                 colorPanel="green"
-                url="/"
+                url="canal-bnk/downloads#materiais-de-suporte"
                 img="/assets/imgs/canal-bnk/img_materiais_de_suporte.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_materiais_de_suporte.svg"
               />
@@ -72,7 +72,7 @@ export const Downloads = () => {
               <DownloadColorPanel
                 title="Materiais de Divulgação"
                 colorPanel="brown"
-                url="/"
+                url="canal-bnk/downloads#materiais-de-divulgacao"
                 img="/assets/imgs/canal-bnk/materiais_de_divulgacao.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_materiais_de_divulgação.svg"
               />
@@ -86,12 +86,13 @@ export const Downloads = () => {
                 url="/"
                 img="/assets/imgs/canal-bnk/img_pack_padroes.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_pack_de_padroes.svg"
+                download={true}
               />
 
               <DownloadColorPanel
                 title="Certificados Florestais"
                 colorPanel="gray"
-                url="/"
+                url="/certificacoes#certificados-florestais"
                 img="/assets/imgs/canal-bnk/img_certificados_florestais.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_certificados_florestais.svg"
               />
@@ -99,7 +100,7 @@ export const Downloads = () => {
               <DownloadColorPanel
                 title="Certificados de Produto"
                 colorPanel="green"
-                url="/"
+                url="/certificacoes#certificados-de-produtos"
                 img="/assets/imgs/canal-bnk/img_certificados_de_produto.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_certificados_de_produto.svg"
               />
@@ -166,6 +167,7 @@ interface DownloadColorPanelProps extends FlexProps {
   img: string
   graphism: string
   colorPanel: 'gray' | 'green' | 'brown'
+  download?: boolean
 }
 
 const DownloadColorPanel = (props: DownloadColorPanelProps) => {
@@ -190,7 +192,7 @@ const DownloadColorPanel = (props: DownloadColorPanelProps) => {
       {...rest}
       // bg="red.100"
     >
-      <Link h="100%" w="100%" pos="relative" href={url} _hover={{}} download>
+      <Link h="100%" w="100%" pos="relative" href={url} _hover={{}} { ...props.download ?? 'download' }>
         <Image src={graphism} h="100%" pos="absolute" objectFit="cover" />
         <Image src={img} right={0} h="100%" pos="absolute" objectFit="cover" />
 
