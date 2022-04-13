@@ -8,7 +8,8 @@ import {
   Grid,
   GridItem,
   FlexProps,
-  useInterval
+  useInterval,
+  Link
 } from '@chakra-ui/react'
 import useMobile from 'hooks/useMobile'
 import { Arrow } from '@components/Icons'
@@ -23,9 +24,14 @@ import BannerCollections from '@components/BannerCollections'
 import type { Gallery } from 'types/data'
 import { useState, useEffect } from 'react'
 
+type BPPageBanner = {
+  link: string,
+  banner_image: string
+}
+
 export type BpBerneckViewProps = {
   galleries?: Gallery[]
-  carrouselImages: string[]
+  banners: BPPageBanner[]
 }
 
 export default function BpBerneckView(props: BpBerneckViewProps) {
@@ -56,7 +62,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           overflowX="hidden"
           // bg="blue"
         >
-        <CarrouselBP images={props.carrouselImages} />
+        <CarrouselBP banners={props.banners} />
       </Flex>
     </Box>
     {/* FIM BANNER CAROUSEL */}
@@ -362,27 +368,27 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
 // )
 
 interface CarrouselBPProps extends FlexProps {
-  images: string[]
+  banners: BPPageBanner[]
 }
 
-const CarrouselBP = ({ images }: CarrouselBPProps) => {
-  const [currentImage, setCurrentImage] = useState(0)
+const CarrouselBP = ({ banners }: CarrouselBPProps) => {
+  const [currentBanner, setCurrentBanner] = useState(0)
   const [imageVisibility, setImageVisibility] = useState(true)
 
   function next() {
     setImageVisibility(false)
     setTimeout(() => {
-      if (currentImage === images.length - 1) {
-        setCurrentImage(0)
+      if (currentBanner === banners.length - 1) {
+        setCurrentBanner(0)
       } else {
-        setCurrentImage((v) => v + 1)
+        setCurrentBanner((v) => v + 1)
       }
     }, 300)
   }
 
   useEffect(() => {
     setTimeout(() => setImageVisibility(true), 100)
-  }, [currentImage])
+  }, [currentBanner])
 
   useInterval(next, 5000)
   return (
@@ -402,30 +408,32 @@ const CarrouselBP = ({ images }: CarrouselBPProps) => {
       // }}
       // bg="green.100"
     >
-      <Flex 
-        // w="100%" 
-        // h="100%"
-      >
-        <Image
-          opacity={imageVisibility ? '1' : '0'}
-          transition={'0.3s'}
-          w="100%"
-          h="100%"
-          // objectFit={'cover'}
-          src={images.length > 0 ? images[currentImage] : ''}
-        />
-      </Flex>
+      <Link href={(banners[currentBanner].link) ? banners[currentBanner].link : "#"}>
+        <Flex 
+          // w="100%" 
+          // h="100%"
+        >
+          <Image
+            opacity={imageVisibility ? '1' : '0'}
+            transition={'0.3s'}
+            w="100%"
+            h="100%"
+            // objectFit={'cover'}
+            src={banners.length > 0 ? banners[currentBanner].banner_image : ''}
+          />
+        </Flex>
+      </Link>
       <Flex
         position={'absolute'}
         bottom="10%"
         left="10%"
         gap={{ base: '4px', md: '10px' }}
       >
-        {images.map((_item, i) => {
+        {banners.map((_item, i) => {
           return (
             <Box
               key={i}
-              bg={i === currentImage ? 'brown.300' : 'brown.200'}
+              bg={i === currentBanner ? 'brown.300' : 'brown.200'}
               w={{ base: '15px', md: '25px' }}
               h={{ base: '15px', md: '25px' }}
               _hover={{
@@ -433,8 +441,8 @@ const CarrouselBP = ({ images }: CarrouselBPProps) => {
               }}
               cursor="pointer"
               onClick={next}
-              border={i === currentImage ? '1px solid' : ''}
-              borderColor={i === currentImage ? 'brown.300' : ''}
+              border={i === currentBanner ? '1px solid' : ''}
+              borderColor={i === currentBanner ? 'brown.300' : ''}
             />
           )
         })}
