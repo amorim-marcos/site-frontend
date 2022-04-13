@@ -26,11 +26,22 @@ export type DownloadItem = {
   }[]
 }
 
-export type DownloadsViewProps = {
-  items: DownloadItem[]
+type PageContent = {
+  title: string,
+  header_text: string,
+  patterns_pack_title: string,
+  patterns_pack_text: string,
+  patterns_pack_download_url: string | null,
+  sections: DownloadItem[]
 }
 
-export const DownlodasView = ({ items }: DownloadsViewProps) => {
+export type DownloadsViewProps = {
+  page_content: PageContent
+}
+
+export const DownlodasView = ({ page_content: { title, header_text, patterns_pack_title, patterns_pack_text, patterns_pack_download_url, sections } }: DownloadsViewProps) => {
+  const items = sections
+
   return (
   <Box>
     <Pagebar
@@ -68,7 +79,7 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
             display={{ base: 'none', md: 'block' }}
           >
             <CompletedTitle
-              titleString="Downloads"
+              titleString={title}
               textAlign="left"
               alignSelf="left"
               zIndex="docked"
@@ -77,7 +88,7 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
 
           <Box display={{ base: 'block', md: 'none' }}>
             <CompletedTitle
-              titleString="Downloads"
+              titleString={title}
               textAlign="center"
               alignSelf="center"
               zIndex="docked"
@@ -89,9 +100,7 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
             marginTop={{ base: '1%', xl: '3%' }}
             color="brown.300"
           >
-            Encontre materiais de divulgação da BERNECK® e de nossos produtos,
-            além de revistas, informativos, fichas técnicas, pack de padrões BP
-            BERNECK® e muito mais em um só lugar.
+            {header_text}
           </Text>
           <Box
             h="100%"
@@ -158,7 +167,7 @@ export const DownlodasView = ({ items }: DownloadsViewProps) => {
             )
           })}
           
-          <SectionPackBpDownloads />
+          <SectionPackBpDownloads title={patterns_pack_title} text={patterns_pack_text} download_url={patterns_pack_download_url} />
 
           {items.map((i, j) => {
             return (
