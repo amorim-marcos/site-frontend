@@ -42,12 +42,18 @@ export const Contact = ({
   const router = useRouter()
 
   useEffect(() => {
-    const queryChannel:any = router.query.channel
+    const queryChannel: any = router.query.channel
     if (queryChannel) {
-      const result = contact_channels.find((contact_channel) => 
-        contact_channel.name.normalize('NFD').replace(/[^\w ]/g, '').split(' ').join('-').toLowerCase() == queryChannel
+      const result = contact_channels.find(
+        (contact_channel) =>
+          contact_channel.name
+            .normalize('NFD')
+            .replace(/[^\w ]/g, '')
+            .split(' ')
+            .join('-')
+            .toLowerCase() == queryChannel
       )
-      if(result){
+      if (result) {
         setContactChannel(result)
       }
     }
@@ -66,137 +72,133 @@ export const Contact = ({
 
       <FireAlert title={fireWarning} />
 
-  <Box
-    backgroundColor="green.400"
-  >
-    
-    {/* INICIO sobre o que deseja falar? */}
-    <Box
-      bg="brown.100"
-    >
+      <Box backgroundColor="green.400">
+        {/* INICIO sobre o que deseja falar? */}
+        <Box bg="brown.100">
+          <Container
+            backgroundColor="brown.100"
+            maxW="1536px"
+            paddingInline="0"
+            paddingTop="30px"
+          >
+            <Flex justifyContent="center">
+              <CompletedTitle
+                titleString="Sobre o que você deseja falar?"
+                textAlign="center"
+              />
+            </Flex>
 
-      <Container
-        backgroundColor="brown.100"
-        maxW="1536px"
-        paddingInline="0"
-        paddingTop="30px"
-      >
-        <Flex justifyContent="center">
-          <CompletedTitle
-            titleString="Sobre o que você deseja falar?"
-            textAlign="center"
-          />
-        </Flex>
-    
-        <Flex
-          flexDirection="column"
-          mt="55px"
-          justifyContent="center"
-          paddingBottom={{ base: '40px', lg: '80px' }}
-          ref={ref}
-        >
-          {isMobile && !showAllAreas ? (
-            <ContactChannelSelectButton
-              alignSelf="center"
-              isActive={contact_channel !== null}
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              onClick={(isActive: boolean) => {
-                setContactChannel(
-                  isActive
-                    ? null
-                    : contact_channel !== null
-                    ? contact_channel
-                    : contact_channels[0]
-                )
-                setShowAllAreas(isActive)
-              }}
-              mr="20px"
-              mb="15px"
-              name={
-                contact_channel != null
-                  ? contact_channel.name
-                  : contact_channels[0].name
-              }
-              service_code={
-                contact_channel != null
-                  ? contact_channel.service_code
-                  : contact_channels[0].service_code
-              }
-              attention_required={
-                contact_channel != null && contact_channel.attention_required
-                  ? true
-                  : false
-              }
-            />
-          ) : (
             <Flex
-              wrap="wrap"
-              paddingLeft="100px"
-              paddingRight="100px"
+              flexDirection="column"
+              mt="55px"
               justifyContent="center"
-              alignItems="center"
+              paddingBottom={{ base: '40px', lg: '80px' }}
+              ref={ref}
             >
-              {contact_channels.map((channel, index) => (
+              {isMobile && !showAllAreas ? (
                 <ContactChannelSelectButton
-                  key={index}
-                  onFinishRender={(w, h) => onRender({ w, h, index })}
-                  isActive={
-                    contact_channel != null && contact_channel.id === channel.id
-                  }
+                  alignSelf="center"
+                  isActive={contact_channel !== null}
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore
                   onClick={(isActive: boolean) => {
-                    setContactChannel(isActive ? null : channel)
+                    setContactChannel(
+                      isActive
+                        ? null
+                        : contact_channel !== null
+                        ? contact_channel
+                        : contact_channels[0]
+                    )
                     setShowAllAreas(isActive)
                   }}
                   mr="20px"
                   mb="15px"
-                  name={channel.name}
-                  service_code={channel.service_code}
-                  attention_required={channel.attention_required ? true : false}
-                  bgX={
-                    bgArray[index] && bgArray[index].x ? bgArray[index].x : 0
+                  name={
+                    contact_channel != null
+                      ? contact_channel.name
+                      : contact_channels[0].name
                   }
-                  bgY={
-                    bgArray[index] && bgArray[index].y ? bgArray[index].y : 0
+                  service_code={
+                    contact_channel != null
+                      ? contact_channel.service_code
+                      : contact_channels[0].service_code
+                  }
+                  attention_required={
+                    contact_channel != null &&
+                    contact_channel.attention_required
+                      ? true
+                      : false
                   }
                 />
-              ))}
+              ) : (
+                <Flex
+                  wrap="wrap"
+                  paddingLeft="100px"
+                  paddingRight="100px"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  {contact_channels.map((channel, index) => (
+                    <ContactChannelSelectButton
+                      key={index}
+                      onFinishRender={(w, h) => onRender({ w, h, index })}
+                      isActive={
+                        contact_channel != null &&
+                        contact_channel.id === channel.id
+                      }
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      onClick={(isActive: boolean) => {
+                        setContactChannel(isActive ? null : channel)
+                        setShowAllAreas(isActive)
+                      }}
+                      mr="20px"
+                      mb="15px"
+                      name={channel.name}
+                      service_code={channel.service_code}
+                      attention_required={
+                        channel.attention_required ? true : false
+                      }
+                      bgX={
+                        bgArray[index] && bgArray[index].x
+                          ? bgArray[index].x
+                          : 0
+                      }
+                      bgY={
+                        bgArray[index] && bgArray[index].y
+                          ? bgArray[index].y
+                          : 0
+                      }
+                    />
+                  ))}
+                </Flex>
+              )}
+              {isMobile && (
+                <Flex mt="20px" justifyContent="center">
+                  <Button
+                    onClick={() => {
+                      setShowAllAreas(!showAllAreas)
+                    }}
+                    variant="link"
+                  >
+                    {showAllAreas ? 'esconder áreas' : 'ver todas as áreas'}
+                  </Button>
+                </Flex>
+              )}
             </Flex>
-          )}
-          {isMobile && (
-            <Flex mt="20px" justifyContent="center">
-              <Button
-                onClick={() => {
-                  setShowAllAreas(!showAllAreas)
-                }}
-                variant="link"
-              >
-                {showAllAreas ? 'esconder áreas' : 'ver todas as áreas'}
-              </Button>
-            </Flex>
-          )}
-        </Flex>
 
-        {contact_channel && <ContactChannelSection channel={contact_channel} />}
+            {contact_channel && (
+              <ContactChannelSection channel={contact_channel} />
+            )}
+          </Container>
+        </Box>
+        {/* FIM sobre o que deseja falar? */}
 
-      </Container>
-
-    </Box>
-    {/* FIM sobre o que deseja falar? */}
-    
-    <Container
-        backgroundColor="green.400"
-        maxW="1536px"
-      >
-        <ButtonsSection />
-      </Container>
-  
-  
-  </Box>
-</>
-    
+        <Container backgroundColor="green.400" maxW="1536px">
+          <ButtonsSection />
+        </Container>
+      </Box>
+    </>
   )
 }
 
@@ -215,21 +217,21 @@ const ContactChannelSection = ({ channel }: { channel: IContactChannel }) => (
       paddingRight={{ base: '40px', lg: '120px' }}
     >
       <Flex flex="1" justifyContent="flex-start" direction="column">
-        <Text as="h3" variant="h3" order="1">
+        <Text as="h3" variant="h3" order={1}>
           {channel.name}
         </Text>
         <Text
           mt={{ base: '10px', lg: '40px' }}
           fontFamily="body"
           variant="body"
-          order={{ base: '3', lg: '2' }}
+          order={{ base: 3, lg: 2 }}
         >
           {channel.description}
         </Text>
         <Image
           mt={{ base: '10px', lg: '30px' }}
           src={channel.image}
-          order={{ base: '2', lg: '3' }}
+          order={{ base: 2, lg: 3 }}
         />
       </Flex>
       <Flex flex="2">
@@ -252,7 +254,7 @@ const ButtonsSection = () => {
       backgroundColor="green.400"
       padding={{ base: '2% 0%', lg: '4% 0%' }}
       flex="1"
-      justify={"center"}
+      justify={'center'}
     >
       <Flex
         // backgroundColor="yellow"
@@ -294,7 +296,9 @@ const ButtonsSection = () => {
             maxH={{ base: '185px' }}
             title="Solicite Nosso"
             description="Mostruário"
-            onClick={() => router.push('/contact?channel=solicitacao-de-mostruario')}
+            onClick={() =>
+              router.push('/contact?channel=solicitacao-de-mostruario')
+            }
             icon={
               <BagIcon
                 width={{
