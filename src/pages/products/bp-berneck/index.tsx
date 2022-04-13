@@ -21,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   let banners = await strapiClient({
     resource: 'bp-page-banners'
   })
-  
+
   let galleries: Gallery[] = await strapiClient({
     resource: 'highlighted-ambient-types'
   })
@@ -42,7 +42,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       galleries,
-      carrouselImages: banners.map((banner:any) => `${url}${banner.banner_image.url}`)
+      banners: banners.map((banner:any) => {
+        return {
+          link: banner.link,
+          banner_image: `${url}${banner.banner_image.url}`
+        }
+      })
     }
   }
 }
