@@ -33,7 +33,7 @@ export const Buy = () => {
         overflowX="hidden"
         bg="white.100"
         padding="5%"
-        flexDirection={"column"}
+        flexDirection={'column'}
       >
         <Image
           src="/img/onde-comprar/grafismo.svg"
@@ -64,12 +64,7 @@ export const Buy = () => {
         </Text>
       </Flex>
 
-      <Flex 
-        padding="25px 0" 
-        w="100%" 
-        bg="green.400" 
-        justifyContent={'center'}
-      >
+      <Flex padding="25px 0" w="100%" bg="green.400" justifyContent={'center'}>
         <Flex
           border="1px solid"
           borderColor={'green.600'}
