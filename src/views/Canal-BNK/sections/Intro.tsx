@@ -136,11 +136,11 @@ export const Intro = (props: { posts: IPost[] }) => {
                     ? '/assets/imgs/canal-bnk/canal_bnk_materia.svg'
                     : '/assets/imgs/canal-bnk/canal_bnk_mundo.svg'
                 }
-                w={{ base: '150px', lg: '210px' }}
+                w={{ base: '150px', lg: '180px' }}
               />
 
               <Box
-                w={'100%'}
+                w={'70%'}
                 marginTop={{ base: '20px', lg: '30px', xl: '40px' }}
               >
                 {!seeOnlyPosts && (
@@ -197,9 +197,9 @@ export const Intro = (props: { posts: IPost[] }) => {
 
             <Flex
               width={{ base: '100%', lg: '70%', '2xl': '80%' }}
-              wrap={{ base: 'nowrap', lg: 'wrap' }}
+              wrap={{ base: 'nowrap', lg: 'wrap', '2xl':'nowrap' }}
               justify="end"
-              gap={{ base: '8px', lg: '16px', xl: '22px' }}
+              gap={{ base: '8px', lg: '16px', xl: '14px' }}
               direction={{
                 base: 'column',
                 lg: 'row'
@@ -207,6 +207,7 @@ export const Intro = (props: { posts: IPost[] }) => {
               marginTop={{ base: '30px', lg: '0' }}
               alignItems={{ base: 'center', lg: 'flex-start' }}
               height={{ base: 'auto', lg: '150px' }}
+              // bg="tomato"
             >
               <NavButton
                 hideArrow
@@ -400,7 +401,7 @@ export const NavButton = (props: NavButtonProps) => {
   return (
     <Button
       as="button"
-      h={{ base: '50px', xl: '62px' }}
+      h={{ base: '50px', xl: '60px' }}
       w={{ base: '100%', lg: 'auto' }}
       border="2px solid"
       borderRadius="17px"
@@ -428,6 +429,7 @@ export const NavButton = (props: NavButtonProps) => {
             base: '2px',
             xl: '3px'
           }}
+          fontSize = {{ base: '12px', sm: '12px', lg: '12px', xl: '12px' }}
         >
           {children}
         </Text>

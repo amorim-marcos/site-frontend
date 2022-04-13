@@ -210,8 +210,8 @@ const DownloadColorPanel = (props: DownloadColorPanelProps) => {
         />
 
         <Text
-          as="h2"
-          variant="h2"
+          as="h4"
+          variant="h4"
           fontWeight="extrabold"
           letterSpacing="-0.68px"
           color={colorPanel === 'brown' ? 'white' : 'green.800'}
