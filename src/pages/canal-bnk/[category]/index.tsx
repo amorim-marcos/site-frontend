@@ -25,6 +25,7 @@ export default function CategoryPage(props: CategoryPageProps) {
     <CanalBNK
       posts={props.posts}
       categories={props.allCategories}
+      patterns_pack_url={props.patterns_pack_url}
       defaultCategory={index}
     />
   )
@@ -36,23 +37,61 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const category = params?.category
   const locale = context.locale
   let res
-
-  res = await fetch(
-    process.env.NEXT_PUBLIC_API_URL + `/categories?_locale=${locale}`
-  )
-  let allCategories = await res.json()
-
-  res = await fetch(
-    process.env.NEXT_PUBLIC_API_URL +
-      `/categories/${category}?_locale=${locale}`
-  )
-  const currentCategory = await res.json()
-
-  res = await fetch(
-    process.env.NEXT_PUBLIC_API_URL + `/posts?_locale=${locale}`
-  )
-  const allPosts = await res.json()
+  let allCategories
+  let downloads_page
   let posts
+  let allPosts
+  let currentCategory
+
+  try{
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/categories?_locale=${locale}`
+    )
+    allCategories = await res.json()
+  
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL +
+        `/categories/${category}?_locale=${locale}`
+    )
+    
+    currentCategory = await res.json()
+  
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/posts?_locale=${locale}`
+    )
+
+    allPosts = await res.json()
+
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/downloads-page?_locale=${locale}`
+    )
+
+    downloads_page = await res.json()
+  }catch(e){
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/categories`
+    )
+    allCategories = await res.json()
+  
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL +
+        `/categories/${category}`
+    )
+    
+    currentCategory = await res.json()
+  
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/posts`
+    )
+
+    allPosts = await res.json()
+
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/downloads-page`
+    )
+
+    downloads_page = await res.json()
+  }
 
   if (allPosts && allPosts.length) {
     posts = allPosts.map((item: { cover: { url: string } }) => {
@@ -75,7 +114,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   )
 
+  const patterns_pack_url = (downloads_page.patterns_pack_file) ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + downloads_page.patterns_pack_file.url : null
+
   return {
-    props: { category: currentCategory, allCategories, posts }
+    props: { category: currentCategory, allCategories, posts, patterns_pack_url }
   }
 }
