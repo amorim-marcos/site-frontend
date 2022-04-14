@@ -16,6 +16,85 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
   const { currentCategory } = useContext(CategoryContext)
   const { isMobile } = useMobile(1024)
 
+  const categoryOne = [
+    <DownloadColorPanel
+      key="Revista Inspirare BNK"
+      title="Revista Inspirare BNK"
+      colorPanel="brown"
+      url="/canal-bnk/downloads#revista-inspirare-bnk"
+      img="/assets/imgs/canal-bnk/img_revista_inspirare.png"
+      graphism="/assets/imgs/canal-bnk/grafismo_revista_inspirare.svg"
+    />,
+  
+    <DownloadColorPanel
+      key="Pack de Padrões BP BERNECK®"
+      title="Pack de Padrões BP BERNECK®"
+      colorPanel="brown"
+      url={(patterns_pack_url) ? patterns_pack_url : "#"}
+      img="/assets/imgs/canal-bnk/img_pack_padroes.png"
+      graphism="/assets/imgs/canal-bnk/grafismos_pack_de_padroes.svg"
+      download={true}
+    />,
+  
+    <DownloadColorPanel
+      key="Materiais de Divulgação"
+      title="Materiais de Divulgação"
+      colorPanel="brown"
+      url="/canal-bnk/downloads#materiais-de-divulgacao"
+      img="/assets/imgs/canal-bnk/materiais_de_divulgacao.png"
+      graphism="/assets/imgs/canal-bnk/grafismos_materiais_de_divulgação.svg"
+    />
+  ]
+  
+  const categoryTwo = [
+    <DownloadColorPanel
+      key="Materiais de Suporte"
+      title="Materiais de Suporte"
+      colorPanel="green"
+      url="/canal-bnk/downloads#materiais-de-suporte"
+      img="/assets/imgs/canal-bnk/img_materiais_de_suporte.png"
+      graphism="/assets/imgs/canal-bnk/grafismo_materiais_de_suporte.svg"
+    />,
+  
+    <DownloadColorPanel
+      key="Certificados de Produto"
+      title="Certificados de Produto"
+      colorPanel="green"
+      url="/certificacoes#certificados-de-produtos"
+      img="/assets/imgs/canal-bnk/img_certificados_de_produto.png"
+      graphism="/assets/imgs/canal-bnk/grafismo_certificados_de_produto.svg"
+    />
+  ]
+  
+  const categoryThree = [
+    <DownloadColorPanel
+      key="Revista Opinus"
+      title="Revista Opinus"
+      colorPanel="gray"
+      url="/canal-bnk/downloads#revista-opinus"
+      img="/assets/imgs/canal-bnk/img_revista_opinus.png"
+      graphism="/assets/imgs/canal-bnk/grafismos_opinus.svg"
+    />,
+  
+    <DownloadColorPanel
+      key="Relatórios"
+      title="Relatórios"
+      colorPanel="gray"
+      url="/canal-bnk/downloads#relatorios-e-documentos"
+      img="/assets/imgs/canal-bnk/img_relatorios.png"
+      graphism="/assets/imgs/canal-bnk/grafismo_relatorios.svg"
+    />,
+  
+    <DownloadColorPanel
+      key="Certificados Florestais"
+      title="Certificados Florestais"
+      colorPanel="gray"
+      url="/certificacoes#certificados-florestais"
+      img="/assets/imgs/canal-bnk/img_certificados_florestais.png"
+      graphism="/assets/imgs/canal-bnk/grafismo_certificados_florestais.svg"
+    />
+  ]
+
   return (
     <Section
       title="Downloads"
@@ -59,7 +138,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
               <DownloadColorPanel
                 title="Relatórios"
                 colorPanel="gray"
-                url="/canal-bnk/downloads#relatorios"
+                url="/canal-bnk/downloads#relatorios-e-documentos"
                 img="/assets/imgs/canal-bnk/img_relatorios.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_relatorios.svg"
               />
@@ -68,7 +147,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                 flex={2}
                 title="Materiais de Suporte"
                 colorPanel="green"
-                url="canal-bnk/downloads#materiais-de-suporte"
+                url="/canal-bnk/downloads#materiais-de-suporte"
                 img="/assets/imgs/canal-bnk/img_materiais_de_suporte.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_materiais_de_suporte.svg"
               />
@@ -76,7 +155,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
               <DownloadColorPanel
                 title="Materiais de Divulgação"
                 colorPanel="brown"
-                url="canal-bnk/downloads#materiais-de-divulgacao"
+                url="/canal-bnk/downloads#materiais-de-divulgacao"
                 img="/assets/imgs/canal-bnk/materiais_de_divulgacao.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_materiais_de_divulgação.svg"
               />
@@ -232,81 +311,3 @@ const DownloadColorPanel = (props: DownloadColorPanelProps) => {
     </Flex>
   )
 }
-
-const categoryOne = [
-  <DownloadColorPanel
-    key="Revista Inspirare BNK"
-    title="Revista Inspirare BNK"
-    colorPanel="brown"
-    url="/"
-    img="/assets/imgs/canal-bnk/img_revista_inspirare.png"
-    graphism="/assets/imgs/canal-bnk/grafismo_revista_inspirare.svg"
-  />,
-
-  <DownloadColorPanel
-    key="Pack de Padrões BP BERNECK®"
-    title="Pack de Padrões BP BERNECK®"
-    colorPanel="brown"
-    url="/"
-    img="/assets/imgs/canal-bnk/img_pack_padroes.png"
-    graphism="/assets/imgs/canal-bnk/grafismos_pack_de_padroes.svg"
-  />,
-
-  <DownloadColorPanel
-    key="Materiais de Divulgação"
-    title="Materiais de Divulgação"
-    colorPanel="brown"
-    url="/"
-    img="/assets/imgs/canal-bnk/materiais_de_divulgacao.png"
-    graphism="/assets/imgs/canal-bnk/grafismos_materiais_de_divulgação.svg"
-  />
-]
-
-const categoryTwo = [
-  <DownloadColorPanel
-    key="Materiais de Suporte"
-    title="Materiais de Suporte"
-    colorPanel="green"
-    url="/"
-    img="/assets/imgs/canal-bnk/img_materiais_de_suporte.png"
-    graphism="/assets/imgs/canal-bnk/grafismo_materiais_de_suporte.svg"
-  />,
-
-  <DownloadColorPanel
-    key="Certificados de Produto"
-    title="Certificados de Produto"
-    colorPanel="green"
-    url="/"
-    img="/assets/imgs/canal-bnk/img_certificados_de_produto.png"
-    graphism="/assets/imgs/canal-bnk/grafismo_certificados_de_produto.svg"
-  />
-]
-
-const categoryThree = [
-  <DownloadColorPanel
-    key="Revista Opinus"
-    title="Revista Opinus"
-    colorPanel="gray"
-    url="/"
-    img="/assets/imgs/canal-bnk/img_revista_opinus.png"
-    graphism="/assets/imgs/canal-bnk/grafismos_opinus.svg"
-  />,
-
-  <DownloadColorPanel
-    key="Relatórios"
-    title="Relatórios"
-    colorPanel="gray"
-    url="/"
-    img="/assets/imgs/canal-bnk/img_relatorios.png"
-    graphism="/assets/imgs/canal-bnk/grafismo_relatorios.svg"
-  />,
-
-  <DownloadColorPanel
-    key="Certificados Florestais"
-    title="Certificados Florestais"
-    colorPanel="gray"
-    url="/"
-    img="/assets/imgs/canal-bnk/img_certificados_florestais.png"
-    graphism="/assets/imgs/canal-bnk/grafismo_certificados_florestais.svg"
-  />
-]
