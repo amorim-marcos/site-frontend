@@ -79,8 +79,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   const router = useRouter()
 
-  const queryCollection = router.query.collection
-
   const [filters, setFilters] = useState(initialFilters)
 
   function changeGridSize(newGridSize: GridSize) {
@@ -174,30 +172,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }
 
   useEffect(() => {
-    if(queryCollection){
-      for (const collection of filtersContext.collections) {
-        const normalizedTitle = collection.title
-          .normalize('NFD')
-          .replace(/[^\w ]/g, '')
-          .split(' ')
-          .join('-')
-          .toLowerCase()
-  
-        if (
-          queryCollection == normalizedTitle &&
-          !initialFilters['collections'].includes(collection.code.toString())
-        ) {
-          filters['collections'].push(collection.code)
-          break
-        }
-      }
-      setFilters(filters)
-      setFilteredBps(applyFilters(filters, bps)) 
-      changeFilterPanel('collections')
-    }
-  }, [])
-
-  useEffect(() => {
     switch (gridSize) {
       case 'big':
         setGridColumnsMode('repeat(3, 1fr)')
@@ -249,6 +223,36 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
           )
         )
         changeFilterPanel('panels')
+      }
+    }
+
+    if(router.query.collection){
+      let queryCollection = router.query.collection
+      for (const collection of filtersContext.collections) {
+        const normalizedTitle = collection.title
+          .normalize('NFD')
+          .replace(/[^\w ]/g, '')
+          .split(' ')
+          .join('-')
+          .toLowerCase()
+  
+        if (
+          queryCollection == normalizedTitle &&
+          !initialFilters['collections'].includes(collection.code)
+        ) {
+          appendFilter('collections', collection.code as any)
+          setFilteredBps(
+            applyFilters(
+              {
+                ...filters,
+                ['collections']: [collection.code as any]
+              },
+              bps
+            )
+          )
+          changeFilterPanel('collections')
+          break
+        }
       }
     }
   }, [router.query])
