@@ -1,13 +1,7 @@
-import {
-  GetServerSideProps,
-  GetStaticPaths,
-  GetStaticPathsResult,
-  GetStaticProps
-} from 'next'
+import { GetServerSideProps } from 'next'
 
 import { Post, Category as CategoryProps } from 'types/data/Post'
 
-import { POSTS } from 'mocks/canal_bnk'
 import CanalBNK from 'views/Canal-BNK'
 
 export interface CategoryPageProps {
@@ -30,7 +24,6 @@ export default function CategoryPage(props: CategoryPageProps) {
       defaultCategory={index}
     />
   )
-  // return <Category posts={props.posts} category={props.category} />
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -44,19 +37,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let allPosts
   let currentCategory
 
-  try{
+  try {
     res = await fetch(
       process.env.NEXT_PUBLIC_API_URL + `/categories?_locale=${locale}`
     )
     allCategories = await res.json()
-  
+
     res = await fetch(
       process.env.NEXT_PUBLIC_API_URL +
         `/categories/${category}?_locale=${locale}`
     )
-    
+
     currentCategory = await res.json()
-  
+
     res = await fetch(
       process.env.NEXT_PUBLIC_API_URL + `/posts?_locale=${locale}`
     )
@@ -68,28 +61,21 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     )
 
     downloads_page = await res.json()
-  }catch(e){
-    res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/categories`
-    )
+  } catch (e) {
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/categories`)
     allCategories = await res.json()
-  
+
     res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL +
-        `/categories/${category}`
+      process.env.NEXT_PUBLIC_API_URL + `/categories/${category}`
     )
-    
+
     currentCategory = await res.json()
-  
-    res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/posts`
-    )
+
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts`)
 
     allPosts = await res.json()
 
-    res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/downloads-page`
-    )
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/downloads-page`)
 
     downloads_page = await res.json()
   }
@@ -115,9 +101,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   )
 
-  const patterns_pack_url = (downloads_page.patterns_pack_file) ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + downloads_page.patterns_pack_file.url : null
+  const patterns_pack_url = downloads_page.patterns_pack_file
+    ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+      downloads_page.patterns_pack_file.url
+    : null
 
   return {
-    props: { category: currentCategory, allCategories, posts, patterns_pack_url }
+    props: {
+      category: currentCategory,
+      allCategories,
+      posts,
+      patterns_pack_url
+    }
   }
 }

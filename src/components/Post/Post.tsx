@@ -12,7 +12,6 @@ import { Category } from 'types/data/Post'
 import { smartDate } from 'utils/utils'
 
 function getPanelColor(i: number) {
-  console.log(i)
   return i <= 2 && i >= 0 ? ['#F0E4D1', '#D6DCD5', '#89BA81'][i] : 'white'
 }
 
@@ -76,7 +75,6 @@ export const Post = (props: PostProps) => {
       }
       cursor="pointer"
       bg={getPanelColor(currentCategory)}
-      {...rest}
       margin={{
         base: '5%',
         md: '3%',
@@ -87,6 +85,7 @@ export const Post = (props: PostProps) => {
       w={{ base: '90%', '2xl': showDate ? '70%' : '90%' }}
       onMouseEnter={() => setMouseDown(true)}
       onMouseLeave={() => setMouseDown(false)}
+      {...rest}
     >
       {/* box imagem cover */}
       <Flex
