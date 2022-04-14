@@ -89,6 +89,9 @@ export const SectionPackBpDownloads = ({
             download
             fontWeight="bold"
             borderRadius="18px"
+            transition="all .2s ease-in-out"
+            _hover={{ outline: 'none', bg: 'green.700' }}
+            _focus={{ outline: 'none' }}
           >
             <Flex h="100%" w="100%" alignItems="center" justifyContent="center">
               <Text color="white.100" fontWeight="bold" variant="body">
