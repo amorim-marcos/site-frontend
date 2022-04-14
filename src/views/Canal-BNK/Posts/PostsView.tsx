@@ -43,7 +43,7 @@ export const PostsView = ({
           disconsiderCurrentPage={false}
         />
 
-        <Box bg={backgroundColor}>
+        <Box bg={backgroundColor} overflow="hidden">
           <Flex
             flexDirection="column"
             alignItems="center"
@@ -51,7 +51,7 @@ export const PostsView = ({
             marginX="auto"
             bg={backgroundColor}
             position="relative"
-            overflow="hidden"
+            // overflow="hidden"
           >
             {/* Header Image */}
             <Image
@@ -81,32 +81,34 @@ export const PostsView = ({
             {/* Grafisms */}
             <Image
               src="/img/grafismo_direita_post.svg"
-              right={{ base: '65%', md: '-9%' }}
-              top={{ base: '-200px', sm: '-240px', md: '-5%' }}
+              right={{ base: '65%', md: '-20%' }}
+              top={{ base: '-0.3%' }}
               position="absolute"
               zIndex={{ base: 'docked', md: 'base' }}
-              width={{ base: '590px', md: '43vw' }}
+              width={{ base: '590px', md: '30vw', '2xl': '43vw' }}
               maxWidth="825px"
+              display={{ base: 'none', md: 'block' }}
             />
             <Image
               src="/img/grafismo_superior_post.svg"
               zIndex="docked"
               position="absolute"
-              top={{ base: '5%', xl: '10%', '2xl': '15%' }}
-              right="5%"
-              width={'20vw'}
+              top={{ base: '2%', md: '3%', '2xl': '5%' }}
+              right="-3%"
+              width={{ base: '40vw', sm: '30vw', md: '20vw' }}
               maxWidth={'384px'}
-              display={{ base: 'none', md: 'block' }}
+              // display={{ base: 'none', md: 'block' }}
             />
             <Image
               src="/img/grafismo_esquerda_post.svg"
-              left={{ base: '85%', md: '0' }}
-              transform={{ base: 'rotate(180deg)', md: '' }}
-              top={{ base: '2%', md: '5%', xl: '10%', '2xl': '15%' }}
+              left={{ base: '0', '2xl': '-13%' }}
+              // transform={{ base: 'rotate(180deg)', md: '' }}
+              top={{ base: '0', md: '2%' }}
               position="absolute"
-              width={{ base: '25vw', md: '12vw' }}
+              width={{ base: '22vw', md: '11vw' }}
               maxWidth="230px"
-              zIndex={{ base: 'docked', md: 'base' }}
+              zIndex={{ base: 'docked' }}
+              opacity={{ base: '0.7', md: '1' }}
             />
             {/* End of Grafisms */}
 
