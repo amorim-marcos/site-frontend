@@ -35,7 +35,11 @@ export const PlusTestInfo = ({
       marginX="auto"
       padding={{ base: '5%', '2xl': '3%' }}
     >
-      <Text variant={'productTitle' as any} >{title}</Text>
+      <Text as={"h3"}
+          variant={"h3"}
+          color="green.900"
+          fontWeight={'extrabold'}
+        >{title}</Text>
       <Text width={{ base: '100%', md: '44%' }}>
         {description}
       </Text>
@@ -174,7 +178,10 @@ export const PlusTestInfo = ({
               xl: '5%',
               '2xl': '5%'
             }}
-            variant={'productTitle' as any}
+              as={"h3"}
+            variant={"h3"}
+            color="green.900"
+            fontWeight={'extrabold'}
           >
             {extraInfoTitle}
           </Text>

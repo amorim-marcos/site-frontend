@@ -20,22 +20,25 @@ export const ProductDimensions = ({
   tableBackgroundColor = '#FFF',
   tableBorderColor = '#000',
   dimensions,
-  tableWidth = {
-    base: '200px',
-    sm: '350px',
-    md: '500px',
-    lg: '500px',
-    xl: '400px',
-    '2xl': '450px'
-  },
   widthFirst = false
 }: ProductDimensionsProps) => {
   const product = useTranslation('product')
 
   return (
-    <Flex justifyContent="space-between">
-      <Flex flexDirection="column">
-        <Heading {...headingStyle}>{product.t('dimensionsMM')}</Heading>
+    <Flex 
+      // justifyContent="space-between"
+      // bg="blue"
+    >
+      <Flex 
+        flexDirection="column"
+      >
+       <Text as={"h3"}
+          variant={"h3"}
+          color="green.900"
+          fontWeight={'extrabold'}
+        >
+          {product.t('dimensionsMM')}
+      </Text>
         <Table
           fontWeight="light"
           fontSize={{ base: '12px', sm: '12px', lg: '13px', xl: '14px' }}
@@ -71,9 +74,11 @@ export const ProductDimensions = ({
             </Tr>
           </Tbody>
         </Table>
-        <Text
-          fontSize={{ base: '10px', sm: '10px', lg: '12px', xl: '12px' }}
-          color="green.900"
+        <Text as={"h6"}
+          variant={"h6"}
+          fontSize={{ base: '10px', sm: '11px', lg: '11px', xl: '11px' }}
+          fontWeight= {'normal'}
+          color="green.300"
           mt={"1%"}
         >
           {product.t('otherDimensionsText')}
@@ -98,20 +103,3 @@ export const tableItemStyle = (borderColor: string, background: string) => ({
   paddingLeft: { base: '5px', md: '15px' },
   paddingRight: { base: '5px', md: '15px' }
 })
-
-const headingStyle = {
-  marginBottom: {
-    base: '8px',
-    sm: '9px',
-    md: '11px',
-    lg: '14px',
-    xl: '17px',
-    '2xl': '20px'
-  },
-  color: 'green.900',
-  fontSize: {
-    base: '18px', lg: '22px', xl: '24px'
-  },
-  fontWeight: 'extrabold',
-  zIndex: 'docked'
-}

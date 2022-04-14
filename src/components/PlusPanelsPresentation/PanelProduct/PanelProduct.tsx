@@ -41,8 +41,9 @@ export const PanelProduct = ({
       overflow="hidden"
       marginBottom={{ base: '30px' }}
     >
-      <Text
-        variant={'productTitle' as any}
+      <Text as={"h3"}
+        variant={"h3"}
+        fontWeight={'extrabold'}
         color="white.100"
         marginBottom="5px"
       >

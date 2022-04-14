@@ -51,7 +51,7 @@ export default function BerneckPinusView({
         imgSrc="/img/pinus.png"
         imgWidth={{ base: '100vw', sm: '60vw' }}
         imgMaxWidth="1151px"
-        imgMarginTop={{ base: '-30%', sm: '0px' }}
+        imgMarginTop={{ base: '-30%', sm: '-5%' }}
         imgMarginRight={{
           base: '-30px',
           sm: '-40px',

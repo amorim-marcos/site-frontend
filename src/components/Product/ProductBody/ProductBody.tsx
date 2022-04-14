@@ -63,6 +63,8 @@ export const ProductBody = ({
       maxWidth="1536px"
       flexDirection="column"
       // bg={backgroundColor}
+      flex="1"
+      w={"100%"}
       // bg="yellow"
       // paddingBottom={paddingBottom}
       padding={{ base: '5% 0 10% 5%', '2xl': '5% 0 5% 3%' }}
@@ -233,7 +235,16 @@ export const ProductBody = ({
         )}
 
         {dimensions && (
-          <Box marginBottom="80px">
+          <Box 
+            marginBottom={{
+              base: '20px',
+              sm: '30px',
+              md: '40px',
+              lg: '60px',
+              xl: '80px',
+              '2xl': '100px'
+            }}
+          >
             <ProductDimensions
               tableBorderColor={backgroundColor}
               tableBackgroundColor={secondaryBackgroundColor}

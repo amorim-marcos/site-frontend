@@ -20,7 +20,11 @@ export const PlusPanelsPresentation = ({
       marginX="auto"
       padding="5%"
     >
-      <Text variant={'productTitle' as any}>{title}</Text>
+      <Text as={"h3"}
+          variant={"h3"}
+          color="green.900"
+          fontWeight={'extrabold'}
+        >{title}</Text>
       <Flex
         marginTop={{
           base: '20px',
