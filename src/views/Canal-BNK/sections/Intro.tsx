@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { useRouter } from 'next/router'
 
 import {
   Flex,
@@ -18,7 +19,6 @@ import { Section } from './Section'
 
 import { CategoryContext } from '..'
 import { Post as IPost } from 'types/data'
-import { useRouter } from 'next/router'
 
 export const PANEL_COLOR = {
   all: 'white',
@@ -216,7 +216,6 @@ export const Intro = (props: {
               marginTop={{ base: '30px', lg: '0' }}
               alignItems={{ base: 'center', lg: 'flex-start' }}
               height={{ base: 'auto', lg: '150px' }}
-              // bg="tomato"
             >
               <NavButton
                 hideArrow
