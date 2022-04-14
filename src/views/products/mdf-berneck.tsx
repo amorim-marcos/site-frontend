@@ -9,6 +9,8 @@ export type MdfBerneckViewProps = {
 }
 
 export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
+  console.log(mdf.technical_sheet)
+
   return (
     <Box>
       <Pagebar
@@ -139,6 +141,7 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
         downloadAndLinks={{
           textColor: '#376B5C',
           hoverColor: '#59993F',
+          datasheetUrl: mdf_plus.technical_sheet,
           qualityCertificate: false
         }}
       />
