@@ -70,7 +70,11 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
           marginY="5%"
           bg="brown.100"
         >
-          <Indicator items={items} currentItem={currentItem} />
+          <Indicator
+            items={items}
+            currentItem={currentItem}
+            onClick={(i) => setCurrentItem(i)}
+          />
         </Flex>
         <Image
           src="/assets/imgs/grafismos_home_header/grafismo_esquerda_home.svg"
@@ -231,7 +235,11 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
             </Flex>
           </Flex>
           <Box display={{ base: 'none', md: 'block' }}>
-            <Indicator items={items} currentItem={currentItem} />
+            <Indicator
+              items={items}
+              currentItem={currentItem}
+              onClick={(i: number) => setCurrentItem(i)}
+            />
           </Box>
         </Flex>
       </Flex>
@@ -249,9 +257,10 @@ type IndicatorProps = {
     title: string
   }[]
   currentItem: number
+  onClick: (i: number) => void
 }
 
-const Indicator = ({ items, currentItem }: IndicatorProps) => {
+const Indicator = ({ items, currentItem, onClick }: IndicatorProps) => {
   return (
     <Flex marginLeft={{ md: '4%' }}>
       {items.map((item, i) => {
@@ -306,6 +315,7 @@ const Indicator = ({ items, currentItem }: IndicatorProps) => {
             }}
             cursor={'pointer'}
             bg="brown.200"
+            onClick={() => onClick(i)}
           />
         )
       })}
