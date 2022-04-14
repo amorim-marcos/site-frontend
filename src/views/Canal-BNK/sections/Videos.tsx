@@ -91,12 +91,9 @@ export const Videos = () => {
           ? 'gray.150'
           : 'brown.100'
       }
-      // bg="red"
-      // py={{ base: '52px', lg: '50px' }}
       py={{ base: '54px', lg: '100px' }}
-      px={{ base: '20px', lg: '5%', '2xl':'3%' }}
-      // padding={{ base: '5% 0%', sm: '5%', lg: '0', xl: '5%', '2xl': '3% 3%' }}
-      maxWidth={"1536px"}
+      px={{ base: '20px', lg: '5%', '2xl': '3%' }}
+      maxWidth={'1536px'}
     >
       <Flex
         w="100%"
