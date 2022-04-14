@@ -14,7 +14,7 @@ export type SawnQuality = {
   image: {
     url: string
   }
-  image_url?: string | null
+  image_url?: string
 }
 
 export type BerneckPinusPageProps = {
