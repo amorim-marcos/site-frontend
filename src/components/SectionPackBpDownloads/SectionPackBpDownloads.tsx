@@ -1,14 +1,19 @@
-import { Flex, Box, Text, Button, Image, Link } from '@chakra-ui/react'
+import { Flex, Box, Text, Image, Link } from '@chakra-ui/react'
 import useMobile from 'hooks/useMobile'
 
 export type SectionPackBpDownloadsProps = {
-  title: string,
-  text: string,
+  title: string
+  text: string
   download_url: string | null
 }
 
-export const SectionPackBpDownloads = ({ title, text, download_url }: SectionPackBpDownloadsProps) => {
-  const { isMobile, width } = useMobile(568)
+export const SectionPackBpDownloads = ({
+  title,
+  text,
+  download_url
+}: SectionPackBpDownloadsProps) => {
+  const { width } = useMobile(568)
+
   return (
     <Flex
       id="pack-bp-downloads"
@@ -62,13 +67,13 @@ export const SectionPackBpDownloads = ({ title, text, download_url }: SectionPac
           alignItems="center"
           textAlign={'center'}
         >
-          <Text  as="h3" variant={'h3' as any}>
+          <Text as="h3" variant="h3">
             {title}
           </Text>
           <Text
             w={{ base: '70%', xl: '80%', '2xl': '100%' }}
             color="green.800"
-            variant={'body' as any}
+            variant="body"
             textAlign="center"
           >
             {text}
@@ -79,16 +84,17 @@ export const SectionPackBpDownloads = ({ title, text, download_url }: SectionPac
             color="white.100"
             w="60%"
             height={{ base: '50px', md: '20%' }}
-            href={(download_url) ? download_url : "#"}
+            href={download_url ? download_url : '#'}
             target="_blank"
             download
-            fontWeight='bold'
-            borderRadius='18px'
-
+            fontWeight="bold"
+            borderRadius="18px"
+            transition="all .2s ease-in-out"
+            _hover={{ outline: 'none', bg: 'green.700' }}
+            _focus={{ outline: 'none' }}
           >
-            <Flex  h="100%" w="100%"             alignItems="center"
-            justifyContent="center">
-              <Text color="white.100" fontWeight="bold" variant={'body' as any} >
+            <Flex h="100%" w="100%" alignItems="center" justifyContent="center">
+              <Text color="white.100" fontWeight="bold" variant="body">
                 Pack de Padrões
               </Text>
             </Flex>

@@ -1,7 +1,5 @@
 import { GetStaticProps } from 'next'
-import {
-  DownlodasView
-} from 'views/Canal-BNK/Downloads/DownloadsView'
+import { DownlodasView } from 'views/Canal-BNK/Downloads/DownloadsView'
 
 type DownloadsItemProps = {
   download_type: { type: string }
@@ -38,11 +36,11 @@ export type DownloadItem = {
 }
 
 type PageContent = {
-  title: string,
-  header_text: string,
-  patterns_pack_title: string,
-  patterns_pack_text: string,
-  patterns_pack_download_url: string | null,
+  title: string
+  header_text: string
+  patterns_pack_title: string
+  patterns_pack_text: string
+  patterns_pack_download_url: string | null
   sections: DownloadItem[]
 }
 
@@ -76,7 +74,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     )
 
     downloadPageContent = await res.json()
-
   } catch (e) {
     // if locale not working, get default
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/downloads`)
@@ -85,19 +82,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/download-types`)
     downloadTypes = await res.json()
 
-    res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/downloads-page`
-    )
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/downloads-page`)
 
     downloadPageContent = await res.json()
   }
 
-  let page_content: PageContent = {
+  const page_content: PageContent = {
     title: downloadPageContent.page_title,
     header_text: downloadPageContent.header_text,
     patterns_pack_title: downloadPageContent.patterns_pack_title,
     patterns_pack_text: downloadPageContent.pattern_pack_text,
-    patterns_pack_download_url: (downloadPageContent.patterns_pack_file) ? `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}${downloadPageContent.patterns_pack_file.url}` : null,
+    patterns_pack_download_url: downloadPageContent.patterns_pack_file
+      ? `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}${downloadPageContent.patterns_pack_file.url}`
+      : null,
     sections: []
   }
 
@@ -111,16 +108,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
               list.push({
                 ...element,
                 image: {
-                  url: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + element.image.url
+                  url:
+                    process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + element.image.url
                 },
                 file: {
-                  url: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + element.file.url
+                  url:
+                    process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + element.file.url
                 }
               })
           }
         }
       })
-      return { items: list.sort((a,b) => a.title.localeCompare(b.title) * -1), ...i } as DownloadItem
+      return {
+        items: list.sort((a, b) => a.title.localeCompare(b.title) * -1),
+        ...i
+      } as DownloadItem
     })
   }
 
