@@ -194,7 +194,11 @@ export const Intro = (props: {
                     w="75%"
                     fontWeight={800}
                     letterSpacing="2.1px"
-                    color={currentCategory === -1 ? 'green.900' : '#436D5D'}
+                    color={
+                      currentCategory === -1 || currentCategory == 2
+                        ? 'green.900'
+                        : '#436D5D'
+                    }
                   >
                     {props.tagsSearch && props.tagName
                       ? `Resultados para: ${props.tagName}`
@@ -383,6 +387,7 @@ export const Intro = (props: {
                 {props.posts?.map((post, j) => (
                   <Post
                     showDate
+                    showContent
                     showShareOptions
                     key={j}
                     post={post}

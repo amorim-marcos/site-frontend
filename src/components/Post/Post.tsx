@@ -3,12 +3,12 @@ import { useRouter } from 'next/router'
 
 import { Flex, Box, Text, FlexProps, Image } from '@chakra-ui/react'
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
+import parser from 'react-html-parser'
 
 import { Arrow, CalendarIcon, SocialIcon } from '@components/Icons'
 import { CategoryContext } from 'views/Canal-BNK'
 
 import { Post as IPost } from 'types/data'
-import { Category } from 'types/data/Post'
 import { smartDate } from 'utils/utils'
 
 function getPanelColor(i: number) {
@@ -16,13 +16,15 @@ function getPanelColor(i: number) {
 }
 
 function getAccentColor(i: number) {
-  return i <= 2 && i >= 0 ? ['#E0CBA5', '#B9C3B8', '#429C2E'][i] : 'white'
+  return i <= 3 && i >= 0
+    ? ['#E0CBA5', '#B9C3B8', '#429C2E', '#59993F'][i]
+    : 'white'
 }
 
 export interface PostProps extends FlexProps {
   post?: IPost
-  categoryPage?: Category
   showDate?: boolean
+  showContent?: boolean
   showShareOptions?: boolean
   imgPos?: 'top' | 'left' | 'right' | 'bottom'
 }
@@ -35,10 +37,10 @@ export const Post = (props: PostProps) => {
 
   const {
     post,
-    categoryPage = 'all',
     imgPos = 'top',
     showDate,
     showShareOptions,
+    showContent,
     ...rest
   } = props
 
@@ -46,16 +48,16 @@ export const Post = (props: PostProps) => {
     const index = categories.findIndex(
       (item) => item.name === post?.category.name
     )
-    if (categoryPage === 'all') return getAccentColor(index)
-    else return currentCategory === 2 ? 'white' : '#595959'
+
+    return getAccentColor(index)
   }
 
   const getHoverIndicatorColor = () => {
     const index = categories.findIndex(
       (item) => item.name === post?.category.name
     )
-    if (currentCategory === -1) return getAccentColor(index)
-    else return 'white'
+
+    return currentCategory === -1 ? getAccentColor(index) : 'white'
   }
 
   return (
@@ -114,11 +116,12 @@ export const Post = (props: PostProps) => {
             data-testid="post-category"
             margin={{
               base: '8px 0px 5px 10px',
-              lg: '10px 0px 7px 15px',
-              xl: '20px 0px 10px 20px'
+              lg: '16px 0px 7px 20px',
+              xl: '26px 0px 10px 25px'
             }}
             align="start"
             flex="1"
+            gap="14px"
           >
             <Arrow
               color={getHoverIndicatorColor()}
@@ -129,6 +132,7 @@ export const Post = (props: PostProps) => {
                 xl: '10px'
               }}
             />
+
             <Text
               as="h5"
               variant="h5"
@@ -155,8 +159,8 @@ export const Post = (props: PostProps) => {
               flex="1"
               margin={{
                 base: '0px 0px 0px 10px',
-                md: '0px 15px 0px 15px',
-                xl: '0px 20px 0px 20px'
+                md: '4px 27px 0px 15px',
+                xl: '4px 32px 0px 20px'
               }}
             >
               <Text
@@ -192,9 +196,9 @@ export const Post = (props: PostProps) => {
 
         {/* Title Post */}
         <Flex
-          pb={showShareOptions ? '18px' : '45px'}
           flex="1"
-          margin={{ base: '10px', lg: '10px', xl: '20px' }}
+          mx={{ base: '10px', xl: '25px' }}
+          pb={!showContent ? '45px' : '0'}
         >
           <Text
             as="h3"
@@ -211,6 +215,24 @@ export const Post = (props: PostProps) => {
             {post?.title}
           </Text>
         </Flex>
+
+        {/* Post Content */}
+        {showContent && (
+          <Flex
+            pb={showShareOptions ? '18px' : '45px'}
+            mx={{ base: '10px', xl: '10px' }}
+          >
+            <Text
+              fontSize="17px"
+              color="grey.350"
+              px="15px"
+              lineHeight="35px"
+              noOfLines={3}
+            >
+              {post?.content && parser(post?.content)}
+            </Text>
+          </Flex>
+        )}
 
         {/* Share Buttons Icons */}
         {showShareOptions && (
