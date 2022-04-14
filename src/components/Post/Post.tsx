@@ -12,11 +12,12 @@ import { Category } from 'types/data/Post'
 import { smartDate } from 'utils/utils'
 
 function getPanelColor(i: number) {
-  return i <= 2 ? ['#F0E4D1', '#D6DCD5', '#89BA81'][i] : 'white'
+  console.log(i)
+  return i <= 2 && i >= 0 ? ['#F0E4D1', '#D6DCD5', '#89BA81'][i] : 'white'
 }
 
 function getAccentColor(i: number) {
-  return i <= 2 ? ['#E0CBA5', '#B9C3B8', '#429C2E'][i] : 'white'
+  return i <= 2 && i >= 0 ? ['#E0CBA5', '#B9C3B8', '#429C2E'][i] : 'white'
 }
 
 export interface PostProps extends FlexProps {
