@@ -85,7 +85,6 @@ function CanalBNKFC(props: CanalBNKProps) {
       changeCurrentCategory(props.defaultCategory)
     }
   }, [props, setCategories, changeCurrentCategory])
-
   return (
     <Box>
       {currentCategory !== -1 ? (
@@ -93,7 +92,7 @@ function CanalBNKFC(props: CanalBNKProps) {
           paths={[
             { title: 'Canal BNK', url: '/canal-bnk' },
             {
-              title: categories[currentCategory].name,
+              title: categories[currentCategory].name.split(" ").map((name) => name[0].toUpperCase() + name.slice(1).toLowerCase()).join(" "),
               url: '/canal-bnk'
             }
           ]}
