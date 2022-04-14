@@ -26,6 +26,7 @@ type ItemProps = {
   image: {
     url: string
   }
+  image_url: string
 }
 
 export type QualityPinusProps = {
@@ -39,35 +40,27 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
   const [currentItem, setCurrentItem] = useState(0)
 
   return (
+
+  <Flex
+    // bg={headerBgColor}
+    flexDirection="column"
+    flex="1"
+    alignItems={"center"}
+  >
     <Flex
-      aria-label="qualityPinusContainer"
-      maxWidth="1536px"
-      marginX="auto"
-      paddingX={{
-        base: '6%',
-        sm: '4%'
-      }}
-      paddingY={{
-        base: '20px',
-        sm: '30px',
-        md: '40px',
-        lg: '50px',
-        xl: '60px',
-        '2xl': '70px'
-      }}
       flexDirection="column"
-      bg="#FCFCFC"
+      maxWidth="1536px"
+      flex="1"
+      w={"100%"}
+      // bg={headerBgColor}
+      // bg="yellow"
+      padding={{ base: '5% 0 10% 5%', '2xl': '5% 0 5% 3%' }}
     >
-      <Text
-        variant={'productTitle' as any}
-        marginBottom={{
-          base: '50px',
-          sm: '10px',
-          md: '20px',
-          lg: '30px',
-          xl: '40px',
-          '2xl': '50px'
-        }}
+      <Text as={"h3"}
+        variant={"h3"}
+        color="green.900"
+        fontWeight={'extrabold'}
+        padding={{ base: '5% 0 5% 0', '2xl': '0 0 5% 0' }}
       >
         {pinus.t('qualitiesPinusBerneck')}
       </Text>
@@ -80,22 +73,23 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
           w={{ base: '100%', sm: '30%' }}
           css={isMobile ? { height: '40vh' } : { height: 'full' }}
         >
-          {items.length > 0 && (
+          {items.length > 0 &&(
             <Image
               h="100%"
               w="100%"
               objectFit={'cover'}
-              src={items[currentItem].image.url}
+              src={items[currentItem].image_url}
             />
           )}
+          
         </Flex>
 
         <Flex width={{ base: '100%', sm: '67%' }} flexDirection="column">
           <Flex
             width={'100%'}
-            marginY={{ base: '30px', sm: '0' }}
-            justifyContent={{ base: 'space-around', sm: 'flex-start' }}
-            marginBottom={'5%'}
+            margin={{ base: '5% 0 5% 0', sm: '0' }}
+            justifyContent={{ base: 'flex-start' }}
+            gap={{ base: '2%', sm: '0' }}
             wrap={'wrap'}
           >
             {items &&
@@ -105,20 +99,20 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
                     key={i}
                     position={'relative'}
                     minWidth={{
-                      base: '40vw',
+                      base: '70px',
                       sm: '80px',
-                      md: '106px',
-                      lg: '133px',
-                      xl: '160px',
-                      '2xl': '200px'
+                      md: '80px',
+                      lg: '110px',
+                      xl: '140px',
+                      '2xl': '160px'
                     }}
                     h={{
-                      base: '60px',
-                      sm: '25px',
-                      md: '34px',
-                      lg: '42px',
-                      xl: '51px',
-                      '2xl': '64px'
+                      base: '30px',
+                      sm: '30px',
+                      md: '30px',
+                      lg: '40px',
+                      xl: '45px',
+                      '2xl': '50px'
                     }}
                     marginRight={{ base: '0', sm: '2%' }}
                     bg={i === currentItem ? 'green.250' : '#E6EBE5'}
@@ -130,7 +124,11 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
                     <Box {...textureBtnContainer}>
                       <QualityBtnTexture texture={getTexture(i + 1)} />
                     </Box>
-                    <Text variant={'productTitle' as any} marginBottom="0">
+                    <Text as={"h3"}
+                        variant={"h3"}
+                        color="green.900"
+                        fontWeight={'bold'}
+                      >
                       {item.number}
                     </Text>
                   </Center>
@@ -139,20 +137,28 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
           </Flex>
           <Flex flexDirection="column" justifyContent="space-between">
             {items.length > 0 && (
-              <Box marginBottom="3%">
-                <Text variant={'productTitle' as any}>
+              <Box 
+                margin={{ base: '5% 0 8% 0', sm: '5% 0 8% 0' }}
+              >
+                 <Text as={"h3"}
+                    variant={"h3"}
+                    color="green.900"
+                    fontWeight={'extrabold'}
+                  >
                   {items[currentItem].name} ︱ COL {items[currentItem].col}
                 </Text>
                 <Text
                   variant={'productBody' as any}
-                  w={{ base: '100%', sm: '90%' }}
+                  w={{ base: '95%', sm: '90%' }}
                 >
                   {items[currentItem].description}
                 </Text>
               </Box>
             )}
 
-            <Box marginBottom={'3%'}>
+            <Box 
+              margin={{ base: '0 0 8% 0', sm: '0 0 8% 0' }}
+            >
               {items.length > 0 && (
                 <ProductDimensions
                   dimensions={{
@@ -175,16 +181,22 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
             </Box>
 
             <Box>
-              <Text variant={'productTitle' as any}>Usos e Aplicações</Text>
-              {items.length > 0 && (
-                <Text variant={'productBody' as any}>
-                  {items[currentItem].uses_and_applications}
-                </Text>
-              )}
+                <Text as={"h3"}
+                    variant={"h3"}
+                    color="green.900"
+                    fontWeight={'extrabold'}
+                  >Usos e Aplicações</Text>
+                  {items.length > 0 && (
+                    <Text variant={'productBody' as any}>
+                      {items[currentItem].uses_and_applications}
+                    </Text>
+                  )}
             </Box>
           </Flex>
         </Flex>
       </Flex>
+    </Flex>
+
     </Flex>
   )
 }

@@ -22,18 +22,23 @@ export const TecaInfo = ({
 
   return (
     <Flex
-      padding="4%"
-      justifyContent="space-around"
+      // padding="4%"
+      // justifyContent="space-around"
       maxWidth="1536px"
       marginX="auto"
       flexDirection={{ base: 'column', sm: 'row' }}
+      padding={{ base: '5% 0 10% 5%', '2xl': '5% 0 5% 3%' }}
     >
       <Box
         marginBottom={{ base: '20px', sm: '0' }}
-        paddingLeft={{ base: '15px' }}
+        // paddingLeft={{ base: '15px' }}
         width={{ base: '100%', sm: '45%' }}
       >
-        <Text variant={'productTitle' as any}>
+         <Text as={"h3"}
+            variant={"h3"}
+            color="green.900"
+            fontWeight={'extrabold'}
+          >
           {product.t('machinability')}
         </Text>
 
@@ -60,7 +65,11 @@ export const TecaInfo = ({
               '2xl': '80px'
             }}
           >
-            <Text variant={'productTitle' as any}>
+             <Text as={"h3"}
+                variant={"h3"}
+                color="green.900"
+                fontWeight={'extrabold'}
+              >
               {product.t('UsesAndApplications')}
             </Text>
             <Text variant={'productBody' as any}>{usesAndApplications}</Text>
@@ -86,36 +95,6 @@ export const TecaInfo = ({
           </Box>
         )}
       </Flex>
-    </Flex>
-  )
-}
-
-const ItemCite = ({ text = '' }) => {
-  return (
-    <Flex marginBottom="5px">
-      <Box
-        margin={{
-          base: '3px',
-          sm: '3px',
-          md: '4px',
-          lg: '6px',
-          xl: '8px',
-          '2xl': '10px'
-        }}
-      >
-        <ArrowIcon
-          width={{
-            base: '10px',
-            sm: '3px',
-            md: '4px',
-            lg: '6px',
-            xl: '8px',
-            '2xl': '10px'
-          }}
-          stroke="#E8DDD5"
-        />
-      </Box>
-      <Text variant={'productBody' as any}>{text}</Text>
     </Flex>
   )
 }
