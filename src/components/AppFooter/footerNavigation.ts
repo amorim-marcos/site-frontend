@@ -50,6 +50,7 @@ export const footerNavigation = {
     href: '/canal-bnk',
     items: [
       // { titleKey: 'column4Subitem1', href: '#' },
+      { titleKey: 'column5Subitem6', href: '/downloads' },
       { titleKey: '', href: '', empty: true },
       { titleKey: 'column5Subitem1', href: '/contact' },
       {
