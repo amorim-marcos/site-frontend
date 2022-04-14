@@ -14,7 +14,14 @@ import { Wrapper } from './styles'
 import { useRouter } from 'next/router'
 
 function iframeYoutube(url: string) {
-  const videoId = url.split('watch?v=').pop()?.split('"')[0]
+  const videoUrl =
+    url.match(/"https:\/\/youtu.be\/(.*?)"/g) ??
+    url.match(/"https:\/\/www.youtube.com\/watch\?v=(.*?)"/g)
+
+  const videoId = videoUrl?.[0]
+    .replace(/"/g, '')
+    .replace('https://www.youtube.com/watch?v=', '')
+    .replace('https://youtu.be/', '')
 
   return `<div class="video-container"><iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe></div>`
 }
