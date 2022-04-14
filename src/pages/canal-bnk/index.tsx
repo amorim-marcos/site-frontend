@@ -55,8 +55,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     downloads_page = await res.json()
   }
 
-  console.log(downloads_page)
-
   const data: Post[] = page_content.map(
     (item: {
       cover: {
