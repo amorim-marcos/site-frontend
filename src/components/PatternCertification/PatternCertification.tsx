@@ -24,7 +24,7 @@ export const PatternCertification = ({
     <Flex
       onClick={onClick}
       bg="rgba(255,255,255, 0.1)"
-      w={{ base: '90%' }}
+      maxW="296px"
       alignContent={'center'}
       alignItems={'center'}
       justifyContent={'center'}
@@ -60,11 +60,12 @@ export const PatternCertification = ({
       <Box
         // bg='blue'
         margin={{ base: '2%', sm: '3%', lg: '4%' }}
-        whiteSpace="nowrap"
       >
         <Text
           variant={'h4' as any}
           fontWeight="bold"
+          maxW="100%"
+          wordBreak="break-word"
           color={hover ? 'green.600' : titleInitialColor}
         >
           {title}
