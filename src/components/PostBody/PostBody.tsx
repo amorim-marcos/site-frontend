@@ -13,6 +13,33 @@ import { colors } from '../../theme/colors'
 import { Wrapper } from './styles'
 import { useRouter } from 'next/router'
 
+function iframeYoutube(url: string) {
+  const videoId = url.split('watch?v=').pop()?.split('"')[0]
+
+  return `<div class="video-container"><iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe></div>`
+}
+
+function parseYoutubeEmbed(body: string) {
+  const oembedTag = /<figure class="media">(.*?)<\/figure>/g
+  const linkTag =
+    /<p><a href="https:\/\/www.youtube.com\/watch\?v=(.*?)<\/a><\/p>/g
+
+  let matchs = body.match(oembedTag)
+
+  matchs = matchs ?? body.match(linkTag)
+
+  if (matchs)
+    matchs.forEach((url) => {
+      body = body.replace(url, iframeYoutube(url))
+    })
+
+  return body
+}
+
+function parserPipe(body: string) {
+  return parser(parseYoutubeEmbed(body))
+}
+
 export type PostBodyProps = {
   category?: Category
   publishDate?: string | Date
@@ -23,6 +50,7 @@ export type PostBodyProps = {
   }[]
   postSlug: string
 }
+
 export const PostBody = ({
   category,
   publishDate,
@@ -147,7 +175,7 @@ export const PostBody = ({
         w={{ base: '100%', md: '80%', xl: '60%' }}
         marginLeft={{ base: '0', md: '12%', xl: '10%' }}
       >
-        <Wrapper>{postContent && parser(postContent)}</Wrapper>
+        <Wrapper>{postContent && parserPipe(postContent)}</Wrapper>
       </Box>
       {/* End of post content */}
 

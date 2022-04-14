@@ -385,7 +385,6 @@ export const Intro = (props: {
                   <Post
                     showDate
                     showShareOptions
-                    showPreview
                     key={j}
                     post={post}
                     w={{ base: '100%', xl: '100%' }}
