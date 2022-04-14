@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import About from 'views/About'
 import { AboutPageContent } from 'views/About/About'
 import { TrajectoryTab } from '@components/TrajectoryCarousel/TrajectoryCarousel'
@@ -48,7 +49,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     )
 
     whereWeAreData = await res.json()
-    
   } catch (e) {
     // if locale not working, get default
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/who-we-are`)
@@ -107,11 +107,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
           lat: Number(item.latitude),
           lng: Number(item.longitude)
         },
-        googleMapsURL: (item.google_maps_url !== null )? null : item.google_maps_url,
+        googleMapsURL: `http://maps.google.com/maps?q=${item.latitude},${item.longitude}`,
         state: item.state,
         country: item.country,
         inaugurationSoon: item.inauguration_soon,
-        image: (item.image === null )? null : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.image.url
+        image:
+          item.image === null
+            ? null
+            : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.image.url
       }
     }
   )
