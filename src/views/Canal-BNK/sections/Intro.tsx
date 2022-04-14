@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { useRouter } from 'next/router'
 
 import {
   Flex,
@@ -18,7 +19,6 @@ import { Section } from './Section'
 
 import { CategoryContext } from '..'
 import { Post as IPost } from 'types/data'
-import { useRouter } from 'next/router'
 
 export const PANEL_COLOR = {
   all: 'white',
@@ -55,23 +55,13 @@ export const Intro = (props: {
       }
     >
       <Flex
-        bg={
-          currentCategory === -1
-            ? 'brown.100'
-            : currentCategory === 0
-            ? 'brown.200'
-            : currentCategory === 1
-            ? 'green.200'
-            : 'green.600'
-        }
         maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
         position="relative"
         zIndex="base"
-        overflowY={{ base: 'hidden', '2xl': 'visible' }}
-        overflowX={{ base: 'hidden', '2xl': 'visible' }}
+        overflow="hidden"
         paddingBottom={{ base: '2%', '2xl': '5%' }}
       >
         <Image
@@ -194,7 +184,11 @@ export const Intro = (props: {
                     w="75%"
                     fontWeight={800}
                     letterSpacing="2.1px"
-                    color={currentCategory === -1 ? 'green.900' : '#436D5D'}
+                    color={
+                      currentCategory === -1 || currentCategory == 2
+                        ? 'green.900'
+                        : '#436D5D'
+                    }
                   >
                     {props.tagsSearch && props.tagName
                       ? `Resultados para: ${props.tagName}`
@@ -216,7 +210,6 @@ export const Intro = (props: {
               marginTop={{ base: '30px', lg: '0' }}
               alignItems={{ base: 'center', lg: 'flex-start' }}
               height={{ base: 'auto', lg: '150px' }}
-              // bg="tomato"
             >
               <NavButton
                 hideArrow
@@ -384,10 +377,12 @@ export const Intro = (props: {
                 {props.posts?.map((post, j) => (
                   <Post
                     showDate
+                    showContent
                     showShareOptions
                     key={j}
                     post={post}
-                    w={{ base: '100%', xl: '100%' }}
+                    h={{ xl: '821px' }}
+                    w={{ base: '90%', lg: '60%', xl: '55%' }}
                   />
                 ))}
               </Flex>

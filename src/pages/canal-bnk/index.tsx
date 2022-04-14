@@ -48,9 +48,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     categories = await res.json()
 
-    res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/downloads-page`
-    )
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/downloads-page`)
 
     downloads_page = await res.json()
   }
@@ -104,7 +102,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return 0
   })
 
-  const patterns_pack_url = (downloads_page.patterns_pack_file) ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + downloads_page.patterns_pack_file.url : null
+  const patterns_pack_url = downloads_page.patterns_pack_file
+    ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+      downloads_page.patterns_pack_file.url
+    : null
 
   return { props: { posts: data, categories, patterns_pack_url } }
 }
