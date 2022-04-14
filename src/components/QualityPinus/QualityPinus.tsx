@@ -26,6 +26,7 @@ type ItemProps = {
   image: {
     url: string
   }
+  image_url: string
 }
 
 export type QualityPinusProps = {
@@ -72,12 +73,12 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
           w={{ base: '100%', sm: '30%' }}
           css={isMobile ? { height: '40vh' } : { height: 'full' }}
         >
-          {items.length > 0 && items[currentItem].image !== null &&(
+          {items.length > 0 &&(
             <Image
               h="100%"
               w="100%"
               objectFit={'cover'}
-              src={items[currentItem].image.url}
+              src={items[currentItem].image_url}
             />
           )}
           
