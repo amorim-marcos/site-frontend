@@ -25,19 +25,19 @@ export const ProductDownloadAndLinks = ({
   const product = useTranslation('product')
   return (
     <Flex
-      flexDirection={{ base: 'column', sm: 'row' }}
-      alignItems="center"
-      justifyContent="space-around"
-      marginTop="4%"
+      flexDirection={{ base: 'column', md: 'row' }}
+      // alignItems="center"
+      // justifyContent="space-around"
+      marginTop={{ base: '0', md: '5%' }}
       marginRight={{
         base: '0',
-        sm: '1%',
         md: '2%',
         lg: '3%',
         xl: '3%',
         '2xl': '2%'
       }}
       position="relative"
+      // bg="violet"
     >
       {datasheetUrl && (
         <Link href={datasheetUrl} _hover={{ outline: 'none' }} isExternal>
@@ -78,11 +78,11 @@ export const ProductDownloadAndLinks = ({
             cursor={'pointer'}
             alignItems="center"
             justifyContent="center"
-            position={{ base: 'relative', sm: 'absolute' }}
-            marginY={{ base: '30px', sm: '0px' }}
+            position={{ base: 'relative', md: 'absolute' }}
+            marginY={{ base: '30px', md: '0px' }}
             bottom={{
               base: '0',
-              sm: '-45px',
+              sm: '0',
               md: '-50px',
               lg: '-60px',
               xl: '-80px',
@@ -98,7 +98,7 @@ export const ProductDownloadAndLinks = ({
             >
               <Text
                 fontSize={{
-                  base: '18px',
+                  base: '12px',
                   sm: '10px',
                   md: '12px',
                   lg: '14px',
@@ -112,7 +112,7 @@ export const ProductDownloadAndLinks = ({
               <Heading
                 color="green.800"
                 fontSize={{
-                  base: '20px',
+                  base: '14px',
                   sm: '12px',
                   md: '14px',
                   lg: '16px',

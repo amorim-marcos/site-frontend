@@ -18,24 +18,27 @@ export const ProductHeader = ({
 }: ProductHeaderProps) => {
   return (
  
- <Box
-    bg="red"
+ <Flex
+  bg={headerBgColor}
+  flexDirection="column"
+  flex="1"
+  alignItems={"center"}
  >
+  
     <Flex
-      padding="5%"
       flexDirection="column"
       maxWidth="1536px"
+      flex="1"
+      w={"100%"}
       bg={headerBgColor}
-      align={{ base: 'center', sm: 'flex-start' }}
-      paddingBottom={{ base: '30vh', sm: '5%' }}
+      // bg="yellow"
+      padding={{ base: '5% 0 10% 5%', '2xl': '5% 0 5% 3%' }}
     >
+
+      {/* PRODUCT TITLE */}
       <Flex
-        width="fit-content"
-        position="relative"
-        align={{ base: 'center', sm: 'flex-start' }}
-        justifyContent="flex-end"
-        flexDirection={{ base: 'row-reverse', sm: 'row' }}
-        textAlign="left"
+        flexDirection={{ base: 'row' }}
+        // textAlign="left"
       >
         {plusIndicator && (
           <Box
@@ -73,6 +76,7 @@ export const ProductHeader = ({
         >
           {title}
         </Text>
+        
       </Flex>
 
       <Box
@@ -89,27 +93,29 @@ export const ProductHeader = ({
         }}
         marginBottom="20px"
       />
-      <Flex flexDirection="column">
-        <Box>
-         <Text as={"h2"}
-            variant={"h2"}
+
+      {/* PRODUCT SUBTITLE */}
+      <Flex 
+        flexDirection="column"
+        // bg="yellowgreen"
+      >
+         <Text as={"h3"}
+            variant={"h3"}
             color="green.900"
-            // zIndex="docked"
-            marginBottom={{ base: '15px', sm: '0px' }}
+            fontWeight={'extrabold'}
           >
             {subtitle}
-          </Text>
-        </Box>
+        </Text>
         <Text
           color="green.900"
-          width={{ base: '100%', sm: '65%' }}
-          // zIndex="docked"
+          w={{ base: '70%', sm: '50%' }}
         >
           {description}
         </Text>
       </Flex>
+
     </Flex>
 
-  </Box>
+  </Flex>
   )
 }

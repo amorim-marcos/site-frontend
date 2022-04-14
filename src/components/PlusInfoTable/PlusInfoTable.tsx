@@ -14,13 +14,20 @@ export type PlusInfoTableProps = {
 export const PlusInfoTable = ({ rows }: PlusInfoTableProps) => {
   return (
     <Box
-      padding="10px"
-      marginTop={{ base: '0', sm: '20px' }}
-      marginLeft={{ base: '0', sm: '20px' }}
+      // padding="10px"
+      // marginTop={{ base: '0', sm: '20px' }}
+      // marginLeft={{ base: '0', sm: '20px' }}
+      // bg="red"
     >
-      <Flex flexDirection="column">
-        <Flex marginBottom="5px">
-          <Box w={firstItemWidth}></Box>
+      <Flex 
+        flexDirection="column"
+      >
+        <Flex 
+          marginBottom="5px"
+        >
+          <Box 
+            w={firstItemWidth}
+          ></Box>
           <Box
             w={itemWidthDoble}
             borderBottom="solid #C2DFB7"

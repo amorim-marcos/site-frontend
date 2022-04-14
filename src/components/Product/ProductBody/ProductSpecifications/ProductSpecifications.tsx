@@ -45,7 +45,12 @@ export const ProductSpecification = ({
 
   return (
     <>
-      <Text variant={'productTitle' as any}>{product.t('Specifications')}</Text>
+      <Text
+          color="green.900"
+          w={{ base: '70%', md: '50%' }}
+        >
+          {product.t('Specifications')}
+      </Text>
       <Table
         fontWeight="light"
         fontSize={{

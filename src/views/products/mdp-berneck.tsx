@@ -28,11 +28,13 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
           grafism: 'type1'
         }}
         imgSrc="/img/mdp.png"
-        imgWidth={{ base: '100vw', sm: '60vw' }}
+        imgWidth={{ base: '100vw', sm: '45vw', md: '55vw' }}
         imgMaxWidth="1151px"
         imgMarginTop={{
           base: '-30%',
-          sm: '0px'
+          sm: '10%',
+          md: '0',
+          '2xl': '-50px'
         }}
         imgMarginRight="0px"
         secondaryBackground="#F3E9DA"
@@ -75,11 +77,11 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
           grafism: 'type2'
         }}
         imgSrc="/img/mdp_plus.png"
-        imgWidth={{ base: '100vw', sm: '53vw' }}
+        imgWidth={{ base: '80vw', sm: '35vw' , md: '45vw' }}
         imgMaxWidth="1017px"
         imgMarginTop={{
-          base: '-30%',
-          sm: '12%',
+          base: '-10%',
+          sm: '22%',
           lg: '5%'
         }}
         imgMarginRight="0px"

@@ -45,17 +45,22 @@ export const Product = ({
   }
 }: ProductProps) => {
   const { width } = useWindowDimensions()
-  const isMobile = width && width < 568
+  const isMobile = width && width < 768
 
   return (
-    <Box
+    <Flex
       aria-label="productContainer"
       overflow="hidden"
       position="relative"
       marginX="auto"
-      maxWidth="1536px"
+      // bg="violet"
+      flexDirection="column"
+    >
+    
+    <Box
       id={plusProduct ? 'plus' : 'product'}
     >
+
       <GrafismProduct {...grafismProps} />
 
       <ProductHeader {...header} />
@@ -63,7 +68,6 @@ export const Product = ({
         <Flex
           direction="column"
           width="100vw"
-          maxWidth="1536px"
           position={{ base: 'relative', sm: 'absolute' }}
           top="0"
           right="0"
@@ -101,9 +105,11 @@ export const Product = ({
           downloadAndLinks && (
             <Flex
               bg={body?.backgroundColor}
-              alignItems="center"
-              justifyContent="center"
-              w="100vw"
+              // alignItems="center"
+              // justifyContent="center"
+              w="100%"
+              // bg="blue"
+              flex="1"
             >
               <ProductDownloadAndLinks
                 plusProduct={plusProduct}
@@ -115,5 +121,6 @@ export const Product = ({
         }
       />
     </Box>
+  </Flex>
   )
 }

@@ -7,18 +7,18 @@ export type ProductTextProps = {
 }
 
 const TextSyle: TextProps = {
-  fontSize: {
-    base: '14px',
-    sm: '8px',
-    md: '11px',
-    lg: '14px',
-    xl: '17px',
-    '2xl': '20px'
-  },
+  // fontSize: {
+  //   base: '14px',
+  //   sm: '8px',
+  //   md: '11px',
+  //   lg: '14px',
+  //   xl: '17px',
+  //   '2xl': '20px'
+  // },
   color: 'green.900',
   width: {
-    base: '100%',
-    sm: '43%'
+    base: '95%',
+    md: '50%'
   },
   zIndex: 'docked'
 }

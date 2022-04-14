@@ -328,7 +328,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               >
                 {i.subtTitle}
               </Text>
-              <Text zIndex={'docked'} as="h3" variant={'h3' as any} fontWeight={'bold'}>
+              <Text zIndex={'docked'} as="h4" variant={'h4' as any} fontWeight={'bold'}>
                 {i.title}
               </Text>
               <Box

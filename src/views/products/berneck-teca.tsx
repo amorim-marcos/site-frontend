@@ -1,5 +1,7 @@
 import TecaInfo from '@components/TecaInfo'
 import Product from '../../components/Product'
+import Pagebar from '@components/Pagebar'
+import { Box } from '@chakra-ui/react'
 
 export type BerneckTecaViewProps = {
   title: string
@@ -16,7 +18,19 @@ export type BerneckTecaViewProps = {
 
 export default function BerneckTecaView(props: BerneckTecaViewProps) {
   return (
-    <div>
+    <Box>
+       <Pagebar
+        paths={[
+          {
+            title: 'Produtos',
+            url: '/products'
+          },
+          {
+            title: props.title,
+            url: '/products/berneck-teca'
+          }
+        ]}
+      />
       <Product
         grafismProps={{
           grafism: 'type2',
@@ -72,6 +86,6 @@ export default function BerneckTecaView(props: BerneckTecaViewProps) {
         usesAndApplications={props.uses_and_applications}
         machinability={props.machinability}
       />
-    </div>
+    </Box>
   )
 }
