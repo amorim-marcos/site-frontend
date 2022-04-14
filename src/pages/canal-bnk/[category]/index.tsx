@@ -13,6 +13,7 @@ import CanalBNK from 'views/Canal-BNK'
 export interface CategoryPageProps {
   category: CategoryProps
   posts: Post[]
+  patterns_pack_url: string
   allCategories: CategoryProps[]
 }
 
