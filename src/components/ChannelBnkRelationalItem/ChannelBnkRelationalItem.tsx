@@ -68,6 +68,8 @@ export const ChannelBnkRelationalItem = ({
       onMouseEnter={() => setMouseDown(true)}
       onMouseLeave={() => setMouseDown(false)}
       flexDirection={{ base: 'column', xl: showInvert ? 'row' : 'column' }}
+      overflow="hidden"
+      h="370px"
       w={{ base: '60vw', xl: showInvert ? '0' : '22%' }}
       minWidth={{
         base: '60vw',
@@ -140,6 +142,7 @@ export const ChannelBnkRelationalItem = ({
               {categoryTitle}
             </Text>
           </Flex>
+
           <Text
             as="h4"
             variant="h4"
@@ -165,6 +168,7 @@ export const ChannelBnkRelationalItem = ({
             )}
           </Text>
         </Flex>
+
         <Box
           transition={'0.5s'}
           width={mouseDown ? '80%' : '50%'}
