@@ -1,13 +1,14 @@
 import { Flex, Text } from '@chakra-ui/react'
+
 import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
 
 export type PostRelationalContentProps = {
   items: {
     category: {
-      id: number,
-      name: string,
+      id: number
+      name: string
       color: string
-    },
+    }
     urlImage: string
     title: string
     url_code: string
@@ -16,8 +17,7 @@ export type PostRelationalContentProps = {
 export const PostRelationalContent = ({
   items
 }: PostRelationalContentProps) => {
-
-  if(items.length > 0) {
+  if (items.length > 0) {
     return (
       <Flex
         flexDirection="column"
@@ -26,7 +26,6 @@ export const PostRelationalContent = ({
         maxWidth="1536px"
         bg="brown.150"
       >
-        
         <Text marginBottom="3%" as="h3" color="green.800" variant={'h3' as any}>
           Conteúdos Relacionados
         </Text>
@@ -43,8 +42,8 @@ export const PostRelationalContent = ({
                 i < 4 && (
                   <ChannelBnkRelationalItem
                     key={i}
-                    categoryTitle = {item.category.name}
-                    categoryId = {item.category.id}
+                    categoryTitle={item.category.name}
+                    categoryId={item.category.id}
                     color={item.category.color}
                     urlImage={item.urlImage}
                     title={item.title}
@@ -52,7 +51,7 @@ export const PostRelationalContent = ({
                       base: '40px',
                       md: items.length >= 4 ? '0' : '3%'
                     }}
-                    url_code = {item.url_code}
+                    url_code={item.url_code}
                   />
                 )
               )
@@ -60,9 +59,5 @@ export const PostRelationalContent = ({
         </Flex>
       </Flex>
     )
-  }else{
-    return <Flex></Flex>
-  }
-
+  } else return null
 }
-
