@@ -117,7 +117,12 @@ export default function Connect() {
                     w="100%"
                     bgColor="green.200"
                   >
-                    <Text color="green.800" px="25px" textAlign="center">
+                    <Text
+                      fontWeight="bold"
+                      color="red"
+                      px="25px"
+                      textAlign="center"
+                    >
                       Aguardando envio da chave do Instagram
                     </Text>
                   </Flex>
