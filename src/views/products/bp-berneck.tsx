@@ -376,20 +376,25 @@ interface CarrouselBPProps extends FlexProps {
 const CarrouselBP = ({ banners }: CarrouselBPProps) => {
   const [currentBanner, setCurrentBanner] = useState(0)
   const [imageVisibility, setImageVisibility] = useState(true)
+  const [runningNext, setRunningNext] = useState(false)
 
   function next() {
-    setImageVisibility(false)
-    setTimeout(() => {
-      if (currentBanner === banners.length - 1) {
-        setCurrentBanner(0)
-      } else {
-        setCurrentBanner((v) => v + 1)
-      }
-    }, 300)
+    if(!runningNext){
+      setRunningNext(true)
+      setImageVisibility(false)
+      setTimeout(() => {
+        if (currentBanner === banners.length - 1) {
+          setCurrentBanner(0)
+        } else {
+          setCurrentBanner((v) => v + 1)
+        }
+        setRunningNext(false)
+      }, 300)
+    }
   }
 
   useEffect(() => {
-    setTimeout(() => setImageVisibility(true), 100)
+    setTimeout(() => setImageVisibility(true), 300)
   }, [currentBanner])
 
   useInterval(next, 5000)
