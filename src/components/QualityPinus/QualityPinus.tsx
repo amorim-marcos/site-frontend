@@ -26,7 +26,7 @@ type ItemProps = {
   image: {
     url: string
   }
-  image_url: string
+  image_url?: string
 }
 
 export type QualityPinusProps = {
