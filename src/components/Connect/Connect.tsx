@@ -110,11 +110,22 @@ export default function Connect() {
             >
               <Flex direction="column" gap="24px" align="center" w="100%">
                 {width && (
-                  <Box
+                  <Flex
+                    align="center"
+                    justify="center"
                     h={isMobile ? '572px' : '640px'}
                     w="100%"
                     bgColor="green.200"
-                  />
+                  >
+                    <Text
+                      fontWeight="bold"
+                      color="red"
+                      px="25px"
+                      textAlign="center"
+                    >
+                      Aguardando envio da chave do Instagram
+                    </Text>
+                  </Flex>
                 )}
 
                 <FollowButton
@@ -215,7 +226,7 @@ const SocialNetwork = (props: {
 }) => (
   <Flex
     h="100%"
-    w={{ base: '245px', xs: '300px', lg: '370px', '2xl': '450px' }}
+    w={{ base: '245px', xs: '290px', lg: '370px', '2xl': '450px' }}
     direction="column"
     gap="30px"
     align="flex-start"
