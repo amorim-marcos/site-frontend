@@ -90,7 +90,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.technical_sheet.url
 
   page_content.sawns_qualities.forEach((item: SawnQuality) => {
-    item.image.url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.image.url
+    item.image.url = (item.image) ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.image.url : "vazio"
   })
 
   return {

@@ -72,7 +72,7 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
           w={{ base: '100%', sm: '30%' }}
           css={isMobile ? { height: '40vh' } : { height: 'full' }}
         >
-          {items.length > 0 && (
+          {items.length > 0 && items[currentItem].image !== null &&(
             <Image
               h="100%"
               w="100%"
@@ -80,6 +80,7 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
               src={items[currentItem].image.url}
             />
           )}
+          
         </Flex>
 
         <Flex width={{ base: '100%', sm: '67%' }} flexDirection="column">
