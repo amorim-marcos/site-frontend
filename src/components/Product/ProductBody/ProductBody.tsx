@@ -50,14 +50,24 @@ export const ProductBody = ({
   const product = useTranslation('product')
 
   return (
+
+  <Flex
+    bg={backgroundColor}
+    // bg="tomato"
+    flexDirection="column"
+    flex="1"
+    alignItems={"center"}
+   >
+
     <Flex
       maxWidth="1536px"
       flexDirection="column"
-      bg={backgroundColor}
-      paddingBottom={paddingBottom}
-      paddingTop={{ base: '5%', sm: '0' }}
+      // bg={backgroundColor}
+      // bg="yellow"
+      // paddingBottom={paddingBottom}
+      padding={{ base: '5% 0 10% 5%', '2xl': '5% 0 5% 3%' }}
     >
-      <Box padding="5%">
+      <Box>
         {description && (
           <Box
             marginBottom={{
@@ -69,7 +79,11 @@ export const ProductBody = ({
               '2xl': '80px'
             }}
           >
-            <Text variant={'productTitle' as any}>
+            <Text as={"h3"}
+              variant={"h3"}
+              color="green.900"
+              fontWeight={'extrabold'}
+            >
               {product.t('Description')}
             </Text>
             <ProductText paragraph content={description} />
@@ -87,7 +101,11 @@ export const ProductBody = ({
               '2xl': '80px'
             }}
           >
-            <Text variant={'productTitle' as any}>
+           <Text as={"h3"}
+            variant={"h3"}
+            color="green.900"
+            fontWeight={'extrabold'}
+          >
               {product.t('MoreTechnologyQualityProtection')}
             </Text>
             <ProductText paragraph content={moreTechnologyQualityProtection} />
@@ -105,7 +123,11 @@ export const ProductBody = ({
               '2xl': '80px'
             }}
           >
-            <Text variant={'productTitle' as any}>
+            <Text as={"h3"}
+              variant={"h3"}
+              color="green.900"
+              fontWeight={'extrabold'}
+            >
               {product.t('UsesAndApplications')}
             </Text>
             <ProductText content={usesAndApplications} />
@@ -123,7 +145,12 @@ export const ProductBody = ({
               '2xl': '80px'
             }}
           >
-            <Text variant={'productTitle' as any}>{product.t('Finishes')}</Text>
+            <Text as={"h3"}
+              variant={"h3"}
+              color="green.900"
+              fontWeight={'extrabold'}
+            >
+            {product.t('Finishes')}</Text>
             {typeof finishes === 'string' ? (
               '• ' + finishes
             ) : (
@@ -147,7 +174,11 @@ export const ProductBody = ({
               '2xl': '80px'
             }}
           >
-            <Text variant={'productTitle' as any}>
+            <Text as={"h3"}
+              variant={"h3"}
+              color="green.900"
+              fontWeight={'extrabold'}
+            >
               {product.t('qualityStandards')}
             </Text>
             <ProductText content={qualityStandards} />
@@ -222,12 +253,14 @@ export const ProductBody = ({
       {BottomComponent}
       {productWithBP && (
         <Box
-          marginBottom={{ base: '30px', sm: '50px' }}
-          paddingX={{ base: '0', sm: '5%' }}
+          //marginBottom={{ base: '30px', sm: '50px' }}
+          //paddingX={{ base: '0', sm: '5%' }}
         >
           <ProductWithBP {...productWithBP} />
         </Box>
       )}
     </Flex>
+
+  </Flex>
   )
 }

@@ -22,9 +22,9 @@ export const ProductDimensions = ({
   dimensions,
   tableWidth = {
     base: '200px',
-    sm: '170px',
-    md: '270px',
-    lg: '350px',
+    sm: '350px',
+    md: '500px',
+    lg: '500px',
     xl: '400px',
     '2xl': '450px'
   },
@@ -38,16 +38,9 @@ export const ProductDimensions = ({
         <Heading {...headingStyle}>{product.t('dimensionsMM')}</Heading>
         <Table
           fontWeight="light"
-          fontSize={{
-            base: '10px',
-            sm: '7px',
-            md: '12px',
-            lg: '14px',
-            xl: '16px',
-            '2xl': '18.5px'
-          }}
+          fontSize={{ base: '12px', sm: '12px', lg: '13px', xl: '14px' }}
           fontFamily="Montserrat"
-          width={tableWidth}
+          //width={tableWidth}
           variant="unstyled"
           color="#626161"
         >
@@ -79,15 +72,9 @@ export const ProductDimensions = ({
           </Tbody>
         </Table>
         <Text
-          fontSize={{
-            base: '13px',
-            sm: '8px',
-            md: '10px',
-            lg: '12px',
-            xl: '14px',
-            '2xl': '16px'
-          }}
+          fontSize={{ base: '10px', sm: '10px', lg: '12px', xl: '12px' }}
           color="green.900"
+          mt={"1%"}
         >
           {product.t('otherDimensionsText')}
         </Text>
@@ -108,8 +95,8 @@ export const tableItemStyle = (borderColor: string, background: string) => ({
     '2xl': '40px'
   },
   border: `3px solid ${borderColor}`,
-  paddingLeft: { base: '5px', sm: '15px' },
-  paddingRight: { base: '5px', sm: '15px' }
+  paddingLeft: { base: '5px', md: '15px' },
+  paddingRight: { base: '5px', md: '15px' }
 })
 
 const headingStyle = {
@@ -123,12 +110,8 @@ const headingStyle = {
   },
   color: 'green.900',
   fontSize: {
-    base: '20px',
-    sm: '11px',
-    md: '14px',
-    lg: '18px',
-    xl: '22px',
-    '2xl': '30px'
+    base: '18px', lg: '22px', xl: '24px'
   },
+  fontWeight: 'extrabold',
   zIndex: 'docked'
 }

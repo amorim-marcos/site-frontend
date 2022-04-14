@@ -28,11 +28,12 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
           grafism: 'type1'
         }}
         imgSrc="/img/mdf.png"
-        imgWidth={{ base: '100vw', sm: '60vw' }}
+        imgWidth={{ base: '100vw', sm: '60vw', md: '50vw' }}
         imgMaxWidth="1151px"
         imgMarginTop={{
           base: '-30%',
-          sm: '0px'
+          sm: '0px',
+          '2xl': '-50px'
         }}
         imgMarginRight={{
           base: '-50px',
@@ -87,19 +88,19 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
           grafism: 'type2'
         }}
         imgSrc="/img/mdf_plus.png"
-        imgWidth={{ base: '100vw', sm: '50vw' }}
-        imgMaxWidth="1051px"
+        imgWidth={{ base: '50vw', sm: '30vw', md: '40vw' }}
+        imgMaxWidth="851px"
         imgMarginTop={{
-          base: '-30%',
-          sm: '10px',
+          base: '-20%',
+          sm: '17%',
           md: '11px',
           lg: '12px',
           xl: '13px',
-          '2xl': '14px'
+          '2xl': '0px'
         }}
         imgMarginRight={{
           base: '-10px',
-          sm: '-15px',
+          sm: '-20px',
           md: '-20px',
           lg: '-25px',
           xl: '-30px',

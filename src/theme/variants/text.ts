@@ -89,51 +89,36 @@ export const Text = {
       fontSize: { base: '12px', sm: '12px', lg: '13px', xl: '14px' },
       fontWeight: 'medium'
     },
+    h6: {
+      color: 'green.700',
+      fontSize: { base: '11px', sm: '12px', lg: '13px', xl: '14px' },
+      fontWeight: 'bold'
+    },
     productBody: {
       fontSize: {
-        base: '14px',
-        sm: '8px',
-        md: '11px',
+        base: '13px',
+        sm: '13px',
+        md: '14px',
         lg: '14px',
-        xl: '17px',
-        '2xl': '20px'
+        xl: '17px'
       },
+      fontWeight: 'normal',
       color: 'green.900',
-      zIndex: 'docked'
     },
     productTitle: {
       fontWeight: 'bold',
-      fontSize: {
-        base: '15px',
-        xs: '20px',
-        sm: '11px',
-        md: '14px',
-        lg: '18px',
-        xl: '22px',
-        '2xl': '30px'
-      },
+      fontSize: { base: '18px', lg: '22px', xl: '24px' },
       color: 'green.900',
-      zIndex: 'docked',
-      marginBottom: {
-        base: '5px',
-        xs: '8px',
-        md: '10px',
-        lg: '13px',
-        xl: '16px',
-        '2xl': '20px'
-      }
+      letterSpacing: '-0.65px'
     },
     berneckPlusTestInfoNumber: {
-      marginRight: '10px',
       fontSize: {
-        base: '20px',
-        sm: '10px',
+        base: '28px',
         md: '20px',
         lg: '30px',
         xl: '40px',
         '2xl': '50px'
       },
-      zIndex: 'docked',
       color: 'green.600',
       fontWeight: 'bold'
     }

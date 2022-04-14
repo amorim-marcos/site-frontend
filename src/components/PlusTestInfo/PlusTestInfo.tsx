@@ -24,98 +24,191 @@ export const PlusTestInfo = ({
   tableInfo
 }: PlusTestInfoProps) => {
   return (
+
+  <Box
+    bg="#E8E8E8"
+  >
     <Box
       aria-label="plusTestinfoContainer"
       bg="#E8E8E8"
       maxWidth="1536px"
       marginX="auto"
-      padding="5%"
+      padding={{ base: '5%', '2xl': '3%' }}
     >
-      <Text variant={'productTitle' as any}>{title}</Text>
-      <Text variant={'productBody' as any} width={{ base: '100%', sm: '44%' }}>
+      <Text variant={'productTitle' as any} >{title}</Text>
+      <Text width={{ base: '100%', md: '44%' }}>
         {description}
       </Text>
+
       <Flex
-        paddingY={{
-          base: '20px',
-          sm: '10px',
-          md: '20px',
-          lg: '30px',
-          xl: '40px',
-          '2xl': '50px'
+        padding={{
+          base: '2% 0 4% 0',
+          md: '2% 0 2% 0',
+          lg: '2% 0 2% 0',
+          xl: '2% 0 5% 0',
+          '2xl': '2% 0 2% 0',
+        }}
+        margin={{
+          base: '2% 0 4% 0',
+          md: '2% 0 2% 0',
+          lg: '2% 0 2% 0',
+          xl: '2% 0 2% 0',
+          '2xl': '2% 0 5% 0',
         }}
         justifyContent="space-evenly"
-        alignItems="center"
+        // alignItems="flex-start"
         position="relative"
-        marginTop="30px"
         backgroundImage={{
           base: "url('/img/fundo_caminho90deg.png')",
-          sm: "url('/img/fundo_caminho.png')"
+          md: "url('/img/fundo_caminho.png')"
         }}
         backgroundRepeat="no-repeat"
-        backgroundSize={{ base: '100%' }}
-        flexDirection={{ base: 'column', sm: 'row' }}
+        backgroundSize={{ base: '120%' }}
+        flexDirection={{ base: 'column', md: 'row' }}
       >
+
+        {/* LINHA 1 */}
         <Flex
-          marginY={{ base: '40px', sm: '0' }}
-          w={{ base: '80%', sm: '30%' }}
+          marginY={{ base: '3%', md: '0' }}
+          w={{ base: '80%', md: '30%' }}
           zIndex="docked"
+          alignItems="flex-start"
+          flexDirection={"row"}
         >
-          <Text variant={'berneckPlusTestInfoNumber' as any}>1</Text>
-          <Text variant={'productBody' as any}>
+          <Flex
+            // bg="black"
+            alignItems="flex-start"
+            padding={{ base: '5%',  sm: '5%', md: '2%' , '2xl': '4%' }}
+            mt={{ base: '-5%',  sm: '-4%', md: '-3%' , '2xl': '-4%' }}
+
+          >
+          <Text 
+            variant={'berneckPlusTestInfoNumber' as any}
+          >1</Text></Flex>
+           <Flex
+            // bg="white"
+            padding={"2%"}
+          >
+          <Text>
             {testSteps && testSteps.first}
-          </Text>
+          </Text></Flex>
         </Flex>
+
+        {/* LINHA 2 */}
         <Flex
-          marginY={{ base: '40px', sm: '0' }}
-          w={{ base: '80%', sm: '30%' }}
+          marginY={{ base: '3%', md: '0' }}
+          w={{ base: '80%', md: '30%' }}
           zIndex="docked"
+          alignItems="flex-start"
+          flexDirection={"row"}
         >
-          <Text variant={'berneckPlusTestInfoNumber' as any}>2</Text>
-          <Text variant={'productBody' as any}>
+          <Flex
+            // bg="black"
+            alignItems="flex-start"
+            padding={{ base: '5%',  sm: '5%', md: '2%' , '2xl': '4%' }}
+            mt={{ base: '-5%',  sm: '-4%', md: '-3%' , '2xl': '-4%' }}
+
+          >
+          <Text 
+            variant={'berneckPlusTestInfoNumber' as any}
+          >2</Text></Flex>
+          <Flex
+            // bg="white"
+            padding={"2%"}
+          >
+          <Text>
             {testSteps && testSteps.second}
-          </Text>
+          </Text></Flex>
         </Flex>
+
+        {/* LINHA 3 */}
         <Flex
-          marginY={{ base: '40px', sm: '0' }}
-          w={{ base: '80%', sm: '30%' }}
+          // marginY={{ base: '3%', md: '0' }}
+          w={{ base: '80%', md: '30%' }}
           zIndex="docked"
+          alignItems="flex-start"
+          flexDirection={"row"}
         >
-          <Text variant={'berneckPlusTestInfoNumber' as any}>3</Text>
-          <Text variant={'productBody' as any}>
-            {testSteps && testSteps.third}
-          </Text>
+          <Flex
+            // bg="black"
+            alignItems="flex-start"
+            padding={{ base: '5%',  sm: '5%', md: '2%' , '2xl': '4%' }}
+            mt={{ base: '-5%',  sm: '-4%', md: '-3%' , '2xl': '-4%' }}
+
+          >
+            <Text 
+              variant={'berneckPlusTestInfoNumber' as any}
+             
+            >3</Text>
+          </Flex>
+          <Flex
+            // bg="white"
+            padding={"2%"}
+          >
+            <Text>
+              {testSteps && testSteps.third}
+            </Text>
+          </Flex>
+
         </Flex>
       </Flex>
 
+
       <Flex
-        justifyContent="space-between"
-        flexDirection={{ base: 'column', sm: 'row' }}
+        flexDirection={{ base: 'column', md: 'row' }}
+        // bg="violet"
+        justifyContent={{ base: 'space-between', md: 'center' }}
+        // justifyItems={{ base: 'center', md: 'center' }}
+        // alignContent={{ base: 'center', md: 'center' }}
+        alignItems={{ base: 'none', md: 'center' }}
       >
-        <Box width={{ base: '90%', sm: '40%' }}>
-          <Text marginTop="40px" variant={'productTitle' as any}>
+        <Box 
+          width={{ base: '100%', md: '60%' }}
+          // flex="2"
+        >
+          <Text 
+            margin={{
+              base: '2%',
+              md: '3%',
+              lg: '5%',
+              xl: '5%',
+              '2xl': '5%'
+            }}
+            variant={'productTitle' as any}
+          >
             {extraInfoTitle}
           </Text>
-
-          <Box>
+          <Box
+            // bg="blue"
+          >
             {extraInfoBody &&
               extraInfoBody.map((e, j) => <ItemCite key={j} text={e} />)}
           </Box>
+
         </Box>
-        <Box>{tableInfo && <PlusInfoTable rows={tableInfo.rows} />}</Box>
+        <Box
+          // flex="1"
+          bg="gray.450"
+          padding={'2%'}
+          marginLeft={{ md: '2%' }}
+        >{tableInfo && <PlusInfoTable rows={tableInfo.rows} />}
+        </Box>
+      
       </Flex>
     </Box>
+  </Box>
   )
 }
 
 const ItemCite = ({ text = '' }) => {
   return (
-    <Flex marginBottom="5px">
+    <Flex 
+      marginBottom="5%"
+    >
       <Box
         margin={{
           base: '3px',
-          sm: '3px',
-          md: '4px',
+          md: '3px',
           lg: '6px',
           xl: '8px',
           '2xl': '10px'
@@ -123,17 +216,25 @@ const ItemCite = ({ text = '' }) => {
       >
         <ArrowIcon
           width={{
-            base: '10px',
-            sm: '3px',
+            base: '4px',
             md: '4px',
-            lg: '6px',
-            xl: '8px',
-            '2xl': '10px'
+            lg: '4px',
+            xl: '5px',
+            '2xl': '6px'
           }}
           stroke="green.600"
         />
       </Box>
-      <Text variant={'productBody' as any}>{text}</Text>
+      <Text 
+        variant={'productBody' as any}
+        mt={{
+          base: '-3px',
+          md: '4px',
+          lg: '4px',
+          xl: '2px',
+          '2xl': '2px'
+        }}
+      >{text}</Text>
     </Flex>
   )
 }

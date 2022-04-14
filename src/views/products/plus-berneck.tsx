@@ -2,8 +2,10 @@ import PlusPanelsPresentation from '@components/PlusPanelsPresentation'
 import PlusTestInfo from '@components/PlusTestInfo'
 import Product from '../../components/Product'
 import { useRouter } from 'next/router'
-import { Box } from '@chakra-ui/react'
+import { Box, Flex, Grid, GridItem } from '@chakra-ui/react'
 import Pagebar from '@components/Pagebar'
+import BannerProducts from '@components/BannerProducts'
+import useMobile from 'hooks/useMobile'
 
 export type PlusBerneckViewProps = {
   title: string
@@ -28,6 +30,8 @@ export type PlusBerneckViewProps = {
 
 export default function PlusBerneckView(props: PlusBerneckViewProps) {
   const router = useRouter()
+  const { isMobile, width } = useMobile(1024)
+
   return (
     <Box>
       <Pagebar
@@ -47,11 +51,11 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
           grafism: 'type1'
         }}
         imgSrc="/img/plus.png"
-        imgWidth={{ base: '120vw', sm: '80vw' }}
+        imgWidth={{ base: '120vw', sm: '60vw', md: '75vw' }}
         imgMaxWidth="1415px"
         imgMarginTop={{
           base: '-30%',
-          sm: '20px',
+          sm: '60px',
           md: '17px',
           lg: '40px',
           xl: '40px',
@@ -59,7 +63,7 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
         }}
         imgMarginRight={{
           base: '-150px',
-          sm: '-220px',
+          sm: '-180px',
           md: '-280px',
           lg: '-370px',
           xl: '-420px',
@@ -106,7 +110,90 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
           }}
         />
       )}
-      <PlusPanelsPresentation
+
+
+          
+      {/* INICIO BANNERS PRODUTOS */}
+      {/* BP | MDP | MDF | HDF | PLUS | PNUS | TECA */}
+      <Flex
+        maxWidth="1536px"
+        marginX="auto"
+        position="relative"
+        zIndex="base"
+        overflowY="hidden"
+        overflowX="hidden"
+        // bg="blue"
+      >
+        <Grid
+          h={{
+            base: '900px',
+            sm: '700px',
+            lg: '400px',
+            xl: '500px',
+            '2xl': '600px'
+          }}
+          w={{ base: '90%', sm: '93%', lg: '93%', xl: '93%' }}
+          margin={{ base: '5%', sm: '3% 3%', lg: '3% 3%', xl: '3% 3%' }}
+          templateRows={{
+            base: 'repeat(3, 1fr)',
+            sm: 'repeat(2, 1fr)',
+            md: 'repeat(1, 1fr)'
+          }}
+          templateColumns={{
+            base: 'repeat(1, 1fr)',
+            sm: 'repeat(2, 1fr)',
+            md: 'repeat(3, 1fr)'
+          }}
+          gap={{ base: '5', sm: '4', lg: '8', xl: '10' }}
+        >
+       
+        <GridItem>
+          <BannerProducts
+            title="HDF PLUS BERNECK®"
+            titleColor="white"
+            subtitle="Painel de Fibra de Alta Densidade com Resistência Extra à Umidade"
+            subtitleColor="brown.350"
+            bgColor="green.400"
+            srcImg="/img/hdf_plus.png"
+            onClick={() => router.push('/products/hdf-berneck#plus')}
+            bannerSize={{ base: '15%', sm: '20px', lg: '30px', xl: '35px' }}
+          />
+        </GridItem>
+
+        <GridItem>
+          <BannerProducts
+            title="MDF PLUS BERNECK®"
+            titleColor="white"
+            subtitle="Painel de Fibra de Média Densidade com Resistência Extra à Umidade"
+            subtitleColor="brown.350"
+            bgColor="green.400"
+            srcImg="/img/mdf_plus_small.png"
+            onClick={() => router.push('/products/mdf-berneck#plus')}
+            bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
+          />
+        </GridItem>
+
+        <GridItem>
+          <BannerProducts
+            title="MDP PLUS BERNECK®"
+            titleColor="white"
+            subtitle="Painel de Partículas de Média Densidade com Resistência Extra à Umidade"
+            subtitleColor="brown.350"
+            bgColor="green.400"
+            srcImg="/img/mdp_plus.png"
+            onClick={() => router.push('/products/mdp-berneck#plus')}
+            bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
+          />
+        </GridItem>
+       
+
+       
+      </Grid>
+    </Flex>
+    {/* FIM BANNERS PRODUTOS */}
+
+
+      {/* <PlusPanelsPresentation
         title="Conheça os painéis PLUS BERNECK®"
         products={{
           first: {
@@ -116,7 +203,7 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
             imageProps: {
               src: '/img/hdf_plus.png',
               w: {
-                base: '600px',
+                base: '500px',
                 sm: '320px',
                 md: '426px',
                 lg: '533px',
@@ -154,7 +241,7 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
             imageProps: {
               src: '/img/mdf_plus_small.png',
               w: {
-                base: '400px',
+                base: '300px',
                 sm: '220px',
                 md: '293px',
                 lg: '366px',
@@ -220,7 +307,11 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
             }
           }
         }}
-      />
+      /> */}
+
+
+
+
     </Box>
   )
 }

@@ -42,14 +42,14 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
         grafismProps={{
           grafism: 'type1'
         }}
-        imgWidth={{ base: '130vw', sm: '74vw' }}
+        imgWidth={{ base: '130vw', sm: '70vw', md: '80vw' }}
         imgMarginTop={{
           base: '-30%',
           sm: '52px',
-          md: '69px',
-          lg: '86px',
+          md: '50px',
+          lg: '50px',
           xl: '104px',
-          '2xl': '130px'
+          '2xl': '0'
         }}
         imgMarginRight={{
           base: '-133px',
@@ -57,7 +57,7 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
           md: '-240px',
           lg: '-300px',
           xl: '-360px',
-          '2xl': '-450px'
+          // '2xl': '-0px'
         }}
         secondaryBackground="#F3E9DA"
         downloadAndLinks={{
@@ -88,21 +88,20 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
 
       <Product
         imgSrc="/img/hdf_plus.png"
-        imgWidth={{ base: '130vw', sm: '74vw' }}
+        imgWidth={{ base: '80vw', sm: '60vw' , md: '70vw' }}
         grafismProps={{
           grafism: 'type2'
         }}
         imgMarginTop={{
-          base: '-30%',
-          sm: '128px',
-          md: '170px',
-          lg: '213px',
-          xl: '256px',
-          '2xl': '320px'
+          base: '-20%',
+          sm: '100px',
+          lg: '50px',
+          xl: '15px',
+          '2xl': '10px'
         }}
         imgMarginRight={{
-          base: '-150px',
-          sm: '-204px',
+          base: '-100px',
+          sm: '-150px',
           md: '-272px',
           lg: '-340px',
           xl: '-408px',
