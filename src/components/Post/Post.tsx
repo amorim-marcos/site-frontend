@@ -92,16 +92,15 @@ export const Post = (props: PostProps) => {
       {/* box imagem cover */}
       <Flex
         flex="10"
-        bg="black"
         marginX="auto"
-        alignItems="center"
-        justifyContent="center"
         position="relative"
         zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
+        align="flex-start"
+        justify="center"
+        overflow="hidden"
+        bg={getPanelColor(currentCategory)}
       >
-        <Image src={post?.cover} />
+        <Image src={post?.cover} objectFit="cover" h="auto" w="100%" />
       </Flex>
 
       {/* box content */}
@@ -154,9 +153,9 @@ export const Post = (props: PostProps) => {
             <Flex
               gap="12px"
               align="center"
-              justifyContent={{ base: 'start', md: 'end' }}
-              alignContent={{ base: 'start', md: 'end' }}
+              justifyContent={{ base: 'center', md: 'end' }}
               flex="1"
+              py={{ base: '5px', sm: '' }}
               margin={{
                 base: '0px 0px 0px 10px',
                 md: '4px 27px 0px 15px',
@@ -195,11 +194,7 @@ export const Post = (props: PostProps) => {
         </Flex>
 
         {/* Title Post */}
-        <Flex
-          flex="1"
-          mx={{ base: '10px', xl: '25px' }}
-          pb={!showContent ? '45px' : '0'}
-        >
+        <Flex flex="1" mx="25px" pb={!showContent ? '45px' : '5px'}>
           <Text
             as="h3"
             variant="h3"
@@ -218,14 +213,10 @@ export const Post = (props: PostProps) => {
 
         {/* Post Content */}
         {showContent && (
-          <Flex
-            pb={showShareOptions ? '18px' : '45px'}
-            mx={{ base: '10px', xl: '10px' }}
-          >
+          <Flex pb={showShareOptions ? '18px' : '45px'} mx="25px">
             <Text
               fontSize="17px"
               color="grey.350"
-              px="15px"
               lineHeight="35px"
               noOfLines={3}
             >
@@ -237,13 +228,12 @@ export const Post = (props: PostProps) => {
         {/* Share Buttons Icons */}
         {showShareOptions && (
           <Flex
-            gap={{ base: '20px', lg: '30px' }}
-            margin={{
-              base: '0px 0px 10px 10px',
-              md: '10px',
-              lg: '15px',
-              xl: '20px'
+            gap="22px"
+            m={{
+              base: '0 0 15px 0',
+              sm: '0 0 30px 35px'
             }}
+            justify={{ base: 'center', sm: 'initial' }}
           >
             <FacebookShareButton
               url={`https://www.berneck.com.br/canal-bnk/${post?.category.id}/${post?.url_code}`}
@@ -272,7 +262,7 @@ export const Post = (props: PostProps) => {
           </Flex>
         )}
 
-        <Flex flex="1">
+        <Flex flex="1" justify={{ base: 'center', sm: 'initial' }}>
           {/* Box hover-indicator */}
           <Box
             transition={'0.5s'}
@@ -287,7 +277,9 @@ export const Post = (props: PostProps) => {
               '2xl': '6px'
             }}
             borderBottomColor={getHoverIndicatorColor()}
-            marginLeft="10%"
+            marginLeft={{
+              sm: '35px'
+            }}
           />
         </Flex>
       </Flex>

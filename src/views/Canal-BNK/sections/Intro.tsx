@@ -55,23 +55,13 @@ export const Intro = (props: {
       }
     >
       <Flex
-        bg={
-          currentCategory === -1
-            ? 'brown.100'
-            : currentCategory === 0
-            ? 'brown.200'
-            : currentCategory === 1
-            ? 'green.200'
-            : 'green.600'
-        }
         maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
         position="relative"
         zIndex="base"
-        overflowY={{ base: 'hidden', '2xl': 'visible' }}
-        overflowX={{ base: 'hidden', '2xl': 'visible' }}
+        overflow="hidden"
         paddingBottom={{ base: '2%', '2xl': '5%' }}
       >
         <Image
@@ -391,7 +381,7 @@ export const Intro = (props: {
                     showShareOptions
                     key={j}
                     post={post}
-                    h="821px"
+                    h={{ xl: '821px' }}
                     w={{ base: '90%', lg: '60%', xl: '55%' }}
                   />
                 ))}
