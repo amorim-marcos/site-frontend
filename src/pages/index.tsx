@@ -39,7 +39,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
         highlightsTreated.push({
           ...item,
           cover: {
-            url: (item.cover === null )? null : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url
+            url:
+              item.cover === null
+                ? null
+                : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url
           }
         })
       }
@@ -54,7 +57,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
         latestTreated.push({
           ...item,
           cover: {
-            url: (item.cover === null )? null : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url
+            url:
+              item.cover === null
+                ? null
+                : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url
           }
         })
       }
