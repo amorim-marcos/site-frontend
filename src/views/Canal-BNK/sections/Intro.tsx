@@ -386,7 +386,8 @@ export const Intro = (props: {
                     showShareOptions
                     key={j}
                     post={post}
-                    w={{ base: '100%', xl: '100%' }}
+                    h="821px"
+                    w={{ base: '90%', lg: '60%', xl: '55%' }}
                   />
                 ))}
               </Flex>
