@@ -10,6 +10,7 @@ import {
 import FormInput from '@components/FormInput'
 import FormSelect from '@components/FormSelect'
 import FormTextArea from '@components/FormTextArea'
+import { useState } from 'react'
 import ContactChannelFormLabel from './ContactChannelFormLabel'
 import ContactChannelInfoInput from './ContactChannelInfoInput'
 
@@ -22,6 +23,17 @@ export const ContactChannelForm = ({
   service_code,
   ...props
 }: ContactChannelFormProps) => {
+  const intialFormData = {
+    name: "",
+    email: "",
+    phone: "",
+    city: "",
+    state: "",
+    company: "",
+    message: ""
+  }
+  const [formData, setFormData] = useState(intialFormData)
+
   return (
     <Flex width="full" flexDirection="column" {...props}>
       <form>
@@ -38,7 +50,7 @@ export const ContactChannelForm = ({
             <ContactChannelFormLabel visibility="hidden" htmlFor="name">
               *Nome
             </ContactChannelFormLabel>
-            <FormInput name="name" placeholder="*Nome" />
+            <FormInput onChange={(e)=>{ setFormData({...formData, name: e.target.value })}} name="name" value={formData.name} placeholder="*Nome" />
           </FormControl>
         </Box>
         <Box mt="10px" flex="1">
@@ -54,7 +66,7 @@ export const ContactChannelForm = ({
             <ContactChannelFormLabel visibility="hidden" htmlFor="email">
               *E-mail
             </ContactChannelFormLabel>
-            <FormInput type="email" name="email" placeholder="*E-mail" />
+            <FormInput type="email" name="email" onChange={(e)=>{ setFormData({...formData, email: e.target.value })}} value={formData.email} placeholder="*E-mail" />
           </FormControl>
         </Box>
         <Box mt="10px" flex="1">
@@ -67,10 +79,10 @@ export const ContactChannelForm = ({
             }}
             isRequired
           >
-            <ContactChannelFormLabel visibility="hidden" htmlFor="tel">
+            <ContactChannelFormLabel visibility="hidden" htmlFor="phone">
               *Telefone
             </ContactChannelFormLabel>
-            <FormInput type="tel" name="tel" placeholder="*Telefone" />
+            <FormInput type="phone" name="phone" onChange={(e)=>{ setFormData({...formData, phone: e.target.value })}} value={formData.phone} placeholder="*Telefone" />
           </FormControl>
         </Box>
         <Flex flexDirection={{ base: 'column', md: 'row' }} flex="1" mt="10px">
@@ -87,7 +99,7 @@ export const ContactChannelForm = ({
             <ContactChannelFormLabel visibility="hidden" htmlFor="city">
               *Cidade
             </ContactChannelFormLabel>
-            <FormInput name="city" placeholder="*Cidade" />
+            <FormInput name="city" onChange={(e)=>{ setFormData({...formData, city: e.target.value })}} value={formData.city} placeholder="*Cidade" />
           </FormControl>
 
           <FormControl
@@ -102,7 +114,7 @@ export const ContactChannelForm = ({
             <ContactChannelFormLabel visibility="hidden" htmlFor="state">
               *Estado
             </ContactChannelFormLabel>
-            <FormSelect name="state" defaultValue="*Estado">
+            <FormSelect name="state" onChange={(e)=>{ setFormData({...formData, state: e.target.value })}} value={formData.state} defaultValue="*Estado">
               <option disabled value="*Estado">
                 *Estado
               </option>
@@ -123,10 +135,10 @@ export const ContactChannelForm = ({
               }
             }}
           >
-            <ContactChannelFormLabel visibility="hidden" htmlFor="enterprise">
+            <ContactChannelFormLabel visibility="hidden" htmlFor="company">
               Empresa
             </ContactChannelFormLabel>
-            <FormInput name="enterprise" placeholder="Empresa" />
+            <FormInput name="company" onChange={(e)=>{ setFormData({...formData, company: e.target.value })}}value={formData.company} placeholder="Empresa" />
           </FormControl>
         </Box>
         <Box mt="10px" flex="1">
@@ -135,7 +147,6 @@ export const ContactChannelForm = ({
               Tipo de Canal de Contato
             </ContactChannelFormLabel>
             <ContactChannelInfoInput value={channel_name} />
-            <Input type="hidden" name="service" value={service_code} />
           </FormControl>
         </Box>
         <Box mt="10px" flex="1">
@@ -150,7 +161,7 @@ export const ContactChannelForm = ({
             <ContactChannelFormLabel visibility="hidden" htmlFor="message">
               Mensagem
             </ContactChannelFormLabel>
-            <FormTextArea name="message" placeholder="Mensagem"></FormTextArea>
+            <FormTextArea name="message" onChange={(e)=>{ setFormData({...formData, message: e.target.value })}} value={formData.message} placeholder="Mensagem"></FormTextArea>
           </FormControl>
         </Box>
         <Flex mt="5px">
