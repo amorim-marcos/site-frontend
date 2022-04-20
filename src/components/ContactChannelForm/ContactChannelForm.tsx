@@ -16,7 +16,7 @@ import ContactChannelInfoInput from './ContactChannelInfoInput'
 
 export type ContactChannelFormProps = FlexProps & {
   channel_name: string
-  contact_channel_id: string | int
+  contact_channel_id: string | number
 }
 
 export const ContactChannelForm = ({
@@ -34,6 +34,7 @@ export const ContactChannelForm = ({
     message: ""
   }
   const [formData, setFormData] = useState({ ...intialFormData })
+  const [status, setStatus] = useState<number|null>(null)
 
   async function submitForm(formData:any){
     const url = `${process.env.NEXT_PUBLIC_API_URL}/contact-channels/${contact_channel_id}/sendForm`
@@ -49,7 +50,7 @@ export const ContactChannelForm = ({
 
     const responseContent = await response.json()
 
-    console.log(response.status, responseContent)
+    setStatus(response.status)
   }
 
   return (
@@ -188,6 +189,16 @@ export const ContactChannelForm = ({
           </Text>
         </Flex>
         <Flex mt="10px">
+          <Box 
+            h="100%"
+            display={(status === null) ? "none" : "block"}
+            paddingTop="30px"
+          >
+            {
+              (status !== 200) ? <Text color="green.550">Agradecemos a sua mensagem</Text> : <Text color="red.100">Alguma coisa aconteceu de errado. Por favor, tente novamente.</Text>
+            }
+          </Box>
+
           <Button
             w={{ base: '100%', lg: '240px' }}
             marginLeft={{ base: 'normal', lg: 'auto' }}
