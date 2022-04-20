@@ -121,13 +121,16 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
                     marginBottom="2%"
                     onClick={() => setCurrentItem(i)}
                   >
-                    <Box {...textureBtnContainer}>
+                    <Box {...textureBtnContainer}
+                      zIndex="1"
+                    >
                       <QualityBtnTexture texture={getTexture(i + 1)} />
                     </Box>
                     <Text as={"h3"}
                         variant={"h3"}
                         color="green.900"
                         fontWeight={'bold'}
+                        zIndex="2"
                       >
                       {item.number}
                     </Text>
