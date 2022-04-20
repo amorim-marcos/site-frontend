@@ -16,11 +16,12 @@ import ContactChannelInfoInput from './ContactChannelInfoInput'
 
 export type ContactChannelFormProps = FlexProps & {
   channel_name: string
-  service_code: string
+  contact_channel_id: string | int
 }
+
 export const ContactChannelForm = ({
   channel_name,
-  service_code,
+  contact_channel_id,
   ...props
 }: ContactChannelFormProps) => {
   const intialFormData = {
@@ -28,11 +29,28 @@ export const ContactChannelForm = ({
     email: "",
     phone: "",
     city: "",
-    state: "",
+    state: "*Estado",
     company: "",
     message: ""
   }
-  const [formData, setFormData] = useState(intialFormData)
+  const [formData, setFormData] = useState({ ...intialFormData })
+
+  async function submitForm(formData:any){
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/contact-channels/${contact_channel_id}/sendForm`
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+
+    const responseContent = await response.json()
+
+    console.log(response.status, responseContent)
+  }
 
   return (
     <Flex width="full" flexDirection="column" {...props}>
@@ -114,7 +132,7 @@ export const ContactChannelForm = ({
             <ContactChannelFormLabel visibility="hidden" htmlFor="state">
               *Estado
             </ContactChannelFormLabel>
-            <FormSelect name="state" onChange={(e)=>{ setFormData({...formData, state: e.target.value })}} value={formData.state} defaultValue="*Estado">
+            <FormSelect name="state" onChange={(e)=>{ setFormData({...formData, state: e.target.value })}} value={formData.state}>
               <option disabled value="*Estado">
                 *Estado
               </option>
@@ -171,9 +189,11 @@ export const ContactChannelForm = ({
         </Flex>
         <Flex mt="10px">
           <Button
-            type="submit"
             w={{ base: '100%', lg: '240px' }}
             marginLeft={{ base: 'normal', lg: 'auto' }}
+            onClick={() => {
+              submitForm(formData)
+            }}
           >
             ENVIAR
           </Button>
