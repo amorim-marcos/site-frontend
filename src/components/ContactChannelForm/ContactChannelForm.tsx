@@ -48,8 +48,6 @@ export const ContactChannelForm = ({
       body: JSON.stringify(formData)
     })
 
-    const responseContent = await response.json()
-
     setStatus(response.status)
   }
 
@@ -195,7 +193,7 @@ export const ContactChannelForm = ({
             paddingTop="30px"
           >
             {
-              (status !== 200) ? <Text color="green.550">Agradecemos a sua mensagem</Text> : <Text color="red.100">Alguma coisa aconteceu de errado. Por favor, tente novamente.</Text>
+              (status === 200) ? <Text color="green.550">Agradecemos a sua mensagem</Text> : <Text color="red.100">Alguma coisa aconteceu de errado. Por favor, tente novamente.</Text>
             }
           </Box>
 
