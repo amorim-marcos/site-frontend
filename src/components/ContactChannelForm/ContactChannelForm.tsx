@@ -190,14 +190,19 @@ export const ContactChannelForm = ({
             *Campos obrigatórios
           </Text>
         </Flex>
-        <Flex mt="10px">
+        <Flex 
+          mt="10px"
+          direction={{base: "column", md: "row"}}
+        >
           <Box 
+            w="100%"
             h="100%"
-            display={(status === null) ? "none" : "block"}
-            paddingTop="30px"
+            //display={(status === null) ? "none" : "block"}
+            order={{base: "2", md: "1"}}
+            textAlign={{base: "center", md: "left"}}
           >
             {
-              (status === 200) ? <Text color="green.550">Agradecemos a sua mensagem</Text> : <Text color="red.100">Alguma coisa aconteceu de errado. Por favor, tente novamente.</Text>
+              (status === 200) ? <Text paddingTop="30px" color="green.550">Agradecemos a sua mensagem</Text> : <Text paddingTop="25px" color="red.100">Alguma coisa aconteceu de errado. Por favor, tente novamente.</Text>
             }
           </Box>
 
@@ -207,6 +212,7 @@ export const ContactChannelForm = ({
             onClick={() => {
               submitForm(formData)
             }}
+            order={{base: "1", md: "2"}}
           >
             ENVIAR
           </Button>
