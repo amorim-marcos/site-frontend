@@ -36,8 +36,10 @@ export const ContactChannelForm = ({
   const [formData, setFormData] = useState({ ...intialFormData })
   const [status, setStatus] = useState<number|null>(null)
 
-  async function submitForm(formData:any){
+  async function submitForm(formData:any, contact_channel_id:string |number){
     const url = `${process.env.NEXT_PUBLIC_API_URL}/contact-channels/${contact_channel_id}/sendForm`
+
+    console.log(url)
 
     const response = await fetch(url, {
       method: "POST",
@@ -58,7 +60,12 @@ export const ContactChannelForm = ({
 
   return (
     <Flex width="full" flexDirection="column" {...props}>
-      <form>
+      <form
+        onSubmit={(e) => { 
+          e.preventDefault()
+          submitForm(formData, contact_channel_id)
+        }}
+      >
         <Box flex="1">
           <FormControl
             as="fieldset"
@@ -208,11 +215,9 @@ export const ContactChannelForm = ({
           </Box>
 
           <Button
+            type="submit"
             w={{ base: '100%', lg: '240px' }}
             marginLeft={{ base: 'normal', lg: 'auto' }}
-            onClick={() => {
-              submitForm(formData)
-            }}
             order={{base: "1", md: "2"}}
           >
             ENVIAR
