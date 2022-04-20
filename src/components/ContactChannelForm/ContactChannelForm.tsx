@@ -53,6 +53,7 @@ export const ContactChannelForm = ({
 
   useEffect(()=> {
     setFormData({ ...intialFormData })
+    setStatus(null)
   }, [contact_channel_id])
 
   return (
