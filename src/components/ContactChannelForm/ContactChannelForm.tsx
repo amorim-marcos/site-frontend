@@ -197,7 +197,7 @@ export const ContactChannelForm = ({
           <Box 
             w="100%"
             h="100%"
-            //display={(status === null) ? "none" : "block"}
+            display={(status === null) ? "none" : "block"}
             order={{base: "2", md: "1"}}
             textAlign={{base: "center", md: "left"}}
           >
