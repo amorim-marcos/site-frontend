@@ -10,7 +10,7 @@ import {
 import FormInput from '@components/FormInput'
 import FormSelect from '@components/FormSelect'
 import FormTextArea from '@components/FormTextArea'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ContactChannelFormLabel from './ContactChannelFormLabel'
 import ContactChannelInfoInput from './ContactChannelInfoInput'
 
@@ -50,6 +50,10 @@ export const ContactChannelForm = ({
 
     setStatus(response.status)
   }
+
+  useEffect(()=> {
+    setFormData({ ...intialFormData })
+  }, [contact_channel_id])
 
   return (
     <Flex width="full" flexDirection="column" {...props}>
