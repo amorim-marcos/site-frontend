@@ -231,7 +231,7 @@ export const AppHeader = () => {
                         href: i.href
                       }))}
                       href={menuNavigation.whoWeAre.href}
-                      title={header.t('btn5')}
+                      title={header.t(menuNavigation.whoWeAre.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                     />
                     <HeaderMenuItem
@@ -242,7 +242,7 @@ export const AppHeader = () => {
                         })
                       )}
                       href={menuNavigation.ourCommitment.href}
-                      title={header.t('btn6')}
+                      title={header.t(menuNavigation.ourCommitment.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                     />
                     <HeaderMenuItem
@@ -253,7 +253,7 @@ export const AppHeader = () => {
                         })
                       )}
                       href={menuNavigation.florestalDivision.href}
-                      title={header.t('btn7')}
+                      title={header.t(menuNavigation.florestalDivision.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                     />
                     <HeaderMenuItem
@@ -267,7 +267,7 @@ export const AppHeader = () => {
                         }))
                       }))}
                       href={menuNavigation.products.href}
-                      title={header.t('btn8')}
+                      title={header.t(menuNavigation.products.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                     />
                     <HeaderMenuItem
@@ -276,7 +276,7 @@ export const AppHeader = () => {
                         href: i.href
                       }))}
                       href={menuNavigation.channelBNK.href}
-                      title={header.t('btn9')}
+                      title={header.t(menuNavigation.channelBNK.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                       borderBottom={false}
                     />
@@ -383,7 +383,7 @@ export const AppHeader = () => {
                   autoFocus
                   value={searchQuery}
                   onChange={handleChange}
-                  placeholder="Digite sua busca"
+                  placeholder={header.t('search.placeholder')}
                   _placeholder={{ color: 'white.100' }}
                   border="none"
                   outline="none"

@@ -237,7 +237,7 @@ const ContactChannelSection = ({ channel }: { channel: IContactChannel }) => (
       <Flex flex="2">
         <ContactChannelForm
           channel_name={channel.name}
-          service_code={channel.service_code}
+          contact_channel_id={channel.id}
           paddingLeft={{ base: 0, lg: '80px' }}
           paddingRight={{ base: 0, lg: '10px', xl: '30px' }}
         />

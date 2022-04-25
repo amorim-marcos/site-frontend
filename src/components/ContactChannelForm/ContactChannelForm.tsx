@@ -10,21 +10,62 @@ import {
 import FormInput from '@components/FormInput'
 import FormSelect from '@components/FormSelect'
 import FormTextArea from '@components/FormTextArea'
+import { useEffect, useState } from 'react'
 import ContactChannelFormLabel from './ContactChannelFormLabel'
 import ContactChannelInfoInput from './ContactChannelInfoInput'
 
 export type ContactChannelFormProps = FlexProps & {
   channel_name: string
-  service_code: string
+  contact_channel_id: string | number
 }
+
 export const ContactChannelForm = ({
   channel_name,
-  service_code,
+  contact_channel_id,
   ...props
 }: ContactChannelFormProps) => {
+  const intialFormData = {
+    name: "",
+    email: "",
+    phone: "",
+    city: "",
+    state: "*Estado",
+    company: "",
+    message: ""
+  }
+  const [formData, setFormData] = useState({ ...intialFormData })
+  const [status, setStatus] = useState<number|null>(null)
+
+  async function submitForm(formData:any, contact_channel_id:string |number){
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/contact-channels/${contact_channel_id}/sendForm`
+
+    console.log(url)
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+
+    setStatus(response.status)
+  }
+
+  useEffect(()=> {
+    setFormData({ ...intialFormData })
+    setStatus(null)
+  }, [contact_channel_id])
+
   return (
     <Flex width="full" flexDirection="column" {...props}>
-      <form>
+      <form
+        onSubmit={(e) => { 
+          e.preventDefault()
+          submitForm(formData, contact_channel_id)
+        }}
+      >
         <Box flex="1">
           <FormControl
             as="fieldset"
@@ -38,7 +79,7 @@ export const ContactChannelForm = ({
             <ContactChannelFormLabel visibility="hidden" htmlFor="name">
               *Nome
             </ContactChannelFormLabel>
-            <FormInput name="name" placeholder="*Nome" />
+            <FormInput onChange={(e)=>{ setFormData({...formData, name: e.target.value })}} name="name" value={formData.name} placeholder="*Nome" />
           </FormControl>
         </Box>
         <Box mt="10px" flex="1">
@@ -54,7 +95,7 @@ export const ContactChannelForm = ({
             <ContactChannelFormLabel visibility="hidden" htmlFor="email">
               *E-mail
             </ContactChannelFormLabel>
-            <FormInput type="email" name="email" placeholder="*E-mail" />
+            <FormInput type="email" name="email" onChange={(e)=>{ setFormData({...formData, email: e.target.value })}} value={formData.email} placeholder="*E-mail" />
           </FormControl>
         </Box>
         <Box mt="10px" flex="1">
@@ -67,10 +108,10 @@ export const ContactChannelForm = ({
             }}
             isRequired
           >
-            <ContactChannelFormLabel visibility="hidden" htmlFor="tel">
+            <ContactChannelFormLabel visibility="hidden" htmlFor="phone">
               *Telefone
             </ContactChannelFormLabel>
-            <FormInput type="tel" name="tel" placeholder="*Telefone" />
+            <FormInput type="phone" name="phone" onChange={(e)=>{ setFormData({...formData, phone: e.target.value })}} value={formData.phone} placeholder="*Telefone" />
           </FormControl>
         </Box>
         <Flex flexDirection={{ base: 'column', md: 'row' }} flex="1" mt="10px">
@@ -87,7 +128,7 @@ export const ContactChannelForm = ({
             <ContactChannelFormLabel visibility="hidden" htmlFor="city">
               *Cidade
             </ContactChannelFormLabel>
-            <FormInput name="city" placeholder="*Cidade" />
+            <FormInput name="city" onChange={(e)=>{ setFormData({...formData, city: e.target.value })}} value={formData.city} placeholder="*Cidade" />
           </FormControl>
 
           <FormControl
@@ -102,7 +143,7 @@ export const ContactChannelForm = ({
             <ContactChannelFormLabel visibility="hidden" htmlFor="state">
               *Estado
             </ContactChannelFormLabel>
-            <FormSelect name="state" defaultValue="*Estado">
+            <FormSelect name="state" onChange={(e)=>{ setFormData({...formData, state: e.target.value })}} value={formData.state}>
               <option disabled value="*Estado">
                 *Estado
               </option>
@@ -123,10 +164,10 @@ export const ContactChannelForm = ({
               }
             }}
           >
-            <ContactChannelFormLabel visibility="hidden" htmlFor="enterprise">
+            <ContactChannelFormLabel visibility="hidden" htmlFor="company">
               Empresa
             </ContactChannelFormLabel>
-            <FormInput name="enterprise" placeholder="Empresa" />
+            <FormInput name="company" onChange={(e)=>{ setFormData({...formData, company: e.target.value })}}value={formData.company} placeholder="Empresa" />
           </FormControl>
         </Box>
         <Box mt="10px" flex="1">
@@ -135,7 +176,6 @@ export const ContactChannelForm = ({
               Tipo de Canal de Contato
             </ContactChannelFormLabel>
             <ContactChannelInfoInput value={channel_name} />
-            <Input type="hidden" name="service" value={service_code} />
           </FormControl>
         </Box>
         <Box mt="10px" flex="1">
@@ -150,7 +190,7 @@ export const ContactChannelForm = ({
             <ContactChannelFormLabel visibility="hidden" htmlFor="message">
               Mensagem
             </ContactChannelFormLabel>
-            <FormTextArea name="message" placeholder="Mensagem"></FormTextArea>
+            <FormTextArea name="message" onChange={(e)=>{ setFormData({...formData, message: e.target.value })}} value={formData.message} placeholder="Mensagem"></FormTextArea>
           </FormControl>
         </Box>
         <Flex mt="5px">
@@ -158,11 +198,27 @@ export const ContactChannelForm = ({
             *Campos obrigatórios
           </Text>
         </Flex>
-        <Flex mt="10px">
+        <Flex 
+          mt="10px"
+          direction={{base: "column", md: "row"}}
+        >
+          <Box 
+            w="100%"
+            h="100%"
+            display={(status === null) ? "none" : "block"}
+            order={{base: "2", md: "1"}}
+            textAlign={{base: "center", md: "left"}}
+          >
+            {
+              (status === 200) ? <Text paddingTop="30px" color="green.550">Agradecemos a sua mensagem</Text> : <Text paddingTop="25px" color="red.100">Alguma coisa aconteceu de errado. Por favor, tente novamente.</Text>
+            }
+          </Box>
+
           <Button
             type="submit"
             w={{ base: '100%', lg: '240px' }}
             marginLeft={{ base: 'normal', lg: 'auto' }}
+            order={{base: "1", md: "2"}}
           >
             ENVIAR
           </Button>
