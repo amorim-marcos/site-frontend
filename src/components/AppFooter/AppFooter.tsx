@@ -11,11 +11,7 @@ export const AppFooter = () => {
   const footer = useTranslation('footer')
   const router = useRouter()
   return (
-    <Box 
-      w="100%" 
-      bg="green.900"
-
-    >
+    <Box w="100%" bg="green.900">
       <Flex
         aria-label="footer-container"
         data-testid="footer-container"
@@ -49,16 +45,15 @@ export const AppFooter = () => {
             marginTop={{ base: '20px', md: '0' }}
             // bg={"grey"}
           >
-            
             <LogoBerneck
-                  width={{
-                    base: '110px',
-                    md: '110px',
-                    lg: '130px',
-                    xl: '145px',
-                    '2xl': '189px'
-                  }}
-                />
+              width={{
+                base: '110px',
+                md: '110px',
+                lg: '130px',
+                xl: '145px',
+                '2xl': '189px'
+              }}
+            />
             <Flex
               w={{ base: '100%', md: '30%' }}
               ml={{ base: '0', md: 'auto' }}
@@ -103,8 +98,8 @@ export const AppFooter = () => {
             display={{ base: 'none', md: 'flex' }}
             // paddingInline={{ base: '4%', xl: '4%' }}
             justifyContent="space-between"
-            justifyItems={"flex-start"}
-            alignContent={"flex-start"}
+            justifyItems={'flex-start'}
+            alignContent={'flex-start'}
             zIndex="docked"
             marginTop={{
               base: '7%',
@@ -196,12 +191,12 @@ export const AppFooter = () => {
           flexDirection={{ base: 'column', md: 'row' }}
           // bg="darksalmon"
         >
-          <Flex 
-           flex="1"
-          //  bg="bisque"
-           alignItems="center"
-          //  justifyContent="center"
-           margin={{ base: '2%' }}
+          <Flex
+            flex="1"
+            //  bg="bisque"
+            alignItems="center"
+            //  justifyContent="center"
+            margin={{ base: '2%' }}
           >
             <Text
               left={{ base: '0' }}
@@ -217,12 +212,12 @@ export const AppFooter = () => {
               &#9400;2022 BERNECK. Todos os direitos reservados.
             </Text>
           </Flex>
-          <Flex 
-           flex="1"
-          //  bg="limegreen"
-           alignItems="center"
-           justifyContent="center"
-          //  padding={{ base: '0', md: '5%' }}
+          <Flex
+            flex="1"
+            //  bg="limegreen"
+            alignItems="center"
+            justifyContent="center"
+            //  padding={{ base: '0', md: '5%' }}
           >
             <Text
               fontSize={{
@@ -239,7 +234,7 @@ export const AppFooter = () => {
               Termos de Uso e Política de Privacidade
             </Text>
           </Flex>
-          <Flex 
+          <Flex
             flex="1"
             // bg="yellowgreen"
             alignItems="center"

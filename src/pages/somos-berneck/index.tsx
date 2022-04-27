@@ -4,6 +4,8 @@ import { AboutPageContent } from 'views/About/About'
 import { TrajectoryTab } from '@components/TrajectoryCarousel/TrajectoryCarousel'
 import { GetStaticProps } from 'next'
 import { WhereWeArePanelProps } from '@components/WhereWeArePanel/WhereWeArePanel'
+import { loadTranslations } from 'ni18n'
+import { ni18nConfig } from '../../../ni18n.config'
 
 export type AboutPageProps = {
   page_content: AboutPageContent
@@ -123,7 +125,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       page_content,
       our_trajectory_tabs,
-      whereWeAreData
+      whereWeAreData,
+      ...(await loadTranslations(ni18nConfig, locale, [
+        'header',
+        'footer',
+        'products',
+        'aboutView'
+      ]))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

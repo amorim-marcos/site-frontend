@@ -15,7 +15,7 @@ export const LanguageSelector = () => {
     <Center
       cursor="pointer"
       position="relative"
-      zIndex="dropdown"
+      zIndex="skipLink"
       onClick={() => setOpen(!open)}
       transition="0.2s"
     >
@@ -47,9 +47,7 @@ export const LanguageSelector = () => {
         transform={open ? 'rotate(180deg)' : ''}
         marginLeft="8%"
       >
-        <ArrowIcon
-          width={{ base: '5px', md: '5px', lg: '7px' }}
-        />
+        <ArrowIcon width={{ base: '5px', md: '5px', lg: '7px' }} />
       </Box>
 
       {open ? (
@@ -60,6 +58,7 @@ export const LanguageSelector = () => {
           top="calc(100%)"
           borderTop="2px solid"
           borderTopColor="green.600"
+          zIndex="skipLink"
         >
           {!(router.locale === 'pt-BR') && (
             <LanguageBtn title="Português" locale="pt-BR" />

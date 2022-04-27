@@ -1,64 +1,100 @@
 export const footerNavigation = {
   column1: {
-    titleKey: 'column1Title',
+    titleKey: 'weAreBerneckColumn.title',
     href: '/somos-berneck',
     items: [
-      { titleKey: 'column1Subitem1', href: '/somos-berneck/#quem-somos' },
-      { titleKey: 'column1Subitem2', href: '/somos-berneck#trajetoria' },
-      { titleKey: 'column1Subitem3', href: '/somos-berneck#onde-estamos' },
-      { titleKey: 'column1Subitem4', href: '/certificacoes' }
+      {
+        titleKey: 'weAreBerneckColumn.whoWeAre',
+        href: '/somos-berneck/#quem-somos'
+      },
+      {
+        titleKey: 'weAreBerneckColumn.ourTrajectory',
+        href: '/somos-berneck#trajetoria'
+      },
+      {
+        titleKey: 'weAreBerneckColumn.whereWeAre',
+        href: '/somos-berneck#onde-estamos'
+      },
+      { titleKey: 'weAreBerneckColumn.certifications', href: '/certificacoes' }
     ]
   },
   column2: {
-    titleKey: 'column2Title',
+    titleKey: 'NOSSO COMPROMISSO',
     href: '/nosso-compromisso',
     items: [
-      { titleKey: 'column2Subitem1', href: '/nosso-compromisso#meio-ambiente' },
-      { titleKey: 'column2Subitem2', href: '/nosso-compromisso#nossa-gente' },
       {
-        titleKey: 'column2Subitem3',
+        titleKey: 'ourCommitmentColumn.environment',
+        href: '/nosso-compromisso#meio-ambiente'
+      },
+      {
+        titleKey: 'ourCommitmentColumn.ourPeople',
+        href: '/nosso-compromisso#nossa-gente'
+      },
+      {
+        titleKey: 'ourCommitmentColumn.ourValues',
         href: '/nosso-compromisso#nossos-valores'
       },
-      { titleKey: 'column2Subitem4', href: '/nosso-compromisso#relatorio' }
+      {
+        titleKey: 'ourCommitmentColumn.report',
+        href: '/nosso-compromisso#relatorio'
+      }
     ]
   },
   column3: {
-    titleKey: 'column3Title',
+    titleKey: 'florestalDivisionColumn.title',
     href: '/divisao-florestal',
     items: [
-      { titleKey: 'column3Subitem1', href: '/divisao-florestal#manejo' },
-      { titleKey: 'column3Subitem2', href: '/divisao-florestal#producao' },
-      { titleKey: 'column3Subitem3', href: '/divisao-florestal#fornecedor' },
-      { titleKey: 'column3Subitem4', href: '/divisao-florestal#resumo-publico' }
+      {
+        titleKey: 'florestalDivisionColumn.forestManagement',
+        href: '/divisao-florestal#manejo'
+      },
+      {
+        titleKey: 'florestalDivisionColumn.forestProduction',
+        href: '/divisao-florestal#producao'
+      },
+      {
+        titleKey: 'florestalDivisionColumn.forestSuppliers',
+        href: '/divisao-florestal#fornecedor'
+      },
+      {
+        titleKey: 'florestalDivisionColumn.publicResume',
+        href: '/divisao-florestal#resumo-publico'
+      }
     ]
   },
   column4: {
-    titleKey: 'column4Title',
+    titleKey: 'productsColumn.title',
     href: '/products',
     items: [
-      { titleKey: 'column4Subitem1', href: '/products/bp-berneck' },
-      { titleKey: 'column4Subitem2', href: '/products/hdf-berneck' },
-      { titleKey: 'column4Subitem3', href: '/products/mdf-berneck' },
-      { titleKey: 'column4Subitem4', href: '/products/mdp-berneck' },
-      { titleKey: 'column4Subitem5', href: '/products/plus-berneck' },
-      { titleKey: 'column4Subitem6', href: '/products/berneck-pinus' },
-      { titleKey: 'column4Subitem7', href: '/products/berneck-teca' }
+      { titleKey: 'productsColumn.bpBerneck', href: '/products/bp-berneck' },
+      { titleKey: 'productsColumn.hdfBerneck', href: '/products/hdf-berneck' },
+      { titleKey: 'productsColumn.mdfBerneck', href: '/products/mdf-berneck' },
+      { titleKey: 'productsColumn.mdpBerneck', href: '/products/mdp-berneck' },
+      {
+        titleKey: 'productsColumn.plusBerneck',
+        href: '/products/plus-berneck'
+      },
+      {
+        titleKey: 'productsColumn.berneckPinus',
+        href: '/products/berneck-pinus'
+      },
+      { titleKey: 'productsColumn.berneckTeca', href: '/products/berneck-teca' }
     ]
   },
   column5: {
-    titleKey: 'column5Title',
+    titleKey: 'channelBNKColumn.title',
     href: '/canal-bnk',
     items: [
       // { titleKey: 'column4Subitem1', href: '#' },
-      { titleKey: 'column5Subitem6', href: '/downloads' },
+      { titleKey: 'channelBNKColumn.downloads', href: '/downloads' },
       { titleKey: '', href: '', empty: true },
-      { titleKey: 'column5Subitem1', href: '/contact' },
+      { titleKey: 'channelBNKColumn.speakWithUs', href: '/contact' },
       {
-        titleKey: 'column5Subitem3',
+        titleKey: 'channelBNKColumn.workWithUs',
         href: 'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup'
       },
-      { titleKey: 'column5Subitem4', href: '/onde-comprar' },
-      { titleKey: 'column5Subitem5', href: 'http://portalcrm.berneck.com.br/' }
+      { titleKey: 'channelBNKColumn.whereBuy', href: '/onde-comprar' },
+      { titleKey: '', href: 'http://portalcrm.berneck.com.br/' }
     ]
   }
 }

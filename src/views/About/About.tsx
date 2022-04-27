@@ -11,6 +11,7 @@ import PatternInfo from '@components/PatternInfo'
 import PatternInfoPhoto from '@components/PatternInfoPhoto'
 import { TrajectoryTab } from '@components/TrajectoryCarousel/TrajectoryCarousel'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'react-i18next'
 
 export type AboutPageContent = {
   header_title: string
@@ -42,13 +43,14 @@ export const About = ({
   panels
 }: AboutProps) => {
   const router = useRouter()
+  const aboutView = useTranslation('aboutView')
 
   return (
     <Box>
       <Pagebar
         paths={[
           {
-            title: 'Somos BERNECK®',
+            title: aboutView.t('pagebar.weAreBerneck'),
             url: 'somos-berneck'
           }
         ]}
@@ -58,7 +60,7 @@ export const About = ({
         <PageSession
           data={{
             imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
-            title: 'Quem somos',
+            title: aboutView.t('headerBanner.title'),
             subtitle: page_content.header_title,
             text: page_content.header_text
           }}
@@ -156,9 +158,7 @@ export const About = ({
               justifyItems="center"
               justifyContent={{
                 base: 'center',
-                sm: 'center',
-                lg: 'flex-end',
-                xl: 'flex-end'
+                lg: 'flex-end'
               }}
             >
               {/* BOX 1 */}
@@ -181,16 +181,20 @@ export const About = ({
                 }}
               >
                 <Infographic
-                  titleSuperscript1Text="Volume de Exportação"
+                  titleSuperscript1Text={aboutView.t(
+                    'infoGraphic.exportVolume'
+                  )}
                   content1Text="+"
                   content2Text={page_content.exportation_volume}
-                  content3Text="TEUs / mês"
+                  content3Text={aboutView.t('infoGraphic.exportMeasure')}
                 />
                 <Infographic
-                  titleSuperscript1Text="Relações Comerciais"
+                  titleSuperscript1Text={aboutView.t(
+                    'infoGraphic.comercialRelations'
+                  )}
                   content1Text="+"
                   content2Text={page_content.comercial_relationship}
-                  content3Text="países"
+                  content3Text={aboutView.t('infoGraphic.countries')}
                 />
               </Box>
             </Flex>
@@ -213,7 +217,7 @@ export const About = ({
               variant={'h3' as any}
               fontFamily="body"
               color="green.900"
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+              textAlign={{ base: 'left' }}
             >
               {page_content.section2_title}
             </Text>
@@ -373,7 +377,7 @@ export const About = ({
         >
           <Flex
             // bg='red'
-            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+            direction={{ base: 'column', lg: 'row' }}
             width={'100%'}
           >
             <Box
@@ -387,17 +391,13 @@ export const About = ({
               }}
               // alignSelf='center'
             >
-              <Text
-                as="h3"
-                variant={'h3' as any}
-                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-              >
+              <Text as="h3" variant={'h3' as any} textAlign={{ base: 'left' }}>
                 Revendedores
               </Text>
               <Text
                 color="green.900"
-                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-                marginTop={{ base: '8px', sm: '8px', lg: '10px', xl: '20px' }}
+                textAlign={{ base: 'left' }}
+                marginTop={{ base: '8px', lg: '10px', xl: '20px' }}
               >
                 {page_content.resellers_description}
               </Text>
@@ -413,8 +413,8 @@ export const About = ({
               }}
             >
               <PatternInfo
-                title="DESCUBRA"
-                description="Onde Comprar"
+                title={aboutView.t('discoverWhereBuy.discover')}
+                description={aboutView.t('discoverWhereBuy.whereBuy')}
                 onClick={() => router.push('/onde-comprar')}
                 icon={
                   <EarthIcon
@@ -462,23 +462,17 @@ export const About = ({
             }}
           >
             <CompletedTitle
-              titleString="Certificações"
+              titleString={aboutView.t('certifications.title')}
               textAlign={{
                 base: 'center',
-                sm: 'center',
-                lg: 'left',
-                xl: 'left'
+                lg: 'left'
               }}
               alignSelf={{
                 base: 'center',
-                sm: 'center',
-                lg: 'flex-start',
-                xl: 'flex-start'
+                lg: 'flex-start'
               }}
             />
-            <Text
-              marginTop={{ base: '25px', sm: '25px', lg: '20px', xl: '20px' }}
-            >
+            <Text marginTop={{ base: '25px', lg: '20px' }}>
               {page_content.certifications_description}
             </Text>
           </Box>
@@ -495,8 +489,8 @@ export const About = ({
             <PatternInfoPhoto
               onClick={() => router.push('/certificacoes')}
               imgSrc="/img/banner_certificacoes_about.png"
-              title="CONHEÇA"
-              description="Nossas certificações"
+              title={aboutView.t('knowOurCertifications.know')}
+              description={aboutView.t('knowOurCertifications.whereBuy')}
               titleColor="green.900"
               descriptionColor="white"
               grafism={false}

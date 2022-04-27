@@ -90,7 +90,7 @@ export const AppHeader = () => {
       <Box
         data-testid="header-container"
         marginX="auto"
-        bg='green.900'
+        bg="green.900"
         position="fixed"
         top="0"
         left="0"
@@ -109,15 +109,12 @@ export const AppHeader = () => {
             w="100%"
             transition={'0.3s'}
             overflow={'hidden'}
-            h={
-              {
-                    base: '25px',
-                    md: '25px',
-                    lg: '30px',
-                    xl: '40px'
-                  }
-               
-            }
+            h={{
+              base: '25px',
+              md: '25px',
+              lg: '30px',
+              xl: '40px'
+            }}
             bg="green.900"
           >
             <Box w="100%" marginX="auto" maxWidth={'1536px'}>
@@ -199,7 +196,7 @@ export const AppHeader = () => {
                     md: '120px',
                     lg: '150px',
                     xl: '160px',
-                    '2xl' : '220px'
+                    '2xl': '220px'
                   }}
                 />
 

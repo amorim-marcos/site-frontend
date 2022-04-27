@@ -8,6 +8,7 @@ import Connect from '@components/Connect'
 import { SectionChannelBNK } from './sections/SectionChannelBNK'
 import { SectionProducts } from './sections/SectionProducts'
 import { SectionBanners } from './sections/SectionBanners'
+import { useTranslation } from 'react-i18next'
 
 type PostProps = {
   id: number
@@ -36,6 +37,9 @@ export type HomeProps = {
 
 export default function Home(props: HomeProps) {
   const router = useRouter()
+
+  const products = useTranslation('products')
+  const homeView = useTranslation('homeView')
 
   return (
     <Box bg="white.100">
@@ -82,13 +86,12 @@ export default function Home(props: HomeProps) {
       <SectionProducts
         products={[
           {
-            title: 'BP BERNECK®',
+            title: products.t('bpBerneck.title'),
             titleColor: 'white',
-            subtitle: 'Laminado Melamínico Decorativo',
+            subtitle: products.t('bpBerneck.description'),
             subtitleColor: 'brown.200',
             bgColor: 'brown.300',
             srcImg: '/img/produto_bp_banner.png',
-            onClick: () => alert('Ir para BP'),
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -98,9 +101,9 @@ export default function Home(props: HomeProps) {
             urlLink: 'bp-berneck'
           },
           {
-            title: 'MDP BERNECK®',
+            title: products.t('mdpBerneck.title'),
             titleColor: 'gray.400',
-            subtitle: 'Painel de Partículas de Média Densidade',
+            subtitle: products.t('mdpBerneck.description'),
             subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: '/img/mdp.png',
@@ -113,9 +116,9 @@ export default function Home(props: HomeProps) {
             urlLink: 'mdp-berneck'
           },
           {
-            title: 'MDF BERNECK®',
+            title: products.t('mdfBerneck.title'),
             titleColor: 'gray.400',
-            subtitle: 'Painel de Fibra de Média Densidade',
+            subtitle: products.t('mdfBerneck.description'),
             subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: '/img/mdf.png',
@@ -128,9 +131,9 @@ export default function Home(props: HomeProps) {
             urlLink: 'mdf-berneck'
           },
           {
-            title: 'HDF BERNECK®',
+            title: products.t('hdfBerneck.title'),
             titleColor: 'gray.400',
-            subtitle: 'Painel de Fibra de Alta Densidade',
+            subtitle: products.t('hdfBerneck.description'),
             subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: '/img/hdf.png',
@@ -143,9 +146,9 @@ export default function Home(props: HomeProps) {
             urlLink: 'hdf-berneck'
           },
           {
-            title: 'PLUS BERNECK®',
+            title: products.t('plusBerneck.title'),
             titleColor: 'white',
-            subtitle: 'Linha de Painéis com Resistência Extra à Umidade',
+            subtitle: products.t('plusBerneck.description'),
             subtitleColor: 'brown.350',
             bgColor: 'green.400',
             srcImg: '/img/plus.png',
@@ -158,9 +161,9 @@ export default function Home(props: HomeProps) {
             urlLink: 'plus-berneck'
           },
           {
-            title: 'BERNECK PINUS®',
+            title: products.t('berneckPinus.title'),
             titleColor: 'green.900',
-            subtitle: 'Madeira Serrada de Pinus',
+            subtitle: products.t('berneckPinus.description'),
             subtitleColor: 'gray.400',
             bgColor: 'green.300',
             srcImg: '/img/pinus.png',
@@ -173,9 +176,9 @@ export default function Home(props: HomeProps) {
             urlLink: 'berneck-pinus'
           },
           {
-            title: 'BERNECK TECA®',
+            title: products.t('berneckTeca.title'),
             titleColor: 'gray.400',
-            subtitle: 'Madeira Serrada de Teca',
+            subtitle: products.t('berneckTeca.description'),
             subtitleColor: 'gray.400',
             bgColor: 'brown.250',
             srcImg: '/img/teca.png',
@@ -197,16 +200,16 @@ export default function Home(props: HomeProps) {
         banner1={{
           onClick: () => router.push('/nosso-compromisso'),
           imgSrc: '/assets/imgs/banner_compromisso.jpg',
-          title: 'CONHEÇA',
-          description: 'Nosso compromisso',
+          title: homeView.t('knowOurCommitment.title'),
+          description: homeView.t('knowOurCommitment.description'),
           titleColor: 'green.600',
           descriptionColor: 'white'
         }}
         banner2={{
           onClick: () => router.push('/divisao-florestal'),
           imgSrc: '/img/conheca_divisao_florestal.png',
-          title: 'CONHEÇA',
-          description: 'Divisão Florestal',
+          title: homeView.t('knowOurFlorestalDivision.title'),
+          description: homeView.t('knowOurFlorestalDivision.description'),
           titleColor: 'green.600',
           descriptionColor: 'white'
         }}
@@ -215,7 +218,7 @@ export default function Home(props: HomeProps) {
       {/* FIM Banners */}
 
       {/* INICIO Redes Sociais */}
-      <Connect />
+      <Connect title={homeView.t('connectTitle')} />
     </Box>
   )
 }

@@ -1,5 +1,7 @@
 import { GetStaticProps } from 'next'
+import { loadTranslations } from 'ni18n'
 import { ForestsView, ForestsViewProps } from 'views/Forests/Forests'
+import { ni18nConfig } from '../../../ni18n.config'
 
 export type FlorestalDivisionPageProps = ForestsViewProps
 
@@ -58,7 +60,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
           ...item,
           image: {
             ...item.image,
-            url: (item.image === null )? null: process.env.NEXT_PUBLIC_API_URL + item.image.url
+            url:
+              item.image === null
+                ? null
+                : process.env.NEXT_PUBLIC_API_URL + item.image.url
           }
         }
       }
@@ -67,7 +72,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       page_content,
-      fireWarningText: fireWarning.warning_text
+      fireWarningText: fireWarning.warning_text,
+      ...(await loadTranslations(ni18nConfig, locale, [
+        'header',
+        'footer',
+        'forestView'
+      ]))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

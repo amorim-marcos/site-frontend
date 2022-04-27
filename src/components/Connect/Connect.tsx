@@ -9,7 +9,11 @@ import CompletedTitle from '@components/CompletedTitle'
 import useFacebook from 'hooks/useFacebook'
 import useMobile from 'hooks/useMobile'
 
-export default function Connect() {
+export type ConnectProps = {
+  title?: string
+}
+
+export default function Connect({ title = 'Conecte-se' }: ConnectProps) {
   const { isMobile, width } = useMobile(568)
   const [lastVideo, setLastVideo] = useState<string | null>()
 
@@ -46,7 +50,7 @@ export default function Connect() {
           justifyContent={{ base: 'center', lg: 'flex-start' }}
         >
           <CompletedTitle
-            titleString="Conecte-se"
+            titleString={title}
             textAlign={{ base: 'center', sm: 'center', lg: 'left', xl: 'left' }}
             alignSelf={{
               base: 'center',

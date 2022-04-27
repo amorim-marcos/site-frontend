@@ -13,6 +13,7 @@ import { List, ListItem } from '@chakra-ui/react'
 import PatternCertification from '@components/PatternCertification'
 import { useRouter } from 'next/router'
 import Paragraph from '@components/Paragraph'
+import { useTranslation } from 'react-i18next'
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/nosso-compromisso-filtro-1x.jpg)',
@@ -64,10 +65,9 @@ export type CompromiseViewProps = {
 
 export const Compromise = ({ page_content }: CompromiseViewProps) => {
   const router = useRouter()
+  const compromiseView = useTranslation('compromiseView')
   return (
-    <Box
-      bg="white"
-    >
+    <Box bg="white">
       <Pagebar
         paths={[
           {
@@ -88,157 +88,153 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
         subTitleColor="white"
       />
 
-    {/* INICIO VALORES */}
-    <Box
-      bg="brown.100"
-    >
-      <Flex
-        maxWidth="1536px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="brown.100"
-      >
+      {/* INICIO VALORES */}
+      <Box bg="brown.100">
         <Flex
-          // bg='red'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="brown.100"
         >
-          {/* BOX 1 */}
-          <Box
-            // bg='pink'
-            flex="1"
-            margin={{
-              base: '0% 0% 2% 0%',
-              sm: '5% 5% 2% 5%',
-              lg: '5%',
-              xl: '5%'
-            }}
+          <Flex
+            // bg='red'
+            direction={{ base: 'column', lg: 'row' }}
           >
-            <Flex
-              // bg='blue'
-              direction="column"
-              alignItems="center"
-              padding={{ base: '6%', sm: '3%', lg: '5%', xl: '5%' }}
-              backgroundImage="/assets/imgs/fundo_madeira.svg"
-              backgroundPosition="center"
-              backgroundRepeat="no-repeat"
+            {/* BOX 1 */}
+            <Box
+              // bg='pink'
+              flex="1"
+              margin={{
+                base: '0% 0% 2% 0%',
+                sm: '5% 5% 2% 5%',
+                lg: '5%',
+                xl: '5%'
+              }}
+            >
+              <Flex
+                // bg='blue'
+                direction="column"
+                alignItems="center"
+                padding={{ base: '6%', sm: '3%', lg: '5%', xl: '5%' }}
+                backgroundImage="/assets/imgs/fundo_madeira.svg"
+                backgroundPosition="center"
+                backgroundRepeat="no-repeat"
+              >
+                <Text
+                  as="h3"
+                  variant={'h3' as any}
+                  fontFamily="body"
+                  color="green.800"
+                  textAlign="center"
+                  margin={{ base: '3%', lg: '5%' }}
+                >
+                  {compromiseView.t('ethicsCodeSection.title')}
+                </Text>
+                <Text fontFamily="body" color="green.900" textAlign="center">
+                  {compromiseView.t('ethicsCodeSection.description')}
+                </Text>
+                <Text
+                  fontFamily="body"
+                  color="green.900"
+                  textAlign="center"
+                  fontWeight="bold"
+                  margin={{ base: '3%', sm: '3%', lg: '5%', xl: '5%' }}
+                >
+                  {compromiseView.t('ethicsCodeSection.know')}
+                </Text>
+
+                <Button
+                  onClick={() =>
+                    window.open(page_content.ethical_code.url, '_blank')
+                  }
+                  w={{ base: '100%', sm: '70%', lg: '100%', xl: '80%' }}
+                  h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%' }}
+                  padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%' }}
+                >
+                  <Text
+                    as="h5"
+                    variant={'h5' as any}
+                    color="white"
+                    textAlign="center"
+                    fontWeight="bold"
+                  >
+                    {compromiseView.t('ethicsCodeSection.btn')}
+                  </Text>
+                </Button>
+              </Flex>
+            </Box>
+
+            {/* BOX 2 */}
+            <Box
+              // bg='yellow'
+              flex="1"
+              margin={{
+                base: '8% 7% 8% 5%',
+                sm: '5% 5% 8% 5%',
+                lg: '5%',
+                xl: '5%'
+              }}
             >
               <Text
                 as="h3"
                 variant={'h3' as any}
-                fontFamily="body"
-                color="green.800"
-                textAlign="center"
-                margin={{ base: '3%', sm: '3%', lg: '5%', xl: '5%' }}
+                color="green.550"
+                marginBottom={{ base: '5%', sm: '2%', lg: '5%', xl: '5%' }}
               >
-                Código de ética e conduta
-              </Text>
-              <Text fontFamily="body" color="green.900" textAlign="center">
-                Nosso Código de Ética e Conduta apresenta os direitos e deveres
-                que todos os nossos colaboradores e parceiros seguem à risca.
-              </Text>
-              <Text
-                fontFamily="body"
-                color="green.900"
-                textAlign="center"
-                fontWeight="bold"
-                margin={{ base: '3%', sm: '3%', lg: '5%', xl: '5%' }}
-              >
-                Conheça:
+                {compromiseView.t('ourCorporativeValues.title')}
               </Text>
 
-              <Button
-                onClick={() =>
-                  window.open(page_content.ethical_code.url, '_blank')
-                }
-                w={{ base: '100%', sm: '70%', lg: '100%', xl: '80%' }}
-                h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%' }}
-                padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%' }}
-              >
-                <Text
-                  as="h5"
-                  variant={'h5' as any}
-                  color="white"
-                  textAlign="center"
-                  fontWeight="bold"
-                >
-                  Código de ética e conduta
-                </Text>
-              </Button>
-            </Flex>
-          </Box>
-
-          {/* BOX 2 */}
-          <Box
-            // bg='yellow'
-            flex="1"
-            margin={{
-              base: '8% 7% 8% 5%',
-              sm: '5% 5% 8% 5%',
-              lg: '5%',
-              xl: '5%'
-            }}
-          >
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              color="green.550"
-              marginBottom={{ base: '5%', sm: '2%', lg: '5%', xl: '5%' }}
-            >
-              Nossos valores corporativos
-            </Text>
-
-            <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5' }}>
-              {page_content.corporative_values.map((item, i) => {
-                return (
-                  <ListItem key={i}>
-                    <Arrow
-                      width={{
-                        base: '7px',
-                        sm: '10px',
-                        lg: '10px',
-                        xl: '10px'
-                      }}
-                      height={{
-                        base: '15px',
-                        sm: '16px',
-                        lg: '20px',
-                        xl: '20px'
-                      }}
-                      direction="right"
-                      color="brown.250"
-                    />
-                    <Text
-                      fontFamily="body"
-                      marginTop={{
-                        base: '-16px',
-                        sm: '-16px',
-                        lg: '-22px',
-                        xl: '-27px'
-                      }}
-                      marginLeft={{
-                        base: '12px',
-                        sm: '16px',
-                        lg: '18px',
-                        xl: '20px'
-                      }}
-                    >
-                      {item.value}
-                    </Text>
-                  </ListItem>
-                )
-              })}
-            </List>
-          </Box>
+              <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5' }}>
+                {page_content.corporative_values.map((item, i) => {
+                  return (
+                    <ListItem key={i}>
+                      <Arrow
+                        width={{
+                          base: '7px',
+                          sm: '10px',
+                          lg: '10px',
+                          xl: '10px'
+                        }}
+                        height={{
+                          base: '15px',
+                          sm: '16px',
+                          lg: '20px',
+                          xl: '20px'
+                        }}
+                        direction="right"
+                        color="brown.250"
+                      />
+                      <Text
+                        fontFamily="body"
+                        marginTop={{
+                          base: '-16px',
+                          sm: '-16px',
+                          lg: '-22px',
+                          xl: '-27px'
+                        }}
+                        marginLeft={{
+                          base: '12px',
+                          sm: '16px',
+                          lg: '18px',
+                          xl: '20px'
+                        }}
+                      >
+                        {item.value}
+                      </Text>
+                    </ListItem>
+                  )
+                })}
+              </List>
+            </Box>
+          </Flex>
         </Flex>
-      </Flex>
-
-    </Box>
-    {/* FIM VALORES */}
+      </Box>
+      {/* FIM VALORES */}
 
       {/* INICIO Cultivamos o meio ambiente */}
       <Flex
@@ -255,7 +251,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       >
         <Flex
           // bg='red'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+          direction={{ base: 'column', lg: 'row' }}
         >
           {/* BOX 1 */}
           <Box
@@ -272,15 +268,11 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               titleString={page_content.section1_title}
               textAlign={{
                 base: 'center',
-                sm: 'center',
-                lg: 'left',
-                xl: 'left'
+                lg: 'left'
               }}
               alignSelf={{
                 base: 'center',
-                sm: 'center',
-                lg: 'flex-start',
-                xl: 'flex-start'
+                lg: 'flex-start'
               }}
             />
             <Text marginTop={{ base: '10%', sm: '8%', lg: '3%', xl: '3%' }}>
@@ -303,10 +295,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
             <Flex
               // bg='black'
               direction={{
-                base: 'column',
-                sm: 'column',
-                lg: 'column',
-                xl: 'column'
+                base: 'column'
               }}
               justifyContent={'flex-end'}
             >
@@ -331,34 +320,24 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                   />
                   <Text
                     textAlign={{
-                      base: 'center',
-                      sm: 'center',
-                      lg: 'center',
-                      xl: 'center'
+                      base: 'center'
                     }}
                   >
                     www.fsc.org
                   </Text>
                   <Text
                     textAlign={{
-                      base: 'center',
-                      sm: 'center',
-                      lg: 'center',
-                      xl: 'center'
+                      base: 'center'
                     }}
                   >
                     FSC® C115987 / C003917
                   </Text>
                   <Text
                     textAlign={{
-                      base: 'center',
-                      sm: 'center',
-                      lg: 'center',
-                      xl: 'center'
+                      base: 'center'
                     }}
                   >
-                    Ao escolher produtos certificados pelo FSC®, você apoia o
-                    manejo responsável das florestas do mundo.
+                    {compromiseView.t('fsc.description')}
                   </Text>
                 </Box>
               </Box>
@@ -370,16 +349,15 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               >
                 <Flex
                   direction={{
-                    base: 'column',
-                    sm: 'column',
-                    lg: 'column',
-                    xl: 'column'
+                    base: 'column'
                   }}
                   justifyContent={'flex-end'}
                 >
                   <PatternInfo
-                    title="CONHEÇA"
-                    description="Nossas Certificações"
+                    title={compromiseView.t('knowOurCertifications.know')}
+                    description={compromiseView.t(
+                      'knowOurCertifications.ourCertifications'
+                    )}
                     onClick={() => router.push('/certificacoes')}
                     icon={
                       <CertificationsIcon
@@ -408,243 +386,247 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       </Flex>
       {/* FIM Cultivamos o meio ambiente */}
 
-
-    {/* INICIO Compromisso com o planeta */}
-    <Box
-      bg="green.900"
-    >
-
-      <Flex
-        maxWidth="1536px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="green.500"
-        backgroundImage="/assets/imgs/img_floresta.png"
-        backgroundPosition="left"
-        backgroundRepeat="no-repeat"
-        backgroundSize={'cover'}
-      >
+      {/* INICIO Compromisso com o planeta */}
+      <Box bg="green.900">
         <Flex
-          // bg='pink'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-          alignItems={'center'}
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="green.500"
+          backgroundImage="/assets/imgs/img_floresta.png"
+          backgroundPosition="left"
+          backgroundRepeat="no-repeat"
+          backgroundSize={'cover'}
         >
-          {/* BOX 1 */}
           <Flex
-            // bg='black'
-            flex="1"
-            margin={{
-              base: '5% 0% 5% 0%',
-              sm: '5% 0% 5% 0%',
-              lg: '8% 2% 8% 2%',
-              xl: '5% 2% 5% 5%'
-            }}
+            // bg='pink'
+            direction={{ base: 'column', lg: 'row' }}
+            alignItems={'center'}
           >
+            {/* BOX 1 */}
             <Flex
               // bg='black'
-              direction={{
-                base: 'column',
-                sm: 'row',
-                lg: 'column',
-                xl: 'column'
-              }}
-              alignItems={'center'}
-              justifyItems={'center'}
-            >
-              <Infographic2
-                titleSuperscript1Text="Sequestro de Carbono"
-                titleSuperscript1Color="green.400"
-                titleSuperscript2Text="Mais de"
-                titleSuperscript2Color="green.200"
-                content1Text={page_content.carbon_sequestration
-                  .toLocaleString('en-US', { maximumFractionDigits: 1 })
-                  .replace('.', ',')}
-                content1Color="white"
-                content2Text="milhões de tCO₂e"
-                content2Color="white"
-                iconName="CarbonIcon"
-              />
-              <Infographic2
-                titleSuperscript1Text="Emissões Atmosféricas"
-                titleSuperscript1Color="green.400"
-                titleSuperscript2Text="Cerca de"
-                titleSuperscript2Color="green.200"
-                content1Text={page_content.atmospheric_emissions
-                  .toLocaleString('en-US', { maximumFractionDigits: 1 })
-                  .replace('.', ',')}
-                content1Color="white"
-                content2Text="milhões de tCO₂e"
-                content2Color="white"
-                iconName="EmissionIcon"
-              />
-              <Text
-                pt="17.3px"
-                color="green.250"
-                fontSize="16px"
-                fontWeight={500}
-                letterSpacing="-0.32px"
-              >
-                (Dados do inventário de GEE de 2019)
-              </Text>
-            </Flex>
-          </Flex>
-          {/* BOX 2 */}
-          <Box
-            margin={{
-              base: '0% 5% 10% 5%',
-              sm: '3% 5% 8% 5%',
-              lg: '8% 7% 8% 0%',
-              xl: '5% 5% 5% 2%'
-            }}
-            // bg='yellow'
-            flex="1"
-          >
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              color="green.400"
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-            >
-              {page_content.section2_title}
-            </Text>
-            <Text
-              color="white.100"
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-              marginTop={{ base: '3%', sm: '2%', lg: '3%', xl: '3%' }}
-            >
-              <Paragraph>{page_content.section2_text}</Paragraph>
-            </Text>
-          </Box>
-        </Flex>
-      </Flex>
-    </Box>
-    {/* FIM Compromisso com o planeta */}
-
-
-    {/* INICIO Economia de recursos naturais*/}
-    <Box
-      bg="gray.100"
-    >
-      <Flex
-        maxWidth="1536px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="gray.100"
-        backgroundImage="/assets/imgs/grafismos_completo.svg"
-        backgroundPosition="center"
-        backgroundRepeat="no-repeat"
-      >
-        <Flex
-          // bg='blue'
-          alignItems={'center'}
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-        >
-          {/* BOX 1 */}
-          <Flex
-            // bg='tomato'
-            flex="1"
-            direction={{
-              base: 'column',
-              sm: 'column',
-              lg: 'column',
-              xl: 'column'
-            }}
-            margin={{
-              base: '5% 5% 0% 5%',
-              sm: '5% 5% 0% 5%',
-              lg: '5% 2% 5% 5%',
-              xl: '5% 2% 5% 5%'
-            }}
-          >
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              color="green.550"
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-            >
-              {page_content.section3_title}
-            </Text>
-            <Text marginTop={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}>
-              <Paragraph>{page_content.section3_text}</Paragraph>
-            </Text>
-          </Flex>
-          {/* BOX 2 */}
-          <Flex
-            margin={{
-              base: '5% 5% 5% 5%',
-              sm: '5% 5% 5% 5%',
-              lg: '5% 5% 5% 5%',
-              xl: '5% 5% 5% 2%'
-            }}
-            // bg="pink.600"
-            flex="1"
-          >
-            {/* FLEX 2 */}
-            <Flex
-              // bg='black'
-              direction={{
-                base: 'column',
-                sm: 'column',
-                lg: 'column',
-                xl: 'column'
+              flex="1"
+              margin={{
+                base: '5% 0% 5% 0%',
+                sm: '5% 0% 5% 0%',
+                lg: '8% 2% 8% 2%',
+                xl: '5% 2% 5% 5%'
               }}
             >
-              {/* LINHA 1 */}
               <Flex
-                // bg='blue'
-                alignItems={'start'}
-              >
-                <Infographic
-                  titleSuperscript2Text="Co-geramos"
-                  content1DisplayIcon="yes"
-                  content1IconName="energy"
-                  content2Text={page_content.cogenerated_energy.toString()}
-                  content4Text="%"
-                  titleSubscript1Text="da Energia Utilizada"
-                ></Infographic>
-                <Infographic
-                  titleSuperscript2Text="Reaproveitamos"
-                  content1DisplayIcon="yes"
-                  content1IconName="water"
-                  content2Text={page_content.reused_water}
-                  content4Text="%"
-                  titleSubscript1Text="da Água Utilizada"
-                ></Infographic>
-              </Flex>
-              <Spacer></Spacer>
-              {/* LINHA 2 */}
-              <Box
-                // bg='blue.100'
-                flex="1"
-                marginTop={{
-                  base: '3%',
-                  sm: '3%',
-                  lg: '30%',
-                  xl: '30%',
-                  '2xl': '8%'
+                // bg='black'
+                direction={{
+                  base: 'column',
+                  sm: 'row',
+                  lg: 'column'
                 }}
                 alignItems={'center'}
+                justifyItems={'center'}
               >
+                <Infographic2
+                  titleSuperscript1Text={compromiseView.t(
+                    'infoGraphicAtmospheric.carbonSequestration'
+                  )}
+                  titleSuperscript1Color="green.400"
+                  titleSuperscript2Text={compromiseView.t(
+                    'infoGraphicAtmospheric.moreOf'
+                  )}
+                  titleSuperscript2Color="green.200"
+                  content1Text={page_content.carbon_sequestration
+                    .toLocaleString('en-US', { maximumFractionDigits: 1 })
+                    .replace('.', ',')}
+                  content1Color="white"
+                  content2Text={compromiseView.t(
+                    'infoGraphicAtmospheric.millionCo2'
+                  )}
+                  content2Color="white"
+                  iconName="CarbonIcon"
+                />
+                <Infographic2
+                  titleSuperscript1Text={compromiseView.t(
+                    'infoGraphicAtmospheric.AtmosphericEmissions'
+                  )}
+                  titleSuperscript1Color="green.400"
+                  titleSuperscript2Text={compromiseView.t(
+                    'infoGraphicAtmospheric.about'
+                  )}
+                  titleSuperscript2Color="green.200"
+                  content1Text={page_content.atmospheric_emissions
+                    .toLocaleString('en-US', { maximumFractionDigits: 1 })
+                    .replace('.', ',')}
+                  content1Color="white"
+                  content2Text={compromiseView.t(
+                    'infoGraphicAtmospheric.millionCo2'
+                  )}
+                  content2Color="white"
+                  iconName="EmissionIcon"
+                />
+                <Text
+                  pt="17.3px"
+                  color="green.250"
+                  fontSize="16px"
+                  fontWeight={500}
+                  letterSpacing="-0.32px"
+                >
+                  {compromiseView.t('infoGraphicAtmospheric.source')}
+                </Text>
+              </Flex>
+            </Flex>
+            {/* BOX 2 */}
+            <Box
+              margin={{
+                base: '0% 5% 10% 5%',
+                sm: '3% 5% 8% 5%',
+                lg: '8% 7% 8% 0%',
+                xl: '5% 5% 5% 2%'
+              }}
+              // bg='yellow'
+              flex="1"
+            >
+              <Text
+                as="h3"
+                variant={'h3' as any}
+                color="green.400"
+                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+              >
+                {page_content.section2_title}
+              </Text>
+              <Text
+                color="white.100"
+                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+                marginTop={{ base: '3%', sm: '2%', lg: '3%', xl: '3%' }}
+              >
+                <Paragraph>{page_content.section2_text}</Paragraph>
+              </Text>
+            </Box>
+          </Flex>
+        </Flex>
+      </Box>
+      {/* FIM Compromisso com o planeta */}
+
+      {/* INICIO Economia de recursos naturais*/}
+      <Box bg="gray.100">
+        <Flex
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="gray.100"
+          backgroundImage="/assets/imgs/grafismos_completo.svg"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
+        >
+          <Flex
+            // bg='blue'
+            alignItems={'center'}
+            direction={{ base: 'column', lg: 'row' }}
+          >
+            {/* BOX 1 */}
+            <Flex
+              // bg='tomato'
+              flex="1"
+              direction={{
+                base: 'column'
+              }}
+              margin={{
+                base: '5% 5% 0% 5%',
+                sm: '5% 5% 0% 5%',
+                lg: '5% 2% 5% 5%',
+                xl: '5% 2% 5% 5%'
+              }}
+            >
+              <Text
+                as="h3"
+                variant={'h3' as any}
+                color="green.550"
+                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+              >
+                {page_content.section3_title}
+              </Text>
+              <Text marginTop={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}>
+                <Paragraph>{page_content.section3_text}</Paragraph>
+              </Text>
+            </Flex>
+            {/* BOX 2 */}
+            <Flex
+              margin={{
+                base: '5% 5% 5% 5%',
+                sm: '5% 5% 5% 5%',
+                lg: '5% 5% 5% 5%',
+                xl: '5% 5% 5% 2%'
+              }}
+              // bg="pink.600"
+              flex="1"
+            >
+              {/* FLEX 2 */}
+              <Flex
+                // bg='black'
+                direction={{
+                  base: 'column'
+                }}
+              >
+                {/* LINHA 1 */}
                 <Flex
                   // bg='blue'
-                  direction="column"
-                  alignItems="center"
-                  padding={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
-                  // backgroundImage="/assets/imgs/fundo_relatorio.svg"
-                  // backgroundPosition="center"
-                  // backgroundRepeat="no-repeat"
+                  alignItems={'start'}
                 >
-                  {/* <Text
+                  <Infographic
+                    titleSuperscript2Text={compromiseView.t(
+                      'infoGraphicSustainability.co-generate'
+                    )}
+                    content1DisplayIcon="yes"
+                    content1IconName="energy"
+                    content2Text={page_content.cogenerated_energy.toString()}
+                    content4Text="%"
+                    titleSubscript1Text={compromiseView.t(
+                      'infoGraphicSustainability.energyUsed'
+                    )}
+                  ></Infographic>
+                  <Infographic
+                    titleSuperscript2Text={compromiseView.t(
+                      'infoGraphicSustainability.reuse'
+                    )}
+                    content1DisplayIcon="yes"
+                    content1IconName="water"
+                    content2Text={page_content.reused_water}
+                    content4Text="%"
+                    titleSubscript1Text={compromiseView.t(
+                      'infoGraphicSustainability.waterUsed'
+                    )}
+                  ></Infographic>
+                </Flex>
+                <Spacer></Spacer>
+                {/* LINHA 2 */}
+                <Box
+                  // bg='blue.100'
+                  flex="1"
+                  marginTop={{
+                    base: '3%',
+                    lg: '30%',
+                    '2xl': '8%'
+                  }}
+                  alignItems={'center'}
+                >
+                  <Flex
+                    // bg='blue'
+                    direction="column"
+                    alignItems="center"
+                    padding={{ base: '5%' }}
+                    // backgroundImage="/assets/imgs/fundo_relatorio.svg"
+                    // backgroundPosition="center"
+                    // backgroundRepeat="no-repeat"
+                  >
+                    {/* <Text
                     fontFamily="body"
                     color="green.900"
                     textAlign="center"
@@ -674,500 +656,475 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                       Relatório de Sustentabilidade
                     </Text>
                   </Button> */}
-                </Flex>
-              </Box>
+                  </Flex>
+                </Box>
+              </Flex>
             </Flex>
           </Flex>
         </Flex>
-      </Flex>
-    
-    </Box>
-    {/* FIM Economia de recursos naturais */}
+      </Box>
+      {/* FIM Economia de recursos naturais */}
 
-    {/* INICIO Preservação da fauna e da flora */}
-    <Box
-      bg="brown.150"
-    >
-      <Flex
-        maxWidth="1536px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="brown.150"
-      >
+      {/* INICIO Preservação da fauna e da flora */}
+      <Box bg="brown.150">
         <Flex
-          // bg='blue'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-          alignItems={'center'}
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="brown.150"
         >
-          {/* BOX 1 */}
-          <Box
-            // bg='pink'
-            flex="1"
-            justifyItems={'center'}
-            // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
-          >
-            <Image src="/assets/imgs/img_passaro.png" />
-          </Box>
-          {/* BOX 2 */}
-          <Box
-            margin={{
-              base: '5% 5% 10% 5%',
-              sm: '5% 5% 8% 5%',
-              lg: '5% 7% 5% 5%',
-              xl: '5% 5% 5% 5%'
-            }}
-            // bg='yellow'
-            flex="1"
-          >
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-              marginTop={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
-            >
-              {page_content.section4_title}
-            </Text>
-            <Text marginTop={{ base: '3%', sm: '3%', lg: '5%', xl: '5%' }}>
-              <Paragraph>{page_content.section4_text}</Paragraph>
-            </Text>
-          </Box>
-        </Flex>
-      </Flex>
-    
-    </Box>
-    {/* FIM Preservação da fauna e da flora */}
-
-    {/* INICIO Cultivamos nossa gente */}
-    <Box
-      bg="white"
-    >
-      <Flex
-        id="nossa-gente"
-        maxWidth="1536px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        // bg = 'red'
-      >
-        <Flex
-          // bg='blue'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-        >
-          {/* BOX 1 */}
-          <Box
-            // bg='pink'
-            flex={{ base: '1', sm: '1', lg: '2', xl: '1' }}
-            margin={{
-              base: '8% 5% 0% 5%',
-              sm: '8% 5% 0% 5%',
-              lg: '5% 2% 5% 5%',
-              xl: '5% 2% 5% 5%'
-            }}
-          >
-            <CompletedTitle
-              titleString={page_content.section5_title}
-              textAlign={{
-                base: 'center',
-                sm: 'center',
-                lg: 'left',
-                xl: 'left'
-              }}
-              alignSelf={{
-                base: 'center',
-                sm: 'center',
-                lg: 'flex-start',
-                xl: 'flex-start'
-              }}
-            />
-            <Text marginTop={{ base: '10%', sm: '10%', lg: '5%', xl: '5%' }}>
-              <Paragraph>{page_content.section5_text}</Paragraph>
-            </Text>
-            <Box
-              // bg='blue'
-              flex="1"
-              margin={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}
-              alignSelf={'center'}
-            >
-              <Infographic
-                content1Text="+"
-                content2Text={(page_content.collaborators_number / 1000)
-                  .toLocaleString('en-US', { maximumFractionDigits: 1 })
-                  .replace('.', ',')}
-                content3Text="Mil"
-                // content4Text = 'Colaboradores diretos e indiretos'
-                // fontSize = {{ base: '12px', sm: '16px', lg: '24px', xl: '18px'}}
-                titleSubscript1Text="Colaboradores diretos e indiretos"
-              />
-            </Box>
-          </Box>
-          {/* BOX 2 */}
           <Flex
-            margin={{
-              base: '0% 5% 5% 5%',
-              sm: '0% 5% 5% 5%',
-              lg: '5% 5% 5% 5%',
-              xl: '5% 5% 5% 2%'
-            }}
-            direction={{
-              base: 'column',
-              sm: 'column',
-              lg: 'column',
-              xl: 'column'
-            }}
+            // bg='blue'
+            direction={{ base: 'column', lg: 'row' }}
             alignItems={'center'}
-            // bg='yellow'
-            flex="1"
           >
-            <Image src="/assets/imgs/170130-Berneck-58.png" />
-
-            <Button
-              onClick={() =>
-                window.open(
-                  'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup',
-                  '_blank'
-                )
-              }
-              w={{ base: '90%', sm: '70%', lg: '80%', xl: '90%' }}
-              h={{ base: '10%', sm: '6%', lg: '10%', xl: '10%' }}
-              padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%' }}
-              marginTop={{
-                base: '-15px',
-                sm: '-20px',
-                lg: '-20px',
-                xl: '-20px'
+            {/* BOX 1 */}
+            <Box
+              // bg='pink'
+              flex="1"
+              justifyItems={'center'}
+              // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+            >
+              <Image src="/assets/imgs/img_passaro.png" />
+            </Box>
+            {/* BOX 2 */}
+            <Box
+              margin={{
+                base: '5% 5% 10% 5%',
+                sm: '5% 5% 8% 5%',
+                lg: '5% 7% 5% 5%',
+                xl: '5% 5% 5% 5%'
               }}
-              colorScheme={'#59993F'}
+              // bg='yellow'
+              flex="1"
             >
               <Text
-                as="h5"
-                variant={'h5' as any}
-                color="white"
-                textAlign="center"
-                fontWeight="bold"
+                as="h3"
+                variant={'h3' as any}
+                textAlign={{ base: 'left' }}
+                marginTop={{ base: '5%' }}
               >
-                Faça parte desse time
+                {page_content.section4_title}
               </Text>
-            </Button>
+              <Text marginTop={{ base: '3%', lg: '5%' }}>
+                <Paragraph>{page_content.section4_text}</Paragraph>
+              </Text>
+            </Box>
           </Flex>
         </Flex>
-      </Flex>
+      </Box>
+      {/* FIM Preservação da fauna e da flora */}
 
-    </Box>
-    {/* FIM Cultivamos nossa gente */}
-
-    {/* INICIO Compromisso com a sociedade */}
-    <Box
-      bg="green.1000"
-    >
-      <Flex
-        maxWidth="1536px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="green.1000"
-        backgroundImage="/assets/imgs/grafismos_fundo2.png"
-        backgroundPosition="center"
-        backgroundRepeat="no-repeat"
-      >
+      {/* INICIO Cultivamos nossa gente */}
+      <Box bg="white">
         <Flex
-          // bg='blue'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-          alignItems={'center'}
+          id="nossa-gente"
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          // bg = 'red'
         >
-          {/* BOX 1 */}
-          <Box
-            // bg='pink'
-            flex="1"
-            justifyItems={'center'}
-            margin={{
-              base: '0% 0% 5% 0%',
-              sm: '0% 0% 5% 0%',
-              lg: '5% 2% 5% 5%',
-              xl: '5% 2% 5% 5%'
-            }}
+          <Flex
+            // bg='blue'
+            direction={{ base: 'column', lg: 'row' }}
           >
-            <Image src="/assets/imgs/img_criancas.png" />
-          </Box>
-          {/* BOX 2 */}
-          <Box
-            margin={{
-              base: '0% 5% 10% 5%',
-              sm: '0% 5% 8% 5%',
-              lg: '3% 3% 3% 3%',
-              xl: '3% 3% 3% 3%'
-            }}
-            // bg='yellow'
-            flex="1"
-            justifyItems={'flex-start'}
-          >
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-              color={'#144835'}
+            {/* BOX 1 */}
+            <Box
+              // bg='pink'
+              flex={{ base: '1', lg: '2', xl: '1' }}
+              margin={{
+                base: '8% 5% 0% 5%',
+                sm: '8% 5% 0% 5%',
+                lg: '5% 2% 5% 5%',
+                xl: '5% 2% 5% 5%'
+              }}
             >
-              {page_content.section6_title}
-            </Text>
-            <Text
-              marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px' }}
-              color={'#143127'}
-            >
-              <Paragraph>{page_content.section6_text}</Paragraph>
-            </Text>
-          </Box>
-        </Flex>
-      </Flex>
-
-    </Box>
-    {/* FIM Compromisso com a sociedade */}
-
-    {/* INICIO Confira alguns projetos patrocinados por nós */}
-    <Box
-      bg="gray.450"
-    >
-      <Flex
-        maxWidth="1536px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="gray.450"
-      >
-        <Flex
-          // bg='blue'
-          direction={{
-            base: 'column',
-            sm: 'column',
-            lg: 'column',
-            xl: 'column'
-          }}
-          // border="1px solid red"
-        >
-          {/* BOX 1 */}
-          <Box
-            bg="gray.500"
-            flex="1"
-            margin={{
-              base: '3% 5% 0% 5%',
-              sm: '5% 5% 0% 5%',
-              lg: '5% 5% 0% 5%',
-              xl: '5% 5% 0% 5%'
-            }}
-            padding={{ base: '5%', sm: '5%', lg: '3%', xl: '3%' }}
-          >
-            <Flex
-              alignItems={'center'}
-              // bg="pink.600"
-              direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-            >
-              <SynergyIcon
-                stroke1="#59993f"
-                stroke2="#143127"
-                height={{ base: '60px', sm: '80px', lg: '100px', xl: '150px' }}
-                width={{ base: '60px', sm: '80px', lg: '100px', xl: '150px' }}
-              />
-              <Text
-                as="h4"
-                variant={'h4' as any}
-                fontSize={{ base: '14px', sm: '12px', lg: '16px', xl: '20px' }}
-                fontWeight="semibold"
-                color="green.900"
+              <CompletedTitle
+                titleString={page_content.section5_title}
                 textAlign={{
                   base: 'center',
-                  sm: 'center',
-                  lg: 'center',
-                  xl: 'left'
+                  lg: 'left'
                 }}
-                padding={{ base: '5%', sm: '5%', lg: '3%', xl: '3%' }}
-              >
-                Por meio das leis de incentivo, a BERNECK® apoia projetos que
-                auxiliam o Estado a criar uma sinergia e impacto social
-                positivo, levando estímulo aos jovens e à população em geral.
+                alignSelf={{
+                  base: 'center',
+                  lg: 'flex-start'
+                }}
+              />
+              <Text marginTop={{ base: '10%', lg: '5%' }}>
+                <Paragraph>{page_content.section5_text}</Paragraph>
               </Text>
-            </Flex>
-          </Box>
-          {/* BOX 2 */}
-          <Box
-            margin={{
-              base: '2% 5% 30% 5%',
-              sm: '2% 5% 15% 5%',
-              lg: '5% 5% 10% 5%',
-              xl: '2% 5% 5% 5%'
-            }}
-            // bg='yellow'
-            flex="1"
-          >
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+              <Box
+                // bg='blue'
+                flex="1"
+                margin={{ base: '5%' }}
+                alignSelf={'center'}
+              >
+                <Infographic
+                  content1Text="+"
+                  content2Text={(page_content.collaborators_number / 1000)
+                    .toLocaleString('en-US', { maximumFractionDigits: 1 })
+                    .replace('.', ',')}
+                  content3Text={compromiseView.t(
+                    'infoGraphicContributors.measure'
+                  )}
+                  // content4Text = 'Colaboradores diretos e indiretos'
+                  // fontSize = {{ base: '12px', sm: '16px', lg: '24px', xl: '18px'}}
+                  titleSubscript1Text={compromiseView.t(
+                    'infoGraphicContributors.description'
+                  )}
+                />
+              </Box>
+            </Box>
+            {/* BOX 2 */}
+            <Flex
               margin={{
-                base: '20px 0px',
-                sm: '20px 0px',
-                lg: '30px 0px',
-                xl: '30px 0px'
+                base: '0% 5% 5% 5%',
+                sm: '0% 5% 5% 5%',
+                lg: '5% 5% 5% 5%',
+                xl: '5% 5% 5% 2%'
               }}
-              color="green.600"
-            >
-              Confira alguns projetos patrocinados por nós:
-            </Text>
-            <SponsoredProjects />
-          </Box>
-        </Flex>
-      </Flex>
-    
-    </Box>
-    {/* FIM Confira alguns projetos patrocinados por nós */}
-
-    
-    {/* INICIO Cultivamos nossos valores */}
-    <Box
-      bg="green.400"
-    >
-      <Flex
-        id="nossos-valores"
-        maxWidth="1536px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="green.400"
-        backgroundImage="/assets/imgs/textura_madeira_esquerda.png"
-        backgroundPosition="center top"
-        backgroundRepeat="no-repeat"
-      >
-        <Flex
-          // bg='blue'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-          alignItems={'center'}
-        >
-          {/* BOX 1 */}
-          <Box
-            // bg='pink'
-            flex="1"
-            justifyItems={'center'}
-            // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
-          >
-            <Image src="/assets/imgs/cultivamos_nossos_valores.png" />
-          </Box>
-          {/* BOX 2 */}
-          <Box
-            margin={{
-              base: '5% 5% 10% 5%',
-              sm: '5% 5% 5% 5%',
-              lg: '5% 7% 5% 5%',
-              xl: '5% 5% 5% 5%'
-            }}
-            // bg='yellow'
-            flex="1"
-          >
-            <CompletedTitle
-              titleString={page_content.section7_title}
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-              alignSelf={{
-                base: 'flex-start',
-                sm: 'flex-start',
-                lg: 'flex-start',
-                xl: 'flex-start'
+              direction={{
+                base: 'column'
               }}
-            />
-            <Text marginTop={{ base: '8%', sm: '2%', lg: '3%', xl: '3%' }}>
-              <Paragraph>{page_content.section7_text}</Paragraph>
-            </Text>
-          </Box>
+              alignItems={'center'}
+              // bg='yellow'
+              flex="1"
+            >
+              <Image src="/assets/imgs/170130-Berneck-58.png" />
+
+              <Button
+                onClick={() =>
+                  window.open(
+                    'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup',
+                    '_blank'
+                  )
+                }
+                w={{ base: '90%', sm: '70%', lg: '80%', xl: '90%' }}
+                h={{ base: '10%', sm: '6%', lg: '10%', xl: '10%' }}
+                padding={{ base: '5%', sm: '3%', lg: '5%', xl: '5%' }}
+                marginTop={{
+                  base: '-15px',
+                  sm: '-20px',
+                  lg: '-20px',
+                  xl: '-20px'
+                }}
+                colorScheme={'#59993F'}
+              >
+                <Text
+                  as="h5"
+                  variant={'h5' as any}
+                  color="white"
+                  textAlign="center"
+                  fontWeight="bold"
+                >
+                  {compromiseView.t('weCultivateOurPeople.bePartOfThisTeamBtn')}
+                </Text>
+              </Button>
+            </Flex>
+          </Flex>
         </Flex>
-      </Flex>
+      </Box>
+      {/* FIM Cultivamos nossa gente */}
 
-    </Box>
-    {/* FIM Cultivamos nossos valores */}
-
-    {/* INICIO Compromisso com a conduta corporativa */}
-    <Box
-      bg="green.100"
-    >
-      <Flex
-        maxWidth="1536px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="green.100"
-        backgroundImage="/assets/imgs/grafismos_fundo2.png"
-        backgroundPosition="center"
-        backgroundRepeat="no-repeat"
-      >
+      {/* INICIO Compromisso com a sociedade */}
+      <Box bg="green.1000">
         <Flex
-          // bg='blue'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-          alignItems={'center'}
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="green.1000"
+          backgroundImage="/assets/imgs/grafismos_fundo2.png"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
         >
-          {/* BOX 1 */}
-          <Box
-            margin={{
-              base: '10% 5% 5% 5%',
-              sm: '5% 5% 5% 5%',
-              lg: '5% 2% 5% 5%',
-              xl: '5% 2% 5% 5%'
-            }}
-            // bg='yellow'
-            flex="1"
-            justifyItems={'flex-start'}
+          <Flex
+            // bg='blue'
+            direction={{ base: 'column', lg: 'row' }}
+            alignItems={'center'}
           >
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-              color="green.550"
+            {/* BOX 1 */}
+            <Box
+              // bg='pink'
+              flex="1"
+              justifyItems={'center'}
+              margin={{
+                base: '0% 0% 5% 0%',
+                sm: '0% 0% 5% 0%',
+                lg: '5% 2% 5% 5%',
+                xl: '5% 2% 5% 5%'
+              }}
             >
-              {page_content.section8_title}
-            </Text>
-            <Text
-              marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px' }}
+              <Image src="/assets/imgs/img_criancas.png" />
+            </Box>
+            {/* BOX 2 */}
+            <Box
+              margin={{
+                base: '0% 5% 10% 5%',
+                sm: '0% 5% 8% 5%',
+                lg: '3% 3% 3% 3%',
+                xl: '3% 3% 3% 3%'
+              }}
+              // bg='yellow'
+              flex="1"
+              justifyItems={'flex-start'}
             >
-              <Paragraph>{page_content.section8_text}</Paragraph>
-            </Text>
-          </Box>
-          {/* BOX 2 */}
-          <Box
-            // bg='pink'
-            flex="1"
-            justifyItems={'center'}
-            margin={{
-              base: '0% 0% 0% 0%',
-              sm: '0% 5% 8% 5%',
-              lg: '3% 3% 3% 3%',
-              xl: '3% 3% 3% 3%'
-            }}
-          >
-            <Image src="/assets/imgs/170130-Berneck-48.png" />
-          </Box>
+              <Text
+                as="h3"
+                variant={'h3' as any}
+                textAlign={{ base: 'left' }}
+                color={'#144835'}
+              >
+                {page_content.section6_title}
+              </Text>
+              <Text marginTop={{ base: '10px', lg: '20px' }} color={'#143127'}>
+                <Paragraph>{page_content.section6_text}</Paragraph>
+              </Text>
+            </Box>
+          </Flex>
         </Flex>
-      </Flex>
-    
-    </Box>
-    {/* FIM Compromisso com a conduta corporativa */}
+      </Box>
+      {/* FIM Compromisso com a sociedade */}
+
+      {/* INICIO Confira alguns projetos patrocinados por nós */}
+      <Box bg="gray.450">
+        <Flex
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="gray.450"
+        >
+          <Flex
+            // bg='blue'
+            direction={{
+              base: 'column'
+            }}
+            // border="1px solid red"
+          >
+            {/* BOX 1 */}
+            <Box
+              bg="gray.500"
+              flex="1"
+              margin={{
+                base: '3% 5% 0% 5%',
+                sm: '5% 5% 0% 5%',
+                lg: '5% 5% 0% 5%',
+                xl: '5% 5% 0% 5%'
+              }}
+              padding={{ base: '5%', lg: '3%' }}
+            >
+              <Flex
+                alignItems={'center'}
+                // bg="pink.600"
+                direction={{
+                  base: 'column',
+                  lg: 'row'
+                }}
+              >
+                <SynergyIcon
+                  stroke1="#59993f"
+                  stroke2="#143127"
+                  height={{
+                    base: '60px',
+                    sm: '80px',
+                    lg: '100px',
+                    xl: '150px'
+                  }}
+                  width={{ base: '60px', sm: '80px', lg: '100px', xl: '150px' }}
+                />
+                <Text
+                  as="h4"
+                  variant={'h4' as any}
+                  fontSize={{
+                    base: '14px',
+                    sm: '12px',
+                    lg: '16px',
+                    xl: '20px'
+                  }}
+                  fontWeight="semibold"
+                  color="green.900"
+                  textAlign={{
+                    base: 'center',
+                    xl: 'left'
+                  }}
+                  padding={{ base: '5%', lg: '3%' }}
+                >
+                  {compromiseView.t('socialProjects.description')}
+                </Text>
+              </Flex>
+            </Box>
+            {/* BOX 2 */}
+            <Box
+              margin={{
+                base: '2% 5% 30% 5%',
+                sm: '2% 5% 15% 5%',
+                lg: '5% 5% 10% 5%',
+                xl: '2% 5% 5% 5%'
+              }}
+              // bg='yellow'
+              flex="1"
+            >
+              <Text
+                as="h3"
+                variant={'h3' as any}
+                textAlign={{ base: 'left' }}
+                margin={{
+                  base: '20px 0px',
+                  sm: '20px 0px',
+                  lg: '30px 0px',
+                  xl: '30px 0px'
+                }}
+                color="green.600"
+              >
+                {compromiseView.t('socialProjects.checkOutSponsoredProjects')}
+              </Text>
+              <SponsoredProjects />
+            </Box>
+          </Flex>
+        </Flex>
+      </Box>
+      {/* FIM Confira alguns projetos patrocinados por nós */}
+
+      {/* INICIO Cultivamos nossos valores */}
+      <Box bg="green.400">
+        <Flex
+          id="nossos-valores"
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="green.400"
+          backgroundImage="/assets/imgs/textura_madeira_esquerda.png"
+          backgroundPosition="center top"
+          backgroundRepeat="no-repeat"
+        >
+          <Flex
+            // bg='blue'
+            direction={{ base: 'column', lg: 'row' }}
+            alignItems={'center'}
+          >
+            {/* BOX 1 */}
+            <Box
+              // bg='pink'
+              flex="1"
+              justifyItems={'center'}
+              // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+            >
+              <Image src="/assets/imgs/cultivamos_nossos_valores.png" />
+            </Box>
+            {/* BOX 2 */}
+            <Box
+              margin={{
+                base: '5% 5% 10% 5%',
+                sm: '5% 5% 5% 5%',
+                lg: '5% 7% 5% 5%',
+                xl: '5% 5% 5% 5%'
+              }}
+              // bg='yellow'
+              flex="1"
+            >
+              <CompletedTitle
+                titleString={page_content.section7_title}
+                textAlign={{ base: 'left' }}
+                alignSelf={{
+                  base: 'flex-start'
+                }}
+              />
+              <Text marginTop={{ base: '8%', sm: '2%', lg: '3%', xl: '3%' }}>
+                <Paragraph>{page_content.section7_text}</Paragraph>
+              </Text>
+            </Box>
+          </Flex>
+        </Flex>
+      </Box>
+      {/* FIM Cultivamos nossos valores */}
+
+      {/* INICIO Compromisso com a conduta corporativa */}
+      <Box bg="green.100">
+        <Flex
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="green.100"
+          backgroundImage="/assets/imgs/grafismos_fundo2.png"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
+        >
+          <Flex
+            // bg='blue'
+            direction={{ base: 'column', lg: 'row' }}
+            alignItems={'center'}
+          >
+            {/* BOX 1 */}
+            <Box
+              margin={{
+                base: '10% 5% 5% 5%',
+                sm: '5% 5% 5% 5%',
+                lg: '5% 2% 5% 5%',
+                xl: '5% 2% 5% 5%'
+              }}
+              // bg='yellow'
+              flex="1"
+              justifyItems={'flex-start'}
+            >
+              <Text
+                as="h3"
+                variant={'h3' as any}
+                textAlign={{ base: 'left' }}
+                color="green.550"
+              >
+                {page_content.section8_title}
+              </Text>
+              <Text marginTop={{ base: '10px', lg: '20px' }}>
+                <Paragraph>{page_content.section8_text}</Paragraph>
+              </Text>
+            </Box>
+            {/* BOX 2 */}
+            <Box
+              // bg='pink'
+              flex="1"
+              justifyItems={'center'}
+              margin={{
+                base: '0% 0% 0% 0%',
+                sm: '0% 5% 8% 5%',
+                lg: '3% 3% 3% 3%',
+                xl: '3% 3% 3% 3%'
+              }}
+            >
+              <Image src="/assets/imgs/170130-Berneck-48.png" />
+            </Box>
+          </Flex>
+        </Flex>
+      </Box>
+      {/* FIM Compromisso com a conduta corporativa */}
 
       {/* INICIO Ouvidoria */}
       {/* <Flex
@@ -1268,75 +1225,71 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       </Flex> */}
       {/* FIM Ouvidoria */}
 
-    {/* INICIO Nossas práticas de ESG */}  
-    <Box
-      bg="green.1000"
-    >
-
-      <Flex
-        id="relatorio"
-        maxWidth="1536px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="green.1000"
-        backgroundImage="/assets/imgs/grafismos_fundo2.png"
-        backgroundPosition="-900px top"
-        backgroundRepeat="no-repeat"
-      >
+      {/* INICIO Nossas práticas de ESG */}
+      <Box bg="green.1000">
         <Flex
-          // bg='blue'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-          alignItems={'center'}
+          id="relatorio"
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="green.1000"
+          backgroundImage="/assets/imgs/grafismos_fundo2.png"
+          backgroundPosition="-900px top"
+          backgroundRepeat="no-repeat"
         >
-          {/* BOX 1 */}
-          <Box
-            // bg='pink'
-            flex="1"
-            justifyItems={'center'}
-            margin={{
-              base: '0% 0% 5% 0%',
-              sm: '0% 0% 5% 0%',
-              lg: '3% 3% 3% 3%',
-              xl: '3% 3% 3% 3%'
-            }}
-          >
-            <Image src="/assets/imgs/relatorio esg.png" />
-          </Box>
-          {/* BOX 2 */}
-          <Box
-            margin={{
-              base: '5% 5% 5% 5%',
-              sm: '0% 5% 5% 5%',
-              lg: '5% 2% 5% 2%',
-              xl: '5% 2% 5% 2%'
-            }}
+          <Flex
             // bg='blue'
-            flex="1.5"
-            // justifyItems={"center"}
+            direction={{ base: 'column', lg: 'row' }}
+            alignItems={'center'}
           >
             {/* BOX 1 */}
-            <Box flex="1">
-              <CompletedTitle
-                titleString="ESG"
-                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-                alignSelf={{
-                  base: 'flex-start',
-                  sm: 'flex-start',
-                  lg: 'flex-start',
-                  xl: 'flex-start'
-                }}
-              />
-              <Text marginTop={{ base: '5%', sm: '2%', lg: '3%', xl: '3%' }}>
-                {page_content.esg_report_description}
-              </Text>
+            <Box
+              // bg='pink'
+              flex="1"
+              justifyItems={'center'}
+              margin={{
+                base: '0% 0% 5% 0%',
+                sm: '0% 0% 5% 0%',
+                lg: '3% 3% 3% 3%',
+                xl: '3% 3% 3% 3%'
+              }}
+            >
+              <Image src="/assets/imgs/relatorio esg.png" />
             </Box>
             {/* BOX 2 */}
-            {/* <Box
+            <Box
+              margin={{
+                base: '5% 5% 5% 5%',
+                sm: '0% 5% 5% 5%',
+                lg: '5% 2% 5% 2%',
+                xl: '5% 2% 5% 2%'
+              }}
+              // bg='blue'
+              flex="1.5"
+              // justifyItems={"center"}
+            >
+              {/* BOX 1 */}
+              <Box flex="1">
+                <CompletedTitle
+                  titleString={compromiseView.t('ESG.title')}
+                  textAlign={{
+                    base: 'left'
+                  }}
+                  alignSelf={{
+                    base: 'flex-start'
+                  }}
+                />
+                <Text marginTop={{ base: '5%', sm: '2%', lg: '3%', xl: '3%' }}>
+                  {page_content.esg_report_description}
+                </Text>
+              </Box>
+              {/* BOX 2 */}
+              {/* <Box
               margin={{
                 base: '5% 0% 5% 0%',
                 sm: '5% 0% 5% 0%',
@@ -1365,14 +1318,11 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 />
               </Link>
             </Box> */}
-          </Box>
+            </Box>
+          </Flex>
         </Flex>
-      </Flex>
-    
+      </Box>
+      {/* FIM Nossas práticas de ESG */}
     </Box>
-    {/* FIM Nossas práticas de ESG */}
-    
-    </Box>
-  
   )
 }
