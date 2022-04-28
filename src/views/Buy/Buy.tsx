@@ -6,17 +6,19 @@ import Pagebar from '@components/Pagebar'
 import WhereBuyTable from '@components/WhereBuyTable'
 import useMobile from 'hooks/useMobile'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { colors } from '../../theme/colors'
 
 export const Buy = () => {
   const [locationBrasil, setLocationBrasil] = useState(true)
   const { isMobile } = useMobile(568)
+  const buyViewLabels = useTranslation('buyView')
   return (
     <Box>
       <Pagebar
         paths={[
           {
-            title: 'Onde Comprar',
+            title: buyViewLabels.t('pagebar.whereToBuy'),
             url: '/'
           }
         ]}
@@ -46,7 +48,7 @@ export const Buy = () => {
         />
         <Box zIndex={'docked'}>
           <CompletedTitle
-            titleString="Onde Comprar"
+            titleString={buyViewLabels.t('headerBanner.title')}
             alignSelf={isMobile ? 'center' : 'left'}
             textAlign={isMobile ? 'center' : 'left'}
           />
@@ -58,9 +60,7 @@ export const Buy = () => {
           color="brown.350"
           zIndex={'docked'}
         >
-          Os produtos BERNECK® podem ser encontrados nos melhores móveis e
-          revendas do Brasil e do mundo. Confira abaixo os pontos de revenda
-          mais próximos a você.
+          {buyViewLabels.t('headerBanner.description')}
         </Text>
       </Flex>
 
@@ -114,7 +114,7 @@ export const Buy = () => {
               color={locationBrasil ? 'white.100' : 'gray.400'}
               marginLeft={'5%'}
             >
-              NO BRASIL
+              {buyViewLabels.t('locationSelector.inBrazil')}
             </Text>
           </Flex>
 
@@ -148,7 +148,7 @@ export const Buy = () => {
               marginRight={'5%'}
               color={locationBrasil ? 'gray.400' : 'white.100'}
             >
-              NO MUNDO
+              {buyViewLabels.t('locationSelector.inTheWorld')}
             </Text>
             <EarthIcon
               width={{
