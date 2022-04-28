@@ -17,6 +17,7 @@ import { IContactChannel } from 'types/data/ContactChannel'
 
 import { useBackgroundArray } from './useBackgroundArray'
 import useMobile from 'hooks/useMobile'
+import { useTranslation } from 'react-i18next'
 
 export type ContactViewProps = {
   contact_channels: IContactChannel[]
@@ -59,12 +60,14 @@ export const Contact = ({
     }
   }, [router.query])
 
+  const contactViewLabels = useTranslation('contactView')
+
   return (
     <>
       <Pagebar
         paths={[
           {
-            title: 'Fale Conosco',
+            title: contactViewLabels.t('pagebar.speakWithUs'),
             url: 'contact'
           }
         ]}
@@ -83,7 +86,7 @@ export const Contact = ({
           >
             <Flex justifyContent="center">
               <CompletedTitle
-                titleString="Sobre o que você deseja falar?"
+                titleString={contactViewLabels.t('headerBanner.title')}
                 textAlign="center"
               />
             </Flex>
@@ -249,6 +252,8 @@ const ContactChannelSection = ({ channel }: { channel: IContactChannel }) => (
 const ButtonsSection = () => {
   const router = useRouter()
 
+  const contactViewLabels = useTranslation('contactView')
+
   return (
     <Flex
       backgroundColor="green.400"
@@ -267,8 +272,8 @@ const ButtonsSection = () => {
           <PatternInfo
             minH={{ base: '100px' }}
             maxH={{ base: '185px' }}
-            title="DESCUBRA"
-            description="Onde Comprar"
+            title={contactViewLabels.t('discoverBanner.title')}
+            description={contactViewLabels.t('discoverBanner.description')}
             onClick={() => router.push('/onde-comprar')}
             icon={
               <EarthIcon
@@ -294,8 +299,8 @@ const ButtonsSection = () => {
           <PatternInfo
             minH={{ base: '100px' }}
             maxH={{ base: '185px' }}
-            title="Solicite Nosso"
-            description="Mostruário"
+            title={contactViewLabels.t('showcaseBanner.title')}
+            description={contactViewLabels.t('showcaseBanner.description')}
             onClick={() =>
               router.push('/contact?channel=solicitacao-de-mostruario')
             }
@@ -323,8 +328,8 @@ const ButtonsSection = () => {
           <PatternInfo
             minH={{ base: '100px' }}
             maxH={{ base: '185px' }}
-            title="Confira Nossas"
-            description="Vagas abertas"
+            title={contactViewLabels.t('positionsBanner.title')}
+            description={contactViewLabels.t('positionsBanner.description')}
             onClick={() =>
               window.open(
                 'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup',
