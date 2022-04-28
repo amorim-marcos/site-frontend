@@ -1,0 +1,33 @@
+{
+    "pagebar": {
+        "products": "Produtos",
+        "bpBerneck": "BP BERNECK®",
+        "envGallery": "Galeria de Ambientes"
+    },
+    "filter": {
+        "notFound": "Os filtros aplicados não retornaram nenhum resultado.",
+        "notFoundFor": "Nenhum resultado encontrado para"
+    },
+    "filtersAccordion": {
+        "filterResults": "Filtrar Resultados",
+        "hideFilters":"Esconder filtros",
+        "bpBerneck": "BP BERNECK®",
+        "seeLess": "Ver menos",
+        "seeMore": "Ver mais",
+        "environment": "AMBIENTE",
+        "style": "ESTILO",
+        "filter": "Filtrar",
+        "searchPlaceHolder": "Digite sua busca",
+        "clearFilters": "Limpar filtros"
+    },
+    "filtersTab": {
+        "filterResults": "Filtrar Resultados",
+        "hideFilters":"Esconder filtros",
+        "bpBerneck": "BP BERNECK®",
+        "environment": "AMBIENTE",
+        "style": "ESTILO",
+        "filter": "Filtrar",
+        "searchPlaceHolder": "Pesquise pelo nome",
+        "clearFilters": "Limpar filtros"
+    }
+}

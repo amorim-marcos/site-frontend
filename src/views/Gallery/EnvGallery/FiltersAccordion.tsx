@@ -17,6 +17,7 @@ import { colors } from 'theme/colors'
 
 import { FilterCheckbox } from './FilterCheckbox'
 import { BPFilter } from './BPFilter'
+import { useTranslation } from 'react-i18next'
 
 export type FiltersSelectProps = {
   filtersContext: {
@@ -66,6 +67,8 @@ export const FiltersAccordion = ({
   const [openSearchBar, setOpenSearchBar] = React.useState(false)
   const TOTAL_BPS_SHOW_FIRST = 9
 
+  const galleryViewLabels = useTranslation('galleryView')
+
   return (
     <Box background="white.200" height="150%">
       <Flex
@@ -90,7 +93,9 @@ export const FiltersAccordion = ({
             <FiltersIcon mr="16px" />
           )}
           <Text fontSize="17px">
-            {!displayFilters ? 'Filtrar Resultados' : 'Esconder filtros'}
+            {!displayFilters
+              ? galleryViewLabels.t('filtersAccordion.filterResults')
+              : galleryViewLabels.t('filtersAccordion.hideFilters')}
           </Text>
           <Arrow
             display={{ base: 'none', md: 'normal' }}
@@ -144,7 +149,7 @@ export const FiltersAccordion = ({
                 alignItems="center"
               >
                 <Text color="gray.300" mr="10px" fontWeight={600}>
-                  BP BERNECK®
+                  {galleryViewLabels.t('filtersAccordion.bpBerneck')}
                 </Text>
                 <Arrow
                   position="absolute"
@@ -216,7 +221,7 @@ export const FiltersAccordion = ({
                     }}
                     onClick={() => setSeeMoreBps(false)}
                   >
-                    Ver menos
+                    {galleryViewLabels.t('filtersAccordion.seeLess')}
                   </Button>
                 ) : (
                   bps.length >= TOTAL_BPS_SHOW_FIRST && (
@@ -231,7 +236,7 @@ export const FiltersAccordion = ({
                       }}
                       onClick={() => setSeeMoreBps(true)}
                     >
-                      Ver mais
+                      {galleryViewLabels.t('filtersAccordion.seeMore')}
                     </Button>
                   )
                 )}
@@ -256,7 +261,7 @@ export const FiltersAccordion = ({
                 alignItems="center"
               >
                 <Text color="gray.300" mr="10px" fontWeight={600}>
-                  AMBIENTE
+                  {galleryViewLabels.t('filtersAccordion.environment')}
                 </Text>
                 <Arrow
                   position="absolute"
@@ -321,7 +326,7 @@ export const FiltersAccordion = ({
                 alignItems="center"
               >
                 <Text color="gray.300" mr="10px" fontWeight={600}>
-                  ESTILO
+                  {galleryViewLabels.t('filtersAccordion.style')}
                 </Text>
                 <Arrow
                   position="absolute"
@@ -391,7 +396,7 @@ export const FiltersAccordion = ({
             setDisplayFilters(!displayFilters)
           }}
         >
-          Filtrar
+          {galleryViewLabels.t('filtersAccordion.filter')}
         </Button>
       )}
       {openSearchBar && (
@@ -414,7 +419,9 @@ export const FiltersAccordion = ({
             borderBottomWidth={{ base: '1px' }}
           >
             <Input
-              placeholder="Digite sua busca"
+              placeholder={galleryViewLabels.t(
+                'filtersAccordion.searchPlaceHolder'
+              )}
               border="none"
               outline="none"
               _active={{ border: 'none', outline: 'none' }}
@@ -468,7 +475,7 @@ export const FiltersAccordion = ({
               variant="link"
               backgroundColor="none"
             >
-              Limpar filtros
+              {galleryViewLabels.t('filtersAccordion.clearFilters')}
             </Button>
           </Flex>
         </>

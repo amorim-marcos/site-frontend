@@ -10,6 +10,7 @@ import { colors } from 'theme/colors'
 import { FilterCheckbox } from './FilterCheckbox'
 import { BPFilter } from './BPFilter'
 import { ResponsiveCss } from 'types/responsive'
+import { useTranslation } from 'react-i18next'
 
 export type FiltersSelectProps = {
   filtersContext: {
@@ -57,6 +58,7 @@ export const FiltersTabs = ({
 }: FiltersSelectProps) => {
   const [searchSelected, setSearchSelected] = React.useState(false)
 
+  const galleryViewLabels = useTranslation('galleryView')
   return (
     <Box background="white.200" minH="80px">
       <Box
@@ -77,7 +79,9 @@ export const FiltersTabs = ({
             <FiltersIcon mr="16px" />
           )}
           <Text fontSize="17px">
-            {!displayFilters ? 'Filtrar Resultados' : 'Esconder filtros'}
+            {!displayFilters
+              ? galleryViewLabels.t('filtersTab.filterResults')
+              : galleryViewLabels.t('filtersTab.hideFilters')}
           </Text>
           <Arrow
             display={{ base: 'none', md: 'normal' }}
@@ -115,13 +119,13 @@ export const FiltersTabs = ({
                   <FilterBtn
                     changeFilterPanel={changeFilterPanel}
                     currentFilterPanel={currentFilterPanel}
-                    title="BP BERNECK®"
+                    title={galleryViewLabels.t('filtersTab.bpBerneck')}
                     filterName={'bps'}
                   />
                   <FilterBtn
                     changeFilterPanel={changeFilterPanel}
                     currentFilterPanel={currentFilterPanel}
-                    title="AMBIENTE"
+                    title={galleryViewLabels.t('filtersTab.environment')}
                     filterName={'ambients'}
                     paddingX={{
                       base: '0',
@@ -133,7 +137,7 @@ export const FiltersTabs = ({
                   <FilterBtn
                     changeFilterPanel={changeFilterPanel}
                     currentFilterPanel={currentFilterPanel}
-                    title="ESTILO"
+                    title={galleryViewLabels.t('filtersTab.styles')}
                     filterName={'styles'}
                   />
                 </Flex>
@@ -237,7 +241,7 @@ export const FiltersTabs = ({
                     _focus={{ outline: 'none' }}
                     onClick={() => setFilteredEnvs(applyFilters(filters, envs))}
                   >
-                    Filtrar
+                    {galleryViewLabels.t('filtersTab.filter')}
                   </Button>
                   {!filtersEmpty && (
                     <Button
@@ -245,7 +249,7 @@ export const FiltersTabs = ({
                       onClick={() => resetFilters()}
                       _focus={{ outline: 'none' }}
                     >
-                      Limpar filtros
+                      {galleryViewLabels.t('filtersTab.clearFilters')}
                     </Button>
                   )}
                 </Flex>
@@ -276,7 +280,9 @@ export const FiltersTabs = ({
                     onBlur={() => {
                       setSearchSelected(false)
                     }}
-                    placeholder="Pesquise pelo nome"
+                    placeholder={galleryViewLabels.t(
+                      'filtersTab.searchPlaceHolder'
+                    )}
                     _placeholder={{ color: 'gray.300' }}
                     border="none"
                     outline="none"

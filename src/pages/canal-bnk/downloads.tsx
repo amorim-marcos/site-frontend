@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next'
-import { DownlodasView } from 'views/Canal-BNK/Downloads/DownloadsView'
+import { DownloadsView } from 'views/Canal-BNK/Downloads/DownloadsView'
 
 type DownloadsItemProps = {
   download_type: { type: string }
@@ -48,7 +48,7 @@ export type DonwloadsPageProps = {
   page_content: PageContent
 }
 export default function DownloadsPage(props: DonwloadsPageProps) {
-  return <DownlodasView page_content={props.page_content} />
+  return <DownloadsView page_content={props.page_content} />
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {

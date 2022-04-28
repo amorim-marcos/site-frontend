@@ -8,6 +8,7 @@ import CompletedTitle from '@components/CompletedTitle'
 import Pagebar from '@components/Pagebar'
 import SeeMore from '@components/SeeMore'
 import { Env } from './EnvGallery/Env'
+import { useTranslation } from 'react-i18next'
 
 export type EnvViewProps = {
   env: {
@@ -46,37 +47,28 @@ export const EnvView = ({
 }: EnvViewProps) => {
   const router = useRouter()
 
+  const galleryViewLabels = useTranslation('envView')
+
   return (
-    <Box 
-      marginX="auto"
-      bg="white.200"
-    >
+    <Box marginX="auto" bg="white.200">
       <Pagebar
         paths={[
           {
-            title: 'Produtos',
+            title: galleryViewLabels.t('pagebar.products'),
             url: '/products'
           },
           {
-            title: 'BP BERNECK',
+            title: galleryViewLabels.t('pagebar.bpBerneck'),
             url: '/products/bp-berneck'
           },
           {
-            title: 'Galeria de Ambientes',
+            title: galleryViewLabels.t('pagebar.envGallery'),
             url: '/products/bp-berneck/gallery'
           }
         ]}
       />
-      <Flex
-        flexDirection={'column'}
-        maxWidth={'1536px'}
-        mt="2%"
-        marginX="auto"
-      >
-          <CompletedTitle 
-            titleString={env.subTitle} 
-            alignSelf={'left'}
-          />
+      <Flex flexDirection={'column'} maxWidth={'1536px'} mt="2%" marginX="auto">
+        <CompletedTitle titleString={env.subTitle} alignSelf={'left'} />
         {/* <Text
           as={'h3'}
           variant={'h3'}
@@ -173,7 +165,7 @@ export const EnvView = ({
                 color="gray.300"
                 marginBottom={'3%'}
               >
-                Padrões BP BERNECK® utilizados neste ambiente
+                {galleryViewLabels.t('patternsInfo')}
               </Text>
 
               <Flex
@@ -238,11 +230,11 @@ export const EnvView = ({
           justifyContent={'space-between'}
         >
           <Text marginY="3%" as="h3" variant="h3" color="gray.300">
-            Outros ambientes
+            {galleryViewLabels.t('othersEnvs')}
           </Text>
           <Flex margin={{ base: '5px 0 15px 0', sm: '0' }}>
             <SeeMore
-              text="Veja mais ambientes"
+              text={galleryViewLabels.t('seeMore')}
               link="/products/bp-berneck/gallery"
             />
           </Flex>
