@@ -95,22 +95,24 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   })
 
-  availableBps = availableBps.map((bp: any) => {
-    return {
-      id: bp.id,
-      name: bp.name,
-      pattern_image: `${url}${bp.pattern_image.url}`,
-      product_texture: bp.product_texture.name,
-      launch: bp.launch
-        ? new Date(bp.launch).toISOString().split('T')[0]
-        : new Date().toISOString().split('T')[0],
-      scale: bp.scale ?? 0,
-      coloration: bp.product_coloration ?? '',
-      collections: bp.product_collections
-    }
-  }).sort((a,b) => {
-    return a['scale'] > b['scale'] ? 1 : a['scale'] < b['scale'] ? -1 : 0
-  })
+  availableBps = availableBps
+    .map((bp: any) => {
+      return {
+        id: bp.id,
+        name: bp.name,
+        pattern_image: `${url}${bp.pattern_image.url}`,
+        product_texture: bp.product_texture.name,
+        launch: bp.launch
+          ? new Date(bp.launch).toISOString().split('T')[0]
+          : new Date().toISOString().split('T')[0],
+        scale: bp.scale ?? 0,
+        coloration: bp.product_coloration ?? '',
+        collections: bp.product_collections
+      }
+    })
+    .sort((a, b) => {
+      return a['scale'] > b['scale'] ? 1 : a['scale'] < b['scale'] ? -1 : 0
+    })
 
   const initialFilters = {
     nameSearched: '',

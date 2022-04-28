@@ -92,21 +92,32 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     props: {
       complete_name: productFetch.complete_name,
       url_code: productFetch.url_code,
-      name: (productFetch.totalWithSameName == 1) ? productFetch.name : productFetch.complete_name,
+      name:
+        productFetch.totalWithSameName == 1
+          ? productFetch.name
+          : productFetch.complete_name,
       description: productFetch.description,
       img: `${url}${productFetch.pattern_image.url}`,
       bg_img: `${url}${productFetch.background_image.url}`,
       pattern_image: `${url}${productFetch.pattern_image.url}`,
-      assets: (productFetch.assets) ? `${url}${productFetch.assets.url}` : `${url}${productFetch.pattern_image.url}`,
+      assets: productFetch.assets
+        ? `${url}${productFetch.assets.url}`
+        : `${url}${productFetch.pattern_image.url}`,
       presentation: productFetch.presentation,
       uses_and_applications: productFetch.uses_and_applications,
       video_url: productFetch.video_url,
-      ebook_url: (productFetch.ebook) ? `${url}${productFetch.ebook.url}` : null,
+      ebook_url: productFetch.ebook ? `${url}${productFetch.ebook.url}` : null,
       texture: {
         name: productFetch.product_texture.name,
         description: productFetch.product_texture.description,
-        icon: (productFetch.product_texture.small_icon_image === null) ? null : `${url}${productFetch.product_texture.small_icon_image.url}`,
-        top_menu_image: (productFetch.product_texture.top_menu_image === null) ? null : `${url}${productFetch.product_texture.top_menu_image.url}`
+        icon:
+          productFetch.product_texture.small_icon_image === null
+            ? null
+            : `${url}${productFetch.product_texture.small_icon_image.url}`,
+        top_menu_image:
+          productFetch.product_texture.top_menu_image === null
+            ? null
+            : `${url}${productFetch.product_texture.top_menu_image.url}`
       },
       combine_with: productFetch.combine_with.map((item: any) => ({
         name: item.name,

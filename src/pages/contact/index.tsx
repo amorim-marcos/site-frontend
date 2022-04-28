@@ -41,9 +41,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
     (item: { image: { url: string } }) => {
       return {
         ...item,
-        image: (item.image === null )? null : process.env.NEXT_PUBLIC_API_URL + item.image.url
+        image:
+          item.image === null
+            ? null
+            : process.env.NEXT_PUBLIC_API_URL + item.image.url
       }
-  })
+    }
+  )
 
   return {
     props: {

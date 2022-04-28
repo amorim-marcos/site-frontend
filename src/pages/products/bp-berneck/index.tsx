@@ -7,7 +7,7 @@ import BpBerneckView from 'views/products/bp-berneck'
 import type { Gallery } from 'types/data'
 
 export type BPPageBanner = {
-  link: string,
+  link: string
   banner_image: string
 }
 
@@ -23,7 +23,7 @@ export default function BpBerneck(props: BpBerneckProps) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
-  let banners = await strapiClient({
+  const banners = await strapiClient({
     resource: 'bp-page-banners'
   })
 
@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       galleries,
-      banners: banners.map((banner:any) => {
+      banners: banners.map((banner: any) => {
         return {
           link: banner.link,
           banner_image: `${url}${banner.banner_image.url}`
