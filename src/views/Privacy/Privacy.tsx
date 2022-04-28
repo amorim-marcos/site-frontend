@@ -6,15 +6,17 @@ import { useState } from 'react'
 import { colors } from '../../theme/colors'
 import parser from 'react-html-parser'
 import { Wrapper } from './styles'
+import { useTranslation } from 'react-i18next'
 
 export const Privacy = (props: { terms: string }) => {
   const [showPrivacy, setShowPrivacy] = useState(false)
+  const privacyViewLabels = useTranslation('privacyView')
   return (
     <Box>
       <Pagebar
         paths={[
           {
-            title: 'Política de privacidade e termos de uso',
+            title: privacyViewLabels.t('pagebar.privacy'),
             url: 'politica-de-privacidade'
           }
         ]}
@@ -70,7 +72,7 @@ export const Privacy = (props: { terms: string }) => {
           >
             <CompletedTitle
               textAlign={'center'}
-              titleString="Política de privacidade e termos de uso"
+              titleString={privacyViewLabels.t('headerBanner.title')}
               titleColor={'white.100'}
               zIndex={'dropdown'}
             />
@@ -96,13 +98,10 @@ export const Privacy = (props: { terms: string }) => {
                 alignItems={'center'}
               >
                 <Text variant={'h3'} color="green.600" marginBottom={'20px'}>
-                  Termos de uso e privacidade
+                  {privacyViewLabels.t('useTermsAndPrivacy')}
                 </Text>
                 <Text variant={'body' as any}>
-                  o acessar o ambiente digital da Berneck S.A você estará
-                  sujeito a coleta de dados pessoais, nos termos da Política de
-                  Privacidade quando assim solicitado, diante de finalidade
-                  clara e determinada.
+                  {privacyViewLabels.t('useTermsAndPrivacyDescription')}
                 </Text>
               </Flex>
               <Flex
@@ -139,7 +138,7 @@ export const Privacy = (props: { terms: string }) => {
                     color="white.100"
                     w={{ base: '60%', md: '50%' }}
                   >
-                    Conheça nossa Política de privacidade
+                    {privacyViewLabels.t('knowOurPrivacyAndTerms')}
                   </Text>
                 </Flex>
               </Flex>
@@ -164,13 +163,10 @@ export const Privacy = (props: { terms: string }) => {
                 flexDirection={'column'}
               >
                 <Text variant={'h3'} color="green.800" marginBottom={'20px'}>
-                  Data Protection Officer (DPO)
+                  {privacyViewLabels.t('dataProtectionOfficer')}
                 </Text>
                 <Text variant={'body' as any}>
-                  Para obter informações, inclusive para exercício dos seus
-                  direitos como titular dos dados pessoais a nós confiados, pode
-                  entrar em contato com nosso Data Protection Officer (DPO)
-                  através do e-mail
+                  {privacyViewLabels.t('privacyMoreInformation')}
                   <strong style={{ color: colors.green[600] }}>
                     {' '}
                     dpo@berneck.com.br.

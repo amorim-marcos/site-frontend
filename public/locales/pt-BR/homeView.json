@@ -7,5 +7,21 @@
     "knowOurFlorestalDivision": {
         "title": "CONHEÇA",
         "description": "Divisão Florestal"
+    },
+    "sectionChannelBnk": {
+        "channelDescription": "Nosso canal de conteúdos sobre madeira, inspiração e muito mais."
+    },
+    "productsSection": {
+        "ourProducts": "Nossos Produtos",
+        "seeAllProducts": "Veja todos os produtos",
+        "discoverBanner": {
+            "title": "DESCUBRA",
+            "description": "Onde Comprar"
+        },
+        "contactBanner": {
+            "title": "ENTRE EM CONTATO",
+            "description": "Fale Conosco"
+        }
     }
+    
 }
