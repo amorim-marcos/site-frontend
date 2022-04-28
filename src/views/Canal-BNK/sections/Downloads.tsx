@@ -7,6 +7,7 @@ import useMobile from 'hooks/useMobile'
 
 import { Section } from './Section'
 import { CategoryContext } from '..'
+import { useTranslation } from 'react-i18next'
 
 type DownloadsProps = {
   patterns_pack_url?: string | null
@@ -15,6 +16,7 @@ type DownloadsProps = {
 export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
   const { currentCategory } = useContext(CategoryContext)
   const { isMobile } = useMobile(1024)
+  const channelBnkLabels = useTranslation('channelBnkView')
 
   const categoryOne = [
     <DownloadColorPanel
@@ -25,17 +27,17 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       img="/assets/imgs/canal-bnk/img_revista_inspirare.png"
       graphism="/assets/imgs/canal-bnk/grafismo_revista_inspirare.svg"
     />,
-  
+
     <DownloadColorPanel
       key="Pack de Padrões BP BERNECK®"
       title="Pack de Padrões BP BERNECK®"
       colorPanel="brown"
-      url={(patterns_pack_url) ? patterns_pack_url : "#"}
+      url={patterns_pack_url ? patterns_pack_url : '#'}
       img="/assets/imgs/canal-bnk/img_pack_padroes.png"
       graphism="/assets/imgs/canal-bnk/grafismos_pack_de_padroes.svg"
       download={true}
     />,
-  
+
     <DownloadColorPanel
       key="Materiais de Divulgação"
       title="Materiais de Divulgação"
@@ -45,7 +47,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       graphism="/assets/imgs/canal-bnk/grafismos_materiais_de_divulgação.svg"
     />
   ]
-  
+
   const categoryTwo = [
     <DownloadColorPanel
       key="Materiais de Suporte"
@@ -55,7 +57,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       img="/assets/imgs/canal-bnk/img_materiais_de_suporte.png"
       graphism="/assets/imgs/canal-bnk/grafismo_materiais_de_suporte.svg"
     />,
-  
+
     <DownloadColorPanel
       key="Certificados de Produto"
       title="Certificados de Produto"
@@ -65,7 +67,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       graphism="/assets/imgs/canal-bnk/grafismo_certificados_de_produto.svg"
     />
   ]
-  
+
   const categoryThree = [
     <DownloadColorPanel
       key="Revista Opinus"
@@ -75,7 +77,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       img="/assets/imgs/canal-bnk/img_revista_opinus.png"
       graphism="/assets/imgs/canal-bnk/grafismos_opinus.svg"
     />,
-  
+
     <DownloadColorPanel
       key="Relatórios"
       title="Relatórios"
@@ -84,7 +86,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       img="/assets/imgs/canal-bnk/img_relatorios.png"
       graphism="/assets/imgs/canal-bnk/grafismo_relatorios.svg"
     />,
-  
+
     <DownloadColorPanel
       key="Certificados Florestais"
       title="Certificados Florestais"
@@ -97,9 +99,9 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
 
   return (
     <Section
-      title="Downloads"
+      title={channelBnkLabels.t('downloadsSection.title')}
       seeMore={{
-        text: 'Veja mais downloads',
+        text: channelBnkLabels.t('downloadsSection.seeMore'),
         link: '/canal-bnk/downloads'
       }}
       py={{ base: '54px', lg: '100px' }}
@@ -118,7 +120,9 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
           >
             <Flex w="100%" gap="34px" px={{ base: '0', lg: '3%', '2xl': '0' }}>
               <DownloadColorPanel
-                title="Revista Inspirare BNK"
+                title={channelBnkLabels.t(
+                  'downloadsSection.inspirareBnkMagazine'
+                )}
                 colorPanel="brown"
                 url="/canal-bnk/downloads#revista-inspirare-bnk"
                 img="/assets/imgs/canal-bnk/img_revista_inspirare.png"
@@ -126,7 +130,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
               />
 
               <DownloadColorPanel
-                title="Revista Opinus"
+                title={channelBnkLabels.t('downloadsSection.opinusMagazine')}
                 colorPanel="gray"
                 url="/canal-bnk/downloads#revista-opinus"
                 img="/assets/imgs/canal-bnk/img_revista_opinus.png"
@@ -136,7 +140,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
 
             <Flex w="100%" gap="34px" px={{ base: '0', lg: '3%', '2xl': '0' }}>
               <DownloadColorPanel
-                title="Relatórios"
+                title={channelBnkLabels.t('downloadsSection.reports')}
                 colorPanel="gray"
                 url="/canal-bnk/downloads#relatorios-e-documentos"
                 img="/assets/imgs/canal-bnk/img_relatorios.png"
@@ -145,7 +149,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
 
               <DownloadColorPanel
                 flex={2}
-                title="Materiais de Suporte"
+                title={channelBnkLabels.t('downloadsSection.supportMaterials')}
                 colorPanel="green"
                 url="/canal-bnk/downloads#materiais-de-suporte"
                 img="/assets/imgs/canal-bnk/img_materiais_de_suporte.png"
@@ -153,7 +157,9 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
               />
 
               <DownloadColorPanel
-                title="Materiais de Divulgação"
+                title={channelBnkLabels.t(
+                  'downloadsSection.promotionalMaterials'
+                )}
                 colorPanel="brown"
                 url="/canal-bnk/downloads#materiais-de-divulgacao"
                 img="/assets/imgs/canal-bnk/materiais_de_divulgacao.png"
@@ -164,16 +170,18 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
             <Flex w="100%" gap="34px" px={{ base: '0', lg: '3%', '2xl': '0' }}>
               <DownloadColorPanel
                 flex={2}
-                title="Pack de Padrões BP BERNECK®"
+                title={channelBnkLabels.t('downloadsSection.patternPack')}
                 colorPanel="brown"
-                url={(patterns_pack_url) ? patterns_pack_url : "#"}
+                url={patterns_pack_url ? patterns_pack_url : '#'}
                 img="/assets/imgs/canal-bnk/img_pack_padroes.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_pack_de_padroes.svg"
                 download={true}
               />
 
               <DownloadColorPanel
-                title="Certificados Florestais"
+                title={channelBnkLabels.t(
+                  'downloadsSection.forestCertificates'
+                )}
                 colorPanel="gray"
                 url="/certificacoes#certificados-florestais"
                 img="/assets/imgs/canal-bnk/img_certificados_florestais.png"
@@ -181,7 +189,9 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
               />
 
               <DownloadColorPanel
-                title="Certificados de Produto"
+                title={channelBnkLabels.t(
+                  'downloadsSection.productCertificates'
+                )}
                 colorPanel="green"
                 url="/certificacoes#certificados-de-produtos"
                 img="/assets/imgs/canal-bnk/img_certificados_de_produto.png"
@@ -275,7 +285,14 @@ const DownloadColorPanel = (props: DownloadColorPanelProps) => {
       {...rest}
       // bg="red.100"
     >
-      <Link h="100%" w="100%" pos="relative" href={url} _hover={{}} { ...props.download ?? 'download' }>
+      <Link
+        h="100%"
+        w="100%"
+        pos="relative"
+        href={url}
+        _hover={{}}
+        {...(props.download ?? 'download')}
+      >
         <Image src={graphism} h="100%" pos="absolute" objectFit="cover" />
         <Image src={img} right={0} h="100%" pos="absolute" objectFit="cover" />
 

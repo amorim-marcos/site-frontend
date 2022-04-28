@@ -6,6 +6,7 @@ import { Flex, Box, Image, Text, Link } from '@chakra-ui/react'
 import { PlayIcon } from '@components/Icons'
 import { Section } from './Section'
 import { CategoryContext } from '..'
+import { useTranslation } from 'react-i18next'
 
 const YOUTUBE_LAST_VIDEOS_URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${
   process.env.YOUTUBE_CHANNEL_ID
@@ -79,11 +80,13 @@ export const Videos = () => {
     fetchData()
   }, [currentCategory])
 
+  const channelBnkLabels = useTranslation('channelBnkView')
+
   return (
     <Section
-      title="Vídeos"
+      title={channelBnkLabels.t('videosSection.title')}
       seeMore={{
-        text: 'Veja mais vídeos',
+        text: channelBnkLabels.t('videosSection.seeMoreVideos'),
         link: getPlaylist(currentCategory)?.url
       }}
       bg={

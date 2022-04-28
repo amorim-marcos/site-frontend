@@ -15,14 +15,13 @@ export const Section = (props: SectionProps) => {
   const { title, seeMore, children, ...rest } = props
 
   return (
-  <Flex 
-    // bg="tomato"
-    direction="column"
-    w="100%"
-    pb={{ base: '58px', lg: '0' }} 
-    {...rest}
-  >
-      
+    <Flex
+      // bg="tomato"
+      direction="column"
+      w="100%"
+      pb={{ base: '58px', lg: '0' }}
+      {...rest}
+    >
       <Flex
         align="center"
         justify={{ base: 'center', lg: 'space-between' }}
@@ -41,15 +40,13 @@ export const Section = (props: SectionProps) => {
               lg: 'flex-start',
               xl: 'flex-start'
             }}
-        />  
+          />
         ) : (
           <Box />
         )}
 
         {seeMore && (
-          <Box 
-            display={{ base: 'none', lg: 'block' }}
-          >
+          <Box display={{ base: 'none', lg: 'block' }}>
             <SeeMore {...seeMore} />
           </Box>
         )}

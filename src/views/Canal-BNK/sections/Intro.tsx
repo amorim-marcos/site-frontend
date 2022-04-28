@@ -19,6 +19,7 @@ import { Section } from './Section'
 
 import { CategoryContext } from '..'
 import { Post as IPost } from 'types/data'
+import { useTranslation } from 'react-i18next'
 
 export const PANEL_COLOR = {
   all: 'white',
@@ -41,6 +42,7 @@ export const Intro = (props: {
   } = useContext(CategoryContext)
 
   const router = useRouter()
+  const channelBnkLabels = useTranslation('channelBnkView')
 
   return (
     <Box
@@ -174,7 +176,7 @@ export const Intro = (props: {
                   >
                     {(currentCategory !== -1 &&
                       categories[currentCategory].description) ||
-                      'Nosso canal de conteúdos sobre madeira, inspiração e muito mais.'}
+                      channelBnkLabels.t('introSection.channelDescription')}
                   </Text>
                 )}
 
@@ -191,8 +193,10 @@ export const Intro = (props: {
                     }
                   >
                     {props.tagsSearch && props.tagName
-                      ? `Resultados para: ${props.tagName}`
-                      : 'Todos os conteúdos'}
+                      ? `${channelBnkLabels.t('introSection.searchResult')} ${
+                          props.tagName
+                        }`
+                      : channelBnkLabels.t('introSection.allContents')}
                   </Text>
                 )}
               </Box>
@@ -225,7 +229,7 @@ export const Intro = (props: {
                 color={'green.900'}
                 borderColor={currentCategory === -1 ? 'brown.200' : 'white'}
               >
-                VER TUDO
+                {channelBnkLabels.t('introSection.seeAll')}
               </NavButton>
 
               {categories.length > 0 && (
@@ -283,7 +287,7 @@ export const Intro = (props: {
             zIndex={100}
             {...(!seeOnlyPosts && {
               seeMore: {
-                text: 'Veja mais conteúdos',
+                text: channelBnkLabels.t('introSection.seeMore'),
                 link: `/canal-bnk/${currentCategory}`,
                 onClick: () => setSeeOnlyPosts(true),
                 textColor:
