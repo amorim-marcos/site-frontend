@@ -8,6 +8,7 @@ import Pagebar from '@components/Pagebar'
 import { Intro, Inspire, Properties } from './sections'
 import { DownloadModal } from './DownloadModal'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export interface BPCatalogItemProps {
   complete_name: string
@@ -57,20 +58,22 @@ export interface BPCatalogItemProps {
 export const BPCatalogItem = (props: BPCatalogItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
+  const bpCatalogItemLabels = useTranslation('bpCatalogItem')
+
   return (
     <Box pos="relative" overflow={'hidden'}>
       <Pagebar
         paths={[
           {
-            title: 'Produtos',
+            title: bpCatalogItemLabels.t('pagebar.products'),
             url: '/products'
           },
           {
-            title: 'BP BERNECK®',
+            title: bpCatalogItemLabels.t('pagebar.bpBerneck'),
             url: '/products/bp-berneck'
           },
           {
-            title: 'Catálogo BP',
+            title: bpCatalogItemLabels.t('pagebar.bpCatalog'),
             url: '/products/bp-berneck/catalog'
           },
           {
@@ -165,123 +168,121 @@ const PageNavegation = (props: {
       }
     }
   }, [])
+  const bpCatalogItemLabels = useTranslation('bpCatalogItem')
 
   return (
-
-  <Flex
-    // bg="purple"
-    // w="100%"
-    justify="center"
-  >
-    
     <Flex
-      w="100%"
-      // pt={{ base: '100px', '2xl': '140px' }}
-      justify="space-between"
-      maxWidth="1536px"
-      position={fixed ? 'fixed' : 'absolute'}
-      bottom={'0'}
-      zIndex={'banner'}
-      pointerEvents="none"
-      // bg="red"
+      // bg="purple"
+      // w="100%"
+      justify="center"
     >
       <Flex
-        pointerEvents={'fill'}
-        bg="white"
-        w={{ base: 'fit-content' }}
-        h={{ base: '90px', sm: '113px' }}
-        padding={{ base: '5%' }}
-        gap={{ base: '10px', lg: '23px' }}
-        align="center"
-        justify="flex-start"
-        boxShadow="0px 0px 30px #00000029"
-        borderTopRightRadius={{ base: '15px', sm: '26px' }}
-        cursor="pointer"
-        onClick={() =>
-          router.push(`/products/bp-berneck/catalog/${props.prev.url_code}`)
-        }
-        transition="all 0.2s ease-in-out"
-        _hover={{ filter: 'brightness(0.8)' }}
+        w="100%"
+        // pt={{ base: '100px', '2xl': '140px' }}
+        justify="space-between"
+        maxWidth="1536px"
+        position={fixed ? 'fixed' : 'absolute'}
+        bottom={'0'}
+        zIndex={'banner'}
+        pointerEvents="none"
+        // bg="red"
       >
-        <Arrow
-          direction="left"
-          width={{ base: '15px', xs: '20px', md: '30px' }}
-          // height={{ base: '30px', sm: '40px' }}
-          color="green.200"
-        />
-        <Box>
-          <Text
-            // fontSize={{ base: '15px', sm: '20px', md: '23px' }}
-            as={'h4'}
-            variant={'h4' as any}
-            fontWeight="bold"
-            letterSpacing="-0.46px"
-            color="gray.300"
-          >
-            Anterior
-          </Text>
+        <Flex
+          pointerEvents={'fill'}
+          bg="white"
+          w={{ base: 'fit-content' }}
+          h={{ base: '90px', sm: '113px' }}
+          padding={{ base: '5%' }}
+          gap={{ base: '10px', lg: '23px' }}
+          align="center"
+          justify="flex-start"
+          boxShadow="0px 0px 30px #00000029"
+          borderTopRightRadius={{ base: '15px', sm: '26px' }}
+          cursor="pointer"
+          onClick={() =>
+            router.push(`/products/bp-berneck/catalog/${props.prev.url_code}`)
+          }
+          transition="all 0.2s ease-in-out"
+          _hover={{ filter: 'brightness(0.8)' }}
+        >
+          <Arrow
+            direction="left"
+            width={{ base: '15px', xs: '20px', md: '30px' }}
+            // height={{ base: '30px', sm: '40px' }}
+            color="green.200"
+          />
+          <Box>
+            <Text
+              // fontSize={{ base: '15px', sm: '20px', md: '23px' }}
+              as={'h4'}
+              variant={'h4' as any}
+              fontWeight="bold"
+              letterSpacing="-0.46px"
+              color="gray.300"
+            >
+              {bpCatalogItemLabels.t('navigation.previous')}
+            </Text>
 
-          <Text
-            as={'h4'}
-            variant={'h4' as any}
-            fontWeight="medium"
-            letterSpacing="-0.36px"
-            color="gray.300"
-          >
-            {props.prev.name}
-          </Text>
-        </Box>
-      </Flex>
-
-      <Flex
-        pointerEvents={'fill'}
-        bg="white"
-        w={{ base: 'fit-content' }}
-        h={{ base: '90px', sm: '113px' }}
-        padding={{ base: '5%' }}
-        gap={{ base: '10px', lg: '23px' }}
-        align="center"
-        justify="flex-start"
-        boxShadow="0px 0px 30px #00000029"
-        borderTopLeftRadius={{ base: '15px', sm: '26px' }}
-        cursor="pointer"
-        onClick={() =>
-          router.push(`/products/bp-berneck/catalog/${props.next.url_code}`)
-        }
-        transition="all 0.2s ease-in-out"
-        _hover={{ filter: 'brightness(0.8)' }}
-      >
-        <Flex direction="column" align="flex-end">
-          <Text
-             as={'h4'}
-             variant={'h4' as any}
-            fontWeight="bold"
-            letterSpacing="-0.46px"
-            color="gray.300"
-          >
-            Próximo
-          </Text>
-
-          <Text
-             as={'h4'}
-             variant={'h4' as any}
-            fontWeight="medium"
-            letterSpacing="-0.36px"
-            color="gray.300"
-          >
-            {props.next.name}
-          </Text>
+            <Text
+              as={'h4'}
+              variant={'h4' as any}
+              fontWeight="medium"
+              letterSpacing="-0.36px"
+              color="gray.300"
+            >
+              {props.prev.name}
+            </Text>
+          </Box>
         </Flex>
 
-        <Arrow
-          direction="right"
-          width={{ base: '15px', xs: '20px', md: '30px' }}
-          // height={{ base: '30px', sm: '40px' }}
-          color="green.200"
-        />
+        <Flex
+          pointerEvents={'fill'}
+          bg="white"
+          w={{ base: 'fit-content' }}
+          h={{ base: '90px', sm: '113px' }}
+          padding={{ base: '5%' }}
+          gap={{ base: '10px', lg: '23px' }}
+          align="center"
+          justify="flex-start"
+          boxShadow="0px 0px 30px #00000029"
+          borderTopLeftRadius={{ base: '15px', sm: '26px' }}
+          cursor="pointer"
+          onClick={() =>
+            router.push(`/products/bp-berneck/catalog/${props.next.url_code}`)
+          }
+          transition="all 0.2s ease-in-out"
+          _hover={{ filter: 'brightness(0.8)' }}
+        >
+          <Flex direction="column" align="flex-end">
+            <Text
+              as={'h4'}
+              variant={'h4' as any}
+              fontWeight="bold"
+              letterSpacing="-0.46px"
+              color="gray.300"
+            >
+              {bpCatalogItemLabels.t('navigation.next')}
+            </Text>
+
+            <Text
+              as={'h4'}
+              variant={'h4' as any}
+              fontWeight="medium"
+              letterSpacing="-0.36px"
+              color="gray.300"
+            >
+              {props.next.name}
+            </Text>
+          </Flex>
+
+          <Arrow
+            direction="right"
+            width={{ base: '15px', xs: '20px', md: '30px' }}
+            // height={{ base: '30px', sm: '40px' }}
+            color="green.200"
+          />
+        </Flex>
       </Flex>
     </Flex>
-
-</Flex>
   )
 }

@@ -73,12 +73,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       highlights: highlightsTreated,
-      latest: latestTreated
-      // ...(await loadTranslations(ni18nConfig, locale, [
-      //   'header',
-      //   'footer',
-      //   'products'
-      // ]))
+      latest: latestTreated,
+      ...(await loadTranslations(ni18nConfig, locale, [
+        'header',
+        'footer',
+        'products'
+      ]))
       // ...clientNamespaces(ni18nConfig, ['components/header'])
     },
     revalidate: parseInt(

@@ -1,0 +1,34 @@
+{
+    "pagebar":{
+        "products": "Produtos",
+        "bpBerneck": "BP BERNECK®",
+        "bpCatalog": "Catálogo BP"
+    },
+    "filters": {
+        "notFound": "Os filtros aplicados não retornaram nenhum resultado.",
+        "notFoundFor": "Nenhum resultado encontrado para"
+    },
+    "filtersAccordion": {
+        "filterResults": "Filtrar Resultados",
+        "hideFilters":"Esconder filtros",
+        "panels": "PAINÉIS",
+        "collections":"COLEÇÕES",
+        "coloration": "COLORAÇÃO",
+        "filter": "Filtrar",
+        "clearFilters": "Limpar filtros"
+    },
+    "filtersTab": {
+        "filterResults": "Filtrar Resultados",
+        "hideFilters":"Esconder filtros",
+        "panels": "PAINÉIS",
+        "collections":"COLEÇÕES",
+        "coloration": "COLORAÇÃO",
+        "filter": "Filtrar",
+        "clearFilters": "Limpar filtros",
+        "orderBy": "Ordenar por",
+        "exhibitionFormat": "Formato de exibição",
+        "searchByName": "Pesquise pelo nome",
+        "bgColor": "Cor do fundo",
+        "productsFound":"Produtos Encontrados"
+    }
+}

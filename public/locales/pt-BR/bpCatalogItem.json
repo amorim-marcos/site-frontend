@@ -1,0 +1,45 @@
+{
+    "pagebar": {
+        "products": "Produtos",
+        "bpBerneck": "BP BERNECK®",
+        "bpCatalog": "Catálogo BP"
+    },
+    "navigation": {
+        "previous": "Anterior",
+        "next": "Próximo"
+    },  
+    "inspire": {
+        "combineWith": "COMBINE COM:",
+        "inspire": "Inspire-se"
+    },
+    "properties": {
+        "download": "FAÇA O DOWNLOAD",
+        "pattern": "Padrão",
+        "knowOurCertifications": {
+            "know": "CONHEÇA",
+            "ourCertifications": "Nossas Certificações"
+        },
+        "discoverWhereToBuy": {
+            "discover":"DESCUBRA",
+            "whereToBuy": "Onde Comprar"
+        },
+        "availableOn": "DISPONÍVEL EM",
+        "table": {
+            "thicknesses":"Espessuras",
+            "dimension": "Dimensão",
+            "otherDimensionsOnRequest":"Outras dimensões sob consulta"
+        },
+        "bpInfo": {
+            "title": "SOBRE O BP BERNECK®",
+            "ours": "Nossos",
+            "panelsBpBerneck": "painéis BP BERNECK®",
+            "paragraph1": "são revestidos com laminado melamínico decorativo – em uma ou duas faces – com ótimo efeito decorativo e excelente resistência superficial, a risco e abrasão. As cores e texturas foram desenvolvidas em sintonia com as tendências do design mundial, que proporcionam infinitas possibilidades de combinação.",
+            "paragraph2": " Os painéis possuem superfície fechada reduzindo a proliferação de micro organismos, ideal para ambientes que requeiram fácil higienização. As dimensões padronizadas, aliadas a praticidade de um painel acabado, permitem a simplificação do processo de produção de móveis.",        
+            "edgeRibbons": "Fitas de borda",
+            "paragraph3": " Todos os padrões possuem fitas de borda desenvolvidas em parceria com os melhores fornecedores do mercado. É importante que todas as bordas do painel estejam seladas, para garantir qualidade superior e durabilidade."
+        },
+        "usesAndApplications": {
+            "title":"USOS E APLICAÇÕES"
+        }
+    }
+}

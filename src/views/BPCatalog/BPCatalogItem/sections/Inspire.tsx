@@ -5,6 +5,7 @@ import { Box, Flex, Image, Link, Text, Button } from '@chakra-ui/react'
 
 import { ReportsIcon, PlayIcon, Arrow } from '@components/Icons'
 import useMobile from 'hooks/useMobile'
+import { useTranslation } from 'react-i18next'
 
 export interface InspireProps {
   textureName: string
@@ -30,9 +31,10 @@ export const Inspire = (props: InspireProps) => {
       : setCurr(curr > 0 ? curr - 1 : curr)
   }
 
+  const bpCatalogItem = useTranslation('bpCatalogItem')
+
   return (
     <Box pos="relative">
-
       <Flex
         data-testid="micro-texture"
         pos="relative"
@@ -48,7 +50,7 @@ export const Inspire = (props: InspireProps) => {
           zIndex={10}
         />
 
-        <Flex 
+        <Flex
           flexDirection={'column'}
           // bg="pink"
         >
@@ -69,7 +71,8 @@ export const Inspire = (props: InspireProps) => {
             {props.textureName}
           </Text>
 
-          <Text as={'h4'}
+          <Text
+            as={'h4'}
             variant={'h4' as any}
             fontWeight="normal"
             color="gray.300"
@@ -113,11 +116,11 @@ export const Inspire = (props: InspireProps) => {
                 letterSpacing="-0.2px"
                 _after={{ sm: ':>>>>>' }}
               >
-                COMBINE COM:
+                {bpCatalogItem.t('inspire.combineWith')}
               </Text>
             </Flex>
 
-            <Flex 
+            <Flex
               direction={{ base: 'column', sm: 'row' }}
               // bg="red"
               // left={{ '2xl': '52%' }}
@@ -202,7 +205,7 @@ export const Inspire = (props: InspireProps) => {
             pt={{ base: '3%', '2xl': '208px' }}
             direction="column"
             // bg="cyan"
-            marginLeft={{'2xl': '17%'}}
+            marginLeft={{ '2xl': '17%' }}
           >
             <Text
               as={'h2'}
@@ -213,7 +216,7 @@ export const Inspire = (props: InspireProps) => {
               pb="21px"
               alignSelf={{ base: 'center', lg: 'flex-start' }}
             >
-              Inspire-se
+              {bpCatalogItem.t('inspire.inspire')}
             </Text>
 
             <Image
@@ -223,7 +226,7 @@ export const Inspire = (props: InspireProps) => {
               // h="100%"
               // w="100%"
               // objectFit={'cover'}
-              w={{ base: '320px', xs: '100%', sm: '846px' , lg: '980px'}}
+              w={{ base: '320px', xs: '100%', sm: '846px', lg: '980px' }}
               h={{ base: '321px', sm: '562px', lg: '650px' }}
               // objectFit={{ base: 'scale-down', xs: 'cover' }}
             />
@@ -236,48 +239,48 @@ export const Inspire = (props: InspireProps) => {
               // w={{ base: '154px' }}
               // bg="tomato"
             >
-                    <Button
-                      onClick={() => switchTo('prev')}
-                      variant="no-border"
-                      background="gray.300"
-                      color="gray.150"
-                      w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
-                      h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}  
-                      _hover={{
-                        background: 'green.550',
-                        color: 'white.100'
-                      }}
-                    >
-                      {isMobile ? (
-                        <Arrow width="5" height="5" direction="left" />
-                      ) : (
-                        <Arrow width="22" height="30" direction="left" />
-                      )}
-                    </Button>
-                    <Button
-                      onClick={() => switchTo('next')}
-                      variant="no-border"
-                      background="gray.300"
-                      color="gray.150"
-                      w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
-                      h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
-                      _hover={{
-                        background: 'green.550',
-                        color: 'white.100'
-                      }}
-                    >
-                      {isMobile ? (
-                        <Arrow width="5" height="5" direction="right" />
-                      ) : (
-                        <Arrow width="22" height="30" direction="right" />
-                      )}
-                    </Button>
+              <Button
+                onClick={() => switchTo('prev')}
+                variant="no-border"
+                background="gray.300"
+                color="gray.150"
+                w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+                h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+                _hover={{
+                  background: 'green.550',
+                  color: 'white.100'
+                }}
+              >
+                {isMobile ? (
+                  <Arrow width="5" height="5" direction="left" />
+                ) : (
+                  <Arrow width="22" height="30" direction="left" />
+                )}
+              </Button>
+              <Button
+                onClick={() => switchTo('next')}
+                variant="no-border"
+                background="gray.300"
+                color="gray.150"
+                w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+                h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+                _hover={{
+                  background: 'green.550',
+                  color: 'white.100'
+                }}
+              >
+                {isMobile ? (
+                  <Arrow width="5" height="5" direction="right" />
+                ) : (
+                  <Arrow width="22" height="30" direction="right" />
+                )}
+              </Button>
             </Flex>
           </Flex>
         ) : (
           <Box
             mt={{ base: '5%', '2xl': '15%' }}
-            w={{ base: '90%'}}
+            w={{ base: '90%' }}
             maxHeight={'600px'}
             cursor="pointer"
             onClick={() => router.push('/products/bp-berneck/gallery')}
@@ -328,11 +331,13 @@ export const Inspire = (props: InspireProps) => {
                   props.urlVideo && window.open(props.urlVideo, '_blank')
                 }
               >
-              <PlayIcon />
+                <PlayIcon />
               </TextureContentButton>
-            ):(<Box></Box>)}
+            ) : (
+              <Box></Box>
+            )}
 
-            {props.urlEbook ? (   
+            {props.urlEbook ? (
               <TextureContentButton
                 title="Confira o ebook"
                 onClick={() =>
@@ -346,8 +351,9 @@ export const Inspire = (props: InspireProps) => {
                   transform="scaleY(-1)"
                 />
               </TextureContentButton>
-           ):(<Box></Box>)}
-
+            ) : (
+              <Box></Box>
+            )}
           </Flex>
         </Flex>
       </Flex>

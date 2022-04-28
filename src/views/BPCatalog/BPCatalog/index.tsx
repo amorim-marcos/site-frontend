@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import React, { useEffect, useState } from 'react'
 
-import { Box, Container, Grid, GridItem, Flex, Text} from '@chakra-ui/react'
+import { Box, Container, Grid, GridItem, Flex, Text } from '@chakra-ui/react'
 
 import Pagebar from '@components/Pagebar'
 import useMobile from 'hooks/useMobile'
@@ -11,6 +11,7 @@ import { FiltersAccordion } from './FiltersAccordion'
 import { FiltersTabs } from './FiltersTabs'
 import { BP } from './BP'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'react-i18next'
 
 export type Filters = {
   orderBy: string
@@ -154,9 +155,11 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         break
       case 'name':
         filteredBps.sort((a, b) => {
-          return a['name'].normalize("NFD").toLowerCase() > b['name'].normalize("NFD").toLowerCase()
+          return a['name'].normalize('NFD').toLowerCase() >
+            b['name'].normalize('NFD').toLowerCase()
             ? 1
-            : a['name'].normalize("NFD").toLowerCase() < b['name'].normalize("NFD").toLowerCase()
+            : a['name'].normalize('NFD').toLowerCase() <
+              b['name'].normalize('NFD').toLowerCase()
             ? -1
             : 0
         })
@@ -226,8 +229,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
       }
     }
 
-    if(router.query.collection){
-      let queryCollection = router.query.collection
+    if (router.query.collection) {
+      const queryCollection = router.query.collection
       for (const collection of filtersContext.collections) {
         const normalizedTitle = collection.title
           .normalize('NFD')
@@ -235,7 +238,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
           .split(' ')
           .join('-')
           .toLowerCase()
-  
+
         if (
           queryCollection == normalizedTitle &&
           !initialFilters['collections'].includes(collection.code)
@@ -257,152 +260,152 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     }
   }, [router.query])
 
+  const bpCatalog = useTranslation('bpCatalog')
+
   return (
     <>
       <Pagebar
         paths={[
           {
-            title: 'Produtos',
+            title: bpCatalog.t('pagebar.products'),
             url: '/products'
           },
           {
-            title: 'BP BERNECK®',
+            title: bpCatalog.t('pagebar.bpBerneck'),
             url: '/products/bp-berneck'
           },
           {
-            title: 'Catálogo BP',
+            title: bpCatalog.t('pagebar.bpCatalog'),
             url: '/products/bp-berneck/catalog'
           }
         ]}
       />
-    <Box
-      backgroundColor={darkMode ? 'gray.400' : 'white.100'}
-    >
-      <Container
-        backgroundColor={darkMode ? 'gray.400' : 'white.100'}
-        maxW="1536px"
-        paddingInline="0"
-        paddingTop={isMobile ? '0' : '30px'}
-      >
+      <Box backgroundColor={darkMode ? 'gray.400' : 'white.100'}>
         <Container
-          zIndex="30"
-          position={isMobile && displayFilters ? 'absolute' : 'relative'}
-          minW="100%"
-          minH={{ base: '0', md: '50px' }}
-          height={isMobile && displayFilters ? '100%' : 'auto'}
+          backgroundColor={darkMode ? 'gray.400' : 'white.100'}
+          maxW="1536px"
           paddingInline="0"
+          paddingTop={isMobile ? '0' : '30px'}
         >
-          {isMobile ? (
-            <FiltersAccordion
-              darkMode={darkMode}
-              setDarkMode={setDarkMode}
-              displayFilters={displayFilters}
-              setDisplayFilters={setDisplayFilters}
-              changeFilterPanel={changeFilterPanel}
-              currentFilterPanel={currentFilterPanel}
-              appendFilter={appendFilter}
-              removeFilter={removeFilter}
-              setFilters={setFilters}
-              bps={bps}
-              setFilteredBps={setFilteredBps}
-              applyFilters={applyFilters}
-              panels={filtersContext['panels']}
-              colorations={filtersContext['colorations']}
-              collections={filtersContext['collections']}
-              filters={filters}
-              filtersEmpty={filtersEmpty}
-              filteredBpsLength={filteredBps.length}
-              gridSize={gridSize}
-              changeGridSize={changeGridSize}
-            />
-          ) : (
-            <FiltersTabs
-              darkMode={darkMode}
-              setDarkMode={setDarkMode}
-              displayFilters={displayFilters}
-              setDisplayFilters={setDisplayFilters}
-              changeFilterPanel={changeFilterPanel}
-              currentFilterPanel={currentFilterPanel}
-              appendFilter={appendFilter}
-              removeFilter={removeFilter}
-              setFilters={setFilters}
-              bps={bps}
-              setFilteredBps={setFilteredBps}
-              applyFilters={applyFilters}
-              panels={filtersContext['panels']}
-              colorations={filtersContext['colorations']}
-              collections={filtersContext['collections']}
-              filters={filters}
-              filtersEmpty={filtersEmpty}
-              filteredBpsLength={filteredBps.length}
-              gridSize={gridSize}
-              changeGridSize={changeGridSize}
-            />
-          )}
+          <Container
+            zIndex="30"
+            position={isMobile && displayFilters ? 'absolute' : 'relative'}
+            minW="100%"
+            minH={{ base: '0', md: '50px' }}
+            height={isMobile && displayFilters ? '100%' : 'auto'}
+            paddingInline="0"
+          >
+            {isMobile ? (
+              <FiltersAccordion
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
+                displayFilters={displayFilters}
+                setDisplayFilters={setDisplayFilters}
+                changeFilterPanel={changeFilterPanel}
+                currentFilterPanel={currentFilterPanel}
+                appendFilter={appendFilter}
+                removeFilter={removeFilter}
+                setFilters={setFilters}
+                bps={bps}
+                setFilteredBps={setFilteredBps}
+                applyFilters={applyFilters}
+                panels={filtersContext['panels']}
+                colorations={filtersContext['colorations']}
+                collections={filtersContext['collections']}
+                filters={filters}
+                filtersEmpty={filtersEmpty}
+                filteredBpsLength={filteredBps.length}
+                gridSize={gridSize}
+                changeGridSize={changeGridSize}
+              />
+            ) : (
+              <FiltersTabs
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
+                displayFilters={displayFilters}
+                setDisplayFilters={setDisplayFilters}
+                changeFilterPanel={changeFilterPanel}
+                currentFilterPanel={currentFilterPanel}
+                appendFilter={appendFilter}
+                removeFilter={removeFilter}
+                setFilters={setFilters}
+                bps={bps}
+                setFilteredBps={setFilteredBps}
+                applyFilters={applyFilters}
+                panels={filtersContext['panels']}
+                colorations={filtersContext['colorations']}
+                collections={filtersContext['collections']}
+                filters={filters}
+                filtersEmpty={filtersEmpty}
+                filteredBpsLength={filteredBps.length}
+                gridSize={gridSize}
+                changeGridSize={changeGridSize}
+              />
+            )}
+          </Container>
+          <Container
+            display={isMobile && displayFilters ? 'none' : 'normal'}
+            minW="100%"
+            mb="100px"
+          >
+            {filteredBps && filteredBps.length > 0 ? (
+              <Grid
+                mt={
+                  displayFilters
+                    ? { base: '40px', md: '100px' }
+                    : { base: '5px', md: '15px' }
+                }
+                templateRows="repeat(auto, 1fr)"
+                templateColumns={gridColumnsMode}
+                gridGap={{ base: '10px', xl: '30px' }}
+              >
+                {filteredBps.map((bp) => (
+                  <GridItem key={bp.id}>
+                    <BP
+                      id={bp.id}
+                      name={bp.name}
+                      product_texture={bp.product_texture}
+                      pattern_image={bp.pattern_image}
+                      url_code={bp.url_code}
+                      href={`/products/bp-berneck/catalog/${bp.url_code}`}
+                      color={darkMode ? 'white.100' : 'gray.400'}
+                    />
+                  </GridItem>
+                ))}
+              </Grid>
+            ) : (
+              <Flex
+                minH="600px"
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                alignContent="center"
+              >
+                {filters['nameSearched'] == '' ? (
+                  <Text
+                    alignSelf="center"
+                    color="gray.300"
+                    fontSize={{ base: '18px', md: '24px' }}
+                    textAlign="center"
+                  >
+                    {bpCatalog.t('filters.notFound')}
+                  </Text>
+                ) : (
+                  <Text
+                    alignSelf="center"
+                    color="gray.300"
+                    fontSize={{ base: '18px', md: '24px' }}
+                    textAlign="center"
+                  >
+                    {bpCatalog.t('filters.notFoundFor')}{' '}
+                    <i>{`"${filters['nameSearched']}"`}</i>
+                  </Text>
+                )}
+              </Flex>
+            )}
+          </Container>
         </Container>
-        <Container
-          display={isMobile && displayFilters ? 'none' : 'normal'}
-          minW="100%"
-          mb="100px"
-        >
-          {filteredBps && filteredBps.length > 0 ? (
-            <Grid
-              mt={
-                displayFilters
-                  ? { base: '40px', md: '100px' }
-                  : { base: '5px', md: '15px' }
-              }
-              templateRows="repeat(auto, 1fr)"
-              templateColumns={gridColumnsMode}
-              gridGap={{ base: '10px', xl: '30px' }}
-            >
-              {filteredBps.map((bp) => (
-                <GridItem key={bp.id}>
-                  <BP
-                    id={bp.id}
-                    name={bp.name}
-                    product_texture={bp.product_texture}
-                    pattern_image={bp.pattern_image}
-                    url_code={bp.url_code}
-                    href={`/products/bp-berneck/catalog/${bp.url_code}`}
-                    color={darkMode ? 'white.100' : 'gray.400'}
-                  />
-                </GridItem>
-              ))}
-            </Grid>
-          ) : (
-            <Flex
-              minH="600px"
-              flexDirection="row"
-              justifyContent="center"
-              alignItems="center"
-              alignContent="center"
-            >
-              {filters['nameSearched'] == '' ? (
-                <Text
-                  alignSelf="center"
-                  color="gray.300"
-                  fontSize={{ base: '18px', md: '24px' }}
-                  textAlign="center"
-                >
-                  Os filtros aplicados não retornaram nenhum resultado.
-                </Text>
-              ) : (
-                <Text
-                  alignSelf="center"
-                  color="gray.300"
-                  fontSize={{ base: '18px', md: '24px' }}
-                  textAlign="center"
-                >
-                  Nenhum resultado encontrado para{' '}
-                  <i>"{filters['nameSearched']}"</i>
-                </Text>
-              )}
-            </Flex>
-          )}
-        </Container>
-      </Container>
-    </Box>
+      </Box>
     </>
   )
 }
