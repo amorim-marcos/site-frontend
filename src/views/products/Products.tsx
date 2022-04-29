@@ -14,7 +14,6 @@ export const Products = () => {
   const router = useRouter()
 
   const productsViewTranslation = useTranslation('productsView')
-  const productsTranslation = useTranslation('products')
 
   return (
     <Box>
@@ -109,9 +108,9 @@ export const Products = () => {
         >
           <GridItem colSpan={{ base: '1', sm: '2', lg: '2', xl: '2' } as any}>
             <BannerProducts
-              title={productsTranslation.t('bpBerneck.title')}
+              title={productsViewTranslation.t('bpBerneck.title')}
               titleColor="white"
-              subtitle={productsTranslation.t('bpBerneck.description')}
+              subtitle={productsViewTranslation.t('bpBerneck.description')}
               subtitleColor="brown.200"
               bgColor="brown.300"
               srcImg="/img/produto_bp_banner.png"
@@ -125,9 +124,9 @@ export const Products = () => {
 
           <GridItem>
             <BannerProducts
-              title={productsTranslation.t('mdpBerneck.title')}
+              title={productsViewTranslation.t('mdpBerneck.title')}
               titleColor="gray.400"
-              subtitle={productsTranslation.t('mdpBerneck.description')}
+              subtitle={productsViewTranslation.t('mdpBerneck.description')}
               subtitleColor="gray.400"
               bgColor="brown.200"
               srcImg="/img/mdp.png"
@@ -138,9 +137,9 @@ export const Products = () => {
 
           <GridItem>
             <BannerProducts
-              title={productsTranslation.t('mdfBerneck.title')}
+              title={productsViewTranslation.t('mdfBerneck.title')}
               titleColor="gray.400"
-              subtitle={productsTranslation.t('mdfBerneck.description')}
+              subtitle={productsViewTranslation.t('mdfBerneck.description')}
               subtitleColor="gray.400"
               bgColor="brown.200"
               srcImg="/img/mdf.png"
@@ -151,9 +150,9 @@ export const Products = () => {
 
           <GridItem>
             <BannerProducts
-              title={productsTranslation.t('hdfBerneck.title')}
+              title={productsViewTranslation.t('hdfBerneck.title')}
               titleColor="gray.400"
-              subtitle={productsTranslation.t('hdfBerneck.description')}
+              subtitle={productsViewTranslation.t('hdfBerneck.description')}
               subtitleColor="gray.400"
               bgColor="brown.200"
               srcImg="/img/hdf.png"
@@ -164,9 +163,9 @@ export const Products = () => {
 
           <GridItem>
             <BannerProducts
-              title={productsTranslation.t('plusBerneck.title')}
+              title={productsViewTranslation.t('plusBerneck.title')}
               titleColor="white"
-              subtitle={productsTranslation.t('plusBerneck.description')}
+              subtitle={productsViewTranslation.t('plusBerneck.description')}
               subtitleColor="brown.350"
               bgColor="green.400"
               srcImg="/img/plus.png"
@@ -177,9 +176,9 @@ export const Products = () => {
 
           <GridItem colSpan={{ base: '1', sm: '1', lg: '2', xl: '2' } as any}>
             <BannerProducts
-              title={productsTranslation.t('berneckPinus.title')}
+              title={productsViewTranslation.t('berneckPinus.title')}
               titleColor="green.900"
-              subtitle={productsTranslation.t('berneckPinus.description')}
+              subtitle={productsViewTranslation.t('berneckPinus.description')}
               subtitleColor="gray.400"
               bgColor="green.300"
               srcImg="/img/pinus.png"
@@ -191,9 +190,9 @@ export const Products = () => {
 
           <GridItem>
             <BannerProducts
-              title={productsTranslation.t('berneckTeca.title')}
+              title={productsViewTranslation.t('berneckTeca.title')}
               titleColor="gray.400"
-              subtitle={productsTranslation.t('berneckTeca.description')}
+              subtitle={productsViewTranslation.t('berneckTeca.description')}
               subtitleColor="gray.400"
               bgColor="brown.250"
               srcImg="/img/teca.png"

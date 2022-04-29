@@ -1,4 +1,5 @@
 import Pagebar from '@components/Pagebar'
+import { useTranslation } from 'react-i18next'
 import Product from '../../components/Product'
 
 export interface ProductProps {
@@ -22,21 +23,23 @@ export type HdfBerneckViewProps = {
 }
 
 export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
+  const productsViewLabels = useTranslation('productsView')
+
   return (
     <div>
       <Pagebar
         paths={[
           {
-            title: 'Produtos',
+            title: productsViewLabels.t('pagebar.products'),
             url: '/products'
           },
           {
-            title: 'HDF BERNECK®',
+            title: productsViewLabels.t('hdfBerneck.title'),
             url: 'products/hdf-berneck'
           }
         ]}
       />
-    
+
       <Product
         imgSrc="/img/hdf.png"
         grafismProps={{
@@ -56,7 +59,7 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
           sm: '-180px',
           md: '-240px',
           lg: '-300px',
-          xl: '-360px',
+          xl: '-360px'
           // '2xl': '-0px'
         }}
         secondaryBackground="#F3E9DA"
@@ -88,7 +91,7 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
 
       <Product
         imgSrc="/img/hdf_plus.png"
-        imgWidth={{ base: '80vw', sm: '60vw' , md: '70vw' }}
+        imgWidth={{ base: '80vw', sm: '60vw', md: '70vw' }}
         grafismProps={{
           grafism: 'type2'
         }}
@@ -135,10 +138,11 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
           productWithBP: {
             btnColor: 'green.400',
             btnHoverColor: '#96BC87',
-            title: 'HDF PLUS BERNECK® com BP',
-            description:
-              'Inove nos projetos com os acabamentos BP em HDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
-            btnText: 'Conheça todos os padrões BP BERNECK em HDF PLUS',
+            title: productsViewLabels.t('hdfBerneck.productWithBP.title'),
+            description: productsViewLabels.t(
+              'hdfBerneck.productWithBP.description'
+            ),
+            btnText: productsViewLabels.t('hdfBerneck.productWithBP.button'),
             imgSrc: '/img/hdf_plus_bp.png',
             href: '/products/bp-berneck/catalog?panel=HDF Plus'
           }

@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import Pagebar from '@components/Pagebar'
+import { useTranslation } from 'react-i18next'
 import Product from '../../components/Product'
 import { ProductProps } from './hdf-berneck'
 
@@ -9,12 +10,14 @@ export type MdpBerneckViewProps = {
 }
 
 export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
+  const productsViewLabels = useTranslation('productsView')
+
   return (
     <Box>
       <Pagebar
         paths={[
           {
-            title: 'Produtos',
+            title: productsViewLabels.t('pagebar.products'),
             url: '/products'
           },
           {
@@ -61,12 +64,13 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
             btnColor: '#D8C39F',
             btnHoverColor: '#D0B588',
             backgroundColor: '#FBF6F0',
-            btnText: 'Conheça todos os padrões BP BERNECK em MDP',
             imgSrc: '/img/mdp_bp.png',
             type: 'centralizedBtn',
-            description:
-              'A combinação das qualidades do MDP com a variedade de acabamentos do BP fornecem inúmeras possibilidades de utilização. Encontre a melhor para a sua aplicação.',
-            title: 'MDP BERNECK® com BP',
+            title: productsViewLabels.t('mdpBerneck.productWithBP.title'),
+            description: productsViewLabels.t(
+              'mdpBerneck.productWithBP.description'
+            ),
+            btnText: productsViewLabels.t('mdpBerneck.productWithBP.button'),
             href: '/products/bp-berneck/catalog?panel=MDP'
           }
         }}
@@ -77,7 +81,7 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
           grafism: 'type2'
         }}
         imgSrc="/img/mdp_plus.png"
-        imgWidth={{ base: '80vw', sm: '35vw' , md: '45vw' }}
+        imgWidth={{ base: '80vw', sm: '35vw', md: '45vw' }}
         imgMaxWidth="1017px"
         imgMarginTop={{
           base: '-10%',
@@ -109,10 +113,13 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
           productWithBP: {
             btnColor: 'green.400',
             btnHoverColor: '#96BC87',
-            title: 'MDP PLUS BERNECK® com BP',
-            description:
-              'Inove nos projetos com os acabamentos BP em MDP PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
-            btnText: 'Conheça todos os padrões BP BERNECK em MDP PLUS',
+            title: productsViewLabels.t('mdpBerneck.productWithBpPlus.title'),
+            description: productsViewLabels.t(
+              'mdpBerneck.productWithBpPlus.description'
+            ),
+            btnText: productsViewLabels.t(
+              'mdpBerneck.productWithBpPlus.button'
+            ),
             imgSrc: '/img/mdp_plus_bp.png',
             href: '/products/bp-berneck/catalog?panel=MDP Plus'
           }

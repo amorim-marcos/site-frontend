@@ -24,6 +24,7 @@ import BannerCollections from '@components/BannerCollections'
 import type { Gallery } from 'types/data'
 import { useState, useEffect } from 'react'
 import { BPPageBanner } from 'pages/products/bp-berneck'
+import { useTranslation } from 'react-i18next'
 
 export type BpBerneckViewProps = {
   galleries?: Gallery[]
@@ -33,23 +34,22 @@ export type BpBerneckViewProps = {
 export default function BpBerneckView(props: BpBerneckViewProps) {
   const { isMobile } = useMobile(768)
   const router = useRouter()
+  const productsViewLabels = useTranslation('productsView')
 
   return (
     <Box>
       <Pagebar
         paths={[
           {
-            title: 'BP BERNECK®',
+            title: productsViewLabels.t('bpBerneck.title'),
             url: 'bp-berneck'
           }
         ]}
       />
 
-    {/* INICIO BANNER CAROUSEL */}
-    <Box
-      bg="brown.300"
-    >
-      <Flex
+      {/* INICIO BANNER CAROUSEL */}
+      <Box bg="brown.300">
+        <Flex
           maxWidth="1536px"
           marginX="auto"
           position="relative"
@@ -58,299 +58,324 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           overflowX="hidden"
           // bg="blue"
         >
-        <CarrouselBP banners={props.banners} />
-      </Flex>
-    </Box>
-    {/* FIM BANNER CAROUSEL */}
+          <CarrouselBP banners={props.banners} />
+        </Flex>
+      </Box>
+      {/* FIM BANNER CAROUSEL */}
 
-    {/* INICIO BANNER COLECAO */}
-    <Flex
-      maxWidth="1536px"
-      marginX="auto"
-      position="relative"
-      zIndex="base"
-      overflowY="hidden"
-      overflowX="hidden"
-      // bg="red"
-    >
-      <Grid
-        h={{ base: '700px', sm: '500px', lg: '400px', xl: '500px' }}
-        w={{ base: '100%', xl: '100%' }}
-        margin={{ base: '5% 0', sm: '3% 1%', lg: '3% 3%', xl: '3% 2%' }}
-        templateRows={{
-          base: 'repeat(4, 1fr)',
-          sm: 'repeat(3, 1fr)',
-          lg: 'repeat(2, 1fr)',
-          xl: 'repeat(2, 1fr)'
-        }}
-        templateColumns={{
-          base: 'repeat(1, 1fr)',
-          sm: 'repeat(2, 1fr)',
-          lg: 'repeat(3, 1fr)',
-          xl: 'repeat(3, 1fr)'
-        }}
-        gap={{ base: '5', sm: '4', lg: '5', xl: '5' }}
+      {/* INICIO BANNER COLECAO */}
+      <Flex
+        maxWidth="1536px"
+        marginX="auto"
+        position="relative"
+        zIndex="base"
+        overflowY="hidden"
+        overflowX="hidden"
+        // bg="red"
       >
-        <GridItem
-          colSpan={{ base: '1', sm: '2', lg: '2', xl: '2' } as any}
-          rowSpan={{ base: '2', sm: '2', lg: '2', xl: '2' } as any}
+        <Grid
+          h={{ base: '700px', sm: '500px', lg: '400px', xl: '500px' }}
+          w={{ base: '100%', xl: '100%' }}
+          margin={{ base: '5% 0', sm: '3% 1%', lg: '3% 3%', xl: '3% 2%' }}
+          templateRows={{
+            base: 'repeat(4, 1fr)',
+            sm: 'repeat(3, 1fr)',
+            lg: 'repeat(2, 1fr)',
+            xl: 'repeat(2, 1fr)'
+          }}
+          templateColumns={{
+            base: 'repeat(1, 1fr)',
+            sm: 'repeat(2, 1fr)',
+            lg: 'repeat(3, 1fr)',
+            xl: 'repeat(3, 1fr)'
+          }}
+          gap={{ base: '5', sm: '4', lg: '5', xl: '5' }}
         >
-          <BannerProducts
-            title="Conheça os padrões BP BERNECK®"
-            titleColor="white"
-            subtitle="Laminado Melamínico Decorativo"
-            subtitleColor="brown.200"
-            bgColor="brown.300"
-            srcImg="../img/BPS.png"
-            onClick={() => router.push('/products/bp-berneck/catalog')}
-            sizeType="rectangle-horizontal"
-          />
-        </GridItem>
-        <GridItem
-          rowSpan={1}
-          colSpan={{ base: '1', sm: '1', lg: '1', xl: '1' } as any}
-          bg="papayawhip"
-        >
-          <BannerCollections
-            onClick={() =>
-              (window.location.href = `/products/bp-berneck/catalog?collection=nomade`)
-            }
-            title="Conheça"
-            titleColor="brown.300"
-            imgSrc="../img/banner_nomade.png"
-            ArrowIconColor="#74675D"
-            bgColor = "brown.100"
-          />
-        </GridItem>
-        <GridItem
-          rowSpan={1}
-          colSpan={{ base: '1', sm: '1', lg: '1', xl: '1' } as any}
-          // bg="blue"
-        >
-          <BannerCollections
-            onClick={() =>
-              (window.location.href = `/products/bp-berneck/catalog?collection=origens`)
-            }
-            title="Conheça"
-            titleColor="green.700"
-            imgSrc="../img/banner_origens.jpg"
-            ArrowIconColor="#0A6C3B"
-            bgColor = "rgb(231, 231, 231)"
-          />
-        </GridItem>
-      </Grid>
-    </Flex>
+          <GridItem
+            colSpan={{ base: '1', sm: '2', lg: '2', xl: '2' } as any}
+            rowSpan={{ base: '2', sm: '2', lg: '2', xl: '2' } as any}
+          >
+            <BannerProducts
+              title={productsViewLabels.t('bpBerneck.bannerProducts.title')}
+              titleColor="white"
+              subtitle={productsViewLabels.t(
+                'bpBerneck.bannerProducts.subTitle'
+              )}
+              subtitleColor="brown.200"
+              bgColor="brown.300"
+              srcImg="../img/BPS.png"
+              onClick={() => router.push('/products/bp-berneck/catalog')}
+              sizeType="rectangle-horizontal"
+            />
+          </GridItem>
+          <GridItem
+            rowSpan={1}
+            colSpan={{ base: '1', sm: '1', lg: '1', xl: '1' } as any}
+            bg="papayawhip"
+          >
+            <BannerCollections
+              onClick={() =>
+                (window.location.href = `/products/bp-berneck/catalog?collection=nomade`)
+              }
+              title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
+              titleColor="brown.300"
+              imgSrc="../img/banner_nomade.png"
+              ArrowIconColor="#74675D"
+              bgColor="brown.100"
+            />
+          </GridItem>
+          <GridItem
+            rowSpan={1}
+            colSpan={{ base: '1', sm: '1', lg: '1', xl: '1' } as any}
+            // bg="blue"
+          >
+            <BannerCollections
+              onClick={() =>
+                (window.location.href = `/products/bp-berneck/catalog?collection=origens`)
+              }
+              title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
+              titleColor="green.700"
+              imgSrc="../img/banner_origens.jpg"
+              ArrowIconColor="#0A6C3B"
+              bgColor="rgb(231, 231, 231)"
+            />
+          </GridItem>
+        </Grid>
+      </Flex>
       {/* FIM BANNER COLECAO */}
-
-
 
       {/* INICIO Galeria de Ambientes */}
       {props.galleries && props.galleries.length > 0 && (
-
-    <Box
-      bg="green.1000"
-    >
-      <Flex
-        flexDirection={'column'}
-        bg="green.1000"
-        maxWidth={'1536px'}
-        marginX="auto"
-        paddingTop={'5%'}
-      >
-        <Flex
-          paddingX={'5%'}
-          w="100%"
-          alignItems={'center'}
-          flexDirection={{ base: 'column', xs: 'row' }}
-          justifyContent={'space-between'}
-        >
-          <CompletedTitle
-            titleString="Inspire-se"
-            textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-            alignSelf={{
-              base: 'flex-start',
-              sm: 'flex-start',
-              lg: 'flex-start',
-              xl: 'flex-start'
-            }}
-          />
-
+        <Box bg="green.1000">
           <Flex
-            marginY={{ base: '30px', xs: '0' }}
-            cursor={'pointer'}
-            _hover={{ opacity: '0.7' }}
-            alignItems={'center'}
-            onClick={() => router.push('/products/bp-berneck/gallery')}
+            flexDirection={'column'}
+            bg="green.1000"
+            maxWidth={'1536px'}
+            marginX="auto"
+            paddingTop={'5%'}
           >
-            <Flex wrap={'nowrap'} direction={'column'} alignItems={'flex-end'}>
-              <Text
-                as="h4"
-                variant={'h4' as any}
-                textAlign={'right'}
-                fontWeight={'medium'}
-              >
-                Acesse a nossa
-              </Text>
-
-              <Text
-                as="h4"
-                whiteSpace={'nowrap'}
-                variant={'h4' as any}
-                textAlign={'right'}
-                fontWeight="bold"
-              >
-                Galeria de ambientes
-              </Text>
-            </Flex>
             <Flex
-              p={{ base: '5px', xl: '10px' }}
-              alignItems={'flex-end'}
-              direction={'column'}
+              paddingX={'5%'}
+              w="100%"
+              alignItems={'center'}
+              flexDirection={{ base: 'column', xs: 'row' }}
+              justifyContent={'space-between'}
             >
-              <Arrow
-                width={{ base: '20px', md: '40px', lg: '32px' }}
-                color="green.700"
-              />
-            </Flex>
-          </Flex>
-        </Flex>
-
-        {props.galleries && props.galleries.length > 0 && (
-          <CarouselMultiElements numberOfEvidenceElements={isMobile ? 1 : 4}>
-            {props.galleries?.map((i) => {
-              return (
-                <Box
-                  key={i.id}
-                  w="100%"
-                  h={{
-                    base: '100vw',
-                    md: '325px',
-                    lg: '406px',
-                    xl: '488px',
-                    '2xl': '610px'
-                  }}
-                  onClick={() =>
-                    router.push(
-                      `/products/bp-berneck/gallery?ambients=${i.ambientType.code}`
-                    )
-                  }
-                >
-                  <BannerGallery
-                    title={i.title}
-                    bgColor={i.bgColor}
-                    backgroundImage={i.backgroundImage}
-                  />
-                </Box>
-              )
-            })}
-          </CarouselMultiElements>
-        )}
-      </Flex>
-      </Box>
-      )}
- 
-      {/* FIM Galeria de Ambientes */}
-
-
-
-    {/* INICIO banners */}
-    <Flex
-      justifyContent={{ base: 'center', '2xl': 'center' }}
-    >
-      
-      <Flex
-        maxWidth={'1536px'}
-        marginX="auto"
-        bg="white.100"
-        margin={{ base: '5% 0', sm: '3% 1%', lg: '3% 3%', xl: '3% 2%' , '2xl': '5% 0 5% 0' }}
-        justifyContent={{ base: 'space-between', '2xl': 'center' }}
-        gap={{ base: '2%', sm: '3%', lg: '3%', xl: '3%' }}
-        flexDirection={{ base: 'column', sm: 'row' }}
-        // bg="violet"
-        flex="1"
-            
-      >
-        {[
-          {
-            srcImg: '/assets/imgs/pagina_capa_bp/pack_padroes_bp.png',
-            id: 1,
-            title: 'Pack de Padrões BP BERNECK',
-            anchorId: 'pack-bp-downloads',
-            subtTitle: 'FAÇA O DOWNLOAD',
-            subTitleColor: 'gray.400'
-          },
-          {
-            srcImg: '/assets/imgs/pagina_capa_bp/revista_inspirare.png',
-            id: 2,
-            title: 'Revista Inspirare BNK',
-            anchorId: 'revista-inspirare-bnk',
-            subtTitle: 'CONHEÇA MAIS',
-            subTitleColor: 'white.100'
-          },
-          {
-            srcImg: '/assets/imgs/pagina_capa_bp/materiais_suporte.png',
-            id: 3,
-            title: 'Materiais de Suporte',
-            anchorId: 'materiais-de-suporte',
-            subtTitle: 'CONHEÇA MAIS',
-            subTitleColor: 'white.100'
-          }
-        ].map((i) => {
-          return (
-            <Flex
-              onClick={() =>
-                (window.location.href = `/canal-bnk/downloads/#${i.anchorId}`)
-              }
-              w={{ base: '100%', md: '30%' }}
-              h={{
-                base: '50vw',
-                sm: '50vw',
-                md: '225px',
-                lg: '282px',
-                xl: '338px',
-                '2xl': '423px'
-              }}
-              key={i.id}
-              flexDirection={'column'}
-              justifyContent={'flex-end'}
-              padding="2%"
-              background={`url(${i.srcImg})`}
-              backgroundSize={'cover'}
-              cursor={'pointer'}
-              position={'relative'}
-              marginY={{ base: '5%', md: '0' }}
-            >
-              <Text
-                zIndex={'docked'}
-                color={i.subTitleColor}
-                variant={'h5' as any}
-                fontWeight={'normal'}
-              >
-                {i.subtTitle}
-              </Text>
-              <Text zIndex={'docked'} as="h4" variant={'h4' as any} fontWeight={'bold'}>
-                {i.title}
-              </Text>
-              <Box
-                position={'absolute'}
-                top="0"
-                left="0"
-                w="100%"
-                h="100%"
-                transition={'0.5s'}
-                zIndex={'base'}
-                _hover={{
-                  bg: 'linear-gradient(180deg, rgba(255,255,255,0) 48%, rgba(172,204,159,0.7959558823529411) 100%)'
+              <CompletedTitle
+                titleString={productsViewLabels.t(
+                  'bpBerneck.inspireSection.title'
+                )}
+                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+                alignSelf={{
+                  base: 'flex-start',
+                  sm: 'flex-start',
+                  lg: 'flex-start',
+                  xl: 'flex-start'
                 }}
               />
+
+              <Flex
+                marginY={{ base: '30px', xs: '0' }}
+                cursor={'pointer'}
+                _hover={{ opacity: '0.7' }}
+                alignItems={'center'}
+                onClick={() => router.push('/products/bp-berneck/gallery')}
+              >
+                <Flex
+                  wrap={'nowrap'}
+                  direction={'column'}
+                  alignItems={'flex-end'}
+                >
+                  <Text
+                    as="h4"
+                    variant={'h4' as any}
+                    textAlign={'right'}
+                    fontWeight={'medium'}
+                  >
+                    {productsViewLabels.t(
+                      'bpBerneck.inspireSection.accessOurs'
+                    )}
+                  </Text>
+
+                  <Text
+                    as="h4"
+                    whiteSpace={'nowrap'}
+                    variant={'h4' as any}
+                    textAlign={'right'}
+                    fontWeight="bold"
+                  >
+                    {' '}
+                    {productsViewLabels.t(
+                      'bpBerneck.inspireSection.envGallery'
+                    )}
+                  </Text>
+                </Flex>
+                <Flex
+                  p={{ base: '5px', xl: '10px' }}
+                  alignItems={'flex-end'}
+                  direction={'column'}
+                >
+                  <Arrow
+                    width={{ base: '20px', md: '40px', lg: '32px' }}
+                    color="green.700"
+                  />
+                </Flex>
+              </Flex>
             </Flex>
-          )
-        })}
+
+            {props.galleries && props.galleries.length > 0 && (
+              <CarouselMultiElements
+                numberOfEvidenceElements={isMobile ? 1 : 4}
+              >
+                {props.galleries?.map((i) => {
+                  return (
+                    <Box
+                      key={i.id}
+                      w="100%"
+                      h={{
+                        base: '100vw',
+                        md: '325px',
+                        lg: '406px',
+                        xl: '488px',
+                        '2xl': '610px'
+                      }}
+                      onClick={() =>
+                        router.push(
+                          `/products/bp-berneck/gallery?ambients=${i.ambientType.code}`
+                        )
+                      }
+                    >
+                      <BannerGallery
+                        title={i.title}
+                        bgColor={i.bgColor}
+                        backgroundImage={i.backgroundImage}
+                      />
+                    </Box>
+                  )
+                })}
+              </CarouselMultiElements>
+            )}
+          </Flex>
+        </Box>
+      )}
+
+      {/* FIM Galeria de Ambientes */}
+
+      {/* INICIO banners */}
+      <Flex justifyContent={{ base: 'center', '2xl': 'center' }}>
+        <Flex
+          maxWidth={'1536px'}
+          marginX="auto"
+          bg="white.100"
+          margin={{
+            base: '5% 0',
+            sm: '3% 1%',
+            lg: '3% 3%',
+            xl: '3% 2%',
+            '2xl': '5% 0 5% 0'
+          }}
+          justifyContent={{ base: 'space-between', '2xl': 'center' }}
+          gap={{ base: '2%', sm: '3%', lg: '3%', xl: '3%' }}
+          flexDirection={{ base: 'column', sm: 'row' }}
+          // bg="violet"
+          flex="1"
+        >
+          {[
+            {
+              srcImg: '/assets/imgs/pagina_capa_bp/pack_padroes_bp.png',
+              id: 1,
+              title: productsViewLabels.t(
+                'bpBerneck.linkBanners.packPatterns.title'
+              ),
+              subtTitle: productsViewLabels.t(
+                'bpBerneck.linkBanners.packPatterns.subtitle'
+              ),
+              anchorId: 'pack-bp-downloads',
+              subTitleColor: 'gray.400'
+            },
+            {
+              srcImg: '/assets/imgs/pagina_capa_bp/revista_inspirare.png',
+              id: 2,
+              title: productsViewLabels.t(
+                'bpBerneck.linkBanners.inspireMagazine.title'
+              ),
+              subtTitle: productsViewLabels.t(
+                'bpBerneck.linkBanners.inspireMagazine.subtitle'
+              ),
+              anchorId: 'revista-inspirare-bnk',
+              subTitleColor: 'white.100'
+            },
+            {
+              srcImg: '/assets/imgs/pagina_capa_bp/materiais_suporte.png',
+              id: 3,
+              title: productsViewLabels.t(
+                'bpBerneck.linkBanners.supportMaterials.title'
+              ),
+              subtTitle: productsViewLabels.t(
+                'bpBerneck.linkBanners.supportMaterials.subtitle'
+              ),
+              anchorId: 'materiais-de-suporte',
+              subTitleColor: 'white.100'
+            }
+          ].map((i) => {
+            return (
+              <Flex
+                onClick={() =>
+                  (window.location.href = `/canal-bnk/downloads/#${i.anchorId}`)
+                }
+                w={{ base: '100%', md: '30%' }}
+                h={{
+                  base: '50vw',
+                  sm: '50vw',
+                  md: '225px',
+                  lg: '282px',
+                  xl: '338px',
+                  '2xl': '423px'
+                }}
+                key={i.id}
+                flexDirection={'column'}
+                justifyContent={'flex-end'}
+                padding="2%"
+                background={`url(${i.srcImg})`}
+                backgroundSize={'cover'}
+                cursor={'pointer'}
+                position={'relative'}
+                marginY={{ base: '5%', md: '0' }}
+              >
+                <Text
+                  zIndex={'docked'}
+                  color={i.subTitleColor}
+                  variant={'h5' as any}
+                  fontWeight={'normal'}
+                >
+                  {i.subtTitle}
+                </Text>
+                <Text
+                  zIndex={'docked'}
+                  as="h4"
+                  variant={'h4' as any}
+                  fontWeight={'bold'}
+                >
+                  {i.title}
+                </Text>
+                <Box
+                  position={'absolute'}
+                  top="0"
+                  left="0"
+                  w="100%"
+                  h="100%"
+                  transition={'0.5s'}
+                  zIndex={'base'}
+                  _hover={{
+                    bg: 'linear-gradient(180deg, rgba(255,255,255,0) 48%, rgba(172,204,159,0.7959558823529411) 100%)'
+                  }}
+                />
+              </Flex>
+            )
+          })}
+        </Flex>
       </Flex>
-    </Flex>
-  {/* FIM banners */}
-
-
+      {/* FIM banners */}
     </Box>
   )
 }
@@ -379,7 +404,7 @@ const CarrouselBP = ({ banners }: CarrouselBPProps) => {
   const [runningNext, setRunningNext] = useState(false)
 
   function next() {
-    if(!runningNext){
+    if (!runningNext) {
       setRunningNext(true)
       setImageVisibility(false)
       setTimeout(() => {
@@ -415,10 +440,12 @@ const CarrouselBP = ({ banners }: CarrouselBPProps) => {
       // }}
       // bg="green.100"
     >
-      <Link href={(banners[currentBanner].link) ? banners[currentBanner].link : "#"}>
-        <Flex 
-          // w="100%" 
-          // h="100%"
+      <Link
+        href={banners[currentBanner].link ? banners[currentBanner].link : '#'}
+      >
+        <Flex
+        // w="100%"
+        // h="100%"
         >
           <Image
             opacity={imageVisibility ? '1' : '0'}
