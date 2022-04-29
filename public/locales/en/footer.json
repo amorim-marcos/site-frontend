@@ -1,0 +1,42 @@
+{
+    "weAreBerneckColumn": {
+        "title": "other_lang_SOMOS BERNECK",
+        "whoWeAre": "other_lang_QUEM SOMOS",
+        "ourTrajectory": "other_lang_NOSSA TRAJETÓRIA",
+        "whereWeAre": "other_lang_ONDE ESTAMOS",
+        "certifications": "other_lang_CERTIFICAÇÕES"
+    },
+    "ourCommitmentColumn": {
+        "title": "other_lang_NOSSO COMPROMISSO",
+        "environment": "other_lang_CULTIVAMOS O MEIO AMBIENTE",
+        "ourPeople": "other_lang_CULTIVAMOS NOSSA GENTE",
+        "ourValues": "other_lang_CULTIVAMOS NOSSOS VALORES",
+        "report": "other_lang_ESG"
+    },
+    "florestalDivisionColumn": {
+        "title": "other_lang_DIVISÃO FLORESTAL",
+        "forestManagement": "other_lang_MANEJO FLORESTAL",
+        "forestProduction": "other_lang_PRODUÇÃO FLORESTAL",
+        "forestSuppliers": "other_lang_FORNECEDOR FLORESTAL",
+        "publicResume": "other_lang_RESUMO PÚBLICO"
+    },
+    "productsColumn":{
+        "title": "other_lang_PRODUTOS",
+        "bpBerneck": "other_lang_BP BERNECK®",
+        "hdfBerneck": "other_lang_HDF BERNECK®",
+        "mdfBerneck": "other_lang_MDF BERNECK®",
+        "mdpBerneck": "other_lang_MDP BERNECK®",
+        "plusBerneck": "other_lang_PLUS BERNECK®",
+        "berneckPinus": "other_lang_BERNECK® PINUS",
+        "berneckTeca": "other_lang_BERNECK® TECA"
+    },
+    "channelBNKColumn": {
+        "title":  "CANAL BNK",
+        "downloads": "other_lang_DOWNLOADS",
+        "speakWithUs": "other_lang_FALE CONOSCO",
+        "workWithUs": "other_lang_TRABALHE CONOSCO",
+        "whereBuy": "other_lang_ONDE COMPRAR"
+    },     
+    "rights": "other_lang_2022 BERNECK. Todos os direitos reservados.",
+    "termsAndPrivacy": "other_lang_Termos de Uso e Política de Privacidade"    
+}

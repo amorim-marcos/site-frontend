@@ -1,0 +1,62 @@
+{
+	"locale": "other_lang_Português",
+	"topMenu": {
+		"speakWithUs": "other_lang_Fale conosco",
+		"workWithUs": "other_lang_Trabalhe conosco",
+		"restrictAccess": "other_lang_Acesso restrito",
+		"whereBuy": "other_lang_Onde comprar"
+	},
+	"menu": {
+		"whoWeAre": {
+			"title": "other_lang_SOMOS BERNECK",
+			"whoWeAre": "other_lang_Quem somos",
+			"ourTrajectory": "other_lang_Nossa Trajetória",
+			"whereWeAre": "other_lang_Onde Estamos",
+			"certifications": "other_lang_Certificações"
+		},
+		"ourCommitment": {
+			"title": "other_lang_NOSSO COMPROMISSO",
+			"environment": "other_lang_Cultivamos o Meio Ambiente",
+			"ourPeople": "other_lang_Cultivamos Nossa Gente",
+			"ourValues": "other_lang_Cultivamos Nossos Valores",
+			"report": "other_lang_ESG"
+		},
+		"florestalDivision": {
+			"title": "other_lang_DIVISÃO FLORESTAL",
+			"forestManagement": "other_lang_Manejo Florestal",
+			"forestProduction": "other_lang_Produção Florestal",
+			"forestSuppliers": "other_lang_Fornecedor Florestal",
+			"publicResume": "other_lang_Resumo Público"
+		},
+		"products": {
+			"title": "other_lang_PRODUTOS",
+			"panels": {
+				"title": "other_lang_Painéis",
+				"bpBerneck": {
+					"title": "other_lang_BP BERNECK®",
+					"bpCatalog": "other_lang_Catálogo BP",
+					"ambientsGallery": "other_lang_Galeria de Ambientes"
+				},
+				"hdf": "other_lang_HDF BERNECK®",
+				"mdf": "other_lang_MDF BERNECK®",
+				"mdp": "other_lang_MDP BERNECK®",
+				"plus": "other_lang_PLUS BERNECK®"
+			},
+			"sawns": {
+				"title": "other_lang_Serrados",
+				"pinus": "other_lang_BERNECK® PINUS",
+				"teca": "other_lang_BERNECK® TECA"
+			}
+		},
+		"channelBNK": {
+			"title": "other_lang_CANAL BNK",
+			"inspiration_channel": "other_lang_Inspiração Sob Medida",
+			"knowledge_channel": "other_lang_Matéria-Prima: Conhecimento",
+			"bernecks_world_channel": "other_lang_Mundo BERNECK",
+			"downloads": "other_lang_Downloads"
+		}
+	},
+	"search": {
+		"placeholder": "other_lang_Digite sua busca"
+	}
+}
