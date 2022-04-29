@@ -1,5 +1,8 @@
 import AppError from '@components/AppError'
 import { useTranslation } from 'react-i18next'
+import { loadTranslations } from 'ni18n'
+import { nameSpaces, ni18nConfig } from '../../ni18n.config'
+import { GetStaticProps } from 'next'
 
 export default function Custom404() {
   const errorPagesLabels = useTranslation('errorPages')
@@ -11,9 +14,6 @@ export default function Custom404() {
   )
 }
 
-import { loadTranslations } from 'ni18n'
-import { nameSpaces, ni18nConfig } from '../../ni18n.config'
-import { GetStaticProps } from 'next'
 export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale
   return {

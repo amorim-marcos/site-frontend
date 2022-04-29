@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { Flex, Box, Text, Image, Button } from '@chakra-ui/react'
+import { useTranslation } from 'react-i18next'
 
 const PostContentSanitize = dynamic(import('./PostContentSanitize'), {
   ssr: false
@@ -17,6 +18,7 @@ export const SectionPosts = (props: {
   }[]
 }) => {
   const router = useRouter()
+  const searchLabels = useTranslation('searchView')
 
   return (
     <Flex
@@ -89,7 +91,7 @@ export const SectionPosts = (props: {
                 bg="green.600"
                 _hover={{ bg: 'green.800' }}
               >
-                Veja mais
+                {searchLabels.t('seeMore')}
               </Button>
             </Flex>
           </Flex>
