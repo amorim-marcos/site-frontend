@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetServerSideProps } from 'next'
+import { loadTranslations } from 'ni18n'
 
 import { strapiClient } from 'services'
 import BPCatalog from 'views/BPCatalog'
+import { nameSpaces, ni18nConfig } from '../../../../../ni18n.config'
 
 export interface BpBerneckProps {
   bps: {
@@ -124,7 +126,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         panels,
         collections,
         colorations
-      }
+      },
+      ...(await loadTranslations(ni18nConfig, ctx.locale, nameSpaces))
     }
   }
 }

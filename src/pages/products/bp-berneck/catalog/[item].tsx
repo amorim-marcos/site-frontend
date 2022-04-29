@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetServerSideProps } from 'next'
+import { loadTranslations } from 'ni18n'
 
 import { strapiClient } from 'services'
 import { BPCatalogItem } from 'views/BPCatalog'
+import { nameSpaces, ni18nConfig } from '../../../../../ni18n.config'
 
 export interface CatalogItemProps {
   url_code: string
@@ -136,7 +138,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       next: {
         name: productFetch.next.complete_name,
         url_code: productFetch.next.url_code
-      }
-    } as CatalogItemProps
+      },
+      ...(await loadTranslations(ni18nConfig, ctx.locale, nameSpaces))
+    }
   }
 }

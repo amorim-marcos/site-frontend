@@ -1,8 +1,10 @@
 import { GetServerSideProps } from 'next'
+import { loadTranslations } from 'ni18n'
 
 import { Post, Category as CategoryProps } from 'types/data/Post'
 
 import CanalBNK from 'views/Canal-BNK'
+import { nameSpaces, ni18nConfig } from '../../../../ni18n.config'
 
 export interface CategoryPageProps {
   category: CategoryProps
@@ -111,7 +113,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       category: currentCategory,
       allCategories,
       posts,
-      patterns_pack_url
+      patterns_pack_url,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     }
   }
 }

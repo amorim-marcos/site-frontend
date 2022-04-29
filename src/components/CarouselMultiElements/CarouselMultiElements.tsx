@@ -1,4 +1,12 @@
-import { Heading, Flex, Box, Text, Center, Button, useMediaQuery } from '@chakra-ui/react'
+import {
+  Heading,
+  Flex,
+  Box,
+  Text,
+  Center,
+  Button,
+  useMediaQuery
+} from '@chakra-ui/react'
 import Arrow from '@components/Arrow'
 import useMobile from 'hooks/useMobile'
 import { useState, useEffect } from 'react'
@@ -95,11 +103,11 @@ export const CarouselMultiElements = ({
           }}
           onClick={back}
         >
-          {
-            isMobile 
-            ? <Arrow width="5" height="5" direction="left" />
-            : <Arrow width="22" height="30" direction="left" />
-          }
+          {isMobile ? (
+            <Arrow width="5" height="5" direction="left" />
+          ) : (
+            <Arrow width="22" height="30" direction="left" />
+          )}
         </Button>
         <Button
           onMouseEnter={() => setHoverBtnControl(true)}
@@ -115,11 +123,11 @@ export const CarouselMultiElements = ({
           }}
           onClick={next}
         >
-          {
-            isMobile 
-            ? <Arrow width="5" height="5" direction="right" />
-            : <Arrow width="22" height="30" direction="right" />
-          }
+          {isMobile ? (
+            <Arrow width="5" height="5" direction="right" />
+          ) : (
+            <Arrow width="22" height="30" direction="right" />
+          )}
         </Button>
       </Flex>
     </Box>

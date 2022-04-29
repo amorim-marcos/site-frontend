@@ -1,5 +1,6 @@
 import { Flex, Text, FlexProps, Image } from '@chakra-ui/react'
 import useMobile from 'hooks/useMobile'
+import { useTranslation } from 'react-i18next'
 
 const cellStyle: FlexProps = {
   w: '16.666667%',
@@ -23,29 +24,42 @@ const cellBodyStyle: FlexProps = {
 }
 export const WhereBuyTable = () => {
   const { isMobile } = useMobile(768)
+  const componentsLabels = useTranslation('components')
   return (
     <Flex w="100%" maxWidth={'1536px'} flexDirection={'column'} marginX="auto">
       <Flex bg="green.400" w="100%">
         <Flex {...cellStyle} w="10%">
-          <Text variant={'body' as any}>PAÍS</Text>
+          <Text variant={'body' as any}>
+            {componentsLabels.t('whereBuyTable.country')}
+          </Text>
         </Flex>
         <Flex w="90%">
           <Flex {...cellStyle} {...(isMobile && { width: '20%' })}>
-            <Text variant={'body' as any}>CIDADE</Text>
+            <Text variant={'body' as any}>
+              {componentsLabels.t('whereBuyTable.city')}
+            </Text>
           </Flex>
           <Flex {...cellStyle} {...(isMobile && { width: '20%' })}>
-            <Text variant={'body' as any}>CLIENTE</Text>
+            <Text variant={'body' as any}>
+              {componentsLabels.t('whereBuyTable.client')}
+            </Text>
           </Flex>
           {!isMobile && (
             <Flex {...cellStyle} w="13.6667%">
-              <Text variant={'body' as any}>NOME FANTASIA</Text>
+              <Text variant={'body' as any}>
+                {componentsLabels.t('whereBuyTable.fantasyName')}
+              </Text>
             </Flex>
           )}
           <Flex {...cellStyle} w="33.333%" {...(isMobile && { width: '40%' })}>
-            <Text variant={'body' as any}>ENDEREÇO</Text>
+            <Text variant={'body' as any}>
+              {componentsLabels.t('whereBuyTable.address')}
+            </Text>
           </Flex>
           <Flex {...cellStyle} w="19.6667%" {...(isMobile && { width: '20%' })}>
-            <Text variant={'body' as any}>CONTATO</Text>
+            <Text variant={'body' as any}>
+              {componentsLabels.t('whereBuyTable.contact')}
+            </Text>
           </Flex>
         </Flex>
       </Flex>

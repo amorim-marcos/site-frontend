@@ -1,0 +1,8 @@
+{
+    "notFound": {
+        "title": "Página não encontrada." 
+    },
+    "serverError": {
+        "title": "Erro desconhecido"
+    }
+}

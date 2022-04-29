@@ -3,6 +3,8 @@ import { Post } from 'types/data'
 import CanalBNK from 'views/Canal-BNK'
 import DOMPurify from 'isomorphic-dompurify'
 import { CanalBNKProps } from '../../views/Canal-BNK/index'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
+import { loadTranslations } from 'ni18n'
 
 export default function CanalBnk(props: CanalBNKProps) {
   return (
@@ -107,5 +109,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       downloads_page.patterns_pack_file.url
     : null
 
-  return { props: { posts: data, categories, patterns_pack_url } }
+  return {
+    props: {
+      posts: data,
+      categories,
+      patterns_pack_url,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
+    }
+  }
 }

@@ -15,13 +15,11 @@ export type FooterListProps = {
 
 export const FooterList = ({ title, items }: FooterListProps) => {
   return (
-    <Box 
+    <Box
       aria-label="footer-list"
       // bg={'red'}
-      >
-      <List 
-        spacing="5"
-      >
+    >
+      <List spacing="5">
         <ListItem cursor="pointer">
           <Link href={title.href} passHref>
             <Text

@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetStaticProps } from 'next'
+import { loadTranslations } from 'ni18n'
 import { IContactChannel } from 'types/data/ContactChannel'
 import Contact from 'views/Contact'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
 export type ContactPageProps = {
   fireWarning: string
@@ -52,7 +54,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       fireWarning: fireWarning.warning_text,
-      contact_channels
+      contact_channels,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

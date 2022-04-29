@@ -1,5 +1,7 @@
 import { GetStaticProps } from 'next'
+import { loadTranslations } from 'ni18n'
 import BerneckPinusView from 'views/products/berneck-pinus'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
 export type SawnQuality = {
   col: string
@@ -98,7 +100,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      page_content
+      page_content,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

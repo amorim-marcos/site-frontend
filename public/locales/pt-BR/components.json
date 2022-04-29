@@ -1,0 +1,80 @@
+{
+    "appCookieConsent": {
+        "satisfactoryExperience": "O site da Berneck S.A utiliza cookies para uma experiência mais satisfatória e personalizada.",
+        "cookieCollect": "Ao navegar neste ambiente digital você estará sujeito à coleta dos cookies descritos na",
+        "privacy": "Política de Privacidade.",
+        "btn": "PROSSEGUIR"
+    },
+    "appError": {
+        "returnToHome": "RETORNAR PARA HOME"
+    },
+    "connect": {
+        "title":"Conecte-se"
+    },
+    "contactChannelForm": {
+        "name": "Nome",
+        "email": "E-mail",
+        "phone": "Telefone",
+        "city": "Cidade",
+        "uf": "Estado",
+        "company": "Empresa",
+        "contactChannelType": "Tipo de Canal de Contato",
+        "message": "Mensagem",
+        "requireFields": "Campos obrigatórios",
+        "send": "ENVIAR",
+        "messageAcknowledgment":"Agradecemos a sua mensagem",
+        "errorMessage": "Alguma coisa aconteceu de errado. Por favor, tente novamente."
+    },
+    "pagebar": {
+        "back": "Voltar"
+    },
+    "plusInfoTable": {
+        "testBody":"CORPO DE PROVA",
+        "amountOfWaterAbsorbed":"Quantidade de água absorvida",
+        "absorption":"Absorção",
+        "thicknessIncrease":"Aumento de espessura",
+        "swelling":"Inchamento"
+    },
+    "postRelationalContent": {
+        "title": "Conteúdos Relacionados"
+    },
+    "product": {
+        "thickness": "Espessura",
+        "length": "Comprimento",
+        "width": "Largura",
+        "otherDimensionsText" : "*Outras dimensões sob consulta",
+        "dimensionsMM": "Dimensões (mm)",
+        "datasheet": "Ficha técnica",
+        "whereBuy": "Onde comprar",
+        "qualityCertificate": "Certificado de Qualidade",
+        "description": "Descrição",
+        "usesAndApplications": "Usos e Aplicações",
+        "finishes": "Acabamentos",
+        "moreTechnologyQualityProtection": "Mais tecnologia, mais qualidade, mais proteção",
+        "specifications": "Especificações",
+        "qualityStandards": "Normas de qualidade",
+        "machinability":"Usinabilidade",
+        "supplyInformationTitleTeca": "Fornecemos a BERNECK® TECA serrada bruta e aplainada:",
+        "plusBerneck": "PLUS BERNECK"
+    },
+    "qualitiesPinusBerneck": {
+        "title": "Qualidades de BERNECK® PINUS"
+    },
+    "sectionPackBpDownloads": {
+        "patternPacks": "Pack de Padrões"
+    },
+    "whereBuyTable": {
+        "country": "PAÍS",
+        "city": "CIDADE",
+        "client": "CLIENTE",
+        "fantasyName":"NOME FANTASIA",
+        "address" : "ENDEREÇO",
+        "contact": "CONTATO"
+    },
+    "whereWeArePanel": {
+        "structure": "ESTRUTURA",
+        "location" : "LOCALIZAÇÃO",
+        "phones" : "TELEFONES",
+        "airportsDistance": "DISTÂNCIA DO AEROPORTO"
+    }
+}

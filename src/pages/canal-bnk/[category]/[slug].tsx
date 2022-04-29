@@ -3,6 +3,8 @@ import { Post } from '../../../types/data/Post/Post'
 import { GetServerSideProps } from 'next'
 import DOMPurify from 'isomorphic-dompurify'
 import { smartDate } from 'utils/utils'
+import { nameSpaces, ni18nConfig } from '../../../../ni18n.config'
+import { loadTranslations } from 'ni18n'
 
 export type PostPageProps = {
   posts: Post[]
@@ -101,7 +103,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     url_code: currentPost.url_code
   }
 
-  return { props: { posts: data, currentPost: currentPostTrated } }
+  return {
+    props: {
+      posts: data,
+      currentPost: currentPostTrated,
+      ...(await loadTranslations(ni18nConfig, ctx.locale, nameSpaces))
+    }
+  }
 }
 
 type PostResponse = {

@@ -38,7 +38,7 @@ export type HomeProps = {
 export default function Home(props: HomeProps) {
   const router = useRouter()
 
-  const products = useTranslation('products')
+  const productsView = useTranslation('productsView')
   const homeView = useTranslation('homeView')
 
   return (
@@ -86,9 +86,9 @@ export default function Home(props: HomeProps) {
       <SectionProducts
         products={[
           {
-            title: products.t('bpBerneck.title'),
+            title: productsView.t('bpBerneck.title'),
             titleColor: 'white',
-            subtitle: products.t('bpBerneck.description'),
+            subtitle: productsView.t('bpBerneck.description'),
             subtitleColor: 'brown.200',
             bgColor: 'brown.300',
             srcImg: '/img/produto_bp_banner.png',
@@ -101,9 +101,9 @@ export default function Home(props: HomeProps) {
             urlLink: 'bp-berneck'
           },
           {
-            title: products.t('mdpBerneck.title'),
+            title: productsView.t('mdpBerneck.title'),
             titleColor: 'gray.400',
-            subtitle: products.t('mdpBerneck.description'),
+            subtitle: productsView.t('mdpBerneck.description'),
             subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: '/img/mdp.png',
@@ -116,9 +116,9 @@ export default function Home(props: HomeProps) {
             urlLink: 'mdp-berneck'
           },
           {
-            title: products.t('mdfBerneck.title'),
+            title: productsView.t('mdfBerneck.title'),
             titleColor: 'gray.400',
-            subtitle: products.t('mdfBerneck.description'),
+            subtitle: productsView.t('mdfBerneck.description'),
             subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: '/img/mdf.png',
@@ -131,9 +131,9 @@ export default function Home(props: HomeProps) {
             urlLink: 'mdf-berneck'
           },
           {
-            title: products.t('hdfBerneck.title'),
+            title: productsView.t('hdfBerneck.title'),
             titleColor: 'gray.400',
-            subtitle: products.t('hdfBerneck.description'),
+            subtitle: productsView.t('hdfBerneck.description'),
             subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: '/img/hdf.png',
@@ -146,9 +146,9 @@ export default function Home(props: HomeProps) {
             urlLink: 'hdf-berneck'
           },
           {
-            title: products.t('plusBerneck.title'),
+            title: productsView.t('plusBerneck.title'),
             titleColor: 'white',
-            subtitle: products.t('plusBerneck.description'),
+            subtitle: productsView.t('plusBerneck.description'),
             subtitleColor: 'brown.350',
             bgColor: 'green.400',
             srcImg: '/img/plus.png',
@@ -161,9 +161,9 @@ export default function Home(props: HomeProps) {
             urlLink: 'plus-berneck'
           },
           {
-            title: products.t('berneckPinus.title'),
+            title: productsView.t('berneckPinus.title'),
             titleColor: 'green.900',
-            subtitle: products.t('berneckPinus.description'),
+            subtitle: productsView.t('berneckPinus.description'),
             subtitleColor: 'gray.400',
             bgColor: 'green.300',
             srcImg: '/img/pinus.png',
@@ -176,9 +176,9 @@ export default function Home(props: HomeProps) {
             urlLink: 'berneck-pinus'
           },
           {
-            title: products.t('berneckTeca.title'),
+            title: productsView.t('berneckTeca.title'),
             titleColor: 'gray.400',
-            subtitle: products.t('berneckTeca.description'),
+            subtitle: productsView.t('berneckTeca.description'),
             subtitleColor: 'gray.400',
             bgColor: 'brown.250',
             srcImg: '/img/teca.png',
@@ -218,7 +218,7 @@ export default function Home(props: HomeProps) {
       {/* FIM Banners */}
 
       {/* INICIO Redes Sociais */}
-      <Connect title={homeView.t('connectTitle')} />
+      <Connect />
     </Box>
   )
 }

@@ -111,8 +111,7 @@ export const DownloadSection = ({
           )
         })}
       </Flex>
-      {
-        ( items.length > 5 || isMobile ) && 
+      {(items.length > 5 || isMobile) && (
         <Flex
           position="absolute"
           left="0px"
@@ -135,11 +134,11 @@ export const DownloadSection = ({
             }}
             onClick={avanceLeft}
           >
-            {
-              isMobile 
-              ? <Arrow width="5" height="5" direction="left" />
-              : <Arrow width="22" height="30" direction="left" />
-            }
+            {isMobile ? (
+              <Arrow width="5" height="5" direction="left" />
+            ) : (
+              <Arrow width="22" height="30" direction="left" />
+            )}
           </Button>
           <Button
             onMouseEnter={() => setHoverBtnControl(true)}
@@ -155,14 +154,14 @@ export const DownloadSection = ({
             }}
             onClick={avanceRight}
           >
-            {
-              isMobile 
-              ? <Arrow width="5" height="5" direction="right" />
-              : <Arrow width="22" height="30" direction="right" />
-            }
+            {isMobile ? (
+              <Arrow width="5" height="5" direction="right" />
+            ) : (
+              <Arrow width="22" height="30" direction="right" />
+            )}
           </Button>
         </Flex>
-      }
+      )}
     </Flex>
   )
 }

@@ -1,5 +1,5 @@
 export const footerNavigation = {
-  column1: {
+  weAreBerneckColumn: {
     titleKey: 'weAreBerneckColumn.title',
     href: '/somos-berneck',
     items: [
@@ -18,8 +18,8 @@ export const footerNavigation = {
       { titleKey: 'weAreBerneckColumn.certifications', href: '/certificacoes' }
     ]
   },
-  column2: {
-    titleKey: 'NOSSO COMPROMISSO',
+  ourCommitmentColumn: {
+    titleKey: 'ourCommitmentColumn.title',
     href: '/nosso-compromisso',
     items: [
       {
@@ -40,7 +40,7 @@ export const footerNavigation = {
       }
     ]
   },
-  column3: {
+  florestalDivisionColumn: {
     titleKey: 'florestalDivisionColumn.title',
     href: '/divisao-florestal',
     items: [
@@ -62,7 +62,7 @@ export const footerNavigation = {
       }
     ]
   },
-  column4: {
+  productsColumn: {
     titleKey: 'productsColumn.title',
     href: '/products',
     items: [
@@ -81,7 +81,7 @@ export const footerNavigation = {
       { titleKey: 'productsColumn.berneckTeca', href: '/products/berneck-teca' }
     ]
   },
-  column5: {
+  channelBNKColumn: {
     titleKey: 'channelBNKColumn.title',
     href: '/canal-bnk',
     items: [

@@ -1,5 +1,7 @@
 import { GetStaticProps } from 'next'
+import { loadTranslations } from 'ni18n'
 import MdfBerneckView from 'views/products/mdf-berneck'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 import { ProductProps } from './hdf-berneck'
 
 export type MdfBerneckPageProps = {
@@ -75,7 +77,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      page_content
+      page_content,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

@@ -122,7 +122,6 @@ export const BannerProducts = ({
             >
               {title}
             </Text>
-
           </Flex>
           <Flex
             // bg="white"

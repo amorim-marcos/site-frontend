@@ -1,7 +1,6 @@
 import { Text, Table, Tbody, Tr, Td, Flex } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 
-
 export type ProductSpecificationProps = {
   tableBorderColor?: string
   tableBackgroundColor?: string
@@ -20,54 +19,61 @@ export const ProductSpecification = ({
   textColor = 'green.900',
   content
 }: ProductSpecificationProps) => {
-  const product = useTranslation('product')
+  const componentsLabels = useTranslation('components')
 
   return (
     <>
-    <Flex 
+      <Flex
       // justifyContent="space-between"
       // bg="red"
-    >
-      <Flex 
-        flexDirection="column"
       >
-       <Text as={"h3"}
-          variant={"h3"}
-          color="green.900"
-          fontWeight={'extrabold'}
-        >
-      {product.t('Specifications')}
-      </Text>
-        <Table
-          fontWeight="light"
-          fontSize={{ base: '12px', sm: '12px', lg: '13px', xl: '14px' }}
-          fontFamily="Montserrat"
-          //width={tableWidth}
-          variant="unstyled"
-          color={textColor}
-        >
-          <Tbody>
-          {content.map((i, j) => {
-            return (
-              <Tr key={j}>
-                <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                  {i.title}
-                </Td>
-                <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                  {i.description}
-                </Td>
-            </Tr>
-            )
-          })}
-          </Tbody>
-        </Table>
+        <Flex flexDirection="column">
+          <Text
+            as={'h3'}
+            variant={'h3'}
+            color="green.900"
+            fontWeight={'extrabold'}
+          >
+            {componentsLabels.t('product.specifications')}
+          </Text>
+          <Table
+            fontWeight="light"
+            fontSize={{ base: '12px', sm: '12px', lg: '13px', xl: '14px' }}
+            fontFamily="Montserrat"
+            //width={tableWidth}
+            variant="unstyled"
+            color={textColor}
+          >
+            <Tbody>
+              {content.map((i, j) => {
+                return (
+                  <Tr key={j}>
+                    <Td
+                      {...tableItemStyle(
+                        tableBorderColor,
+                        tableBackgroundColor
+                      )}
+                    >
+                      {i.title}
+                    </Td>
+                    <Td
+                      {...tableItemStyle(
+                        tableBorderColor,
+                        tableBackgroundColor
+                      )}
+                    >
+                      {i.description}
+                    </Td>
+                  </Tr>
+                )
+              })}
+            </Tbody>
+          </Table>
+        </Flex>
       </Flex>
-    </Flex>
-
     </>
   )
 }
-
 
 export const tableItemStyle = (borderColor: string, background: string) => ({
   padding: '0px',

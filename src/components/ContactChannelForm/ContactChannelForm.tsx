@@ -11,6 +11,7 @@ import FormInput from '@components/FormInput'
 import FormSelect from '@components/FormSelect'
 import FormTextArea from '@components/FormTextArea'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import ContactChannelFormLabel from './ContactChannelFormLabel'
 import ContactChannelInfoInput from './ContactChannelInfoInput'
 
@@ -61,6 +62,8 @@ export const ContactChannelForm = ({
     setStatus(null)
   }, [contact_channel_id])
 
+  const componentsLabels = useTranslation('components')
+
   return (
     <Flex width="full" flexDirection="column" {...props}>
       <form
@@ -80,7 +83,7 @@ export const ContactChannelForm = ({
             isRequired
           >
             <ContactChannelFormLabel visibility="hidden" htmlFor="name">
-              *Nome
+              *{componentsLabels.t('contactChannelForm.name')}
             </ContactChannelFormLabel>
             <FormInput
               onChange={(e) => {
@@ -88,7 +91,7 @@ export const ContactChannelForm = ({
               }}
               name="name"
               value={formData.name}
-              placeholder="*Nome"
+              placeholder={`*${componentsLabels.t('contactChannelForm.name')}`}
             />
           </FormControl>
         </Box>
@@ -103,7 +106,7 @@ export const ContactChannelForm = ({
             isRequired
           >
             <ContactChannelFormLabel visibility="hidden" htmlFor="email">
-              *E-mail
+              *{componentsLabels.t('contactChannelForm.email')}
             </ContactChannelFormLabel>
             <FormInput
               type="email"
@@ -112,7 +115,7 @@ export const ContactChannelForm = ({
                 setFormData({ ...formData, email: e.target.value })
               }}
               value={formData.email}
-              placeholder="*E-mail"
+              placeholder={`*${componentsLabels.t('contactChannelForm.email')}`}
             />
           </FormControl>
         </Box>
@@ -127,7 +130,7 @@ export const ContactChannelForm = ({
             isRequired
           >
             <ContactChannelFormLabel visibility="hidden" htmlFor="phone">
-              *Telefone
+              *{componentsLabels.t('contactChannelForm.phone')}
             </ContactChannelFormLabel>
             <FormInput
               type="phone"
@@ -136,7 +139,7 @@ export const ContactChannelForm = ({
                 setFormData({ ...formData, phone: e.target.value })
               }}
               value={formData.phone}
-              placeholder="*Telefone"
+              placeholder={`*${componentsLabels.t('contactChannelForm.phone')}`}
             />
           </FormControl>
         </Box>
@@ -152,7 +155,7 @@ export const ContactChannelForm = ({
             isRequired
           >
             <ContactChannelFormLabel visibility="hidden" htmlFor="city">
-              *Cidade
+              *{componentsLabels.t('contactChannelForm.city')}
             </ContactChannelFormLabel>
             <FormInput
               name="city"
@@ -160,7 +163,7 @@ export const ContactChannelForm = ({
                 setFormData({ ...formData, city: e.target.value })
               }}
               value={formData.city}
-              placeholder="*Cidade"
+              placeholder={`*${componentsLabels.t('contactChannelForm.city')}`}
             />
           </FormControl>
 
@@ -174,7 +177,7 @@ export const ContactChannelForm = ({
             isRequired
           >
             <ContactChannelFormLabel visibility="hidden" htmlFor="state">
-              *Estado
+              *{componentsLabels.t('contactChannelForm.uf')}
             </ContactChannelFormLabel>
             <FormSelect
               name="state"
@@ -183,7 +186,10 @@ export const ContactChannelForm = ({
               }}
               value={formData.state}
             >
-              <option disabled value="*Estado">
+              <option
+                disabled
+                value={`*${componentsLabels.t('contactChannelForm.uf')}`}
+              >
                 *Estado
               </option>
               {brazilianStates.map((state, i) => (
@@ -204,7 +210,7 @@ export const ContactChannelForm = ({
             }}
           >
             <ContactChannelFormLabel visibility="hidden" htmlFor="company">
-              Empresa
+              {componentsLabels.t('contactChannelForm.company')}
             </ContactChannelFormLabel>
             <FormInput
               name="company"
@@ -212,14 +218,14 @@ export const ContactChannelForm = ({
                 setFormData({ ...formData, company: e.target.value })
               }}
               value={formData.company}
-              placeholder="Empresa"
+              placeholder={componentsLabels.t('contactChannelForm.company')}
             />
           </FormControl>
         </Box>
         <Box mt="10px" flex="1">
           <FormControl as="fieldset">
             <ContactChannelFormLabel visibility="hidden" htmlFor="service">
-              Tipo de Canal de Contato
+              {componentsLabels.t('contactChannelForm.contactChannelType')}
             </ContactChannelFormLabel>
             <ContactChannelInfoInput value={channel_name} />
           </FormControl>
@@ -234,7 +240,7 @@ export const ContactChannelForm = ({
             }}
           >
             <ContactChannelFormLabel visibility="hidden" htmlFor="message">
-              Mensagem
+              {componentsLabels.t('contactChannelForm.message')}
             </ContactChannelFormLabel>
             <FormTextArea
               name="message"
@@ -242,13 +248,13 @@ export const ContactChannelForm = ({
                 setFormData({ ...formData, message: e.target.value })
               }}
               value={formData.message}
-              placeholder="Mensagem"
+              placeholder={componentsLabels.t('contactChannelForm.message')}
             ></FormTextArea>
           </FormControl>
         </Box>
         <Flex mt="5px">
           <Text variant={'body' as any} color="gray.300">
-            *Campos obrigatórios
+            *{componentsLabels.t('contactChannelForm.requireFields')}
           </Text>
         </Flex>
         <Flex mt="10px" direction={{ base: 'column', md: 'row' }}>
@@ -261,11 +267,11 @@ export const ContactChannelForm = ({
           >
             {status === 200 ? (
               <Text paddingTop="30px" color="green.550">
-                Agradecemos a sua mensagem
+                {componentsLabels.t('contactChannelForm.messageAcknowledgment')}
               </Text>
             ) : (
               <Text paddingTop="25px" color="red.100">
-                Alguma coisa aconteceu de errado. Por favor, tente novamente.
+                {componentsLabels.t('contactChannelForm.errorMessage')}
               </Text>
             )}
           </Box>
@@ -276,7 +282,7 @@ export const ContactChannelForm = ({
             marginLeft={{ base: 'normal', lg: 'auto' }}
             order={{ base: 1, md: 2 }}
           >
-            ENVIAR
+            {componentsLabels.t('contactChannelForm.send')}
           </Button>
         </Flex>
       </form>

@@ -18,7 +18,7 @@ export const TecaInfo = ({
   machinability,
   supplyInformation
 }: TecaInfoProps) => {
-  const product = useTranslation('product')
+  const componentsLabels = useTranslation('components')
 
   return (
     <Flex
@@ -34,12 +34,13 @@ export const TecaInfo = ({
         // paddingLeft={{ base: '15px' }}
         width={{ base: '100%', sm: '45%' }}
       >
-         <Text as={"h3"}
-            variant={"h3"}
-            color="green.900"
-            fontWeight={'extrabold'}
-          >
-          {product.t('machinability')}
+        <Text
+          as={'h3'}
+          variant={'h3'}
+          color="green.900"
+          fontWeight={'extrabold'}
+        >
+          {componentsLabels.t('product.machinability')}
         </Text>
 
         {machinability && (
@@ -65,12 +66,13 @@ export const TecaInfo = ({
               '2xl': '80px'
             }}
           >
-             <Text as={"h3"}
-                variant={"h3"}
-                color="green.900"
-                fontWeight={'extrabold'}
-              >
-              {product.t('UsesAndApplications')}
+            <Text
+              as={'h3'}
+              variant={'h3'}
+              color="green.900"
+              fontWeight={'extrabold'}
+            >
+              {componentsLabels.t('product.usesAndApplications')}
             </Text>
             <Text variant={'productBody' as any}>{usesAndApplications}</Text>
           </Box>

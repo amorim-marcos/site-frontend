@@ -1,6 +1,8 @@
 import { GetStaticProps } from 'next'
 import BerneckTecaView from '../../views/products/berneck-teca'
 import DOMPurify from 'isomorphic-dompurify'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
+import { loadTranslations } from 'ni18n'
 
 export type BerneckTecaPageProps = {
   page_content: {
@@ -48,7 +50,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   page_content.machinability = DOMPurify.sanitize(page_content.machinability)
   return {
     props: {
-      page_content
+      page_content,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

@@ -1,5 +1,7 @@
 import { GetStaticProps } from 'next'
+import { loadTranslations } from 'ni18n'
 import { DownloadsView } from 'views/Canal-BNK/Downloads/DownloadsView'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
 type DownloadsItemProps = {
   download_type: { type: string }
@@ -128,7 +130,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      page_content
+      page_content,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

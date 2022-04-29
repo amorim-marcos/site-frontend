@@ -1,4 +1,5 @@
 import { Image, Flex, Box, Text, BoxProps } from '@chakra-ui/react'
+import { useTranslation } from 'react-i18next'
 
 export type PlusInfoTableProps = {
   rows?: {
@@ -12,22 +13,12 @@ export type PlusInfoTableProps = {
 }
 
 export const PlusInfoTable = ({ rows }: PlusInfoTableProps) => {
+  const componentsLabels = useTranslation('components')
   return (
-    <Box
-      // padding="10px"
-      // marginTop={{ base: '0', sm: '20px' }}
-      // marginLeft={{ base: '0', sm: '20px' }}
-      // bg="red"
-    >
-      <Flex 
-        flexDirection="column"
-      >
-        <Flex 
-          marginBottom="5px"
-        >
-          <Box 
-            w={firstItemWidth}
-          ></Box>
+    <Box>
+      <Flex flexDirection="column">
+        <Flex marginBottom="5px">
+          <Box w={firstItemWidth}></Box>
           <Box
             w={itemWidthDoble}
             borderBottom="solid #C2DFB7"
@@ -88,27 +79,27 @@ export const PlusInfoTable = ({ rows }: PlusInfoTableProps) => {
               fontWeight="bold"
               fontSize={tableText}
             >
-              CORPO DE PROVA
+              {componentsLabels.t('plusInfoTable.testBody')}
             </Text>
           </Flex>
           <Flex alignItems="center" {...tableItemTitle}>
             <Text variant={'productBody' as any} fontSize={tableText}>
-              Quantidade de água absorvida
+              {componentsLabels.t('plusInfoTable.amountOfWaterAbsorbed')}
             </Text>
           </Flex>
           <Flex alignItems="center" {...tableItemTitle}>
             <Text variant={'productBody' as any} fontSize={tableText}>
-              Absorção
+              {componentsLabels.t('plusInfoTable.absorption')}
             </Text>
           </Flex>
           <Flex alignItems="center" {...tableItemTitle}>
             <Text variant={'productBody' as any} fontSize={tableText}>
-              Aumento de espessura
+              {componentsLabels.t('plusInfoTable.thicknessIncrease')}
             </Text>
           </Flex>
           <Flex alignItems="center" {...tableItemTitle}>
             <Text variant={'productBody' as any} fontSize={tableText}>
-              Inchamento
+              {componentsLabels.t('plusInfoTable.swelling')}
             </Text>
           </Flex>
         </Flex>

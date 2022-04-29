@@ -22,7 +22,7 @@ export const ProductDownloadAndLinks = ({
   textColor = '#665E5A',
   hoverColor = '#595959'
 }: ProductDownloadAndLinksProps) => {
-  const product = useTranslation('product')
+  const componentsLabels = useTranslation('components')
   return (
     <Flex
       flexDirection={{ base: 'column', md: 'row' }}
@@ -45,7 +45,7 @@ export const ProductDownloadAndLinks = ({
             textColor={textColor}
             hoverColor={hoverColor}
             iconName="datasheet"
-            text={product.t('datasheet')}
+            text={componentsLabels.t('product.datasheet')}
             backgroundColor={backgroundColor}
           />
         </Link>
@@ -56,7 +56,7 @@ export const ProductDownloadAndLinks = ({
             textColor={textColor}
             hoverColor={hoverColor}
             iconName="location"
-            text={product.t('whereBuy')}
+            text={componentsLabels.t('product.whereBuy')}
             backgroundColor={backgroundColor}
           />
         </Link>
@@ -67,7 +67,7 @@ export const ProductDownloadAndLinks = ({
             textColor={textColor}
             hoverColor={hoverColor}
             iconName="qualityCertificate"
-            text={product.t('qualityCertificate')}
+            text={componentsLabels.t('product.qualityCertificate')}
             backgroundColor={backgroundColor}
           />
         </Link>
@@ -107,7 +107,7 @@ export const ProductDownloadAndLinks = ({
                 }}
                 color="green.800"
               >
-                Saiba mais sobre o{' '}
+                {componentsLabels.t('product.knowMoreAbout')}{' '}
               </Text>
               <Heading
                 color="green.800"
@@ -120,7 +120,7 @@ export const ProductDownloadAndLinks = ({
                   '2xl': '20px'
                 }}
               >
-                PLUS BERNECK
+                {componentsLabels.t('product.plusBerneck')}
               </Heading>
             </Flex>
             <ArrowIcon

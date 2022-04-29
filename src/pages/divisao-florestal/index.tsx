@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import { loadTranslations } from 'ni18n'
 import { ForestsView, ForestsViewProps } from 'views/Forests/Forests'
-import { ni18nConfig } from '../../../ni18n.config'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
 export type FlorestalDivisionPageProps = ForestsViewProps
 
@@ -73,11 +73,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       page_content,
       fireWarningText: fireWarning.warning_text,
-      ...(await loadTranslations(ni18nConfig, locale, [
-        'header',
-        'footer',
-        'forestView'
-      ]))
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

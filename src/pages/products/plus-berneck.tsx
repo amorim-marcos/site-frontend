@@ -1,4 +1,6 @@
 import { GetStaticProps } from 'next'
+import { loadTranslations } from 'ni18n'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 import PlusBerneckView from '../../views/products/plus-berneck'
 
 export type PlusBerneckPageProps = {
@@ -79,7 +81,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      page_content
+      page_content,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

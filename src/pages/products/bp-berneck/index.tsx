@@ -5,6 +5,8 @@ import { strapiClient } from 'services'
 import BpBerneckView from 'views/products/bp-berneck'
 
 import type { Gallery } from 'types/data'
+import { nameSpaces, ni18nConfig } from '../../../../ni18n.config'
+import { loadTranslations } from 'ni18n'
 
 export type BPPageBanner = {
   link: string
@@ -20,7 +22,7 @@ export default function BpBerneck(props: BpBerneckProps) {
   return <BpBerneckView {...props} />
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
   const banners = await strapiClient({
@@ -52,7 +54,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
           link: banner.link,
           banner_image: `${url}${banner.banner_image.url}`
         }
-      })
+      }),
+      ...(await loadTranslations(ni18nConfig, context.locale, nameSpaces))
     }
   }
 }

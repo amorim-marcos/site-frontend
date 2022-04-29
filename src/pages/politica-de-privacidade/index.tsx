@@ -1,6 +1,8 @@
 import { GetStaticProps } from 'next'
 import { Privacy } from 'views/Privacy/Privacy'
 import DOMPurify from 'isomorphic-dompurify'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
+import { loadTranslations } from 'ni18n'
 
 export default function PrivacyPage(props: { terms: string }) {
   return <Privacy terms={props.terms} />
@@ -24,7 +26,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      terms: DOMPurify.sanitize(terms.content)
+      terms: DOMPurify.sanitize(terms.content),
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

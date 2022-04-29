@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import { loadTranslations } from 'ni18n'
 import { Compromise, CompromiseViewProps } from 'views/Compromise/Compromise'
-import { ni18nConfig } from '../../../ni18n.config'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
 export type OurCommitmentPageProps = CompromiseViewProps
 
@@ -45,11 +45,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       page_content,
-      ...(await loadTranslations(ni18nConfig, locale, [
-        'header',
-        'footer',
-        'compromiseView'
-      ]))
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

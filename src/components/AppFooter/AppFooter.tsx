@@ -118,10 +118,10 @@ export const AppFooter = () => {
             <FooterList
               key={0}
               title={{
-                title: footer.t(footerNavigation.column1.titleKey),
-                href: footerNavigation.column1.href
+                title: footer.t(footerNavigation.weAreBerneckColumn.titleKey),
+                href: footerNavigation.weAreBerneckColumn.href
               }}
-              items={footerNavigation.column1.items.map((i) => ({
+              items={footerNavigation.weAreBerneckColumn.items.map((i) => ({
                 title: footer.t(i.titleKey),
                 href: i.href
               }))}
@@ -130,10 +130,10 @@ export const AppFooter = () => {
             <FooterList
               key={1}
               title={{
-                title: footer.t(footerNavigation.column2.titleKey),
-                href: footerNavigation.column2.href
+                title: footer.t(footerNavigation.ourCommitmentColumn.titleKey),
+                href: footerNavigation.ourCommitmentColumn.href
               }}
-              items={footerNavigation.column2.items.map((i) => ({
+              items={footerNavigation.ourCommitmentColumn.items.map((i) => ({
                 title: footer.t(i.titleKey),
                 href: i.href
               }))}
@@ -142,22 +142,26 @@ export const AppFooter = () => {
             <FooterList
               key={2}
               title={{
-                title: footer.t(footerNavigation.column3.titleKey),
-                href: footerNavigation.column3.href
+                title: footer.t(
+                  footerNavigation.florestalDivisionColumn.titleKey
+                ),
+                href: footerNavigation.florestalDivisionColumn.href
               }}
-              items={footerNavigation.column3.items.map((i) => ({
-                title: footer.t(i.titleKey),
-                href: i.href
-              }))}
+              items={footerNavigation.florestalDivisionColumn.items.map(
+                (i) => ({
+                  title: footer.t(i.titleKey),
+                  href: i.href
+                })
+              )}
             />
 
             <FooterList
               key={3}
               title={{
-                title: footer.t(footerNavigation.column4.titleKey),
-                href: footerNavigation.column4.href
+                title: footer.t(footerNavigation.productsColumn.titleKey),
+                href: footerNavigation.productsColumn.href
               }}
-              items={footerNavigation.column4.items.map((i) => ({
+              items={footerNavigation.productsColumn.items.map((i) => ({
                 title: footer.t(i.titleKey),
                 href: i.href
               }))}
@@ -166,10 +170,10 @@ export const AppFooter = () => {
             <FooterList
               key={4}
               title={{
-                title: footer.t(footerNavigation.column5.titleKey),
-                href: footerNavigation.column5.href
+                title: footer.t(footerNavigation.channelBNKColumn.titleKey),
+                href: footerNavigation.channelBNKColumn.href
               }}
-              items={footerNavigation.column5.items.map((i) => ({
+              items={footerNavigation.channelBNKColumn.items.map((i) => ({
                 title: footer.t(i.titleKey),
                 href: i.href,
                 empty: i.empty
@@ -209,7 +213,7 @@ export const AppFooter = () => {
               }}
               color="green.300"
             >
-              &#9400;2022 BERNECK. Todos os direitos reservados.
+              &#9400;{footer.t('rights')}
             </Text>
           </Flex>
           <Flex
@@ -231,7 +235,7 @@ export const AppFooter = () => {
               _hover={{ opacity: '0.9' }}
               onClick={() => router.push('politica-de-privacidade')}
             >
-              Termos de Uso e Política de Privacidade
+              {footer.t('termsAndPrivacy')}
             </Text>
           </Flex>
           <Flex
