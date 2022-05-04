@@ -1,6 +1,8 @@
 import { GetStaticProps } from 'next'
 import Home from 'views/Home'
 import { HomeProps } from '../views/Home/index'
+import { ni18nConfig, nameSpaces } from '../../ni18n.config'
+import { loadTranslations } from 'ni18n'
 
 export default function HomePage(props: HomeProps) {
   return <Home {...props} />
@@ -70,7 +72,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       highlights: highlightsTreated,
-      latest: latestTreated
+      latest: latestTreated,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
+      // ...clientNamespaces(ni18nConfig, ['components/header'])
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

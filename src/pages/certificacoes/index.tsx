@@ -4,6 +4,8 @@ import {
   CertificationViewProps
 } from 'views/Certification/Certification'
 import DOMPurify from 'isomorphic-dompurify'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
+import { loadTranslations } from 'ni18n'
 
 export type CertificatePageProps = CertificationViewProps
 
@@ -59,7 +61,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
         ...item,
         certificate_file: {
           ...item.certificate_file,
-          url: (item.certificate_file === null)? null : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.certificate_file.url
+          url:
+            item.certificate_file === null
+              ? null
+              : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+                item.certificate_file.url
         }
       }
     }
@@ -74,7 +80,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
             ...item2,
             certificate_file: {
               ...item2.certificate_file,
-              url: (item2.certificate_file === null)? null : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item2.certificate_file.url
+              url:
+                item2.certificate_file === null
+                  ? null
+                  : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+                    item2.certificate_file.url
             }
           }
         })
@@ -86,7 +96,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       productsCertificates,
       forestCertificate,
-      page_content
+      page_content,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

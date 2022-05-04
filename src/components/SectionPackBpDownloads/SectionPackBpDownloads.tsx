@@ -1,5 +1,6 @@
 import { Flex, Box, Text, Image, Link } from '@chakra-ui/react'
 import useMobile from 'hooks/useMobile'
+import { useTranslation } from 'react-i18next'
 
 export type SectionPackBpDownloadsProps = {
   title: string
@@ -13,6 +14,8 @@ export const SectionPackBpDownloads = ({
   download_url
 }: SectionPackBpDownloadsProps) => {
   const { width } = useMobile(568)
+
+  const componentsLabels = useTranslation('components')
 
   return (
     <Flex
@@ -95,7 +98,7 @@ export const SectionPackBpDownloads = ({
           >
             <Flex h="100%" w="100%" alignItems="center" justifyContent="center">
               <Text color="white.100" fontWeight="bold" variant="body">
-                Pack de Padrões
+                {componentsLabels.t('sectionPackBpDownloads.patternPacks')}
               </Text>
             </Flex>
           </Link>

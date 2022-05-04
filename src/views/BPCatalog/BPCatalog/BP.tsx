@@ -31,15 +31,10 @@ export const BP = ({
             transform: 'scale(1.01)'
           }}
         />
-         <Text as={'h4'} variant={'h4'} fontWeight="bold" color={'gray.300'}>
+        <Text as={'h4'} variant={'h4'} fontWeight="bold" color={'gray.300'}>
           {name}
         </Text>
-        <Text
-              as={'h5'}
-              variant={'h5'}
-              fontWeight="medium"
-              color={'gray.300'}
-            >
+        <Text as={'h5'} variant={'h5'} fontWeight="medium" color={'gray.300'}>
           {product_texture}
         </Text>
       </Flex>

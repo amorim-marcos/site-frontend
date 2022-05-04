@@ -5,6 +5,8 @@ import { Intro } from 'views/Canal-BNK/sections'
 import DOMPurify from 'isomorphic-dompurify'
 import { Post } from 'types/data/Post/Post'
 import Pagebar from '@components/Pagebar'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
+import { loadTranslations } from 'ni18n'
 
 export default function Tagspage(props: { posts: Post[]; tagName: string }) {
   return (
@@ -79,7 +81,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       : []
   // console.log(page_content)
 
-  return { props: { posts, tagName: queryName } }
+  return {
+    props: {
+      posts,
+      tagName: queryName,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
+    }
+  }
 }
 
 type PostResponse = {

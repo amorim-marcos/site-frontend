@@ -1,0 +1,8 @@
+{
+    "notFound": {
+        "title": "other_lang_Página não encontrada." 
+    },
+    "serverError": {
+        "title": "other_lang_Erro desconhecido"
+    }
+}

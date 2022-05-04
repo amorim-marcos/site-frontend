@@ -1,7 +1,9 @@
 import { GetServerSideProps } from 'next'
+import { loadTranslations } from 'ni18n'
 
 import { meiliSearch } from 'services'
 import Search from 'views/Search'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
 export interface SearchProps {
   query: string
@@ -86,7 +88,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return {
     props: {
       query: slug,
-      results: { pages, products, posts }
+      results: { pages, products, posts },
+      ...(await loadTranslations(ni18nConfig, ctx.locale, nameSpaces))
     }
   }
 }

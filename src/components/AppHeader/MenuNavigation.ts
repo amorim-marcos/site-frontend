@@ -118,7 +118,7 @@ export const menuNavigation = {
             href: '/products/berneck-pinus'
           },
           {
-            key: 'menu.products.sawns.pinus',
+            key: 'menu.products.sawns.teca',
             href: '/products/berneck-teca'
           }
         ]

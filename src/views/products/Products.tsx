@@ -7,17 +7,20 @@ import useMobile from 'hooks/useMobile'
 import Pagebar from '@components/Pagebar'
 import CompletedTitle from '@components/CompletedTitle'
 import BannerProducts from '@components/BannerProducts'
+import { useTranslation } from 'react-i18next'
 
 export const Products = () => {
   const { isMobile, width } = useMobile(1024)
   const router = useRouter()
+
+  const productsViewTranslation = useTranslation('productsView')
 
   return (
     <Box>
       <Pagebar
         paths={[
           {
-            title: 'Produtos',
+            title: productsViewTranslation.t('ourProducts'),
             url: 'products'
           }
         ]}
@@ -50,7 +53,7 @@ export const Products = () => {
           }}
         >
           <CompletedTitle
-            titleString="Nossos Produtos"
+            titleString={productsViewTranslation.t('ourProducts')}
             textAlign={{
               base: 'left',
               sm: 'left',
@@ -105,9 +108,9 @@ export const Products = () => {
         >
           <GridItem colSpan={{ base: '1', sm: '2', lg: '2', xl: '2' } as any}>
             <BannerProducts
-              title="BP BERNECK®"
+              title={productsViewTranslation.t('bpBerneck.title')}
               titleColor="white"
-              subtitle="Laminado Melamínico Decorativo"
+              subtitle={productsViewTranslation.t('bpBerneck.description')}
               subtitleColor="brown.200"
               bgColor="brown.300"
               srcImg="/img/produto_bp_banner.png"
@@ -119,91 +122,87 @@ export const Products = () => {
             />
           </GridItem>
 
-       
-        <GridItem>
-          <BannerProducts
-            title="MDP BERNECK®"
-            titleColor="gray.400"
-            subtitle="Painel de Partículas de Média Densidade"
-            subtitleColor="gray.400"
-            bgColor="brown.200"
-            srcImg="/img/mdp.png"
-            onClick={() => router.push('/products/mdp-berneck')}
-            bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
-          />
-        </GridItem>
+          <GridItem>
+            <BannerProducts
+              title={productsViewTranslation.t('mdpBerneck.title')}
+              titleColor="gray.400"
+              subtitle={productsViewTranslation.t('mdpBerneck.description')}
+              subtitleColor="gray.400"
+              bgColor="brown.200"
+              srcImg="/img/mdp.png"
+              onClick={() => router.push('/products/mdp-berneck')}
+              bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
+            />
+          </GridItem>
 
-        <GridItem>
-          <BannerProducts
-            title="MDF BERNECK®"
-            titleColor="gray.400"
-            subtitle="Painel de Fibra de Média Densidade"
-            subtitleColor="gray.400"
-            bgColor="brown.200"
-            srcImg="/img/mdf.png"
-            onClick={() => router.push('/products/mdf-berneck')}
-            bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
-          />
-        </GridItem>
+          <GridItem>
+            <BannerProducts
+              title={productsViewTranslation.t('mdfBerneck.title')}
+              titleColor="gray.400"
+              subtitle={productsViewTranslation.t('mdfBerneck.description')}
+              subtitleColor="gray.400"
+              bgColor="brown.200"
+              srcImg="/img/mdf.png"
+              onClick={() => router.push('/products/mdf-berneck')}
+              bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
+            />
+          </GridItem>
 
-        <GridItem>
-          <BannerProducts
-            title="HDF BERNECK®"
-            titleColor="gray.400"
-            subtitle="Painel de Fibra de Alta Densidade"
-            subtitleColor="gray.400"
-            bgColor="brown.200"
-            srcImg="/img/hdf.png"
-            onClick={() => router.push('/products/hdf-berneck')}
-            bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
-          />
-        </GridItem>
-       
-        <GridItem>
-          <BannerProducts
-            title="PLUS BERNECK®"
-            titleColor="white"
-            subtitle="Linha de Painéis com Resistência Extra à Umidade"
-            subtitleColor="brown.350"
-            bgColor="green.400"
-            srcImg="/img/plus.png"
-            onClick={() => router.push('/products/plus-berneck')}
-            bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
-          />
-        </GridItem>
+          <GridItem>
+            <BannerProducts
+              title={productsViewTranslation.t('hdfBerneck.title')}
+              titleColor="gray.400"
+              subtitle={productsViewTranslation.t('hdfBerneck.description')}
+              subtitleColor="gray.400"
+              bgColor="brown.200"
+              srcImg="/img/hdf.png"
+              onClick={() => router.push('/products/hdf-berneck')}
+              bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
+            />
+          </GridItem>
 
-        <GridItem colSpan={{ base: '1', sm: '1', lg: '2', xl: '2' } as any}>
-          <BannerProducts
-            title="BERNECK® PINUS"
-            titleColor="green.900"
-            subtitle="Madeira Serrada de Pinus"
-            subtitleColor="gray.400"
-            bgColor="green.300"
-            srcImg="/img/pinus.png"
-            onClick={() => router.push('/products/berneck-pinus')}
-            bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
-            sizeType={isMobile ? 'square' : 'rectangle-horizontal'}
-          />
-        </GridItem>
-        
-        <GridItem>
-          <BannerProducts
-            title="BERNECK® TECA"
-            titleColor="gray.400"
-            subtitle="Madeira Serrada de Teca"
-            subtitleColor="gray.400"
-            bgColor="brown.250"
-            srcImg="/img/teca.png"
-            onClick={() => router.push('/products/berneck-teca')}
-            bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
-          />
-        </GridItem>
+          <GridItem>
+            <BannerProducts
+              title={productsViewTranslation.t('plusBerneck.title')}
+              titleColor="white"
+              subtitle={productsViewTranslation.t('plusBerneck.description')}
+              subtitleColor="brown.350"
+              bgColor="green.400"
+              srcImg="/img/plus.png"
+              onClick={() => router.push('/products/plus-berneck')}
+              bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
+            />
+          </GridItem>
 
-       
-      </Grid>
-    </Flex>
-    {/* FIM BANNERS PRODUTOS */}
-  
-  </Box>
+          <GridItem colSpan={{ base: '1', sm: '1', lg: '2', xl: '2' } as any}>
+            <BannerProducts
+              title={productsViewTranslation.t('berneckPinus.title')}
+              titleColor="green.900"
+              subtitle={productsViewTranslation.t('berneckPinus.description')}
+              subtitleColor="gray.400"
+              bgColor="green.300"
+              srcImg="/img/pinus.png"
+              onClick={() => router.push('/products/berneck-pinus')}
+              bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
+              sizeType={isMobile ? 'square' : 'rectangle-horizontal'}
+            />
+          </GridItem>
+
+          <GridItem>
+            <BannerProducts
+              title={productsViewTranslation.t('berneckTeca.title')}
+              titleColor="gray.400"
+              subtitle={productsViewTranslation.t('berneckTeca.description')}
+              subtitleColor="gray.400"
+              bgColor="brown.250"
+              srcImg="/img/teca.png"
+              onClick={() => router.push('/products/berneck-teca')}
+              bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
+            />
+          </GridItem>
+        </Grid>
+      </Flex>
+      {/* FIM BANNERS PRODUTOS */}
+    </Box>
   )
 }

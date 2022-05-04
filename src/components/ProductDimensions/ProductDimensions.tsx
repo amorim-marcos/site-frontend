@@ -22,23 +22,22 @@ export const ProductDimensions = ({
   dimensions,
   widthFirst = false
 }: ProductDimensionsProps) => {
-  const product = useTranslation('product')
+  const componentsLabels = useTranslation('components')
 
   return (
-    <Flex 
-      // justifyContent="space-between"
-      // bg="blue"
+    <Flex
+    // justifyContent="space-between"
+    // bg="blue"
     >
-      <Flex 
-        flexDirection="column"
-      >
-       <Text as={"h3"}
-          variant={"h3"}
+      <Flex flexDirection="column">
+        <Text
+          as={'h3'}
+          variant={'h3'}
           color="green.900"
           fontWeight={'extrabold'}
         >
-          {product.t('dimensionsMM')}
-      </Text>
+          {componentsLabels.t('product.dimensionsMM')}
+        </Text>
         <Table
           fontWeight="light"
           fontSize={{ base: '12px', sm: '12px', lg: '13px', xl: '14px' }}
@@ -50,7 +49,7 @@ export const ProductDimensions = ({
           <Tbody>
             <Tr>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                {product.t('thickness')}
+                {componentsLabels.t('product.thickness')}
               </Td>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
                 {dimensions?.thickness}
@@ -58,7 +57,9 @@ export const ProductDimensions = ({
             </Tr>
             <Tr>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                {widthFirst ? product.t('width') : product.t('length')}
+                {widthFirst
+                  ? componentsLabels.t('product.width')
+                  : componentsLabels.t('product.length')}
               </Td>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
                 {widthFirst ? dimensions?.width : dimensions?.length}
@@ -66,7 +67,9 @@ export const ProductDimensions = ({
             </Tr>
             <Tr>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                {!widthFirst ? product.t('width') : product.t('length')}
+                {!widthFirst
+                  ? componentsLabels.t('product.width')
+                  : componentsLabels.t('product.length')}
               </Td>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
                 {!widthFirst ? dimensions?.width : dimensions?.length}
@@ -74,14 +77,15 @@ export const ProductDimensions = ({
             </Tr>
           </Tbody>
         </Table>
-        <Text as={"h6"}
-          variant={"h6"}
+        <Text
+          as={'h6'}
+          variant={'h6'}
           fontSize={{ base: '10px', sm: '11px', lg: '11px', xl: '11px' }}
-          fontWeight= {'normal'}
+          fontWeight={'normal'}
           color="green.300"
-          mt={"1%"}
+          mt={'1%'}
         >
-          {product.t('otherDimensionsText')}
+          {componentsLabels.t('product.otherDimensionsText')}
         </Text>
       </Flex>
     </Flex>

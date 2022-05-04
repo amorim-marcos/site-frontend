@@ -79,8 +79,9 @@ export const ProductDownloadItem = ({
           stroke={isHover ? hoverColor : textColor}
         />
       )}
-      <Text as={"h5"}
-        variant={"h5"}
+      <Text
+        as={'h5'}
+        variant={'h5'}
         color={textColor}
         fontWeight="bold"
         marginLeft={{

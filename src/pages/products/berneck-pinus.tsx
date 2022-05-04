@@ -1,5 +1,7 @@
 import { GetStaticProps } from 'next'
+import { loadTranslations } from 'ni18n'
 import BerneckPinusView from 'views/products/berneck-pinus'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
 export type SawnQuality = {
   col: string
@@ -91,12 +93,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
     process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.technical_sheet.url
 
   page_content.sawns_qualities.forEach((item: SawnQuality) => {
-    item.image_url = (item.image) ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.image.url : '../assets/imgs/banner_pinus.png'
+    item.image_url = item.image
+      ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.image.url
+      : '../assets/imgs/banner_pinus.png'
   })
 
   return {
     props: {
-      page_content
+      page_content,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

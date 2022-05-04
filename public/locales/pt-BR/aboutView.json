@@ -1,0 +1,25 @@
+{
+    "pagebar":{
+        "weAreBerneck": "Somos BERNECK®"
+    },
+    "headerBanner": {
+        "title": "Quem somos"
+    },
+    "infoGraphic": {
+        "exportVolume": "Volume de Exportação",
+        "exportMeasure": "TEUs / mês",
+        "comercialRelations": "Relações Comerciais",
+        "countries": "países"
+    },
+    "discoverWhereBuy": {
+        "discover": "DESCUBRA",
+        "whereBuy": "Onde Comprar"
+    },
+    "certifications": {
+        "title": "Certificações"
+    },
+    "knowOurCertifications": {
+        "know": "CONHEÇA",
+        "whereBuy": "Nossas certificações"
+    }
+}

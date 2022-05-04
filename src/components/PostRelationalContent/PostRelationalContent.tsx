@@ -1,6 +1,7 @@
 import { Flex, Text } from '@chakra-ui/react'
 
 import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
+import { useTranslation } from 'react-i18next'
 
 export type PostRelationalContentProps = {
   items: {
@@ -17,6 +18,8 @@ export type PostRelationalContentProps = {
 export const PostRelationalContent = ({
   items
 }: PostRelationalContentProps) => {
+  const componentsLabels = useTranslation('components')
+
   if (items.length > 0) {
     return (
       <Flex
@@ -27,7 +30,7 @@ export const PostRelationalContent = ({
         bg="brown.150"
       >
         <Text marginBottom="3%" as="h3" color="green.800" variant={'h3' as any}>
-          Conteúdos Relacionados
+          {componentsLabels.t('postRelationalContent.title')}
         </Text>
         <Flex
           overflowX={{ base: 'scroll', md: 'visible' }}

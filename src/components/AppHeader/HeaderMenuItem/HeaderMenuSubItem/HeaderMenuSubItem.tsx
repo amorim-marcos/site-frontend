@@ -83,18 +83,19 @@ export const HeaderMenuSubItem = ({
                 w="100%"
                 bg="green.700"
               >
-                { i.arrow && 
-                  <ArrowIcon 
+                {i.arrow && (
+                  <ArrowIcon
                     stroke="#CCD3CA"
                     w={{
                       base: '8px',
                       md: '5px',
                       lg: '6px',
                       xl: '8px'
-                    }} 
-                  /> }
+                    }}
+                  />
+                )}
                 <Text
-                  ml={(i.arrow) ? "10px" :  "0" }
+                  ml={i.arrow ? '10px' : '0'}
                   fontSize={{
                     base: '14px',
                     md: '8.3px',

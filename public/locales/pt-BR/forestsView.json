@@ -1,0 +1,37 @@
+{
+    "weCultivate": {
+        "sloganPartOne": "Cultivamos para colher,",
+        "sloganPartTwo": " Conservamos para colher sempre!",
+        "discoverOurEnvironmentalCommitmentBtn": "Conheça nosso compromisso ambiental"
+    },
+    "infoGraphicsForests": {
+        "thousandHectares": "mil hectares",
+        "pineForestCultivation": "Cultivo Florestal do Pinus",
+        "effectivelyPlantedForests": "Florestas Efetivamente Plantadas",
+        "millionsPerYear": "milhões por ano",
+        "preservationOfNaturalForests": "Preservação de Florestas Naturais",
+        "plantedTrees": "Árvores Plantadas",
+        "states": "estados",
+        "whichStates": "PR, SC, RS, MT e SP",
+        "counties": "municípios",
+        "supplyChain": "Cadeia de Suprimentos"
+    },
+    "knowOurCertifications": {
+        "know": "CONHEÇA",
+        "ourCertifications": "Nossas Certificações"
+    },
+    "infoGraphicBiodiversity": {
+        "wildAnimalSpecies": "Espécies de Animais Silvestres",
+        "monitoredFarms":"Fazendas Monitoradas"
+    },
+    "forestProductionHighlights": {
+        "title": "Destaques da produção florestal"
+    },
+    "forestSupplier": {
+        "becomeAForestSupplierBtn": "Seja um Fornecedor Florestal"
+    },
+    "publicSummaryOfForestManagement":{
+        "title": "Resumo público de Manejo Florestal",
+        "description": " Saiba mais sobre o manejo responsável das nossas florestas."
+    }
+}

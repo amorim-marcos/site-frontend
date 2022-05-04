@@ -1,0 +1,27 @@
+{
+    "connectTitle": "other_lang_Conecte-se",
+    "knowOurCommitment": {
+        "title": "other_lang_CONHEÇA",
+        "description": "other_lang_Nosso compromisso"
+    },
+    "knowOurFlorestalDivision": {
+        "title": "other_lang_CONHEÇA",
+        "description": "other_lang_Divisão Florestal"
+    },
+    "sectionChannelBnk": {
+        "channelDescription": "other_lang_Nosso canal de conteúdos sobre madeira, inspiração e muito mais."
+    },
+    "productsSection": {
+        "ourProducts": "other_lang_Nossos Produtos",
+        "seeAllProducts": "other_lang_Veja todos os produtos",
+        "discoverBanner": {
+            "title": "other_lang_DESCUBRA",
+            "description": "other_lang_Onde Comprar"
+        },
+        "contactBanner": {
+            "title": "other_lang_ENTRE EM CONTATO",
+            "description": "other_lang_Fale Conosco"
+        }
+    }
+    
+}

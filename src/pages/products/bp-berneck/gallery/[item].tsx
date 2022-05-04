@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetServerSideProps } from 'next'
+import { loadTranslations } from 'ni18n'
 
 import { strapiClient } from 'services'
 import { EnvView } from 'views/Gallery/EnvView'
+import { nameSpaces, ni18nConfig } from '../../../../../ni18n.config'
 
 export interface GalleryItemProps {
   env: {
@@ -121,7 +123,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       env,
       otherEnvs,
       imgs,
-      tableContent
+      tableContent,
+      ...(await loadTranslations(ni18nConfig, ctx.locale, nameSpaces))
     }
   }
 }

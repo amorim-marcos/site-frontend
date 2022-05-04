@@ -4,6 +4,7 @@ import CompletedTitle from '@components/CompletedTitle'
 import DownloadSection from '@components/DownloadSection'
 import { SectionPackBpDownloads } from '@components/SectionPackBpDownloads/SectionPackBpDownloads'
 import Pagebar from '@components/Pagebar'
+import { useTranslation } from 'react-i18next'
 
 export type DownloadItem = {
   id: number
@@ -40,7 +41,7 @@ export type DownloadsViewProps = {
   page_content: PageContent
 }
 
-export const DownlodasView = ({
+export const DownloadsView = ({
   page_content: {
     title,
     header_text,
@@ -52,12 +53,14 @@ export const DownlodasView = ({
 }: DownloadsViewProps) => {
   const items = sections
 
+  const channelBnkLabels = useTranslation('channelBnkView')
+
   return (
     <Box>
       <Pagebar
         paths={[
           {
-            title: 'Downloads',
+            title: channelBnkLabels.t('downloadsView.pagebar.downloads'),
             url: '/canal-bnk/downloads'
           }
         ]}

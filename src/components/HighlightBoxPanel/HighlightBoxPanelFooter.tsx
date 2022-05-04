@@ -13,37 +13,36 @@ const HighlightBoxPanelFooter = (props: HighlightBoxPanelProps) => (
     direction="column"
     borderBottomRightRadius="33px"
     bgColor="green.800"
-    flexWrap={"nowrap"}
+    flexWrap={'nowrap'}
   >
-    <Flex 
+    <Flex
       // alignItems="flex-start"
-      marginLeft={{ base: '3%', sm: '5%', lg: '4%', xl: '3%'}}
-      marginTop={{ base: '4%', sm: '3.5%', lg: '4%', xl: '3%'}}
+      marginLeft={{ base: '3%', sm: '5%', lg: '4%', xl: '3%' }}
+      marginTop={{ base: '4%', sm: '3.5%', lg: '4%', xl: '3%' }}
       // bg="red"
       flex="1"
     >
       <Title title={props.title} />
     </Flex>
 
-    <Flex 
-      marginLeft={{ base: '3%', sm: '5%', lg: '4%', xl: '3%'}}
-      marginBottom={{ base: '2%', sm: '2%', lg: '2%', xl: '2%'}}
+    <Flex
+      marginLeft={{ base: '3%', sm: '5%', lg: '4%', xl: '3%' }}
+      marginBottom={{ base: '2%', sm: '2%', lg: '2%', xl: '2%' }}
       // bg="blue"
       flex="1"
     >
       <SubTitle subtitle={props.subtitle} />
     </Flex>
-
   </Flex>
 )
 
 const Title = (props: { title: string }) => (
   <Text
-    variant={"h4" as any}
-    fontSize = {{ base: '15px', sm: '16px', lg: '16px', xl: '20px' }}
+    variant={'h4' as any}
+    fontSize={{ base: '15px', sm: '16px', lg: '16px', xl: '20px' }}
     whiteSpace="pre"
     letterSpacing="-0.46px"
-    color={"green.600"}
+    color={'green.600'}
   >
     {props.title}
   </Text>
@@ -51,14 +50,13 @@ const Title = (props: { title: string }) => (
 
 const SubTitle = (props: { subtitle: string }) => (
   <Text
-    variant={"h5" as any}
-    fontSize = {{ base: '12px', sm: '12px', lg: '14px', xl: '15px' }}
+    variant={'h5' as any}
+    fontSize={{ base: '12px', sm: '12px', lg: '14px', xl: '15px' }}
     color="white"
     letterSpacing="-0.36px"
   >
     {props.subtitle}
   </Text>
 )
-
 
 export default HighlightBoxPanelFooter

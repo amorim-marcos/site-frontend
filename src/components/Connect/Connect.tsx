@@ -8,10 +8,12 @@ import CompletedTitle from '@components/CompletedTitle'
 
 import useFacebook from 'hooks/useFacebook'
 import useMobile from 'hooks/useMobile'
+import { useTranslation } from 'react-i18next'
 
 export default function Connect() {
   const { isMobile, width } = useMobile(568)
   const [lastVideo, setLastVideo] = useState<string | null>()
+  const componentsLabels = useTranslation('components')
 
   useFacebook()
 
@@ -46,7 +48,7 @@ export default function Connect() {
           justifyContent={{ base: 'center', lg: 'flex-start' }}
         >
           <CompletedTitle
-            titleString="Conecte-se"
+            titleString={componentsLabels.t('connect.title')}
             textAlign={{ base: 'center', sm: 'center', lg: 'left', xl: 'left' }}
             alignSelf={{
               base: 'center',

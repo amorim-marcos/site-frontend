@@ -14,6 +14,7 @@ import Connect from '@components/Connect'
 import { Intro, Videos, Downloads } from './sections'
 
 import { Post, Category } from 'types/data/Post'
+import { useTranslation } from 'react-i18next'
 
 export const CategoryContext = createContext(
   {} as {
@@ -85,20 +86,38 @@ function CanalBNKFC(props: CanalBNKProps) {
       changeCurrentCategory(props.defaultCategory)
     }
   }, [props, setCategories, changeCurrentCategory])
+
+  const channelBnkLabels = useTranslation('channelBnkView')
+
   return (
     <Box>
       {currentCategory !== -1 ? (
         <Pagebar
           paths={[
-            { title: 'Canal BNK', url: '/canal-bnk' },
             {
-              title: categories[currentCategory].name.split(" ").map((name) => name[0].toUpperCase() + name.slice(1).toLowerCase()).join(" "),
+              title: channelBnkLabels.t('pagebar.channelBnk'),
+              url: '/canal-bnk'
+            },
+            {
+              title: categories[currentCategory].name
+                .split(' ')
+                .map(
+                  (name) => name[0].toUpperCase() + name.slice(1).toLowerCase()
+                )
+                .join(' '),
               url: '/canal-bnk'
             }
           ]}
         />
       ) : (
-        <Pagebar paths={[{ title: 'Canal BNK', url: '/canal-bnk' }]} />
+        <Pagebar
+          paths={[
+            {
+              title: channelBnkLabels.t('pagebar.channelBnk'),
+              url: '/canal-bnk'
+            }
+          ]}
+        />
       )}
 
       <Intro

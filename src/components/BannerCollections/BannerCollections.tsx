@@ -30,7 +30,7 @@ export const BannerCollections = (props: BannerCollectionsProps) => {
         xl: 'center'
       }}
       backgroundRepeat="no-repeat"
-      backgroundSize={"contain"}
+      backgroundSize={'contain'}
       w="100%"
       // padding={{ base: '8%', sm: '8%', lg: '10%', xl: '8%'}}
       h="100%"

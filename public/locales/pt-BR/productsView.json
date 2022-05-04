@@ -1,0 +1,100 @@
+{
+    "ourProducts": "Nossos Produtos",
+    "pagebar": {
+        "products": "Produtos"
+    },
+    "bpBerneck": {
+		"title": "BP BERNECK®",
+        "description": "Laminado Melamínico Decorativo",
+        "bannerProducts": {
+            "title":"Conheça os padrões BP BERNECK®",
+            "subtitle": "Laminado Melamínico Decorativo"
+        },
+        "bannerCollections": {
+            "title": "Conheça"
+        },
+        "inspireSection": {
+            "title":"Inspire-se",
+            "accessOurs": "Acesse a nossa",
+            "envGallery": "Galeria de ambientes"
+        },
+        "linkBanners": {
+            "packPatterns":{
+                "title": "Pack de Padrões BP BERNECK",
+                "subtitle": "FAÇA O DOWNLOAD"
+            },
+            "inspireMagazine": {
+                "title": "Revista Inspirare BNK",
+                "subtitle": "CONHEÇA MAIS"
+            },
+            "supportMaterials": {
+                "title": "Materiais de Suporte",
+                "subtitle": "CONHEÇA MAIS"
+            }
+        }
+	},
+    "mdpBerneck": {
+        "title": "MDP BERNECK®",
+        "description": "Painel de Partículas de Média Densidade",
+        "productWithBP":{
+            "title": "MDP BERNECK® com BP",
+            "description": "A combinação das qualidades do MDP com a variedade de acabamentos do BP fornecem inúmeras possibilidades de utilização. Encontre a melhor para a sua aplicação.",
+            "button": "Conheça todos os padrões BP BERNECK em MDP"
+        },
+        "productWithBpPlus":{
+            "title": "MDP PLUS BERNECK® com BP",
+            "description": "Inove nos projetos com os acabamentos BP em MDP PLUS, laminados melamínicos com a proteção do PLUS BERNECK.",
+            "button": "Conheça todos os padrões BP BERNECK em MDP PLUS"
+        }
+    },
+    "mdfBerneck": {
+        "title": "MDF BERNECK®",
+        "description": "Painel de Fibra de Média Densidade",
+        "productWithBP":{
+            "title": "MDF BERNECK® com BP",
+            "description": "A combinação das qualidades do MDF com a variedade de acabamentos do BP fornecem inúmeras possibilidades de utilização. Encontre a melhor para a sua aplicação.",
+            "button": "Conheça todos os padrões BP BERNECK em MDF"
+        },
+        "productWithBpPlus":{
+            "title": "MDF PLUS BERNECK® com BP",
+            "description": "Inove nos projetos com os acabamentos BP em MDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .",
+            "button": "Conheça todos os padrões BP BERNECK em MDF PLUS"
+        }
+    },
+    "hdfBerneck": {
+        "title": "HDF BERNECK®",
+        "description": "Painel de Fibra de Alta Densidade",
+        "productWithBP":{
+            "title": "HDF PLUS BERNECK® com BP",
+            "description": "Inove nos projetos com os acabamentos BP em HDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .",
+            "button": "Conheça todos os padrões BP BERNECK em HDF PLUS"
+        }
+    },
+    "plusBerneck": {
+        "title": "PLUS BERNECK®",
+        "description": "Linha de Painéis com Resistência Extra à Umidade",
+        "extraInfoTitle": "Muito importante",
+        "plusProducts": {
+            "hdfPlus": {
+                "title": "HDF PLUS BERNECK®",
+                "subtitle": "Painel de Fibra de Alta Densidade com Resistência Extra à Umidade"
+            },
+            "mdfPlus": {   
+                "title":"MDF PLUS BERNECK®",
+                "subtitle":"Painel de Fibra de Média Densidade com Resistência Extra à Umidade"
+            },
+            "mdpPlus": {
+                "title":"MDP PLUS BERNECK®",
+                "subtitle":"Painel de Partículas de Média Densidade com Resistência Extra à Umidade"
+            }
+        }
+    },
+    "berneckPinus": {
+        "title": "BERNECK PINUS®",
+        "description": "Madeira Serrada de Pinus"
+    },
+    "berneckTeca": {
+        "title": "BERNECK TECA®",
+        "description": "Madeira Serrada de Teca"
+    }
+}

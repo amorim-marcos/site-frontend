@@ -1,4 +1,12 @@
-import { Heading, Flex, Box, Text, Center, Image, FlexProps } from '@chakra-ui/react'
+import {
+  Heading,
+  Flex,
+  Box,
+  Text,
+  Center,
+  Image,
+  FlexProps
+} from '@chakra-ui/react'
 import GrafismLeft from '@components/GrafismLeft'
 import React, { ReactNode } from 'react'
 
@@ -30,7 +38,7 @@ export const PatternInfo = ({
       overflowY="hidden"
       overflowX="hidden"
       padding={{ base: '5%', sm: '5%', lg: '8%', xl: '3%' }}
-      w={"100%"}
+      w={'100%'}
       {...props}
     >
       <Box position={'absolute'} zIndex="base" left="-50px" top="-70px">

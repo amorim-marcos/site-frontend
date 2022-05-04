@@ -28,6 +28,7 @@ import {
 import { colors } from 'theme/colors'
 import { initialFilters } from './'
 import { FilterCheckbox } from './FilterCheckbox'
+import { useTranslation } from 'react-i18next'
 
 export type FiltersSelectProps = {
   darkMode: boolean
@@ -76,6 +77,8 @@ export const FiltersTabs = ({
 }: FiltersSelectProps) => {
   const [searchSelected, setSearchSelected] = React.useState(false)
 
+  const bpCatalog = useTranslation('bpCatalog')
+
   return (
     <>
       <Button
@@ -93,7 +96,9 @@ export const FiltersTabs = ({
           <FiltersIcon mr="16px" />
         )}
         <Text color={darkMode ? 'green.300' : 'gray.300'} fontSize="17px">
-          {!displayFilters ? 'Filtrar Resultados' : 'Esconder filtros'}
+          {!displayFilters
+            ? bpCatalog.t('filtersTab.filterResults')
+            : bpCatalog.t('filtersTab.hideFilters')}
         </Text>
         <Arrow
           visibility={displayFilters ? 'hidden' : 'visible'}
@@ -134,7 +139,7 @@ export const FiltersTabs = ({
                     _focus={{ outline: 'none' }}
                   >
                     <Text color={darkMode ? 'green.300' : 'gray.300'} mr="10px">
-                      PAINÉIS
+                      {bpCatalog.t('filtersTab.panels')}
                     </Text>
                     <Arrow
                       direction={currentFilterPanel == 'panels' ? 'up' : 'down'}
@@ -158,7 +163,7 @@ export const FiltersTabs = ({
                     _focus={{ outline: 'none' }}
                   >
                     <Text color={darkMode ? 'green.300' : 'gray.300'} mr="10px">
-                      COLEÇÕES
+                      {bpCatalog.t('filtersTab.collections')}
                     </Text>
                     <Arrow
                       direction={
@@ -184,7 +189,7 @@ export const FiltersTabs = ({
                     _focus={{ outline: 'none' }}
                   >
                     <Text color={darkMode ? 'green.300' : 'gray.300'} mr="10px">
-                      COLORAÇÃO
+                      {bpCatalog.t('filtersTab.coloration')}
                     </Text>
                     <Arrow
                       direction={
@@ -293,7 +298,7 @@ export const FiltersTabs = ({
                     onClick={() => setFilteredBps(applyFilters(filters, bps))}
                     _focus={{ outline: 'none' }}
                   >
-                    Filtrar
+                    {bpCatalog.t('filtersTab.filter')}
                   </Button>
                   {!filtersEmpty && (
                     <Button
@@ -304,7 +309,7 @@ export const FiltersTabs = ({
                       }}
                       _focus={{ outline: 'none' }}
                     >
-                      Limpar filtros
+                      {bpCatalog.t('filtersTab.clearFilters')}
                     </Button>
                   )}
                 </Flex>
@@ -324,7 +329,7 @@ export const FiltersTabs = ({
               fontSize="16px"
               mr="15px"
             >
-                  Ordenar por
+              {bpCatalog.t('filtersTab.orderBy')}
             </Text>
             <Select
               onChange={(e) => {
@@ -333,7 +338,7 @@ export const FiltersTabs = ({
                   applyFilters({ ...filters, orderBy: e.target.value }, bps)
                 )
               }}
-              value={filters["orderBy"]}
+              value={filters['orderBy']}
               mr="30px"
               color={darkMode ? 'green.300' : 'gray.300'}
               position="relative"
@@ -357,7 +362,7 @@ export const FiltersTabs = ({
                   fontSize="16px"
                   mr="15px"
                 >
-                  Formato de exibição
+                  {bpCatalog.t('filtersTab.exhibitionFormat')}
                 </Text>
 
                 <Button
@@ -431,7 +436,7 @@ export const FiltersTabs = ({
                       if (event.key === 'Enter')
                         setFilteredBps(applyFilters(filters, bps))
                     }}
-                    placeholder="Pesquise pelo nome"
+                    placeholder={bpCatalog.t('filtersTab.searchByName')}
                     _placeholder={{
                       color: darkMode ? 'green.300' : 'gray.300'
                     }}
@@ -486,7 +491,7 @@ export const FiltersTabs = ({
                   fontSize="16px"
                   mr="15px"
                 >
-                  Cor do fundo
+                  {bpCatalog.t('filtersTab.bgColor')}
                 </Text>
 
                 <Box position="relative" display="inline-block" mr="15px">
@@ -517,7 +522,7 @@ export const FiltersTabs = ({
         top="0"
         right="0"
       >
-        {filteredBpsLength} Produtos Encontrados
+        {filteredBpsLength} {bpCatalog.t('filtersTab.productsFound')}
       </Text>
     </>
   )

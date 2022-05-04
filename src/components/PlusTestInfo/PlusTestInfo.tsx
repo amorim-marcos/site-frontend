@@ -24,194 +24,174 @@ export const PlusTestInfo = ({
   tableInfo
 }: PlusTestInfoProps) => {
   return (
-
-  <Box
-    bg="#E8E8E8"
-  >
-    <Box
-      aria-label="plusTestinfoContainer"
-      bg="#E8E8E8"
-      maxWidth="1536px"
-      marginX="auto"
-      padding={{ base: '5%', '2xl': '3%' }}
-    >
-      <Text as={"h3"}
-          variant={"h3"}
+    <Box bg="#E8E8E8">
+      <Box
+        aria-label="plusTestinfoContainer"
+        bg="#E8E8E8"
+        maxWidth="1536px"
+        marginX="auto"
+        padding={{ base: '5%', '2xl': '3%' }}
+      >
+        <Text
+          as={'h3'}
+          variant={'h3'}
           color="green.900"
           fontWeight={'extrabold'}
-        >{title}</Text>
-      <Text width={{ base: '100%', md: '44%' }}>
-        {description}
-      </Text>
-
-      <Flex
-        padding={{
-          base: '2% 0 4% 0',
-          md: '2% 0 2% 0',
-          lg: '2% 0 2% 0',
-          xl: '2% 0 5% 0',
-          '2xl': '2% 0 2% 0',
-        }}
-        margin={{
-          base: '2% 0 4% 0',
-          md: '2% 0 2% 0',
-          lg: '2% 0 2% 0',
-          xl: '2% 0 2% 0',
-          '2xl': '2% 0 5% 0',
-        }}
-        justifyContent="space-evenly"
-        // alignItems="flex-start"
-        position="relative"
-        backgroundImage={{
-          base: "url('/img/fundo_caminho90deg.png')",
-          md: "url('/img/fundo_caminho.png')"
-        }}
-        backgroundRepeat="no-repeat"
-        backgroundSize={{ base: '120%' }}
-        flexDirection={{ base: 'column', md: 'row' }}
-      >
-
-        {/* LINHA 1 */}
-        <Flex
-          marginY={{ base: '3%', md: '0' }}
-          w={{ base: '80%', md: '30%' }}
-          zIndex="docked"
-          alignItems="flex-start"
-          flexDirection={"row"}
         >
-          <Flex
-            // bg="black"
-            alignItems="flex-start"
-            padding={{ base: '5%',  sm: '5%', md: '2%' , '2xl': '4%' }}
-            mt={{ base: '-5%',  sm: '-4%', md: '-3%' , '2xl': '-4%' }}
+          {title}
+        </Text>
+        <Text width={{ base: '100%', md: '44%' }}>{description}</Text>
 
-          >
-          <Text 
-            variant={'berneckPlusTestInfoNumber' as any}
-          >1</Text></Flex>
-           <Flex
-            // bg="white"
-            padding={"2%"}
-          >
-          <Text>
-            {testSteps && testSteps.first}
-          </Text></Flex>
-        </Flex>
-
-        {/* LINHA 2 */}
         <Flex
-          marginY={{ base: '3%', md: '0' }}
-          w={{ base: '80%', md: '30%' }}
-          zIndex="docked"
-          alignItems="flex-start"
-          flexDirection={"row"}
+          padding={{
+            base: '2% 0 4% 0',
+            md: '2% 0 2% 0',
+            lg: '2% 0 2% 0',
+            xl: '2% 0 5% 0',
+            '2xl': '2% 0 2% 0'
+          }}
+          margin={{
+            base: '2% 0 4% 0',
+            md: '2% 0 2% 0',
+            lg: '2% 0 2% 0',
+            xl: '2% 0 2% 0',
+            '2xl': '2% 0 5% 0'
+          }}
+          justifyContent="space-evenly"
+          // alignItems="flex-start"
+          position="relative"
+          backgroundImage={{
+            base: "url('/img/fundo_caminho90deg.png')",
+            md: "url('/img/fundo_caminho.png')"
+          }}
+          backgroundRepeat="no-repeat"
+          backgroundSize={{ base: '120%' }}
+          flexDirection={{ base: 'column', md: 'row' }}
         >
+          {/* LINHA 1 */}
           <Flex
-            // bg="black"
+            marginY={{ base: '3%', md: '0' }}
+            w={{ base: '80%', md: '30%' }}
+            zIndex="docked"
             alignItems="flex-start"
-            padding={{ base: '5%',  sm: '5%', md: '2%' , '2xl': '4%' }}
-            mt={{ base: '-5%',  sm: '-4%', md: '-3%' , '2xl': '-4%' }}
-
+            flexDirection={'row'}
           >
-          <Text 
-            variant={'berneckPlusTestInfoNumber' as any}
-          >2</Text></Flex>
-          <Flex
-            // bg="white"
-            padding={"2%"}
-          >
-          <Text>
-            {testSteps && testSteps.second}
-          </Text></Flex>
-        </Flex>
-
-        {/* LINHA 3 */}
-        <Flex
-          // marginY={{ base: '3%', md: '0' }}
-          w={{ base: '80%', md: '30%' }}
-          zIndex="docked"
-          alignItems="flex-start"
-          flexDirection={"row"}
-        >
-          <Flex
-            // bg="black"
-            alignItems="flex-start"
-            padding={{ base: '5%',  sm: '5%', md: '2%' , '2xl': '4%' }}
-            mt={{ base: '-5%',  sm: '-4%', md: '-3%' , '2xl': '-4%' }}
-
-          >
-            <Text 
-              variant={'berneckPlusTestInfoNumber' as any}
-             
-            >3</Text>
-          </Flex>
-          <Flex
-            // bg="white"
-            padding={"2%"}
-          >
-            <Text>
-              {testSteps && testSteps.third}
-            </Text>
+            <Flex
+              // bg="black"
+              alignItems="flex-start"
+              padding={{ base: '5%', sm: '5%', md: '2%', '2xl': '4%' }}
+              mt={{ base: '-5%', sm: '-4%', md: '-3%', '2xl': '-4%' }}
+            >
+              <Text variant={'berneckPlusTestInfoNumber' as any}>1</Text>
+            </Flex>
+            <Flex
+              // bg="white"
+              padding={'2%'}
+            >
+              <Text>{testSteps && testSteps.first}</Text>
+            </Flex>
           </Flex>
 
-        </Flex>
-      </Flex>
-
-
-      <Flex
-        flexDirection={{ base: 'column', md: 'row' }}
-        // bg="violet"
-        justifyContent={{ base: 'space-between', md: 'center' }}
-        // justifyItems={{ base: 'center', md: 'center' }}
-        // alignContent={{ base: 'center', md: 'center' }}
-        alignItems={{ base: 'none', md: 'center' }}
-      >
-        <Box 
-          width={{ base: '100%', md: '60%' }}
-          // flex="2"
-        >
-          <Text 
-            margin={{
-              base: '2%',
-              md: '3%',
-              lg: '5%',
-              xl: '5%',
-              '2xl': '5%'
-            }}
-              as={"h3"}
-            variant={"h3"}
-            color="green.900"
-            fontWeight={'extrabold'}
+          {/* LINHA 2 */}
+          <Flex
+            marginY={{ base: '3%', md: '0' }}
+            w={{ base: '80%', md: '30%' }}
+            zIndex="docked"
+            alignItems="flex-start"
+            flexDirection={'row'}
           >
-            {extraInfoTitle}
-          </Text>
+            <Flex
+              // bg="black"
+              alignItems="flex-start"
+              padding={{ base: '5%', sm: '5%', md: '2%', '2xl': '4%' }}
+              mt={{ base: '-5%', sm: '-4%', md: '-3%', '2xl': '-4%' }}
+            >
+              <Text variant={'berneckPlusTestInfoNumber' as any}>2</Text>
+            </Flex>
+            <Flex
+              // bg="white"
+              padding={'2%'}
+            >
+              <Text>{testSteps && testSteps.second}</Text>
+            </Flex>
+          </Flex>
+
+          {/* LINHA 3 */}
+          <Flex
+            // marginY={{ base: '3%', md: '0' }}
+            w={{ base: '80%', md: '30%' }}
+            zIndex="docked"
+            alignItems="flex-start"
+            flexDirection={'row'}
+          >
+            <Flex
+              // bg="black"
+              alignItems="flex-start"
+              padding={{ base: '5%', sm: '5%', md: '2%', '2xl': '4%' }}
+              mt={{ base: '-5%', sm: '-4%', md: '-3%', '2xl': '-4%' }}
+            >
+              <Text variant={'berneckPlusTestInfoNumber' as any}>3</Text>
+            </Flex>
+            <Flex
+              // bg="white"
+              padding={'2%'}
+            >
+              <Text>{testSteps && testSteps.third}</Text>
+            </Flex>
+          </Flex>
+        </Flex>
+
+        <Flex
+          flexDirection={{ base: 'column', md: 'row' }}
+          // bg="violet"
+          justifyContent={{ base: 'space-between', md: 'center' }}
+          // justifyItems={{ base: 'center', md: 'center' }}
+          // alignContent={{ base: 'center', md: 'center' }}
+          alignItems={{ base: 'none', md: 'center' }}
+        >
           <Box
-            // bg="blue"
+            width={{ base: '100%', md: '60%' }}
+            // flex="2"
           >
-            {extraInfoBody &&
-              extraInfoBody.map((e, j) => <ItemCite key={j} text={e} />)}
+            <Text
+              margin={{
+                base: '2%',
+                md: '3%',
+                lg: '5%',
+                xl: '5%',
+                '2xl': '5%'
+              }}
+              as={'h3'}
+              variant={'h3'}
+              color="green.900"
+              fontWeight={'extrabold'}
+            >
+              {extraInfoTitle}
+            </Text>
+            <Box
+            // bg="blue"
+            >
+              {extraInfoBody &&
+                extraInfoBody.map((e, j) => <ItemCite key={j} text={e} />)}
+            </Box>
           </Box>
-
-        </Box>
-        <Box
-          // flex="1"
-          bg="gray.450"
-          padding={'2%'}
-          marginLeft={{ md: '2%' }}
-        >{tableInfo && <PlusInfoTable rows={tableInfo.rows} />}
-        </Box>
-      
-      </Flex>
+          <Box
+            // flex="1"
+            bg="gray.450"
+            padding={'2%'}
+            marginLeft={{ md: '2%' }}
+          >
+            {tableInfo && <PlusInfoTable rows={tableInfo.rows} />}
+          </Box>
+        </Flex>
+      </Box>
     </Box>
-  </Box>
   )
 }
 
 const ItemCite = ({ text = '' }) => {
   return (
-    <Flex 
-      marginBottom="5%"
-    >
+    <Flex marginBottom="5%">
       <Box
         margin={{
           base: '3px',
@@ -232,7 +212,7 @@ const ItemCite = ({ text = '' }) => {
           stroke="green.600"
         />
       </Box>
-      <Text 
+      <Text
         variant={'productBody' as any}
         mt={{
           base: '-3px',
@@ -241,7 +221,9 @@ const ItemCite = ({ text = '' }) => {
           xl: '2px',
           '2xl': '2px'
         }}
-      >{text}</Text>
+      >
+        {text}
+      </Text>
     </Flex>
   )
 }

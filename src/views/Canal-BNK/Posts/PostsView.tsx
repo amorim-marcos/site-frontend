@@ -10,6 +10,7 @@ import React, { useState } from 'react'
 
 import { PostBodyProps } from '@components/PostBody/PostBody'
 import { Category } from 'types/data/Post'
+import { useTranslation } from 'react-i18next'
 
 export type PostViewProps = {
   postBody: PostBodyProps
@@ -26,13 +27,15 @@ export const PostsView = ({
   backgroundColor,
   postCategory
 }: PostViewProps) => {
+  const channelBnkLabels = useTranslation('channelBnkView')
+
   return (
     <>
       <Box>
         <Pagebar
           paths={[
             {
-              title: 'Canal BNK',
+              title: channelBnkLabels.t('postsView.pagebar.channelBnk'),
               url: '/canal-bnk'
             },
             {
