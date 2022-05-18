@@ -13,6 +13,8 @@ import { ni18nConfig } from '../../ni18n.config'
 
 import AppCookieConsent from '@components/AppCookieConsent'
 
+import '../styles/zoomout.css'
+
 function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
