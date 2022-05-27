@@ -18,6 +18,7 @@ import { IContactChannel } from 'types/data/ContactChannel'
 import { useBackgroundArray } from './useBackgroundArray'
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export type ContactViewProps = {
   contact_channels: IContactChannel[]
@@ -229,7 +230,7 @@ const ContactChannelSection = ({ channel }: { channel: IContactChannel }) => (
           variant="body"
           order={{ base: 3, lg: 2 }}
         >
-          {channel.description}
+          <HtmlTextParser>{channel.description}</HtmlTextParser>
         </Text>
         <Image
           mt={{ base: '10px', lg: '30px' }}

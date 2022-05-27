@@ -5,6 +5,8 @@ import { DimensionsProps } from '@components/ProductDimensions/ProductDimensions
 import { useTranslation } from 'react-i18next'
 import parser from 'react-html-parser'
 import { Wrapper } from './style'
+import HtmlTextParser from '@components/HtmlTextParser'
+import Paragraph from '@components/Paragraph'
 
 export type TecaInfoProps = {
   dimensions?: DimensionsProps
@@ -22,8 +24,6 @@ export const TecaInfo = ({
 
   return (
     <Flex
-      // padding="4%"
-      // justifyContent="space-around"
       maxWidth="1536px"
       marginX="auto"
       flexDirection={{ base: 'column', sm: 'row' }}
@@ -31,7 +31,6 @@ export const TecaInfo = ({
     >
       <Box
         marginBottom={{ base: '20px', sm: '0' }}
-        // paddingLeft={{ base: '15px' }}
         width={{ base: '100%', sm: '45%' }}
       >
         <Text
@@ -45,7 +44,10 @@ export const TecaInfo = ({
 
         {machinability && (
           <Wrapper>
-            <Text variant={'productBody' as any}>{parser(machinability)}</Text>
+            <Text variant={'productBody' as any}>
+              <HtmlTextParser>{machinability}</HtmlTextParser>
+            </Text>
+            {/* <Text variant={'productBody' as any}>{parser(machinability)}</Text> */}
           </Wrapper>
         )}
       </Box>
@@ -74,7 +76,9 @@ export const TecaInfo = ({
             >
               {componentsLabels.t('product.usesAndApplications')}
             </Text>
-            <Text variant={'productBody' as any}>{usesAndApplications}</Text>
+            <Text variant={'productBody' as any}>
+              <HtmlTextParser>{usesAndApplications}</HtmlTextParser>
+            </Text>
           </Box>
         )}
         {dimensions && (

@@ -7,14 +7,6 @@ export type ProductTextProps = {
 }
 
 const TextSyle: TextProps = {
-  // fontSize: {
-  //   base: '14px',
-  //   sm: '8px',
-  //   md: '11px',
-  //   lg: '14px',
-  //   xl: '17px',
-  //   '2xl': '20px'
-  // },
   color: 'green.900',
   width: {
     base: '95%',

@@ -12,6 +12,7 @@ import useMobile from 'hooks/useMobile'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { QualityBtnTexture } from './QualityPinusBtnsTexture/QualityBtnTexture'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 type ItemProps = {
   col: string
@@ -151,7 +152,9 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
                     variant={'productBody' as any}
                     w={{ base: '95%', sm: '90%' }}
                   >
-                    {items[currentItem].description}
+                    <HtmlTextParser>
+                      {items[currentItem].description}
+                    </HtmlTextParser>
                   </Text>
                 </Box>
               )}
@@ -189,7 +192,9 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
                 </Text>
                 {items.length > 0 && (
                   <Text variant={'productBody' as any}>
-                    {items[currentItem].uses_and_applications}
+                    <HtmlTextParser>
+                      {items[currentItem].uses_and_applications}
+                    </HtmlTextParser>
                   </Text>
                 )}
               </Box>

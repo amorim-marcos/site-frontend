@@ -1,4 +1,5 @@
 import { Flex, Text, LayoutProps, Button, Box } from '@chakra-ui/react'
+import HtmlTextParser from '@components/HtmlTextParser'
 import { AlertIcon, CloseIcon } from '@components/Icons'
 import { useState } from 'react'
 
@@ -70,7 +71,7 @@ export const FireAlert = ({ title }: FireAlertProps) => {
             textAlign={{ base: 'center', sm: 'left' }}
             fontWeight="normal"
           >
-            {title}
+            <HtmlTextParser>{title}</HtmlTextParser>
           </Text>
         </Flex>
 

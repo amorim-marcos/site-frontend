@@ -1,4 +1,5 @@
 import { Heading, Flex, Box, Text, Center, Container } from '@chakra-ui/react'
+import HtmlTextParser from '@components/HtmlTextParser'
 import { CertificationsIcon, ReportsIcon } from '@components/Icons'
 import { useState } from 'react'
 import { colors } from 'theme/colors'
@@ -68,7 +69,7 @@ export const PatternCertification = ({
           wordBreak="break-word"
           color={hover ? 'green.600' : titleInitialColor}
         >
-          {title}
+          <HtmlTextParser>{title}</HtmlTextParser>
         </Text>
       </Box>
     </Flex>

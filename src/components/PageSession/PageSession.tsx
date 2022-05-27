@@ -3,6 +3,7 @@ import { Box, Text, Flex } from '@chakra-ui/react'
 
 import CompletedTitle from '@components/CompletedTitle'
 import GrafismLeft from '@components/GrafismLeft'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export type PageSessionProps = {
   // Title
@@ -156,7 +157,7 @@ export const PageSession = ({
                 color={subTitleColor}
                 textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
               >
-                {data.subtitle}
+                <HtmlTextParser>{data.subtitle}</HtmlTextParser>
               </Text>
               <Text
                 color={subTitleColor}
@@ -168,7 +169,7 @@ export const PageSession = ({
                   xl: '15px 10px'
                 }}
               >
-                {data.text}
+                <HtmlTextParser>{data.text}</HtmlTextParser>
               </Text>
             </Box>
           </Flex>

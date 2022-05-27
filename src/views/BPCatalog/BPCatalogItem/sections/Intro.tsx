@@ -2,6 +2,7 @@ import { Box, Flex, Image, Text } from '@chakra-ui/react'
 
 import { Link } from 'react-scroll'
 import { ZoomInIcon } from '@components/Icons'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export interface IntroProps {
   productName: string
@@ -68,7 +69,7 @@ export const Intro = (props: IntroProps) => (
         color="gray.300"
         pb="22px"
       >
-        {props.productDescription}
+        <HtmlTextParser>{props.productDescription}</HtmlTextParser>
       </Text>
 
       <Box h="3px" w="87px" bg="green.600" />

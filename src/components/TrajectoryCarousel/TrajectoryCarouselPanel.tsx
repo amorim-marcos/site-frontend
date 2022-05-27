@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Flex, Box, Heading, Text, Image, SlideFade } from '@chakra-ui/react'
 import Arrow from '@components/Arrow'
 import { TrajectoryTab } from './TrajectoryCarousel'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export type TrajectoryCarouselPanelProps = {
   tabData: TrajectoryTab
@@ -81,7 +82,9 @@ export const TrajectoryCarouselPanel = ({
           // bg="green.300"
           marginTop="5px"
         >
-          <Text fontFamily="body">{tabData.content.text}</Text>
+          <Text fontFamily="body">
+            <HtmlTextParser>{tabData.content.text}</HtmlTextParser>
+          </Text>
         </Box>
       </Flex>
       <Box
