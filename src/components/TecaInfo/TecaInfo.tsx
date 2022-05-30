@@ -10,7 +10,7 @@ import Paragraph from '@components/Paragraph'
 
 export type TecaInfoProps = {
   dimensions?: DimensionsProps
-  usesAndApplications?: string | Array<string>
+  usesAndApplications?: string
   machinability?: string
   supplyInformation?: Array<string>
 }
