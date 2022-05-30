@@ -20,6 +20,7 @@ import { Section } from './Section'
 import { CategoryContext } from '..'
 import { Post as IPost } from 'types/data'
 import { useTranslation } from 'react-i18next'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export const PANEL_COLOR = {
   all: 'white',
@@ -174,8 +175,11 @@ export const Intro = (props: {
                         : 'white'
                     }
                   >
-                    {(currentCategory !== -1 &&
-                      categories[currentCategory].description) ||
+                    {(currentCategory !== -1 && (
+                      <HtmlTextParser>
+                        {categories[currentCategory].description}
+                      </HtmlTextParser>
+                    )) ||
                       channelBnkLabels.t('introSection.channelDescription')}
                   </Text>
                 )}

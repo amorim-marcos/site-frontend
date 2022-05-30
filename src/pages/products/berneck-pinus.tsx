@@ -43,7 +43,7 @@ export default function BerneckPinus(props: BerneckPinusPageProps) {
       pinus={{
         title: props.page_content.page_title,
         subTitle: props.page_content.header_subtitle,
-        description: props.page_content.header_subtitle_description,
+        description: props.page_content.description,
 
         subTitleDescription: props.page_content.header_subtitle_description,
         usesAndApplications: props.page_content.uses_and_applications,

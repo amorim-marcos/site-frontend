@@ -1,4 +1,5 @@
 import { Flex, Box, Text } from '@chakra-ui/react'
+import HtmlTextParser from '@components/HtmlTextParser'
 import PlusInfoTable from '@components/PlusInfoTable'
 import { PlusInfoTableProps } from '@components/PlusInfoTable/PlusInfoTable'
 
@@ -40,7 +41,9 @@ export const PlusTestInfo = ({
         >
           {title}
         </Text>
-        <Text width={{ base: '100%', md: '44%' }}>{description}</Text>
+        <Text width={{ base: '100%', md: '44%' }}>
+          <HtmlTextParser>{description}</HtmlTextParser>
+        </Text>
 
         <Flex
           padding={{
@@ -58,7 +61,6 @@ export const PlusTestInfo = ({
             '2xl': '2% 0 5% 0'
           }}
           justifyContent="space-evenly"
-          // alignItems="flex-start"
           position="relative"
           backgroundImage={{
             base: "url('/img/fundo_caminho90deg.png')",
@@ -77,18 +79,18 @@ export const PlusTestInfo = ({
             flexDirection={'row'}
           >
             <Flex
-              // bg="black"
               alignItems="flex-start"
               padding={{ base: '5%', sm: '5%', md: '2%', '2xl': '4%' }}
               mt={{ base: '-5%', sm: '-4%', md: '-3%', '2xl': '-4%' }}
             >
               <Text variant={'berneckPlusTestInfoNumber' as any}>1</Text>
             </Flex>
-            <Flex
-              // bg="white"
-              padding={'2%'}
-            >
-              <Text>{testSteps && testSteps.first}</Text>
+            <Flex padding={'2%'}>
+              <Text>
+                {testSteps && (
+                  <HtmlTextParser>{testSteps.first}</HtmlTextParser>
+                )}
+              </Text>
             </Flex>
           </Flex>
 
@@ -101,58 +103,51 @@ export const PlusTestInfo = ({
             flexDirection={'row'}
           >
             <Flex
-              // bg="black"
               alignItems="flex-start"
               padding={{ base: '5%', sm: '5%', md: '2%', '2xl': '4%' }}
               mt={{ base: '-5%', sm: '-4%', md: '-3%', '2xl': '-4%' }}
             >
               <Text variant={'berneckPlusTestInfoNumber' as any}>2</Text>
             </Flex>
-            <Flex
-              // bg="white"
-              padding={'2%'}
-            >
-              <Text>{testSteps && testSteps.second}</Text>
+            <Flex padding={'2%'}>
+              <Text>
+                {testSteps && (
+                  <HtmlTextParser>{testSteps.second}</HtmlTextParser>
+                )}
+              </Text>
             </Flex>
           </Flex>
 
           {/* LINHA 3 */}
           <Flex
-            // marginY={{ base: '3%', md: '0' }}
             w={{ base: '80%', md: '30%' }}
             zIndex="docked"
             alignItems="flex-start"
             flexDirection={'row'}
           >
             <Flex
-              // bg="black"
               alignItems="flex-start"
               padding={{ base: '5%', sm: '5%', md: '2%', '2xl': '4%' }}
               mt={{ base: '-5%', sm: '-4%', md: '-3%', '2xl': '-4%' }}
             >
               <Text variant={'berneckPlusTestInfoNumber' as any}>3</Text>
             </Flex>
-            <Flex
-              // bg="white"
-              padding={'2%'}
-            >
-              <Text>{testSteps && testSteps.third}</Text>
+            <Flex padding={'2%'}>
+              <Text>
+                {testSteps && (
+                  <HtmlTextParser>{testSteps.third}</HtmlTextParser>
+                )}
+              </Text>
             </Flex>
           </Flex>
         </Flex>
 
         <Flex
           flexDirection={{ base: 'column', md: 'row' }}
-          // bg="violet"
           justifyContent={{ base: 'space-between', md: 'center' }}
-          // justifyItems={{ base: 'center', md: 'center' }}
-          // alignContent={{ base: 'center', md: 'center' }}
           alignItems={{ base: 'none', md: 'center' }}
         >
-          <Box
-            width={{ base: '100%', md: '60%' }}
-            // flex="2"
-          >
+          <Box width={{ base: '100%', md: '60%' }}>
             <Text
               margin={{
                 base: '2%',
@@ -168,19 +163,12 @@ export const PlusTestInfo = ({
             >
               {extraInfoTitle}
             </Text>
-            <Box
-            // bg="blue"
-            >
+            <Box>
               {extraInfoBody &&
                 extraInfoBody.map((e, j) => <ItemCite key={j} text={e} />)}
             </Box>
           </Box>
-          <Box
-            // flex="1"
-            bg="gray.450"
-            padding={'2%'}
-            marginLeft={{ md: '2%' }}
-          >
+          <Box bg="gray.450" padding={'2%'} marginLeft={{ md: '2%' }}>
             {tableInfo && <PlusInfoTable rows={tableInfo.rows} />}
           </Box>
         </Flex>
@@ -222,7 +210,7 @@ const ItemCite = ({ text = '' }) => {
           '2xl': '2px'
         }}
       >
-        {text}
+        <HtmlTextParser>{text}</HtmlTextParser>
       </Text>
     </Flex>
   )

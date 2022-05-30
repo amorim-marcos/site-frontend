@@ -6,6 +6,7 @@ import { Box, Flex, Image, Link, Text, Button } from '@chakra-ui/react'
 import { ReportsIcon, PlayIcon, Arrow } from '@components/Icons'
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export interface InspireProps {
   textureName: string
@@ -80,7 +81,7 @@ export const Inspire = (props: InspireProps) => {
             whiteSpace={'pre-wrap'}
             marginTop="10px"
           >
-            {props.textureDescription}
+            <HtmlTextParser>{props.textureDescription}</HtmlTextParser>
           </Text>
         </Flex>
       </Flex>
@@ -315,7 +316,7 @@ export const Inspire = (props: InspireProps) => {
             letterSpacing="0px"
             color="green.900"
           >
-            {props.productPresentation}
+            <HtmlTextParser>{props.productPresentation}</HtmlTextParser>
           </Text>
 
           <Flex

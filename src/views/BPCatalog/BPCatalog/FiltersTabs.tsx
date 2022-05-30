@@ -349,9 +349,11 @@ export const FiltersTabs = ({
               fontSize="16px"
               _focus={{ outline: 'none' }}
             >
-              <option value="launch">Lançamento</option>
-              <option value="name">Nome</option>
-              <option value="scale">Escala de cor</option>
+              <option value="launch">{bpCatalog.t('filtersTab.launch')}</option>
+              <option value="name">{bpCatalog.t('filtersTab.name')}</option>
+              <option value="scale">
+                {bpCatalog.t('filtersTab.colorScale')}
+              </option>
             </Select>
 
             <Box position="relative" display="inline-block" mr="30px">

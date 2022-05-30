@@ -1,4 +1,5 @@
 import { Flex, Text, LayoutProps, Button, Box } from '@chakra-ui/react'
+import HtmlTextParser from '@components/HtmlTextParser'
 import { AlertIcon, CloseIcon } from '@components/Icons'
 import { useState } from 'react'
 
@@ -10,7 +11,7 @@ export const FireAlert = ({ title }: FireAlertProps) => {
   const [hide, setHide] = useState(false)
 
   return (
-    <Box bg="brown.400">
+    <Box bg="#C34D31">
       <Flex
         display={hide ? 'none' : 'flex'}
         data-testid="fire-alert"
@@ -20,7 +21,7 @@ export const FireAlert = ({ title }: FireAlertProps) => {
         overflowY="hidden"
         overflowX="hidden"
         h={{ xl: '50px' }}
-        bg="brown.400"
+        bg="#C34D31"
         align="center"
         // justify="start"
         direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
@@ -70,7 +71,7 @@ export const FireAlert = ({ title }: FireAlertProps) => {
             textAlign={{ base: 'center', sm: 'left' }}
             fontWeight="normal"
           >
-            {title}
+            <HtmlTextParser>{title}</HtmlTextParser>
           </Text>
         </Flex>
 
@@ -84,7 +85,7 @@ export const FireAlert = ({ title }: FireAlertProps) => {
           <Button
             ml={{ sm: '10px' }}
             onClick={() => setHide(true)}
-            bgColor={'brown.400'}
+            bgColor={'#C34D31'}
             w="fit-content"
             h="fit-content"
             _hover={{}}

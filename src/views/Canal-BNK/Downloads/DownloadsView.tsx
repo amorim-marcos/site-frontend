@@ -5,6 +5,7 @@ import DownloadSection from '@components/DownloadSection'
 import { SectionPackBpDownloads } from '@components/SectionPackBpDownloads/SectionPackBpDownloads'
 import Pagebar from '@components/Pagebar'
 import { useTranslation } from 'react-i18next'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export type DownloadItem = {
   id: number
@@ -105,7 +106,7 @@ export const DownloadsView = ({
               marginTop={{ base: '1%', xl: '3%' }}
               color="brown.300"
             >
-              {header_text}
+              <HtmlTextParser>{header_text}</HtmlTextParser>
             </Text>
             <Box
               h="100%"

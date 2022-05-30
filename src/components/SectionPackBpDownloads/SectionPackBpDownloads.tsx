@@ -1,4 +1,5 @@
 import { Flex, Box, Text, Image, Link } from '@chakra-ui/react'
+import HtmlTextParser from '@components/HtmlTextParser'
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
 
@@ -79,7 +80,7 @@ export const SectionPackBpDownloads = ({
             variant="body"
             textAlign="center"
           >
-            {text}
+            <HtmlTextParser>{text}</HtmlTextParser>
           </Text>
           <Link
             marginTop="6%"

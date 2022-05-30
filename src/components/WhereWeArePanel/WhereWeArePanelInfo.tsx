@@ -1,4 +1,5 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 import { CloseIcon, Arrow } from '@components/Icons'
 import { useTranslation } from 'react-i18next'
@@ -73,7 +74,9 @@ const Section = (props: { title: string; bodyText: string }) => {
           {props.title}
         </Text>
       </Flex>
-      <Text variant="body">{props.bodyText}</Text>
+      <Text variant="body">
+        <HtmlTextParser>{props.bodyText}</HtmlTextParser>
+      </Text>
     </Flex>
   )
 }

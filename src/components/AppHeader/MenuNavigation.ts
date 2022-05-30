@@ -5,7 +5,7 @@ export const menuNavigation = {
   },
   workWithUs: {
     key: 'topMenu.workWithUs',
-    href: 'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup'
+    href: 'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/vacancies/list'
   },
   whereBuy: {
     key: 'topMenu.whereBuy',

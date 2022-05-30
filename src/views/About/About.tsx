@@ -12,6 +12,7 @@ import PatternInfoPhoto from '@components/PatternInfoPhoto'
 import { TrajectoryTab } from '@components/TrajectoryCarousel/TrajectoryCarousel'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export type AboutPageContent = {
   header_title: string
@@ -100,7 +101,7 @@ export const About = ({
                 textAlign={{ base: 'left' }}
                 marginTop={{ base: '8px', lg: '10px', xl: '20px' }}
               >
-                {page_content.section1_text}
+                <HtmlTextParser>{page_content.section1_text}</HtmlTextParser>
               </Text>
             </Box>
             <Box
@@ -227,7 +228,7 @@ export const About = ({
               textAlign={{ base: 'left' }}
               marginTop={{ base: '8px', lg: '10px', xl: '20px' }}
             >
-              {page_content.section2_text}
+              <HtmlTextParser>{page_content.section2_text}</HtmlTextParser>
             </Text>
           </Box>
         </Flex>
@@ -269,7 +270,9 @@ export const About = ({
               marginTop={'30px'}
               textAlign="center"
             >
-              {page_content.our_trajectory_description}
+              <HtmlTextParser>
+                {page_content.our_trajectory_description}
+              </HtmlTextParser>
             </Text>
           </Flex>
           <Flex
@@ -350,7 +353,9 @@ export const About = ({
                   base: 'left'
                 }}
               >
-                {page_content.where_we_are_description}
+                <HtmlTextParser>
+                  {page_content.where_we_are_description}
+                </HtmlTextParser>
               </Text>
             </Box>
           </Flex>
@@ -399,7 +404,9 @@ export const About = ({
                 textAlign={{ base: 'left' }}
                 marginTop={{ base: '8px', lg: '10px', xl: '20px' }}
               >
-                {page_content.resellers_description}
+                <HtmlTextParser>
+                  {page_content.resellers_description}
+                </HtmlTextParser>
               </Text>
             </Box>
             <Box
@@ -473,7 +480,9 @@ export const About = ({
               }}
             />
             <Text marginTop={{ base: '25px', lg: '20px' }}>
-              {page_content.certifications_description}
+              <HtmlTextParser>
+                {page_content.certifications_description}
+              </HtmlTextParser>
             </Text>
           </Box>
           <Box
