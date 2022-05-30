@@ -14,6 +14,7 @@ import PatternCertification from '@components/PatternCertification'
 import { useRouter } from 'next/router'
 import HtmlTextParser from '@components/HtmlTextParser'
 import { useTranslation } from 'react-i18next'
+import ArrowIcon from '@components/Icons/ArrowIcon'
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/nosso-compromisso-filtro-1x.jpg)',
@@ -193,39 +194,35 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 {page_content.corporative_values.map((item, i) => {
                   return (
                     <ListItem key={i}>
-                      <Arrow
-                        width={{
-                          base: '7px',
-                          sm: '10px',
-                          lg: '10px',
-                          xl: '10px'
-                        }}
-                        height={{
-                          base: '15px',
-                          sm: '16px',
-                          lg: '20px',
-                          xl: '20px'
-                        }}
-                        direction="right"
-                        color="brown.250"
-                      />
-                      <Text
-                        fontFamily="body"
-                        marginTop={{
-                          base: '-16px',
-                          sm: '-16px',
-                          lg: '-22px',
-                          xl: '-27px'
-                        }}
-                        marginLeft={{
-                          base: '12px',
-                          sm: '16px',
-                          lg: '18px',
-                          xl: '20px'
-                        }}
+                      <Flex
+                        flexDirection={'row'}
+                        // border="1px solid red"
+                        padding={'5px'}
+                        alignItems="flex-start"
+                        justifyItems={'flex-start'}
+                        // overflow="hidden"
                       >
-                        <HtmlTextParser>{item.value}</HtmlTextParser>
-                      </Text>
+                        <Box>
+                          <ArrowIcon
+                            stroke={'brown.250'}
+                            marginTop={{
+                              base: '4px',
+                              md: '2px',
+                              lg: '2px',
+                              xl: '5px',
+                              '2xl': '4px'
+                            }}
+                            marginRight={'5px'}
+                            width={{ base: '7px', md: '10px' }}
+                          />
+                        </Box>
+                        <Box
+                          //  border="1px solid green"
+                          width={'100%'}
+                        >
+                          <Text fontFamily="body">{item.value}</Text>
+                        </Box>
+                      </Flex>
                     </ListItem>
                   )
                 })}
