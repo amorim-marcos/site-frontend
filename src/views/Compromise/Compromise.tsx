@@ -1119,7 +1119,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 xl: '3% 3% 3% 3%'
               }}
             >
-              <Image src="/assets/imgs/170130-Berneck-48.png" />
+              <Image src="/assets/imgs/imagem_compromisso.png" />
             </Box>
           </Flex>
         </Flex>
