@@ -445,10 +445,18 @@ export const FiltersAccordion = ({
               variant="flushed"
               _focus={{ outline: 'none' }}
             >
-              <option disabled>Ordenar por</option>
-              <option value="launch">Lançamento</option>
-              <option value="name">Nome</option>
-              <option value="scale">Escala de cor</option>
+              <option disabled>
+                {bpCatalog.t('filtersAccordion.orderBy')}
+              </option>
+              <option value="launch">
+                {bpCatalog.t('filtersAccordion.launch')}
+              </option>
+              <option value="name">
+                {bpCatalog.t('filtersAccordion.name')}
+              </option>
+              <option value="scale">
+                {bpCatalog.t('filtersAccordion.colorScale')}
+              </option>
             </Select>
 
             <Box>

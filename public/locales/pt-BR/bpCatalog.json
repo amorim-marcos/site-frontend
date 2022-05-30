@@ -15,7 +15,11 @@
         "collections":"COLEÇÕES",
         "coloration": "COLORAÇÃO",
         "filter": "Filtrar",
-        "clearFilters": "Limpar filtros"
+        "clearFilters": "Limpar filtros",
+        "orderBy":"Ordenar por",
+        "launch":"Lançamento",
+        "name":"Ordem alfabética",
+        "colorScale":"Escala de cor"
     },
     "filtersTab": {
         "filterResults": "Filtrar Resultados",
@@ -29,6 +33,9 @@
         "exhibitionFormat": "Formato de exibição",
         "searchByName": "Pesquise pelo nome",
         "bgColor": "Cor do fundo",
-        "productsFound":"Produtos Encontrados"
+        "productsFound":"Produtos Encontrados",
+        "launch":"Lançamento",
+        "name":"Ordem alfabética",
+        "colorScale":"Escala de cor"
     }
 }
