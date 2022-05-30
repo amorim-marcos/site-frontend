@@ -10,7 +10,7 @@ export const FireAlert = ({ title }: FireAlertProps) => {
   const [hide, setHide] = useState(false)
 
   return (
-    <Box bg="brown.400">
+    <Box bg="#C34D31">
       <Flex
         display={hide ? 'none' : 'flex'}
         data-testid="fire-alert"
@@ -20,7 +20,7 @@ export const FireAlert = ({ title }: FireAlertProps) => {
         overflowY="hidden"
         overflowX="hidden"
         h={{ xl: '50px' }}
-        bg="brown.400"
+        bg="#C34D31"
         align="center"
         // justify="start"
         direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
@@ -84,7 +84,7 @@ export const FireAlert = ({ title }: FireAlertProps) => {
           <Button
             ml={{ sm: '10px' }}
             onClick={() => setHide(true)}
-            bgColor={'brown.400'}
+            bgColor={'#C34D31'}
             w="fit-content"
             h="fit-content"
             _hover={{}}
