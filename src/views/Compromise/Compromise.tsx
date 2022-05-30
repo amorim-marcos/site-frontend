@@ -12,7 +12,7 @@ import SponsoredProjects from '@components/SponsoredProjects'
 import { List, ListItem } from '@chakra-ui/react'
 import PatternCertification from '@components/PatternCertification'
 import { useRouter } from 'next/router'
-import Paragraph from '@components/Paragraph'
+import HtmlTextParser from '@components/HtmlTextParser'
 import { useTranslation } from 'react-i18next'
 
 const dataPageSession = {
@@ -224,7 +224,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                           xl: '20px'
                         }}
                       >
-                        {item.value}
+                        <HtmlTextParser>{item.value}</HtmlTextParser>
                       </Text>
                     </ListItem>
                   )
@@ -276,7 +276,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               }}
             />
             <Text marginTop={{ base: '10%', sm: '8%', lg: '3%', xl: '3%' }}>
-              <Paragraph>{page_content.section1_text}</Paragraph>
+              <HtmlTextParser>{page_content.section1_text}</HtmlTextParser>
             </Text>
           </Box>
 
@@ -502,7 +502,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
                 marginTop={{ base: '3%', sm: '2%', lg: '3%', xl: '3%' }}
               >
-                <Paragraph>{page_content.section2_text}</Paragraph>
+                <HtmlTextParser>{page_content.section2_text}</HtmlTextParser>
               </Text>
             </Box>
           </Flex>
@@ -554,7 +554,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 {page_content.section3_title}
               </Text>
               <Text marginTop={{ base: '5%', sm: '5%', lg: '5%', xl: '5%' }}>
-                <Paragraph>{page_content.section3_text}</Paragraph>
+                <HtmlTextParser>{page_content.section3_text}</HtmlTextParser>
               </Text>
             </Flex>
             {/* BOX 2 */}
@@ -712,7 +712,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 {page_content.section4_title}
               </Text>
               <Text marginTop={{ base: '3%', lg: '5%' }}>
-                <Paragraph>{page_content.section4_text}</Paragraph>
+                <HtmlTextParser>{page_content.section4_text}</HtmlTextParser>
               </Text>
             </Box>
           </Flex>
@@ -761,7 +761,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 }}
               />
               <Text marginTop={{ base: '10%', lg: '5%' }}>
-                <Paragraph>{page_content.section5_text}</Paragraph>
+                <HtmlTextParser>{page_content.section5_text}</HtmlTextParser>
               </Text>
               <Box
                 // bg='blue'
@@ -892,7 +892,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 {page_content.section6_title}
               </Text>
               <Text marginTop={{ base: '10px', lg: '20px' }} color={'#143127'}>
-                <Paragraph>{page_content.section6_text}</Paragraph>
+                <HtmlTextParser>{page_content.section6_text}</HtmlTextParser>
               </Text>
             </Box>
           </Flex>
@@ -1054,7 +1054,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 }}
               />
               <Text marginTop={{ base: '8%', sm: '2%', lg: '3%', xl: '3%' }}>
-                <Paragraph>{page_content.section7_text}</Paragraph>
+                <HtmlTextParser>{page_content.section7_text}</HtmlTextParser>
               </Text>
             </Box>
           </Flex>
@@ -1104,7 +1104,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 {page_content.section8_title}
               </Text>
               <Text marginTop={{ base: '10px', lg: '20px' }}>
-                <Paragraph>{page_content.section8_text}</Paragraph>
+                <HtmlTextParser>{page_content.section8_text}</HtmlTextParser>
               </Text>
             </Box>
             {/* BOX 2 */}
@@ -1285,7 +1285,9 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                   }}
                 />
                 <Text marginTop={{ base: '5%', sm: '2%', lg: '3%', xl: '3%' }}>
-                  {page_content.esg_report_description}
+                  <HtmlTextParser>
+                    {page_content.esg_report_description}
+                  </HtmlTextParser>
                 </Text>
               </Box>
               {/* BOX 2 */}

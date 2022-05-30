@@ -1,4 +1,5 @@
 import { Heading, Flex, Box, Text } from '@chakra-ui/react'
+import HtmlTextParser from '@components/HtmlTextParser'
 import { PlusIndicator } from '../PlusIndicator/PlusIndicator'
 
 export type ProductHeaderProps = {
@@ -29,14 +30,10 @@ export const ProductHeader = ({
         flex="1"
         w={'100%'}
         bg={headerBgColor}
-        // bg="yellow"
         padding={{ base: '5% 0 10% 5%', '2xl': '5% 0 5% 3%' }}
       >
         {/* PRODUCT TITLE */}
-        <Flex
-          flexDirection={{ base: 'row' }}
-          // textAlign="left"
-        >
+        <Flex flexDirection={{ base: 'row' }}>
           {plusIndicator && (
             <Box
               position={'absolute'}
@@ -92,10 +89,7 @@ export const ProductHeader = ({
         />
 
         {/* PRODUCT SUBTITLE */}
-        <Flex
-          flexDirection="column"
-          // bg="yellowgreen"
-        >
+        <Flex flexDirection="column">
           <Text
             as={'h3'}
             variant={'h3'}
@@ -105,7 +99,7 @@ export const ProductHeader = ({
             {subtitle}
           </Text>
           <Text color="green.900" w={{ base: '70%', sm: '50%' }}>
-            {description}
+            <HtmlTextParser>{description}</HtmlTextParser>
           </Text>
         </Flex>
       </Flex>

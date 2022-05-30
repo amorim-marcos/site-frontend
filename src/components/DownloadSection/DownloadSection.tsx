@@ -8,6 +8,7 @@ import {
   Link
 } from '@chakra-ui/react'
 import Arrow from '@components/Arrow'
+import HtmlTextParser from '@components/HtmlTextParser'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import useMobile from 'hooks/useMobile'
 import { useState } from 'react'
@@ -63,7 +64,7 @@ export const DownloadSection = ({
         {title}
       </Text>
       <Text variant={'body' as any} color="green.900" zIndex="docked">
-        {description}
+        <HtmlTextParser>{description}</HtmlTextParser>
       </Text>
 
       <Box

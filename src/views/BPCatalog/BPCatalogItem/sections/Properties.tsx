@@ -22,6 +22,7 @@ import {
 
 import { CertificationsIcon, EarthIcon, TapIcon } from '@components/Icons'
 import { useTranslation } from 'react-i18next'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export interface PropertiesProps {
   productName: string
@@ -329,7 +330,7 @@ export const Properties = (props: PropertiesProps) => {
                 letterSpacing="-0.4px"
                 color="gray.300"
               >
-                {props.uses_and_applications}
+                <HtmlTextParser>{props.uses_and_applications}</HtmlTextParser>
               </AccordionPanelBp>
             </AccordionItem>
           </Accordion>

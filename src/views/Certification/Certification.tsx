@@ -16,6 +16,8 @@ import PatternCertification from '@components/PatternCertification'
 import { CheckIcon } from '@chakra-ui/icons'
 import parser from 'react-html-parser'
 import { useTranslation } from 'react-i18next'
+import { HtmlContext } from 'next/dist/shared/lib/utils'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export type CertificationViewProps = {
   forestCertificate: {
@@ -100,7 +102,7 @@ export const Certification = (props: CertificationViewProps) => {
             marginTop={{ base: '1%', xl: '3%' }}
             color="brown.300"
           >
-            {props.page_content.header_text}
+            <HtmlTextParser>{props.page_content.header_text}</HtmlTextParser>
           </Text>
           <Box
             h="100%"
@@ -175,7 +177,9 @@ export const Certification = (props: CertificationViewProps) => {
               marginTop={{ base: '5%', sm: '2%', lg: '3%', xl: '3%' }}
               color={'green.800'}
             >
-              {parser(props.forestCertificate.description)}
+              <HtmlTextParser>
+                {props.forestCertificate.description}
+              </HtmlTextParser>
             </Text>
 
             <Flex
@@ -354,7 +358,7 @@ export const Certification = (props: CertificationViewProps) => {
                           xl: '0px'
                         }}
                       >
-                        {item.description}
+                        <HtmlTextParser>{item.description}</HtmlTextParser>
                       </Text>
                     </Flex>
                   </Flex>
@@ -587,7 +591,9 @@ export const Certification = (props: CertificationViewProps) => {
                   }}
                   marginTop={{ base: '8px', sm: '8px', lg: '10px', xl: '20px' }}
                 >
-                  {props.page_content.quality_norm_text}
+                  <HtmlTextParser>
+                    {props.page_content.quality_norm_text}
+                  </HtmlTextParser>
                 </Text>
               </Flex>
 

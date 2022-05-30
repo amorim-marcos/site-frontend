@@ -7,6 +7,8 @@ import { colors } from '../../theme/colors'
 import parser from 'react-html-parser'
 import { Wrapper } from './styles'
 import { useTranslation } from 'react-i18next'
+import HtmlParser from 'react-html-parser'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export const Privacy = (props: { terms: string }) => {
   const [showPrivacy, setShowPrivacy] = useState(false)
@@ -81,7 +83,9 @@ export const Privacy = (props: { terms: string }) => {
 
         {showPrivacy ? (
           <Flex flexDirection={'column'} w="100%" padding={'5%'}>
-            <Wrapper>{parser(props.terms)}</Wrapper>
+            <Wrapper>
+              <HtmlTextParser>{props.terms}</HtmlTextParser>
+            </Wrapper>
           </Flex>
         ) : (
           <>
