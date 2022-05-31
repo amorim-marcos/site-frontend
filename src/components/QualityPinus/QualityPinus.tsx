@@ -27,14 +27,14 @@ type ItemProps = {
   image: {
     url: string
   }
-  image_url?: string
 }
 
 export type QualityPinusProps = {
   items: ItemProps[]
+  pdfUrl?: string
 }
 
-export const QualityPinus = ({ items }: QualityPinusProps) => {
+export const QualityPinus = ({ items, pdfUrl }: QualityPinusProps) => {
   const componentsLabels = useTranslation('components')
   const { isMobile } = useMobile(568)
 
@@ -54,7 +54,7 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
         w={'100%'}
         // bg={headerBgColor}
         // bg="yellow"
-        padding={{ base: '5% 0 10% 5%', '2xl': '5% 0 5% 3%' }}
+        padding={{ base: '5% 5% 10% 5%', '2xl': '5% 0% 5% 3%' }}
       >
         <Text
           as={'h3'}
@@ -66,25 +66,36 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
           {componentsLabels.t('qualitiesPinusBerneck.title')}
         </Text>
         <Flex
-          flexDirection={{ base: 'column', sm: 'row' }}
+          flexDirection={{ base: 'column-reverse', md: 'row' }}
           justifyContent="space-between"
           w="100%"
+          height={{ base: 'auto', md: '490px', lg: '540px', xl: '630px' }}
+          // border="1px solid red"
         >
           <Flex
-            w={{ base: '100%', sm: '30%' }}
-            css={isMobile ? { height: '40vh' } : { height: 'full' }}
+            w={{ base: '100%', md: '35%' }}
+            h={{ base: '300px', sm: '500px', md: '100%' }}
+            marginTop={{ base: '30px', md: '0' }}
+            // css={isMobile ? { height: '40vh' } : { height: 'full' }}
           >
             {items.length > 0 && (
               <Image
                 h="100%"
                 w="100%"
                 objectFit={'cover'}
-                src={items[currentItem].image_url}
+                src={'/img/banner_pinus_novo.png'}
+                cursor="pointer"
+                onClick={() => window.open(pdfUrl, '_blank')}
               />
             )}
           </Flex>
 
-          <Flex width={{ base: '100%', sm: '67%' }} flexDirection="column">
+          <Flex
+            // border="1px solid red"
+            width={{ base: '100%', md: '63%' }}
+            flexDirection="column"
+            padding={{ base: '1%', md: '0' }}
+          >
             <Flex
               width={'100%'}
               margin={{ base: '5% 0 5% 0', sm: '0' }}
@@ -99,12 +110,12 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
                       key={i}
                       position={'relative'}
                       minWidth={{
-                        base: '70px',
-                        sm: '80px',
-                        md: '80px',
-                        lg: '110px',
-                        xl: '140px',
-                        '2xl': '160px'
+                        base: '68px',
+                        sm: '70px',
+                        md: '70px',
+                        lg: '100px',
+                        xl: '130px',
+                        '2xl': '150px'
                       }}
                       h={{
                         base: '30px',
@@ -139,7 +150,7 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
             </Flex>
             <Flex flexDirection="column" justifyContent="space-between">
               {items.length > 0 && (
-                <Box margin={{ base: '5% 0 8% 0', sm: '5% 0 8% 0' }}>
+                <Box margin={{ base: '5% 0 8% 0', sm: '2% 0 2% 0' }}>
                   <Text
                     as={'h3'}
                     variant={'h3'}
@@ -159,7 +170,7 @@ export const QualityPinus = ({ items }: QualityPinusProps) => {
                 </Box>
               )}
 
-              <Box margin={{ base: '0 0 8% 0', sm: '0 0 8% 0' }}>
+              <Box margin={{ base: '0 0 2% 0', sm: '0 0 3% 0' }}>
                 {items.length > 0 && (
                   <ProductDimensions
                     dimensions={{
