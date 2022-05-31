@@ -20,7 +20,14 @@ export const DownloadModal = (props: {
   onClose: () => void
 }) => (
   <Modal isOpen={props.isOpen} onClose={props.onClose}>
-    <ModalOverlay bg="rgba(255, 255, 255, 0.4)" backdropFilter="blur(9px)" />
+    <ModalOverlay
+      style={{
+        zoom: 1.4
+      }}
+      w="200vw"
+      bg="rgba(255, 255, 255, 0.4)"
+      backdropFilter="blur(9px)"
+    />
     <ModalContent
       boxShadow="2px 2px 10px -1px rgba(0,0,0,0.6)"
       borderTopRadius="22px"
