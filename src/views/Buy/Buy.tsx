@@ -1,4 +1,4 @@
-import { Flex, Box, Text, Image } from '@chakra-ui/react'
+import { Flex, Box, Text, Image, Link } from '@chakra-ui/react'
 import CompletedTitle from '@components/CompletedTitle'
 import { EarthIcon } from '@components/Icons'
 import { BrasilIcon } from '@components/Icons/BrasilIcon/BrasilIcon'
@@ -9,7 +9,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { colors } from '../../theme/colors'
 
-export const Buy = () => {
+export const Buy = ({ representatives_list = '/onde-comprar' }) => {
   const [locationBrasil, setLocationBrasil] = useState(true)
   const { isMobile } = useMobile(568)
   const buyViewLabels = useTranslation('buyView')
@@ -61,6 +61,22 @@ export const Buy = () => {
           zIndex={'docked'}
         >
           {buyViewLabels.t('headerBanner.description')}
+        </Text>
+        <Text
+          marginTop="4%"
+          w={{ base: '100%', md: '50%' }}
+          variant={'body' as any}
+          color="brown.350"
+          zIndex={'docked'}
+        >
+          {buyViewLabels.t('headerBanner.industrialApplications')}{' '}
+          <Link
+            onClick={() => window.open(representatives_list, '_blank')}
+            textDecoration={'underline #59993F'}
+            color="#59993F"
+          >
+            {buyViewLabels.t('headerBanner.ourRepresentatives')}
+          </Link>
         </Text>
       </Flex>
 
