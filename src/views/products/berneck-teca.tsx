@@ -15,6 +15,7 @@ export type BerneckTecaViewProps = {
   _length: string
   _width: string
   thickness: string
+  representatives_list: string
 }
 
 export default function BerneckTecaView(props: BerneckTecaViewProps) {
@@ -64,7 +65,7 @@ export default function BerneckTecaView(props: BerneckTecaViewProps) {
           textColor: '#987257',
           hoverColor: '#3E1500',
           datasheetUrl: props.technical_sheet,
-          whereBuy: true,
+          whereBuy: props.representatives_list,
           qualityCertificate: false,
           backgroundColor: '#dbc3b2'
         }}

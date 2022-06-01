@@ -16,6 +16,7 @@ export type BerneckTecaPageProps = {
     _width: string
     thickness: string
     page_title: string
+    representatives_list: string
   }
 }
 
@@ -28,6 +29,7 @@ export default function BerneckTecaPage({
 export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale
   let page_content
+  let representatives_list
 
   let res
 
@@ -36,16 +38,28 @@ export const getStaticProps: GetStaticProps = async (context) => {
       process.env.NEXT_PUBLIC_API_URL + `/berneck-teca?_locale=${locale}`
     )
     page_content = await res.json()
+
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL +
+        `/representatives-list?_locale=${locale}`
+    )
+    representatives_list = await res.json()
   } catch (e) {
     // if locale not working, get default
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/berneck-teca`)
     page_content = await res.json()
+
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/representatives-list`)
+    representatives_list = await res.json()
   }
 
   page_content.technical_sheet = page_content.technical_sheet[0]
     ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
       page_content.technical_sheet[0].url
     : null
+
+  page_content.representatives_list =
+    process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + representatives_list.pdf_list.url
 
   page_content.machinability = DOMPurify.sanitize(page_content.machinability)
   return {
