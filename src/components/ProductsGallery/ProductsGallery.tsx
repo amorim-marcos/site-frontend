@@ -27,7 +27,7 @@ export const ProductsGallery = ({
               md: '350px',
               lg: '400px',
               xl: '420px',
-              '2xl': '460px'
+              '2xl': '400px'
             }}
             // bg="black"
           >

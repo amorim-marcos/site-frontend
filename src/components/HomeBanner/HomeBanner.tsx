@@ -103,11 +103,11 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
         <Box
           zIndex={'base'}
           position={{ base: 'relative', md: 'absolute' }}
-          right={{ base: '0', md: opacity ? '5.5%' : '5%' }}
-          top={{ base: '0', md: '8%' }}
+          right={{ base: '0', md: opacity ? '3.5%' : '3%' }}
+          top={{ base: '0', md: '15%' }}
           w={{ base: '100vw', md: '60vw' }}
           maxWidth={'1150px'}
-          h={{ base: '100vw', md: '34.5vw' }}
+          h={{ base: '100vw', md: '28.5vw' }}
           maxHeight={'650px'}
           bg="#c2d898"
           opacity={opacity ? '1' : '0'}
