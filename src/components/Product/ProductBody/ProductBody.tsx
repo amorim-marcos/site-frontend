@@ -237,6 +237,10 @@ export const ProductBody = ({
             </Box>
           )}
 
+          {!dimensions && !specifications && (
+            <Box width={'100%'} height={{ '2xl': '200px' }} />
+          )}
+
           {dimensions && (
             <Box
               marginBottom={{

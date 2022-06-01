@@ -1,4 +1,4 @@
-import { Flex, Text, Heading, Link } from '@chakra-ui/react'
+import { Flex, Text, Heading, Link, Box } from '@chakra-ui/react'
 import { ProductDownloadItem } from './ProductDownloadItem/ProductDownloadItem'
 import { useTranslation } from 'react-i18next'
 import ArrowIcon from '@components/Icons/ArrowIcon'
@@ -7,7 +7,7 @@ export type ProductDownloadAndLinksProps = {
   textColor?: string
   hoverColor?: string
   qualityCertificate?: boolean
-  whereBuy?: boolean
+  whereBuy?: boolean | string
   datasheetUrl?: string
   backgroundColor?: string
   plusProduct?: boolean
@@ -50,7 +50,17 @@ export const ProductDownloadAndLinks = ({
           />
         </Link>
       )}
-      {whereBuy && (
+      {whereBuy && typeof whereBuy === 'string' ? (
+        <Box onClick={() => window.open(whereBuy, '_blank')}>
+          <ProductDownloadItem
+            textColor={textColor}
+            hoverColor={hoverColor}
+            iconName="location"
+            text={componentsLabels.t('product.whereBuy')}
+            backgroundColor={backgroundColor}
+          />
+        </Box>
+      ) : (
         <Link href="/onde-comprar" _hover={{ outline: 'none' }}>
           <ProductDownloadItem
             textColor={textColor}
