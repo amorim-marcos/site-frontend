@@ -42,7 +42,7 @@ export const PatternInfoPhoto = ({
         md: '286px',
         lg: '180px',
         xl: '230px',
-        '2xl': '280px'
+        '2xl': '260px'
       }}
     >
       <Image

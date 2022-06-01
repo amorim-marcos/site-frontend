@@ -37,6 +37,8 @@ export default function Connect() {
       </Head>
 
       <Flex bg={'white.200'} alignItems={'center'} flexDirection={'column'}>
+        <Flex></Flex>
+
         <Flex
           w="100%"
           maxWidth="1536px"
@@ -60,83 +62,52 @@ export default function Connect() {
         </Flex>
 
         <Flex
-          maxWidth="1536px"
-          data-testid="connect"
+          maxWidth={'1536px'}
           w="100%"
-          gap="50px"
-          pt="55px"
-          pb="96px"
-          justify="center"
-          align={{ base: 'center', lg: 'flex-start' }}
-          wrap={{ base: 'wrap', '2xl': 'nowrap' }}
-          direction={{
-            base: 'column',
-            md: 'row'
-          }}
+          // border="1px solid red"
+          height={{ base: 'auto', lg: '1600px', xl: '800px' }}
+          paddingTop="50px"
+          paddingLeft={{ lg: '30px' }}
+          justifyContent={'space-around'}
+          flexWrap={{ base: 'wrap', xl: 'nowrap' }}
         >
-          <Flex gap="70px" direction="column">
-            <SocialNetwork
-              title="FACEBOOK"
-              icon={
-                <SocialIcon
-                  media="facebook"
-                  width="51px"
-                  height="51px"
-                  color="#59993F"
-                />
-              }
-            >
+          <SocialNetwork
+            title="INSTAGRAM"
+            icon={
+              <SocialIcon
+                media="instagram"
+                width="51px"
+                height="51px"
+                color="#59993F"
+              />
+            }
+          >
+            <Flex direction="column" gap="24px" align="center" w="100%">
               {width && (
-                <Box
-                  className="fb-page"
-                  data-href="https://www.facebook.com/BerneckSA/"
-                  data-width={isMobile ? '300px' : '420px'}
-                  data-small-header="false"
-                  data-adapt-container-width={true}
-                  data-hide-cover="false"
-                  data-show-facepile="false"
-                />
-              )}
-            </SocialNetwork>
-
-            <SocialNetwork
-              title="INSTAGRAM"
-              icon={
-                <SocialIcon
-                  media="instagram"
-                  width="51px"
-                  height="51px"
-                  color="#59993F"
-                />
-              }
-            >
-              <Flex direction="column" gap="24px" align="center" w="100%">
-                {width && (
-                  <Flex
-                    align="center"
-                    justify="center"
-                    h={isMobile ? '572px' : '640px'}
-                    w="100%"
-                    bgColor="green.200"
+                <Flex
+                  align="center"
+                  justify="center"
+                  h={isMobile ? '572px' : '520px'}
+                  w="100%"
+                  bgColor="green.200"
+                >
+                  <Text
+                    fontWeight="bold"
+                    color="red"
+                    px="25px"
+                    textAlign="center"
                   >
-                    <Text
-                      fontWeight="bold"
-                      color="red"
-                      px="25px"
-                      textAlign="center"
-                    >
-                      Aguardando envio da chave do Instagram
-                    </Text>
-                  </Flex>
-                )}
+                    Aguardando envio da chave do Instagram
+                  </Text>
+                </Flex>
+              )}
 
-                <FollowButton
-                  text="SIGA-NOS NO INSTAGRAM"
-                  link="https://www.instagram.com/berneckoficial/"
-                />
-              </Flex>
-            </SocialNetwork>
-          </Flex>
+              <FollowButton
+                text="SIGA-NOS NO INSTAGRAM"
+                link="https://www.instagram.com/berneckoficial/"
+              />
+            </Flex>
+          </SocialNetwork>
 
           <SocialNetwork
             title="LINKEDIN"
@@ -153,7 +124,8 @@ export default function Connect() {
               {width && (
                 <iframe
                   src="https://www.linkedin.com/embed/feed/update/urn:li:share:6868626499726012417"
-                  height={isMobile ? '572px' : '920px'}
+                  // height={isMobile ? '572px' : '520px'}
+                  height={'520px'}
                   width="100%"
                 />
               )}
@@ -165,13 +137,66 @@ export default function Connect() {
             </Flex>
           </SocialNetwork>
 
-          <Flex gap="70px" direction="column">
-            <Flex gap="32px" direction="column" align="center">
+          <SocialNetwork
+            title="PINTEREST"
+            icon={
+              <SocialIcon
+                media="pinterest"
+                width="51px"
+                height="51px"
+                color="#59993F"
+              />
+            }
+          >
+            <a
+              data-pin-do="embedUser"
+              data-pin-lang="pt"
+              // data-pin-scale-height={isMobile ? '455px' : '470px'}
+              data-pin-scale-height={'515px'}
+              data-pin-scale-width={isMobile ? '388px' : '399px'}
+              href="https://br.pinterest.com/berneckoficial/"
+            />
+          </SocialNetwork>
+
+          <SocialNetwork
+            title="YOUTUBE"
+            icon={
+              <SocialIcon
+                media="youtube"
+                width="51px"
+                height="51px"
+                color="#59993F"
+              />
+            }
+          >
+            <Flex
+              gap="20px"
+              flexDirection={'column'}
+              justifyContent="center"
+              alignItems={'center'}
+              w="100%"
+            >
+              {width && (
+                <iframe
+                  width="100%"
+                  height={'280px'}
+                  // height={isMobile ? '175px' : '510px'}
+                  src={`https://www.youtube.com/embed/${lastVideo}`}
+                  frameBorder="0"
+                  allowFullScreen
+                />
+              )}
+
+              <FollowButton
+                text="INSCREVA-SE EM NOSSO CANAL"
+                link="https://www.youtube.com/channel/UC-YLSfIYCSIyMHH_6I9G8cw"
+              />
+
               <SocialNetwork
-                title="YOUTUBE"
+                title="FACEBOOK"
                 icon={
                   <SocialIcon
-                    media="youtube"
+                    media="facebook"
                     width="51px"
                     height="51px"
                     color="#59993F"
@@ -179,42 +204,20 @@ export default function Connect() {
                 }
               >
                 {width && (
-                  <iframe
-                    width="100%"
-                    height={isMobile ? '175px' : '180px'}
-                    src={`https://www.youtube.com/embed/${lastVideo}`}
-                    frameBorder="0"
-                    allowFullScreen
+                  <Box
+                    className="fb-page"
+                    data-href="https://www.facebook.com/BerneckSA/"
+                    // data-width={isMobile ? '300px' : '500px'}
+                    data-width={'500px'}
+                    data-small-header="false"
+                    data-adapt-container-width={true}
+                    data-hide-cover="false"
+                    data-show-facepile="false"
                   />
                 )}
               </SocialNetwork>
-
-              <FollowButton
-                text="INSCREVA-SE EM NOSSO CANAL"
-                link="https://www.youtube.com/channel/UC-YLSfIYCSIyMHH_6I9G8cw"
-              />
             </Flex>
-
-            <SocialNetwork
-              title="PINTEREST"
-              icon={
-                <SocialIcon
-                  media="pinterest"
-                  width="51px"
-                  height="51px"
-                  color="#59993F"
-                />
-              }
-            >
-              <a
-                data-pin-do="embedUser"
-                data-pin-lang="pt"
-                data-pin-scale-height={isMobile ? '455px' : '470px'}
-                data-pin-scale-width={isMobile ? '388px' : '399px'}
-                href="https://br.pinterest.com/berneckoficial/"
-              />
-            </SocialNetwork>
-          </Flex>
+          </SocialNetwork>
         </Flex>
       </Flex>
     </>
@@ -227,8 +230,16 @@ const SocialNetwork = (props: {
   title: string
 }) => (
   <Flex
-    h="100%"
-    w={{ base: '245px', xs: '290px', lg: '370px', '2xl': '450px' }}
+    w={{
+      base: '245px',
+      xs: '290px',
+      sm: '85%',
+      md: '400px',
+      lg: '450px',
+      xl: '330px',
+      '2xl': '350px'
+    }}
+    marginBottom={{ base: '50px', lg: '0' }}
     direction="column"
     gap="30px"
     align="flex-start"
@@ -256,7 +267,7 @@ const FollowButton = (props: { text: string; link: string }) => (
       bg="green.600"
       borderRadius="17px"
       alignSelf="flex-end"
-      fontSize={{ base: '15px', sm: '18px' }}
+      fontSize={{ base: '12px', sm: '15px' }}
       fontWeight="bold"
       transition="all 0.2s easy-in-out"
       _hover={{ bg: 'green.700' }}
