@@ -180,7 +180,7 @@ const PageNavegation = (props: {
         w="100%"
         // pt={{ base: '100px', '2xl': '140px' }}
         justify="space-between"
-        maxWidth="1536px"
+        maxWidth="1920px"
         position={fixed ? 'fixed' : 'absolute'}
         bottom={'0'}
         zIndex={'banner'}
@@ -188,11 +188,12 @@ const PageNavegation = (props: {
         // bg="red"
       >
         <Flex
+          // border="1px solid red"
           pointerEvents={'fill'}
           bg="white"
           w={{ base: 'fit-content' }}
-          h={{ base: '90px', sm: '113px' }}
-          padding={{ base: '5%' }}
+          h={{ base: '90px', sm: '65px' }}
+          padding={{ base: '10px', sm: '40px' }}
           gap={{ base: '10px', lg: '23px' }}
           align="center"
           justify="flex-start"
@@ -207,7 +208,7 @@ const PageNavegation = (props: {
         >
           <Arrow
             direction="left"
-            width={{ base: '15px', xs: '20px', md: '30px' }}
+            width={{ base: '15px', xs: '20px', md: '24px' }}
             // height={{ base: '30px', sm: '40px' }}
             color="green.200"
           />
@@ -239,8 +240,8 @@ const PageNavegation = (props: {
           pointerEvents={'fill'}
           bg="white"
           w={{ base: 'fit-content' }}
-          h={{ base: '90px', sm: '113px' }}
-          padding={{ base: '5%' }}
+          h={{ base: '90px', sm: '65px' }}
+          padding={{ base: '10px', sm: '40px' }}
           gap={{ base: '10px', lg: '23px' }}
           align="center"
           justify="flex-start"
@@ -277,7 +278,7 @@ const PageNavegation = (props: {
 
           <Arrow
             direction="right"
-            width={{ base: '15px', xs: '20px', md: '30px' }}
+            width={{ base: '15px', xs: '20px', md: '24px' }}
             // height={{ base: '30px', sm: '40px' }}
             color="green.200"
           />
