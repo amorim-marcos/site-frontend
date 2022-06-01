@@ -56,15 +56,11 @@ export const BannerProducts = ({
         right={
           sizeType === 'rectangle-horizontal'
             ? mouseEnter
-              ? '-1%'
-              : '-5%'
-            : biggerImage
-            ? mouseEnter
-              ? { base: '-1%', lg: '-3%' }
-              : { base: '-5%', lg: '-9%' }
+              ? '-12%'
+              : '-15%'
             : mouseEnter
-            ? { base: '-10%', '2xl': '-17%' }
-            : { base: '-15%', '2xl': '-20%' }
+            ? { base: '-17%', '2xl': '-13%' }
+            : { base: '-20%', '2xl': '-20%' }
         }
         top={
           sizeType === 'rectangle-horizontal'
@@ -72,22 +68,30 @@ export const BannerProducts = ({
               ? '-14%'
               : '-17%'
             : mouseEnter
-            ? '-3%'
-            : '-7%'
+            ? '-1%'
+            : '-3%'
         }
         transition={'0.5s'}
         zIndex="base"
-        h={sizeType === 'square' ? '90%' : '130%'}
+        h={sizeType === 'square' ? '80%' : '130%'}
         w={
           sizeType === 'square'
-            ? { base: '90%', lg: '90%' }
-            : { base: '63%', lg: '63%' }
+            ? { base: '90%', lg: '95%' }
+            : { base: '63%', lg: '68%' }
         }
-        background={`url(${srcImg})`}
-        backgroundRepeat={'no-repeat'}
-        backgroundPosition={'center left'}
-        backgroundSize={'auto 100%'}
-      ></Box>
+        // background={`url(${srcImg})`}
+        // backgroundRepeat={'no-repeat'}
+        // backgroundPosition={'center left'}
+        // backgroundSize={'auto 100%'}
+      >
+        <Image
+          src={srcImg}
+          objectFit="cover"
+          objectPosition={'left bottom'}
+          width={'100%'}
+          height="100%"
+        />
+      </Box>
 
       <Flex
         zIndex={10}
