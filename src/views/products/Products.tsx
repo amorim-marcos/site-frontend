@@ -81,14 +81,16 @@ export const Products = () => {
         overflowY="hidden"
         overflowX="hidden"
         // bg="blue"
+        paddingX={{ md: '60px' }}
       >
         <Grid
           h={{
-            base: '3900px',
-            sm: '1900px',
-            lg: '1300px',
-            xl: '1500px',
-            '2xl': '1885px'
+            base: '2000px',
+            xs: '2800px',
+            sm: '1500px',
+            lg: '900px',
+            xl: '1000px',
+            '2xl': '1150px'
           }}
           w={{ base: '90%', sm: '93%', lg: '93%', xl: '93%' }}
           margin={{ base: '5%', sm: '3% 3%', lg: '3% 3%', xl: '3% 3%' }}
@@ -144,7 +146,7 @@ export const Products = () => {
               bgColor="brown.200"
               srcImg="/img/mdf.png"
               onClick={() => router.push('/products/mdf-berneck')}
-              bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
+              // bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
             />
           </GridItem>
 
