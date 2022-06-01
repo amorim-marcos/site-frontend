@@ -12,6 +12,7 @@ export type BerneckPinusViewProps = {
     title: string
     subTitle: string
     technical_sheet: string
+    where_buy: string
     subTitleDescription: string
     description: string
     usesAndApplications: string
@@ -65,7 +66,7 @@ export default function BerneckPinusView({
         downloadAndLinks={{
           textColor: '#376B5C',
           hoverColor: '#59993F',
-          whereBuy: true,
+          whereBuy: pinus.where_buy,
           datasheetUrl: pinus.technical_sheet,
           qualityCertificate: false
         }}

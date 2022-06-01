@@ -33,6 +33,7 @@ export type BerneckPinusPageProps = {
     technical_sheet: string
     uses_and_applications: string
     page_title: string
+    representatives_list: string
   }
 }
 
@@ -46,7 +47,8 @@ export default function BerneckPinus(props: BerneckPinusPageProps) {
 
         subTitleDescription: props.page_content.header_subtitle_description,
         usesAndApplications: props.page_content.uses_and_applications,
-        technical_sheet: props.page_content.technical_sheet
+        technical_sheet: props.page_content.technical_sheet,
+        where_buy: props.page_content.representatives_list
       }}
       specifications={[
         {
@@ -74,6 +76,7 @@ export default function BerneckPinus(props: BerneckPinusPageProps) {
 export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale
   let page_content
+  let representatives_list
 
   let res
 
@@ -82,15 +85,26 @@ export const getStaticProps: GetStaticProps = async (context) => {
       process.env.NEXT_PUBLIC_API_URL + `/berneck-pinus?_locale=${locale}`
     )
     page_content = await res.json()
+
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL +
+        `/representatives-list?_locale=${locale}`
+    )
+    representatives_list = await res.json()
   } catch (e) {
     // if locale not working, get default
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/berneck-pinus`)
     page_content = await res.json()
+
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/representatives-list`)
+    representatives_list = await res.json()
   }
 
   page_content.technical_sheet =
     process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.technical_sheet.url
 
+  page_content.representatives_list =
+    process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + representatives_list.pdf_list.url
   return {
     props: {
       page_content,
