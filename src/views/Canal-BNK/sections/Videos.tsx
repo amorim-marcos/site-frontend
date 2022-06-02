@@ -95,7 +95,7 @@ export const Videos = () => {
           : 'brown.100'
       }
       py={{ base: '54px', lg: '100px' }}
-      px={{ base: '20px', lg: '5%', '2xl': '3%' }}
+      px={{ base: '20px', lg: '5%', '2xl': '1%' }}
       maxWidth={'1536px'}
     >
       <Flex align="center" justify="center" py="25px">

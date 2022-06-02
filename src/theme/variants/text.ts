@@ -91,7 +91,7 @@ export const Text = {
     },
     h6: {
       color: 'green.700',
-      fontSize: { base: '11px', sm: '12px', lg: '13px', xl: '14px' },
+      fontSize: { base: '11px', sm: '11px', lg: '12px', xl: '13px' },
       fontWeight: 'bold'
     },
     productBody: {

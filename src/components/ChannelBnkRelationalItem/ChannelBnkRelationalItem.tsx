@@ -85,7 +85,7 @@ export const ChannelBnkRelationalItem = ({
       {/* {CARD CHANNEL  } */}
       <Box
         h={{
-          base: '200px'
+          base: '180px'
         }}
         w="100%"
       >
@@ -103,7 +103,7 @@ export const ChannelBnkRelationalItem = ({
         w="100%"
       >
         <Flex
-          padding={{ base: '8%', xl: showInvert ? '3%' : '6%', '2xl': '9%' }}
+          padding={{ base: '8%', xl: showInvert ? '5%' : '6%', '2xl': '6%' }}
           flexDirection={{
             base: 'column',
             md: showInvert ? 'column' : 'column'
@@ -114,7 +114,7 @@ export const ChannelBnkRelationalItem = ({
           <Flex
             alignItems="flex-start"
             justifyContent={'flex-start'}
-            margin={{ base: '0', xl: showInvert ? '10px 0 0 0' : '0%' }}
+            margin={{ base: '0', xl: showInvert ? '1% 0 0 0' : '0%' }}
           >
             <ArrowIcon
               stroke={getAccentColor(categoryId, currentCategory)}

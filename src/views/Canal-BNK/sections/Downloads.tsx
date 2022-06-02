@@ -105,7 +105,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
         link: '/canal-bnk/downloads'
       }}
       py={{ base: '54px', lg: '100px' }}
-      px={{ base: '20px', lg: '5%', '2xl': '3%' }}
+      px={{ base: '20px', lg: '5%', '2xl': '1%' }}
       overflow="hidden"
       maxWidth={'1536px'}
     >
@@ -118,7 +118,11 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
             gap="34px"
             direction="column"
           >
-            <Flex w="100%" gap="34px" px={{ base: '0', lg: '3%', '2xl': '0' }}>
+            <Flex 
+              w="100%" 
+              gap="34px" 
+              px={{ base: '0', lg: '3%', '2xl': '0' }}
+            >
               <DownloadColorPanel
                 title={channelBnkLabels.t(
                   'downloadsSection.inspirareBnkMagazine'
@@ -200,8 +204,17 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
             </Flex>
           </Flex>
         ) : (
-          <Flex data-testid="downloads" pt="65px" gap="34px" direction="column">
-            <Flex w="100%" gap="34px" px="88px">
+          <Flex 
+            data-testid="downloads" 
+            pt="65px" 
+            gap="34px" 
+            direction="column">
+            <Flex 
+              w="100%" 
+              gap="34px" 
+              // px="88px"
+              // bg="black"
+            >
               {currentCategory === 0
                 ? categoryOne
                 : currentCategory === 1
@@ -223,6 +236,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
           align="center"
           justify="center"
           overflow="hidden"
+          // bg="yellow"
         >
           <Carousel>{categoryOne}</Carousel>
 
@@ -235,10 +249,14 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
           display={{ base: 'flex', md: 'none' }}
           data-testid="downloads"
           pt="65px"
-          gap="34px"
+          gap="30px"
           direction="column"
+          // bg="violet"
         >
-          <Flex gap="34px">
+          <Flex   
+            gap="34px"
+          
+          >
             <Carousel>
               {currentCategory === 0
                 ? categoryOne
@@ -277,7 +295,7 @@ const DownloadColorPanel = (props: DownloadColorPanelProps) => {
 
   return (
     <Flex
-      h={{ base: '200px', lg: '220px' }}
+      h={{ base: '200px', lg: '180px' }}
       w={{ base: '100vw', lg: '100%' }}
       pos="relative"
       flex={props.flex ?? 1}
@@ -312,8 +330,8 @@ const DownloadColorPanel = (props: DownloadColorPanelProps) => {
         />
 
         <Text
-          as="h4"
-          variant="h4"
+          as="h3"
+          variant="h3"
           fontWeight="extrabold"
           letterSpacing="-0.68px"
           color={colorPanel === 'brown' ? 'white' : 'green.800'}

@@ -84,7 +84,7 @@ export const Post = (props: PostProps) => {
         xl: '4.2%',
         '2xl': showDate ? '5% 2% 0% 0%' : '0% 2% 0% 0%'
       }}
-      w={{ base: '90%', '2xl': showDate ? '70%' : '90%' }}
+      // w={{ base: '90%', '2xl': showDate ? '70%' : '85%' }}
       onMouseEnter={() => setMouseDown(true)}
       onMouseLeave={() => setMouseDown(false)}
       {...rest}
@@ -104,23 +104,28 @@ export const Post = (props: PostProps) => {
       </Flex>
 
       {/* box content */}
-      <Flex direction="column" flex="1">
+      <Flex 
+        direction="column" 
+        flex="1"
+      >
         <Flex
           flex="1"
           direction={{ base: 'column', md: 'row' }}
           justifyContent={{ base: 'start', md: 'end' }}
           alignContent={{ base: 'start', md: 'end' }}
+          // bg="red"
         >
           <Flex
             data-testid="post-category"
             margin={{
               base: '8px 0px 5px 10px',
               lg: '16px 0px 7px 20px',
-              xl: '26px 0px 10px 25px'
+              xl: '20px 0px 10px 25px'
             }}
             align="start"
             flex="1"
             gap="14px"
+            // bg="black"
           >
             <Arrow
               color={getHoverIndicatorColor()}
