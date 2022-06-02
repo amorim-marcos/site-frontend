@@ -98,8 +98,8 @@ export const BannerProducts = ({
         mr={bannerSize}
         // bg="black"
         flex="1"
-        mb={{ base: '6%', sm: '20px', lg: '25px', xl: '40px' }}
-        ml={{ base: '6%', sm: '20px', lg: '25px', xl: '40px' }}
+        mb={{ base: '6%', sm: '25px', lg: '25px', xl: '40px' }}
+        ml={{ base: '6%', sm: '25px', lg: '25px', xl: '40px' }}
         direction={{ base: 'row', sm: 'row', lg: 'row', xl: 'row' }}
       >
         <Flex

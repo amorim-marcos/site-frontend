@@ -69,8 +69,8 @@ export const ChannelBnkRelationalItem = ({
       onMouseLeave={() => setMouseDown(false)}
       flexDirection={{ base: 'column', xl: showInvert ? 'row' : 'column' }}
       overflow="hidden"
-      h="370px"
-      w={{ base: '60vw', xl: showInvert ? '0' : '22%' }}
+      // h="370px"
+      // w={{ base: '60vw', xl: showInvert ? '0' : '22%' }}
       minWidth={{
         base: '60vw',
         sm: '50vw',
@@ -85,7 +85,7 @@ export const ChannelBnkRelationalItem = ({
       {/* {CARD CHANNEL  } */}
       <Box
         h={{
-          base: '200px'
+          base: '180px'
         }}
         w="100%"
       >
@@ -95,23 +95,26 @@ export const ChannelBnkRelationalItem = ({
 
       {/* { CARD TEXT  } */}
       <Flex
+        //  bg = "tomato"
         bg={getPanelColor(categoryId, currentCategory)}
         flexDirection={{ base: 'column', md: showInvert ? 'column' : 'column' }}
-        justifyContent="space-between"
+        // justifyContent="space-between"
         h={{ base: '50%', xl: showInvert ? '100%' : '50%' }}
         w="100%"
       >
         <Flex
-          padding={{ base: '8%', xl: showInvert ? '3%' : '5%', '2xl': '12%' }}
+          padding={{ base: '8%', xl: showInvert ? '5%' : '6%', '2xl': '6%' }}
           flexDirection={{
             base: 'column',
             md: showInvert ? 'column' : 'column'
           }}
+          // bg= "violet"
+          h={{ base: '100%', xl: showInvert ? '98%' : '96%' }}
         >
           <Flex
             alignItems="flex-start"
             justifyContent={'flex-start'}
-            margin={{ base: '0', xl: showInvert ? '12px 0 0 0' : '0%' }}
+            margin={{ base: '0', xl: showInvert ? '1% 0 0 0' : '0%' }}
           >
             <ArrowIcon
               stroke={getAccentColor(categoryId, currentCategory)}

@@ -21,6 +21,7 @@ import { CategoryContext } from '..'
 import { Post as IPost } from 'types/data'
 import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
+import SeeMore from '@components/SeeMore'
 
 export const PANEL_COLOR = {
   all: 'white',
@@ -107,7 +108,11 @@ export const Intro = (props: {
           }
         />
 
-        <Flex direction="column" align={{ base: 'center', lg: 'inherit' }}>
+        <Flex 
+          direction="column" 
+          align={{ base: 'center', lg: 'inherit' }}
+          // bg = "red"
+          >
           <Flex
             data-testid="intro-header"
             w="100%"
@@ -118,13 +123,15 @@ export const Intro = (props: {
               base: '5% 5% 0 5%',
               md: '5% 3% 0 5%',
               xl: '5% 5% 0 3%',
-              '2xl': '5% 0% 0 5%'
+              '2xl': '2% 0% 0 4%'
             }}
+            // bg = "yellow"
           >
             <Flex
-              direction="column"
+              direction="row"
               alignSelf={{ base: 'flex-start' }}
-              w={{ lg: '30%', '2xl': '23%' }}
+              w={{ lg: '100%', xl: '100%' }}
+              // bg="blue"
             >
               <Image
                 src={
@@ -136,17 +143,21 @@ export const Intro = (props: {
                     ? '/assets/imgs/canal-bnk/canal_bnk_materia.svg'
                     : '/assets/imgs/canal-bnk/canal_bnk_mundo.svg'
                 }
-                w={{ base: '150px', lg: '180px' }}
+                w={{ base: '150px', lg: '160px' }}
               />
 
               <Box
-                w={'70%'}
-                marginTop={{ base: '20px', lg: '30px', xl: '40px' }}
+                w={{ base: '100%', xl: '60%' }}
+                // flex="1"
+                // marginTop={{ base: '20px', lg: '30px', xl: '40px' }}
+                // bg="green"
+                padding={"5%"}
               >
                 {!seeOnlyPosts && (
                   <Text
-                    as="h1"
-                    fontWeight={800}
+                    as="h5"
+                    variant={'h5'} 
+                    fontWeight = 'bold'
                     color={
                       currentCategory === -1
                         ? '#436D5D'
@@ -163,8 +174,9 @@ export const Intro = (props: {
 
                 {!seeOnlyPosts && (
                   <Text
-                    as="h2"
-                    letterSpacing="-0.4px"
+                    as="h5"
+                    variant={'h5'} 
+                    fontWeight = 'normal'
                     color={
                       currentCategory === -1
                         ? '#436D5D'
@@ -186,10 +198,9 @@ export const Intro = (props: {
 
                 {seeOnlyPosts && (
                   <Text
-                    as="h1"
-                    w="75%"
-                    fontWeight={800}
-                    letterSpacing="2.1px"
+                    as="h5"
+                    variant={'h5'} 
+                    fontWeight = 'bold' 
                     color={
                       currentCategory === -1 || currentCategory == 2
                         ? 'green.900'
@@ -207,19 +218,20 @@ export const Intro = (props: {
             </Flex>
 
             <Flex
-              width={{ base: '100%', lg: '70%', '2xl': '80%' }}
+              // width={{ base: '100%', lg: '70%', '2xl': '60%' }}
               wrap={{ base: 'nowrap', lg: 'wrap', '2xl': 'nowrap' }}
               justify="end"
-              gap={{ base: '8px', lg: '16px', xl: '14px' }}
+              gap={{ base: '8px', lg: '8px', xl: '14px' }}
               direction={{
                 base: 'column',
                 lg: 'row'
               }}
               marginTop={{ base: '30px', lg: '0' }}
-              alignItems={{ base: 'center', lg: 'flex-start' }}
-              height={{ base: 'auto', lg: '150px' }}
+              alignItems={{ base: 'center', lg: 'center' }}
+              // height={{ base: 'auto', lg: '150px' }}
+              // bg = "pink"
             >
-              <NavButton
+              {/* <NavButton
                 hideArrow
                 justify="center"
                 selected={currentCategory === -1}
@@ -234,7 +246,7 @@ export const Intro = (props: {
                 borderColor={currentCategory === -1 ? 'brown.200' : 'white'}
               >
                 {channelBnkLabels.t('introSection.seeAll')}
-              </NavButton>
+              </NavButton> */}
 
               {categories.length > 0 && (
                 <NavButton
@@ -286,7 +298,14 @@ export const Intro = (props: {
             </Flex>
           </Flex>
 
-          <Section
+
+          <Flex
+            w="100%"
+            zIndex={100}
+            // bg="black"
+          >
+
+          {/* <Section
             w="100%"
             zIndex={100}
             {...(!seeOnlyPosts && {
@@ -302,16 +321,17 @@ export const Intro = (props: {
                     : 'white.100'
               }
             })}
-          >
+          > */}
             {/* INICIO SECTION CANAL BNK */}
             {!seeOnlyPosts && (
               <Flex
                 direction={{ base: 'column', xl: 'row' }}
-                margin={{ md: '0 0 0 2%', '2xl': '0 0 0 5%' }}
+                margin={{ base: '0', '2xl': '1% 0 0 3.5%' }}
               >
                 <Flex
-                  flex={{ base: '1', xl: '2' }}
-                  maxH={{ xl: '700', '2xl': '650' }}
+                  flex={{ base: '1', xl: '1.5' }}
+                  maxH={{ xl: '700', '2xl': '540' }}
+                  // bg="blue"
                 >
                   {props.posts.length > 0 && <HeroPost post={props.posts[0]} />}
                 </Flex>
@@ -319,15 +339,15 @@ export const Intro = (props: {
                 <Flex
                   flex={{ base: '1' }}
                   flexDirection={{ base: 'row', xl: 'column' }}
-                  justifyContent={{ xl: 'space-evenly' }}
+                  // justifyContent={{ xl: 'space-evenly' }}
                   overflowX={{ base: 'scroll', xl: 'hidden' }}
                   overflowY={{ base: 'hidden', xl: 'scroll', '2xl': 'hidden' }}
                   w={{ base: '100vw', xl: '100%' }}
                   maxH={'650px'}
-                  gap={{ base: '5%', xl: '2%' }}
+                  gap={{ base: '5%', xl: '5%' }}
                   margin={{
                     base: '5% 10% 5% 5%',
-                    md: '3% 0% 3% 3.5%',
+                    md: '0% 0% 3% 5%',
                     xl: '3% 3% 3% 0',
                     '2xl': '0% 0% 0% 0'
                   }}
@@ -395,7 +415,45 @@ export const Intro = (props: {
                 ))}
               </Flex>
             )}
-          </Section>
+
+           
+
+
+          </Flex>
+        
+          <Flex
+            // bg="red"
+            zIndex={100}
+            direction="column"
+            alignSelf={{ base: 'flex-end' }}
+            justify={{ base: 'center' }}
+            w={{ lg: '100%', xl: '100%' }}
+            h={{ lg: '20px', xl: '50px' }}
+          >
+          
+              <Section
+                w="100%"
+                zIndex={100}
+                {...(!seeOnlyPosts && {
+                  seeMore: {
+                    text: channelBnkLabels.t('introSection.seeMore'),
+                    link: `/canal-bnk/${currentCategory}`,
+                    onClick: () => setSeeOnlyPosts(true),
+                    textColor:
+                      currentCategory === -1
+                        ? 'green.550'
+                        : currentCategory === 0
+                        ? 'brown.300'
+                        : 'white.100'
+                  }
+                })}
+                py={{ base: '54px', lg: '100px' }}
+                px={{ base: '20px', lg: '5%', '2xl': '1%' }}
+                maxWidth={'1536px'}
+              /> 
+
+            </Flex> 
+
         </Flex>
       </Flex>
     </Box>
@@ -418,8 +476,8 @@ export const NavButton = (props: NavButtonProps) => {
   return (
     <Button
       as="button"
-      h={{ base: '50px', xl: '60px' }}
-      w={{ base: '100%', lg: 'auto' }}
+      h={{ base: '50px', xl: '50px' }}
+      w={{ base: '100%', xl: '80%' }}
       border="2px solid"
       borderRadius="17px"
       color={'gray.350'}
@@ -433,9 +491,9 @@ export const NavButton = (props: NavButtonProps) => {
       <Flex
         align="center"
         justify={justify ?? 'center'}
-        gap="20px"
+        gap="10px"
         w="100%"
-        px={{ base: '21px', lg: '37px' }}
+        px={{ base: '21px', lg: '30px' }}
         py={{ base: '17px', lg: '21px' }}
       >
         <Text
@@ -443,10 +501,10 @@ export const NavButton = (props: NavButtonProps) => {
           variant="h5"
           textColor={'black'}
           letterSpacing={{
-            base: '2px',
-            xl: '3px'
+            base: '1.4px',
+            xl: '2px'
           }}
-          fontSize={{ base: '12px', sm: '12px', lg: '12px', xl: '12px' }}
+          fontSize={{ base: '10px', sm: '10px', lg: '10px', xl: '10px' }}
         >
           {children}
         </Text>

@@ -113,7 +113,7 @@ export const AppHeader = () => {
               base: '25px',
               md: '25px',
               lg: '30px',
-              xl: '40px'
+              xl: '32px'
             }}
             bg="green.900"
           >
@@ -124,7 +124,7 @@ export const AppHeader = () => {
                   base: '25px',
                   md: '25px',
                   lg: '30px',
-                  xl: '40px'
+                  xl: '32px'
                 }}
                 justifyContent="space-between"
                 bg="green.900"
@@ -166,7 +166,7 @@ export const AppHeader = () => {
                   base: '50px',
                   md: '60px',
                   lg: '70px',
-                  xl: '95px'
+                  xl: '80px'
                 }}
                 bg="green.800"
                 alignItems="center"
@@ -420,7 +420,7 @@ export const AppHeader = () => {
           base: '75px',
           md: '88px',
           lg: '103px',
-          xl: '140px'
+          xl: '118px'
         }}
       ></Box>
     </>
