@@ -81,7 +81,7 @@ export const Products = () => {
         overflowY="hidden"
         overflowX="hidden"
         // bg="blue"
-        paddingX={{ md: '60px' }}
+        paddingX={{ md: '50px' }}
       >
         <Grid
           h={{
@@ -93,7 +93,7 @@ export const Products = () => {
             '2xl': '1150px'
           }}
           w={{ base: '90%', sm: '93%', lg: '93%', xl: '93%' }}
-          margin={{ base: '5%', sm: '3% 3%', lg: '3% 3%', xl: '3% 3%' }}
+          margin={{ base: '5%', sm: '3% 3%', lg: '3% 0%', xl: '3% 0%' }}
           templateRows={{
             base: 'repeat(7, 1fr)',
             sm: 'repeat(4, 1fr)',

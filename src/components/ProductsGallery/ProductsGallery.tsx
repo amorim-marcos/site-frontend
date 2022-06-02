@@ -26,8 +26,7 @@ export const ProductsGallery = ({
               sm: '485px',
               md: '280px',
               lg: '400px',
-              xl: '420px',
-              '2xl': '400px'
+              xl: '345px'
             }}
             paddingX={{ base: '20px', sm: '80px', md: '0' }}
             // bg="black"

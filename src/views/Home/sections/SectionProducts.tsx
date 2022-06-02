@@ -97,9 +97,10 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
             base: '0% 0% 5% 0%',
             sm: '0% 0% 3% 0%',
             lg: '0% 0% 3% 0%',
-            xl: '0% 5% 5% 5%',
+            xl: '0% 0% 0% 0%',
             '2xl': '0% 0% 0% 4%'
           }}
+          // bgColor = "pink"
         >
           <ProductsGallery numberEvidence={3} products={products} />
         </Box>

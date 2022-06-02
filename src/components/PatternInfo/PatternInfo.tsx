@@ -28,6 +28,7 @@ export const PatternInfo = ({
       data-testid="pattern-info-box"
       align="center"
       bg="green.800"
+      // bg="red.800"
       cursor="pointer"
       pos="relative"
       zIndex="base"
@@ -37,7 +38,7 @@ export const PatternInfo = ({
       }}
       overflowY="hidden"
       overflowX="hidden"
-      padding={{ base: '5%', sm: '5%', lg: '8%', xl: '3%' }}
+      padding={{ base: '5%', sm: '5%', lg: '8%', xl: '0' }}
       w={'100%'}
       {...props}
     >

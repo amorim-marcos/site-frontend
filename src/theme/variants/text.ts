@@ -58,7 +58,7 @@ export const Text = {
     },
     h1: {
       color: 'green.800',
-      fontSize: { base: '28px', sm: '32px', lg: '32px', xl: '35px' },
+      fontSize: { base: '28px', sm: '30px', lg: '30px', xl: '32px' },
       fontWeight: 'extrabold',
       letterSpacing: '-0.84px'
     },
@@ -76,10 +76,10 @@ export const Text = {
       color: 'green.700',
       fontSize: {
         base: '14px',
-        md: '16px',
-        lg: '18px',
+        md: '15px',
+        lg: '16px',
         xl: '17px',
-        '2xl': '19px'
+        '2xl': '17px'
       },
       fontWeight: 'bold',
       letterSpacing: '-0.45px'
