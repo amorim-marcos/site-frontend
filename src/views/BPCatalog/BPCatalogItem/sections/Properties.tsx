@@ -92,6 +92,8 @@ export const Properties = (props: PropertiesProps) => {
           >
             <Image
               src={props.textureImg}
+              minWidth={{ base: '128px', '2xl': '148px' }}
+              minHeight={{ base: '128px', '2xl': '148px' }}
               w={{ base: '128px', '2xl': '148px' }}
               h={{ base: '128px', '2xl': '148px' }}
               border="7px solid"
