@@ -66,6 +66,8 @@ export const Pagebar = ({
             // position="absolute"
             left="0"
             zIndex="base"
+            cursor={'pointer'}
+            onClick={() => router.push('/')}
           >
             <PagebarGrafism
               height={{
