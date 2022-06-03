@@ -180,7 +180,7 @@ const PageNavegation = (props: {
         w="100%"
         // pt={{ base: '100px', '2xl': '140px' }}
         justify="space-between"
-        maxWidth="1920px"
+        // maxWidth="1920px"
         position={fixed ? 'fixed' : 'absolute'}
         bottom={'0'}
         zIndex={'banner'}
@@ -188,9 +188,9 @@ const PageNavegation = (props: {
         // bg="red"
       >
         <Flex
-          // border="1px solid red"
+          // border="1px solid blue"
           pointerEvents={'fill'}
-          bg="white"
+          bg="rgb(255,255,255,0.7)"
           w={{ base: 'fit-content' }}
           h={{ base: '90px', sm: '65px' }}
           padding={{ base: '10px', sm: '40px' }}
@@ -203,33 +203,33 @@ const PageNavegation = (props: {
           onClick={() =>
             router.push(`/products/bp-berneck/catalog/${props.prev.url_code}`)
           }
-          transition="all 0.2s ease-in-out"
-          _hover={{ filter: 'brightness(0.8)' }}
+          // transition="all 0.2s ease-in-out"
+          _hover={{ filter: "brightness(80%)" }}
         >
           <Arrow
             direction="left"
             width={{ base: '15px', xs: '20px', md: '24px' }}
             // height={{ base: '30px', sm: '40px' }}
-            color="green.200"
+            color="gray.100"
           />
           <Box>
             <Text
               // fontSize={{ base: '15px', sm: '20px', md: '23px' }}
-              as={'h4'}
-              variant={'h4' as any}
+              as={'h5'}
+              variant={'h5' as any}
               fontWeight="bold"
               letterSpacing="-0.46px"
-              color="gray.300"
+              color="gray.250"
             >
               {bpCatalogItemLabels.t('navigation.previous')}
             </Text>
 
             <Text
-              as={'h4'}
-              variant={'h4' as any}
+              as={'h6'}
+              variant={'h6' as any}
               fontWeight="medium"
               letterSpacing="-0.36px"
-              color="gray.300"
+              color="gray.250"
             >
               {props.prev.name}
             </Text>
@@ -238,7 +238,7 @@ const PageNavegation = (props: {
 
         <Flex
           pointerEvents={'fill'}
-          bg="white"
+          bg="rgb(255,255,255,0.7)"
           w={{ base: 'fit-content' }}
           h={{ base: '90px', sm: '65px' }}
           padding={{ base: '10px', sm: '40px' }}
@@ -251,26 +251,26 @@ const PageNavegation = (props: {
           onClick={() =>
             router.push(`/products/bp-berneck/catalog/${props.next.url_code}`)
           }
-          transition="all 0.2s ease-in-out"
-          _hover={{ filter: 'brightness(0.8)' }}
+          // transition="all 0.2s ease-in-out"
+          _hover={{ filter: "brightness(80%)" }}
         >
           <Flex direction="column" align="flex-end">
             <Text
-              as={'h4'}
-              variant={'h4' as any}
+              as={'h5'}
+              variant={'h5' as any}
               fontWeight="bold"
               letterSpacing="-0.46px"
-              color="gray.300"
+              color="gray.250"
             >
               {bpCatalogItemLabels.t('navigation.next')}
             </Text>
 
             <Text
-              as={'h4'}
-              variant={'h4' as any}
+              as={'h6'}
+              variant={'h6' as any}
               fontWeight="medium"
               letterSpacing="-0.36px"
-              color="gray.300"
+              color="gray.250"
             >
               {props.next.name}
             </Text>
@@ -280,7 +280,7 @@ const PageNavegation = (props: {
             direction="right"
             width={{ base: '15px', xs: '20px', md: '24px' }}
             // height={{ base: '30px', sm: '40px' }}
-            color="green.200"
+            color="gray.100"
           />
         </Flex>
       </Flex>

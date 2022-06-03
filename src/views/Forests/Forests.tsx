@@ -346,10 +346,10 @@ export const ForestsView = (props: ForestsViewProps) => {
           >
             {/* BOX 1 */}
             <Box
-              // bg='pink'
+              bg='pink'
               flex="1"
               justifyItems={'center'}
-              backgroundImage="/assets/imgs/iStock-621469294.png"
+              backgroundImage="/assets/imgs/foto_floresta.jpg"
               backgroundPosition="center"
               backgroundRepeat="no-repeat"
               // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
@@ -452,24 +452,45 @@ export const ForestsView = (props: ForestsViewProps) => {
               // bg='pink'
               flex="1"
               margin={{
-                base: '0% 0% 5% 0%',
+                base: '5% 0% 5% 0%',
                 sm: '5% 5% 5% 5%',
                 lg: '5% 2% 5% 5%',
-                xl: '5% 2% 5% 5%'
+                xl: '5% 2% 5% 0%'
               }}
             >
               {/* INTERNAL FLEX */}
               <Flex
                 // bg='gray'
                 direction={{
-                  base: 'column'
+                  base: 'row'
                 }}
+                flex={1}
+                // gap={"30px"}
               >
                 {/* INTERNAL FLEX - BOX 1 */}
+               
+                  <Flex
+                    overflowY="hidden"
+                    overflowX="hidden"
+                    backgroundImage="/assets/imgs/tamandua.png"
+                    backgroundPosition="right"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize={'cover'}
+                    flex={1.5}
+                    marginRight={"30px"}
+                  >
+                    {/* <Text>tamandua</Text> */}
+                  
+                 
+                </Flex>
+                {/* INTERNAL FLEX - BOX 2 */}
                 <Flex
                   bg="white.100"
                   flex={1}
-                  marginLeft={{ base: '0%', sm: '10%', lg: '10%', xl: '10%' }}
+                  // marginLeft={{ base: '0%', sm: '10%', lg: '10%', xl: '10%' }}
+                  direction={{
+                    base: 'column'
+                  }}
                 >
                   <Infographic
                     content1Text="+"
@@ -485,38 +506,27 @@ export const ForestsView = (props: ForestsViewProps) => {
                       'infoGraphicBiodiversity.monitoredFarms'
                     )}
                   />
-                </Flex>
-                {/* INTERNAL FLEX - BOX 2 */}
-                <Flex
-                  // bg='gray.400'
-                  flex={1}
-                  // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
-                >
-                  <Flex
-                    // bg='gray.400'
-                    flex={2}
-                    // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
-                  >
-                    <Image src="/assets/imgs/tamandua.png" />
-                  </Flex>
-                  <Flex
+                   <Flex
                     // bg='gray.400'
                     flex={1}
                     // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
                   >
                     <Text
-                      as="h5"
-                      variant={'h5' as any}
+                      as="h6"
+                      variant={'h6' as any}
                       padding={{ base: '5%', sm: '5%', lg: '10%', xl: '5%' }}
                       color={'brown.300'}
-                      // textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+                      fontSize = {{ base: '9px', sm: '9px', lg: '9px', xl: '9px' }}
+                      fontWeight =  'normal'
                     >
                       <HtmlTextParser>
                         {props.page_content.monitored_animals_and_farms_text}
                       </HtmlTextParser>
                     </Text>
                   </Flex>
+
                 </Flex>
+                
               </Flex>
             </Box>
             {/* BOX 2 */}
@@ -543,12 +553,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                   {props.page_content.section3_text}
                 </HtmlTextParser>
               </Text>
-              {/* <Text
-              marginTop={'3%'}
-              // textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-            >
-
-            </Text> */}
+             
             </Box>
           </Flex>
         </Flex>
@@ -627,7 +632,7 @@ export const ForestsView = (props: ForestsViewProps) => {
             </Box>
           </Flex>
           {/* MADEIRA FLYANTE */}
-          <Flex
+          {/* <Flex
             marginX="auto"
             zIndex={10}
             overflowY="visible"
@@ -651,7 +656,7 @@ export const ForestsView = (props: ForestsViewProps) => {
             }}
           >
             <Image src="/assets/imgs/madeiras.png" />
-          </Flex>
+          </Flex> */}
           {/* MADEIRA FLYANTE */}
         </Flex>
       </Box>
