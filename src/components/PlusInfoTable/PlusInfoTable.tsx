@@ -16,14 +16,14 @@ export const PlusInfoTable = ({ rows }: PlusInfoTableProps) => {
   const componentsLabels = useTranslation('components')
   return (
     <Box>
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" bg="#F3F3F3">
         <Flex marginBottom="5px">
           <Box w={firstItemWidth}></Box>
           <Box
             w={itemWidthDoble}
             borderBottom="solid #C2DFB7"
             borderBottomWidth={{ base: '5px', sm: '3px', lg: '5px' }}
-            borderX="1px solid #E8E8E8"
+            margin="1px"
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -46,7 +46,7 @@ export const PlusInfoTable = ({ rows }: PlusInfoTableProps) => {
             w={itemWidthDoble}
             borderBottom="solid #C2DFB7"
             borderBottomWidth={{ base: '5px', sm: '3px', lg: '5px' }}
-            borderX="1px solid #E8E8E8"
+            margin="1px"
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -83,22 +83,38 @@ export const PlusInfoTable = ({ rows }: PlusInfoTableProps) => {
             </Text>
           </Flex>
           <Flex alignItems="center" {...tableItemTitle}>
-            <Text variant={'productBody' as any} fontSize={tableText}>
+            <Text
+              variant={'productBody' as any}
+              fontSize={tableText}
+              color="#626161"
+            >
               {componentsLabels.t('plusInfoTable.amountOfWaterAbsorbed')}
             </Text>
           </Flex>
           <Flex alignItems="center" {...tableItemTitle}>
-            <Text variant={'productBody' as any} fontSize={tableText}>
+            <Text
+              variant={'productBody' as any}
+              fontSize={tableText}
+              color="#626161"
+            >
               {componentsLabels.t('plusInfoTable.absorption')}
             </Text>
           </Flex>
           <Flex alignItems="center" {...tableItemTitle}>
-            <Text variant={'productBody' as any} fontSize={tableText}>
+            <Text
+              variant={'productBody' as any}
+              fontSize={tableText}
+              color="#626161"
+            >
               {componentsLabels.t('plusInfoTable.thicknessIncrease')}
             </Text>
           </Flex>
           <Flex alignItems="center" {...tableItemTitle}>
-            <Text variant={'productBody' as any} fontSize={tableText}>
+            <Text
+              variant={'productBody' as any}
+              fontSize={tableText}
+              color="#626161"
+            >
               {componentsLabels.t('plusInfoTable.swelling')}
             </Text>
           </Flex>
@@ -106,34 +122,76 @@ export const PlusInfoTable = ({ rows }: PlusInfoTableProps) => {
         {rows &&
           rows.map((r, j) => {
             return (
-              <Flex key={j}>
+              <Flex
+                position={'relative'}
+                key={j}
+                maxWidth={{ base: '365px', md: '100vw' }}
+              >
+                {r.plus && (
+                  <Image
+                    src="/img/plus.svg"
+                    position={'absolute'}
+                    right="0"
+                    top="25%"
+                    width={'30px'}
+                    display={{ base: 'none', sm: 'block' }}
+                  />
+                )}
                 <Box
                   {...tableFirstItem}
                   w={firstItemWidth}
                   bg={r.plus ? '#C2DFB7' : '#FFF'}
                 >
-                  <Text variant={'productBody' as any} fontSize={tableText}>
+                  <Text
+                    variant={'productBody' as any}
+                    fontSize={tableText}
+                    color={'#626161'}
+                    fontWeight={r.plus ? 'bold' : 'normal'}
+                  >
                     {r.column1}
                   </Text>
                 </Box>
                 <Box {...(r.plus ? tableItemPlus : tableItem)}>
-                  <Text variant={'productBody' as any} fontSize={tableText}>
+                  <Text
+                    variant={'productBody' as any}
+                    fontSize={tableText}
+                    color={'#626161'}
+                    fontWeight={r.plus ? 'bold' : 'normal'}
+                  >
                     {r.column2}
                   </Text>
                 </Box>
                 <Box {...(r.plus ? tableItemPlus : tableItem)}>
-                  <Text variant={'productBody' as any} fontSize={tableText}>
+                  <Text
+                    variant={'productBody' as any}
+                    fontSize={tableText}
+                    color={'#626161'}
+                    fontWeight={r.plus ? 'bold' : 'normal'}
+                  >
                     {r.column3}
+                    {' %'}
                   </Text>
                 </Box>
                 <Box {...(r.plus ? tableItemPlus : tableItem)}>
-                  <Text variant={'productBody' as any} fontSize={tableText}>
+                  <Text
+                    variant={'productBody' as any}
+                    fontSize={tableText}
+                    color={'#626161'}
+                    fontWeight={r.plus ? 'bold' : 'normal'}
+                  >
                     {r.column4}
+                    {' mm'}
                   </Text>
                 </Box>
                 <Box {...(r.plus ? tableItemPlus : tableItem)}>
-                  <Text variant={'productBody' as any} fontSize={tableText}>
+                  <Text
+                    variant={'productBody' as any}
+                    fontSize={tableText}
+                    color={'#626161'}
+                    fontWeight={r.plus ? 'bold' : 'normal'}
+                  >
                     {r.column5}
+                    {' %'}
                   </Text>
                 </Box>
               </Flex>
@@ -169,7 +227,7 @@ const tableText = {
 }
 
 const firstItemWidth = {
-  base: '100px',
+  base: '60px',
   sm: '72px',
   md: '129px',
   lg: '170px',
@@ -178,7 +236,7 @@ const firstItemWidth = {
 }
 
 const itemWidth = {
-  base: '100px',
+  base: '60px',
   sm: '68px',
   md: '90px',
   lg: '113px',
@@ -187,7 +245,7 @@ const itemWidth = {
 }
 
 const itemWidthDoble = {
-  base: '200px',
+  base: '126px',
   sm: '136px',
   md: '180px',
   lg: '226px',
@@ -225,7 +283,7 @@ const itemPaddingX = {
 const tableFirstItem: BoxProps = {
   width: firstItemWidth,
   bg: '#FFF',
-  border: '1px solid #E8E8E8',
+  margin: '2px',
   paddingX: itemPaddingX,
   paddingY: itemPaddingY,
   paddingRight: itemPaddingRight
@@ -234,7 +292,7 @@ const tableFirstItem: BoxProps = {
 const tableItem: BoxProps = {
   width: itemWidth,
   bg: '#FFF',
-  border: '1px solid #E8E8E8',
+  margin: '2px',
   paddingX: itemPaddingX,
   paddingY: itemPaddingY,
   paddingRight: itemPaddingRight
@@ -243,7 +301,7 @@ const tableItem: BoxProps = {
 const tableItemPlus: BoxProps = {
   width: itemWidth,
   bg: '#C2DFB7',
-  border: '1px solid #E8E8E8',
+  margin: '2px',
   paddingX: itemPaddingX,
   paddingY: itemPaddingY,
   paddingRight: itemPaddingRight
@@ -252,7 +310,7 @@ const tableItemPlus: BoxProps = {
 const tableItemTitle: BoxProps = {
   width: itemWidth,
   bg: 'none',
-  border: '1px solid #E8E8E8',
+  // border: '1px solid #F3F3F3',
   paddingX: itemPaddingX,
   paddingY: itemPaddingY,
   paddingRight: itemPaddingRight

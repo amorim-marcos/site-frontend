@@ -69,6 +69,8 @@ export const PlusTestInfo = ({
           backgroundRepeat="no-repeat"
           backgroundSize={{ base: '120%' }}
           flexDirection={{ base: 'column', md: 'row' }}
+          backgroundColor="#BCDBB0"
+          // border="1px solid red"
         >
           {/* LINHA 1 */}
           <Flex
@@ -143,11 +145,16 @@ export const PlusTestInfo = ({
         </Flex>
 
         <Flex
-          flexDirection={{ base: 'column', md: 'row' }}
+          flexDirection={{ base: 'column', lg: 'row' }}
           justifyContent={{ base: 'space-between', md: 'center' }}
-          alignItems={{ base: 'none', md: 'center' }}
+          alignItems={{ base: 'center', md: 'center' }}
+          // border="1px solid red"
+          width={{ base: '100%', lg: 'auto' }}
         >
-          <Box width={{ base: '100%', md: '60%' }}>
+          <Box
+            width={{ base: '100%', lg: '60%' }}
+            // border="1px solid blue"
+          >
             <Text
               margin={{
                 base: '2%',
@@ -168,7 +175,13 @@ export const PlusTestInfo = ({
                 extraInfoBody.map((e, j) => <ItemCite key={j} text={e} />)}
             </Box>
           </Box>
-          <Box bg="gray.450" padding={'2%'} marginLeft={{ md: '2%' }}>
+          <Box
+            bg="#F3F3F3"
+            padding={'2%'}
+            marginLeft={{ md: '2%' }}
+            maxWidth={{ base: '400px', md: '100vw' }}
+            overflowX={{ base: 'scroll', md: 'visible' }}
+          >
             {tableInfo && <PlusInfoTable rows={tableInfo.rows} />}
           </Box>
         </Flex>
