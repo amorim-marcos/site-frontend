@@ -220,7 +220,9 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                           //  border="1px solid green"
                           width={'100%'}
                         >
-                          <Text fontFamily="body">{item.value}</Text>
+                          <Text fontFamily="body">
+                            <HtmlTextParser>{item.value}</HtmlTextParser>
+                          </Text>
                         </Box>
                       </Flex>
                     </ListItem>
