@@ -203,8 +203,8 @@ const PageNavegation = (props: {
           onClick={() =>
             router.push(`/products/bp-berneck/catalog/${props.prev.url_code}`)
           }
-          // transition="all 0.2s ease-in-out"
-          _hover={{ filter: "brightness(80%)" }}
+          transition="all 0.2s ease-in-out"
+          _hover={{ background: '#FFF' }}
         >
           <Arrow
             direction="left"
@@ -251,8 +251,8 @@ const PageNavegation = (props: {
           onClick={() =>
             router.push(`/products/bp-berneck/catalog/${props.next.url_code}`)
           }
-          // transition="all 0.2s ease-in-out"
-          _hover={{ filter: "brightness(80%)" }}
+          transition="all 0.2s ease-in-out"
+          _hover={{ background: '#FFF' }}
         >
           <Flex direction="column" align="flex-end">
             <Text
