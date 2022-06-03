@@ -342,13 +342,13 @@ export const Infographic = ({
                             base: '45px',
                             sm: '80px',
                             lg: '120px',
-                            xl: '120px'
+                            xl: '100px'
                           }}
                           width={{
-                            base: '28px',
-                            sm: '35px',
-                            lg: '45px',
-                            xl: '45px'
+                            base: '58px',
+                            sm: '75px',
+                            lg: '105px',
+                            xl: '145px'
                           }}
                         />
                       )) ||
