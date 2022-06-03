@@ -98,11 +98,6 @@ export const Videos = () => {
       px={{ base: '20px', lg: '5%', '2xl': '1%' }}
       maxWidth={'1536px'}
     >
-      <Flex align="center" justify="center" py="25px">
-        <Text fontWeight="bold" color="red">
-          Aguardando envio da chave do YouTube
-        </Text>
-      </Flex>
       <Flex
         w="100%"
         data-testid="videos"
