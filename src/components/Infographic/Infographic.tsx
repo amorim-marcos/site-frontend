@@ -340,15 +340,14 @@ export const Infographic = ({
                         <MapIcon
                           height={{
                             base: '45px',
-                            sm: '80px',
-                            lg: '120px',
-                            xl: '100px'
+                            sm: '60px',
+                            lg: '70px'
                           }}
                           width={{
                             base: '58px',
                             sm: '75px',
-                            lg: '105px',
-                            xl: '145px'
+                            lg: '80px',
+                            xl: '95px'
                           }}
                         />
                       )) ||
