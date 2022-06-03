@@ -137,7 +137,7 @@ export const FiltersTabs = ({
                   <FilterBtn
                     changeFilterPanel={changeFilterPanel}
                     currentFilterPanel={currentFilterPanel}
-                    title={galleryViewLabels.t('filtersTab.styles')}
+                    title={galleryViewLabels.t('filtersTab.style')}
                     filterName={'styles'}
                   />
                 </Flex>
