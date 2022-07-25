@@ -82,7 +82,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     content: item.content,
     category: item.category.name,
     url_code: item.url_code,
-    cover_url: `${url}${item.cover.url}`
+    cover_url: (item.cover)? `${url}${item.cover.url}` :''
   }))
 
   return {
