@@ -45,19 +45,19 @@ export const mockPanelObj: HighlightBoxPanelProps = {
 
 export const mockPanels: HighlightBoxPanelProps[] = [
   {
-    title: 'Música no Bairro',
-    subtitle: 'Alm. Tamandaré, PR | Projeto Cultural',
-    image: '/img/patrocinados/musica_bairro.png'
+    title: 'HANDLAGES',
+    subtitle: 'Lages, SC | Projeto Desportivo',
+    image: '/img/patrocinados/HANDLAGES.jpg'
   },
   {
-    title: 'Escolinha ADPB',
-    subtitle: 'Lages, SC | Projeto Desportivo ',
-    image: 'img/patrocinados/escolinha_adpb.png'
+    title: 'Gran Circo Stopim',
+    subtitle: 'Mato Grosso | Projeto Cultural ',
+    image: 'img/patrocinados/Gran-Circo-Stopim.jpg'
   },
   {
-    title: 'APAE',
-    subtitle: ' Brasnorte, MT | Projeto Social - Crianças',
-    image: 'img/patrocinados/apae.png'
+    title: 'Herdeiros da Terra',
+    subtitle: 'Curitibanos | Projeto Social - Crianças',
+    image: 'img/patrocinados/Herdeiros-da-Terra.jpg'
   },
   {
     title: 'Fundo Municipal do Idoso',
