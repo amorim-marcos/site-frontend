@@ -201,8 +201,8 @@ export const Section = (props: {
         >
           {props.contentLen}{' '}
           {props.contentLen > 1
-            ? searchLabels.t('pageNotFound')
-            : searchLabels.t('pageFound')}
+            ? searchLabels.t('')
+            : searchLabels.t('')}
         </Text>
       </Flex>
 

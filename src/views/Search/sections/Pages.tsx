@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { Flex, Box, Text, Image, Button } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export const SectionPages = (props: {
   content: {
@@ -183,7 +184,7 @@ const Page = (props: {
               overflow="hidden"
               noOfLines={4}
             >
-              {props.content.description}
+              <HtmlTextParser>{props.content.description}</HtmlTextParser>
             </Text>
           </Flex>
         </Flex>
