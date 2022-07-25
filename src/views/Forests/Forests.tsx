@@ -299,7 +299,7 @@ export const ForestsView = (props: ForestsViewProps) => {
               <Infographic
                 content3Text={forestView.t('infoGraphicsForests.states')}
                 content1DisplayIcon="yes"
-                content1IconName="map"
+                content1IconName="estado"
                 content2Text={props.page_content.states.toString()}
                 titleSubscript1Text={forestView.t(
                   'infoGraphicsForests.whichStates'
