@@ -47,6 +47,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   res = await meiliSearch({ index: 'pages', query: slug as string })
 
+  console.log(res)
+
   const pages: SearchProps['results']['pages'] = res.hits.map((item) => ({
     id: item.id,
     header_text: item.header_text ?? null,
@@ -68,7 +70,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     name: item.name,
     url_code: item.url_code,
     pattern_image_url: `${url}${item.pattern_image.url}`,
-    product_collections_name: item.product_collections[0]?.name
+    product_collections_name: item.product_collections[0] ? item.product_collections[0].name : null
   }))
 
   res = await meiliSearch({
