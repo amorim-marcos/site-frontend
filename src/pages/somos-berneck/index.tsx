@@ -65,61 +65,71 @@ export const getStaticProps: GetStaticProps = async (context) => {
     whereWeAreData = await res.json()
   }
 
-  const our_trajectory_tabs = our_trajectory.year.map((year: any) => {
-    return {
-      name: year.year,
-      content: {
-        title: year.title,
-        text: year.description,
-        image: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + year.image.url
-      }
-    }
-  })
+  let our_trajectory_tabs
 
-  whereWeAreData = whereWeAreData.map(
-    (item: {
-      name: string
-      city: string
-      our_place_information: {
-        structure: string
-        localization: string
-        phones: string
-        airport_distance: string
-      }
-      latitude: string
-      longitude: string
-      google_maps_url: string
-      state: string
-      country: string
-      inauguration_soon: string
-      image: {
-        url: string
-      }
-    }) => {
+  if (our_trajectory.year && our_trajectory.year.length) {
+    our_trajectory_tabs = our_trajectory.year.map((year: any) => {
       return {
-        name: item.name,
-        city: item.city,
-        ourPlaceInformation: {
-          structure: item.our_place_information.structure,
-          localization: item.our_place_information.localization,
-          phones: item.our_place_information.phones,
-          airportDistance: item.our_place_information.airport_distance
-        },
-        coords: {
-          lat: Number(item.latitude),
-          lng: Number(item.longitude)
-        },
-        googleMapsURL: `http://maps.google.com/maps?q=${item.latitude},${item.longitude}`,
-        state: item.state,
-        country: item.country,
-        inaugurationSoon: item.inauguration_soon,
-        image:
-          item.image === null
-            ? null
-            : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.image.url
+        name: year.year,
+        content: {
+          title: year.title,
+          text: year.description,
+          image: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + year.image.url
+        }
       }
-    }
-  )
+    })
+  } else {
+    our_trajectory_tabs = []
+  }
+
+  if (whereWeAreData && typeof whereWeAreData.map === 'function') {
+    whereWeAreData = whereWeAreData.map(
+      (item: {
+        name: string
+        city: string
+        our_place_information: {
+          structure: string
+          localization: string
+          phones: string
+          airport_distance: string
+        }
+        latitude: string
+        longitude: string
+        google_maps_url: string
+        state: string
+        country: string
+        inauguration_soon: string
+        image: {
+          url: string
+        }
+      }) => {
+        return {
+          name: item.name,
+          city: item.city,
+          ourPlaceInformation: {
+            structure: item.our_place_information.structure,
+            localization: item.our_place_information.localization,
+            phones: item.our_place_information.phones,
+            airportDistance: item.our_place_information.airport_distance
+          },
+          coords: {
+            lat: Number(item.latitude),
+            lng: Number(item.longitude)
+          },
+          googleMapsURL: `http://maps.google.com/maps?q=${item.latitude},${item.longitude}`,
+          state: item.state,
+          country: item.country,
+          inaugurationSoon: item.inauguration_soon,
+          image:
+            item.image === null
+              ? null
+              : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.image.url
+        }
+      }
+    )
+  } else {
+    whereWeAreData = []
+  }
 
   return {
     props: {

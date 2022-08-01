@@ -192,21 +192,23 @@ export const Certification = (props: CertificationViewProps) => {
               padding={{ base: '3%', sm: '3%', lg: '1%', xl: '1%' }}
               direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
             >
-              {props.forestCertificate.certificates.map((item, i) => {
-                return (
-                  <PatternCertification
-                    onClick={() =>
-                      window.open(item.certificate_file.url, '_blank')
-                    }
-                    key={i}
-                    title={item.certificate_name}
-                    titleInitialColor="green.800"
-                    iconName="certification"
-                    iconInitialColor1="#004934"
-                    iconInitialColor2="#004934"
-                  />
-                )
-              })}
+              {typeof props.forestCertificate.certificates !== 'undefined'
+                ? props.forestCertificate.certificates.map((item, i) => {
+                    return (
+                      <PatternCertification
+                        onClick={() =>
+                          window.open(item.certificate_file.url, '_blank')
+                        }
+                        key={i}
+                        title={item.certificate_name}
+                        titleInitialColor="green.800"
+                        iconName="certification"
+                        iconInitialColor1="#004934"
+                        iconInitialColor2="#004934"
+                      />
+                    )
+                  })
+                : []}
             </Flex>
           </Box>
           {/* BOX 2 */}
@@ -291,132 +293,134 @@ export const Certification = (props: CertificationViewProps) => {
               />
             </Box>
 
-            {props.productsCertificates.map((item, i) => {
-              return (
-                <Flex
-                  key={i}
-                  m="5%"
-                  mb="0"
-                  bg="green.100"
-                  flex="1"
-                  direction={
-                    i % 2 === 0
-                      ? { base: 'column', lg: 'row' }
-                      : {
-                          base: 'column',
-                          sm: 'column',
-                          lg: 'row-reverse',
-                          xl: 'row-reverse'
-                        }
-                  }
-                  // alignItems="center"
-                  // alignContent="center"
-                  // justifyContent="center"
-                  // justifyItems="center"
-                  padding={'5%'}
-                >
-                  <Flex
-                    // bg='green'
-                    flex="1"
-                    direction={{ base: 'column', lg: 'row' }}
-                  >
+            {typeof props.productsCertificates !== 'undefined'
+              ? props.productsCertificates.map((item, i) => {
+                  return (
                     <Flex
-                      // bg='black'
+                      key={i}
+                      m="5%"
+                      mb="0"
+                      bg="green.100"
                       flex="1"
-                    >
-                      <Text
-                        as="h3"
-                        variant={'h3' as any}
-                        color="green.800"
-                        textAlign={{
-                          base: 'left',
-                          sm: 'left',
-                          lg: 'left',
-                          xl: 'left'
-                        }}
-                      >
-                        {item.certifier}
-                      </Text>
-                    </Flex>
-                    <Flex
-                      // bg='azure'
-                      flex="2"
-                    >
-                      <Text
-                        color="brown.350"
-                        fontWeight="medium"
-                        textAlign={{
-                          base: 'left',
-                          sm: 'left',
-                          lg: 'left',
-                          xl: 'left'
-                        }}
-                        marginTop={{
-                          base: '8px',
-                          sm: '8px',
-                          lg: '0px',
-                          xl: '0px'
-                        }}
-                      >
-                        <HtmlTextParser>{item.description}</HtmlTextParser>
-                      </Text>
-                    </Flex>
-                  </Flex>
-                  <Flex
-                    // bg='red'
-                    flex="1"
-                  >
-                    <Flex
-                      // bg='tomato'
-                      flex="1"
-                      justifyContent={'left'}
-                      direction={{
-                        base: 'column',
-                        sm: 'column',
-                        lg: 'column',
-                        xl: 'row'
-                      }}
-
-                      // alignItems="start"
-                      // alignContent="end"
-                      // justifyItems="start"
-                    >
-                      {item.certificates.map((c, j) => {
-                        return (
-                          <Flex
-                            onClick={() =>
-                              window.open(c.certificate_file.url, '_blank')
+                      direction={
+                        i % 2 === 0
+                          ? { base: 'column', lg: 'row' }
+                          : {
+                              base: 'column',
+                              sm: 'column',
+                              lg: 'row-reverse',
+                              xl: 'row-reverse'
                             }
-                            key={j}
-                            backgroundColor="#EBDDC4"
-                            // backgroundImage="/assets/imgs/fundo_relatorio.svg"
-                            // backgroundPosition="left"
-                            // backgroundRepeat="no-repeat"
-                            // backgroundSize={'cover'}
-                            margin={{
-                              base: '2% 0%',
-                              lg: '0% 3% 1% 3%',
-                              xl: '1%'
+                      }
+                      // alignItems="center"
+                      // alignContent="center"
+                      // justifyContent="center"
+                      // justifyItems="center"
+                      padding={'5%'}
+                    >
+                      <Flex
+                        // bg='green'
+                        flex="1"
+                        direction={{ base: 'column', lg: 'row' }}
+                      >
+                        <Flex
+                          // bg='black'
+                          flex="1"
+                        >
+                          <Text
+                            as="h3"
+                            variant={'h3' as any}
+                            color="green.800"
+                            textAlign={{
+                              base: 'left',
+                              sm: 'left',
+                              lg: 'left',
+                              xl: 'left'
                             }}
-                            padding={{ base: '5%' }}
-                            minWidth={{ base: '100px', sm: '220px' }}
-                            h={{ base: '100%', lg: '50%' }}
                           >
-                            <PatternCertification
-                              title={c.certificate_name}
-                              titleInitialColor="green.700"
-                              iconName="certification"
-                              iconInitialColor1="#0A6C3B"
-                              iconInitialColor2="#0A6C3B"
-                            />
-                          </Flex>
-                        )
-                      })}
+                            {item.certifier}
+                          </Text>
+                        </Flex>
+                        <Flex
+                          // bg='azure'
+                          flex="2"
+                        >
+                          <Text
+                            color="brown.350"
+                            fontWeight="medium"
+                            textAlign={{
+                              base: 'left',
+                              sm: 'left',
+                              lg: 'left',
+                              xl: 'left'
+                            }}
+                            marginTop={{
+                              base: '8px',
+                              sm: '8px',
+                              lg: '0px',
+                              xl: '0px'
+                            }}
+                          >
+                            <HtmlTextParser>{item.description}</HtmlTextParser>
+                          </Text>
+                        </Flex>
+                      </Flex>
+                      <Flex
+                        // bg='red'
+                        flex="1"
+                      >
+                        <Flex
+                          // bg='tomato'
+                          flex="1"
+                          justifyContent={'left'}
+                          direction={{
+                            base: 'column',
+                            sm: 'column',
+                            lg: 'column',
+                            xl: 'row'
+                          }}
+
+                          // alignItems="start"
+                          // alignContent="end"
+                          // justifyItems="start"
+                        >
+                          {item.certificates.map((c, j) => {
+                            return (
+                              <Flex
+                                onClick={() =>
+                                  window.open(c.certificate_file.url, '_blank')
+                                }
+                                key={j}
+                                backgroundColor="#EBDDC4"
+                                // backgroundImage="/assets/imgs/fundo_relatorio.svg"
+                                // backgroundPosition="left"
+                                // backgroundRepeat="no-repeat"
+                                // backgroundSize={'cover'}
+                                margin={{
+                                  base: '2% 0%',
+                                  lg: '0% 3% 1% 3%',
+                                  xl: '1%'
+                                }}
+                                padding={{ base: '5%' }}
+                                minWidth={{ base: '100px', sm: '220px' }}
+                                h={{ base: '100%', lg: '50%' }}
+                              >
+                                <PatternCertification
+                                  title={c.certificate_name}
+                                  titleInitialColor="green.700"
+                                  iconName="certification"
+                                  iconInitialColor1="#0A6C3B"
+                                  iconInitialColor2="#0A6C3B"
+                                />
+                              </Flex>
+                            )
+                          })}
+                        </Flex>
+                      </Flex>
                     </Flex>
-                  </Flex>
-                </Flex>
-              )
-            })}
+                  )
+                })
+              : []}
 
             {/* BOX 5 - Normas da qualidade */}
             <Flex
@@ -490,35 +494,38 @@ export const Certification = (props: CertificationViewProps) => {
                     flex="1"
                   >
                     <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5' }}>
-                      {props.page_content.quality_norms.map((item, i) => {
-                        return (
-                          i <= props.page_content.quality_norms.length / 2 && (
-                            <ListItem key={i}>
-                              <ListIcon as={CheckIcon} color="green.500" />
-                              <Text
-                                as={'h5'}
-                                variant={'h5' as any}
-                                fontWeight={'bold'}
-                                color="green.700"
-                                marginTop={{
-                                  base: '-20px',
-                                  sm: '-20px',
-                                  lg: '-22px',
-                                  xl: '-25px'
-                                }}
-                                marginLeft={{
-                                  base: '25px',
-                                  sm: '25px',
-                                  lg: '25px',
-                                  xl: '25px'
-                                }}
-                              >
-                                {item.norm + 'test'}
-                              </Text>
-                            </ListItem>
-                          )
-                        )
-                      })}
+                      {typeof props.page_content.quality_norms !== 'undefined'
+                        ? props.page_content.quality_norms.map((item, i) => {
+                            return (
+                              i <=
+                                props.page_content.quality_norms.length / 2 && (
+                                <ListItem key={i}>
+                                  <ListIcon as={CheckIcon} color="green.500" />
+                                  <Text
+                                    as={'h5'}
+                                    variant={'h5' as any}
+                                    fontWeight={'bold'}
+                                    color="green.700"
+                                    marginTop={{
+                                      base: '-20px',
+                                      sm: '-20px',
+                                      lg: '-22px',
+                                      xl: '-25px'
+                                    }}
+                                    marginLeft={{
+                                      base: '25px',
+                                      sm: '25px',
+                                      lg: '25px',
+                                      xl: '25px'
+                                    }}
+                                  >
+                                    {item.norm + 'test'}
+                                  </Text>
+                                </ListItem>
+                              )
+                            )
+                          })
+                        : []}
                     </List>
                   </Flex>
                   <Flex
@@ -527,34 +534,37 @@ export const Certification = (props: CertificationViewProps) => {
                     mt={{ base: '3%', sm: '0' }}
                   >
                     <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5' }}>
-                      {props.page_content.quality_norms.map((item, i) => {
-                        return (
-                          i > props.page_content.quality_norms.length / 2 && (
-                            <ListItem key={i}>
-                              <ListIcon as={CheckIcon} color="green.500" />
-                              <Text
-                                as={'h5'}
-                                variant={'h5' as any}
-                                fontWeight={'bold'}
-                                marginTop={{
-                                  base: '-20px',
-                                  sm: '-20px',
-                                  lg: '-22px',
-                                  xl: '-25px'
-                                }}
-                                marginLeft={{
-                                  base: '25px',
-                                  sm: '25px',
-                                  lg: '25px',
-                                  xl: '25px'
-                                }}
-                              >
-                                {item.norm}
-                              </Text>
-                            </ListItem>
-                          )
-                        )
-                      })}
+                      {typeof props.page_content.quality_norms !== 'undefined'
+                        ? props.page_content.quality_norms.map((item, i) => {
+                            return (
+                              i >
+                                props.page_content.quality_norms.length / 2 && (
+                                <ListItem key={i}>
+                                  <ListIcon as={CheckIcon} color="green.500" />
+                                  <Text
+                                    as={'h5'}
+                                    variant={'h5' as any}
+                                    fontWeight={'bold'}
+                                    marginTop={{
+                                      base: '-20px',
+                                      sm: '-20px',
+                                      lg: '-22px',
+                                      xl: '-25px'
+                                    }}
+                                    marginLeft={{
+                                      base: '25px',
+                                      sm: '25px',
+                                      lg: '25px',
+                                      xl: '25px'
+                                    }}
+                                  >
+                                    {item.norm}
+                                  </Text>
+                                </ListItem>
+                              )
+                            )
+                          })
+                        : []}
                     </List>
                   </Flex>
                 </Flex>
