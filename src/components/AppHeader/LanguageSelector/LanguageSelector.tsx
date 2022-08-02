@@ -50,7 +50,7 @@ export const LanguageSelector = () => {
         <ArrowIcon width={{ base: '5px', md: '5px', lg: '7px' }} />
       </Box>
 
-      {open ? (
+      {open && (
         <Flex
           width="115%"
           flexDir="column"
@@ -58,7 +58,7 @@ export const LanguageSelector = () => {
           top="calc(100%)"
           borderTop="2px solid"
           borderTopColor="green.600"
-          zIndex="skipLink"
+          // zIndex="skipLink"
         >
           {!(router.locale === 'pt-BR') && (
             <LanguageBtn title="Português" locale="pt-BR" />
@@ -76,7 +76,7 @@ export const LanguageSelector = () => {
             <LanguageBtn title="Mandarim" locale="zn-CN" />
           )}
         </Flex>
-      ) : null}
+      )}
     </Center>
   )
 }

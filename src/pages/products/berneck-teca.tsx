@@ -53,13 +53,29 @@ export const getStaticProps: GetStaticProps = async (context) => {
     representatives_list = await res.json()
   }
 
-  page_content.technical_sheet = page_content.technical_sheet[0]
-    ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
-      page_content.technical_sheet[0].url
-    : null
+  if (
+    typeof page_content.technical_sheet !== 'undefined' &&
+    page_content.technical_sheet.length > 0
+  ) {
+    page_content.technical_sheet =
+      page_content.technical_sheet && page_content.technical_sheet[0]
+        ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+          page_content.technical_sheet[0].url
+        : null
+  } else {
+    page_content.technical_sheet = ''
+  }
 
-  page_content.representatives_list =
-    process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + representatives_list.pdf_list.url
+  if (
+    typeof representatives_list.pdf_list !== 'undefined' &&
+    representatives_list.pdf_list.url
+  ) {
+    page_content.representatives_list =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+      representatives_list.pdf_list.url
+  } else {
+    page_content.representatives_list = ''
+  }
 
   page_content.machinability = DOMPurify.sanitize(page_content.machinability)
   return {

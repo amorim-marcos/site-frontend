@@ -108,7 +108,7 @@ export const AppHeader = () => {
           <Box
             w="100%"
             transition={'0.3s'}
-            overflow={'hidden'}
+            // overflow={'hidden'}
             h={{
               base: '25px',
               md: '25px',
@@ -129,7 +129,7 @@ export const AppHeader = () => {
                 justifyContent="space-between"
                 bg="green.900"
               >
-                <Flex display="none" height="100%">
+                <Flex display="flex" height="100%">
                   <LanguageSelector />
                 </Flex>
 

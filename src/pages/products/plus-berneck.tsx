@@ -45,17 +45,25 @@ export default function PlusBerneckPage(props: PlusBerneckPageProps) {
       qualityStandards={props.page_content.quality_norms_text}
       section2Text={props.page_content.section2_text}
       section2Title={props.page_content.section2_title}
-      testPoints={props.page_content.test_points.map((i) => i.point_text)}
-      importantPoints={props.page_content.important_points.map(
-        (i) => i.point_text
-      )}
+      testPoints={
+        props.page_content.test_points
+          ? props.page_content.test_points.map((i) => i.point_text)
+          : []
+      }
+      importantPoints={
+        props.page_content.important_points
+          ? props.page_content.important_points.map((i) => i.point_text)
+          : []
+      }
       body_proof={props.page_content.body_proof}
       abnt={
-        props.page_content.quality_norms.length > 1
-          ? ` • ${props.page_content.quality_norms[0].norm} • ${props.page_content.quality_norms[1].norm}`
-          : props.page_content.quality_norms.length > 0
-          ? props.page_content.quality_norms[0].norm +
-            `• ${props.page_content.quality_norms[0].norm}`
+        props.page_content.quality_norms
+          ? props.page_content.quality_norms.length > 1
+            ? ` • ${props.page_content.quality_norms[0].norm} • ${props.page_content.quality_norms[1].norm}`
+            : props.page_content.quality_norms.length > 0
+            ? props.page_content.quality_norms[0].norm +
+              `• ${props.page_content.quality_norms[0].norm}`
+            : ''
           : ''
       }
     />
