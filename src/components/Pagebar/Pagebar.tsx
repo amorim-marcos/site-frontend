@@ -15,6 +15,7 @@ import { PagebarGrafism } from './PagebarGrafism/PagebarGrafism'
 import { useTranslation } from 'react-i18next'
 
 import { CategoryContext } from 'views/Canal-BNK/index'
+import Link from 'next/link'
 
 export type Path = {
   title: string
@@ -121,8 +122,14 @@ export const Pagebar = ({
                       disconsiderCurrentPage && i === paths.length - 1
                     }
                   >
-                    <BreadcrumbLink color="white.100" href={s.url}>
+                    <BreadcrumbLink
+                      color="white.100"
+                      href={
+                        router.locale ? `/${router.locale}/${s.url}` : s.url
+                      }
+                    >
                       <Text
+                        // onClick={() => router.push(s.url)}
                         color="white.100"
                         fontSize={{
                           base: '8px',
