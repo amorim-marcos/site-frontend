@@ -42,10 +42,15 @@ export default function SearchPage(props: SearchProps) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { slug = '*' } = ctx.query
+  const locale = ctx.locale
   const url = process.env.NEXT_PUBLIC_API_URL
   let res
 
-  res = await meiliSearch({ index: 'pages', query: slug as string })
+  res = await meiliSearch({
+    index: 'pages',
+    query: slug as string,
+    options: { filter: `locale = ${locale}` }
+  })
 
   console.log(res)
 
@@ -62,7 +67,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   res = await meiliSearch({
     index: 'products',
-    query: slug as string
+    query: slug as string,
+    options: { filter: `locale = ${locale}` }
   })
 
   const products: SearchProps['results']['products'] = res.hits.map((item) => ({
@@ -70,12 +76,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     name: item.name,
     url_code: item.url_code,
     pattern_image_url: `${url}${item.pattern_image.url}`,
-    product_collections_name: item.product_collections[0] ? item.product_collections[0].name : null
+    product_collections_name: item.product_collections[0]
+      ? item.product_collections[0].name
+      : null
   }))
 
   res = await meiliSearch({
     index: 'posts',
-    query: slug as string
+    query: slug as string,
+    options: { filter: `locale = ${locale}` }
   })
 
   const posts: SearchProps['results']['posts'] = res.hits.map((item) => ({
@@ -84,7 +93,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     content: item.content,
     category: item.category.name,
     url_code: item.url_code,
-    cover_url: (item.cover)? `${url}${item.cover.url}` :''
+    cover_url: item.cover ? `${url}${item.cover.url}` : ''
   }))
 
   return {
