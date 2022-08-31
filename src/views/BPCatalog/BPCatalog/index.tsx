@@ -260,6 +260,11 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     }
   }, [router.query])
 
+  useEffect(() => {
+    setFilters({ ...filters, orderBy: 'scale' })
+    setFilteredBps(applyFilters({ ...filters, orderBy: 'scale' }, bps))
+  }, [])
+
   const bpCatalog = useTranslation('bpCatalog')
 
   return (
