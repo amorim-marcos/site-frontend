@@ -29,6 +29,7 @@ export type CertificationViewProps = {
         url: string
       }
     }[]
+    forest_img: string
   }
   productsCertificates: {
     certifier: string
@@ -52,6 +53,7 @@ export type CertificationViewProps = {
 
 export const Certification = (props: CertificationViewProps) => {
   const certificationViewLabels = useTranslation('certificationView')
+
   return (
     <Box>
       <Pagebar
@@ -216,7 +218,7 @@ export const Certification = (props: CertificationViewProps) => {
             // bg='pink'
             flex="1"
             justifyItems={'center'}
-            backgroundImage="/img/imagem_certificados.jpg"
+            backgroundImage={props.forestCertificate.forest_img}
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}

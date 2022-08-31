@@ -39,15 +39,21 @@ export type CompromiseViewProps = {
     section3_text: string
     section3_title: string
     section4_text: string
+    section4_img: string
     section4_title: string
     section5_text: string
+    section5_img: string
     section5_title: string
     section6_text: string
+    section6_img: string
     section6_title: string
     section7_text: string
+    section7_img: string
     section7_title: string
     section8_text: string
+    section8_img: string
     section8_title: string
+    esg_img: string
     sustainability_report: {
       url: string
     }
@@ -689,7 +695,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               justifyItems={'center'}
               // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
             >
-              <Image src="/assets/imgs/img_passaro.png" />
+              <Image src={page_content.section4_img} maxW="660px" />
             </Box>
             {/* BOX 2 */}
             <Box
@@ -799,7 +805,9 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               // bg='yellow'
               flex="1"
             >
-              <Image src="/assets/imgs/170130-Berneck-58.png" />
+              <Box>
+                <Image src={page_content.section5_img} maxW="660px" />
+              </Box>
 
               <Button
                 onClick={() =>
@@ -868,7 +876,8 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 xl: '5% 2% 5% 5%'
               }}
             >
-              <Image src="/assets/imgs/img_criancas.png" />
+              <Image src={page_content.section6_img} maxW="668px" />
+              {/* <Image src="/assets/imgs/img_criancas.png" /> */}
             </Box>
             {/* BOX 2 */}
             <Box
@@ -1032,7 +1041,8 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               justifyItems={'center'}
               // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
             >
-              <Image src="/assets/imgs/cultivamos_nossos_valores.png" />
+              <Image src={page_content.section7_img} maxW="690px" />
+              {/* <Image src="/assets/imgs/cultivamos_nossos_valores.png" /> */}
             </Box>
             {/* BOX 2 */}
             <Box
@@ -1118,7 +1128,8 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 xl: '3% 3% 3% 3%'
               }}
             >
-              <Image src="/assets/imgs/imagem_compromisso.png" />
+              <Image src={page_content.section8_img} maxW="668px" />
+              {/* <Image src="/assets/imgs/imagem_compromisso.png" /> */}
             </Box>
           </Flex>
         </Flex>
@@ -1258,7 +1269,8 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 xl: '3% 3% 3% 3%'
               }}
             >
-              <Image src="/assets/imgs/relatorio esg.png" />
+              <Image src={page_content.esg_img} maxW="550px" />
+              {/* <Image src="/assets/imgs/relatorio esg.png" /> */}
             </Box>
             {/* BOX 2 */}
             <Box

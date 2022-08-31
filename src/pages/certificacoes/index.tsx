@@ -55,6 +55,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     forestCertificate.description
   )
 
+  if (forestCertificate.forest_img) {
+    forestCertificate.forest_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+      forestCertificate.forest_img.url
+  }
+
   if (
     typeof forestCertificate.certificates !== 'undefined' &&
     typeof forestCertificate.certificates.map === 'function'

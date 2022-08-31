@@ -65,6 +65,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
     whereWeAreData = await res.json()
   }
 
+  if (page_content.section1_img) {
+    page_content.section1_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section1_img.url
+  }
+
   let our_trajectory_tabs
 
   if (our_trajectory.year && our_trajectory.year.length) {

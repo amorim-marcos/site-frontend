@@ -69,6 +69,27 @@ export const getStaticProps: GetStaticProps = async (context) => {
       }
     )
 
+  if (page_content.section2_img) {
+    page_content.section2_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section2_img.url
+  }
+  if (page_content.section3_img) {
+    page_content.section3_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section3_img.url
+  }
+  if (page_content.section4_img) {
+    page_content.section4_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section4_img.url
+  }
+  if (page_content.section5_img) {
+    page_content.section5_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section5_img.url
+  }
+  if (page_content.section6_img) {
+    page_content.section6_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section6_img.url
+  }
+
   return {
     props: {
       page_content,
