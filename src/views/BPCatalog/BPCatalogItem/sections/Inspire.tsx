@@ -229,7 +229,9 @@ export const Inspire = (props: InspireProps) => {
               // objectFit={'cover'}
               w={{ base: '320px', xs: '100%', sm: '846px', lg: '980px' }}
               h={{ base: '321px', sm: '562px', lg: '650px' }}
-              // objectFit={{ base: 'scale-down', xs: 'cover' }}
+              // border="1px solid red"
+              // objectFit={'scale-down'}
+              objectFit={{ base: 'scale-down', xs: 'cover' }}
             />
 
             <Flex
