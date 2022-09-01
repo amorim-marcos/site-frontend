@@ -83,25 +83,29 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   if (allPosts && allPosts.length) {
-    posts = allPosts.map((item: { cover: { url: string } }) => {
-      return {
-        ...item,
-        cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url
-      }
-    })
+    posts =
+      allPosts && typeof allPosts.map === 'function'
+        ? allPosts.map((item: { cover: { url: string } }) => {
+            return {
+              ...item,
+              cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url
+            }
+          })
+        : []
   }
 
-  allCategories = allCategories.sort(
-    (a: { name: string }, b: { name: string }) => {
-      if (a.name < b.name) {
-        return -1
-      }
-      if (b.name < a.name) {
-        return 1
-      }
-      return 0
-    }
-  )
+  allCategories =
+    allCategories && typeof allCategories.sort === 'function'
+      ? allCategories.sort((a: { name: string }, b: { name: string }) => {
+          if (a.name < b.name) {
+            return -1
+          }
+          if (b.name < a.name) {
+            return 1
+          }
+          return 0
+        })
+      : []
 
   const patterns_pack_url = downloads_page.patterns_pack_file
     ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
@@ -112,7 +116,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       category: currentCategory,
       allCategories,
-      posts,
+      posts: posts && posts.length ? posts : [],
       patterns_pack_url,
       ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     }

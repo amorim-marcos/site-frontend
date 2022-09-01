@@ -441,7 +441,11 @@ const CarrouselBP = ({ banners }: CarrouselBPProps) => {
       // bg="green.100"
     >
       <Link
-        href={banners[currentBanner].link ? banners[currentBanner].link : '#'}
+        href={
+          banners[currentBanner] && banners[currentBanner].link
+            ? banners[currentBanner].link
+            : '#'
+        }
       >
         <Flex
         // w="100%"

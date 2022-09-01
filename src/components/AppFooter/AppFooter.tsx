@@ -121,10 +121,16 @@ export const AppFooter = () => {
                 title: footer.t(footerNavigation.weAreBerneckColumn.titleKey),
                 href: footerNavigation.weAreBerneckColumn.href
               }}
-              items={footerNavigation.weAreBerneckColumn.items.map((i) => ({
-                title: footer.t(i.titleKey),
-                href: i.href
-              }))}
+              items={
+                footerNavigation &&
+                footerNavigation.weAreBerneckColumn &&
+                footerNavigation.weAreBerneckColumn.items
+                  ? footerNavigation.weAreBerneckColumn.items.map((i) => ({
+                      title: footer.t(i.titleKey),
+                      href: i.href
+                    }))
+                  : []
+              }
             />
 
             <FooterList
@@ -133,10 +139,16 @@ export const AppFooter = () => {
                 title: footer.t(footerNavigation.ourCommitmentColumn.titleKey),
                 href: footerNavigation.ourCommitmentColumn.href
               }}
-              items={footerNavigation.ourCommitmentColumn.items.map((i) => ({
-                title: footer.t(i.titleKey),
-                href: i.href
-              }))}
+              items={
+                footerNavigation &&
+                footerNavigation.ourCommitmentColumn &&
+                footerNavigation.ourCommitmentColumn.items
+                  ? footerNavigation.ourCommitmentColumn.items.map((i) => ({
+                      title: footer.t(i.titleKey),
+                      href: i.href
+                    }))
+                  : []
+              }
             />
 
             <FooterList
@@ -147,12 +159,14 @@ export const AppFooter = () => {
                 ),
                 href: footerNavigation.florestalDivisionColumn.href
               }}
-              items={footerNavigation.florestalDivisionColumn.items.map(
-                (i) => ({
-                  title: footer.t(i.titleKey),
-                  href: i.href
-                })
-              )}
+              items={
+                footerNavigation.florestalDivisionColumn.items
+                  ? footerNavigation.florestalDivisionColumn.items.map((i) => ({
+                      title: footer.t(i.titleKey),
+                      href: i.href
+                    }))
+                  : []
+              }
             />
 
             <FooterList
@@ -161,10 +175,14 @@ export const AppFooter = () => {
                 title: footer.t(footerNavigation.productsColumn.titleKey),
                 href: footerNavigation.productsColumn.href
               }}
-              items={footerNavigation.productsColumn.items.map((i) => ({
-                title: footer.t(i.titleKey),
-                href: i.href
-              }))}
+              items={
+                footerNavigation.productsColumn.items
+                  ? footerNavigation.productsColumn.items.map((i) => ({
+                      title: footer.t(i.titleKey),
+                      href: i.href
+                    }))
+                  : []
+              }
             />
 
             <FooterList
@@ -173,11 +191,15 @@ export const AppFooter = () => {
                 title: footer.t(footerNavigation.channelBNKColumn.titleKey),
                 href: footerNavigation.channelBNKColumn.href
               }}
-              items={footerNavigation.channelBNKColumn.items.map((i) => ({
-                title: footer.t(i.titleKey),
-                href: i.href,
-                empty: i.empty
-              }))}
+              items={
+                footerNavigation.channelBNKColumn.items
+                  ? footerNavigation.channelBNKColumn.items.map((i) => ({
+                      title: footer.t(i.titleKey),
+                      href: i.href,
+                      empty: i.empty
+                    }))
+                  : []
+              }
             />
           </Flex>
 

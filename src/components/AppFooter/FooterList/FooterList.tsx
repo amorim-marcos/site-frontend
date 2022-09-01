@@ -38,31 +38,33 @@ export const FooterList = ({ title, items }: FooterListProps) => {
             </Text>
           </Link>
         </ListItem>
-        {items.map((i, j) =>
-          i.empty ? (
-            <Box key={j} height="20px"></Box>
-          ) : (
-            <ListItem cursor="pointer" key={j}>
-              <Link passHref href={i.href}>
-                <Text
-                  _hover={{ color: '#FFF' }}
-                  variant={'tags' as any}
-                  fontSize={{
-                    base: '6px',
-                    sm: '7px',
-                    md: '9px',
-                    lg: '12px',
-                    xl: '13px'
-                  }}
-                  color="green.200"
-                  fontWeight="600"
-                >
-                  {i.title}
-                </Text>
-              </Link>
-            </ListItem>
-          )
-        )}
+        {items && items.length
+          ? items.map((i, j) =>
+              i.empty ? (
+                <Box key={j} height="20px"></Box>
+              ) : (
+                <ListItem cursor="pointer" key={j}>
+                  <Link passHref href={i.href}>
+                    <Text
+                      _hover={{ color: '#FFF' }}
+                      variant={'tags' as any}
+                      fontSize={{
+                        base: '6px',
+                        sm: '7px',
+                        md: '9px',
+                        lg: '12px',
+                        xl: '13px'
+                      }}
+                      color="green.200"
+                      fontWeight="600"
+                    >
+                      {i.title}
+                    </Text>
+                  </Link>
+                </ListItem>
+              )
+            )
+          : []}
       </List>
     </Box>
   )

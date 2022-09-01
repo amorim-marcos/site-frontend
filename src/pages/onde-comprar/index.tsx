@@ -26,8 +26,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
     representatives_list = await res.json()
   }
 
-  representatives_list =
-    process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + representatives_list.pdf_list.url
+  representatives_list = representatives_list.pdf_list
+    ? process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+      representatives_list.pdf_list.url
+    : ''
 
   return {
     props: {

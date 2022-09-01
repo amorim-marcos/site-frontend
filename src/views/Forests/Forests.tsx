@@ -240,7 +240,11 @@ export const ForestsView = (props: ForestsViewProps) => {
                 )}
                 content1DisplayIcon="yes"
                 content1IconName="pinus"
-                content2Text={props.page_content.pinus_cultivation.toString()}
+                content2Text={
+                  props.page_content.pinus_cultivation
+                    ? props.page_content.pinus_cultivation.toString()
+                    : ''
+                }
                 titleSubscript1Text={forestView.t(
                   'infoGraphicsForests.pineForestCultivation'
                 )}
@@ -257,7 +261,11 @@ export const ForestsView = (props: ForestsViewProps) => {
                 )}
                 content1DisplayIcon="yes"
                 content1IconName="trees"
-                content2Text={props.page_content.preserved_native_forests.toString()}
+                content2Text={
+                  props.page_content.preserved_native_forests
+                    ? props.page_content.preserved_native_forests.toString()
+                    : ''
+                }
                 titleSubscript1Text={forestView.t(
                   'infoGraphicsForests.effectivelyPlantedForests'
                 )}
@@ -274,7 +282,11 @@ export const ForestsView = (props: ForestsViewProps) => {
                 )}
                 content1DisplayIcon="yes"
                 content1IconName="forest"
-                content2Text={props.page_content.planted_forests.toString()}
+                content2Text={
+                  props.page_content.planted_forests
+                    ? props.page_content.planted_forests.toString()
+                    : ''
+                }
                 titleSubscript1Text={forestView.t(
                   'infoGraphicsForests.preservationOfNaturalForests'
                 )}
@@ -291,7 +303,11 @@ export const ForestsView = (props: ForestsViewProps) => {
                 )}
                 content1DisplayIcon="yes"
                 content1IconName="mudas"
-                content2Text={props.page_content.planted_trees.toString()}
+                content2Text={
+                  props.page_content.planted_trees
+                    ? props.page_content.planted_trees.toString()
+                    : ''
+                }
                 titleSubscript1Text={forestView.t(
                   'infoGraphicsForests.plantedTrees'
                 )}
@@ -306,7 +322,11 @@ export const ForestsView = (props: ForestsViewProps) => {
                 content3Text={forestView.t('infoGraphicsForests.states')}
                 content1DisplayIcon="yes"
                 content1IconName="estado"
-                content2Text={props.page_content.states.toString()}
+                content2Text={
+                  props.page_content.states
+                    ? props.page_content.states.toString()
+                    : ''
+                }
                 titleSubscript1Text={forestView.t(
                   'infoGraphicsForests.whichStates'
                 )}
@@ -321,7 +341,11 @@ export const ForestsView = (props: ForestsViewProps) => {
                 content3Text={forestView.t('infoGraphicsForests.counties')}
                 content1DisplayIcon="yes"
                 content1IconName="house"
-                content2Text={props.page_content.value_chain_counties.toString()}
+                content2Text={
+                  props.page_content.value_chain_counties
+                    ? props.page_content.value_chain_counties.toString()
+                    : ''
+                }
                 titleSubscript1Text={forestView.t(
                   'infoGraphicsForests.supplyChain'
                 )}
@@ -498,14 +522,22 @@ export const ForestsView = (props: ForestsViewProps) => {
                 >
                   <Infographic
                     content1Text="+"
-                    content2Text={props.page_content.monitored_animals.toString()}
+                    content2Text={
+                      props.page_content.monitored_animals
+                        ? props.page_content.monitored_animals.toString()
+                        : ''
+                    }
                     titleSubscript1Text={forestView.t(
                       'infoGraphicBiodiversity.wildAnimalSpecies'
                     )}
                   />
 
                   <Infographic
-                    content2Text={props.page_content.monitored_farms.toString()}
+                    content2Text={
+                      props.page_content.monitored_farms
+                        ? props.page_content.monitored_farms.toString()
+                        : ''
+                    }
                     titleSubscript1Text={forestView.t(
                       'infoGraphicBiodiversity.monitoredFarms'
                     )}

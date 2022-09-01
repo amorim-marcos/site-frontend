@@ -18,16 +18,14 @@ export const WhereWeAre = ({ panels }: WhereWeAreProps) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         <Flex as={'carousel' as any} justify="center">
           <Carousel>
-            {panels?.map((item, i) => (
-              <WhereWeArePanel key={i} {...item} />
-            ))}
+            {panels &&
+              panels.map((item, i) => <WhereWeArePanel key={i} {...item} />)}
           </Carousel>
         </Flex>
       ) : (
         <Flex w="100%" wrap="wrap" gap="54px" justify="center">
-          {panels?.map((item, i) => (
-            <WhereWeArePanel key={i} {...item} />
-          ))}
+          {panels &&
+            panels.map((item, i) => <WhereWeArePanel key={i} {...item} />)}
         </Flex>
       )}
     </Box>

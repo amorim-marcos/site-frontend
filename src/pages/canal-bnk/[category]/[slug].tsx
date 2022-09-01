@@ -19,23 +19,27 @@ export default function PostPage(props: PostPageProps) {
         publishDate: props.currentPost.date,
         postTitle: props.currentPost.title,
         postContent: props.currentPost.content,
-        tags: props.currentPost.tags.map((item) => ({ name: item.Tag })),
+        tags: props.currentPost.tags
+          ? props.currentPost.tags.map((item) => ({ name: item.Tag }))
+          : [],
         postSlug: props.currentPost.url_code
       }}
       coverImageUrl={props.currentPost.cover}
       relationalContent={{
-        items: props.posts.map((item) => {
-          return {
-            category: {
-              id: item.category.id,
-              name: item.category.name,
-              color: item.category.color
-            },
-            url_code: item.url_code,
-            urlImage: item.cover,
-            title: item.title
-          }
-        })
+        items: props.posts
+          ? props.posts.map((item) => {
+              return {
+                category: {
+                  id: item.category.id,
+                  name: item.category.name,
+                  color: item.category.color
+                },
+                url_code: item.url_code,
+                urlImage: item.cover,
+                title: item.title
+              }
+            })
+          : []
       }}
       backgroundColor="brown.100"
       postCategory={props.currentPost.category}
@@ -71,9 +75,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
           `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}/uploads`
         ),
         cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url,
-        tags: item.tags.map((j) => ({
-          Tag: j.tag
-        })),
+        tags: item.tags
+          ? item.tags.map((j) => ({
+              Tag: j.tag
+            }))
+          : [],
         title: item.title,
         date: item.published_at,
         url_code: item.url_code

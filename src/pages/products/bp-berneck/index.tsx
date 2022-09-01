@@ -33,28 +33,34 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     resource: 'highlighted-ambient-types'
   })
 
-  galleries = galleries.map((gallery: any, i: number) => {
-    return {
-      id: i,
-      title: gallery.ambient_type.type,
-      bgColor: gallery.color,
-      backgroundImage: `${url}${gallery.image.url}`,
-      ambientType: {
-        name: gallery.ambient_type.type,
-        code: gallery.ambient_type.url_code
-      }
-    }
-  })
+  galleries =
+    galleries && typeof galleries.map === 'function'
+      ? galleries.map((gallery: any, i: number) => {
+          return {
+            id: i,
+            title: gallery.ambient_type.type,
+            bgColor: gallery.color,
+            backgroundImage: `${url}${gallery.image.url}`,
+            ambientType: {
+              name: gallery.ambient_type.type,
+              code: gallery.ambient_type.url_code
+            }
+          }
+        })
+      : []
 
   return {
     props: {
       galleries,
-      banners: banners.map((banner: any) => {
-        return {
-          link: banner.link,
-          banner_image: `${url}${banner.banner_image.url}`
-        }
-      }),
+      banners:
+        banners && typeof banners.map === 'function'
+          ? banners.map((banner: any) => {
+              return {
+                link: banner.link,
+                banner_image: `${url}${banner.banner_image.url}`
+              }
+            })
+          : [],
       ...(await loadTranslations(ni18nConfig, context.locale, nameSpaces))
     }
   }

@@ -94,23 +94,27 @@ export const DownloadSection = ({
           md: itemsData.length > 4 ? 'space-between' : 'flex-start'
         }}
       >
-        {itemsData.map((item, i) => {
-          return i < 5 ? (
-            <Item
-              key={i}
-              url={item.downloadUrl}
-              cursor={'pointer'}
-              display={i < 1 ? { base: 'flex' } : { base: 'none', md: 'flex' }}
-              imageUrl={item.urlImage}
-              title={item.title}
-              marginRight={
-                itemsData.length <= 4 ? { base: '0', md: '3.5%' } : '0'
-              }
-            />
-          ) : (
-            ''
-          )
-        })}
+        {itemsData
+          ? itemsData.map((item, i) => {
+              return i < 5 ? (
+                <Item
+                  key={i}
+                  url={item.downloadUrl}
+                  cursor={'pointer'}
+                  display={
+                    i < 1 ? { base: 'flex' } : { base: 'none', md: 'flex' }
+                  }
+                  imageUrl={item.urlImage}
+                  title={item.title}
+                  marginRight={
+                    itemsData.length <= 4 ? { base: '0', md: '3.5%' } : '0'
+                  }
+                />
+              ) : (
+                ''
+              )
+            })
+          : []}
       </Flex>
       {(items.length > 5 || isMobile) && (
         <Flex

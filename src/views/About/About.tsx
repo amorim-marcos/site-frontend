@@ -15,35 +15,35 @@ import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
 
 export type AboutPageContent = {
-  header_title: string
-  header_text: string
-  section1_title: string
-  section1_text: string
-  section2_title: string
-  section2_text: string
-  exportation_volume: number
-  comercial_relationship: number
-  our_trajectory_title: string
-  our_trajectory_description: string
-  where_we_are_title: string
-  where_we_are_subtitle: string
-  where_we_are_description: string
-  resellers_description: string
-  certifications_description: string
-  section1_img: string
-  section2_img: string
+  header_title?: string
+  header_text?: string
+  section1_title?: string
+  section1_text?: string
+  section2_title?: string
+  section2_text?: string
+  exportation_volume?: number
+  comercial_relationship?: number
+  our_trajectory_title?: string
+  our_trajectory_description?: string
+  where_we_are_title?: string
+  where_we_are_subtitle?: string
+  where_we_are_description?: string
+  resellers_description?: string
+  certifications_description?: string
+  section1_img?: string
+  section2_img?: string
 }
 
 export type AboutProps = {
   page_content: AboutPageContent
-  our_trajectory_tabs: Array<TrajectoryTab>
-  panels: WhereWeArePanelProps[]
+  our_trajectory_tabs?: Array<TrajectoryTab>
+  panels?: WhereWeArePanelProps[]
 }
 
 export const About = ({
   page_content,
-  our_trajectory_tabs,
-  panels
+  our_trajectory_tabs = [],
+  panels = []
 }: AboutProps) => {
   const router = useRouter()
   const aboutView = useTranslation('aboutView')
@@ -64,8 +64,8 @@ export const About = ({
           data={{
             imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
             title: aboutView.t('headerBanner.title'),
-            subtitle: page_content.header_title,
-            text: page_content.header_text
+            subtitle: page_content.header_title || '',
+            text: page_content.header_text || ''
           }}
           titleColor="white"
           subTitleColor="white"

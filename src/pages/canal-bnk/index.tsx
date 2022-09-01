@@ -55,44 +55,48 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     downloads_page = await res.json()
   }
 
-  const data: Post[] = page_content.map(
-    (item: {
-      cover: {
-        url: string
-      }
-      category: {
-        name: string
-        id: number
-        description: string
-        color: string
-      }
-      content: string
-      tags: {
-        tag: string
-      }[]
-      title: string
-      published_at: string
-      url_code: string
-    }) => {
-      const post: Post = {
-        category: {
-          name: item.category.name,
-          id: item.category.id,
-          description: item.category.description,
-          color: item.category.color
-        },
-        content: DOMPurify.sanitize(item.content),
-        cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url,
-        tags: item.tags.map((j) => ({
-          Tag: j.tag
-        })),
-        title: item.title,
-        date: item.published_at,
-        url_code: item.url_code
-      }
-      return post
-    }
-  )
+  const data: Post[] = page_content
+    ? page_content.map(
+        (item: {
+          cover: {
+            url: string
+          }
+          category: {
+            name: string
+            id: number
+            description: string
+            color: string
+          }
+          content: string
+          tags: {
+            tag: string
+          }[]
+          title: string
+          published_at: string
+          url_code: string
+        }) => {
+          const post: Post = {
+            category: {
+              name: item.category.name,
+              id: item.category.id,
+              description: item.category.description,
+              color: item.category.color
+            },
+            content: DOMPurify.sanitize(item.content),
+            cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url,
+            tags: item.tags
+              ? item.tags.map((j) => ({
+                  Tag: j.tag
+                }))
+              : [],
+            title: item.title,
+            date: item.published_at,
+            url_code: item.url_code
+          }
+          return post
+        }
+      )
+    : []
 
   categories = categories.sort((a: { name: string }, b: { name: string }) => {
     if (a.name < b.name) {

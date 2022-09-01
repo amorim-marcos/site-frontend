@@ -70,54 +70,66 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     resource: 'panel-types'
   })
 
-  bps = bps.map((product: any) => {
-    return {
-      id: product.id,
-      scale: product.scale,
-      launch: product.launch,
-      name: product.name,
-      complete_name: product.complete_name,
-      url_code: product.url_code,
-      product_texture: product.product_texture.name,
-      pattern_image: `${url}${product.pattern_image.url}`,
-      collections: product.product_collections.map((i: any) => i.id),
-      coloration: product.product_coloration?.id ?? null,
-      panelTypes: product.available_at.map((i: any) => i.panel_type.id)
-    }
-  })
+  bps =
+    bps && typeof bps.map === 'function'
+      ? bps.map((product: any) => {
+          return {
+            id: product.id,
+            scale: product.scale,
+            launch: product.launch,
+            name: product.name,
+            complete_name: product.complete_name,
+            url_code: product.url_code,
+            product_texture: product.product_texture.name,
+            pattern_image: `${url}${product.pattern_image.url}`,
+            collections: product.product_collections.map((i: any) => i.id),
+            coloration: product.product_coloration?.id ?? null,
+            panelTypes: product.available_at.map((i: any) => i.panel_type.id)
+          }
+        })
+      : []
 
-  collections = collections.map((collection: any) => {
-    return {
-      title: collection.name,
-      code: collection.id,
-      background_image:
-        collection.background_image_small === null
-          ? null
-          : `${url}${collection.background_image_small.url}`
-    }
-  })
+  collections =
+    collections && typeof collections.map === 'function'
+      ? collections.map((collection: any) => {
+          return {
+            title: collection.name,
+            code: collection.id,
+            background_image:
+              collection.background_image_small === null
+                ? null
+                : `${url}${collection.background_image_small.url}`
+          }
+        })
+      : []
 
-  colorations = colorations.map((coloration: any) => {
-    return {
-      title: coloration.name,
-      code: coloration.id,
-      background_image:
-        coloration.background_image_small === null
-          ? null
-          : `${url}${coloration.background_image_small.url}`
-    }
-  })
+  colorations =
+    colorations && typeof colorations.map === 'function'
+      ? colorations.map((coloration: any) => {
+          return {
+            title: coloration.name,
+            code: coloration.id,
+            background_image:
+              coloration.background_image_small === null
+                ? null
+                : `${url}${coloration.background_image_small.url}`
+          }
+        })
+      : []
 
-  panels = panels.map((panel: any) => {
-    return {
-      title: panel.name,
-      code: panel.id,
-      background_image:
-        panel.background_image_small === null
-          ? null
-          : `${url}${panel.background_image_small.url}`
-    }
-  })
+  panels =
+    panels && typeof panels.map === 'function'
+      ? panels.map((panel: any) => {
+          return {
+            title: panel.name,
+            code: panel.id,
+            background_image:
+              panel.background_image_small === null
+                ? null
+                : `${url}${panel.background_image_small.url}`
+          }
+        })
+      : []
 
   return {
     props: {

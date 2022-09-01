@@ -58,7 +58,7 @@ function listTabContents(tabs: Array<TrajectoryTab>, tabIndex: number) {
 }
 
 export const TrajectoryCarousel = ({ tabs }: TrajectoryCarouselProps) => {
-  const tabNames = tabs.map((tab: TrajectoryTab) => tab.name)
+  const tabNames = tabs ? tabs.map((tab: TrajectoryTab) => tab.name) : []
 
   const [totalTabs, setTotalTabs] = React.useState(tabs.length)
 
