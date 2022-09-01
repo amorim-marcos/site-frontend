@@ -89,16 +89,27 @@ export const getStaticProps: GetStaticProps = async (context) => {
     downloadPageContent = await res.json()
   }
 
-  const page_content: PageContent = {
-    title: downloadPageContent.page_title,
-    header_text: downloadPageContent.header_text,
-    patterns_pack_title: downloadPageContent.patterns_pack_title,
-    patterns_pack_text: downloadPageContent.pattern_pack_text,
-    patterns_pack_download_url: downloadPageContent.patterns_pack_file
-      ? `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}${downloadPageContent.patterns_pack_file.url}`
-      : null,
-    sections: []
-  }
+  const page_content: PageContent = downloadPageContent.page_title
+    ? {
+        title: downloadPageContent.page_title,
+        header_text: downloadPageContent.header_text,
+        patterns_pack_title: downloadPageContent.patterns_pack_title,
+        patterns_pack_text: downloadPageContent.pattern_pack_text,
+        patterns_pack_download_url: downloadPageContent.patterns_pack_file
+          ? `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}${downloadPageContent.patterns_pack_file.url}`
+          : null,
+        sections: []
+      }
+    : {
+        title: '',
+        header_text: '',
+        patterns_pack_title: '',
+        patterns_pack_text: '',
+        patterns_pack_download_url: downloadPageContent.patterns_pack_file
+          ? `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}${downloadPageContent.patterns_pack_file.url}`
+          : null,
+        sections: []
+      }
 
   if (downloadTypes.length) {
     page_content.sections = downloadTypes.map((i) => {

@@ -16,35 +16,36 @@ export const ProductsGallery = ({
   const router = useRouter()
   return products.length > 1 ? (
     <CarouselMultiElements numberOfEvidenceElements={numberEvidence}>
-      {products.map((p, i) => {
-        return (
-          <Box
-            key={i}
-            h={{
-              base: '290px',
-              xs: '400px',
-              sm: '485px',
-              md: '280px',
-              lg: '400px',
-              xl: '345px'
-            }}
-            paddingX={{ base: '20px', sm: '80px', md: '0' }}
-            // bg="black"
-          >
-            <BannerProducts
-              title={p.title}
-              titleColor={p.titleColor}
-              subtitle={p.subtitle}
-              subtitleColor={p.subtitleColor}
-              bgColor={p.bgColor}
-              srcImg={p.srcImg}
-              onClick={() => router.push(`/products/${p.urlLink}`)}
-              bannerSize={p.bannerSize}
-              urlLink={p.urlLink}
-            />
-          </Box>
-        )
-      })}
+      {products &&
+        products.map((p, i) => {
+          return (
+            <Box
+              key={i}
+              h={{
+                base: '290px',
+                xs: '400px',
+                sm: '485px',
+                md: '280px',
+                lg: '400px',
+                xl: '345px'
+              }}
+              paddingX={{ base: '20px', sm: '80px', md: '0' }}
+              // bg="black"
+            >
+              <BannerProducts
+                title={p.title}
+                titleColor={p.titleColor}
+                subtitle={p.subtitle}
+                subtitleColor={p.subtitleColor}
+                bgColor={p.bgColor}
+                srcImg={p.srcImg}
+                onClick={() => router.push(`/products/${p.urlLink}`)}
+                bannerSize={p.bannerSize}
+                urlLink={p.urlLink}
+              />
+            </Box>
+          )
+        })}
     </CarouselMultiElements>
   ) : (
     <h1>products missing</h1>

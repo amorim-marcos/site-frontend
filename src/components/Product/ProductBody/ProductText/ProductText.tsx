@@ -25,26 +25,27 @@ export const ProductText = ({
     </Text>
   ) : (
     <>
-      {content?.map((p, i) => (
-        <Text
-          key={i}
-          {...TextSyle}
-          marginBottom={
-            i !== content.length - 1 && paragraph
-              ? {
-                  base: '7px',
-                  sm: '10px',
-                  md: '20px',
-                  lg: '30px',
-                  xl: '40px',
-                  '2xl': '50px'
-                }
-              : '0px'
-          }
-        >
-          <Paragraph>{p}</Paragraph>
-        </Text>
-      ))}
+      {content &&
+        content.map((p, i) => (
+          <Text
+            key={i}
+            {...TextSyle}
+            marginBottom={
+              i !== content.length - 1 && paragraph
+                ? {
+                    base: '7px',
+                    sm: '10px',
+                    md: '20px',
+                    lg: '30px',
+                    xl: '40px',
+                    '2xl': '50px'
+                  }
+                : '0px'
+            }
+          >
+            <Paragraph>{p}</Paragraph>
+          </Text>
+        ))}
     </>
   )
 }

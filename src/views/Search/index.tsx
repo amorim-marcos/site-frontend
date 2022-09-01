@@ -7,10 +7,10 @@ import { SectionPages, SectionPosts, SectionProducts } from './sections'
 import { useTranslation } from 'react-i18next'
 
 export interface SearchProps {
-  query: string
-  results: {
-    pages: {
-      id: string
+  query?: string
+  results?: {
+    pages?: {
+      id?: string
       header_text?: string
       header_subtitle?: string
       description?: string
@@ -19,20 +19,20 @@ export interface SearchProps {
       mdp_berneck?: string
       year_description?: string
     }[]
-    products: {
-      id: number
-      name: string
-      url_code: string
-      pattern_image_url: string
-      product_collections_name: string
+    products?: {
+      id?: number
+      name?: string
+      url_code?: string
+      pattern_image_url?: string
+      product_collections_name?: string
     }[]
-    posts: {
-      id: number
-      title: string
-      content: string
-      category: string
-      url_code: string
-      cover_url: string
+    posts?: {
+      id?: number
+      title?: string
+      content?: string
+      category?: string
+      url_code?: string
+      cover_url?: string
     }[]
   }
 }
@@ -112,9 +112,13 @@ export default function Search(props: SearchProps) {
                 fontSize={'15px'}
                 fontWeight={600}
               >
-                {props.results.pages.length +
-                  props.results.posts.length +
-                  props.results.products.length}{' '}
+                {props.results &&
+                  props.results.pages &&
+                  props.results.posts &&
+                  props.results.products &&
+                  props.results.pages.length +
+                    props.results.posts.length +
+                    props.results.products.length}{' '}
                 {searchLabels.t('resultsFinded')}
               </Text>
             </Flex>
@@ -127,32 +131,46 @@ export default function Search(props: SearchProps) {
             bg="brown.100"
             pb="145px"
           >
-            {props.results.pages.length > 0 && (
-              <Section
-                title={searchLabels.t('pages')}
-                contentLen={props.results.pages.length}
-              >
-                <SectionPages content={props.results.pages} />
-              </Section>
-            )}
+            {props.results &&
+              props.results.pages &&
+              props.results.pages.length > 0 && (
+                <Section
+                  title={searchLabels.t('pages')}
+                  contentLen={props.results.pages.length}
+                >
+                  <SectionPages
+                    content={props.results.pages ? props.results.pages : []}
+                  />
+                </Section>
+              )}
 
-            {props.results.products.length > 0 && (
-              <Section
-                title={searchLabels.t('bpsBerneck')}
-                contentLen={props.results.products.length}
-              >
-                <SectionProducts content={props.results.products} />
-              </Section>
-            )}
+            {props.results &&
+              props.results.products &&
+              props.results.products.length > 0 && (
+                <Section
+                  title={searchLabels.t('bpsBerneck')}
+                  contentLen={props.results.products.length}
+                >
+                  <SectionProducts
+                    content={
+                      props.results.products ? props.results.products : []
+                    }
+                  />
+                </Section>
+              )}
 
-            {props.results.posts.length > 0 && (
-              <Section
-                title={searchLabels.t('contents')}
-                contentLen={props.results.posts.length}
-              >
-                <SectionPosts content={props.results.posts} />
-              </Section>
-            )}
+            {props.results &&
+              props.results.posts &&
+              props.results.posts.length > 0 && (
+                <Section
+                  title={searchLabels.t('contents')}
+                  contentLen={props.results.posts.length}
+                >
+                  <SectionPosts
+                    content={props.results.posts ? props.results.posts : []}
+                  />
+                </Section>
+              )}
           </Flex>
         </Flex>
       </Flex>
@@ -200,9 +218,7 @@ export const Section = (props: {
           fontWeight={'regular'}
         >
           {props.contentLen}{' '}
-          {props.contentLen > 1
-            ? searchLabels.t('')
-            : searchLabels.t('')}
+          {props.contentLen > 1 ? searchLabels.t('') : searchLabels.t('')}
         </Text>
       </Flex>
 

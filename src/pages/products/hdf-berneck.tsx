@@ -30,11 +30,15 @@ export type HdfBerneckPageProps = {
 }
 
 export default function HdfBerneckPage(props: HdfBerneckPageProps) {
-  return (
+  return props.page_content.hdf_berneck ? (
     <HdfBerneckView
       hdf={{
-        title: props.page_content.hdf_berneck.page_title,
-        subTitle: props.page_content.hdf_berneck.subtitle,
+        title: props.page_content.hdf_berneck
+          ? props.page_content.hdf_berneck.page_title
+          : '',
+        subTitle: props.page_content.hdf_berneck
+          ? props.page_content.hdf_berneck.subtitle
+          : '',
         description: props.page_content.hdf_berneck.description,
         finishes: props.page_content.hdf_berneck.finishes.map((f) => {
           return f.finish
@@ -73,6 +77,8 @@ export default function HdfBerneckPage(props: HdfBerneckPageProps) {
           props.page_content.hdf_berneck_plus.technical_sheet.url
       }}
     />
+  ) : (
+    ''
   )
 }
 

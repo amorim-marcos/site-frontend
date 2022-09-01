@@ -45,28 +45,29 @@ export const ProductSpecification = ({
             color={textColor}
           >
             <Tbody>
-              {content.map((i, j) => {
-                return (
-                  <Tr key={j}>
-                    <Td
-                      {...tableItemStyle(
-                        tableBorderColor,
-                        tableBackgroundColor
-                      )}
-                    >
-                      {i.title}
-                    </Td>
-                    <Td
-                      {...tableItemStyle(
-                        tableBorderColor,
-                        tableBackgroundColor
-                      )}
-                    >
-                      {i.description}
-                    </Td>
-                  </Tr>
-                )
-              })}
+              {content &&
+                content.map((i, j) => {
+                  return (
+                    <Tr key={j}>
+                      <Td
+                        {...tableItemStyle(
+                          tableBorderColor,
+                          tableBackgroundColor
+                        )}
+                      >
+                        {i.title}
+                      </Td>
+                      <Td
+                        {...tableItemStyle(
+                          tableBorderColor,
+                          tableBackgroundColor
+                        )}
+                      >
+                        {i.description}
+                      </Td>
+                    </Tr>
+                  )
+                })}
             </Tbody>
           </Table>
         </Flex>

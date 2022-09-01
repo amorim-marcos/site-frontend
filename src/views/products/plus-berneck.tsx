@@ -7,23 +7,23 @@ import BannerProducts from '@components/BannerProducts'
 import { useTranslation } from 'react-i18next'
 
 export type PlusBerneckViewProps = {
-  title: string
-  subtitle: string
-  subtitleDescription: string
-  description: string
-  qualityStandards: string
-  abnt: string
-  section2Title: string
-  section2Text: string
-  testPoints: string[]
-  importantPoints: string[]
-  body_proof: {
-    absorbed_water: number
-    absorption: number
-    id: number
-    item: string
-    swelling: number
-    thickness_increase: number
+  title?: string
+  subtitle?: string
+  subtitleDescription?: string
+  description?: string
+  qualityStandards?: string
+  abnt?: string
+  section2Title?: string
+  section2Text?: string
+  testPoints?: string[]
+  importantPoints?: string[]
+  body_proof?: {
+    absorbed_water?: number
+    absorption?: number
+    id?: number
+    item?: string
+    swelling?: number
+    thickness_increase?: number
   }[]
 }
 
@@ -41,7 +41,7 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
             url: '/products'
           },
           {
-            title: props.title,
+            title: props.title || '',
             url: '/products/plus-berneck'
           }
         ]}
@@ -85,7 +85,7 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
         }}
       />
 
-      {props.testPoints.length >= 3 && (
+      {props.testPoints && props.testPoints.length >= 3 && (
         <PlusTestInfo
           title={props.section2Title}
           description={props.section2Text}
@@ -97,16 +97,24 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
           extraInfoTitle={productsViewLabels.t('plusBerneck.extraInfoTitle')}
           extraInfoBody={props.importantPoints}
           tableInfo={{
-            rows: props.body_proof.map((item) => {
-              return {
-                column1: item.item.toString(),
-                column2: item.absorbed_water.toString() + 'g',
-                column3: item.absorption.toString(),
-                column4: item.thickness_increase.toString(),
-                column5: item.swelling.toString(),
-                plus: item.item.includes('plus') || item.item.includes('PLUS')
-              }
-            })
+            rows: props.body_proof
+              ? props.body_proof.map((item) => {
+                  return {
+                    column1: item.item ? item.item.toString() : '',
+                    column2: item.absorbed_water
+                      ? item.absorbed_water.toString() + 'g'
+                      : '',
+                    column3: item.absorption ? item.absorption.toString() : '',
+                    column4: item.thickness_increase
+                      ? item.thickness_increase.toString()
+                      : '',
+                    column5: item.swelling ? item.swelling.toString() : '',
+                    plus: item.item
+                      ? item.item.includes('plus') || item.item.includes('PLUS')
+                      : false
+                  }
+                })
+              : []
           }}
         />
       )}

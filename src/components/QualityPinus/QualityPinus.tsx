@@ -78,7 +78,7 @@ export const QualityPinus = ({ items, pdfUrl }: QualityPinusProps) => {
             marginTop={{ base: '30px', md: '0' }}
             // css={isMobile ? { height: '40vh' } : { height: 'full' }}
           >
-            {items.length > 0 && (
+            {items && items.length > 0 && (
               <Image
                 h="100%"
                 w="100%"
@@ -149,7 +149,7 @@ export const QualityPinus = ({ items, pdfUrl }: QualityPinusProps) => {
                 })}
             </Flex>
             <Flex flexDirection="column" justifyContent="space-between">
-              {items.length > 0 && (
+              {items && items.length > 0 && (
                 <Box margin={{ base: '5% 0 8% 0', sm: '2% 0 2% 0' }}>
                   <Text
                     as={'h3'}
@@ -171,7 +171,7 @@ export const QualityPinus = ({ items, pdfUrl }: QualityPinusProps) => {
               )}
 
               <Box margin={{ base: '0 0 2% 0', sm: '0 0 3% 0' }}>
-                {items.length > 0 && (
+                {items && items.length > 0 && (
                   <ProductDimensions
                     dimensions={{
                       length: items[currentItem]._length,
@@ -201,7 +201,7 @@ export const QualityPinus = ({ items, pdfUrl }: QualityPinusProps) => {
                 >
                   Usos e Aplicações
                 </Text>
-                {items.length > 0 && (
+                {items && items.length > 0 && (
                   <Text variant={'productBody' as any}>
                     <HtmlTextParser>
                       {items[currentItem].uses_and_applications}

@@ -39,21 +39,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
     contact_channels = await res.json()
   }
 
-  contact_channels = contact_channels.map(
-    (item: { image: { url: string } }) => {
-      return {
-        ...item,
-        image:
-          item.image === null
-            ? null
-            : process.env.NEXT_PUBLIC_API_URL + item.image.url
-      }
-    }
-  )
+  contact_channels =
+    contact_channels && typeof contact_channels.map === 'function'
+      ? contact_channels.map((item: { image: { url: string } }) => {
+          return {
+            ...item,
+            image:
+              item.image === null
+                ? null
+                : process.env.NEXT_PUBLIC_API_URL + item.image.url
+          }
+        })
+      : []
 
   return {
     props: {
-      fireWarning: fireWarning.warning_text,
+      fireWarning: fireWarning.warning_text ? fireWarning.warning_text : '',
       contact_channels,
       ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },

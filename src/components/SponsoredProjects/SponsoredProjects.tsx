@@ -18,9 +18,8 @@ export const SponsoredProjects = ({
       {isMobile ? (
         <Flex as={'carousel' as any} px={{ base: '20px' }} justify="center">
           <Carousel>
-            {panels.map((item, i) => (
-              <HighlightBoxPanel key={i} {...item} />
-            ))}
+            {panels &&
+              panels.map((item, i) => <HighlightBoxPanel key={i} {...item} />)}
           </Carousel>
         </Flex>
       ) : (
@@ -28,9 +27,8 @@ export const SponsoredProjects = ({
         // w="100%"
         // alignContent={"start"}
         >
-          {panels.map((item, j) => (
-            <HighlightBoxPanel key={j} {...item} />
-          ))}
+          {panels &&
+            panels.map((item, j) => <HighlightBoxPanel key={j} {...item} />)}
         </Flex>
       )}
     </Box>

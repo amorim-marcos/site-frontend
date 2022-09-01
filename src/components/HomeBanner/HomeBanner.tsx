@@ -263,62 +263,63 @@ type IndicatorProps = {
 const Indicator = ({ items, currentItem, onClick }: IndicatorProps) => {
   return (
     <Flex marginLeft={{ md: '4%' }}>
-      {items.map((item, i) => {
-        return i === currentItem ? (
-          <Box
-            key={i}
-            marginTop={{
-              base: '-10px',
-              lg: '-25px'
-            }}
-            marginLeft={'5px'}
-            border="1px solid"
-            borderColor={'brown.300'}
-            w={{
-              base: '20px',
-              md: '10px',
-              lg: '13px',
-              xl: '16px',
-              '2xl': '20px'
-            }}
-            h={{
-              base: '20px',
-              md: '10px',
-              lg: '13px',
-              xl: '16px',
-              '2xl': '20px'
-            }}
-            cursor={'pointer'}
-            bg="brown.350"
-          />
-        ) : (
-          <Box
-            key={i}
-            marginTop={{
-              base: '-10px',
-              lg: '-25px'
-            }}
-            marginLeft={'5px'}
-            w={{
-              base: '20px',
-              md: '10px',
-              lg: '13px',
-              xl: '16px',
-              '2xl': '20px'
-            }}
-            h={{
-              base: '20px',
-              md: '10px',
-              lg: '13px',
-              xl: '16px',
-              '2xl': '20px'
-            }}
-            cursor={'pointer'}
-            bg="brown.200"
-            onClick={() => onClick(i)}
-          />
-        )
-      })}
+      {items &&
+        items.map((item, i) => {
+          return i === currentItem ? (
+            <Box
+              key={i}
+              marginTop={{
+                base: '-10px',
+                lg: '-25px'
+              }}
+              marginLeft={'5px'}
+              border="1px solid"
+              borderColor={'brown.300'}
+              w={{
+                base: '20px',
+                md: '10px',
+                lg: '13px',
+                xl: '16px',
+                '2xl': '20px'
+              }}
+              h={{
+                base: '20px',
+                md: '10px',
+                lg: '13px',
+                xl: '16px',
+                '2xl': '20px'
+              }}
+              cursor={'pointer'}
+              bg="brown.350"
+            />
+          ) : (
+            <Box
+              key={i}
+              marginTop={{
+                base: '-10px',
+                lg: '-25px'
+              }}
+              marginLeft={'5px'}
+              w={{
+                base: '20px',
+                md: '10px',
+                lg: '13px',
+                xl: '16px',
+                '2xl': '20px'
+              }}
+              h={{
+                base: '20px',
+                md: '10px',
+                lg: '13px',
+                xl: '16px',
+                '2xl': '20px'
+              }}
+              cursor={'pointer'}
+              bg="brown.200"
+              onClick={() => onClick(i)}
+            />
+          )
+        })}
     </Flex>
   )
 }

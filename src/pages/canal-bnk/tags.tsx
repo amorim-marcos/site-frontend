@@ -69,9 +69,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
               `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}/uploads`
             ),
             cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url,
-            tags: item.tags.map((j) => ({
-              Tag: j.tag
-            })),
+            tags: item.tags
+              ? item.tags.map((j) => ({
+                  Tag: j.tag
+                }))
+              : [],
             title: item.title,
             date: item.published_at,
             url_code: item.url_code
