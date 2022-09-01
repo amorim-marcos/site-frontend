@@ -82,9 +82,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             url_code: product.url_code,
             product_texture: product.product_texture.name,
             pattern_image: `${url}${product.pattern_image.url}`,
-            collections: product.product_collections.map((i: any) => i.id),
+            collections:
+              typeof product.product_collections === 'function'
+                ? product.product_collections.map((i: any) => i.id)
+                : [],
             coloration: product.product_coloration?.id ?? null,
-            panelTypes: product.available_at.map((i: any) => i.panel_type.id)
+            panelTypes:
+              typeof product.available_at.map === 'function'
+                ? product.available_at.map((i: any) => i.panel_type.id)
+                : []
           }
         })
       : []
