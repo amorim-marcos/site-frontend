@@ -533,7 +533,7 @@ export const FiltersAccordion = ({
                 variant="link"
                 backgroundColor="none"
               >
-                {bpCatalog.t('filtersAccordion.ClearFilters')}
+                {bpCatalog.t('filtersAccordion.clearFilters')}
               </Button>
             </Flex>
           </>

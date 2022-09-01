@@ -99,7 +99,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               title={productsViewLabels.t('bpBerneck.bannerProducts.title')}
               titleColor="white"
               subtitle={productsViewLabels.t(
-                'bpBerneck.bannerProducts.subTitle'
+                'bpBerneck.bannerProducts.subtitle'
               )}
               subtitleColor="brown.200"
               bgColor="brown.300"
