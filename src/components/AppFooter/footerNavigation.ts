@@ -86,7 +86,7 @@ export const footerNavigation = {
     href: '/canal-bnk',
     items: [
       // { titleKey: 'column4Subitem1', href: '#' },
-      { titleKey: 'channelBNKColumn.downloads', href: '/downloads' },
+      { titleKey: 'channelBNKColumn.downloads', href: '/canal-bnk/downloads' },
       { titleKey: '', href: '', empty: true },
       { titleKey: 'channelBNKColumn.speakWithUs', href: '/contact' },
       {
