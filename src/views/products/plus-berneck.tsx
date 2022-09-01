@@ -133,13 +133,20 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
         <Grid
           h={{
             base: '900px',
-            sm: '2000px',
+            sm: '1500',
+            md: '300px',
             lg: '400px',
             xl: '500px',
             '2xl': '600px'
           }}
-          w={{ base: '90%', sm: '93%', lg: '93%', xl: '93%' }}
-          margin={{ base: '5%', sm: '3% 3%', lg: '3% 3%', xl: '3% 3%' }}
+          w={{ base: '90%', sm: '63%', md: '100%', lg: '93%', xl: '93%' }}
+          margin={{
+            base: '5%',
+            sm: '3% auto',
+            md: '3% 3%',
+            lg: '3% 3%',
+            xl: '3% 3%'
+          }}
           templateRows={{
             base: 'repeat(3, 1fr)',
             sm: 'repeat(3, 1fr)',
