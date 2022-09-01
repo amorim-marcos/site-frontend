@@ -93,7 +93,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       id: img.id,
       imgSrc: `${url}${img.url}`
     }
-  })
+  }).reverse()
 
   const tableContent = [
     {
