@@ -9,12 +9,12 @@ const PostContentSanitize = dynamic(import('./PostContentSanitize'), {
 
 export const SectionPosts = (props: {
   content: {
-    id: number
-    title: string
-    content: string
-    category: string
-    url_code: string
-    cover_url: string
+    id?: number
+    title?: string
+    content?: string
+    category?: string
+    url_code?: string
+    cover_url?: string
   }[]
 }) => {
   const router = useRouter()

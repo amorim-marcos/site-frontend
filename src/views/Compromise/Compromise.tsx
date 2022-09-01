@@ -197,43 +197,44 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               </Text>
 
               <List spacing={{ base: '2', sm: '3', lg: '5', xl: '5' }}>
-                {page_content.corporative_values.map((item, i) => {
-                  return (
-                    <ListItem key={i}>
-                      <Flex
-                        flexDirection={'row'}
-                        // border="1px solid red"
-                        padding={'5px'}
-                        alignItems="flex-start"
-                        justifyItems={'flex-start'}
-                        // overflow="hidden"
-                      >
-                        <Box>
-                          <ArrowIcon
-                            stroke={'brown.250'}
-                            marginTop={{
-                              base: '4px',
-                              md: '2px',
-                              lg: '2px',
-                              xl: '5px',
-                              '2xl': '4px'
-                            }}
-                            marginRight={'5px'}
-                            width={{ base: '7px', md: '10px' }}
-                          />
-                        </Box>
-                        <Box
-                          //  border="1px solid green"
-                          width={'100%'}
+                {page_content.corporative_values &&
+                  page_content.corporative_values.map((item, i) => {
+                    return (
+                      <ListItem key={i}>
+                        <Flex
+                          flexDirection={'row'}
+                          // border="1px solid red"
+                          padding={'5px'}
+                          alignItems="flex-start"
+                          justifyItems={'flex-start'}
+                          // overflow="hidden"
                         >
-                          <Text fontFamily="body">
-                            <HtmlTextParser>{item.value}</HtmlTextParser>
-                          </Text>
-                        </Box>
-                      </Flex>
-                    </ListItem>
-                  )
-                })}
+                          <Box>
+                            <ArrowIcon
+                              stroke={'brown.250'}
+                              marginTop={{
+                                base: '4px',
+                                md: '2px',
+                                lg: '2px',
+                                xl: '5px',
+                                '2xl': '4px'
+                              }}
+                              marginRight={'5px'}
+                              width={{ base: '7px', md: '10px' }}
+                            />
+                          </Box>
+                          <Box
+                            //  border="1px solid green"
+                            width={'100%'}
+                          >
+                            <Text fontFamily="body">
+                              <HtmlTextParser>{item.value}</HtmlTextParser>
+                            </Text>
+                          </Box>
+                        </Flex>
+                      </ListItem>
+                    )
+                  })}
               </List>
             </Box>
           </Flex>
@@ -443,9 +444,13 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                     'infoGraphicAtmospheric.moreOf'
                   )}
                   titleSuperscript2Color="green.200"
-                  content1Text={page_content.carbon_sequestration
-                    .toLocaleString('en-US', { maximumFractionDigits: 1 })
-                    .replace('.', ',')}
+                  content1Text={
+                    page_content.carbon_sequestration
+                      ? page_content.carbon_sequestration
+                          .toLocaleString('en-US', { maximumFractionDigits: 1 })
+                          .replace('.', ',')
+                      : ''
+                  }
                   content1Color="white"
                   content2Text={compromiseView.t(
                     'infoGraphicAtmospheric.millionCo2'
@@ -462,9 +467,13 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                     'infoGraphicAtmospheric.about'
                   )}
                   titleSuperscript2Color="green.200"
-                  content1Text={page_content.atmospheric_emissions
-                    .toLocaleString('en-US', { maximumFractionDigits: 1 })
-                    .replace('.', ',')}
+                  content1Text={
+                    page_content.atmospheric_emissions
+                      ? page_content.atmospheric_emissions
+                          .toLocaleString('en-US', { maximumFractionDigits: 1 })
+                          .replace('.', ',')
+                      : ''
+                  }
                   content1Color="white"
                   content2Text={compromiseView.t(
                     'infoGraphicAtmospheric.millionCo2'
@@ -591,7 +600,11 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                     )}
                     content1DisplayIcon="yes"
                     content1IconName="energy"
-                    content2Text={page_content.cogenerated_energy.toString()}
+                    content2Text={
+                      page_content.cogenerated_energy
+                        ? page_content.cogenerated_energy.toString()
+                        : ''
+                    }
                     content4Text="%"
                     titleSubscript1Text={compromiseView.t(
                       'infoGraphicSustainability.energyUsed'

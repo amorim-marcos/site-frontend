@@ -11,7 +11,7 @@ export default function FlorestalDivisionPage(
   return (
     <ForestsView
       page_content={props.page_content}
-      fireWarningText={props.fireWarningText}
+      fireWarningText={props.fireWarningText ? props.fireWarningText : ''}
     />
   )
 }
@@ -41,34 +41,47 @@ export const getStaticProps: GetStaticProps = async (context) => {
     fireWarning = await res.json()
   }
 
-  page_content.public_resume = page_content.public_resume.map(
-    (item: { public_resume_file: { url: string } }) => {
-      return {
-        ...item,
-        public_resume_file: {
-          ...item.public_resume_file,
-          url: process.env.NEXT_PUBLIC_API_URL + item.public_resume_file.url
-        }
-      }
-    }
-  )
-
-  page_content.forest_production_highlights =
-    page_content.forest_production_highlights.map(
-      (item: { image: { url: string } }) => {
+  if (
+    page_content.public_resume &&
+    typeof page_content.public_resume.map === 'function'
+  ) {
+    page_content.public_resume = page_content.public_resume.map(
+      (item: { public_resume_file: { url: string } }) => {
         return {
           ...item,
-          image: {
-            ...item.image,
-            url:
-              item.image === null
-                ? null
-                : process.env.NEXT_PUBLIC_API_URL + item.image.url
+          public_resume_file: {
+            ...item.public_resume_file,
+            url: process.env.NEXT_PUBLIC_API_URL + item.public_resume_file.url
           }
         }
       }
     )
+  } else {
+    page_content.public_resume = []
+  }
 
+  if (
+    page_content.forest_production_highlights &&
+    typeof page_content.forest_production_highlights.map === 'function'
+  ) {
+    page_content.forest_production_highlights =
+      page_content.forest_production_highlights.map(
+        (item: { image: { url: string } }) => {
+          return {
+            ...item,
+            image: {
+              ...item.image,
+              url:
+                item.image === null
+                  ? null
+                  : process.env.NEXT_PUBLIC_API_URL + item.image.url
+            }
+          }
+        }
+      )
+  } else {
+    page_content.forest_production_highlights = []
+  }
   if (page_content.section2_img) {
     page_content.section2_img =
       process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section2_img.url
@@ -93,7 +106,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       page_content,
-      fireWarningText: fireWarning.warning_text,
+      fireWarningText: fireWarning.warning_text ? fireWarning.warning_text : '',
       ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(

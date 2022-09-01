@@ -5,7 +5,7 @@ import HtmlTextParser from '@components/HtmlTextParser'
 
 export const SectionPages = (props: {
   content: {
-    id: string
+    id?: string
     header_text?: string
     header_subtitle?: string
     description?: string

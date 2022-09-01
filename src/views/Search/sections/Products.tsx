@@ -5,11 +5,11 @@ import BpPatternImage from '@components/BpPatternImage'
 
 export const SectionProducts = (props: {
   content: {
-    id: number
-    name: string
-    url_code: string
-    pattern_image_url: string
-    product_collections_name: string
+    id?: number
+    name?: string
+    url_code?: string
+    pattern_image_url?: string
+    product_collections_name?: string
   }[]
 }) => {
   const router = useRouter()

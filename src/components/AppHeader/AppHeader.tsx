@@ -223,55 +223,73 @@ export const AppHeader = () => {
                     w="100%"
                   >
                     <HeaderMenuItem
-                      subItems={menuNavigation.whoWeAre.subItems.map((i) => ({
-                        title: header.t(i.key),
-                        href: i.href
-                      }))}
+                      subItems={
+                        menuNavigation.whoWeAre.subItems
+                          ? menuNavigation.whoWeAre.subItems.map((i) => ({
+                              title: header.t(i.key),
+                              href: i.href
+                            }))
+                          : []
+                      }
                       href={menuNavigation.whoWeAre.href}
                       title={header.t(menuNavigation.whoWeAre.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                     />
                     <HeaderMenuItem
-                      subItems={menuNavigation.ourCommitment.subItems.map(
-                        (i) => ({
-                          title: header.t(i.key),
-                          href: i.href
-                        })
-                      )}
+                      subItems={
+                        menuNavigation.ourCommitment.subItems
+                          ? menuNavigation.ourCommitment.subItems.map((i) => ({
+                              title: header.t(i.key),
+                              href: i.href
+                            }))
+                          : []
+                      }
                       href={menuNavigation.ourCommitment.href}
                       title={header.t(menuNavigation.ourCommitment.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                     />
                     <HeaderMenuItem
-                      subItems={menuNavigation.florestalDivision.subItems.map(
-                        (i) => ({
-                          title: header.t(i.key),
-                          href: i.href
-                        })
-                      )}
+                      subItems={
+                        menuNavigation.florestalDivision.subItems
+                          ? menuNavigation.florestalDivision.subItems.map(
+                              (i) => ({
+                                title: header.t(i.key),
+                                href: i.href
+                              })
+                            )
+                          : []
+                      }
                       href={menuNavigation.florestalDivision.href}
                       title={header.t(menuNavigation.florestalDivision.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                     />
                     <HeaderMenuItem
-                      subItems={menuNavigation.products.subItems.map((i) => ({
-                        title: header.t(i.key),
-                        href: i.href,
-                        subItems: i.subItems.map((i) => ({
-                          title: header.t(i.key),
-                          href: i.href,
-                          arrow: i.arrow
-                        }))
-                      }))}
+                      subItems={
+                        menuNavigation.products.subItems
+                          ? menuNavigation.products.subItems.map((i) => ({
+                              title: header.t(i.key),
+                              href: i.href,
+                              subItems: i.subItems.map((i) => ({
+                                title: header.t(i.key),
+                                href: i.href,
+                                arrow: i.arrow
+                              }))
+                            }))
+                          : []
+                      }
                       href={menuNavigation.products.href}
                       title={header.t(menuNavigation.products.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                     />
                     <HeaderMenuItem
-                      subItems={menuNavigation.channelBNK.subItems.map((i) => ({
-                        title: header.t(i.key),
-                        href: i.href
-                      }))}
+                      subItems={
+                        menuNavigation.channelBNK.subItems
+                          ? menuNavigation.channelBNK.subItems.map((i) => ({
+                              title: header.t(i.key),
+                              href: i.href
+                            }))
+                          : []
+                      }
                       href={menuNavigation.channelBNK.href}
                       title={header.t(menuNavigation.channelBNK.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}

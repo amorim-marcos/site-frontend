@@ -35,6 +35,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const highlightsTreated: object[] = []
 
+  if (typeof highlights.forEach !== 'function') {
+    highlights = []
+  }
+
   highlights.forEach(
     (item: { cover: { url: string }; category: { name: string } }) => {
       if (item !== null && item.category !== null && item.cover !== null) {

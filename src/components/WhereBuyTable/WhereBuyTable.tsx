@@ -63,70 +63,72 @@ export const WhereBuyTable = () => {
           </Flex>
         </Flex>
       </Flex>
-      {data.countries.map((c, i) => {
-        return (
-          <Flex key={i} bg="green.400" w="100%">
-            <Flex
-              flexDirection={'column'}
-              alignItems={'center'}
-              justifyContent={'center'}
-              bg="white.100"
-              w="10%"
-              css={{
-                height: 'full'
-              }}
-              border="1px solid"
-              borderColor="gray.100"
-            >
-              <Image marginY="10px" src={c.imgUrl} w="40px" />
-              <Text variant={'body' as any}>{c.name}</Text>
-            </Flex>
-            <Flex w="90%" flexDirection={'column'}>
-              {c.rows.map((r, i) => {
-                return (
-                  <Flex key={i} w="100%">
-                    <Flex
-                      {...cellBodyStyle}
-                      {...(isMobile && { width: '20%' })}
-                    >
-                      <Text variant={'body' as any}>{r.city}</Text>
-                    </Flex>
-                    <Flex
-                      {...cellBodyStyle}
-                      {...(isMobile && { width: '20%' })}
-                    >
-                      <Text variant={'body' as any}>{r.client}</Text>
-                    </Flex>
-                    {!isMobile && (
-                      <Flex {...cellBodyStyle} w="13.66667%">
-                        <Text variant={'body' as any}>{r.nameFantasy}</Text>
+      {data.countries &&
+        data.countries.map((c, i) => {
+          return (
+            <Flex key={i} bg="green.400" w="100%">
+              <Flex
+                flexDirection={'column'}
+                alignItems={'center'}
+                justifyContent={'center'}
+                bg="white.100"
+                w="10%"
+                css={{
+                  height: 'full'
+                }}
+                border="1px solid"
+                borderColor="gray.100"
+              >
+                <Image marginY="10px" src={c.imgUrl} w="40px" />
+                <Text variant={'body' as any}>{c.name}</Text>
+              </Flex>
+              <Flex w="90%" flexDirection={'column'}>
+                {c.rows &&
+                  c.rows.map((r, i) => {
+                    return (
+                      <Flex key={i} w="100%">
+                        <Flex
+                          {...cellBodyStyle}
+                          {...(isMobile && { width: '20%' })}
+                        >
+                          <Text variant={'body' as any}>{r.city}</Text>
+                        </Flex>
+                        <Flex
+                          {...cellBodyStyle}
+                          {...(isMobile && { width: '20%' })}
+                        >
+                          <Text variant={'body' as any}>{r.client}</Text>
+                        </Flex>
+                        {!isMobile && (
+                          <Flex {...cellBodyStyle} w="13.66667%">
+                            <Text variant={'body' as any}>{r.nameFantasy}</Text>
+                          </Flex>
+                        )}
+                        <Flex
+                          {...cellBodyStyle}
+                          w="33.3333%"
+                          {...(isMobile && { width: '40%' })}
+                        >
+                          <Text variant={'body' as any} fontSize={'100%'}>
+                            {r.address}
+                          </Text>
+                        </Flex>
+                        <Flex
+                          {...cellBodyStyle}
+                          w="19.66667%"
+                          {...(isMobile && { width: '20%' })}
+                        >
+                          <Text variant={'body' as any} fontSize={'90%'}>
+                            {r.contact}
+                          </Text>
+                        </Flex>
                       </Flex>
-                    )}
-                    <Flex
-                      {...cellBodyStyle}
-                      w="33.3333%"
-                      {...(isMobile && { width: '40%' })}
-                    >
-                      <Text variant={'body' as any} fontSize={'100%'}>
-                        {r.address}
-                      </Text>
-                    </Flex>
-                    <Flex
-                      {...cellBodyStyle}
-                      w="19.66667%"
-                      {...(isMobile && { width: '20%' })}
-                    >
-                      <Text variant={'body' as any} fontSize={'90%'}>
-                        {r.contact}
-                      </Text>
-                    </Flex>
-                  </Flex>
-                )
-              })}
+                    )
+                  })}
+              </Flex>
             </Flex>
-          </Flex>
-        )
-      })}
+          )
+        })}
     </Flex>
   )
 }

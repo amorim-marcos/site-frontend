@@ -12,7 +12,7 @@ export type MdpBerneckPageProps = {
 }
 
 export default function MdpBerneckPage(props: MdpBerneckPageProps) {
-  return (
+  return props.page_content.mdp_berneck ? (
     <MdpBerneckView
       mdp={{
         title: props.page_content.mdp_berneck.page_title,
@@ -55,6 +55,8 @@ export default function MdpBerneckPage(props: MdpBerneckPageProps) {
           props.page_content.mdp_berneck_plus.technical_sheet.url
       }}
     />
+  ) : (
+    ''
   )
 }
 

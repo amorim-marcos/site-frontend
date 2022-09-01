@@ -43,7 +43,9 @@ export default function useEnvsFetch(pageSize: number) {
                 id: gallery.id,
                 title: gallery.title,
                 name: gallery.place,
-                bps: gallery.products.map((product: any) => product.name),
+                bps: gallery.products
+                  ? gallery.products.map((product: any) => product.name)
+                  : [],
                 type: gallery.ambient_type.url_code,
                 style: String(gallery.ambient_styles[0].id),
                 url_code: gallery.url_code,
