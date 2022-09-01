@@ -101,7 +101,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             type: gallery.ambient_type.url_code,
             style: String(gallery.ambient_styles[0].id),
             url_code: gallery.url_code,
-            image_url: `${url}${gallery.gallery_of_images[0].url}`
+            image_url: `${url}${gallery.gallery_of_images[gallery.gallery_of_images.length - 1].url}`
           }
         })
       : []
