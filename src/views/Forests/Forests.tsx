@@ -25,14 +25,19 @@ export type ForestsViewProps = {
     section1_text: string
     section1_title: string
     section2_text: string
+    section2_img: string
     section2_title: string
     section3_text: string
+    section3_img: string
     section3_title: string
     section4_text: string
+    section4_img: string
     section4_title: string
     section5_text: string
+    section5_img: string
     section5_title: string
     section6_text: string
+    section6_img: string
     section6_title: string
     value_chain_counties: number
     states: number
@@ -66,6 +71,7 @@ export type ForestsViewProps = {
 export const ForestsView = (props: ForestsViewProps) => {
   const router = useRouter()
   const forestView = useTranslation('forestsView')
+  console.log(props)
   return (
     <Box>
       <Pagebar
@@ -346,10 +352,10 @@ export const ForestsView = (props: ForestsViewProps) => {
           >
             {/* BOX 1 */}
             <Box
-              bg='pink'
+              bg="pink"
               flex="1"
               justifyItems={'center'}
-              backgroundImage="/assets/imgs/foto_floresta.jpg"
+              backgroundImage={props.page_content.section2_img}
               backgroundPosition="center"
               backgroundRepeat="no-repeat"
               // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
@@ -468,20 +474,18 @@ export const ForestsView = (props: ForestsViewProps) => {
                 // gap={"30px"}
               >
                 {/* INTERNAL FLEX - BOX 1 */}
-               
-                  <Flex
-                    overflowY="hidden"
-                    overflowX="hidden"
-                    backgroundImage="/assets/imgs/tamandua.png"
-                    backgroundPosition="right"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize={'cover'}
-                    flex={1.5}
-                    marginRight={"30px"}
-                  >
-                    {/* <Text>tamandua</Text> */}
-                  
-                 
+
+                <Flex
+                  overflowY="hidden"
+                  overflowX="hidden"
+                  backgroundImage={props.page_content.section3_img}
+                  backgroundPosition="right"
+                  backgroundRepeat="no-repeat"
+                  backgroundSize={'cover'}
+                  flex={1.5}
+                  marginRight={'30px'}
+                >
+                  {/* <Text>tamandua</Text> */}
                 </Flex>
                 {/* INTERNAL FLEX - BOX 2 */}
                 <Flex
@@ -506,7 +510,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                       'infoGraphicBiodiversity.monitoredFarms'
                     )}
                   />
-                   <Flex
+                  <Flex
                     // bg='gray.400'
                     flex={1}
                     // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
@@ -516,17 +520,20 @@ export const ForestsView = (props: ForestsViewProps) => {
                       variant={'h6' as any}
                       padding={{ base: '5%', sm: '5%', lg: '10%', xl: '5%' }}
                       color={'brown.300'}
-                      fontSize = {{ base: '9px', sm: '9px', lg: '9px', xl: '9px' }}
-                      fontWeight =  'normal'
+                      fontSize={{
+                        base: '9px',
+                        sm: '9px',
+                        lg: '9px',
+                        xl: '9px'
+                      }}
+                      fontWeight="normal"
                     >
                       <HtmlTextParser>
                         {props.page_content.monitored_animals_and_farms_text}
                       </HtmlTextParser>
                     </Text>
                   </Flex>
-
                 </Flex>
-                
               </Flex>
             </Box>
             {/* BOX 2 */}
@@ -553,7 +560,6 @@ export const ForestsView = (props: ForestsViewProps) => {
                   {props.page_content.section3_text}
                 </HtmlTextParser>
               </Text>
-             
             </Box>
           </Flex>
         </Flex>
@@ -628,7 +634,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                 xl: '8% 2% 5% 5%'
               }}
             >
-              <Image src="/assets/imgs/IMG_0618.png" />
+              <Image src={props.page_content.section4_img} maxW={'668px'} />
             </Box>
           </Flex>
           {/* MADEIRA FLYANTE */}
@@ -692,7 +698,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                 xl: '5% 0% 5% 5%'
               }}
             >
-              <Image src="/assets/imgs/5–8_MUDAS.png" />
+              <Image src={props.page_content.section5_img} maxW={'668px'} />
             </Box>
             {/* BOX 2 */}
             <Box
@@ -918,7 +924,7 @@ export const ForestsView = (props: ForestsViewProps) => {
               // bg='yellow'
               flex="1"
             >
-              <Image src="/assets/imgs/fornecedor_florestal.png" />
+              <Image src={props.page_content.section6_img} maxW={'660px'} />
               <Button
                 onClick={() =>
                   router.push('/contact?channel=suprimentos-florestais')

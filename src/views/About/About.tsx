@@ -30,6 +30,8 @@ export type AboutPageContent = {
   where_we_are_description: string
   resellers_description: string
   certifications_description: string
+  section1_img: string
+  section2_img: string
 }
 
 export type AboutProps = {
@@ -80,13 +82,18 @@ export const About = ({
           overflow="hidden"
           bg="green.150"
         >
-          <Flex direction={{ base: 'column', lg: 'row' }}>
+          <Flex
+            w="100%"
+            justifyContent={'center'}
+            direction={{ base: 'column', lg: 'row' }}
+          >
             <Box
               margin={{
                 base: '8% 8% 2% 5%',
                 lg: '5%'
               }}
               alignSelf="center"
+              w={{ base: '90%', lg: '60%' }}
             >
               <Text
                 as="h3"
@@ -105,15 +112,19 @@ export const About = ({
               </Text>
             </Box>
             <Box
+              w={{ base: '100%', lg: '25%' }}
               margin={{
-                base: '5% 8% 10% 5%',
-                sm: '2% 8% 8% 5%',
-                lg: '5%'
+                base: '5% 0',
+                lg: '5% 0'
               }}
+              h={{ base: '500px', lg: '300px', xl: '370px' }}
             >
               <Image
-                src={'/assets/imgs/foto_fabrica.png'}
-                w={{ base: '200px', sm: '300px', lg: '2000px', xl: '2000px' }}
+                // src={'/assets/imgs/foto_fabrica.png'}
+                src={page_content.section1_img}
+                w="100%"
+                h="100%"
+                objectFit={'cover'}
               />
             </Box>
           </Flex>
