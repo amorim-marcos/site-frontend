@@ -7,6 +7,8 @@ import { SocialIcon } from '@components/Icons'
 import CompletedTitle from '@components/CompletedTitle'
 
 import useFacebook from 'hooks/useFacebook'
+import useInstagram from 'hooks/useInstagram'
+
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
 
@@ -14,6 +16,8 @@ export default function Connect() {
   const { isMobile, width } = useMobile(568)
   const [lastVideo, setLastVideo] = useState<string | null>()
   const componentsLabels = useTranslation('components')
+
+  const { Feed } = useInstagram()
 
   useFacebook()
 
@@ -34,6 +38,7 @@ export default function Connect() {
     <>
       <Head>
         <script async defer src="https://assets.pinterest.com/js/pinit.js" />
+        <script src="https://apps.elfsight.com/p/platform.js" defer />
       </Head>
 
       <Flex bg={'white.200'} alignItems={'center'} flexDirection={'column'}>
@@ -85,20 +90,13 @@ export default function Connect() {
             <Flex direction="column" gap="24px" align="center" w="100%">
               {width && (
                 <Flex
-                  align="center"
-                  justify="center"
+                  align="start"
+                  justify="start"
                   h={isMobile ? '572px' : '520px'}
                   w="100%"
-                  bgColor="green.200"
+                  direction="column"
                 >
-                  <Text
-                    fontWeight="bold"
-                    color="red"
-                    px="25px"
-                    textAlign="center"
-                  >
-                    Aguardando envio da chave do Instagram
-                  </Text>
+                  <Feed />
                 </Flex>
               )}
 
