@@ -14,10 +14,10 @@ export const LanguageSelector = () => {
 
   useEffect(() => {
     const locale = Cookies.get('berneck_language')
-    if (router.locale !== locale && typeof locale !== 'undefined') {
+    if (router && router.locale !== locale && typeof locale !== 'undefined') {
       router.push('/', '/', { locale })
     }
-  }, [])
+  }, [router])
 
   return (
     <Center
