@@ -1,4 +1,6 @@
 import { Flex, Text, Image, Link } from '@chakra-ui/react'
+import axios from 'axios'
+
 import { useCallback, useEffect, useState } from 'react'
 
 // Ad instgrm to window type
@@ -50,35 +52,25 @@ export default function useOembedPageInstagram() {
 
   const { process } = useInstagramOembed()
 
+  async function init() {
+    let response = await axios.post('/api/instagram-profile')
+    setUserData(response.data.data)
+
+    response = await axios.post('/api/instagram-post')
+    setPost(response.data.data)
+  }
+
   useEffect(() => {
     process()
   })
 
   useEffect(() => {
-    const APP_ID = '7948908401846796'
-    const SECRET_KEY = '8da86289b34a339c4641c13f4e89e341'
-    const ACCOUNT = 'https://www.instagram.com/berneckoficial/'
-
-    const URL = `https://graph.facebook.com/v11.0/instagram_oembed?url=${ACCOUNT}&access_token=${APP_ID}|${SECRET_KEY}`
-
-    fetch(URL)
-      .then((res) => res.json())
-      .then((data) => setUserData(data))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    init()
   }, [])
 
   useEffect(() => {
-    const POST = 'https://www.instagram.com/p/CXwjl8flrYf/'
-    const APP_ID = '7948908401846796'
-    const SECRET_KEY = '8da86289b34a339c4641c13f4e89e341'
-
-    const URL = `https://graph.facebook.com/instagram_oembed?url=${POST}&access_token=${APP_ID}|${SECRET_KEY}`
-
-    fetch(URL)
-      .then((res) => res.json())
-      .then((data) => setPost(data))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    console.log('user', userData)
+  }, [userData])
 
   const Feed = () => {
     return (
