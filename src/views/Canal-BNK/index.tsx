@@ -146,7 +146,7 @@ function CanalBNKFC(props: CanalBNKProps) {
           <Flex bg="white.100" justify={'center'}>
             <Downloads patterns_pack_url={props.patterns_pack_url} />
           </Flex>
-          <Connect />
+          <Connect youtubeLink={props.youtubeDownloadLink} />
         </>
       )}
     </Box>
@@ -158,6 +158,7 @@ export interface CanalBNKProps {
   categories: Category[]
   defaultCategory: number
   patterns_pack_url?: string | null
+  youtubeDownloadLink?: string
 }
 
 export default function CanalBNK(props: CanalBNKProps) {

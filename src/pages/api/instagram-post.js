@@ -3,11 +3,9 @@ export default async function handler(req, res) {
   const SECRET_KEY = process.env.INSTAGRAM_KEY
 
   try {
-    const postJson = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + '/instagram-post'
-    )
+    const postJson = await fetch(process.env.NEXT_PUBLIC_API_URL + '/connect')
     const post = await postJson.json()
-    const POST = post.post_url
+    const POST = post.instagram_post_link
 
     const URL = `https://graph.facebook.com/instagram_oembed?url=${POST}&access_token=${APP_ID}|${SECRET_KEY}`
 

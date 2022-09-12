@@ -68,10 +68,6 @@ export default function useOembedPageInstagram() {
     init()
   }, [])
 
-  useEffect(() => {
-    console.log('user', userData)
-  }, [userData])
-
   const Feed = () => {
     return (
       <div>
@@ -80,7 +76,7 @@ export default function useOembedPageInstagram() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Flex align="center" gap="19px">
+          {/* <Flex align="center" gap="19px">
             <Image
               src={userData?.thumbnail_url}
               alt=""
@@ -97,7 +93,7 @@ export default function useOembedPageInstagram() {
             >
               {userData?.author_name}
             </Text>
-          </Flex>
+          </Flex> */}
         </Link>
 
         {post && <div dangerouslySetInnerHTML={{ __html: post.html }} />}

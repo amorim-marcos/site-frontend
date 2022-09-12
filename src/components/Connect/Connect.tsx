@@ -12,9 +12,9 @@ import useInstagram from 'hooks/useInstagram'
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
 
-export default function Connect() {
+export default function Connect({ youtubeLink = '' }) {
   const { isMobile, width } = useMobile(568)
-  const [lastVideo, setLastVideo] = useState<string | null>()
+  const [lastVideo, setLastVideo] = useState<string | null>('PtRcMibSJgk')
   const componentsLabels = useTranslation('components')
 
   const { Feed } = useInstagram()
@@ -95,6 +95,7 @@ export default function Connect() {
                   h={isMobile ? '572px' : '520px'}
                   w="100%"
                   direction="column"
+                  overflowY={'scroll'}
                 >
                   <Feed />
                 </Flex>
@@ -174,16 +175,20 @@ export default function Connect() {
               alignItems={'center'}
               w="100%"
             >
-              {width && (
-                <iframe
-                  width="100%"
-                  height={'280px'}
-                  // height={isMobile ? '175px' : '510px'}
-                  src={`https://www.youtube.com/embed/${lastVideo}`}
-                  frameBorder="0"
-                  allowFullScreen
-                />
-              )}
+              {width &&
+                typeof youtubeLink.split === 'function' &&
+                youtubeLink.split('=').length > 1 && (
+                  <iframe
+                    width="100%"
+                    height={'280px'}
+                    // height={isMobile ? '175px' : '510px'}
+                    src={`https://www.youtube.com/embed/${
+                      youtubeLink.split('=')[1].split('&')[0] || lastVideo
+                    }`}
+                    frameBorder="0"
+                    allowFullScreen
+                  />
+                )}
 
               <FollowButton
                 text="INSCREVA-SE EM NOSSO CANAL"

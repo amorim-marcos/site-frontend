@@ -12,6 +12,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale
   let highlights
   let latestPosts
+  let youtubeLink
 
   let res
 
@@ -25,12 +26,20 @@ export const getStaticProps: GetStaticProps = async (context) => {
       process.env.NEXT_PUBLIC_API_URL + `/posts/highlights?_locale=${locale}`
     )
     highlights = await res.json()
+
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/connect`)
+    youtubeLink = await res.json()
+    youtubeLink = youtubeLink.youtube_video_link
   } catch (e) {
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/latest`)
     latestPosts = await res.json()
 
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/highlights`)
     highlights = await res.json()
+
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/connect`)
+    youtubeLink = await res.json()
+    youtubeLink = youtubeLink.youtube_video_link
   }
 
   const highlightsTreated: object[] = []
@@ -76,6 +85,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       highlights: highlightsTreated,
+      youtubeLink,
       latest: latestTreated,
       ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
       // ...clientNamespaces(ni18nConfig, ['components/header'])
