@@ -53,10 +53,10 @@ export default function useOembedPageInstagram() {
   const { process } = useInstagramOembed()
 
   async function init() {
-    let response = await axios.post('/api/instagram-profile')
-    setUserData(response.data.data)
+    // let response = await axios.get('/api/instagram-profile')
+    // setUserData(response.data.data)
 
-    response = await axios.post('/api/instagram-post')
+    const response = await axios.get('/api/instagram-post')
     setPost(response.data.data)
   }
 
@@ -72,7 +72,7 @@ export default function useOembedPageInstagram() {
     return (
       <div>
         <Link
-          href={`https://instagram.com/${userData?.author_name}`}
+          href={`https://instagram.com/${'berneckoficial'}`}
           target="_blank"
           rel="noopener noreferrer"
         >
