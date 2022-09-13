@@ -68,6 +68,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   if (
     typeof representatives_list.pdf_list !== 'undefined' &&
+    representatives_list.pdf_list &&
     representatives_list.pdf_list.url
   ) {
     page_content.representatives_list =
