@@ -1,15 +1,23 @@
 import { Center, Text, Box, Flex } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { LanguageBtn } from './LanguageBtn/LanguageBtn'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { LanguageIcon } from './LanguageIcon'
 import { ArrowIcon } from './ArrowIcon'
+import Cookies from 'js-cookie'
 
 export const LanguageSelector = () => {
   const [open, setOpen] = useState(false)
   const router = useRouter()
   const header = useTranslation('header')
+
+  useEffect(() => {
+    const locale = Cookies.get('berneck_language')
+    if (router && router.locale !== locale && typeof locale !== 'undefined') {
+      router.push('/', '/', { locale })
+    }
+  }, [router])
 
   return (
     <Center
