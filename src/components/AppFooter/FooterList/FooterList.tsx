@@ -15,8 +15,11 @@ export type FooterListProps = {
 
 export const FooterList = ({ title, items }: FooterListProps) => {
   return (
-    <Box aria-label="footer-list">
-      <List spacing="10%">
+    <Box
+      aria-label="footer-list"
+      // bg={'red'}
+    >
+      <List spacing="5">
         <ListItem cursor="pointer">
           <Link href={title.href} passHref>
             <Text
@@ -27,8 +30,7 @@ export const FooterList = ({ title, items }: FooterListProps) => {
                 sm: '8px',
                 md: '10px',
                 lg: '13px',
-                xl: '15px',
-                '2xl': '17px'
+                xl: '14px'
               }}
               color="white.100"
             >
@@ -36,32 +38,33 @@ export const FooterList = ({ title, items }: FooterListProps) => {
             </Text>
           </Link>
         </ListItem>
-        {items.map((i, j) =>
-          i.empty ? (
-            <Box key={j} height="20px"></Box>
-          ) : (
-            <ListItem cursor="pointer" key={j}>
-              <Link passHref href={i.href}>
-                <Text
-                  _hover={{ color: '#FFF' }}
-                  variant={'tags' as any}
-                  fontSize={{
-                    base: '6px',
-                    sm: '7px',
-                    md: '9px',
-                    lg: '12px',
-                    xl: '14px',
-                    '2xl': '17px'
-                  }}
-                  color="green.200"
-                  fontWeight="600"
-                >
-                  {i.title}
-                </Text>
-              </Link>
-            </ListItem>
-          )
-        )}
+        {items && items.length
+          ? items.map((i, j) =>
+              i.empty ? (
+                <Box key={j} height="20px"></Box>
+              ) : (
+                <ListItem cursor="pointer" key={j}>
+                  <Link passHref href={i.href}>
+                    <Text
+                      _hover={{ color: '#FFF' }}
+                      variant={'tags' as any}
+                      fontSize={{
+                        base: '6px',
+                        sm: '7px',
+                        md: '9px',
+                        lg: '12px',
+                        xl: '13px'
+                      }}
+                      color="green.200"
+                      fontWeight="600"
+                    >
+                      {i.title}
+                    </Text>
+                  </Link>
+                </ListItem>
+              )
+            )
+          : []}
       </List>
     </Box>
   )

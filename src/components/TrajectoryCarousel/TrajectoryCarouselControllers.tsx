@@ -28,10 +28,10 @@ export const TrajectoryCarouselControllers = ({
         variant="no-border"
         background="gray.300"
         color="gray.150"
-        w={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
-        h={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
+        w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+        h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
         _hover={{
-          background: 'green.600',
+          background: 'green.550',
           color: 'white.100'
         }}
       >
@@ -46,10 +46,10 @@ export const TrajectoryCarouselControllers = ({
         variant="no-border"
         background="gray.300"
         color="gray.150"
-        w={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
-        h={{ base: '35px', sm: '50px', lg: '60px', xl: '77px' }}
+        w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+        h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
         _hover={{
-          background: 'green.600',
+          background: 'green.550',
           color: 'white.100'
         }}
       >

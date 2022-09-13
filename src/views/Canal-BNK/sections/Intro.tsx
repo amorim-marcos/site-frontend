@@ -1,4 +1,6 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
+import { useRouter } from 'next/router'
+
 import {
   Flex,
   Box,
@@ -6,18 +8,20 @@ import {
   Text,
   Button,
   ButtonProps,
-  FlexProps,
-  Link
+  FlexProps
 } from '@chakra-ui/react'
 
-import { Arrow } from '@components/Icons'
 import Post from '@components/Post'
+import { Arrow } from '@components/Icons'
 import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
 
-import useMobile from 'hooks/useMobile'
+import { Section } from './Section'
+
 import { CategoryContext } from '..'
 import { Post as IPost } from 'types/data'
-import { Section } from './Section'
+import { useTranslation } from 'react-i18next'
+import HtmlTextParser from '@components/HtmlTextParser'
+import SeeMore from '@components/SeeMore'
 
 export const PANEL_COLOR = {
   all: 'white',
@@ -26,7 +30,11 @@ export const PANEL_COLOR = {
   world: '#89BA81'
 }
 
-export const Intro = (props: { posts: IPost[] }) => {
+export const Intro = (props: {
+  posts: IPost[]
+  tagsSearch?: boolean
+  tagName?: string
+}) => {
   const {
     currentCategory,
     changeCurrentCategory,
@@ -35,11 +43,11 @@ export const Intro = (props: { posts: IPost[] }) => {
     setSeeOnlyPosts
   } = useContext(CategoryContext)
 
+  const router = useRouter()
+  const channelBnkLabels = useTranslation('channelBnkView')
+
   return (
     <Box
-      pos="relative"
-      overflow="hidden"
-      w="100%"
       bg={
         currentCategory === -1
           ? 'brown.100'
@@ -50,370 +58,410 @@ export const Intro = (props: { posts: IPost[] }) => {
           : 'green.600'
       }
     >
-      <Image
-        src="/assets/imgs/canal-bnk/grafismo_esquerda.svg"
-        w="232px"
-        h="618px"
-        pos="absolute"
-        left="-80px"
-        top="300px"
-        opacity={
-          currentCategory === -1 ? 0.6 : currentCategory === 0 ? 0.9 : 0.2
-        }
-        filter={
-          currentCategory === -1
-            ? 'brightness(1) contrast(0.5) sepia(1) grayscale(0.6) hue-rotate(350deg) saturate(1.4)'
-            : currentCategory === 1
-            ? 'brightness(0.5) contrast(0.2) sepia(1) grayscale(0.6) hue-rotate(110deg) saturate(1)'
-            : ''
-        }
-      />
-
-      <Image
-        src="/assets/imgs/canal-bnk/grafismo_direita.svg"
-        w="810px"
-        h="980px"
-        objectFit="cover"
-        overflow="hidden"
-        pos="absolute"
-        right="-150px"
-        top="0"
-        opacity={
-          currentCategory === -1 ? 0.6 : currentCategory === 0 ? 0.9 : 0.2
-        }
-        filter={
-          currentCategory === -1
-            ? 'brightness(1) contrast(0.5) sepia(1) grayscale(0.6) hue-rotate(350deg) saturate(1.4)'
-            : currentCategory === 1
-            ? 'brightness(0.5) contrast(0.2) sepia(1) grayscale(0.6) hue-rotate(110deg) saturate(1)'
-            : ''
-        }
-      />
-
       <Flex
-        // w="100%"
-        direction="column"
-        align={{ base: 'center', lg: 'inherit' }}
-        // bg="red"
+        maxWidth="1536px"
+        marginX="auto"
+        alignItems="center"
+        justifyContent="center"
+        position="relative"
+        zIndex="base"
+        overflow="hidden"
+        paddingBottom={{ base: '2%', '2xl': '5%' }}
       >
-        <Flex
-          data-testid="intro-header"
-          w="100%"
-          justifyContent="space-between"
-          zIndex={100}
-          direction={{ base: 'column', lg: 'row' }}
-          padding={{ base: '5% 5% 0 5%', xl: '5% 5% 0 5%' }}
-          // bg="yellow"
-        >
-          <Flex
-            direction="column"
-            alignSelf={{ base: 'flex-start' }}
-            w={{ lg: '30%', '2xl': '23%' }}
-            // bg="tomato"
+        <Image
+          src="/assets/imgs/canal-bnk/grafismo_esquerda.svg"
+          w="232px"
+          h="618px"
+          pos="absolute"
+          left="-80px"
+          top="300px"
+          opacity={
+            currentCategory === -1 ? 0.6 : currentCategory === 0 ? 0.9 : 0.2
+          }
+          filter={
+            currentCategory === -1
+              ? 'brightness(1) contrast(0.5) sepia(1) grayscale(0.6) hue-rotate(350deg) saturate(1.4)'
+              : currentCategory === 1
+              ? 'brightness(0.5) contrast(0.2) sepia(1) grayscale(0.6) hue-rotate(110deg) saturate(1)'
+              : ''
+          }
+        />
+
+        <Image
+          src="/assets/imgs/canal-bnk/grafismo_direita.svg"
+          w="810px"
+          h="980px"
+          objectFit="cover"
+          overflow="hidden"
+          pos="absolute"
+          right="-150px"
+          top="0"
+          opacity={
+            currentCategory === -1 ? 0.6 : currentCategory === 0 ? 0.9 : 0.2
+          }
+          filter={
+            currentCategory === -1
+              ? 'brightness(1) contrast(0.5) sepia(1) grayscale(0.6) hue-rotate(350deg) saturate(1.4)'
+              : currentCategory === 1
+              ? 'brightness(0.5) contrast(0.2) sepia(1) grayscale(0.6) hue-rotate(110deg) saturate(1)'
+              : ''
+          }
+        />
+
+        <Flex 
+          direction="column" 
+          align={{ base: 'center', lg: 'inherit' }}
+          // bg = "red"
           >
-            <Image
-              src={
-                currentCategory === -1
-                  ? '/assets/imgs/canal-bnk/Canal_Berneck.svg'
-                  : currentCategory === 0
-                  ? '/assets/imgs/canal-bnk/canal_bnk_materia.svg'
-                  : currentCategory === 1
-                  ? '/assets/imgs/canal-bnk/canal_bnk_materia.svg'
-                  : '/assets/imgs/canal-bnk/canal_bnk_mundo.svg'
-              }
-              w={{ base: '206px', lg: '210px' }}
-              // pb="42px"
-            />
-
-            <Box 
-              w={'100%'} 
-              marginTop={{ base: '20px', lg: '30px', xl: '40px' }}
-              // bg = "red"
-            >
-              {!seeOnlyPosts && (
-                <Text
-                  as="h1"
-                  // w="100%"
-                  fontWeight={800}
-                  // fontSize="21px"
-                  // letterSpacing="2.1px"
-                  color={
-                    currentCategory === -1
-                      ? '#436D5D'
-                      : currentCategory === 0
-                      ? 'green.900'
-                      : currentCategory === 1
-                      ? 'green.900'
-                      : 'white'
-                  }
-                >
-                  {currentCategory !== -1 && categories[currentCategory].name}
-                </Text>
-              )}
-
-              {!seeOnlyPosts && (
-                <Text
-                  as="h2"
-                  // width={{ base: '100%', lg: '130%' }}
-                  fontSize={{ base: '16px', lg: '20px' }}
-                  letterSpacing="-0.4px"
-                  color={
-                    currentCategory === -1
-                      ? '#436D5D'
-                      : currentCategory === 0
-                      ? 'green.900'
-                      : currentCategory === 1
-                      ? 'green.900'
-                      : 'white'
-                  }
-                >
-                  {(currentCategory !== -1 &&
-                    categories[currentCategory].description) ||
-                    'Nosso canal de conteúdos sobre madeira, inspiração e muito mais.'}
-                </Text>
-              )}
-
-              {seeOnlyPosts && (
-                <Text
-                  as="h1"
-                  w="75%"
-                  fontWeight={800}
-                  fontSize="21px"
-                  letterSpacing="2.1px"
-                  color={currentCategory === -1 ? 'green.900' : '#436D5D'}
-                >
-                  Todos os conteúdos
-                </Text>
-              )}
-            </Box>
-          </Flex>
-
           <Flex
-            width={{ base: '100%', lg: '70%', '2xl': '80%' }}
-            wrap={{ base: 'nowrap', lg: 'wrap' }}
-            justify="end"
-            gap={{ base: '8px', lg: '16px', xl: '22px' }}
-            direction={{
-              base: 'column',
-              lg: 'row'
+            data-testid="intro-header"
+            w="100%"
+            justifyContent="space-between"
+            zIndex={100}
+            direction={{ base: 'column', lg: 'row' }}
+            padding={{
+              base: '5% 5% 0 5%',
+              md: '5% 3% 0 5%',
+              xl: '5% 5% 0 3%',
+              '2xl': '2% 0% 0 4%'
             }}
-            marginTop={{ base: '30px', lg: '0' }}
-            alignItems={{ base: 'center', lg: 'flex-start' }}
-            height={{ base: 'auto', lg: '150px' }}
-            // bg="yellow"
+            // bg = "yellow"
           >
-            <NavButton
-              hideArrow
-              justify="center"
-              selected={currentCategory === -1}
-              onClick={() => changeCurrentCategory(-1)}
-              color={'green.900'}
-              borderColor={currentCategory === -1 ? 'brown.200' : 'white'}
-            >
-              VER TUDO
-            </NavButton>
-
-            {categories.length > 0 && (
-              <NavButton
-                justify={{ base: 'space-between', lg: 'center' }}
-                selected={currentCategory === 0}
-                onClick={() => changeCurrentCategory(0)}
-                color={currentCategory === 0 ? 'green.900' : 'gray.360'}
-                borderColor={
-                  currentCategory === -1 || currentCategory === 0
-                    ? 'brown.200'
-                    : 'white'
-                }
-              >
-                {categories[0].name}
-              </NavButton>
-            )}
-
-            {categories.length > 1 && (
-              <NavButton
-                justify={{ base: 'space-between', lg: 'center' }}
-                selected={currentCategory === 1}
-                onClick={() => changeCurrentCategory(1)}
-                color={currentCategory === 1 ? 'green.900' : 'gray.360'}
-                borderColor={
-                  currentCategory === -1 || currentCategory === 1
-                    ? 'green.250'
-                    : 'white'
-                }
-              >
-                {categories[1].name}
-              </NavButton>
-            )}
-
-            {categories.length > 2 && (
-              <NavButton
-                justify={{ base: 'space-between', lg: 'center' }}
-                selected={currentCategory === 2}
-                onClick={() => changeCurrentCategory(2)}
-                color={currentCategory === 2 ? 'green.900' : 'gray.360'}
-                borderColor={
-                  currentCategory === -1 || currentCategory === 2
-                    ? 'green.600'
-                    : 'white'
-                }
-              >
-                {categories[2].name}
-              </NavButton>
-            )}
-          </Flex>
-        </Flex>
-
-        <Section
-          w="100%"
-          zIndex={100}
-          {...(!seeOnlyPosts && {
-            seeMore: {
-              text: 'Veja mais conteúdos',
-              link: `/canal-bnk/${currentCategory}`,
-              onClick: () => setSeeOnlyPosts(true),
-              textColor:
-                currentCategory === -1
-                  ? 'green.600'
-                  : currentCategory === 0
-                  ? 'brown.300'
-                  : 'white.100'
-            }
-          })}
-        >
-          {!seeOnlyPosts && (
             <Flex
-              direction={{ base: 'column', md: 'row' }}
-              // bg = "blue"
+              direction="row"
+              alignSelf={{ base: 'flex-start' }}
+              w={{ lg: '100%', xl: '100%' }}
+              // bg="blue"
             >
-              <Flex
-                // bg = "black"
-                flex={{ base: '1', md: '2' }}
-                justifyContent={{ md: 'space-between' }}
+              <Image
+                src={
+                  currentCategory === -1
+                    ? '/assets/imgs/canal-bnk/Canal_Berneck.svg'
+                    : currentCategory === 0
+                    ? '/assets/imgs/canal-bnk/canal_bnk_materia.svg'
+                    : currentCategory === 1
+                    ? '/assets/imgs/canal-bnk/canal_bnk_materia.svg'
+                    : '/assets/imgs/canal-bnk/canal_bnk_mundo.svg'
+                }
+                w={{ base: '150px', lg: '160px' }}
+              />
+
+              <Box
+                w={{ base: '100%', xl: '60%' }}
+                // flex="1"
+                // marginTop={{ base: '20px', lg: '30px', xl: '40px' }}
+                // bg="green"
+                padding={"5%"}
               >
-                {props.posts.length > 0 && <HeroPost post={props.posts[0]} />}
-              </Flex>
-              
-              <Flex
-                // bg = "green"
-                flex={{ base: '1', md: '1' }}
-                flexDirection={{ base: 'row', md: 'column' }}
-                justifyContent={{ md: 'space-between' }}
-                overflowX={{ base: 'scroll', md: 'hidden' }}
-                overflowY={{ base: 'hidden', md: 'hidden' }}
-                w={{ base: '100vw', md: '100%' }}
-                gap={{ base: '5%', md: '2%' }}
-                paddingBottom={{ base: '2%', md: '1%' , lg: '3%'}}
-                margin={{ base: '5% 10% 5% 5%', md: '3% 3% 3% 0' }}
-                css={{
-                  '-webkit-scrollbar': {
-                    display: 'none'
-                  },
-                  '-ms-overflow-style': 'none',
-                  'scrollbar-width': 'none'
+                {!seeOnlyPosts && (
+                  <Text
+                    as="h5"
+                    variant={'h5'} 
+                    fontWeight = 'bold'
+                    color={
+                      currentCategory === -1
+                        ? '#436D5D'
+                        : currentCategory === 0
+                        ? 'green.900'
+                        : currentCategory === 1
+                        ? 'green.900'
+                        : 'white'
+                    }
+                  >
+                    {currentCategory !== -1 && categories[currentCategory].name}
+                  </Text>
+                )}
+
+                {!seeOnlyPosts && (
+                  <Text
+                    as="h5"
+                    variant={'h5'} 
+                    fontWeight = 'normal'
+                    color={
+                      currentCategory === -1
+                        ? '#436D5D'
+                        : currentCategory === 0
+                        ? 'green.900'
+                        : currentCategory === 1
+                        ? 'green.900'
+                        : 'white'
+                    }
+                  >
+                    {(currentCategory !== -1 && (
+                      <HtmlTextParser>
+                        {categories[currentCategory].description}
+                      </HtmlTextParser>
+                    )) ||
+                      channelBnkLabels.t('introSection.channelDescription')}
+                  </Text>
+                )}
+
+                {seeOnlyPosts && (
+                  <Text
+                    as="h5"
+                    variant={'h5'} 
+                    fontWeight = 'bold' 
+                    color={
+                      currentCategory === -1 || currentCategory == 2
+                        ? 'green.900'
+                        : '#436D5D'
+                    }
+                  >
+                    {props.tagsSearch && props.tagName
+                      ? `${channelBnkLabels.t('introSection.searchResult')} ${
+                          props.tagName
+                        }`
+                      : channelBnkLabels.t('introSection.allContents')}
+                  </Text>
+                )}
+              </Box>
+            </Flex>
+
+            <Flex
+              // width={{ base: '100%', lg: '70%', '2xl': '60%' }}
+              wrap={{ base: 'nowrap', lg: 'wrap', '2xl': 'nowrap' }}
+              justify="end"
+              gap={{ base: '8px', lg: '8px', xl: '14px' }}
+              direction={{
+                base: 'column',
+                lg: 'row'
+              }}
+              marginTop={{ base: '30px', lg: '0' }}
+              alignItems={{ base: 'center', lg: 'center' }}
+              // height={{ base: 'auto', lg: '150px' }}
+              // bg = "pink"
+            >
+              {/* <NavButton
+                hideArrow
+                justify="center"
+                selected={currentCategory === -1}
+                onClick={() => {
+                  if (props.tagsSearch) {
+                    router.push('/canal-bnk')
+                  } else {
+                    changeCurrentCategory(-1)
+                  }
                 }}
+                color={'green.900'}
+                borderColor={currentCategory === -1 ? 'brown.200' : 'white'}
               >
-              
+                {channelBnkLabels.t('introSection.seeAll')}
+              </NavButton> */}
+
+              {categories.length > 0 && (
+                <NavButton
+                  justify={{ base: 'space-between', lg: 'center' }}
+                  selected={currentCategory === 0}
+                  onClick={() => changeCurrentCategory(0)}
+                  color={currentCategory === 0 ? 'green.900' : 'gray.360'}
+                  borderColor={
+                    currentCategory === -1 || currentCategory === 0
+                      ? 'brown.200'
+                      : 'white'
+                  }
+                >
+                  {categories[0].name}
+                </NavButton>
+              )}
+
+              {categories.length > 1 && (
+                <NavButton
+                  justify={{ base: 'space-between', lg: 'center' }}
+                  selected={currentCategory === 1}
+                  onClick={() => changeCurrentCategory(1)}
+                  color={currentCategory === 1 ? 'green.900' : 'gray.360'}
+                  borderColor={
+                    currentCategory === -1 || currentCategory === 1
+                      ? 'green.250'
+                      : 'white'
+                  }
+                >
+                  {categories[1].name}
+                </NavButton>
+              )}
+
+              {categories.length > 2 && (
+                <NavButton
+                  justify={{ base: 'space-between', lg: 'center' }}
+                  selected={currentCategory === 2}
+                  onClick={() => changeCurrentCategory(2)}
+                  color={currentCategory === 2 ? 'green.900' : 'gray.360'}
+                  borderColor={
+                    currentCategory === -1 || currentCategory === 2
+                      ? 'green.600'
+                      : 'white'
+                  }
+                >
+                  {categories[2].name}
+                </NavButton>
+              )}
+            </Flex>
+          </Flex>
+
+
+          <Flex
+            w="100%"
+            zIndex={100}
+            // bg="black"
+          >
+
+          {/* <Section
+            w="100%"
+            zIndex={100}
+            {...(!seeOnlyPosts && {
+              seeMore: {
+                text: channelBnkLabels.t('introSection.seeMore'),
+                link: `/canal-bnk/${currentCategory}`,
+                onClick: () => setSeeOnlyPosts(true),
+                textColor:
+                  currentCategory === -1
+                    ? 'green.550'
+                    : currentCategory === 0
+                    ? 'brown.300'
+                    : 'white.100'
+              }
+            })}
+          > */}
+            {/* INICIO SECTION CANAL BNK */}
+            {!seeOnlyPosts && (
+              <Flex
+                direction={{ base: 'column', xl: 'row' }}
+                margin={{ base: '0', '2xl': '1% 0 0 3.5%' }}
+              >
+                <Flex
+                  flex={{ base: '1', xl: '1.5' }}
+                  maxH={{ xl: '700', '2xl': '540' }}
+                  // bg="blue"
+                >
+                  {props.posts.length > 0 && <HeroPost post={props.posts[0]} />}
+                </Flex>
+
+                <Flex
+                  flex={{ base: '1' }}
+                  flexDirection={{ base: 'row', xl: 'column' }}
+                  // justifyContent={{ xl: 'space-evenly' }}
+                  overflowX={{ base: 'scroll', xl: 'hidden' }}
+                  overflowY={{ base: 'hidden', xl: 'scroll', '2xl': 'hidden' }}
+                  w={{ base: '100vw', xl: '100%' }}
+                  maxH={'650px'}
+                  gap={{ base: '5%', xl: '5%' }}
+                  margin={{
+                    base: '5% 10% 5% 5%',
+                    md: '0% 0% 3% 5%',
+                    xl: '3% 3% 3% 0',
+                    '2xl': '0% 0% 0% 0'
+                  }}
+                  css={{
+                    '-webkit-scrollbar': {
+                      display: 'none'
+                    },
+                    '-ms-overflow-style': 'none',
+                    'scrollbar-width': 'none'
+                  }}
+                >
                   {/* INICIO SECTION CANAL BNK */}
                   {props.posts.length > 1 && (
                     <ChannelBnkRelationalItem
-                      categoryTitle = {props.posts[1].category.name}
-                      categoryId = {props.posts[1].category.id}
-                      url_code = {props.posts[1].url_code}
-                      urlImage = {props.posts[1].cover}
-                      title = {props.posts[1].title}
-                      color = {props.posts[1].category.color}
+                      categoryTitle={props.posts[1].category.name}
+                      categoryId={props.posts[1].category.id}
+                      url_code={props.posts[1].url_code}
+                      urlImage={props.posts[1].cover}
+                      title={props.posts[1].title}
+                      color={props.posts[1].category.color}
                       showInvert
-                      currentCategory = {currentCategory}
+                      currentCategory={currentCategory}
                     />
                   )}
                   {props.posts.length > 2 && (
                     <ChannelBnkRelationalItem
-                      categoryTitle = {props.posts[2].category.name}
-                      categoryId = {props.posts[2].category.id}
-                      url_code = {props.posts[2].url_code}
-                      urlImage = {props.posts[2].cover}
-                      title = {props.posts[2].title}
-                      color = {props.posts[2].category.color}
+                      categoryTitle={props.posts[2].category.name}
+                      categoryId={props.posts[2].category.id}
+                      url_code={props.posts[2].url_code}
+                      urlImage={props.posts[2].cover}
+                      title={props.posts[2].title}
+                      color={props.posts[2].category.color}
                       showInvert
-                      currentCategory = {currentCategory}
+                      currentCategory={currentCategory}
                     />
                   )}
                   {props.posts.length > 3 && (
                     <ChannelBnkRelationalItem
-                      categoryTitle = {props.posts[3].category.name}
-                      categoryId = {props.posts[3].category.id}
-                      url_code = {props.posts[3].url_code}
-                      urlImage = {props.posts[3].cover}
-                      title = {props.posts[3].title}
-                      color = {props.posts[3].category.color}
+                      categoryTitle={props.posts[3].category.name}
+                      categoryId={props.posts[3].category.id}
+                      url_code={props.posts[3].url_code}
+                      urlImage={props.posts[3].cover}
+                      title={props.posts[3].title}
+                      color={props.posts[3].category.color}
                       showInvert
-                      
                     />
                   )}
                   {/* FIM SECTION CANAL BNK */}
-
-              
+                </Flex>
               </Flex>
-            </Flex>
-          )}
+            )}
 
-          {seeOnlyPosts && (
-            <Flex
-              //gap="58px"
-             // paddingBottom="200px"
-              direction="column"
-              align="center"
-              // w="100%"
-            >
-              {props.posts?.map((post, j) => (
-                <Post
-                  showDate
-                  showShareOptions
-                  showPreview
-                  key={j}
-                  post={post}
-                  //h="821px"
-                  w={{ base: '100%', xl: '1014px' }}
-                />
-              ))}
-            </Flex>
-          )}
-        </Section>
+            {seeOnlyPosts && (
+              <Flex direction="column" align="center">
+                {props.posts?.map((post, j) => (
+                  <Post
+                    showDate
+                    showContent
+                    showShareOptions
+                    key={j}
+                    post={post}
+                    h={{ xl: '821px' }}
+                    w={{ base: '90%', lg: '60%', xl: '55%' }}
+                  />
+                ))}
+              </Flex>
+            )}
+
+           
+
+
+          </Flex>
+        
+          <Flex
+            // bg="red"
+            zIndex={100}
+            direction="column"
+            alignSelf={{ base: 'flex-end' }}
+            justify={{ base: 'center' }}
+            w={{ lg: '100%', xl: '100%' }}
+            h={{ lg: '20px', xl: '50px' }}
+          >
+          
+              <Section
+                w="100%"
+                zIndex={100}
+                {...(!seeOnlyPosts && {
+                  seeMore: {
+                    text: channelBnkLabels.t('introSection.seeMore'),
+                    link: `/canal-bnk/${currentCategory}`,
+                    onClick: () => setSeeOnlyPosts(true),
+                    textColor:
+                      currentCategory === -1
+                        ? 'green.550'
+                        : currentCategory === 0
+                        ? 'brown.300'
+                        : 'white.100'
+                  }
+                })}
+                py={{ base: '54px', lg: '100px' }}
+                px={{ base: '20px', lg: '5%', '2xl': '1%' }}
+                maxWidth={'1536px'}
+              /> 
+
+            </Flex> 
+
+        </Flex>
       </Flex>
     </Box>
   )
 }
 
 const HeroPost = (props: { post: IPost }) => {
-  return (
-    <Post
-      w={{
-        base: '92%',
-        lg: '90%',
-        xl: '550px',
-      }}
-      post={props.post}
-    />
-  )
-}
-
-const SmallPost = (props: { post: IPost }) => {
-  const { isMobile } = useMobile(1024)
-
-  return (
-    <Post
-      //h={{ base: '376px', lg: '190px' }}
-      // w={{
-      //   base: '250px',
-      //   md: '400px',
-      //   lg: '980px',
-      //   xl: '500px',
-      //   '2xl': '684px'
-      // }}
-      imgPos={isMobile ? 'top' : 'left'}
-      post={props.post}
-    />
-  )
+  return <Post post={props.post} />
 }
 
 export interface NavButtonProps extends ButtonProps {
@@ -428,8 +476,8 @@ export const NavButton = (props: NavButtonProps) => {
   return (
     <Button
       as="button"
-      h="62px"
-      w={{ base: '100%', lg: 'auto' }}
+      h={{ base: '50px', xl: '50px' }}
+      w={{ base: '100%', xl: '80%' }}
       border="2px solid"
       borderRadius="17px"
       color={'gray.350'}
@@ -443,35 +491,35 @@ export const NavButton = (props: NavButtonProps) => {
       <Flex
         align="center"
         justify={justify ?? 'center'}
-        gap="20px"
+        gap="10px"
         w="100%"
-        px={{ base: '21px', lg: '37px' }}
+        px={{ base: '21px', lg: '30px' }}
         py={{ base: '17px', lg: '21px' }}
-        // bg="pink"
       >
         <Text
-          as="h5" 
-          variant={'h5' as any}
-          textColor = {"black"}
-          letterSpacing= {{
-            base: '2px',
-            xl: '3px'
+          as="h5"
+          variant="h5"
+          textColor={'black'}
+          letterSpacing={{
+            base: '1.4px',
+            xl: '2px'
           }}
-          fontSize = {{ base: '9px', sm: '13px', lg: '14px', xl: '16px' }}
+          fontSize={{ base: '10px', sm: '10px', lg: '10px', xl: '10px' }}
         >
           {children}
         </Text>
 
         {!hideArrow && (
-          <Arrow 
-            color={borderColor as string} 
-            width = {{
+          <Arrow
+            color={borderColor as string}
+            width={{
               base: '8px',
               md: '10px',
               lg: '10px',
               xl: '12px'
-            }} 
-            height="21px" />
+            }}
+            height="21px"
+          />
         )}
       </Flex>
     </Button>

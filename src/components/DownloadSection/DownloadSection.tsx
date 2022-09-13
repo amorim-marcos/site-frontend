@@ -7,6 +7,8 @@ import {
   FlexProps,
   Link
 } from '@chakra-ui/react'
+import Arrow from '@components/Arrow'
+import HtmlTextParser from '@components/HtmlTextParser'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import useMobile from 'hooks/useMobile'
 import { useState } from 'react'
@@ -62,7 +64,7 @@ export const DownloadSection = ({
         {title}
       </Text>
       <Text variant={'body' as any} color="green.900" zIndex="docked">
-        {description}
+        <HtmlTextParser>{description}</HtmlTextParser>
       </Text>
 
       <Box
@@ -92,72 +94,79 @@ export const DownloadSection = ({
           md: itemsData.length > 4 ? 'space-between' : 'flex-start'
         }}
       >
-        {itemsData.map((item, i) => {
-          return i < 5 ? (
-            <Item
-              key={i}
-              url={item.downloadUrl}
-              cursor={'pointer'}
-              display={i < 1 ? { base: 'flex' } : { base: 'none', md: 'flex' }}
-              imageUrl={item.urlImage}
-              title={item.title}
-              marginRight={
-                itemsData.length <= 4 ? { base: '0', md: '3.5%' } : '0'
-              }
-            />
-          ) : (
-            ''
-          )
-        })}
+        {itemsData
+          ? itemsData.map((item, i) => {
+              return i < 5 ? (
+                <Item
+                  key={i}
+                  url={item.downloadUrl}
+                  cursor={'pointer'}
+                  display={
+                    i < 1 ? { base: 'flex' } : { base: 'none', md: 'flex' }
+                  }
+                  imageUrl={item.urlImage}
+                  title={item.title}
+                  marginRight={
+                    itemsData.length <= 4 ? { base: '0', md: '3.5%' } : '0'
+                  }
+                />
+              ) : (
+                ''
+              )
+            })
+          : []}
       </Flex>
-      <Flex
-        position="absolute"
-        left="0px"
-        right="0px"
-        marginX="auto"
-        w="fit-content"
-        bottom={{ base: '-17px', md: '-25px', lg: '-30px', xl: '-38px' }}
-      >
-        <Button
-          onMouseEnter={() => setHoverBtnControl(true)}
-          onMouseLeave={() => setHoverBtnControl(false)}
-          variant="no-border"
-          background="gray.300"
-          color="gray.150"
-          w={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
-          h={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
-          _hover={{
-            background: 'green.600',
-            color: 'white.100'
-          }}
-          onClick={avanceRight}
+      {(items.length > 5 || isMobile) && (
+        <Flex
+          position="absolute"
+          left="0px"
+          right="0px"
+          marginX="auto"
+          w="fit-content"
+          bottom={{ base: '-20px', sm: '-20px', lg: '-30px', xl: '-30px' }}
         >
-          <ArrowIcon
-            direction="left"
-            stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
-            width="40%"
-          />
-        </Button>
-        <Button
-          onMouseEnter={() => setHoverBtnControl(true)}
-          onMouseLeave={() => setHoverBtnControl(false)}
-          variant="no-border"
-          background="gray.300"
-          color="gray.150"
-          w={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
-          h={{ base: '35px', md: '50px', lg: '60px', xl: '77px' }}
-          _hover={{
-            background: 'green.600',
-            color: 'white.100'
-          }}
-          onClick={avanceLeft}
-        >
-          <ArrowIcon
-            width="40%"
-            stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
-          />
-        </Button>
-      </Flex>
+          <Button
+            onMouseEnter={() => setHoverBtnControl(true)}
+            onMouseLeave={() => setHoverBtnControl(false)}
+            variant="no-border"
+            background="gray.300"
+            color="gray.150"
+            w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+            h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+            _hover={{
+              background: 'green.550',
+              color: 'white.100'
+            }}
+            onClick={avanceLeft}
+          >
+            {isMobile ? (
+              <Arrow width="5" height="5" direction="left" />
+            ) : (
+              <Arrow width="22" height="30" direction="left" />
+            )}
+          </Button>
+          <Button
+            onMouseEnter={() => setHoverBtnControl(true)}
+            onMouseLeave={() => setHoverBtnControl(false)}
+            variant="no-border"
+            background="gray.300"
+            color="gray.150"
+            w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+            h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+            _hover={{
+              background: 'green.550',
+              color: 'white.100'
+            }}
+            onClick={avanceRight}
+          >
+            {isMobile ? (
+              <Arrow width="5" height="5" direction="right" />
+            ) : (
+              <Arrow width="22" height="30" direction="right" />
+            )}
+          </Button>
+        </Flex>
+      )}
     </Flex>
   )
 }

@@ -1,16 +1,19 @@
 import { Box, Text, Button, Link } from '@chakra-ui/react'
 import CookieConsent from 'react-cookie-consent'
+import { useTranslation } from 'react-i18next'
 
 export const AppCookieConsent = () => {
+  const componentsLabels = useTranslation('components')
   return (
-    <Box maxWidth={'1920px'} marginX="auto">
+    <Box maxWidth={'1536px'} marginX="auto">
       <CookieConsent
         style={{
           background: '#595959',
           padding: '0 3%',
           fontSize: '90%',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          zIndex: '1700'
         }}
         buttonStyle={{
           background: '#59993F',
@@ -25,14 +28,17 @@ export const AppCookieConsent = () => {
         cookieName="cookieAccepted"
         expires={30}
       >
-        <Text variant={'body' as any}>
-          O site da Berneck S.A utiliza cookies para uma experiência mais
-          satisfatória e personalizada.
+        <Text variant={'body' as any} color="#FFFFFF">
+          {componentsLabels.t('appCookieConsent.satisfactoryExperience')}
           <br />
-          Ao navegar neste ambiente digital você estará sujeito à coleta dos
-          cookies descritos na{' '}
-          <Link color={'green.600'} href="/politica-de-privacidade">
-            Política de Privacidade.
+          {componentsLabels.t('appCookieConsent.cookieCollect')}{' '}
+          <Link
+            color={'#ACCC9F'}
+            _hover={{ color: '#59993F' }}
+            textDecoration="underline"
+            href="/politica-de-privacidade"
+          >
+            {componentsLabels.t('appCookieConsent.privacy')}
           </Link>
         </Text>
       </CookieConsent>
@@ -41,6 +47,8 @@ export const AppCookieConsent = () => {
 }
 
 const ConsentButton = (props: { onClick: () => void }) => {
+  const componentsLabels = useTranslation('components')
+
   return (
     <Button
       onClick={props.onClick}
@@ -49,7 +57,7 @@ const ConsentButton = (props: { onClick: () => void }) => {
       marginY={{ md: '15px' }}
       marginBottom={{ base: '15px', md: '15px' }}
     >
-      PROSSEGUIR
+      {componentsLabels.t('appCookieConsent.btn')}
     </Button>
   )
 }

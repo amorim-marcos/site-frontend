@@ -1,4 +1,6 @@
 import { Text, Flex, Box } from '@chakra-ui/react'
+import Arrow from '@components/Arrow'
+import ArrowIcon from '@components/Icons/ArrowIcon'
 import Link from 'next/link'
 import useMobile from '../../../../hooks/useMobile'
 
@@ -8,6 +10,7 @@ export type HeaderMenuSubItemProps = {
   subItems?: {
     title?: string
     href?: string
+    arrow?: boolean
   }[]
   onClick?: () => void
 }
@@ -26,8 +29,7 @@ export const HeaderMenuSubItem = ({
             base: '15px',
             md: '12px',
             lg: '15px',
-            xl: '20px',
-            '2xl': '25px'
+            xl: '20px'
           }}
           cursor="pointer"
           _hover={{ md: { bg: subItems ? 'green.800' : '#79B928' } }}
@@ -36,8 +38,7 @@ export const HeaderMenuSubItem = ({
             base: '60px',
             md: '30px',
             lg: '35px',
-            xl: '40px',
-            '2xl': '50px'
+            xl: '40px'
           }}
           w={{ base: '100%', md: '100%' }}
           bg={{ base: 'green.700', md: 'green.800' }}
@@ -49,8 +50,7 @@ export const HeaderMenuSubItem = ({
               base: '14px',
               md: '8.3px',
               lg: '10px',
-              xl: '13px',
-              '2xl': '16.5px'
+              xl: '13px'
             }}
             color="white.100"
             variant={'header-menu' as any}
@@ -69,8 +69,7 @@ export const HeaderMenuSubItem = ({
                   base: '15px',
                   md: '12px',
                   lg: '15px',
-                  xl: '20px',
-                  '2xl': '25px'
+                  xl: '20px'
                 }}
                 cursor="pointer"
                 _hover={{ bg: '#79B928' }}
@@ -79,19 +78,29 @@ export const HeaderMenuSubItem = ({
                   base: '40px',
                   md: '30px',
                   lg: '35px',
-                  xl: '40px',
-                  '2xl': '50px'
+                  xl: '40px'
                 }}
                 w="100%"
                 bg="green.700"
               >
+                {i.arrow && (
+                  <ArrowIcon
+                    stroke="#CCD3CA"
+                    w={{
+                      base: '8px',
+                      md: '5px',
+                      lg: '6px',
+                      xl: '8px'
+                    }}
+                  />
+                )}
                 <Text
+                  ml={i.arrow ? '10px' : '0'}
                   fontSize={{
                     base: '14px',
                     md: '8.3px',
                     lg: '10px',
-                    xl: '13px',
-                    '2xl': '16.5px'
+                    xl: '13px'
                   }}
                   color="white.100"
                   variant={'header-menu-small' as any}

@@ -1,4 +1,5 @@
 import { Flex, Box, Text } from '@chakra-ui/react'
+import HtmlTextParser from '@components/HtmlTextParser'
 import PlusInfoTable from '@components/PlusInfoTable'
 import { PlusInfoTableProps } from '@components/PlusInfoTable/PlusInfoTable'
 
@@ -24,98 +25,178 @@ export const PlusTestInfo = ({
   tableInfo
 }: PlusTestInfoProps) => {
   return (
-    <Box
-      aria-label="plusTestinfoContainer"
-      bg="#E8E8E8"
-      maxWidth="1920px"
-      marginX="auto"
-      padding="5%"
-    >
-      <Text variant={'productTitle' as any}>{title}</Text>
-      <Text variant={'productBody' as any} width={{ base: '100%', sm: '44%' }}>
-        {description}
-      </Text>
-      <Flex
-        paddingY={{
-          base: '20px',
-          sm: '10px',
-          md: '20px',
-          lg: '30px',
-          xl: '40px',
-          '2xl': '50px'
-        }}
-        justifyContent="space-evenly"
-        alignItems="center"
-        position="relative"
-        marginTop="30px"
-        backgroundImage={{
-          base: "url('/img/fundo_caminho90deg.png')",
-          sm: "url('/img/fundo_caminho.png')"
-        }}
-        backgroundRepeat="no-repeat"
-        backgroundSize={{ base: '100%' }}
-        flexDirection={{ base: 'column', sm: 'row' }}
+    <Box bg="#E8E8E8">
+      <Box
+        aria-label="plusTestinfoContainer"
+        bg="#E8E8E8"
+        maxWidth="1536px"
+        marginX="auto"
+        padding={{ base: '5%', '2xl': '3%' }}
       >
-        <Flex
-          marginY={{ base: '40px', sm: '0' }}
-          w={{ base: '80%', sm: '30%' }}
-          zIndex="docked"
+        <Text
+          as={'h3'}
+          variant={'h3'}
+          color="green.900"
+          fontWeight={'extrabold'}
         >
-          <Text variant={'berneckPlusTestInfoNumber' as any}>1</Text>
-          <Text variant={'productBody' as any}>
-            {testSteps && testSteps.first}
-          </Text>
-        </Flex>
-        <Flex
-          marginY={{ base: '40px', sm: '0' }}
-          w={{ base: '80%', sm: '30%' }}
-          zIndex="docked"
-        >
-          <Text variant={'berneckPlusTestInfoNumber' as any}>2</Text>
-          <Text variant={'productBody' as any}>
-            {testSteps && testSteps.second}
-          </Text>
-        </Flex>
-        <Flex
-          marginY={{ base: '40px', sm: '0' }}
-          w={{ base: '80%', sm: '30%' }}
-          zIndex="docked"
-        >
-          <Text variant={'berneckPlusTestInfoNumber' as any}>3</Text>
-          <Text variant={'productBody' as any}>
-            {testSteps && testSteps.third}
-          </Text>
-        </Flex>
-      </Flex>
+          {title}
+        </Text>
+        <Text width={{ base: '100%', md: '44%' }}>
+          <HtmlTextParser>{description}</HtmlTextParser>
+        </Text>
 
-      <Flex
-        justifyContent="space-between"
-        flexDirection={{ base: 'column', sm: 'row' }}
-      >
-        <Box width={{ base: '90%', sm: '40%' }}>
-          <Text marginTop="40px" variant={'productTitle' as any}>
-            {extraInfoTitle}
-          </Text>
+        <Flex
+          padding={{
+            base: '2% 0 4% 0',
+            md: '2% 0 2% 0',
+            lg: '2% 0 2% 0',
+            xl: '2% 0 5% 0',
+            '2xl': '2% 0 2% 0'
+          }}
+          margin={{
+            base: '2% 0 4% 0',
+            md: '2% 0 2% 0',
+            lg: '2% 0 2% 0',
+            xl: '2% 0 2% 0',
+            '2xl': '2% 0 5% 0'
+          }}
+          justifyContent="space-evenly"
+          position="relative"
+          backgroundImage={{
+            base: "url('/img/fundo_caminho90deg.png')",
+            md: "url('/img/fundo_caminho.png')"
+          }}
+          backgroundRepeat="no-repeat"
+          backgroundSize={{ base: '120%' }}
+          flexDirection={{ base: 'column', md: 'row' }}
+          backgroundColor="#BCDBB0"
+          // border="1px solid red"
+        >
+          {/* LINHA 1 */}
+          <Flex
+            marginY={{ base: '3%', md: '0' }}
+            w={{ base: '80%', md: '30%' }}
+            zIndex="docked"
+            alignItems="flex-start"
+            flexDirection={'row'}
+          >
+            <Flex
+              alignItems="flex-start"
+              padding={{ base: '5%', sm: '5%', md: '2%', '2xl': '4%' }}
+              mt={{ base: '-5%', sm: '-4%', md: '-3%', '2xl': '-4%' }}
+            >
+              <Text variant={'berneckPlusTestInfoNumber' as any}>1</Text>
+            </Flex>
+            <Flex padding={'2%'}>
+              <Text>
+                {testSteps && (
+                  <HtmlTextParser>{testSteps.first}</HtmlTextParser>
+                )}
+              </Text>
+            </Flex>
+          </Flex>
 
-          <Box>
-            {extraInfoBody &&
-              extraInfoBody.map((e, j) => <ItemCite key={j} text={e} />)}
+          {/* LINHA 2 */}
+          <Flex
+            marginY={{ base: '3%', md: '0' }}
+            w={{ base: '80%', md: '30%' }}
+            zIndex="docked"
+            alignItems="flex-start"
+            flexDirection={'row'}
+          >
+            <Flex
+              alignItems="flex-start"
+              padding={{ base: '5%', sm: '5%', md: '2%', '2xl': '4%' }}
+              mt={{ base: '-5%', sm: '-4%', md: '-3%', '2xl': '-4%' }}
+            >
+              <Text variant={'berneckPlusTestInfoNumber' as any}>2</Text>
+            </Flex>
+            <Flex padding={'2%'}>
+              <Text>
+                {testSteps && (
+                  <HtmlTextParser>{testSteps.second}</HtmlTextParser>
+                )}
+              </Text>
+            </Flex>
+          </Flex>
+
+          {/* LINHA 3 */}
+          <Flex
+            w={{ base: '80%', md: '30%' }}
+            zIndex="docked"
+            alignItems="flex-start"
+            flexDirection={'row'}
+          >
+            <Flex
+              alignItems="flex-start"
+              padding={{ base: '5%', sm: '5%', md: '2%', '2xl': '4%' }}
+              mt={{ base: '-5%', sm: '-4%', md: '-3%', '2xl': '-4%' }}
+            >
+              <Text variant={'berneckPlusTestInfoNumber' as any}>3</Text>
+            </Flex>
+            <Flex padding={'2%'}>
+              <Text>
+                {testSteps && (
+                  <HtmlTextParser>{testSteps.third}</HtmlTextParser>
+                )}
+              </Text>
+            </Flex>
+          </Flex>
+        </Flex>
+
+        <Flex
+          flexDirection={{ base: 'column', lg: 'row' }}
+          justifyContent={{ base: 'space-between', md: 'center' }}
+          alignItems={{ base: 'center', md: 'center' }}
+          // border="1px solid red"
+          width={{ base: '100%', lg: 'auto' }}
+        >
+          <Box
+            width={{ base: '100%', lg: '60%' }}
+            // border="1px solid blue"
+          >
+            <Text
+              margin={{
+                base: '2%',
+                md: '3%',
+                lg: '5%',
+                xl: '5%',
+                '2xl': '5%'
+              }}
+              as={'h3'}
+              variant={'h3'}
+              color="green.900"
+              fontWeight={'extrabold'}
+            >
+              {extraInfoTitle}
+            </Text>
+            <Box>
+              {extraInfoBody &&
+                extraInfoBody.map((e, j) => <ItemCite key={j} text={e} />)}
+            </Box>
           </Box>
-        </Box>
-        <Box>{tableInfo && <PlusInfoTable rows={tableInfo.rows} />}</Box>
-      </Flex>
+          <Box
+            bg="#F3F3F3"
+            padding={'2%'}
+            marginLeft={{ md: '2%' }}
+            maxWidth={{ base: '400px', md: '100vw' }}
+            overflowX={{ base: 'scroll', md: 'visible' }}
+          >
+            {tableInfo && <PlusInfoTable rows={tableInfo.rows} />}
+          </Box>
+        </Flex>
+      </Box>
     </Box>
   )
 }
 
 const ItemCite = ({ text = '' }) => {
   return (
-    <Flex marginBottom="5px">
+    <Flex marginBottom="5%">
       <Box
         margin={{
           base: '3px',
-          sm: '3px',
-          md: '4px',
+          md: '3px',
           lg: '6px',
           xl: '8px',
           '2xl': '10px'
@@ -123,17 +204,27 @@ const ItemCite = ({ text = '' }) => {
       >
         <ArrowIcon
           width={{
-            base: '10px',
-            sm: '3px',
+            base: '4px',
             md: '4px',
-            lg: '6px',
-            xl: '8px',
-            '2xl': '10px'
+            lg: '4px',
+            xl: '5px',
+            '2xl': '6px'
           }}
           stroke="green.600"
         />
       </Box>
-      <Text variant={'productBody' as any}>{text}</Text>
+      <Text
+        variant={'productBody' as any}
+        mt={{
+          base: '-3px',
+          md: '4px',
+          lg: '4px',
+          xl: '2px',
+          '2xl': '2px'
+        }}
+      >
+        <HtmlTextParser>{text}</HtmlTextParser>
+      </Text>
     </Flex>
   )
 }

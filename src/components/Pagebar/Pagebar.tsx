@@ -15,6 +15,7 @@ import { PagebarGrafism } from './PagebarGrafism/PagebarGrafism'
 import { useTranslation } from 'react-i18next'
 
 import { CategoryContext } from 'views/Canal-BNK/index'
+import Link from 'next/link'
 
 export type Path = {
   title: string
@@ -30,82 +31,155 @@ export const Pagebar = ({
   disconsiderCurrentPage = true
 }: PagebarProps) => {
   const { seeOnlyPosts, setSeeOnlyPosts } = useContext(CategoryContext)
-  const pagebar = useTranslation('pagebar')
+  const componentsLabels = useTranslation('components')
   const router = useRouter()
 
   return (
-    <Flex
-      display={{ base: 'none', sm: 'flex' }}
-      alignItems="center"
-      justifyContent="space-between"
-      bg="green.950"
-      maxWidth="1920px"
-      aria-label="pagebar-container"
-      marginX="auto"
-      h={{
-        base: '83px',
-        sm: '40px',
-        md: '50px',
-        lg: '60px',
-        xl: '70px',
-        '2xl': '83px'
-      }}
-      paddingLeft={{ base: '8%', sm: '4%', md: '7%', lg: '8%' }}
-      paddingRight={{ base: '4%' }}
-      position="relative"
-      zIndex="base"
+    <Box
+      bg="green.650"
+      // bgGradient='linear(to-r, green.650, green.950)'
     >
-      <Box
-        zIndex="dropdown"
-        cursor="pointer"
-        position="absolute"
-        top="35%"
-        left={{
-          base: '120px',
-          sm: '57px',
-          md: '70px',
-          lg: '84px',
-          xl: '97px',
-          '2xl': '120px'
+      <Flex
+        display={{ base: 'none', sm: 'flex' }}
+        maxWidth="1536px"
+        alignItems="center"
+        justifyContent="space-between"
+        bg="green.950"
+        aria-label="pagebar-container"
+        marginX="auto"
+        h={{
+          base: '83px',
+          sm: '35px',
+          md: '40px',
+          lg: '45px',
+          xl: '45px'
         }}
+        // paddingLeft={{ base: '8%', sm: '4%', md: '7%', lg: '6%' }}
+        // paddingRight={{ base: '2%', '2xl': '2%'  }}
+        position="relative"
+        zIndex="base"
       >
-        <HouseIcon
-          onClick={() => router.push('/')}
-          data-testid="house-icon"
-          width={{
-            base: '26px',
-            sm: '13px',
-            md: '16px',
-            lg: '19px',
-            xl: '22px',
-            '2xl': '26px'
-          }}
-          color="white.100"
-        />
-      </Box>
-      <Box position="absolute" left="0" zIndex="base">
-        <PagebarGrafism
-          height={{
-            base: '83px',
-            sm: '40px',
-            md: '50px',
-            lg: '60px',
-            xl: '70px',
-            '2xl': '83px'
-          }}
-        />
-      </Box>
-      <Flex alignItems="center" zIndex="docked" w="100%">
-        <Breadcrumb
-          marginLeft="70px"
-          separator={
-            <Box
-              marginX={{
+        <Flex
+          // bg="crimson"
+          flex="1"
+        >
+          <Box
+            // position="absolute"
+            left="0"
+            zIndex="base"
+            cursor={'pointer'}
+            onClick={() => router.push('/')}
+          >
+            <PagebarGrafism
+              height={{
                 base: '83px',
-                sm: '0px',
-                md: '3px',
+                sm: '35px',
+                md: '40px',
+                lg: '45px',
+                xl: '45px'
+              }}
+            />
+          </Box>
+        </Flex>
+
+        <Flex
+          alignItems="left"
+          zIndex="docked"
+          // w="100%"
+          // bg="blue"
+          flex="12"
+          marginX={{
+            base: '83px',
+            sm: '2%',
+            md: '1%',
+            lg: '1%',
+            xl: '1%',
+            '2xl': '0'
+          }}
+        >
+          <Breadcrumb
+            separator={
+              <Box>
+                <Arrow
+                  width={{
+                    base: '14px',
+                    sm: '6px',
+                    md: '8px',
+                    lg: '10px',
+                    xl: '11px'
+                  }}
+                  color="white.100"
+                />
+              </Box>
+            }
+          >
+            {paths &&
+              paths.map((s, i) => {
+                return (
+                  <BreadcrumbItem
+                    key={i}
+                    isCurrentPage={
+                      disconsiderCurrentPage && i === paths.length - 1
+                    }
+                  >
+                    <BreadcrumbLink
+                      color="white.100"
+                      href={
+                        router.locale ? `/${router.locale}/${s.url}` : s.url
+                      }
+                    >
+                      <Text
+                        // onClick={() => router.push(s.url)}
+                        color="white.100"
+                        fontSize={{
+                          base: '8px',
+                          sm: '11px',
+                          md: '12px',
+                          lg: '13px',
+                          xl: '14px'
+                        }}
+                        variant={
+                          (i === paths.length - 1
+                            ? 'breadcrumbs-selected'
+                            : 'breadcrumbs') as any
+                        }
+                      >
+                        {s.title}
+                      </Text>
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                )
+              })}
+          </Breadcrumb>
+
+          <Flex
+            _hover={{ opacity: '0.6' }}
+            onClick={() => {
+              if (seeOnlyPosts) {
+                setSeeOnlyPosts(false)
+              } else {
+                router.back()
+              }
+            }}
+            alignItems="center"
+            marginLeft="auto"
+            marginRight={{
+              base: '83px',
+              sm: '5px',
+              md: '8px',
+              lg: '6px',
+              xl: '10px',
+              '2xl': '10px'
+            }}
+          >
+            <Box
+              transform="rotate(180deg)"
+              marginRight={{
+                base: '83px',
+                sm: '5px',
+                md: '8px',
                 lg: '6px',
-                xl: '9px',
+                xl: '10px',
                 '2xl': '10px'
               }}
             >
@@ -115,100 +189,28 @@ export const Pagebar = ({
                   sm: '6px',
                   md: '8px',
                   lg: '10px',
-                  xl: '12px',
-                  '2xl': '14px'
+                  xl: '12px'
                 }}
-                color="white.100"
+                color="green.800"
               />
             </Box>
-          }
-        >
-          {paths &&
-            paths.map((s, i) => {
-              return (
-                <BreadcrumbItem
-                  key={i}
-                  isCurrentPage={
-                    disconsiderCurrentPage && i === paths.length - 1
-                  }
-                >
-                  <BreadcrumbLink color="white.100" href={s.url}>
-                    <Text
-                      color="white.100"
-                      fontSize={{
-                        base: '8px',
-                        sm: '12px',
-                        md: '14px',
-                        lg: '16.5px',
-                        xl: '19px',
-                        '2xl': '23.5px'
-                      }}
-                      variant={
-                        (i === paths.length - 1
-                          ? 'breadcrumbs-selected'
-                          : 'breadcrumbs') as any
-                      }
-                    >
-                      {s.title}
-                    </Text>
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-              )
-            })}
-        </Breadcrumb>
-
-        <Flex
-          _hover={{ opacity: '0.6' }}
-          onClick={() => {
-            if (seeOnlyPosts) {
-              setSeeOnlyPosts(false)
-            } else {
-              router.back()
-            }
-          }}
-          alignItems="center"
-          marginLeft="auto"
-        >
-          <Box
-            transform="rotate(180deg)"
-            marginRight={{
-              base: '83px',
-              sm: '0px',
-              md: '3px',
-              lg: '6px',
-              xl: '9px',
-              '2xl': '10px'
-            }}
-          >
-            <Arrow
-              width={{
-                base: '14px',
-                sm: '6px',
-                md: '8px',
-                lg: '10px',
-                xl: '12px',
-                '2xl': '15px'
+            <Text
+              color="green.900"
+              cursor="pointer"
+              variant={'breadcrumbs' as any}
+              fontSize={{
+                base: '8px',
+                sm: '11px',
+                md: '12px',
+                lg: '13px',
+                xl: '14px'
               }}
-              color="green.800"
-            />
-          </Box>
-          <Text
-            color="green.900"
-            cursor="pointer"
-            variant={'breadcrumbs' as any}
-            fontSize={{
-              base: '8px',
-              sm: '12px',
-              md: '14px',
-              lg: '16.5px',
-              xl: '19px',
-              '2xl': '23.5px'
-            }}
-          >
-            {pagebar.t('backBtn')}
-          </Text>
+            >
+              {componentsLabels.t('pagebar.back')}
+            </Text>
+          </Flex>
         </Flex>
       </Flex>
-    </Flex>
+    </Box>
   )
 }

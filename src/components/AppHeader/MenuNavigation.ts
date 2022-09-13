@@ -1,122 +1,124 @@
 export const menuNavigation = {
   speakWithUs: {
-    key: 'btn1',
+    key: 'topMenu.speakWithUs',
     href: '/contact'
   },
   workWithUs: {
-    key: 'btn2',
-    href: 'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup'
+    key: 'topMenu.workWithUs',
+    href: 'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/vacancies/list'
   },
   whereBuy: {
-    key: 'btn3',
+    key: 'topMenu.whereBuy',
     href: '/onde-comprar'
   },
   restrictAccess: {
-    key: 'btn4',
+    key: 'topMenu.restrictAccess',
     href: 'http://portalcrm.berneck.com.br/'
   },
   whoWeAre: {
-    key: 'btn5',
+    key: 'menu.whoWeAre.title',
     href: '/somos-berneck',
     subItems: [
-      { key: 'btn5_subItem1', href: '/somos-berneck/#quem-somos' },
-      { key: 'btn5_subItem2', href: '/somos-berneck#trajetoria' },
-      { key: 'btn5_subItem3', href: '/somos-berneck#onde-estamos' },
-      { key: 'btn5_subItem4', href: '/certificacoes' }
+      { key: 'menu.whoWeAre.whoWeAre', href: '/somos-berneck/#quem-somos' },
+      { key: 'menu.whoWeAre.ourTrajectory', href: '/somos-berneck#trajetoria' },
+      { key: 'menu.whoWeAre.whereWeAre', href: '/somos-berneck#onde-estamos' },
+      { key: 'menu.whoWeAre.certifications', href: '/certificacoes' }
     ]
   },
   ourCommitment: {
-    key: 'btn6',
+    key: 'menu.ourCommitment.title',
     href: '/nosso-compromisso',
     subItems: [
       {
-        key: 'btn6_subItem1',
+        key: 'menu.ourCommitment.environment',
         href: '/nosso-compromisso#meio-ambiente'
       },
       {
-        key: 'btn6_subItem2',
+        key: 'menu.ourCommitment.ourPeople',
         href: '/nosso-compromisso#nossa-gente'
       },
       {
-        key: 'btn6_subItem3',
+        key: 'menu.ourCommitment.ourValues',
         href: '/nosso-compromisso#nossos-valores'
       },
       {
-        key: 'btn6_subItem4',
+        key: 'menu.ourCommitment.report',
         href: '/nosso-compromisso#relatorio'
       }
     ]
   },
   florestalDivision: {
-    key: 'btn7',
+    key: 'menu.florestalDivision.title',
     href: '/divisao-florestal',
     subItems: [
       {
-        key: 'btn7_subItem1',
+        key: 'menu.florestalDivision.forestManagement',
         href: '/divisao-florestal#manejo'
       },
       {
-        key: 'btn7_subItem2',
+        key: 'menu.florestalDivision.forestProduction',
         href: '/divisao-florestal#producao'
       },
       {
-        key: 'btn7_subItem3',
+        key: 'menu.florestalDivision.forestSuppliers',
         href: '/divisao-florestal#fornecedor'
       },
       {
-        key: 'btn7_subItem4',
+        key: 'menu.florestalDivision.publicResume',
         href: '/divisao-florestal#resumo-publico'
       }
     ]
   },
   products: {
-    key: 'btn8',
+    key: 'menu.products.title',
     href: '/products',
     subItems: [
       {
-        key: 'btn8_subItem1',
+        key: 'menu.products.panels.title',
         href: '/products',
         subItems: [
           {
-            key: 'btn8_subItem2',
+            key: 'menu.products.panels.bpBerneck.title',
             href: '/products/bp-berneck'
           },
           {
-            key: 'btn8_subItem21',
-            href: '/products/bp-berneck/catalog'
+            key: 'menu.products.panels.bpBerneck.bpCatalog',
+            href: '/products/bp-berneck/catalog',
+            arrow: true
           },
           {
-            key: 'btn8_subItem22',
-            href: '/products/bp-berneck/gallery'
+            key: 'menu.products.panels.bpBerneck.ambientsGallery',
+            href: '/products/bp-berneck/gallery',
+            arrow: true
           },
           {
-            key: 'btn8_subItem3',
+            key: 'menu.products.panels.hdf',
             href: '/products/hdf-berneck'
           },
           {
-            key: 'btn8_subItem4',
+            key: 'menu.products.panels.mdf',
             href: '/products/mdf-berneck'
           },
           {
-            key: 'btn8_subItem5',
+            key: 'menu.products.panels.mdp',
             href: '/products/mdp-berneck'
           },
           {
-            key: 'btn8_subItem6',
+            key: 'menu.products.panels.plus',
             href: '/products/plus-berneck'
           }
         ]
       },
       {
-        key: 'btn8_subItem7',
+        key: 'menu.products.sawns.title',
         href: '/products',
         subItems: [
           {
-            key: 'btn8_subItem8',
+            key: 'menu.products.sawns.pinus',
             href: '/products/berneck-pinus'
           },
           {
-            key: 'btn8_subItem9',
+            key: 'menu.products.sawns.teca',
             href: '/products/berneck-teca'
           }
         ]
@@ -124,23 +126,23 @@ export const menuNavigation = {
     ]
   },
   channelBNK: {
-    key: 'btn9',
+    key: 'menu.channelBNK.title',
     href: '/canal-bnk',
     subItems: [
       {
-        key: 'btn9_subItem1',
+        key: 'menu.channelBNK.inspiration_channel',
         href: '/canal-bnk/1/'
       },
       {
-        key: 'btn9_subItem2',
+        key: 'menu.channelBNK.knowledge_channel',
         href: '/canal-bnk/2/'
       },
       {
-        key: 'btn9_subItem3',
+        key: 'menu.channelBNK.bernecks_world_channel',
         href: '/canal-bnk/3/'
       },
       {
-        key: 'btn9_subItem4',
+        key: 'menu.channelBNK.downloads',
         href: '/canal-bnk/downloads'
       }
     ]

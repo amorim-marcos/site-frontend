@@ -1,7 +1,20 @@
 import { useRouter } from 'next/router'
 import { Flex, Box, Text, Image, Button } from '@chakra-ui/react'
+import { useTranslation } from 'react-i18next'
+import HtmlTextParser from '@components/HtmlTextParser'
 
-export const SectionPages = (props: { content: unknown[] }) => {
+export const SectionPages = (props: {
+  content: {
+    id?: string
+    header_text?: string
+    header_subtitle?: string
+    description?: string
+    hdf_berneck?: string
+    mdf_berneck?: string
+    mdp_berneck?: string
+    year_description?: string
+  }[]
+}) => {
   const router = useRouter()
 
   return (
@@ -50,7 +63,7 @@ export const SectionPages = (props: { content: unknown[] }) => {
             image={'/assets/imgs/search/hdf_page.png'}
             content={{
               title: 'HDF Berneck©',
-              description: item.hdf_berneck.description
+              description: item.hdf_berneck
             }}
           />
         ) : item.id.includes('mdf-berneck') ? (
@@ -60,7 +73,7 @@ export const SectionPages = (props: { content: unknown[] }) => {
             image={'/assets/imgs/search/mdf_page.png'}
             content={{
               title: 'MDF Berneck©',
-              description: item.mdf_berneck.description
+              description: item.mdf_berneck
             }}
           />
         ) : item.id.includes('mdp-berneck') ? (
@@ -70,7 +83,7 @@ export const SectionPages = (props: { content: unknown[] }) => {
             image={'/assets/imgs/search/mdp_page.png'}
             content={{
               title: 'MDP Berneck©',
-              description: item.mdp_berneck.description
+              description: item.mdp_berneck
             }}
           />
         ) : item.id.includes('our-commitment') ? (
@@ -92,7 +105,7 @@ export const SectionPages = (props: { content: unknown[] }) => {
             image={'/assets/imgs/foto_fabrica@2x.png'}
             content={{
               title: 'Nossa Trajetória',
-              description: item.year[item.year.length - 1].description
+              description: item.year_description
             }}
           />
         ) : (
@@ -120,72 +133,76 @@ const Page = (props: {
     description: string
   }
   onClick: () => void
-}) => (
-  <Flex w="100%" direction="column">
-    <Flex
-      role="group"
-      w="100%"
-      cursor="pointer"
-      onClick={props.onClick}
-      justify="space-between"
-      direction={{ base: 'column', lg: 'row' }}
-      gap={{ base: '25px', lg: '69px' }}
-      padding={{ base: '25px', lg: '33px 29px 33px 33px' }}
-    >
-      <Flex gap="28px" direction={{ base: 'column', md: 'row' }}>
-        <Image
-          src={props.image}
-          minW={{ base: '100%', md: '259px', xl: '269px' }}
-          w={{ base: '100%', md: '259px', xl: '269px' }}
-          h={{ base: '180px', md: '220px', lg: '200px' }}
-          objectFit="cover"
-          transition={'all .2s ease-in-out'}
-          _groupHover={{
-            boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)'
-          }}
-        />
+}) => {
+  const searchLabels = useTranslation('searchView')
 
-        <Flex direction="column">
-          <Text
-            as={'h1'}
-            color="gray.300"
-            letterSpacing="-0.6px"
-            fontSize={{ base: '22px', xl: '29px' }}
-            fontWeight={'extrabold'}
-          >
-            {props.content.title}
-          </Text>
+  return (
+    <Flex w="100%" direction="column">
+      <Flex
+        role="group"
+        w="100%"
+        cursor="pointer"
+        onClick={props.onClick}
+        justify="space-between"
+        direction={{ base: 'column', lg: 'row' }}
+        gap={{ base: '25px', lg: '69px' }}
+        padding={{ base: '25px', lg: '33px 29px 33px 33px' }}
+      >
+        <Flex gap="28px" direction={{ base: 'column', md: 'row' }}>
+          <Image
+            src={props.image}
+            minW={{ base: '100%', md: '259px', xl: '269px' }}
+            w={{ base: '100%', md: '259px', xl: '269px' }}
+            h={{ base: '180px', md: '220px', lg: '200px' }}
+            objectFit="cover"
+            transition={'all .2s ease-in-out'}
+            _groupHover={{
+              boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.3)'
+            }}
+          />
 
-          <Text
-            as={'h1'}
-            color="gray.300"
-            letterSpacing="-0.5px"
-            fontSize={{ base: '18px', xl: '25px' }}
-            textAlign={{ base: 'justify', xl: 'left' }}
-            fontWeight={'medium'}
-            lineHeight="35px"
-            textOverflow="ellipsis"
-            overflow="hidden"
-            noOfLines={4}
+          <Flex direction="column">
+            <Text
+              as={'h1'}
+              color="gray.300"
+              letterSpacing="-0.6px"
+              fontSize={{ base: '22px', xl: '29px' }}
+              fontWeight={'extrabold'}
+            >
+              {props.content.title}
+            </Text>
+
+            <Text
+              as={'h1'}
+              color="gray.300"
+              letterSpacing="-0.5px"
+              fontSize={{ base: '18px', xl: '25px' }}
+              textAlign={{ base: 'justify', xl: 'left' }}
+              fontWeight={'medium'}
+              lineHeight="35px"
+              textOverflow="ellipsis"
+              overflow="hidden"
+              noOfLines={4}
+            >
+              <HtmlTextParser>{props.content.description}</HtmlTextParser>
+            </Text>
+          </Flex>
+        </Flex>
+
+        <Flex h="100%" alignSelf="center" w={{ base: '100%', lg: 'auto' }}>
+          <Button
+            borderRadius="17px"
+            w={{ base: '100%', lg: '221px' }}
+            h={{ base: '65px', lg: '78px' }}
+            bg="green.600"
+            _hover={{ bg: 'green.800' }}
           >
-            {props.content.description}
-          </Text>
+            {searchLabels.t('seeMore')}
+          </Button>
         </Flex>
       </Flex>
 
-      <Flex h="100%" alignSelf="center" w={{ base: '100%', lg: 'auto' }}>
-        <Button
-          borderRadius="17px"
-          w={{ base: '100%', lg: '221px' }}
-          h={{ base: '65px', lg: '78px' }}
-          bg="green.600"
-          _hover={{ bg: 'green.800' }}
-        >
-          Veja mais
-        </Button>
-      </Flex>
+      <Box w="100%" border="2px solid" color="brown.100" />
     </Flex>
-
-    <Box w="100%" border="2px solid" color="brown.100" />
-  </Flex>
-)
+  )
+}

@@ -1,13 +1,51 @@
-import { Flex, Box, Text, Image } from '@chakra-ui/react'
-import CompletedTitle from '@components/CompletedTitle'
-import { CalendarIcon, SocialIcon } from '@components/Icons'
-import ArrowIcon from '@components/Icons/ArrowIcon'
-import { useState } from 'react'
-import parser from 'react-html-parser'
-import { Wrapper } from './styles'
-import { colors } from '../../theme/colors'
+import { Flex, Box, Text } from '@chakra-ui/react'
+
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
+import parser from 'react-html-parser'
+
+import CompletedTitle from '@components/CompletedTitle'
+import { CalendarIcon, SocialIcon, Arrow } from '@components/Icons'
+
 import { Category } from 'types/data/Post'
+import { smartDate } from 'utils/utils'
+
+import { colors } from '../../theme/colors'
+import { Wrapper } from './styles'
+import { useRouter } from 'next/router'
+
+function iframeYoutube(url: string) {
+  const videoUrl =
+    url.match(/"https:\/\/youtu.be\/(.*?)"/g) ??
+    url.match(/"https:\/\/www.youtube.com\/watch\?v=(.*?)"/g)
+
+  const videoId = videoUrl?.[0]
+    .replace(/"/g, '')
+    .replace('https://www.youtube.com/watch?v=', '')
+    .replace('https://youtu.be/', '')
+
+  return `<div class="video-container"><iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe></div>`
+}
+
+function parseYoutubeEmbed(body: string) {
+  const oembedTag = /<figure class="media">(.*?)<\/figure>/g
+  const linkTag =
+    /<p><a href="https:\/\/www.youtube.com\/watch\?v=(.*?)<\/a><\/p>/g
+
+  let matchs = body.match(oembedTag)
+
+  matchs = matchs ?? body.match(linkTag)
+
+  if (matchs)
+    matchs.forEach((url) => {
+      body = body.replace(url, iframeYoutube(url))
+    })
+
+  return body
+}
+
+function parserPipe(body: string) {
+  return parser(parseYoutubeEmbed(body))
+}
 
 export type PostBodyProps = {
   category?: Category
@@ -19,6 +57,7 @@ export type PostBodyProps = {
   }[]
   postSlug: string
 }
+
 export const PostBody = ({
   category,
   publishDate,
@@ -60,33 +99,30 @@ export const PostBody = ({
           <Flex
             marginX={{ base: '0', md: '2%' }}
             flexDirection={{ base: 'row', md: 'column' }}
+            gap={{ base: '10px', lg: '0px' }}
           >
             <FacebookShareButton
-              url={
-                process.env.NEXT_PUBLIC_APP_URL +
-                `/canal-bnk/${category?.id}/${postSlug}`
-              }
+              url={`https://www.berneck.com.br/canal-bnk/${category?.id}/${postSlug}`}
               quote={postTitle}
             >
               <SocialIcon
                 media="facebook"
                 marginY={{ base: '20%', md: '40%' }}
                 color="brown.350"
-                width={{ base: '70px', md: '40px' }}
+                width={{ base: '45px', md: '40px' }}
                 marginRight={{ base: '15%' }}
+                hoverColor={category?.color}
               />
             </FacebookShareButton>
             <TwitterShareButton
-              url={
-                process.env.NEXT_PUBLIC_APP_URL +
-                `/canal-bnk/${category?.id}/${postSlug}`
-              }
+              url={`https://www.berneck.com.br/canal-bnk/${category?.id}/${postSlug}`}
             >
               <SocialIcon
                 media="twitter"
                 marginY={{ base: '20%', md: '40%' }}
                 color="brown.350"
-                width={{ base: '70px', md: '40px' }}
+                width={{ base: '45px', md: '40px' }}
+                hoverColor={category?.color}
               />
             </TwitterShareButton>
           </Flex>
@@ -100,8 +136,8 @@ export const PostBody = ({
             paddingLeft={{ base: '0', md: '3%' }}
           >
             <Flex marginBottom={{ base: '15px', md: '0' }} alignItems="center">
-              <ArrowIcon width="10px" stroke={category?.color} />
-              <Text marginLeft={'2%'} variant={'body' as any}>
+              <Arrow width="10px" color={category?.color} />
+              <Text marginLeft={'2%'} variant="body">
                 {category?.name}
               </Text>
             </Flex>
@@ -127,19 +163,13 @@ export const PostBody = ({
           bottom={{ base: '8%', md: '0' }}
           right={{ base: '0', md: '0' }}
         >
-          {/* <Image
-            marginRight="15px"
-            src="/img/calendario.png"
-            w="30px"
-            height="30px"
-          /> */}
           <CalendarIcon
             width={'30px'}
             marginRight="15px"
             stroke1={category?.color}
           />
-          <Text color="gray.350" variant={'body' as any}>
-            {publishDate}
+          <Text color="gray.350" variant="body">
+            {smartDate(publishDate, 'PT-BR')}
           </Text>
         </Flex>
         {/* End of date publish */}
@@ -152,7 +182,7 @@ export const PostBody = ({
         w={{ base: '100%', md: '80%', xl: '60%' }}
         marginLeft={{ base: '0', md: '12%', xl: '10%' }}
       >
-        <Wrapper>{postContent && parser(postContent)}</Wrapper>
+        <Wrapper>{postContent && parserPipe(postContent)}</Wrapper>
       </Box>
       {/* End of post content */}
 
@@ -164,9 +194,9 @@ export const PostBody = ({
         wrap="wrap"
       >
         {tags &&
-          tags.map((item, i) => {
-            return <TagItem key={i} tag={item.name} />
-          })}
+          tags.map((item, i) => (
+            <TagItem key={i} tag={item.name} hoverColor={category?.color} />
+          ))}
       </Flex>
 
       {/* End of tags section */}
@@ -174,8 +204,14 @@ export const PostBody = ({
   )
 }
 
-export const TagItem = ({ tag = 'tag' }) => {
-  const [hover, setHover] = useState(false)
+export const TagItem = ({
+  tag = 'tag',
+  hoverColor
+}: {
+  tag: string
+  hoverColor?: string
+}) => {
+  const router = useRouter()
   return (
     <Box
       marginRight="2%"
@@ -183,11 +219,15 @@ export const TagItem = ({ tag = 'tag' }) => {
       padding="2%"
       bg="white.100"
       borderRadius="20px"
-      cursor="pointer"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      cursor={'pointer'}
+      onClick={() => router.push(`/canal-bnk/tags?_tag=${tag}`)}
     >
-      <Text variant={'body' as any} color={hover ? 'green.600' : 'green.900'}>
+      <Text
+        userSelect="none"
+        variant={'body'}
+        color={'brown.350'}
+        _hover={{ color: hoverColor }}
+      >
         {tag}
       </Text>
     </Box>

@@ -13,6 +13,7 @@ export type ProductWithBPProps = {
   btnText?: string
   type?: 'centralizedBtn' | 'bottomBtn'
   grafismColor?: string
+  href?: string
 }
 
 function arrowDistance(type: 'centralizedBtn' | 'bottomBtn') {
@@ -34,29 +35,34 @@ export const ProductWithBP = ({
   btnTextColor = '#FFF',
   btnText = 'Btn text',
   type = 'bottomBtn',
-  grafismColor = '#dfdbd9'
+  grafismColor = '#dfdbd9',
+  href = '/products/plus-berneck'
 }: ProductWithBPProps) => {
   return (
     <Flex
-      marginX="auto"
-      w="100%"
       bg={backgroundColor}
+      // bg="blue"
       alignItems="center"
       justifyContent="flex-start"
-      paddingX="30px"
       boxShadow="0px 0px 15px #00000007"
       position="relative"
       h={
         type === 'bottomBtn'
-          ? { base: 'auto', sm: '23.7vw' }
-          : { base: 'auto', sm: '22.5vw' }
+          ? { base: 'auto', md: '24vw' }
+          : { base: 'auto', md: '30vw' }
       }
-      maxHeight={type === 'bottomBtn' ? '457px' : '432px'}
-      flexDirection={{ base: 'column', sm: 'row' }}
-      paddingTop={{ base: '30px', sm: '0px' }}
-      marginBottom="30px"
+      maxHeight={type === 'bottomBtn' ? '550px' : '432px'}
+      w="90%"
+      flexDirection={{ base: 'column', md: 'row' }}
     >
-      <Box position={'absolute'} {...arrowDistance(type)} left="0">
+      
+
+      {/* GRAFISMO */}
+      <Box 
+        position={'absolute'} 
+        {...arrowDistance(type)} 
+        left="0"
+      >
         <GrafismProductWithBP
           type={type}
           width={{
@@ -70,38 +76,31 @@ export const ProductWithBP = ({
           color={grafismColor}
         />
       </Box>
+      
+
+      {/* TEXTOS */}
       <Flex
         justifyContent="center"
         alignItems="center"
-        textAlign="center"
         flexDirection="column"
-        width={{ base: '100%', sm: '50%' }}
+        width={{ base: '100%', md: '50%' , '2xl': '30%' }}
         position="relative"
+        // bg="pink"
+        padding={{ base: '5%', md: '0', '2xl': '1%' }}
       >
-        <Heading
+        <Text as={"h3"}
+          variant={"h3"}
           fontWeight="light"
-          fontSize={{
-            base: '14px',
-            sm: '12px',
-            md: '16px',
-            lg: '20px',
-            xl: '25px',
-            '2xl': '33px'
-          }}
           color={textColor}
+          textAlign="center"
         >
           {title}
-        </Heading>
+        </Text>
         <Text
+          as={"h6"}
+          variant={"h6"}
+          fontWeight="light"
           color={textColor}
-          fontSize={{
-            base: '12px',
-            sm: '6px',
-            md: '9px',
-            lg: '12px',
-            xl: '15px',
-            '2xl': '18px'
-          }}
           width={{ base: '100%', sm: '75%' }}
           marginTop={{
             base: '7px',
@@ -111,11 +110,13 @@ export const ProductWithBP = ({
             xl: '25px',
             '2xl': '30px'
           }}
+          textAlign="center"
         >
           {description}
         </Text>
+       
         {type === 'centralizedBtn' && (
-          <Link href="/products/plus-berneck">
+          <Link href={href} _hover={{ outline: 'none' }}>
             <Center
               bg={btnColor}
               _hover={{ bg: btnHoverColor }}
@@ -127,7 +128,7 @@ export const ProductWithBP = ({
                 xl: '60px',
                 '2xl': '78px'
               }}
-              width={{ base: '90%', sm: '75%' }}
+              width={{ base: '90%' }}
               marginY={{ base: '15px', sm: '0' }}
               borderRadius={{
                 base: '12px',
@@ -148,45 +149,37 @@ export const ProductWithBP = ({
               }}
               padding="10px"
             >
-              <Heading
-                fontSize={{
-                  base: '10px',
-                  sm: '5px',
-                  md: '7.5px',
-                  lg: '11px',
-                  xl: '14px',
-                  '2xl': '17px'
-                }}
+              <Text as={"h6"}
+                variant={"h6"}
                 color={btnTextColor}
+                textAlign={"center"}
               >
                 {btnText}
-              </Heading>
+              </Text>
             </Center>
           </Link>
         )}
       </Flex>
 
       {type === 'bottomBtn' && (
-        <Link href="/products/plus-berneck">
+        <Link href={href}>
           <Center
-            position={{ base: 'relative', sm: 'absolute' }}
-            bottom={{ base: '0', sm: '-10%' }}
-            left={{ base: '0', sm: '5.7%' }}
+            position={{ base: 'relative', md: 'absolute' }}
+            bottom={{ base: '0', md: '-10%' }}
+            left={{ base: '0', md: '5.7%', '2xl': '3%' }}
             bg={btnColor}
             _hover={{ bg: btnHoverColor }}
-            marginY={{ base: '15px', sm: '0' }}
+            marginY={{ base: '15px', md: '0' }}
             h={{
-              base: '40px',
-              sm: '30px',
-              md: '50px',
+              base: '50px',
+              md: '55px',
               lg: '60px',
               xl: '70px',
               '2xl': '78px'
             }}
-            width={{ base: '90%', sm: '40%' }}
+            width={{ base: '90%', md: '40%' }}
             borderRadius={{
               base: '12px',
-              sm: '5px',
               md: '8px',
               lg: '11px',
               xl: '14px',
@@ -196,30 +189,25 @@ export const ProductWithBP = ({
             textAlign="center"
             padding="10px"
           >
-            <Heading
-              fontSize={{
-                base: '10px',
-                sm: '6px',
-                md: '8.5px',
-                lg: '12px',
-                xl: '15px',
-                '2xl': '18px'
-              }}
-              color={btnTextColor}
-            >
-              {btnText}
-            </Heading>
+            <Text as={"h6"}
+                variant={"h6"}
+                color={btnTextColor}
+              >
+                {btnText}
+              </Text>
           </Center>
         </Link>
       )}
 
+
+      {/* IMAGEM */}
       <Image
-        position={{ base: 'relative', sm: 'absolute' }}
-        top={{ base: '0', sm: type === 'bottomBtn' ? '-1.5%' : '-17%' }}
-        right={{ base: '0', sm: type === 'bottomBtn' ? '-3%' : '-3%' }}
+        position={{ base: 'relative', md: 'absolute' }}
+        top={{ base: '0', md: type === 'bottomBtn' ? '-1.5%' : '-17%' }}
+        right={{ base: '0', md: type === 'bottomBtn' ? '-3%' : '-3%' }}
         src={imgSrc}
-        width={{ base: '117vw', sm: '52vw' }}
-        maxWidth={{ base: '117vw', sm: '998px' }}
+        width={{ base: '100vw', md: '52vw' }}
+        maxWidth={{ base: '90vw', md: '998px' }}
       />
     </Flex>
   )

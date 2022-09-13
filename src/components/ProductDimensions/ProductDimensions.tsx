@@ -7,6 +7,7 @@ export type ProductDimensionsProps = {
   tableBackgroundColor?: string
   dimensions: DimensionsProps
   tableWidth?: ResponsiveCss
+  widthFirst?: boolean
 }
 
 export type DimensionsProps = {
@@ -19,40 +20,36 @@ export const ProductDimensions = ({
   tableBackgroundColor = '#FFF',
   tableBorderColor = '#000',
   dimensions,
-  tableWidth = {
-    base: '200px',
-    sm: '170px',
-    md: '270px',
-    lg: '350px',
-    xl: '400px',
-    '2xl': '450px'
-  }
+  widthFirst = false
 }: ProductDimensionsProps) => {
-  const product = useTranslation('product')
+  const componentsLabels = useTranslation('components')
 
   return (
-    <Flex justifyContent="space-between">
+    <Flex
+    // justifyContent="space-between"
+    // bg="blue"
+    >
       <Flex flexDirection="column">
-        <Heading {...headingStyle}>{product.t('dimensionsMM')}</Heading>
+        <Text
+          as={'h3'}
+          variant={'h3'}
+          color="green.900"
+          fontWeight={'extrabold'}
+        >
+          {componentsLabels.t('product.dimensionsMM')}
+        </Text>
         <Table
           fontWeight="light"
-          fontSize={{
-            base: '10px',
-            sm: '7px',
-            md: '12px',
-            lg: '14px',
-            xl: '16px',
-            '2xl': '18.5px'
-          }}
+          fontSize={{ base: '12px', sm: '12px', lg: '13px', xl: '14px' }}
           fontFamily="Montserrat"
-          width={tableWidth}
+          //width={tableWidth}
           variant="unstyled"
           color="#626161"
         >
           <Tbody>
             <Tr>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                {product.t('thickness')}
+                {componentsLabels.t('product.thickness')}
               </Td>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
                 {dimensions?.thickness}
@@ -60,34 +57,35 @@ export const ProductDimensions = ({
             </Tr>
             <Tr>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                {product.t('length')}
+                {widthFirst
+                  ? componentsLabels.t('product.width')
+                  : componentsLabels.t('product.length')}
               </Td>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                {dimensions?.length}
+                {widthFirst ? dimensions?.width : dimensions?.length}
               </Td>
             </Tr>
             <Tr>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                {product.t('width')}
+                {!widthFirst
+                  ? componentsLabels.t('product.width')
+                  : componentsLabels.t('product.length')}
               </Td>
               <Td {...tableItemStyle(tableBorderColor, tableBackgroundColor)}>
-                {dimensions?.width}
+                {!widthFirst ? dimensions?.width : dimensions?.length}
               </Td>
             </Tr>
           </Tbody>
         </Table>
         <Text
-          fontSize={{
-            base: '13px',
-            sm: '8px',
-            md: '10px',
-            lg: '12px',
-            xl: '14px',
-            '2xl': '16px'
-          }}
-          color="green.900"
+          as={'h6'}
+          variant={'h6'}
+          fontSize={{ base: '10px', sm: '11px', lg: '11px', xl: '11px' }}
+          fontWeight={'normal'}
+          color="green.300"
+          mt={'1%'}
         >
-          {product.t('otherDimensionsText')}
+          {componentsLabels.t('product.otherDimensionsText')}
         </Text>
       </Flex>
     </Flex>
@@ -106,27 +104,6 @@ export const tableItemStyle = (borderColor: string, background: string) => ({
     '2xl': '40px'
   },
   border: `3px solid ${borderColor}`,
-  paddingLeft: { base: '5px', sm: '15px' },
-  paddingRight: { base: '5px', sm: '15px' }
+  paddingLeft: { base: '5px', md: '15px' },
+  paddingRight: { base: '5px', md: '15px' }
 })
-
-const headingStyle = {
-  marginBottom: {
-    base: '8px',
-    sm: '9px',
-    md: '11px',
-    lg: '14px',
-    xl: '17px',
-    '2xl': '20px'
-  },
-  color: 'green.900',
-  fontSize: {
-    base: '20px',
-    sm: '11px',
-    md: '14px',
-    lg: '18px',
-    xl: '22px',
-    '2xl': '30px'
-  },
-  zIndex: 'docked'
-}

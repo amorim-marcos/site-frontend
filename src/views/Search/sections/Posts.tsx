@@ -1,13 +1,24 @@
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { Flex, Box, Text, Image, Button } from '@chakra-ui/react'
+import { useTranslation } from 'react-i18next'
 
 const PostContentSanitize = dynamic(import('./PostContentSanitize'), {
   ssr: false
 })
 
-export const SectionPosts = (props: { content: unknown[] }) => {
+export const SectionPosts = (props: {
+  content: {
+    id?: number
+    title?: string
+    content?: string
+    category?: string
+    url_code?: string
+    cover_url?: string
+  }[]
+}) => {
   const router = useRouter()
+  const searchLabels = useTranslation('searchView')
 
   return (
     <Flex
@@ -28,12 +39,12 @@ export const SectionPosts = (props: { content: unknown[] }) => {
             gap={{ base: '25px', lg: '69px' }}
             padding={{ base: '25px', lg: '33px 29px 33px 33px' }}
             onClick={() =>
-              router.push(`/canal-bnk/${item.category.name}/${item.url_code}`)
+              router.push(`/canal-bnk/${item.category}/${item.url_code}`)
             }
           >
             <Flex gap="28px" direction={{ base: 'column', md: 'row' }}>
               <Image
-                src={`${process.env.NEXT_PUBLIC_API_URL}${item.cover.url}`}
+                src={item.cover_url}
                 minW={{ base: '100%', md: '259px', xl: '269px' }}
                 w={{ base: '100%', md: '259px', xl: '269px' }}
                 h={{ base: '180px', md: '220px', lg: '200px' }}
@@ -80,7 +91,7 @@ export const SectionPosts = (props: { content: unknown[] }) => {
                 bg="green.600"
                 _hover={{ bg: 'green.800' }}
               >
-                Veja mais
+                {searchLabels.t('seeMore')}
               </Button>
             </Flex>
           </Flex>

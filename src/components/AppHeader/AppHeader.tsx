@@ -47,46 +47,84 @@ export const AppHeader = () => {
   }, [openSearchBar])
 
   const header = useTranslation('header')
+
+  const [fixed, setFixed] = useState(true)
+  function handleScroll(value: any) {
+    if (window) {
+      let headerLimit = 51
+
+      if (window.innerWidth < 1536) {
+        headerLimit = 40
+      }
+      if (window.innerWidth < 1280) {
+        headerLimit = 30
+      }
+      if (window.innerWidth < 1024) {
+        headerLimit = 25
+      }
+      if (window.innerWidth < 768) {
+        headerLimit = 25
+      }
+
+      // const scrollLimit =
+      //   document.body.scrollHeight - window.innerHeight - footerSize
+      if (window.pageYOffset <= headerLimit) {
+        setFixed(true)
+      } else {
+        setFixed(false)
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (window) {
+      window.addEventListener('scroll', handleScroll, { passive: true })
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }
+  }, [])
   return (
     <>
       <Box
         data-testid="header-container"
         marginX="auto"
-        h={{
-          base: '75px',
-          md: '88px',
-          lg: '103px',
-          xl: '140px',
-          '2xl': '172px'
-        }}
-        // maxWidth="1920px"
-        bg={'green.900'}
-        // position="relative"
+        bg="green.900"
         position="fixed"
         top="0"
         left="0"
         w="100%"
-        zIndex={'banner'}
-        transition="0.5s"
+        zIndex={'overlay'}
+        transition="0.2s"
       >
         <Box
           zIndex="modal"
-          // position={{ base: 'fixed', md: 'relative' }}
           position={'relative'}
           padding={0}
           marginX="auto"
           flexDirection={'column'}
         >
-          <Box w="100%" bg="green.900">
-            <Box w="100%" marginX="auto" maxWidth={'1920px'}>
+          <Box
+            w="100%"
+            transition={'0.3s'}
+            // overflow={'hidden'}
+            h={{
+              base: '25px',
+              md: '25px',
+              lg: '30px',
+              xl: '32px'
+            }}
+            bg="green.900"
+          >
+            <Box w="100%" marginX="auto" maxWidth={'1536px'}>
               <Flex
                 paddingX={{ base: '4.5%', md: '3.5%' }}
                 h={{
                   base: '25px',
                   md: '25px',
                   lg: '30px',
-                  xl: '40px',
-                  '2xl': '51px'
+                  xl: '32px'
                 }}
                 justifyContent="space-between"
                 bg="green.900"
@@ -109,30 +147,26 @@ export const AppHeader = () => {
                   <HeaderSecondaryItem
                     href={menuNavigation.workWithUs.href}
                     title={header.t(menuNavigation.workWithUs.key)}
+                    isExternal={true}
                   />
                   <HeaderSecondaryItem
                     href={menuNavigation.whereBuy.href}
                     title={header.t(menuNavigation.whereBuy.key)}
                   />
-                  {/* <HeaderSecondaryItem
-              href={menuNavigation.restrictAccess.href}
-              title={header.t(menuNavigation.restrictAccess.key)}
-            /> */}
                 </Flex>
               </Flex>
             </Box>
           </Box>
 
           <Box w="100%" bg="green.800">
-            <Box w="100%" marginX="auto" maxWidth={'1920px'}>
+            <Box w="100%" marginX="auto" maxWidth={'1536px'}>
               <Flex
-                paddingInline={{ base: '4%', xl: '4%', '2xl': '4%' }}
+                paddingInline={{ base: '4%', xl: '4%' }}
                 h={{
                   base: '50px',
                   md: '60px',
                   lg: '70px',
-                  xl: '95px',
-                  '2xl': '115px'
+                  xl: '80px'
                 }}
                 bg="green.800"
                 alignItems="center"
@@ -161,7 +195,7 @@ export const AppHeader = () => {
                     base: '110px',
                     md: '120px',
                     lg: '150px',
-                    xl: '180px',
+                    xl: '160px',
                     '2xl': '220px'
                   }}
                 />
@@ -169,7 +203,7 @@ export const AppHeader = () => {
                 <Flex
                   paddingLeft={{ base: '0', md: '70px' }}
                   justifyContent={{ base: 'flex-start', md: 'flex-end' }}
-                  h={{ base: 'calc(100vh - 75px)', md: '100%' }}
+                  h={{ base: 'calc(100vh - 50px)', md: '100%' }}
                   position={{ base: 'absolute', md: 'inherit' }}
                   width={{ base: '100vw', md: '100%' }}
                   top={{ base: '100%', md: '0' }}
@@ -189,56 +223,75 @@ export const AppHeader = () => {
                     w="100%"
                   >
                     <HeaderMenuItem
-                      subItems={menuNavigation.whoWeAre.subItems.map((i) => ({
-                        title: header.t(i.key),
-                        href: i.href
-                      }))}
+                      subItems={
+                        menuNavigation.whoWeAre.subItems
+                          ? menuNavigation.whoWeAre.subItems.map((i) => ({
+                              title: header.t(i.key),
+                              href: i.href
+                            }))
+                          : []
+                      }
                       href={menuNavigation.whoWeAre.href}
-                      title={header.t('btn5')}
+                      title={header.t(menuNavigation.whoWeAre.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                     />
                     <HeaderMenuItem
-                      subItems={menuNavigation.ourCommitment.subItems.map(
-                        (i) => ({
-                          title: header.t(i.key),
-                          href: i.href
-                        })
-                      )}
+                      subItems={
+                        menuNavigation.ourCommitment.subItems
+                          ? menuNavigation.ourCommitment.subItems.map((i) => ({
+                              title: header.t(i.key),
+                              href: i.href
+                            }))
+                          : []
+                      }
                       href={menuNavigation.ourCommitment.href}
-                      title={header.t('btn6')}
+                      title={header.t(menuNavigation.ourCommitment.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                     />
                     <HeaderMenuItem
-                      subItems={menuNavigation.florestalDivision.subItems.map(
-                        (i) => ({
-                          title: header.t(i.key),
-                          href: i.href
-                        })
-                      )}
+                      subItems={
+                        menuNavigation.florestalDivision.subItems
+                          ? menuNavigation.florestalDivision.subItems.map(
+                              (i) => ({
+                                title: header.t(i.key),
+                                href: i.href
+                              })
+                            )
+                          : []
+                      }
                       href={menuNavigation.florestalDivision.href}
-                      title={header.t('btn7')}
+                      title={header.t(menuNavigation.florestalDivision.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                     />
                     <HeaderMenuItem
-                      subItems={menuNavigation.products.subItems.map((i) => ({
-                        title: header.t(i.key),
-                        href: i.href,
-                        subItems: i.subItems.map((i) => ({
-                          title: header.t(i.key),
-                          href: i.href
-                        }))
-                      }))}
+                      subItems={
+                        menuNavigation.products.subItems
+                          ? menuNavigation.products.subItems.map((i) => ({
+                              title: header.t(i.key),
+                              href: i.href,
+                              subItems: i.subItems.map((i) => ({
+                                title: header.t(i.key),
+                                href: i.href,
+                                arrow: i.arrow
+                              }))
+                            }))
+                          : []
+                      }
                       href={menuNavigation.products.href}
-                      title={header.t('btn8')}
+                      title={header.t(menuNavigation.products.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                     />
                     <HeaderMenuItem
-                      subItems={menuNavigation.channelBNK.subItems.map((i) => ({
-                        title: header.t(i.key),
-                        href: i.href
-                      }))}
+                      subItems={
+                        menuNavigation.channelBNK.subItems
+                          ? menuNavigation.channelBNK.subItems.map((i) => ({
+                              title: header.t(i.key),
+                              href: i.href
+                            }))
+                          : []
+                      }
                       href={menuNavigation.channelBNK.href}
-                      title={header.t('btn9')}
+                      title={header.t(menuNavigation.channelBNK.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
                       borderBottom={false}
                     />
@@ -256,15 +309,12 @@ export const AppHeader = () => {
                     <HeaderSecondaryItem
                       href={menuNavigation.workWithUs.href}
                       title={header.t(menuNavigation.workWithUs.key)}
+                      isExternal={true}
                     />
                     <HeaderSecondaryItem
                       href={menuNavigation.whereBuy.href}
                       title={header.t(menuNavigation.whereBuy.key)}
                     />
-                    {/* <HeaderSecondaryItem
-                href={menuNavigation.restrictAccess.href}
-                title={header.t(menuNavigation.restrictAccess.key)}
-              /> */}
                   </Box>
 
                   <Flex
@@ -277,9 +327,9 @@ export const AppHeader = () => {
                         transition="0.8s"
                         alignItems={'center'}
                         justifyContent="center"
-                        w={{ md: '35px', xl: '45px', '2xl': '55px' }}
-                        h={{ md: '35px', xl: '45px', '2xl': '55px' }}
-                        borderRadius={{ md: '35px', xl: '45px', '2xl': '55px' }}
+                        w={{ md: '35px', xl: '45px' }}
+                        h={{ md: '35px', xl: '45px' }}
+                        borderRadius={{ md: '35px', xl: '45px' }}
                         bg="green.600"
                         color="white.100"
                         _hover={{ bg: 'green.750' }}
@@ -299,8 +349,7 @@ export const AppHeader = () => {
                           width={{
                             base: '10px',
                             md: '18px',
-                            xl: '28px',
-                            '2xl': '35px'
+                            xl: '28px'
                           }}
                           onClick={() => setOpenSearchBar(true)}
                         />
@@ -321,8 +370,7 @@ export const AppHeader = () => {
               base: '35px',
               md: '50px',
               lg: '60px',
-              xl: '80px',
-              '2xl': '100px'
+              xl: '80px'
             }}
             bg="green.900"
             width="100%"
@@ -338,8 +386,7 @@ export const AppHeader = () => {
                   base: '200px',
                   md: '300px',
                   lg: '350px',
-                  xl: '400px',
-                  '2xl': '450px'
+                  xl: '400px'
                 }}
                 borderBottom="solid"
                 borderBottomColor="white.100"
@@ -351,7 +398,7 @@ export const AppHeader = () => {
                   autoFocus
                   value={searchQuery}
                   onChange={handleChange}
-                  placeholder="Digite sua busca"
+                  placeholder={header.t('search.placeholder')}
                   _placeholder={{ color: 'white.100' }}
                   border="none"
                   outline="none"
@@ -364,8 +411,7 @@ export const AppHeader = () => {
                     base: '8px',
                     md: '10px',
                     lg: '12px',
-                    xl: '14px',
-                    '2xl': '16px'
+                    xl: '14px'
                   }}
                   height={{ base: '30px' }}
                 />
@@ -376,10 +422,9 @@ export const AppHeader = () => {
                       base: '13px',
                       md: '16px',
                       lg: '23px',
-                      xl: '28px',
-                      '2xl': '35px'
+                      xl: '28px'
                     }}
-                    height={{ base: '25px', md: '10px', '2xl': '0px' }}
+                    height={{ base: '25px', md: '10px' }}
                   />
                 </Box>
               </Flex>
@@ -388,12 +433,12 @@ export const AppHeader = () => {
         ) : null}
       </Box>
       <Box
+        bg="green.900"
         paddingTop={{
           base: '75px',
           md: '88px',
           lg: '103px',
-          xl: '140px',
-          '2xl': '172px'
+          xl: '118px'
         }}
       ></Box>
     </>

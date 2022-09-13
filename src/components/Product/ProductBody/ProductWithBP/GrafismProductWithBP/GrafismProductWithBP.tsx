@@ -20,7 +20,12 @@ export const GrafismProductWithBP = ({
   type = 'bottomBtn'
 }: GrafismProductWithBPProps) => {
   return (
-    <Box overflow="hidden" height={'400px'} position="relative" width={width}>
+    <Box 
+      overflow="hidden" 
+      height={'400px'} 
+      position="relative" 
+      width={width}
+    >
       <Box
         position="absolute"
         {...visible(type)}

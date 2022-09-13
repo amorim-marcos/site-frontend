@@ -1,7 +1,11 @@
 import { Flex, Text, Image, Box } from '@chakra-ui/react'
+
 import CompletedTitle from '@components/CompletedTitle'
 import DownloadSection from '@components/DownloadSection'
 import { SectionPackBpDownloads } from '@components/SectionPackBpDownloads/SectionPackBpDownloads'
+import Pagebar from '@components/Pagebar'
+import { useTranslation } from 'react-i18next'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export type DownloadItem = {
   id: number
@@ -25,133 +29,194 @@ export type DownloadItem = {
   }[]
 }
 
-export type DownloadsViewProps = {
-  items: DownloadItem[]
+type PageContent = {
+  title: string
+  header_text: string
+  patterns_pack_title: string
+  patterns_pack_text: string
+  patterns_pack_download_url: string | null
+  sections: DownloadItem[]
 }
 
-export const DownlodasView = ({ items }: DownloadsViewProps) => {
+export type DownloadsViewProps = {
+  page_content: PageContent
+}
+
+export const DownloadsView = ({
+  page_content: {
+    title,
+    header_text,
+    patterns_pack_title,
+    patterns_pack_text,
+    patterns_pack_download_url,
+    sections
+  }
+}: DownloadsViewProps) => {
+  const items = sections
+
+  const channelBnkLabels = useTranslation('channelBnkView')
+
   return (
-    <Flex flexDir="column" maxWidth="1920px" marginX="auto">
-      {/* Downloads Header */}
-      <Flex
-        flexDir="column"
-        width="100%"
-        bg="brown.100"
-        paddingX="5%"
-        paddingY={{ base: '20px', md: '0' }}
-        height={{ base: 'auto', md: '25vw' }}
-        maxHeight="298px"
-        position="relative"
-        justifyContent="center"
-        overflow="hidden"
-        alignItems={{ base: 'center', md: 'flex-start' }}
-      >
-        <Box display={{ base: 'none', md: 'block' }}>
-          <CompletedTitle
-            titleString="Downloads"
-            textAlign="left"
-            alignSelf="left"
-            zIndex="docked"
-          />
-        </Box>
+    <Box>
+      <Pagebar
+        paths={[
+          {
+            title: channelBnkLabels.t('downloadsView.pagebar.downloads'),
+            url: '/canal-bnk/downloads'
+          }
+        ]}
+      />
 
-        <Box display={{ base: 'block', md: 'none' }}>
-          <CompletedTitle
-            titleString="Downloads"
-            textAlign="center"
-            alignSelf="center"
-            zIndex="docked"
-          />
+      <Flex bg="brown.150" alignItems={'center'} flexDir="column" flex="1">
+        {/* Downloads Header */}
+        <Box bg="blue.150">
+          <Flex
+            flexDir="column"
+            bg="brown.100"
+            overflow="hidden"
+            paddingX={{ base: '5%', '2xl': '3%' }}
+            paddingY={{ base: '20px', md: '0' }}
+            position="relative"
+            justifyContent="center"
+            alignItems={{ base: 'center', md: 'start' }}
+            maxWidth={'1536px'}
+            maxHeight="298px"
+            height={{ base: 'auto', md: '25vw' }}
+          >
+            <Box display={{ base: 'none', md: 'block' }}>
+              <CompletedTitle
+                titleString={title}
+                textAlign="left"
+                alignSelf="left"
+                zIndex="docked"
+              />
+            </Box>
+
+            <Box display={{ base: 'block', md: 'none' }}>
+              <CompletedTitle
+                titleString={title}
+                textAlign="center"
+                alignSelf="center"
+                zIndex="docked"
+              />
+            </Box>
+            <Text
+              variant="body"
+              w={{ base: '100%', md: '50%' }}
+              marginTop={{ base: '1%', xl: '3%' }}
+              color="brown.300"
+            >
+              <HtmlTextParser>{header_text}</HtmlTextParser>
+            </Text>
+            <Box
+              h="100%"
+              position={'absolute'}
+              top="0"
+              left={{ base: '55%', md: '47%' }}
+              overflow="hidden"
+            >
+              <Box w="100vw" h="100%">
+                <Image
+                  src="/img/downloads_header_img.png"
+                  width={'auto'}
+                  height={'100%'}
+                  display={{ base: 'none', md: 'block' }}
+                />
+              </Box>
+            </Box>
+          </Flex>
         </Box>
-        <Text
-          variant={'body' as any}
-          w={{ base: '100%', md: '50%' }}
-          marginTop={{ base: '1%', xl: '3%' }}
-          color="brown.300"
-        >
-          Encontre materiais de divulgação da BERNECK® e de nossos produtos,
-          além de revistas, informativos, fichas técnicas, pack de padrões BP
-          BERNECK® e muito mais em um só lugar.
-        </Text>
-        <Box
-          h="100%"
-          position={'absolute'}
-          top="0"
-          left={{ base: '55%', md: '47%' }}
-          overflow="hidden"
-        >
-          <Box w="100vw" h="100%">
-            <Image
-              src="/img/downloads_header_img.png"
-              width={'auto'}
-              height={'100%'}
-              display={{ base: 'none', md: 'block' }}
-            />
-          </Box>
-        </Box>
+        {/* End Downloads Header */}
       </Flex>
-      {/* End Downloads Header */}
-      
+
       {/* Start Downloads sections */}
-      <Flex p="5%" w="100%" bg="white.100" flexDir="column">
-        {items.map((i, j) => {
-          return (
-            j < 2 && (
-              <Box key={j}>
-                <DownloadSection
-                  title={i.type}
-                  description={i.description}
-                  items={i.items.map((w) => {
-                    return {
-                      title: w.title,
-                      urlImage: w.image.url,
-                      downloadUrl: w.file.url
+      <Flex alignItems={'center'} flexDir="column" flex="1">
+        <Flex
+          p={{ base: '5%', '2xl': '2%' }}
+          w="100%"
+          bg="white.100"
+          flexDir="column"
+          maxWidth={'1536px'}
+        >
+          {items.map((i, j) => {
+            return (
+              j < 2 && (
+                <Box
+                  key={j}
+                  id={i.type
+                    .normalize('NFD')
+                    .replace(/[^\w ]/g, '')
+                    .split(' ')
+                    .join('-')
+                    .toLowerCase()}
+                >
+                  <DownloadSection
+                    title={i.type}
+                    description={i.description}
+                    items={i.items.map((w) => {
+                      return {
+                        title: w.title,
+                        urlImage: w.image.url,
+                        downloadUrl: w.file.url
+                      }
+                    })}
+                    key={0}
+                    grafism={
+                      (j + 1) % 3 === 0
+                        ? 'type3'
+                        : (j + 1) % 3 === 1
+                        ? 'type1'
+                        : 'type2'
                     }
-                  })}
-                  key={0}
-                  grafism={
-                    (j + 1) % 3 === 0
-                      ? 'type3'
-                      : (j + 1) % 3 === 1
-                      ? 'type1'
-                      : 'type2'
-                  }
-                />
-              </Box>
+                  />
+                </Box>
+              )
             )
-          )
-        })}
+          })}
 
-        <SectionPackBpDownloads />
+          <SectionPackBpDownloads
+            title={patterns_pack_title}
+            text={patterns_pack_text}
+            download_url={patterns_pack_download_url}
+          />
 
-        {items.map((i, j) => {
-          return (
-            j >= 2 && (
-              <Box key={j}>
-                <DownloadSection
-                  title={i.type}
-                  description={i.description}
-                  items={i.items.map((w) => {
-                    return {
-                      title: w.title,
-                      urlImage: w.image.url,
-                      downloadUrl: w.file.url
+          {items.map((i, j) => {
+            return (
+              j >= 2 && (
+                <Box
+                  key={j}
+                  id={i.type
+                    .normalize('NFD')
+                    .replace(/[^\w ]/g, '')
+                    .split(' ')
+                    .join('-')
+                    .toLowerCase()}
+                >
+                  <DownloadSection
+                    title={i.type}
+                    description={i.description}
+                    items={i.items.map((w) => {
+                      return {
+                        title: w.title,
+                        urlImage: w.image.url,
+                        downloadUrl: w.file.url
+                      }
+                    })}
+                    key={0}
+                    grafism={
+                      (j + 1) % 3 === 0
+                        ? 'type3'
+                        : (j + 1) % 3 === 1
+                        ? 'type1'
+                        : 'type2'
                     }
-                  })}
-                  key={0}
-                  grafism={
-                    (j + 1) % 3 === 0
-                      ? 'type3'
-                      : (j + 1) % 3 === 1
-                      ? 'type1'
-                      : 'type2'
-                  }
-                />
-              </Box>
+                  />
+                </Box>
+              )
             )
-          )
-        })}
+          })}
+        </Flex>
       </Flex>
-    </Flex>
+    </Box>
   )
 }

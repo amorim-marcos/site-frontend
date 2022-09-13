@@ -1,0 +1,38 @@
+{
+    "pagebar":{
+        "channelBnk":"Canal BNK"
+    },
+    "downloadsView": {
+        "pagebar":  {
+            "downloads": "other_lang_Downloads"
+        }
+    },
+    "postsView": {
+        "pagebar":{
+            "channelBnk": "other_lang_Canal BNK"
+        }
+    },
+    "downloadsSection": {
+        "title": "other_lang_Downloads",
+        "seeMore" : "other_lang_Veja mais downloads",
+        "inspirareBnkMagazine" :"Revista Inspirare BNK",
+        "opinusMagazine":"Revista Opinus",
+        "reports":"Relatórios",
+        "supportMaterials": "other_lang_Materiais de Suporte",
+        "promotionalMaterials":"Materiais de Divulgação",
+        "patternPack": "other_lang_Pack de Padrões BP BERNECK®",
+        "forestCertificates":"Certificados Florestais",
+        "productCertificates": "other_lang_Certificados de Produto"
+    },
+    "introSection": {
+        "channelDescription": "other_lang_Nosso canal de conteúdos sobre madeira, inspiração e muito mais.",
+        "searchResult": "other_lang_Resultados para:",
+        "allContents": "other_lang_Todos os conteúdos",
+        "seeAll": "other_lang_VER TUDO",
+        "seeMore": "other_lang_Veja mais conteúdos"
+    },
+    "videosSection": {
+        "title": "other_lang_Vídeos",
+        "seeMoreVideos": "other_lang_Veja mais vídeos"
+    }
+}

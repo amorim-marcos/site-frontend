@@ -8,10 +8,10 @@ describe('<PlusTestInfo />', () => {
     renderWithTheme(<PlusTestInfo />)
   })
 
-  it('should render a component with max width of 1920px', () => {
+  it('should render a component with max width of 1536px', () => {
     renderWithTheme(<PlusTestInfo />)
     expect(screen.getByLabelText(/plusTestinfoContainer/i)).toHaveStyle({
-      maxWidth: '1920px'
+      maxWidth: '1536px'
     })
   })
 

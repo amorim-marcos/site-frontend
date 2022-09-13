@@ -1,7 +1,7 @@
-import { Box } from '@chakra-ui/react'
+import { Box, BoxProps } from '@chakra-ui/react'
 import { ResponsiveCss } from 'types/responsive'
 
-export type ArrowIconProps = {
+export type ArrowIconProps = BoxProps & {
   stroke?: string
   onClick?: () => void
   width?: ResponsiveCss
@@ -26,7 +26,8 @@ export const ArrowIcon = ({
   width = '30px',
   stroke = 'white',
   hoverStroke = 'gray.300',
-  direction = 'right'
+  direction = 'right',
+  ...props
 }: ArrowIconProps) => {
   return (
     <Box
@@ -35,6 +36,7 @@ export const ArrowIcon = ({
       onClick={onClick}
       width={width}
       transform={getDirection(direction)}
+      {...props}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

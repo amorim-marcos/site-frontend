@@ -1,33 +1,42 @@
 {
-    "column1Title": "SOMOS BERNECK®",
-    "column1Subitem1": "QUEM SOMOS",
-    "column1Subitem2": "NOSSA TRAJETÓRIA",
-    "column1Subitem3": "ONDE ESTAMOS",
-    "column1Subitem4": "CERTIFICAÇÕES",
-    "column2Title": "NOSSO COMPROMISSO",
-    "column2Subitem1": "CULTIVAMOS O MEIO AMBIENTE",
-    "column2Subitem2": "CULTIVAMOS NOSSA GENTE",
-    "column2Subitem3": "CULTIVAMOS NOSSOS VALORES",
-    "column2Subitem4": "ESG",
-    "column3Title": "DIVISÃO FLORESTAL",
-    "column3Subitem1": "MANEJO FLORESTAL",
-    "column3Subitem2": "PRODUÇÃO FLORESTAL",
-    "column3Subitem3": "FORNECEDOR FLORESTAL",
-    "column3Subitem4": "RESUMO PÚBLICO",
-    "column4Title": "PRODUTOS",
-    "column4Subitem1": "BP BERNECK®",
-    "column4Subitem2": "HDF BERNECK®",
-    "column4Subitem3": "MDF BERNECK®",
-    "column4Subitem4": "MDP BERNECK®",
-    "column4Subitem5": "PLUS BERNECK®",
-    "column4Subitem6": "BERNECK® PINUS",
-    "column4Subitem7": "BERNECK® TECA",
-    "column5Title": "CANAL BNK",
-    "column5Subitem1": "FALE CONOSCO",
-    "column5Subitem2": "TRABALHE CONOSCO",
-    "column5Subitem3": "TRABALHE CONOSCO",
-    "column5Subitem4": "ONDE COMPRAR",
-    "column5Subitem5": "",
-    "rights": "© 2021 BERNECK . Todos os direitos reservados.",
+    "weAreBerneckColumn": {
+        "title": "SOMOS BERNECK",
+        "whoWeAre": "QUEM SOMOS",
+        "ourTrajectory": "NOSSA TRAJETÓRIA",
+        "whereWeAre": "ONDE ESTAMOS",
+        "certifications": "CERTIFICAÇÕES"
+    },
+    "ourCommitmentColumn": {
+        "title": "NOSSO COMPROMISSO",
+        "environment": "CULTIVAMOS O MEIO AMBIENTE",
+        "ourPeople": "CULTIVAMOS NOSSA GENTE",
+        "ourValues": "CULTIVAMOS NOSSOS VALORES",
+        "report": "ESG"
+    },
+    "florestalDivisionColumn": {
+        "title": "DIVISÃO FLORESTAL",
+        "forestManagement": "MANEJO FLORESTAL",
+        "forestProduction": "PRODUÇÃO FLORESTAL",
+        "forestSuppliers": "FORNECEDOR FLORESTAL",
+        "publicResume": "RESUMO PÚBLICO"
+    },
+    "productsColumn":{
+        "title": "PRODUTOS",
+        "bpBerneck": "BP BERNECK®",
+        "hdfBerneck": "HDF BERNECK®",
+        "mdfBerneck": "MDF BERNECK®",
+        "mdpBerneck": "MDP BERNECK®",
+        "plusBerneck": "PLUS BERNECK®",
+        "berneckPinus": "BERNECK® PINUS",
+        "berneckTeca": "BERNECK® TECA"
+    },
+    "channelBNKColumn": {
+        "title":  "CANAL BNK",
+        "downloads": "DOWNLOADS",
+        "speakWithUs": "FALE CONOSCO",
+        "workWithUs": "TRABALHE CONOSCO",
+        "whereBuy": "ONDE COMPRAR"
+    },     
+    "rights": "2022 BERNECK. Todos os direitos reservados.",
     "termsAndPrivacy": "Termos de Uso e Política de Privacidade"    
 }

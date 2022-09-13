@@ -1,8 +1,16 @@
-import { Heading, Flex, Box, Text, Center, Image } from '@chakra-ui/react'
+import {
+  Heading,
+  Flex,
+  Box,
+  Text,
+  Center,
+  Image,
+  FlexProps
+} from '@chakra-ui/react'
 import GrafismLeft from '@components/GrafismLeft'
 import React, { ReactNode } from 'react'
 
-export type PatternInfoProps = {
+export type PatternInfoProps = FlexProps & {
   title?: string
   description?: string
   icon?: ReactNode
@@ -12,13 +20,15 @@ export const PatternInfo = ({
   title = '',
   description = '',
   icon = '',
-  onClick
+  onClick,
+  ...props
 }: PatternInfoProps) => {
   return (
     <Flex
       data-testid="pattern-info-box"
       align="center"
       bg="green.800"
+      // bg="red.800"
       cursor="pointer"
       pos="relative"
       zIndex="base"
@@ -28,7 +38,9 @@ export const PatternInfo = ({
       }}
       overflowY="hidden"
       overflowX="hidden"
-      padding={{ base: '5%', sm: '5%', lg: '10%', xl: '3%' }}
+      padding={{ base: '5%', sm: '5%', lg: '8%', xl: '0' }}
+      w={'100%'}
+      {...props}
     >
       <Box position={'absolute'} zIndex="base" left="-50px" top="-70px">
         <Image src="/img/grafismo_banner_1.svg" />
@@ -46,7 +58,7 @@ export const PatternInfo = ({
 
       <Flex
         zIndex={10}
-        padding={{ base: '5%', sm: '2%', lg: '2%', xl: '1%' }}
+        padding={{ base: '4%', sm: '1%', lg: '2%', xl: '1%' }}
         // bg="blue"
         flex="4"
         direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'column' }}

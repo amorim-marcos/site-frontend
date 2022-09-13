@@ -1,9 +1,12 @@
 import { ReactNode, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import { Box, Flex, Image, Text } from '@chakra-ui/react'
+import { Box, Flex, Image, Link, Text, Button } from '@chakra-ui/react'
 
 import { ReportsIcon, PlayIcon, Arrow } from '@components/Icons'
+import useMobile from 'hooks/useMobile'
+import { useTranslation } from 'react-i18next'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export interface InspireProps {
   textureName: string
@@ -12,13 +15,14 @@ export interface InspireProps {
   productPresentation: string
   urlVideo: string
   urlEbook: string
-  combine_with: { name: string; img: string }[]
-  in_ambients: { id: number; image_url: string }[]
+  combine_with: { name: string; href: string; img: string }[]
+  in_ambients: { id: number; ambient_href: string; image_url: string }[]
 }
 
 export const Inspire = (props: InspireProps) => {
   const [curr, setCurr] = useState(0)
   const router = useRouter()
+  const isMobile = useMobile(568)
 
   const switchTo = (act: 'next' | 'prev') => {
     const count = props.in_ambients.length
@@ -28,14 +32,17 @@ export const Inspire = (props: InspireProps) => {
       : setCurr(curr > 0 ? curr - 1 : curr)
   }
 
+  const bpCatalogItem = useTranslation('bpCatalogItem')
+
   return (
     <Box pos="relative">
       <Flex
         data-testid="micro-texture"
         pos="relative"
-        left={{ base: '15%', '2xl': '140px' }}
+        left={{ base: '0', lg: '5%', '2xl': '5%' }}
         top="-65px"
-        w="fit-content"
+        w={{ base: '100%', md: '100%', '2xl': '30%' }}
+        // bg="violet"
       >
         <Image
           src={props.textureIcon}
@@ -44,11 +51,13 @@ export const Inspire = (props: InspireProps) => {
           zIndex={10}
         />
 
-        <Flex>
+        <Flex
+          flexDirection={'column'}
+          // bg="pink"
+        >
           <Text
             bg="green.650"
-            w={{ base: 'fit-content', sm: '185px' }}
-            padding={{ base: '10px 20px', sm: 0 }}
+            w={{ base: '185px' }}
             h="40px"
             pt={{ base: '3px' }}
             borderTopRightRadius="22px"
@@ -57,25 +66,22 @@ export const Inspire = (props: InspireProps) => {
             fontWeight="bold"
             letterSpacing="-0.26px"
             textAlign="center"
-            pos="absolute"
-            top="25px"
-            left={{ base: '90px', '2xl': '110px' }}
+            marginTop="25px"
+            marginLeft={{ base: '-30px' }}
           >
             {props.textureName}
           </Text>
 
           <Text
-            w={{ base: '80vw', lg: '532px', '2xl': '532px' }}
-            pos="absolute"
-            fontSize="18px"
-            letterSpacing="0px"
+            as={'h4'}
+            variant={'h4' as any}
+            fontWeight="normal"
             color="gray.300"
-            top={{ base: '130px', lg: '75px' }}
-            left={{ base: '-18%', lg: '110px', '2xl': '145px' }}
-            textAlign={{ base: 'center', '2xl': 'left' }}
-            whiteSpace={{ base: 'normal', '2xl': 'pre-wrap' }}
+            marginLeft={'10px'}
+            whiteSpace={'pre-wrap'}
+            marginTop="10px"
           >
-            {props.textureDescription}
+            <HtmlTextParser>{props.textureDescription}</HtmlTextParser>
           </Text>
         </Flex>
       </Flex>
@@ -85,10 +91,12 @@ export const Inspire = (props: InspireProps) => {
           data-testid="combine-texture"
           pos="relative"
           direction="column"
-          w={{ base: '100%', '2xl': 'fit-content' }}
-          align={{ base: 'center', '2xl': 'inherit' }}
-          top={{ base: '80px', sm: '25px', '2xl': '-330px' }}
-          left={{ '2xl': '52%' }}
+          w={{ base: '100%', '2xl': '100%' }}
+          top={{ base: '0px', sm: '5%', '2xl': '-330px' }}
+          alignItems={{ base: 'flex-start', '2xl': 'flex-end' }}
+          padding={{ base: '0', lg: '0 5%', '2xl': '0 5%' }}
+          zIndex="docked"
+          // bg="blue"
         >
           <Box>
             <Flex
@@ -102,34 +110,43 @@ export const Inspire = (props: InspireProps) => {
               justify="center"
             >
               <Text
-                fontSize="20px"
+                as={'h4'}
+                variant={'h4' as any}
                 fontWeight="medium"
                 color="white"
                 letterSpacing="-0.2px"
                 _after={{ sm: ':>>>>>' }}
               >
-                COMBINE COM:
+                {bpCatalogItem.t('inspire.combineWith')}
               </Text>
             </Flex>
 
-            <Flex direction={{ base: 'column', sm: 'row' }}>
+            <Flex
+              direction={{ base: 'column', sm: 'row' }}
+              // bg="red"
+              // left={{ '2xl': '52%' }}
+            >
               {props.combine_with?.map((texture) => (
                 <Flex
                   key={texture.name}
                   direction="column"
                   pos="relative"
                   gap={{ sm: '9px' }}
+                  // bg="yellow"
                 >
-                  <Image
-                    src={texture.img}
-                    w={{ base: '100vw', sm: '211px' }}
-                    h={{ base: '120px', sm: '350px' }}
-                  />
+                  <Link href={texture.href}>
+                    <Image
+                      src={texture.img}
+                      w={{ base: '100vw', sm: '214px' }}
+                      h={{ base: '120px', sm: '350px' }}
+                      objectFit="cover"
+                    />
+                  </Link>
                   <Text
-                    fontSize="20px"
-                    letterSpacing="0px"
+                    as={'h5'}
+                    variant={'h5' as any}
                     color={{ base: 'gray.400', sm: 'gray.300' }}
-                    textAlign={{ base: 'center', '2xl': 'left' }}
+                    textAlign={{ base: 'center', lg: 'left' }}
                     pos={{ base: 'absolute', sm: 'relative' }}
                     bg={{ base: 'rgba( 226, 226, 226, 0.55 )', sm: 'none' }}
                     backdropFilter={{ base: 'blur( 4px )', sm: 'none' }}
@@ -153,20 +170,26 @@ export const Inspire = (props: InspireProps) => {
           w={{ base: '100%', '2xl': 'fit-content' }}
           top={{ base: '80px', sm: '25px', '2xl': '-330px' }}
           left={{ '2xl': '52%' }}
+          display={{ base: 'none', '2xl': 'block' }}
         />
       )}
 
       <Flex
+        bg={{ base: '#D6DCD5', '2xl': 'none' }}
         pl={{ '2xl': '88px' }}
         pos="relative"
-        mt={{ '2xl': '-580px' }}
+        mt={{
+          base: props.combine_with.length > 0 ? '5%' : '0px',
+          '2xl': '-550px'
+        }}
+        mb={{ base: '50px', '2xl': 'none' }}
         wrap={{ base: 'wrap', '2xl': 'nowrap' }}
         w={{
           base: '100%',
           '2xl': 'inherit'
         }}
         _before={{
-          backgroundColor: '#D6DCD5',
+          backgroundColor: { base: 'white.100', md: '#D6DCD5' },
           position: 'absolute',
           content: '""',
           right: 0,
@@ -175,106 +198,165 @@ export const Inspire = (props: InspireProps) => {
           w: { base: '1440px', xl: '100%', '2xl': '1440px' },
           zIndex: '-1'
         }}
+        justifyContent={'center'}
       >
         {props.in_ambients.length ? (
           <Flex
             data-testid="texture-examples"
-            pt={{ base: '110px', '2xl': '208px' }}
+            pt={{ base: '3%', '2xl': '208px' }}
             direction="column"
-            align={{ base: 'center', '2xl': 'inherit' }}
-            w={{
-              base: '100vw',
-              '2xl': 'inherit'
-            }}
+            // bg="cyan"
+            marginLeft={{ '2xl': '17%' }}
           >
             <Text
-              fontSize="37px"
+              as={'h2'}
+              variant={'h2' as any}
               fontWeight={800}
               letterSpacing="-0.74px"
               color="green.700"
               pb="21px"
-              alignSelf={{ base: 'center', '2xl': 'flex-start' }}
+              alignSelf={{ base: 'center', lg: 'flex-start' }}
             >
-              Inspire-se
+              {bpCatalogItem.t('inspire.inspire')}
             </Text>
 
             <Image
+              onClick={() => router.push(props.in_ambients[curr].ambient_href)}
+              cursor="pointer"
               src={props.in_ambients[curr].image_url}
-              w={{ base: '320px', xs: '100%', sm: '846px' }}
-              h={{ base: '321px', sm: '562px' }}
+              // h="100%"
+              // w="100%"
+              // objectFit={'cover'}
+              w={{ base: '320px', xs: '100%', sm: '846px', lg: '980px' }}
+              h={{ base: '321px', sm: '562px', lg: '650px' }}
+              // border="1px solid red"
+              // objectFit={'scale-down'}
               objectFit={{ base: 'scale-down', xs: 'cover' }}
             />
 
             <Flex
               data-testid="examples-control"
-              alignSelf={{ base: 'flex-start', sm: 'center', lg: 'flex-end' }}
-              mr={{ lg: '160px', xl: '270px', '2xl': '50px' }}
-              mt={{ base: '-5px', sm: '-38px' }}
-              w={{ base: '154px' }}
+              alignSelf={{ base: 'center' }}
+              // mr={{ base: '0', lg: '160px', xl: '270px', '2xl': '50px' }}
+              // mt={{ base: '-5px', sm: '-38px' }}
+              // w={{ base: '154px' }}
+              // bg="tomato"
             >
-              <ArrowButton onClick={() => switchTo('prev')} direction="left" />
-              <ArrowButton onClick={() => switchTo('next')} direction="right" />
+              <Button
+                onClick={() => switchTo('prev')}
+                variant="no-border"
+                background="gray.300"
+                color="gray.150"
+                w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+                h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+                _hover={{
+                  background: 'green.550',
+                  color: 'white.100'
+                }}
+              >
+                {isMobile ? (
+                  <Arrow width="5" height="5" direction="left" />
+                ) : (
+                  <Arrow width="22" height="30" direction="left" />
+                )}
+              </Button>
+              <Button
+                onClick={() => switchTo('next')}
+                variant="no-border"
+                background="gray.300"
+                color="gray.150"
+                w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+                h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+                _hover={{
+                  background: 'green.550',
+                  color: 'white.100'
+                }}
+              >
+                {isMobile ? (
+                  <Arrow width="5" height="5" direction="right" />
+                ) : (
+                  <Arrow width="22" height="30" direction="right" />
+                )}
+              </Button>
             </Flex>
           </Flex>
         ) : (
           <Box
-            pt={{ base: '110px', '2xl': '208px' }}
-            w={{ base: '320px', xs: '100%', sm: '846px' }}
-            h={{ base: '321px', sm: '562px' }}
-          />
+            mt={{ base: '5%', '2xl': '15%' }}
+            w={{ base: '90%' }}
+            maxHeight={'600px'}
+            cursor="pointer"
+            onClick={() => router.push('/products/bp-berneck/gallery')}
+            // bg="violet"
+            // marginLeft={{'2xl': '5%'}}
+          >
+            <Image
+              // w="100%"
+              h="100%"
+              objectFit={'cover'}
+              src="/img/conheca_galeria.jpg"
+            />
+          </Box>
         )}
 
         <Flex
           data-testid="texture-description"
-          mt={{ base: '50px', '2xl': '165px' }}
-          w={{ base: '100%', xl: '100%', '2xl': '840px' }}
-          h={{ '2xl': '633px' }}
-          padding={{
-            base: '40px 20px',
-            xl: '40px 120px',
-            '2xl': '223px 100px 203px 120px'
-          }}
+          mt={{ base: '5%', '2xl': '18%' }}
+          mb={{ base: '0', '2xl': '10%' }}
+          mr={{ '2xl': '10%' }}
+          padding={{ '2xl': '2%' }}
+          w={{ base: '90%', '2xl': '70%' }}
+          // h={{ '2xl': '633px' }}
           direction="column"
-          right="0"
+          // bg="purple"
         >
           <Text
-            textAlign={{ base: 'center', '2xl': 'left' }}
-            w={{ '2xl': '660px' }}
-            fontSize="20px"
+            as={'h4'}
+            variant={'h4' as any}
+            fontWeight="normal"
+            textAlign={{ base: 'center', xl: 'left' }}
             letterSpacing="0px"
             color="green.900"
           >
-            {props.productPresentation}
+            <HtmlTextParser>{props.productPresentation}</HtmlTextParser>
           </Text>
 
           <Flex
-            pt="52px"
-            gap="116px"
+            padding={{ base: '8%', xl: 'flex-start' }}
+            gap="10%"
             zIndex={1000}
-            justify={{ base: 'center', '2xl': 'flex-start' }}
+            justify={{ base: 'center', xl: 'flex-start' }}
           >
-            <TextureContentButton
-              title="Assista ao vídeo"
-              onClick={() =>
-                props.urlVideo && window.open(props.urlVideo, '_blank')
-              }
-            >
-              <PlayIcon />
-            </TextureContentButton>
+            {props.urlVideo ? (
+              <TextureContentButton
+                title="Assista ao vídeo"
+                onClick={() =>
+                  props.urlVideo && window.open(props.urlVideo, '_blank')
+                }
+              >
+                <PlayIcon />
+              </TextureContentButton>
+            ) : (
+              <Box></Box>
+            )}
 
-            <TextureContentButton
-              title="Confira o ebook"
-              onClick={() =>
-                props.urlEbook && window.open(props.urlEbook, '_blank')
-              }
-            >
-              <ReportsIcon
-                stroke1="#6AA353"
-                width="35px"
-                height="35px"
-                transform="scaleY(-1)"
-              />
-            </TextureContentButton>
+            {props.urlEbook ? (
+              <TextureContentButton
+                title="Confira o ebook"
+                onClick={() =>
+                  props.urlEbook && window.open(props.urlEbook, '_blank')
+                }
+              >
+                <ReportsIcon
+                  stroke1="#6AA353"
+                  width="35px"
+                  height="35px"
+                  transform="scaleY(-1)"
+                />
+              </TextureContentButton>
+            ) : (
+              <Box></Box>
+            )}
           </Flex>
         </Flex>
       </Flex>
@@ -317,7 +399,7 @@ const TextureContentButton = (props: {
     direction={{ base: 'column-reverse', md: 'row' }}
     align="center"
     color="green.500"
-    fontSize="20px"
+    // fontSize="20px"
     fontWeight="bold"
     letterSpacing="0px"
     gap="14px"

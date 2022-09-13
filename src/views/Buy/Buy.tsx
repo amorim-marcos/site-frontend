@@ -1,4 +1,4 @@
-import { Flex, Box, Text, Image } from '@chakra-ui/react'
+import { Flex, Box, Text, Image, Link } from '@chakra-ui/react'
 import CompletedTitle from '@components/CompletedTitle'
 import { EarthIcon } from '@components/Icons'
 import { BrasilIcon } from '@components/Icons/BrasilIcon/BrasilIcon'
@@ -6,28 +6,36 @@ import Pagebar from '@components/Pagebar'
 import WhereBuyTable from '@components/WhereBuyTable'
 import useMobile from 'hooks/useMobile'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { colors } from '../../theme/colors'
 
-export const Buy = () => {
+export const Buy = ({ representatives_list = '/onde-comprar' }) => {
   const [locationBrasil, setLocationBrasil] = useState(true)
   const { isMobile } = useMobile(568)
+  const buyViewLabels = useTranslation('buyView')
   return (
-    <Box maxWidth={'1920px'} marginX="auto">
+    <Box>
       <Pagebar
         paths={[
           {
-            title: 'Onde Comprar',
+            title: buyViewLabels.t('pagebar.whereToBuy'),
             url: '/'
           }
         ]}
       />
 
       <Flex
-        position={'relative'}
-        w="100%"
+        maxWidth="1536px"
+        marginX="auto"
+        alignItems="start"
+        justifyContent="center"
+        position="relative"
+        zIndex="base"
+        overflowY="hidden"
+        overflowX="hidden"
+        bg="white.100"
         padding="5%"
         flexDirection={'column'}
-        overflow={'hidden'}
       >
         <Image
           src="/img/onde-comprar/grafismo.svg"
@@ -40,7 +48,7 @@ export const Buy = () => {
         />
         <Box zIndex={'docked'}>
           <CompletedTitle
-            titleString="Onde Comprar"
+            titleString={buyViewLabels.t('headerBanner.title')}
             alignSelf={isMobile ? 'center' : 'left'}
             textAlign={isMobile ? 'center' : 'left'}
           />
@@ -52,9 +60,23 @@ export const Buy = () => {
           color="brown.350"
           zIndex={'docked'}
         >
-          Os produtos BERNECK® podem ser encontrados nos melhores móveis e
-          revendas do Brasil e do mundo. Confira abaixo os pontos de revenda
-          mais próximos a você.
+          {buyViewLabels.t('headerBanner.description')}
+        </Text>
+        <Text
+          marginTop="4%"
+          w={{ base: '100%', md: '50%' }}
+          variant={'body' as any}
+          color="brown.350"
+          zIndex={'docked'}
+        >
+          {buyViewLabels.t('headerBanner.industrialApplications')}{' '}
+          <Link
+            onClick={() => window.open(representatives_list, '_blank')}
+            textDecoration={'underline #59993F'}
+            color="#59993F"
+          >
+            {buyViewLabels.t('headerBanner.ourRepresentatives')}
+          </Link>
         </Text>
       </Flex>
 
@@ -108,7 +130,7 @@ export const Buy = () => {
               color={locationBrasil ? 'white.100' : 'gray.400'}
               marginLeft={'5%'}
             >
-              NO BRASIL
+              {buyViewLabels.t('locationSelector.inBrazil')}
             </Text>
           </Flex>
 
@@ -142,7 +164,7 @@ export const Buy = () => {
               marginRight={'5%'}
               color={locationBrasil ? 'gray.400' : 'white.100'}
             >
-              NO MUNDO
+              {buyViewLabels.t('locationSelector.inTheWorld')}
             </Text>
             <EarthIcon
               width={{

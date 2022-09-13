@@ -16,223 +16,277 @@ export const AppFooter = () => {
         aria-label="footer-container"
         data-testid="footer-container"
         flexDir="column"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
-        h={{
-          base: '240px',
-          md: '460px',
-          lg: '600px',
-          xl: '670px',
-          '2xl': '732px'
-        }}
+        // h={{
+        //   base: '240px',
+        //   md: '460px',
+        //   lg: '320px',
+        //   xl: '400px'
+        // }}
         bg="green.900"
+        // bg="pink"
         position="relative"
       >
         <Flex
-          padding="5%"
+          paddingInline={{ base: '4%', xl: '4%' }}
           overflow="hidden"
           position="relative"
-          height="643px"
+          // marginTop={{ base: '0', md: '20%' }}
           width="100%"
           flexDir="column"
+          // bg="darkcyan"
         >
           <Flex
-            w="100%"
+            flex="1"
             flexDirection={{ base: 'column', md: 'row' }}
-            alignItems={{ base: 'flex-start', md: 'center' }}
+            alignItems={{ base: 'center', md: 'center' }}
             zIndex="docked"
-            marginTop={{ base: '20px', sm: '0' }}
+            marginTop={{ base: '20px', md: '0' }}
+            // bg={"grey"}
           >
             <LogoBerneck
               width={{
                 base: '110px',
-                md: '120px',
-                lg: '150px',
-                xl: '180px',
-                '2xl': '220px'
+                md: '110px',
+                lg: '130px',
+                xl: '145px',
+                '2xl': '189px'
               }}
             />
             <Flex
-              // border="1px solid pink"
               w={{ base: '100%', md: '30%' }}
               ml={{ base: '0', md: 'auto' }}
-              justifyContent={{ base: 'space-around', md: 'flex-end' }}
+              justifyContent={{ base: 'space-around', lg: 'flex-end' }}
               marginY={{ base: '30px', md: 'none' }}
             >
-              
-                <SocialIcon
-                  marginLeft={socialIconMarginLeft}
-                  width={socialIconWidth}
-                  media="facebook"
-                  href='https://www.facebook.com/BerneckSA'
-                />
-                <SocialIcon
-                  marginLeft={socialIconMarginLeft}
-                  width={socialIconWidth}
-                  media="instagram"
-                  href='https://www.instagram.com/berneckoficial'
-                />
-                <SocialIcon
-                  marginLeft={socialIconMarginLeft}
-                  width={socialIconWidth}
-                  media="linkedin"
-                  href='https://www.linkedin.com/company/berneck-s.a.-pain-is-e-serrados'
-                />
-                <SocialIcon
-                  marginLeft={socialIconMarginLeft}
-                  width={socialIconWidth}
-                  media="youtube"
-                  href=' https://www.youtube.com/Berneckoficial'
-                />
-                <SocialIcon
-                  marginLeft={socialIconMarginLeft}
-                  width={socialIconWidth}
-                  media="pinterest"
-                  href='https://br.pinterest.com/berneckoficial'
-                />
+              <SocialIcon
+                marginLeft={socialIconMarginLeft}
+                width={socialIconWidth}
+                media="facebook"
+                href="https://www.facebook.com/BerneckSA"
+              />
+              <SocialIcon
+                marginLeft={socialIconMarginLeft}
+                width={socialIconWidth}
+                media="instagram"
+                href="https://www.instagram.com/berneckoficial"
+              />
+              <SocialIcon
+                marginLeft={socialIconMarginLeft}
+                width={socialIconWidth}
+                media="linkedin"
+                href="https://www.linkedin.com/company/berneck-s.a.-pain-is-e-serrados"
+              />
+              <SocialIcon
+                marginLeft={socialIconMarginLeft}
+                width={socialIconWidth}
+                media="youtube"
+                href=" https://www.youtube.com/Berneckoficial"
+              />
+              <SocialIcon
+                marginLeft={socialIconMarginLeft}
+                width={socialIconWidth}
+                media="pinterest"
+                href="https://br.pinterest.com/berneckoficial"
+              />
             </Flex>
           </Flex>
 
           <Flex
+            flex="1"
             display={{ base: 'none', md: 'flex' }}
+            // paddingInline={{ base: '4%', xl: '4%' }}
             justifyContent="space-between"
+            justifyItems={'flex-start'}
+            alignContent={'flex-start'}
             zIndex="docked"
             marginTop={{
               base: '7%',
-              sm: '10%',
-              lg: '11%',
-              '2xl': '6%'
+              sm: '3%',
+              lg: '3%',
+              xl: '2%'
             }}
+            marginBottom={{
+              base: '7%',
+              sm: '3%',
+              lg: '3%',
+              xl: '2%'
+            }}
+            // bg={'yellow'}
           >
             <FooterList
               key={0}
               title={{
-                title: footer.t(footerNavigation.column1.titleKey),
-                href: footerNavigation.column1.href
+                title: footer.t(footerNavigation.weAreBerneckColumn.titleKey),
+                href: footerNavigation.weAreBerneckColumn.href
               }}
-              items={footerNavigation.column1.items.map((i) => ({
-                title: footer.t(i.titleKey),
-                href: i.href
-              }))}
+              items={
+                footerNavigation &&
+                footerNavigation.weAreBerneckColumn &&
+                footerNavigation.weAreBerneckColumn.items
+                  ? footerNavigation.weAreBerneckColumn.items.map((i) => ({
+                      title: footer.t(i.titleKey),
+                      href: i.href
+                    }))
+                  : []
+              }
             />
 
             <FooterList
               key={1}
               title={{
-                title: footer.t(footerNavigation.column2.titleKey),
-                href: footerNavigation.column2.href
+                title: footer.t(footerNavigation.ourCommitmentColumn.titleKey),
+                href: footerNavigation.ourCommitmentColumn.href
               }}
-              items={footerNavigation.column2.items.map((i) => ({
-                title: footer.t(i.titleKey),
-                href: i.href
-              }))}
+              items={
+                footerNavigation &&
+                footerNavigation.ourCommitmentColumn &&
+                footerNavigation.ourCommitmentColumn.items
+                  ? footerNavigation.ourCommitmentColumn.items.map((i) => ({
+                      title: footer.t(i.titleKey),
+                      href: i.href
+                    }))
+                  : []
+              }
             />
 
             <FooterList
               key={2}
               title={{
-                title: footer.t(footerNavigation.column3.titleKey),
-                href: footerNavigation.column3.href
+                title: footer.t(
+                  footerNavigation.florestalDivisionColumn.titleKey
+                ),
+                href: footerNavigation.florestalDivisionColumn.href
               }}
-              items={footerNavigation.column3.items.map((i) => ({
-                title: footer.t(i.titleKey),
-                href: i.href
-              }))}
+              items={
+                footerNavigation.florestalDivisionColumn.items
+                  ? footerNavigation.florestalDivisionColumn.items.map((i) => ({
+                      title: footer.t(i.titleKey),
+                      href: i.href
+                    }))
+                  : []
+              }
             />
 
             <FooterList
               key={3}
               title={{
-                title: footer.t(footerNavigation.column4.titleKey),
-                href: footerNavigation.column4.href
+                title: footer.t(footerNavigation.productsColumn.titleKey),
+                href: footerNavigation.productsColumn.href
               }}
-              items={footerNavigation.column4.items.map((i) => ({
-                title: footer.t(i.titleKey),
-                href: i.href
-              }))}
+              items={
+                footerNavigation.productsColumn.items
+                  ? footerNavigation.productsColumn.items.map((i) => ({
+                      title: footer.t(i.titleKey),
+                      href: i.href
+                    }))
+                  : []
+              }
             />
 
             <FooterList
               key={4}
               title={{
-                title: footer.t(footerNavigation.column5.titleKey),
-                href: footerNavigation.column5.href
+                title: footer.t(footerNavigation.channelBNKColumn.titleKey),
+                href: footerNavigation.channelBNKColumn.href
               }}
-              items={footerNavigation.column5.items.map((i) => ({
-                title: footer.t(i.titleKey),
-                href: i.href,
-                empty: i.empty
-              }))}
+              items={
+                footerNavigation.channelBNKColumn.items
+                  ? footerNavigation.channelBNKColumn.items.map((i) => ({
+                      title: footer.t(i.titleKey),
+                      href: i.href,
+                      empty: i.empty
+                    }))
+                  : []
+              }
             />
           </Flex>
 
           <Box zIndex="base" position="absolute" top="-35px" left="0">
-            <Grafism width={{ base: '1024px', md: '1280px', lg: '1920px' }} />
+            <Grafism width={{ base: '1024px', md: '1280px', lg: '1536px' }} />
           </Box>
         </Flex>
         <Flex
           w="100%"
-          h={{ base: '230px', md: '100px' }}
+          h={{ base: '120px', md: '50px' }}
+          padding={{ base: '1%', md: '0' }}
           alignItems="center"
           justifyContent={{ base: 'space-evenly', md: 'space-between' }}
-          paddingX="70px"
           position="relative"
           flexDirection={{ base: 'column', md: 'row' }}
+          // bg="darksalmon"
         >
-          <Text
-            width="fit-content"
-            position={{ base: 'absolute', md: 'relative' }}
-            top={{ base: '-30px', md: '0' }}
-            left={{ base: '0' }}
-            right={{ base: '0' }}
-            marginX={{ base: 'auto', md: '0' }}
-            fontSize={{
-              base: '12px',
-              md: '8px',
-              lg: '10px',
-              xl: '12px',
-              '2xl': '14px'
-            }}
-            color="green.300"
+          <Flex
+            flex="1"
+            //  bg="bisque"
+            alignItems="center"
+            //  justifyContent="center"
+            margin={{ base: '2%' }}
           >
-            © 2022 BERNECK . Todos os direitos reservados.
-          </Text>
-          <Text
-            fontSize={{
-              base: '11px',
-              md: '8px',
-              lg: '10px',
-              xl: '12px',
-              '2xl': '14px'
-            }}
-            color="green.600"
-            cursor={'pointer'}
-            _hover={{ opacity: '0.9' }}
-            onClick={() => router.push('politica-de-privacidade')}
+            <Text
+              left={{ base: '0' }}
+              right={{ base: '0' }}
+              fontSize={{
+                base: '12px',
+                md: '8px',
+                lg: '10px',
+                xl: '12px'
+              }}
+              color="green.300"
+            >
+              &#9400;{footer.t('rights')}
+            </Text>
+          </Flex>
+          <Flex
+            flex="1"
+            //  bg="limegreen"
+            alignItems="center"
+            justifyContent="center"
+            //  padding={{ base: '0', md: '5%' }}
           >
-            Termos de Uso e Política de Privacidade
-          </Text>
-          <Link href="http://www.commcepta.com.br/" isExternal>
-            <Image
-              cursor="pointer"
-              height={{
-                base: '23px',
-                md: '12px',
-                lg: '15px',
-                xl: '18px',
-                '2xl': '23px'
+            <Text
+              fontSize={{
+                base: '11px',
+                md: '8px',
+                lg: '10px',
+                xl: '12px'
               }}
-              width={{
-                base: '116px',
-                md: '61px',
-                lg: '77px',
-                xl: '92px',
-                '2xl': '116px'
-              }}
-              src="/img/logo-commcepta.png"
-              alt="Logo Commcepta"
-            />
-          </Link>
+              color="green.600"
+              cursor={'pointer'}
+              _hover={{ opacity: '0.9' }}
+              onClick={() => router.push('politica-de-privacidade')}
+            >
+              {footer.t('termsAndPrivacy')}
+            </Text>
+          </Flex>
+          <Flex
+            flex="1"
+            // bg="yellowgreen"
+            alignItems="center"
+            justifyContent="flex-end"
+            margin={{ base: '2%' }}
+          >
+            <Link href="http://www.commcepta.com.br/" isExternal>
+              <Image
+                cursor="pointer"
+                // height={{
+                //   base: '23px',
+                //   md: '12px',
+                //   lg: '15px',
+                //   xl: '18px'
+                // }}
+                width={{
+                  base: '80px',
+                  md: '61px',
+                  lg: '77px',
+                  xl: '92px'
+                }}
+                src="/img/logo-commcepta.png"
+                alt="Logo Commcepta"
+              />
+            </Link>
+          </Flex>
         </Flex>
       </Flex>
     </Box>
@@ -244,13 +298,11 @@ const socialIconWidth = {
   sm: '40px',
   md: '25px',
   lg: '30px',
-  xl: '35px',
-  '2xl': '42px'
+  xl: '35px'
 }
 
 const socialIconMarginLeft = {
-  base: '0px',
+  base: '15px',
   lg: '30px',
-  xl: '40px',
-  '2xl': '50px'
+  xl: '40px'
 }

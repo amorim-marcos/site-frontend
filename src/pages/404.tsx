@@ -1,5 +1,29 @@
 import AppError from '@components/AppError'
+import { loadTranslations } from 'ni18n'
+import { nameSpaces, ni18nConfig } from '../../ni18n.config'
+import { GetStaticProps } from 'next'
+import { useTranslation } from 'react-i18next'
 
 export default function Custom404() {
-  return <AppError errorNumber="404" errorText="Página não encontrada." />
+  const errorPagesLabels = useTranslation('errorPages')
+
+  return (
+    <AppError
+      errorNumber="404"
+      errorText={errorPagesLabels.t('notFound.title')}
+    />
+  )
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const locale = context.locale
+  return {
+    props: {
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
+      // ...clientNamespaces(ni18nConfig, ['components/header'])
+    },
+    revalidate: parseInt(
+      process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'
+    )
+  }
 }

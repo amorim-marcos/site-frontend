@@ -1,18 +1,34 @@
-import { Flex, Box, Text, Button, Image } from '@chakra-ui/react'
+import { Flex, Box, Text, Image, Link } from '@chakra-ui/react'
+import HtmlTextParser from '@components/HtmlTextParser'
 import useMobile from 'hooks/useMobile'
+import { useTranslation } from 'react-i18next'
 
-export const SectionPackBpDownloads = () => {
-  const { isMobile, width } = useMobile(568)
+export type SectionPackBpDownloadsProps = {
+  title: string
+  text: string
+  download_url: string | null
+}
+
+export const SectionPackBpDownloads = ({
+  title,
+  text,
+  download_url
+}: SectionPackBpDownloadsProps) => {
+  const { width } = useMobile(568)
+
+  const componentsLabels = useTranslation('components')
+
   return (
     <Flex
+      id="pack-bp-downloads"
       w="100%"
       marginBottom={{ base: '400px', md: '10%' }}
       justifyContent="center"
     >
       <Flex
         bg="#F6EFE3"
-        maxWidth="1920px"
-        minWidth={width && width < 1920 ? '100vw' : '1920px'}
+        maxWidth="1536px"
+        minWidth={width && width < 1536 ? '100vw' : '1536px'}
         h={{ base: 'auto', md: '23vw' }}
         maxHeight="441px"
         position="relative"
@@ -43,7 +59,7 @@ export const SectionPackBpDownloads = () => {
             right="0"
             top={{ base: '0', md: '0' }}
             src="/img/pack_bp_downlodas.png"
-            flexShrink="0"
+            flexShrink={0}
             objectFit="cover"
           />
         </Box>
@@ -55,30 +71,38 @@ export const SectionPackBpDownloads = () => {
           alignItems="center"
           textAlign={'center'}
         >
-          <Text as="h3" variant={'h3' as any}>
-            Pack de Padrões BP BERNECK®
+          <Text as="h3" variant="h3">
+            {title}
           </Text>
           <Text
             w={{ base: '70%', xl: '80%', '2xl': '100%' }}
             color="green.800"
-            variant={'body' as any}
+            variant="body"
             textAlign="center"
           >
-            Faça o download do pack de padrões BP BERNECK® para utilizar em seus
-            projetos.
+            <HtmlTextParser>{text}</HtmlTextParser>
           </Text>
-          <Button
+          <Link
             marginTop="6%"
             bg="green.600"
             color="white.100"
             w="60%"
-            variant="unstyled"
             height={{ base: '50px', md: '20%' }}
+            href={download_url ? download_url : '#'}
+            target="_blank"
+            download
+            fontWeight="bold"
+            borderRadius="18px"
+            transition="all .2s ease-in-out"
+            _hover={{ outline: 'none', bg: 'green.700' }}
+            _focus={{ outline: 'none' }}
           >
-            <Text color="white.100" fontWeight="bold" variant={'body' as any}>
-              Pack de Padrões
-            </Text>
-          </Button>
+            <Flex h="100%" w="100%" alignItems="center" justifyContent="center">
+              <Text color="white.100" fontWeight="bold" variant="body">
+                {componentsLabels.t('sectionPackBpDownloads.patternPacks')}
+              </Text>
+            </Flex>
+          </Link>
         </Flex>
 
         <Box w={{ base: '40%', md: '30%', lg: '25%' }}></Box>

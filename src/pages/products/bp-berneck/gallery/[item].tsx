@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GetServerSideProps } from 'next'
+import { loadTranslations } from 'ni18n'
 
 import { strapiClient } from 'services'
 import { EnvView } from 'views/Gallery/EnvView'
+import { nameSpaces, ni18nConfig } from '../../../../../ni18n.config'
 
 export interface GalleryItemProps {
   env: {
@@ -39,12 +42,13 @@ export default function GalleryItem(props: GalleryItemProps) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { item } = ctx.query
-  const url = process.env.NEXT_PUBLIC_API_URL
+  const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
   let envFetch = await strapiClient({
     defaultOnEmpty: true,
     locale: ctx.locale,
-    resource: `ambients?url_code=${item}`
+    query: [{ url_code: item }],
+    resource: 'ambients'
   })
 
   const otherEnvsFetch = await strapiClient({
@@ -59,11 +63,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     id: envFetch.id,
     imgSrc: envFetch.gallery_of_images.map((img: any) => `${url}${img.url}`),
     title: envFetch.ambient_type.type,
-    subTitle: envFetch.place,
+    subTitle: envFetch.title,
     panels: envFetch.products.map((product: any) => {
       return {
         id: product.id,
         name: product.name,
+        href: `/products/bp-berneck/catalog/${product.url_code}`,
         imgSrc: `${url}${product.pattern_image.url}`,
         product_texture: product.product_texture
       }
@@ -72,13 +77,14 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const otherEnvs: GalleryItemProps['otherEnvs'] = otherEnvsFetch
     .filter((env: any) => env.id !== envFetch.id)
+    .slice(0, 4)
     .map((env: any) => {
       return {
         id: env.id,
         url_code: env.url_code,
         imgSrc: `${url}${env.gallery_of_images[0].url}`,
         title: env.ambient_type.type,
-        subTitle: env.place
+        subTitle: env.title
       }
     })
 
@@ -87,12 +93,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       id: img.id,
       imgSrc: `${url}${img.url}`
     }
-  })
+  }).reverse()
 
   const tableContent = [
     {
       column1: 'Ano',
-      column2: envFetch.informations.year
+      column2: envFetch.informations?.year ?? null
     },
     {
       column1: 'Ambiente',
@@ -104,11 +110,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     },
     {
       column1: 'Arquiteto',
-      column2: envFetch.informations.architect
+      column2: envFetch.informations?.architect ?? null
     },
     {
       column1: 'Fotógrafo',
-      column2: envFetch.informations.photographer
+      column2: envFetch.informations?.photographer ?? null
     }
   ]
 
@@ -117,7 +123,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       env,
       otherEnvs,
       imgs,
-      tableContent
+      tableContent,
+      ...(await loadTranslations(ni18nConfig, ctx.locale, nameSpaces))
     }
   }
 }

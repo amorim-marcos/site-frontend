@@ -1,7 +1,10 @@
+import { Box } from '@chakra-ui/react'
+import Pagebar from '@components/Pagebar'
 import {
   QualityPinus,
   QualityPinusProps
 } from '@components/QualityPinus/QualityPinus'
+import { useTranslation } from 'react-i18next'
 import Product from '../../components/Product'
 
 export type BerneckPinusViewProps = {
@@ -9,6 +12,7 @@ export type BerneckPinusViewProps = {
     title: string
     subTitle: string
     technical_sheet: string
+    where_buy: string
     subTitleDescription: string
     description: string
     usesAndApplications: string
@@ -25,8 +29,21 @@ export default function BerneckPinusView({
   specifications,
   qualityPinus
 }: BerneckPinusViewProps) {
+  const productsViewLabels = useTranslation('productsView')
   return (
-    <div>
+    <Box>
+      <Pagebar
+        paths={[
+          {
+            title: productsViewLabels.t('pagebar.products'),
+            url: '/products'
+          },
+          {
+            title: pinus.title,
+            url: '/products/berneck-pinus'
+          }
+        ]}
+      />
       <Product
         grafismProps={{
           grafism: 'type3',
@@ -37,7 +54,7 @@ export default function BerneckPinusView({
         imgSrc="/img/pinus.png"
         imgWidth={{ base: '100vw', sm: '60vw' }}
         imgMaxWidth="1151px"
-        imgMarginTop={{ base: '-30%', sm: '0px' }}
+        imgMarginTop={{ base: '-30%', sm: '-5%' }}
         imgMarginRight={{
           base: '-30px',
           sm: '-40px',
@@ -47,7 +64,9 @@ export default function BerneckPinusView({
         }}
         secondaryBackground="#F5F6F4"
         downloadAndLinks={{
-          whereBuy: true,
+          textColor: '#376B5C',
+          hoverColor: '#59993F',
+          whereBuy: pinus.where_buy,
           datasheetUrl: pinus.technical_sheet,
           qualityCertificate: false
         }}
@@ -64,7 +83,7 @@ export default function BerneckPinusView({
           backgroundColor: '#E8E8E8'
         }}
       />
-      <QualityPinus items={qualityPinus.items} />
-    </div>
+      <QualityPinus items={qualityPinus.items} pdfUrl={pinus.technical_sheet} />
+    </Box>
   )
 }

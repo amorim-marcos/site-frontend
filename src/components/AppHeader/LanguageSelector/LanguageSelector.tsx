@@ -1,21 +1,29 @@
 import { Center, Text, Box, Flex } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { LanguageBtn } from './LanguageBtn/LanguageBtn'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { LanguageIcon } from './LanguageIcon'
 import { ArrowIcon } from './ArrowIcon'
+import Cookies from 'js-cookie'
 
 export const LanguageSelector = () => {
   const [open, setOpen] = useState(false)
   const router = useRouter()
   const header = useTranslation('header')
 
+  useEffect(() => {
+    const locale = Cookies.get('berneck_language')
+    if (router && router.locale !== locale && typeof locale !== 'undefined') {
+      router.push('/', '/', { locale })
+    }
+  }, [router])
+
   return (
     <Center
       cursor="pointer"
       position="relative"
-      zIndex="dropdown"
+      zIndex="skipLink"
       onClick={() => setOpen(!open)}
       transition="0.2s"
     >
@@ -26,8 +34,7 @@ export const LanguageSelector = () => {
             sm: '10px',
             md: '14px',
             lg: '18px',
-            xl: '20px',
-            '2xl': '25px'
+            xl: '20px'
           }}
         />
       </Box>
@@ -37,8 +44,7 @@ export const LanguageSelector = () => {
           base: '11px',
           md: '10px',
           lg: '12px',
-          xl: '14px',
-          '2xl': '16.5px'
+          xl: '14px'
         }}
       >
         {header.t('locale')}
@@ -49,12 +55,10 @@ export const LanguageSelector = () => {
         transform={open ? 'rotate(180deg)' : ''}
         marginLeft="8%"
       >
-        <ArrowIcon
-          width={{ base: '5px', md: '5px', lg: '7px', '2xl': '10px' }}
-        />
+        <ArrowIcon width={{ base: '5px', md: '5px', lg: '7px' }} />
       </Box>
 
-      {open ? (
+      {open && (
         <Flex
           width="115%"
           flexDir="column"
@@ -62,6 +66,7 @@ export const LanguageSelector = () => {
           top="calc(100%)"
           borderTop="2px solid"
           borderTopColor="green.600"
+          // zIndex="skipLink"
         >
           {!(router.locale === 'pt-BR') && (
             <LanguageBtn title="Português" locale="pt-BR" />
@@ -79,7 +84,7 @@ export const LanguageSelector = () => {
             <LanguageBtn title="Mandarim" locale="zn-CN" />
           )}
         </Flex>
-      ) : null}
+      )}
     </Center>
   )
 }

@@ -1,3 +1,6 @@
+import { Box } from '@chakra-ui/react'
+import Pagebar from '@components/Pagebar'
+import { useTranslation } from 'react-i18next'
 import Product from '../../components/Product'
 import { ProductProps } from './hdf-berneck'
 
@@ -7,18 +10,33 @@ export type MdfBerneckViewProps = {
 }
 
 export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
+  const productsViewLabels = useTranslation('productsView')
+
   return (
-    <div>
+    <Box>
+      <Pagebar
+        paths={[
+          {
+            title: productsViewLabels.t('pagebar.products'),
+            url: '/products'
+          },
+          {
+            title: mdf.title,
+            url: '/products/mdp-berneck'
+          }
+        ]}
+      />
       <Product
         grafismProps={{
           grafism: 'type1'
         }}
         imgSrc="/img/mdf.png"
-        imgWidth={{ base: '100vw', sm: '60vw' }}
+        imgWidth={{ base: '100vw', sm: '60vw', md: '50vw' }}
         imgMaxWidth="1151px"
         imgMarginTop={{
           base: '-30%',
-          sm: '0px'
+          sm: '0px',
+          '2xl': '-50px'
         }}
         imgMarginRight={{
           base: '-50px',
@@ -30,6 +48,8 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
         }}
         secondaryBackground="#F3E9DA"
         downloadAndLinks={{
+          textColor: '#665E5A',
+          hoverColor: '#D3A383',
           datasheetUrl: mdf.technical_sheet,
           whereBuy: true,
           qualityCertificate: true
@@ -51,15 +71,18 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
           },
           backgroundColor: '#FCFCFC',
           productWithBP: {
+            btnColor: '#D8C39F',
+            btnHoverColor: '#D0B588',
             backgroundColor: '#FBF6F0',
             imgSrc: '/img/mdf_bp.png',
             type: 'centralizedBtn',
-            title: 'MDF BERNECK® com BP',
-            description:
-              'A combinação das qualidades do MDF com a variedade de acabamentos do BP fornecem inúmeras possibilidades de utilização. Encontre a melhor para a sua aplicação.',
-            btnText: 'Conheça todos os padrões BP BERNECK em MDF',
-            btnColor: '#D8C39F',
-            grafismColor: '#D8C39F'
+            title: productsViewLabels.t('mdfBerneck.productWithBP.title'),
+            description: productsViewLabels.t(
+              'mdfBerneck.productWithBP.description'
+            ),
+            btnText: productsViewLabels.t('mdfBerneck.productWithBP.button'),
+            grafismColor: '#D8C39F',
+            href: '/products/bp-berneck/catalog?panel=MDF'
           }
         }}
       />
@@ -69,19 +92,19 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
           grafism: 'type2'
         }}
         imgSrc="/img/mdf_plus.png"
-        imgWidth={{ base: '100vw', sm: '60vw' }}
-        imgMaxWidth="1151px"
+        imgWidth={{ base: '50vw', sm: '30vw', md: '40vw' }}
+        imgMaxWidth="851px"
         imgMarginTop={{
-          base: '-30%',
-          sm: '10px',
+          base: '-20%',
+          sm: '17%',
           md: '11px',
           lg: '12px',
           xl: '13px',
-          '2xl': '14px'
+          '2xl': '0px'
         }}
         imgMarginRight={{
           base: '-10px',
-          sm: '-15px',
+          sm: '-20px',
           md: '-20px',
           lg: '-25px',
           xl: '-30px',
@@ -91,7 +114,7 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
         plusProduct
         header={{
           plusIndicator: true,
-          title: 'MDF PLUS BERNECK®',
+          title: mdf_plus.title,
           headerBgColor: '#ACCC9F',
           subtitle: mdf_plus.subTitle,
           description: mdf_plus.subTitleDescription
@@ -107,17 +130,26 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
           },
           backgroundColor: '#E8E8E8',
           productWithBP: {
-            title: mdf.title,
-            description:
-              'Inove nos projetos com os acabamentos BP em MDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .',
-            btnText: 'Conheça todos os padrões BP BERNECK em MDF PLUS',
-            imgSrc: '/img/mdf_plus_bp.png'
+            btnColor: 'green.400',
+            btnHoverColor: '#96BC87',
+            title: productsViewLabels.t('mdfBerneck.productWithBpPlus.title'),
+            description: productsViewLabels.t(
+              'mdfBerneck.productWithBpPlus.description'
+            ),
+            btnText: productsViewLabels.t(
+              'mdfBerneck.productWithBpPlus.button'
+            ),
+            imgSrc: '/img/mdf_plus_bp.png',
+            href: '/products/bp-berneck/catalog?panel=MDF Plus'
           }
         }}
         downloadAndLinks={{
+          textColor: '#376B5C',
+          hoverColor: '#59993F',
+          datasheetUrl: mdf_plus.technical_sheet,
           qualityCertificate: false
         }}
       />
-    </div>
+    </Box>
   )
 }

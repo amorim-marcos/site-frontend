@@ -10,6 +10,9 @@ import FeaturedBanner from '@components/FeaturedBanner'
 
 import PatternCertification from '@components/PatternCertification'
 import { useRouter } from 'next/router'
+import Paragraph from '@components/Paragraph'
+import { useTranslation } from 'react-i18next'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/Grupo_1872.png)',
@@ -17,25 +20,24 @@ const dataPageSession = {
   subtitle: ''
 }
 
-const bannerIcendio = {
-  title:
-    'Em caso de incêndio em nossas florestas e entornos, ligue para 41 2109-3855 [PR] | 41 2109-3856 [PR] | 49 3245-9015 [SC] | 49 3245-9186 [SC]',
-  display: 'flex'
-}
-
 export type ForestsViewProps = {
   page_content: {
     section1_text: string
     section1_title: string
     section2_text: string
+    section2_img: string
     section2_title: string
     section3_text: string
+    section3_img: string
     section3_title: string
     section4_text: string
+    section4_img: string
     section4_title: string
     section5_text: string
+    section5_img: string
     section5_title: string
     section6_text: string
+    section6_img: string
     section6_title: string
     value_chain_counties: number
     states: number
@@ -63,12 +65,15 @@ export type ForestsViewProps = {
       }
     }[]
   }
+  fireWarningText: string
 }
 
 export const ForestsView = (props: ForestsViewProps) => {
   const router = useRouter()
+  const forestView = useTranslation('forestsView')
+  console.log(props)
   return (
-    <Box maxWidth="1920px" marginX="auto" bg="green.100">
+    <Box>
       <Pagebar
         paths={[
           {
@@ -78,7 +83,7 @@ export const ForestsView = (props: ForestsViewProps) => {
         ]}
       />
 
-      <FireAlert title={bannerIcendio.title} display={bannerIcendio.display} />
+      <FireAlert title={props.fireWarningText} />
 
       <PageSession
         data={{
@@ -93,7 +98,7 @@ export const ForestsView = (props: ForestsViewProps) => {
 
       {/* INICIO Colhemos o que plantamos */}
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -105,16 +110,13 @@ export const ForestsView = (props: ForestsViewProps) => {
       >
         <Flex
           direction={{
-            base: 'column',
-            sm: 'column',
-            lg: 'column',
-            xl: 'column'
+            base: 'column'
           }}
           // bg='gray'
         >
           <Flex
             // bg='blue'
-            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+            direction={{ base: 'column', lg: 'row' }}
           >
             {/* BOX 1 */}
             <Box
@@ -136,7 +138,11 @@ export const ForestsView = (props: ForestsViewProps) => {
                 {props.page_content.section1_title}
               </Text>
 
-              <Text fontFamily="body">{props.page_content.section1_text}</Text>
+              <Text fontFamily="body">
+                <HtmlTextParser>
+                  {props.page_content.section1_text}
+                </HtmlTextParser>
+              </Text>
             </Box>
             {/* BOX 2 */}
             <Box
@@ -172,7 +178,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                     xl: '3% 3% 0% 3%'
                   }}
                 >
-                  Cultivamos para colher,
+                  {forestView.t('weCultivate.sloganPartOne')}
                 </Text>
                 <Text
                   as="h3"
@@ -187,7 +193,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                     xl: '0% 3% 5% 3%'
                   }}
                 >
-                  Conservamos para colher sempre!
+                  {forestView.t('weCultivate.sloganPartTwo')}
                 </Text>
 
                 <Button
@@ -203,7 +209,9 @@ export const ForestsView = (props: ForestsViewProps) => {
                     textAlign="center"
                     fontWeight="bold"
                   >
-                    Conheça nosso compromisso ambiental
+                    {forestView.t(
+                      'weCultivate.discoverOurEnvironmentalCommitmentBtn'
+                    )}
                   </Text>
                 </Button>
               </Flex>
@@ -227,11 +235,19 @@ export const ForestsView = (props: ForestsViewProps) => {
               height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px' }}
             >
               <Infographic
-                content3Text="mil hectares"
+                content3Text={forestView.t(
+                  'infoGraphicsForests.thousandHectares'
+                )}
                 content1DisplayIcon="yes"
                 content1IconName="pinus"
-                content2Text={props.page_content.pinus_cultivation.toString()}
-                titleSubscript1Text="Cultivo Florestal do Pinus"
+                content2Text={
+                  props.page_content.pinus_cultivation
+                    ? props.page_content.pinus_cultivation.toString()
+                    : ''
+                }
+                titleSubscript1Text={forestView.t(
+                  'infoGraphicsForests.pineForestCultivation'
+                )}
               />
             </Flex>
             <Flex
@@ -240,11 +256,19 @@ export const ForestsView = (props: ForestsViewProps) => {
               height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px' }}
             >
               <Infographic
-                content3Text="mil hectares"
+                content3Text={forestView.t(
+                  'infoGraphicsForests.thousandHectares'
+                )}
                 content1DisplayIcon="yes"
                 content1IconName="trees"
-                content2Text={props.page_content.preserved_native_forests.toString()}
-                titleSubscript1Text="Florestas Efetivamente Plantadas"
+                content2Text={
+                  props.page_content.preserved_native_forests
+                    ? props.page_content.preserved_native_forests.toString()
+                    : ''
+                }
+                titleSubscript1Text={forestView.t(
+                  'infoGraphicsForests.effectivelyPlantedForests'
+                )}
               />
             </Flex>
             <Flex
@@ -253,11 +277,19 @@ export const ForestsView = (props: ForestsViewProps) => {
               height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px' }}
             >
               <Infographic
-                content3Text="mil hectares"
+                content3Text={forestView.t(
+                  'infoGraphicsForests.thousandHectares'
+                )}
                 content1DisplayIcon="yes"
                 content1IconName="forest"
-                content2Text={props.page_content.planted_forests.toString()}
-                titleSubscript1Text="Preservação de Florestas Naturais"
+                content2Text={
+                  props.page_content.planted_forests
+                    ? props.page_content.planted_forests.toString()
+                    : ''
+                }
+                titleSubscript1Text={forestView.t(
+                  'infoGraphicsForests.preservationOfNaturalForests'
+                )}
               />
             </Flex>
             <Flex
@@ -266,11 +298,19 @@ export const ForestsView = (props: ForestsViewProps) => {
               height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px' }}
             >
               <Infographic
-                content3Text="milhões por ano"
+                content3Text={forestView.t(
+                  'infoGraphicsForests.millionsPerYear'
+                )}
                 content1DisplayIcon="yes"
                 content1IconName="mudas"
-                content2Text={props.page_content.planted_trees.toString()}
-                titleSubscript1Text="Árvores Plantadas"
+                content2Text={
+                  props.page_content.planted_trees
+                    ? props.page_content.planted_trees.toString()
+                    : ''
+                }
+                titleSubscript1Text={forestView.t(
+                  'infoGraphicsForests.plantedTrees'
+                )}
               />
             </Flex>
             <Flex
@@ -279,11 +319,17 @@ export const ForestsView = (props: ForestsViewProps) => {
               height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px' }}
             >
               <Infographic
-                content3Text="estados"
+                content3Text={forestView.t('infoGraphicsForests.states')}
                 content1DisplayIcon="yes"
-                content1IconName="earth"
-                content2Text={props.page_content.states.toString()}
-                titleSubscript1Text="PR, SC, RS e SP"
+                content1IconName="estado"
+                content2Text={
+                  props.page_content.states
+                    ? props.page_content.states.toString()
+                    : ''
+                }
+                titleSubscript1Text={forestView.t(
+                  'infoGraphicsForests.whichStates'
+                )}
               />
             </Flex>
             <Flex
@@ -292,11 +338,17 @@ export const ForestsView = (props: ForestsViewProps) => {
               height={{ base: '130px', sm: '130px', lg: '150px', xl: '200px' }}
             >
               <Infographic
-                content3Text="municípios"
+                content3Text={forestView.t('infoGraphicsForests.counties')}
                 content1DisplayIcon="yes"
                 content1IconName="house"
-                content2Text={props.page_content.value_chain_counties.toString()}
-                titleSubscript1Text="Cadeia de Suprimentos"
+                content2Text={
+                  props.page_content.value_chain_counties
+                    ? props.page_content.value_chain_counties.toString()
+                    : ''
+                }
+                titleSubscript1Text={forestView.t(
+                  'infoGraphicsForests.supplyChain'
+                )}
               />
             </Flex>
           </Flex>
@@ -305,600 +357,640 @@ export const ForestsView = (props: ForestsViewProps) => {
       {/* FIM Colhemos o que plantamos */}
 
       {/* INICIO Manejo Florestal */}
-      <Flex
-        id="manejo"
-        maxWidth="1920px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="green.200"
-      >
+      <Box bg="green.200">
         <Flex
-          // bg='blue'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+          id="manejo"
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="green.200"
         >
-          {/* BOX 1 */}
-          <Box
-            // bg='pink'
-            flex="1"
-            justifyItems={'center'}
-            backgroundImage="/assets/imgs/iStock-621469294.png"
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"
-            // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+          <Flex
+            // bg='blue'
+            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
           >
+            {/* BOX 1 */}
+            <Box
+              bg="pink"
+              flex="1"
+              justifyItems={'center'}
+              backgroundImage={props.page_content.section2_img}
+              backgroundPosition="center"
+              backgroundRepeat="no-repeat"
+              // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+            >
+              <Box
+                margin={{
+                  base: '30% 8% 5% 8%',
+                  sm: '30% 8% 5% 8%',
+                  lg: '80% 5% 8% 5%',
+                  xl: '80% 8% 8% 8%'
+                }}
+                h="100%"
+              >
+                <PatternInfo
+                  title={forestView.t('knowOurCertifications.know')}
+                  description={forestView.t(
+                    'knowOurCertifications.ourCertifications'
+                  )}
+                  onClick={() => router.push('/certificacoes')}
+                  icon={
+                    <CertificationsIcon
+                      width={{
+                        base: '40px',
+                        xs: '50px',
+                        sm: '58px',
+                        lg: '70px',
+                        xl: '80px'
+                      }}
+                      height={{
+                        base: '40px',
+                        xs: '50px',
+                        sm: '58px',
+                        lg: '70px',
+                        xl: '80px'
+                      }}
+                    />
+                  }
+                />
+              </Box>
+            </Box>
+            {/* BOX 2 */}
             <Box
               margin={{
-                base: '30% 8% 5% 8%',
-                sm: '30% 8% 5% 8%',
-                lg: '80% 5% 8% 5%',
-                xl: '80% 8% 8% 8%'
+                base: '8% 5% 10% 5%',
+                sm: '5% 5% 8% 5%',
+                lg: '5% 5% 5% 5%',
+                xl: '5% 5% 5% 5%'
               }}
-              h="100%"
+              // bg='yellow'
+              flex="1"
             >
-              <PatternInfo
-                title="CONHEÇA"
-                description="Nossas Certificações"
-                onClick={() => router.push('/certificacoes')}
-                icon={
-                  <CertificationsIcon
-                    width={{
-                      base: '40px',
-                      xs: '50px',
-                      sm: '58px',
-                      lg: '70px',
-                      xl: '80px'
-                    }}
-                    height={{
-                      base: '40px',
-                      xs: '50px',
-                      sm: '58px',
-                      lg: '70px',
-                      xl: '80px'
-                    }}
-                  />
-                }
+              <CompletedTitle
+                titleString={props.page_content.section2_title}
+                textAlign={{
+                  base: 'center',
+                  lg: 'left'
+                }}
+                alignSelf={{
+                  base: 'center',
+                  lg: 'flex-start'
+                }}
               />
-            </Box>
-          </Box>
-          {/* BOX 2 */}
-          <Box
-            margin={{
-              base: '8% 5% 10% 5%',
-              sm: '5% 5% 8% 5%',
-              lg: '5% 5% 5% 5%',
-              xl: '5% 5% 5% 5%'
-            }}
-            // bg='yellow'
-            flex="1"
-          >
-            <CompletedTitle
-              titleString={props.page_content.section2_title}
-              textAlign={{
-                base: 'center',
-                sm: 'center',
-                lg: 'left',
-                xl: 'left'
-              }}
-              alignSelf={{
-                base: 'center',
-                sm: 'center',
-                lg: 'flex-start',
-                xl: 'flex-start'
-              }}
-            />
-            <Text
-              marginTop={{ base: '10%', sm: '4%', lg: '4%', xl: '4%' }}
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-            >
-              {props.page_content.section2_text}
-            </Text>
-            {/* <Text
+              <Text
+                marginTop={{ base: '10%', sm: '4%', lg: '4%', xl: '4%' }}
+                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+              >
+                <HtmlTextParser>
+                  {props.page_content.section2_text}
+                </HtmlTextParser>
+              </Text>
+              {/* <Text
               marginTop={'3%'}
               textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
             ></Text> */}
-          </Box>
+            </Box>
+          </Flex>
         </Flex>
-      </Flex>
+      </Box>
       {/* FIM Manejo Florestal */}
 
       {/* INICIO Preservação da biodiversidade */}
-      <Flex
-        maxWidth="1920px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="gray.100"
-      >
+      <Box bg="gray.100">
         <Flex
-          // bg='blue'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="gray.100"
         >
-          {/* BOX 1 */}
-          <Box
-            // bg='pink'
-            flex="1"
-            margin={{
-              base: '0% 0% 5% 0%',
-              sm: '5% 5% 5% 5%',
-              lg: '5% 2% 5% 5%',
-              xl: '5% 2% 5% 5%'
-            }}
+          <Flex
+            // bg='blue'
+            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
           >
-            {/* INTERNAL FLEX */}
-            <Flex
-              // bg='gray'
-              direction={{
-                base: 'column',
-                sm: 'column',
-                lg: 'column',
-                xl: 'column'
+            {/* BOX 1 */}
+            <Box
+              // bg='pink'
+              flex="1"
+              margin={{
+                base: '5% 0% 5% 0%',
+                sm: '5% 5% 5% 5%',
+                lg: '5% 2% 5% 5%',
+                xl: '5% 2% 5% 0%'
               }}
             >
-              {/* INTERNAL FLEX - BOX 1 */}
+              {/* INTERNAL FLEX */}
               <Flex
-                bg="white.100"
+                // bg='gray'
+                direction={{
+                  base: 'row'
+                }}
                 flex={1}
-                marginLeft={{ base: '0%', sm: '10%', lg: '10%', xl: '10%' }}
+                // gap={"30px"}
               >
-                <Infographic
-                  content1Text="+"
-                  content2Text={props.page_content.monitored_animals.toString()}
-                  titleSubscript1Text="Espécies de Animais Silvestres"
-                />
+                {/* INTERNAL FLEX - BOX 1 */}
 
-                <Infographic
-                  content2Text={props.page_content.monitored_farms.toString()}
-                  titleSubscript1Text="Fazendas Monitoradas"
-                />
-              </Flex>
-              {/* INTERNAL FLEX - BOX 2 */}
-              <Flex
-                // bg='gray.400'
-                flex={1}
-                // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
-              >
                 <Flex
-                  // bg='gray.400'
-                  flex={2}
-                  // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
+                  overflowY="hidden"
+                  overflowX="hidden"
+                  backgroundImage={props.page_content.section3_img}
+                  backgroundPosition="right"
+                  backgroundRepeat="no-repeat"
+                  backgroundSize={'cover'}
+                  flex={1.5}
+                  marginRight={'30px'}
                 >
-                  <Image src="/assets/imgs/tamandua.png" />
+                  {/* <Text>tamandua</Text> */}
                 </Flex>
+                {/* INTERNAL FLEX - BOX 2 */}
                 <Flex
-                  // bg='gray.400'
+                  bg="white.100"
                   flex={1}
-                  // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
+                  // marginLeft={{ base: '0%', sm: '10%', lg: '10%', xl: '10%' }}
+                  direction={{
+                    base: 'column'
+                  }}
                 >
-                  <Text
-                    as="h5"
-                    variant={'h5' as any}
-                    padding={{ base: '5%', sm: '5%', lg: '10%', xl: '5%' }}
-                    color={'brown.300'}
-                    // textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
+                  <Infographic
+                    content1Text="+"
+                    content2Text={
+                      props.page_content.monitored_animals
+                        ? props.page_content.monitored_animals.toString()
+                        : ''
+                    }
+                    titleSubscript1Text={forestView.t(
+                      'infoGraphicBiodiversity.wildAnimalSpecies'
+                    )}
+                  />
+
+                  <Infographic
+                    content2Text={
+                      props.page_content.monitored_farms
+                        ? props.page_content.monitored_farms.toString()
+                        : ''
+                    }
+                    titleSubscript1Text={forestView.t(
+                      'infoGraphicBiodiversity.monitoredFarms'
+                    )}
+                  />
+                  <Flex
+                    // bg='gray.400'
+                    flex={1}
+                    // direction = {{ base: 'column', sm: 'column', lg: 'row', xl: 'row'}}
                   >
-                    {props.page_content.monitored_animals_and_farms_text}
-                  </Text>
+                    <Text
+                      as="h6"
+                      variant={'h6' as any}
+                      padding={{ base: '5%', sm: '5%', lg: '10%', xl: '5%' }}
+                      color={'brown.300'}
+                      fontSize={{
+                        base: '9px',
+                        sm: '9px',
+                        lg: '9px',
+                        xl: '9px'
+                      }}
+                      fontWeight="normal"
+                    >
+                      <HtmlTextParser>
+                        {props.page_content.monitored_animals_and_farms_text}
+                      </HtmlTextParser>
+                    </Text>
+                  </Flex>
                 </Flex>
               </Flex>
-            </Flex>
-          </Box>
-          {/* BOX 2 */}
-          <Box
-            margin={{
-              base: '0% 5% 10% 5%',
-              sm: '0% 5% 5% 5%',
-              lg: '5% 5% 5% 5%',
-              xl: '5% 5% 5% 2%'
-            }}
-            // bg='yellow'
-            alignSelf={'center'}
-            flex="1"
-          >
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+            </Box>
+            {/* BOX 2 */}
+            <Box
+              margin={{
+                base: '0% 5% 10% 5%',
+                sm: '0% 5% 5% 5%',
+                lg: '5% 5% 5% 5%',
+                xl: '5% 5% 5% 2%'
+              }}
+              // bg='yellow'
+              alignSelf={'center'}
+              flex="1"
             >
-              {props.page_content.section3_title}
-            </Text>
-            <Text marginTop={'2%'}>{props.page_content.section3_text}</Text>
-            {/* <Text
-              marginTop={'3%'}
-              // textAlign =  {{ base: 'left', sm: 'left', lg: 'left', xl: 'left'}}
-            >
-             
-            </Text> */}
-          </Box>
+              <Text
+                as="h3"
+                variant={'h3' as any}
+                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+              >
+                {props.page_content.section3_title}
+              </Text>
+              <Text marginTop={'2%'}>
+                <HtmlTextParser>
+                  {props.page_content.section3_text}
+                </HtmlTextParser>
+              </Text>
+            </Box>
+          </Flex>
         </Flex>
-      </Flex>
+      </Box>
       {/* FIM Preservação da biodiversidade */}
 
       {/* INICIO Produção Florestal */}
-      <Flex
-        id="producao"
-        maxWidth="1920px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="white.100"
-        backgroundImage="/assets/imgs/grafismos_fundo2.png"
-        backgroundPosition="center"
-        backgroundRepeat="no-repeat"
-      >
+      <Box bg="white.100">
         <Flex
-          // bg='blue'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-          alignItems={'center'}
+          id="producao"
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="visible"
+          overflowX="visible"
+          bg="white.100"
+          backgroundImage="/assets/imgs/grafismos_fundo2.png"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
         >
-          {/* BOX 1 */}
-          <Box
-            margin={{
-              base: '8% 5% 5% 5%',
-              sm: '8% 5% 8% 5%',
-              lg: '5% 3% 8% 3%',
-              xl: '5% 3% 3% 3%'
-            }}
-            // bg='yellow'
-            flex="1"
-            justifyItems={'flex-start'}
+          <Flex
+            // bg='blue'
+            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+            alignItems={'center'}
           >
-            <CompletedTitle
-              titleString={props.page_content.section4_title}
-              textAlign={{
-                base: 'center',
-                sm: 'center',
-                lg: 'left',
-                xl: 'left'
+            {/* BOX 1 */}
+            <Box
+              margin={{
+                base: '8% 5% 5% 5%',
+                sm: '8% 5% 8% 5%',
+                lg: '5% 3% 8% 3%',
+                xl: '5% 3% 3% 3%'
               }}
-              alignSelf={{
-                base: 'center',
-                sm: 'center',
-                lg: 'flex-start',
-                xl: 'flex-start'
-              }}
-            />
-            <Text marginTop={{ base: '10%', sm: '5%', lg: '4%', xl: '4%' }}>
-              {props.page_content.section4_text}
-            </Text>
-          </Box>
+              // bg='yellow'
+              flex="1"
+              justifyItems={'flex-start'}
+            >
+              <CompletedTitle
+                titleString={props.page_content.section4_title}
+                textAlign={{
+                  base: 'center',
+                  sm: 'center',
+                  lg: 'left',
+                  xl: 'left'
+                }}
+                alignSelf={{
+                  base: 'center',
+                  sm: 'center',
+                  lg: 'flex-start',
+                  xl: 'flex-start'
+                }}
+              />
+              <Text marginTop={{ base: '10%', sm: '5%', lg: '4%', xl: '4%' }}>
+                <HtmlTextParser>
+                  {props.page_content.section4_text}
+                </HtmlTextParser>
+              </Text>
+            </Box>
 
-          {/* BOX 2 */}
-          <Box
-            // bg='pink'
-            flex="1"
-            justifyItems={'center'}
-            margin={{
-              base: '0% 0% 0% 0%',
-              sm: '0% 0% 0% 0%',
-              lg: '5% 2% 5% 5%',
-              xl: '8% 2% 5% 5%'
+            {/* BOX 2 */}
+            <Box
+              // bg='pink'
+              flex="1"
+              justifyItems={'center'}
+              margin={{
+                base: '0% 0% 0% 0%',
+                sm: '0% 0% 0% 0%',
+                lg: '5% 2% 5% 5%',
+                xl: '8% 2% 5% 5%'
+              }}
+            >
+              <Image src={props.page_content.section4_img} maxW={'668px'} />
+            </Box>
+          </Flex>
+          {/* MADEIRA FLYANTE */}
+          {/* <Flex
+            marginX="auto"
+            zIndex={10}
+            overflowY="visible"
+            overflowX="hidden"
+            // bg='blue'
+            justifyContent={'flex-end'}
+            position={'absolute'}
+            width={{
+              base: '50%',
+              md: '45%',
+              lg: '30%',
+              '2xl': '100%'
+            }}
+            bottom={{
+              base: '-30px',
+              md: '-30px',
+              lg: '-30px'
+            }}
+            right={{
+              base: 0
             }}
           >
-            <Image src="/assets/imgs/IMG_0618.png" />
-          </Box>
+            <Image src="/assets/imgs/madeiras.png" />
+          </Flex> */}
+          {/* MADEIRA FLYANTE */}
         </Flex>
-      </Flex>
+      </Box>
       {/* FIM Produção Florestal */}
 
-      {/* MADEIRA FLYANTE */}
-      <Flex
-        marginX="auto"
-        zIndex={10}
-        overflowY="hidden"
-        overflowX="hidden"
-        // bg='blue'
-        justifyContent={'flex-end'}
-        position={'absolute'}
-        margin={{
-          base: '-30% 0% 0% 40%',
-          sm: '-22% -0% 5% 55%',
-          lg: '-22% 0% 5% 65%',
-          xl: '-15% 0% 5% 70%'
-        }}
-      >
-        <Image src="/assets/imgs/madeiras.png" />
-      </Flex>
-      {/* MADEIRA FLYANTE */}
-
       {/* INICIO Do plantio à colheita */}
-      <Flex
-        maxWidth="1920px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="brown.100"
-      >
+      <Box bg="brown.100">
         <Flex
-          // bg='blue'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-          alignItems={'center'}
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          // position="relative"
+          zIndex="base"
+          overflowY="visible"
+          overflowX="hidden"
+          bg="brown.100"
         >
-          {/* BOX 1 */}
-          <Box
-            // bg='pink'
-            flex="1"
-            justifyItems={'center'}
-            margin={{
-              base: '5% 5% 5% 5%',
-              sm: '5% 5% 5% 5%',
-              lg: '5% 2% 5% 5%',
-              xl: '5% 0% 5% 5%'
-            }}
+          <Flex
+            // bg='blue'
+            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+            alignItems={'center'}
           >
-            <Image src="/assets/imgs/5–8_MUDAS.png" />
-          </Box>
-          {/* BOX 2 */}
-          <Box
-            margin={{
-              base: '0% 5% 8% 5%',
-              sm: '0% 5% 8% 5%',
-              lg: '3% 3% 3% 3%',
-              xl: '3% 5% 3% 3%'
-            }}
-            // bg='yellow'
-            flex="1"
-            justifyItems={'flex-start'}
-          >
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              color={'green.800'}
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+            {/* BOX 1 */}
+            <Box
+              // bg='pink'
+              flex="1"
+              justifyItems={'center'}
+              margin={{
+                base: '5% 5% 5% 5%',
+                sm: '5% 5% 5% 5%',
+                lg: '5% 2% 5% 5%',
+                xl: '5% 0% 5% 5%'
+              }}
             >
-              {props.page_content.section5_title}
-            </Text>
-            <Text
-              marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px' }}
+              <Image src={props.page_content.section5_img} maxW={'668px'} />
+            </Box>
+            {/* BOX 2 */}
+            <Box
+              margin={{
+                base: '0% 5% 8% 5%',
+                sm: '0% 5% 8% 5%',
+                lg: '3% 3% 3% 3%',
+                xl: '3% 5% 3% 3%'
+              }}
+              // bg='yellow'
+              flex="1"
+              justifyItems={'flex-start'}
             >
-              {props.page_content.section5_text}
-            </Text>
-          </Box>
+              <Text
+                as="h3"
+                variant={'h3' as any}
+                color={'green.800'}
+                textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+              >
+                {props.page_content.section5_title}
+              </Text>
+              <Text
+                marginTop={{ base: '10px', sm: '10px', lg: '20px', xl: '20px' }}
+              >
+                <HtmlTextParser>
+                  {props.page_content.section5_text}
+                </HtmlTextParser>
+              </Text>
+            </Box>
+          </Flex>
         </Flex>
-      </Flex>
+      </Box>
       {/* FIM Do plantio à colheita */}
 
       {/* INICIO Destaques da produção florestal */}
-      <Flex
-        maxWidth="1920px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="gray.100"
-        backgroundImage="/assets/imgs/grafismos_fundo2.png"
-        backgroundPosition="center"
-        backgroundRepeat="no-repeat"
-      >
+      <Box bg="green.1000">
         <Flex
-          // bg='blue'
-          direction={{
-            base: 'column',
-            sm: 'column',
-            lg: 'column',
-            xl: 'column'
-          }}
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="green.1000"
+          backgroundImage="/assets/imgs/grafismo_fundo_forest3.svg"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
         >
-          {/* BOX 1 */}
-          <Box
-            // bg='pink'
-            flex={{ base: '1', sm: '1', lg: '1', xl: '1' }}
-            margin={{
-              base: '8% 5% 0% 5%',
-              sm: '8% 5% 0% 5%',
-              lg: '5% 2% 5% 5%',
-              xl: '5% 2% 5% 5%'
-            }}
-          >
-            <CompletedTitle
-              titleString="Destaques da produção florestal"
-              textAlign={{
-                base: 'center',
-                sm: 'center',
-                lg: 'center',
-                xl: 'center'
-              }}
-              alignSelf={{
-                base: 'center',
-                sm: 'center',
-                lg: 'center',
-                xl: 'center'
-              }}
-            />
-          </Box>
-          {/* BOX 2 */}
           <Flex
-            margin={{
-              base: '3% 0% 5% 0%',
-              sm: '3% 0% 5% 0%',
-              lg: '1% 5% 5% 5%',
-              xl: '1% 0% 5% 0%'
+            // bg='blue'
+            direction={{
+              base: 'column'
             }}
-            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-            alignItems={'center'}
-            // bg='tomato'
-            flex="1"
+            w="100%"
           >
-            <Flex
-              flex="1"
-              // bg='yellow'
-              direction={{
-                base: 'column',
-                sm: 'column',
-                lg: 'column',
-                xl: 'column'
+            {/* BOX 1 */}
+            <Box
+              // bg='pink'
+              flex={{ base: '1', sm: '1', lg: '1', xl: '1' }}
+              margin={{
+                base: '8% 5% 0% 5%',
+                sm: '8% 5% 0% 5%',
+                lg: '5% 2% 2% 5%',
+                xl: '5% 2% 2% 5%'
               }}
             >
-              {props.page_content.forest_production_highlights.map(
-                (item, i) => {
-                  return i % 2 === 0 ? (
-                    <FeaturedBanner
-                      key={i}
-                      title={item.highlight}
-                      srcImage={item.image.url}
-                    />
-                  ) : (
-                    ''
-                  )
-                }
-              )}
-            </Flex>
+              <CompletedTitle
+                titleString={forestView.t('forestProductionHighlights.title')}
+                textAlign={{
+                  base: 'center',
+                  sm: 'center',
+                  lg: 'center',
+                  xl: 'center'
+                }}
+                alignSelf={{
+                  base: 'center',
+                  sm: 'center',
+                  lg: 'center',
+                  xl: 'center'
+                }}
+              />
+            </Box>
+            {/* BOX 2 */}
+            <Flex
+              margin={{
+                base: '3% 0% 5% 0%',
+                sm: '3% 0% 5% 0%',
+                lg: '0% 0% 5% 0%'
+              }}
+              paddingX="4%"
+              direction={{ base: 'column', lg: 'row' }}
+              alignItems={'center'}
+              // bg='tomato'
+              // flex="1"
+              w="100%"
+            >
+              <Flex
+                w={{ base: '100%', lg: '50%' }}
+                // bg="yellow"
+                direction={{
+                  base: 'column'
+                }}
+                alignItems="center"
+              >
+                {props.page_content.forest_production_highlights.map(
+                  (item, i) => {
+                    return i % 2 === 0 ? (
+                      <FeaturedBanner
+                        key={i}
+                        title={item.highlight}
+                        srcImage={item.image.url}
+                      />
+                    ) : (
+                      ''
+                    )
+                  }
+                )}
+              </Flex>
 
-            <Flex
-              flex="1"
-              // bg='blue'
-              direction={{
-                base: 'column',
-                sm: 'column',
-                lg: 'column',
-                xl: 'column'
-              }}
-            >
-              {props.page_content.forest_production_highlights.map(
-                (item, i) => {
-                  return i % 2 !== 0 ? (
-                    <FeaturedBanner
-                      key={i}
-                      title={item.highlight}
-                      srcImage={item.image.url}
-                      invert
-                    />
-                  ) : (
-                    ''
-                  )
-                }
-              )}
+              <Flex
+                // flex="1"
+                w={{ base: '100%', lg: '50%' }}
+                // bg='blue'
+                direction={{
+                  base: 'column'
+                }}
+                alignItems="center"
+              >
+                {props.page_content.forest_production_highlights.map(
+                  (item, i) => {
+                    return i % 2 !== 0 ? (
+                      <FeaturedBanner
+                        key={i}
+                        title={item.highlight}
+                        srcImage={item.image.url}
+                        invert
+                      />
+                    ) : (
+                      ''
+                    )
+                  }
+                )}
+              </Flex>
             </Flex>
           </Flex>
         </Flex>
-      </Flex>
+      </Box>
       {/* FIM Destaques da produção florestal */}
 
       {/* INICIO Fornecedor Florestal */}
-      <Flex
-        id="fornecedor"
-        maxWidth="1920px"
-        marginX="auto"
-        alignItems="center"
-        justifyContent="center"
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="white.100"
-      >
+      <Box bg="green.100">
         <Flex
-          // bg='blue'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+          id="fornecedor"
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="green.100"
         >
-          {/* BOX 1 */}
-          <Box
-            // bg='pink'
-            flex={{ base: '1', sm: '1', lg: '2', xl: '1' }}
-            margin={{
-              base: '8% 5% 0% 5%',
-              sm: '8% 5% 0% 5%',
-              lg: '5% 2% 5% 5%',
-              xl: '5% 2% 5% 5%'
-            }}
+          <Flex
+            // bg='blue'
+            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
           >
-            <CompletedTitle
-              titleString={props.page_content.section6_title}
-              textAlign={{
-                base: 'center',
-                sm: 'center',
-                lg: 'left',
-                xl: 'left'
+            {/* BOX 1 */}
+            <Box
+              // bg='pink'
+              flex={{ base: '1', sm: '1', lg: '2', xl: '1' }}
+              margin={{
+                base: '8% 5% 0% 5%',
+                sm: '8% 5% 0% 5%',
+                lg: '5% 2% 5% 5%',
+                xl: '5% 2% 5% 5%'
               }}
-              alignSelf={{
-                base: 'center',
-                sm: 'center',
-                lg: 'flex-start',
-                xl: 'flex-start'
-              }}
-            />
-            <Text
-              marginTop={{ base: '10%', sm: '5%', lg: '4%', xl: '4%' }}
-              color={'green.800'}
             >
-              {props.page_content.section6_text}
-            </Text>
-            {/* <Text
+              <CompletedTitle
+                titleString={props.page_content.section6_title}
+                textAlign={{
+                  base: 'center',
+                  sm: 'center',
+                  lg: 'left',
+                  xl: 'left'
+                }}
+                alignSelf={{
+                  base: 'center',
+                  sm: 'center',
+                  lg: 'flex-start',
+                  xl: 'flex-start'
+                }}
+              />
+              <Text
+                marginTop={{ base: '10%', sm: '5%', lg: '4%', xl: '4%' }}
+                color={'green.800'}
+              >
+                <HtmlTextParser>
+                  {props.page_content.section6_text}
+                </HtmlTextParser>
+              </Text>
+              {/* <Text
               marginTop={{ base: '2%', sm: '2%', lg: '3%', xl: '3%' }}
               color={'green.800'}
             >
-              
+
             </Text> */}
-          </Box>
-          {/* BOX 2 */}
-          <Flex
-            margin={{
-              base: '3% 0% 5% 0%',
-              sm: '3% 0% 5% 0%',
-              lg: '5% 5% 5% 5%',
-              xl: '5% 5% 5% 2%'
-            }}
-            direction={{
-              base: 'column',
-              sm: 'column',
-              lg: 'column',
-              xl: 'column'
-            }}
-            alignItems={'center'}
-            // bg='yellow'
-            flex="1"
-          >
-            <Image src="/assets/imgs/fornecedor_florestal.png" />
-            <Button
-              onClick={() => router.push('/contact')}
-              w={{ base: '90%', sm: '70%', lg: '90%', xl: '70%' }}
-              h={{ base: '100%', sm: '70%', lg: '15%', xl: '10%' }}
-              padding={{ base: '4%', sm: '3%', lg: '5%', xl: '5%' }}
-              marginTop={{
-                base: '-15px',
-                sm: '-20px',
-                lg: '-50px',
-                xl: '-20px'
+            </Box>
+            {/* BOX 2 */}
+            <Flex
+              margin={{
+                base: '3% 0% 5% 0%',
+                sm: '3% 0% 5% 0%',
+                lg: '5% 5% 5% 5%',
+                xl: '5% 5% 5% 2%'
               }}
+              direction={{
+                base: 'column'
+              }}
+              alignItems={'center'}
+              // bg='yellow'
+              flex="1"
             >
-              <Text
-                as="h5"
-                variant={'h5' as any}
-                color="white"
-                textAlign="center"
-                fontWeight="bold"
+              <Image src={props.page_content.section6_img} maxW={'660px'} />
+              <Button
+                onClick={() =>
+                  router.push('/contact?channel=suprimentos-florestais')
+                }
+                w={{ base: '90%', sm: '70%', lg: '90%', xl: '70%' }}
+                h={{ base: '100%', sm: '70%', lg: '15%', xl: '10%' }}
+                padding={{ base: '4%', sm: '3%', lg: '5%', xl: '5%' }}
+                marginTop={{
+                  base: '-15px',
+                  sm: '-20px',
+                  lg: '-50px',
+                  xl: '-20px'
+                }}
               >
-                Seja um Fornecedor Florestal
-              </Text>
-            </Button>
+                <Text
+                  as="h5"
+                  variant={'h5' as any}
+                  color="white"
+                  textAlign="center"
+                  fontWeight="bold"
+                >
+                  {forestView.t('forestSupplier.becomeAForestSupplierBtn')}
+                </Text>
+              </Button>
+            </Flex>
           </Flex>
         </Flex>
-      </Flex>
+      </Box>
       {/* FIM Fornecedor Florestal */}
 
       {/* INICIO Resumo público de Manejo Florestal */}
       <Flex
         id="resumo-publico"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         // alignItems='center'
         // justifyContent='center'
@@ -906,20 +998,25 @@ export const ForestsView = (props: ForestsViewProps) => {
         zIndex="base"
         overflowY="hidden"
         overflowX="hidden"
-        bg="green.100"
-        backgroundImage="/assets/imgs/grafismos_fundo2.png"
-        backgroundPosition="top"
+        bg="white.100"
+        backgroundImage="/img/grafismo_resumo_publico.svg"
+        backgroundPosition="left top"
+        backgroundBlendMode={'multiply'}
+        backgroundSize={{ base: '100% auto', xl: '40% auto' }}
         backgroundRepeat="no-repeat"
       >
         <Flex
           // bg='blue'
-          direction={{ base: 'column', sm: 'column', lg: 'column', xl: 'row' }}
+          direction={{ base: 'column', xl: 'row' }}
+          alignItems={'center'}
+          justifyContent="space-between"
+          w="100%"
           // alignItems={"center"}
         >
           {/* BOX 1 */}
           <Box
             // bg='pink'
-            flex="1"
+            w={{ base: '70%', xl: '45%' }}
             // justifyItems={"center"}
             margin={{
               base: '8% 5% 3% 5%',
@@ -929,7 +1026,9 @@ export const ForestsView = (props: ForestsViewProps) => {
             }}
           >
             <CompletedTitle
-              titleString="Resumo público de Manejo Florestal"
+              titleString={forestView.t(
+                'publicSummaryOfForestManagement.title'
+              )}
               textAlign={{
                 base: 'center',
                 sm: 'center',
@@ -942,16 +1041,18 @@ export const ForestsView = (props: ForestsViewProps) => {
                 lg: 'center',
                 xl: 'flex-start'
               }}
+              titleLineHeight="1.3"
             />
             <Text
               marginTop={{ base: '10%', sm: '5%', lg: '4%', xl: '4%' }}
               color={'green.800'}
               textAlign={{ base: 'left', sm: 'left', lg: 'center', xl: 'left' }}
             >
-              Saiba mais sobre o manejo responsável das nossas florestas.
+              {forestView.t('publicSummaryOfForestManagement.description')}
             </Text>
           </Box>
           {/* BOX 2 */}
+
           <Flex
             margin={{
               base: '0% 5% 5% 5%',
@@ -959,31 +1060,35 @@ export const ForestsView = (props: ForestsViewProps) => {
               lg: '2% 2% 8% 0%',
               xl: '5% 5% 5% 0%'
             }}
-            padding={{ base: '10%', sm: '10%', lg: '10%', xl: '2%' }}
+            // padding={{ base: '10%', sm: '10%', lg: '10%', xl: '2%' }}
+            padding="2%"
             // bg='blue'
-            flex="1"
+            w={{ base: '90%', lg: '50%' }}
             position="relative"
             zIndex="base"
             overflowY="hidden"
             overflowX="hidden"
-            backgroundImage="/assets/imgs/fundo_relatorio.svg"
+            backgroundImage="/img/fundo_resumo_publico.svg"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             backgroundSize={'cover'}
-            alignItems='center'
-            justifyContent='center'
+            alignItems="center"
+            justifyContent="center"
+            flexDirection={'column'}
           >
             {props.page_content.public_resume.map((item, i) => {
               return (
-                <Link href={item.public_resume_file.url} key={i} isExternal>
-                  <PatternCertification
-                    title={item.public_resume_name}
-                    titleInitialColor="green.800"
-                    iconName="reports"
-                    iconInitialColor1="#004934"
-                    iconInitialColor2="#004934"
-                  />
-                </Link>
+                <PatternCertification
+                  onClick={() =>
+                    window.open(item.public_resume_file.url, '_blank')
+                  }
+                  key={i}
+                  title={item.public_resume_name}
+                  titleInitialColor="green.800"
+                  iconName="reports"
+                  iconInitialColor1="#004934"
+                  iconInitialColor2="#004934"
+                />
               )
             })}
           </Flex>

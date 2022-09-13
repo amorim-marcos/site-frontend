@@ -4,6 +4,8 @@ import {
   CertificationViewProps
 } from 'views/Certification/Certification'
 import DOMPurify from 'isomorphic-dompurify'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
+import { loadTranslations } from 'ni18n'
 
 export type CertificatePageProps = CertificationViewProps
 
@@ -53,40 +55,70 @@ export const getStaticProps: GetStaticProps = async (context) => {
     forestCertificate.description
   )
 
-  forestCertificate.certificates = forestCertificate.certificates.map(
-    (item: { certificate_file: { url: string } }) => {
-      return {
-        ...item,
-        certificate_file: {
-          ...item.certificate_file,
-          url: process.env.NEXT_PUBLIC_API_URL + item.certificate_file.url
+  if (forestCertificate.forest_img) {
+    forestCertificate.forest_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+      forestCertificate.forest_img.url
+  }
+
+  if (
+    typeof forestCertificate.certificates !== 'undefined' &&
+    typeof forestCertificate.certificates.map === 'function'
+  ) {
+    forestCertificate.certificates = forestCertificate.certificates.map(
+      (item: { certificate_file: { url: string } }) => {
+        return {
+          ...item,
+          certificate_file: {
+            ...item.certificate_file,
+            url:
+              item.certificate_file === null
+                ? null
+                : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+                  item.certificate_file.url
+          }
         }
       }
-    }
-  )
+    )
+  } else {
+    forestCertificate.certificates = []
+  }
 
-  productsCertificates = productsCertificates.map(
-    (item: { certificates: { certificate_file: { url: string } }[] }) => {
-      return {
-        ...item,
-        certificates: item.certificates.map((item2) => {
-          return {
-            ...item2,
-            certificate_file: {
-              ...item2.certificate_file,
-              url: process.env.NEXT_PUBLIC_API_URL + item2.certificate_file.url
+  productsCertificates =
+    typeof productsCertificates !== 'undefined' &&
+    typeof productsCertificates.map === 'function'
+      ? productsCertificates.map(
+          (item: { certificates: { certificate_file: { url: string } }[] }) => {
+            return {
+              ...item,
+              certificates:
+                typeof item.certificates !== 'undefined' &&
+                typeof item.certificates.map === 'function'
+                  ? item.certificates.map((item2) => {
+                      return {
+                        ...item2,
+                        certificate_file: {
+                          ...item2.certificate_file,
+                          url:
+                            item2.certificate_file === null
+                              ? null
+                              : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+                                item2.certificate_file.url
+                        }
+                      }
+                    })
+                  : []
             }
           }
-        })
-      }
-    }
-  )
+        )
+      : []
 
   return {
     props: {
       productsCertificates,
       forestCertificate,
-      page_content
+      page_content,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

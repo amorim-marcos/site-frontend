@@ -1,86 +1,103 @@
-import { Heading, Flex, Box, Text, LayoutProps, Button } from "@chakra-ui/react"
-import { AttentionIcon  } from '@components/Icons'
-import CloseIcon from "@components/Icons/CloseIcon"
+import { Flex, Text, LayoutProps, Button, Box } from '@chakra-ui/react'
+import HtmlTextParser from '@components/HtmlTextParser'
+import { AlertIcon, CloseIcon } from '@components/Icons'
+import { useState } from 'react'
 
 export type FireAlertProps = LayoutProps & {
   title?: string
-  // display?: "flex"
 }
-export const FireAlert = ({ 
-  title = "Em caso de incêndio em nossas florestas e entornos, ligue para 41 2109-3855 [PR] | 41 2109-3856 [PR] | 49 3245-9015 [SC] | 49 3245-9186 [SC]",
- }: FireAlertProps ) => {
+
+export const FireAlert = ({ title }: FireAlertProps) => {
+  const [hide, setHide] = useState(false)
+
   return (
-    <Flex
-      data-testid="fire-alert"
-      maxWidth="1920px"
-      marginX="auto"
-      position='relative'
-      zIndex='base'
-      overflowY="hidden"
-      overflowX="hidden"
-      bg = 'brown.400'
-      // display = {display}
-    >
+    <Box bg="#C34D31">
+      <Flex
+        display={hide ? 'none' : 'flex'}
+        data-testid="fire-alert"
+        maxWidth="1536px"
+        marginX="auto"
+        zIndex="base"
+        overflowY="hidden"
+        overflowX="hidden"
+        h={{ xl: '50px' }}
+        bg="#C34D31"
+        align="center"
+        // justify="start"
+        direction={{ base: 'column', sm: 'row', lg: 'row', xl: 'row' }}
+        px="30px"
+        py={{ base: '25px', sm: 'auto' }}
+        gap={{ base: '15px', sm: '0' }}
+        flex="1"
+      >
         <Flex
-          direction = {{ base: 'column', sm: 'row', lg: 'row', xl: 'row'}}
-          // bg='red'
-          w={"100%"}
+          align="flex-end"
+          justify="flex-end"
+          // bg="red"
         >
-
-            {/* BOX 1 */}
-            <Flex
-                // bg='yellow'
-                flex = "1"
-                margin = {{ base: '2%', sm: '2%', lg: '1%', xl: '1%'}}
-                alignItems={'center'}
-                justifyContent={'center'}
-            >
-              <AttentionIcon
-                width={{ base: '30px', xs: '36px', sm: '40px', lg: '35px', xl: '40px' }}
-                height={{ base: '30px', xs: '36px', sm: '40px', lg: '35px', xl: '40px' }}
-                color='#FFF'
-                fillColor = '#7F5A42'
-              />
-            </Flex>
-            {/* BOX 2 */}
-            <Flex
-                // bg='blue'
-                flex = "15"
-                alignSelf='center'
-                margin = {{ base: '2%', sm: '2%', lg: '1%', xl: '1%'}}
-                
-            >
-              <Text as='h5'
-                  variant = {"h5" as any}
-                  color={"white"}
-                  textAlign={{ base: 'center', sm: 'left'}}
-                  fontWeight = 'normal'
-              >{title}</Text>
-
-            </Flex>
-            {/* BOX 3 */}
-            <Flex
-                // bg='green'
-                flex = "1"
-                margin = {{ base: '2%', sm: '2%', lg: '1%', xl: '1%'}}
-                alignSelf='center'
-            >
-               <Button 
-                onClick={() => alert('close')}
-                bgColor={"brown.400"}
-                w={{ base: '60%', sm: '60%', lg: '60%', xl: '60%'}}
-                h={{ base: '10%', sm: '610%', lg: '10%', xl: '10%'}}
-              >
-                {/* <CloseIcon
-                  width={{ base: '16px', sm: '19px', lg: '20px', xl: '20px' }}
-                  height={{ base: '16px', sm: '19px', lg: '20px', xl: '20px' }}
-                  color={"white"}
-                /> */}
-              </Button>
-            </Flex>
-      
+          <AlertIcon
+            mr={{ sm: '15px' }}
+            width={{
+              base: '30px',
+              xs: '36px',
+              lg: '30px',
+              xl: '32px'
+            }}
+            height={{
+              base: '30px',
+              xs: '32px',
+              md: '26px',
+              xl: '28px'
+            }}
+            color="#FFF"
+          />
         </Flex>
 
-    </Flex>
+        <Flex
+          align="flex-end"
+          justify="flex-end"
+          // bg="blue"
+        >
+          <Text
+            as="h5"
+            fontSize={{
+              base: '11px',
+              sm: '12px',
+              md: '13px',
+              xl: '14px',
+              '2xl': '15px'
+            }}
+            color={'white'}
+            textAlign={{ base: 'center', sm: 'left' }}
+            fontWeight="normal"
+          >
+            <HtmlTextParser>{title}</HtmlTextParser>
+          </Text>
+        </Flex>
+
+        <Flex
+          align="flex-end"
+          justify="flex-end"
+          // bg="pink"
+          // px="30px"
+          flex="1"
+        >
+          <Button
+            ml={{ sm: '10px' }}
+            onClick={() => setHide(true)}
+            bgColor={'#C34D31'}
+            w="fit-content"
+            h="fit-content"
+            _hover={{}}
+          >
+            <CloseIcon
+              width={{ base: '16px', sm: '19px', lg: '14px' }}
+              height={{ base: '16px', sm: '19px', lg: '14px' }}
+              color={'white'}
+            />
+          </Button>
+        </Flex>
+      </Flex>
+    </Box>
   )
 }

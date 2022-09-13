@@ -1,7 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-import { Container, Grid, GridItem, Center } from '@chakra-ui/react'
+import {
+  Container,
+  Grid,
+  GridItem,
+  Center,
+  Text,
+  Flex,
+  Box
+} from '@chakra-ui/react'
 
 import Pagebar from '@components/Pagebar'
 
@@ -9,6 +17,9 @@ import useMobile from 'hooks/useMobile'
 import { FiltersAccordion } from './FiltersAccordion'
 import { FiltersTabs } from './FiltersTab'
 import { Env } from './Env'
+import { useRouter } from 'next/router'
+import { env } from 'process'
+import { useTranslation } from 'react-i18next'
 
 export type ValidFilterNames = 'bps' | 'ambients' | 'styles'
 
@@ -36,6 +47,7 @@ export type EnvGalleryProps = {
     }[]
   }
 }
+const pageSize = 9
 
 export const EnvGallery = ({
   envs,
@@ -49,11 +61,13 @@ export const EnvGallery = ({
   }
 }: EnvGalleryProps) => {
   const [currentFilterPanel, setCurrentFilterPanel] = useState('none')
-  const [displayFilters, setDisplayFilters] = useState(false)
+  const [displayFilters, setDisplayFilters] = useState(true)
   const [filteredEnvs, setFilteredEnvs] = useState(envs)
   const [filters, setFilters] = useState(initialFilters)
   const [filtersEmpty, setFiltersEmpty] = useState(true)
   const { isMobile } = useMobile(1024)
+  const [pagination, setPagination] = useState(1)
+  const router = useRouter()
 
   function changeFilterPanel(newFilterPanel: FilterPanelName) {
     setCurrentFilterPanel(
@@ -81,9 +95,9 @@ export const EnvGallery = ({
     // search
     if (filters['nameSearched'] && filters['nameSearched'] !== '') {
       filteredEnvs = filteredEnvs.filter((env: any) => {
-        return env.name
+        return env.title
           .toLowerCase()
-          .startsWith(filters['nameSearched'].toLowerCase())
+          .includes(filters['nameSearched'].toLowerCase())
       })
     }
 
@@ -156,120 +170,197 @@ export const EnvGallery = ({
     }
   }, [filters])
 
+  useEffect(() => {
+    if (router.query.ambients) {
+      const itemFilter = filtersContext.ambients.find(
+        (item) => item.title === router.query.ambients
+      )
+      if (typeof itemFilter !== 'undefined') {
+        appendFilter('ambients', itemFilter.code as any)
+
+        setFilteredEnvs(
+          applyFilters(
+            {
+              ...filters,
+              ['ambients']: [itemFilter.code as any]
+            },
+            envs
+          )
+        )
+        changeFilterPanel('ambients')
+      }
+    }
+  }, [router.query])
+
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        // console.log('It works!')
+        setPagination((p) => p + 1)
+      }
+    })
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+  }, [ref])
+
+  const galleryViewLabels = useTranslation('galleryView')
+
   return (
     <>
       <Pagebar
         paths={[
           {
-            title: 'Produtos',
-            url: 'produtos'
+            title: galleryViewLabels.t('pagebar.products'),
+            url: '/products'
           },
           {
-            title: 'BP BERNECK®',
-            url: '/produtos/bp-berneck'
+            title: galleryViewLabels.t('pagebar.bpBerneck'),
+            url: '/products/bp-berneck'
           },
           {
-            title: 'Galeria de Ambientes',
-            url: '/produtos/bp-berneck/gallery'
+            title: galleryViewLabels.t('pagebar.envGallery'),
+            url: '/products/bp-berneck/gallery'
           }
         ]}
       />
-      <Container
-        backgroundColor="white.100"
-        maxW="1920px"
-        width="100%"
-        paddingInline="0"
-        paddingBottom="300px"
-      >
+
+      <Box bg="white.100">
         <Container
-          zIndex="30"
-          position={isMobile && displayFilters ? 'absolute' : 'relative'}
-          mb={
-            displayFilters
-              ? { base: '40px', md: '100px' }
-              : { base: '5px', md: '15px' }
-          }
-          minW="100%"
-          minH={{ base: '0', md: '50px' }}
-          height={isMobile && displayFilters ? '100%' : 'auto'}
+          backgroundColor="white.100"
+          maxW="1536px"
+          width="100%"
           paddingInline="0"
         >
-          {isMobile ? (
-            <FiltersAccordion
-              filtersContext={filtersContext}
-              displayFilters={displayFilters}
-              setDisplayFilters={setDisplayFilters}
-              changeFilterPanel={changeFilterPanel}
-              currentFilterPanel={currentFilterPanel}
-              appendFilter={appendFilter}
-              removeFilter={removeFilter}
-              resetFilters={resetFilters}
-              setFilters={setFilters}
-              setFilteredEnvs={setFilteredEnvs}
-              applyFilters={applyFilters}
-              bps={availableBps}
-              envs={envs}
-              filters={filters}
-              filtersEmpty={filtersEmpty}
-            />
-          ) : (
-            <FiltersTabs
-              filtersContext={filtersContext}
-              displayFilters={displayFilters}
-              setDisplayFilters={setDisplayFilters}
-              changeFilterPanel={changeFilterPanel}
-              currentFilterPanel={currentFilterPanel}
-              appendFilter={appendFilter}
-              removeFilter={removeFilter}
-              resetFilters={resetFilters}
-              setFilters={setFilters}
-              setFilteredEnvs={setFilteredEnvs}
-              applyFilters={applyFilters}
-              bps={availableBps}
-              envs={envs}
-              filters={filters}
-              filtersEmpty={filtersEmpty}
-            />
-          )}
+          <Container
+            zIndex="30"
+            position={isMobile && displayFilters ? 'absolute' : 'relative'}
+            minW="100%"
+            minH={{ base: '0', md: '50px' }}
+            height={isMobile && displayFilters ? '100%' : 'auto'}
+            paddingInline="0"
+          >
+            {isMobile ? (
+              <FiltersAccordion
+                filtersContext={filtersContext}
+                displayFilters={displayFilters}
+                setDisplayFilters={setDisplayFilters}
+                changeFilterPanel={changeFilterPanel}
+                currentFilterPanel={currentFilterPanel}
+                appendFilter={appendFilter}
+                removeFilter={removeFilter}
+                resetFilters={resetFilters}
+                setFilters={setFilters}
+                setFilteredEnvs={setFilteredEnvs}
+                applyFilters={applyFilters}
+                bps={availableBps}
+                envs={envs}
+                filters={filters}
+                filtersEmpty={filtersEmpty}
+              />
+            ) : (
+              <FiltersTabs
+                filtersContext={filtersContext}
+                displayFilters={displayFilters}
+                setDisplayFilters={setDisplayFilters}
+                changeFilterPanel={changeFilterPanel}
+                currentFilterPanel={currentFilterPanel}
+                appendFilter={appendFilter}
+                removeFilter={removeFilter}
+                resetFilters={resetFilters}
+                setFilters={setFilters}
+                setFilteredEnvs={setFilteredEnvs}
+                applyFilters={applyFilters}
+                bps={availableBps}
+                envs={envs}
+                filters={filters}
+                filtersEmpty={filtersEmpty}
+              />
+            )}
+          </Container>
+          <Container
+            display={isMobile && displayFilters ? 'none' : 'normal'}
+            minW="100%"
+          >
+            {filteredEnvs && filteredEnvs.length > 0 ? (
+              <Center
+                mt={
+                  displayFilters
+                    ? { base: '40px', md: '100px' }
+                    : { base: '5px', md: '15px' }
+                }
+              >
+                <Grid
+                  width="100%"
+                  overflow="hidden"
+                  templateRows="repeat(auto, 1fr)"
+                  templateColumns={{
+                    base: 'repeat(1, 1fr)',
+                    md: 'repeat(2, 1fr)',
+                    xl: 'repeat(3, 1fr)'
+                  }}
+                  gridGap={{
+                    base: 'none',
+                    sm: '10px',
+                    md: '30px',
+                    xl: '30px',
+                    '2xl': '40px'
+                  }}
+                  justifyItems="center"
+                  // bg="pink"
+                >
+                  {filteredEnvs.map((env, i) => {
+                    return (
+                      i < pagination * pageSize && (
+                        <GridItem key={env.id} mt="20px">
+                          <Env
+                            href={`/products/bp-berneck/gallery/${env.url_code}`}
+                            title={env.title}
+                            place={env.subTitle}
+                            image_url={env.image_url}
+                          />
+                        </GridItem>
+                      )
+                    )
+                  })}
+                </Grid>
+              </Center>
+            ) : (
+              <Flex
+                minH="600px"
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                alignContent="center"
+              >
+                {filters['nameSearched'] == '' ? (
+                  <Text
+                    alignSelf="center"
+                    color="gray.300"
+                    fontSize={{ base: '18px', md: '24px' }}
+                    textAlign="center"
+                  >
+                    {galleryViewLabels.t('filter.notFound')}
+                  </Text>
+                ) : (
+                  <Text
+                    alignSelf="center"
+                    color="gray.300"
+                    fontSize={{ base: '18px', md: '24px' }}
+                    textAlign="center"
+                  >
+                    {galleryViewLabels.t('filter.notFoundFor')} &quot;
+                    {filters['nameSearched']}&quot;
+                  </Text>
+                )}
+              </Flex>
+            )}
+          </Container>
+          <Box marginTop={{ base: '0', md: '300px' }} ref={ref}></Box>
         </Container>
-        <Container
-          display={isMobile && displayFilters ? 'none' : 'normal'}
-          minW="100%"
-        >
-          <Center>
-            <Grid
-              width="100%"
-              overflow="hidden"
-              templateRows="repeat(auto, 1fr)"
-              templateColumns={{
-                base: 'repeat(1, 1fr)',
-                md: 'repeat(2, 1fr)',
-                xl: 'repeat(3, 1fr)'
-              }}
-              gridGap={{
-                base: 'none',
-                sm: '10px',
-                md: '30px',
-                xl: '10px',
-                '2xl': '30px'
-              }}
-              justifyItems="center"
-            >
-              {filteredEnvs &&
-                filteredEnvs.map((env) => (
-                  <GridItem key={env.id} mt="60px">
-                    <Env
-                      href={`/products/bp-berneck/gallery/${env.url_code}`}
-                      title={env.title}
-                      place={env.name}
-                      image_url={env.image_url}
-                    />
-                  </GridItem>
-                ))}
-            </Grid>
-          </Center>
-        </Container>
-      </Container>
+      </Box>
     </>
   )
 }

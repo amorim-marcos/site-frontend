@@ -11,8 +11,9 @@ import AppFooter from 'components/AppFooter'
 import { appWithI18Next } from 'ni18n'
 import { ni18nConfig } from '../../ni18n.config'
 
-import 'leaflet/dist/leaflet.css'
 import AppCookieConsent from '@components/AppCookieConsent'
+
+import '../styles/zoomout.css'
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -25,6 +26,11 @@ function App({ Component, pageProps }: AppProps) {
         src="https://code.jquery.com/jquery-3.6.0.min.js"
       />
       <Script strategy="beforeInteractive" src="/static/replaceTrademark.js" />
+      {/*RD station script*/}
+      <Script
+        strategy="beforeInteractive"
+        src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/461ed3f4-597a-4986-8c6b-cd3c63f5455b-loader.js%22"
+      />
 
       <AppHeader />
       <Component {...pageProps} />

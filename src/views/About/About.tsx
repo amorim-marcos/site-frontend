@@ -11,44 +11,49 @@ import PatternInfo from '@components/PatternInfo'
 import PatternInfoPhoto from '@components/PatternInfoPhoto'
 import { TrajectoryTab } from '@components/TrajectoryCarousel/TrajectoryCarousel'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'react-i18next'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export type AboutPageContent = {
-  header_title: string
-  header_text: string
-  section1_title: string
-  section1_text: string
-  section2_title: string
-  section2_text: string
-  exportation_volume: number
-  comercial_relationship: number
-  our_trajectory_title: string
-  our_trajectory_description: string
-  where_we_are_title: string
-  where_we_are_subtitle: string
-  where_we_are_description: string
-  resellers_description: string
-  certifications_description: string
+  header_title?: string
+  header_text?: string
+  section1_title?: string
+  section1_text?: string
+  section2_title?: string
+  section2_text?: string
+  exportation_volume?: number
+  comercial_relationship?: number
+  our_trajectory_title?: string
+  our_trajectory_description?: string
+  where_we_are_title?: string
+  where_we_are_subtitle?: string
+  where_we_are_description?: string
+  resellers_description?: string
+  certifications_description?: string
+  section1_img?: string
+  section2_img?: string
 }
 
 export type AboutProps = {
   page_content: AboutPageContent
-  our_trajectory_tabs: Array<TrajectoryTab>
-  panels: WhereWeArePanelProps[]
+  our_trajectory_tabs?: Array<TrajectoryTab>
+  panels?: WhereWeArePanelProps[]
 }
 
 export const About = ({
   page_content,
-  our_trajectory_tabs,
-  panels
+  our_trajectory_tabs = [],
+  panels = []
 }: AboutProps) => {
   const router = useRouter()
+  const aboutView = useTranslation('aboutView')
 
   return (
-    <Box maxWidth="1920px" marginX="auto" bg="green.100">
+    <Box>
       <Pagebar
         paths={[
           {
-            title: 'Somos BERNECK®',
+            title: aboutView.t('pagebar.weAreBerneck'),
             url: 'somos-berneck'
           }
         ]}
@@ -58,9 +63,9 @@ export const About = ({
         <PageSession
           data={{
             imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
-            title: 'Quem somos',
-            subtitle: page_content.header_title,
-            text: page_content.header_text
+            title: aboutView.t('headerBanner.title'),
+            subtitle: page_content.header_title || '',
+            text: page_content.header_text || ''
           }}
           titleColor="white"
           subTitleColor="white"
@@ -68,58 +73,68 @@ export const About = ({
       </Box>
 
       {/* INICIO RAIZES FIRMES PARA CRESCER */}
-      <Flex
-        maxWidth="1920px"
-        marginX="auto"
-        position="relative"
-        zIndex="base"
-        overflow="hidden"
-        bg="green.150"
-      >
-        <Flex direction={{ base: 'column', lg: 'row' }}>
-          <Box
-            margin={{
-              base: '8% 8% 2% 5%',
-              lg: '5%'
-            }}
-            alignSelf="center"
+      <Box bg="green.150">
+        <Flex
+          maxWidth="1536px"
+          marginX="auto"
+          position="relative"
+          zIndex="base"
+          overflow="hidden"
+          bg="green.150"
+        >
+          <Flex
+            w="100%"
+            justifyContent={'center'}
+            direction={{ base: 'column', lg: 'row' }}
           >
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              color="green.550"
-              textAlign={{ base: 'left' }}
+            <Box
+              margin={{
+                base: '8% 8% 2% 5%',
+                lg: '5%'
+              }}
+              alignSelf="center"
+              w={{ base: '90%', lg: '60%' }}
             >
-              {page_content.section1_title}
-            </Text>
-            <Text
-              color="green.900"
-              textAlign={{ base: 'left' }}
-              marginTop={{ base: '8px', lg: '10px', xl: '20px' }}
+              <Text
+                as="h3"
+                variant={'h3' as any}
+                color="green.550"
+                textAlign={{ base: 'left' }}
+              >
+                {page_content.section1_title}
+              </Text>
+              <Text
+                color="green.900"
+                textAlign={{ base: 'left' }}
+                marginTop={{ base: '8px', lg: '10px', xl: '20px' }}
+              >
+                <HtmlTextParser>{page_content.section1_text}</HtmlTextParser>
+              </Text>
+            </Box>
+            <Box
+              w={{ base: '100%', lg: '25%' }}
+              margin={{
+                base: '5% 0',
+                lg: '5% 0'
+              }}
+              h={{ base: '500px', lg: '300px', xl: '370px' }}
             >
-              {page_content.section1_text}
-            </Text>
-          </Box>
-          <Box
-            margin={{
-              base: '5% 8% 10% 5%',
-              sm: '2% 8% 8% 5%',
-              lg: '5%'
-            }}
-          >
-            <Image
-              src={'/assets/imgs/foto_fabrica.png'}
-              w={{ base: '300px', sm: '400px', lg: '2000px', xl: '3000px' }}
-            />
-          </Box>
+              <Image
+                // src={'/assets/imgs/foto_fabrica.png'}
+                src={page_content.section1_img}
+                w="100%"
+                h="100%"
+                objectFit={'cover'}
+              />
+            </Box>
+          </Flex>
         </Flex>
-      </Flex>
+      </Box>
       {/* FIM RAIZES FIRMES PARA CRESCER */}
-
 
       {/* INICIO PARA O MADEIRAS MUNDO */}
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         alignItems="center"
         justifyContent="center"
@@ -142,7 +157,7 @@ export const About = ({
           <Box
             flex={{ base: '1', sm: '1', md: '1', lg: '1', xl: '1' }}
             margin={{
-              base: '8% 0% 0% 0%',
+              base: '10% 0% 0% 0%',
               lg: '8% 0% 8% 0%'
             }}
           >
@@ -153,14 +168,17 @@ export const About = ({
                 sm: 'row'
               }}
               justifyItems="center"
-              justifyContent={{ base: 'center', sm: 'center', lg: 'flex-end', xl: 'flex-end' }}
+              justifyContent={{
+                base: 'center',
+                lg: 'flex-end'
+              }}
             >
               {/* BOX 1 */}
               <Box w={{ base: '80%', sm: '40%', lg: '100%' }}>
                 <Image
                   src="/assets/imgs/quem_somos_container.png"
                   w={{ base: '55%', lg: '60%' }}
-                  opacity={{ base: '0.5', sm: '1' }}
+                  opacity={{ base: '0.5', lg: '1' }}
                 />
               </Box>
               {/* BOX 2 */}
@@ -175,16 +193,20 @@ export const About = ({
                 }}
               >
                 <Infographic
-                  titleSuperscript1Text="Volume de Exportação"
+                  titleSuperscript1Text={aboutView.t(
+                    'infoGraphic.exportVolume'
+                  )}
                   content1Text="+"
                   content2Text={page_content.exportation_volume}
-                  content3Text="TEUs / mês"
+                  content3Text={aboutView.t('infoGraphic.exportMeasure')}
                 />
                 <Infographic
-                  titleSuperscript1Text="Relações Comerciais"
+                  titleSuperscript1Text={aboutView.t(
+                    'infoGraphic.comercialRelations'
+                  )}
                   content1Text="+"
                   content2Text={page_content.comercial_relationship}
-                  content3Text="países"
+                  content3Text={aboutView.t('infoGraphic.countries')}
                 />
               </Box>
             </Flex>
@@ -207,7 +229,7 @@ export const About = ({
               variant={'h3' as any}
               fontFamily="body"
               color="green.900"
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+              textAlign={{ base: 'left' }}
             >
               {page_content.section2_title}
             </Text>
@@ -217,7 +239,7 @@ export const About = ({
               textAlign={{ base: 'left' }}
               marginTop={{ base: '8px', lg: '10px', xl: '20px' }}
             >
-              {page_content.section2_text}
+              <HtmlTextParser>{page_content.section2_text}</HtmlTextParser>
             </Text>
           </Box>
         </Flex>
@@ -227,17 +249,24 @@ export const About = ({
       {/* INICIO TRAJETORIA CAROUSEL */}
       <Box bg="brown.100" id="trajetoria">
         <Flex
-          // bg='yellow'
-          direction={{ base: 'column' }}
+          maxWidth="1536px"
+          marginX="auto"
           alignItems="center"
-          padding={{ base: '5%' }}
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          direction={{ base: 'column' }}
+          // bg='blue'
+          padding={{ base: '3%', sm: '2%', lg: '2%', xl: '1%' }}
         >
           <Flex
             direction={{ base: 'column' }}
             // bg='pink'
             flex="1"
             alignItems="center"
-            margin={{ base: '8% 5%', sm: '8% 5%', lg: '5% 10%', xl: '5% 10%' }}
+            margin={{ base: '8% 5%', sm: '5% 5%', lg: '5% 10%', xl: '5% 10%' }}
           >
             <CompletedTitle
               titleString={page_content.our_trajectory_title}
@@ -252,14 +281,17 @@ export const About = ({
               marginTop={'30px'}
               textAlign="center"
             >
-              {page_content.our_trajectory_description}
+              <HtmlTextParser>
+                {page_content.our_trajectory_description}
+              </HtmlTextParser>
             </Text>
           </Flex>
           <Flex
             justifyContent="center"
             alignItems="center"
-            width="100%"
+            width="90%"
             margin={{ xs: '0', lg: '20px' }}
+            // bg='red'
           >
             <TrajectoryCarousel tabs={our_trajectory_tabs} />
           </Flex>
@@ -270,7 +302,7 @@ export const About = ({
       {/* INICIO ONDE ESTAMOS */}
       <Flex
         id="onde-estamos"
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         position="relative"
         zIndex="base"
@@ -332,7 +364,9 @@ export const About = ({
                   base: 'left'
                 }}
               >
-                {page_content.where_we_are_description}
+                <HtmlTextParser>
+                  {page_content.where_we_are_description}
+                </HtmlTextParser>
               </Text>
             </Box>
           </Flex>
@@ -344,91 +378,90 @@ export const About = ({
       </Flex>
       {/* FIM ONDE ESTAMOS */}
 
-
       {/* INICIO REVENDEDORES */}
-      <Flex
-        maxWidth="1920px"
-        marginX="auto"
-        // alignItems='center'
-        // justifyContent='center'
-        position="relative"
-        zIndex="base"
-        overflowY="hidden"
-        overflowX="hidden"
-        bg="green.200"
-      >
+      <Box bg="green.200">
         <Flex
-          // bg='red'
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-          width={'100%'}
+          maxWidth="1536px"
+          marginX="auto"
+          // alignItems='center'
+          // justifyContent='center'
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="green.200"
         >
-          <Box
-            // bg='pink'
-            flex="1"
-            margin={{
-              base: '8% 8% 5% 5%',
-              sm: '8% 8% 2% 5%',
-              lg: '5%',
-              xl: '5%'
-            }}
-            // alignSelf='center'
+          <Flex
+            // bg='red'
+            direction={{ base: 'column', lg: 'row' }}
+            width={'100%'}
           >
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
+            <Box
+              // bg='pink'
+              flex="1"
+              margin={{
+                base: '8% 8% 5% 5%',
+                sm: '8% 8% 2% 5%',
+                lg: '5%',
+                xl: '5%'
+              }}
+              // alignSelf='center'
             >
-              Revendedores
-            </Text>
-            <Text
-              color="green.900"
-              textAlign={{ base: 'left', sm: 'left', lg: 'left', xl: 'left' }}
-              marginTop={{ base: '8px', sm: '8px', lg: '10px', xl: '20px' }}
+              <Text as="h3" variant={'h3' as any} textAlign={{ base: 'left' }}>
+                Revendedores
+              </Text>
+              <Text
+                color="green.900"
+                textAlign={{ base: 'left' }}
+                marginTop={{ base: '8px', lg: '10px', xl: '20px' }}
+              >
+                <HtmlTextParser>
+                  {page_content.resellers_description}
+                </HtmlTextParser>
+              </Text>
+            </Box>
+            <Box
+              // bg="yellow"
+              flex="1"
+              margin={{
+                base: '3% 0% 0% 0%',
+                sm: '3% 0% 0% 0%',
+                lg: '5%',
+                xl: '5%'
+              }}
             >
-              {page_content.resellers_description}
-            </Text>
-          </Box>
-          <Box
-            bg="yellow"
-            flex="1"
-            margin={{
-              base: '3% 0% 0% 0%',
-              sm: '3% 0% 0% 0%',
-              lg: '5%',
-              xl: '5%'
-            }}
-          >
-            <PatternInfo
-              title="DESCUBRA"
-              description="Onde Comprar"
-              onClick={() => router.push('/onde-comprar')}
-              icon={
-                <EarthIcon
-                  width={{
-                    base: '60px',
-                    xs: '30px',
-                    sm: '58px',
-                    lg: '70px',
-                    xl: '80px'
-                  }}
-                  height={{
-                    base: '60px',
-                    xs: '30px',
-                    sm: '58px',
-                    lg: '70px',
-                    xl: '80px'
-                  }}
-                />
-              }
-            />
-          </Box>
+              <PatternInfo
+                title={aboutView.t('discoverWhereBuy.discover')}
+                description={aboutView.t('discoverWhereBuy.whereBuy')}
+                onClick={() => router.push('/onde-comprar')}
+                icon={
+                  <EarthIcon
+                    width={{
+                      base: '60px',
+                      xs: '30px',
+                      sm: '58px',
+                      lg: '70px',
+                      xl: '80px'
+                    }}
+                    height={{
+                      base: '60px',
+                      xs: '30px',
+                      sm: '58px',
+                      lg: '70px',
+                      xl: '80px'
+                    }}
+                  />
+                }
+              />
+            </Box>
+          </Flex>
         </Flex>
-      </Flex>
+      </Box>
       {/* FIM REVENDEDORES */}
 
       {/* INICIO CERTIFICADOS */}
       <Flex
-        maxWidth="1920px"
+        maxWidth="1536px"
         marginX="auto"
         position="relative"
         zIndex="base"
@@ -447,28 +480,25 @@ export const About = ({
             }}
           >
             <CompletedTitle
-              titleString="Certificações"
+              titleString={aboutView.t('certifications.title')}
               textAlign={{
                 base: 'center',
-                sm: 'center',
-                lg: 'left',
-                xl: 'left'
+                lg: 'left'
               }}
               alignSelf={{
                 base: 'center',
-                sm: 'center',
-                lg: 'flex-start',
-                xl: 'flex-start'
+                lg: 'flex-start'
               }}
             />
-            <Text
-              marginTop={{ base: '25px', sm: '25px', lg: '20px', xl: '20px' }}
-            >
-              {page_content.certifications_description}
+            <Text marginTop={{ base: '25px', lg: '20px' }}>
+              <HtmlTextParser>
+                {page_content.certifications_description}
+              </HtmlTextParser>
             </Text>
           </Box>
           <Box
-            w={{ base: '100%', lg: '40%' }}
+            // bg="yellow"
+            flex="1"
             margin={{
               base: '3% 0% 0% 0%',
               sm: '3% 0% 0% 0%',
@@ -478,11 +508,12 @@ export const About = ({
           >
             <PatternInfoPhoto
               onClick={() => router.push('/certificacoes')}
-              imgSrc="/assets/imgs/banner_certificacoes.png"
-              title="CONHEÇA"
-              description="Nossas certificações"
+              imgSrc="/img/banner_certificacoes_about.png"
+              title={aboutView.t('knowOurCertifications.know')}
+              description={aboutView.t('knowOurCertifications.whereBuy')}
               titleColor="green.900"
               descriptionColor="white"
+              grafism={false}
             />
           </Box>
         </Flex>

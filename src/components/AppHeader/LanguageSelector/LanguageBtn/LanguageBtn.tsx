@@ -1,5 +1,6 @@
 import { Text, Flex } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import Cookies from 'js-cookie'
 
 export type LanguageBtnProps = {
   title: string
@@ -14,6 +15,9 @@ export const LanguageBtn = ({
   return (
     <Flex
       onClick={() => {
+        if (Cookies.get('cookieAccepted')) {
+          Cookies.set('berneck_language', locale)
+        }
         router.push('/', '/', { locale })
       }}
       alignItems="center"

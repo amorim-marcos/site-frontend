@@ -1,5 +1,8 @@
 import TecaInfo from '@components/TecaInfo'
 import Product from '../../components/Product'
+import Pagebar from '@components/Pagebar'
+import { Box } from '@chakra-ui/react'
+import { useTranslation } from 'react-i18next'
 
 export type BerneckTecaViewProps = {
   title: string
@@ -12,11 +15,25 @@ export type BerneckTecaViewProps = {
   _length: string
   _width: string
   thickness: string
+  representatives_list: string
 }
 
 export default function BerneckTecaView(props: BerneckTecaViewProps) {
+  const productsViewLabels = useTranslation('productsView')
   return (
-    <div>
+    <Box>
+      <Pagebar
+        paths={[
+          {
+            title: productsViewLabels.t('pagebar.products'),
+            url: '/products'
+          },
+          {
+            title: props.title,
+            url: '/products/berneck-teca'
+          }
+        ]}
+      />
       <Product
         grafismProps={{
           grafism: 'type2',
@@ -45,8 +62,10 @@ export default function BerneckTecaView(props: BerneckTecaViewProps) {
         }}
         secondaryBackground="#F5F6F4"
         downloadAndLinks={{
+          textColor: '#987257',
+          hoverColor: '#3E1500',
           datasheetUrl: props.technical_sheet,
-          whereBuy: true,
+          whereBuy: props.representatives_list,
           qualityCertificate: false,
           backgroundColor: '#dbc3b2'
         }}
@@ -70,6 +89,6 @@ export default function BerneckTecaView(props: BerneckTecaViewProps) {
         usesAndApplications={props.uses_and_applications}
         machinability={props.machinability}
       />
-    </div>
+    </Box>
   )
 }

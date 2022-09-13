@@ -1,5 +1,7 @@
 import { GetStaticProps } from 'next'
+import { loadTranslations } from 'ni18n'
 import { Compromise, CompromiseViewProps } from 'views/Compromise/Compromise'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
 export type OurCommitmentPageProps = CompromiseViewProps
 
@@ -25,22 +27,55 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   if (page_content.sustainability_report) {
     page_content.sustainability_report.url =
-      process.env.NEXT_PUBLIC_API_URL + page_content.sustainability_report.url
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+      page_content.sustainability_report.url
   }
 
   if (page_content.ethical_code) {
     page_content.ethical_code.url =
-      process.env.NEXT_PUBLIC_API_URL + page_content.ethical_code.url
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.ethical_code.url
   }
 
   if (page_content.esg_report_file) {
     page_content.esg_report_file.url =
-      process.env.NEXT_PUBLIC_API_URL + page_content.esg_report_file.url
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+      page_content.esg_report_file.url
+  }
+
+  if (page_content.section4_img) {
+    page_content.section4_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section4_img.url
+  }
+
+  if (page_content.section5_img) {
+    page_content.section5_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section5_img.url
+  }
+
+  if (page_content.section6_img) {
+    page_content.section6_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section6_img.url
+  }
+
+  if (page_content.section7_img) {
+    page_content.section7_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section7_img.url
+  }
+
+  if (page_content.section8_img) {
+    page_content.section8_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section8_img.url
+  }
+
+  if (page_content.esg_img) {
+    page_content.esg_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.esg_img.url
   }
 
   return {
     props: {
-      page_content
+      page_content,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

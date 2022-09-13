@@ -2,6 +2,8 @@ import { Heading, Flex, Box, Text, Center, Image } from '@chakra-ui/react'
 import { useState } from 'react'
 import { ResponsiveCss } from 'types/responsive'
 
+type SizeTypes = 'square' | 'rectangle-horizontal' | 'rectangle-vertical'
+
 export type BannerProductsProps = {
   title?: string
   titleColor?: string
@@ -11,8 +13,9 @@ export type BannerProductsProps = {
   srcImg?: string
   bannerSize?: ResponsiveCss
   onClick?: () => void
-  sizeType?: 'square' | 'rectangle'
+  sizeType?: SizeTypes
   urlLink?: string
+  biggerImage?: boolean
 }
 export const BannerProducts = ({
   title,
@@ -23,7 +26,8 @@ export const BannerProducts = ({
   srcImg,
   bannerSize,
   sizeType = 'square',
-  onClick
+  onClick,
+  biggerImage = false
 }: BannerProductsProps) => {
   const [mouseEnter, setMouseEnter] = useState(false)
   return (
@@ -47,47 +51,55 @@ export const BannerProducts = ({
       onClick={onClick}
     >
       <Box
+        // border="1px solid red"
         position={'absolute'}
         right={
-          sizeType === 'rectangle'
+          sizeType === 'rectangle-horizontal'
             ? mouseEnter
-              ? '-1%'
-              : '-5%'
+              ? '-12%'
+              : '-15%'
             : mouseEnter
-            ? '-3%'
-            : '-7%'
+            ? { base: '-17%', '2xl': '-13%' }
+            : { base: '-20%', '2xl': '-20%' }
         }
         top={
-          sizeType === 'rectangle'
+          sizeType === 'rectangle-horizontal'
             ? mouseEnter
               ? '-14%'
               : '-17%'
             : mouseEnter
-            ? '-3%'
-            : '-7%'
+            ? '-1%'
+            : '-3%'
         }
         transition={'0.5s'}
         zIndex="base"
-        h={sizeType === 'square' ? '100%' : '130%'}
+        h={sizeType === 'square' ? '80%' : '130%'}
         w={
           sizeType === 'square'
-            ? { base: '100%', lg: '100%' }
-            : { base: '63%', lg: '63%' }
+            ? { base: '90%', lg: '95%' }
+            : { base: '63%', lg: '68%' }
         }
-        background={`url(${srcImg})`}
-        backgroundRepeat={'no-repeat'}
-        backgroundPosition={'center left'}
-        backgroundSize={'auto 100%'}
-        // border="1px solid red"
-      ></Box>
+        // background={`url(${srcImg})`}
+        // backgroundRepeat={'no-repeat'}
+        // backgroundPosition={'center left'}
+        // backgroundSize={'auto 100%'}
+      >
+        <Image
+          src={srcImg}
+          objectFit="cover"
+          objectPosition={'left bottom'}
+          width={'100%'}
+          height="100%"
+        />
+      </Box>
 
       <Flex
         zIndex={10}
         mr={bannerSize}
         // bg="black"
         flex="1"
-        mb={{ base: '6%', sm: '20px', lg: '25px', xl: '40px' }}
-        ml={{ base: '6%', sm: '20px', lg: '25px', xl: '40px' }}
+        mb={{ base: '6%', sm: '25px', lg: '25px', xl: '40px' }}
+        ml={{ base: '6%', sm: '25px', lg: '25px', xl: '40px' }}
         direction={{ base: 'row', sm: 'row', lg: 'row', xl: 'row' }}
       >
         <Flex
@@ -104,29 +116,16 @@ export const BannerProducts = ({
           <Flex
             // bg="pink"
             flex="1"
-            w={sizeType === 'rectangle' ? '50%' : '100%'}
+            w={sizeType === 'rectangle-horizontal' ? '50%' : '100%'}
           >
-            <Text as="h1" 
+            <Text
+              as="h1"
               variant={'h1' as any}
               color={titleColor}
-              lineHeight={{ base: '35px', sm: '35px', lg: '40px', xl: '50px' }}
+              lineHeight={{ base: '35px', sm: '35px', lg: '40px', xl: '40px' }}
             >
               {title}
             </Text>
-
-              {/* <Flex
-                bg="red"
-                alignItems={'flex-end'}
-              >
-                <Text as="h3" 
-                  variant={'h3' as any}
-                  color={titleColor}
-                  // lineHeight={{ base: '35px', sm: '35px', lg: '40px', xl: '50px' }}
-                >
-                  ®
-                </Text>
-              </Flex> */}
-
           </Flex>
           <Flex
             // bg="white"

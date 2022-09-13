@@ -45,74 +45,78 @@ export const Product = ({
   }
 }: ProductProps) => {
   const { width } = useWindowDimensions()
-  const isMobile = width && width < 568
+  const isMobile = width && width < 768
 
   return (
-    <Box
+    <Flex
       aria-label="productContainer"
       overflow="hidden"
       position="relative"
       marginX="auto"
-      maxWidth="1920px"
+      // bg="violet"
+      flexDirection="column"
     >
-      <GrafismProduct {...grafismProps} />
+      <Box id={plusProduct ? 'plus' : 'product'}>
+        <GrafismProduct {...grafismProps} />
 
-      <ProductHeader {...header} />
-      {imgSrc && (
-        <Flex
-          direction="column"
-          width="100vw"
-          maxWidth="1920px"
-          position={{ base: 'relative', sm: 'absolute' }}
-          top="0"
-          right="0"
-          alignItems={'flex-end'}
-        >
+        <ProductHeader {...header} />
+        {imgSrc && (
           <Flex
-            justifyContent="flex-end"
-            w="100vw"
-            bg={{ base: body?.backgroundColor, sm: 'none' }}
+            direction="column"
+            width="100vw"
+            position={{ base: 'relative', sm: 'absolute' }}
+            top="0"
+            right="0"
+            alignItems={'flex-end'}
           >
-            <Image
-              as="img"
-              src={imgSrc}
-              alt="product image"
-              width={imgWidth}
-              maxWidth={imgMaxWidth}
-              marginTop={imgMarginTop}
-              marginRight={imgMarginRight}
-            />
-          </Flex>
-          {!isMobile && downloadAndLinks && (
-            <ProductDownloadAndLinks
-              plusProduct={plusProduct}
-              backgroundColor={secondaryBackground}
-              {...downloadAndLinks}
-            />
-          )}
-        </Flex>
-      )}
-      <ProductBody
-        {...body}
-        secondaryBackgroundColor={secondaryBackground}
-        BottomComponent={
-          isMobile &&
-          downloadAndLinks && (
             <Flex
-              bg={body?.backgroundColor}
-              alignItems="center"
-              justifyContent="center"
+              justifyContent="flex-end"
               w="100vw"
+              bg={{ base: body?.backgroundColor, sm: 'none' }}
             >
+              <Image
+                as="img"
+                src={imgSrc}
+                alt="product image"
+                width={imgWidth}
+                maxWidth={imgMaxWidth}
+                marginTop={imgMarginTop}
+                marginRight={imgMarginRight}
+              />
+            </Flex>
+            {!isMobile && downloadAndLinks && (
               <ProductDownloadAndLinks
                 plusProduct={plusProduct}
                 backgroundColor={secondaryBackground}
                 {...downloadAndLinks}
               />
-            </Flex>
-          )
-        }
-      />
-    </Box>
+            )}
+          </Flex>
+        )}
+        <ProductBody
+          {...body}
+          secondaryBackgroundColor={secondaryBackground}
+          BottomComponent={
+            isMobile &&
+            downloadAndLinks && (
+              <Flex
+                bg={body?.backgroundColor}
+                // alignItems="center"
+                // justifyContent="center"
+                w="100%"
+                // bg="blue"
+                flex="1"
+              >
+                <ProductDownloadAndLinks
+                  plusProduct={plusProduct}
+                  backgroundColor={secondaryBackground}
+                  {...downloadAndLinks}
+                />
+              </Flex>
+            )
+          }
+        />
+      </Box>
+    </Flex>
   )
 }

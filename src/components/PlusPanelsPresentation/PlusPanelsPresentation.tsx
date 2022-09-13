@@ -16,11 +16,13 @@ export const PlusPanelsPresentation = ({
   return (
     <Box
       aria-label="PlusPanelPrensentationContainer"
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       padding="5%"
     >
-      <Text variant={'productTitle' as any}>{title}</Text>
+      <Text as={'h3'} variant={'h3'} color="green.900" fontWeight={'extrabold'}>
+        {title}
+      </Text>
       <Flex
         marginTop={{
           base: '20px',

@@ -1,0 +1,46 @@
+{
+    "ethicsCodeSection": {
+        "title": "Código de ética e conduta",
+        "description": "Nosso Código de Ética e Conduta apresenta os direitos e deveres que todos os nossos colaboradores e parceiros seguem à risca.",
+        "know": "Conheça:",
+        "btn": "Código de ética e conduta"
+    },
+    "ourCorporativeValues": {
+        "title": "Nossos valores corporativos"
+    },
+    "fsc": {
+        "description": "Ao escolher produtos certificados pelo FSC®, você apoia o manejo responsável das florestas do mundo."
+    },
+    "knowOurCertifications": {
+        "know": "CONHEÇA",
+        "ourCertifications": "Nossas Certificações"
+    },
+    "infoGraphicAtmospheric": {
+        "carbonSequestration": "Sequestro de Carbono",
+        "moreOf":"Mais de",
+        "millionCo2": "milhões de tCO₂e",
+        "AtmosphericEmissions": "Emissões Atmosféricas",
+        "about": "Cerca de",
+        "source": "(Dados do inventário de GEE de 2019)"
+    },
+    "infoGraphicSustainability": {
+        "co-generate": "Co-geramos",
+        "energyUsed": "da Energia Utilizada",
+        "reuse": "Reaproveitamos",
+        "waterUsed": "da Água Utilizada"
+    },
+    "infoGraphicContributors": {
+        "measure": "Mil",
+        "description": "Colaboradores diretos e indiretos"
+    },
+    "weCultivateOurPeople": {
+        "bePartOfThisTeamBtn": "Faça parte desse time"
+    },
+    "socialProjects":{
+        "description": "Por meio das leis de incentivo, a BERNECK® apoia projetos que auxiliam o Estado a criar uma sinergia e impacto social positivo, levando estímulo aos jovens e à população em geral.",
+        "checkOutSponsoredProjects": "Confira alguns projetos patrocinados por nós:"
+    },
+    "ESG": {
+        "title":"ESG"
+    }
+}

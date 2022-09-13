@@ -1,6 +1,7 @@
 import { Flex, Text } from '@chakra-ui/react'
 import LocationIcon from '@components/Icons/LocationIcon'
 import QualityCertificateIcon from '@components/Icons/QualityCertificateIcon'
+import { useState } from 'react'
 import { DatasheetIcon } from '../../../Icons/DatasheetIcon/DatasheetIcon'
 
 export type ProductDownloadItemProps = {
@@ -20,21 +21,20 @@ export const ProductDownloadItem = ({
   iconName = 'datasheet',
   backgroundColor = '#FFF'
 }: ProductDownloadItemProps) => {
+  const [isHover, setIsHover] = useState(false)
+
   return (
     <Flex
       cursor={'pointer'}
-      padding={{ base: '10px', sm: '0' }}
+      // padding={{ base: '2%', md: '0' }}
       h={{
         base: '100px',
-        sm: '50px',
         md: '65px',
         lg: '85px',
-        xl: '100px',
-        '2xl': '136px'
+        xl: '100px'
       }}
       w={{
-        base: '100vw',
-        sm: '98px',
+        base: '90vw',
         md: '125px',
         lg: '165px',
         xl: '216px',
@@ -44,56 +44,45 @@ export const ProductDownloadItem = ({
       justifyContent="center"
       alignItems="center"
       backgroundColor={backgroundColor}
-      marginBottom={{ base: '15px', sm: '0px' }}
+      marginBottom={{ base: '15px', md: '0px' }}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
     >
       {iconName === 'datasheet' ? (
         <DatasheetIcon
           width={{
-            base: '30px',
-            sm: '8px',
+            base: '25px',
             md: '13px',
             lg: '15px',
-            xl: '20px',
-            '2xl': '30px'
+            xl: '20px'
           }}
-          stroke={textColor}
+          stroke={isHover ? hoverColor : textColor}
         />
       ) : iconName === 'location' ? (
         <LocationIcon
           width={{
-            base: '30px',
-            sm: '8px',
+            base: '20px',
             md: '13px',
             lg: '15px',
-            xl: '20px',
-            '2xl': '30px'
+            xl: '20px'
           }}
-          stroke={textColor}
+          stroke={isHover ? hoverColor : textColor}
         />
       ) : (
         <QualityCertificateIcon
           width={{
-            base: '30px',
-            sm: '8px',
-            md: '13px',
-            lg: '15px',
-            xl: '20px',
-            '2xl': '30px'
+            base: '25px',
+            md: '20px',
+            lg: '18px',
+            xl: '20px'
           }}
-          stroke={textColor}
+          stroke={isHover ? hoverColor : textColor}
         />
       )}
       <Text
-        _hover={{ color: hoverColor }}
+        as={'h5'}
+        variant={'h5'}
         color={textColor}
-        fontSize={{
-          base: '16px',
-          sm: '8px',
-          md: '10px',
-          lg: '14px',
-          xl: '16px',
-          '2xl': '20px'
-        }}
         fontWeight="bold"
         marginLeft={{
           base: '15px',

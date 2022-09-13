@@ -3,6 +3,8 @@ import { Post } from '../../../types/data/Post/Post'
 import { GetServerSideProps } from 'next'
 import DOMPurify from 'isomorphic-dompurify'
 import { smartDate } from 'utils/utils'
+import { nameSpaces, ni18nConfig } from '../../../../ni18n.config'
+import { loadTranslations } from 'ni18n'
 
 export type PostPageProps = {
   posts: Post[]
@@ -17,23 +19,27 @@ export default function PostPage(props: PostPageProps) {
         publishDate: props.currentPost.date,
         postTitle: props.currentPost.title,
         postContent: props.currentPost.content,
-        tags: props.currentPost.tags.map((item) => ({ name: item.Tag })),
+        tags: props.currentPost.tags
+          ? props.currentPost.tags.map((item) => ({ name: item.Tag }))
+          : [],
         postSlug: props.currentPost.url_code
       }}
       coverImageUrl={props.currentPost.cover}
       relationalContent={{
-        items: props.posts.map((item) => {
-          return {
-            category: {
-              id: item.category.id,
-              name: item.category.name,
-              color: item.category.color
-            },
-            url_code: item.url_code,
-            urlImage: item.cover,
-            title: item.title
-          }
-        })
+        items: props.posts
+          ? props.posts.map((item) => {
+              return {
+                category: {
+                  id: item.category.id,
+                  name: item.category.name,
+                  color: item.category.color
+                },
+                url_code: item.url_code,
+                urlImage: item.cover,
+                title: item.title
+              }
+            })
+          : []
       }}
       backgroundColor="brown.100"
       postCategory={props.currentPost.category}
@@ -66,12 +72,14 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         },
         content: DOMPurify.sanitize(item.content).replace(
           '/uploads',
-          `${process.env.NEXT_PUBLIC_API_URL}/uploads`
+          `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}/uploads`
         ),
-        cover: process.env.NEXT_PUBLIC_API_URL + item.cover.url,
-        tags: item.tags.map((j) => ({
-          Tag: j.tag
-        })),
+        cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url,
+        tags: item.tags
+          ? item.tags.map((j) => ({
+              Tag: j.tag
+            }))
+          : [],
         title: item.title,
         date: item.published_at,
         url_code: item.url_code
@@ -86,8 +94,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       description: currentPost.category.description,
       color: currentPost.category.color
     },
-    content: DOMPurify.sanitize(currentPost.content),
-    cover: process.env.NEXT_PUBLIC_API_URL + currentPost.cover.url,
+    content: DOMPurify.sanitize(currentPost.content, {
+      ADD_TAGS: ['oembed', 'figure'],
+      ADD_ATTR: ['url', 'allow', 'allowfullscreen', 'frameborder', 'scrolling']
+    }),
+    cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + currentPost.cover.url,
     tags: currentPost.tags.map((j) => ({
       Tag: j.tag
     })),
@@ -98,7 +109,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     url_code: currentPost.url_code
   }
 
-  return { props: { posts: data, currentPost: currentPostTrated } }
+  return {
+    props: {
+      posts: data,
+      currentPost: currentPostTrated,
+      ...(await loadTranslations(ni18nConfig, ctx.locale, nameSpaces))
+    }
+  }
 }
 
 type PostResponse = {

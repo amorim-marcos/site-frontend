@@ -4,7 +4,7 @@ import { ResponsiveCss } from 'types/responsive'
 export type GrafismProps = {
   width?: ResponsiveCss
 }
-export const Grafism = ({ width = '1920px' }: GrafismProps) => {
+export const Grafism = ({ width = '1536px' }: GrafismProps) => {
   return (
     <Box width={width}>
       <svg

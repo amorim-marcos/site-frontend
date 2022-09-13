@@ -47,6 +47,9 @@ export const FilterCheckbox = ({
       {...props}
       padding="28px"
       overflow="hidden"
+      _focus={{ outline: 'none' }}
+      _hover={{ outline: 'none' }}
+      _active={{ outline: 'none' }}
     >
       <Checkbox
         onClickCapture={(e) => {
@@ -56,20 +59,16 @@ export const FilterCheckbox = ({
         }}
         padding="0"
         iconColor="green.600"
-        border="1px solid"
+        bgColor="#FFFFFF73"
         borderColor="green.900"
         borderRadius="3px"
         colorScheme="white.100"
         isChecked={isChecked}
         zIndex="2"
         mr="5px"
+        sx={{ span: { border: '1.2px solid green.900', borderRadius: '3px' } }}
       />
-      <Text
-        fontWeight="600"
-        fontSize={{ base: '17px', md: '19px' }}
-        color="green.900"
-        zIndex="2"
-      >
+      <Text fontWeight="600" fontSize={{ base: '17px', md: '19px' }} zIndex="2">
         {title}
       </Text>
       <Image
@@ -77,6 +76,7 @@ export const FilterCheckbox = ({
         top="0"
         right="0"
         zIndex="1"
+        w="100%"
         src={background_image}
       ></Image>
     </Button>

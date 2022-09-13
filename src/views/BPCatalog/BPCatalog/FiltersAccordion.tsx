@@ -19,6 +19,7 @@ import {
 import { colors } from 'theme/colors'
 import { FilterCheckbox } from './FilterCheckbox'
 import { initialFilters } from './'
+import { useTranslation } from 'react-i18next'
 
 export type FiltersSelectProps = {
   darkMode: boolean
@@ -66,9 +67,11 @@ export const FiltersAccordion = ({
 }: FiltersSelectProps) => {
   const [openSearchBar, setOpenSearchBar] = React.useState(false)
 
+  const bpCatalog = useTranslation('bpCatalog')
+
   return (
     <>
-      <Box backgroundColor={darkMode ? 'gray.400' : 'white.200'} height="100%">
+      <Box backgroundColor={darkMode ? 'gray.400' : 'white.200'} height="150%">
         <Flex
           padding={{ base: '25px' }}
           justifyContent="space-between"
@@ -90,7 +93,9 @@ export const FiltersAccordion = ({
               <FiltersIcon mr="16px" />
             )}
             <Text color={darkMode ? 'green.300' : 'gray.300'} fontSize="17px">
-              {!displayFilters ? 'Filtrar Resultados' : 'Esconder filtros'}
+              {!displayFilters
+                ? bpCatalog.t('filtersAccordion.filterResults')
+                : bpCatalog.t('filtersAccordion.hideFilters')}
             </Text>
             <Arrow
               color={darkMode ? 'green.300' : 'gray.300'}
@@ -132,7 +137,12 @@ export const FiltersAccordion = ({
                 bottom="-3px"
                 left="0"
               />
-              <Box width="100%" paddingLeft="20px" paddingRight="20px">
+              <Box
+                width="100%"
+                backgroundColor={darkMode ? 'gray.400' : 'white.200'}
+                paddingLeft="20px"
+                paddingRight="20px"
+              >
                 <Button
                   onClick={() => changeFilterPanel('panels')}
                   variant="link"
@@ -142,13 +152,14 @@ export const FiltersAccordion = ({
                   fontSize="22px"
                   justifyContent="start"
                   alignItems="center"
+                  _focus={{ outline: 'none' }}
                 >
                   <Text
                     fontSize="17px"
                     color={darkMode ? 'green.300' : 'gray.300'}
                     mr="10px"
                   >
-                    PAINÉIS
+                    {bpCatalog.t('filtersAccordion.panels')}
                   </Text>
                   <Arrow
                     position="absolute"
@@ -193,7 +204,12 @@ export const FiltersAccordion = ({
                 bottom="-3px"
                 left="0"
               />
-              <Box width="100%" paddingLeft="20px" paddingRight="20px">
+              <Box
+                width="100%"
+                backgroundColor={darkMode ? 'gray.400' : 'white.200'}
+                paddingLeft="20px"
+                paddingRight="20px"
+              >
                 <Button
                   onClick={() => changeFilterPanel('collections')}
                   variant="link"
@@ -203,13 +219,14 @@ export const FiltersAccordion = ({
                   fontSize="22px"
                   justifyContent="start"
                   alignItems="center"
+                  _focus={{ outline: 'none' }}
                 >
                   <Text
                     fontSize="17px"
                     color={darkMode ? 'green.300' : 'gray.300'}
                     mr="10px"
                   >
-                    COLEÇÕES
+                    {bpCatalog.t('filtersAccordion.collections')}
                   </Text>
                   <Arrow
                     position="absolute"
@@ -258,7 +275,12 @@ export const FiltersAccordion = ({
                 bottom="-3px"
                 left="0"
               />
-              <Box width="100%" paddingLeft="20px" paddingRight="20px">
+              <Box
+                width="100%"
+                backgroundColor={darkMode ? 'gray.400' : 'white.200'}
+                paddingLeft="20px"
+                paddingRight="20px"
+              >
                 <Button
                   onClick={() => changeFilterPanel('colorations')}
                   variant="link"
@@ -268,13 +290,14 @@ export const FiltersAccordion = ({
                   fontSize="22px"
                   justifyContent="start"
                   alignItems="center"
+                  _focus={{ outline: 'none' }}
                 >
                   <Text
                     fontSize="17px"
                     color={darkMode ? 'green.300' : 'gray.300'}
                     mr="10px"
                   >
-                    COLORAÇÃO
+                    {bpCatalog.t('filtersAccordion.coloration')}
                   </Text>
                   <Arrow
                     position="absolute"
@@ -296,9 +319,11 @@ export const FiltersAccordion = ({
                   width="100%"
                   height="100%"
                   paddingBottom="25px"
+                  mb="50px"
                 >
                   {colorations.map((filter) => (
                     <FilterCheckbox
+                      color="white.100"
                       key={filter.code}
                       minW={{ base: '100%', sm: '48%' }}
                       mr={{ base: 0, sm: '2%' }}
@@ -339,7 +364,7 @@ export const FiltersAccordion = ({
               setDisplayFilters(false)
             }}
           >
-            Filtrar
+            {bpCatalog.t('filtersAccordion.filter')}
           </Button>
         )}
         {openSearchBar && (
@@ -379,6 +404,10 @@ export const FiltersAccordion = ({
                 onChange={(e) => {
                   setFilters({ ...filters, nameSearched: e.target.value })
                 }}
+                onKeyPress={(event) => {
+                  if (event.key === 'Enter')
+                    setFilteredBps(applyFilters(filters, bps))
+                }}
               />
               <Box>
                 <SearchIcon
@@ -406,16 +435,28 @@ export const FiltersAccordion = ({
                   applyFilters({ ...filters, orderBy: e.target.value }, bps)
                 )
               }}
+              value={filters['orderBy']}
               color={darkMode ? 'green.300' : 'gray.300'}
               border="0"
               backgroundColor={darkMode ? 'gray.400' : 'white.100'}
               width="160px"
               fontSize="16px"
               mr="10px"
+              variant="flushed"
+              _focus={{ outline: 'none' }}
             >
-              <option value="launch">lançamento</option>
-              <option value="name">nome</option>
-              <option value="scale">escala de cor</option>
+              <option disabled>
+                {bpCatalog.t('filtersAccordion.orderBy')}
+              </option>
+              <option value="launch">
+                {bpCatalog.t('filtersAccordion.launch')}
+              </option>
+              <option value="name">
+                {bpCatalog.t('filtersAccordion.name')}
+              </option>
+              <option value="scale">
+                {bpCatalog.t('filtersAccordion.colorScale')}
+              </option>
             </Select>
 
             <Box>
@@ -492,7 +533,7 @@ export const FiltersAccordion = ({
                 variant="link"
                 backgroundColor="none"
               >
-                Limpar filtros
+                {bpCatalog.t('filtersAccordion.clearFilters')}
               </Button>
             </Flex>
           </>

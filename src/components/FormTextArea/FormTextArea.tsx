@@ -1,4 +1,4 @@
-import { Textarea, TextareaProps } from "@chakra-ui/react"
+import { Textarea, TextareaProps } from '@chakra-ui/react'
 
 export type FormTextAreaProps = TextareaProps
 
@@ -9,21 +9,17 @@ export const FormTextArea = (props: FormTextAreaProps) => {
       border="0"
       color="brown.300"
       minH="250px"
-      _placeholder={
-        {
-          color: "brown.300",
-          fontSize: "18px"
+      _placeholder={{
+        color: 'brown.300',
+        fontSize: '18px'
+      }}
+      _focus={{
+        border: '1px',
+        borderColor: 'green.600',
+        _placeholder: {
+          color: 'transparent'
         }
-      }
-      _focus={
-        {
-          border: '1px',
-          borderColor: 'green.600',
-          _placeholder: {
-            color: 'transparent'
-          }
-        }
-      }
+      }}
       {...props}
     >
       {props.children}

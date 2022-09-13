@@ -1,15 +1,20 @@
 import {
-  createContext,
-  ReactNode,
+  useState,
+  useEffect,
   useCallback,
+  createContext,
   useContext,
-  useState
+  ReactNode
 } from 'react'
-import { Intro, Videos, Downloads, Connect } from './sections'
-import { Post, Category } from 'types/data/Post'
+
+import { Box, Flex } from '@chakra-ui/react'
+
 import Pagebar from '@components/Pagebar'
-import { Box } from '@chakra-ui/react'
-import { useEffect } from 'react'
+import Connect from '@components/Connect'
+import { Intro, Videos, Downloads } from './sections'
+
+import { Post, Category } from 'types/data/Post'
+import { useTranslation } from 'react-i18next'
 
 export const CategoryContext = createContext(
   {} as {
@@ -22,7 +27,10 @@ export const CategoryContext = createContext(
   }
 )
 
-export function CategoryCtxProvider(props: { children: ReactNode }) {
+export function CategoryCtxProvider(props: {
+  children: ReactNode
+  seeOnlyPostsDefault?: boolean
+}) {
   const [currentCategory, setCurrentCategory] = useState<number>(-1)
   const [categories, setCategories] = useState<Category[]>([])
   const [seeOnlyPosts, setSeeOnlyPosts] = useState(false)
@@ -41,8 +49,12 @@ export function CategoryCtxProvider(props: { children: ReactNode }) {
       setCurrentCategory(-1)
     }
   }, [currentCategory, categories])
+
+  useEffect(() => {
+    setSeeOnlyPosts(props.seeOnlyPostsDefault || false)
+  }, [props.seeOnlyPostsDefault])
   return (
-    <Box maxWidth={'1920px'} marginX="auto">
+    <Box>
       <CategoryContext.Provider
         value={{
           currentCategory,
@@ -75,20 +87,37 @@ function CanalBNKFC(props: CanalBNKProps) {
     }
   }, [props, setCategories, changeCurrentCategory])
 
+  const channelBnkLabels = useTranslation('channelBnkView')
+
   return (
     <Box>
       {currentCategory !== -1 ? (
         <Pagebar
           paths={[
-            { title: 'Canal BNK', url: '/canal-bnk' },
             {
-              title: categories[currentCategory].name,
+              title: channelBnkLabels.t('pagebar.channelBnk'),
+              url: '/canal-bnk'
+            },
+            {
+              title: categories[currentCategory].name
+                .split(' ')
+                .map(
+                  (name) => name[0].toUpperCase() + name.slice(1).toLowerCase()
+                )
+                .join(' '),
               url: '/canal-bnk'
             }
           ]}
         />
       ) : (
-        <Pagebar paths={[{ title: 'Canal BNK', url: '/canal-bnk' }]} />
+        <Pagebar
+          paths={[
+            {
+              title: channelBnkLabels.t('pagebar.channelBnk'),
+              url: '/canal-bnk'
+            }
+          ]}
+        />
       )}
 
       <Intro
@@ -101,11 +130,23 @@ function CanalBNKFC(props: CanalBNKProps) {
               )
         }
       />
-      <Videos videos={[]} />
+
+      <Flex
+        bg={
+          currentCategory === -1 || currentCategory === 0
+            ? 'gray.150'
+            : 'brown.100'
+        }
+        justify={'center'}
+      >
+        <Videos />
+      </Flex>
       {!seeOnlyPosts && (
         <>
-          <Downloads />
-          <Connect />
+          <Flex bg="white.100" justify={'center'}>
+            <Downloads patterns_pack_url={props.patterns_pack_url} />
+          </Flex>
+          <Connect youtubeLink={props.youtubeDownloadLink} />
         </>
       )}
     </Box>
@@ -116,6 +157,8 @@ export interface CanalBNKProps {
   posts: Post[]
   categories: Category[]
   defaultCategory: number
+  patterns_pack_url?: string | null
+  youtubeDownloadLink?: string
 }
 
 export default function CanalBNK(props: CanalBNKProps) {

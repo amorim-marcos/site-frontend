@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRouter } from 'next/router'
 
-import { Flex, Box, Text, Image } from '@chakra-ui/react'
+import { Flex, Box, Text, Image, Grid, GridItem, Link } from '@chakra-ui/react'
 
 import CarouselMultiElements from '@components/CarouselMultiElements'
 import CompletedTitle from '@components/CompletedTitle'
-import { Arrow } from '@components/Icons'
 import Pagebar from '@components/Pagebar'
+import SeeMore from '@components/SeeMore'
+import { Env } from './EnvGallery/Env'
+import { useTranslation } from 'react-i18next'
 
 export type EnvViewProps = {
   env: {
@@ -45,38 +47,37 @@ export const EnvView = ({
 }: EnvViewProps) => {
   const router = useRouter()
 
+  const galleryViewLabels = useTranslation('envView')
+
   return (
-    <Box maxWidth={'1920px'} marginX="auto">
+    <Box marginX="auto" bg="white.200">
       <Pagebar
         paths={[
           {
-            title: 'Produtos',
-            url: '/'
+            title: galleryViewLabels.t('pagebar.products'),
+            url: '/products'
           },
           {
-            title: 'BP BERNECK',
-            url: '/'
+            title: galleryViewLabels.t('pagebar.bpBerneck'),
+            url: '/products/bp-berneck'
           },
           {
-            title: 'Galeria de Ambientes',
-            url: '/'
-          },
-          {
-            title: 'Cozinha',
-            url: '/'
+            title: galleryViewLabels.t('pagebar.envGallery'),
+            url: '/products/bp-berneck/gallery'
           }
         ]}
       />
-      <Flex
-        flexDirection={'column'}
-        maxWidth={'1920px'}
-        padding="5%"
-        marginX="auto"
-      >
-        <CompletedTitle titleString={env.title} alignSelf={'left'} />
-        <Text marginY="3%" as="h3" variant="h3" color="brown.300">
+      <Flex flexDirection={'column'} maxWidth={'1536px'} mt="2%" marginX="auto">
+        <CompletedTitle titleString={env.subTitle} alignSelf={'left'} />
+        {/* <Text
+          as={'h3'}
+          variant={'h3'}
+          fontWeight="extrabold"
+          color={'gray.300'}
+          marginY={'3%'}
+        >
           {env.subTitle}
-        </Text>
+        </Text> */}
 
         <Box bg="white.200" w="100%">
           <CarouselMultiElements numberOfEvidenceElements={1}>
@@ -106,98 +107,115 @@ export const EnvView = ({
               w={{ base: '100%', md: '50%' }}
             >
               <Flex w={{ base: '100%', md: '80%' }} flexDirection={'column'}>
-                {tableContent.map((item) => {
+                {tableContent.map((item, i) => {
                   return (
-                    <Flex key={item.column1} w="100%">
-                      <Flex
-                        bg="white.100"
-                        padding={{
-                          base: '5px',
-                          xs: '5px 10px',
-                          lg: '5px 20px'
-                        }}
-                        border="3px solid"
-                        borderColor="white.200"
-                        minHeight="40px"
-                        minWidth={{
-                          base: '85px',
-                          xs: '100px',
-                          sm: '180px',
-                          md: '90px',
-                          lg: '180px'
-                        }}
-                        alignItems="center"
-                      >
-                        <Text variant="body" fontWeight="bold" color="gray.250">
-                          {item.column1}
-                        </Text>
+                    item.column2 && (
+                      <Flex key={i} w="100%">
+                        <Flex
+                          bg="white.100"
+                          padding={{
+                            base: '5px',
+                            xs: '5px 10px',
+                            lg: '5px 20px'
+                          }}
+                          border="3px solid"
+                          borderColor="white.200"
+                          minHeight="40px"
+                          minWidth={{
+                            base: '85px',
+                            xs: '100px',
+                            sm: '180px',
+                            md: '90px',
+                            lg: '180px'
+                          }}
+                          alignItems="center"
+                        >
+                          <Text
+                            variant="body"
+                            fontWeight="bold"
+                            color="gray.250"
+                          >
+                            {item.column1}
+                          </Text>
+                        </Flex>
+                        <Flex
+                          bg="white.100"
+                          padding={{ base: '5px 5px', lg: '5px 20px' }}
+                          border="3px solid"
+                          borderColor="white.200"
+                          minHeight="40px"
+                          minWidth="180px"
+                          alignItems="center"
+                          w="full"
+                        >
+                          <Text variant="body" color="gray.250">
+                            {item.column2}
+                          </Text>
+                        </Flex>
                       </Flex>
-                      <Flex
-                        bg="white.100"
-                        padding={{ base: '5px 5px', lg: '5px 20px' }}
-                        border="3px solid"
-                        borderColor="white.200"
-                        minHeight="40px"
-                        minWidth="180px"
-                        alignItems="center"
-                        w="full"
-                      >
-                        <Text variant="body" color="gray.250">
-                          {item.column2}
-                        </Text>
-                      </Flex>
-                    </Flex>
+                    )
                   )
                 })}
               </Flex>
             </Flex>
             <Flex flexDirection={'column'} w={{ base: '100%', md: '50%' }}>
               <Text
-                variant="body"
+                variant="h5"
                 fontWeight={'bold'}
-                color="brown.300"
+                color="gray.300"
                 marginBottom={'3%'}
               >
-                Padrões BP BERNECK® utilizados neste ambiente
+                {galleryViewLabels.t('patternsInfo')}
               </Text>
 
-              <Flex flexDirection={'row'} w="100%" gap="30px">
-                {env.panels.map((panel: any) => (
-                  <Box key={panel.id}>
-                    <Flex w="100%">
-                      <Box
-                        w="233px"
-                        h={{ base: '35vw', md: '18vw' }}
-                        maxHeight="380px"
-                      >
-                        <Image
-                          src={panel.imgSrc}
-                          w="100%"
-                          h="100%"
-                          objectFit={'cover'}
-                        />
+              <Flex
+                flexDirection={'row'}
+                w="100%"
+                // gap={{ base: '5px', lg: '10px' }}
+                justifyContent={{ base: 'center', md: 'start' }}
+                flexDir={{ base: 'column', sm: 'row' }}
+              >
+                {env.panels.map((panel: any, i) => {
+                  return (
+                    i < 4 && (
+                      <Box key={i}>
+                        <Flex w="100%">
+                          <Box
+                            w={{ base: '80vw', sm: '150px' }}
+                            h={{ base: '120px', sm: '275px' }}
+                          >
+                            <Link href={panel.href}>
+                              <Image
+                                src={panel.imgSrc}
+                                w="100%"
+                                h="100%"
+                                objectFit={'cover'}
+                              />
+                            </Link>
+                          </Box>
+                        </Flex>
+
+                        <Text
+                          variant="body"
+                          fontWeight={'extrabold'}
+                          color="gray.300"
+                          marginTop={'3%'}
+                        >
+                          {panel.name}
+                        </Text>
+
+                        <Text
+                          variant="body"
+                          fontWeight={'bold'}
+                          color="gray.300"
+                          marginTop={'3%'}
+                        >
+                          {/* {panel.product_texture} */}
+                        </Text>
                       </Box>
-                    </Flex>
-
-                    <Text
-                      variant="body"
-                      fontWeight={'extrabold'}
-                      color="brown.300"
-                      marginTop={'3%'}
-                    >
-                      {panel.name}
-                    </Text>
-
-                    <Text
-                      variant="body"
-                      fontWeight={'bold'}
-                      color="brown.300"
-                      marginTop={'3%'}
-                    >
-                      {panel.product_texture}
-                    </Text>
-                  </Box>
-                ))}
+                    )
+                  )
+                })}
               </Flex>
             </Flex>
           </Flex>
@@ -205,75 +223,119 @@ export const EnvView = ({
       </Flex>
       {/* Other Envs */}
       <Flex flexDirection={'column'} padding={'5%'} bg="brown.100" w="100%">
-        <Flex w="100%" alignItems={'center'} justifyContent={'space-between'}>
-          <Text marginY="3%" as="h3" variant="h3" color="brown.300">
-            Outros ambientes
+        <Flex
+          w="100%"
+          flexDirection={{ base: 'column', sm: 'row' }}
+          alignItems={'center'}
+          justifyContent={'space-between'}
+        >
+          <Text marginY="3%" as="h3" variant="h3" color="gray.300">
+            {galleryViewLabels.t('othersEnvs')}
           </Text>
-          <Flex
-            alignItems={'center'}
-            _hover={{ opacity: '0.6' }}
-            cursor={'pointer'}
-            onClick={() => alert('ir para galeria')}
-          >
-            <Text
-              variant="body"
-              color="green.600"
-              marginRight={'4%'}
-              whiteSpace={'nowrap'}
-            >
-              Veja mais ambientes
-            </Text>
-            <Arrow
-              color={'green.500'}
-              width={{
-                base: '18px',
-                sm: '13px',
-                md: '15px',
-                lg: '18px',
-                xl: '20px'
-              }}
+          <Flex margin={{ base: '5px 0 15px 0', sm: '0' }}>
+            <SeeMore
+              text={galleryViewLabels.t('seeMore')}
+              link="/products/bp-berneck/gallery"
             />
           </Flex>
         </Flex>
 
         <Flex
+          // border="1px solid red"
+          flexDirection={{ base: 'column', lg: 'row' }}
+          justifyContent={otherEnvs.length > 3 ? 'space-between' : 'flex-start'}
+        >
+          {otherEnvs.map((item, i) => {
+            return (
+              i < 4 && (
+                <Flex
+                  w={{ base: '100%', lg: '23%' }}
+                  // h="300px"
+                  // border="1px solid green"
+                  marginRight={otherEnvs.length > 3 ? '0' : '2%'}
+                  key={i}
+                  flexDirection="column"
+                  cursor="pointer"
+                  onClick={() =>
+                    router.push(`/products/bp-berneck/gallery/${item.url_code}`)
+                  }
+                >
+                  <Image
+                    w="100%"
+                    h={{
+                      base: '350px',
+                      lg: '250px',
+                      xl: '270px',
+                      '2xl': '300px'
+                    }}
+                    objectFit={'cover'}
+                    src={item.imgSrc}
+                  />
+                  <Text
+                    as={'h4'}
+                    variant={'h4'}
+                    fontWeight="bold"
+                    color={'gray.300'}
+                    marginTop="10px"
+                  >
+                    {item.title}
+                  </Text>
+                  <Text
+                    as={'h5'}
+                    variant={'h5'}
+                    fontWeight="medium"
+                    color={'gray.300'}
+                    marginBottom={{ base: '40px', lg: '0' }}
+                  >
+                    {item.subTitle}
+                  </Text>
+                </Flex>
+              )
+            )
+          })}
+        </Flex>
+
+        {/* <Flex
           w="100%"
           flexDirection={{ base: 'column', md: 'row' }}
           justifyContent={'space-between'}
+          // border="1px solid red"
         >
-          {otherEnvs.map((item) => (
-            <Flex
-              w={{ base: '100%', md: '23%' }}
-              key={item.id}
-              flexDirection={'column'}
-              _hover={{ opacity: '0.9' }}
-              cursor={'pointer'}
-              onClick={() =>
-                router.push(`/products/bp-berneck/gallery/${item.url_code}`)
-              }
-            >
-              <Image
-                w="100%"
-                objectFit={'cover'}
-                maxHeight={'80%'}
-                src={item.imgSrc}
-              />
-              <Text marginTop="3%" as="h3" variant="h3" color="brown.300">
-                {item.title}
-              </Text>
-
-              <Text
-                as="body"
-                bg="none"
-                variant="body"
-                color="brown.300"
-                marginBottom={{ base: '10%', md: '0' }}
+          <Grid
+            width="100%"
+            overflow="hidden"
+            templateRows="repeat(auto, 1fr)"
+            templateColumns={{
+              base: 'repeat(1, 1fr)',
+              md: 'repeat(2, 1fr)',
+              xl: 'repeat(4, 1fr)'
+            }}
+            gridGap={{
+              base: 'none',
+              sm: '10px',
+              md: '30px',
+              xl: '20px'
+            }}
+            // justifyItems="center"
+            // bg="pink"
+          >
+            {otherEnvs.map((item) => (
+              <GridItem
+                key={item.id}
+                // bg="red"
+                // gap={"10px"}
               >
-                {item.subTitle}
-              </Text>
-            </Flex>
-          ))}
-        </Flex>
+                <Env
+                  href={`/products/bp-berneck/gallery/${item.url_code}`}
+                  title={item.title}
+                  place={item.subTitle}
+                  image_url={item.imgSrc}
+                  others
+                />
+              </GridItem>
+            ))}
+          </Grid>
+        </Flex> */}
       </Flex>
     </Box>
   )

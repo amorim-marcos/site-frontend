@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect, useContext } from 'react'
 
 import { Flex, Box, Image, Text, Link } from '@chakra-ui/react'
@@ -5,12 +6,42 @@ import { Flex, Box, Image, Text, Link } from '@chakra-ui/react'
 import { PlayIcon } from '@components/Icons'
 import { Section } from './Section'
 import { CategoryContext } from '..'
+import { useTranslation } from 'react-i18next'
 
-const YOUTUBE_PLAYLIST_ITEMS_API =
-  'https://www.googleapis.com/youtube/v3/playlistItems'
+const YOUTUBE_LAST_VIDEOS_URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${
+  process.env.YOUTUBE_CHANNEL_ID
+}&maxResults=${4}&order=date&type=video&key=${process.env.YOUTUBE_API_KEY}`
+
+const YOUTUBE_PLAYLIST_ITEMS_URL = (playlistId?: string) =>
+  `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=${4}&playlistId=${playlistId}&key=${
+    process.env.YOUTUBE_API_KEY
+  }`
+
+function getPlaylist(currentCategory: number) {
+  if (currentCategory === -1)
+    return {
+      id: 'PL0jp-uZ7a4g9FQWW5R_u0pz4yzV4RiOXu',
+      url: 'https://www.youtube.com/c/Berneckoficial/videos'
+    }
+  else
+    return {
+      0: {
+        id: 'PLOtoyzs6hjIo4VNi3CNXtWBk-RTKg_eEI',
+        url: 'https://www.youtube.com/watch?v=GG-UvXBUx54&list=PLOtoyzs6hjIo4VNi3CNXtWBk-RTKg_eEI'
+      },
+      1: {
+        id: 'PLOtoyzs6hjIoqzOctI-pgk--rPWS4ELKQ',
+        url: 'https://www.youtube.com/watch?v=v5n_MIjNM6E&list=PLOtoyzs6hjIqvJfJBt5dRdJDuh3yPl7RM'
+      },
+      2: {
+        id: 'PLOtoyzs6hjIqvJfJBt5dRdJDuh3yPl7RM',
+        url: 'https://www.youtube.com/watch?v=PtRcMibSJgk&list=PLOtoyzs6hjIoqzOctI-pgk--rPWS4ELKQ'
+      }
+    }[currentCategory]
+}
 
 interface IVideos {
-  id: string
+  id: any
   snippet: {
     title: string
     thumbnails: {
@@ -26,60 +57,46 @@ interface IVideos {
   }
 }
 
-const PLAYLISTS = {
-  all: {
-    id: 'PL0jp-uZ7a4g9FQWW5R_u0pz4yzV4RiOXu',
-    url: 'https://www.youtube.com/watch?v=KQetemT1sWc&list=PL0jp-uZ7a4g9FQWW5R_u0pz4yzV4RiOXu'
-  },
-  inspiration: {
-    id: 'PL718D16542AE44430',
-    url: 'https://www.youtube.com/watch?v=-tJYN-eG1zk&list=PL718D16542AE44430'
-  },
-  feedstock: {
-    id: 'PLP02sRgldWRb9LjuQgJ4AfxCd4cxygDrA',
-    url: 'https://www.youtube.com/watch?v=O4irXQhgMqg&list=PLP02sRgldWRb9LjuQgJ4AfxCd4cxygDrA'
-  },
-  world: {
-    id: 'PL718D16542AE44430',
-    url: 'https://www.youtube.com/watch?v=-tJYN-eG1zk&list=PL718D16542AE44430'
-  }
-}
-
-export const Videos = (props: {
-  videos: { id: number; title: string; url: string }[]
-}) => {
-  // const { categories, currentCategory } = useContext(CategoryContext)
+export const Videos = () => {
   const [videos, setVideos] = useState<IVideos[]>([])
   const { currentCategory } = useContext(CategoryContext)
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch(
-        `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&maxResults=${4}&playlistId=${'AL_3OsEsnQc'}&key=${
-          process.env.YOUTUBE_API_KEY
-        }`
+      let data
+
+      data = await fetch(
+        currentCategory === -1
+          ? YOUTUBE_LAST_VIDEOS_URL
+          : YOUTUBE_PLAYLIST_ITEMS_URL(getPlaylist(currentCategory)?.id)
       )
-      const data = await result.json()
+
+      data = await data.json()
+
+      setVideos([])
       setVideos(data.items)
     }
 
     fetchData()
-  }, [props])
+  }, [currentCategory])
+
+  const channelBnkLabels = useTranslation('channelBnkView')
 
   return (
     <Section
-      title="Vídeos"
+      title={channelBnkLabels.t('videosSection.title')}
       seeMore={{
-        text: 'Veja mais vídeos',
-        link: '/'
+        text: channelBnkLabels.t('videosSection.seeMoreVideos'),
+        link: getPlaylist(currentCategory)?.url
       }}
       bg={
         currentCategory === -1 || currentCategory === 0
           ? 'gray.150'
           : 'brown.100'
       }
-      py={{ base: '52px', lg: '100px' }}
-      px={{ base: '20px', lg: '0' }}
+      py={{ base: '54px', lg: '100px' }}
+      px={{ base: '20px', lg: '5%', '2xl': '1%' }}
+      maxWidth={'1536px'}
     >
       <Flex
         w="100%"
@@ -88,62 +105,56 @@ export const Videos = (props: {
         px={{ base: '0', lg: '88px' }}
         pt="60px"
         pb={{ base: '20px', lg: '0' }}
-        justify={{
-          base: 'flex-start',
-          lg: 'center'
-        }}
+        justify={{ base: 'flex-start', lg: 'center' }}
         overflowX={{ base: 'scroll', lg: 'hidden' }}
         overflowY="hidden"
       >
-        {/* {videos?.map(({ id, snippet }) => {
-          return (
-            <Link
-              key={id}
-              href={`https://www.youtube.com/watch?v=${snippet.resourceId.videoId}`}
-              _hover={{}}
-              _focus={{ border: 'none', outline: 0 }}
-              isExternal
-            >
-              <Flex gap="12px" direction="column">
-                <Box h="230px" w="410px" pos="relative">
-                  <Flex
-                    h="100%"
-                    w="100%"
-                    justify="center"
-                    align="center"
-                    pos="absolute"
-                    bg="#1442313f"
-                    backdropFilter="blur(1px)"
-                    _hover={{
-                      opacity: '0'
-                    }}
-                  >
-                    <PlayIcon width="38px" height="38px" />
-                  </Flex>
-
-                  <Image
-                    h="100%"
-                    w="100%"
-                    src={snippet.thumbnails.medium.url}
-                    alt=""
-                  />
-                </Box>
-
-                <Text
-                  as="h3"
-                  fontSize="20px"
-                  fontWeight={500}
-                  letterSpacing="0px"
-                  color="green.800"
+        {videos?.map(({ id, snippet }) => (
+          <Link
+            key={id.videoId}
+            href={`https://www.youtube.com/watch?v=${id.videoId}`}
+            _hover={{}}
+            _focus={{ border: 'none', outline: 0 }}
+            isExternal
+          >
+            <Flex gap="12px" direction="column" w="410px">
+              <Box h="230px" pos="relative">
+                <Flex
+                  h="100%"
+                  w="100%"
+                  justify="center"
+                  align="center"
+                  pos="absolute"
+                  bg="#1442313f"
+                  backdropFilter="blur(1px)"
+                  _hover={{
+                    opacity: '0'
+                  }}
                 >
-                  {snippet.title}
-                </Text>
-              </Flex>
-            </Link>
-          )
-        })} */}
+                  <PlayIcon width="38px" height="38px" />
+                </Flex>
+
+                <Image
+                  h="100%"
+                  w="100%"
+                  src={snippet.thumbnails.medium.url}
+                  alt=""
+                />
+              </Box>
+
+              <Text
+                as="h3"
+                fontSize="20px"
+                fontWeight={500}
+                letterSpacing="0px"
+                color="green.800"
+              >
+                {snippet.title}
+              </Text>
+            </Flex>
+          </Link>
+        ))}
       </Flex>
     </Section>
   )
-  // return <h1>Videos sections</h1>
 }

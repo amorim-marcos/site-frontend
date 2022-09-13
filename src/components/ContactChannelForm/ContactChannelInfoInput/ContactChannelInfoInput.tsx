@@ -1,10 +1,12 @@
-import { Input, InputProps } from "@chakra-ui/react"
+import { Input, InputProps } from '@chakra-ui/react'
 
 export type ContactChannelInfoInputProps = InputProps
 
-export const ContactChannelInfoInput = (props: ContactChannelInfoInputProps) => {
+export const ContactChannelInfoInput = (
+  props: ContactChannelInfoInputProps
+) => {
   return (
-    <Input 
+    <Input
       fontWeight="semibold"
       borderRadius="0"
       backgroundColor="brown.200"
@@ -15,14 +17,11 @@ export const ContactChannelInfoInput = (props: ContactChannelInfoInputProps) => 
       paddingRight="20px"
       paddingTop="12px"
       paddingBottom="12px"
-      h="50px"
+      h="38px"
       {...props}
-
-      _focus={
-        {
-          border: '0'
-        }
-      }
+      _focus={{
+        border: '0'
+      }}
       readOnly
     />
   )

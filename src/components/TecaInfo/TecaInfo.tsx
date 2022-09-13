@@ -5,10 +5,12 @@ import { DimensionsProps } from '@components/ProductDimensions/ProductDimensions
 import { useTranslation } from 'react-i18next'
 import parser from 'react-html-parser'
 import { Wrapper } from './style'
+import HtmlTextParser from '@components/HtmlTextParser'
+import Paragraph from '@components/Paragraph'
 
 export type TecaInfoProps = {
   dimensions?: DimensionsProps
-  usesAndApplications?: string | Array<string>
+  usesAndApplications?: string
   machinability?: string
   supplyInformation?: Array<string>
 }
@@ -18,28 +20,34 @@ export const TecaInfo = ({
   machinability,
   supplyInformation
 }: TecaInfoProps) => {
-  const product = useTranslation('product')
+  const componentsLabels = useTranslation('components')
 
   return (
     <Flex
-      padding="4%"
-      justifyContent="space-around"
-      maxWidth="1920px"
+      maxWidth="1536px"
       marginX="auto"
       flexDirection={{ base: 'column', sm: 'row' }}
+      padding={{ base: '5% 0 10% 5%', '2xl': '5% 0 5% 3%' }}
     >
       <Box
         marginBottom={{ base: '20px', sm: '0' }}
-        paddingLeft={{ base: '15px' }}
         width={{ base: '100%', sm: '45%' }}
       >
-        <Text variant={'productTitle' as any}>
-          {product.t('machinability')}
+        <Text
+          as={'h3'}
+          variant={'h3'}
+          color="green.900"
+          fontWeight={'extrabold'}
+        >
+          {componentsLabels.t('product.machinability')}
         </Text>
 
         {machinability && (
           <Wrapper>
-            <Text variant={'productBody' as any}>{parser(machinability)}</Text>
+            <Text variant={'productBody' as any}>
+              <HtmlTextParser>{machinability}</HtmlTextParser>
+            </Text>
+            {/* <Text variant={'productBody' as any}>{parser(machinability)}</Text> */}
           </Wrapper>
         )}
       </Box>
@@ -60,10 +68,17 @@ export const TecaInfo = ({
               '2xl': '80px'
             }}
           >
-            <Text variant={'productTitle' as any}>
-              {product.t('UsesAndApplications')}
+            <Text
+              as={'h3'}
+              variant={'h3'}
+              color="green.900"
+              fontWeight={'extrabold'}
+            >
+              {componentsLabels.t('product.usesAndApplications')}
             </Text>
-            <Text variant={'productBody' as any}>{usesAndApplications}</Text>
+            <Text variant={'productBody' as any}>
+              <HtmlTextParser>{usesAndApplications}</HtmlTextParser>
+            </Text>
           </Box>
         )}
         {dimensions && (
@@ -81,40 +96,11 @@ export const TecaInfo = ({
                 xl: '610px',
                 '2xl': '710px'
               }}
+              widthFirst
             />
           </Box>
         )}
       </Flex>
-    </Flex>
-  )
-}
-
-const ItemCite = ({ text = '' }) => {
-  return (
-    <Flex marginBottom="5px">
-      <Box
-        margin={{
-          base: '3px',
-          sm: '3px',
-          md: '4px',
-          lg: '6px',
-          xl: '8px',
-          '2xl': '10px'
-        }}
-      >
-        <ArrowIcon
-          width={{
-            base: '10px',
-            sm: '3px',
-            md: '4px',
-            lg: '6px',
-            xl: '8px',
-            '2xl': '10px'
-          }}
-          stroke="#E8DDD5"
-        />
-      </Box>
-      <Text variant={'productBody' as any}>{text}</Text>
     </Flex>
   )
 }

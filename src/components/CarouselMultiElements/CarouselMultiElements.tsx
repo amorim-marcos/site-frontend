@@ -1,6 +1,14 @@
-import { Heading, Flex, Box, Text, Center, Button } from '@chakra-ui/react'
-import ArrowIcon from '@components/Icons/ArrowIcon'
-import { json } from 'node:stream/consumers'
+import {
+  Heading,
+  Flex,
+  Box,
+  Text,
+  Center,
+  Button,
+  useMediaQuery
+} from '@chakra-ui/react'
+import Arrow from '@components/Arrow'
+import useMobile from 'hooks/useMobile'
 import { useState, useEffect } from 'react'
 
 export type CarouselMultiElementsProps = {
@@ -15,6 +23,7 @@ export const CarouselMultiElements = ({
   const [endItem, setEndItem] = useState(numberOfEvidenceElements - 1)
   const [transform, setStranform] = useState(0)
   const [hoverBtnControl, setHoverBtnControl] = useState(false)
+  const { isMobile } = useMobile(568)
 
   function next() {
     if (startItem < children.length - numberOfEvidenceElements) {
@@ -45,10 +54,12 @@ export const CarouselMultiElements = ({
       <Flex
         alignItems={'center'}
         justifyContent={'flex-start'}
-        maxWidth={'1920px'}
+        maxWidth={'1536px'}
         marginX="auto"
-        padding="5%"
+        // padding={{ base: '2%', md: '2% 5%' }}
+        padding={{ base: '0%', sm: '5%', xl: '5%', '2xl': '3% 0%' }}
         overflow="hidden"
+        // bg="red"
       >
         <Flex w="100%">
           {children &&
@@ -76,7 +87,7 @@ export const CarouselMultiElements = ({
         right="0px"
         marginX="auto"
         w="fit-content"
-        bottom={{ base: '-37px', sm: '-25px', lg: '-30px', xl: '-38px' }}
+        bottom={{ base: '-20px', sm: '0px', lg: '5px', xl: '15px' }}
       >
         <Button
           onMouseEnter={() => setHoverBtnControl(true)}
@@ -84,19 +95,19 @@ export const CarouselMultiElements = ({
           variant="no-border"
           background="gray.300"
           color="gray.150"
-          w={{ base: '70px', sm: '50px', lg: '60px', xl: '77px' }}
-          h={{ base: '70px', sm: '50px', lg: '60px', xl: '77px' }}
+          w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+          h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
           _hover={{
-            background: 'green.600',
+            background: 'green.550',
             color: 'white.100'
           }}
           onClick={back}
         >
-          <ArrowIcon
-            direction="left"
-            stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
-            width="40%"
-          />
+          {isMobile ? (
+            <Arrow width="5" height="5" direction="left" />
+          ) : (
+            <Arrow width="22" height="30" direction="left" />
+          )}
         </Button>
         <Button
           onMouseEnter={() => setHoverBtnControl(true)}
@@ -104,18 +115,19 @@ export const CarouselMultiElements = ({
           variant="no-border"
           background="gray.300"
           color="gray.150"
-          w={{ base: '70px', sm: '50px', lg: '60px', xl: '77px' }}
-          h={{ base: '70px', sm: '50px', lg: '60px', xl: '77px' }}
+          w={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
+          h={{ base: '40px', sm: '45px', lg: '50px', xl: '55px' }}
           _hover={{
-            background: 'green.600',
+            background: 'green.550',
             color: 'white.100'
           }}
           onClick={next}
         >
-          <ArrowIcon
-            width="40%"
-            stroke={hoverBtnControl ? 'white.100' : 'gray.200'}
-          />
+          {isMobile ? (
+            <Arrow width="5" height="5" direction="right" />
+          ) : (
+            <Arrow width="22" height="30" direction="right" />
+          )}
         </Button>
       </Flex>
     </Box>

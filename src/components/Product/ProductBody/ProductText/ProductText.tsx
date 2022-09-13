@@ -1,4 +1,5 @@
 import { Text, TextProps } from '@chakra-ui/react'
+import Paragraph from '@components/Paragraph'
 
 export type ProductTextProps = {
   content: string | Array<string>
@@ -6,18 +7,10 @@ export type ProductTextProps = {
 }
 
 const TextSyle: TextProps = {
-  fontSize: {
-    base: '14px',
-    sm: '8px',
-    md: '11px',
-    lg: '14px',
-    xl: '17px',
-    '2xl': '20px'
-  },
   color: 'green.900',
   width: {
-    base: '100%',
-    sm: '43%'
+    base: '95%',
+    md: '50%'
   },
   zIndex: 'docked'
 }
@@ -27,29 +20,32 @@ export const ProductText = ({
   paragraph = false
 }: ProductTextProps) => {
   return typeof content === 'string' ? (
-    <Text {...TextSyle}>{content}</Text>
+    <Text {...TextSyle}>
+      <Paragraph>{content}</Paragraph>
+    </Text>
   ) : (
     <>
-      {content?.map((p, i) => (
-        <Text
-          key={i}
-          {...TextSyle}
-          marginBottom={
-            i !== content.length - 1 && paragraph
-              ? {
-                  base: '7px',
-                  sm: '10px',
-                  md: '20px',
-                  lg: '30px',
-                  xl: '40px',
-                  '2xl': '50px'
-                }
-              : '0px'
-          }
-        >
-          {p}
-        </Text>
-      ))}
+      {content &&
+        content.map((p, i) => (
+          <Text
+            key={i}
+            {...TextSyle}
+            marginBottom={
+              i !== content.length - 1 && paragraph
+                ? {
+                    base: '7px',
+                    sm: '10px',
+                    md: '20px',
+                    lg: '30px',
+                    xl: '40px',
+                    '2xl': '50px'
+                  }
+                : '0px'
+            }
+          >
+            <Paragraph>{p}</Paragraph>
+          </Text>
+        ))}
     </>
   )
 }

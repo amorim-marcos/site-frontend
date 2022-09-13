@@ -18,9 +18,8 @@ export const SponsoredProjects = ({
       {isMobile ? (
         <Flex as={'carousel' as any} px={{ base: '20px' }} justify="center">
           <Carousel>
-            {panels.map((item, i) => (
-              <HighlightBoxPanel key={i} {...item} />
-            ))}
+            {panels &&
+              panels.map((item, i) => <HighlightBoxPanel key={i} {...item} />)}
           </Carousel>
         </Flex>
       ) : (
@@ -28,9 +27,8 @@ export const SponsoredProjects = ({
         // w="100%"
         // alignContent={"start"}
         >
-          {panels.map((item, j) => (
-            <HighlightBoxPanel key={j} {...item} />
-          ))}
+          {panels &&
+            panels.map((item, j) => <HighlightBoxPanel key={j} {...item} />)}
         </Flex>
       )}
     </Box>
@@ -44,23 +42,24 @@ export const mockPanelObj: HighlightBoxPanelProps = {
 }
 
 export const mockPanels: HighlightBoxPanelProps[] = [
-  mockPanelObj,
   {
-    ...mockPanelObj,
-    title: 'Escolinha ADPB',
+    title: 'HANDLAGES',
     subtitle: 'Lages, SC | Projeto Desportivo',
-    image: 'img/escolinha adpb.png'
+    image: '/img/patrocinados/HANDLAGES.jpg'
   },
   {
-    ...mockPanelObj,
-    title: 'APAE',
-    subtitle: 'Projeto Social • Crianças e Adolescentes',
-    image: 'img/musica no bairro.png'
+    title: 'Gran Circo Stopim',
+    subtitle: 'Mato Grosso | Projeto Cultural ',
+    image: 'img/patrocinados/Gran-Circo-Stopim.jpg'
   },
   {
-    ...mockPanelObj,
+    title: 'Herdeiros da Terra',
+    subtitle: 'Curitibanos | Projeto Social - Crianças',
+    image: 'img/patrocinados/Herdeiros-da-Terra.jpg'
+  },
+  {
     title: 'Fundo Municipal do Idoso',
     subtitle: 'Joinville, SC | Projeto Social • Idosos',
-    image: 'img/musica no bairro.png'
+    image: 'img/patrocinados/fundo_municipal_do_idoso.png'
   }
 ]

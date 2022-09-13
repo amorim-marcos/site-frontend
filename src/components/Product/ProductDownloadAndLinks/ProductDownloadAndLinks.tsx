@@ -1,11 +1,13 @@
-import { Flex, Text, Heading, Link } from '@chakra-ui/react'
+import { Flex, Text, Heading, Link, Box } from '@chakra-ui/react'
 import { ProductDownloadItem } from './ProductDownloadItem/ProductDownloadItem'
 import { useTranslation } from 'react-i18next'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 
 export type ProductDownloadAndLinksProps = {
+  textColor?: string
+  hoverColor?: string
   qualityCertificate?: boolean
-  whereBuy?: boolean
+  whereBuy?: boolean | string
   datasheetUrl?: string
   backgroundColor?: string
   plusProduct?: boolean
@@ -16,48 +18,66 @@ export const ProductDownloadAndLinks = ({
   whereBuy = true,
   datasheetUrl = '/',
   backgroundColor = '#FEFEFE',
-  plusProduct = false
+  plusProduct = false,
+  textColor = '#665E5A',
+  hoverColor = '#595959'
 }: ProductDownloadAndLinksProps) => {
-  const product = useTranslation('product')
+  const componentsLabels = useTranslation('components')
   return (
     <Flex
-      flexDirection={{ base: 'column', sm: 'row' }}
-      alignItems="center"
-      justifyContent="space-around"
-      marginTop="4%"
+      flexDirection={{ base: 'column', md: 'row' }}
+      // alignItems="center"
+      // justifyContent="space-around"
+      marginTop={{ base: '0', md: '5%' }}
       marginRight={{
         base: '0',
-        sm: '1%',
         md: '2%',
         lg: '3%',
         xl: '3%',
         '2xl': '2%'
       }}
       position="relative"
+      // bg="violet"
     >
       {datasheetUrl && (
-        <Link href={datasheetUrl} isExternal>
+        <Link href={datasheetUrl} _hover={{ outline: 'none' }} isExternal>
           <ProductDownloadItem
+            textColor={textColor}
+            hoverColor={hoverColor}
             iconName="datasheet"
-            text={product.t('datasheet')}
+            text={componentsLabels.t('product.datasheet')}
             backgroundColor={backgroundColor}
           />
         </Link>
       )}
-      {whereBuy && (
-        <Link href="/onde-comprar">
+      {whereBuy && typeof whereBuy === 'string' ? (
+        <Box onClick={() => window.open(whereBuy, '_blank')}>
           <ProductDownloadItem
+            textColor={textColor}
+            hoverColor={hoverColor}
             iconName="location"
-            text={product.t('whereBuy')}
+            text={componentsLabels.t('product.whereBuy')}
+            backgroundColor={backgroundColor}
+          />
+        </Box>
+      ) : (
+        <Link href="/onde-comprar" _hover={{ outline: 'none' }}>
+          <ProductDownloadItem
+            textColor={textColor}
+            hoverColor={hoverColor}
+            iconName="location"
+            text={componentsLabels.t('product.whereBuy')}
             backgroundColor={backgroundColor}
           />
         </Link>
       )}
       {qualityCertificate && (
-        <Link href="/somos-berneck">
+        <Link href="/certificacoes" _hover={{ outline: 'none' }}>
           <ProductDownloadItem
+            textColor={textColor}
+            hoverColor={hoverColor}
             iconName="qualityCertificate"
-            text={product.t('qualityCertificate')}
+            text={componentsLabels.t('product.qualityCertificate')}
             backgroundColor={backgroundColor}
           />
         </Link>
@@ -68,11 +88,11 @@ export const ProductDownloadAndLinks = ({
             cursor={'pointer'}
             alignItems="center"
             justifyContent="center"
-            position={{ base: 'relative', sm: 'absolute' }}
-            marginY={{ base: '30px', sm: '0px' }}
+            position={{ base: 'relative', md: 'absolute' }}
+            marginY={{ base: '30px', md: '0px' }}
             bottom={{
               base: '0',
-              sm: '-45px',
+              sm: '0',
               md: '-50px',
               lg: '-60px',
               xl: '-80px',
@@ -88,7 +108,7 @@ export const ProductDownloadAndLinks = ({
             >
               <Text
                 fontSize={{
-                  base: '18px',
+                  base: '12px',
                   sm: '10px',
                   md: '12px',
                   lg: '14px',
@@ -97,12 +117,12 @@ export const ProductDownloadAndLinks = ({
                 }}
                 color="green.800"
               >
-                Saiba mais sobre o{' '}
+                {componentsLabels.t('product.knowMoreAbout')}{' '}
               </Text>
               <Heading
                 color="green.800"
                 fontSize={{
-                  base: '20px',
+                  base: '14px',
                   sm: '12px',
                   md: '14px',
                   lg: '16px',
@@ -110,7 +130,7 @@ export const ProductDownloadAndLinks = ({
                   '2xl': '20px'
                 }}
               >
-                PLUS BERNECK
+                {componentsLabels.t('product.plusBerneck')}
               </Heading>
             </Flex>
             <ArrowIcon

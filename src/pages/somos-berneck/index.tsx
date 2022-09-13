@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import About from 'views/About'
 import { AboutPageContent } from 'views/About/About'
 import { TrajectoryTab } from '@components/TrajectoryCarousel/TrajectoryCarousel'
 import { GetStaticProps } from 'next'
 import { WhereWeArePanelProps } from '@components/WhereWeArePanel/WhereWeArePanel'
+import { loadTranslations } from 'ni18n'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
 export type AboutPageProps = {
   page_content: AboutPageContent
@@ -62,59 +65,83 @@ export const getStaticProps: GetStaticProps = async (context) => {
     whereWeAreData = await res.json()
   }
 
-  const our_trajectory_tabs = our_trajectory.year.map((year: any) => {
-    return {
-      name: year.year,
-      content: {
-        title: year.title,
-        text: year.description,
-        image: process.env.NEXT_PUBLIC_API_URL + year.image.url
-      }
-    }
-  })
+  if (page_content.section1_img) {
+    page_content.section1_img =
+      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section1_img.url
+  }
 
-  whereWeAreData = whereWeAreData.map(
-    (item: {
-      name: string
-      city: string
-      our_place_information: {
-        structure: string
-        localization: string
-        phones: string
-        airport_distance: string
-      }
-      google_maps_url: string
-      state: string
-      country: string
-      inauguration_soon: string
-      image: {
-        url: string
-      }
-    }) => {
+  let our_trajectory_tabs
+
+  if (our_trajectory.year && our_trajectory.year.length) {
+    our_trajectory_tabs = our_trajectory.year.map((year: any) => {
       return {
-        name: item.name,
-        city: item.city,
-        ourPlaceInformation: {
-          structure: item.our_place_information.structure,
-          localization: item.our_place_information.localization,
-          phones: item.our_place_information.phones,
-          airportDistance: item.our_place_information.airport_distance
-        },
-        coords: [0, 0],
-        googleMapsURL: item.google_maps_url,
-        state: item.state,
-        country: item.country,
-        inaugurationSoon: item.inauguration_soon,
-        image: process.env.NEXT_PUBLIC_API_URL + item.image.url
+        name: year.year,
+        content: {
+          title: year.title,
+          text: year.description,
+          image: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + year.image.url
+        }
       }
-    }
-  )
+    })
+  } else {
+    our_trajectory_tabs = []
+  }
+
+  if (whereWeAreData && typeof whereWeAreData.map === 'function') {
+    whereWeAreData = whereWeAreData.map(
+      (item: {
+        name: string
+        city: string
+        our_place_information: {
+          structure: string
+          localization: string
+          phones: string
+          airport_distance: string
+        }
+        latitude: string
+        longitude: string
+        google_maps_url: string
+        state: string
+        country: string
+        inauguration_soon: string
+        image: {
+          url: string
+        }
+      }) => {
+        return {
+          name: item.name,
+          city: item.city,
+          ourPlaceInformation: {
+            structure: item.our_place_information.structure,
+            localization: item.our_place_information.localization,
+            phones: item.our_place_information.phones,
+            airportDistance: item.our_place_information.airport_distance
+          },
+          coords: {
+            lat: Number(item.latitude),
+            lng: Number(item.longitude)
+          },
+          googleMapsURL: `http://maps.google.com/maps?q=${item.latitude},${item.longitude}`,
+          state: item.state,
+          country: item.country,
+          inaugurationSoon: item.inauguration_soon,
+          image:
+            item.image === null
+              ? null
+              : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.image.url
+        }
+      }
+    )
+  } else {
+    whereWeAreData = []
+  }
 
   return {
     props: {
       page_content,
       our_trajectory_tabs,
-      whereWeAreData
+      whereWeAreData,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

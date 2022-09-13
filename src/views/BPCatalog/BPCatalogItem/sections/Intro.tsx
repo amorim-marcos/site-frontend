@@ -2,12 +2,14 @@ import { Box, Flex, Image, Text } from '@chakra-ui/react'
 
 import { Link } from 'react-scroll'
 import { ZoomInIcon } from '@components/Icons'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export interface IntroProps {
   productName: string
   productImgBg: string
   productDescription: string
   textureTopMenuImg: string
+  handleDownload: () => void
 }
 
 export const Intro = (props: IntroProps) => (
@@ -17,9 +19,9 @@ export const Intro = (props: IntroProps) => (
     bgImg={props.productImgBg}
     bgSize="40%"
     bgRepeat="repeat"
-    pl={{ '2xl': '205px' }}
     align="center"
-    justify={{ base: 'center', '2xl': 'inherit' }}
+    justify={{ base: 'center', lg: 'flex-start' }}
+    pl={{ lg: '5%', '2xl': '5%' }}
     pos="relative"
   >
     <Box
@@ -36,22 +38,22 @@ export const Intro = (props: IntroProps) => (
         h="100%"
         objectFit={'cover'}
         objectPosition={{ base: 'none', sm: 'right' }}
-        // boxSize={['642px', '538px']}
       />
     </Box>
 
     <Flex
       data-testid="texture-attr"
-      h={{ base: 'fit-content', '2xl': '476px' }}
+      h={{ base: 'fit-content' }}
       w={{ base: '100%', sm: '476px' }}
       direction="column"
       padding={{ base: '50px', sm: '78px 71px 60px 75px' }}
       bg="green.100"
       pos="relative"
       overflow={'hidden'}
+      boxShadow="0px 0px 20px #00000027"
     >
       <Text
-        // fontSize={{ base: '50px', '2xl': '53px' }}
+        as={'h2'}
         variant={'h2' as any}
         fontWeight={800}
         letterSpacing="-1.06px"
@@ -67,15 +69,19 @@ export const Intro = (props: IntroProps) => (
         color="gray.300"
         pb="22px"
       >
-        {props.productDescription}
+        <HtmlTextParser>{props.productDescription}</HtmlTextParser>
       </Text>
 
       <Box h="3px" w="87px" bg="green.600" />
 
-      <Box cursor="pointer" pos="absolute" bottom="29px" right="29px">
-        <Link to="texture-props" smooth offset={-80}>
-          <ZoomInIcon />
-        </Link>
+      <Box
+        cursor="pointer"
+        pos="absolute"
+        bottom="29px"
+        right="29px"
+        onClick={props.handleDownload}
+      >
+        <ZoomInIcon />
       </Box>
     </Flex>
   </Flex>

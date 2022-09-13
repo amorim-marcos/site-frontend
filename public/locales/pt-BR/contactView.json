@@ -1,0 +1,20 @@
+{
+    "pagebar":{
+        "speakWithUs": "Fale Conosco"
+    },
+    "headerBanner": {
+        "title": "Sobre o que você deseja falar?"
+    },
+    "discoverBanner": {
+        "title": "DESCUBRA",
+        "description": "Onde Comprar"
+    },
+    "showcaseBanner": {
+        "title": "Solicite Nosso",
+        "description": "Mostruário"
+    },
+    "positionsBanner":{
+        "title": "Confira Nossas",
+        "description": "Vagas abertas"
+    }
+}

@@ -1,5 +1,7 @@
 import { GetStaticProps } from 'next'
+import { loadTranslations } from 'ni18n'
 import HdfBerneckView from 'views/products/hdf-berneck'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
 export type ProductProps = {
   description: string
@@ -17,6 +19,7 @@ export type ProductProps = {
   _length: string
   _width: string
   uses_and_applications: string
+  page_title: string
 }
 
 export type HdfBerneckPageProps = {
@@ -27,11 +30,15 @@ export type HdfBerneckPageProps = {
 }
 
 export default function HdfBerneckPage(props: HdfBerneckPageProps) {
-  return (
+  return props.page_content.hdf_berneck ? (
     <HdfBerneckView
       hdf={{
-        title: 'HDF Berneck',
-        subTitle: props.page_content.hdf_berneck.subtitle,
+        title: props.page_content.hdf_berneck
+          ? props.page_content.hdf_berneck.page_title
+          : '',
+        subTitle: props.page_content.hdf_berneck
+          ? props.page_content.hdf_berneck.subtitle
+          : '',
         description: props.page_content.hdf_berneck.description,
         finishes: props.page_content.hdf_berneck.finishes.map((f) => {
           return f.finish
@@ -46,11 +53,11 @@ export default function HdfBerneckPage(props: HdfBerneckPageProps) {
           thickness: props.page_content.hdf_berneck.thickness
         },
         technical_sheet:
-          process.env.NEXT_PUBLIC_API_URL +
+          process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
           props.page_content.hdf_berneck.technical_sheet.url
       }}
       hdf_plus={{
-        title: 'HDF PLUS BERNECK®',
+        title: props.page_content.hdf_berneck_plus.page_title,
         description: props.page_content.hdf_berneck_plus.description,
         subTitle: props.page_content.hdf_berneck_plus.subtitle,
         finishes: props.page_content.hdf_berneck_plus.finishes.map((f) => {
@@ -66,10 +73,12 @@ export default function HdfBerneckPage(props: HdfBerneckPageProps) {
           thickness: props.page_content.hdf_berneck_plus.thickness
         },
         technical_sheet:
-          process.env.NEXT_PUBLIC_API_URL +
+          process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
           props.page_content.hdf_berneck_plus.technical_sheet.url
       }}
     />
+  ) : (
+    ''
   )
 }
 
@@ -92,7 +101,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      page_content
+      page_content,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'

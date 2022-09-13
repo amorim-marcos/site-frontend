@@ -1,4 +1,6 @@
 import { GetStaticProps } from 'next'
+import { loadTranslations } from 'ni18n'
+import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 import PlusBerneckView from '../../views/products/plus-berneck'
 
 export type PlusBerneckPageProps = {
@@ -29,30 +31,39 @@ export type PlusBerneckPageProps = {
     important_points: {
       point_text: string
     }[]
+    page_title: string
   }
 }
 
 export default function PlusBerneckPage(props: PlusBerneckPageProps) {
   return (
     <PlusBerneckView
-      title="Painéis PLUS BERNECK®"
+      title={props.page_content.page_title}
       description={props.page_content.section1_text}
       subtitle={props.page_content.header_subtitle}
       subtitleDescription={props.page_content.header_text}
       qualityStandards={props.page_content.quality_norms_text}
       section2Text={props.page_content.section2_text}
       section2Title={props.page_content.section2_title}
-      testPoints={props.page_content.test_points.map((i) => i.point_text)}
-      importantPoints={props.page_content.important_points.map(
-        (i) => i.point_text
-      )}
+      testPoints={
+        props.page_content.test_points
+          ? props.page_content.test_points.map((i) => i.point_text)
+          : []
+      }
+      importantPoints={
+        props.page_content.important_points
+          ? props.page_content.important_points.map((i) => i.point_text)
+          : []
+      }
       body_proof={props.page_content.body_proof}
       abnt={
-        props.page_content.quality_norms.length > 1
-          ? ` • ${props.page_content.quality_norms[0].norm} • ${props.page_content.quality_norms[1].norm}`
-          : props.page_content.quality_norms.length > 0
-          ? props.page_content.quality_norms[0].norm +
-            `• ${props.page_content.quality_norms[0].norm}`
+        props.page_content.quality_norms
+          ? props.page_content.quality_norms.length > 1
+            ? ` • ${props.page_content.quality_norms[0].norm} • ${props.page_content.quality_norms[1].norm}`
+            : props.page_content.quality_norms.length > 0
+            ? props.page_content.quality_norms[0].norm +
+              `• ${props.page_content.quality_norms[0].norm}`
+            : ''
           : ''
       }
     />
@@ -78,7 +89,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      page_content
+      page_content,
+      ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     },
     revalidate: parseInt(
       process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'
