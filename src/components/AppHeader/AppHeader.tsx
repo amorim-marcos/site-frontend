@@ -129,7 +129,7 @@ export const AppHeader = () => {
                 justifyContent="space-between"
                 bg="green.900"
               >
-                <Flex display="flex" height="100%">
+                <Flex display="none" height="100%">
                   <LanguageSelector />
                 </Flex>
 
