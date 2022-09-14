@@ -59,7 +59,7 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
           sm: '-180px',
           md: '-240px',
           lg: '-300px',
-          xl: '-360px'
+          xl: '-460px'
           // '2xl': '-0px'
         }}
         secondaryBackground="#F3E9DA"
