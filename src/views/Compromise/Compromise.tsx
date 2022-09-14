@@ -1,16 +1,14 @@
-import { Box, Spacer, Flex, Link, Text, Image, Button } from '@chakra-ui/react'
+import { Box, Spacer, Flex, Text, Image, Button } from '@chakra-ui/react'
 import Pagebar from '@components/Pagebar'
 import PageSession from '@components/PageSession'
-import Arrow from '@components/Arrow'
 import CompletedTitle from '@components/CompletedTitle'
 import PatternInfo from '@components/PatternInfo'
-import { CertificationsIcon, ReportsIcon } from '@components/Icons'
+import { CertificationsIcon } from '@components/Icons'
 import Infographic from '@components/Infographic'
 import Infographic2 from '@components/Infographic2'
 import { SynergyIcon } from '@components/Icons'
 import SponsoredProjects from '@components/SponsoredProjects'
 import { List, ListItem } from '@chakra-ui/react'
-import PatternCertification from '@components/PatternCertification'
 import { useRouter } from 'next/router'
 import HtmlTextParser from '@components/HtmlTextParser'
 import { useTranslation } from 'react-i18next'
@@ -50,9 +48,9 @@ export type CompromiseViewProps = {
     section7_text: string
     section7_img: string
     section7_title: string
-    section8_text: string
-    section8_img: string
-    section8_title: string
+    // section8_text: string
+    // section8_img: string
+    // section8_title: string
     esg_img: string
     sustainability_report: {
       url: string
@@ -1085,7 +1083,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       {/* FIM Cultivamos nossos valores */}
 
       {/* INICIO Compromisso com a conduta corporativa */}
-      <Box bg="green.100">
+      {/* <Box bg="green.100">
         <Flex
           maxWidth="1536px"
           marginX="auto"
@@ -1100,12 +1098,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           backgroundPosition="center"
           backgroundRepeat="no-repeat"
         >
-          <Flex
-            // bg='blue'
-            direction={{ base: 'column', lg: 'row' }}
-            alignItems={'center'}
-          >
-            {/* BOX 1 */}
+          <Flex direction={{ base: 'column', lg: 'row' }} alignItems={'center'}>
             <Box
               margin={{
                 base: '10% 5% 5% 5%',
@@ -1113,7 +1106,6 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 lg: '5% 2% 5% 5%',
                 xl: '5% 2% 5% 5%'
               }}
-              // bg='yellow'
               flex="1"
               justifyItems={'flex-start'}
             >
@@ -1129,9 +1121,8 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 <HtmlTextParser>{page_content.section8_text}</HtmlTextParser>
               </Text>
             </Box>
-            {/* BOX 2 */}
+
             <Box
-              // bg='pink'
               flex="1"
               justifyItems={'center'}
               margin={{
@@ -1142,11 +1133,10 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               }}
             >
               <Image src={page_content.section8_img} maxW="668px" />
-              {/* <Image src="/assets/imgs/imagem_compromisso.png" /> */}
             </Box>
           </Flex>
         </Flex>
-      </Box>
+      </Box> */}
       {/* FIM Compromisso com a conduta corporativa */}
 
       {/* INICIO Ouvidoria */}

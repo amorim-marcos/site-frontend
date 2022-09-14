@@ -62,10 +62,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
       process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section7_img.url
   }
 
-  if (page_content.section8_img) {
-    page_content.section8_img =
-      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section8_img.url
-  }
+  // if (page_content.section8_img) {
+  //   page_content.section8_img =
+  //     process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + page_content.section8_img.url
+  // }
 
   if (page_content.esg_img) {
     page_content.esg_img =
