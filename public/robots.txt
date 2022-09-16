@@ -1,1 +1,9 @@
+# *
 User-agent: *
+Allow: /
+
+# Host
+Host: https://berneck.com.br
+
+# Sitemaps
+Sitemap: https://berneck.com.br/sitemap.xml
