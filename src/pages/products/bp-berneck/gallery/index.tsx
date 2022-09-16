@@ -99,7 +99,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             name: gallery.place,
             bps: gallery.products.map((product: any) => product.name),
             type: gallery.ambient_type.url_code,
-            style: String(gallery.ambient_styles[0].id),
+            style: gallery.ambient_styles.map((gallery:any) => gallery.id.toString()),
             url_code: gallery.url_code,
             image_url: `${url}${gallery.gallery_of_images[gallery.gallery_of_images.length - 1].url}`
           }
