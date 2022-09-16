@@ -118,7 +118,7 @@ export const EnvGallery = ({
     // styles
     if (filters['styles'].length > 0) {
       filteredEnvs = filteredEnvs.filter((env: any) => {
-        return filters['styles'].includes(env.style)
+        return filters['styles'].some((style: any) => env.style.includes(style))
       })
     }
 

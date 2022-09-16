@@ -32,6 +32,20 @@ function App({ Component, pageProps }: AppProps) {
         src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/461ed3f4-597a-4986-8c6b-cd3c63f5455b-loader.js%22"
       />
 
+            {/* Google Analytics */}
+            <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      />
+      <Script strategy="lazyOnload">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+        `}
+      </Script>
+
       <AppHeader />
       <Component {...pageProps} />
       <AppFooter />
