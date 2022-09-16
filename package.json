@@ -16,7 +16,7 @@
     "postinstall": "husky install",
     "prepare": "husky install",
     "unprepare": "husky uninstall",
-    "postbuild": "next-sitemap"
+    "sitemap": "next-sitemap"
   },
   "lint-staged": {
     "src/**/*": [
