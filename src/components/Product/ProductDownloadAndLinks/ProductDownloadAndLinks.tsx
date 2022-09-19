@@ -37,6 +37,7 @@ export const ProductDownloadAndLinks = ({
         '2xl': '2%'
       }}
       position="relative"
+      marginLeft={{ base: '-7px', md: '0' }}
       // bg="violet"
     >
       {datasheetUrl && (
