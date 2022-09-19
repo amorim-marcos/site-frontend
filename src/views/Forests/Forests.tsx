@@ -619,6 +619,8 @@ export const ForestsView = (props: ForestsViewProps) => {
             // bg='blue'
             direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
             alignItems={'center'}
+            maxWidth="100vw"
+            overflow={'hidden'}
           >
             {/* BOX 1 */}
             <Box
@@ -666,7 +668,10 @@ export const ForestsView = (props: ForestsViewProps) => {
                 xl: '8% 2% 5% 5%'
               }}
             >
-              <Image src={props.page_content.section4_img} maxW={'668px'} />
+              <Image
+                src={props.page_content.section4_img}
+                maxW={{ base: '100vw', lg: '668px' }}
+              />
             </Box>
           </Flex>
           {/* MADEIRA FLYANTE */}
@@ -965,8 +970,8 @@ export const ForestsView = (props: ForestsViewProps) => {
                 h={{ base: '100%', sm: '70%', lg: '15%', xl: '10%' }}
                 padding={{ base: '4%', sm: '3%', lg: '5%', xl: '5%' }}
                 marginTop={{
-                  base: '-15px',
-                  sm: '-20px',
+                  base: '0px',
+                  // sm: '-20px',
                   lg: '-50px',
                   xl: '-20px'
                 }}
