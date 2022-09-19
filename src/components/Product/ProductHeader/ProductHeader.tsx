@@ -23,6 +23,7 @@ export const ProductHeader = ({
       flexDirection="column"
       flex="1"
       alignItems={'center'}
+      zIndex={'docked'}
     >
       <Flex
         flexDirection="column"
@@ -95,10 +96,15 @@ export const ProductHeader = ({
             variant={'h3'}
             color="green.900"
             fontWeight={'extrabold'}
+            zIndex={'docked'}
           >
             {subtitle}
           </Text>
-          <Text color="green.900" w={{ base: '70%', sm: '50%' }}>
+          <Text
+            color="green.900"
+            zIndex={'docked'}
+            w={{ base: '70%', sm: '50%' }}
+          >
             <HtmlTextParser>{description}</HtmlTextParser>
           </Text>
         </Flex>

@@ -68,11 +68,13 @@ export const Product = ({
             top="0"
             right="0"
             alignItems={'flex-end'}
+            zIndex={'base'}
           >
             <Flex
               justifyContent="flex-end"
               w="100vw"
               bg={{ base: body?.backgroundColor, sm: 'none' }}
+              zIndex={'base'}
             >
               <Image
                 as="img"
@@ -82,6 +84,7 @@ export const Product = ({
                 maxWidth={imgMaxWidth}
                 marginTop={imgMarginTop}
                 marginRight={imgMarginRight}
+                zIndex={'base'}
               />
             </Flex>
             {!isMobile && downloadAndLinks && (

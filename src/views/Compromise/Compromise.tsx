@@ -706,7 +706,10 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               justifyItems={'center'}
               // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
             >
-              <Image src={page_content.section4_img} maxW="660px" />
+              <Image
+                src={page_content.section4_img}
+                maxW={{ base: '100vw', lg: '660px' }}
+              />
             </Box>
             {/* BOX 2 */}
             <Box
@@ -817,7 +820,10 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               flex="1"
             >
               <Box>
-                <Image src={page_content.section5_img} maxW="660px" />
+                <Image
+                  src={page_content.section5_img}
+                  maxW={{ base: '100vw', lg: '660px' }}
+                />
               </Box>
 
               <Button
@@ -887,7 +893,10 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 xl: '5% 2% 5% 5%'
               }}
             >
-              <Image src={page_content.section6_img} maxW="668px" />
+              <Image
+                src={page_content.section6_img}
+                maxW={{ base: '100vw', lg: '660px' }}
+              />
               {/* <Image src="/assets/imgs/img_criancas.png" /> */}
             </Box>
             {/* BOX 2 */}
@@ -1052,7 +1061,10 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               justifyItems={'center'}
               // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
             >
-              <Image src={page_content.section7_img} maxW="690px" />
+              <Image
+                src={page_content.section7_img}
+                maxW={{ base: '100vw', lg: '690px' }}
+              />
               {/* <Image src="/assets/imgs/cultivamos_nossos_valores.png" /> */}
             </Box>
             {/* BOX 2 */}
@@ -1272,7 +1284,10 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                 xl: '3% 3% 3% 3%'
               }}
             >
-              <Image src={page_content.esg_img} maxW="550px" />
+              <Image
+                src={page_content.esg_img}
+                maxW={{ base: '100vw', lg: '550px' }}
+              />
               {/* <Image src="/assets/imgs/relatorio esg.png" /> */}
             </Box>
             {/* BOX 2 */}

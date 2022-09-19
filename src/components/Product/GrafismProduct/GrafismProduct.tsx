@@ -53,11 +53,11 @@ export const GrafismProduct = ({
         xl: '-180px',
         '2xl': '-236px'
       }}
-      left={{ base: '40%', sm: '42%' , md: '36%', '2xl': '1100px' }}
+      left={{ base: '40%', sm: '42%', md: '36%', '2xl': '1100px' }}
       h={{ base: '300px', sm: 'auto' }}
       overflow="hidden"
     >
-      <Box marginTop={{ base: '-110px', md: '0' }} >
+      <Box marginTop={{ base: '-110px', md: '0' }}>
         <GrafismProduct2
           width={{
             base: '700px',

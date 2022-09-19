@@ -55,14 +55,8 @@ export const ProductWithBP = ({
       w="90%"
       flexDirection={{ base: 'column', md: 'row' }}
     >
-      
-
       {/* GRAFISMO */}
-      <Box 
-        position={'absolute'} 
-        {...arrowDistance(type)} 
-        left="0"
-      >
+      <Box position={'absolute'} {...arrowDistance(type)} left="0">
         <GrafismProductWithBP
           type={type}
           width={{
@@ -76,29 +70,30 @@ export const ProductWithBP = ({
           color={grafismColor}
         />
       </Box>
-      
 
       {/* TEXTOS */}
       <Flex
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
-        width={{ base: '100%', md: '50%' , '2xl': '30%' }}
+        width={{ base: '100%', md: '50%', '2xl': '30%' }}
         position="relative"
         // bg="pink"
         padding={{ base: '5%', md: '0', '2xl': '1%' }}
       >
-        <Text as={"h3"}
-          variant={"h3"}
+        <Text
+          as={'h3'}
+          variant={'h3'}
           fontWeight="light"
           color={textColor}
           textAlign="center"
+          zIndex={'docked'}
         >
           {title}
         </Text>
         <Text
-          as={"h6"}
-          variant={"h6"}
+          as={'h6'}
+          variant={'h6'}
           fontWeight="light"
           color={textColor}
           width={{ base: '100%', sm: '75%' }}
@@ -111,10 +106,11 @@ export const ProductWithBP = ({
             '2xl': '30px'
           }}
           textAlign="center"
+          zIndex={'docked'}
         >
           {description}
         </Text>
-       
+
         {type === 'centralizedBtn' && (
           <Link href={href} _hover={{ outline: 'none' }}>
             <Center
@@ -149,10 +145,11 @@ export const ProductWithBP = ({
               }}
               padding="10px"
             >
-              <Text as={"h6"}
-                variant={"h6"}
+              <Text
+                as={'h6'}
+                variant={'h6'}
                 color={btnTextColor}
-                textAlign={"center"}
+                textAlign={'center'}
               >
                 {btnText}
               </Text>
@@ -168,6 +165,7 @@ export const ProductWithBP = ({
             bottom={{ base: '0', md: '-10%' }}
             left={{ base: '0', md: '5.7%', '2xl': '3%' }}
             bg={btnColor}
+            marginX={{ base: 'auto', lg: '0' }}
             _hover={{ bg: btnHoverColor }}
             marginY={{ base: '15px', md: '0' }}
             h={{
@@ -189,16 +187,12 @@ export const ProductWithBP = ({
             textAlign="center"
             padding="10px"
           >
-            <Text as={"h6"}
-                variant={"h6"}
-                color={btnTextColor}
-              >
-                {btnText}
-              </Text>
+            <Text as={'h6'} variant={'h6'} color={btnTextColor}>
+              {btnText}
+            </Text>
           </Center>
         </Link>
       )}
-
 
       {/* IMAGEM */}
       <Image
@@ -208,6 +202,7 @@ export const ProductWithBP = ({
         src={imgSrc}
         width={{ base: '100vw', md: '52vw' }}
         maxWidth={{ base: '90vw', md: '998px' }}
+        zIndex="base"
       />
     </Flex>
   )
