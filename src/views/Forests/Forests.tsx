@@ -10,7 +10,6 @@ import FeaturedBanner from '@components/FeaturedBanner'
 
 import PatternCertification from '@components/PatternCertification'
 import { useRouter } from 'next/router'
-import Paragraph from '@components/Paragraph'
 import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
 
@@ -735,7 +734,10 @@ export const ForestsView = (props: ForestsViewProps) => {
                 xl: '5% 0% 5% 5%'
               }}
             >
-              <Image src={props.page_content.section5_img} maxW={'668px'} />
+              <Image
+                src={props.page_content.section5_img}
+                maxW={{ base: '100vw', lg: '668px' }}
+              />
             </Box>
             {/* BOX 2 */}
             <Box
@@ -961,7 +963,10 @@ export const ForestsView = (props: ForestsViewProps) => {
               // bg='yellow'
               flex="1"
             >
-              <Image src={props.page_content.section6_img} maxW={'660px'} />
+              <Image
+                src={props.page_content.section6_img}
+                maxW={{ base: '100vw', lg: '660px' }}
+              />
               <Button
                 onClick={() =>
                   router.push('/contact?channel=suprimentos-florestais')

@@ -55,6 +55,7 @@ export const ProductBody = ({
       flexDirection="column"
       flex="1"
       alignItems={'center'}
+      zIndex="docked"
     >
       <Flex
         maxWidth="1536px"
@@ -74,12 +75,14 @@ export const ProductBody = ({
                 xl: '70px',
                 '2xl': '80px'
               }}
+              maxW={{ base: '100%', sm: '50%', md: '80%', lg: '100%' }}
             >
               <Text
                 as={'h3'}
                 variant={'h3'}
                 color="green.900"
                 fontWeight={'extrabold'}
+                zIndex="docked"
               >
                 {componentsLabels.t('product.description')}
               </Text>
@@ -97,12 +100,16 @@ export const ProductBody = ({
                 xl: '70px',
                 '2xl': '80px'
               }}
+              zIndex="docked"
+              maxW={{ base: '100%', sm: '60%', md: '100%' }}
             >
               <Text
                 as={'h3'}
                 variant={'h3'}
                 color="green.900"
                 fontWeight={'extrabold'}
+                zIndex="docked"
+                maxWidth={{ md: '60%' }}
               >
                 {componentsLabels.t('product.moreTechnologyQualityProtection')}
               </Text>
@@ -129,6 +136,7 @@ export const ProductBody = ({
                 variant={'h3'}
                 color="green.900"
                 fontWeight={'extrabold'}
+                zIndex="docked"
               >
                 {componentsLabels.t('product.usesAndApplications')}
               </Text>
@@ -152,6 +160,7 @@ export const ProductBody = ({
                 variant={'h3'}
                 color="green.900"
                 fontWeight={'extrabold'}
+                zIndex="docked"
               >
                 {componentsLabels.t('product.finishes')}
               </Text>
@@ -183,6 +192,7 @@ export const ProductBody = ({
                 variant={'h3'}
                 color="green.900"
                 fontWeight={'extrabold'}
+                zIndex="docked"
               >
                 {componentsLabels.t('product.qualityStandards')}
               </Text>
