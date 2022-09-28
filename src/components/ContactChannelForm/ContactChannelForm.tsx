@@ -36,25 +36,37 @@ export const ContactChannelForm = ({
   }
   const [formData, setFormData] = useState({ ...intialFormData })
   const [status, setStatus] = useState<number | null>(null)
+  const [sendButtonEnabled, setSendButtonEnabled] = useState<Boolean>(true)
 
   async function submitForm(
     formData: any,
     contact_channel_id: string | number
   ) {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/contact-channels/${contact_channel_id}/sendForm`
+    try{
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/contact-channels/${contact_channel_id}/sendForm`
 
-    console.log(url)
-
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-
-    setStatus(response.status)
+      // Disable send button to avoid duplicates.
+      setSendButtonEnabled(false)
+  
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+  
+      // Reset form
+      setFormData({...intialFormData})
+      setStatus(response.status)
+  
+      // Enable send button
+      setSendButtonEnabled(true)
+    }catch(e){
+      setSendButtonEnabled(true)
+      console.log(e)
+    }
   }
 
   useEffect(() => {
@@ -281,6 +293,7 @@ export const ContactChannelForm = ({
             w={{ base: '100%', lg: '240px' }}
             marginLeft={{ base: 'normal', lg: 'auto' }}
             order={{ base: 1, md: 2 }}
+            disabled={!sendButtonEnabled}
           >
             {componentsLabels.t('contactChannelForm.send')}
           </Button>
