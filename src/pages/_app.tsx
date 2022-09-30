@@ -29,7 +29,7 @@ function App({ Component, pageProps }: AppProps) {
       {/*RD station script*/}
       <Script
         strategy="beforeInteractive"
-        src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/461ed3f4-597a-4986-8c6b-cd3c63f5455b-loader.js%22"
+        src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/461ed3f4-597a-4986-8c6b-cd3c63f5455b-loader.js"
       />
 
             {/* Google Analytics */}
