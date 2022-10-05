@@ -278,7 +278,7 @@ const data = {
       ]
     },
     {
-      name: 'Pamamá',
+      name: 'Panamá',
       imgUrl: '/img/onde-comprar/panama.svg',
       id: 2,
       rows: [
