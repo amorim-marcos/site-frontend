@@ -28,12 +28,12 @@ function App({ Component, pageProps }: AppProps) {
       <Script strategy="beforeInteractive" src="/static/replaceTrademark.js" />
       {/*RD station script*/}
       <Script
-        strategy="beforeInteractive"
+        strategy="lazyOnload"
         src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/461ed3f4-597a-4986-8c6b-cd3c63f5455b-loader.js"
       />
 
-            {/* Google Analytics */}
-            <Script
+      {/* Google Analytics */}
+      <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
       />
