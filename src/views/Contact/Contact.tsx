@@ -82,12 +82,6 @@ export const Contact = ({
                 <ContactChannelSelectButton
                   alignSelf="center"
                   isActive={contact_channel !== null}
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-ignore
-                  onClick={(isActive: boolean) => {
-                    // go to url
-                    setShowAllAreas(isActive)
-                  }}
                   mr="20px"
                   mb="15px"
                   name={
@@ -123,12 +117,6 @@ export const Contact = ({
                         contact_channel != null &&
                         contact_channel.id === channel.id
                       }
-                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                      // @ts-ignore
-                      onClick={(isActive: boolean) => {
-                        // go to url
-                        setShowAllAreas(isActive)
-                      }}
                       mr="20px"
                       mb="15px"
                       name={channel.name}
