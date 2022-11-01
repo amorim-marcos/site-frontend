@@ -24,6 +24,7 @@ const colors = {
 
 export type ContactChannelSelectButtonProps = ButtonProps & {
   name: string
+  service_code: string
   attention_required?: boolean
   onClick?: (isActive: boolean) => void
   onFinishRender?: (width: number, height: number) => void

@@ -8,6 +8,7 @@ import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
 export type ContactPageProps = {
   fireWarning: string
+  contact_channel: IContactChannel
   contact_channels: IContactChannel[]
 }
 
