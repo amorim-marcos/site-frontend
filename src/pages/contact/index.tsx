@@ -2,6 +2,7 @@
 import { GetServerSideProps } from 'next'
 import { loadTranslations } from 'ni18n'
 import { IContactChannel } from 'types/data/ContactChannel'
+import { formatChannelNameUrl } from 'utils/utils'
 import Contact from 'views/Contact'
 import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
@@ -57,12 +58,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     let queryChannel = context.query.channel
     contact_channel = contact_channels.find(
       (contact_channel:any) =>
-        contact_channel.name
-          .normalize('NFD')
-          .replace(/[^\w ]/g, '')
-          .split(' ')
-          .join('-')
-          .toLowerCase() == queryChannel
+        formatChannelNameUrl(contact_channel.name) == queryChannel
     )
   }
 

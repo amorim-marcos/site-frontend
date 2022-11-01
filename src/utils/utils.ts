@@ -38,3 +38,13 @@ export function smartDate(data: Date | string | undefined, locale: string) {
     return null
   }
 }
+
+
+export function formatChannelNameUrl(channel_name: string){
+  return channel_name
+    .normalize('NFD')
+    .replace(/[^\w ]/g, '')
+    .split(' ')
+    .join('-')
+    .toLowerCase()
+}
