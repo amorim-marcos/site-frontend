@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { loadTranslations } from 'ni18n'
 import { IContactChannel } from 'types/data/ContactChannel'
 import Contact from 'views/Contact'
@@ -14,7 +14,7 @@ export default function ContactPage(props: ContactPageProps) {
   return <Contact {...props} />
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const locale = context.locale
   let fireWarning
   let contact_channels
@@ -39,6 +39,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     contact_channels = await res.json()
   }
 
+
+
   contact_channels =
     contact_channels && typeof contact_channels.map === 'function'
       ? contact_channels.map((item: { image: { url: string } }) => {
@@ -57,9 +59,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       fireWarning: fireWarning.warning_text ? fireWarning.warning_text : '',
       contact_channels,
       ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
-    },
-    revalidate: parseInt(
-      process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'
-    )
+    }
   }
 }
