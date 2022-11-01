@@ -18,6 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const locale = context.locale
   let fireWarning
   let contact_channels
+  let contact_channel = null
   let res
 
   try {
@@ -39,8 +40,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     contact_channels = await res.json()
   }
 
-
-
   contact_channels =
     contact_channels && typeof contact_channels.map === 'function'
       ? contact_channels.map((item: { image: { url: string } }) => {
@@ -54,10 +53,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         })
       : []
 
+  if(context.query.channel){
+    let queryChannel = context.query.channel
+    contact_channel = contact_channels.find(
+      (contact_channel:any) =>
+        contact_channel.name
+          .normalize('NFD')
+          .replace(/[^\w ]/g, '')
+          .split(' ')
+          .join('-')
+          .toLowerCase() == queryChannel
+    )
+  }
+
+      
   return {
     props: {
       fireWarning: fireWarning.warning_text ? fireWarning.warning_text : '',
       contact_channels,
+      contact_channel,
       ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     }
   }

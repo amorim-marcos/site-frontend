@@ -22,11 +22,13 @@ import HtmlTextParser from '@components/HtmlTextParser'
 
 export type ContactViewProps = {
   contact_channels: IContactChannel[]
+  contact_channel: IContactChannel | null
   fireWarning: string
 }
 
 export const Contact = ({
   contact_channels,
+  contact_channel,
   fireWarning
 }: ContactViewProps) => {
   const { isMobile, width } = useMobile(1024)
@@ -37,29 +39,6 @@ export const Contact = ({
   })
 
   const [showAllAreas, setShowAllAreas] = useState<boolean>(true)
-  const [contact_channel, setContactChannel] = useState<IContactChannel | null>(
-    null
-  )
-
-  const router = useRouter()
-
-  useEffect(() => {
-    const queryChannel: any = router.query.channel
-    if (queryChannel) {
-      const result = contact_channels.find(
-        (contact_channel) =>
-          contact_channel.name
-            .normalize('NFD')
-            .replace(/[^\w ]/g, '')
-            .split(' ')
-            .join('-')
-            .toLowerCase() == queryChannel
-      )
-      if (result) {
-        setContactChannel(result)
-      }
-    }
-  }, [router.query])
 
   const contactViewLabels = useTranslation('contactView')
 
@@ -106,13 +85,7 @@ export const Contact = ({
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore
                   onClick={(isActive: boolean) => {
-                    setContactChannel(
-                      isActive
-                        ? null
-                        : contact_channel !== null
-                        ? contact_channel
-                        : contact_channels[0]
-                    )
+                    // go to url
                     setShowAllAreas(isActive)
                   }}
                   mr="20px"
@@ -153,7 +126,7 @@ export const Contact = ({
                       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                       // @ts-ignore
                       onClick={(isActive: boolean) => {
-                        setContactChannel(isActive ? null : channel)
+                        // go to url
                         setShowAllAreas(isActive)
                       }}
                       mr="20px"
