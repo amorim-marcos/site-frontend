@@ -246,7 +246,10 @@ export const FiltersTabs = ({
                   {!filtersEmpty && (
                     <Button
                       variant={'filters' as any}
-                      onClick={() => resetFilters()}
+                      onClick={() => {
+                        resetFilters()
+                        setDisplayFilters(!displayFilters)
+                      }}
                       _focus={{ outline: 'none' }}
                     >
                       {galleryViewLabels.t('filtersTab.clearFilters')}
