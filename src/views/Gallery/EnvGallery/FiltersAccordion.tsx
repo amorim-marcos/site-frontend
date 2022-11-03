@@ -471,7 +471,10 @@ export const FiltersAccordion = ({
           >
             <Button
               zIndex="10"
-              onClick={() => resetFilters()}
+              onClick={() => {
+                resetFilters()
+                setDisplayFilters(!displayFilters)
+              }}
               variant="link"
               backgroundColor="none"
             >

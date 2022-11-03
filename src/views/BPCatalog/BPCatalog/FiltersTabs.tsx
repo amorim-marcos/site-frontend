@@ -306,6 +306,7 @@ export const FiltersTabs = ({
                       onClick={() => {
                         setFilters(JSON.parse(JSON.stringify(initialFilters)))
                         setFilteredBps(applyFilters(initialFilters, bps))
+                        setDisplayFilters(!displayFilters)
                       }}
                       _focus={{ outline: 'none' }}
                     >
