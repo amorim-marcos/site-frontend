@@ -161,11 +161,11 @@ export const FiltersTabs = ({
                       bps.map((bp) => (
                         <BPFilter
                           key={bp.id}
-                          isSelected={filters['bps'].includes(bp.name)}
+                          isSelected={filters['bps'].includes(bp.id)}
                           toggleSelect={(selected: boolean) => {
                             !selected
-                              ? appendFilter('bps', bp.name)
-                              : removeFilter('bps', bp.name)
+                              ? appendFilter('bps', bp.id)
+                              : removeFilter('bps', bp.id)
                           }}
                           mr="15px"
                           mt="10px"
