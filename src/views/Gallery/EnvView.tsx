@@ -52,6 +52,7 @@ export const EnvView = ({
   return (
     <Box marginX="auto" bg="white.200">
       <Pagebar
+        disconsiderCurrentPage={false}
         paths={[
           {
             title: galleryViewLabels.t('pagebar.products'),
