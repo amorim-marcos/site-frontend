@@ -24,6 +24,7 @@ export interface GalleryProps {
     style: string
     image_url: string
     bps: string[]
+    created_at: string
   }[]
   availableBps: {
     name: string
@@ -92,18 +93,30 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   envs =
     envs && typeof envs.map === 'function'
-      ? envs.map((gallery: any) => {
-          return {
-            id: gallery.id,
-            title: gallery.title,
-            name: gallery.place,
-            bps: gallery.products.map((product: any) => product.name),
-            type: gallery.ambient_type.url_code,
-            style: gallery.ambient_styles.map((gallery:any) => gallery.id.toString()),
-            url_code: gallery.url_code,
-            image_url: `${url}${gallery.gallery_of_images[gallery.gallery_of_images.length - 1].url}`
-          }
-        })
+      ? envs
+          .map((gallery: any) => {
+            return {
+              id: gallery.id,
+              title: gallery.title,
+              name: gallery.place,
+              bps: gallery.products.map((product: any) => product.name),
+              type: gallery.ambient_type.url_code,
+              style: gallery.ambient_styles.map((gallery: any) =>
+                gallery.id.toString()
+              ),
+              url_code: gallery.url_code,
+              image_url: `${url}${
+                gallery.gallery_of_images[gallery.gallery_of_images.length - 1]
+                  .url
+              }`,
+              created_at: gallery.created_at
+            }
+          })
+          .sort(
+            (a, b) =>
+              new Date(b.created_at).getTime() -
+              new Date(a.created_at).getTime()
+          )
       : []
 
   availableBps =
