@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { loadTranslations } from 'ni18n'
 import { IContactChannel } from 'types/data/ContactChannel'
+import { formatChannelNameUrl } from 'utils/utils'
 import Contact from 'views/Contact'
 import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
 export type ContactPageProps = {
   fireWarning: string
+  contact_channel: IContactChannel
   contact_channels: IContactChannel[]
 }
 
@@ -14,10 +16,11 @@ export default function ContactPage(props: ContactPageProps) {
   return <Contact {...props} />
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const locale = context.locale
   let fireWarning
   let contact_channels
+  let contact_channel = null
   let res
 
   try {
@@ -52,14 +55,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
         })
       : []
 
+  if(context.query.channel){
+    let queryChannel = context.query.channel
+    contact_channel = contact_channels.find(
+      (contact_channel:any) =>
+        formatChannelNameUrl(contact_channel.name) == queryChannel
+    )
+  }
+
+      
   return {
     props: {
       fireWarning: fireWarning.warning_text ? fireWarning.warning_text : '',
       contact_channels,
+      contact_channel,
       ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
-    },
-    revalidate: parseInt(
-      process.env.NEXT_PUBLIC_PAGES_REVALITATION_TIME ?? '7200'
-    )
+    }
   }
 }
