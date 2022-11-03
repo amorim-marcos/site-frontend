@@ -51,7 +51,7 @@ const securityHeaders = [
     },
     {
       key: 'Referrer-Policy',
-      value: 'same-origin'
+      value: 'no-referrer'
     }
 ]
 
