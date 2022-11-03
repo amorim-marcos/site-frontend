@@ -48,6 +48,10 @@ const securityHeaders = [
     {
       key: 'Content-Security-Policy',
       value: contentSecurityPolicyItems.join('; ')
+    },
+    {
+      key: 'Referrer-Policy',
+      value: 'same-origin'
     }
 ]
 
