@@ -177,11 +177,11 @@ export const FiltersAccordion = ({
                     ? bps.map((bp) => (
                         <GridItem key={bp.id}>
                           <BPFilter
-                            isSelected={filters['bps'].includes(bp.name)}
+                            isSelected={filters['bps'].includes(bp.id)}
                             toggleSelect={(selected: boolean) => {
                               !selected
-                                ? appendFilter('bps', bp.name)
-                                : removeFilter('bps', bp.name)
+                                ? appendFilter('bps', bp.id)
+                                : removeFilter('bps', bp.id)
                             }}
                             mt="10px"
                             w="100%"

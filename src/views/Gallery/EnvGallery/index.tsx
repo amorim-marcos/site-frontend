@@ -27,7 +27,7 @@ export type FilterPanelName = 'none' | ValidFilterNames
 
 export type Filters = {
   nameSearched: string
-  bps: Array<string>
+  bps: Array<number>
   ambients: Array<string>
   styles: Array<string>
 }
