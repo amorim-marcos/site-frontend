@@ -57,7 +57,7 @@ export function CategoryCtxProvider(props: {
         const target = `/canal-bnk/${category.id}`
 
         if (router.asPath !== target) {
-          router.push(target, undefined, { shallow: true })
+          router.push(target)
         }
       }
     }
