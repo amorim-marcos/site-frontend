@@ -1,21 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useEffect, useContext } from 'react'
+import { useContext } from 'react'
 
 import { Flex, Box, Image, Text, Link } from '@chakra-ui/react'
 
 import { PlayIcon } from '@components/Icons'
 import { Section } from './Section'
-import { CategoryContext } from '..'
+import { CategoryContext, IVideos } from '..'
 import { useTranslation } from 'react-i18next'
-
-const YOUTUBE_LAST_VIDEOS_URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${
-  process.env.YOUTUBE_CHANNEL_ID
-}&maxResults=${4}&order=date&type=video&key=${process.env.YOUTUBE_API_KEY}`
-
-const YOUTUBE_PLAYLIST_ITEMS_URL = (playlistId?: string) =>
-  `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=${4}&playlistId=${playlistId}&key=${
-    process.env.YOUTUBE_API_KEY
-  }`
 
 function getPlaylist(currentCategory: number) {
   if (currentCategory === -1)
@@ -40,45 +31,8 @@ function getPlaylist(currentCategory: number) {
     }[currentCategory]
 }
 
-interface IVideos {
-  id: any
-  snippet: {
-    title: string
-    thumbnails: {
-      medium: {
-        url: string
-        width: number
-        height: number
-      }
-    }
-    resourceId: {
-      videoId: string
-    }
-  }
-}
-
-export const Videos = () => {
-  const [videos, setVideos] = useState<IVideos[]>([])
+export const Videos = (props: { videos?: IVideos[] }) => {
   const { currentCategory } = useContext(CategoryContext)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      let data
-
-      data = await fetch(
-        currentCategory === -1
-          ? YOUTUBE_LAST_VIDEOS_URL
-          : YOUTUBE_PLAYLIST_ITEMS_URL(getPlaylist(currentCategory)?.id)
-      )
-
-      data = await data.json()
-
-      setVideos([])
-      setVideos(data.items)
-    }
-
-    fetchData()
-  }, [currentCategory])
 
   const channelBnkLabels = useTranslation('channelBnkView')
 
@@ -109,7 +63,7 @@ export const Videos = () => {
         overflowX={{ base: 'scroll', lg: 'hidden' }}
         overflowY="hidden"
       >
-        {videos?.map(({ id, snippet }) => (
+        {props.videos?.map(({ id, snippet }) => (
           <Link
             key={id.videoId}
             href={`https://www.youtube.com/watch?v=${id.videoId}`}
