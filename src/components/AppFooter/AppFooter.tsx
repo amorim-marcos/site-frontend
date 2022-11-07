@@ -255,7 +255,7 @@ export const AppFooter = () => {
               color="green.600"
               cursor={'pointer'}
               _hover={{ opacity: '0.9' }}
-              onClick={() => router.push('politica-de-privacidade')}
+              onClick={() => router.push('/politica-de-privacidade')}
             >
               {footer.t('termsAndPrivacy')}
             </Text>
