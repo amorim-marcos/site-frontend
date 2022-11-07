@@ -15,6 +15,7 @@ import { Intro, Videos, Downloads } from './sections'
 
 import { Post, Category } from 'types/data/Post'
 import { useTranslation } from 'react-i18next'
+import { useRouter } from 'next/router'
 
 export const CategoryContext = createContext(
   {} as {
@@ -35,6 +36,8 @@ export function CategoryCtxProvider(props: {
   const [categories, setCategories] = useState<Category[]>([])
   const [seeOnlyPosts, setSeeOnlyPosts] = useState(false)
 
+  const router = useRouter()
+
   const changeCurrentCategory = useCallback(
     (i: number) => {
       if (i < categories.length) {
@@ -45,14 +48,25 @@ export function CategoryCtxProvider(props: {
   )
 
   useEffect(() => {
-    if (!!categories && categories.length <= 0) {
+    if (categories.length <= 0) {
       setCurrentCategory(-1)
+    } else {
+      const category = categories[currentCategory]
+
+      if (category) {
+        const target = `/canal-bnk/${category.id}`
+
+        if (router.asPath !== target) {
+          router.push(target)
+        }
+      }
     }
-  }, [currentCategory, categories])
+  }, [currentCategory, categories, router])
 
   useEffect(() => {
     setSeeOnlyPosts(props.seeOnlyPostsDefault || false)
   }, [props.seeOnlyPostsDefault])
+
   return (
     <Box>
       <CategoryContext.Provider
@@ -139,7 +153,7 @@ function CanalBNKFC(props: CanalBNKProps) {
         }
         justify={'center'}
       >
-        <Videos />
+        <Videos videos={props.youtubeVideos} />
       </Flex>
       {!seeOnlyPosts && (
         <>
@@ -153,12 +167,30 @@ function CanalBNKFC(props: CanalBNKProps) {
   )
 }
 
+export interface IVideos {
+  id: any
+  snippet: {
+    title: string
+    thumbnails: {
+      medium: {
+        url: string
+        width: number
+        height: number
+      }
+    }
+    resourceId: {
+      videoId: string
+    }
+  }
+}
+
 export interface CanalBNKProps {
   posts: Post[]
   categories: Category[]
   defaultCategory: number
   patterns_pack_url?: string | null
   youtubeDownloadLink?: string
+  youtubeVideos?: IVideos[]
 }
 
 export default function CanalBNK(props: CanalBNKProps) {

@@ -108,11 +108,11 @@ export const Intro = (props: {
           }
         />
 
-        <Flex 
-          direction="column" 
+        <Flex
+          direction="column"
           align={{ base: 'center', lg: 'inherit' }}
           // bg = "red"
-          >
+        >
           <Flex
             data-testid="intro-header"
             w="100%"
@@ -151,13 +151,13 @@ export const Intro = (props: {
                 // flex="1"
                 // marginTop={{ base: '20px', lg: '30px', xl: '40px' }}
                 // bg="green"
-                padding={"5%"}
+                padding={'5%'}
               >
                 {!seeOnlyPosts && (
                   <Text
                     as="h5"
-                    variant={'h5'} 
-                    fontWeight = 'bold'
+                    variant={'h5'}
+                    fontWeight="bold"
                     color={
                       currentCategory === -1
                         ? '#436D5D'
@@ -175,8 +175,8 @@ export const Intro = (props: {
                 {!seeOnlyPosts && (
                   <Text
                     as="h5"
-                    variant={'h5'} 
-                    fontWeight = 'normal'
+                    variant={'h5'}
+                    fontWeight="normal"
                     color={
                       currentCategory === -1
                         ? '#436D5D'
@@ -199,8 +199,8 @@ export const Intro = (props: {
                 {seeOnlyPosts && (
                   <Text
                     as="h5"
-                    variant={'h5'} 
-                    fontWeight = 'bold' 
+                    variant={'h5'}
+                    fontWeight="bold"
                     color={
                       currentCategory === -1 || currentCategory == 2
                         ? 'green.900'
@@ -298,14 +298,12 @@ export const Intro = (props: {
             </Flex>
           </Flex>
 
-
           <Flex
             w="100%"
             zIndex={100}
             // bg="black"
           >
-
-          {/* <Section
+            {/* <Section
             w="100%"
             zIndex={100}
             {...(!seeOnlyPosts && {
@@ -415,12 +413,8 @@ export const Intro = (props: {
                 ))}
               </Flex>
             )}
-
-           
-
-
           </Flex>
-        
+
           <Flex
             // bg="red"
             zIndex={100}
@@ -430,30 +424,27 @@ export const Intro = (props: {
             w={{ lg: '100%', xl: '100%' }}
             h={{ lg: '20px', xl: '50px' }}
           >
-          
-              <Section
-                w="100%"
-                zIndex={100}
-                {...(!seeOnlyPosts && {
-                  seeMore: {
-                    text: channelBnkLabels.t('introSection.seeMore'),
-                    link: `/canal-bnk/${currentCategory}`,
-                    onClick: () => setSeeOnlyPosts(true),
-                    textColor:
-                      currentCategory === -1
-                        ? 'green.550'
-                        : currentCategory === 0
-                        ? 'brown.300'
-                        : 'white.100'
-                  }
-                })}
-                py={{ base: '54px', lg: '100px' }}
-                px={{ base: '20px', lg: '5%', '2xl': '1%' }}
-                maxWidth={'1536px'}
-              /> 
-
-            </Flex> 
-
+            <Section
+              w="100%"
+              zIndex={100}
+              {...(!seeOnlyPosts && {
+                seeMore: {
+                  text: channelBnkLabels.t('introSection.seeMore'),
+                  link: `/canal-bnk/${currentCategory}`,
+                  onClick: () => setSeeOnlyPosts(true),
+                  textColor:
+                    currentCategory === -1
+                      ? 'green.550'
+                      : currentCategory === 0
+                      ? 'brown.300'
+                      : 'white.100'
+                }
+              })}
+              py={{ base: '54px', lg: '100px' }}
+              px={{ base: '20px', lg: '5%', '2xl': '1%' }}
+              maxWidth={'1536px'}
+            />
+          </Flex>
         </Flex>
       </Flex>
     </Box>
