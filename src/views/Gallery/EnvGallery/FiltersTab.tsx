@@ -161,11 +161,11 @@ export const FiltersTabs = ({
                       bps.map((bp) => (
                         <BPFilter
                           key={bp.id}
-                          isSelected={filters['bps'].includes(bp.name)}
+                          isSelected={filters['bps'].includes(bp.id)}
                           toggleSelect={(selected: boolean) => {
                             !selected
-                              ? appendFilter('bps', bp.name)
-                              : removeFilter('bps', bp.name)
+                              ? appendFilter('bps', bp.id)
+                              : removeFilter('bps', bp.id)
                           }}
                           mr="15px"
                           mt="10px"
@@ -246,7 +246,10 @@ export const FiltersTabs = ({
                   {!filtersEmpty && (
                     <Button
                       variant={'filters' as any}
-                      onClick={() => resetFilters()}
+                      onClick={() => {
+                        resetFilters()
+                        setDisplayFilters(!displayFilters)
+                      }}
                       _focus={{ outline: 'none' }}
                     >
                       {galleryViewLabels.t('filtersTab.clearFilters')}

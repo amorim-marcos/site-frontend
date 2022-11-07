@@ -80,7 +80,23 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   const router = useRouter()
 
-  const [filters, setFilters] = useState(initialFilters)
+  const [filters, setFilters] = useState(
+    router.query.collection
+      ? {
+          ...initialFilters,
+          collections: [
+            filtersContext.collections?.find(
+              (c: any) =>
+                router.query.collection ===
+                c.title
+                  .toLowerCase()
+                  .normalize('NFD')
+                  .replace(/[\u0300-\u036f]/g, '')
+            )?.code
+          ]
+        }
+      : initialFilters
+  )
 
   function changeGridSize(newGridSize: GridSize) {
     setGridSize(newGridSize)
