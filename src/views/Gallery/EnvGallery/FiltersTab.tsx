@@ -239,7 +239,10 @@ export const FiltersTabs = ({
                     variant={'filters' as any}
                     mr="30px"
                     _focus={{ outline: 'none' }}
-                    onClick={() => setFilteredEnvs(applyFilters(filters, envs))}
+                    onClick={() => {
+                      setFilteredEnvs(applyFilters(filters, envs))
+                      setDisplayFilters(!displayFilters)
+                    }}
                   >
                     {galleryViewLabels.t('filtersTab.filter')}
                   </Button>

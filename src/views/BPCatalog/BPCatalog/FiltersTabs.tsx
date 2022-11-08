@@ -295,7 +295,10 @@ export const FiltersTabs = ({
                   <Button
                     variant={'filters' as any}
                     mr="30px"
-                    onClick={() => setFilteredBps(applyFilters(filters, bps))}
+                    onClick={() => {
+                      setFilteredBps(applyFilters(filters, bps))
+                      setDisplayFilters(!displayFilters)
+                    }}
                     _focus={{ outline: 'none' }}
                   >
                     {bpCatalog.t('filtersTab.filter')}
