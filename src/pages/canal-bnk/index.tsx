@@ -15,6 +15,7 @@ export default function CanalBnk(props: CanalBNKProps) {
       defaultCategory={-1}
       youtubeDownloadLink={props.youtubeDownloadLink}
       youtubeVideos={props.youtubeVideos}
+      lastYoutubeVideo={props.lastYoutubeVideo}
     />
   )
 }
@@ -26,6 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let downloads_page
   let youtubeDownloadLink
   let youtubeVideos
+  let lastYoutubeVideo
 
   let res
 
@@ -59,6 +61,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     )
 
     youtubeVideos = (await res.json()).items
+
+    res = await fetch(
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${process.env.YOUTUBE_CHANNEL_ID}&maxResults=1&order=date&type=video&key=${process.env.YOUTUBE_API_KEY}`
+    )
+    res = await res.json()
+
+    if (res.items?.length > 0) {
+      lastYoutubeVideo = res.items[0].id.videoId
+    }
   } catch (e) {
     // if locale not working, get default
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts`)
@@ -138,6 +149,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       youtubeDownloadLink,
       patterns_pack_url,
       youtubeVideos,
+      lastYoutubeVideo,
       ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     }
   }

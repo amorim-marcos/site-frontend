@@ -34,6 +34,7 @@ export type HomeProps = {
   highlights: PostProps[]
   latest: PostProps[]
   youtubeLink?: string
+  lastYoutubeVideo?: string
 }
 
 export default function Home(props: HomeProps) {
@@ -219,7 +220,10 @@ export default function Home(props: HomeProps) {
       {/* FIM Banners */}
 
       {/* INICIO Redes Sociais */}
-      <Connect youtubeLink={props.youtubeLink} />
+      <Connect
+        youtubeLink={props.youtubeLink}
+        lastYoutubeVideo={props.lastYoutubeVideo}
+      />
     </Box>
   )
 }
