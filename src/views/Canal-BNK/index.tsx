@@ -160,7 +160,10 @@ function CanalBNKFC(props: CanalBNKProps) {
           <Flex bg="white.100" justify={'center'}>
             <Downloads patterns_pack_url={props.patterns_pack_url} />
           </Flex>
-          <Connect youtubeLink={props.youtubeDownloadLink} />
+          <Connect
+            youtubeLink={props.youtubeDownloadLink}
+            lastYoutubeVideo={props.lastYoutubeVideo}
+          />
         </>
       )}
     </Box>
@@ -191,6 +194,7 @@ export interface CanalBNKProps {
   patterns_pack_url?: string | null
   youtubeDownloadLink?: string
   youtubeVideos?: IVideos[]
+  lastYoutubeVideo?: string
 }
 
 export default function CanalBNK(props: CanalBNKProps) {

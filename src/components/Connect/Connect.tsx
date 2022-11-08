@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import { ReactNode, useEffect, useState } from 'react'
+import { ReactNode } from 'react'
 import { Box, Button, Flex, Text, Link } from '@chakra-ui/react'
 
 import { SocialIcon } from '@components/Icons'
@@ -12,27 +12,16 @@ import useInstagram from 'hooks/useInstagram'
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
 
-export default function Connect({ youtubeLink = '' }) {
+export default function Connect({
+  youtubeLink = '',
+  lastYoutubeVideo = 'PtRcMibSJgk'
+}) {
   const { isMobile, width } = useMobile(568)
-  const [lastVideo, setLastVideo] = useState<string | null>('PtRcMibSJgk')
   const componentsLabels = useTranslation('components')
 
   const { Feed } = useInstagram()
 
   useFacebook()
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${process.env.YOUTUBE_CHANNEL_ID}&maxResults=1&order=date&type=video&key=${process.env.YOUTUBE_API_KEY}`
-      )
-      const data = await result.json()
-
-      if (data.items?.length > 0) setLastVideo(data.items[0].id.videoId)
-    }
-
-    fetchData()
-  }, [])
 
   return (
     <>
@@ -183,7 +172,8 @@ export default function Connect({ youtubeLink = '' }) {
                     height={'280px'}
                     // height={isMobile ? '175px' : '510px'}
                     src={`https://www.youtube.com/embed/${
-                      youtubeLink.split('=')[1].split('&')[0] || lastVideo
+                      youtubeLink.split('=')[1].split('&')[0] ||
+                      lastYoutubeVideo
                     }`}
                     frameBorder="0"
                     allowFullScreen
