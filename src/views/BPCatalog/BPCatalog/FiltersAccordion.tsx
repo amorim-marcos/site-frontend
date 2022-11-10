@@ -529,6 +529,7 @@ export const FiltersAccordion = ({
                 onClick={() => {
                   setFilters(JSON.parse(JSON.stringify(initialFilters)))
                   setFilteredBps(applyFilters(initialFilters, bps))
+                  setDisplayFilters(!displayFilters)
                 }}
                 variant="link"
                 backgroundColor="none"

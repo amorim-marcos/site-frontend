@@ -42,12 +42,12 @@ export const ContactChannelForm = ({
     formData: any,
     contact_channel_id: string | number
   ) {
-    try{
+    try {
       const url = `${process.env.NEXT_PUBLIC_API_URL}/contact-channels/${contact_channel_id}/sendForm`
 
       // Disable send button to avoid duplicates.
       setSendButtonEnabled(false)
-  
+
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -56,14 +56,14 @@ export const ContactChannelForm = ({
         },
         body: JSON.stringify(formData)
       })
-  
+
       // Reset form
-      setFormData({...intialFormData})
+      setFormData({ ...intialFormData })
       setStatus(response.status)
-  
+
       // Enable send button
       setSendButtonEnabled(true)
-    }catch(e){
+    } catch (e) {
       setSendButtonEnabled(true)
       console.log(e)
     }
@@ -192,18 +192,14 @@ export const ContactChannelForm = ({
               *{componentsLabels.t('contactChannelForm.uf')}
             </ContactChannelFormLabel>
             <FormSelect
+              id="state"
               name="state"
               onChange={(e) => {
                 setFormData({ ...formData, state: e.target.value })
               }}
               value={formData.state}
+              placeholder={`*${componentsLabels.t('contactChannelForm.uf')}`}
             >
-              <option
-                disabled
-                value={`*${componentsLabels.t('contactChannelForm.uf')}`}
-              >
-                *Estado
-              </option>
               {brazilianStates.map((state, i) => (
                 <option key={i} value={state.code}>
                   {state.name} [{state.code}]
