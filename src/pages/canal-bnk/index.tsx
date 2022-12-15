@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { Post } from 'types/data'
 import CanalBNK from 'views/Canal-BNK'
 import DOMPurify from 'isomorphic-dompurify'
@@ -13,9 +13,6 @@ export default function CanalBnk(props: CanalBNKProps) {
       categories={props.categories}
       patterns_pack_url={props.patterns_pack_url}
       defaultCategory={-1}
-      youtubeDownloadLink={props.youtubeDownloadLink}
-      youtubeVideos={props.youtubeVideos}
-      lastYoutubeVideo={props.lastYoutubeVideo}
     />
   )
 }
@@ -25,9 +22,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let page_content
   let categories
   let downloads_page
-  let youtubeDownloadLink
-  let youtubeVideos
-  let lastYoutubeVideo
 
   let res
 
@@ -47,29 +41,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     )
 
     downloads_page = await res.json()
-
-    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/connect`)
-    youtubeDownloadLink = await res.json()
-    youtubeDownloadLink = youtubeDownloadLink.youtube_video_link
-
-    res = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${
-        process.env.YOUTUBE_CHANNEL_ID
-      }&maxResults=${4}&order=date&type=video&key=${
-        process.env.YOUTUBE_API_KEY
-      }`
-    )
-
-    youtubeVideos = (await res.json()).items
-
-    res = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${process.env.YOUTUBE_CHANNEL_ID}&maxResults=1&order=date&type=video&key=${process.env.YOUTUBE_API_KEY}`
-    )
-    res = await res.json()
-
-    if (res.items?.length > 0) {
-      lastYoutubeVideo = res.items[0].id.videoId
-    }
   } catch (e) {
     // if locale not working, get default
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts`)
@@ -146,10 +117,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       posts: data,
       categories,
-      youtubeDownloadLink,
       patterns_pack_url,
-      youtubeVideos,
-      lastYoutubeVideo,
       ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     }
   }

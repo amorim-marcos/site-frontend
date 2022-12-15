@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   useState,
   useEffect,
@@ -25,6 +26,9 @@ export const CategoryContext = createContext(
     setCategories: (v: Category[]) => void
     seeOnlyPosts: boolean
     setSeeOnlyPosts: (v: boolean) => void
+    youtubeDownloadLink?: string
+    youtubeVideos?: IVideos[]
+    lastYoutubeVideo?: string
   }
 )
 
@@ -32,11 +36,15 @@ export function CategoryCtxProvider(props: {
   children: ReactNode
   seeOnlyPostsDefault?: boolean
 }) {
+  const router = useRouter()
+
   const [currentCategory, setCurrentCategory] = useState<number>(-1)
   const [categories, setCategories] = useState<Category[]>([])
   const [seeOnlyPosts, setSeeOnlyPosts] = useState(false)
 
-  const router = useRouter()
+  const [youtubeDownloadLink, setYoutubeDownloadLink] = useState('')
+  const [youtubeVideos, setYoutubeVideos] = useState<IVideos[]>([])
+  const [lastYoutubeVideo, setLastYoutubeVideo] = useState('')
 
   const changeCurrentCategory = useCallback(
     (i: number) => {
@@ -46,6 +54,41 @@ export function CategoryCtxProvider(props: {
     },
     [categories]
   )
+
+  useEffect(() => {
+    const fetchYoutube = async () => {
+      let res: any, data: any
+
+      res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/connect`)
+      data = await res.json()
+      setYoutubeDownloadLink(data.youtube_video_link)
+
+      res = await fetch(
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${
+          process.env.YOUTUBE_CHANNEL_ID
+        }&maxResults=${4}&order=date&type=video&key=${
+          process.env.YOUTUBE_API_KEY
+        }`
+      )
+      data = await res.json()
+      setYoutubeVideos(data.items)
+
+      res = await fetch(
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${
+          process.env.YOUTUBE_CHANNEL_ID
+        }&maxResults=${1}&order=date&type=video&key=${
+          process.env.YOUTUBE_API_KEY
+        }`
+      )
+      data = await res.json()
+
+      if (data.items?.length > 0) {
+        setLastYoutubeVideo(data.items[0].id.videoId)
+      }
+    }
+
+    fetchYoutube()
+  })
 
   useEffect(() => {
     if (categories.length <= 0) {
@@ -76,7 +119,10 @@ export function CategoryCtxProvider(props: {
           categories,
           setCategories,
           seeOnlyPosts,
-          setSeeOnlyPosts
+          setSeeOnlyPosts,
+          youtubeDownloadLink,
+          youtubeVideos,
+          lastYoutubeVideo
         }}
       >
         {props.children}
@@ -91,7 +137,10 @@ function CanalBNKFC(props: CanalBNKProps) {
     setCategories,
     categories,
     seeOnlyPosts,
-    changeCurrentCategory
+    changeCurrentCategory,
+    youtubeDownloadLink,
+    youtubeVideos,
+    lastYoutubeVideo
   } = useContext(CategoryContext)
 
   useEffect(() => {
@@ -153,7 +202,7 @@ function CanalBNKFC(props: CanalBNKProps) {
         }
         justify={'center'}
       >
-        <Videos videos={props.youtubeVideos} />
+        <Videos videos={youtubeVideos} />
       </Flex>
       {!seeOnlyPosts && (
         <>
@@ -161,8 +210,8 @@ function CanalBNKFC(props: CanalBNKProps) {
             <Downloads patterns_pack_url={props.patterns_pack_url} />
           </Flex>
           <Connect
-            youtubeLink={props.youtubeDownloadLink}
-            lastYoutubeVideo={props.lastYoutubeVideo}
+            youtubeLink={youtubeDownloadLink}
+            lastYoutubeVideo={lastYoutubeVideo}
           />
         </>
       )}
