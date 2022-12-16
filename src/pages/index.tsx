@@ -12,8 +12,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale
   let highlights
   let latestPosts
-  let youtubeLink
-  let lastYoutubeVideo
 
   let res
 
@@ -27,29 +25,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
       process.env.NEXT_PUBLIC_API_URL + `/posts/highlights?_locale=${locale}`
     )
     highlights = await res.json()
-
-    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/connect`)
-    youtubeLink = await res.json()
-    youtubeLink = youtubeLink.youtube_video_link
-
-    res = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${process.env.YOUTUBE_CHANNEL_ID}&maxResults=1&order=date&type=video&key=${process.env.YOUTUBE_API_KEY}`
-    )
-    res = await res.json()
-
-    if (res.items?.length > 0) {
-      lastYoutubeVideo = res.items[0].id.videoId
-    }
   } catch (e) {
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/latest`)
     latestPosts = await res.json()
 
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/highlights`)
     highlights = await res.json()
-
-    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/connect`)
-    youtubeLink = await res.json()
-    youtubeLink = youtubeLink.youtube_video_link
   }
 
   const highlightsTreated: object[] = []
@@ -95,8 +76,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       highlights: highlightsTreated,
-      youtubeLink,
-      lastYoutubeVideo,
       latest: latestTreated,
       ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
       // ...clientNamespaces(ni18nConfig, ['components/header'])

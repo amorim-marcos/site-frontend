@@ -9,6 +9,7 @@ import { SectionChannelBNK } from './sections/SectionChannelBNK'
 import { SectionProducts } from './sections/SectionProducts'
 import { SectionBanners } from './sections/SectionBanners'
 import { useTranslation } from 'react-i18next'
+import { useEffect, useState } from 'react'
 
 type PostProps = {
   id: number
@@ -42,6 +43,28 @@ export default function Home(props: HomeProps) {
 
   const productsView = useTranslation('productsView')
   const homeView = useTranslation('homeView')
+  const [lastYoutubeVideo, setLastYoutubeVideo] = useState<string>()
+  const [youtubeLink, setYoutubeLink] = useState<string>()
+
+  useEffect(() => {
+    const fetchYoutubeData = async () => {
+      let res
+
+      res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/connect`)
+      setYoutubeLink((await res.json()).youtube_video_link)
+
+      res = await fetch(
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${process.env.YOUTUBE_CHANNEL_ID}&maxResults=1&order=date&type=video&key=${process.env.YOUTUBE_API_KEY}`
+      )
+      res = await res.json()
+
+      if (res.items?.length > 0) {
+        setLastYoutubeVideo(res.items[0].id.videoId)
+      }
+    }
+
+    fetchYoutubeData()
+  })
 
   return (
     <Box bg="white.100">
@@ -220,10 +243,7 @@ export default function Home(props: HomeProps) {
       {/* FIM Banners */}
 
       {/* INICIO Redes Sociais */}
-      <Connect
-        youtubeLink={props.youtubeLink}
-        lastYoutubeVideo={props.lastYoutubeVideo}
-      />
+      <Connect youtubeLink={youtubeLink} lastYoutubeVideo={lastYoutubeVideo} />
     </Box>
   )
 }
