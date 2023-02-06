@@ -27,7 +27,7 @@ export function useInstagramOembed() {
   document.body.appendChild(script)
 
   const process = useCallback(
-    () => loaded && window.instgrm.Embeds.process(),
+    () => loaded && window.instgrm?.Embeds.process(),
     [loaded]
   )
 
