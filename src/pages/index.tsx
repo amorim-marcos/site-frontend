@@ -16,21 +16,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let res
 
   try {
-    res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/posts/latest?_locale=${locale}`
-    )
-    latestPosts = await res.json()
-
-    res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/posts/highlights?_locale=${locale}`
-    )
-    highlights = await res.json()
-  } catch (e) {
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/latest`)
     latestPosts = await res.json()
 
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/highlights`)
     highlights = await res.json()
+  } catch (e) {
+    // res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/latest`)
+    latestPosts = []
+
+    // res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/highlights`)
+    highlights = []
   }
 
   const highlightsTreated: object[] = []

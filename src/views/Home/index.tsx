@@ -50,16 +50,20 @@ export default function Home(props: HomeProps) {
     const fetchYoutubeData = async () => {
       let res
 
-      res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/connect`)
-      setYoutubeLink((await res.json()).youtube_video_link)
+      try {
+        res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/connect`)
+        setYoutubeLink((await res.json()).youtube_video_link)
 
-      res = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${process.env.YOUTUBE_CHANNEL_ID}&maxResults=1&order=date&type=video&key=${process.env.YOUTUBE_API_KEY}`
-      )
-      res = await res.json()
+        res = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${process.env.YOUTUBE_CHANNEL_ID}&maxResults=1&order=date&type=video&key=${process.env.YOUTUBE_API_KEY}`
+        )
+        res = await res.json()
 
-      if (res.items?.length > 0) {
-        setLastYoutubeVideo(res.items[0].id.videoId)
+        if (res.items?.length > 0) {
+          setLastYoutubeVideo(res.items[0].id.videoId)
+        }
+      } catch (error) {
+        console.log(error)
       }
     }
 

@@ -188,16 +188,21 @@ export const AppFooter = () => {
             <FooterList
               key={4}
               title={{
-                title: footer.t(footerNavigation.channelBNKColumn.titleKey),
+                title:
+                  router.locale === 'pt-BR'
+                    ? footer.t(footerNavigation.channelBNKColumn.titleKey)
+                    : '',
                 href: footerNavigation.channelBNKColumn.href
               }}
               items={
                 footerNavigation.channelBNKColumn.items
-                  ? footerNavigation.channelBNKColumn.items.map((i) => ({
-                      title: footer.t(i.titleKey),
-                      href: i.href,
-                      empty: i.empty
-                    }))
+                  ? footerNavigation.channelBNKColumn.items
+                      .slice(router.locale === 'pt-BR' ? 0 : 1)
+                      .map((i) => ({
+                        title: footer.t(i.titleKey),
+                        href: i.href,
+                        empty: i.empty
+                      }))
                   : []
               }
             />
