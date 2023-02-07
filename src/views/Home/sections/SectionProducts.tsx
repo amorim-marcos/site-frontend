@@ -109,84 +109,86 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
         </Box>
         {/* FIM GALERIA PRODUTOS */}
 
-        <Flex
-          // bg="yellow"
-          flex="1"
-          m={{
-            base: '0% 0% 5% 0%',
-            sm: '0% 5% 2% 5%',
-            lg: '0% 5% 5% 5%',
-            xl: '0% 5% 5% 5%',
-            '2xl': '0% 0% 5% 4%'
-          }}
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-        >
-          <Box
+        {router.locale === 'pt-BR' && (
+          <Flex
+            // bg="yellow"
             flex="1"
-            // bg="pink"
-            m={{ base: '0% 0% 2% 0%', sm: '0% 0% 1% 0%', lg: '0%', xl: '0%' }}
-          >
-            <PatternInfo
-              title={homeViewLabels.t('productsSection.discoverBanner.title')}
-              description={homeViewLabels.t(
-                'productsSection.discoverBanner.description'
-              )}
-              onClick={() => router.push('/onde-comprar')}
-              icon={
-                <EarthIcon
-                  width={{
-                    base: '50px',
-                    md: '62px',
-                    lg: '70px',
-                    xl: '80px'
-                  }}
-                  height={{
-                    base: '50px',
-                    md: '62px',
-                    lg: '70px',
-                    xl: '80px'
-                  }}
-                />
-              }
-            />
-          </Box>
-          <Box
-            flex="1"
-            // bg="pink"
             m={{
-              base: '0% 0% 2% 0%',
-              sm: '0% 0% 5% 0%',
-              lg: '0% 0% 0% 3%',
-              xl: '0% 0% 0% 4%'
+              base: '0% 0% 5% 0%',
+              sm: '0% 5% 2% 5%',
+              lg: '0% 5% 5% 5%',
+              xl: '0% 5% 5% 5%',
+              '2xl': '0% 0% 5% 4%'
             }}
+            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
           >
-            <PatternInfo
-              title={homeViewLabels.t('productsSection.contactBanner.title')}
-              description={homeViewLabels.t(
-                'productsSection.contactBanner.description'
-              )}
-              onClick={() => router.push('/contact')}
-              icon={
-                <Contactusicon
-                  width={{
-                    base: '60px',
-                    xs: '30px',
-                    sm: '58px',
-                    lg: '70px',
-                    xl: '80px'
-                  }}
-                  height={{
-                    base: '60px',
-                    xs: '30px',
-                    sm: '58px',
-                    lg: '70px',
-                    xl: '80px'
-                  }}
-                />
-              }
-            />
-          </Box>
-        </Flex>
+            <Box
+              flex="1"
+              // bg="pink"
+              m={{ base: '0% 0% 2% 0%', sm: '0% 0% 1% 0%', lg: '0%', xl: '0%' }}
+            >
+              <PatternInfo
+                title={homeViewLabels.t('productsSection.discoverBanner.title')}
+                description={homeViewLabels.t(
+                  'productsSection.discoverBanner.description'
+                )}
+                onClick={() => router.push('/onde-comprar')}
+                icon={
+                  <EarthIcon
+                    width={{
+                      base: '50px',
+                      md: '62px',
+                      lg: '70px',
+                      xl: '80px'
+                    }}
+                    height={{
+                      base: '50px',
+                      md: '62px',
+                      lg: '70px',
+                      xl: '80px'
+                    }}
+                  />
+                }
+              />
+            </Box>
+            <Box
+              flex="1"
+              // bg="pink"
+              m={{
+                base: '0% 0% 2% 0%',
+                sm: '0% 0% 5% 0%',
+                lg: '0% 0% 0% 3%',
+                xl: '0% 0% 0% 4%'
+              }}
+            >
+              <PatternInfo
+                title={homeViewLabels.t('productsSection.contactBanner.title')}
+                description={homeViewLabels.t(
+                  'productsSection.contactBanner.description'
+                )}
+                onClick={() => router.push('/contact')}
+                icon={
+                  <Contactusicon
+                    width={{
+                      base: '60px',
+                      xs: '30px',
+                      sm: '58px',
+                      lg: '70px',
+                      xl: '80px'
+                    }}
+                    height={{
+                      base: '60px',
+                      xs: '30px',
+                      sm: '58px',
+                      lg: '70px',
+                      xl: '80px'
+                    }}
+                  />
+                }
+              />
+            </Box>
+          </Flex>
+        )}
       </Flex>
     </Flex>
   )

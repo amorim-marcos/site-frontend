@@ -73,26 +73,28 @@ export default function Home(props: HomeProps) {
   return (
     <Box bg="white.100">
       {/* INICIO BANNER CAROUSEL */}
-      {props.highlights && props.highlights.length > 0 && (
-        <HomeBanner
-          items={props.highlights.map((item) => {
-            return {
-              imageUrl: item.cover.url,
-              category: {
-                id: item.category.id,
-                name: item.category.name
-              },
-              title: item.title,
-              url_code: item.url_code,
-              color: item.category.color
-            }
-          })}
-        />
-      )}
+      {router.locale === 'pt-BR' &&
+        props.highlights &&
+        props.highlights.length > 0 && (
+          <HomeBanner
+            items={props.highlights.map((item) => {
+              return {
+                imageUrl: item.cover.url,
+                category: {
+                  id: item.category.id,
+                  name: item.category.name
+                },
+                title: item.title,
+                url_code: item.url_code,
+                color: item.category.color
+              }
+            })}
+          />
+        )}
       {/* FIM BANNER CAROUSEL */}
 
       {/* INICIO SECTION CANAL BNK */}
-      {props.latest.length > 0 && (
+      {router.locale === 'pt-BR' && props.latest.length > 0 && (
         <SectionChannelBNK
           items={props.latest.map((item, i) => {
             return {

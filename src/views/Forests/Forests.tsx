@@ -967,30 +967,32 @@ export const ForestsView = (props: ForestsViewProps) => {
                 src={props.page_content.section6_img}
                 maxW={{ base: '100vw', lg: '660px' }}
               />
-              <Button
-                onClick={() =>
-                  router.push('/contact?channel=suprimentos-florestais')
-                }
-                w={{ base: '90%', sm: '70%', lg: '90%', xl: '70%' }}
-                h={{ base: '100%', sm: '70%', lg: '15%', xl: '10%' }}
-                padding={{ base: '4%', sm: '3%', lg: '5%', xl: '5%' }}
-                marginTop={{
-                  base: '0px',
-                  // sm: '-20px',
-                  lg: '-50px',
-                  xl: '-20px'
-                }}
-              >
-                <Text
-                  as="h5"
-                  variant={'h5' as any}
-                  color="white"
-                  textAlign="center"
-                  fontWeight="bold"
+              {router.locale === 'pt-BR' && (
+                <Button
+                  onClick={() =>
+                    router.push('/contact?channel=suprimentos-florestais')
+                  }
+                  w={{ base: '90%', sm: '70%', lg: '90%', xl: '70%' }}
+                  h={{ base: '100%', sm: '70%', lg: '15%', xl: '10%' }}
+                  padding={{ base: '4%', sm: '3%', lg: '5%', xl: '5%' }}
+                  marginTop={{
+                    base: '0px',
+                    // sm: '-20px',
+                    lg: '-50px',
+                    xl: '-20px'
+                  }}
                 >
-                  {forestView.t('forestSupplier.becomeAForestSupplierBtn')}
-                </Text>
-              </Button>
+                  <Text
+                    as="h5"
+                    variant={'h5' as any}
+                    color="white"
+                    textAlign="center"
+                    fontWeight="bold"
+                  >
+                    {forestView.t('forestSupplier.becomeAForestSupplierBtn')}
+                  </Text>
+                </Button>
+              )}
             </Flex>
           </Flex>
         </Flex>

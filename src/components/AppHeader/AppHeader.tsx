@@ -143,19 +143,23 @@ export const AppHeader = () => {
                   width="100%"
                   display={{ base: 'none', md: 'flex' }}
                 >
-                  <HeaderSecondaryItem
-                    href={menuNavigation.speakWithUs.href}
-                    title={header.t(menuNavigation.speakWithUs.key)}
-                  />
-                  <HeaderSecondaryItem
-                    href={menuNavigation.workWithUs.href}
-                    title={header.t(menuNavigation.workWithUs.key)}
-                    isExternal={true}
-                  />
-                  <HeaderSecondaryItem
-                    href={menuNavigation.whereBuy.href}
-                    title={header.t(menuNavigation.whereBuy.key)}
-                  />
+                  {router.locale === 'pt-BR' && (
+                    <>
+                      <HeaderSecondaryItem
+                        href={menuNavigation.speakWithUs.href}
+                        title={header.t(menuNavigation.speakWithUs.key)}
+                      />
+                      <HeaderSecondaryItem
+                        href={menuNavigation.workWithUs.href}
+                        title={header.t(menuNavigation.workWithUs.key)}
+                        isExternal={true}
+                      />
+                      <HeaderSecondaryItem
+                        href={menuNavigation.whereBuy.href}
+                        title={header.t(menuNavigation.whereBuy.key)}
+                      />
+                    </>
+                  )}
                 </Flex>
               </Flex>
             </Box>
@@ -307,19 +311,23 @@ export const AppHeader = () => {
                     onClick={() => setMenuMobileOpen(false)}
                     bg="green.800"
                   >
-                    <HeaderSecondaryItem
-                      href={menuNavigation.speakWithUs.href}
-                      title={header.t(menuNavigation.speakWithUs.key)}
-                    />
-                    <HeaderSecondaryItem
-                      href={menuNavigation.workWithUs.href}
-                      title={header.t(menuNavigation.workWithUs.key)}
-                      isExternal={true}
-                    />
-                    <HeaderSecondaryItem
-                      href={menuNavigation.whereBuy.href}
-                      title={header.t(menuNavigation.whereBuy.key)}
-                    />
+                    {router.locale === 'pt-BR' && (
+                      <>
+                        <HeaderSecondaryItem
+                          href={menuNavigation.speakWithUs.href}
+                          title={header.t(menuNavigation.speakWithUs.key)}
+                        />
+                        <HeaderSecondaryItem
+                          href={menuNavigation.workWithUs.href}
+                          title={header.t(menuNavigation.workWithUs.key)}
+                          isExternal={true}
+                        />
+                        <HeaderSecondaryItem
+                          href={menuNavigation.whereBuy.href}
+                          title={header.t(menuNavigation.whereBuy.key)}
+                        />
+                      </>
+                    )}
                   </Box>
 
                   <Flex
