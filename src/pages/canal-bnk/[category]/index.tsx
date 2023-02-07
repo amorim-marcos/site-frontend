@@ -25,7 +25,7 @@ export default function CategoryPage(props: CategoryPageProps) {
       categories={props.allCategories}
       patterns_pack_url={props.patterns_pack_url}
       defaultCategory={index}
-      youtubeVideos={props.youtubeVideos}
+      youtubeVideos={props.youtubeVideos || []}
     />
   )
 }
@@ -134,7 +134,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       allCategories,
       posts: posts && posts.length ? posts : [],
       patterns_pack_url,
-      youtubeVideos,
+      youtubeVideos: youtubeVideos || [],
       ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
     }
   }

@@ -59,31 +59,35 @@ export function CategoryCtxProvider(props: {
     const fetchYoutube = async () => {
       let res: any, data: any
 
-      res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/connect`)
-      data = await res.json()
-      setYoutubeDownloadLink(data.youtube_video_link)
+      try {
+        res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/connect`)
+        data = await res.json()
+        setYoutubeDownloadLink(data.youtube_video_link)
 
-      res = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${
-          process.env.YOUTUBE_CHANNEL_ID
-        }&maxResults=${4}&order=date&type=video&key=${
-          process.env.YOUTUBE_API_KEY
-        }`
-      )
-      data = await res.json()
-      setYoutubeVideos(data.items)
+        res = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${
+            process.env.YOUTUBE_CHANNEL_ID
+          }&maxResults=${4}&order=date&type=video&key=${
+            process.env.YOUTUBE_API_KEY
+          }`
+        )
+        data = await res.json()
+        setYoutubeVideos(data.items)
 
-      res = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${
-          process.env.YOUTUBE_CHANNEL_ID
-        }&maxResults=${1}&order=date&type=video&key=${
-          process.env.YOUTUBE_API_KEY
-        }`
-      )
-      data = await res.json()
+        res = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${
+            process.env.YOUTUBE_CHANNEL_ID
+          }&maxResults=${1}&order=date&type=video&key=${
+            process.env.YOUTUBE_API_KEY
+          }`
+        )
+        data = await res.json()
 
-      if (data.items?.length > 0) {
-        setLastYoutubeVideo(data.items[0].id.videoId)
+        if (data.items?.length > 0) {
+          setLastYoutubeVideo(data.items[0].id.videoId)
+        }
+      } catch (error) {
+        console.log(error)
       }
     }
 

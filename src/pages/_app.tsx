@@ -14,8 +14,23 @@ import { ni18nConfig } from '../../ni18n.config'
 import AppCookieConsent from '@components/AppCookieConsent'
 
 import '../styles/zoomout.css'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 function App({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+
+  useEffect(() => {
+    if (
+      router &&
+      router.locale &&
+      router.pathname.includes('canal-bnk') &&
+      router.locale !== 'pt-BR'
+    ) {
+      console.log('AAAAAAA - CANAL- BNK')
+      router.push('/')
+    }
+  }, [router])
   return (
     <ChakraProvider theme={theme}>
       <MyHead />
