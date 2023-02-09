@@ -12,6 +12,7 @@ import PatternCertification from '@components/PatternCertification'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
+import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/Grupo_1872.png)',
@@ -967,7 +968,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                 src={props.page_content.section6_img}
                 maxW={{ base: '100vw', lg: '660px' }}
               />
-              {router.locale === 'pt-BR' && (
+              <ConditionalLanguageRender>
                 <Button
                   onClick={() =>
                     router.push('/contact?channel=suprimentos-florestais')
@@ -992,7 +993,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                     {forestView.t('forestSupplier.becomeAForestSupplierBtn')}
                   </Text>
                 </Button>
-              )}
+              </ConditionalLanguageRender>
             </Flex>
           </Flex>
         </Flex>

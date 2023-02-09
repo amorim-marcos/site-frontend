@@ -1,6 +1,7 @@
 import { Box, Text, Flex } from '@chakra-ui/react'
 
 import CompletedTitle from '@components/CompletedTitle'
+import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import { Contactusicon } from '@components/Icons/Contactusicon/Contactusicon'
 import EarthIcon from '@components/Icons/EarthIcon'
@@ -109,7 +110,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
         </Box>
         {/* FIM GALERIA PRODUTOS */}
 
-        {router.locale === 'pt-BR' && (
+        <ConditionalLanguageRender>
           <Flex
             // bg="yellow"
             flex="1"
@@ -188,7 +189,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
               />
             </Box>
           </Flex>
-        )}
+        </ConditionalLanguageRender>
       </Flex>
     </Flex>
   )

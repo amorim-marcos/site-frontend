@@ -10,6 +10,7 @@ import { SectionProducts } from './sections/SectionProducts'
 import { SectionBanners } from './sections/SectionBanners'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
+import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 
 type PostProps = {
   id: number
@@ -73,9 +74,8 @@ export default function Home(props: HomeProps) {
   return (
     <Box bg="white.100">
       {/* INICIO BANNER CAROUSEL */}
-      {router.locale === 'pt-BR' &&
-        props.highlights &&
-        props.highlights.length > 0 && (
+      <ConditionalLanguageRender>
+        {props.highlights && props.highlights.length > 0 && (
           <HomeBanner
             items={props.highlights.map((item) => {
               return {
@@ -91,25 +91,28 @@ export default function Home(props: HomeProps) {
             })}
           />
         )}
+      </ConditionalLanguageRender>
       {/* FIM BANNER CAROUSEL */}
 
       {/* INICIO SECTION CANAL BNK */}
-      {router.locale === 'pt-BR' && props.latest.length > 0 && (
-        <SectionChannelBNK
-          items={props.latest.map((item, i) => {
-            return {
-              category: {
-                id: item.category.id,
-                name: item.category.name,
-                color: item.category.color
-              },
-              title: item.title,
-              urlImage: item.cover.url,
-              url_code: item.url_code
-            }
-          })}
-        />
-      )}
+      <ConditionalLanguageRender>
+        {props.latest.length > 0 && (
+          <SectionChannelBNK
+            items={props.latest.map((item, i) => {
+              return {
+                category: {
+                  id: item.category.id,
+                  name: item.category.name,
+                  color: item.category.color
+                },
+                title: item.title,
+                urlImage: item.cover.url,
+                url_code: item.url_code
+              }
+            })}
+          />
+        )}
+      </ConditionalLanguageRender>
       {/* FIM SECTION CANAL BNK */}
 
       {/* INICIO Nossos Produtos */}
@@ -249,7 +252,13 @@ export default function Home(props: HomeProps) {
       {/* FIM Banners */}
 
       {/* INICIO Redes Sociais */}
-      <Connect youtubeLink={youtubeLink} lastYoutubeVideo={lastYoutubeVideo} />
+
+      <ConditionalLanguageRender>
+        <Connect
+          youtubeLink={youtubeLink}
+          lastYoutubeVideo={lastYoutubeVideo}
+        />
+      </ConditionalLanguageRender>
     </Box>
   )
 }
