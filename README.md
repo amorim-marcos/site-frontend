@@ -3,25 +3,26 @@
 ## Dependências
 
 Projeto construído utilizando Node 14 LTS.
+Projeto desenvolvido usando npm como gerenciador de pacotes.
 
 ## Initial Setup
 
 Inicie instalando as dependências:
 
 ```bash
-$ yarn
+$ npm install
 ```
 
 Depois, adicione os hooks de verificação husky com o comando:
 
 ```bash
-$ yarn prepare
+$ npm run prepare
 ```
 
 Caso algum problema esteja ocorrendo com os hooks, comunique a equipe e, caso seja extremamente necessário, desative os hooks com o comando:
 
 ```bash
-$ yarn unprepare
+$ npm run unprepare
 ```
 
 ## Inciando a aplicação
@@ -31,7 +32,7 @@ $ yarn unprepare
 Para iniciar a aplicação em ambiente de desenvolvimento:
 
 ```bash
-$ yarn dev
+$ npm run dev
 ```
 
 ### Build
@@ -39,8 +40,8 @@ $ yarn dev
 Para iniciar a aplicação em ambiente de produção:
 
 ```bash
-$ yarn build
-$ yarn start
+$ npm run build
+$ npm run start
 ```
 
 
@@ -48,7 +49,7 @@ $ yarn start
 Visualização de componentes
 
 ```bash
-$ yarn storybook
+$ npm run storybook
 ```
 
 
@@ -56,13 +57,13 @@ $ yarn storybook
 DOM testing library + Jest
 
 ```bash
-$ yarn test --watch
+$ npm run test --watch
 ```
 
 
 ## Create Automatic Component
-Criação de novo componentes
+Criação de novo componente
 
 ```bash
-$ yarn generate
+$  npm run generate
 ```
