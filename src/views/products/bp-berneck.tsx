@@ -25,6 +25,7 @@ import type { Gallery } from 'types/data'
 import { useState, useEffect } from 'react'
 import { BPPageBanner } from 'pages/products/bp-berneck'
 import { useTranslation } from 'react-i18next'
+import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 
 export type BpBerneckViewProps = {
   galleries?: Gallery[]
@@ -262,119 +263,121 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
       {/* FIM Galeria de Ambientes */}
 
       {/* INICIO banners */}
-      <Flex justifyContent={{ base: 'center', '2xl': 'center' }}>
-        <Flex
-          maxWidth={'1536px'}
-          marginX="auto"
-          bg="white.100"
-          margin={{
-            base: '5% 0',
-            sm: '3% 1%',
-            lg: '3% 3%',
-            xl: '3% 2%',
-            '2xl': '5% 0 5% 0'
-          }}
-          justifyContent={{ base: 'space-between', '2xl': 'center' }}
-          gap={{ base: '2%', sm: '3%', lg: '3%', xl: '3%' }}
-          flexDirection={{ base: 'column', sm: 'row' }}
-          // bg="violet"
-          flex="1"
-        >
-          {[
-            {
-              srcImg: '/assets/imgs/pagina_capa_bp/pack_padroes_bp.png',
-              id: 1,
-              title: productsViewLabels.t(
-                'bpBerneck.linkBanners.packPatterns.title'
-              ),
-              subtTitle: productsViewLabels.t(
-                'bpBerneck.linkBanners.packPatterns.subtitle'
-              ),
-              anchorId: 'pack-bp-downloads',
-              subTitleColor: 'gray.400'
-            },
-            {
-              srcImg: '/assets/imgs/pagina_capa_bp/revista_inspirare.png',
-              id: 2,
-              title: productsViewLabels.t(
-                'bpBerneck.linkBanners.inspireMagazine.title'
-              ),
-              subtTitle: productsViewLabels.t(
-                'bpBerneck.linkBanners.inspireMagazine.subtitle'
-              ),
-              anchorId: 'revista-inspirare-bnk',
-              subTitleColor: 'white.100'
-            },
-            {
-              srcImg: '/assets/imgs/pagina_capa_bp/materiais_suporte.png',
-              id: 3,
-              title: productsViewLabels.t(
-                'bpBerneck.linkBanners.supportMaterials.title'
-              ),
-              subtTitle: productsViewLabels.t(
-                'bpBerneck.linkBanners.supportMaterials.subtitle'
-              ),
-              anchorId: 'materiais-de-suporte',
-              subTitleColor: 'white.100'
-            }
-          ].map((i) => {
-            return (
-              <Flex
-                onClick={() =>
-                  (window.location.href = `/canal-bnk/downloads/#${i.anchorId}`)
-                }
-                w={{ base: '100%', md: '30%' }}
-                h={{
-                  base: '50vw',
-                  sm: '50vw',
-                  md: '225px',
-                  lg: '282px',
-                  xl: '338px',
-                  '2xl': '423px'
-                }}
-                key={i.id}
-                flexDirection={'column'}
-                justifyContent={'flex-end'}
-                padding="2%"
-                background={`url(${i.srcImg})`}
-                backgroundSize={'cover'}
-                cursor={'pointer'}
-                position={'relative'}
-                marginY={{ base: '5%', md: '0' }}
-              >
-                <Text
-                  zIndex={'docked'}
-                  color={i.subTitleColor}
-                  variant={'h5' as any}
-                  fontWeight={'normal'}
-                >
-                  {i.subtTitle}
-                </Text>
-                <Text
-                  zIndex={'docked'}
-                  as="h4"
-                  variant={'h4' as any}
-                  fontWeight={'bold'}
-                >
-                  {i.title}
-                </Text>
-                <Box
-                  position={'absolute'}
-                  top="0"
-                  left="0"
-                  w="100%"
-                  h="100%"
-                  transition={'0.5s'}
-                  zIndex={'base'}
-                  _hover={{
-                    bg: 'linear-gradient(180deg, rgba(255,255,255,0) 48%, rgba(172,204,159,0.7959558823529411) 100%)'
+      <ConditionalLanguageRender>
+        <Flex justifyContent={{ base: 'center', '2xl': 'center' }}>
+          <Flex
+            maxWidth={'1536px'}
+            marginX="auto"
+            bg="white.100"
+            margin={{
+              base: '5% 0',
+              sm: '3% 1%',
+              lg: '3% 3%',
+              xl: '3% 2%',
+              '2xl': '5% 0 5% 0'
+            }}
+            justifyContent={{ base: 'space-between', '2xl': 'center' }}
+            gap={{ base: '2%', sm: '3%', lg: '3%', xl: '3%' }}
+            flexDirection={{ base: 'column', sm: 'row' }}
+            // bg="violet"
+            flex="1"
+          >
+            {[
+              {
+                srcImg: '/assets/imgs/pagina_capa_bp/pack_padroes_bp.png',
+                id: 1,
+                title: productsViewLabels.t(
+                  'bpBerneck.linkBanners.packPatterns.title'
+                ),
+                subtTitle: productsViewLabels.t(
+                  'bpBerneck.linkBanners.packPatterns.subtitle'
+                ),
+                anchorId: 'pack-bp-downloads',
+                subTitleColor: 'gray.400'
+              },
+              {
+                srcImg: '/assets/imgs/pagina_capa_bp/revista_inspirare.png',
+                id: 2,
+                title: productsViewLabels.t(
+                  'bpBerneck.linkBanners.inspireMagazine.title'
+                ),
+                subtTitle: productsViewLabels.t(
+                  'bpBerneck.linkBanners.inspireMagazine.subtitle'
+                ),
+                anchorId: 'revista-inspirare-bnk',
+                subTitleColor: 'white.100'
+              },
+              {
+                srcImg: '/assets/imgs/pagina_capa_bp/materiais_suporte.png',
+                id: 3,
+                title: productsViewLabels.t(
+                  'bpBerneck.linkBanners.supportMaterials.title'
+                ),
+                subtTitle: productsViewLabels.t(
+                  'bpBerneck.linkBanners.supportMaterials.subtitle'
+                ),
+                anchorId: 'materiais-de-suporte',
+                subTitleColor: 'white.100'
+              }
+            ].map((i) => {
+              return (
+                <Flex
+                  onClick={() =>
+                    (window.location.href = `/canal-bnk/downloads/#${i.anchorId}`)
+                  }
+                  w={{ base: '100%', md: '30%' }}
+                  h={{
+                    base: '50vw',
+                    sm: '50vw',
+                    md: '225px',
+                    lg: '282px',
+                    xl: '338px',
+                    '2xl': '423px'
                   }}
-                />
-              </Flex>
-            )
-          })}
+                  key={i.id}
+                  flexDirection={'column'}
+                  justifyContent={'flex-end'}
+                  padding="2%"
+                  background={`url(${i.srcImg})`}
+                  backgroundSize={'cover'}
+                  cursor={'pointer'}
+                  position={'relative'}
+                  marginY={{ base: '5%', md: '0' }}
+                >
+                  <Text
+                    zIndex={'docked'}
+                    color={i.subTitleColor}
+                    variant={'h5' as any}
+                    fontWeight={'normal'}
+                  >
+                    {i.subtTitle}
+                  </Text>
+                  <Text
+                    zIndex={'docked'}
+                    as="h4"
+                    variant={'h4' as any}
+                    fontWeight={'bold'}
+                  >
+                    {i.title}
+                  </Text>
+                  <Box
+                    position={'absolute'}
+                    top="0"
+                    left="0"
+                    w="100%"
+                    h="100%"
+                    transition={'0.5s'}
+                    zIndex={'base'}
+                    _hover={{
+                      bg: 'linear-gradient(180deg, rgba(255,255,255,0) 48%, rgba(172,204,159,0.7959558823529411) 100%)'
+                    }}
+                  />
+                </Flex>
+              )
+            })}
+          </Flex>
         </Flex>
-      </Flex>
+      </ConditionalLanguageRender>
       {/* FIM banners */}
     </Box>
   )

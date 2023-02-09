@@ -6,6 +6,7 @@ import { Grafism } from './Grafism/Grafism'
 import { useTranslation } from 'react-i18next'
 import { footerNavigation } from './footerNavigation'
 import { useRouter } from 'next/router'
+import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 
 export const AppFooter = () => {
   const footer = useTranslation('footer')
@@ -185,22 +186,24 @@ export const AppFooter = () => {
               }
             />
 
-            <FooterList
-              key={4}
-              title={{
-                title: footer.t(footerNavigation.channelBNKColumn.titleKey),
-                href: footerNavigation.channelBNKColumn.href
-              }}
-              items={
-                footerNavigation.channelBNKColumn.items
-                  ? footerNavigation.channelBNKColumn.items.map((i) => ({
-                      title: footer.t(i.titleKey),
-                      href: i.href,
-                      empty: i.empty
-                    }))
-                  : []
-              }
-            />
+            <ConditionalLanguageRender>
+              <FooterList
+                key={4}
+                title={{
+                  title: footer.t(footerNavigation.channelBNKColumn.titleKey),
+                  href: footerNavigation.channelBNKColumn.href
+                }}
+                items={
+                  footerNavigation.channelBNKColumn.items
+                    ? footerNavigation.channelBNKColumn.items.map((i) => ({
+                        title: footer.t(i.titleKey),
+                        href: i.href,
+                        empty: i.empty
+                      }))
+                    : []
+                }
+              />
+            </ConditionalLanguageRender>
           </Flex>
 
           <Box zIndex="base" position="absolute" top="-35px" left="0">

@@ -23,6 +23,7 @@ import {
 import { CertificationsIcon, EarthIcon, TapIcon } from '@components/Icons'
 import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
+import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 
 export interface PropertiesProps {
   productName: string
@@ -134,6 +135,7 @@ export const Properties = (props: PropertiesProps) => {
             // gap="2%"
             flex="2"
             gap={{ base: '2%', '2xl': '3%' }}
+
             // bg="blue.300"
           >
             <PatternInfo
@@ -158,27 +160,31 @@ export const Properties = (props: PropertiesProps) => {
               }
             />
 
-            <PatternInfo
-              title={bpCatalogItem.t('properties.discoverWhereToBuy.discover')}
-              description={bpCatalogItem.t(
-                'properties.discoverWhereToBuy.whereToBuy'
-              )}
-              onClick={() => router.push('/onde-comprar')}
-              icon={
-                <EarthIcon
-                  width={{
-                    base: '30px',
-                    lg: '50px',
-                    xl: '60px'
-                  }}
-                  height={{
-                    base: '30px',
-                    lg: '50px',
-                    xl: '60px'
-                  }}
-                />
-              }
-            />
+            <ConditionalLanguageRender>
+              <PatternInfo
+                title={bpCatalogItem.t(
+                  'properties.discoverWhereToBuy.discover'
+                )}
+                description={bpCatalogItem.t(
+                  'properties.discoverWhereToBuy.whereToBuy'
+                )}
+                onClick={() => router.push('/onde-comprar')}
+                icon={
+                  <EarthIcon
+                    width={{
+                      base: '30px',
+                      lg: '50px',
+                      xl: '60px'
+                    }}
+                    height={{
+                      base: '30px',
+                      lg: '50px',
+                      xl: '60px'
+                    }}
+                  />
+                }
+              />
+            </ConditionalLanguageRender>
           </Flex>
         </Flex>
 

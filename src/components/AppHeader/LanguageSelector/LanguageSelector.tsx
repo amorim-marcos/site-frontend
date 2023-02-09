@@ -7,6 +7,13 @@ import { LanguageIcon } from './LanguageIcon'
 import { ArrowIcon } from './ArrowIcon'
 import Cookies from 'js-cookie'
 
+function getLocale(locale: string) {
+  if (locale === 'en') return 'English'
+  if (locale === 'es') return 'Español'
+  if (locale === 'zn-CN') return 'Mandarim'
+  return 'Português'
+}
+
 export const LanguageSelector = () => {
   const [open, setOpen] = useState(false)
   const router = useRouter()
@@ -47,7 +54,7 @@ export const LanguageSelector = () => {
           xl: '14px'
         }}
       >
-        {header.t('locale')}
+        {getLocale(router.locale || '')}
       </Text>
 
       <Box

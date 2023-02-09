@@ -63,6 +63,7 @@ export const ProductBody = ({
         flex="1"
         w={'100%'}
         padding={{ base: '5% 0 10% 5%', '2xl': '5% 0 5% 3%' }}
+        position="relative"
       >
         <Box>
           {description && (
