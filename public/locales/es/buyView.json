@@ -1,13 +1,10 @@
 {
-    "headerBanner": {
-        "title":"Onde Comprar",
-        "description": "other_lang_Os produtos BERNECK® podem ser encontrados nos melhores móveis e revendas do Brasil e do mundo. Confira abaixo os pontos de revenda mais próximos a você."
-    },
-    "pagebar": {
-        "whereToBuy": "other_lang_Onde Comprar"
-    },
-    "locationSelector": {
-        "inBrazil": "other_lang_NO BRASIL",
-        "inTheWorld": "other_lang_NO MUNDO"
-    }
+  "headerBanner": {
+    "title": "Dónde Comprar",
+    "description": "Los productos BERNECK® se pueden encontrar en los mejores muebles y reventas de Brasil y del mundo. Consulta a continuación los puntos de reventa más cercanos a ti.",
+    "industrialApplications": " contact one of \"",
+    "ourRepresentatives": "nuestros representantes."
+  },
+  "pagebar": { "whereToBuy": "Dónde Comprar" },
+  "locationSelector": { "inBrazil": "EN BRASIL", "inTheWorld": "EN EL MUNDO" }
 }

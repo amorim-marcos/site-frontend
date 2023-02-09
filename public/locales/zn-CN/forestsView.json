@@ -1,37 +1,33 @@
 {
-    "weCultivate": {
-        "sloganPartOne": "other_lang_Cultivamos para colher,",
-        "sloganPartTwo": "other_lang_ Conservamos para colher sempre!",
-        "discoverOurEnvironmentalCommitmentBtn": "other_lang_Conheça nosso compromisso ambiental"
-    },
-    "infoGraphicsForests": {
-        "thousandHectares": "other_lang_mil hectares",
-        "pineForestCultivation": "other_lang_Cultivo Florestal do Pinus",
-        "effectivelyPlantedForests": "other_lang_Florestas Efetivamente Plantadas",
-        "millionsPerYear": "other_lang_milhões por ano",
-        "preservationOfNaturalForests": "other_lang_Preservação de Florestas Naturais",
-        "plantedTrees": "other_lang_Árvores Plantadas",
-        "states": "other_lang_estados",
-        "whichStates": "other_lang_PR, SC, RS, MT e SP",
-        "counties": "other_lang_municípios",
-        "supplyChain": "other_lang_Cadeia de Suprimentos"
-    },
-    "knowOurCertifications": {
-        "know": "other_lang_CONHEÇA",
-        "ourCertifications": "other_lang_Nossas Certificações"
-    },
-    "infoGraphicBiodiversity": {
-        "wildAnimalSpecies": "other_lang_Espécies de Animais Silvestres",
-        "monitoredFarms":"Fazendas Monitoradas"
-    },
-    "forestProductionHighlights": {
-        "title": "other_lang_Destaques da produção florestal"
-    },
-    "forestSupplier": {
-        "becomeAForestSupplierBtn": "other_lang_Seja um Fornecedor Florestal"
-    },
-    "publicSummaryOfForestManagement":{
-        "title": "other_lang_Resumo público de Manejo Florestal",
-        "description": "other_lang_ Saiba mais sobre o manejo responsável das nossas florestas."
-    }
+  "weCultivate": {
+    "sloganPartOne": "\"Cultivamos para colher",
+    "sloganPartTwo": "我们始终保持的收获\r",
+    "discoverOurEnvironmentalCommitmentBtn": "了解我们的环保承诺\r"
+  },
+  "infoGraphicsForests": {
+    "thousandHectares": "一千公顷\r",
+    "pineForestCultivation": "松木林栽培\r",
+    "effectivelyPlantedForests": "有效种植的森林 \r",
+    "millionsPerYear": "百万/年\r",
+    "preservationOfNaturalForests": "天然林保护\r",
+    "plantedTrees": "种植的树木 \r",
+    "states": "州\r",
+    "whichStates": " MT and SP\"",
+    "counties": "市政当局\r",
+    "supplyChain": "供应链\r"
+  },
+  "knowOurCertifications": {
+    "know": "认知\r",
+    "ourCertifications": "我们的证书\r"
+  },
+  "infoGraphicBiodiversity": {
+    "wildAnimalSpecies": "野生动物种类\r",
+    "monitoredFarms": "受监管的农场\r"
+  },
+  "forestProductionHighlights": { "title": "森林生产重点\r" },
+  "forestSupplier": { "becomeAForestSupplierBtn": "成为林业供应商\r" },
+  "publicSummaryOfForestManagement": {
+    "title": "森林管理公开摘要\r",
+    "description": "了解有关负责任的森林管理的更多信息"
+  }
 }

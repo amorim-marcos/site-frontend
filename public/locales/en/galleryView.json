@@ -1,33 +1,33 @@
 {
-    "pagebar": {
-        "products": "other_lang_Produtos",
-        "bpBerneck": "other_lang_BP BERNECK®",
-        "envGallery": "other_lang_Galeria de Ambientes"
-    },
-    "filter": {
-        "notFound": "other_lang_Os filtros aplicados não retornaram nenhum resultado.",
-        "notFoundFor": "other_lang_Nenhum resultado encontrado para"
-    },
-    "filtersAccordion": {
-        "filterResults": "other_lang_Filtrar Resultados",
-        "hideFilters":"Esconder filtros",
-        "bpBerneck": "other_lang_BP BERNECK®",
-        "seeLess": "other_lang_Ver menos",
-        "seeMore": "other_lang_Ver mais",
-        "environment": "other_lang_AMBIENTE",
-        "style": "other_lang_ESTILO",
-        "filter": "other_lang_Filtrar",
-        "searchPlaceHolder": "other_lang_Digite sua busca",
-        "clearFilters": "other_lang_Limpar filtros"
-    },
-    "filtersTab": {
-        "filterResults": "other_lang_Filtrar Resultados",
-        "hideFilters":"Esconder filtros",
-        "bpBerneck": "other_lang_BP BERNECK®",
-        "environment": "other_lang_AMBIENTE",
-        "style": "other_lang_ESTILO",
-        "filter": "other_lang_Filtrar",
-        "searchPlaceHolder": "other_lang_Pesquise pelo nome",
-        "clearFilters": "other_lang_Limpar filtros"
-    }
+  "pagebar": {
+    "products": "Products",
+    "bpBerneck": "BP BERNECK®",
+    "envGallery": "Environments Gallery"
+  },
+  "filter": {
+    "notFound": "The filters applied returned no results.",
+    "notFoundFor": "No results found for"
+  },
+  "filtersAccordion": {
+    "filterResults": "Filter Results",
+    "hideFilters": "Hide filters",
+    "bpBerneck": "BP BERNECK®",
+    "seeLess": "See less",
+    "seeMore": "See more",
+    "environment": "ENVIRONMENT",
+    "style": "STYLE",
+    "filter": "Filter",
+    "searchPlaceHolder": "Enter your search",
+    "clearFilters": "Clean filters"
+  },
+  "filtersTab": {
+    "filterResults": "Filter Results",
+    "hideFilters": "Hide filters",
+    "bpBerneck": "BP BERNECK®",
+    "environment": "ENVIRONMENT",
+    "style": "STYLE",
+    "filter": "Filter",
+    "searchPlaceHolder": "Search by names",
+    "clearFilters": "Clean filters"
+  }
 }

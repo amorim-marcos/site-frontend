@@ -1,80 +1,69 @@
 {
-    "appCookieConsent": {
-        "satisfactoryExperience": "other_lang_O site da Berneck S.A utiliza cookies para uma experiência mais satisfatória e personalizada.",
-        "cookieCollect": "other_lang_Ao navegar neste ambiente digital você estará sujeito à coleta dos cookies descritos na",
-        "privacy": "other_lang_Política de Privacidade.",
-        "btn": "other_lang_PROSSEGUIR"
-    },
-    "appError": {
-        "returnToHome": "other_lang_RETORNAR PARA HOME"
-    },
-    "connect": {
-        "title":"Conecte-se"
-    },
-    "contactChannelForm": {
-        "name": "other_lang_Nome",
-        "email": "other_lang_E-mail",
-        "phone": "other_lang_Telefone",
-        "city": "other_lang_Cidade",
-        "uf": "other_lang_Estado",
-        "company": "other_lang_Empresa",
-        "contactChannelType": "other_lang_Tipo de Canal de Contato",
-        "message": "other_lang_Mensagem",
-        "requireFields": "other_lang_Campos obrigatórios",
-        "send": "other_lang_ENVIAR",
-        "messageAcknowledgment":"Agradecemos a sua mensagem",
-        "errorMessage": "other_lang_Alguma coisa aconteceu de errado. Por favor, tente novamente."
-    },
-    "pagebar": {
-        "back": "other_lang_Voltar"
-    },
-    "plusInfoTable": {
-        "testBody":"CORPO DE PROVA",
-        "amountOfWaterAbsorbed":"Quantidade de água absorvida",
-        "absorption":"Absorção",
-        "thicknessIncrease":"Aumento de espessura",
-        "swelling":"Inchamento"
-    },
-    "postRelationalContent": {
-        "title": "other_lang_Conteúdos Relacionados"
-    },
-    "product": {
-        "thickness": "other_lang_Espessura",
-        "length": "other_lang_Comprimento",
-        "width": "other_lang_Largura",
-        "otherDimensionsText" : "other_lang_*Outras dimensões sob consulta",
-        "dimensionsMM": "other_lang_Dimensões (mm)",
-        "datasheet": "other_lang_Ficha técnica",
-        "whereBuy": "other_lang_Onde comprar",
-        "qualityCertificate": "other_lang_Certificado de Qualidade",
-        "description": "other_lang_Descrição",
-        "usesAndApplications": "other_lang_Usos e Aplicações",
-        "finishes": "other_lang_Acabamentos",
-        "moreTechnologyQualityProtection": "other_lang_Mais tecnologia, mais qualidade, mais proteção",
-        "specifications": "other_lang_Especificações",
-        "qualityStandards": "other_lang_Normas de qualidade",
-        "machinability":"Usinabilidade",
-        "supplyInformationTitleTeca": "other_lang_Fornecemos a BERNECK® TECA serrada bruta e aplainada:",
-        "plusBerneck": "other_lang_PLUS BERNECK"
-    },
-    "qualitiesPinusBerneck": {
-        "title": "other_lang_Qualidades de BERNECK® PINUS"
-    },
-    "sectionPackBpDownloads": {
-        "patternPacks": "other_lang_Pack de Padrões"
-    },
-    "whereBuyTable": {
-        "country": "other_lang_PAÍS",
-        "city": "other_lang_CIDADE",
-        "client": "other_lang_CLIENTE",
-        "fantasyName":"NOME FANTASIA",
-        "address" : "other_lang_ENDEREÇO",
-        "contact": "other_lang_CONTATO"
-    },
-    "whereWeArePanel": {
-        "structure": "other_lang_ESTRUTURA",
-        "location" : "other_lang_LOCALIZAÇÃO",
-        "phones" : "other_lang_TELEFONES",
-        "airportsDistance": "other_lang_DISTÂNCIA DO AEROPORTO"
-    }
+  "appCookieConsent": {
+    "satisfactoryExperience": "Berneck S.A. 的网站使用cookie提供更令人满意和个性化的体验。\r",
+    "cookieCollect": "Ao navegar neste ambiente digital você estará sujeito à coleta dos cookies descritos na",
+    "privacy": "隐私政策\r",
+    "btn": "继续\r"
+  },
+  "appError": { "returnToHome": "返回主页\r" },
+  "connect": { "title": "连接您自己\r" },
+  "contactChannelForm": {
+    "name": "姓名\r",
+    "email": "电子邮件\r",
+    "phone": "电话\r",
+    "city": "城市\r",
+    "uf": "州\r",
+    "company": "公司\r",
+    "contactChannelType": "联系方式类型\r",
+    "message": "消息\r",
+    "requireFields": "必填内容\r",
+    "send": "发送\r",
+    "messageAcknowledgment": "感谢您的留言\r",
+    "errorMessage": "\"Alguma coisa aconteceu de errado. Por favor"
+  },
+  "pagebar": { "back": "返回\r" },
+  "plusInfoTable": {
+    "testBody": "试验体\r",
+    "amountOfWaterAbsorbed": "吸水量\r",
+    "absorption": "吸收\r",
+    "thicknessIncrease": "厚度增加\r",
+    "swelling": "通货膨胀\r"
+  },
+  "postRelationalContent": { "title": "相关内容\r" },
+  "product": {
+    "thickness": "厚度\r",
+    "length": "长度\r",
+    "width": "宽度\r",
+    "otherDimensionsText": "根据要求提供的其他尺寸\r",
+    "dimensionsMM": "尺寸（mm）\r",
+    "datasheet": "参数表\r",
+    "whereBuy": "从哪里购买\r",
+    "qualityCertificate": "质量证书\r",
+    "description": "描述\r",
+    "usesAndApplications": "用途和应用\r",
+    "finishes": "饰面\r",
+    "moreTechnologyQualityProtection": "\"Más tecnología",
+    "specifications": "规格\r",
+    "qualityStandards": "质量规范\r",
+    "machinability": "无法使用\r",
+    "supplyInformationTitleTeca": "我们供应BERNECK®柚木锯材毛板和刨光板：\r",
+    "plusBerneck": "PLUS BERNECK\r",
+    "knowMoreAbout": "了解更多有关"
+  },
+  "qualitiesPinusBerneck": { "title": "优质BERNECK®松木\r" },
+  "sectionPackBpDownloads": { "patternPacks": "图案包\r" },
+  "whereBuyTable": {
+    "country": "国家\r",
+    "city": "城市\r",
+    "client": "客户\r",
+    "fantasyName": "幻想的名字\r",
+    "address": "地址\r",
+    "contact": "联系人\r"
+  },
+  "whereWeArePanel": {
+    "structure": "结构\r",
+    "location": "位置\r",
+    "phones": "电话\r",
+    "airportsDistance": "离机场的距离\r"
+  }
 }

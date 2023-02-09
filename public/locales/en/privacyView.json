@@ -1,13 +1,9 @@
 {
-    "pagebar": {
-        "privacy": "other_lang_Política de privacidade e termos de uso"
-    },
-    "headerBanner": {
-        "title":"Política de privacidade e termos de uso"
-    },
-    "useTermsAndPrivacy": "other_lang_Termos de uso e privacidade",
-    "useTermsAndPrivacyDescription": "other_lang_o acessar o ambiente digital da Berneck S.A você estará sujeito a coleta de dados pessoais, nos termos da Política de Privacidade quando assim solicitado, diante de finalidade clara e determinada.",
-    "knowOurPrivacyAndTerms": "other_lang_Conheça nossa Política de privacidade",
-    "dataProtectionOfficer": "other_lang_Data Protection Officer (DPO)",
-    "privacyMoreInformation": "other_lang_Para obter informações, inclusive para exercício dos seus direitos como titular dos dados pessoais a nós confiados, pode entrar em contato com nosso Data Protection Officer (DPO) através do e-mail" 
+  "pagebar": { "privacy": "Privacy Policy and Terms of Use" },
+  "headerBanner": { "title": "Privacy Policy and Terms of Use" },
+  "useTermsAndPrivacy": "Terms of Use and Privacy",
+  "useTermsAndPrivacyDescription": "\"the accessing the Berneck S.A. digital environment you will be subject to the collection of personal data in accordance with the Privacy Policy",
+  "knowOurPrivacyAndTerms": "Learn about our Privacy Policy",
+  "dataProtectionOfficer": "Data Protection Officer (DPO)",
+  "privacyMoreInformation": "\"For information"
 }

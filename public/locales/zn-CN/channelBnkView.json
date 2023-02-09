@@ -1,38 +1,25 @@
 {
-    "pagebar":{
-        "channelBnk":"Canal BNK"
-    },
-    "downloadsView": {
-        "pagebar":  {
-            "downloads": "other_lang_Downloads"
-        }
-    },
-    "postsView": {
-        "pagebar":{
-            "channelBnk": "other_lang_Canal BNK"
-        }
-    },
-    "downloadsSection": {
-        "title": "other_lang_Downloads",
-        "seeMore" : "other_lang_Veja mais downloads",
-        "inspirareBnkMagazine" :"Revista Inspirare BNK",
-        "opinusMagazine":"Revista Opinus",
-        "reports":"Relatórios",
-        "supportMaterials": "other_lang_Materiais de Suporte",
-        "promotionalMaterials":"Materiais de Divulgação",
-        "patternPack": "other_lang_Pack de Padrões BP BERNECK®",
-        "forestCertificates":"Certificados Florestais",
-        "productCertificates": "other_lang_Certificados de Produto"
-    },
-    "introSection": {
-        "channelDescription": "other_lang_Nosso canal de conteúdos sobre madeira, inspiração e muito mais.",
-        "searchResult": "other_lang_Resultados para:",
-        "allContents": "other_lang_Todos os conteúdos",
-        "seeAll": "other_lang_VER TUDO",
-        "seeMore": "other_lang_Veja mais conteúdos"
-    },
-    "videosSection": {
-        "title": "other_lang_Vídeos",
-        "seeMoreVideos": "other_lang_Veja mais vídeos"
-    }
+  "pagebar": { "channelBnk": "BNK 渠道\r" },
+  "downloadsView": { "pagebar": { "downloads": "下载\r" } },
+  "postsView": { "pagebar": { "channelBnk": "BNK 渠道\r" } },
+  "downloadsSection": {
+    "title": "下载\r",
+    "seeMore": "查看更多下载\r",
+    "inspirareBnkMagazine": "Inspirare BNK 杂志\r",
+    "opinusMagazine": "Opinus杂志\r",
+    "reports": "报告\r",
+    "supportMaterials": "支持资料\r",
+    "promotionalMaterials": "披露材料\r",
+    "patternPack": "BERNECK®BP图案包\r",
+    "forestCertificates": "林业证书\r",
+    "productCertificates": "产品证书\r"
+  },
+  "introSection": {
+    "channelDescription": "\"Nuestro canal de contenidos sobre madera",
+    "searchResult": "结果：\r",
+    "allContents": "所有内容\r",
+    "seeAll": "查看全部\r",
+    "seeMore": "查看更多内容\r"
+  },
+  "videosSection": { "title": "视频\r", "seeMoreVideos": "查看更多视频" }
 }

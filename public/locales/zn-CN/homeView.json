@@ -1,27 +1,14 @@
 {
-    "connectTitle": "other_lang_Conecte-se",
-    "knowOurCommitment": {
-        "title": "other_lang_CONHEÇA",
-        "description": "other_lang_Nosso compromisso"
-    },
-    "knowOurFlorestalDivision": {
-        "title": "other_lang_CONHEÇA",
-        "description": "other_lang_Divisão Florestal"
-    },
-    "sectionChannelBnk": {
-        "channelDescription": "other_lang_Nosso canal de conteúdos sobre madeira, inspiração e muito mais."
-    },
-    "productsSection": {
-        "ourProducts": "other_lang_Nossos Produtos",
-        "seeAllProducts": "other_lang_Veja todos os produtos",
-        "discoverBanner": {
-            "title": "other_lang_DESCUBRA",
-            "description": "other_lang_Onde Comprar"
-        },
-        "contactBanner": {
-            "title": "other_lang_ENTRE EM CONTATO",
-            "description": "other_lang_Fale Conosco"
-        }
-    }
-    
+  "connectTitle": "连接\r",
+  "knowOurCommitment": { "title": "认知\r", "description": "我们的约定\r" },
+  "knowOurFlorestalDivision": { "title": "认知\r", "description": "林业部\r" },
+  "sectionChannelBnk": {
+    "channelDescription": "\"Nuestro canal de contenidos sobre madera"
+  },
+  "productsSection": {
+    "ourProducts": "我们的产品\r",
+    "seeAllProducts": "查看所有产品\r",
+    "discoverBanner": { "title": "发现 \r", "description": "从哪里购买\r" },
+    "contactBanner": { "title": "联系我们 \r", "description": "与我们交谈" }
+  }
 }

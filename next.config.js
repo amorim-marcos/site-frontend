@@ -23,16 +23,6 @@ module.exports = withPWA({
   },
   i18n: {
     defaultLocale: 'pt-BR',
-    // locales: ['pt-BR']
     locales: ['en', 'es', 'pt-BR', 'zn-CN']
-  },
-  poweredByHeader: false,
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: securityHeaders
-      }
-    ]
   }
 })
