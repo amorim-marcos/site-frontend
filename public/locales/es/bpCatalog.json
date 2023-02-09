@@ -1,34 +1,41 @@
 {
-    "pagebar":{
-        "products": "other_lang_Produtos",
-        "bpBerneck": "other_lang_BP BERNECK®",
-        "bpCatalog": "other_lang_Catálogo BP"
-    },
-    "filters": {
-        "notFound": "other_lang_Os filtros aplicados não retornaram nenhum resultado.",
-        "notFoundFor": "other_lang_Nenhum resultado encontrado para"
-    },
-    "filtersAccordion": {
-        "filterResults": "other_lang_Filtrar Resultados",
-        "hideFilters":"Esconder filtros",
-        "panels": "other_lang_PAINÉIS",
-        "collections":"COLEÇÕES",
-        "coloration": "other_lang_COLORAÇÃO",
-        "filter": "other_lang_Filtrar",
-        "clearFilters": "other_lang_Limpar filtros"
-    },
-    "filtersTab": {
-        "filterResults": "other_lang_Filtrar Resultados",
-        "hideFilters":"Esconder filtros",
-        "panels": "other_lang_PAINÉIS",
-        "collections":"COLEÇÕES",
-        "coloration": "other_lang_COLORAÇÃO",
-        "filter": "other_lang_Filtrar",
-        "clearFilters": "other_lang_Limpar filtros",
-        "orderBy": "other_lang_Ordenar por",
-        "exhibitionFormat": "other_lang_Formato de exibição",
-        "searchByName": "other_lang_Pesquise pelo nome",
-        "bgColor": "other_lang_Cor do fundo",
-        "productsFound":"Produtos Encontrados"
-    }
+  "pagebar": {
+    "products": "Productos",
+    "bpBerneck": "BP BERNECK®",
+    "bpCatalog": "Catálogo BP"
+  },
+  "filters": {
+    "notFound": "Los filtros aplicados no devolvieron ningún resultado.",
+    "notFoundFor": "No se encontraron resultados para"
+  },
+  "filtersAccordion": {
+    "filterResults": "Filtrar Resultados",
+    "hideFilters": "Ocultar filtros",
+    "panels": "PANELES",
+    "collections": "COLECCIONES",
+    "coloration": "COLORACIÓN",
+    "filter": "Filtrar",
+    "clearFilters": "Limpiar filtros",
+    "orderBy": "Ordenar por",
+    "launch": "Lanzamiento",
+    "name": "Orden alfabético",
+    "colorScale": "Escala de color"
+  },
+  "filtersTab": {
+    "filterResults": "Filtrar Resultados",
+    "hideFilters": "Ocultar filtros",
+    "panels": "PANELES",
+    "collections": "COLECCIONES",
+    "coloration": "COLORACIÓN",
+    "filter": "Filtrar",
+    "clearFilters": "Limpiar filtros",
+    "orderBy": "Ordenar por",
+    "exhibitionFormat": "Formato de visualización",
+    "searchByName": "Buscar por nombre",
+    "bgColor": "Color de fondo",
+    "productsFound": "Productos Encontrados",
+    "launch": "Lanzamiento",
+    "name": "Orden alfabético",
+    "colorScale": "Escala de color"
+  }
 }

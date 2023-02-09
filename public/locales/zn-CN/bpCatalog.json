@@ -1,34 +1,41 @@
 {
-    "pagebar":{
-        "products": "other_lang_Produtos",
-        "bpBerneck": "other_lang_BP BERNECK®",
-        "bpCatalog": "other_lang_Catálogo BP"
-    },
-    "filters": {
-        "notFound": "other_lang_Os filtros aplicados não retornaram nenhum resultado.",
-        "notFoundFor": "other_lang_Nenhum resultado encontrado para"
-    },
-    "filtersAccordion": {
-        "filterResults": "other_lang_Filtrar Resultados",
-        "hideFilters":"Esconder filtros",
-        "panels": "other_lang_PAINÉIS",
-        "collections":"COLEÇÕES",
-        "coloration": "other_lang_COLORAÇÃO",
-        "filter": "other_lang_Filtrar",
-        "clearFilters": "other_lang_Limpar filtros"
-    },
-    "filtersTab": {
-        "filterResults": "other_lang_Filtrar Resultados",
-        "hideFilters":"Esconder filtros",
-        "panels": "other_lang_PAINÉIS",
-        "collections":"COLEÇÕES",
-        "coloration": "other_lang_COLORAÇÃO",
-        "filter": "other_lang_Filtrar",
-        "clearFilters": "other_lang_Limpar filtros",
-        "orderBy": "other_lang_Ordenar por",
-        "exhibitionFormat": "other_lang_Formato de exibição",
-        "searchByName": "other_lang_Pesquise pelo nome",
-        "bgColor": "other_lang_Cor do fundo",
-        "productsFound":"Produtos Encontrados"
-    }
+  "pagebar": {
+    "products": "产品\r",
+    "bpBerneck": "BP BERNECK®\r",
+    "bpCatalog": "BP目录\r"
+  },
+  "filters": {
+    "notFound": "应用的筛选条件未查到任何结果\r",
+    "notFoundFor": "未找到结果\r"
+  },
+  "filtersAccordion": {
+    "filterResults": "筛选结果\r",
+    "hideFilters": "隐藏筛选器\r",
+    "panels": "面板\r",
+    "collections": "收藏\r",
+    "coloration": "着色\r",
+    "filter": "筛选\r",
+    "clearFilters": "清除筛选\r",
+    "orderBy": "排序依据\r",
+    "launch": "启动\r",
+    "name": "字母顺序\r",
+    "colorScale": "颜色比例\r"
+  },
+  "filtersTab": {
+    "filterResults": "筛选结果\r",
+    "hideFilters": "隐藏筛选器\r",
+    "panels": "面板\r",
+    "collections": "收藏\r",
+    "coloration": "着色\r",
+    "filter": "筛选\r",
+    "clearFilters": "清除筛选\r",
+    "orderBy": "排序依据\r",
+    "exhibitionFormat": "显示格式\r",
+    "searchByName": "按名称搜索\r",
+    "bgColor": "背景色\r",
+    "productsFound": "产品查找\r",
+    "launch": "启动\r",
+    "name": "字母顺序\r",
+    "colorScale": "颜色比例"
+  }
 }

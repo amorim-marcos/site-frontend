@@ -1,46 +1,40 @@
 {
-    "ethicsCodeSection": {
-        "title": "other_lang_Código de ética e conduta",
-        "description": "other_lang_Nosso Código de Ética e Conduta apresenta os direitos e deveres que todos os nossos colaboradores e parceiros seguem à risca.",
-        "know": "other_lang_Conheça:",
-        "btn": "other_lang_Código de ética e conduta"
-    },
-    "ourCorporativeValues": {
-        "title": "other_lang_Nossos valores corporativos"
-    },
-    "fsc": {
-        "description": "other_lang_Ao escolher produtos certificados pelo FSC®, você apoia o manejo responsável das florestas do mundo."
-    },
-    "knowOurCertifications": {
-        "know": "other_lang_CONHEÇA",
-        "ourCertifications": "other_lang_Nossas Certificações"
-    },
-    "infoGraphicAtmospheric": {
-        "carbonSequestration": "other_lang_Sequestro de Carbono",
-        "moreOf":"Mais de",
-        "millionCo2": "other_lang_milhões de tCO₂e",
-        "AtmosphericEmissions": "other_lang_Emissões Atmosféricas",
-        "about": "other_lang_Cerca de",
-        "source": "other_lang_(Dados do inventário de GEE de 2019)"
-    },
-    "infoGraphicSustainability": {
-        "co-generate": "other_lang_Co-geramos",
-        "energyUsed": "other_lang_da Energia Utilizada",
-        "reuse": "other_lang_Reaproveitamos",
-        "waterUsed": "other_lang_da Água Utilizada"
-    },
-    "infoGraphicContributors": {
-        "measure": "other_lang_Mil",
-        "description": "other_lang_Colaboradores diretos e indiretos"
-    },
-    "weCultivateOurPeople": {
-        "bePartOfThisTeamBtn": "other_lang_Faça parte desse time"
-    },
-    "socialProjects":{
-        "description": "other_lang_Por meio das leis de incentivo, a BERNECK® apoia projetos que auxiliam o Estado a criar uma sinergia e impacto social positivo, levando estímulo aos jovens e à população em geral.",
-        "checkOutSponsoredProjects": "other_lang_Confira alguns projetos patrocinados por nós:"
-    },
-    "ESG": {
-        "title":"ESG"
-    }
+  "ethicsCodeSection": {
+    "title": "道德和行为准则\r",
+    "description": "我们的《道德与行为准则》明确规定了所有员工和合作伙伴应遵守的权利和义务\r",
+    "know": "了解：\r",
+    "btn": "道德和行为准则\r"
+  },
+  "ourCorporativeValues": { "title": "我们的企业价值观\r" },
+  "fsc": {
+    "description": " apoyas la gestión responsable de los bosques del mundo.\""
+  },
+  "knowOurCertifications": {
+    "know": "了解：\r",
+    "ourCertifications": "我们的认证\r"
+  },
+  "infoGraphicAtmospheric": {
+    "carbonSequestration": "碳捕获\r",
+    "moreOf": "更多\r",
+    "millionCo2": "百万吨二氧化碳CO₂\r",
+    "AtmosphericEmissions": "大气排放物\r",
+    "about": "关于\r",
+    "source": "（2019年温室气体清单数据）\r"
+  },
+  "infoGraphicSustainability": {
+    "co-generate": "共同生成\r",
+    "energyUsed": "使用的能源\r",
+    "reuse": "重新使用\r",
+    "waterUsed": "使用的水\r"
+  },
+  "infoGraphicContributors": {
+    "measure": "一千\r",
+    "description": "直接和间接合作者\r"
+  },
+  "weCultivateOurPeople": { "bePartOfThisTeamBtn": "加入这个团队\r" },
+  "socialProjects": {
+    "description": "\"Por medio de las leyes de incentivo",
+    "checkOutSponsoredProjects": "查看我们赞助的一些项目：\r"
+  },
+  "ESG": { "title": "ESG" }
 }

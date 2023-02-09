@@ -1,42 +1,42 @@
 {
-    "weAreBerneckColumn": {
-        "title": "other_lang_SOMOS BERNECK",
-        "whoWeAre": "other_lang_QUEM SOMOS",
-        "ourTrajectory": "other_lang_NOSSA TRAJETÓRIA",
-        "whereWeAre": "other_lang_ONDE ESTAMOS",
-        "certifications": "other_lang_CERTIFICAÇÕES"
-    },
-    "ourCommitmentColumn": {
-        "title": "other_lang_NOSSO COMPROMISSO",
-        "environment": "other_lang_CULTIVAMOS O MEIO AMBIENTE",
-        "ourPeople": "other_lang_CULTIVAMOS NOSSA GENTE",
-        "ourValues": "other_lang_CULTIVAMOS NOSSOS VALORES",
-        "report": "other_lang_ESG"
-    },
-    "florestalDivisionColumn": {
-        "title": "other_lang_DIVISÃO FLORESTAL",
-        "forestManagement": "other_lang_MANEJO FLORESTAL",
-        "forestProduction": "other_lang_PRODUÇÃO FLORESTAL",
-        "forestSuppliers": "other_lang_FORNECEDOR FLORESTAL",
-        "publicResume": "other_lang_RESUMO PÚBLICO"
-    },
-    "productsColumn":{
-        "title": "other_lang_PRODUTOS",
-        "bpBerneck": "other_lang_BP BERNECK®",
-        "hdfBerneck": "other_lang_HDF BERNECK®",
-        "mdfBerneck": "other_lang_MDF BERNECK®",
-        "mdpBerneck": "other_lang_MDP BERNECK®",
-        "plusBerneck": "other_lang_PLUS BERNECK®",
-        "berneckPinus": "other_lang_BERNECK® PINUS",
-        "berneckTeca": "other_lang_BERNECK® TECA"
-    },
-    "channelBNKColumn": {
-        "title":  "CANAL BNK",
-        "downloads": "other_lang_DOWNLOADS",
-        "speakWithUs": "other_lang_FALE CONOSCO",
-        "workWithUs": "other_lang_TRABALHE CONOSCO",
-        "whereBuy": "other_lang_ONDE COMPRAR"
-    },     
-    "rights": "other_lang_2022 BERNECK. Todos os direitos reservados.",
-    "termsAndPrivacy": "other_lang_Termos de Uso e Política de Privacidade"    
+  "weAreBerneckColumn": {
+    "title": "我们是伯内克\r",
+    "whoWeAre": "我们是谁\r",
+    "ourTrajectory": "我们的发展历程\r",
+    "whereWeAre": "我们在哪里\r",
+    "certifications": "证书\r"
+  },
+  "ourCommitmentColumn": {
+    "title": "我们的承诺\r",
+    "environment": "我们培育环境\r",
+    "ourPeople": "我们培养员工\r",
+    "ourValues": "我们培养自己的价值观\r",
+    "report": "ESG\r"
+  },
+  "florestalDivisionColumn": {
+    "title": "林业部门\r",
+    "forestManagement": "森林管理\r",
+    "forestProduction": "林业生产\r",
+    "forestSuppliers": "FORNECEDOR FLORESTAL\r",
+    "publicResume": "公开摘要\r"
+  },
+  "productsColumn": {
+    "title": "产品\r",
+    "bpBerneck": "BP BERNECK®\r",
+    "hdfBerneck": "HDF BERNECK®\r",
+    "mdfBerneck": "MDF BERNECK®\r",
+    "mdpBerneck": "MDP BERNECK®\r",
+    "plusBerneck": "PLUS BERNECK®\r",
+    "berneckPinus": "BERNECK® 松木\r",
+    "berneckTeca": "BERNECK® 柚木\r"
+  },
+  "channelBNKColumn": {
+    "title": "BNK 渠道\r",
+    "downloads": "下载\r",
+    "speakWithUs": "联系我们\r",
+    "workWithUs": "与我们合作\r",
+    "whereBuy": "从哪里购买\r"
+  },
+  "rights": "2022 BERNECK。保留所有权利\r",
+  "termsAndPrivacy": "使用条款和隐私政策"
 }

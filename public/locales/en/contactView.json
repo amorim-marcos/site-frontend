@@ -1,20 +1,10 @@
 {
-    "pagebar":{
-        "speakWithUs": "other_lang_Fale Conosco"
-    },
-    "headerBanner": {
-        "title": "other_lang_Sobre o que você deseja falar?"
-    },
-    "discoverBanner": {
-        "title": "other_lang_DESCUBRA",
-        "description": "other_lang_Onde Comprar"
-    },
-    "showcaseBanner": {
-        "title": "other_lang_Solicite Nosso",
-        "description": "other_lang_Mostruário"
-    },
-    "positionsBanner":{
-        "title": "other_lang_Confira Nossas",
-        "description": "other_lang_Vagas abertas"
-    }
+  "pagebar": { "speakWithUs": "Talk to Us" },
+  "headerBanner": { "title": "What do you want to talk about?" },
+  "discoverBanner": { "title": "DISCOVER", "description": "Where to Buy" },
+  "showcaseBanner": { "title": "Request Our", "description": "Showcase" },
+  "positionsBanner": {
+    "title": "Check out Our",
+    "description": "Open positions"
+  }
 }

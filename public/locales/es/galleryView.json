@@ -1,33 +1,33 @@
 {
-    "pagebar": {
-        "products": "other_lang_Produtos",
-        "bpBerneck": "other_lang_BP BERNECK®",
-        "envGallery": "other_lang_Galeria de Ambientes"
-    },
-    "filter": {
-        "notFound": "other_lang_Os filtros aplicados não retornaram nenhum resultado.",
-        "notFoundFor": "other_lang_Nenhum resultado encontrado para"
-    },
-    "filtersAccordion": {
-        "filterResults": "other_lang_Filtrar Resultados",
-        "hideFilters":"Esconder filtros",
-        "bpBerneck": "other_lang_BP BERNECK®",
-        "seeLess": "other_lang_Ver menos",
-        "seeMore": "other_lang_Ver mais",
-        "environment": "other_lang_AMBIENTE",
-        "style": "other_lang_ESTILO",
-        "filter": "other_lang_Filtrar",
-        "searchPlaceHolder": "other_lang_Digite sua busca",
-        "clearFilters": "other_lang_Limpar filtros"
-    },
-    "filtersTab": {
-        "filterResults": "other_lang_Filtrar Resultados",
-        "hideFilters":"Esconder filtros",
-        "bpBerneck": "other_lang_BP BERNECK®",
-        "environment": "other_lang_AMBIENTE",
-        "style": "other_lang_ESTILO",
-        "filter": "other_lang_Filtrar",
-        "searchPlaceHolder": "other_lang_Pesquise pelo nome",
-        "clearFilters": "other_lang_Limpar filtros"
-    }
+  "pagebar": {
+    "products": "Productos",
+    "bpBerneck": "BP BERNECK®",
+    "envGallery": "Galería de Ambientes"
+  },
+  "filter": {
+    "notFound": "Los filtros aplicados no devolvieron ningún resultado.",
+    "notFoundFor": "No se encontraron resultados para"
+  },
+  "filtersAccordion": {
+    "filterResults": "Filtrar Resultados",
+    "hideFilters": "Ocultar filtros",
+    "bpBerneck": "BP BERNECK®",
+    "seeLess": "Vea menos",
+    "seeMore": "Vea más",
+    "environment": "AMBIENTE",
+    "style": "ESTILO",
+    "filter": "Filtrar",
+    "searchPlaceHolder": "Introduce tu búsqueda",
+    "clearFilters": "Limpiar filtros"
+  },
+  "filtersTab": {
+    "filterResults": "Filtrar Resultados",
+    "hideFilters": "Ocultar filtros",
+    "bpBerneck": "BP BERNECK®",
+    "environment": "AMBIENTE",
+    "style": "ESTILO",
+    "filter": "Filtrar",
+    "searchPlaceHolder": "Buscar por nombre",
+    "clearFilters": "Limpiar filtros"
+  }
 }

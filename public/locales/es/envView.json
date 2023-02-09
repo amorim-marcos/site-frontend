@@ -1,10 +1,10 @@
 {
-    "pagebar": {
-        "products": "other_lang_Produtos",
-        "bpBerneck": "other_lang_BP BERNECK®",
-        "envGallery": "other_lang_Galeria de Ambientes"
-    },
-    "patternsInfo": "other_lang_Padrões BP BERNECK® utilizados neste ambiente",
-    "othersEnvs": "other_lang_Outros ambientes",
-    "seeMore": "other_lang_Veja mais ambientes"
+  "pagebar": {
+    "products": "Productos",
+    "bpBerneck": "BP BERNECK®",
+    "envGallery": "Galería de Ambientes"
+  },
+  "patternsInfo": "Estándares BP BERNECK utilizados utilizados en este entorno",
+  "othersEnvs": "Otros ambientes",
+  "seeMore": "Vea más ambientes"
 }
