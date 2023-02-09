@@ -1,100 +1,93 @@
 {
-    "ourProducts": "other_lang_Nossos Produtos",
-    "pagebar": {
-        "products": "other_lang_Produtos"
+  "ourProducts": "我们的产品\r",
+  "pagebar": { "products": "产品\r" },
+  "bpBerneck": {
+    "title": "BP BERNECK®\r",
+    "description": "装饰三聚氰胺贴面板\r",
+    "bannerProducts": {
+      "title": "符合BP BERNECK标准®\r",
+      "subtitle": "装饰三聚氰胺贴面板\r"
     },
-    "bpBerneck": {
-		"title": "other_lang_BP BERNECK®",
-        "description": "other_lang_Laminado Melamínico Decorativo",
-        "bannerProducts": {
-            "title":"Conheça os padrões BP BERNECK®",
-            "subtitle": "other_lang_Laminado Melamínico Decorativo"
-        },
-        "bannerCollections": {
-            "title": "other_lang_Conheça"
-        },
-        "inspireSection": {
-            "title":"Inspire-se",
-            "accessOurs": "other_lang_Acesse a nossa",
-            "envGallery": "other_lang_Galeria de ambientes"
-        },
-        "linkBanners": {
-            "packPatterns":{
-                "title": "other_lang_Pack de Padrões BP BERNECK",
-                "subtitle": "other_lang_FAÇA O DOWNLOAD"
-            },
-            "inspireMagazine": {
-                "title": "other_lang_Revista Inspirare BNK",
-                "subtitle": "other_lang_CONHEÇA MAIS"
-            },
-            "supportMaterials": {
-                "title": "other_lang_Materiais de Suporte",
-                "subtitle": "other_lang_CONHEÇA MAIS"
-            }
-        }
-	},
-    "mdpBerneck": {
-        "title": "other_lang_MDP BERNECK®",
-        "description": "other_lang_Painel de Partículas de Média Densidade",
-        "productWithBP":{
-            "title": "other_lang_MDP BERNECK® com BP",
-            "description": "other_lang_A combinação das qualidades do MDP com a variedade de acabamentos do BP fornecem inúmeras possibilidades de utilização. Encontre a melhor para a sua aplicação.",
-            "button": "other_lang_Conheça todos os padrões BP BERNECK em MDP"
-        },
-        "productWithBpPlus":{
-            "title": "other_lang_MDP PLUS BERNECK® com BP",
-            "description": "other_lang_Inove nos projetos com os acabamentos BP em MDP PLUS, laminados melamínicos com a proteção do PLUS BERNECK.",
-            "button": "other_lang_Conheça todos os padrões BP BERNECK em MDP PLUS"
-        }
+    "bannerCollections": { "title": "认知\r" },
+    "inspireSection": {
+      "title": "获得灵感\r",
+      "accessOurs": "访问我们的\r",
+      "envGallery": "环境库\r"
     },
-    "mdfBerneck": {
-        "title": "other_lang_MDF BERNECK®",
-        "description": "other_lang_Painel de Fibra de Média Densidade",
-        "productWithBP":{
-            "title": "other_lang_MDF BERNECK® com BP",
-            "description": "other_lang_A combinação das qualidades do MDF com a variedade de acabamentos do BP fornecem inúmeras possibilidades de utilização. Encontre a melhor para a sua aplicação.",
-            "button": "other_lang_Conheça todos os padrões BP BERNECK em MDF"
-        },
-        "productWithBpPlus":{
-            "title": "other_lang_MDF PLUS BERNECK® com BP",
-            "description": "other_lang_Inove nos projetos com os acabamentos BP em MDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .",
-            "button": "other_lang_Conheça todos os padrões BP BERNECK em MDF PLUS"
-        }
-    },
-    "hdfBerneck": {
-        "title": "other_lang_HDF BERNECK®",
-        "description": "other_lang_Painel de Fibra de Alta Densidade",
-        "productWithBP":{
-            "title": "other_lang_HDF PLUS BERNECK® com BP",
-            "description": "other_lang_Inove nos projetos com os acabamentos BP em HDF PLUS, laminados melamínicos com a proteção do PLUS BERNECK .",
-            "button": "other_lang_Conheça todos os padrões BP BERNECK em HDF PLUS"
-        }
-    },
-    "plusBerneck": {
-        "title": "other_lang_PLUS BERNECK®",
-        "description": "other_lang_Linha de Painéis com Resistência Extra à Umidade",
-        "extraInfoTitle": "other_lang_Muito importante",
-        "plusProducts": {
-            "hdfPlus": {
-                "title": "other_lang_HDF PLUS BERNECK®",
-                "subtitle": "other_lang_Painel de Fibra de Alta Densidade com Resistência Extra à Umidade"
-            },
-            "mdfPlus": {   
-                "title":"MDF PLUS BERNECK®",
-                "subtitle":"Painel de Fibra de Média Densidade com Resistência Extra à Umidade"
-            },
-            "mdpPlus": {
-                "title":"MDP PLUS BERNECK®",
-                "subtitle":"Painel de Partículas de Média Densidade com Resistência Extra à Umidade"
-            }
-        }
-    },
-    "berneckPinus": {
-        "title": "other_lang_BERNECK PINUS®",
-        "description": "other_lang_Madeira Serrada de Pinus"
-    },
-    "berneckTeca": {
-        "title": "other_lang_BERNECK TECA®",
-        "description": "other_lang_Madeira Serrada de Teca"
+    "linkBanners": {
+      "packPatterns": {
+        "title": "BP BERNECK标准套装\r",
+        "subtitle": "立即下载\r"
+      },
+      "inspireMagazine": {
+        "title": "Inspirare BNK杂志\r",
+        "subtitle": "了解更多信息\r"
+      },
+      "supportMaterials": {
+        "title": "支持材料\r",
+        "subtitle": "了解更多信息\r"
+      }
     }
+  },
+  "mdpBerneck": {
+    "title": "MDP BERNECK®\r",
+    "description": "中密度刨花板\r",
+    "productWithBP": {
+      "title": "MDP BERNECK® 结合 BP\r",
+      "description": "将MDP的品质与BP的各种饰面相结合，提供了无限的使用可能性。找到适合您应用的最佳解决方案。\r",
+      "button": "了解MDP中的所有BERNECK BP标准\r"
+    },
+    "productWithBpPlus": {
+      "title": "MDP PLUS BERNECK® 结合 BP\r",
+      "description": " laminados melamínicos con la protección del PLUS BERNECK.\"",
+      "button": "了解MDP PLUS中的所有BERNECK BP标准\r"
+    }
+  },
+  "mdfBerneck": {
+    "title": "MDF BERNECK®\r",
+    "description": "中密度纤维板\r",
+    "productWithBP": {
+      "title": "MDF BERNECK® 结合 BP\r",
+      "description": "MDF的质量和BP的各种饰面的结合提供了无限的使用可能性。找到适合您应用的最佳解决方案。\r",
+      "button": "了解MDF中的所有BERNECK BP标准\r"
+    },
+    "productWithBpPlus": {
+      "title": "MDF PLUS BERNECK® 结合 BP\r",
+      "description": " laminados melamínicos con la protección del PLUS BERNECK .\"",
+      "button": "了解MDF PLUS中的所有BERNECK BP标准 \r"
+    }
+  },
+  "hdfBerneck": {
+    "title": "HDF BERNECK®\r",
+    "description": "高密度纤维板\r",
+    "productWithBP": {
+      "title": "HDF PLUS BERNECK® 结合 BP\r",
+      "description": " laminados melamínicos con la protección del PLUS BERNECK .\"",
+      "button": "了解HDF PLUS中的所有BP BERNECK标准\r"
+    }
+  },
+  "plusBerneck": {
+    "title": "PLUS BERNECK®\r",
+    "description": "超强防潮性能人造板产品线\r",
+    "extraInfoTitle": "非常重要\r",
+    "plusProducts": {
+      "hdfPlus": {
+        "title": "HDF PLUS BERNECK®\r",
+        "subtitle": "具有超强防潮性能的高密度纤维板\r"
+      },
+      "mdfPlus": {
+        "title": "MDF PLUS BERNECK®\r",
+        "subtitle": "具有超强防潮性能的中密度纤维板\r"
+      },
+      "mdpPlus": {
+        "title": "MDP PLUS BERNECK®\r",
+        "subtitle": "具有超强防潮性的中密度刨花板\r"
+      }
+    }
+  },
+  "berneckPinus": {
+    "title": "BERNECK PINUS®\r",
+    "description": "BERNECK 松木®\r"
+  },
+  "berneckTeca": { "title": "BERNECK TECA®\r", "description": "BERNECK 松木®" }
 }

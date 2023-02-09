@@ -23,6 +23,7 @@ module.exports = withPWA({
   },
   i18n: {
     defaultLocale: 'pt-BR',
+<<<<<<< Updated upstream
     locales: ['pt-BR']
     // locales: ['en', 'es', 'pt-BR', 'zn-CN']
   },
@@ -34,5 +35,8 @@ module.exports = withPWA({
         headers: securityHeaders
       }
     ]
+=======
+    locales: ['en', 'es', 'pt-BR', 'zn-CN']
+>>>>>>> Stashed changes
   }
 })

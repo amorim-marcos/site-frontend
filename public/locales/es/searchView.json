@@ -1,14 +1,11 @@
 {
-    "pagebar": {
-        "search": "other_lang_Busca",
-        "resultsFor": "other_lang_Resultados para:"
-    },
-    "resultsFor": "other_lang_Resultados para:",
-    "resultsFinded": "other_lang_Resultados Encontrados",
-    "pages":"Páginas",
-    "bpsBerneck": "other_lang_BPs BERNECK®",
-    "contents":"Conteúdos",
-    "pagesNotFound": "other_lang_páginas encontradas",
-    "pageFound": "other_lang_página encontrada",
-    "seeMore": "other_lang_Veja mais"
+  "pagebar": { "search": "Búsqueda", "resultsFor": "Resultados para:" },
+  "resultsFor": "Resultados para:",
+  "resultsFinded": "Resultados Encontrados",
+  "pages": "Páginas",
+  "bpsBerneck": "BPs BERNECK®",
+  "contents": "Contenidos",
+  "pagesNotFound": "páginas encontradas",
+  "pageFound": "página encontrada",
+  "seeMore": "Vea más"
 }

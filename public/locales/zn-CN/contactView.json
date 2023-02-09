@@ -1,20 +1,7 @@
 {
-    "pagebar":{
-        "speakWithUs": "other_lang_Fale Conosco"
-    },
-    "headerBanner": {
-        "title": "other_lang_Sobre o que você deseja falar?"
-    },
-    "discoverBanner": {
-        "title": "other_lang_DESCUBRA",
-        "description": "other_lang_Onde Comprar"
-    },
-    "showcaseBanner": {
-        "title": "other_lang_Solicite Nosso",
-        "description": "other_lang_Mostruário"
-    },
-    "positionsBanner":{
-        "title": "other_lang_Confira Nossas",
-        "description": "other_lang_Vagas abertas"
-    }
+  "pagebar": { "speakWithUs": "与我们交谈\r" },
+  "headerBanner": { "title": "你想谈什么？\r" },
+  "discoverBanner": { "title": "发现\r", "description": "从哪里购买\r" },
+  "showcaseBanner": { "title": "请求我们的\r", "description": "玻璃陈列柜\r" },
+  "positionsBanner": { "title": "查看我们的\r", "description": "空缺职位\r" }
 }

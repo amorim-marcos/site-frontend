@@ -1,45 +1,37 @@
 {
-    "pagebar": {
-        "products": "other_lang_Produtos",
-        "bpBerneck": "other_lang_BP BERNECK®",
-        "bpCatalog": "other_lang_Catálogo BP"
+  "pagebar": {
+    "products": "Products",
+    "bpBerneck": "BP BERNECK®",
+    "bpCatalog": "BP Catalog"
+  },
+  "navigation": { "previous": "Previous", "next": "Next" },
+  "inspire": { "combineWith": "COMBINE WITH:", "inspire": "Get inspired" },
+  "properties": {
+    "download": "DOWNLOAD NOW",
+    "pattern": "Standard",
+    "knowOurCertifications": {
+      "know": "MEET",
+      "ourCertifications": "Our Certifications"
     },
-    "navigation": {
-        "previous": "other_lang_Anterior",
-        "next": "other_lang_Próximo"
-    },  
-    "inspire": {
-        "combineWith": "other_lang_COMBINE COM:",
-        "inspire": "other_lang_Inspire-se"
+    "discoverWhereToBuy": {
+      "discover": "DISCOVER",
+      "whereToBuy": "Where to Buy"
     },
-    "properties": {
-        "download": "other_lang_FAÇA O DOWNLOAD",
-        "pattern": "other_lang_Padrão",
-        "knowOurCertifications": {
-            "know": "other_lang_CONHEÇA",
-            "ourCertifications": "other_lang_Nossas Certificações"
-        },
-        "discoverWhereToBuy": {
-            "discover":"DESCUBRA",
-            "whereToBuy": "other_lang_Onde Comprar"
-        },
-        "availableOn": "other_lang_DISPONÍVEL EM",
-        "table": {
-            "thicknesses":"Espessuras",
-            "dimension": "other_lang_Dimensão",
-            "otherDimensionsOnRequest":"Outras dimensões sob consulta"
-        },
-        "bpInfo": {
-            "title": "other_lang_SOBRE O BP BERNECK®",
-            "ours": "other_lang_Nossos",
-            "panelsBpBerneck": "other_lang_painéis BP BERNECK®",
-            "paragraph1": "other_lang_são revestidos com laminado melamínico decorativo – em uma ou duas faces – com ótimo efeito decorativo e excelente resistência superficial, a risco e abrasão. As cores e texturas foram desenvolvidas em sintonia com as tendências do design mundial, que proporcionam infinitas possibilidades de combinação.",
-            "paragraph2": "other_lang_ Os painéis possuem superfície fechada reduzindo a proliferação de micro organismos, ideal para ambientes que requeiram fácil higienização. As dimensões padronizadas, aliadas a praticidade de um painel acabado, permitem a simplificação do processo de produção de móveis.",        
-            "edgeRibbons": "other_lang_Fitas de borda",
-            "paragraph3": "other_lang_ Todos os padrões possuem fitas de borda desenvolvidas em parceria com os melhores fornecedores do mercado. É importante que todas as bordas do painel estejam seladas, para garantir qualidade superior e durabilidade."
-        },
-        "usesAndApplications": {
-            "title":"USOS E APLICAÇÕES"
-        }
-    }
+    "availableOn": "AVAILABLE ON",
+    "table": {
+      "thicknesses": "Thicknesses",
+      "dimension": "Size",
+      "otherDimensionsOnRequest": "Other dimensions under consultation"
+    },
+    "bpInfo": {
+      "title": "ABOUT BP BERNECK®",
+      "ours": "Our",
+      "panelsBpBerneck": "BP BERNECK® panels",
+      "paragraph1": "\"are coated with decorative melaminic laminate - on one or two sides - with a great decorative effect and excellent surface resistance to scratching and abrasion. The colors and textures were developed in tune with global design trends",
+      "paragraph2": "\"The panels have a closed surface that reduces the proliferation of microorganisms",
+      "edgeRibbons": "Edge tapes",
+      "paragraph3": "\"All patterns have edge tapes developed in partnership with the best suppliers in the market. It is important that all panel edges are sealed"
+    },
+    "usesAndApplications": { "title": "USES AND APPLICATIONS" }
+  }
 }

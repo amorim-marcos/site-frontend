@@ -1,25 +1,13 @@
 {
-    "pagebar":{
-        "weAreBerneck": "other_lang_Somos BERNECK®"
-    },
-    "headerBanner": {
-        "title": "other_lang_Quem somos"
-    },
-    "infoGraphic": {
-        "exportVolume": "other_lang_Volume de Exportação",
-        "exportMeasure": "other_lang_TEUs / mês",
-        "comercialRelations": "other_lang_Relações Comerciais",
-        "countries": "other_lang_países"
-    },
-    "discoverWhereBuy": {
-        "discover": "other_lang_DESCUBRA",
-        "whereBuy": "other_lang_Onde Comprar"
-    },
-    "certifications": {
-        "title": "other_lang_Certificações"
-    },
-    "knowOurCertifications": {
-        "know": "other_lang_CONHEÇA",
-        "whereBuy": "other_lang_Nossas certificações"
-    }
+  "pagebar": { "weAreBerneck": "We are BERNECK®" },
+  "headerBanner": { "title": "Who are are" },
+  "infoGraphic": {
+    "exportVolume": "Export Volumes",
+    "exportMeasure": "TEUs / month",
+    "comercialRelations": "Commercial Relationships",
+    "countries": "countries"
+  },
+  "discoverWhereBuy": { "discover": "DISCOVER", "whereBuy": "Where to Buy" },
+  "certifications": { "title": "Certifications" },
+  "knowOurCertifications": { "know": "MEET", "whereBuy": "Our Certifications" }
 }

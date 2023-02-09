@@ -1,8 +1,6 @@
 {
-    "pagebar":{
-        "berneckCertifications": "other_lang_Certificações BERNECK®"
-    },
-    "certificatedForests": "other_lang_Florestas Certificadas",
-    "highlyQualifiedProducts": "other_lang_Produtos altamente qualificados",
-    "qualityNorms": "other_lang_Normas de qualidade"
+  "pagebar": { "berneckCertifications": "BERNECK® Certifications" },
+  "certificatedForests": "Certified Forests",
+  "highlyQualifiedProducts": "Highly qualified products",
+  "qualityNorms": "Quality norms"
 }
