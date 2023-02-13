@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
 import React, { useEffect, useState } from 'react'
+import * as Scroll from 'react-scroll'
 
 import { Box, Container, Grid, GridItem, Flex, Text } from '@chakra-ui/react'
 
@@ -186,6 +187,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         })
         break
     }
+    Scroll.animateScroll.scrollToTop()
 
     return filteredBps.slice()
   }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useRef, useState } from 'react'
-
+import * as Scroll from 'react-scroll'
 import {
   Container,
   Grid,
@@ -121,6 +121,7 @@ export const EnvGallery = ({
         return filters['styles'].some((style: any) => env.style.includes(style))
       })
     }
+    Scroll.animateScroll.scrollToTop()
 
     return filteredEnvs.slice()
   }
