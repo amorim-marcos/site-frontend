@@ -50,10 +50,9 @@ export const EnvView = ({
   const [modal, setModal] = useState(false)
   const [imagesIndex, setImagesIndex] = useState(0)
 
-  function openModal(index?: number) {
-    if (index) {
-      setImagesIndex(index)
-    }
+  function openModal(index: number) {
+    setImagesIndex(index)
+
     setModal(true)
   }
   const router = useRouter()
@@ -96,9 +95,10 @@ export const EnvView = ({
             data={{ images: imgs.map((i) => i.imgSrc) }}
             active={modal}
             onClose={() => setModal(false)}
+            index={imagesIndex}
           />
           <CarouselMultiElements numberOfEvidenceElements={1}>
-            {imgs.map((i) => {
+            {imgs.map((i, index) => {
               return (
                 <Flex
                   alignItems={'center'}
@@ -108,7 +108,7 @@ export const EnvView = ({
                   h="65vw"
                   maxHeight={'calc(100vh - 120px)'}
                   cursor="pointer"
-                  onClick={() => openModal(i.id)}
+                  onClick={() => openModal(index)}
                 >
                   <Image src={i.imgSrc} h="100%" objectFit={'contain'} />
                 </Flex>
