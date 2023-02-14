@@ -106,11 +106,7 @@ export const EnvView = ({
                   key={i.id}
                   w="100%"
                   h="65vw"
-                  maxHeight={{
-                    base: 'calc(70vh - 120px)',
-                    lg: 'calc(70vh - 120px)',
-                    xl: 'calc(70vh - 120px)'
-                  }}
+                  maxHeight={'calc(90vh - 120px)'}
                   cursor="pointer"
                   onClick={() => openModal(index)}
                 >
