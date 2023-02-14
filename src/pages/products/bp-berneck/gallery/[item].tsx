@@ -88,12 +88,14 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       }
     })
 
-  const imgs = envFetch.gallery_of_images.map((img: any) => {
-    return {
-      id: img.id,
-      imgSrc: `${url}${img.url}`
-    }
-  }).reverse()
+  const imgs = envFetch.gallery_of_images
+    .map((img: any) => {
+      return {
+        id: img.id,
+        imgSrc: `${url}${img.url}`
+      }
+    })
+    .reverse()
 
   const tableContent = [
     {

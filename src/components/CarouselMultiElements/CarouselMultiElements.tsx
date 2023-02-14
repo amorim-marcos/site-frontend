@@ -102,6 +102,7 @@ export const CarouselMultiElements = ({
             color: 'white.100'
           }}
           onClick={back}
+          disabled={children.length === 1 || startItem <= 0}
         >
           {isMobile ? (
             <Arrow width="5" height="5" direction="left" />
@@ -122,6 +123,10 @@ export const CarouselMultiElements = ({
             color: 'white.100'
           }}
           onClick={next}
+          disabled={
+            children.length === 1 ||
+            startItem >= children.length - numberOfEvidenceElements
+          }
         >
           {isMobile ? (
             <Arrow width="5" height="5" direction="right" />

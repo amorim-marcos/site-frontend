@@ -9,6 +9,8 @@ import Pagebar from '@components/Pagebar'
 import SeeMore from '@components/SeeMore'
 import { Env } from './EnvGallery/Env'
 import { useTranslation } from 'react-i18next'
+import GalleryCarrousel from '@components/GalleryImagesCarroussel/GalleryImagesCarroussel'
+import { useState } from 'react'
 
 export type EnvViewProps = {
   env: {
@@ -45,6 +47,15 @@ export const EnvView = ({
   imgs,
   tableContent
 }: EnvViewProps) => {
+  const [modal, setModal] = useState(false)
+  const [imagesIndex, setImagesIndex] = useState(0)
+
+  function openModal(index?: number) {
+    if (index) {
+      setImagesIndex(index)
+    }
+    setModal(true)
+  }
   const router = useRouter()
 
   const galleryViewLabels = useTranslation('envView')
@@ -81,6 +92,11 @@ export const EnvView = ({
         </Text> */}
 
         <Box bg="white.200" w="100%">
+          <GalleryCarrousel
+            data={{ images: imgs.map((i) => i.imgSrc) }}
+            active={modal}
+            onClose={() => setModal(false)}
+          />
           <CarouselMultiElements numberOfEvidenceElements={1}>
             {imgs.map((i) => {
               return (
@@ -90,9 +106,11 @@ export const EnvView = ({
                   key={i.id}
                   w="100%"
                   h="65vw"
-                  maxHeight={'1268px'}
+                  maxHeight={'calc(100vh - 120px)'}
+                  cursor="pointer"
+                  onClick={() => openModal(i.id)}
                 >
-                  <Image src={i.imgSrc} h="100%" objectFit={'cover'} />
+                  <Image src={i.imgSrc} h="100%" objectFit={'contain'} />
                 </Flex>
               )
             })}
