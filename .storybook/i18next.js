@@ -3,7 +3,7 @@ import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
 const ns = ['header']
-const supportedLngs = ['en', 'es', 'pt-BR', 'zn-CN']
+const supportedLngs = ['en', 'es', 'pt-BR', 'zh-CN']
 
 i18n
   .use(LanguageDetector)

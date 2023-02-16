@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 
 export type LanguageBtnProps = {
   title: string
-  locale: 'en' | 'es' | 'pt-BR' | 'zn-CN'
+  locale: 'en' | 'es' | 'pt-BR' | 'zh-CN'
 }
 
 export const LanguageBtn = ({

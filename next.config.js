@@ -23,6 +23,6 @@ module.exports = withPWA({
   },
   i18n: {
     defaultLocale: 'pt-BR',
-    locales: ['en', 'es', 'pt-BR', 'zn-CN']
+    locales: ['en', 'es', 'pt-BR', 'zh-CN']
   }
 })

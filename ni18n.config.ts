@@ -22,7 +22,7 @@ export const nameSpaces = [
 ]
 
 export const ni18nConfig: Ni18nOptions = {
-  supportedLngs: ['en', 'es', 'pt-BR', 'zn-CN'],
+  supportedLngs: ['en', 'es', 'pt-BR', 'zh-CN'],
   ns: nameSpaces
   // backend: {
   //   loadPath: (locale: string, namespace: string, missing: boolean) => {
