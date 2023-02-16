@@ -10,7 +10,7 @@ import Cookies from 'js-cookie'
 function getLocale(locale: string) {
   if (locale === 'en') return 'English'
   if (locale === 'es') return 'Español'
-  if (locale === 'zn-CN') return 'Mandarim'
+  if (locale === 'zh-CN') return 'Mandarim'
   return 'Português'
 }
 
@@ -87,8 +87,8 @@ export const LanguageSelector = () => {
             <LanguageBtn title="Español" locale="es" />
           )}
 
-          {!(router.locale === 'zn-CN') && (
-            <LanguageBtn title="Mandarim" locale="zn-CN" />
+          {!(router.locale === 'zh-CN') && (
+            <LanguageBtn title="Mandarim" locale="zh-CN" />
           )}
         </Flex>
       )}
