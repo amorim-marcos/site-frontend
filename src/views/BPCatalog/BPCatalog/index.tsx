@@ -231,12 +231,12 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
 
 
-  // Cookie  para salvar os filtros
   if (Cookies.get('cookieAccepted')) {
     useEffect(() => {
-      Cookies.set('filtersBP', JSON.stringify(filtersBP))
+      Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
     }, [filtersBP])
   }
+  
 
   useEffect(() => {
     if (router.query.panel) {

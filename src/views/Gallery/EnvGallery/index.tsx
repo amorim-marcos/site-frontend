@@ -161,7 +161,8 @@ export const EnvGallery = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters])
 
-  // Cookie  para salvar os filtros
+
+  
   if (Cookies.get('cookieAccepted')) {
     useEffect(() => {
       const filtersCookie = Cookies.get('filters')
@@ -169,7 +170,7 @@ export const EnvGallery = ({
         setFilteredEnvs(applyFilters(JSON.parse(filtersCookie), envs))
         setDisplayFilters(true)
       }
-      Cookies.set('filters', JSON.stringify(filters))
+      Cookies.set('filters', JSON.stringify(filters), { expires: 7 })
     }, [filters, envs])
   }
   
