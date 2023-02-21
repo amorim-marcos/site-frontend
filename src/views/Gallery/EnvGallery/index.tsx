@@ -20,6 +20,7 @@ import { Env } from './Env'
 import { useRouter } from 'next/router'
 import { env } from 'process'
 import { useTranslation } from 'react-i18next'
+import Cookies from 'js-cookie'
 
 export type ValidFilterNames = 'bps' | 'ambients' | 'styles'
 
@@ -63,7 +64,10 @@ export const EnvGallery = ({
   const [currentFilterPanel, setCurrentFilterPanel] = useState('none')
   const [displayFilters, setDisplayFilters] = useState(true)
   const [filteredEnvs, setFilteredEnvs] = useState(envs)
-  const [filters, setFilters] = useState(initialFilters)
+  const [filters, setFilters] = useState(() => {
+    const filtersCookie = Cookies.get('filters')
+    return filtersCookie ? JSON.parse(decodeURIComponent(filtersCookie)) : initialFilters
+  })
   const [filtersEmpty, setFiltersEmpty] = useState(true)
   const { isMobile } = useMobile(1024)
   const [pagination, setPagination] = useState(1)
@@ -144,7 +148,7 @@ export const EnvGallery = ({
       initialFilters.styles.length !== 0 ||
       initialFilters.nameSearched !== ''
     ) {
-      setFilteredEnvs(applyFilters(initialFilters, envs))
+      setFilteredEnvs(applyFilters(filters, envs))
 
       initialFilters.ambients.length !== 0
         ? setCurrentFilterPanel('ambients')
@@ -155,7 +159,21 @@ export const EnvGallery = ({
       setDisplayFilters(true)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialFilters])
+  }, [filters])
+
+  // Cookie  para salvar os filtros
+  if (Cookies.get('cookieAccepted')) {
+    useEffect(() => {
+      const filtersCookie = Cookies.get('filters')
+      if (filtersCookie) {
+        setFilteredEnvs(applyFilters(JSON.parse(filtersCookie), envs))
+        setDisplayFilters(true)
+      }
+      Cookies.set('filters', JSON.stringify(filters))
+    }, [filters, envs])
+  }
+  
+
 
   useEffect(() => {
     if (
