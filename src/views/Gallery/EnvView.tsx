@@ -9,6 +9,8 @@ import Pagebar from '@components/Pagebar'
 import SeeMore from '@components/SeeMore'
 import { Env } from './EnvGallery/Env'
 import { useTranslation } from 'react-i18next'
+import GalleryCarrousel from '@components/GalleryImagesCarroussel/GalleryImagesCarroussel'
+import { useState } from 'react'
 
 export type EnvViewProps = {
   env: {
@@ -45,6 +47,14 @@ export const EnvView = ({
   imgs,
   tableContent
 }: EnvViewProps) => {
+  const [modal, setModal] = useState(false)
+  const [imagesIndex, setImagesIndex] = useState(0)
+
+  function openModal(index: number) {
+    setImagesIndex(index)
+
+    setModal(true)
+  }
   const router = useRouter()
 
   const galleryViewLabels = useTranslation('envView')
@@ -69,7 +79,12 @@ export const EnvView = ({
         ]}
       />
       <Flex flexDirection={'column'} maxWidth={'1536px'} mt="2%" marginX="auto">
-        <CompletedTitle titleString={env.subTitle} alignSelf={'left'} />
+        <Box
+          paddingLeft={{ base: '10px', '2xl': '0' }}
+          paddingBottom={{ base: '10px', '2xl': '0' }}
+        >
+          <CompletedTitle titleString={env.subTitle} alignSelf={'left'} />
+        </Box>
         {/* <Text
           as={'h3'}
           variant={'h3'}
@@ -81,8 +96,14 @@ export const EnvView = ({
         </Text> */}
 
         <Box bg="white.200" w="100%">
+          <GalleryCarrousel
+            data={{ images: imgs.map((i) => i.imgSrc) }}
+            active={modal}
+            onClose={() => setModal(false)}
+            index={imagesIndex}
+          />
           <CarouselMultiElements numberOfEvidenceElements={1}>
-            {imgs.map((i) => {
+            {imgs.map((i, index) => {
               return (
                 <Flex
                   alignItems={'center'}
@@ -90,9 +111,11 @@ export const EnvView = ({
                   key={i.id}
                   w="100%"
                   h="65vw"
-                  maxHeight={'1268px'}
+                  maxHeight={'calc(90vh - 120px)'}
+                  // cursor="pointer"
+                  // onClick={() => openModal(index)}
                 >
-                  <Image src={i.imgSrc} h="100%" objectFit={'cover'} />
+                  <Image src={i.imgSrc} h="100%" objectFit={'contain'} />
                 </Flex>
               )
             })}

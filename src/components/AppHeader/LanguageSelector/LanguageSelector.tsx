@@ -68,6 +68,7 @@ export const LanguageSelector = () => {
       {open && (
         <Flex
           width="115%"
+          minW="130px"
           flexDir="column"
           position="absolute"
           top="calc(100%)"
