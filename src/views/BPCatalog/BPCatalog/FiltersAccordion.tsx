@@ -39,7 +39,7 @@ export type FiltersSelectProps = {
   panels: Array<any>
   collections: Array<any>
   colorations: Array<any>
-  filters: any
+  filtersBP: any
   filtersEmpty: boolean
   filteredBpsLength: number
 }
@@ -62,12 +62,14 @@ export const FiltersAccordion = ({
   bps,
   setFilteredBps,
   applyFilters,
-  filters,
+  filtersBP,
   filtersEmpty
 }: FiltersSelectProps) => {
   const [openSearchBar, setOpenSearchBar] = React.useState(false)
 
   const bpCatalog = useTranslation('bpCatalog')
+
+
 
   return (
     <>
@@ -183,7 +185,7 @@ export const FiltersAccordion = ({
                       mb="10px"
                       minW={{ base: '100%', sm: '48%' }}
                       mr={{ base: 0, sm: '2%' }}
-                      isChecked={filters['panels'].includes(filter.code)}
+                      isChecked={filtersBP['panels'].includes(filter.code)}
                       onCheck={(isChecked: boolean, value: any) => {
                         !isChecked
                           ? appendFilter('panels', value)
@@ -255,7 +257,7 @@ export const FiltersAccordion = ({
                       minW={{ base: '100%', sm: '48%' }}
                       mr={{ base: 0, sm: '2%' }}
                       mb="10px"
-                      isChecked={filters['collections'].includes(filter.code)}
+                      isChecked={filtersBP['collections'].includes(filter.code)}
                       onCheck={(isChecked: boolean, value: any) => {
                         !isChecked
                           ? appendFilter('collections', value)
@@ -328,7 +330,7 @@ export const FiltersAccordion = ({
                       minW={{ base: '100%', sm: '48%' }}
                       mr={{ base: 0, sm: '2%' }}
                       mb="10px"
-                      isChecked={filters['colorations'].includes(filter.code)}
+                      isChecked={filtersBP['colorations'].includes(filter.code)}
                       onCheck={(isChecked: boolean, value: any) => {
                         !isChecked
                           ? appendFilter('colorations', value)
@@ -357,10 +359,10 @@ export const FiltersAccordion = ({
             w="100%"
             position="fixed"
             bottom="0"
-            variant={'filters' as any}
+            variant={'filtersBP' as any}
             mr="30px"
             onClick={() => {
-              setFilteredBps(applyFilters(filters, bps))
+              setFilteredBps(applyFilters(filtersBP, bps))
               setDisplayFilters(false)
             }}
           >
@@ -399,19 +401,19 @@ export const FiltersAccordion = ({
                 _placeholder={{
                   color: 'white.100'
                 }}
-                value={filters.nameSearched}
+                value={filtersBP.nameSearched}
                 height={{ base: '30px' }}
                 onChange={(e) => {
-                  setFilters({ ...filters, nameSearched: e.target.value })
+                  setFilters({ ...filtersBP, nameSearched: e.target.value })
                 }}
                 onKeyPress={(event) => {
                   if (event.key === 'Enter')
-                    setFilteredBps(applyFilters(filters, bps))
+                    setFilteredBps(applyFilters(filtersBP, bps))
                 }}
               />
               <Box>
                 <SearchIcon
-                  onClick={() => setFilteredBps(applyFilters(filters, bps))}
+                  onClick={() => setFilteredBps(applyFilters(filtersBP, bps))}
                   stroke={colors.white[100]}
                   width="30px"
                   height={{ base: '25px', md: '10px', '2xl': '0px' }}
@@ -430,12 +432,12 @@ export const FiltersAccordion = ({
           >
             <Select
               onChange={(e) => {
-                setFilters({ ...filters, orderBy: e.target.value })
+                setFilters({ ...filtersBP, orderBy: e.target.value })
                 setFilteredBps(
-                  applyFilters({ ...filters, orderBy: e.target.value }, bps)
+                  applyFilters({ ...filtersBP, orderBy: e.target.value }, bps)
                 )
               }}
-              value={filters['orderBy']}
+              value={filtersBP['orderBy']}
               color={darkMode ? 'green.300' : 'gray.300'}
               border="0"
               backgroundColor={darkMode ? 'gray.400' : 'white.100'}

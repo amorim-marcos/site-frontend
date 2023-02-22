@@ -48,7 +48,7 @@ export type FiltersSelectProps = {
   panels: Array<any>
   collections: Array<any>
   colorations: Array<any>
-  filters: any
+  filtersBP: any
   filtersEmpty: boolean
   filteredBpsLength: number
 }
@@ -71,7 +71,7 @@ export const FiltersTabs = ({
   bps,
   setFilteredBps,
   applyFilters,
-  filters,
+  filtersBP,
   filtersEmpty,
   filteredBpsLength
 }: FiltersSelectProps) => {
@@ -218,7 +218,7 @@ export const FiltersTabs = ({
                   <Flex justifyContent="center" wrap="wrap">
                     {panels.map((filter) => (
                       <FilterCheckbox
-                        isChecked={filters['panels'].includes(filter.code)}
+                        isChecked={filtersBP['panels'].includes(filter.code)}
                         onCheck={(isChecked: boolean, value: any) => {
                           !isChecked
                             ? appendFilter('panels', value)
@@ -247,7 +247,7 @@ export const FiltersTabs = ({
                     {collections.map((filter) => (
                       <FilterCheckbox
                         key={filter.code}
-                        isChecked={filters['collections'].includes(filter.code)}
+                        isChecked={filtersBP['collections'].includes(filter.code)}
                         onCheck={(isChecked: boolean, value: any) => {
                           !isChecked
                             ? appendFilter('collections', value)
@@ -276,7 +276,7 @@ export const FiltersTabs = ({
                       <FilterCheckbox
                         color="white.100"
                         key={filter.code}
-                        isChecked={filters['colorations'].includes(filter.code)}
+                        isChecked={filtersBP['colorations'].includes(filter.code)}
                         onCheck={(isChecked: boolean, value: any) => {
                           !isChecked
                             ? appendFilter('colorations', value)
@@ -293,10 +293,10 @@ export const FiltersTabs = ({
                 </Box>
                 <Flex justifyContent="center" padding="30px">
                   <Button
-                    variant={'filters' as any}
+                    variant={'filtersBP' as any}
                     mr="30px"
                     onClick={() => {
-                      setFilteredBps(applyFilters(filters, bps))
+                      setFilteredBps(applyFilters(filtersBP, bps))
                       setDisplayFilters(!displayFilters)
                     }}
                     _focus={{ outline: 'none' }}
@@ -305,7 +305,7 @@ export const FiltersTabs = ({
                   </Button>
                   {!filtersEmpty && (
                     <Button
-                      variant={'filters' as any}
+                      variant={'filtersBP' as any}
                       onClick={() => {
                         setFilters(JSON.parse(JSON.stringify(initialFilters)))
                         setFilteredBps(applyFilters(initialFilters, bps))
@@ -337,12 +337,12 @@ export const FiltersTabs = ({
             </Text>
             <Select
               onChange={(e) => {
-                setFilters({ ...filters, orderBy: e.target.value })
+                setFilters({ ...filtersBP, orderBy: e.target.value })
                 setFilteredBps(
-                  applyFilters({ ...filters, orderBy: e.target.value }, bps)
+                  applyFilters({ ...filtersBP, orderBy: e.target.value }, bps)
                 )
               }}
-              value={filters['orderBy']}
+              value={filtersBP['orderBy']}
               mr="30px"
               color={darkMode ? 'green.300' : 'gray.300'}
               position="relative"
@@ -440,7 +440,7 @@ export const FiltersTabs = ({
                     }}
                     onKeyPress={(event) => {
                       if (event.key === 'Enter')
-                        setFilteredBps(applyFilters(filters, bps))
+                        setFilteredBps(applyFilters(filtersBP, bps))
                     }}
                     placeholder={bpCatalog.t('filtersTab.searchByName')}
                     _placeholder={{
@@ -462,12 +462,12 @@ export const FiltersTabs = ({
                     }}
                     height={{ base: '30px' }}
                     onChange={(e) => {
-                      setFilters({ ...filters, nameSearched: e.target.value })
+                      setFilters({ ...filtersBP, nameSearched: e.target.value })
                     }}
                   />
                   <Box>
                     <SearchIcon
-                      onClick={() => setFilteredBps(applyFilters(filters, bps))}
+                      onClick={() => setFilteredBps(applyFilters(filtersBP, bps))}
                       stroke={
                         searchSelected
                           ? colors.green[500]

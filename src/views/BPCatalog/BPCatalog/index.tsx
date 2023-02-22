@@ -13,8 +13,9 @@ import { FiltersTabs } from './FiltersTabs'
 import { BP } from './BP'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
+import Cookies from 'js-cookie'
 
-export type Filters = {
+export type filtersBP = {
   orderBy: string
   nameSearched: string
   panels: Array<number | string>
@@ -28,7 +29,7 @@ export type FilterPanelName = 'none' | ValidFilterNames
 
 export type GridSize = 'big' | 'medium' | 'small'
 
-export const initialFilters: Filters = {
+export const initialFilters: filtersBP = {
   orderBy: 'scale',
   nameSearched: '',
   panels: [],
@@ -81,23 +82,27 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   const router = useRouter()
 
-  const [filters, setFilters] = useState(
-    router.query.collection
-      ? {
-          ...initialFilters,
-          collections: [
-            filtersContext.collections?.find(
-              (c: any) =>
-                router.query.collection ===
-                c.title
-                  .toLowerCase()
-                  .normalize('NFD')
-                  .replace(/[\u0300-\u036f]/g, '')
-            )?.code
-          ]
-        }
-      : initialFilters
-  )
+  const [filtersBP, setFilters] = useState(() => {
+    const filtersCookie = Cookies.get('filtersBP')
+    return filtersCookie ? JSON.parse(decodeURIComponent(filtersCookie)) : (
+      router.query.collection
+        ? {
+            ...initialFilters,
+            collections: [
+              filtersContext.collections?.find(
+                (c: any) =>
+                  router.query.collection ===
+                  c.title
+                    .toLowerCase()
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '')
+              )?.code
+            ]
+          }
+        : initialFilters
+    )
+  })
+  
 
   function changeGridSize(newGridSize: GridSize) {
     setGridSize(newGridSize)
@@ -123,45 +128,45 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     }))
   }
 
-  function applyFilters(filters: any, originalBps: Array<any>) {
+  function applyFilters(filtersBP: any, originalBps: Array<any>) {
     let filteredBps = originalBps
 
     // search
-    if (filters['nameSearched'] && filters['nameSearched'] !== '') {
+    if (filtersBP['nameSearched'] && filtersBP['nameSearched'] !== '') {
       filteredBps = filteredBps.filter((bp: any) => {
         return bp.name
           .toLowerCase()
-          .includes(filters['nameSearched'].toLowerCase())
+          .includes(filtersBP['nameSearched'].toLowerCase())
       })
     }
 
     // panels
-    if (filters['panels'].length > 0) {
+    if (filtersBP['panels'].length > 0) {
       filteredBps = filteredBps.filter((bp: any) => {
         return bp.panelTypes.some((panel: any) =>
-          filters['panels'].includes(panel)
+          filtersBP['panels'].includes(panel)
         )
       })
     }
 
     // collections
-    if (filters['collections'].length > 0) {
+    if (filtersBP['collections'].length > 0) {
       filteredBps = filteredBps.filter((bp: any) => {
         return bp.collections.some((collection: any) =>
-          filters['collections'].includes(collection)
+          filtersBP['collections'].includes(collection)
         )
       })
     }
 
     // colorations
-    if (filters['colorations'].length > 0) {
+    if (filtersBP['colorations'].length > 0) {
       filteredBps = filteredBps.filter((bp: any) => {
-        return filters['colorations'].includes(bp.coloration)
+        return filtersBP['colorations'].includes(bp.coloration)
       })
     }
 
     // order
-    switch (filters['orderBy']) {
+    switch (filtersBP['orderBy']) {
       case 'launch':
         filteredBps.sort((a, b) => {
           const dateA = new Date(a['launch'])
@@ -214,17 +219,26 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   useEffect(() => {
     setFiltersEmpty(
-      filters.panels.length == 0 &&
-        filters.collections.length == 0 &&
-        filters.colorations.length == 0 &&
-        filters.nameSearched === ''
+      filtersBP.panels.length == 0 &&
+        filtersBP.collections.length == 0 &&
+        filtersBP.colorations.length == 0 &&
+        filtersBP.nameSearched === ''
     )
-  }, [filters])
+  }, [filtersBP])
 
   useEffect(() => {
     setGridSize(isMobile ? 'mobile-medium' : 'medium')
     setDisplayFilters(isMobile ? false : true)
   }, [isMobile])
+
+
+
+  if (Cookies.get('cookieAccepted')) {
+    useEffect(() => {
+      Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
+    }, [filtersBP])
+  }
+  
 
   useEffect(() => {
     if (router.query.panel) {
@@ -237,7 +251,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         setFilteredBps(
           applyFilters(
             {
-              ...filters,
+              ...filtersBP,
               ['panels']: [itemFilter.code as any]
             },
             bps
@@ -265,7 +279,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
           setFilteredBps(
             applyFilters(
               {
-                ...filters,
+                ...filtersBP,
                 ['collections']: [collection.code as any]
               },
               bps
@@ -279,8 +293,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }, [router.query])
 
   useEffect(() => {
-    setFilters({ ...filters, orderBy: 'scale' })
-    setFilteredBps(applyFilters({ ...filters, orderBy: 'scale' }, bps))
+    setFilters({ ...filtersBP, orderBy: 'scale' })
+    setFilteredBps(applyFilters({ ...filtersBP, orderBy: 'scale' }, bps))
   }, [])
 
   const bpCatalog = useTranslation('bpCatalog')
@@ -335,7 +349,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                 panels={filtersContext['panels']}
                 colorations={filtersContext['colorations']}
                 collections={filtersContext['collections']}
-                filters={filters}
+                filtersBP={filtersBP}
                 filtersEmpty={filtersEmpty}
                 filteredBpsLength={filteredBps.length}
                 gridSize={gridSize}
@@ -358,7 +372,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                 panels={filtersContext['panels']}
                 colorations={filtersContext['colorations']}
                 collections={filtersContext['collections']}
-                filters={filters}
+                filtersBP={filtersBP}
                 filtersEmpty={filtersEmpty}
                 filteredBpsLength={filteredBps.length}
                 gridSize={gridSize}
@@ -404,14 +418,14 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                 alignItems="center"
                 alignContent="center"
               >
-                {filters['nameSearched'] == '' ? (
+                {filtersBP['nameSearched'] == '' ? (
                   <Text
                     alignSelf="center"
                     color="gray.300"
                     fontSize={{ base: '18px', md: '24px' }}
                     textAlign="center"
                   >
-                    {bpCatalog.t('filters.notFound')}
+                    {bpCatalog.t('filtersBP.notFound')}
                   </Text>
                 ) : (
                   <Text
@@ -420,8 +434,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                     fontSize={{ base: '18px', md: '24px' }}
                     textAlign="center"
                   >
-                    {bpCatalog.t('filters.notFoundFor')}{' '}
-                    <i>{`"${filters['nameSearched']}"`}</i>
+                    {bpCatalog.t('filtersBP.notFoundFor')}{' '}
+                    <i>{`"${filtersBP['nameSearched']}"`}</i>
                   </Text>
                 )}
               </Flex>
