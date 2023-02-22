@@ -293,7 +293,7 @@ export const FiltersTabs = ({
                 </Box>
                 <Flex justifyContent="center" padding="30px">
                   <Button
-                    variant={'filtersBP' as any}
+                    variant={'filters' as any}
                     mr="30px"
                     onClick={() => {
                       setFilteredBps(applyFilters(filtersBP, bps))
@@ -305,7 +305,7 @@ export const FiltersTabs = ({
                   </Button>
                   {!filtersEmpty && (
                     <Button
-                      variant={'filtersBP' as any}
+                      variant={'filters' as any}
                       onClick={() => {
                         setFilters(JSON.parse(JSON.stringify(initialFilters)))
                         setFilteredBps(applyFilters(initialFilters, bps))
