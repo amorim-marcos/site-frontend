@@ -79,7 +79,12 @@ export const EnvView = ({
         ]}
       />
       <Flex flexDirection={'column'} maxWidth={'1536px'} mt="2%" marginX="auto">
-        <CompletedTitle titleString={env.subTitle} alignSelf={'left'} />
+        <Box
+          paddingLeft={{ base: '10px', '2xl': '0' }}
+          paddingBottom={{ base: '10px', '2xl': '0' }}
+        >
+          <CompletedTitle titleString={env.subTitle} alignSelf={'left'} />
+        </Box>
         {/* <Text
           as={'h3'}
           variant={'h3'}
@@ -107,8 +112,8 @@ export const EnvView = ({
                   w="100%"
                   h="65vw"
                   maxHeight={'calc(90vh - 120px)'}
-                  cursor="pointer"
-                  onClick={() => openModal(index)}
+                  // cursor="pointer"
+                  // onClick={() => openModal(index)}
                 >
                   <Image src={i.imgSrc} h="100%" objectFit={'contain'} />
                 </Flex>
