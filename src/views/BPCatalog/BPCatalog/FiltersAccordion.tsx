@@ -359,7 +359,7 @@ export const FiltersAccordion = ({
             w="100%"
             position="fixed"
             bottom="0"
-            variant={'filtersBP' as any}
+            variant={'filters' as any}
             mr="30px"
             onClick={() => {
               setFilteredBps(applyFilters(filtersBP, bps))
