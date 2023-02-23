@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const withPWA = require('next-pwa')
 const isProd = process.env.NODE_ENV === 'production'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const securityHeaders = require('./config/securityHeaders')
 
 module.exports = withPWA({
@@ -24,5 +25,13 @@ module.exports = withPWA({
   i18n: {
     defaultLocale: 'pt-BR',
     locales: ['en', 'es', 'pt-BR', 'zh-CN']
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders
+      }
+    ]
   }
 })
