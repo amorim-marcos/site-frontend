@@ -84,25 +84,24 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   const [filtersBP, setFilters] = useState(() => {
     const filtersCookie = Cookies.get('filtersBP')
-    return filtersCookie ? JSON.parse(decodeURIComponent(filtersCookie)) : (
-      router.query.collection
-        ? {
-            ...initialFilters,
-            collections: [
-              filtersContext.collections?.find(
-                (c: any) =>
-                  router.query.collection ===
-                  c.title
-                    .toLowerCase()
-                    .normalize('NFD')
-                    .replace(/[\u0300-\u036f]/g, '')
-              )?.code
-            ]
-          }
-        : initialFilters
-    )
+    return filtersCookie
+      ? JSON.parse(decodeURIComponent(filtersCookie))
+      : router.query.collection
+      ? {
+          ...initialFilters,
+          collections: [
+            filtersContext.collections?.find(
+              (c: any) =>
+                router.query.collection ===
+                c.title
+                  .toLowerCase()
+                  .normalize('NFD')
+                  .replace(/[\u0300-\u036f]/g, '')
+            )?.code
+          ]
+        }
+      : initialFilters
   })
-  
 
   function changeGridSize(newGridSize: GridSize) {
     setGridSize(newGridSize)
@@ -194,6 +193,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     }
     Scroll.animateScroll.scrollToTop()
 
+    console.log(filtersBP)
+
     return filteredBps.slice()
   }
 
@@ -231,14 +232,11 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     setDisplayFilters(isMobile ? false : true)
   }, [isMobile])
 
-
-
   if (Cookies.get('cookieAccepted')) {
     useEffect(() => {
       Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
     }, [filtersBP])
   }
-  
 
   useEffect(() => {
     if (router.query.panel) {
@@ -298,6 +296,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }, [])
 
   const bpCatalog = useTranslation('bpCatalog')
+  const galleryViewLabels = useTranslation('galleryView')
 
   return (
     <>
@@ -385,6 +384,18 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
             minW="100%"
             mb="100px"
           >
+            <Flex
+              w="100%"
+              pt="50px"
+              justifyContent={'flex-end'}
+              alignItems="center"
+            >
+              <Text color="gray">{`${
+                filtersBP.collections.length +
+                filtersBP.colorations.length +
+                filtersBP.panels.length
+              } ${galleryViewLabels.t('filter.filtersApplied')}`}</Text>
+            </Flex>
             {filteredBps && filteredBps.length > 0 ? (
               <Grid
                 mt={

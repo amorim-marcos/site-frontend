@@ -66,7 +66,9 @@ export const EnvGallery = ({
   const [filteredEnvs, setFilteredEnvs] = useState(envs)
   const [filters, setFilters] = useState(() => {
     const filtersCookie = Cookies.get('filters')
-    return filtersCookie ? JSON.parse(decodeURIComponent(filtersCookie)) : initialFilters
+    return filtersCookie
+      ? JSON.parse(decodeURIComponent(filtersCookie))
+      : initialFilters
   })
   const [filtersEmpty, setFiltersEmpty] = useState(true)
   const { isMobile } = useMobile(1024)
@@ -127,6 +129,8 @@ export const EnvGallery = ({
     }
     Scroll.animateScroll.scrollToTop()
 
+    // console.log(filters)
+
     return filteredEnvs.slice()
   }
 
@@ -162,8 +166,6 @@ export const EnvGallery = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters])
 
-
-  
   if (Cookies.get('cookieAccepted')) {
     useEffect(() => {
       const filtersCookie = Cookies.get('filters')
@@ -174,8 +176,6 @@ export const EnvGallery = ({
       Cookies.set('filters', JSON.stringify(filters), { expires: 7 })
     }, [filters, envs])
   }
-  
-
 
   useEffect(() => {
     if (
@@ -304,6 +304,18 @@ export const EnvGallery = ({
             display={isMobile && displayFilters ? 'none' : 'normal'}
             minW="100%"
           >
+            <Flex
+              w="100%"
+              pt="50px"
+              justifyContent={'flex-end'}
+              alignItems="center"
+            >
+              <Text color="gray">{`${
+                filters.ambients.length +
+                filters.bps.length +
+                filters.styles.length
+              } ${galleryViewLabels.t('filter.filtersApplied')}`}</Text>
+            </Flex>
             {filteredEnvs && filteredEnvs.length > 0 ? (
               <Center
                 mt={

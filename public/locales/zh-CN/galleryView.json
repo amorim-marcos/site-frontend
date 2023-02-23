@@ -6,7 +6,8 @@
   },
   "filter": {
     "notFound": "应用的筛选条件未查到任何结果\r",
-    "notFoundFor": "未找到结果\r"
+    "notFoundFor": "未找到结果\r",
+    "filtersApplied": "Filters Selected"
   },
   "filtersAccordion": {
     "filterResults": "筛选结果\r",

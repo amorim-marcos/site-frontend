@@ -101,7 +101,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
           return {
             title: collection.name,
             code: collection.id,
-            release_date: collection.release_date,
+            release_date: collection.release_date || '',
             background_image:
               collection.background_image_small === null
                 ? null
