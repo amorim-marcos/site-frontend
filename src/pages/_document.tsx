@@ -5,6 +5,7 @@ import Document, {
   NextScript,
   DocumentContext
 } from 'next/document'
+
 import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
@@ -48,8 +49,21 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap"
             rel="stylesheet"
           />
+
+          <script
+            src="https://assets.juicer.io/embed.js"
+            type="text/javascript"
+          ></script>
+          <link
+            href="https://assets.juicer.io/embed.css"
+            media="all"
+            rel="stylesheet"
+            type="text/css"
+          />
         </Head>
         <body>
+          <div id="fb-root"></div>
+
           <Main />
           <NextScript />
         </body>

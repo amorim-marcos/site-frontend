@@ -1,7 +1,9 @@
 import Head from 'next/head'
 
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useRef } from 'react'
 import { Box, Button, Flex, Text, Link } from '@chakra-ui/react'
+
+import Script from 'next/script'
 
 import { SocialIcon } from '@components/Icons'
 import CompletedTitle from '@components/CompletedTitle'
@@ -18,8 +20,9 @@ export default function Connect({
 }) {
   const { isMobile, width } = useMobile(568)
   const componentsLabels = useTranslation('components')
+  const instagramIframeRef = useRef<HTMLIFrameElement>(null)
 
-  const { Feed } = useInstagram()
+  // const { Feed } = useInstagram()
 
   useFacebook()
 
@@ -64,7 +67,53 @@ export default function Connect({
           paddingLeft={{ lg: '30px' }}
           justifyContent={'space-around'}
           flexWrap={{ base: 'wrap', xl: 'nowrap' }}
+          marginBottom="30px"
         >
+          <SocialNetwork
+            title="FACEBOOK"
+            icon={
+              <SocialIcon
+                media="facebook"
+                width="51px"
+                height="51px"
+                color="#59993F"
+              />
+            }
+          >
+            <Flex w="100%" h="100%">
+              <div
+                className="fb-page"
+                data-href="https://www.facebook.com/BerneckSA"
+                data-tabs="timeline"
+                data-width=""
+                data-height="630"
+                data-small-header="false"
+                data-adapt-container-width="false"
+                data-hide-cover="false"
+                data-show-facepile="true"
+              >
+                <blockquote
+                  cite="https://www.facebook.com/BerneckSA"
+                  className="fb-xfbml-parse-ignore"
+                >
+                  <a href="https://www.facebook.com/BerneckSA">Berneck</a>
+                </blockquote>
+              </div>
+            </Flex>
+
+            {/* {width && (
+              <Box
+                className="fb-page"
+                data-href="https://www.facebook.com/BerneckSA/"
+                // data-width={isMobile ? '300px' : '500px'}
+                data-width={'500px'}
+                data-small-header="false"
+                data-adapt-container-width={true}
+                data-hide-cover="false"
+                data-show-facepile="false"
+              />
+            )} */}
+          </SocialNetwork>
           <SocialNetwork
             title="INSTAGRAM"
             icon={
@@ -84,9 +133,41 @@ export default function Connect({
                   h={isMobile ? '572px' : '520px'}
                   w="100%"
                   direction="column"
-                  overflowY={'scroll'}
+                  // overflowY={'scroll'}
+                  // overflow={'visible'}
+                  overflow={'hidden'}
+                  // border="3px solid red"
+                  position="relative"
+                  // border="2px solid red"
                 >
-                  <Feed />
+                  <Flex
+                    position={'absolute'}
+                    left="0"
+                    // top="-50px"
+                    // h="calc(100% + 50px)"
+                    h="100%"
+                    w="100%"
+                  >
+                    <iframe
+                      src="https://www.juicer.io/api/feeds/berneckoficial/iframe"
+                      frameBorder="0"
+                      width="100%"
+                      height="100%"
+                      style={{
+                        display: 'block',
+                        margin: '0 auto'
+                      }}
+                      ref={instagramIframeRef}
+                      // style="display:block;margin:0 auto;"
+                    ></iframe>
+
+                    {/* <div className="juicer-feed" data-feed-id="berneckoficial">
+                      <h1 className="referral">
+                        <a href="https://www.juicer.io">Powered by Juicer.io</a>
+                      </h1>
+                    </div> */}
+                  </Flex>
+                  {/* <Feed /> */}
                 </Flex>
               )}
 
@@ -126,27 +207,6 @@ export default function Connect({
           </SocialNetwork>
 
           <SocialNetwork
-            title="PINTEREST"
-            icon={
-              <SocialIcon
-                media="pinterest"
-                width="51px"
-                height="51px"
-                color="#59993F"
-              />
-            }
-          >
-            <a
-              data-pin-do="embedUser"
-              data-pin-lang="pt"
-              // data-pin-scale-height={isMobile ? '455px' : '470px'}
-              data-pin-scale-height={'515px'}
-              data-pin-scale-width={isMobile ? '388px' : '399px'}
-              href="https://br.pinterest.com/berneckoficial/"
-            />
-          </SocialNetwork>
-
-          <SocialNetwork
             title="YOUTUBE"
             icon={
               <SocialIcon
@@ -169,7 +229,7 @@ export default function Connect({
                 youtubeLink.split('=').length > 1 && (
                   <iframe
                     width="100%"
-                    height={'280px'}
+                    height={'200px'}
                     // height={isMobile ? '175px' : '510px'}
                     src={`https://www.youtube.com/embed/${
                       youtubeLink.split('=')[1].split('&')[0] ||
@@ -186,32 +246,51 @@ export default function Connect({
               />
 
               <SocialNetwork
-                title="FACEBOOK"
+                title="PINTEREST"
                 icon={
                   <SocialIcon
-                    media="facebook"
+                    media="pinterest"
                     width="51px"
                     height="51px"
                     color="#59993F"
                   />
                 }
               >
-                {width && (
-                  <Box
-                    className="fb-page"
-                    data-href="https://www.facebook.com/BerneckSA/"
-                    // data-width={isMobile ? '300px' : '500px'}
-                    data-width={'500px'}
-                    data-small-header="false"
-                    data-adapt-container-width={true}
-                    data-hide-cover="false"
-                    data-show-facepile="false"
+                <Flex
+                  w="100%"
+                  h="220px"
+                  // border="1px solid red"
+                >
+                  <a
+                    data-pin-do="embedUser"
+                    data-pin-lang="pt"
+                    // data-pin-scale-height={isMobile ? '455px' : '470px'}
+                    data-pin-scale-height={'515px'}
+                    data-pin-scale-width={isMobile ? '388px' : '220px'}
+                    href="https://br.pinterest.com/berneckoficial/"
                   />
-                )}
+
+                  {/* <a
+                  data-pin-do="embedBoard"
+                  data-pin-board-width="400"
+                  data-pin-scale-height="240"
+                  data-pin-scale-width="80"
+                  href="https://www.pinterest.com/pinterest/official-news/"
+                ></a> */}
+                </Flex>
               </SocialNetwork>
             </Flex>
           </SocialNetwork>
         </Flex>
+
+        <Script async defer src="//assets.pinterest.com/js/pinit.js"></Script>
+        <Script
+          async
+          defer
+          crossOrigin="anonymous"
+          src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v16.0"
+          nonce="epq7DT2K"
+        ></Script>
       </Flex>
     </>
   )
