@@ -320,7 +320,7 @@ export const EnvGallery = ({
               <Center
                 mt={
                   displayFilters
-                    ? { base: '40px', md: '100px' }
+                    ? { base: '40px', md: '30px' }
                     : { base: '5px', md: '15px' }
                 }
               >

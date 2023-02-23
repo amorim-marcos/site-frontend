@@ -400,7 +400,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
               <Grid
                 mt={
                   displayFilters
-                    ? { base: '40px', md: '100px' }
+                    ? { base: '40px', md: '30px' }
                     : { base: '5px', md: '15px' }
                 }
                 templateRows="repeat(auto, 1fr)"
