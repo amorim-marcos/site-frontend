@@ -156,7 +156,11 @@ export const FiltersTabs = ({
                   height="100%"
                   // bg="yellow"
                 >
-                  <Flex alignItems="flex-start" wrap="wrap">
+                  <Flex
+                    alignItems="flex-start"
+                    justifyContent={'center'}
+                    wrap="wrap"
+                  >
                     {bps &&
                       bps.map((bp) => (
                         <BPFilter
@@ -185,7 +189,7 @@ export const FiltersTabs = ({
                 >
                   <Center>
                     <Flex
-                      justifyContent="flex-start"
+                      justifyContent="center"
                       wrap="wrap"
                       //  bg="yellow"
                     >
@@ -215,7 +219,7 @@ export const FiltersTabs = ({
                   height="100%"
                 >
                   <Center>
-                    <Flex justifyContent="flex-start" wrap="wrap">
+                    <Flex justifyContent="center" wrap="wrap">
                       {filtersContext['styles'].map((filter) => (
                         <FilterCheckbox
                           key={filter.code}
