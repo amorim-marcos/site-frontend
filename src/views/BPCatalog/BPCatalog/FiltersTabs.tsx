@@ -79,6 +79,14 @@ export const FiltersTabs = ({
 
   const bpCatalog = useTranslation('bpCatalog')
 
+  // organiza o array de coleções por data de lançamento
+  const sortedCollections = collections.sort((a, b) => {
+    const dateA = Date.parse(a.release_date);
+    const dateB = Date.parse(b.release_date);
+    return dateB - dateA;
+  });
+  
+
   return (
     <>
       <Button
@@ -244,10 +252,12 @@ export const FiltersTabs = ({
                   height="100%"
                 >
                   <Flex justifyContent="center" wrap="wrap">
-                    {collections.map((filter) => (
+                    {sortedCollections.map((filter) => (
                       <FilterCheckbox
                         key={filter.code}
-                        isChecked={filtersBP['collections'].includes(filter.code)}
+                        isChecked={filtersBP['collections'].includes(
+                          filter.code
+                        )}
                         onCheck={(isChecked: boolean, value: any) => {
                           !isChecked
                             ? appendFilter('collections', value)
