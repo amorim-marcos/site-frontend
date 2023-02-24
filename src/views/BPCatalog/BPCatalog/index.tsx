@@ -373,7 +373,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                 collections={filtersContext['collections']}
                 filtersBP={filtersBP}
                 filtersEmpty={filtersEmpty}
-                filteredBpsLength={filteredBps.length}
                 gridSize={gridSize}
                 changeGridSize={changeGridSize}
               />
@@ -390,11 +389,15 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
               justifyContent={'flex-end'}
               alignItems="center"
             >
-              <Text color="gray">{`${
-                filtersBP.collections.length +
-                filtersBP.colorations.length +
-                filtersBP.panels.length
-              } ${galleryViewLabels.t('filter.filtersApplied')}`}</Text>
+              <Text color={darkMode ? 'green.300' : 'gray.300'}>
+                {`${filteredBps.length} ${bpCatalog.t(
+                  'filtersTab.productsFound'
+                )} | ${
+                  filtersBP.collections.length +
+                  filtersBP.colorations.length +
+                  filtersBP.panels.length
+                } ${galleryViewLabels.t('filter.filtersApplied')}`}
+              </Text>
             </Flex>
             {filteredBps && filteredBps.length > 0 ? (
               <Grid

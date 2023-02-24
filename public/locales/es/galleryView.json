@@ -7,7 +7,7 @@
   "filter": {
     "notFound": "Los filtros aplicados no devolvieron ningún resultado.",
     "notFoundFor": "No se encontraron resultados para",
-    "filtersApplied": "Filtros Selecionados"
+    "filtersApplied": "Filtros Aplicados"
   },
   "filtersAccordion": {
     "filterResults": "Filtrar Resultados",
