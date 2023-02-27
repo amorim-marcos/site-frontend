@@ -84,25 +84,24 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   const [filtersBP, setFilters] = useState(() => {
     const filtersCookie = Cookies.get('filtersBP')
-    return filtersCookie ? JSON.parse(decodeURIComponent(filtersCookie)) : (
-      router.query.collection
-        ? {
-            ...initialFilters,
-            collections: [
-              filtersContext.collections?.find(
-                (c: any) =>
-                  router.query.collection ===
-                  c.title
-                    .toLowerCase()
-                    .normalize('NFD')
-                    .replace(/[\u0300-\u036f]/g, '')
-              )?.code
-            ]
-          }
-        : initialFilters
-    )
+    return filtersCookie
+      ? JSON.parse(decodeURIComponent(filtersCookie))
+      : router.query.collection
+      ? {
+          ...initialFilters,
+          collections: [
+            filtersContext.collections?.find(
+              (c: any) =>
+                router.query.collection ===
+                c.title
+                  .toLowerCase()
+                  .normalize('NFD')
+                  .replace(/[\u0300-\u036f]/g, '')
+            )?.code
+          ]
+        }
+      : initialFilters
   })
-  
 
   function changeGridSize(newGridSize: GridSize) {
     setGridSize(newGridSize)
@@ -194,6 +193,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     }
     Scroll.animateScroll.scrollToTop()
 
+    console.log(filtersBP)
+
     return filteredBps.slice()
   }
 
@@ -231,14 +232,43 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     setDisplayFilters(isMobile ? false : true)
   }, [isMobile])
 
-
+  if (Cookies.get('cookieAccepted')) {
+    useEffect(() => {
+      Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
+    }, [])
+  }
 
   if (Cookies.get('cookieAccepted')) {
     useEffect(() => {
       Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
     }, [filtersBP])
   }
-  
+
+  const [filterCount, setFilterCount] = useState('')
+  useEffect(() => {
+    const numFilters =
+      filtersBP.collections.length +
+      filtersBP.colorations.length +
+      filtersBP.panels.length
+    const filtersCounterText =
+      numFilters === 1
+        ? bpCatalog.t('filtersTab.filtersCounter1')
+        : bpCatalog.t('filtersTab.filtersCounter')
+    if (numFilters === 0) {
+      setFilterCount(
+        `${filteredBps.length} ${bpCatalog.t(
+          'filtersTab.productsFound'
+        )} | ${bpCatalog.t('filtersTab.noFiltersApplied')}`
+      )
+    } else {
+      const filterCountText = `${numFilters} ${filtersCounterText}`
+      setFilterCount(
+        `${filteredBps.length} ${bpCatalog.t(
+          'filtersTab.productsFound'
+        )} | ${filterCountText}`
+      )
+    }
+  }, [filteredBps])
 
   useEffect(() => {
     if (router.query.panel) {
@@ -298,6 +328,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }, [])
 
   const bpCatalog = useTranslation('bpCatalog')
+  const galleryViewLabels = useTranslation('galleryView')
 
   return (
     <>
@@ -374,7 +405,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                 collections={filtersContext['collections']}
                 filtersBP={filtersBP}
                 filtersEmpty={filtersEmpty}
-                filteredBpsLength={filteredBps.length}
                 gridSize={gridSize}
                 changeGridSize={changeGridSize}
               />
@@ -385,11 +415,21 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
             minW="100%"
             mb="100px"
           >
+            <Flex
+              w="100%"
+              pt="50px"
+              justifyContent={'flex-end'}
+              alignItems="center"
+            >
+              <Text color={darkMode ? 'green.300' : 'gray.300'}>
+                {filterCount}
+              </Text>
+            </Flex>
             {filteredBps && filteredBps.length > 0 ? (
               <Grid
                 mt={
                   displayFilters
-                    ? { base: '40px', md: '100px' }
+                    ? { base: '40px', md: '30px' }
                     : { base: '5px', md: '15px' }
                 }
                 templateRows="repeat(auto, 1fr)"
@@ -425,7 +465,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                     fontSize={{ base: '18px', md: '24px' }}
                     textAlign="center"
                   >
-                    {bpCatalog.t('filtersBP.notFound')}
+                    {bpCatalog.t('filters.notFound')}
                   </Text>
                 ) : (
                   <Text
@@ -434,7 +474,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                     fontSize={{ base: '18px', md: '24px' }}
                     textAlign="center"
                   >
-                    {bpCatalog.t('filtersBP.notFoundFor')}{' '}
+                    {bpCatalog.t('filters.notFoundFor')}{' '}
                     <i>{`"${filtersBP['nameSearched']}"`}</i>
                   </Text>
                 )}

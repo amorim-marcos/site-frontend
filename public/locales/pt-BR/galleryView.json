@@ -6,7 +6,8 @@
     },
     "filter": {
         "notFound": "Os filtros aplicados não retornaram nenhum resultado.",
-        "notFoundFor": "Nenhum resultado encontrado para"
+        "notFoundFor": "Nenhum resultado encontrado para",
+        "filtersApplied": "Filtros Aplicados"
     },
     "filtersAccordion": {
         "filterResults": "Filtrar Resultados",
@@ -28,6 +29,14 @@
         "style": "ESTILO",
         "filter": "Filtrar",
         "searchPlaceHolder": "Pesquise pelo nome",
-        "clearFilters": "Limpar filtros"
+        "clearFilters": "Limpar filtros",
+        "environmentFound": "Ambientes Encontrados",
+        "environmentFound1": "Ambiente Encontrado",
+        "filtersCounter": "Filtros Aplicados",
+        "noFiltersApplied": "Nenhum Filtro Aplicado",
+        "filtersCounter1": "Filtro Aplicado"
+
+        
+
     }
 }

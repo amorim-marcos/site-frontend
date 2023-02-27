@@ -6,7 +6,8 @@
   },
   "filter": {
     "notFound": "应用的筛选条件未查到任何结果\r",
-    "notFoundFor": "未找到结果\r"
+    "notFoundFor": "未找到结果\r",
+    "filtersApplied": "Filters Selected"
   },
   "filtersAccordion": {
     "filterResults": "筛选结果\r",
@@ -28,6 +29,13 @@
     "style": "样式\r",
     "filter": "筛选\r",
     "searchPlaceHolder": "按名称搜索\r",
-    "clearFilters": "清除筛选"
+    "clearFilters": "清除筛选",
+    "environmentFound": "找到的环境",
+    "environmentFound1": "找到的环境",
+    "filtersCounter": "筛选出的环境",
+    "noFiltersApplied": "未应用过滤器\r",
+    "filtersCounter1": "筛选出的环境"
+
+
   }
 }

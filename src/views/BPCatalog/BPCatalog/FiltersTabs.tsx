@@ -50,7 +50,6 @@ export type FiltersSelectProps = {
   colorations: Array<any>
   filtersBP: any
   filtersEmpty: boolean
-  filteredBpsLength: number
 }
 
 export const FiltersTabs = ({
@@ -73,7 +72,6 @@ export const FiltersTabs = ({
   applyFilters,
   filtersBP,
   filtersEmpty,
-  filteredBpsLength
 }: FiltersSelectProps) => {
   const [searchSelected, setSearchSelected] = React.useState(false)
 
@@ -532,14 +530,7 @@ export const FiltersTabs = ({
           </Flex>
         </Box>
       )}
-      <Text
-        position="absolute"
-        color={darkMode ? 'green.300' : 'gray.300'}
-        top="0"
-        right="0"
-      >
-        {filteredBpsLength} {bpCatalog.t('filtersTab.productsFound')}
-      </Text>
+
     </>
   )
 }
