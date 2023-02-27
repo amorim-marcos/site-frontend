@@ -236,7 +236,14 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   if (Cookies.get('cookieAccepted')) {
     useEffect(() => {
       Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
+    }, [])
+  }
+
+  if (Cookies.get('cookieAccepted')) {
+    useEffect(() => {
+      Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
     }, [filtersBP])
+  
   }
 
   const [filterCount, setFilterCount] = useState('')
