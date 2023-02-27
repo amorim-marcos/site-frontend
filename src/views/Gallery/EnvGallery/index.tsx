@@ -210,12 +210,12 @@ if (Cookies.get('cookieAccepted')) {
       filters.styles.length === 0
     ) {
       setFilterCount(
-        `${filteredEnvs.length} ${galleryViewLabels.t('Produtos Encontrados')}`
+        `${filteredEnvs.length} ${galleryViewLabels.t('Ambientes Encontrados')}`
         + ' | Nenhum Filtro Aplicado'
       )
     } else {
       setFilterCount(
-        `${filteredEnvs.length} ${galleryViewLabels.t('Produtos Encontrados')} | ${
+        `${filteredEnvs.length} ${galleryViewLabels.t('Ambientes Encontrados')} | ${
           filters.bps.length +
           filters.ambients.length +
           filters.styles.length
