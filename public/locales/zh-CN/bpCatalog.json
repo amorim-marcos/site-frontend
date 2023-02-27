@@ -36,6 +36,9 @@
     "productsFound": "产品查找\r",
     "launch": "启动\r",
     "name": "字母顺序\r",
-    "colorScale": "颜色比例"
+    "colorScale": "颜色比例",
+    "filtersCounter": "应用过滤器\r",
+    "filtersCounter1": "个过滤器\r",
+    "noFiltersApplied": "未应用过滤器\r"
   }
 }

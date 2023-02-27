@@ -129,7 +129,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   function applyFilters(filtersBP: any, originalBps: Array<any>) {
     let filteredBps = originalBps
-    
 
     // search
     if (filtersBP['nameSearched'] && filtersBP['nameSearched'] !== '') {
@@ -243,47 +242,33 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     useEffect(() => {
       Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
     }, [filtersBP])
-  
   }
 
   const [filterCount, setFilterCount] = useState('')
   useEffect(() => {
-    if (
+    const numFilters =
       filtersBP.collections.length +
       filtersBP.colorations.length +
-      filtersBP.panels.length === 0
-    ) {
+      filtersBP.panels.length
+    const filtersCounterText =
+      numFilters === 1
+        ? bpCatalog.t('filtersTab.filtersCounter1')
+        : bpCatalog.t('filtersTab.filtersCounter')
+    if (numFilters === 0) {
       setFilterCount(
-        `${filteredBps.length} ${bpCatalog.t('filtersTab.productsFound')}`
-        + ' | Nenhum Filtro Aplicado'
+        `${filteredBps.length} ${bpCatalog.t(
+          'filtersTab.productsFound'
+        )} | ${bpCatalog.t('filtersTab.noFiltersApplied')}`
       )
     } else {
+      const filterCountText = `${numFilters} ${filtersCounterText}`
       setFilterCount(
-        `${filteredBps.length} ${bpCatalog.t('filtersTab.productsFound')} | ${
-          filtersBP.collections.length +
-          filtersBP.colorations.length +
-          filtersBP.panels.length
-        } ${galleryViewLabels.t(
-          'Filtro' +
-            (filtersBP.collections.length +
-              filtersBP.colorations.length +
-              filtersBP.panels.length !==
-              1
-                ? 's'
-                : '') +
-            ' Aplicado' +
-            (filtersBP.collections.length +
-              filtersBP.colorations.length +
-              filtersBP.panels.length !==
-              1
-                ? 's'
-                : '')
-        )}`
+        `${filteredBps.length} ${bpCatalog.t(
+          'filtersTab.productsFound'
+        )} | ${filterCountText}`
       )
     }
   }, [filteredBps])
-  
-  
 
   useEffect(() => {
     if (router.query.panel) {

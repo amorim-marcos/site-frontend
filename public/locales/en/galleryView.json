@@ -29,6 +29,15 @@
     "style": "STYLE",
     "filter": "Filter",
     "searchPlaceHolder": "Search by names",
-    "clearFilters": "Clean filters"
+    "clearFilters": "Clean filters",
+    "environmentFound": "Environments Found",
+    "environmentFound1": "Environment Found",
+    "filtersCounter": "Applied Filters",
+    "noFiltersApplied": "No Filters Applied",
+    "filtersCounter1": "Applied Filter"
+
+
+
+
   }
 }

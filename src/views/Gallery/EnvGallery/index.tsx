@@ -166,25 +166,21 @@ export const EnvGallery = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters])
 
-if (Cookies.get('cookieAccepted')) {
-  useEffect(() => {
-    const filtersCookie = Cookies.get('filters')
-    if (filtersCookie) {
-      setFilteredEnvs(applyFilters(JSON.parse(filtersCookie), envs))
-      setDisplayFilters(true)
-    }
-  }, [])
-}
+  if (Cookies.get('cookieAccepted')) {
+    useEffect(() => {
+      const filtersCookie = Cookies.get('filters')
+      if (filtersCookie) {
+        setFilteredEnvs(applyFilters(JSON.parse(filtersCookie), envs))
+        setDisplayFilters(true)
+      }
+    }, [])
+  }
 
-
-if (Cookies.get('cookieAccepted')) {
-  useEffect(() => {
-    Cookies.set('filters', JSON.stringify(filters), { expires: 7 })
-  }, [filters])
-
-}
-
-
+  if (Cookies.get('cookieAccepted')) {
+    useEffect(() => {
+      Cookies.set('filters', JSON.stringify(filters), { expires: 7 })
+    }, [filters])
+  }
 
   useEffect(() => {
     if (
@@ -199,45 +195,36 @@ if (Cookies.get('cookieAccepted')) {
     }
   }, [filters])
 
-
-
   const [filterCount, setFilterCount] = useState('')
 
   useEffect(() => {
-    if (
+    const numEnvs =
       filters.bps.length +
       filters.ambients.length +
-      filters.styles.length === 0
-    ) {
+      filters.styles.length
+    const filtersCounterText =
+      numEnvs === 1
+        ? galleryViewLabels.t('filtersTab.filtersCounter1')
+        : galleryViewLabels.t('filtersTab.filtersCounter')
+    const environmentFoundText =
+      filteredEnvs.length === 1
+        ? galleryViewLabels.t('filtersTab.environmentFound1')
+        : galleryViewLabels.t('filtersTab.environmentFound')
+    if (numEnvs === 0) {
       setFilterCount(
-        `${filteredEnvs.length} ${galleryViewLabels.t('Ambientes Encontrados')}`
-        + ' | Nenhum Filtro Aplicado'
+        `${filteredEnvs.length} ${environmentFoundText} | ${galleryViewLabels.t(
+          'filtersTab.noFiltersApplied'
+        )}`
       )
     } else {
+      const filterCountText = `${numEnvs} ${filtersCounterText}`
       setFilterCount(
-        `${filteredEnvs.length} ${galleryViewLabels.t('Ambientes Encontrados')} | ${
-          filters.bps.length +
-          filters.ambients.length +
-          filters.styles.length
-        } ${galleryViewLabels.t(
-          'Filtro' +
-            (filters.bps.length +
-              filters.ambients.length +
-              filters.styles.length !==
-              1
-                ? 's'
-                : '') +
-            ' Aplicado' +
-            (filters.bps.length +
-              filters.ambients.length +
-              filters.styles.length !==
-              1
-                ? 's'
-                : '')
-        )}`
+        `${filteredEnvs.length} ${environmentFoundText} | ${filterCountText}`
       )
     }
   }, [filteredEnvs])
+  
+  
   
 
   useEffect(() => {
@@ -360,9 +347,7 @@ if (Cookies.get('cookieAccepted')) {
               justifyContent={'flex-end'}
               alignItems="center"
             >
-                   <Text color={'gray.300'}>
-                {filterCount}
-              </Text>
+              <Text color={'gray.300'}>{filterCount}</Text>
             </Flex>
             {filteredEnvs && filteredEnvs.length > 0 ? (
               <Center
