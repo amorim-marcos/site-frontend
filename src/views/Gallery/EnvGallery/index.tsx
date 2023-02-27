@@ -166,11 +166,24 @@ export const EnvGallery = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters])
 
-  if (Cookies.get('cookieAccepted')) {
-    useEffect(() => {
-      Cookies.set('filters', JSON.stringify(filters), { expires: 7 })
-    }, [filters])
-  }
+if (Cookies.get('cookieAccepted')) {
+  useEffect(() => {
+    const filtersCookie = Cookies.get('filters')
+    if (filtersCookie) {
+      setFilteredEnvs(applyFilters(JSON.parse(filtersCookie), envs))
+      setDisplayFilters(true)
+    }
+  }, [])
+}
+
+
+if (Cookies.get('cookieAccepted')) {
+  useEffect(() => {
+    Cookies.set('filters', JSON.stringify(filters), { expires: 7 })
+  }, [filters])
+
+}
+
 
 
   useEffect(() => {
