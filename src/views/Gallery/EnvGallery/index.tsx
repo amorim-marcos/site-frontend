@@ -190,6 +190,47 @@ export const EnvGallery = ({
     }
   }, [filters])
 
+
+
+  const [filterCount, setFilterCount] = useState('')
+
+  useEffect(() => {
+    if (
+      filters.bps.length +
+      filters.ambients.length +
+      filters.styles.length === 0
+    ) {
+      setFilterCount(
+        `${filteredEnvs.length} ${galleryViewLabels.t('Produtos Encontrados')}`
+        + ' | Nenhum Filtro Aplicado'
+      )
+    } else {
+      setFilterCount(
+        `${filteredEnvs.length} ${galleryViewLabels.t('Produtos Encontrados')} | ${
+          filters.bps.length +
+          filters.ambients.length +
+          filters.styles.length
+        } ${galleryViewLabels.t(
+          'Filtro' +
+            (filters.bps.length +
+              filters.ambients.length +
+              filters.styles.length !==
+              1
+                ? 's'
+                : '') +
+            ' Aplicado' +
+            (filters.bps.length +
+              filters.ambients.length +
+              filters.styles.length !==
+              1
+                ? 's'
+                : '')
+        )}`
+      )
+    }
+  }, [filteredEnvs])
+  
+
   useEffect(() => {
     if (router.query.ambients) {
       const itemFilter = filtersContext.ambients.find(
@@ -310,11 +351,9 @@ export const EnvGallery = ({
               justifyContent={'flex-end'}
               alignItems="center"
             >
-              <Text color="gray">{`${
-                filters.ambients.length +
-                filters.bps.length +
-                filters.styles.length
-              } ${galleryViewLabels.t('filter.filtersApplied')}`}</Text>
+                   <Text color={'gray.300'}>
+                {filterCount}
+              </Text>
             </Flex>
             {filteredEnvs && filteredEnvs.length > 0 ? (
               <Center

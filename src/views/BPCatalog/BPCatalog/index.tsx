@@ -129,6 +129,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   function applyFilters(filtersBP: any, originalBps: Array<any>) {
     let filteredBps = originalBps
+    
 
     // search
     if (filtersBP['nameSearched'] && filtersBP['nameSearched'] !== '') {
@@ -237,6 +238,46 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
       Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
     }, [filtersBP])
   }
+
+  const [filterCount, setFilterCount] = useState('')
+  useEffect(() => {
+    if (
+      filtersBP.collections.length +
+      filtersBP.colorations.length +
+      filtersBP.panels.length === 0
+    ) {
+      setFilterCount(
+        `${filteredBps.length} ${bpCatalog.t('filtersTab.productsFound')}`
+        + (filteredBps.length !== 1 ? 's' : '')
+        + ' | Nenhum Filtro Aplicado'
+      )
+    } else {
+      setFilterCount(
+        `${filteredBps.length} ${bpCatalog.t('filtersTab.productsFound')} | ${
+          filtersBP.collections.length +
+          filtersBP.colorations.length +
+          filtersBP.panels.length
+        } ${galleryViewLabels.t(
+          'Filtro' +
+            (filtersBP.collections.length +
+              filtersBP.colorations.length +
+              filtersBP.panels.length !==
+              1
+                ? 's'
+                : '') +
+            ' Aplicado' +
+            (filtersBP.collections.length +
+              filtersBP.colorations.length +
+              filtersBP.panels.length !==
+              1
+                ? 's'
+                : '')
+        )}`
+      )
+    }
+  }, [filteredBps])
+  
+  
 
   useEffect(() => {
     if (router.query.panel) {
@@ -390,13 +431,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
               alignItems="center"
             >
               <Text color={darkMode ? 'green.300' : 'gray.300'}>
-                {`${filteredBps.length} ${bpCatalog.t(
-                  'filtersTab.productsFound'
-                )} | ${
-                  filtersBP.collections.length +
-                  filtersBP.colorations.length +
-                  filtersBP.panels.length
-                } ${galleryViewLabels.t('filter.filtersApplied')}`}
+                {filterCount}
               </Text>
             </Flex>
             {filteredBps && filteredBps.length > 0 ? (

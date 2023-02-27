@@ -72,7 +72,6 @@ export const FiltersTabs = ({
   applyFilters,
   filtersBP,
   filtersEmpty,
-  
 }: FiltersSelectProps) => {
   const [searchSelected, setSearchSelected] = React.useState(false)
 
