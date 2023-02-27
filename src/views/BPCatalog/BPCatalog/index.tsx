@@ -255,7 +255,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     ) {
       setFilterCount(
         `${filteredBps.length} ${bpCatalog.t('filtersTab.productsFound')}`
-        + (filteredBps.length !== 1 ? 's' : '')
         + ' | Nenhum Filtro Aplicado'
       )
     } else {
