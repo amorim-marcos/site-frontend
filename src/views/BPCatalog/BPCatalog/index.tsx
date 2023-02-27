@@ -474,7 +474,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                     fontSize={{ base: '18px', md: '24px' }}
                     textAlign="center"
                   >
-                    {bpCatalog.t('filtersBP.notFound')}
+                    {bpCatalog.t('filters.notFound')}
                   </Text>
                 ) : (
                   <Text
@@ -483,7 +483,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                     fontSize={{ base: '18px', md: '24px' }}
                     textAlign="center"
                   >
-                    {bpCatalog.t('filtersBP.notFoundFor')}{' '}
+                    {bpCatalog.t('filters.notFoundFor')}{' '}
                     <i>{`"${filtersBP['nameSearched']}"`}</i>
                   </Text>
                 )}

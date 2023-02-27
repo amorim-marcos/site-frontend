@@ -168,14 +168,10 @@ export const EnvGallery = ({
 
   if (Cookies.get('cookieAccepted')) {
     useEffect(() => {
-      const filtersCookie = Cookies.get('filters')
-      if (filtersCookie) {
-        setFilteredEnvs(applyFilters(JSON.parse(filtersCookie), envs))
-        setDisplayFilters(true)
-      }
       Cookies.set('filters', JSON.stringify(filters), { expires: 7 })
-    }, [filters, envs])
+    }, [filters])
   }
+
 
   useEffect(() => {
     if (
