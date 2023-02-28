@@ -444,7 +444,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                       product_texture={bp.product_texture}
                       pattern_image={bp.pattern_image}
                       url_code={bp.url_code}
-                      href={`/products/bp-berneck/catalog/${bp.url_code}`}
+                      href={(router.locale == "pt-BR") ? `/products/bp-berneck/catalog/${bp.url_code}` : `/${router.locale}/products/bp-berneck/catalog/${bp.url_code}`}
                       color={darkMode ? 'white.100' : 'gray.400'}
                     />
                   </GridItem>
