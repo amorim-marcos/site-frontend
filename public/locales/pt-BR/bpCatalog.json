@@ -36,6 +36,9 @@
         "productsFound":"Produtos Encontrados",
         "launch":"Lançamento",
         "name":"Ordem alfabética",
-        "colorScale":"Escala de cor"
+        "colorScale":"Escala de cor",
+        "filtersCounter": "Filtros Aplicados",
+        "filtersCounter1": "Filtro Aplicado",
+        "noFiltersApplied": "Nenhum Filtro Aplicado"
     }
 }

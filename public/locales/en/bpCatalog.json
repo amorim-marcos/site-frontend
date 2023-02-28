@@ -33,9 +33,12 @@
     "exhibitionFormat": "Display format",
     "searchByName": "Search by name",
     "bgColor": "Background Color",
-    "productsFound": "Product Finder",
+    "productsFound": "Products Found",
     "launch": "Launch",
     "name": "Alphabetic order",
-    "colorScale": "Color Scale"
+    "colorScale": "Color Scale",
+    "filtersCounter": "Applied Filters",
+    "filtersCounter1": "Applied Filter",
+    "noFiltersApplied": "No Filters Applied"
   }
 }
