@@ -66,13 +66,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   let panels = await strapiClient({
     defaultOnEmpty: true,
-    locale: ctx.locale,
     resource: 'panel-types'
   })
 
   bps =
     bps && typeof bps.map === 'function'
       ? bps.map((product: any) => {
+        console.log(product.available_at)
           return {
             id: product.id,
             scale: product.scale,
