@@ -72,7 +72,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   bps =
     bps && typeof bps.map === 'function'
       ? bps.map((product: any) => {
-        console.log(product.available_at)
           return {
             id: product.id,
             scale: product.scale,
