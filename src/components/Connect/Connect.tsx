@@ -8,6 +8,7 @@ import CompletedTitle from '@components/CompletedTitle'
 
 import useFacebook from 'hooks/useFacebook'
 import useInstagram from 'hooks/useInstagram'
+import useLinkedin from 'hooks/useLinkedin'
 
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
@@ -20,6 +21,7 @@ export default function Connect({
   const componentsLabels = useTranslation('components')
 
   const { Feed } = useInstagram()
+  const { linkedinLink } = useLinkedin()
 
   useFacebook()
 
@@ -111,7 +113,7 @@ export default function Connect({
             <Flex w="100%" direction="column" gap="24px" align="center">
               {width && (
                 <iframe
-                  src="https://www.linkedin.com/embed/feed/update/urn:li:share:6868626499726012417"
+                  src={linkedinLink}
                   // height={isMobile ? '572px' : '520px'}
                   height={'520px'}
                   width="100%"
