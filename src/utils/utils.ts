@@ -1,3 +1,5 @@
+const punycode = require('punycode/');
+
 export function smartString(phrase: string, num: number) {
   let subString, restString, proxSpace, subString2
 
@@ -41,10 +43,11 @@ export function smartDate(data: Date | string | undefined, locale: string) {
 
 
 export function formatChannelNameUrl(channel_name: string){
-  return channel_name
-    .normalize('NFD')
+  const normalized_name = punycode.encode(channel_name)
     .replace(/[^\w ]/g, '')
     .split(' ')
     .join('-')
     .toLowerCase()
+
+  return normalized_name
 }
