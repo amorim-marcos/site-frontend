@@ -51,3 +51,29 @@ export function formatChannelNameUrl(channel_name: string){
 
   return normalized_name
 }
+
+export function showcaseChannelCode(locale: string){
+  switch(locale){
+    case 'pt-BR':
+      return 'solicitao-de-mostruriok3b0b7g';
+    case 'en':
+      return 'showcase-request';
+    case 'es':
+      return 'solicitud-de-muestrario';
+    case 'zh-CN':
+      return '1brp3wqlnotmk8vweo';
+  }
+}
+
+export function exportationContactChannelCode(locale: string){
+  switch(locale){
+    case 'pt-BR':
+      return 'comercial-exportaodwb7f';
+    case 'en':
+      return 'commercial-exportation';
+    case 'es':
+      return 'comercial-exportacin4cc';
+    case 'zh-CN':
+      return 'vhq57g6xbr0b5w65b';
+  }
+}

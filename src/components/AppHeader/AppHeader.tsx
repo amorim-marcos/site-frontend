@@ -15,6 +15,7 @@ import { IoMdClose } from 'react-icons/io'
 
 import { colors } from '../../theme/colors'
 import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
+import { exportationContactChannelCode } from 'utils/utils'
 
 export type AppHeaderProps = null
 
@@ -145,7 +146,7 @@ export const AppHeader = () => {
                   display={{ base: 'none', md: 'flex' }}
                 >
                   <HeaderSecondaryItem
-                    href={(router.locale == 'pt-BR') ? menuNavigation.speakWithUs.href : `/${router.locale}/${menuNavigation.speakWithUs.href}`}
+                    href={(router.locale == 'pt-BR') ? menuNavigation.speakWithUs.href : `/${router.locale}/${menuNavigation.speakWithUs.href}?channel=${exportationContactChannelCode(router.locale ?? 'en')}`}
                     title={header.t(menuNavigation.speakWithUs.key)}
                   />
                   <ConditionalLanguageRender>  
