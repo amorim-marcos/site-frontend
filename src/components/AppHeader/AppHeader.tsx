@@ -145,7 +145,7 @@ export const AppHeader = () => {
                   display={{ base: 'none', md: 'flex' }}
                 >
                   <HeaderSecondaryItem
-                    href={menuNavigation.speakWithUs.href}
+                    href={(router.locale == 'pt-BR') ? menuNavigation.speakWithUs.href : `/${router.locale}/${menuNavigation.speakWithUs.href}`}
                     title={header.t(menuNavigation.speakWithUs.key)}
                   />
                   <ConditionalLanguageRender>  
