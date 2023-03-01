@@ -25,7 +25,6 @@ function App({ Component, pageProps }: AppProps) {
       router &&
       router.locale &&
       (router.pathname.includes('canal-bnk') ||
-        router.pathname.includes('contact') ||
         router.pathname.includes('onde-comprar')) &&
       router.locale !== 'pt-BR'
     ) {

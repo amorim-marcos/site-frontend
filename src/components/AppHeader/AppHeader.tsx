@@ -144,11 +144,11 @@ export const AppHeader = () => {
                   width="100%"
                   display={{ base: 'none', md: 'flex' }}
                 >
-                  <ConditionalLanguageRender>
-                    <HeaderSecondaryItem
-                      href={menuNavigation.speakWithUs.href}
-                      title={header.t(menuNavigation.speakWithUs.key)}
-                    />
+                  <HeaderSecondaryItem
+                    href={menuNavigation.speakWithUs.href}
+                    title={header.t(menuNavigation.speakWithUs.key)}
+                  />
+                  <ConditionalLanguageRender>  
                     <HeaderSecondaryItem
                       href={menuNavigation.workWithUs.href}
                       title={header.t(menuNavigation.workWithUs.key)}
