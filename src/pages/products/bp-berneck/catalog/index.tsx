@@ -66,7 +66,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   let panels = await strapiClient({
     defaultOnEmpty: true,
-    locale: ctx.locale,
     resource: 'panel-types'
   })
 
