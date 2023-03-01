@@ -19,6 +19,7 @@ import { useBackgroundArray } from './useBackgroundArray'
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
+import { showcaseChannelCode } from 'utils/utils'
 
 export type ContactViewProps = {
   contact_channels: IContactChannel[]
@@ -264,7 +265,7 @@ const ButtonsSection = () => {
             title={contactViewLabels.t('showcaseBanner.title')}
             description={contactViewLabels.t('showcaseBanner.description')}
             onClick={() =>
-              router.push('/contact?channel=solicitacao-de-mostruario')
+              router.push((router.locale == 'pt-BR') ? `/contact?channel=${showcaseChannelCode(router.locale ?? 'pt-BR')}` : `/${router.locale}/contact?channel=${showcaseChannelCode(router.locale ?? 'pt-BR')}`)
             }
             icon={
               <BagIcon

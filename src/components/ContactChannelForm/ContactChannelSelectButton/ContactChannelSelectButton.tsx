@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Button, ButtonProps } from '@chakra-ui/react'
 import { AttentionIcon } from '@components/Icons'
 import { formatChannelNameUrl } from 'utils/utils'
+import { useRouter } from 'next/router'
 
 const colors = {
   default: {
@@ -45,6 +46,7 @@ export const ContactChannelSelectButton = ({
   const [height, setHeight] = useState<number | null>(0)
   const [width, setWidth] = useState<number | null>(0)
   const ref = useRef<HTMLButtonElement>(null)
+  const router = useRouter();
 
   useEffect(() => {
     const { current } = ref
@@ -65,7 +67,7 @@ export const ContactChannelSelectButton = ({
     <>
       <Button 
         as="a"
-        href={`/contact?channel=${formatChannelNameUrl(name)}`}
+        href={(router.locale == 'pt-BR') ? `/contact?channel=${formatChannelNameUrl(name)}`: `/${router.locale}/contact?channel=${formatChannelNameUrl(name)}` }
         background={
           isActive
             ? 'url(/contact-channels/contact-channel-tab-bg-selecionado.svg) repeat'

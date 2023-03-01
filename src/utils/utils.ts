@@ -1,3 +1,5 @@
+const punycode = require('punycode/');
+
 export function smartString(phrase: string, num: number) {
   let subString, restString, proxSpace, subString2
 
@@ -41,10 +43,37 @@ export function smartDate(data: Date | string | undefined, locale: string) {
 
 
 export function formatChannelNameUrl(channel_name: string){
-  return channel_name
-    .normalize('NFD')
+  const normalized_name = punycode.encode(channel_name)
     .replace(/[^\w ]/g, '')
     .split(' ')
     .join('-')
     .toLowerCase()
+
+  return normalized_name
+}
+
+export function showcaseChannelCode(locale: string){
+  switch(locale){
+    case 'pt-BR':
+      return 'solicitao-de-mostruriok3b0b7g';
+    case 'en':
+      return 'showcase-request';
+    case 'es':
+      return 'solicitud-de-muestrario';
+    case 'zh-CN':
+      return '1brp3wqlnotmk8vweo';
+  }
+}
+
+export function exportationContactChannelCode(locale: string){
+  switch(locale){
+    case 'pt-BR':
+      return 'comercial-exportaodwb7f';
+    case 'en':
+      return 'commercial-exportation';
+    case 'es':
+      return 'comercial-exportacin4cc';
+    case 'zh-CN':
+      return 'vhq57g6xbr0b5w65b';
+  }
 }
