@@ -21,7 +21,7 @@
     "messageAcknowledgment": "Thank you for your message",
     "errorMessage": "Something went wrong. Please try again."
   },
-  "pagebar": { "back": "GO BACK" },
+  "pagebar": { "back": "Go Back" },
   "plusInfoTable": {
     "testBody": "TEST BODY",
     "amountOfWaterAbsorbed": "Amount of water absorbed",

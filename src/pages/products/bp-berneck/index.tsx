@@ -26,11 +26,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
   const banners = await strapiClient({
-    resource: 'bp-page-banners'
+    resource: 'bp-page-banners',
+    locale: context.locale
   })
 
   let galleries: Gallery[] = await strapiClient({
-    resource: 'highlighted-ambient-types'
+    resource: 'highlighted-ambient-types',
+    locale: context.locale
   })
 
   galleries =

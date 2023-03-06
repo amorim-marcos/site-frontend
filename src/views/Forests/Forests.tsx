@@ -88,7 +88,7 @@ export const ForestsView = (props: ForestsViewProps) => {
       <PageSession
         data={{
           imageUrl: dataPageSession.imageUrl,
-          title: dataPageSession.title,
+          title: props.page_content.page_title,
           subtitle: dataPageSession.subtitle,
           text: props.page_content.header_text
         }}

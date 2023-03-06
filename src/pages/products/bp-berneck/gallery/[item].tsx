@@ -43,6 +43,9 @@ export default function GalleryItem(props: GalleryItemProps) {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { item } = ctx.query
   const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
+  const translations = await loadTranslations(ni18nConfig, ctx.locale, nameSpaces);
+
+  const t = translations.__ni18n_server__.resources[ctx.locale ?? 'pt-BR'].envView as any;
 
   let envFetch = await strapiClient({
     defaultOnEmpty: true,
@@ -99,23 +102,23 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const tableContent = [
     {
-      column1: 'Ano',
+      column1: t["year"] ?? "",
       column2: envFetch.informations?.year ?? null
     },
     {
-      column1: 'Ambiente',
+      column1: t["environment"] ?? "",
       column2: envFetch.ambient_type.type
     },
     {
-      column1: 'Estilo',
+      column1: t["style"] ?? "",
       column2: envFetch.ambient_styles.map((i: any) => i.style).join(', ')
     },
     {
-      column1: 'Arquiteto',
+      column1: t["architect"] ?? "",
       column2: envFetch.informations?.architect ?? null
     },
     {
-      column1: 'Fotógrafo',
+      column1: t["photographer"] ?? "",
       column2: envFetch.informations?.photographer ?? null
     }
   ]
@@ -126,7 +129,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       otherEnvs,
       imgs,
       tableContent,
-      ...(await loadTranslations(ni18nConfig, ctx.locale, nameSpaces))
+      ...translations
     }
   }
 }

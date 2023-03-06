@@ -6,5 +6,10 @@
   },
   "patternsInfo": "BERNECK® BP standards used in this environment",
   "othersEnvs": "Other environments",
-  "seeMore": "See more environments"
+  "seeMore": "See more environments",
+  "year": "Year",
+  "environment": "Environment",
+  "style": "Style",
+  "architect": "Architect",
+  "photographer": "Photographer"
 }

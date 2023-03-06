@@ -80,7 +80,7 @@ export const HeaderMenuItem = ({
               variant={'header-menu' as any}
               whiteSpace="nowrap"
             >
-              {title}
+              {title.toUpperCase()}
             </Text>
             <Box display={{ base: 'block', md: 'none' }}>
               <ArrowIcon width="10px" stroke="green.800" />

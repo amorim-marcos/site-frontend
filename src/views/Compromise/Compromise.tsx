@@ -87,7 +87,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           imageUrl: dataPageSession.imageUrl,
           subtitle: dataPageSession.subtitle,
           text: page_content.header_text,
-          title: dataPageSession.title
+          title: page_content.page_title
         }}
         titleColor="white"
         subTitleColor="white"

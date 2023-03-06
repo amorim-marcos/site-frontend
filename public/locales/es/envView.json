@@ -6,5 +6,10 @@
   },
   "patternsInfo": "Estándares BP BERNECK utilizados utilizados en este entorno",
   "othersEnvs": "Otros ambientes",
-  "seeMore": "Vea más ambientes"
+  "seeMore": "Vea más ambientes",
+  "year": "Año",
+  "environment": "Ambiente",
+  "style": "Estilo",
+  "architect": "Arquitecto",
+  "photographer": "Fotógrafo"
 }
