@@ -16,6 +16,7 @@ export const SectionPages = (props: {
   }[]
 }) => {
   const router = useRouter()
+  const labels = useTranslation('header')
 
   return (
     <Flex
@@ -52,7 +53,7 @@ export const SectionPages = (props: {
             onClick={() => router.push('/divisao-florestal')}
             image={'/assets/imgs/divisao-florestal-1x.jpg'}
             content={{
-              title: 'Divisão Florestal',
+              title: item.page_title,
               description: item.header_text
             }}
           />
@@ -92,7 +93,7 @@ export const SectionPages = (props: {
             onClick={() => router.push('/nosso-compromisso')}
             image={'/assets/imgs/nosso-compromisso-1x.jpg'}
             content={{
-              title: 'Nosso Compromisso',
+              title: item.page_title,
               description: item.header_text
             }}
           />
@@ -104,7 +105,7 @@ export const SectionPages = (props: {
             }
             image={'/assets/imgs/foto_fabrica@2x.png'}
             content={{
-              title: 'Nossa Trajetória',
+              title: labels.t('menu.whoWeAre.ourTrajectory'),
               description: item.year_description
             }}
           />
@@ -115,7 +116,7 @@ export const SectionPages = (props: {
               onClick={() => router.push('/somos-berneck')}
               image={'/assets/imgs/capa_somos_berneck.png'}
               content={{
-                title: 'Quem Somos',
+                title: item.page_title,
                 description: item.header_text
               }}
             />

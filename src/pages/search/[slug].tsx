@@ -52,10 +52,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     options: { filter: `locale = ${locale}` }
   })
 
-  console.log(res)
-
   const pages: SearchProps['results']['pages'] = res.hits.map((item) => ({
     id: item.id,
+    page_title: item.page_title ?? null,
     header_text: item.header_text ?? null,
     header_subtitle: item.header_subtitle ?? null,
     description: item.description ?? null,
