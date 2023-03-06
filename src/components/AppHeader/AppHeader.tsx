@@ -311,11 +311,11 @@ export const AppHeader = () => {
                     onClick={() => setMenuMobileOpen(false)}
                     bg="green.800"
                   >
+                    <HeaderSecondaryItem
+                      href={(router.locale == 'pt-BR') ? menuNavigation.speakWithUs.href : `/${router.locale}/${menuNavigation.speakWithUs.href}?channel=${exportationContactChannelCode(router.locale ?? 'en')}`}
+                      title={header.t(menuNavigation.speakWithUs.key)}
+                    />
                     <ConditionalLanguageRender>
-                      <HeaderSecondaryItem
-                        href={menuNavigation.speakWithUs.href}
-                        title={header.t(menuNavigation.speakWithUs.key)}
-                      />
                       <HeaderSecondaryItem
                         href={menuNavigation.workWithUs.href}
                         title={header.t(menuNavigation.workWithUs.key)}
