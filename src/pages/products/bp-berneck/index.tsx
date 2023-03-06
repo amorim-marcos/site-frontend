@@ -27,6 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const banners = await strapiClient({
     resource: 'bp-page-banners',
+    locale: context.locale
   })
 
   let galleries: Gallery[] = await strapiClient({
