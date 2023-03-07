@@ -49,19 +49,22 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
       />
 
       {/* INICIO BANNER CAROUSEL */}
-      <Box bg="brown.300">
-        <Flex
-          maxWidth="1536px"
-          marginX="auto"
-          position="relative"
-          zIndex="base"
-          overflowY="hidden"
-          overflowX="hidden"
-          // bg="blue"
-        >
-          <CarrouselBP banners={props.banners} />
-        </Flex>
-      </Box>
+      {
+        ( props.banners && props.banners.length > 0 ) && 
+        <Box bg="brown.300">
+          <Flex
+            maxWidth="1536px"
+            marginX="auto"
+            position="relative"
+            zIndex="base"
+            overflowY="hidden"
+            overflowX="hidden"
+            // bg="blue"
+          >
+            <CarrouselBP banners={props.banners} />
+          </Flex>
+        </Box>
+      }
       {/* FIM BANNER CAROUSEL */}
 
       {/* INICIO BANNER COLECAO */}
