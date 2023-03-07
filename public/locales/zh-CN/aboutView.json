@@ -7,7 +7,7 @@
     "comercialRelations": "商业关系\r",
     "countries": "国家\r"
   },
-  "discoverWhereBuy": { "discover": "发现\r", "whereBuy": "从哪里购买\r" },
+  "discoverWhereBuy": { "discover": "发现\r", "whereBuy": "从哪里购买\r", "dealers": "经销商" },
   "certifications": { "title": "证书\r" },
   "knowOurCertifications": { "know": "认知\r", "whereBuy": "我们的认证" }
 }

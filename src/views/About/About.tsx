@@ -408,7 +408,7 @@ export const About = ({
               // alignSelf='center'
             >
               <Text as="h3" variant={'h3' as any} textAlign={{ base: 'left' }}>
-                Revendedores
+                {aboutView.t('discoverWhereBuy.dealers')}
               </Text>
               <Text
                 color="green.900"
