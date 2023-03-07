@@ -9,7 +9,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { colors } from '../../theme/colors'
 
-export const Buy = ({ representatives_list = '/onde-comprar' }) => {
+export const Buy = ({ representatives_list = '/where-to-buy' }) => {
   const [locationBrasil, setLocationBrasil] = useState(true)
   const { isMobile } = useMobile(568)
   const buyViewLabels = useTranslation('buyView')

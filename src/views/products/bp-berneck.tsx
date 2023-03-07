@@ -49,8 +49,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
       />
 
       {/* INICIO BANNER CAROUSEL */}
-      {
-        ( props.banners && props.banners.length > 0 ) && 
+      {props.banners && props.banners.length > 0 && (
         <Box bg="brown.300">
           <Flex
             maxWidth="1536px"
@@ -64,7 +63,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             <CarrouselBP banners={props.banners} />
           </Flex>
         </Box>
-      }
+      )}
       {/* FIM BANNER CAROUSEL */}
 
       {/* INICIO BANNER COLECAO */}
@@ -307,7 +306,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
                 subtTitle: productsViewLabels.t(
                   'bpBerneck.linkBanners.inspireMagazine.subtitle'
                 ),
-                anchorId: 'revista-inspirare-bnk',
+                anchorId: 'magazine-inspirare-bnk',
                 subTitleColor: 'white.100'
               },
               {
@@ -319,14 +318,14 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
                 subtTitle: productsViewLabels.t(
                   'bpBerneck.linkBanners.supportMaterials.subtitle'
                 ),
-                anchorId: 'materiais-de-suporte',
+                anchorId: 'support-materials',
                 subTitleColor: 'white.100'
               }
             ].map((i) => {
               return (
                 <Flex
                   onClick={() =>
-                    (window.location.href = `/canal-bnk/downloads/#${i.anchorId}`)
+                    (window.location.href = `/channel-bnk/downloads/#${i.anchorId}`)
                   }
                   w={{ base: '100%', md: '30%' }}
                   h={{

@@ -39,7 +39,7 @@ export const SectionPosts = (props: {
             gap={{ base: '25px', lg: '69px' }}
             padding={{ base: '25px', lg: '33px 29px 33px 33px' }}
             onClick={() =>
-              router.push(`/canal-bnk/${item.category}/${item.url_code}`)
+              router.push(`/channel-bnk/${item.category}/${item.url_code}`)
             }
           >
             <Flex gap="28px" direction={{ base: 'column', md: 'row' }}>

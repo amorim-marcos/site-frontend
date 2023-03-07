@@ -36,7 +36,7 @@ export const AppCookieConsent = () => {
             color={'#ACCC9F'}
             _hover={{ color: '#59993F' }}
             textDecoration="underline"
-            href="/politica-de-privacidade"
+            href="/privacy-policy"
           >
             {componentsLabels.t('appCookieConsent.privacy')}
           </Link>

@@ -77,7 +77,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
         paths={[
           {
             title: page_content.page_title,
-            url: 'nosso-compromisso'
+            url: 'our-commitment'
           }
         ]}
       />
@@ -242,7 +242,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
 
       {/* INICIO Cultivamos o meio ambiente */}
       <Flex
-        id="meio-ambiente"
+        id="environment"
         maxWidth="1536px"
         marginX="auto"
         alignItems="center"
@@ -362,7 +362,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                     description={compromiseView.t(
                       'knowOurCertifications.ourCertifications'
                     )}
-                    onClick={() => router.push('/certificacoes')}
+                    onClick={() => router.push('/certifications')}
                     icon={
                       <CertificationsIcon
                         width={{
@@ -742,7 +742,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       {/* INICIO Cultivamos nossa gente */}
       <Box bg="white">
         <Flex
-          id="nossa-gente"
+          id="out-people"
           maxWidth="1536px"
           marginX="auto"
           alignItems="center"
@@ -1035,7 +1035,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       {/* INICIO Cultivamos nossos valores */}
       <Box bg="green.400">
         <Flex
-          id="nossos-valores"
+          id="our-values"
           maxWidth="1536px"
           marginX="auto"
           alignItems="center"
@@ -1253,7 +1253,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       {/* INICIO Nossas práticas de ESG */}
       <Box bg="green.1000">
         <Flex
-          id="relatorio"
+          id="report"
           maxWidth="1536px"
           marginX="auto"
           alignItems="center"

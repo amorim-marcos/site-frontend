@@ -102,7 +102,7 @@ export const PostBody = ({
             gap={{ base: '10px', lg: '0px' }}
           >
             <FacebookShareButton
-              url={`https://www.berneck.com.br/canal-bnk/${category?.id}/${postSlug}`}
+              url={`https://www.berneck.com.br/channel-bnk/${category?.id}/${postSlug}`}
               quote={postTitle}
             >
               <SocialIcon
@@ -115,7 +115,7 @@ export const PostBody = ({
               />
             </FacebookShareButton>
             <TwitterShareButton
-              url={`https://www.berneck.com.br/canal-bnk/${category?.id}/${postSlug}`}
+              url={`https://www.berneck.com.br/channel-bnk/${category?.id}/${postSlug}`}
             >
               <SocialIcon
                 media="twitter"
@@ -220,7 +220,7 @@ export const TagItem = ({
       bg="white.100"
       borderRadius="20px"
       cursor={'pointer'}
-      onClick={() => router.push(`/canal-bnk/tags?_tag=${tag}`)}
+      onClick={() => router.push(`/channel-bnk/tags?_tag=${tag}`)}
     >
       <Text
         userSelect="none"

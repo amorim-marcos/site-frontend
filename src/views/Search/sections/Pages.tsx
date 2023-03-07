@@ -50,7 +50,7 @@ export const SectionPages = (props: {
         ) : item.id.includes('forest-division') ? (
           <Page
             key={item.id}
-            onClick={() => router.push('/divisao-florestal')}
+            onClick={() => router.push('/florestal-division')}
             image={'/assets/imgs/divisao-florestal-1x.jpg'}
             content={{
               title: item.page_title,
@@ -90,7 +90,7 @@ export const SectionPages = (props: {
         ) : item.id.includes('our-commitment') ? (
           <Page
             key={item.id}
-            onClick={() => router.push('/nosso-compromisso')}
+            onClick={() => router.push('/our-commitment')}
             image={'/assets/imgs/nosso-compromisso-1x.jpg'}
             content={{
               title: item.page_title,
@@ -101,7 +101,7 @@ export const SectionPages = (props: {
           <Page
             key={item.id}
             onClick={() =>
-              router.push('/somos-berneck#:~:text=Nossa%20Trajet%C3%B3ria')
+              router.push('/we-are-berneck#:~:text=Nossa%20Trajet%C3%B3ria')
             }
             image={'/assets/imgs/foto_fabrica@2x.png'}
             content={{
@@ -113,7 +113,7 @@ export const SectionPages = (props: {
           item.id.includes('who-we-are') && (
             <Page
               key={item.id}
-              onClick={() => router.push('/somos-berneck')}
+              onClick={() => router.push('/we-are-berneck')}
               image={'/assets/imgs/capa_somos_berneck.png'}
               content={{
                 title: item.page_title,
