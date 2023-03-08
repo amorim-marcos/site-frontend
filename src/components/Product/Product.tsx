@@ -60,30 +60,37 @@ export const Product = ({
         <GrafismProduct {...grafismProps} />
 
         <ProductHeader {...header} />
+
         {imgSrc && (
           <Flex
             direction="column"
             width="100vw"
-            position={{ base: 'relative', sm: 'absolute' }}
-            top="0"
-            right="0"
+            position={{ base: 'relative', md: 'absolute' }}
+            top={{ md: '0' }}
+            right={{ md: '50%' }}
+            transform={{ md: 'translateX(50%)' }}
             alignItems={'flex-end'}
-            zIndex={'base'}
+            bg={{ base: body?.backgroundColor, md: 'none' }}
+            // border="2px solid blue"
           >
             <Flex
+              // border="2px solid red"
               justifyContent="flex-end"
-              w="100vw"
-              bg={{ base: body?.backgroundColor, sm: 'none' }}
-              zIndex={'base'}
+              w={{ base: '90%', md: '47%' }}
             >
               <Image
+                marginTop={{ base: '-50px', md: '0' }}
                 as="img"
                 src={imgSrc}
                 alt="product image"
-                width={imgWidth}
-                maxWidth={imgMaxWidth}
-                marginTop={imgMarginTop}
-                marginRight={imgMarginRight}
+                w="100%"
+                objectFit={'contain'}
+                objectPosition="right"
+                maxH={'1000px'}
+                // width={imgWidth}
+                // maxWidth={imgMaxWidth}
+                // marginTop={imgMarginTop}
+                // marginRight={imgMarginRight}
                 zIndex={'base'}
               />
             </Flex>
@@ -96,6 +103,7 @@ export const Product = ({
             )}
           </Flex>
         )}
+
         <ProductBody
           {...body}
           secondaryBackgroundColor={secondaryBackground}

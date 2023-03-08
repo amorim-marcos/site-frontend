@@ -47,6 +47,7 @@ export const ProductDownloadItem = ({
       marginBottom={{ base: '15px', md: '0px' }}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
+      position="relative"
     >
       {iconName === 'datasheet' ? (
         <DatasheetIcon
@@ -92,6 +93,8 @@ export const ProductDownloadItem = ({
           xl: '13px',
           '2xl': '15px'
         }}
+        w="50%"
+        fontSize={{ base: '10px', lg: '12px', xl: '14px' }}
       >
         {text}
       </Text>

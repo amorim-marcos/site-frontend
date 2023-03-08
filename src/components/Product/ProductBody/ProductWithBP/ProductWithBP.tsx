@@ -112,7 +112,7 @@ export const ProductWithBP = ({
         </Text>
 
         {type === 'centralizedBtn' && (
-          <Link href={href} _hover={{ outline: 'none' }}>
+          <Link href={href} _hover={{ outline: 'none' }} position="relative">
             <Center
               bg={btnColor}
               _hover={{ bg: btnHoverColor }}

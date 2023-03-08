@@ -55,13 +55,13 @@ export default function BerneckPinusView({
         imgWidth={{ base: '100vw', sm: '60vw' }}
         imgMaxWidth="1151px"
         imgMarginTop={{ base: '-30%', sm: '-5%' }}
-        imgMarginRight={{
-          base: '-30px',
-          sm: '-40px',
-          md: '-75px',
-          lg: '-100px',
-          xl: '-150px'
-        }}
+        // imgMarginRight={{
+        //   base: '-30px',
+        //   sm: '-40px',
+        //   md: '-75px',
+        //   lg: '-100px',
+        //   xl: '-150px'
+        // }}
         secondaryBackground="#F5F6F4"
         downloadAndLinks={{
           textColor: '#376B5C',

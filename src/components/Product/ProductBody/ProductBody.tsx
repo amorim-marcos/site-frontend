@@ -64,6 +64,7 @@ export const ProductBody = ({
         w={'100%'}
         padding={{ base: '5% 0 10% 5%', '2xl': '5% 0 5% 3%' }}
         position="relative"
+        pointerEvents={'none'}
       >
         <Box>
           {description && (
@@ -76,7 +77,7 @@ export const ProductBody = ({
                 xl: '70px',
                 '2xl': '80px'
               }}
-              maxW={{ base: '100%', sm: '50%', md: '80%', lg: '100%' }}
+              maxW={{ base: '600px', lg: '900px', xl: '1200px' }}
             >
               <Text
                 as={'h3'}
@@ -102,7 +103,7 @@ export const ProductBody = ({
                 '2xl': '80px'
               }}
               zIndex="docked"
-              maxW={{ base: '100%', sm: '60%', md: '100%' }}
+              maxW={{ base: '100%', md: '100%' }}
             >
               <Text
                 as={'h3'}
@@ -131,6 +132,7 @@ export const ProductBody = ({
                 xl: '70px',
                 '2xl': '80px'
               }}
+              maxW={{ base: '600px', lg: '900px' }}
             >
               <Text
                 as={'h3'}
@@ -155,13 +157,15 @@ export const ProductBody = ({
                 xl: '70px',
                 '2xl': '80px'
               }}
+              pointerEvents="none"
             >
               <Text
                 as={'h3'}
                 variant={'h3'}
                 color="green.900"
                 fontWeight={'extrabold'}
-                zIndex="docked"
+
+                // zIndex="docked"
               >
                 {componentsLabels.t('product.finishes')}
               </Text>
@@ -282,8 +286,9 @@ export const ProductBody = ({
         {BottomComponent}
         {productWithBP && (
           <Box
-          //marginBottom={{ base: '30px', sm: '50px' }}
-          //paddingX={{ base: '0', sm: '5%' }}
+            //marginBottom={{ base: '30px', sm: '50px' }}
+            //paddingX={{ base: '0', sm: '5%' }}
+            pointerEvents={'visible'}
           >
             <ProductWithBP {...productWithBP} />
           </Box>
