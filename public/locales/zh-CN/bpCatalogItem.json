@@ -5,7 +5,7 @@
     "bpCatalog": "BP目录\r"
   },
   "navigation": { "previous": "上一个\r", "next": "下一个\r" },
-  "inspire": { "combineWith": "结合：\r", "inspire": "获得灵感\r" },
+  "inspire": { "combineWith": "结合：\r", "inspire": "获得灵感\r", "watchVideo": "观看视频", "seeEbook": "查看电子书" },
   "properties": {
     "download": "立即下载\r",
     "pattern": "标准\r",

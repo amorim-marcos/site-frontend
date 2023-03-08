@@ -5,7 +5,7 @@
     "bpCatalog": "Catálogo BP"
   },
   "navigation": { "previous": "Anterior", "next": "Siguiente" },
-  "inspire": { "combineWith": "COMBINA CON:", "inspire": "Inspírate" },
+  "inspire": { "combineWith": "COMBINA CON:", "inspire": "Inspírate", "watchVideo": "Ver el vídeo", "seeEbook": "Echa un vistazo al ebook" },
   "properties": {
     "download": "DESCARGAR",
     "pattern": "Estándar",
