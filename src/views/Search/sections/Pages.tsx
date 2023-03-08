@@ -50,7 +50,7 @@ export const SectionPages = (props: {
         ) : item.id.includes('forest-division') ? (
           <Page
             key={item.id}
-            onClick={() => router.push('/florestal-division')}
+            onClick={() => router.push('/forest-division')}
             image={'/assets/imgs/divisao-florestal-1x.jpg'}
             content={{
               title: item.page_title,

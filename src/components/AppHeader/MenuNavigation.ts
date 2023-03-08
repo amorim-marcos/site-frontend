@@ -38,7 +38,7 @@ export const menuNavigation = {
       },
       {
         key: 'menu.ourCommitment.ourPeople',
-        href: '/our-commitment#out-people'
+        href: '/our-commitment#our-people'
       },
       {
         key: 'menu.ourCommitment.ourValues',
@@ -52,23 +52,23 @@ export const menuNavigation = {
   },
   florestalDivision: {
     key: 'menu.florestalDivision.title',
-    href: '/florestal-division',
+    href: '/forest-division',
     subItems: [
       {
         key: 'menu.florestalDivision.forestManagement',
-        href: '/florestal-division#management'
+        href: '/forest-division#management'
       },
       {
         key: 'menu.florestalDivision.forestProduction',
-        href: '/florestal-division#production'
+        href: '/forest-division#production'
       },
       {
         key: 'menu.florestalDivision.forestSuppliers',
-        href: '/florestal-division#supplier'
+        href: '/forest-division#supplier'
       },
       {
         key: 'menu.florestalDivision.publicResume',
-        href: '/florestal-division#public-summary'
+        href: '/forest-division#public-summary'
       }
     ]
   },
@@ -130,23 +130,23 @@ export const menuNavigation = {
   },
   channelBNK: {
     key: 'menu.channelBNK.title',
-    href: '/channel-bnk',
+    href: '/bnk-channel',
     subItems: [
       {
         key: 'menu.channelBNK.inspiration_channel',
-        href: '/channel-bnk/1/'
+        href: '/bnk-channel/1/'
       },
       {
         key: 'menu.channelBNK.knowledge_channel',
-        href: '/channel-bnk/2/'
+        href: '/bnk-channel/2/'
       },
       {
         key: 'menu.channelBNK.bernecks_world_channel',
-        href: '/channel-bnk/3/'
+        href: '/bnk-channel/3/'
       },
       {
         key: 'menu.channelBNK.downloads',
-        href: '/channel-bnk/downloads'
+        href: '/bnk-channel/downloads'
       }
     ]
   }

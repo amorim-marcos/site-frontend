@@ -325,7 +325,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               return (
                 <Flex
                   onClick={() =>
-                    (window.location.href = `/channel-bnk/downloads/#${i.anchorId}`)
+                    (window.location.href = `/bnk-channel/downloads/#${i.anchorId}`)
                   }
                   w={{ base: '100%', md: '30%' }}
                   h={{

@@ -742,7 +742,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       {/* INICIO Cultivamos nossa gente */}
       <Box bg="white">
         <Flex
-          id="out-people"
+          id="our-people"
           maxWidth="1536px"
           marginX="auto"
           alignItems="center"

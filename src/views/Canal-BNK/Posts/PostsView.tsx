@@ -36,11 +36,11 @@ export const PostsView = ({
           paths={[
             {
               title: channelBnkLabels.t('postsView.pagebar.channelBnk'),
-              url: '/channel-bnk'
+              url: '/bnk-channel'
             },
             {
               title: postCategory.name,
-              url: `/channel-bnk/${postCategory.id}`
+              url: `/bnk-channel/${postCategory.id}`
             }
           ]}
           disconsiderCurrentPage={false}

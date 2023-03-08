@@ -73,7 +73,7 @@ export const Post = (props: PostProps) => {
       }
       role="group"
       onClick={() =>
-        router.push(`/channel-bnk/${post?.category.id}/${post?.url_code}`)
+        router.push(`/bnk-channel/${post?.category.id}/${post?.url_code}`)
       }
       cursor="pointer"
       bg={getPanelColor(currentCategory)}
@@ -238,7 +238,7 @@ export const Post = (props: PostProps) => {
             justify={{ base: 'center', sm: 'initial' }}
           >
             <FacebookShareButton
-              url={`https://www.berneck.com.br/channel-bnk/${post?.category.id}/${post?.url_code}`}
+              url={`https://www.berneck.com.br/bnk-channel/${post?.category.id}/${post?.url_code}`}
               quote={post?.title}
             >
               <SocialIcon
@@ -251,7 +251,7 @@ export const Post = (props: PostProps) => {
             </FacebookShareButton>
 
             <TwitterShareButton
-              url={`https://www.berneck.com.br/channel-bnk/${post?.category.id}/${post?.url_code}`}
+              url={`https://www.berneck.com.br/bnk-channel/${post?.category.id}/${post?.url_code}`}
             >
               <SocialIcon
                 media="twitter"

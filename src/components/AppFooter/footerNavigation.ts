@@ -28,7 +28,7 @@ export const footerNavigation = {
       },
       {
         titleKey: 'ourCommitmentColumn.ourPeople',
-        href: '/our-commitment#out-people'
+        href: '/our-commitment#our-people'
       },
       {
         titleKey: 'ourCommitmentColumn.ourValues',
@@ -42,23 +42,23 @@ export const footerNavigation = {
   },
   florestalDivisionColumn: {
     titleKey: 'florestalDivisionColumn.title',
-    href: '/florestal-division',
+    href: '/forest-division',
     items: [
       {
         titleKey: 'florestalDivisionColumn.forestManagement',
-        href: '/florestal-division#management'
+        href: '/forest-division#management'
       },
       {
         titleKey: 'florestalDivisionColumn.forestProduction',
-        href: '/florestal-division#production'
+        href: '/forest-division#production'
       },
       {
         titleKey: 'florestalDivisionColumn.forestSuppliers',
-        href: '/florestal-division#supplier'
+        href: '/forest-division#supplier'
       },
       {
         titleKey: 'florestalDivisionColumn.publicResume',
-        href: '/florestal-division#public-summary'
+        href: '/forest-division#public-summary'
       }
     ]
   },
@@ -83,12 +83,12 @@ export const footerNavigation = {
   },
   channelBNKColumn: {
     titleKey: 'channelBNKColumn.title',
-    href: '/channel-bnk',
+    href: '/bnk-channel',
     items: [
       // { titleKey: 'column4Subitem1', href: '#' },
       {
         titleKey: 'channelBNKColumn.downloads',
-        href: '/channel-bnk/downloads'
+        href: '/bnk-channel/downloads'
       },
       { titleKey: '', href: '', empty: true },
       { titleKey: 'channelBNKColumn.speakWithUs', href: '/contact' },

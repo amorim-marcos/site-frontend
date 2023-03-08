@@ -240,7 +240,7 @@ export default function Home(props: HomeProps) {
           descriptionColor: 'white'
         }}
         banner2={{
-          onClick: () => router.push('/florestal-division'),
+          onClick: () => router.push('/forest-division'),
           imgSrc: '/img/conheca_divisao_florestal.png',
           title: homeView.t('knowOurFlorestalDivision.title'),
           description: homeView.t('knowOurFlorestalDivision.description'),

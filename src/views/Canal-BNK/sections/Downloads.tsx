@@ -23,7 +23,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       key="Revista Inspirare BNK"
       title="Revista Inspirare BNK"
       colorPanel="brown"
-      url="/channel-bnk/downloads#magazine-inspirare-bnk"
+      url="/bnk-channel/downloads#magazine-inspirare-bnk"
       img="/assets/imgs/canal-bnk/img_revista_inspirare.png"
       graphism="/assets/imgs/canal-bnk/grafismo_revista_inspirare.svg"
     />,
@@ -42,7 +42,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       key="Materiais de Divulgação"
       title="Materiais de Divulgação"
       colorPanel="brown"
-      url="/channel-bnk/downloads#promotional-materials"
+      url="/bnk-channel/downloads#promotional-materials"
       img="/assets/imgs/canal-bnk/materiais_de_divulgacao.png"
       graphism="/assets/imgs/canal-bnk/grafismos_materiais_de_divulgação.svg"
     />
@@ -53,7 +53,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       key="Materiais de Suporte"
       title="Materiais de Suporte"
       colorPanel="green"
-      url="/channel-bnk/downloads#support-materials"
+      url="/bnk-channel/downloads#support-materials"
       img="/assets/imgs/canal-bnk/img_materiais_de_suporte.png"
       graphism="/assets/imgs/canal-bnk/grafismo_materiais_de_suporte.svg"
     />,
@@ -73,7 +73,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       key="Revista Opinus"
       title="Revista Opinus"
       colorPanel="gray"
-      url="/channel-bnk/downloads#magazine-opinus"
+      url="/bnk-channel/downloads#magazine-opinus"
       img="/assets/imgs/canal-bnk/img_revista_opinus.png"
       graphism="/assets/imgs/canal-bnk/grafismos_opinus.svg"
     />,
@@ -82,7 +82,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       key="Relatórios"
       title="Relatórios"
       colorPanel="gray"
-      url="/channel-bnk/downloads#reports-and-docs"
+      url="/bnk-channel/downloads#reports-and-docs"
       img="/assets/imgs/canal-bnk/img_relatorios.png"
       graphism="/assets/imgs/canal-bnk/grafismo_relatorios.svg"
     />,
@@ -102,7 +102,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       title={channelBnkLabels.t('downloadsSection.title')}
       seeMore={{
         text: channelBnkLabels.t('downloadsSection.seeMore'),
-        link: '/channel-bnk/downloads'
+        link: '/bnk-channel/downloads'
       }}
       py={{ base: '54px', lg: '100px' }}
       px={{ base: '20px', lg: '5%', '2xl': '1%' }}
@@ -124,7 +124,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                   'downloadsSection.inspirareBnkMagazine'
                 )}
                 colorPanel="brown"
-                url="/channel-bnk/downloads#magazine-inspirare-bnk"
+                url="/bnk-channel/downloads#magazine-inspirare-bnk"
                 img="/assets/imgs/canal-bnk/img_revista_inspirare.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_revista_inspirare.svg"
               />
@@ -132,7 +132,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
               <DownloadColorPanel
                 title={channelBnkLabels.t('downloadsSection.opinusMagazine')}
                 colorPanel="gray"
-                url="/channel-bnk/downloads#magazine-opinus"
+                url="/bnk-channel/downloads#magazine-opinus"
                 img="/assets/imgs/canal-bnk/img_revista_opinus.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_opinus.svg"
               />
@@ -142,7 +142,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
               <DownloadColorPanel
                 title={channelBnkLabels.t('downloadsSection.reports')}
                 colorPanel="gray"
-                url="/channel-bnk/downloads#reports-and-docs"
+                url="/bnk-channel/downloads#reports-and-docs"
                 img="/assets/imgs/canal-bnk/img_relatorios.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_relatorios.svg"
               />
@@ -151,7 +151,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                 flex={2}
                 title={channelBnkLabels.t('downloadsSection.supportMaterials')}
                 colorPanel="green"
-                url="/channel-bnk/downloads#support-materials"
+                url="/bnk-channel/downloads#support-materials"
                 img="/assets/imgs/canal-bnk/img_materiais_de_suporte.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_materiais_de_suporte.svg"
               />
@@ -161,7 +161,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                   'downloadsSection.promotionalMaterials'
                 )}
                 colorPanel="brown"
-                url="/channel-bnk/downloads#promotional-materials"
+                url="/bnk-channel/downloads#promotional-materials"
                 img="/assets/imgs/canal-bnk/materiais_de_divulgacao.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_materiais_de_divulgação.svg"
               />

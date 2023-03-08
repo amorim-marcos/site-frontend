@@ -78,7 +78,7 @@ export const ForestsView = (props: ForestsViewProps) => {
         paths={[
           {
             title: props.page_content.page_title,
-            url: 'florestal-division'
+            url: 'forest-division'
           }
         ]}
       />

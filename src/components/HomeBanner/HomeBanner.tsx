@@ -40,7 +40,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
 
   function navigateToThePost() {
     router.push(
-      `channel-bnk/${items[currentItem].category.id}/${items[currentItem].url_code}`
+      `bnk-channel/${items[currentItem].category.id}/${items[currentItem].url_code}`
     )
   }
 
