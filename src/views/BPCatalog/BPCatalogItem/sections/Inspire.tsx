@@ -329,7 +329,7 @@ export const Inspire = (props: InspireProps) => {
           >
             {props.urlVideo ? (
               <TextureContentButton
-                title="Assista ao vídeo"
+                title={bpCatalogItem.t('inspire.watchVideo')}
                 onClick={() =>
                   props.urlVideo && window.open(props.urlVideo, '_blank')
                 }
@@ -342,7 +342,7 @@ export const Inspire = (props: InspireProps) => {
 
             {props.urlEbook ? (
               <TextureContentButton
-                title="Confira o ebook"
+                title={bpCatalogItem.t('inspire.seeEbook')}
                 onClick={() =>
                   props.urlEbook && window.open(props.urlEbook, '_blank')
                 }

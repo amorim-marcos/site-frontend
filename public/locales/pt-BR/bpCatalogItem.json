@@ -10,7 +10,9 @@
     },  
     "inspire": {
         "combineWith": "COMBINE COM:",
-        "inspire": "Inspire-se"
+        "inspire": "Inspire-se",
+        "watchVideo": "Assista ao vídeo",
+        "seeEbook": "Confira o ebook"
     },
     "properties": {
         "download": "FAÇA O DOWNLOAD",

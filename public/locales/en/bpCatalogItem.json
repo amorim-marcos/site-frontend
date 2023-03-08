@@ -5,7 +5,7 @@
     "bpCatalog": "BP Catalog"
   },
   "navigation": { "previous": "Previous", "next": "Next" },
-  "inspire": { "combineWith": "COMBINE WITH:", "inspire": "Get inspired" },
+  "inspire": { "combineWith": "COMBINE WITH:", "inspire": "Get inspired", "watchVideo": "Watch the video", "seeEbook": "Check out the ebook" },
   "properties": {
     "download": "DOWNLOAD NOW",
     "pattern": "Standard",
