@@ -5,11 +5,13 @@ export type HeaderSecondaryItemProps = {
   title?: string
   href?: string
   isExternal?: boolean
+  borderBottom?: boolean
 }
 export const HeaderSecondaryItem = ({
   title = 'TopMenuItem',
   href = '/',
-  isExternal
+  isExternal,
+  borderBottom = true
 }: HeaderSecondaryItemProps) => {
   const router = useRouter()
 
@@ -25,8 +27,8 @@ export const HeaderSecondaryItem = ({
       alignItems="center"
       width={{ base: 'calc(100vw - 20px)', md: 'auto' }}
       height={{ base: '9vh', md: 'auto' }}
-      borderBottom={{ base: '2px solid', md: 'none' }}
-      borderBottomColor={{ base: 'green.900', md: 'none' }}
+      borderBottom={borderBottom ? { base: '2px solid', md: 'none' } : ''}
+      borderBottomColor={borderBottom ? { base: 'green.900', md: 'none' } : ''}
       paddingX={{ base: '10px', md: '0' }}
       marginX={{ base: '10px', md: '0' }}
       marginLeft={{ base: '0', md: '6%', xl: '7%' }}

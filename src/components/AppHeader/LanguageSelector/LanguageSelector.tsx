@@ -27,14 +27,17 @@ export const LanguageSelector = () => {
   }, [router])
 
   return (
-    <Center
+    <Flex
       cursor="pointer"
       position="relative"
       zIndex="skipLink"
       onClick={() => setOpen(!open)}
       transition="0.2s"
+      minW={{ base: '100px', lg: '130px' }}
+      alignItems={'center'}
+      gap="8px"
     >
-      <Box marginRight="8%">
+      <Box margin="auto 0">
         <LanguageIcon
           width={{
             base: '12px',
@@ -93,6 +96,6 @@ export const LanguageSelector = () => {
           )}
         </Flex>
       )}
-    </Center>
+    </Flex>
   )
 }

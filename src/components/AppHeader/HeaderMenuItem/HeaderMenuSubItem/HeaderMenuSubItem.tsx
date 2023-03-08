@@ -34,7 +34,7 @@ export const HeaderMenuSubItem = ({
           cursor="pointer"
           _hover={{ md: { bg: subItems ? 'green.800' : '#79B928' } }}
           alignItems="center"
-          h={{
+          minH={{
             base: '60px',
             md: '30px',
             lg: '35px',
@@ -44,6 +44,7 @@ export const HeaderMenuSubItem = ({
           bg={{ base: 'green.700', md: 'green.800' }}
           borderBottom={{ base: '2px solid', md: 'none' }}
           borderBottomColor={{ base: 'green.800', md: 'none' }}
+          paddingY="10px"
         >
           <Text
             fontSize={{
@@ -54,6 +55,7 @@ export const HeaderMenuSubItem = ({
             }}
             color="white.100"
             variant={'header-menu' as any}
+            maxW="95%"
           >
             {title || 'Component text'}
           </Text>
@@ -71,10 +73,11 @@ export const HeaderMenuSubItem = ({
                   lg: '15px',
                   xl: '20px'
                 }}
+                paddingY="10px"
                 cursor="pointer"
                 _hover={{ bg: '#79B928' }}
                 alignItems="center"
-                h={{
+                minH={{
                   base: '40px',
                   md: '30px',
                   lg: '35px',
@@ -104,6 +107,7 @@ export const HeaderMenuSubItem = ({
                   }}
                   color="white.100"
                   variant={'header-menu-small' as any}
+                  maxW="95%"
                 >
                   {i.title}
                 </Text>

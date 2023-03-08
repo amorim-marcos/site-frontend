@@ -146,10 +146,18 @@ export const AppHeader = () => {
                   display={{ base: 'none', md: 'flex' }}
                 >
                   <HeaderSecondaryItem
-                    href={(router.locale == 'pt-BR') ? menuNavigation.speakWithUs.href : `/${router.locale}/${menuNavigation.speakWithUs.href}?channel=${exportationContactChannelCode(router.locale ?? 'en')}`}
+                    href={
+                      router.locale == 'pt-BR'
+                        ? menuNavigation.speakWithUs.href
+                        : `/${router.locale}/${
+                            menuNavigation.speakWithUs.href
+                          }?channel=${exportationContactChannelCode(
+                            router.locale ?? 'en'
+                          )}`
+                    }
                     title={header.t(menuNavigation.speakWithUs.key)}
                   />
-                  <ConditionalLanguageRender>  
+                  <ConditionalLanguageRender>
                     <HeaderSecondaryItem
                       href={menuNavigation.workWithUs.href}
                       title={header.t(menuNavigation.workWithUs.key)}
@@ -287,6 +295,7 @@ export const AppHeader = () => {
                       href={menuNavigation.products.href}
                       title={header.t(menuNavigation.products.key)}
                       closeMenuMobile={() => setMenuMobileOpen(false)}
+                      borderBottom={router.locale === 'pt-BR'}
                     />
                     <ConditionalLanguageRender>
                       <HeaderMenuItem
@@ -312,8 +321,17 @@ export const AppHeader = () => {
                     bg="green.800"
                   >
                     <HeaderSecondaryItem
-                      href={(router.locale == 'pt-BR') ? menuNavigation.speakWithUs.href : `/${router.locale}/${menuNavigation.speakWithUs.href}?channel=${exportationContactChannelCode(router.locale ?? 'en')}`}
+                      href={
+                        router.locale == 'pt-BR'
+                          ? menuNavigation.speakWithUs.href
+                          : `/${router.locale}/${
+                              menuNavigation.speakWithUs.href
+                            }?channel=${exportationContactChannelCode(
+                              router.locale ?? 'en'
+                            )}`
+                      }
                       title={header.t(menuNavigation.speakWithUs.key)}
+                      borderBottom={router.locale === 'pt-BR'}
                     />
                     <ConditionalLanguageRender>
                       <HeaderSecondaryItem
@@ -324,6 +342,7 @@ export const AppHeader = () => {
                       <HeaderSecondaryItem
                         href={menuNavigation.whereBuy.href}
                         title={header.t(menuNavigation.whereBuy.key)}
+                        borderBottom={false}
                       />
                     </ConditionalLanguageRender>
                   </Box>
