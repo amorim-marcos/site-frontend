@@ -133,7 +133,7 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
                 description={homeViewLabels.t(
                   'productsSection.discoverBanner.description'
                 )}
-                onClick={() => router.push('/onde-comprar')}
+                onClick={() => router.push('/where-to-buy')}
                 icon={
                   <EarthIcon
                     width={{

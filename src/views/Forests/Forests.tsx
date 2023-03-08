@@ -78,7 +78,7 @@ export const ForestsView = (props: ForestsViewProps) => {
         paths={[
           {
             title: props.page_content.page_title,
-            url: 'divisao-florestal'
+            url: 'forest-division'
           }
         ]}
       />
@@ -197,7 +197,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                 </Text>
 
                 <Button
-                  onClick={() => router.push('/nosso-compromisso')}
+                  onClick={() => router.push('/our-commitment')}
                   w={{ base: '100%', sm: '70%', lg: '100%', xl: '80%' }}
                   h={{ base: '100%', sm: '70%', lg: '90%', xl: '90%' }}
                   padding={{ base: '4%', sm: '3%', lg: '5%', xl: '5%' }}
@@ -359,7 +359,7 @@ export const ForestsView = (props: ForestsViewProps) => {
       {/* INICIO Manejo Florestal */}
       <Box bg="green.200">
         <Flex
-          id="manejo"
+          id="management"
           maxWidth="1536px"
           marginX="auto"
           alignItems="center"
@@ -398,7 +398,7 @@ export const ForestsView = (props: ForestsViewProps) => {
                   description={forestView.t(
                     'knowOurCertifications.ourCertifications'
                   )}
-                  onClick={() => router.push('/certificacoes')}
+                  onClick={() => router.push('/certifications')}
                   icon={
                     <CertificationsIcon
                       width={{
@@ -601,7 +601,7 @@ export const ForestsView = (props: ForestsViewProps) => {
       {/* INICIO Produção Florestal */}
       <Box bg="white.100">
         <Flex
-          id="producao"
+          id="production"
           maxWidth="1536px"
           marginX="auto"
           alignItems="center"
@@ -893,7 +893,7 @@ export const ForestsView = (props: ForestsViewProps) => {
       {/* INICIO Fornecedor Florestal */}
       <Box bg="green.100">
         <Flex
-          id="fornecedor"
+          id="supplier"
           maxWidth="1536px"
           marginX="auto"
           alignItems="center"
@@ -1002,7 +1002,7 @@ export const ForestsView = (props: ForestsViewProps) => {
 
       {/* INICIO Resumo público de Manejo Florestal */}
       <Flex
-        id="resumo-publico"
+        id="public-summary"
         maxWidth="1536px"
         marginX="auto"
         // alignItems='center'

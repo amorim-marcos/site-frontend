@@ -430,7 +430,7 @@ export const Intro = (props: {
               {...(!seeOnlyPosts && {
                 seeMore: {
                   text: channelBnkLabels.t('introSection.seeMore'),
-                  link: `/canal-bnk/${currentCategory}`,
+                  link: `/bnk-channel/${currentCategory}`,
                   onClick: () => setSeeOnlyPosts(true),
                   textColor:
                     currentCategory === -1

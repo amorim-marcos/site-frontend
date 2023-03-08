@@ -19,7 +19,7 @@ export const Privacy = (props: { terms: string }) => {
         paths={[
           {
             title: privacyViewLabels.t('pagebar.privacy'),
-            url: 'politica-de-privacidade'
+            url: 'privacy-policy'
           }
         ]}
       />

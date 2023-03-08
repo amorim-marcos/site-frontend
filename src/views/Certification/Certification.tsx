@@ -60,7 +60,7 @@ export const Certification = (props: CertificationViewProps) => {
         paths={[
           {
             title: certificationViewLabels.t('pagebar.berneckCertifications'),
-            url: '/certificacoes'
+            url: '/certifications'
           }
         ]}
       />
@@ -139,7 +139,7 @@ export const Certification = (props: CertificationViewProps) => {
         overflowX="hidden"
         // bg="red.100"
         bg="white.100"
-        id="certificados-florestais"
+        id="forest-certificates"
       >
         <Flex
           // bg='blue'
@@ -250,7 +250,7 @@ export const Certification = (props: CertificationViewProps) => {
       {/* FIM Florestas Certificadas*/}
 
       {/* INICIO Produtos altamente qualificados */}
-      <Box bg="green.170" id="certificados-de-produtos">
+      <Box bg="green.170" id="products-certificate">
         <Flex
           maxWidth="1536px"
           marginX="auto"

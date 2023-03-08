@@ -9,7 +9,7 @@ export const menuNavigation = {
   },
   whereBuy: {
     key: 'topMenu.whereBuy',
-    href: '/onde-comprar'
+    href: '/where-to-buy'
   },
   restrictAccess: {
     key: 'topMenu.restrictAccess',
@@ -17,55 +17,58 @@ export const menuNavigation = {
   },
   whoWeAre: {
     key: 'menu.whoWeAre.title',
-    href: '/somos-berneck',
+    href: '/we-are-berneck',
     subItems: [
-      { key: 'menu.whoWeAre.whoWeAre', href: '/somos-berneck/#quem-somos' },
-      { key: 'menu.whoWeAre.ourTrajectory', href: '/somos-berneck#trajetoria' },
-      { key: 'menu.whoWeAre.whereWeAre', href: '/somos-berneck#onde-estamos' },
-      { key: 'menu.whoWeAre.certifications', href: '/certificacoes' }
+      { key: 'menu.whoWeAre.whoWeAre', href: '/we-are-berneck/#who-we-are' },
+      {
+        key: 'menu.whoWeAre.ourTrajectory',
+        href: '/we-are-berneck#trajectory'
+      },
+      { key: 'menu.whoWeAre.whereWeAre', href: '/we-are-berneck#where-we-are' },
+      { key: 'menu.whoWeAre.certifications', href: '/certifications' }
     ]
   },
   ourCommitment: {
     key: 'menu.ourCommitment.title',
-    href: '/nosso-compromisso',
+    href: '/our-commitment',
     subItems: [
       {
         key: 'menu.ourCommitment.environment',
-        href: '/nosso-compromisso#meio-ambiente'
+        href: '/our-commitment#environment'
       },
       {
         key: 'menu.ourCommitment.ourPeople',
-        href: '/nosso-compromisso#nossa-gente'
+        href: '/our-commitment#our-people'
       },
       {
         key: 'menu.ourCommitment.ourValues',
-        href: '/nosso-compromisso#nossos-valores'
+        href: '/our-commitment#our-values'
       },
       {
         key: 'menu.ourCommitment.report',
-        href: '/nosso-compromisso#relatorio'
+        href: '/our-commitment#report'
       }
     ]
   },
   florestalDivision: {
     key: 'menu.florestalDivision.title',
-    href: '/divisao-florestal',
+    href: '/forest-division',
     subItems: [
       {
         key: 'menu.florestalDivision.forestManagement',
-        href: '/divisao-florestal#manejo'
+        href: '/forest-division#management'
       },
       {
         key: 'menu.florestalDivision.forestProduction',
-        href: '/divisao-florestal#producao'
+        href: '/forest-division#production'
       },
       {
         key: 'menu.florestalDivision.forestSuppliers',
-        href: '/divisao-florestal#fornecedor'
+        href: '/forest-division#supplier'
       },
       {
         key: 'menu.florestalDivision.publicResume',
-        href: '/divisao-florestal#resumo-publico'
+        href: '/forest-division#public-summary'
       }
     ]
   },
@@ -127,23 +130,23 @@ export const menuNavigation = {
   },
   channelBNK: {
     key: 'menu.channelBNK.title',
-    href: '/canal-bnk',
+    href: '/bnk-channel',
     subItems: [
       {
         key: 'menu.channelBNK.inspiration_channel',
-        href: '/canal-bnk/1/'
+        href: '/bnk-channel/1/'
       },
       {
         key: 'menu.channelBNK.knowledge_channel',
-        href: '/canal-bnk/2/'
+        href: '/bnk-channel/2/'
       },
       {
         key: 'menu.channelBNK.bernecks_world_channel',
-        href: '/canal-bnk/3/'
+        href: '/bnk-channel/3/'
       },
       {
         key: 'menu.channelBNK.downloads',
-        href: '/canal-bnk/downloads'
+        href: '/bnk-channel/downloads'
       }
     ]
   }

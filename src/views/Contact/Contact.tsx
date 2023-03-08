@@ -237,7 +237,7 @@ const ButtonsSection = () => {
             maxH={{ base: '185px' }}
             title={contactViewLabels.t('discoverBanner.title')}
             description={contactViewLabels.t('discoverBanner.description')}
-            onClick={() => router.push('/onde-comprar')}
+            onClick={() => router.push('/where-to-buy')}
             icon={
               <EarthIcon
                 width={{
@@ -265,7 +265,15 @@ const ButtonsSection = () => {
             title={contactViewLabels.t('showcaseBanner.title')}
             description={contactViewLabels.t('showcaseBanner.description')}
             onClick={() =>
-              router.push((router.locale == 'pt-BR') ? `/contact?channel=${showcaseChannelCode(router.locale ?? 'pt-BR')}` : `/${router.locale}/contact?channel=${showcaseChannelCode(router.locale ?? 'pt-BR')}`)
+              router.push(
+                router.locale == 'pt-BR'
+                  ? `/contact?channel=${showcaseChannelCode(
+                      router.locale ?? 'pt-BR'
+                    )}`
+                  : `/${router.locale}/contact?channel=${showcaseChannelCode(
+                      router.locale ?? 'pt-BR'
+                    )}`
+              )
             }
             icon={
               <BagIcon

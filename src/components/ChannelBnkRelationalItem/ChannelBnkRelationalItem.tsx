@@ -80,7 +80,7 @@ export const ChannelBnkRelationalItem = ({
       maxWidth={{ base: '270px', '2xl': '100%' }}
       {...props}
       cursor="pointer"
-      onClick={() => router.push(`/canal-bnk/${categoryId}/${url_code}`)}
+      onClick={() => router.push(`/bnk-channel/${categoryId}/${url_code}`)}
     >
       {/* {CARD CHANNEL  } */}
       <Box

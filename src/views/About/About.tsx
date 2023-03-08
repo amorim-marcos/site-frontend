@@ -59,7 +59,7 @@ export const About = ({
         ]}
       />
 
-      <Box id="quem-somos">
+      <Box id="who-we-are">
         <PageSession
           data={{
             imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
@@ -247,7 +247,7 @@ export const About = ({
       {/* FIM PARA O MADEIRAS MUNDO */}
 
       {/* INICIO TRAJETORIA CAROUSEL */}
-      <Box bg="brown.100" id="trajetoria">
+      <Box bg="brown.100" id="trajectory">
         <Flex
           maxWidth="1536px"
           marginX="auto"
@@ -301,7 +301,7 @@ export const About = ({
 
       {/* INICIO ONDE ESTAMOS */}
       <Flex
-        id="onde-estamos"
+        id="where-we-are"
         maxWidth="1536px"
         marginX="auto"
         position="relative"
@@ -433,7 +433,7 @@ export const About = ({
               <PatternInfo
                 title={aboutView.t('discoverWhereBuy.discover')}
                 description={aboutView.t('discoverWhereBuy.whereBuy')}
-                onClick={() => router.push('/onde-comprar')}
+                onClick={() => router.push('/where-to-buy')}
                 icon={
                   <EarthIcon
                     width={{
@@ -507,7 +507,7 @@ export const About = ({
             }}
           >
             <PatternInfoPhoto
-              onClick={() => router.push('/certificacoes')}
+              onClick={() => router.push('/certifications')}
               imgSrc="/img/banner_certificacoes_about.png"
               title={aboutView.t('knowOurCertifications.know')}
               description={aboutView.t('knowOurCertifications.whereBuy')}

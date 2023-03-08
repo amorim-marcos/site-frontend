@@ -62,7 +62,7 @@ export const DownloadsView = ({
         paths={[
           {
             title: channelBnkLabels.t('downloadsView.pagebar.downloads'),
-            url: '/canal-bnk/downloads'
+            url: '/bnk-channel/downloads'
           }
         ]}
       />

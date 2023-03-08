@@ -23,7 +23,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       key="Revista Inspirare BNK"
       title="Revista Inspirare BNK"
       colorPanel="brown"
-      url="/canal-bnk/downloads#revista-inspirare-bnk"
+      url="/bnk-channel/downloads#magazine-inspirare-bnk"
       img="/assets/imgs/canal-bnk/img_revista_inspirare.png"
       graphism="/assets/imgs/canal-bnk/grafismo_revista_inspirare.svg"
     />,
@@ -42,7 +42,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       key="Materiais de Divulgação"
       title="Materiais de Divulgação"
       colorPanel="brown"
-      url="/canal-bnk/downloads#materiais-de-divulgacao"
+      url="/bnk-channel/downloads#promotional-materials"
       img="/assets/imgs/canal-bnk/materiais_de_divulgacao.png"
       graphism="/assets/imgs/canal-bnk/grafismos_materiais_de_divulgação.svg"
     />
@@ -53,7 +53,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       key="Materiais de Suporte"
       title="Materiais de Suporte"
       colorPanel="green"
-      url="/canal-bnk/downloads#materiais-de-suporte"
+      url="/bnk-channel/downloads#support-materials"
       img="/assets/imgs/canal-bnk/img_materiais_de_suporte.png"
       graphism="/assets/imgs/canal-bnk/grafismo_materiais_de_suporte.svg"
     />,
@@ -62,7 +62,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       key="Certificados de Produto"
       title="Certificados de Produto"
       colorPanel="green"
-      url="/certificacoes#certificados-de-produtos"
+      url="/certifications#products-certificate"
       img="/assets/imgs/canal-bnk/img_certificados_de_produto.png"
       graphism="/assets/imgs/canal-bnk/grafismo_certificados_de_produto.svg"
     />
@@ -73,7 +73,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       key="Revista Opinus"
       title="Revista Opinus"
       colorPanel="gray"
-      url="/canal-bnk/downloads#revista-opinus"
+      url="/bnk-channel/downloads#magazine-opinus"
       img="/assets/imgs/canal-bnk/img_revista_opinus.png"
       graphism="/assets/imgs/canal-bnk/grafismos_opinus.svg"
     />,
@@ -82,7 +82,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       key="Relatórios"
       title="Relatórios"
       colorPanel="gray"
-      url="/canal-bnk/downloads#relatorios-e-documentos"
+      url="/bnk-channel/downloads#reports-and-docs"
       img="/assets/imgs/canal-bnk/img_relatorios.png"
       graphism="/assets/imgs/canal-bnk/grafismo_relatorios.svg"
     />,
@@ -91,7 +91,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       key="Certificados Florestais"
       title="Certificados Florestais"
       colorPanel="gray"
-      url="/certificacoes#certificados-florestais"
+      url="/certifications#forest-certificates"
       img="/assets/imgs/canal-bnk/img_certificados_florestais.png"
       graphism="/assets/imgs/canal-bnk/grafismo_certificados_florestais.svg"
     />
@@ -102,7 +102,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       title={channelBnkLabels.t('downloadsSection.title')}
       seeMore={{
         text: channelBnkLabels.t('downloadsSection.seeMore'),
-        link: '/canal-bnk/downloads'
+        link: '/bnk-channel/downloads'
       }}
       py={{ base: '54px', lg: '100px' }}
       px={{ base: '20px', lg: '5%', '2xl': '1%' }}
@@ -118,17 +118,13 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
             gap="34px"
             direction="column"
           >
-            <Flex 
-              w="100%" 
-              gap="34px" 
-              px={{ base: '0', lg: '3%', '2xl': '0' }}
-            >
+            <Flex w="100%" gap="34px" px={{ base: '0', lg: '3%', '2xl': '0' }}>
               <DownloadColorPanel
                 title={channelBnkLabels.t(
                   'downloadsSection.inspirareBnkMagazine'
                 )}
                 colorPanel="brown"
-                url="/canal-bnk/downloads#revista-inspirare-bnk"
+                url="/bnk-channel/downloads#magazine-inspirare-bnk"
                 img="/assets/imgs/canal-bnk/img_revista_inspirare.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_revista_inspirare.svg"
               />
@@ -136,7 +132,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
               <DownloadColorPanel
                 title={channelBnkLabels.t('downloadsSection.opinusMagazine')}
                 colorPanel="gray"
-                url="/canal-bnk/downloads#revista-opinus"
+                url="/bnk-channel/downloads#magazine-opinus"
                 img="/assets/imgs/canal-bnk/img_revista_opinus.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_opinus.svg"
               />
@@ -146,7 +142,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
               <DownloadColorPanel
                 title={channelBnkLabels.t('downloadsSection.reports')}
                 colorPanel="gray"
-                url="/canal-bnk/downloads#relatorios-e-documentos"
+                url="/bnk-channel/downloads#reports-and-docs"
                 img="/assets/imgs/canal-bnk/img_relatorios.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_relatorios.svg"
               />
@@ -155,7 +151,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                 flex={2}
                 title={channelBnkLabels.t('downloadsSection.supportMaterials')}
                 colorPanel="green"
-                url="/canal-bnk/downloads#materiais-de-suporte"
+                url="/bnk-channel/downloads#support-materials"
                 img="/assets/imgs/canal-bnk/img_materiais_de_suporte.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_materiais_de_suporte.svg"
               />
@@ -165,7 +161,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                   'downloadsSection.promotionalMaterials'
                 )}
                 colorPanel="brown"
-                url="/canal-bnk/downloads#materiais-de-divulgacao"
+                url="/bnk-channel/downloads#promotional-materials"
                 img="/assets/imgs/canal-bnk/materiais_de_divulgacao.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_materiais_de_divulgação.svg"
               />
@@ -187,7 +183,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                   'downloadsSection.forestCertificates'
                 )}
                 colorPanel="gray"
-                url="/certificacoes#certificados-florestais"
+                url="/certifications#forest-certificates"
                 img="/assets/imgs/canal-bnk/img_certificados_florestais.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_certificados_florestais.svg"
               />
@@ -197,21 +193,17 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                   'downloadsSection.productCertificates'
                 )}
                 colorPanel="green"
-                url="/certificacoes#certificados-de-produtos"
+                url="/certifications#products-certificate"
                 img="/assets/imgs/canal-bnk/img_certificados_de_produto.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_certificados_de_produto.svg"
               />
             </Flex>
           </Flex>
         ) : (
-          <Flex 
-            data-testid="downloads" 
-            pt="65px" 
-            gap="34px" 
-            direction="column">
-            <Flex 
-              w="100%" 
-              gap="34px" 
+          <Flex data-testid="downloads" pt="65px" gap="34px" direction="column">
+            <Flex
+              w="100%"
+              gap="34px"
               // px="88px"
               // bg="black"
             >
@@ -253,10 +245,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
           direction="column"
           // bg="violet"
         >
-          <Flex   
-            gap="34px"
-          
-          >
+          <Flex gap="34px">
             <Carousel>
               {currentCategory === 0
                 ? categoryOne

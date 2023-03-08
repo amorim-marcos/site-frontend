@@ -62,7 +62,7 @@ export const ProductDownloadAndLinks = ({
           />
         </Box>
       ) : (
-        <Link href="/onde-comprar" _hover={{ outline: 'none' }}>
+        <Link href="/where-to-buy" _hover={{ outline: 'none' }}>
           <ProductDownloadItem
             textColor={textColor}
             hoverColor={hoverColor}
@@ -73,7 +73,7 @@ export const ProductDownloadAndLinks = ({
         </Link>
       )}
       {qualityCertificate && (
-        <Link href="/certificacoes" _hover={{ outline: 'none' }}>
+        <Link href="/certifications" _hover={{ outline: 'none' }}>
           <ProductDownloadItem
             textColor={textColor}
             hoverColor={hoverColor}

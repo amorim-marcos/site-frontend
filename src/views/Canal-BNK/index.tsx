@@ -101,7 +101,7 @@ export function CategoryCtxProvider(props: {
       const category = categories[currentCategory]
 
       if (category) {
-        const target = `/canal-bnk/${category.id}`
+        const target = `/bnk-channel/${category.id}`
 
         if (router.asPath !== target) {
           router.push(target)
@@ -163,7 +163,7 @@ function CanalBNKFC(props: CanalBNKProps) {
           paths={[
             {
               title: channelBnkLabels.t('pagebar.channelBnk'),
-              url: '/canal-bnk'
+              url: '/bnk-channel'
             },
             {
               title: categories[currentCategory].name
@@ -172,7 +172,7 @@ function CanalBNKFC(props: CanalBNKProps) {
                   (name) => name[0].toUpperCase() + name.slice(1).toLowerCase()
                 )
                 .join(' '),
-              url: '/canal-bnk'
+              url: '/bnk-channel'
             }
           ]}
         />
@@ -181,7 +181,7 @@ function CanalBNKFC(props: CanalBNKProps) {
           paths={[
             {
               title: channelBnkLabels.t('pagebar.channelBnk'),
-              url: '/canal-bnk'
+              url: '/bnk-channel'
             }
           ]}
         />

@@ -143,7 +143,7 @@ export const Properties = (props: PropertiesProps) => {
               description={bpCatalogItem.t(
                 'properties.knowOurCertifications.ourCertifications'
               )}
-              onClick={() => router.push('/certificacoes')}
+              onClick={() => router.push('/certifications')}
               icon={
                 <CertificationsIcon
                   width={{
@@ -168,7 +168,7 @@ export const Properties = (props: PropertiesProps) => {
                 description={bpCatalogItem.t(
                   'properties.discoverWhereToBuy.whereToBuy'
                 )}
-                onClick={() => router.push('/onde-comprar')}
+                onClick={() => router.push('/where-to-buy')}
                 icon={
                   <EarthIcon
                     width={{

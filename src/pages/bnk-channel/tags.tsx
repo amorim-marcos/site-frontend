@@ -13,10 +13,10 @@ export default function Tagspage(props: { posts: Post[]; tagName: string }) {
     <Box>
       <Pagebar
         paths={[
-          { title: 'Canal BNK', url: '/canal-bnk' },
+          { title: 'Canal BNK', url: '/bnk-channel' },
           {
             title: props.tagName,
-            url: '/canal-bnk'
+            url: '/bnk-channel'
           }
         ]}
       />
