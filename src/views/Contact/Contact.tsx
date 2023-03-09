@@ -20,6 +20,7 @@ import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
 import { showcaseChannelCode } from 'utils/utils'
+import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 
 export type ContactViewProps = {
   contact_channels: IContactChannel[]
@@ -231,33 +232,35 @@ const ButtonsSection = () => {
         paddingRight={{ base: 0, lg: '80px' }}
         flex="1"
       >
-        <Box flex="1" mr={{ base: 0, lg: '45px' }}>
-          <PatternInfo
-            minH={{ base: '100px' }}
-            maxH={{ base: '185px' }}
-            title={contactViewLabels.t('discoverBanner.title')}
-            description={contactViewLabels.t('discoverBanner.description')}
-            onClick={() => router.push('/where-to-buy')}
-            icon={
-              <EarthIcon
-                width={{
-                  base: '30px',
-                  xs: '30px',
-                  sm: '58px',
-                  lg: '70px',
-                  xl: '80px'
-                }}
-                height={{
-                  base: '30px',
-                  xs: '30px',
-                  sm: '58px',
-                  lg: '70px',
-                  xl: '80px'
-                }}
-              />
-            }
-          />
-        </Box>
+        <ConditionalLanguageRender>
+          <Box flex="1" mr={{ base: 0, lg: '45px' }}>
+            <PatternInfo
+              minH={{ base: '100px' }}
+              maxH={{ base: '185px' }}
+              title={contactViewLabels.t('discoverBanner.title')}
+              description={contactViewLabels.t('discoverBanner.description')}
+              onClick={() => router.push('/where-to-buy')}
+              icon={
+                <EarthIcon
+                  width={{
+                    base: '30px',
+                    xs: '30px',
+                    sm: '58px',
+                    lg: '70px',
+                    xl: '80px'
+                  }}
+                  height={{
+                    base: '30px',
+                    xs: '30px',
+                    sm: '58px',
+                    lg: '70px',
+                    xl: '80px'
+                  }}
+                />
+              }
+            />
+          </Box>
+        </ConditionalLanguageRender>
         <Box flex="1" mr={{ base: 0, lg: '45px' }} mt={{ base: '45px', lg: 0 }}>
           <PatternInfo
             minH={{ base: '100px' }}
@@ -295,38 +298,40 @@ const ButtonsSection = () => {
             }
           />
         </Box>
-        <Box flex="1" mt={{ base: '45px', lg: 0 }}>
-          <PatternInfo
-            minH={{ base: '100px' }}
-            maxH={{ base: '185px' }}
-            title={contactViewLabels.t('positionsBanner.title')}
-            description={contactViewLabels.t('positionsBanner.description')}
-            onClick={() =>
-              window.open(
-                'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup',
-                '_blank'
-              )
-            }
-            icon={
-              <BadgeIcon
-                width={{
-                  base: '30px',
-                  xs: '30px',
-                  sm: '58px',
-                  lg: '70px',
-                  xl: '80px'
-                }}
-                height={{
-                  base: '30px',
-                  xs: '30px',
-                  sm: '58px',
-                  lg: '70px',
-                  xl: '80px'
-                }}
-              />
-            }
-          />
-        </Box>
+        <ConditionalLanguageRender>
+          <Box flex="1" mt={{ base: '45px', lg: 0 }}>
+            <PatternInfo
+              minH={{ base: '100px' }}
+              maxH={{ base: '185px' }}
+              title={contactViewLabels.t('positionsBanner.title')}
+              description={contactViewLabels.t('positionsBanner.description')}
+              onClick={() =>
+                window.open(
+                  'https://platform.senior.com.br/hcmrs/hcm/curriculo/?tenant=berneck&tenantdomain=berneck.com.br#!/login/signup',
+                  '_blank'
+                )
+              }
+              icon={
+                <BadgeIcon
+                  width={{
+                    base: '30px',
+                    xs: '30px',
+                    sm: '58px',
+                    lg: '70px',
+                    xl: '80px'
+                  }}
+                  height={{
+                    base: '30px',
+                    xs: '30px',
+                    sm: '58px',
+                    lg: '70px',
+                    xl: '80px'
+                  }}
+                />
+              }
+            />
+          </Box>
+        </ConditionalLanguageRender>
       </Flex>
     </Flex>
   )

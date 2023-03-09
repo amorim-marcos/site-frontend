@@ -13,8 +13,10 @@ import { TrajectoryTab } from '@components/TrajectoryCarousel/TrajectoryCarousel
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
+import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 
 export type AboutPageContent = {
+  page_title?: string
   header_title?: string
   header_text?: string
   section1_title?: string
@@ -63,7 +65,7 @@ export const About = ({
         <PageSession
           data={{
             imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
-            title: aboutView.t('headerBanner.title'),
+            title: page_content.page_title  || '',
             subtitle: page_content.header_title || '',
             text: page_content.header_text || ''
           }}
@@ -379,6 +381,7 @@ export const About = ({
       {/* FIM ONDE ESTAMOS */}
 
       {/* INICIO REVENDEDORES */}
+      <ConditionalLanguageRender>
       <Box bg="green.200">
         <Flex
           maxWidth="1536px"
@@ -456,7 +459,8 @@ export const About = ({
             </Box>
           </Flex>
         </Flex>
-      </Box>
+      </Box> 
+      </ConditionalLanguageRender>
       {/* FIM REVENDEDORES */}
 
       {/* INICIO CERTIFICADOS */}

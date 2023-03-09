@@ -7,7 +7,7 @@
   },
   "ourCorporativeValues": { "title": "Nuestros valores corporativos" },
   "fsc": {
-    "description": " you support the responsible management of the world's forests.\""
+    "description": "Al elegir productos certificados por FSC®, apoyas la gestión responsable de los bosques del mundo."
   },
   "knowOurCertifications": {
     "know": "CONOCE",
@@ -36,7 +36,11 @@
   },
   "socialProjects": {
     "description": "Por medio de las leyes de incentivo, BERNECK® apoya proyectos que auxilian al Estado a crear una sinergia e impacto social positivo, llevando estímulo a los jóvenes y a la población en general.",
-    "checkOutSponsoredProjects": "Algunos proyectos patrocinados por nosotros:"
+    "checkOutSponsoredProjects": "Algunos proyectos patrocinados por nosotros:",
+    "handlagesSubtitle": "Lages, SC | Proyecto Deportivo",
+    "granCircoStopimSubtitle": "Mato Grosso | Proyecto Cultural",
+    "herdeirosDaTerraSubtitle": "Curitibanos | Proyecto Social - Niños",
+    "fundoMunicipalDoIdosoSubtitle": "Joinville, SC | Proyecto Social - Mayores"
   },
   "ESG": { "title": "ESG" }
 }

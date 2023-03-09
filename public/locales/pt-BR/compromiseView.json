@@ -38,7 +38,11 @@
     },
     "socialProjects":{
         "description": "Por meio das leis de incentivo, a BERNECK® apoia projetos que auxiliam o Estado a criar uma sinergia e impacto social positivo, levando estímulo aos jovens e à população em geral.",
-        "checkOutSponsoredProjects": "Confira alguns projetos patrocinados por nós:"
+        "checkOutSponsoredProjects": "Confira alguns projetos patrocinados por nós:",
+        "handlagesSubtitle": "Lages, SC | Projeto Desportivo",
+        "granCircoStopimSubtitle": "Mato Grosso | Projeto Cultural",
+        "herdeirosDaTerraSubtitle": "Curitibanos | Projeto Social - Crianças",
+        "fundoMunicipalDoIdosoSubtitle": "Joinville, SC | Projeto Social • Idosos"
     },
     "ESG": {
         "title":"ESG"

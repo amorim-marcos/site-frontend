@@ -83,7 +83,11 @@
         "title": "MDP PLUS BERNECK®\r",
         "subtitle": "具有超强防潮性的中密度刨花板\r"
       }
-    }
+    },
+    "species": "物種",
+    "humity": "標準含水率",
+    "density": "平均密度 12% 水分",
+    "variation": "測量偏差"
   },
   "berneckPinus": {
     "title": "BERNECK PINUS®\r",

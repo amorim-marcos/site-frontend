@@ -2,14 +2,17 @@ import { useState } from 'react'
 import { Flex, Image, Text, Box } from '@chakra-ui/react'
 
 import HighlightBoxPanelFooter from './HighlightBoxPanelFooter'
+import { useTranslation } from 'react-i18next'
 
 export type HighlightBoxPanelProps = {
   title: string
-  subtitle: string
+  subtitle_key: string
   image: string
 }
 
 export const HighlightBoxPanel = (props: HighlightBoxPanelProps) => {
+  const compromiseView = useTranslation('compromiseView')
+
   return (
     <Flex
       w={{ base: '95%', md: '80%', lg: '45%', xl: '30%' }}
@@ -21,7 +24,7 @@ export const HighlightBoxPanel = (props: HighlightBoxPanelProps) => {
     >
       <PanelImage image={props.image} />
 
-      <HighlightBoxPanelFooter title={props.title} subtitle={props.subtitle} />
+      <HighlightBoxPanelFooter title={props.title} subtitle={compromiseView.t(props.subtitle_key)} />
     </Flex>
   )
 }

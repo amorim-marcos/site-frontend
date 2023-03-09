@@ -7,7 +7,7 @@
     "comercialRelations": "Commercial Relationships",
     "countries": "countries"
   },
-  "discoverWhereBuy": { "discover": "DISCOVER", "whereBuy": "Where to Buy", "dealers": "Dealers" },
+  "discoverWhereBuy": { "discover": "FIND OUT", "whereBuy": "Where to Buy", "dealers": "Dealers" },
   "certifications": { "title": "Certifications" },
-  "knowOurCertifications": { "know": "MEET", "whereBuy": "Our Certifications" }
+  "knowOurCertifications": { "know": "GET TO KNOW", "whereBuy": "Our Certifications" }
 }
