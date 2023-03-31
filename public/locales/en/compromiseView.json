@@ -6,7 +6,7 @@
     "btn": "Code of ethics and conduct"
   },
   "ourCorporativeValues": { "title": "Our corporate values" },
-  "fsc": { "description": "\"By choosing FSC® certified products" },
+  "fsc": { "description": "By choosing FSC® certified products, you support the responsible management of the world's forests." },
   "knowOurCertifications": {
     "know": "GET TO KNOW",
     "ourCertifications": "Our Certifications"
@@ -26,13 +26,17 @@
     "waterUsed": "of the Water Used"
   },
   "infoGraphicContributors": {
-    "measure": "One thousand",
+    "measure": "thousand",
     "description": "Direct and indirect collaborators"
   },
   "weCultivateOurPeople": { "bePartOfThisTeamBtn": "Be part of this team" },
   "socialProjects": {
     "description": "Through the incentive laws, BERNECK® supports projects that help the state to create a synergy and positive social impact, bringing stimulus to young people and the population in general.",
-    "checkOutSponsoredProjects": "Check out some projects we sponsor:"
+    "checkOutSponsoredProjects": "Check out some projects we sponsor:",
+    "handlagesSubtitle": "Lages, SC | Sports Project",
+    "granCircoStopimSubtitle": "Mato Grosso | Cultural Project",
+    "herdeirosDaTerraSubtitle": "Curitibanos | Social Project - Children",
+    "fundoMunicipalDoIdosoSubtitle": "Joinville, SC | Social Project - Senior Citizens"
   },
   "ESG": { "title": "ESG" }
 }

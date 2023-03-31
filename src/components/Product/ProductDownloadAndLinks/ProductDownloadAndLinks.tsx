@@ -2,6 +2,7 @@ import { Flex, Text, Heading, Link, Box } from '@chakra-ui/react'
 import { ProductDownloadItem } from './ProductDownloadItem/ProductDownloadItem'
 import { useTranslation } from 'react-i18next'
 import ArrowIcon from '@components/Icons/ArrowIcon'
+import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 
 export type ProductDownloadAndLinksProps = {
   textColor?: string
@@ -51,27 +52,29 @@ export const ProductDownloadAndLinks = ({
           />
         </Link>
       )}
-      {whereBuy && typeof whereBuy === 'string' ? (
-        <Box onClick={() => window.open(whereBuy, '_blank')}>
-          <ProductDownloadItem
-            textColor={textColor}
-            hoverColor={hoverColor}
-            iconName="location"
-            text={componentsLabels.t('product.whereBuy')}
-            backgroundColor={backgroundColor}
-          />
-        </Box>
-      ) : (
-        <Link href="/where-to-buy" _hover={{ outline: 'none' }}>
-          <ProductDownloadItem
-            textColor={textColor}
-            hoverColor={hoverColor}
-            iconName="location"
-            text={componentsLabels.t('product.whereBuy')}
-            backgroundColor={backgroundColor}
-          />
-        </Link>
-      )}
+      <ConditionalLanguageRender>
+        {whereBuy && typeof whereBuy === 'string' ? (
+          <Box onClick={() => window.open(whereBuy, '_blank')}>
+            <ProductDownloadItem
+              textColor={textColor}
+              hoverColor={hoverColor}
+              iconName="location"
+              text={componentsLabels.t('product.whereBuy')}
+              backgroundColor={backgroundColor}
+            />
+          </Box>
+        ) : (
+          <Link href="/where-to-buy" _hover={{ outline: 'none' }}>
+            <ProductDownloadItem
+              textColor={textColor}
+              hoverColor={hoverColor}
+              iconName="location"
+              text={componentsLabels.t('product.whereBuy')}
+              backgroundColor={backgroundColor}
+            />
+          </Link>
+        )}
+      </ConditionalLanguageRender>
       {qualityCertificate && (
         <Link href="/certifications" _hover={{ outline: 'none' }}>
           <ProductDownloadItem

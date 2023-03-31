@@ -1,7 +1,7 @@
 {
   "appCookieConsent": {
     "satisfactoryExperience": "El sitio web de Berneck S.A utiliza cookies para una experiencia más satisfactoria y personalizada.",
-    "cookieCollect": "\"Al navegar por este entorno digital",
+    "cookieCollect": "Al navegar por este entorno digital, estará sujeto a la recopilación de las cookies descritas en la",
     "privacy": "Política de Privacidad.",
     "btn": "CONTINUAR"
   },
@@ -19,7 +19,7 @@
     "requireFields": "Campos obligatorios",
     "send": "ENVIAR",
     "messageAcknowledgment": "Gracias por tu mensaje",
-    "errorMessage": "\"Algo salió mal. Por favor"
+    "errorMessage": "Algo salió mal. Por favor, inténtelo de nuevo."
   },
   "pagebar": { "back": "Volver" },
   "plusInfoTable": {

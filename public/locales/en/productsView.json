@@ -83,7 +83,11 @@
         "title": "MDP PLUS BERNECK®",
         "subtitle": "Medium Density Particleboard with Extra Resistance to Moisture"
       }
-    }
+    },
+    "species": "Species",
+    "humity": "Standard moisture content",
+    "density": "Average density 12% moisture",
+    "variation": "Measurement variation"
   },
   "berneckPinus": { "title": "BERNECK PINUS®", "description": "Pine Lumber" },
   "berneckTeca": { "title": "BERNECK TECA®", "description": "Teak Sawn Wood" }

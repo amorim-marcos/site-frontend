@@ -37,29 +37,29 @@ export const SponsoredProjects = ({
 
 export const mockPanelObj: HighlightBoxPanelProps = {
   title: 'Música no bairro',
-  subtitle: 'Alm. Tamandaré | Projeto Cultural',
+  subtitle_key: 'Alm. Tamandaré | Projeto Cultural',
   image: 'img/musica no bairro.png'
 }
 
 export const mockPanels: HighlightBoxPanelProps[] = [
   {
     title: 'HANDLAGES',
-    subtitle: 'Lages, SC | Projeto Desportivo',
+    subtitle_key: 'socialProjects.handlagesSubtitle',
     image: '/img/patrocinados/HANDLAGES.jpg'
   },
   {
     title: 'Gran Circo Stopim',
-    subtitle: 'Mato Grosso | Projeto Cultural ',
+    subtitle_key: 'socialProjects.granCircoStopimSubtitle',
     image: 'img/patrocinados/Gran-Circo-Stopim.jpg'
   },
   {
     title: 'Herdeiros da Terra',
-    subtitle: 'Curitibanos | Projeto Social - Crianças',
+    subtitle_key: 'socialProjects.herdeirosDaTerraSubtitle',
     image: 'img/patrocinados/Herdeiros-da-Terra.jpg'
   },
   {
     title: 'Fundo Municipal do Idoso',
-    subtitle: 'Joinville, SC | Projeto Social • Idosos',
+    subtitle_key: 'socialProjects.fundoMunicipalDoIdosoSubtitle',
     image: 'img/patrocinados/fundo_municipal_do_idoso.png'
   }
 ]

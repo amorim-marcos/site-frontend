@@ -7,7 +7,7 @@
   },
   "ourCorporativeValues": { "title": "我们的企业价值观\r" },
   "fsc": {
-    "description": " apoyas la gestión responsable de los bosques del mundo.\""
+    "description": "通过选择FSC®认证产品，您可以支持对世界森林的负责任管理"
   },
   "knowOurCertifications": {
     "know": "了解：\r",
@@ -34,7 +34,11 @@
   "weCultivateOurPeople": { "bePartOfThisTeamBtn": "加入这个团队\r" },
   "socialProjects": {
     "description": "通过激励法则，BERNECK®支持能帮助国家创造协同效应和正面社会影响力的项目，为年轻人和普通民众带来激励",
-    "checkOutSponsoredProjects": "查看我们赞助的一些项目：\r"
+    "checkOutSponsoredProjects": "查看我们赞助的一些项目：\r",
+    "handlagesSubtitle": "Lages, SC | 體育項目",
+    "granCircoStopimSubtitle": "Mato Grosso | 文化項目",
+    "herdeirosDaTerraSubtitle": "Curitibanos | 社會項目 - 兒童",
+    "fundoMunicipalDoIdosoSubtitle": "Joinville, SC | 社會項目 - 老年人"
   },
   "ESG": { "title": "ESG" }
 }

@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next'
 import { loadTranslations } from 'ni18n'
+import { useTranslation } from 'react-i18next'
 import BerneckPinusView from 'views/products/berneck-pinus'
 import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 
@@ -38,6 +39,8 @@ export type BerneckPinusPageProps = {
 }
 
 export default function BerneckPinus(props: BerneckPinusPageProps) {
+  const productsView = useTranslation('productsView');
+
   return (
     <BerneckPinusView
       pinus={{
@@ -53,19 +56,19 @@ export default function BerneckPinus(props: BerneckPinusPageProps) {
       specifications={[
         {
           description: props.page_content.species,
-          title: 'Espécie'
+          title: productsView.t('plusBerneck.species')
         },
         {
           description: props.page_content.standard_humity,
-          title: 'Teor de Umidade padrão'
+          title: productsView.t('plusBerneck.humity')
         },
         {
           description: props.page_content.average_density,
-          title: 'Densidade Média 12% de umidade'
+          title: productsView.t('plusBerneck.density')
         },
         {
           description: props.page_content.average_measure,
-          title: 'Variação de medida'
+          title: productsView.t('plusBerneck.variation')
         }
       ]}
       qualityPinus={{ items: props.page_content.sawns_qualities }}

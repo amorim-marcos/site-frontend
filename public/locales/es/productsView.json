@@ -83,7 +83,11 @@
         "title": "MDP PLUS BERNECK®",
         "subtitle": "Panel de Partículas de Densidad Media con Resistencia Adicional a la Humedad"
       }
-    }
+    },
+    "species": "Especie",
+    "humity": "Contenido de humedad estándar",
+    "density": "Densidad media 12% de humedad",
+    "variation": "Variación de medida"
   },
   "berneckPinus": {
     "title": "BERNECK PINUS®",

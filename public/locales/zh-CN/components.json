@@ -1,7 +1,7 @@
 {
   "appCookieConsent": {
     "satisfactoryExperience": "Berneck S.A. 的网站使用cookie提供更令人满意和个性化的体验。\r",
-    "cookieCollect": "Ao navegar neste ambiente digital você estará sujeito à coleta dos cookies descritos na",
+    "cookieCollect": "浏览本网站即表示您同意收集所述的cookie。",
     "privacy": "隐私政策\r",
     "btn": "继续\r"
   },
@@ -19,7 +19,7 @@
     "requireFields": "必填内容\r",
     "send": "发送\r",
     "messageAcknowledgment": "感谢您的留言\r",
-    "errorMessage": "\"Alguma coisa aconteceu de errado. Por favor"
+    "errorMessage": "出现问题。请重试。"
   },
   "pagebar": { "back": "返回\r" },
   "plusInfoTable": {
