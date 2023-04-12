@@ -2,7 +2,7 @@
   "appCookieConsent": {
     "satisfactoryExperience": "Berneck S.A.'s website uses cookies for a more satisfying and personalized experience.",
     "cookieCollect": "By browsing this website you consent to the collection of the cookies described in the",
-    "privacy": "privacy policy.",
+    "privacy": "Privacy Policy.",
     "btn": "CONTINUE"
   },
   "appError": { "returnToHome": "RETURN TO HOMEPAGE" },
@@ -16,18 +16,18 @@
     "company": "Company",
     "contactChannelType": "Type of Contact Channel",
     "message": "Message",
-    "requireFields": "Mandatory Fields",
+    "requireFields": "Required fields",
     "send": "SEND",
     "messageAcknowledgment": "Thank you for your message",
     "errorMessage": "Something went wrong. Please try again."
   },
-  "pagebar": { "back": "Go Back" },
+  "pagebar": { "back": "Return" },
   "plusInfoTable": {
     "testBody": "TEST BODY",
     "amountOfWaterAbsorbed": "Amount of water absorbed",
     "absorption": "Absorbtion",
     "thicknessIncrease": "Thickness Increase",
-    "swelling": "Inflation"
+    "swelling": "Swelling"
   },
   "postRelationalContent": { "title": "Related Content" },
   "product": {
@@ -44,9 +44,9 @@
     "finishes": "Finishes",
     "moreTechnologyQualityProtection": "More technology, more quality, more protection",
     "specifications": "Specifications",
-    "qualityStandards": "Quality Norms",
-    "machinability": "Usinability",
-    "supplyInformationTitleTeca": "We supply BERNECK® TECA sawn raw and planed:",
+    "qualityStandards": "Quality Standards",
+    "machinability": "Machinability",
+    "supplyInformationTitleTeca": "We supply BERNECK® TECA rough sawn and planed:",
     "plusBerneck": "PLUS BERNECK",
     "knowMoreAbout": "Learn more about the"
   },
@@ -63,7 +63,7 @@
   "whereWeArePanel": {
     "structure": "STRUCTURE",
     "location": "LOCATION",
-    "phones": "TELEPHONES",
-    "airportsDistance": "DISTANCE FROM THE AIRPORT"
+    "phones": "PHONES",
+    "airportsDistance": "AIRPORT DISTANCE"
   }
 }

@@ -8,7 +8,7 @@
       "title": "Learn about BP BERNECK® patterns",
       "subtitle": "Decorative Melaminic Laminate"
     },
-    "bannerCollections": { "title": "Visit" },
+    "bannerCollections": { "title": "Get to know" },
     "inspireSection": {
       "title": "Get inspired",
       "accessOurs": "Access our",
@@ -35,12 +35,12 @@
     "productWithBP": {
       "title": "BERNECK® MDP with BP",
       "description": "Combining the qualities of MDP with the variety of finishes of BP provides countless possibilities for use. Find the best one for your application.",
-      "button": "Get to know all the BERNECK BP standards in MDP"
+      "button": "Get to know all the BERNECK BP patterns in MDP"
     },
     "productWithBpPlus": {
       "title": "BERNECK® MDP with BP",
       "description": "Innovate in your projects with the BP finishes in MDP PLUS, melaminic laminates with the PLUS BERNECK protection.",
-      "button": "Get to know all the BERNECK BP standards in MDP PLUS"
+      "button": "Get to know all the BERNECK BP patterns in MDP PLUS"
     }
   },
   "mdfBerneck": {
@@ -49,12 +49,12 @@
     "productWithBP": {
       "title": "MDF BERNECK® with BP",
       "description": "The combination of the qualities of MDF and the variety of finishes of BP provide countless possibilities for use. Find the best one for your application.",
-      "button": "Get to know all the BERNECK BP standards in MDF"
+      "button": "Get to know all the BERNECK BP patterns in MDF"
     },
     "productWithBpPlus": {
       "title": "MDF BERNECK® with BP",
       "description": "Innovate in projects with the BP finishes in MDF PLUS, melamine laminates with the protection of PLUS BERNECK .",
-      "button": "Get to know all the BERNECK BP standards in MDF PLUS"
+      "button": "Get to know all the BERNECK BP patterns in MDF PLUS"
     }
   },
   "hdfBerneck": {
@@ -63,7 +63,7 @@
     "productWithBP": {
       "title": "HDF PLUS BERNECK® with BP",
       "description": "Innovate in projects with the BP finishes in HDF PLUS, melamine laminates with the PLUS BERNECK protection.",
-      "button": "Get to know all the BP BERNECK standards in HDF PLUS"
+      "button": "Get to know all the BP BERNECK patterns in HDF PLUS"
     }
   },
   "plusBerneck": {
