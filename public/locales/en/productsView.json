@@ -89,6 +89,6 @@
     "density": "Average density 12% moisture",
     "variation": "Measurement variation"
   },
-  "berneckPinus": { "title": "BERNECK PINUS®", "description": "Pine Lumber" },
-  "berneckTeca": { "title": "BERNECK TECA®", "description": "Teak Sawn Wood" }
+  "berneckPinus": { "title": "BERNECK® PINUS", "description": "Pine Lumber" },
+  "berneckTeca": { "title": "BERNECK® TECA", "description": "Teak Sawn Wood" }
 }
