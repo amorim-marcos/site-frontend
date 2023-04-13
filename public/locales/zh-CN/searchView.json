@@ -1,11 +1,11 @@
 {
-  "pagebar": { "search": "搜索\r", "resultsFor": "结果：\r" },
-  "resultsFor": "结果：\r",
-  "resultsFinded": "找到的结果\r",
-  "pages": "页\r",
-  "bpsBerneck": "BPs BERNECK®\r",
-  "contents": "目录\r",
-  "pagesNotFound": "找到的页面\r",
-  "pageFound": "找到的页面\r",
+  "pagebar": { "search": "搜索", "resultsFor": "结果：" },
+  "resultsFor": "结果：",
+  "resultsFinded": "找到的结果",
+  "pages": "页",
+  "bpsBerneck": "BPs BERNECK®",
+  "contents": "目录",
+  "pagesNotFound": "找到的页面",
+  "pageFound": "找到的页面",
   "seeMore": "查看更多"
 }

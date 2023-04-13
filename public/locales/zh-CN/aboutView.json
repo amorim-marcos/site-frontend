@@ -1,13 +1,13 @@
 {
-  "pagebar": { "weAreBerneck": "我们是BERNECK®\r" },
-  "headerBanner": { "title": "我们是谁\r" },
+  "pagebar": { "weAreBerneck": "我们是BERNECK®" },
+  "headerBanner": { "title": "我们是谁" },
   "infoGraphic": {
-    "exportVolume": "出口数量\r",
-    "exportMeasure": "标准箱/月\r",
-    "comercialRelations": "商业关系\r",
-    "countries": "国家\r"
+    "exportVolume": "出口数量",
+    "exportMeasure": "标准箱/月",
+    "comercialRelations": "商业关系",
+    "countries": "国家"
   },
-  "discoverWhereBuy": { "discover": "发现\r", "whereBuy": "从哪里购买\r", "dealers": "经销商" },
-  "certifications": { "title": "证书\r" },
-  "knowOurCertifications": { "know": "认知\r", "whereBuy": "我们的认证" }
+  "discoverWhereBuy": { "discover": "发现", "whereBuy": "从哪里购买", "dealers": "经销商" },
+  "certifications": { "title": "证书" },
+  "knowOurCertifications": { "know": "认知", "whereBuy": "我们的认证" }
 }

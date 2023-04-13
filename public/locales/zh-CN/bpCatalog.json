@@ -1,44 +1,44 @@
 {
   "pagebar": {
-    "products": "产品\r",
-    "bpBerneck": "BP BERNECK®\r",
-    "bpCatalog": "BP目录\r"
+    "products": "产品",
+    "bpBerneck": "BP BERNECK®",
+    "bpCatalog": "BP目录"
   },
   "filters": {
-    "notFound": "应用的筛选条件未查到任何结果\r",
-    "notFoundFor": "未找到结果\r"
+    "notFound": "应用的筛选条件未查到任何结果",
+    "notFoundFor": "未找到结果"
   },
   "filtersAccordion": {
-    "filterResults": "筛选结果\r",
-    "hideFilters": "隐藏筛选器\r",
-    "panels": "面板\r",
-    "collections": "收藏\r",
-    "coloration": "着色\r",
-    "filter": "筛选\r",
-    "clearFilters": "清除筛选\r",
-    "orderBy": "排序依据\r",
-    "launch": "启动\r",
-    "name": "字母顺序\r",
-    "colorScale": "颜色比例\r"
+    "filterResults": "筛选结果",
+    "hideFilters": "隐藏筛选器",
+    "panels": "面板",
+    "collections": "收藏",
+    "coloration": "着色",
+    "filter": "筛选",
+    "clearFilters": "清除筛选",
+    "orderBy": "排序依据",
+    "launch": "启动",
+    "name": "字母顺序",
+    "colorScale": "颜色比例"
   },
   "filtersTab": {
-    "filterResults": "筛选结果\r",
-    "hideFilters": "隐藏筛选器\r",
-    "panels": "面板\r",
-    "collections": "收藏\r",
-    "coloration": "着色\r",
-    "filter": "筛选\r",
-    "clearFilters": "清除筛选\r",
-    "orderBy": "排序依据\r",
-    "exhibitionFormat": "显示格式\r",
-    "searchByName": "按名称搜索\r",
-    "bgColor": "背景色\r",
-    "productsFound": "产品查找\r",
-    "launch": "启动\r",
-    "name": "字母顺序\r",
+    "filterResults": "筛选结果",
+    "hideFilters": "隐藏筛选器",
+    "panels": "面板",
+    "collections": "收藏",
+    "coloration": "着色",
+    "filter": "筛选",
+    "clearFilters": "清除筛选",
+    "orderBy": "排序依据",
+    "exhibitionFormat": "显示格式",
+    "searchByName": "按名称搜索",
+    "bgColor": "背景色",
+    "productsFound": "产品查找",
+    "launch": "启动",
+    "name": "字母顺序",
     "colorScale": "颜色比例",
-    "filtersCounter": "应用过滤器\r",
-    "filtersCounter1": "个过滤器\r",
-    "noFiltersApplied": "未应用过滤器\r"
+    "filtersCounter": "应用过滤器",
+    "filtersCounter1": "个过滤器",
+    "noFiltersApplied": "未应用过滤器"
   }
 }

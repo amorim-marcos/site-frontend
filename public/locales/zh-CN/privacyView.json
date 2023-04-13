@@ -1,9 +1,9 @@
 {
-  "pagebar": { "privacy": "隐私政策和使用条款\r" },
-  "headerBanner": { "title": "隐私政策和使用条款\r" },
-  "useTermsAndPrivacy": "使用条款和隐私\r",
+  "pagebar": { "privacy": "隐私政策和使用条款" },
+  "headerBanner": { "title": "隐私政策和使用条款" },
+  "useTermsAndPrivacy": "使用条款和隐私",
   "useTermsAndPrivacyDescription": "访问Berneck S.A数码环境时，您将根据隐私政策出于明确和确定的目的收集个人信息",
-  "knowOurPrivacyAndTerms": "了解我们的隐私政策\r",
-  "dataProtectionOfficer": "数据保护官（DPO）\r",
+  "knowOurPrivacyAndTerms": "了解我们的隐私政策",
+  "dataProtectionOfficer": "数据保护官（DPO）",
   "privacyMoreInformation": "相关信息，包括行使您作为委托给我们的个人信息所有者的权利，您可以通过以下方式联系我们的数据保护官（DPO）： "
 }

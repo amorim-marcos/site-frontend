@@ -1,39 +1,39 @@
 {
   "pagebar": {
-    "products": "产品\r",
-    "bpBerneck": "BP BERNECK®\r",
-    "envGallery": "环境库\r"
+    "products": "产品",
+    "bpBerneck": "BP BERNECK®",
+    "envGallery": "环境库"
   },
   "filter": {
-    "notFound": "应用的筛选条件未查到任何结果\r",
-    "notFoundFor": "未找到结果\r",
+    "notFound": "应用的筛选条件未查到任何结果",
+    "notFoundFor": "未找到结果",
     "filtersApplied": "Filters Selected"
   },
   "filtersAccordion": {
-    "filterResults": "筛选结果\r",
-    "hideFilters": "隐藏筛选器\r",
-    "bpBerneck": "BP BERNECK®\r",
-    "seeLess": "查看更少\r",
-    "seeMore": "查看更多\r",
-    "environment": "环境\r",
-    "style": "样式\r",
-    "filter": "筛选\r",
-    "searchPlaceHolder": "输入您的搜索\r",
-    "clearFilters": "清除筛选\r"
+    "filterResults": "筛选结果",
+    "hideFilters": "隐藏筛选器",
+    "bpBerneck": "BP BERNECK®",
+    "seeLess": "查看更少",
+    "seeMore": "查看更多",
+    "environment": "环境",
+    "style": "样式",
+    "filter": "筛选",
+    "searchPlaceHolder": "输入您的搜索",
+    "clearFilters": "清除筛选"
   },
   "filtersTab": {
-    "filterResults": "筛选结果\r",
-    "hideFilters": "隐藏筛选器\r",
-    "bpBerneck": "BP BERNECK®\r",
-    "environment": "环境\r",
-    "style": "样式\r",
-    "filter": "筛选\r",
-    "searchPlaceHolder": "按名称搜索\r",
+    "filterResults": "筛选结果",
+    "hideFilters": "隐藏筛选器",
+    "bpBerneck": "BP BERNECK®",
+    "environment": "环境",
+    "style": "样式",
+    "filter": "筛选",
+    "searchPlaceHolder": "按名称搜索",
     "clearFilters": "清除筛选",
     "environmentFound": "找到的环境",
     "environmentFound1": "找到的环境",
     "filtersCounter": "筛选出的环境",
-    "noFiltersApplied": "未应用过滤器\r",
+    "noFiltersApplied": "未应用过滤器",
     "filtersCounter1": "筛选出的环境"
 
 

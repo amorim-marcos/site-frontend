@@ -1,59 +1,59 @@
 {
-  "locale": "葡萄牙语\r",
+  "locale": "葡萄牙语",
   "topMenu": {
-    "speakWithUs": "联系我们\r",
-    "workWithUs": "与我们合作\r",
-    "restrictAccess": "受限访问\r",
-    "whereBuy": "从哪里购买\r"
+    "speakWithUs": "联系我们",
+    "workWithUs": "与我们合作",
+    "restrictAccess": "受限访问",
+    "whereBuy": "从哪里购买"
   },
   "menu": {
     "whoWeAre": {
-      "title": "我们是BERNECK\r",
-      "whoWeAre": "我们是谁\r",
-      "ourTrajectory": "我们的轨迹\r",
-      "whereWeAre": "我们在哪里\r",
-      "certifications": "所获证书\r"
+      "title": "我们是BERNECK",
+      "whoWeAre": "我们是谁",
+      "ourTrajectory": "我们的轨迹",
+      "whereWeAre": "我们在哪里",
+      "certifications": "所获证书"
     },
     "ourCommitment": {
-      "title": "我们的承诺\r",
-      "environment": "我们培育环境\r",
-      "ourPeople": "我们培养员工\r",
-      "ourValues": "我们培养我们的价值观\r",
-      "report": "ESG\r"
+      "title": "我们的承诺",
+      "environment": "我们培育环境",
+      "ourPeople": "我们培养员工",
+      "ourValues": "我们培养我们的价值观",
+      "report": "ESG"
     },
     "florestalDivision": {
-      "title": "林业部\r",
-      "forestManagement": "森林管理\r",
-      "forestProduction": "森林生产\r",
-      "forestSuppliers": "林业供应商\r",
-      "publicResume": "公开摘要\r"
+      "title": "林业部",
+      "forestManagement": "森林管理",
+      "forestProduction": "森林生产",
+      "forestSuppliers": "林业供应商",
+      "publicResume": "公开摘要"
     },
     "products": {
-      "title": "产品\r",
+      "title": "产品",
       "panels": {
-        "title": "人造板\r",
+        "title": "人造板",
         "bpBerneck": {
-          "title": "BP BERNECK®\r",
-          "bpCatalog": "BP目录\r",
-          "ambientsGallery": "环境库\r"
+          "title": "BP BERNECK®",
+          "bpCatalog": "BP目录",
+          "ambientsGallery": "环境库"
         },
-        "hdf": "HDF BERNECK®\r",
-        "mdf": "MDF BERNECK®\r",
-        "mdp": "MDP BERNECK®\r",
-        "plus": "PLUS BERNECK®\r"
+        "hdf": "HDF BERNECK®",
+        "mdf": "MDF BERNECK®",
+        "mdp": "MDP BERNECK®",
+        "plus": "PLUS BERNECK®"
       },
       "sawns": {
-        "title": "锯末\r",
-        "pinus": "BERNECK® 松木\r",
-        "teca": "BERNECK® 柚木\r"
+        "title": "锯末",
+        "pinus": "BERNECK® 松木",
+        "teca": "BERNECK® 柚木"
       }
     },
     "channelBNK": {
-      "title": "BNK渠道\r",
-      "inspiration_channel": "量身定制的灵感\r",
-      "knowledge_channel": "原材料：知识\r",
-      "bernecks_world_channel": "BERNECK世界\r",
-      "downloads": "下载\r"
+      "title": "BNK渠道",
+      "inspiration_channel": "量身定制的灵感",
+      "knowledge_channel": "原材料：知识",
+      "bernecks_world_channel": "BERNECK世界",
+      "downloads": "下载"
     }
   },
   "search": { "placeholder": "输入您的搜索" }
