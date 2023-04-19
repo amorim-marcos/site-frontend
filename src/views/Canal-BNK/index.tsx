@@ -108,7 +108,7 @@ export function CategoryCtxProvider(props: {
         }
       }
     }
-  }, [currentCategory, categories, router])
+  }, [currentCategory, categories])
 
   useEffect(() => {
     setSeeOnlyPosts(props.seeOnlyPostsDefault || false)

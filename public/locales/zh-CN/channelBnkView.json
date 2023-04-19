@@ -1,25 +1,25 @@
 {
-  "pagebar": { "channelBnk": "BNK 渠道\r" },
-  "downloadsView": { "pagebar": { "downloads": "下载\r" } },
-  "postsView": { "pagebar": { "channelBnk": "BNK 渠道\r" } },
+  "pagebar": { "channelBnk": "BNK 渠道" },
+  "downloadsView": { "pagebar": { "downloads": "下载" } },
+  "postsView": { "pagebar": { "channelBnk": "BNK 渠道" } },
   "downloadsSection": {
-    "title": "下载\r",
-    "seeMore": "查看更多下载\r",
-    "inspirareBnkMagazine": "Inspirare BNK 杂志\r",
-    "opinusMagazine": "Opinus杂志\r",
-    "reports": "报告\r",
-    "supportMaterials": "支持资料\r",
-    "promotionalMaterials": "披露材料\r",
-    "patternPack": "BERNECK®BP图案包\r",
-    "forestCertificates": "林业证书\r",
-    "productCertificates": "产品证书\r"
+    "title": "下载",
+    "seeMore": "查看更多下载",
+    "inspirareBnkMagazine": "Inspirare BNK 杂志",
+    "opinusMagazine": "Opinus杂志",
+    "reports": "报告",
+    "supportMaterials": "支持资料",
+    "promotionalMaterials": "披露材料",
+    "patternPack": "BERNECK®BP图案包",
+    "forestCertificates": "林业证书",
+    "productCertificates": "产品证书"
   },
   "introSection": {
     "channelDescription": "我们关于木材、灵感等内容频道",
-    "searchResult": "结果：\r",
-    "allContents": "所有内容\r",
-    "seeAll": "查看全部\r",
-    "seeMore": "查看更多内容\r"
+    "searchResult": "结果：",
+    "allContents": "所有内容",
+    "seeAll": "查看全部",
+    "seeMore": "查看更多内容"
   },
-  "videosSection": { "title": "视频\r", "seeMoreVideos": "查看更多视频" }
+  "videosSection": { "title": "视频", "seeMoreVideos": "查看更多视频" }
 }

@@ -8,9 +8,9 @@
   "inspire": { "combineWith": "COMBINE WITH:", "inspire": "Get inspired", "watchVideo": "Watch the video", "seeEbook": "Check out the ebook" },
   "properties": {
     "download": "DOWNLOAD NOW",
-    "pattern": "Standard",
+    "pattern": "Pattern",
     "knowOurCertifications": {
-      "know": "MEET",
+      "know": "GET TO KNOW",
       "ourCertifications": "Our Certifications"
     },
     "discoverWhereToBuy": {
@@ -20,8 +20,8 @@
     "availableOn": "AVAILABLE ON",
     "table": {
       "thicknesses": "Thicknesses",
-      "dimension": "Size",
-      "otherDimensionsOnRequest": "Other dimensions under consultation"
+      "dimension": "Dimension",
+      "otherDimensionsOnRequest": "Other dimensions on request"
     },
     "bpInfo": {
       "title": "ABOUT BP BERNECK®",
@@ -29,8 +29,8 @@
       "panelsBpBerneck": "BP BERNECK® panels",
       "paragraph1": "are coated with decorative melaminic laminate - on one or two sides - with a great decorative effect and excellent surface resistance to scratching and abrasion. The colors and textures were developed in tune with global design trends, which provide endless combination possibilities.",
       "paragraph2": "The panels have a closed surface that reduces the proliferation of microorganisms, ideal for environments that require easy cleaning. The standardized dimensions, allied to the practicality of a finished panel, allow the simplification of the furniture production process.",
-      "edgeRibbons": "Edge tapes",
-      "paragraph3": "All patterns have edge tapes developed in partnership with the best suppliers in the market. It is important that all panel edges are sealed, to ensure superior quality and durability."
+      "edgeRibbons": "Edge ribbons",
+      "paragraph3": "All patterns have edge ribbons developed in partnership with the best suppliers in the market. It is important that all panel edges are sealed, to ensure superior quality and durability."
     },
     "usesAndApplications": { "title": "USES AND APPLICATIONS" }
   }

@@ -1,14 +1,14 @@
 {
-  "connectTitle": "连接\r",
-  "knowOurCommitment": { "title": "认知\r", "description": "我们的约定\r" },
-  "knowOurFlorestalDivision": { "title": "认知\r", "description": "林业部\r" },
+  "connectTitle": "连接",
+  "knowOurCommitment": { "title": "认知", "description": "我们的约定" },
+  "knowOurFlorestalDivision": { "title": "认知", "description": "林业部" },
   "sectionChannelBnk": {
     "channelDescription": "我们关于木材、灵感等内容频道"
   },
   "productsSection": {
-    "ourProducts": "我们的产品\r",
-    "seeAllProducts": "查看所有产品\r",
-    "discoverBanner": { "title": "发现 \r", "description": "从哪里购买\r" },
-    "contactBanner": { "title": "联系我们 \r", "description": "与我们交谈" }
+    "ourProducts": "我们的产品",
+    "seeAllProducts": "查看所有产品",
+    "discoverBanner": { "title": "发现 ", "description": "从哪里购买" },
+    "contactBanner": { "title": "联系我们 ", "description": "与我们交谈" }
   }
 }

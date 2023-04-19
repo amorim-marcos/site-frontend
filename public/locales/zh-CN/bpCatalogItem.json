@@ -1,35 +1,35 @@
 {
   "pagebar": {
-    "products": "产品\r",
-    "bpBerneck": "BP BERNECK®\r",
-    "bpCatalog": "BP目录\r"
+    "products": "产品",
+    "bpBerneck": "BP BERNECK®",
+    "bpCatalog": "BP目录"
   },
-  "navigation": { "previous": "上一个\r", "next": "下一个\r" },
-  "inspire": { "combineWith": "结合：\r", "inspire": "获得灵感\r", "watchVideo": "观看视频", "seeEbook": "查看电子书" },
+  "navigation": { "previous": "上一个", "next": "下一个" },
+  "inspire": { "combineWith": "结合：", "inspire": "获得灵感", "watchVideo": "观看视频", "seeEbook": "查看电子书" },
   "properties": {
-    "download": "立即下载\r",
-    "pattern": "标准\r",
+    "download": "立即下载",
+    "pattern": "标准",
     "knowOurCertifications": {
-      "know": "认知\r",
-      "ourCertifications": "我们的认证\r"
+      "know": "认知",
+      "ourCertifications": "我们的认证"
     },
     "discoverWhereToBuy": {
-      "discover": "发现\r",
-      "whereToBuy": "从哪里购买\r"
+      "discover": "发现",
+      "whereToBuy": "从哪里购买"
     },
-    "availableOn": "可在此获取\r",
+    "availableOn": "可在此获取",
     "table": {
-      "thicknesses": "厚度\r",
-      "dimension": "尺寸\r",
-      "otherDimensionsOnRequest": "根据要求提供其他尺寸\r"
+      "thicknesses": "厚度",
+      "dimension": "尺寸",
+      "otherDimensionsOnRequest": "根据要求提供其他尺寸"
     },
     "bpInfo": {
-      "title": "关于BP BERNECK®\r",
-      "ours": "我们的\r",
-      "panelsBpBerneck": "BP BERNECK®人造板\r",
+      "title": "关于BP BERNECK®",
+      "ours": "我们的",
+      "panelsBpBerneck": "BP BERNECK®人造板",
       "paragraph1": "在一侧或两侧涂装三聚氰胺饰面板，具有良好的装饰效果和优异的表面耐刮擦和磨损性。颜色和纹理的开发符合全球设计趋势，提供了无限的组合可能性。",
       "paragraph2": "人造板有一个封闭的表面，可以减少微生物的繁殖，非常适用于需要便捷清洁的环境。标准化的尺寸，结合成品板材的实用性，可以简化家具生产过程。 ",
-      "edgeRibbons": "边缘胶带\r",
+      "edgeRibbons": "边缘胶带",
       "paragraph3": "所有人造板饰样都用到与市场上最好的供应商合作开发的边缘胶带。所有面板边缘必须密封，以确保卓越的质量和耐久性。"
     },
     "usesAndApplications": { "title": "用途和应用" }

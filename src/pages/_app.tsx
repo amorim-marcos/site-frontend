@@ -32,6 +32,20 @@ function App({ Component, pageProps }: AppProps) {
       router.push('/')
     }
   }, [router])
+
+  useEffect(() => {
+    const existingScript = document.getElementById('replaceTrademarkScript');
+    if (existingScript) {
+      existingScript.remove();
+    }
+  
+    const script = document.createElement('script');
+    script.src = '/static/replaceTrademark.js';
+    script.async = true;
+    script.id = 'replaceTrademarkScript';
+    document.body.appendChild(script);
+  }, [router])
+
   return (
     <ChakraProvider theme={theme}>
       <MyHead />
@@ -41,7 +55,7 @@ function App({ Component, pageProps }: AppProps) {
         strategy="beforeInteractive"
         src="https://code.jquery.com/jquery-3.6.0.min.js"
       />
-      <Script strategy="beforeInteractive" src="/static/replaceTrademark.js" />
+      {/* <Script strategy="beforeInteractive" src="/static/replaceTrademark.js" /> */}
       {/*RD station script*/}
       <Script
         strategy="lazyOnload"

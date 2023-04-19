@@ -5,5 +5,13 @@ $('body :not(script)')
     return this.nodeType === 3
   })
   .replaceWith(function () {
-    return this.nodeValue.replace(/[™®©]/g, '<sup>$&</sup>')
-  })
+    const oldValue = this.nodeValue;
+    if (!$(this.parentNode).is('sup')) {
+      const newValue = oldValue.includes('®')
+        ? oldValue.replace(/(®)/g, '<sup>$1</sup>')
+        : oldValue;
+      return newValue;
+    } else {
+      return oldValue;
+    }
+  });

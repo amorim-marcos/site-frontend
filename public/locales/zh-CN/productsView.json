@@ -1,87 +1,87 @@
 {
-  "ourProducts": "我们的产品\r",
-  "pagebar": { "products": "产品\r" },
+  "ourProducts": "我们的产品",
+  "pagebar": { "products": "产品" },
   "bpBerneck": {
-    "title": "BP BERNECK®\r",
-    "description": "装饰三聚氰胺贴面板\r",
+    "title": "BP BERNECK®",
+    "description": "装饰三聚氰胺贴面板",
     "bannerProducts": {
-      "title": "符合BP BERNECK标准®\r",
-      "subtitle": "装饰三聚氰胺贴面板\r"
+      "title": "符合BP BERNECK标准®",
+      "subtitle": "装饰三聚氰胺贴面板"
     },
-    "bannerCollections": { "title": "认知\r" },
+    "bannerCollections": { "title": "认知" },
     "inspireSection": {
-      "title": "获得灵感\r",
-      "accessOurs": "访问我们的\r",
-      "envGallery": "环境库\r"
+      "title": "获得灵感",
+      "accessOurs": "访问我们的",
+      "envGallery": "环境库"
     },
     "linkBanners": {
       "packPatterns": {
-        "title": "BP BERNECK标准套装\r",
-        "subtitle": "立即下载\r"
+        "title": "BP BERNECK标准套装",
+        "subtitle": "立即下载"
       },
       "inspireMagazine": {
-        "title": "Inspirare BNK杂志\r",
-        "subtitle": "了解更多信息\r"
+        "title": "Inspirare BNK杂志",
+        "subtitle": "了解更多信息"
       },
       "supportMaterials": {
-        "title": "支持材料\r",
-        "subtitle": "了解更多信息\r"
+        "title": "支持材料",
+        "subtitle": "了解更多信息"
       }
     }
   },
   "mdpBerneck": {
-    "title": "MDP BERNECK®\r",
-    "description": "中密度刨花板\r",
+    "title": "MDP BERNECK®",
+    "description": "中密度刨花板",
     "productWithBP": {
-      "title": "MDP BERNECK® 结合 BP\r",
-      "description": "将MDP的品质与BP的各种饰面相结合，提供了无限的使用可能性。找到适合您应用的最佳解决方案。\r",
-      "button": "了解MDP中的所有BERNECK BP标准\r"
+      "title": "MDP BERNECK® 结合 BP",
+      "description": "将MDP的品质与BP的各种饰面相结合，提供了无限的使用可能性。找到适合您应用的最佳解决方案。",
+      "button": "了解MDP中的所有BERNECK BP标准"
     },
     "productWithBpPlus": {
-      "title": "MDP PLUS BERNECK® 结合 BP\r",
+      "title": "MDP PLUS BERNECK® 结合 BP",
       "description": "采用MDP PLUS的BP饰面在您的项目中创新，使之成为PLUS BERNECK保护的三聚氰胺饰面板。",
-      "button": "了解MDP PLUS中的所有BERNECK BP标准\r"
+      "button": "了解MDP PLUS中的所有BERNECK BP标准"
     }
   },
   "mdfBerneck": {
-    "title": "MDF BERNECK®\r",
-    "description": "中密度纤维板\r",
+    "title": "MDF BERNECK®",
+    "description": "中密度纤维板",
     "productWithBP": {
-      "title": "MDF BERNECK® 结合 BP\r",
-      "description": "MDF的质量和BP的各种饰面的结合提供了无限的使用可能性。找到适合您应用的最佳解决方案。\r",
-      "button": "了解MDF中的所有BERNECK BP标准\r"
+      "title": "MDF BERNECK® 结合 BP",
+      "description": "MDF的质量和BP的各种饰面的结合提供了无限的使用可能性。找到适合您应用的最佳解决方案。",
+      "button": "了解MDF中的所有BERNECK BP标准"
     },
     "productWithBpPlus": {
-      "title": "MDF PLUS BERNECK® 结合 BP\r",
+      "title": "MDF PLUS BERNECK® 结合 BP",
       "description": "采用MDF PLUS的BP饰面在您的项目中创新，使之成为PLUS BERNECK保护的三聚氰胺饰面板。",
-      "button": "了解MDF PLUS中的所有BERNECK BP标准 \r"
+      "button": "了解MDF PLUS中的所有BERNECK BP标准 "
     }
   },
   "hdfBerneck": {
-    "title": "HDF BERNECK®\r",
-    "description": "高密度纤维板\r",
+    "title": "HDF BERNECK®",
+    "description": "高密度纤维板",
     "productWithBP": {
-      "title": "HDF PLUS BERNECK® 结合 BP\r",
+      "title": "HDF PLUS BERNECK® 结合 BP",
       "description": "采用HDF PLUS的BP饰面在您的项目中创新，使之成为PLUS BERNECK保护的三聚氰胺饰面板。",
-      "button": "了解HDF PLUS中的所有BP BERNECK标准\r"
+      "button": "了解HDF PLUS中的所有BP BERNECK标准"
     }
   },
   "plusBerneck": {
-    "title": "PLUS BERNECK®\r",
-    "description": "超强防潮性能人造板产品线\r",
-    "extraInfoTitle": "非常重要\r",
+    "title": "PLUS BERNECK®",
+    "description": "超强防潮性能人造板产品线",
+    "extraInfoTitle": "非常重要",
     "plusProducts": {
       "hdfPlus": {
-        "title": "HDF PLUS BERNECK®\r",
-        "subtitle": "具有超强防潮性能的高密度纤维板\r"
+        "title": "HDF PLUS BERNECK®",
+        "subtitle": "具有超强防潮性能的高密度纤维板"
       },
       "mdfPlus": {
-        "title": "MDF PLUS BERNECK®\r",
-        "subtitle": "具有超强防潮性能的中密度纤维板\r"
+        "title": "MDF PLUS BERNECK®",
+        "subtitle": "具有超强防潮性能的中密度纤维板"
       },
       "mdpPlus": {
-        "title": "MDP PLUS BERNECK®\r",
-        "subtitle": "具有超强防潮性的中密度刨花板\r"
+        "title": "MDP PLUS BERNECK®",
+        "subtitle": "具有超强防潮性的中密度刨花板"
       }
     },
     "species": "物種",
@@ -90,8 +90,8 @@
     "variation": "測量偏差"
   },
   "berneckPinus": {
-    "title": "BERNECK PINUS®\r",
-    "description": "BERNECK 松木®\r"
+    "title": "BERNECK® PINUS",
+    "description": "BERNECK 松木®"
   },
-  "berneckTeca": { "title": "BERNECK TECA®\r", "description": "BERNECK 松木®" }
+  "berneckTeca": { "title": "BERNECK® TECA", "description": "BERNECK 松木®" }
 }

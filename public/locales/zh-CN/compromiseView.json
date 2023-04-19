@@ -1,40 +1,40 @@
 {
   "ethicsCodeSection": {
-    "title": "道德和行为准则\r",
-    "description": "我们的《道德与行为准则》明确规定了所有员工和合作伙伴应遵守的权利和义务\r",
-    "know": "了解：\r",
-    "btn": "道德和行为准则\r"
+    "title": "道德和行为准则",
+    "description": "我们的《道德与行为准则》明确规定了所有员工和合作伙伴应遵守的权利和义务",
+    "know": "了解：",
+    "btn": "道德和行为准则"
   },
-  "ourCorporativeValues": { "title": "我们的企业价值观\r" },
+  "ourCorporativeValues": { "title": "我们的企业价值观" },
   "fsc": {
     "description": "通过选择FSC®认证产品，您可以支持对世界森林的负责任管理"
   },
   "knowOurCertifications": {
-    "know": "了解：\r",
-    "ourCertifications": "我们的认证\r"
+    "know": "了解：",
+    "ourCertifications": "我们的认证"
   },
   "infoGraphicAtmospheric": {
-    "carbonSequestration": "碳捕获\r",
-    "moreOf": "更多\r",
-    "millionCo2": "百万吨二氧化碳CO₂\r",
-    "AtmosphericEmissions": "大气排放物\r",
-    "about": "关于\r",
-    "source": "（2019年温室气体清单数据）\r"
+    "carbonSequestration": "碳捕获",
+    "moreOf": "更多",
+    "millionCo2": "百万吨二氧化碳CO₂",
+    "AtmosphericEmissions": "大气排放物",
+    "about": "关于",
+    "source": "（2019年温室气体清单数据）"
   },
   "infoGraphicSustainability": {
-    "co-generate": "共同生成\r",
-    "energyUsed": "使用的能源\r",
-    "reuse": "重新使用\r",
-    "waterUsed": "使用的水\r"
+    "co-generate": "共同生成",
+    "energyUsed": "使用的能源",
+    "reuse": "重新使用",
+    "waterUsed": "使用的水"
   },
   "infoGraphicContributors": {
-    "measure": "一千\r",
-    "description": "直接和间接合作者\r"
+    "measure": "一千",
+    "description": "直接和间接合作者"
   },
-  "weCultivateOurPeople": { "bePartOfThisTeamBtn": "加入这个团队\r" },
+  "weCultivateOurPeople": { "bePartOfThisTeamBtn": "加入这个团队" },
   "socialProjects": {
     "description": "通过激励法则，BERNECK®支持能帮助国家创造协同效应和正面社会影响力的项目，为年轻人和普通民众带来激励",
-    "checkOutSponsoredProjects": "查看我们赞助的一些项目：\r",
+    "checkOutSponsoredProjects": "查看我们赞助的一些项目：",
     "handlagesSubtitle": "Lages, SC | 體育項目",
     "granCircoStopimSubtitle": "Mato Grosso | 文化項目",
     "herdeirosDaTerraSubtitle": "Curitibanos | 社會項目 - 兒童",
