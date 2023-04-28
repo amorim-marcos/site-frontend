@@ -2,6 +2,7 @@ import Head from 'next/head'
 
 import { ReactNode, useEffect, useRef } from 'react'
 import { Box, Button, Flex, Text, Link } from '@chakra-ui/react'
+import NextLink from 'next/link'
 
 import Script from 'next/script'
 
@@ -11,7 +12,6 @@ import CompletedTitle from '@components/CompletedTitle'
 import useFacebook from 'hooks/useFacebook'
 import useInstagram from 'hooks/useInstagram'
 import useLinkedin from 'hooks/useLinkedin'
-
 
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
@@ -24,7 +24,6 @@ export default function Connect({
   const componentsLabels = useTranslation('components')
   const instagramIframeRef = useRef<HTMLIFrameElement>(null)
   const { linkedinLink } = useLinkedin()
-
 
   // const { Feed } = useInstagram()
 
@@ -81,6 +80,7 @@ export default function Connect({
                 width="51px"
                 height="51px"
                 color="#59993F"
+                href="https://www.facebook.com/BerneckSA"
               />
             }
           >
@@ -121,12 +121,13 @@ export default function Connect({
           <SocialNetwork
             title="INSTAGRAM"
             icon={
-              <SocialIcon
-                media="instagram"
-                width="51px"
-                height="51px"
-                color="#59993F"
-              />
+                <SocialIcon
+                  media="instagram"
+                  width="51px"
+                  height="51px"
+                  color="#59993F"
+                  href = "https://www.instagram.com/berneckoficial/"
+                />
             }
           >
             <Flex direction="column" gap="24px" align="center" w="100%">
@@ -184,12 +185,12 @@ export default function Connect({
           <SocialNetwork
             title="LINKEDIN"
             icon={
-              <SocialIcon
-                media="linkedin"
-                width="51px"
-                height="51px"
-                color="#59993F"
-              />
+                <SocialIcon
+                  media="linkedin"
+                  width="51px"
+                  height="51px"
+                  href = "https://www.linkedin.com/company/berneck-s.a.-pain-is-e-serrados/"
+                />
             }
           >
             <Flex w="100%" direction="column" gap="24px" align="center">
@@ -212,12 +213,13 @@ export default function Connect({
           <SocialNetwork
             title="YOUTUBE"
             icon={
-              <SocialIcon
-                media="youtube"
-                width="51px"
-                height="51px"
-                color="#59993F"
-              />
+                <SocialIcon
+                  media="youtube"
+                  width="51px"
+                  height="51px"
+                  color="#59993F"
+                  href = "https://www.youtube.com/@Berneckoficial"
+                />
             }
           >
             <Flex
@@ -251,12 +253,13 @@ export default function Connect({
               <SocialNetwork
                 title="PINTEREST"
                 icon={
-                  <SocialIcon
-                    media="pinterest"
-                    width="51px"
-                    height="51px"
-                    color="#59993F"
-                  />
+                    <SocialIcon
+                      media="pinterest"
+                      width="51px"
+                      height="51px"
+                      color="#59993F"
+                      href = "https://br.pinterest.com/berneckoficial/"
+                    />
                 }
               >
                 <Flex
