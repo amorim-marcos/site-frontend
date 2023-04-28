@@ -11,6 +11,7 @@ import { FilterCheckbox } from './FilterCheckbox'
 import { BPFilter } from './BPFilter'
 import { ResponsiveCss } from 'types/responsive'
 import { useTranslation } from 'react-i18next'
+import {Filters} from './index'
 
 export type FiltersSelectProps = {
   filtersContext: {
@@ -309,7 +310,7 @@ export const FiltersTabs = ({
                       '2xl': '16px'
                     }}
                     height={{ base: '30px' }}
-                    value={filters.nameSearched}
+                    value={filters['nameSearched'] || filters.nameSearched}
                     onChange={(e) => {
                       setFilters({ ...filters, nameSearched: e.target.value })
                     }}
