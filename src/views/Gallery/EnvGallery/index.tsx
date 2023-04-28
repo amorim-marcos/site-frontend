@@ -201,7 +201,8 @@ export const EnvGallery = ({
     const numEnvs =
       filters.bps.length +
       filters.ambients.length +
-      filters.styles.length
+      filters.styles.length +
+      (filters.nameSearched !== '' ? 1 : 0) 
     const filtersCounterText =
       numEnvs === 1
         ? galleryViewLabels.t('filtersTab.filtersCounter1')
@@ -223,9 +224,6 @@ export const EnvGallery = ({
       )
     }
   }, [filteredEnvs])
-  
-  
-  
 
   useEffect(() => {
     if (router.query.ambients) {
@@ -381,7 +379,11 @@ export const EnvGallery = ({
                       i < pagination * pageSize && (
                         <GridItem key={env.id} mt="20px">
                           <Env
-                            href={(router.locale == 'pt-BR') ? `/products/bp-berneck/gallery/${env.url_code}` : `/${router.locale}/products/bp-berneck/gallery/${env.url_code}` }
+                            href={
+                              router.locale == 'pt-BR'
+                                ? `/products/bp-berneck/gallery/${env.url_code}`
+                                : `/${router.locale}/products/bp-berneck/gallery/${env.url_code}`
+                            }
                             title={env.title}
                             place={env.subTitle}
                             image_url={env.image_url}
