@@ -16,12 +16,12 @@ import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
 
 export type filtersBP = {
-  orderBy: string;
-  nameSearched: string;
-  panels: Array<number | string>;
-  collections: Array<number | string>;
-  colorations: Array<number | string>;
-};
+  orderBy: string
+  nameSearched: string
+  panels: Array<number | string>
+  collections: Array<number | string>
+  colorations: Array<number | string>
+}
 
 export type ValidFilterNames = 'panels' | 'collections' | 'colorations'
 
@@ -36,8 +36,6 @@ export const initialFilters: filtersBP = {
   collections: [],
   colorations: []
 }
-
-
 
 export type BPCatalogProps = {
   bps: {
@@ -70,7 +68,6 @@ export type BPCatalogProps = {
       background_image: string
     }[]
   }
-
 }
 
 export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
@@ -84,7 +81,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   const [filtersEmpty, setFiltersEmpty] = useState(true)
 
   const router = useRouter()
-  
 
   const [filtersBP, setFilters] = useState(() => {
     const filtersCookie = Cookies.get('filtersBP')
@@ -202,9 +198,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     return filteredBps.slice()
   }
 
-
-
-  
   useEffect(() => {
     switch (gridSize) {
       case 'big':
@@ -253,10 +246,15 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   const [filterCount, setFilterCount] = useState('')
   useEffect(() => {
-    const numFilters =
+    let numFilters =
       filtersBP.collections.length +
       filtersBP.colorations.length +
       filtersBP.panels.length
+
+    if (filtersBP.nameSearched !== '') {
+      numFilters += 1
+    }
+
     const filtersCounterText =
       numFilters === 1
         ? bpCatalog.t('filtersTab.filtersCounter1')
@@ -328,7 +326,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
       }
     }
   }, [router.query])
-  
 
   useEffect(() => {
     setFilters({ ...filtersBP, orderBy: 'scale' })
@@ -337,8 +334,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   const bpCatalog = useTranslation('bpCatalog')
   const galleryViewLabels = useTranslation('galleryView')
-
-
 
   return (
     <>
@@ -454,7 +449,11 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                       product_texture={bp.product_texture}
                       pattern_image={bp.pattern_image}
                       url_code={bp.url_code}
-                      href={(router.locale == "pt-BR") ? `/products/bp-berneck/catalog/${bp.url_code}` : `/${router.locale}/products/bp-berneck/catalog/${bp.url_code}`}
+                      href={
+                        router.locale == 'pt-BR'
+                          ? `/products/bp-berneck/catalog/${bp.url_code}`
+                          : `/${router.locale}/products/bp-berneck/catalog/${bp.url_code}`
+                      }
                       color={darkMode ? 'white.100' : 'gray.400'}
                     />
                   </GridItem>
@@ -496,4 +495,3 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     </>
   )
 }
-
