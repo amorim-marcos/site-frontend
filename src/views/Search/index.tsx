@@ -116,10 +116,9 @@ export default function Search(props: SearchProps) {
                   props.results.pages &&
                   props.results.posts &&
                   props.results.products &&
-                  props.results.pages.length +
-                    props.results.posts.length +
-                    props.results.products.length}{' '}
-                {searchLabels.t('resultsFinded')}
+                  props.results &&
+                  props.results.posts.length + props.results.pages.length}{' '}
+                {searchLabels.t('resultsFound')}
               </Text>
             </Flex>
           </Flex>
@@ -127,14 +126,16 @@ export default function Search(props: SearchProps) {
           <Flex
             direction="column"
             w="100%"
-            gap="70px"
+            gap={{ base: '20px', sm: '35px', md: '50px', lg: '70px' }}
             bg="brown.100"
             pb="145px"
+            px={{ base: '10px', sm: '20px', md: '30px', lg: '60px' }}
           >
             {props.results &&
               props.results.pages &&
               props.results.pages.length > 0 && (
                 <Section
+                
                   title={searchLabels.t('pages')}
                   contentLen={props.results.pages.length}
                 >
@@ -187,25 +188,33 @@ export const Section = (props: {
 
   return (
     <Flex
-      direction="column"
-      px={{ sm: '25px', xl: '50px', '2xl': '120px' }}
-      pt="84px"
-      gap={{ base: '35px', md: '20px' }}
+    direction="column"
+    alignItems="center"
+    justifyContent="center"
+    px={{ base: '15px', md: '20px', lg: '50px', xl: '100px', '2xl': '120px' }}
+    pt={{ base: '50px', md: '70px', lg: '84px' }}
+    gap={{ base: '25px', md: '35px', lg: '20px' }}
+    ml={{ base: '0', md: '20px', lg: '20px', '2xl': '60px' }}
+    mr={{ base: '0', md: '10px', lg: '20px', '2xl': '60px' }}
+    maxWidth="100vw"
+
     >
       <Flex
-        h="40px"
-        align="center"
-        justify="space-between"
-        direction={{ base: 'column', md: 'row' }}
-        gap={{ base: '5px', md: '0px' }}
-        px={{ base: '10px', lg: '0px' }}
+        h={{ base: 'auto', lg: '40px' }}
+        alignItems="center"
+        justifyContent="space-between"
+        flexDirection={{ base: 'column', lg: 'row' }}
+        gap={{ base: '20px', lg: '33px' }}
+        px={{ base: '0px', lg: '0px' }}
+        w="100%"
+        
       >
         <Text
           as={'h2'}
           fontSize={{ base: '22px', xl: '30px' }}
           fontWeight={800}
           color="green.900"
-          pb={{ base: '2px', xl: '20px' }}
+          pb={{ base: '20px', xl: '20px' }}
         >
           {props.title}
         </Text>
@@ -214,8 +223,9 @@ export const Section = (props: {
           as={'h3'}
           color="green.900"
           letterSpacing="-0.4px"
-          fontSize={{ base: '15px', xl: '20px' }}
+          fontSize={{ base: '20px', xl: '20px' }}
           fontWeight={'regular'}
+          
         >
           {props.contentLen}{' '}
           {props.contentLen > 1 ? searchLabels.t('') : searchLabels.t('')}
