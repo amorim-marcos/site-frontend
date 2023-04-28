@@ -29,6 +29,8 @@ import { colors } from 'theme/colors'
 import { initialFilters } from './'
 import { FilterCheckbox } from './FilterCheckbox'
 import { useTranslation } from 'react-i18next'
+import { filtersBP } from './index'
+
 
 export type FiltersSelectProps = {
   darkMode: boolean
@@ -468,6 +470,7 @@ export const FiltersTabs = ({
                       xl: '14px',
                       '2xl': '16px'
                     }}
+                    value={filtersBP['nameSearched']}
                     height={{ base: '30px' }}
                     onChange={(e) => {
                       setFilters({ ...filtersBP, nameSearched: e.target.value })
