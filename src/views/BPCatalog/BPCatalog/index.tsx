@@ -84,23 +84,29 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   const [filtersBP, setFilters] = useState(() => {
     const filtersCookie = Cookies.get('filtersBP')
-    return filtersCookie
-      ? JSON.parse(decodeURIComponent(filtersCookie))
-      : router.query.collection
-      ? {
-          ...initialFilters,
-          collections: [
-            filtersContext.collections?.find(
-              (c: any) =>
-                router.query.collection ===
-                c.title
-                  .toLowerCase()
-                  .normalize('NFD')
-                  .replace(/[\u0300-\u036f]/g, '')
-            )?.code
-          ]
-        }
-      : initialFilters
+
+    if(router.query.collection){
+      return {
+        ...initialFilters,
+        collections: [
+          filtersContext.collections?.find(
+            (c: any) =>
+              router.query.collection ===
+              c.title
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+          )?.code
+        ]
+      }
+    }else if(router.query.panel){
+      // fix not setting up at start panel here
+      return initialFilters
+    }else if(filtersCookie){
+      return JSON.parse(decodeURIComponent(filtersCookie))
+    }
+
+    return initialFilters
   })
 
   function changeGridSize(newGridSize: GridSize) {
