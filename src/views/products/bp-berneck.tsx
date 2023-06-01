@@ -124,7 +124,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               titleColor="brown.300"
               imgSrc="../img/sentido_banner.jpg"
               ArrowIconColor="#74675D"
-              bgColor="brown.100"
+              bgColor="rgb(228, 230, 222)"
             />
           </GridItem>
           <GridItem
@@ -140,7 +140,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               titleColor="green.700"
               imgSrc="../img/banner_nomade.png"
               ArrowIconColor="#0A6C3B"
-              bgColor="rgb(231, 231, 231)"
+              bgColor="brown.100"
             />
           </GridItem>
         </Grid>
