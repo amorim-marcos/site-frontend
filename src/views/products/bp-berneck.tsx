@@ -118,13 +118,13 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           >
             <BannerCollections
               onClick={() =>
-                (window.location.href = `/products/bp-berneck/catalog?collection=nomade`)
+                (window.location.href = `/${router.locale}/products/bp-berneck/catalog?collection=sentido`)
               }
               title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
               titleColor="brown.300"
-              imgSrc="../img/banner_nomade.png"
+              imgSrc="../img/sentido_banner.jpg"
               ArrowIconColor="#74675D"
-              bgColor="brown.100"
+              bgColor="rgb(228, 230, 222)"
             />
           </GridItem>
           <GridItem
@@ -134,13 +134,13 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           >
             <BannerCollections
               onClick={() =>
-                (window.location.href = `/products/bp-berneck/catalog?collection=origens`)
+                (window.location.href = `/${router.locale}/products/bp-berneck/catalog?collection=nomade`)
               }
               title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
               titleColor="green.700"
-              imgSrc="../img/banner_origens.jpg"
+              imgSrc="../img/banner_nomade.png"
               ArrowIconColor="#0A6C3B"
-              bgColor="rgb(231, 231, 231)"
+              bgColor="brown.100"
             />
           </GridItem>
         </Grid>

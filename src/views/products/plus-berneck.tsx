@@ -171,7 +171,7 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
               subtitleColor="brown.350"
               bgColor="green.400"
               srcImg="/img/hdf_plus.png"
-              onClick={() => router.push('/products/hdf-berneck#plus')}
+              onClick={() => router.push(`/${router.locale}/products/hdf-berneck#plus`)}
               bannerSize={{ base: '15%', sm: '20px', lg: '30px', xl: '35px' }}
             />
           </GridItem>
@@ -188,7 +188,7 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
               subtitleColor="brown.350"
               bgColor="green.400"
               srcImg="/img/mdf_plus_small.png"
-              onClick={() => router.push('/products/mdf-berneck#plus')}
+              onClick={() => router.push(`/${router.locale}/products/mdf-berneck#plus`)}
               bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
             />
           </GridItem>
@@ -205,7 +205,7 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
               subtitleColor="brown.350"
               bgColor="green.400"
               srcImg="/img/mdp_plus.png"
-              onClick={() => router.push('/products/mdp-berneck#plus')}
+              onClick={() => router.push(`/${router.locale}/products/mdp-berneck#plus`)}
               bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
             />
           </GridItem>

@@ -84,23 +84,40 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   const [filtersBP, setFilters] = useState(() => {
     const filtersCookie = Cookies.get('filtersBP')
-    return filtersCookie
-      ? JSON.parse(decodeURIComponent(filtersCookie))
-      : router.query.collection
-      ? {
-          ...initialFilters,
-          collections: [
-            filtersContext.collections?.find(
-              (c: any) =>
-                router.query.collection ===
-                c.title
-                  .toLowerCase()
-                  .normalize('NFD')
-                  .replace(/[\u0300-\u036f]/g, '')
-            )?.code
-          ]
-        }
-      : initialFilters
+
+    if (router.query.collection) {
+      const matchedCollection = filtersContext.collections.find(
+        (c: any) =>
+          router.query.collection ===
+          c.title
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+      )
+
+      return {
+        ...initialFilters,
+        collections: matchedCollection ? [matchedCollection.code] : []
+      }
+    } else if (router.query.panel) {
+      const matchedPanel = filtersContext.panels.find(
+        (p: any) =>
+          router.query.panel ===
+          p.title
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+      )
+
+      return {
+        ...initialFilters,
+        panels: matchedPanel ? [matchedPanel.code] : []
+      }
+    } else if (filtersCookie) {
+      return JSON.parse(decodeURIComponent(filtersCookie))
+    }
+
+    return initialFilters
   })
 
   function changeGridSize(newGridSize: GridSize) {
@@ -276,56 +293,88 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }, [filteredBps])
 
   useEffect(() => {
-    if (router.query.panel) {
-      const itemFilter = filtersContext.panels.find(
-        (item) => item.title === router.query.panel
-      )
-      if (typeof itemFilter !== 'undefined') {
-        appendFilter('panels', itemFilter.code as any)
+    const normalizeTitle = (title: string): string => {
+      return title
+            .normalize('NFD')
+            .replace(/[^\w ]/g, '')
+            .split(' ')
+            .join('-')
+            .toLowerCase();
+    };
 
-        setFilteredBps(
-          applyFilters(
-            {
-              ...filtersBP,
-              ['panels']: [itemFilter.code as any]
-            },
-            bps
-          )
-        )
-        changeFilterPanel('panels')
-      }
+    if (router.query.panel) {
+        const queryPanel = Array.isArray(router.query.panel)
+            ? router.query.panel[0]
+            : router.query.panel;
+        const normalizedPanelQuery = normalizeTitle(queryPanel);
+
+        for (const panel of filtersContext.panels) {
+            const normalizedTitle = normalizeTitle(panel.title);
+
+            if (
+                normalizedPanelQuery === normalizedTitle &&
+                !initialFilters['panels'].includes(panel.code)
+            ) {
+                appendFilter('panels', panel.code as any);
+            }
+
+            if (
+                normalizedPanelQuery === normalizedTitle &&
+                initialFilters['panels'].includes(panel.code)
+            ) {
+                removeFilter('panels', panel.code as any);
+            }
+        }
+
+        const itemFilter = filtersContext.panels.find(
+            (item) => normalizeTitle(item.title) === normalizedPanelQuery
+        );
+        if (itemFilter) {
+            appendFilter('panels', itemFilter.code as any);
+
+            setFilteredBps(
+                applyFilters(
+                    {
+                        ...filtersBP,
+                        ['panels']: [itemFilter.code as any],
+                    },
+                    bps
+                )
+            );
+            changeFilterPanel('panels');
+        }
     }
 
     if (router.query.collection) {
-      const queryCollection = router.query.collection
-      for (const collection of filtersContext.collections) {
-        const normalizedTitle = collection.title
-          .normalize('NFD')
-          .replace(/[^\w ]/g, '')
-          .split(' ')
-          .join('-')
-          .toLowerCase()
+        const queryCollection = Array.isArray(router.query.collection)
+            ? router.query.collection[0]
+            : router.query.collection;
+        const normalizedCollectionQuery = normalizeTitle(queryCollection);
 
-        if (
-          queryCollection == normalizedTitle &&
-          !initialFilters['collections'].includes(collection.code)
-        ) {
-          appendFilter('collections', collection.code as any)
-          setFilteredBps(
-            applyFilters(
-              {
-                ...filtersBP,
-                ['collections']: [collection.code as any]
-              },
-              bps
-            )
-          )
-          changeFilterPanel('collections')
-          break
+        for (const collection of filtersContext.collections) {
+            const normalizedTitle = normalizeTitle(collection.title);
+
+            if (
+                normalizedCollectionQuery === normalizedTitle &&
+                !initialFilters['collections'].includes(collection.code)
+            ) {
+                appendFilter('collections', collection.code as any);
+                setFilteredBps(
+                    applyFilters(
+                        {
+                            ...filtersBP,
+                            ['collections']: [collection.code as any],
+                        },
+                        bps
+                    )
+                );
+                changeFilterPanel('collections');
+                break;
+            }
         }
-      }
     }
-  }, [router.query])
+}, [router.query]);
+
 
   useEffect(() => {
     setFilters({ ...filtersBP, orderBy: 'scale' })

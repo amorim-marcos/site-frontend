@@ -1,6 +1,8 @@
 import Pagebar from '@components/Pagebar'
 import { useTranslation } from 'react-i18next'
 import Product from '../../components/Product'
+import { useRouter } from 'next/router'
+
 
 export interface ProductProps {
   title: string
@@ -24,6 +26,7 @@ export type HdfBerneckViewProps = {
 
 export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
   const productsViewLabels = useTranslation('productsView')
+  const router = useRouter()
 
   return (
     <div>
@@ -35,7 +38,7 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
           },
           {
             title: productsViewLabels.t('hdfBerneck.title'),
-            url: 'products/hdf-berneck'
+            url: `/${router.locale}products/hdf-berneck`
           }
         ]}
       />
@@ -144,7 +147,7 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
             ),
             btnText: productsViewLabels.t('hdfBerneck.productWithBP.button'),
             imgSrc: '/img/hdf_plus_bp.png',
-            href: '/products/bp-berneck/catalog?panel=HDF Plus'
+            href: `/${router.locale}/products/bp-berneck/catalog?panel=hdf plus`
           }
         }}
       />
