@@ -293,8 +293,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }, [filteredBps])
 
   useEffect(() => {
-    const normalizeTitle = (title) => {
-        return title
+    const normalizeTitle = (title: string): string => {
+      return title
             .normalize('NFD')
             .replace(/[^\w ]/g, '')
             .split(' ')
