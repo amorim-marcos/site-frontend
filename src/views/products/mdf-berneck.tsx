@@ -84,7 +84,7 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
             ),
             btnText: productsViewLabels.t('mdfBerneck.productWithBP.button'),
             grafismColor: '#D8C39F',
-            href: '/products/bp-berneck/catalog?panel=MDF'
+            href: `/${router.locale}/products/bp-berneck/catalog?panel=mdf`
           }
         }}
       />
@@ -142,7 +142,7 @@ export default function MdfBerneckView({ mdf, mdf_plus }: MdfBerneckViewProps) {
               'mdfBerneck.productWithBpPlus.button'
             ),
             imgSrc: '/img/mdf_plus_bp.png',
-            href: `/${router.locale}/products/bp-berneck/catalog?panel=MDF Plus`
+            href: `/${router.locale}/products/bp-berneck/catalog?panel=mdf plus`
           }
         }}
         downloadAndLinks={{

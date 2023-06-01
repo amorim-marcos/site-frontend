@@ -73,7 +73,7 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
               'mdpBerneck.productWithBP.description'
             ),
             btnText: productsViewLabels.t('mdpBerneck.productWithBP.button'),
-            href: `/${router.locale}/products/bp-berneck/catalog?panel=MDP`
+            href: `/${router.locale}/products/bp-berneck/catalog?panel=mdp`
           }
         }}
       />
@@ -123,7 +123,7 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
               'mdpBerneck.productWithBpPlus.button'
             ),
             imgSrc: '/img/mdp_plus_bp.png',
-            href: `/${router.locale}/products/bp-berneck/catalog?panel=MDP Plus`
+            href: `/${router.locale}/products/bp-berneck/catalog?panel=mdp plus`
           }
         }}
       />

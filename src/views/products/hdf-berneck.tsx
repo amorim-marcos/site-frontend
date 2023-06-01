@@ -147,7 +147,7 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
             ),
             btnText: productsViewLabels.t('hdfBerneck.productWithBP.button'),
             imgSrc: '/img/hdf_plus_bp.png',
-            href: `/${router.locale}/products/bp-berneck/catalog?panel=HDF Plus`
+            href: `/${router.locale}/products/bp-berneck/catalog?panel=hdf plus`
           }
         }}
       />
