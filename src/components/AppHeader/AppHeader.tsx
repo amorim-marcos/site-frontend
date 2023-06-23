@@ -53,33 +53,33 @@ export const AppHeader = () => {
   useEffect(() => {
     if (router.asPath.includes('#')) {
       const elementId = router.asPath.split('#')[1];
+  
       setTimeout(() => {
         const element = document.getElementById(elementId);
-
-        let headerLimit = 51;
-        if (window.innerWidth < 1536) {
-          headerLimit = 40;
-        }
-        if (window.innerWidth < 1280) {
-          headerLimit = 30;
-        }
-        if (window.innerWidth < 1024) {
-          headerLimit = 25;
-        }
-        if (window.innerWidth < 768) {
-          headerLimit = 25;
-        }
-
+  
         if (element) {
+          let headerLimit = 51;
+          if (window.innerWidth < 1536) {
+            headerLimit = 40;
+          }
+          if (window.innerWidth < 1280) {
+            headerLimit = 30;
+          }
+          if (window.innerWidth < 1024) {
+            headerLimit = 25;
+          }
+          if (window.innerWidth < 768) {
+            headerLimit = 25;
+          }
+  
           window.scrollTo({
             top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit,
             behavior: "smooth"
           });
         }
-      }, 10); 
+      }, 10);
     }
-  }, [router.asPath]);
-  
+  }, [router.asPath]);  
 
   
   return (
