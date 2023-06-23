@@ -19,7 +19,7 @@ export const HeaderSecondaryItem = ({
     if (isExternal) {
       window.open(href, '_blank')
     } else {
-      // router.push(href, undefined, { scroll: false })
+      router.push(href, undefined, { scroll: false })
     }
   }
 
