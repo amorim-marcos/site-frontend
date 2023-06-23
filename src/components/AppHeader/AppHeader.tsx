@@ -50,43 +50,38 @@ export const AppHeader = () => {
 
   const header = useTranslation('header')
 
-  const [fixed, setFixed] = useState(true)
-  function handleScroll(value: any) {
-    if (window) {
-      let headerLimit = 51
-
-      if (window.innerWidth < 1536) {
-        headerLimit = 40
-      }
-      if (window.innerWidth < 1280) {
-        headerLimit = 30
-      }
-      if (window.innerWidth < 1024) {
-        headerLimit = 25
-      }
-      if (window.innerWidth < 768) {
-        headerLimit = 25
-      }
-
-      // const scrollLimit =
-      //   document.body.scrollHeight - window.innerHeight - footerSize
-      if (window.pageYOffset <= headerLimit) {
-        setFixed(true)
-      } else {
-        setFixed(false)
-      }
-    }
-  }
-
   useEffect(() => {
-    if (window) {
-      window.addEventListener('scroll', handleScroll, { passive: true })
+    if (router.asPath.includes('#')) {
+      const elementId = router.asPath.split('#')[1];
+      setTimeout(() => {
+        const element = document.getElementById(elementId);
 
-      return () => {
-        window.removeEventListener('scroll', handleScroll)
-      }
+        let headerLimit = 51;
+        if (window.innerWidth < 1536) {
+          headerLimit = 40;
+        }
+        if (window.innerWidth < 1280) {
+          headerLimit = 30;
+        }
+        if (window.innerWidth < 1024) {
+          headerLimit = 25;
+        }
+        if (window.innerWidth < 768) {
+          headerLimit = 25;
+        }
+
+        if (element) {
+          window.scrollTo({
+            top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit,
+            behavior: "smooth"
+          });
+        }
+      }, 10); 
     }
-  }, [])
+  }, [router.asPath]);
+  
+
+  
   return (
     <>
       <Box

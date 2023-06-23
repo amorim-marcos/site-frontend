@@ -152,7 +152,7 @@ export const HeaderMenuItem = ({
             onClick={() => {
               setOpen(false)
               closeMenuMobile()
-              router.push(href)
+              router.push(href,undefined, { scroll: false })
             }}
           >
             {title}

@@ -19,9 +19,10 @@ export const HeaderSecondaryItem = ({
     if (isExternal) {
       window.open(href, '_blank')
     } else {
-      router.push(href)
+      // router.push(href, undefined, { scroll: false })
     }
   }
+
   return (
     <Flex
       alignItems="center"
