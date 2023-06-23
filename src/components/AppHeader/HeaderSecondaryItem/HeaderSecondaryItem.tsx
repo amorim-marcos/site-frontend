@@ -22,6 +22,7 @@ export const HeaderSecondaryItem = ({
       router.push(href)
     }
   }
+
   return (
     <Flex
       alignItems="center"
