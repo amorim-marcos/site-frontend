@@ -34,7 +34,7 @@ export const FooterList = ({ title, items }: FooterListProps) => {
             headerLimit = 25;
           }
           if (window.innerWidth < 768) {
-            headerLimit = 25;
+            headerLimit = 40;
           }
   
           requestAnimationFrame(() => {

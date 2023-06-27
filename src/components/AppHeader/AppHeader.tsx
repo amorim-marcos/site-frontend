@@ -69,7 +69,7 @@ export const AppHeader = () => {
             headerLimit = 25;
           }
           if (window.innerWidth < 768) {
-            headerLimit = 25;
+            headerLimit = 40;
           }
   
           window.scrollTo({
