@@ -29,7 +29,7 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
     };
   }
   
-  const handleNavigation = (event: React.MouseEvent<HTMLAnchorElement>, link: string): void => {
+  const handleNavigation = (event: React.MouseEvent<HTMLDivElement>, link: string): void => {
     event.preventDefault();
   
     router.push(link);
