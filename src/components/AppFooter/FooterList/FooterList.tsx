@@ -21,7 +21,7 @@ interface HeaderLimits {
 
 export const FooterList = ({ title, items }: FooterListProps) => {
   const router = useRouter();
-  const handleNavigation = (event: React.MouseEvent<HTMLDivElement>, link: string): void => {
+  const handleNavigation = (event: React.MouseEvent<HTMLElement>, link: string): void => {
     event.preventDefault();
   
     router.push(link);
