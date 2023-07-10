@@ -7,6 +7,8 @@ import ArrowIcon from '@components/Icons/ArrowIcon'
 
 import { smartString } from 'utils/utils'
 
+
+
 export type HomeBannerProps = {
   items: {
     imageUrl: string
@@ -19,10 +21,14 @@ export type HomeBannerProps = {
     color: string
   }[]
 }
+
 export const HomeBanner = ({ items }: HomeBannerProps) => {
   const [opacity, setOpacity] = useState(true)
   const [currentItem, setCurrentItem] = useState(0)
   const router = useRouter()
+
+
+   
 
   function next() {
     let newIndex = 0

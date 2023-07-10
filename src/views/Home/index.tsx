@@ -16,6 +16,7 @@ type PostProps = {
   id: number
   title: string
   content: string
+  updated_at: string
   category: {
     id: number
     name: string
@@ -50,7 +51,6 @@ export default function Home(props: HomeProps) {
   useEffect(() => {
     const fetchYoutubeData = async () => {
       let res
-
       try {
         res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/connect`)
         setYoutubeLink((await res.json()).youtube_video_link)
@@ -69,15 +69,21 @@ export default function Home(props: HomeProps) {
     }
 
     fetchYoutubeData()
+
   })
 
   return (
     <Box bg="white.100">
       {/* INICIO BANNER CAROUSEL */}
       <ConditionalLanguageRender>
-        {props.highlights && props.highlights.length > 0 && (
-          <HomeBanner
-            items={props.highlights.map((item) => {
+
+        
+      {props.highlights && props.highlights.length > 0 && (
+        <HomeBanner
+          items={props.highlights
+            .sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
+            .map((item) => {
+              console.log ( ' carousel data', item )
               return {
                 imageUrl: item.cover.url,
                 category: {
@@ -89,8 +95,8 @@ export default function Home(props: HomeProps) {
                 color: item.category.color
               }
             })}
-          />
-        )}
+        />
+      )}
       </ConditionalLanguageRender>
       {/* FIM BANNER CAROUSEL */}
 
