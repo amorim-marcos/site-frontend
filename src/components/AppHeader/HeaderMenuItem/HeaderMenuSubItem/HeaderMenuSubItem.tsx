@@ -23,28 +23,70 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
 }) => {
   const router = useRouter();
 
-  const handleNavigation = (event: React.MouseEvent, link: string) => {
+  interface HeaderLimits {
+    [key: string]: {
+      [key: string]: number;
+    };
+  }
+  
+  const handleNavigation = (event: React.MouseEvent<HTMLDivElement>, link: string): void => {
     event.preventDefault();
-
+  
     router.push(link);
-
+  
     if (link.includes('#')) {
-      const element = document.getElementById(link.split('#')[1]);
+      const elementId = link.split('#')[1];
+      const element = document.getElementById(elementId);
+  
       if (element) {
-        let headerLimit = 51;
-        if (window.innerWidth < 1536) {
-          headerLimit = 40;
+        const headerLimits: HeaderLimits = {
+          default: {
+            '1536': 51,
+            '1280': 40,
+            '1024': 30,
+            '768': 25,
+            'default': 25,
+          },
+          'where-we-are': {
+            '768': 50,
+          },
+          'trajectory': {
+            '768': 30,
+          },
+          'environment': {
+            '768': 50,
+          },
+          'our-people': {
+            '768': 40,
+          },
+          'our-values': {
+            '768': 40,
+          },
+          'production': {
+            '768': 40,
+          },
+          'management': {
+            '768': 40,
+          },
+          'supplier': {
+            '768': 49,
+          },
+        };
+  
+        let headerLimit = headerLimits.default.default;
+  
+        const limitsForCurrentWidth = Object.keys(headerLimits.default)
+          .reverse()
+          .find((width) => window.innerWidth < Number(width));
+          
+        if (limitsForCurrentWidth) {
+          headerLimit = headerLimits.default[limitsForCurrentWidth];
         }
-        if (window.innerWidth < 1280) {
-          headerLimit = 30;
-        }
-        if (window.innerWidth < 1024) {
-          headerLimit = 25;
-        }
-        if (window.innerWidth < 768) {
-          headerLimit = 25;
-        }
-
+  
+        if (limitsForCurrentWidth && headerLimits[elementId] && headerLimits[elementId][limitsForCurrentWidth]) {
+          headerLimit = headerLimits[elementId][limitsForCurrentWidth];
+        }        
+  
         window.scrollTo({
           top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit,
           behavior: 'smooth',
@@ -52,6 +94,9 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
       }
     }
   };
+  
+  
+  
 
   return (
 

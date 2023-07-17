@@ -17,6 +17,15 @@ import { colors } from '../../theme/colors'
 import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 import { exportationContactChannelCode } from 'utils/utils'
 
+
+interface HeaderLimits {
+  [key: string]: {
+    [key: string]: number;
+  };
+}
+
+
+
 export type AppHeaderProps = null
 
 export const AppHeader = () => {
@@ -53,33 +62,64 @@ export const AppHeader = () => {
   useEffect(() => {
     if (router.asPath.includes('#')) {
       const elementId = router.asPath.split('#')[1];
-  
+
       setTimeout(() => {
         const element = document.getElementById(elementId);
-  
+
         if (element) {
-          let headerLimit = 51;
-          if (window.innerWidth < 1536) {
-            headerLimit = 40;
+          const headerLimits: HeaderLimits = {
+            default: {
+              '1536': 51,
+              '1280': 40,
+              '1024': 30,
+              '768': 25,
+              'default': 25,
+            },
+            'where-we-are': {
+              '768': 50,
+            },
+            'trajectory': {
+              '768': 30,
+            },
+            'environment': {
+              '768': 50,
+            },
+            'our-people': {
+              '768': 40,
+            },
+            'our-values': {
+              '768': 40,
+            },
+            'production': {
+              '768': 40,
+            },
+            'supplier': {
+              '768': 49,
+            },
+          };
+
+          let headerLimit = headerLimits.default.default;
+
+          const limitsForCurrentWidth = Object.keys(headerLimits.default)
+            .reverse()
+            .find((width) => window.innerWidth < Number(width));
+            
+          if (limitsForCurrentWidth) {
+            headerLimit = headerLimits.default[limitsForCurrentWidth];
           }
-          if (window.innerWidth < 1280) {
-            headerLimit = 30;
+
+          if (limitsForCurrentWidth && headerLimits[elementId] && headerLimits[elementId][limitsForCurrentWidth]) {
+            headerLimit = headerLimits[elementId][limitsForCurrentWidth];
           }
-          if (window.innerWidth < 1024) {
-            headerLimit = 25;
-          }
-          if (window.innerWidth < 768) {
-            headerLimit = 25;
-          }
-  
+
           window.scrollTo({
             top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit,
-            behavior: "smooth"
+            behavior: 'smooth',
           });
         }
-      }, 10);
+      }, 50);
     }
-  }, [router.asPath]);  
+  }, [router.asPath]);
 
   
   return (
