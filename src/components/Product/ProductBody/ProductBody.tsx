@@ -64,6 +64,7 @@ export const ProductBody = ({
         w={'100%'}
         padding={{ base: '5% 0 10% 5%', '2xl': '5% 0 5% 3%' }}
         position="relative"
+        pointerEvents={'none'}
       >
         <Box>
           {description && (
