@@ -1,19 +1,15 @@
 const contentSecurityPolicyItems = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-eval'",
-  "script-src-elem 'self' *.berneck.com.br berneck.pertinhodemim.com *.google-analytics.com *.jquery.com *.cloudfront.net *.googletagmanager.com *.instagram.com *.pinterest.com *.elfsight.com *.facebook.net 'unsafe-inline'",
-  "script-src-elem 'self' ... *.facebook.net *.facebook.com *.juicer.io",
+  "script-src 'self' 'unsafe-eval' *.berneck.com.br berneck.pertinhodemim.com *.google-analytics.com *.jquery.com *.cloudfront.net *.googletagmanager.com *.instagram.com *.pinterest.com *.elfsight.com *.facebook.net *.facebook.com *.juicer.io 'unsafe-inline'",
   "style-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.jquery.com *.googleapis.com 'unsafe-inline'",
   "img-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.google-analytics.com data: *.pinimg.com *.pinterest.com",
   "font-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.jquery.com *.gstatic.com *.googleapis.com",
-  "connect-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.doubleclick.net *.google-analytics.com *.googleapis.com *.rdstation.com.br",
-  "connect-src 'self' ... *.facebook.com *.juicer.io",
+  "connect-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.doubleclick.net *.google-analytics.com *.googleapis.com *.rdstation.com.br *.facebook.com *.juicer.io",
   "media-src 'self'",
   "object-src 'self' data:",
   "prefetch-src 'self'",
   "child-src 'self'",
-  "frame-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.linkedin.com *.youtube.com *.facebook.com",
-  "frame-src 'self' ... *.facebook.com *.juicer.io",
+  "frame-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.linkedin.com *.youtube.com *.facebook.com *.juicer.io",
   "worker-src 'self' *.berneck.com.br berneck.pertinhodemim.com",
   "frame-ancestors 'self'",
   "form-action 'self'",
@@ -22,6 +18,7 @@ const contentSecurityPolicyItems = [
   "base-uri 'self'",
   "manifest-src 'self'"
 ]
+
 
 const securityHeaders = [
   {
