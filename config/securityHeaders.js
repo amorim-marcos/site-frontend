@@ -4,7 +4,7 @@ const contentSecurityPolicyItems = [
   "style-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.jquery.com *.googleapis.com 'unsafe-inline'",
   "img-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.google-analytics.com data: *.pinimg.com *.pinterest.com",
   "font-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.jquery.com *.gstatic.com *.googleapis.com fonts.gstatic.com",  // Added fonts.gstatic.com here
-  "connect-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.doubleclick.net *.google-analytics.com *.googleapis.com *.rdstation.com.br *.facebook.com *.juicer.io fonts.gstatic.com",  // Added fonts.gstatic.com here
+  "connect-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.doubleclick.net *.google-analytics.com *.googleapis.com *.rdstation.com.br *.facebook.com *.juicer.io fonts.gstatic.com devapisite.berneck.com.br",  // Added fonts.gstatic.com and devapisite.berneck.com.br here
   "media-src 'self'",
   "object-src 'self' data:",
   "prefetch-src 'self'",
