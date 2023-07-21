@@ -2,9 +2,9 @@ const contentSecurityPolicyItems = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-eval' *.berneck.com.br berneck.pertinhodemim.com *.google-analytics.com *.jquery.com *.cloudfront.net *.googletagmanager.com *.instagram.com *.pinterest.com *.elfsight.com *.facebook.net *.facebook.com *.juicer.io 'unsafe-inline'",
   "style-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.jquery.com *.googleapis.com 'unsafe-inline'",
-  "img-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.google-analytics.com data: *.pinimg.com *.pinterest.com",
+  "img-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.google-analytics.com data: *.pinimg.com *.pinterest.com ",
   "font-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.jquery.com *.gstatic.com *.googleapis.com fonts.gstatic.com", 
-  "connect-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.doubleclick.net *.google-analytics.com *.googleapis.com *.rdstation.com.br *.facebook.com *.juicer.io fonts.gstatic.com",  // Added fonts.gstatic.com here
+  "connect-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.doubleclick.net *.google-analytics.com *.googleapis.com *.rdstation.com.br *.facebook.com *.juicer.io fonts.gstatic.com *.pinterest.com *.elfsight.com *.jquery.com *.facebook.net", 
   "media-src 'self'",
   "object-src 'self' data:",
   "prefetch-src 'self'",
