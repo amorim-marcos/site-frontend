@@ -267,6 +267,7 @@ export default function Connect({
                   <a
                     data-pin-do="embedUser"
                     data-pin-lang="pt"
+                    data-tabs="timeline"
                     // data-pin-scale-height={isMobile ? '455px' : '470px'}
                     data-pin-scale-height={'515px'}
                     data-pin-scale-width={isMobile ? '388px' : '220px'}
