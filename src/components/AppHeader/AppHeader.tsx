@@ -117,11 +117,24 @@ export const AppHeader = () => {
                 if (elementId === "where-we-are") {
                     additionalOffset = 5;
                 } else if (elementId === "environment") {
-                    additionalOffset = 5;  
+                    additionalOffset = 15;  
                 } else if (elementId === "our-people") {
-                    additionalOffset = 5;  
+                    additionalOffset = 20;  
                 }
+                  else if (elementId === "our-values") {
+                    additionalOffset = 15;
+                  }
+                  else if (elementId === "production") {
+                    additionalOffset = 15;
+                  }
+                  else if (elementId === "supplier") {
+                    additionalOffset = 20;
+                  }
+                  else if (elementId === "management") {
+                    additionalOffset = 15;
+                  }
 
+                  
                 window.scrollTo({
                     top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit - additionalOffset,
                     behavior: 'smooth',

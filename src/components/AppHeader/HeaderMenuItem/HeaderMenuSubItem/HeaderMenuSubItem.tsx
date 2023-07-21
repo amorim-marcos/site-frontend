@@ -96,6 +96,18 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
             } else if (elementId === "our-people") {
                 additionalOffset = 10;  // Replace Y with the offset value you want for "our-people"
             }
+            else if (elementId === "our-values") {
+              additionalOffset = 10;
+            }
+            else if (elementId === "production") {
+              additionalOffset = 10;
+            }
+            else if (elementId === "supplier") {
+              additionalOffset = 10;
+            }
+            else if (elementId === "management") {
+              additionalOffset = 10;
+            }
 
             window.scrollTo({
                 top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit - additionalOffset,
