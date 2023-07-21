@@ -87,13 +87,19 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
           headerLimit = headerLimits[elementId][limitsForCurrentWidth];
         }        
   
+        let additionalOffset = 0;
+        if (elementId === "where-we-are") {
+          additionalOffset = 10; 
+        }
+  
         window.scrollTo({
-          top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit,
+          top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit - additionalOffset,
           behavior: 'smooth',
         });
       }
     }
   };
+  
   
   
   
