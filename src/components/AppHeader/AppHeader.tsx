@@ -115,7 +115,7 @@ export const AppHeader = () => {
                 let additionalOffset = 0;
 
                 if (elementId === "where-we-are") {
-                    additionalOffset = 5;
+                    additionalOffset = 15;
                 } else if (elementId === "environment") {
                     additionalOffset = 15;  
                 } else if (elementId === "our-people") {
