@@ -88,7 +88,7 @@ export default function Connect({
               <div
                 className="fb-page"
                 data-href="https://www.facebook.com/BerneckSA"
-                data-tabs="timeline"
+                data-show-posts="true" 
                 data-width=""
                 data-height="630"
                 data-small-header="false"

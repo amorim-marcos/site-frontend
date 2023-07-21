@@ -20,6 +20,35 @@ import { useEffect } from 'react'
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
+
+  function getCookie(name: string): string | undefined {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        const result = parts.pop();
+        if (result) {
+            return result.split(';').shift();
+        }
+    }
+    return undefined;
+}
+
+
+
+  if (typeof window !== 'undefined') {
+    const storageClearedCookie = getCookie('storageCleared');
+
+    if (!storageClearedCookie) {
+      localStorage.clear();
+      sessionStorage.clear();
+
+      const date = new Date();
+      date.setDate(date.getDate() + 5); 
+      document.cookie = `storageCleared=true; expires=${date.toUTCString()}; path=/`;
+    }
+  }
+
+
   useEffect(() => {
     if (
       router &&

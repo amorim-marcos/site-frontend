@@ -62,10 +62,10 @@ export const AppHeader = () => {
   useEffect(() => {
     if (router.asPath.includes('#')) {
       const elementId = router.asPath.split('#')[1];
-
+  
       setTimeout(() => {
         const element = document.getElementById(elementId);
-
+  
         if (element) {
           const headerLimits: HeaderLimits = {
             default: {
@@ -97,9 +97,9 @@ export const AppHeader = () => {
               '768': 49,
             },
           };
-
+  
           let headerLimit = headerLimits.default.default;
-
+  
           const limitsForCurrentWidth = Object.keys(headerLimits.default)
             .reverse()
             .find((width) => window.innerWidth < Number(width));
@@ -107,20 +107,25 @@ export const AppHeader = () => {
           if (limitsForCurrentWidth) {
             headerLimit = headerLimits.default[limitsForCurrentWidth];
           }
-
+  
           if (limitsForCurrentWidth && headerLimits[elementId] && headerLimits[elementId][limitsForCurrentWidth]) {
             headerLimit = headerLimits[elementId][limitsForCurrentWidth];
           }
-
+  
+          let additionalOffset = 0;
+          if (elementId === "where-we-are") {
+            additionalOffset = 10; 
+          }
+  
           window.scrollTo({
-            top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit,
+            top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit - additionalOffset,
             behavior: 'smooth',
           });
         }
       }, 50);
     }
   }, [router.asPath]);
-
+  
   
   return (
     <>
