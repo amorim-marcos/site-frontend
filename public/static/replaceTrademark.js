@@ -1,17 +1,12 @@
-// eslint-disable-next-line no-undef
-$('body :not(script)')
-  .contents()
-  .filter(function () {
-    return this.nodeType === 3
-  })
-  .replaceWith(function () {
-    const oldValue = this.nodeValue;
-    if (!$(this.parentNode).is('sup')) {
-      const newValue = oldValue.includes('®')
-        ? oldValue.replace(/(®)/g, '<sup>$1</sup>')
-        : oldValue;
-      return newValue;
-    } else {
-      return oldValue;
+$(function() {
+  $('body :not(script)').contents().filter(function () {
+    return this.nodeType === 3 && this.parentNode && this.nodeValue.includes('®') && !$(this.parentNode).is('sup');
+  }).each(function () {
+    const node = this;
+    if (node && node.parentNode) {
+      const replacedText = node.nodeValue.replace(/(®)/g, '<sup>$1</sup>');
+      const newElement = $('<div>').html(replacedText).contents(); 
+      $(node).replaceWith(newElement);
     }
   });
+});
