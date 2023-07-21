@@ -31,74 +31,80 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
   
   const handleNavigation = (event: React.MouseEvent<HTMLDivElement>, link: string): void => {
     event.preventDefault();
-  
+
     router.push(link);
-  
+
     if (link.includes('#')) {
-      const elementId = link.split('#')[1];
-      const element = document.getElementById(elementId);
-  
-      if (element) {
-        const headerLimits: HeaderLimits = {
-          default: {
-            '1536': 51,
-            '1280': 40,
-            '1024': 30,
-            '768': 25,
-            'default': 25,
-          },
-          'where-we-are': {
-            '768': 50,
-          },
-          'trajectory': {
-            '768': 30,
-          },
-          'environment': {
-            '768': 50,
-          },
-          'our-people': {
-            '768': 40,
-          },
-          'our-values': {
-            '768': 40,
-          },
-          'production': {
-            '768': 40,
-          },
-          'management': {
-            '768': 40,
-          },
-          'supplier': {
-            '768': 49,
-          },
-        };
-  
-        let headerLimit = headerLimits.default.default;
-  
-        const limitsForCurrentWidth = Object.keys(headerLimits.default)
-          .reverse()
-          .find((width) => window.innerWidth < Number(width));
-          
-        if (limitsForCurrentWidth) {
-          headerLimit = headerLimits.default[limitsForCurrentWidth];
+        const elementId = link.split('#')[1];
+        const element = document.getElementById(elementId);
+
+        if (element) {
+            const headerLimits: HeaderLimits = {
+                default: {
+                    '1536': 51,
+                    '1280': 40,
+                    '1024': 30,
+                    '768': 25,
+                    'default': 25,
+                },
+                'where-we-are': {
+                    '768': 50,
+                },
+                'trajectory': {
+                    '768': 30,
+                },
+                'environment': {
+                    '768': 50,
+                },
+                'our-people': {
+                    '768': 40,
+                },
+                'our-values': {
+                    '768': 40,
+                },
+                'production': {
+                    '768': 40,
+                },
+                'management': {
+                    '768': 40,
+                },
+                'supplier': {
+                    '768': 49,
+                },
+            };
+
+            let headerLimit = headerLimits.default.default;
+
+            const limitsForCurrentWidth = Object.keys(headerLimits.default)
+                .reverse()
+                .find((width) => window.innerWidth < Number(width));
+
+            if (limitsForCurrentWidth) {
+                headerLimit = headerLimits.default[limitsForCurrentWidth];
+            }
+
+            if (limitsForCurrentWidth && headerLimits[elementId] && headerLimits[elementId][limitsForCurrentWidth]) {
+                headerLimit = headerLimits[elementId][limitsForCurrentWidth];
+            }
+
+            let additionalOffset = 0;
+            
+            if (elementId === "where-we-are") {
+                additionalOffset = 10;
+            } else if (elementId === "environment") {
+                additionalOffset = 10;  // Replace X with the offset value you want for "environment"
+            } else if (elementId === "our-people") {
+                additionalOffset = 10;  // Replace Y with the offset value you want for "our-people"
+            }
+
+            window.scrollTo({
+                top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit - additionalOffset,
+                behavior: 'smooth',
+            });
         }
-  
-        if (limitsForCurrentWidth && headerLimits[elementId] && headerLimits[elementId][limitsForCurrentWidth]) {
-          headerLimit = headerLimits[elementId][limitsForCurrentWidth];
-        }        
-  
-        let additionalOffset = 0;
-        if (elementId === "where-we-are") {
-          additionalOffset = 10; 
-        }
-  
-        window.scrollTo({
-          top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit - additionalOffset,
-          behavior: 'smooth',
-        });
-      }
     }
-  };
+};
+
   
   
   
