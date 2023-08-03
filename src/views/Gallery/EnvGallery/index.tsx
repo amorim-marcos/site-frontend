@@ -381,7 +381,7 @@ export const EnvGallery = ({
               justifyContent={'flex-end'}
               alignItems="center"
             >
-              <Text color={'gray.300'}>{filterCount}</Text>
+              <Text color={'gray.300'} fontWeight={'bold'}>{filterCount}</Text>
             </Flex>
             {filteredEnvs && filteredEnvs.length > 0 ? (
               <Center

@@ -475,7 +475,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
               justifyContent={'flex-end'}
               alignItems="center"
             >
-              <Text color={darkMode ? 'green.300' : 'gray.300'}>
+              <Text color={darkMode ? 'green.300' : 'gray.300'} fontWeight={'bold'}>
                 {filterCount}
               </Text>
             </Flex>
