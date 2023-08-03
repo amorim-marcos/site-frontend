@@ -351,14 +351,38 @@ export const ForestsView = (props: ForestsViewProps) => {
                 )}
               />
             </Flex>
+          </Flex>
+        </Flex>
+      </Flex>
+      {/* FIM Colhemos o que plantamos */}
+
+      {/* INICIO Manejo Florestal */}
+      <Box bg="green.200">
+        <Flex
+          id="management"
+          maxWidth="1536px"
+          marginX="auto"
+          alignItems="center"
+          justifyContent="center"
+          position="relative"
+          zIndex="base"
+          overflowY="hidden"
+          overflowX="hidden"
+          bg="green.200"
+        >
+          <Flex
+            // bg='blue'
+            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+          >
             {/* BOX 1 */}
             <Box
-              // bg="pink"
+              bg="pink"
               flex="1"
               justifyItems={'center'}
               backgroundImage={props.page_content.section2_img}
               backgroundPosition="center"
               backgroundRepeat="no-repeat"
+              // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
             >
               <Box
                 margin={{
@@ -396,30 +420,6 @@ export const ForestsView = (props: ForestsViewProps) => {
                 />
               </Box>
             </Box>
-          </Flex>
-        </Flex>
-      </Flex>
-      {/* FIM Colhemos o que plantamos */}
-
-      {/* INICIO Manejo Florestal */}
-      <Box bg="green.200">
-        <Flex
-          id="management"
-          maxWidth="1536px"
-          marginX="auto"
-          alignItems="center"
-          justifyContent="center"
-          position="relative"
-          zIndex="base"
-          overflowY="hidden"
-          overflowX="hidden"
-          bg="green.200"
-        >
-          <Flex
-            // bg='blue'
-            direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-          >
-
             {/* BOX 2 */}
             <Box
               margin={{

@@ -118,7 +118,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
             gap="34px"
             direction="column"
           >
-            <Flex w="100%" gap="34px" px={{ base: '0', lg: '3%', '2xl': '0' }}>
+            <Flex w="100%" gap="34px" id="magazine-inspirare-bnk" px={{ base: '0', lg: '3%', '2xl': '0' }}>
               <DownloadColorPanel
                 title={channelBnkLabels.t(
                   'downloadsSection.inspirareBnkMagazine'
@@ -229,7 +229,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
           justify="center"
           overflow="hidden"
           // bg="yellow"
-        >
+        >  
           <Carousel>{categoryOne}</Carousel>
 
           <Carousel>{categoryTwo}</Carousel>
