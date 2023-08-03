@@ -376,7 +376,7 @@ export const ForestsView = (props: ForestsViewProps) => {
           >
             {/* BOX 1 */}
             <Box
-              bg="pink"
+              // bg="pink"
               flex="1"
               justifyItems={'center'}
               backgroundImage={props.page_content.section2_img}

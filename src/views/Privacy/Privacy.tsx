@@ -154,12 +154,14 @@ export const Privacy = (props: { terms: string }) => {
               alignItems={'center'}
             >
               <Box w={{ base: '100%', md: '50%' }}>
-                <Image
-                  src="/img/useTerms/terms.png"
-                  w="100%"
-                  h="100%"
-                  objectFit={'cover'}
-                />
+                <a href="mailto:dpo@berneck.com.br" target="_blank" rel="noopener noreferrer">
+                  <Image
+                    src="/img/useTerms/terms.png"
+                    w="100%"
+                    h="100%"
+                    objectFit={'cover'}
+                  />
+                </a>
               </Box>
               <Flex
                 w={{ base: '100%', md: '50%' }}
