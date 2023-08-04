@@ -27,6 +27,78 @@ export default function Connect({
 
   // const { Feed } = useInstagram()
 
+
+  // These are hooks to ensure the loading of social networks widgets (Facebook, Pinterest, Linkedin) on the page.
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    script.async = true;
+    document.body.appendChild(script);
+
+    script.onload = () => {
+        if ((window as any).FB) {
+            (window as any).FB.XFBML.parse();
+        }
+    };
+
+    return () => {
+      if (document.body.contains(script)) {
+          document.body.removeChild(script);
+      }
+    };
+  
+  }, []);
+
+  
+
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "//assets.pinterest.com/js/pinit.js";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+    script.onload = () => {
+      if ((window as any).PinUtils) {
+        (window as any).PinUtils.build();
+      }
+    };
+    
+
+    return () => {
+      if (document.body.contains(script)) {
+          document.body.removeChild(script);
+      }
+    };
+  
+  }, []); 
+
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://platform.linkedin.com/in.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    // Note: LinkedIn might not require an onload re-initialization. This is just a pattern.
+    script.onload = () => {
+        if ((window as any).IN && (window as any).IN.parse) {
+            (window as any).IN.parse();
+        }
+    };
+
+    return () => {
+      if (document.body.contains(script)) {
+          document.body.removeChild(script);
+      }
+    };
+
+  }, []);
+
+
+
+
   useFacebook()
 
   return (

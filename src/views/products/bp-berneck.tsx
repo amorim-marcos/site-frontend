@@ -306,7 +306,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
                 subtTitle: productsViewLabels.t(
                   'bpBerneck.linkBanners.inspireMagazine.subtitle'
                 ),
-                anchorId: 'magazine-inspirare-bnk',
+                anchorId: 'revista-inspirare-bnk ',
                 subTitleColor: 'white.100'
               },
               {
@@ -318,7 +318,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
                 subtTitle: productsViewLabels.t(
                   'bpBerneck.linkBanners.supportMaterials.subtitle'
                 ),
-                anchorId: 'support-materials',
+                anchorId: 'materiais-de-suporte',
                 subTitleColor: 'white.100'
               }
             ].map((i) => {

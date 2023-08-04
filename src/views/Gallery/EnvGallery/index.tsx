@@ -62,18 +62,47 @@ export const EnvGallery = ({
   }
 }: EnvGalleryProps) => {
   const [currentFilterPanel, setCurrentFilterPanel] = useState('none')
-  const [displayFilters, setDisplayFilters] = useState(true)
+  const [displayFilters, setDisplayFilters] = useState(false)
   const [filteredEnvs, setFilteredEnvs] = useState(envs)
-  const [filters, setFilters] = useState(() => {
-    const filtersCookie = Cookies.get('filters')
-    return filtersCookie
-      ? JSON.parse(decodeURIComponent(filtersCookie))
-      : initialFilters
-  })
   const [filtersEmpty, setFiltersEmpty] = useState(true)
   const { isMobile } = useMobile(1024)
   const [pagination, setPagination] = useState(1)
   const router = useRouter()
+
+  const initialURLFilters = getFiltersFromURL();
+  const initialCookieFilters = getFiltersFromCookies() || initialFilters;
+
+  const [filters, setFilters] = useState(() => {
+    return {
+      ...initialCookieFilters,
+      ...initialURLFilters
+    };
+  });
+
+
+  function getFiltersFromCookies() {
+    const filtersCookie = Cookies.get('filters');
+    return filtersCookie ? JSON.parse(decodeURIComponent(filtersCookie)) : null;
+  }
+
+
+
+  function getFiltersFromURL() {
+    const { query } = router;
+    const filtersFromURL: any = {};
+
+    const ambientValue = (typeof query.ambients === 'string' ? query.ambients : '') || '';
+    const sanitizedAmbient: string = ambientValue.replace(/-/g, ' ');
+
+    if (sanitizedAmbient) {
+      const itemFilter = filtersContext.ambients.find(item => item.title.toLowerCase() === sanitizedAmbient.toLowerCase());
+      if (itemFilter) {
+        filtersFromURL['ambients'] = [itemFilter.code];
+      }
+    }
+
+    return filtersFromURL;
+}
 
   function changeFilterPanel(newFilterPanel: FilterPanelName) {
     setCurrentFilterPanel(
@@ -161,26 +190,32 @@ export const EnvGallery = ({
         ? setCurrentFilterPanel('styles')
         : initialFilters.bps.length !== 0
 
-      setDisplayFilters(true)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters])
 
-  if (Cookies.get('cookieAccepted')) {
-    useEffect(() => {
-      const filtersCookie = Cookies.get('filters')
-      if (filtersCookie) {
-        setFilteredEnvs(applyFilters(JSON.parse(filtersCookie), envs))
-        setDisplayFilters(true)
-      }
-    }, [])
-  }
+  // if (Cookies.get('cookieAccepted')) {
+  //   useEffect(() => {
+  //     const filtersCookie = Cookies.get('filters')
+  //     if (filtersCookie) {
+  //       setFilteredEnvs(applyFilters(JSON.parse(filtersCookie), envs))
+  //       setDisplayFilters(true)
+  //     }
+  //   }, [])
+  // }
 
-  if (Cookies.get('cookieAccepted')) {
-    useEffect(() => {
-      Cookies.set('filters', JSON.stringify(filters), { expires: 7 })
-    }, [filters])
-  }
+  // useEffect(() => {
+  //   if (Cookies.get('cookieAccepted')) {
+  //     Cookies.set('filters', JSON.stringify(filters), { expires: 7 });
+  //   }
+  // }, [filters]);
+
+  // useEffect(() => {
+  //   // Since we already considered URL and cookies for the initial filter state, 
+  //   // we only need to reapply filters when "filters" state changes
+  //   setFilteredEnvs(applyFilters(filters, envs));
+  // }, [filters]);
+
 
   useEffect(() => {
     if (
@@ -189,11 +224,11 @@ export const EnvGallery = ({
       filters.styles.length == 0 &&
       filters.nameSearched === ''
     ) {
-      setFiltersEmpty(true)
+      setFiltersEmpty(true);
     } else {
-      setFiltersEmpty(false)
+      setFiltersEmpty(false);
     }
-  }, [filters])
+  }, [filters]);
 
   const [filterCount, setFilterCount] = useState('')
 
@@ -345,7 +380,7 @@ export const EnvGallery = ({
               justifyContent={'flex-end'}
               alignItems="center"
             >
-              <Text color={'gray.300'}>{filterCount}</Text>
+              <Text color={'gray.300'} fontWeight={'bold'}>{filterCount}</Text>
             </Flex>
             {filteredEnvs && filteredEnvs.length > 0 ? (
               <Center

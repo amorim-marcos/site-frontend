@@ -374,7 +374,7 @@ export const Certification = (props: CertificationViewProps) => {
                         <Flex
                           // bg='tomato'
                           flex="1"
-                          justifyContent={'left'}
+                          justifyContent={'center'}
                           direction={{
                             base: 'column',
                             sm: 'column',

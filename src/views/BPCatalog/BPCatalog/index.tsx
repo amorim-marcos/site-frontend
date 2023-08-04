@@ -83,7 +83,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   const router = useRouter()
 
   const [filtersBP, setFilters] = useState(() => {
-    const filtersCookie = Cookies.get('filtersBP')
+    // const filtersCookie = Cookies.get('filtersBP')
 
     if (router.query.collection) {
       const matchedCollection = filtersContext.collections.find(
@@ -113,9 +113,10 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         ...initialFilters,
         panels: matchedPanel ? [matchedPanel.code] : []
       }
-    } else if (filtersCookie) {
-      return JSON.parse(decodeURIComponent(filtersCookie))
-    }
+    } 
+    // else if (filtersCookie) {
+    //   return JSON.parse(decodeURIComponent(filtersCookie))
+    // }
 
     return initialFilters
   })
@@ -215,6 +216,13 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     return filteredBps.slice()
   }
 
+  // const resetCookies = () => {
+  //   if (Cookies.get('cookieAccepted')) {
+  //     Cookies.remove('filtersBP');
+  //   }
+  // };
+  
+
   useEffect(() => {
     switch (gridSize) {
       case 'big':
@@ -244,22 +252,20 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     )
   }, [filtersBP])
 
+  
+
   useEffect(() => {
     setGridSize(isMobile ? 'mobile-medium' : 'medium')
-    setDisplayFilters(isMobile ? false : true)
+    
   }, [isMobile])
 
-  if (Cookies.get('cookieAccepted')) {
-    useEffect(() => {
-      Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
-    }, [])
-  }
+  // if (Cookies.get('cookieAccepted')) {
+  //   useEffect(() => {
+  //     Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
+  //   }, [])
+  // }
 
-  if (Cookies.get('cookieAccepted')) {
-    useEffect(() => {
-      Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
-    }, [filtersBP])
-  }
+
 
   const [filterCount, setFilterCount] = useState('')
   useEffect(() => {
@@ -475,7 +481,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
               justifyContent={'flex-end'}
               alignItems="center"
             >
-              <Text color={darkMode ? 'green.300' : 'gray.300'}>
+              <Text color={darkMode ? 'green.300' : 'gray.300'} fontWeight={'bold'}>
                 {filterCount}
               </Text>
             </Flex>
