@@ -190,7 +190,6 @@ export const EnvGallery = ({
         ? setCurrentFilterPanel('styles')
         : initialFilters.bps.length !== 0
 
-      setDisplayFilters(true)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters])
