@@ -83,7 +83,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   const router = useRouter()
 
   const [filtersBP, setFilters] = useState(() => {
-    const filtersCookie = Cookies.get('filtersBP')
+    // const filtersCookie = Cookies.get('filtersBP')
 
     if (router.query.collection) {
       const matchedCollection = filtersContext.collections.find(
@@ -113,9 +113,10 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         ...initialFilters,
         panels: matchedPanel ? [matchedPanel.code] : []
       }
-    } else if (filtersCookie) {
-      return JSON.parse(decodeURIComponent(filtersCookie))
-    }
+    } 
+    // else if (filtersCookie) {
+    //   return JSON.parse(decodeURIComponent(filtersCookie))
+    // }
 
     return initialFilters
   })
@@ -215,6 +216,13 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     return filteredBps.slice()
   }
 
+  // const resetCookies = () => {
+  //   if (Cookies.get('cookieAccepted')) {
+  //     Cookies.remove('filtersBP');
+  //   }
+  // };
+  
+
   useEffect(() => {
     switch (gridSize) {
       case 'big':
@@ -245,21 +253,40 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }, [filtersBP])
 
   useEffect(() => {
+    if (router.query.resetFilters === 'true') {
+      setFilters(initialFilters); // Reset filters to their default values
+      // resetCookies();             // Clear the saved cookie
+    } else if (router.query.bps) {
+      const matchedBps = filtersContext.bps.find(
+        (b: any) =>
+          router.query.bps ===
+          b.title
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+      );
+  
+      setFilters({
+        ...initialFilters,
+        bps: matchedBps ? [matchedBps.code] : []
+      });
+    }
+    // You can handle other query parameters here if necessary.
+  }, [router.query, initialFilters]);
+  
+
+  useEffect(() => {
     setGridSize(isMobile ? 'mobile-medium' : 'medium')
-    setDisplayFilters(isMobile ? false : true)
+    
   }, [isMobile])
 
-  if (Cookies.get('cookieAccepted')) {
-    useEffect(() => {
-      Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
-    }, [])
-  }
+  // if (Cookies.get('cookieAccepted')) {
+  //   useEffect(() => {
+  //     Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
+  //   }, [])
+  // }
 
-  if (Cookies.get('cookieAccepted')) {
-    useEffect(() => {
-      Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
-    }, [filtersBP])
-  }
+
 
   const [filterCount, setFilterCount] = useState('')
   useEffect(() => {

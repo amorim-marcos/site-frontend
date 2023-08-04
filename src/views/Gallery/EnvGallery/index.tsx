@@ -62,7 +62,7 @@ export const EnvGallery = ({
   }
 }: EnvGalleryProps) => {
   const [currentFilterPanel, setCurrentFilterPanel] = useState('none')
-  const [displayFilters, setDisplayFilters] = useState(true)
+  const [displayFilters, setDisplayFilters] = useState(false)
   const [filteredEnvs, setFilteredEnvs] = useState(envs)
   const [filtersEmpty, setFiltersEmpty] = useState(true)
   const { isMobile } = useMobile(1024)
@@ -195,27 +195,27 @@ export const EnvGallery = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters])
 
-  if (Cookies.get('cookieAccepted')) {
-    useEffect(() => {
-      const filtersCookie = Cookies.get('filters')
-      if (filtersCookie) {
-        setFilteredEnvs(applyFilters(JSON.parse(filtersCookie), envs))
-        setDisplayFilters(true)
-      }
-    }, [])
-  }
+  // if (Cookies.get('cookieAccepted')) {
+  //   useEffect(() => {
+  //     const filtersCookie = Cookies.get('filters')
+  //     if (filtersCookie) {
+  //       setFilteredEnvs(applyFilters(JSON.parse(filtersCookie), envs))
+  //       setDisplayFilters(true)
+  //     }
+  //   }, [])
+  // }
 
-  useEffect(() => {
-    if (Cookies.get('cookieAccepted')) {
-      Cookies.set('filters', JSON.stringify(filters), { expires: 7 });
-    }
-  }, [filters]);
+  // useEffect(() => {
+  //   if (Cookies.get('cookieAccepted')) {
+  //     Cookies.set('filters', JSON.stringify(filters), { expires: 7 });
+  //   }
+  // }, [filters]);
 
-  useEffect(() => {
-    // Since we already considered URL and cookies for the initial filter state, 
-    // we only need to reapply filters when "filters" state changes
-    setFilteredEnvs(applyFilters(filters, envs));
-  }, [filters]);
+  // useEffect(() => {
+  //   // Since we already considered URL and cookies for the initial filter state, 
+  //   // we only need to reapply filters when "filters" state changes
+  //   setFilteredEnvs(applyFilters(filters, envs));
+  // }, [filters]);
 
 
   useEffect(() => {
