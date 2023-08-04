@@ -252,27 +252,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     )
   }, [filtersBP])
 
-  useEffect(() => {
-    if (router.query.resetFilters === 'true') {
-      setFilters(initialFilters); // Reset filters to their default values
-      // resetCookies();             // Clear the saved cookie
-    } else if (router.query.bps) {
-      const matchedBps = filtersContext.bps.find(
-        (b: any) =>
-          router.query.bps ===
-          b.title
-            .toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-      );
-  
-      setFilters({
-        ...initialFilters,
-        bps: matchedBps ? [matchedBps.code] : []
-      });
-    }
-    // You can handle other query parameters here if necessary.
-  }, [router.query, initialFilters]);
   
 
   useEffect(() => {
