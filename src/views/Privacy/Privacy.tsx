@@ -173,10 +173,12 @@ export const Privacy = (props: { terms: string }) => {
                 </Text>
                 <Text variant={'body' as any}>
                   {privacyViewLabels.t('privacyMoreInformation')}
-                  <strong style={{ color: colors.green[600] }}>
-                    {' '}
-                    dpo@berneck.com.br.
-                  </strong>
+                  <a href="mailto:dpo@berneck.com.br" target="_blank" rel="noopener noreferrer">
+                    <strong style={{ color: colors.green[600] }}>
+                      {' '}
+                      dpo@berneck.com.br.
+                    </strong>
+                  </a>
                 </Text>
               </Flex>
             </Flex>
