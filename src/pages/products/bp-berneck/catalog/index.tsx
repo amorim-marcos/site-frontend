@@ -19,6 +19,7 @@ export interface BpBerneckProps {
     coloration: number
     collections: number[]
     panelTypes: number[]
+    available_at?: AvailableAt[]
   }[]
   filtersContext: {
     panels: {
@@ -39,6 +40,37 @@ export interface BpBerneckProps {
   }
 }
 
+export interface AvailableAt {
+  id: number
+  panel_type: PanelType
+}
+
+export interface PanelType {
+  id: number
+  name: string
+  created_at: string | Date
+  update_at: string | Date
+  background_image_small: ImageProps
+}
+
+export interface ImageProps {
+  id: number
+  name: string
+  alternativeText: string
+  caption: string
+  width: number
+  height: number
+  hash: string
+  ext: string
+  mime: string
+  size: number
+  url: string
+  previewUrl: string
+  provider: string
+  created_at: string | Date
+  updated_at: string | Date
+}
+
 export default function BpBerneck(props: BpBerneckProps) {
   return <BPCatalog {...props} />
 }
@@ -51,6 +83,18 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     locale: ctx.locale,
     resource: 'products'
   })
+
+  // todo
+  // check the functional requirements for panel type
+  const filteredProducts = bps.filter((product) =>
+    product.available_at?.some(
+      (available_at_item) => available_at_item.panel_type
+    )
+  )
+
+  const allProductsPanelTypes = filteredProducts.map(
+    (product) => product.available_at
+  )
 
   let collections = await strapiClient({
     defaultOnEmpty: true,
@@ -68,6 +112,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     defaultOnEmpty: true,
     resource: 'panel-types'
   })
+
+  bps = filteredProducts
 
   bps =
     bps && typeof bps.map === 'function'
@@ -88,7 +134,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             coloration: product.product_coloration?.id ?? null,
             panelTypes:
               typeof product.available_at.map === 'function'
-                ? product.available_at.map((i: any) => i.panel_type.id)
+                ? product.available_at.map(
+                    (i: any) => i.panel_type && i.panel_type.id
+                  )
                 : []
           }
         })
