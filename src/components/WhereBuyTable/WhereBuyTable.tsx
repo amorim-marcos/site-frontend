@@ -194,6 +194,20 @@ const data = {
       ]
     },
     {
+      name: 'China',
+      imgUrl: '/img/onde-comprar/china.svg',
+      id: 0,
+      rows: [
+        {
+          city: 'DongGuan',
+          client: 'Dongguan M&M Wood Co., Ltd',
+          nameFantasy: 'M&M Wood',
+          address: 'Room 107, Building 23, No. 252 Guanchang Road, Dongguan, Guangdong Province',
+          contact: 'tonny_yu@hotmail.com WeChat: wxid_1to9kjgpqoxh21'
+        }
+      ]
+    },
+    {
       name: 'Colômbia',
       imgUrl: '/img/onde-comprar/colombia.svg',
       id: 1,
