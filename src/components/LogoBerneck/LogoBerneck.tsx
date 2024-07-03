@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react'
-import Link from 'next/link'
 import { ResponsiveCss } from '../../types/responsive'
+import CustomLink from '@components/CustomLink'
 
 export type LogoBerneckProps = {
   color?: string
@@ -11,8 +11,8 @@ export const LogoBerneck = ({
   width = '230px'
 }: LogoBerneckProps) => {
   return (
-    <Link passHref href="/">
-      <Box w={width} color={color} cursor="pointer">
+    <Box w={width} color={color} cursor="pointer">
+      <CustomLink linkTo="/">
         <svg
           id="logo_berneck"
           data-name="logo berneck"
@@ -78,7 +78,7 @@ export const LogoBerneck = ({
             fill="currentColor"
           />
         </svg>
-      </Box>
-    </Link>
+      </CustomLink>
+    </Box>
   )
 }
