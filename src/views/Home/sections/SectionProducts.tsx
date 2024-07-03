@@ -133,7 +133,8 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
                 description={homeViewLabels.t(
                   'productsSection.discoverBanner.description'
                 )}
-                onClick={() => router.push('/where-to-buy')}
+                // onClick={() => router.push('/where-to-buy')}
+                linkTo="/where-to-buy"
                 icon={
                   <EarthIcon
                     width={{
@@ -167,7 +168,8 @@ export const SectionProducts = ({ products }: SectionsProductsProps) => {
                 description={homeViewLabels.t(
                   'productsSection.contactBanner.description'
                 )}
-                onClick={() => router.push('/contact')}
+                // onClick={() => router.push('/contact')}
+                linkTo="/contact"
                 icon={
                   <Contactusicon
                     width={{
