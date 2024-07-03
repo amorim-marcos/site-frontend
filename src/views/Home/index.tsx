@@ -238,7 +238,8 @@ export default function Home(props: HomeProps) {
       {/* INICIO dos banners */}
       <SectionBanners
         banner1={{
-          onClick: () => router.push('/our-commitment'),
+          // onClick: () => router.push('/our-commitment'),
+          linkTo: '/our-commitment',
           imgSrc: '/assets/imgs/banner_compromisso.jpg',
           title: homeView.t('knowOurCommitment.title'),
           description: homeView.t('knowOurCommitment.description'),
@@ -246,7 +247,8 @@ export default function Home(props: HomeProps) {
           descriptionColor: 'white'
         }}
         banner2={{
-          onClick: () => router.push('/forest-division'),
+          // onClick: () => router.push('/forest-division'),
+          linkTo: '/forest-division',
           imgSrc: '/img/conheca_divisao_florestal.png',
           title: homeView.t('knowOurFlorestalDivision.title'),
           description: homeView.t('knowOurFlorestalDivision.description'),

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { HeaderMenuSubItem } from './HeaderMenuSubItem/HeaderMenuSubItem'
+import CustomLink from '@components/CustomLink'
 
 export type HeaderMenuItemProps = {
   title?: string
@@ -61,7 +62,7 @@ export const HeaderMenuItem = ({
       borderBottomColor={{ base: borderBottom ? 'green.800' : '', md: 'none' }}
     >
       <Box display={{ base: 'none', md: 'block' }}>
-        <Link href={href} passHref>
+        <CustomLink linkTo={href}>
           <Flex
             justifyContent="space-between"
             alignItems="center"
@@ -86,7 +87,7 @@ export const HeaderMenuItem = ({
               <ArrowIcon width="10px" stroke="green.800" />
             </Box>
           </Flex>
-        </Link>
+        </CustomLink>
       </Box>
 
       <Flex
@@ -152,7 +153,7 @@ export const HeaderMenuItem = ({
             onClick={() => {
               setOpen(false)
               closeMenuMobile()
-              router.push(href)
+              // router.push(href)
             }}
           >
             {title}
