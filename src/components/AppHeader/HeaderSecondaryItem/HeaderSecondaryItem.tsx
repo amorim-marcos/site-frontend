@@ -1,5 +1,6 @@
 import { Flex, Text, Link } from '@chakra-ui/react'
-import { useRouter } from 'next/router'
+import CustomLink from '@components/CustomLink'
+// import { useRouter } from 'next/router'
 
 export type HeaderSecondaryItemProps = {
   title?: string
@@ -13,15 +14,15 @@ export const HeaderSecondaryItem = ({
   isExternal,
   borderBottom = true
 }: HeaderSecondaryItemProps) => {
-  const router = useRouter()
+  // const router = useRouter()
 
-  function navigate() {
-    if (isExternal) {
-      window.open(href, '_blank')
-    } else {
-      router.push(href)
-    }
-  }
+  // function navigate() {
+  //   if (isExternal) {
+  //     window.open(href, '_blank')
+  //   } else {
+  //     router.push(href)
+  //   }
+  // }
 
   return (
     <Flex
@@ -34,22 +35,24 @@ export const HeaderSecondaryItem = ({
       marginX={{ base: '10px', md: '0' }}
       marginLeft={{ base: '0', md: '6%', xl: '7%' }}
     >
-      <Text
-        onClick={navigate}
-        _hover={{ color: '#FFF' }}
-        variant={'header-menu-small' as any}
-        color={{ base: 'white.100', md: 'green.200' }}
-        cursor="pointer"
-        whiteSpace="nowrap"
-        fontSize={{
-          base: '10px',
-          md: '9px',
-          lg: '11px',
-          xl: '13px'
-        }}
-      >
-        {title}
-      </Text>
+      <CustomLink linkTo={href} target={isExternal ? '_blank' : '_self'}>
+        <Text
+          // onClick={navigate}
+          _hover={{ color: '#FFF' }}
+          variant={'header-menu-small' as any}
+          color={{ base: 'white.100', md: 'green.200' }}
+          cursor="pointer"
+          whiteSpace="nowrap"
+          fontSize={{
+            base: '10px',
+            md: '9px',
+            lg: '11px',
+            xl: '13px'
+          }}
+        >
+          {title}
+        </Text>
+      </CustomLink>
     </Flex>
   )
 }
