@@ -7,6 +7,7 @@ import ArrowIcon from '@components/Icons/ArrowIcon'
 
 import useWindowDimensions from 'hooks/useWindow'
 import { smartString } from 'utils/utils'
+import Link from 'next/link'
 
 function getBetterStrSize(
   tam: number | undefined,
@@ -80,114 +81,130 @@ export const ChannelBnkRelationalItem = ({
       maxWidth={{ base: '270px', '2xl': '100%' }}
       {...props}
       cursor="pointer"
-      onClick={() => router.push(`/bnk-channel/${categoryId}/${url_code}`)}
+      // onClick={() => router.push(`/bnk-channel/${categoryId}/${url_code}`)}
     >
-      {/* {CARD CHANNEL  } */}
-      <Box
-        h={{
-          base: '180px'
-        }}
-        w="100%"
-      >
-        {/* {IMAGEM CAPA CARD  } */}
-        <Image h="100%" w="100%" objectFit="cover" src={urlImage} />
-      </Box>
+      <Link href={`/bnk-channel/${categoryId}/${url_code}`}>
+        <a>
+          {/* {CARD CHANNEL  } */}
+          <Box
+            h={{
+              base: '180px'
+            }}
+            w="100%"
+          >
+            {/* {IMAGEM CAPA CARD  } */}
+            <Image h="100%" w="100%" objectFit="cover" src={urlImage} />
+          </Box>
 
-      {/* { CARD TEXT  } */}
-      <Flex
-        //  bg = "tomato"
-        bg={getPanelColor(categoryId, currentCategory)}
-        flexDirection={{ base: 'column', md: showInvert ? 'column' : 'column' }}
-        // justifyContent="space-between"
-        h={{ base: '50%', xl: showInvert ? '100%' : '50%' }}
-        w="100%"
-      >
-        <Flex
-          padding={{ base: '8%', xl: showInvert ? '5%' : '6%', '2xl': '6%' }}
-          flexDirection={{
-            base: 'column',
-            md: showInvert ? 'column' : 'column'
-          }}
-          // bg= "violet"
-          h={{ base: '100%', xl: showInvert ? '98%' : '96%' }}
-        >
+          {/* { CARD TEXT  } */}
           <Flex
-            alignItems="flex-start"
-            justifyContent={'flex-start'}
-            margin={{ base: '0', xl: showInvert ? '1% 0 0 0' : '0%' }}
+            //  bg = "tomato"
+            bg={getPanelColor(categoryId, currentCategory)}
+            flexDirection={{
+              base: 'column',
+              md: showInvert ? 'column' : 'column'
+            }}
+            // justifyContent="space-between"
+            h={{ base: '50%', xl: showInvert ? '100%' : '50%' }}
+            w="100%"
           >
-            <ArrowIcon
-              stroke={getAccentColor(categoryId, currentCategory)}
-              width={{
-                base: '7px',
-                md: '9px',
-                lg: '10px',
-                xl: '9px'
+            <Flex
+              padding={{
+                base: '8%',
+                xl: showInvert ? '5%' : '6%',
+                '2xl': '6%'
               }}
-            />
-            <Text
-              as="h5"
-              variant="h5"
-              marginLeft="3%"
-              color="gray.400"
-              marginTop={{
-                base: '-3.5px',
-                md: '-3px',
-                lg: '-2px',
-                xl: '-3px'
+              flexDirection={{
+                base: 'column',
+                md: showInvert ? 'column' : 'column'
               }}
-              letterSpacing={{
-                base: '2px',
-                xl: '2px'
-              }}
-              fontSize={{ base: '11px', sm: '11px', lg: '11px', xl: '12px' }}
+              // bg= "violet"
+              h={{ base: '100%', xl: showInvert ? '98%' : '96%' }}
             >
-              {categoryTitle}
-            </Text>
+              <Flex
+                alignItems="flex-start"
+                justifyContent={'flex-start'}
+                margin={{ base: '0', xl: showInvert ? '1% 0 0 0' : '0%' }}
+              >
+                <ArrowIcon
+                  stroke={getAccentColor(categoryId, currentCategory)}
+                  width={{
+                    base: '7px',
+                    md: '9px',
+                    lg: '10px',
+                    xl: '9px'
+                  }}
+                />
+                <Text
+                  as="h5"
+                  variant="h5"
+                  marginLeft="3%"
+                  color="gray.400"
+                  marginTop={{
+                    base: '-3.5px',
+                    md: '-3px',
+                    lg: '-2px',
+                    xl: '-3px'
+                  }}
+                  letterSpacing={{
+                    base: '2px',
+                    xl: '2px'
+                  }}
+                  fontSize={{
+                    base: '11px',
+                    sm: '11px',
+                    lg: '11px',
+                    xl: '12px'
+                  }}
+                >
+                  {categoryTitle}
+                </Text>
+              </Flex>
+
+              <Text
+                as="h4"
+                variant="h4"
+                marginTop={{
+                  base: '10px',
+                  sm: '15px',
+                  md: '10px',
+                  lg: '10px',
+                  xl: '10px'
+                }}
+                color="green.800"
+                lineHeight={{
+                  base: '18px',
+                  sm: '18px',
+                  md: '20px',
+                  lg: '22px',
+                  xl: '28px'
+                }}
+              >
+                {smartString(
+                  title,
+                  getBetterStrSize(useWindowDimensionsLocal.width, showInvert)
+                )}
+              </Text>
+            </Flex>
+
+            <Box
+              transition={'0.5s'}
+              width={mouseDown ? '80%' : '50%'}
+              borderBottom="solid"
+              borderBottomWidth={{
+                base: '3px',
+                sm: '4px',
+                md: '3px',
+                lg: '4px',
+                xl: '5px',
+                '2xl': '6px'
+              }}
+              borderBottomColor={getAccentColor(categoryId, currentCategory)}
+              marginLeft="10%"
+            />
           </Flex>
-
-          <Text
-            as="h4"
-            variant="h4"
-            marginTop={{
-              base: '10px',
-              sm: '15px',
-              md: '10px',
-              lg: '10px',
-              xl: '10px'
-            }}
-            color="green.800"
-            lineHeight={{
-              base: '18px',
-              sm: '18px',
-              md: '20px',
-              lg: '22px',
-              xl: '28px'
-            }}
-          >
-            {smartString(
-              title,
-              getBetterStrSize(useWindowDimensionsLocal.width, showInvert)
-            )}
-          </Text>
-        </Flex>
-
-        <Box
-          transition={'0.5s'}
-          width={mouseDown ? '80%' : '50%'}
-          borderBottom="solid"
-          borderBottomWidth={{
-            base: '3px',
-            sm: '4px',
-            md: '3px',
-            lg: '4px',
-            xl: '5px',
-            '2xl': '6px'
-          }}
-          borderBottomColor={getAccentColor(categoryId, currentCategory)}
-          marginLeft="10%"
-        />
-      </Flex>
+        </a>
+      </Link>
     </Flex>
   )
 }
