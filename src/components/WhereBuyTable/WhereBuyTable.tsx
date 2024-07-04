@@ -267,7 +267,7 @@ const data = {
           nameFantasy: 'Xiangyu Superchain',
           address:
             'Unit 1-01, 6th Floor, Xmxyg Corp. Building, No.85 Xiangyu Road, Xiamen Area Of China, Fujian',
-          contact: ['sun.h@xiangyu.cn', '+86 150 6398 2436']
+          contact: ['+86 150 6398 2436', 'sun.h@xiangyu.cn']
         }
       ]
     },
@@ -296,7 +296,7 @@ const data = {
           nameFantasy: 'Global Lumber Resources',
           address:
             'P.O.Box: 643536, Plot No: S-20802, Jebel Ali Free Zone South, Dubai, U.A.E.',
-          contact: ['zag@globallumber.org', '+1 647 205-4125']
+          contact: ['+1 647 205-4125', 'zag@globallumber.org']
         }
       ]
     },
@@ -324,7 +324,7 @@ const data = {
           client: 'Woodstock - Altaf Ahmed Usman Ali',
           nameFantasy: 'Wood Stock',
           address: '212 Bazar Ward, Old Agra Road, Kurla, Mumbai, India',
-          contact: ['altaf7862@gmail.com', '+91 98677 62598']
+          contact: ['+91 98677 62598', 'altaf7862@gmail.com']
         }
       ]
     },
@@ -423,7 +423,7 @@ const data = {
           nameFantasy: 'Sumitomo Forestry / Pan Asia',
           address:
             '789/5-7 Pinthong Industrial Estate Moo. 1, T. Nongkham, A. Sriracha, Chonburi 20230, Thailand',
-          contact: ['uchida@panasiapacking.co.th', '+66 65 955 9585']
+          contact: ['+66 65 955 9585', 'uchida@panasiapacking.co.th']
         }
       ]
     },
@@ -473,7 +473,7 @@ const data = {
           nameFantasy: 'Senfeng Hongkong / Canh Hong Wood',
           address:
             ' Room 803,Chevalier House,45-51, Chatham Road South, Tsim Sha Tsui, Kowloon, Hong Kong',
-          contact: ['jackzengww@vip.qq.com', '+852 0650-3612958']
+          contact: ['+852 0650-3612958', 'jackzengww@vip.qq.com']
         },
         {
           city: 'Ho Chi Minh City',
@@ -489,7 +489,7 @@ const data = {
           nameFantasy: 'Tan Phu',
           address:
             '130 Nguyen Cuu Dam Street, Tan Son Nhi Ward, Tan Phu District, HCMC, Vietnam',
-          contact: ['tanphu@tanphujsc.vn', '+84 835014911']
+          contact: ['+84 835014911', 'tanphu@tanphujsc.vn']
         }
       ]
     }
