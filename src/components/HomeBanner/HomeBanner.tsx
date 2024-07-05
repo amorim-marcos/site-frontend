@@ -1,13 +1,11 @@
 import { useState } from 'react'
-import { useRouter } from 'next/router'
 
 import { Image, Flex, Box, Text, useInterval } from '@chakra-ui/react'
 
 import ArrowIcon from '@components/Icons/ArrowIcon'
 
 import { smartString } from 'utils/utils'
-
-
+import CustomLink from '@components/CustomLink'
 
 export type HomeBannerProps = {
   items: {
@@ -25,10 +23,6 @@ export type HomeBannerProps = {
 export const HomeBanner = ({ items }: HomeBannerProps) => {
   const [opacity, setOpacity] = useState(true)
   const [currentItem, setCurrentItem] = useState(0)
-  const router = useRouter()
-
-
-   
 
   function next() {
     let newIndex = 0
@@ -42,12 +36,6 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
 
       setOpacity(true)
     }, 400)
-  }
-
-  function navigateToThePost() {
-    router.push(
-      `bnk-channel/${items[currentItem].category.id}/${items[currentItem].url_code}`
-    )
   }
 
   useInterval(next, 5000)
@@ -82,68 +70,81 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
             onClick={(i) => setCurrentItem(i)}
           />
         </Flex>
-        <Image
-          src="/assets/imgs/grafismos_home_header/grafismo_esquerda_home.svg"
-          position={'absolute'}
-          top="10%"
-          left="-4%"
-          onClick={navigateToThePost}
-          w="12vw"
-          maxWidth={'231px'}
-          cursor={'pointer'}
-          display={{ base: 'none', md: 'block' }}
-        />
+        <CustomLink
+          linkTo={`bnk-channel/${items[currentItem].category.id}/${items[currentItem].url_code}`}
+        >
+          <Image
+            src="/assets/imgs/grafismos_home_header/grafismo_esquerda_home.svg"
+            position={'absolute'}
+            top="10%"
+            left="-4%"
+            // onClick={navigateToThePost}
+            w="12vw"
+            maxWidth={'231px'}
+            cursor={'pointer'}
+            display={{ base: 'none', md: 'block' }}
+          />
+        </CustomLink>
 
-        <Image
-          src="/assets/imgs/grafismos_home_header/grafismo_direita_home_parte1.svg"
-          position={'absolute'}
-          top={{ base: 'none', md: '0' }}
-          bottom={{ base: '5%', md: 'none' }}
-          right={{ base: '-15%', md: '0%' }}
-          w={{ base: '100vw', md: '34vw' }}
-          maxWidth={'655px'}
-          zIndex={'docked'}
-          onClick={navigateToThePost}
-          cursor={'pointer'}
-        />
-        <Box
-          zIndex={'base'}
-          position={{ base: 'relative', md: 'absolute' }}
-          right={{ base: '0', md: opacity ? '3.5%' : '3%' }}
-          top={{ base: '0', md: '15%' }}
-          w={{ base: '100vw', md: '60vw' }}
-          maxWidth={'1150px'}
-          h={{ base: '100vw', md: '28.5vw' }}
-          maxHeight={'650px'}
-          bg="#c2d898"
-          opacity={opacity ? '1' : '0'}
-          transition={'0.4s'}
-          onClick={navigateToThePost}
-          cursor={'pointer'}
+        <CustomLink
+          linkTo={`bnk-channel/${items[currentItem].category.id}/${items[currentItem].url_code}`}
+        >
+          <Image
+            src="/assets/imgs/grafismos_home_header/grafismo_direita_home_parte1.svg"
+            position={'absolute'}
+            top={{ base: 'none', md: '0' }}
+            bottom={{ base: '5%', md: 'none' }}
+            right={{ base: '-15%', md: '0%' }}
+            w={{ base: '100vw', md: '34vw' }}
+            maxWidth={'655px'}
+            zIndex={'docked'}
+            // onClick={navigateToThePost}
+            cursor={'pointer'}
+          />
+        </CustomLink>
+
+        <CustomLink
+          linkTo={`bnk-channel/${items[currentItem].category.id}/${items[currentItem].url_code}`}
         >
           <Box
-            position={'absolute'}
-            top="0"
-            left="0"
-            w="100%"
-            h="100%"
-            bg={{
-              base: 'none',
-              md: 'linear-gradient(90deg, rgba(241,224,196,0.76234243697479) 0%, rgba(255,255,255,0) 100%)'
-            }}
-            cursor="pointer"
-            onClick={navigateToThePost}
-          ></Box>
+            zIndex={'base'}
+            position={{ base: 'relative', md: 'absolute' }}
+            right={{ base: '0', md: opacity ? '3.5%' : '3%' }}
+            top={{ base: '0', md: '15%' }}
+            w={{ base: '100vw', md: '60vw' }}
+            maxWidth={'1150px'}
+            h={{ base: '100vw', md: '28.5vw' }}
+            maxHeight={'650px'}
+            bg="#c2d898"
+            opacity={opacity ? '1' : '0'}
+            transition={'0.4s'}
+            // onClick={navigateToThePost}
+            cursor={'pointer'}
+          >
+            <Box
+              position={'absolute'}
+              top="0"
+              left="0"
+              w="100%"
+              h="100%"
+              bg={{
+                base: 'none',
+                md: 'linear-gradient(90deg, rgba(241,224,196,0.76234243697479) 0%, rgba(255,255,255,0) 100%)'
+              }}
+              cursor="pointer"
+              // onClick={navigateToThePost}
+            ></Box>
 
-          <Image
-            src={items[currentItem].imageUrl}
-            objectFit={'cover'}
-            w="100%"
-            h="100%"
-            onClick={navigateToThePost}
-            cursor="pointer"
-          />
-        </Box>
+            <Image
+              src={items[currentItem].imageUrl}
+              objectFit={'cover'}
+              w="100%"
+              h="100%"
+              // onClick={navigateToThePost}
+              cursor="pointer"
+            />
+          </Box>
+        </CustomLink>
 
         <Flex
           flexDirection={'column'}
@@ -165,80 +166,89 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                 stroke={items[currentItem].color}
               />
             </Box>
-            <Flex
-              onClick={navigateToThePost}
-              marginLeft={{
-                base: '8px',
-                md: '10px',
-                lg: '10px',
-                xl: '8px'
-              }}
-              flexDirection={'column'}
-              cursor="pointer"
+            <CustomLink
+              linkTo={`bnk-channel/${items[currentItem].category.id}/${items[currentItem].url_code}`}
             >
-              <Text
-                marginTop={{
-                  base: '-3.5px',
-                  md: '-3px',
-                  lg: '-2px',
-                  xl: '-3px'
-                }}
-                as="h5"
-                variant="h5"
-                textColor={'black'}
-                fontSize={{ base: '11px', sm: '11px', lg: '11px', xl: '14px' }}
-                letterSpacing={{
-                  base: '2px',
-                  xl: '2px'
-                }}
-              >
-                {items[currentItem].category.name}
-              </Text>
-              <Box
-                opacity={opacity ? '1' : '0'}
-                transition={'0.4s'}
-                maxWidth={{
-                  base: '90vw',
-                  md: '450px',
-                  lg: '600px',
-                  xl: '850px'
-                }}
-                w="100vw"
-                height={{ md: '18vw' }}
-                maxHeight={{ md: '384px' }}
-                marginTop={{
-                  base: '12px',
+              <Flex
+                // onClick={navigateToThePost}
+                marginLeft={{
+                  base: '8px',
                   md: '10px',
-                  lg: '8px',
-                  xl: '10px'
+                  lg: '10px',
+                  xl: '8px'
                 }}
+                flexDirection={'column'}
+                cursor="pointer"
               >
                 <Text
-                  as="h1"
-                  variant="h1"
-                  color="green.900"
-                  fontWeight="bold"
-                  lineHeight={{
-                    base: '26px',
-                    sm: '35px',
-                    md: '28px',
-                    lg: '36px',
-                    xl: '45px'
+                  marginTop={{
+                    base: '-3.5px',
+                    md: '-3px',
+                    lg: '-2px',
+                    xl: '-3px'
                   }}
+                  as="h5"
+                  variant="h5"
+                  textColor={'black'}
                   fontSize={{
-                    base: '22px',
-                    sm: '30px',
-                    md: '26px',
-                    lg: '32px',
-                    xl: '40px'
+                    base: '11px',
+                    sm: '11px',
+                    lg: '11px',
+                    xl: '14px'
                   }}
-                  maxHeight={'100%'}
-                  marginLeft={{ base: '-10px', md: '0' }}
+                  letterSpacing={{
+                    base: '2px',
+                    xl: '2px'
+                  }}
                 >
-                  {smartString(items[currentItem].title, 150)}
+                  {items[currentItem].category.name}
                 </Text>
-              </Box>
-            </Flex>
+                <Box
+                  opacity={opacity ? '1' : '0'}
+                  transition={'0.4s'}
+                  maxWidth={{
+                    base: '90vw',
+                    md: '450px',
+                    lg: '600px',
+                    xl: '850px'
+                  }}
+                  w="100vw"
+                  height={{ md: '18vw' }}
+                  maxHeight={{ md: '384px' }}
+                  marginTop={{
+                    base: '12px',
+                    md: '10px',
+                    lg: '8px',
+                    xl: '10px'
+                  }}
+                >
+                  <Text
+                    as="h1"
+                    variant="h1"
+                    color="green.900"
+                    fontWeight="bold"
+                    lineHeight={{
+                      base: '26px',
+                      sm: '35px',
+                      md: '28px',
+                      lg: '36px',
+                      xl: '45px'
+                    }}
+                    fontSize={{
+                      base: '22px',
+                      sm: '30px',
+                      md: '26px',
+                      lg: '32px',
+                      xl: '40px'
+                    }}
+                    maxHeight={'100%'}
+                    marginLeft={{ base: '-10px', md: '0' }}
+                  >
+                    {smartString(items[currentItem].title, 150)}
+                  </Text>
+                </Box>
+              </Flex>
+            </CustomLink>
           </Flex>
           <Box display={{ base: 'none', md: 'block' }}>
             <Indicator

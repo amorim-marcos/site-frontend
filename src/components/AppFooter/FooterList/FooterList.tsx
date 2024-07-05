@@ -1,5 +1,6 @@
-import { List, ListItem, Text, Box } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
+import { List, ListItem, Text, Box } from '@chakra-ui/react'
+import CustomLink from '@components/CustomLink'
+import { useRouter } from 'next/router'
 
 export type FooterListProps = {
   title: {
@@ -90,21 +91,26 @@ export const FooterList = ({ title, items }: FooterListProps) => {
   return (
     <Box aria-label="footer-list">
       <List spacing="5">
-        <ListItem cursor="pointer" onClick={(event) => handleNavigation(event, title.href)}>
-          <Text
-            _hover={{ color: 'green.600' }}
-            variant={'header-menu' as any}
-            fontSize={{
-              base: '7px',
-              sm: '8px',
-              md: '10px',
-              lg: '13px',
-              xl: '14px',
-            }}
-            color="white.100"
-          >
-            {title.title}
-          </Text>
+        <ListItem
+          cursor="pointer"
+          onClick={(event) => handleNavigation(event, title.href)}
+        >
+          <CustomLink linkTo={title?.href}>
+            <Text
+              _hover={{ color: 'green.600' }}
+              variant={'header-menu' as any}
+              fontSize={{
+                base: '7px',
+                sm: '8px',
+                md: '10px',
+                lg: '13px',
+                xl: '14px'
+              }}
+              color="white.100"
+            >
+              {title.title}
+            </Text>
+          </CustomLink>
         </ListItem>
         {items &&
           items.length &&
@@ -117,21 +123,23 @@ export const FooterList = ({ title, items }: FooterListProps) => {
                 key={j}
                 onClick={(event) => handleNavigation(event, i.href)}
               >
-                <Text
-                  _hover={{ color: '#FFF' }}
-                  variant={'tags' as any}
-                  fontSize={{
-                    base: '6px',
-                    sm: '7px',
-                    md: '9px',
-                    lg: '12px',
-                    xl: '13px',
-                  }}
-                  color="green.200"
-                  fontWeight="600"
-                >
-                  {i.title}
-                </Text>
+                <CustomLink linkTo={i.href}>
+                  <Text
+                    _hover={{ color: '#FFF' }}
+                    variant={'tags' as any}
+                    fontSize={{
+                      base: '6px',
+                      sm: '7px',
+                      md: '9px',
+                      lg: '12px',
+                      xl: '13px'
+                    }}
+                    color="green.200"
+                    fontWeight="600"
+                  >
+                    {i.title}
+                  </Text>
+                </CustomLink>
               </ListItem>
             )
           )}

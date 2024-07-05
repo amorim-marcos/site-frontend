@@ -209,7 +209,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         })
         break
     }
-    Scroll.animateScroll.scrollToTop()
+    // Scroll.animateScroll.scrollToTop()
 
     console.log(filtersBP)
 
