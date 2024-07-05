@@ -198,9 +198,23 @@ const data = {
       ]
     },
     {
+      name: 'Bonaire',
+      imgUrl: '/img/onde-comprar/bonaire.svg',
+      id: 1,
+      rows: [
+        {
+          city: 'Kralendijk',
+          client: 'Karpenteria Ramon N.V.',
+          nameFantasy: 'Karpenteria Ramon N.V.',
+          address: 'Kaya Londres 15, Kralendijk, Bonaire',
+          contact: ['+599 786 7079', 'karpenteriaramon@gmail.com']
+        }
+      ]
+    },
+    {
       name: 'China',
       imgUrl: '/img/onde-comprar/china.svg',
-      id: 1,
+      id: 2,
       rows: [
         {
           city: 'DongGuan',
@@ -274,7 +288,7 @@ const data = {
     {
       name: 'Colômbia',
       imgUrl: '/img/onde-comprar/colombia.svg',
-      id: 2,
+      id: 3,
       rows: [
         {
           city: 'Soledad',
@@ -288,7 +302,7 @@ const data = {
     {
       name: 'E. Árabes Unidos',
       imgUrl: '/img/onde-comprar/emirados.svg',
-      id: 3,
+      id: 4,
       rows: [
         {
           city: 'Dubai',
@@ -303,7 +317,7 @@ const data = {
     {
       name: 'EUA',
       imgUrl: '/img/onde-comprar/eua.svg',
-      id: 4,
+      id: 5,
       rows: [
         {
           city: 'Hialeah/Florida',
@@ -317,7 +331,7 @@ const data = {
     {
       name: 'Índia',
       imgUrl: '/img/onde-comprar/india.svg',
-      id: 5,
+      id: 6,
       rows: [
         {
           city: 'Mumbai',
@@ -331,7 +345,7 @@ const data = {
     {
       name: 'Paraguai',
       imgUrl: '/img/onde-comprar/paraguay.svg',
-      id: 6,
+      id: 7,
       rows: [
         {
           city: 'Lambaré',
@@ -387,7 +401,7 @@ const data = {
     {
       name: 'Panamá',
       imgUrl: '/img/onde-comprar/panama.svg',
-      id: 7,
+      id: 8,
       rows: [
         {
           city: 'Cidade do Panamá',
@@ -415,7 +429,7 @@ const data = {
     {
       name: 'Tailândia',
       imgUrl: '/img/onde-comprar/tailandia.svg',
-      id: 8,
+      id: 9,
       rows: [
         {
           city: 'Si Racha',
@@ -430,7 +444,7 @@ const data = {
     {
       name: 'Uruguai',
       imgUrl: '/img/onde-comprar/uruguay.svg',
-      id: 9,
+      id: 10,
       rows: [
         {
           city: 'Montevideo',
@@ -465,7 +479,7 @@ const data = {
     {
       name: 'Vietnã',
       imgUrl: '/img/onde-comprar/vietna.svg',
-      id: 10,
+      id: 11,
       rows: [
         {
           city: 'Tân Uyên',
