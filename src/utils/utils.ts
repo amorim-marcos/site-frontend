@@ -52,8 +52,17 @@ export function formatChannelNameUrl(channel_name: string){
   return normalized_name
 }
 
-export function showcaseChannelCode(locale: string){
-  switch(locale){
+export const normalizeTitle = (title: string): string => {
+  return title
+    .normalize('NFD')
+    .replace(/[^\w ]/g, '')
+    .split(' ')
+    .join('-')
+    .toLowerCase()
+}
+
+export function showcaseChannelCode(locale: string) {
+  switch (locale) {
     case 'pt-BR':
       return 'solicitao-de-mostruriok3b0b7g';
     case 'en':

@@ -14,6 +14,7 @@ import { BP } from './BP'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
+import { normalizeTitle } from 'utils/utils'
 
 export type filtersBP = {
   orderBy: string
