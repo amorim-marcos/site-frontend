@@ -23,7 +23,11 @@ export type filtersBP = {
   colorations: Array<number | string>
 }
 
-export type ValidFilterNames = 'panels' | 'collections' | 'colorations'
+export type ValidFilterNames =
+  | 'panels'
+  | 'collections'
+  | 'colorations'
+  | 'nameSearched'
 
 export type FilterPanelName = 'none' | ValidFilterNames
 
@@ -67,6 +71,7 @@ export type BPCatalogProps = {
       title: string
       background_image: string
     }[]
+    nameSearched: string
   }
 }
 
@@ -85,6 +90,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   const [filtersBP, setFilters] = useState(() => {
     // const filtersCookie = Cookies.get('filtersBP')
 
+    let initialProcessedFilters = { ...initialFilters }
+
     if (router.query.collection) {
       const matchedCollection = filtersContext.collections.find(
         (c: any) =>
@@ -95,11 +102,17 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
             .replace(/[\u0300-\u036f]/g, '')
       )
 
-      return {
-        ...initialFilters,
+      initialProcessedFilters = {
+        ...initialProcessedFilters,
         collections: matchedCollection ? [matchedCollection.code] : []
       }
-    } else if (router.query.panel) {
+
+      // return {
+      //   ...initialFilters,
+      //   collections: matchedCollection ? [matchedCollection.code] : []
+      // }
+    }
+    if (router.query.panel) {
       const matchedPanel = filtersContext.panels.find(
         (p: any) =>
           router.query.panel ===
@@ -109,16 +122,30 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
             .replace(/[\u0300-\u036f]/g, '')
       )
 
-      return {
-        ...initialFilters,
+      initialProcessedFilters = {
+        ...initialProcessedFilters,
         panels: matchedPanel ? [matchedPanel.code] : []
       }
-    } 
+      // return {
+      //   ...initialFilters,
+      //   panels: matchedPanel ? [matchedPanel.code] : []
+      // }
+    }
+    if (router.query.nameSearched) {
+      const queryName = Array.isArray(router.query.nameSearched)
+        ? router.query.nameSearched[0]
+        : router.query.nameSearched
+
+      initialProcessedFilters = {
+        ...initialProcessedFilters,
+        nameSearched: queryName
+      }
+    }
     // else if (filtersCookie) {
     //   return JSON.parse(decodeURIComponent(filtersCookie))
     // }
 
-    return initialFilters
+    return initialProcessedFilters
   })
 
   function changeGridSize(newGridSize: GridSize) {
