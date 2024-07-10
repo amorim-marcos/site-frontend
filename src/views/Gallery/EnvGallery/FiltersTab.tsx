@@ -11,7 +11,7 @@ import { FilterCheckbox } from './FilterCheckbox'
 import { BPFilter } from './BPFilter'
 import { ResponsiveCss } from 'types/responsive'
 import { useTranslation } from 'react-i18next'
-import {Filters} from './index'
+import { Filters, ValidFilterNames } from './index'
 
 export type FiltersSelectProps = {
   filtersContext: {
@@ -27,8 +27,8 @@ export type FiltersSelectProps = {
   displayFilters: boolean
   setDisplayFilters: Function
   changeFilterPanel: Function
-  appendFilter: Function
-  removeFilter: Function
+  appendFilter: (filterName: ValidFilterNames, value: any) => void
+  removeFilter: (filtername: ValidFilterNames, value: any) => void
   resetFilters: Function
   setFilters: Function
   setFilteredEnvs: Function
@@ -38,6 +38,8 @@ export type FiltersSelectProps = {
   bps: Array<any>
   filters: any
   filtersEmpty: boolean
+  onRemoveQueryParam: (queryName: ValidFilterNames, value: string) => void
+  onAddQueryParam: (queryName: ValidFilterNames, value: string) => void
 }
 
 export const FiltersTabs = ({
@@ -55,7 +57,9 @@ export const FiltersTabs = ({
   bps,
   envs,
   filters,
-  filtersEmpty
+  filtersEmpty,
+  onRemoveQueryParam,
+  onAddQueryParam
 }: FiltersSelectProps) => {
   const [searchSelected, setSearchSelected] = React.useState(false)
 
@@ -168,9 +172,16 @@ export const FiltersTabs = ({
                           key={bp.id}
                           isSelected={filters['bps'].includes(bp.id)}
                           toggleSelect={(selected: boolean) => {
-                            !selected
-                              ? appendFilter('bps', bp.id)
-                              : removeFilter('bps', bp.id)
+                            if (!selected) {
+                              appendFilter('bps', bp.id)
+                              onAddQueryParam('bps', bp.name)
+                            } else {
+                              removeFilter('bps', bp.id)
+                              onRemoveQueryParam('bps', bp.name)
+                            }
+                            // !selected
+                            //   ? appendFilter('bps', bp.id)
+                            //   : removeFilter('bps', bp.id)
                           }}
                           mr="15px"
                           mt="10px"
@@ -199,9 +210,16 @@ export const FiltersTabs = ({
                           key={filter.code}
                           isChecked={filters['ambients'].includes(filter.code)}
                           onCheck={(isChecked: boolean, value: any) => {
-                            !isChecked
-                              ? appendFilter('ambients', value)
-                              : removeFilter('ambients', value)
+                            if (!isChecked) {
+                              appendFilter('ambients', value)
+                              onAddQueryParam('ambients', value)
+                            } else {
+                              removeFilter('ambients', value)
+                              onRemoveQueryParam('ambients', value)
+                            }
+                            // !isChecked
+                            //   ? appendFilter('ambients', value)
+                            //   : removeFilter('ambients', value)
                           }}
                           title={filter.title}
                           code={filter.code}
@@ -226,9 +244,16 @@ export const FiltersTabs = ({
                           key={filter.code}
                           isChecked={filters['styles'].includes(filter.code)}
                           onCheck={(isChecked: boolean, value: any) => {
-                            !isChecked
-                              ? appendFilter('styles', value)
-                              : removeFilter('styles', value)
+                            if (!isChecked) {
+                              appendFilter('styles', value)
+                              onAddQueryParam('styles', filter.title)
+                            } else {
+                              removeFilter('styles', value)
+                              onRemoveQueryParam('styles', filter.title)
+                            }
+                            // !isChecked
+                            //   ? appendFilter('styles', value)
+                            //   : removeFilter('styles', value)
                           }}
                           title={filter.title}
                           code={filter.code}
@@ -314,9 +339,14 @@ export const FiltersTabs = ({
                     onChange={(e) => {
                       setFilters({ ...filters, nameSearched: e.target.value })
                     }}
-                    onKeyPress={(event) => {
-                      if (event.key === 'Enter')
+                    onKeyPress={(event: any) => {
+                      if (event.key === 'Enter') {
+                        onAddQueryParam('nameSearched', event.target.value)
+                        if (event.target.value?.length <= 0) {
+                          onRemoveQueryParam('nameSearched', event.target.value)
+                        }
                         setFilteredEnvs(applyFilters(filters, envs))
+                      }
                     }}
                   />
                   <Box>
