@@ -70,14 +70,18 @@ export const EnvGallery = ({
   const [filteredEnvs, setFilteredEnvs] = useState(envs)
   const [filtersEmpty, setFiltersEmpty] = useState(true)
   const { isMobile } = useMobile(1024)
-  const [pagination, setPagination] = useState(1)
 
   const [isInitialRender, setIsInitialRender] = useState(true)
   const router = useRouter()
 
   const initialURLFilters = getFiltersFromURL()
+  const initialPage = initialURLFilters?.page
+    ? Number(initialURLFilters.page)
+    : 1
+
   const initialCookieFilters = getFiltersFromCookies() || initialFilters
 
+  const [pagination, setPagination] = useState(initialPage)
   const [filters, setFilters] = useState(() => {
     return {
       ...initialCookieFilters,
@@ -148,6 +152,10 @@ export const EnvGallery = ({
       const sanitizedName = sanitizeValue(queryNameSearchedValue) || ''
 
       filtersFromURL['nameSearched'] = sanitizedName
+    }
+
+    if (query.page) {
+      filtersFromURL['page'] = query.page
     }
 
     return filtersFromURL
