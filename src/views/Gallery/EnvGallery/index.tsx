@@ -46,6 +46,10 @@ export type EnvGalleryProps = {
       title: string
       code: string
     }[]
+    bps: {
+      title: string
+      code: string
+    }[]
   }
 }
 const pageSize = 9
@@ -67,42 +71,87 @@ export const EnvGallery = ({
   const [filtersEmpty, setFiltersEmpty] = useState(true)
   const { isMobile } = useMobile(1024)
   const [pagination, setPagination] = useState(1)
+
+  const [isInitialRender, setIsInitialRender] = useState(true)
   const router = useRouter()
 
-  const initialURLFilters = getFiltersFromURL();
-  const initialCookieFilters = getFiltersFromCookies() || initialFilters;
+  const initialURLFilters = getFiltersFromURL()
+  const initialCookieFilters = getFiltersFromCookies() || initialFilters
 
   const [filters, setFilters] = useState(() => {
     return {
       ...initialCookieFilters,
       ...initialURLFilters
-    };
-  });
-
+    }
+  })
 
   function getFiltersFromCookies() {
-    const filtersCookie = Cookies.get('filters');
-    return filtersCookie ? JSON.parse(decodeURIComponent(filtersCookie)) : null;
+    const filtersCookie = Cookies.get('filters')
+    return filtersCookie ? JSON.parse(decodeURIComponent(filtersCookie)) : null
   }
 
+  function sanitizeValue(value: string) {
+    const sanitized = value.replace(/-/g, ' ')
 
+    return sanitized
+  }
 
   function getFiltersFromURL() {
-    const { query } = router;
-    const filtersFromURL: any = {};
+    const { query } = router
+    const filtersFromURL: any = {}
 
-    const ambientValue = (typeof query.ambients === 'string' ? query.ambients : '') || '';
-    const sanitizedAmbient: string = ambientValue.replace(/-/g, ' ');
+    const ambientValue =
+      (typeof query.ambients === 'string' ? query.ambients : '') || ''
+    const sanitizedAmbient: string = sanitizeValue(ambientValue)
 
     if (sanitizedAmbient) {
-      const itemFilter = filtersContext.ambients.find(item => item.title.toLowerCase() === sanitizedAmbient.toLowerCase());
+      const itemFilter = filtersContext.ambients.find(
+        (item) => item.title.toLowerCase() === sanitizedAmbient.toLowerCase()
+      )
       if (itemFilter) {
-        filtersFromURL['ambients'] = [itemFilter.code];
+        filtersFromURL['ambients'] = [itemFilter.code]
       }
     }
 
-    return filtersFromURL;
-}
+    if (query.bps) {
+      const queryBpsValue =
+        (typeof query.bps === 'string' ? query.bps : '') || ''
+      const sanitizedBpsValue = sanitizeValue(queryBpsValue!)
+
+      const itemFilter = filtersContext?.bps?.find(
+        (bp) => bp.title.toLowerCase() === sanitizedBpsValue.toLowerCase()
+      )
+
+      if (itemFilter) {
+        filtersFromURL['bps'] = [itemFilter.code]
+      }
+    }
+
+    if (query.styles) {
+      const queryStylesValue =
+        (typeof query.styles === 'string' ? query.styles : '') || ''
+      const sanitizedStylesValue = sanitizeValue(queryStylesValue!)
+
+      const itemFilter = filtersContext?.styles?.find(
+        (style) =>
+          style.title.toLowerCase() === sanitizedStylesValue.toLowerCase()
+      )
+
+      if (itemFilter) {
+        filtersFromURL['styles'] = [itemFilter.code]
+      }
+    }
+
+    if (query.nameSearched) {
+      const queryNameSearchedValue =
+        (typeof query.nameSearched === 'string' ? query.nameSearched : '') || ''
+      const sanitizedName = sanitizeValue(queryNameSearchedValue) || ''
+
+      filtersFromURL['nameSearched'] = sanitizedName
+    }
+
+    return filtersFromURL
+  }
 
   function changeFilterPanel(newFilterPanel: FilterPanelName) {
     setCurrentFilterPanel(
@@ -125,6 +174,8 @@ export const EnvGallery = ({
   }
 
   function applyFilters(filters: any, originalEnvs: Array<any>) {
+    console.log('applying filter: ', filters)
+
     let filteredEnvs = originalEnvs
 
     // search
@@ -156,7 +207,7 @@ export const EnvGallery = ({
         return filters['styles'].some((style: any) => env.style.includes(style))
       })
     }
-    Scroll.animateScroll.scrollToTop()
+    // Scroll.animateScroll.scrollToTop()
 
     // console.log(filters)
 
@@ -175,24 +226,48 @@ export const EnvGallery = ({
     setFilteredEnvs(applyFilters(cleanedFilters, envs))
   }
 
+  // useEffect(() => {
+  //   if (
+  //     initialFilters.ambients.length !== 0 ||
+  //     initialFilters.bps.length !== 0 ||
+  //     initialFilters.styles.length !== 0 ||
+  //     initialFilters.nameSearched.length !== 0
+  //   ) {
+  //     setFilteredEnvs(applyFilters(filters, envs))
+
+  //     initialFilters.ambients.length !== 0
+  //       ? setCurrentFilterPanel('ambients')
+  //       : initialFilters.styles.length !== 0
+  //       ? setCurrentFilterPanel('styles')
+  //       : initialFilters.bps.length !== 0
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [filters])
+
   useEffect(() => {
-    if (
-      initialFilters.ambients.length !== 0 ||
-      initialFilters.bps.length !== 0 ||
-      initialFilters.styles.length !== 0 ||
-      initialFilters.nameSearched !== ''
-    ) {
-      setFilteredEnvs(applyFilters(filters, envs))
+    if (isInitialRender) {
+      const queryParams: Filters = getFiltersFromURL()
 
-      initialFilters.ambients.length !== 0
-        ? setCurrentFilterPanel('ambients')
-        : initialFilters.styles.length !== 0
-        ? setCurrentFilterPanel('styles')
-        : initialFilters.bps.length !== 0
-
+      if (queryParams?.ambients) {
+        changeFilterPanel('ambients')
+      }
+      if (queryParams?.bps) {
+        changeFilterPanel('bps')
+      }
+      if (queryParams?.styles) {
+        changeFilterPanel('styles')
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters])
+  }, [isInitialRender])
+
+  useEffect(() => {
+    setIsInitialRender(false)
+  }, [])
+
+  useEffect(() => {
+    // setFilters({ ...filters })
+    setFilteredEnvs(applyFilters({ ...filters }, envs))
+  }, [])
 
   // if (Cookies.get('cookieAccepted')) {
   //   useEffect(() => {
@@ -211,11 +286,10 @@ export const EnvGallery = ({
   // }, [filters]);
 
   // useEffect(() => {
-  //   // Since we already considered URL and cookies for the initial filter state, 
+  //   // Since we already considered URL and cookies for the initial filter state,
   //   // we only need to reapply filters when "filters" state changes
   //   setFilteredEnvs(applyFilters(filters, envs));
   // }, [filters]);
-
 
   useEffect(() => {
     if (
@@ -224,11 +298,11 @@ export const EnvGallery = ({
       filters.styles.length == 0 &&
       filters.nameSearched === ''
     ) {
-      setFiltersEmpty(true);
+      setFiltersEmpty(true)
     } else {
-      setFiltersEmpty(false);
+      setFiltersEmpty(false)
     }
-  }, [filters]);
+  }, [filters])
 
   const [filterCount, setFilterCount] = useState('')
 
@@ -237,7 +311,7 @@ export const EnvGallery = ({
       filters.bps.length +
       filters.ambients.length +
       filters.styles.length +
-      (filters.nameSearched !== '' ? 1 : 0) 
+      (filters.nameSearched !== '' ? 1 : 0)
     const filtersCounterText =
       numEnvs === 1
         ? galleryViewLabels.t('filtersTab.filtersCounter1')
@@ -260,27 +334,27 @@ export const EnvGallery = ({
     }
   }, [filteredEnvs])
 
-  useEffect(() => {
-    if (router.query.ambients) {
-      const itemFilter = filtersContext.ambients.find(
-        (item) => item.title === router.query.ambients
-      )
-      if (typeof itemFilter !== 'undefined') {
-        appendFilter('ambients', itemFilter.code as any)
+  // useEffect(() => {
+  //   if (router.query.ambients) {
+  //     const itemFilter = filtersContext.ambients.find(
+  //       (item) => item.title === router.query.ambients
+  //     )
+  //     if (typeof itemFilter !== 'undefined') {
+  //       appendFilter('ambients', itemFilter.code as any)
 
-        setFilteredEnvs(
-          applyFilters(
-            {
-              ...filters,
-              ['ambients']: [itemFilter.code as any]
-            },
-            envs
-          )
-        )
-        changeFilterPanel('ambients')
-      }
-    }
-  }, [router.query])
+  //       setFilteredEnvs(
+  //         applyFilters(
+  //           {
+  //             ...filters,
+  //             ['ambients']: [itemFilter.code as any]
+  //           },
+  //           envs
+  //         )
+  //       )
+  //       changeFilterPanel('ambients')
+  //     }
+  //   }
+  // }, [router.query])
 
   const ref = useRef<HTMLDivElement>(null)
 
@@ -380,7 +454,9 @@ export const EnvGallery = ({
               justifyContent={'flex-end'}
               alignItems="center"
             >
-              <Text color={'gray.300'} fontWeight={'bold'}>{filterCount}</Text>
+              <Text color={'gray.300'} fontWeight={'bold'}>
+                {filterCount}
+              </Text>
             </Flex>
             {filteredEnvs && filteredEnvs.length > 0 ? (
               <Center

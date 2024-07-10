@@ -16,6 +16,10 @@ export interface GalleryProps {
       title: string
       code: string
     }[]
+    bps: {
+      title: string
+      code: string
+    }[]
   }
   envs: {
     id: number
@@ -27,6 +31,8 @@ export interface GalleryProps {
     created_at: string
   }[]
   availableBps: {
+    // check this
+    id?: string
     name: string
     product_texture: string
     pattern_image: string
@@ -91,6 +97,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         })
       : []
 
+  const ambientBps: GalleryProps['filtersContext']['bps'] = availableBps?.map(
+    (bp) => {
+      return {
+        title: bp.name,
+        code: bp.id!
+      }
+    }
+  )
+
   envs =
     envs && typeof envs.map === 'function'
       ? envs
@@ -152,7 +167,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     props: {
       filtersContext: {
         styles: ambientStyles,
-        ambients: ambientTypes
+        ambients: ambientTypes,
+        bps: ambientBps
       },
       envs,
       availableBps,
