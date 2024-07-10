@@ -495,20 +495,19 @@ export const EnvGallery = ({
                 >
                   {filteredEnvs.map((env, i) => {
                     return (
-                      i < pagination * pageSize && (
-                        <GridItem key={env.id} mt="20px">
-                          <Env
-                            href={
-                              router.locale == 'pt-BR'
-                                ? `/products/bp-berneck/gallery/${env.url_code}`
-                                : `/${router.locale}/products/bp-berneck/gallery/${env.url_code}`
-                            }
-                            title={env.title}
-                            place={env.subTitle}
-                            image_url={env.image_url}
-                          />
-                        </GridItem>
-                      )
+                      // i < pagination * pageSize && (
+                      <GridItem key={env.id} mt="20px">
+                        <Env
+                          href={
+                            router.locale == 'pt-BR'
+                              ? `/products/bp-berneck/gallery/${env.url_code}`
+                              : `/${router.locale}/products/bp-berneck/gallery/${env.url_code}`
+                          }
+                          title={env.title}
+                          place={env.subTitle}
+                          image_url={env.image_url}
+                        />
+                      </GridItem>
                     )
                   })}
                 </Grid>
