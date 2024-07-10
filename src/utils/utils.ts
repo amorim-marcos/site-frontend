@@ -57,7 +57,7 @@ export const normalizeTitle = (title: string): string => {
     .normalize('NFD')
     .replace(/[^\w ]/g, '')
     .split(' ')
-    .join('-')
+    .join(' ')
     .toLowerCase()
 }
 
