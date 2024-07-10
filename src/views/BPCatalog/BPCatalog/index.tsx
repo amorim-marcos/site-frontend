@@ -14,6 +14,7 @@ import { BP } from './BP'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
+import { normalizeTitle } from 'utils/utils'
 
 export type filtersBP = {
   orderBy: string
@@ -23,7 +24,11 @@ export type filtersBP = {
   colorations: Array<number | string>
 }
 
-export type ValidFilterNames = 'panels' | 'collections' | 'colorations'
+export type ValidFilterNames =
+  | 'panels'
+  | 'collections'
+  | 'colorations'
+  | 'nameSearched'
 
 export type FilterPanelName = 'none' | ValidFilterNames
 
@@ -67,6 +72,7 @@ export type BPCatalogProps = {
       title: string
       background_image: string
     }[]
+    nameSearched: string
   }
 }
 
@@ -80,10 +86,16 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   const [filteredBps, setFilteredBps] = useState(bps)
   const [filtersEmpty, setFiltersEmpty] = useState(true)
 
+  const [isInitialRender, setIsInitialRender] = useState(true)
+
   const router = useRouter()
+
+  const pathname = router.pathname
 
   const [filtersBP, setFilters] = useState(() => {
     // const filtersCookie = Cookies.get('filtersBP')
+
+    let initialProcessedFilters = { ...initialFilters }
 
     if (router.query.collection) {
       const matchedCollection = filtersContext.collections.find(
@@ -95,11 +107,17 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
             .replace(/[\u0300-\u036f]/g, '')
       )
 
-      return {
-        ...initialFilters,
+      initialProcessedFilters = {
+        ...initialProcessedFilters,
         collections: matchedCollection ? [matchedCollection.code] : []
       }
-    } else if (router.query.panel) {
+
+      // return {
+      //   ...initialFilters,
+      //   collections: matchedCollection ? [matchedCollection.code] : []
+      // }
+    }
+    if (router.query.panel) {
       const matchedPanel = filtersContext.panels.find(
         (p: any) =>
           router.query.panel ===
@@ -109,16 +127,52 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
             .replace(/[\u0300-\u036f]/g, '')
       )
 
-      return {
-        ...initialFilters,
+      initialProcessedFilters = {
+        ...initialProcessedFilters,
         panels: matchedPanel ? [matchedPanel.code] : []
       }
-    } 
+      // return {
+      //   ...initialFilters,
+      //   panels: matchedPanel ? [matchedPanel.code] : []
+      // }
+    }
+
+    if (router.query.coloration) {
+      const matchedColoration = filtersContext.colorations.find(
+        (color: any) =>
+          router.query.coloration ===
+        color.title
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+      )
+
+      initialProcessedFilters = {
+        ...initialProcessedFilters,
+        colorations: matchedColoration ? [matchedColoration.code] : []
+      }
+      // return {
+      //   ...initialFilters,
+      //   panels: matchedPanel ? [matchedPanel.code] : []
+      // }
+    }
+
+
+    if (router.query.nameSearched) {
+      const queryName = Array.isArray(router.query.nameSearched)
+        ? router.query.nameSearched[0]
+        : router.query.nameSearched
+
+      initialProcessedFilters = {
+        ...initialProcessedFilters,
+        nameSearched: queryName
+      }
+    }
     // else if (filtersCookie) {
     //   return JSON.parse(decodeURIComponent(filtersCookie))
     // }
 
-    return initialFilters
+    return initialProcessedFilters
   })
 
   function changeGridSize(newGridSize: GridSize) {
@@ -138,7 +192,110 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     }))
   }
 
+  const queryParamsMapping = {
+    collections: 'collection',
+    panels: 'panel',
+    colorations: 'coloration',
+    nameSearched: 'nameSearched'
+  }
+
+  function getCollectionName(collectionCode: string, collections: any) {
+    const collection = collections.find(
+      (col: any) => collectionCode === col.code
+    )
+    const collectionName = collection?.title
+
+    // todo
+    // handle special chars
+    const normalizedTitle = normalizeTitle(collectionName) || collectionName
+
+    return normalizedTitle
+  }
+
+  // todo
+  function removeSpecialChars(value: string){
+    const formatted = value
+  }
+
+  function getPanelName(panelCode: string, panels: any) {
+    const panel = panels.find((pan: any) => panelCode === pan.code)
+    const panelName = panel?.title
+
+    // todo
+    // handle special chars
+    const normalizedTitle = String(panelName)?.toLocaleLowerCase()
+
+    return normalizedTitle
+  }
+
+  function getColorationName(colorationCode: string, colorations: any) {
+
+    const coloration = colorations.find(
+      (col: any) => colorationCode === col.code
+    )
+    const colorationName = coloration?.title
+
+    // const normalizedTitle = String(colorationName).toLocaleLowerCase()
+    const normalizedTitle = normalizeTitle(colorationName)
+
+    return normalizedTitle
+  }
+
+  // todo
+  // perform query with multiple values
+  function handleAddQueryToUrl(queryName: ValidFilterNames, value: string) {
+    let friendlyValue = value
+
+    if (queryName === 'collections') {
+      friendlyValue = getCollectionName(value, filtersContext['collections'])
+    } else if (queryName === 'panels') {
+      friendlyValue = getPanelName(value, filtersContext['panels'])
+    } else if (queryName === 'colorations') {
+      friendlyValue = getColorationName(value, filtersContext['colorations'])
+    }
+
+
+    router.replace(
+      {
+        pathname: pathname,
+        query: {
+          ...router.query,
+          [queryParamsMapping[queryName]]: friendlyValue
+        }
+      },
+      undefined,
+      {
+        shallow: true
+      }
+    )
+  }
+
+  function handleRemoveQueryFromUrl(queryName: ValidFilterNames){
+    const queryFilterName = queryParamsMapping[queryName]
+    const {query: queryObj} = router
+
+    let newQuery = {...queryObj}
+    delete newQuery[queryFilterName]
+    
+    router.replace(
+      {
+        pathname: pathname,
+        query: {
+          ...newQuery,
+        }
+      },
+      undefined,
+      {
+        shallow: true
+      }
+    )
+    
+  }
+
+
+
   function removeFilter(type: ValidFilterNames, value: string) {
+    // handleRemoveQueryFromUrl(type, value)
     setFilters((f: any) => ({
       ...f,
       [type]: f[type].filter((v: string) => v != value)
@@ -211,7 +368,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     }
     // Scroll.animateScroll.scrollToTop()
 
-    console.log(filtersBP)
+    // console.log(filtersBP)
 
     return filteredBps.slice()
   }
@@ -221,8 +378,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   //     Cookies.remove('filtersBP');
   //   }
   // };
-  
-
   useEffect(() => {
     switch (gridSize) {
       case 'big':
@@ -252,11 +407,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     )
   }, [filtersBP])
 
-  
-
   useEffect(() => {
     setGridSize(isMobile ? 'mobile-medium' : 'medium')
-    
   }, [isMobile])
 
   // if (Cookies.get('cookieAccepted')) {
@@ -264,8 +416,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   //     Cookies.set('filtersBP', JSON.stringify(filtersBP), { expires: 7 })
   //   }, [])
   // }
-
-
 
   const [filterCount, setFilterCount] = useState('')
   useEffect(() => {
@@ -299,88 +449,93 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }, [filteredBps])
 
   useEffect(() => {
-    const normalizeTitle = (title: string): string => {
-      return title
-            .normalize('NFD')
-            .replace(/[^\w ]/g, '')
-            .split(' ')
-            .join('-')
-            .toLowerCase();
-    };
+    setIsInitialRender(false)
+  }, [])
 
-    if (router.query.panel) {
+  useEffect(() => {
+    if (isInitialRender) {
+      const normalizeTitle = (title: string): string => {
+        return title
+          .normalize('NFD')
+          .replace(/[^\w ]/g, '')
+          .split(' ')
+          .join('-')
+          .toLowerCase()
+      }
+
+      if (router.query.panel) {
         const queryPanel = Array.isArray(router.query.panel)
-            ? router.query.panel[0]
-            : router.query.panel;
-        const normalizedPanelQuery = normalizeTitle(queryPanel);
+          ? router.query.panel[0]
+          : router.query.panel
+        const normalizedPanelQuery = normalizeTitle(queryPanel)
 
         for (const panel of filtersContext.panels) {
-            const normalizedTitle = normalizeTitle(panel.title);
+          const normalizedTitle = normalizeTitle(panel.title)
 
-            if (
-                normalizedPanelQuery === normalizedTitle &&
-                !initialFilters['panels'].includes(panel.code)
-            ) {
-                appendFilter('panels', panel.code as any);
-            }
+          if (
+            normalizedPanelQuery === normalizedTitle &&
+            !initialFilters['panels'].includes(panel.code)
+          ) {
+            appendFilter('panels', panel.code as any)
+          }
 
-            if (
-                normalizedPanelQuery === normalizedTitle &&
-                initialFilters['panels'].includes(panel.code)
-            ) {
-                removeFilter('panels', panel.code as any);
-            }
+          if (
+            normalizedPanelQuery === normalizedTitle &&
+            initialFilters['panels'].includes(panel.code)
+          ) {
+            removeFilter('panels', panel.code as any)
+          }
         }
 
         const itemFilter = filtersContext.panels.find(
-            (item) => normalizeTitle(item.title) === normalizedPanelQuery
-        );
+          (item) => normalizeTitle(item.title) === normalizedPanelQuery
+        )
         if (itemFilter) {
-            appendFilter('panels', itemFilter.code as any);
+          appendFilter('panels', itemFilter.code as any)
 
-            setFilteredBps(
-                applyFilters(
-                    {
-                        ...filtersBP,
-                        ['panels']: [itemFilter.code as any],
-                    },
-                    bps
-                )
-            );
-            changeFilterPanel('panels');
+          setFilteredBps(
+            applyFilters(
+              {
+                ...filtersBP,
+                ['panels']: [itemFilter.code as any]
+              },
+              bps
+            )
+          )
+          changeFilterPanel('panels')
         }
-    }
+      }
 
-    if (router.query.collection) {
+      if (router.query.collection) {
         const queryCollection = Array.isArray(router.query.collection)
-            ? router.query.collection[0]
-            : router.query.collection;
-        const normalizedCollectionQuery = normalizeTitle(queryCollection);
+          ? router.query.collection[0]
+          : router.query.collection
+        const normalizedCollectionQuery = normalizeTitle(queryCollection)
 
         for (const collection of filtersContext.collections) {
-            const normalizedTitle = normalizeTitle(collection.title);
+          const normalizedTitle = normalizeTitle(collection.title)
 
-            if (
-                normalizedCollectionQuery === normalizedTitle &&
-                !initialFilters['collections'].includes(collection.code)
-            ) {
-                appendFilter('collections', collection.code as any);
-                setFilteredBps(
-                    applyFilters(
-                        {
-                            ...filtersBP,
-                            ['collections']: [collection.code as any],
-                        },
-                        bps
-                    )
-                );
-                changeFilterPanel('collections');
-                break;
-            }
+          if (
+            normalizedCollectionQuery === normalizedTitle &&
+            !initialFilters['collections'].includes(collection.code)
+          ) {
+            appendFilter('collections', collection.code as any)
+            setFilteredBps(
+              applyFilters(
+                {
+                  ...filtersBP,
+                  ['collections']: [collection.code as any]
+                },
+                bps
+              )
+            )
+            changeFilterPanel('collections')
+            break
+          }
         }
+      }
     }
-}, [router.query]);
-
+  }, [router.query, isInitialRender])
 
   useEffect(() => {
     setFilters({ ...filtersBP, orderBy: 'scale' })
@@ -445,6 +600,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                 filteredBpsLength={filteredBps.length}
                 gridSize={gridSize}
                 changeGridSize={changeGridSize}
+                onAddQueryParam={handleAddQueryToUrl}
+                onRemoveQueryParam={handleRemoveQueryFromUrl}
               />
             ) : (
               <FiltersTabs
@@ -467,6 +624,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                 filtersEmpty={filtersEmpty}
                 gridSize={gridSize}
                 changeGridSize={changeGridSize}
+                onAddQueryParam={handleAddQueryToUrl}
+                onRemoveQueryParam={handleRemoveQueryFromUrl}
               />
             )}
           </Container>
@@ -481,7 +640,10 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
               justifyContent={'flex-end'}
               alignItems="center"
             >
-              <Text color={darkMode ? 'green.300' : 'gray.300'} fontWeight={'bold'}>
+              <Text
+                color={darkMode ? 'green.300' : 'gray.300'}
+                fontWeight={'bold'}
+              >
                 {filterCount}
               </Text>
             </Flex>
