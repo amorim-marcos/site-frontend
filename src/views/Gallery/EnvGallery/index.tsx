@@ -22,7 +22,12 @@ import { env } from 'process'
 import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
 
-export type ValidFilterNames = 'bps' | 'ambients' | 'styles'
+export type ValidFilterNames =
+  | 'bps'
+  | 'ambients'
+  | 'styles'
+  | 'page'
+  | 'nameSearched'
 
 export type FilterPanelName = 'none' | ValidFilterNames
 
@@ -74,6 +79,8 @@ export const EnvGallery = ({
   const [isInitialRender, setIsInitialRender] = useState(true)
   const router = useRouter()
 
+  const pathname = router.pathname
+
   const initialURLFilters = getFiltersFromURL()
   const initialPage = initialURLFilters?.page
     ? Number(initialURLFilters.page)
@@ -88,6 +95,55 @@ export const EnvGallery = ({
       ...initialURLFilters
     }
   })
+
+  function handleAddQueryToUrl(queryName: ValidFilterNames, value: string) {
+    router.replace(
+      {
+        pathname: pathname,
+        query: {
+          ...router.query,
+          [queryName]: value
+        }
+      },
+      undefined,
+      { shallow: true }
+    )
+  }
+
+  function handleResetQueriesFromUrl() {
+    router.push(
+      {
+        pathname: pathname
+      },
+      undefined,
+      {
+        shallow: true
+      }
+    )
+  }
+
+  function handleRemoveQueryFromUrl(
+    queryName: ValidFilterNames,
+    value: string
+  ) {
+    const { query: queryObj } = router
+
+    const newQuery = { ...queryObj }
+    delete newQuery[queryName]
+
+    router.replace(
+      {
+        pathname: pathname,
+        query: {
+          ...newQuery
+        }
+      },
+      undefined,
+      {
+        shallow: true
+      }
+    )
+  }
 
   function getFiltersFromCookies() {
     const filtersCookie = Cookies.get('filters')
@@ -230,6 +286,7 @@ export const EnvGallery = ({
       styles: []
     }
 
+    handleResetQueriesFromUrl()
     setFilters(cleanedFilters)
     setFilteredEnvs(applyFilters(cleanedFilters, envs))
   }
@@ -370,7 +427,11 @@ export const EnvGallery = ({
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         // console.log('It works!')
-        setPagination((p) => p + 1)
+        setPagination((p) => {
+          const newPage = p + 1
+          // handleAddQueryToUrl('page', String(newPage))
+          return newPage
+        })
       }
     })
     if (ref.current) {
@@ -431,6 +492,8 @@ export const EnvGallery = ({
                 envs={envs}
                 filters={filters}
                 filtersEmpty={filtersEmpty}
+                onAddQueryParam={handleAddQueryToUrl}
+                onRemoveQueryParam={handleRemoveQueryFromUrl}
               />
             ) : (
               <FiltersTabs
@@ -449,6 +512,8 @@ export const EnvGallery = ({
                 envs={envs}
                 filters={filters}
                 filtersEmpty={filtersEmpty}
+                onAddQueryParam={handleAddQueryToUrl}
+                onRemoveQueryParam={handleRemoveQueryFromUrl}
               />
             )}
           </Container>
