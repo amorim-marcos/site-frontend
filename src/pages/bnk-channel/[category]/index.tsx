@@ -43,21 +43,24 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let currentCategory
   let youtubeVideos
 
+  const sortQuery = `_sort=created_at:desc`
+
   try {
     res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/categories?_locale=${locale}`
+      process.env.NEXT_PUBLIC_API_URL +
+        `/categories?_locale=${locale}&${sortQuery}`
     )
     allCategories = await res.json()
 
     res = await fetch(
       process.env.NEXT_PUBLIC_API_URL +
-        `/categories/${category}?_locale=${locale}`
+        `/categories/${category}?_locale=${locale}&${sortQuery}`
     )
 
     currentCategory = await res.json()
 
     res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/posts?_locale=${locale}`
+      process.env.NEXT_PUBLIC_API_URL + `/posts?_locale=${locale}&${sortQuery}`
     )
 
     allPosts = await res.json()
@@ -80,16 +83,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     youtubeVideos = (await res.json()).items
   } catch (e) {
-    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/categories`)
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/categories?${sortQuery}`
+    )
     allCategories = await res.json()
 
     res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/categories/${category}`
+      process.env.NEXT_PUBLIC_API_URL + `/categories/${category}?${sortQuery}`
     )
 
     currentCategory = await res.json()
 
-    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts`)
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts?${sortQuery}`)
 
     allPosts = await res.json()
 

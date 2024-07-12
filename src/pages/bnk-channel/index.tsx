@@ -25,28 +25,34 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   let res
 
+  const sortQuery = `_sort=created_at:desc`
+
   try {
     res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/posts?_locale=${locale}`
+      process.env.NEXT_PUBLIC_API_URL + `/posts?_locale=${locale}&${sortQuery}`
     )
     page_content = await res.json()
 
     res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/categories?_locale=${locale}`
+      process.env.NEXT_PUBLIC_API_URL +
+        `/categories?_locale=${locale}&${sortQuery}`
     )
     categories = await res.json()
 
     res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/downloads-page?_locale=${locale}`
+      process.env.NEXT_PUBLIC_API_URL +
+        `/downloads-page?_locale=${locale}&${sortQuery}`
     )
 
     downloads_page = await res.json()
   } catch (e) {
     // if locale not working, get default
-    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts`)
+    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts?${sortQuery}`)
     page_content = await res.json()
 
-    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/categories`)
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/categories?${sortQuery}`
+    )
 
     categories = await res.json()
 
