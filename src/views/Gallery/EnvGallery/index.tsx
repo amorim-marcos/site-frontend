@@ -21,6 +21,7 @@ import { useRouter } from 'next/router'
 import { env } from 'process'
 import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
+import useRouterCustom from 'hooks/useRouterCustom'
 
 export type ValidFilterNames =
   | 'bps'
@@ -79,6 +80,9 @@ export const EnvGallery = ({
   const [isInitialRender, setIsInitialRender] = useState(true)
   const router = useRouter()
 
+  const { addQueryToUrl, removeQueryFromUrl, resetQueriesFromUrl } =
+    useRouterCustom()
+
   const pathname = router.pathname
 
   const initialURLFilters = getFiltersFromURL()
@@ -96,54 +100,54 @@ export const EnvGallery = ({
     }
   })
 
-  function handleAddQueryToUrl(queryName: ValidFilterNames, value: string) {
-    router.replace(
-      {
-        pathname: pathname,
-        query: {
-          ...router.query,
-          [queryName]: value
-        }
-      },
-      undefined,
-      { shallow: true }
-    )
-  }
+  // function handleAddQueryToUrl(queryName: ValidFilterNames, value: string) {
+  //   router.replace(
+  //     {
+  //       pathname: pathname,
+  //       query: {
+  //         ...router.query,
+  //         [queryName]: value
+  //       }
+  //     },
+  //     undefined,
+  //     { shallow: true }
+  //   )
+  // }
 
-  function handleResetQueriesFromUrl() {
-    router.push(
-      {
-        pathname: pathname
-      },
-      undefined,
-      {
-        shallow: true
-      }
-    )
-  }
+  // function handleResetQueriesFromUrl() {
+  //   router.replace(
+  //     {
+  //       pathname: pathname
+  //     },
+  //     undefined,
+  //     {
+  //       shallow: true
+  //     }
+  //   )
+  // }
 
-  function handleRemoveQueryFromUrl(
-    queryName: ValidFilterNames,
-    value: string
-  ) {
-    const { query: queryObj } = router
+  // function handleRemoveQueryFromUrl(
+  //   queryName: ValidFilterNames,
+  //   value: string
+  // ) {
+  //   const { query: queryObj } = router
 
-    const newQuery = { ...queryObj }
-    delete newQuery[queryName]
+  //   const newQuery = { ...queryObj }
+  //   delete newQuery[queryName]
 
-    router.replace(
-      {
-        pathname: pathname,
-        query: {
-          ...newQuery
-        }
-      },
-      undefined,
-      {
-        shallow: true
-      }
-    )
-  }
+  //   router.replace(
+  //     {
+  //       pathname: pathname,
+  //       query: {
+  //         ...newQuery
+  //       }
+  //     },
+  //     undefined,
+  //     {
+  //       shallow: true
+  //     }
+  //   )
+  // }
 
   function getFiltersFromCookies() {
     const filtersCookie = Cookies.get('filters')
@@ -278,7 +282,7 @@ export const EnvGallery = ({
     return filteredEnvs.slice()
   }
 
-  function resetFilters() {
+  function handleResetFilters() {
     const cleanedFilters = {
       nameSearched: '',
       bps: [],
@@ -286,7 +290,7 @@ export const EnvGallery = ({
       styles: []
     }
 
-    handleResetQueriesFromUrl()
+    resetQueriesFromUrl()
     setFilters(cleanedFilters)
     setFilteredEnvs(applyFilters(cleanedFilters, envs))
   }
@@ -440,7 +444,9 @@ export const EnvGallery = ({
   }, [ref])
 
   const galleryViewLabels = useTranslation('galleryView')
-
+  const handleBackAction = () => {
+    handleResetFilters()
+  }
   return (
     <>
       <Pagebar
@@ -458,6 +464,8 @@ export const EnvGallery = ({
             url: '/products/bp-berneck/gallery'
           }
         ]}
+        goToUrl={pathname}
+        onBackAction={handleBackAction}
       />
 
       <Box bg="white.100">
@@ -484,7 +492,7 @@ export const EnvGallery = ({
                 currentFilterPanel={currentFilterPanel}
                 appendFilter={appendFilter}
                 removeFilter={removeFilter}
-                resetFilters={resetFilters}
+                onResetFilters={handleResetFilters}
                 setFilters={setFilters}
                 setFilteredEnvs={setFilteredEnvs}
                 applyFilters={applyFilters}
@@ -492,8 +500,8 @@ export const EnvGallery = ({
                 envs={envs}
                 filters={filters}
                 filtersEmpty={filtersEmpty}
-                onAddQueryParam={handleAddQueryToUrl}
-                onRemoveQueryParam={handleRemoveQueryFromUrl}
+                onAddQueryParam={addQueryToUrl}
+                onRemoveQueryParam={removeQueryFromUrl}
               />
             ) : (
               <FiltersTabs
@@ -504,7 +512,7 @@ export const EnvGallery = ({
                 currentFilterPanel={currentFilterPanel}
                 appendFilter={appendFilter}
                 removeFilter={removeFilter}
-                resetFilters={resetFilters}
+                onResetFilters={handleResetFilters}
                 setFilters={setFilters}
                 setFilteredEnvs={setFilteredEnvs}
                 applyFilters={applyFilters}
@@ -512,8 +520,8 @@ export const EnvGallery = ({
                 envs={envs}
                 filters={filters}
                 filtersEmpty={filtersEmpty}
-                onAddQueryParam={handleAddQueryToUrl}
-                onRemoveQueryParam={handleRemoveQueryFromUrl}
+                onAddQueryParam={addQueryToUrl}
+                onRemoveQueryParam={removeQueryFromUrl}
               />
             )}
           </Container>

@@ -53,6 +53,7 @@ export type FiltersSelectProps = {
   filtersEmpty: boolean
   onRemoveQueryParam: (queryName: ValidFilterNames) => void
   onAddQueryParam: (queryName: ValidFilterNames, value: string) => void
+  onResetFilters: () => void
 }
 
 export const FiltersTabs = ({
@@ -76,7 +77,8 @@ export const FiltersTabs = ({
   filtersBP,
   filtersEmpty,
   onRemoveQueryParam,
-  onAddQueryParam
+  onAddQueryParam,
+  onResetFilters
 }: FiltersSelectProps) => {
   const [searchSelected, setSearchSelected] = React.useState(false)
 
@@ -343,8 +345,9 @@ export const FiltersTabs = ({
                     <Button
                       variant={'filters' as any}
                       onClick={() => {
-                        setFilters(JSON.parse(JSON.stringify(initialFilters)))
-                        setFilteredBps(applyFilters(initialFilters, bps))
+                        onResetFilters()
+                        // setFilters(JSON.parse(JSON.stringify(initialFilters)))
+                        // setFilteredBps(applyFilters(initialFilters, bps))
                         setDisplayFilters(!displayFilters)
                       }}
                       _focus={{ outline: 'none' }}
