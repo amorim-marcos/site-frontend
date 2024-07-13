@@ -29,7 +29,7 @@ export type FiltersSelectProps = {
   changeFilterPanel: Function
   appendFilter: (filterName: ValidFilterNames, value: any) => void
   removeFilter: (filtername: ValidFilterNames, value: any) => void
-  resetFilters: Function
+  onResetFilters: Function
   setFilters: Function
   setFilteredEnvs: Function
   applyFilters: Function
@@ -50,7 +50,7 @@ export const FiltersTabs = ({
   currentFilterPanel,
   appendFilter,
   removeFilter,
-  resetFilters,
+  onResetFilters,
   setFilters,
   setFilteredEnvs,
   applyFilters,
@@ -280,7 +280,7 @@ export const FiltersTabs = ({
                     <Button
                       variant={'filters' as any}
                       onClick={() => {
-                        resetFilters()
+                        onResetFilters()
                         setDisplayFilters(!displayFilters)
                       }}
                       _focus={{ outline: 'none' }}

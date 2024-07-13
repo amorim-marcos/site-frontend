@@ -15,6 +15,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
 import { normalizeTitle } from 'utils/utils'
+import useRouterCustom from 'hooks/useRouterCustom'
 
 export type filtersBP = {
   orderBy: string
@@ -89,6 +90,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   const [isInitialRender, setIsInitialRender] = useState(true)
 
   const router = useRouter()
+  const { resetQueriesFromUrl } = useRouterCustom()
 
   const pathname = router.pathname
 
@@ -141,7 +143,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
       const matchedColoration = filtersContext.colorations.find(
         (color: any) =>
           router.query.coloration ===
-        color.title
+          color.title
             .toLowerCase()
             .normalize('NFD')
             .replace(/[\u0300-\u036f]/g, '')
@@ -156,7 +158,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
       //   panels: matchedPanel ? [matchedPanel.code] : []
       // }
     }
-
 
     if (router.query.nameSearched) {
       const queryName = Array.isArray(router.query.nameSearched)
@@ -213,7 +214,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }
 
   // todo
-  function removeSpecialChars(value: string){
+  function removeSpecialChars(value: string) {
     const formatted = value
   }
 
@@ -229,7 +230,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }
 
   function getColorationName(colorationCode: string, colorations: any) {
-
     const coloration = colorations.find(
       (col: any) => colorationCode === col.code
     )
@@ -254,7 +254,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
       friendlyValue = getColorationName(value, filtersContext['colorations'])
     }
 
-
     router.replace(
       {
         pathname: pathname,
@@ -270,18 +269,18 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     )
   }
 
-  function handleRemoveQueryFromUrl(queryName: ValidFilterNames){
+  function handleRemoveQueryFromUrl(queryName: ValidFilterNames) {
     const queryFilterName = queryParamsMapping[queryName]
-    const {query: queryObj} = router
+    const { query: queryObj } = router
 
-    let newQuery = {...queryObj}
+    const newQuery = { ...queryObj }
     delete newQuery[queryFilterName]
-    
+
     router.replace(
       {
         pathname: pathname,
         query: {
-          ...newQuery,
+          ...newQuery
         }
       },
       undefined,
@@ -289,10 +288,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         shallow: true
       }
     )
-    
   }
-
-
 
   function removeFilter(type: ValidFilterNames, value: string) {
     // handleRemoveQueryFromUrl(type, value)
@@ -545,6 +541,19 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   const bpCatalog = useTranslation('bpCatalog')
   const galleryViewLabels = useTranslation('galleryView')
 
+  const handleResetFilters = () => {
+    const cleanedFilters = { ...initialFilters }
+
+    resetQueriesFromUrl()
+    setFilters({ ...cleanedFilters })
+    const filteredBps = applyFilters({ ...initialFilters }, bps)
+    setFilteredBps(filteredBps)
+  }
+
+  const handleBackAction = () => {
+    handleResetFilters()
+  }
+
   return (
     <>
       <Pagebar
@@ -562,6 +571,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
             url: '/products/bp-berneck/catalog'
           }
         ]}
+        goToUrl={pathname}
+        onBackAction={handleBackAction}
       />
       <Box backgroundColor={darkMode ? 'gray.400' : 'white.100'}>
         <Container
@@ -602,6 +613,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                 changeGridSize={changeGridSize}
                 onAddQueryParam={handleAddQueryToUrl}
                 onRemoveQueryParam={handleRemoveQueryFromUrl}
+                onResetFilters={handleResetFilters}
               />
             ) : (
               <FiltersTabs
@@ -626,6 +638,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                 changeGridSize={changeGridSize}
                 onAddQueryParam={handleAddQueryToUrl}
                 onRemoveQueryParam={handleRemoveQueryFromUrl}
+                onResetFilters={handleResetFilters}
               />
             )}
           </Container>

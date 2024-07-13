@@ -44,6 +44,7 @@ export type FiltersSelectProps = {
   filteredBpsLength: number
   onRemoveQueryParam: (queryName: ValidFilterNames) => void
   onAddQueryParam: (queryName: ValidFilterNames, value: string) => void
+  onResetFilters: () => void
 }
 
 export const FiltersAccordion = ({
@@ -67,7 +68,8 @@ export const FiltersAccordion = ({
   filtersBP,
   filtersEmpty,
   onRemoveQueryParam,
-  onAddQueryParam
+  onAddQueryParam,
+  onResetFilters
 }: FiltersSelectProps) => {
   const [openSearchBar, setOpenSearchBar] = React.useState(false)
 
@@ -557,8 +559,9 @@ export const FiltersAccordion = ({
               <Button
                 zIndex="10"
                 onClick={() => {
-                  setFilters(JSON.parse(JSON.stringify(initialFilters)))
-                  setFilteredBps(applyFilters(initialFilters, bps))
+                  onResetFilters()
+                  // setFilters(JSON.parse(JSON.stringify(initialFilters)))
+                  // setFilteredBps(applyFilters(initialFilters, bps))
                   setDisplayFilters(!displayFilters)
                 }}
                 variant="link"
