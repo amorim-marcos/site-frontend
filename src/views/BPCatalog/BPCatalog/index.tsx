@@ -568,7 +568,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
           },
           {
             title: bpCatalog.t('pagebar.bpCatalog'),
-            url: '/products/bp-berneck/catalog'
+            url: '/products/bp-berneck/catalog',
+            onItemClick: handleBackAction
           }
         ]}
         goToUrl={pathname}
