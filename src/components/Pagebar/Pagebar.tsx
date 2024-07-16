@@ -20,15 +20,20 @@ import Link from 'next/link'
 export type Path = {
   title: string
   url: string
+  onItemClick?: () => void
 }
 
 export type PagebarProps = {
   paths?: Array<Path>
   disconsiderCurrentPage?: boolean
+  goToUrl?: string
+  onBackAction?: () => void
 }
 export const Pagebar = ({
   paths,
-  disconsiderCurrentPage = true
+  disconsiderCurrentPage = true,
+  goToUrl,
+  onBackAction
 }: PagebarProps) => {
   const { seeOnlyPosts, setSeeOnlyPosts } = useContext(CategoryContext)
   const componentsLabels = useTranslation('components')
@@ -127,6 +132,7 @@ export const Pagebar = ({
                       href={
                         router.locale ? `/${router.locale}/${s.url}` : s.url
                       }
+                      onClick={s.onItemClick ? s.onItemClick : undefined}
                     >
                       <Text
                         // onClick={() => router.push(s.url)}
@@ -158,7 +164,16 @@ export const Pagebar = ({
               if (seeOnlyPosts) {
                 setSeeOnlyPosts(false)
               } else {
-                router.back()
+                // in case of some custom path is provided,
+                // check if the url path is not the current, then replace it
+                if (goToUrl && goToUrl !== router.asPath) {
+                  if (onBackAction) {
+                    onBackAction()
+                  }
+                  router.replace(goToUrl)
+                } else {
+                  router.back()
+                }
               }
             }}
             alignItems="center"

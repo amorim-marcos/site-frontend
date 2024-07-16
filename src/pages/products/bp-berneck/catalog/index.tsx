@@ -37,6 +37,7 @@ export interface BpBerneckProps {
       title: string
       background_image: string
     }[]
+    nameSearched: string
   }
 }
 

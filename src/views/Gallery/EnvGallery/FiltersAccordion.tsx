@@ -18,6 +18,7 @@ import { colors } from 'theme/colors'
 import { FilterCheckbox } from './FilterCheckbox'
 import { BPFilter } from './BPFilter'
 import { useTranslation } from 'react-i18next'
+import { ValidFilterNames } from '.'
 
 export type FiltersSelectProps = {
   filtersContext: {
@@ -35,7 +36,7 @@ export type FiltersSelectProps = {
   changeFilterPanel: Function
   appendFilter: Function
   removeFilter: Function
-  resetFilters: Function
+  onResetFilters: Function
   setFilters: Function
   setFilteredEnvs: Function
   applyFilters: Function
@@ -44,6 +45,8 @@ export type FiltersSelectProps = {
   bps: Array<any>
   filters: any
   filtersEmpty: boolean
+  onRemoveQueryParam: (queryName: ValidFilterNames, value: string) => void
+  onAddQueryParam: (queryName: ValidFilterNames, value: string) => void
 }
 
 export const FiltersAccordion = ({
@@ -54,14 +57,16 @@ export const FiltersAccordion = ({
   currentFilterPanel,
   appendFilter,
   removeFilter,
-  resetFilters,
+  onResetFilters,
   setFilters,
   setFilteredEnvs,
   applyFilters,
   bps,
   envs,
   filters,
-  filtersEmpty
+  filtersEmpty,
+  onRemoveQueryParam,
+  onAddQueryParam
 }: FiltersSelectProps) => {
   const [seeMoreBps, setSeeMoreBps] = React.useState(false)
   const [openSearchBar, setOpenSearchBar] = React.useState(false)
@@ -179,9 +184,16 @@ export const FiltersAccordion = ({
                           <BPFilter
                             isSelected={filters['bps'].includes(bp.id)}
                             toggleSelect={(selected: boolean) => {
-                              !selected
-                                ? appendFilter('bps', bp.id)
-                                : removeFilter('bps', bp.id)
+                              if (!selected) {
+                                appendFilter('bps', bp.id)
+                                onAddQueryParam('bps', bp.name)
+                              } else {
+                                removeFilter('bps', bp.id)
+                                onRemoveQueryParam('bps', bp.name)
+                              }
+                              // !selected
+                              //   ? appendFilter('bps', bp.id)
+                              //   : removeFilter('bps', bp.id)
                             }}
                             mt="10px"
                             w="100%"
@@ -191,14 +203,21 @@ export const FiltersAccordion = ({
                           />
                         </GridItem>
                       ))
-                    : bps.slice(0, TOTAL_BPS_SHOW_FIRST).map((bp) => (
+                    : bps.slice(0, 20).map((bp) => (
                         <GridItem key={bp.id}>
                           <BPFilter
                             isSelected={filters['bps'].includes(bp.name)}
                             toggleSelect={(selected: boolean) => {
-                              !selected
-                                ? appendFilter('bps', bp.name)
-                                : removeFilter('bps', bp.name)
+                              if (!selected) {
+                                appendFilter('bps', bp.id)
+                                onAddQueryParam('bps', bp.name)
+                              } else {
+                                removeFilter('bps', bp.id)
+                                onRemoveQueryParam('bps', bp.name)
+                              }
+                              // !selected
+                              //   ? appendFilter('bps', bp.name)
+                              //   : removeFilter('bps', bp.name)
                             }}
                             mt="10px"
                             w="100%"
@@ -293,9 +312,16 @@ export const FiltersAccordion = ({
                       <FilterCheckbox
                         isChecked={filters['ambients'].includes(filter.code)}
                         onCheck={(isChecked: boolean, value: any) => {
-                          !isChecked
-                            ? appendFilter('ambients', value)
-                            : removeFilter('ambients', value)
+                          if (!isChecked) {
+                            appendFilter('ambients', value)
+                            onAddQueryParam('ambients', value)
+                          } else {
+                            removeFilter('ambients', value)
+                            onRemoveQueryParam('ambients', value)
+                          }
+                          // !isChecked
+                          //   ? appendFilter('ambients', value)
+                          //   : removeFilter('ambients', value)
                         }}
                         title={filter.title}
                         code={filter.code}
@@ -359,9 +385,16 @@ export const FiltersAccordion = ({
                       <FilterCheckbox
                         isChecked={filters['styles'].includes(filter.code)}
                         onCheck={(isChecked: boolean, value: any) => {
-                          !isChecked
-                            ? appendFilter('styles', value)
-                            : removeFilter('styles', value)
+                          if (!isChecked) {
+                            appendFilter('styles', value)
+                            onAddQueryParam('styles', filter.title)
+                          } else {
+                            removeFilter('styles', value)
+                            onRemoveQueryParam('styles', filter.title)
+                          }
+                          // !isChecked
+                          //   ? appendFilter('styles', value)
+                          //   : removeFilter('styles', value)
                         }}
                         title={filter.title}
                         code={filter.code}
@@ -438,9 +471,14 @@ export const FiltersAccordion = ({
               onChange={(e) => {
                 setFilters({ ...filters, nameSearched: e.target.value })
               }}
-              onKeyPress={(event) => {
-                if (event.key === 'Enter')
+              onKeyPress={(event: any) => {
+                if (event.key === 'Enter') {
+                  onAddQueryParam('nameSearched', event.target.value)
+                  if (event.target.value?.length <= 0) {
+                    onRemoveQueryParam('nameSearched', event.target.value)
+                  }
                   setFilteredEnvs(applyFilters(filters, envs))
+                }
               }}
             />
             <Box>
@@ -472,7 +510,7 @@ export const FiltersAccordion = ({
             <Button
               zIndex="10"
               onClick={() => {
-                resetFilters()
+                onResetFilters()
                 setDisplayFilters(!displayFilters)
               }}
               variant="link"

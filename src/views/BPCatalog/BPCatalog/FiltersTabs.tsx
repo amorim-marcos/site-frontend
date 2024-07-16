@@ -26,11 +26,10 @@ import {
 } from '@components/Icons'
 
 import { colors } from 'theme/colors'
-import { initialFilters } from './'
+import { initialFilters, ValidFilterNames } from './'
 import { FilterCheckbox } from './FilterCheckbox'
 import { useTranslation } from 'react-i18next'
 import { filtersBP } from './index'
-
 
 export type FiltersSelectProps = {
   darkMode: boolean
@@ -52,6 +51,9 @@ export type FiltersSelectProps = {
   colorations: Array<any>
   filtersBP: any
   filtersEmpty: boolean
+  onRemoveQueryParam: (queryName: ValidFilterNames) => void
+  onAddQueryParam: (queryName: ValidFilterNames, value: string) => void
+  onResetFilters: () => void
 }
 
 export const FiltersTabs = ({
@@ -74,6 +76,9 @@ export const FiltersTabs = ({
   applyFilters,
   filtersBP,
   filtersEmpty,
+  onRemoveQueryParam,
+  onAddQueryParam,
+  onResetFilters
 }: FiltersSelectProps) => {
   const [searchSelected, setSearchSelected] = React.useState(false)
 
@@ -81,11 +86,10 @@ export const FiltersTabs = ({
 
   // organiza o array de coleções por data de lançamento
   const sortedCollections = collections.sort((a, b) => {
-    const dateA = Date.parse(a.release_date);
-    const dateB = Date.parse(b.release_date);
-    return dateB - dateA;
-  });
-  
+    const dateA = Date.parse(a.release_date)
+    const dateB = Date.parse(b.release_date)
+    return dateB - dateA
+  })
 
   return (
     <>
@@ -228,9 +232,17 @@ export const FiltersTabs = ({
                       <FilterCheckbox
                         isChecked={filtersBP['panels'].includes(filter.code)}
                         onCheck={(isChecked: boolean, value: any) => {
-                          !isChecked
-                            ? appendFilter('panels', value)
-                            : removeFilter('panels', value)
+                          if (!isChecked) {
+                            appendFilter('panels', value)
+                            onAddQueryParam('panels', value)
+                          } else {
+                            removeFilter('panels', value)
+                            onRemoveQueryParam('panels')
+                          }
+
+                          // !isChecked
+                          //   ? appendFilter('panels', value)
+                          //   : removeFilter('panels', value)
                         }}
                         title={filter.title}
                         code={filter.code}
@@ -259,9 +271,16 @@ export const FiltersTabs = ({
                           filter.code
                         )}
                         onCheck={(isChecked: boolean, value: any) => {
-                          !isChecked
-                            ? appendFilter('collections', value)
-                            : removeFilter('collections', value)
+                          if (!isChecked) {
+                            onAddQueryParam('collections', value)
+                            appendFilter('collections', value)
+                          } else {
+                            onRemoveQueryParam('collections')
+                            removeFilter('collections', value)
+                          }
+                          // !isChecked
+                          //   ? appendFilter('collections', value)
+                          //   : removeFilter('collections', value)
                         }}
                         title={filter.title}
                         code={filter.code}
@@ -286,11 +305,20 @@ export const FiltersTabs = ({
                       <FilterCheckbox
                         color="white.100"
                         key={filter.code}
-                        isChecked={filtersBP['colorations'].includes(filter.code)}
+                        isChecked={filtersBP['colorations'].includes(
+                          filter.code
+                        )}
                         onCheck={(isChecked: boolean, value: any) => {
-                          !isChecked
-                            ? appendFilter('colorations', value)
-                            : removeFilter('colorations', value)
+                          if (!isChecked) {
+                            onAddQueryParam('colorations', value)
+                            appendFilter('colorations', value)
+                          } else {
+                            onRemoveQueryParam('colorations')
+                            removeFilter('colorations', value)
+                          }
+                          // !isChecked
+                          //   ? appendFilter('colorations', value)
+                          //   : removeFilter('colorations', value)
                         }}
                         title={filter.title}
                         code={filter.code}
@@ -317,8 +345,9 @@ export const FiltersTabs = ({
                     <Button
                       variant={'filters' as any}
                       onClick={() => {
-                        setFilters(JSON.parse(JSON.stringify(initialFilters)))
-                        setFilteredBps(applyFilters(initialFilters, bps))
+                        onResetFilters()
+                        // setFilters(JSON.parse(JSON.stringify(initialFilters)))
+                        // setFilteredBps(applyFilters(initialFilters, bps))
                         setDisplayFilters(!displayFilters)
                       }}
                       _focus={{ outline: 'none' }}
@@ -448,9 +477,15 @@ export const FiltersTabs = ({
                     onBlur={() => {
                       setSearchSelected(false)
                     }}
-                    onKeyPress={(event) => {
-                      if (event.key === 'Enter')
+                    onKeyPress={(event: any) => {
+                      if (event.key === 'Enter') {
+                        console.log('query valueee> ', event.target.value)
+                        onAddQueryParam('nameSearched', event.target.value)
+                        if (event.target.value?.length <= 0) {
+                          onRemoveQueryParam('nameSearched')
+                        }
                         setFilteredBps(applyFilters(filtersBP, bps))
+                      }
                     }}
                     placeholder={bpCatalog.t('filtersTab.searchByName')}
                     _placeholder={{
@@ -478,7 +513,9 @@ export const FiltersTabs = ({
                   />
                   <Box>
                     <SearchIcon
-                      onClick={() => setFilteredBps(applyFilters(filtersBP, bps))}
+                      onClick={() =>
+                        setFilteredBps(applyFilters(filtersBP, bps))
+                      }
                       stroke={
                         searchSelected
                           ? colors.green[500]
@@ -533,7 +570,6 @@ export const FiltersTabs = ({
           </Flex>
         </Box>
       )}
-
     </>
   )
 }
