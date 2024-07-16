@@ -461,7 +461,8 @@ export const EnvGallery = ({
           },
           {
             title: galleryViewLabels.t('pagebar.envGallery'),
-            url: '/products/bp-berneck/gallery'
+            url: '/products/bp-berneck/gallery',
+            onItemClick: handleBackAction
           }
         ]}
         goToUrl={pathname}

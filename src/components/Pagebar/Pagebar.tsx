@@ -20,6 +20,7 @@ import Link from 'next/link'
 export type Path = {
   title: string
   url: string
+  onItemClick?: () => void
 }
 
 export type PagebarProps = {
@@ -131,6 +132,7 @@ export const Pagebar = ({
                       href={
                         router.locale ? `/${router.locale}/${s.url}` : s.url
                       }
+                      onClick={s.onItemClick ? s.onItemClick : undefined}
                     >
                       <Text
                         // onClick={() => router.push(s.url)}
