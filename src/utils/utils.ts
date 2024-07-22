@@ -1,4 +1,4 @@
-const punycode = require('punycode/');
+import punycode from 'punycode'
 
 export function smartString(phrase: string, num: number) {
   let subString, restString, proxSpace, subString2
@@ -41,9 +41,9 @@ export function smartDate(data: Date | string | undefined, locale: string) {
   }
 }
 
-
-export function formatChannelNameUrl(channel_name: string){
-  const normalized_name = punycode.encode(channel_name)
+export function formatChannelNameUrl(channel_name: string) {
+  const normalized_name = punycode
+    .encode(channel_name)
     .replace(/[^\w ]/g, '')
     .split(' ')
     .join('-')
@@ -64,25 +64,25 @@ export const normalizeTitle = (title: string): string => {
 export function showcaseChannelCode(locale: string) {
   switch (locale) {
     case 'pt-BR':
-      return 'solicitao-de-mostruriok3b0b7g';
+      return 'solicitao-de-mostruriok3b0b7g'
     case 'en':
-      return 'showcase-request';
+      return 'showcase-request'
     case 'es':
-      return 'solicitud-de-muestrario';
+      return 'solicitud-de-muestrario'
     case 'zh-CN':
-      return '1brp3wqlnotmk8vweo';
+      return '1brp3wqlnotmk8vweo'
   }
 }
 
-export function exportationContactChannelCode(locale: string){
-  switch(locale){
+export function exportationContactChannelCode(locale: string) {
+  switch (locale) {
     case 'pt-BR':
-      return 'comercial-exportaodwb7f';
+      return 'comercial-exportaodwb7f'
     case 'en':
-      return 'commercial-exportation';
+      return 'commercial-exportation'
     case 'es':
-      return 'comercial-exportacin4cc';
+      return 'comercial-exportacin4cc'
     case 'zh-CN':
-      return 'vhq57g6xbr0b5w65b';
+      return 'vhq57g6xbr0b5w65b'
   }
 }

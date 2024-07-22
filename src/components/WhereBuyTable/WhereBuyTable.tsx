@@ -120,7 +120,11 @@ export const WhereBuyTable = () => {
                         >
                           <Flex flexDirection={'column'}>
                             {r?.contact?.map((item) => (
-                              <Text variant={'body' as any} fontSize={'90%'}>
+                              <Text
+                                key={item}
+                                variant={'body' as any}
+                                fontSize={'90%'}
+                              >
                                 {item}
                               </Text>
                             ))}

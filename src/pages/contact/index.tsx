@@ -55,15 +55,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         })
       : []
 
-  if(context.query.channel){
-    let queryChannel = context.query.channel
+  if (context.query.channel) {
+    const queryChannel = context.query.channel
     contact_channel = contact_channels.find(
-      (contact_channel:any) =>
+      (contact_channel: any) =>
         formatChannelNameUrl(contact_channel.name) == queryChannel
     )
   }
 
-      
   return {
     props: {
       fireWarning: fireWarning.warning_text ? fireWarning.warning_text : '',
