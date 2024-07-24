@@ -21,8 +21,8 @@ node -v
 echo $DEPLOYMENT_GROUP_NAME
 git pull origin $DEPLOYMENT_GROUP_NAME
 # git pull origin qas
-rm -r node_modules/
-rm -r .next/
+# rm -r node_modules/
+# rm -r .next/
 
 yarn install &&
 yarn build &&
