@@ -7,9 +7,9 @@ cd $APP_DIR
 # requires nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh"] && \. "$NVM_DIR/nvm.sh"
-
-nvm install 16
-nvm use 16
+nvm -v
+# nvm install 16
+# nvm use 16
 
 echo $DEPLOYMENT_GROUP_NAME
 git pull origin $DEPLOYMENT_GROUP_NAME
@@ -17,6 +17,12 @@ git pull origin $DEPLOYMENT_GROUP_NAME
 rm -r node_modules/
 rm -r .next/
 
+nvm -v
+node -v
+
+nvm install 16 &&
+nvm use 16 &&
+node -v &&
 yarn install &&
 yarn build &&
 pm2 restart frontend --interpreter=$(nvm which 16)
