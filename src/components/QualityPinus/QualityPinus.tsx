@@ -199,7 +199,7 @@ export const QualityPinus = ({ items, pdfUrl }: QualityPinusProps) => {
                   color="green.900"
                   fontWeight={'extrabold'}
                 >
-                  Usos e Aplicações
+                  {componentsLabels.t('product.usesAndApplications')}
                 </Text>
                 {items && items.length > 0 && (
                   <Text variant={'productBody' as any}>
