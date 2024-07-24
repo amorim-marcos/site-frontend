@@ -13,6 +13,8 @@ import { ni18nConfig } from '../../ni18n.config'
 
 import AppCookieConsent from '@components/AppCookieConsent'
 
+import ErrorBoundaryProvider from 'services/errorBoundary'
+
 import '../styles/zoomout.css'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -71,40 +73,50 @@ function App({ Component, pageProps }: AppProps) {
     document.body.appendChild(script)
   }, [router])
 
+  const ErrorMessage = () => {
+    return (
+      <div>
+        <p>Sorry, this page is not available. Please go back</p>
+        <button onClick={() => router.back()}>Back</button>
+      </div>
+    )
+  }
+
   return (
     <ChakraProvider theme={theme}>
       <MyHead />
+      <ErrorBoundaryProvider fallback={<ErrorMessage />}>
+        <Script
+          crossOrigin="anonymous"
+          strategy="beforeInteractive"
+          src="https://code.jquery.com/jquery-3.6.0.min.js"
+        />
+        {/* <Script strategy="beforeInteractive" src="/static/replaceTrademark.js" /> */}
+        {/*RD station script*/}
+        <Script
+          strategy="lazyOnload"
+          src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/461ed3f4-597a-4986-8c6b-cd3c63f5455b-loader.js"
+        />
 
-      <Script
-        crossOrigin="anonymous"
-        strategy="beforeInteractive"
-        src="https://code.jquery.com/jquery-3.6.0.min.js"
-      />
-      {/* <Script strategy="beforeInteractive" src="/static/replaceTrademark.js" /> */}
-      {/*RD station script*/}
-      <Script
-        strategy="lazyOnload"
-        src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/461ed3f4-597a-4986-8c6b-cd3c63f5455b-loader.js"
-      />
-
-      {/* Google Analytics */}
-      <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-      />
-      <Script id="gtm-config" strategy="lazyOnload">
-        {`
+        {/* Google Analytics */}
+        <Script
+          strategy="lazyOnload"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+        />
+        <Script id="gtm-config" strategy="lazyOnload">
+          {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
         `}
-      </Script>
+        </Script>
 
-      <AppHeader />
-      <Component {...pageProps} />
-      <AppFooter />
-      <AppCookieConsent />
+        <AppHeader />
+        <Component {...pageProps} />
+        <AppFooter />
+        <AppCookieConsent />
+      </ErrorBoundaryProvider>
     </ChakraProvider>
   )
 }
