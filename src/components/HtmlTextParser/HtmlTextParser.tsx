@@ -1,4 +1,4 @@
-import DOMPurify from 'dompurify'
+import DOMPurify from 'isomorphic-dompurify'
 import parser from 'react-html-parser'
 export type HtmlTextParserProps = {
   children?: string
