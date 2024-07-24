@@ -118,11 +118,13 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           >
             <BannerCollections
               onClick={() =>
-                (window.location.href = `/${router.locale}/products/bp-berneck/catalog?collection=sentido`)
+                router.push(
+                  `/${router.locale}/products/bp-berneck/catalog?collection=horizontes`
+                )
               }
               title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
               titleColor="brown.300"
-              imgSrc="../img/sentido_banner.jpg"
+              imgSrc="../img/horizontes_banner.png"
               ArrowIconColor="#74675D"
               bgColor="rgb(228, 230, 222)"
             />
@@ -134,11 +136,13 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
           >
             <BannerCollections
               onClick={() =>
-                (window.location.href = `/${router.locale}/products/bp-berneck/catalog?collection=nomade`)
+                router.push(
+                  `/${router.locale}/products/bp-berneck/catalog?collection=sentido`
+                )
               }
               title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
               titleColor="green.700"
-              imgSrc="../img/banner_nomade.png"
+              imgSrc="../img/sentido_banner.png"
               ArrowIconColor="#0A6C3B"
               bgColor="brown.100"
             />
