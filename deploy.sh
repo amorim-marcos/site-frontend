@@ -1,14 +1,22 @@
 #!/bin/bash
-cd /home/admin/html/frontend
-# todo
-# get env dynamically
+
+APP_DIR="/home/admin/html/frontend"
+
+cd $APP_DIR
+
+# requires nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh"] && \. "$NVM_DIR/nvm.sh"
+
+nvm install 16
+nvm use 16
+
 echo $DEPLOYMENT_GROUP_NAME
 git pull origin $DEPLOYMENT_GROUP_NAME
 # git pull origin qas
 rm -r node_modules/
 rm -r .next/
-# requires nvm
-nvm use 16 &&
+
 yarn install &&
 yarn build &&
-pm2 restart frontend --interpreter=/home/admin/.nvm/versions/node/v16.20.2/bin/node
+pm2 restart frontend --interpreter=$(nvm which 16)
