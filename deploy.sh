@@ -4,12 +4,16 @@ APP_DIR="/home/admin/html/frontend"
 
 cd $APP_DIR
 
-# requires nvm
+node -v
+
+# installs nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh"] && \. "$NVM_DIR/nvm.sh"
-nvm -v
-# nvm install 16
-# nvm use 16
+nvm install 16
+nvm use 16
+node -v 
+
 
 echo $DEPLOYMENT_GROUP_NAME
 git pull origin $DEPLOYMENT_GROUP_NAME
@@ -17,12 +21,6 @@ git pull origin $DEPLOYMENT_GROUP_NAME
 rm -r node_modules/
 rm -r .next/
 
-nvm -v
-node -v
-
-nvm install 16 &&
-nvm use 16 &&
-node -v &&
 yarn install &&
 yarn build &&
 pm2 restart frontend --interpreter=$(nvm which 16)
