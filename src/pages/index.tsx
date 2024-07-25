@@ -21,6 +21,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/highlights`)
     highlights = await res.json()
+    console.log('highlights: ', highlights)
   } catch (e) {
     // res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts/latest`)
     latestPosts = []
