@@ -50,9 +50,9 @@ export const BannerCollections = (props: BannerCollectionsProps) => {
           justifyContent={'flex-end'}
           m={{
             base: '0% 8% 7% 0%',
-            sm: '0% 8% 7% 0%',
-            lg: '0% 5% 10% 0%',
-            xl: '0% 9% 5% 0%'
+            sm: '0% 8% 10% 0%',
+            lg: '0% 5% 15% 0%',
+            xl: '0% 5% 5% 0%'
           }}
         >
           <Text
