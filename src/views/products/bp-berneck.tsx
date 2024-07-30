@@ -124,7 +124,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               }
               title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
               titleColor="brown.300"
-              imgSrc="../img/horizontes_banner.png"
+              imgSrc="../img/horizontes_banner.jpg"
               ArrowIconColor="#74675D"
               bgColor="rgb(228, 230, 222)"
             />
@@ -141,9 +141,9 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
                 )
               }
               title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
-              titleColor="green.700"
-              imgSrc="../img/sentido_banner.png"
-              ArrowIconColor="#0A6C3B"
+              titleColor="brown.300"
+              imgSrc="../img/sentido_banner.jpg"
+              ArrowIconColor="#74675D"
               bgColor="brown.100"
             />
           </GridItem>
