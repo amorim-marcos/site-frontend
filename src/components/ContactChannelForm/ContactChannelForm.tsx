@@ -36,7 +36,7 @@ export const ContactChannelForm = ({
   }
   const [formData, setFormData] = useState({ ...intialFormData })
   const [status, setStatus] = useState<number | null>(null)
-  const [sendButtonEnabled, setSendButtonEnabled] = useState<Boolean>(true)
+  const [sendButtonEnabled, setSendButtonEnabled] = useState<boolean>(true)
 
   async function submitForm(
     formData: any,

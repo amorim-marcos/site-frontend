@@ -8,8 +8,8 @@ export type CustomLinkProps = {
 }
 export const CustomLink = ({ linkTo, children, target }: CustomLinkProps) => {
   return (
-    <Link href={linkTo ?? '#'}>
-      <a target={target ?? '_self'}>{children}</a>
+    <Link href={linkTo ?? '#'} target={target ?? '_self'}>
+      {children}
     </Link>
   )
 }

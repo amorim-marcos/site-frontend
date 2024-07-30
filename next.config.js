@@ -1,16 +1,15 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withPWA = require('next-pwa')
 const isProd = process.env.NODE_ENV === 'production'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  disable: !isProd
+})
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const securityHeaders = require('./config/securityHeaders')
 
 module.exports = withPWA({
   images: {
     domains: ['scontent.cdninstagram.com']
-  },
-  pwa: {
-    dest: 'public',
-    disable: !isProd
   },
   env: {
     GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,

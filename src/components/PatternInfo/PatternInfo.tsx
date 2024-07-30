@@ -28,82 +28,80 @@ export const PatternInfo = ({
 }: PatternInfoProps) => {
   return (
     <Link href={linkTo ?? ''}>
-      <a>
+      <Flex
+        data-testid="pattern-info-box"
+        align="center"
+        bg="green.800"
+        // bg="red.800"
+        cursor="pointer"
+        pos="relative"
+        zIndex="base"
+        onClick={onClick}
+        _hover={{
+          filter: 'brightness(1.2)'
+        }}
+        overflowY="hidden"
+        overflowX="hidden"
+        padding={{ base: '5%', sm: '5%', lg: '8%', xl: '0' }}
+        w={'100%'}
+        {...props}
+      >
+        <Box position={'absolute'} zIndex="base" left="-50px" top="-70px">
+          <Image src="/img/grafismo_banner_1.svg" />
+        </Box>
+
         <Flex
-          data-testid="pattern-info-box"
-          align="center"
-          bg="green.800"
-          // bg="red.800"
-          cursor="pointer"
-          pos="relative"
-          zIndex="base"
-          onClick={onClick}
-          _hover={{
-            filter: 'brightness(1.2)'
-          }}
-          overflowY="hidden"
-          overflowX="hidden"
-          padding={{ base: '5%', sm: '5%', lg: '8%', xl: '0' }}
-          w={'100%'}
-          {...props}
+          zIndex={10}
+          padding={{ base: '1%', sm: '1%', lg: '2%', xl: '5%' }}
+          // bg="gray"
+          flex="1"
+          justifyContent={'center'}
         >
-          <Box position={'absolute'} zIndex="base" left="-50px" top="-70px">
-            <Image src="/img/grafismo_banner_1.svg" />
-          </Box>
+          {icon}
+        </Flex>
 
+        <Flex
+          zIndex={10}
+          padding={{ base: '4%', sm: '1%', lg: '2%', xl: '1%' }}
+          // bg="blue"
+          flex="4"
+          direction={{
+            base: 'column',
+            sm: 'column',
+            lg: 'column',
+            xl: 'column'
+          }}
+        >
           <Flex
-            zIndex={10}
-            padding={{ base: '1%', sm: '1%', lg: '2%', xl: '5%' }}
-            // bg="gray"
+            // bg="pink"
             flex="1"
-            justifyContent={'center'}
           >
-            {icon}
+            <Text
+              as="h4"
+              variant={'h4' as any}
+              fontWeight="medium"
+              letterSpacing="-0.45px"
+              color="green.600"
+            >
+              {title}
+            </Text>
           </Flex>
-
           <Flex
-            zIndex={10}
-            padding={{ base: '4%', sm: '1%', lg: '2%', xl: '1%' }}
-            // bg="blue"
-            flex="4"
-            direction={{
-              base: 'column',
-              sm: 'column',
-              lg: 'column',
-              xl: 'column'
-            }}
+            // bg="white"
+            flex="1"
           >
-            <Flex
-              // bg="pink"
-              flex="1"
+            <Text
+              as="h2"
+              variant={'h2' as any}
+              fontWeight="extrabold"
+              letterSpacing="-0.68px"
+              color="white"
             >
-              <Text
-                as="h4"
-                variant={'h4' as any}
-                fontWeight="medium"
-                letterSpacing="-0.45px"
-                color="green.600"
-              >
-                {title}
-              </Text>
-            </Flex>
-            <Flex
-              // bg="white"
-              flex="1"
-            >
-              <Text
-                as="h2"
-                variant={'h2' as any}
-                fontWeight="extrabold"
-                letterSpacing="-0.68px"
-                color="white"
-              >
-                {description}
-              </Text>
-            </Flex>
+              {description}
+            </Text>
           </Flex>
         </Flex>
-      </a>
+      </Flex>
     </Link>
   )
 }
