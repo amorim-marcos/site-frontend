@@ -3,127 +3,128 @@ import CustomLink from '@components/CustomLink'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 import { useRouter } from 'next/router'
 type SubItem = {
-  title?: string;
-  href?: string;
-  arrow?: boolean;
-};
+  title?: string
+  href?: string
+  arrow?: boolean
+}
 
 type HeaderMenuSubItemProps = {
-  title?: string;
-  href?: string;
-  subItems?: SubItem[];
-  onClick?: () => void;
-};
+  title?: string
+  href?: string
+  subItems?: SubItem[]
+  onClick?: () => void
+}
 
 export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
   title = 'Default Title',
   href = '/',
   subItems,
-  onClick,
+  onClick
 }) => {
-  const router = useRouter();
+  const router = useRouter()
 
   interface HeaderLimits {
     [key: string]: {
-      [key: string]: number;
-    };
+      [key: string]: number
+    }
   }
-  
-  const handleNavigation = (event: React.MouseEvent<HTMLDivElement>, link: string): void => {
-    event.preventDefault();
 
-    router.push(link);
+  const handleNavigation = (
+    event: React.MouseEvent<HTMLDivElement>,
+    link: string
+  ): void => {
+    event.preventDefault()
+
+    router.push(link)
 
     if (link.includes('#')) {
-        const elementId = link.split('#')[1];
-        const element = document.getElementById(elementId);
+      const elementId = link.split('#')[1]
+      const element = document.getElementById(elementId)
 
-        if (element) {
-            const headerLimits: HeaderLimits = {
-                default: {
-                    '1536': 51,
-                    '1280': 40,
-                    '1024': 30,
-                    '768': 25,
-                    'default': 25,
-                },
-                'where-we-are': {
-                    '768': 50,
-                },
-                'trajectory': {
-                    '768': 30,
-                },
-                'environment': {
-                    '768': 50,
-                },
-                'our-people': {
-                    '768': 40,
-                },
-                'our-values': {
-                    '768': 40,
-                },
-                'production': {
-                    '768': 40,
-                },
-                'management': {
-                    '768': 40,
-                },
-                'supplier': {
-                    '768': 49,
-                },
-            };
-
-            let headerLimit = headerLimits.default.default;
-
-            const limitsForCurrentWidth = Object.keys(headerLimits.default)
-                .reverse()
-                .find((width) => window.innerWidth < Number(width));
-
-            if (limitsForCurrentWidth) {
-                headerLimit = headerLimits.default[limitsForCurrentWidth];
-            }
-
-            if (limitsForCurrentWidth && headerLimits[elementId] && headerLimits[elementId][limitsForCurrentWidth]) {
-                headerLimit = headerLimits[elementId][limitsForCurrentWidth];
-            }
-
-            let additionalOffset = 0;
-            
-            if (elementId === "where-we-are") {
-                additionalOffset = 10;
-            } else if (elementId === "environment") {
-                additionalOffset = 10;  // Replace X with the offset value you want for "environment"
-            } else if (elementId === "our-people") {
-                additionalOffset = 10;  // Replace Y with the offset value you want for "our-people"
-            }
-            else if (elementId === "our-values") {
-              additionalOffset = 10;
-            }
-            else if (elementId === "production") {
-              additionalOffset = 10;
-            }
-            else if (elementId === "supplier") {
-              additionalOffset = 10;
-            }
-            else if (elementId === "management") {
-              additionalOffset = 10;
-            }
-
-            window.scrollTo({
-                top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit - additionalOffset,
-                behavior: 'smooth',
-            });
+      if (element) {
+        const headerLimits: HeaderLimits = {
+          default: {
+            '1536': 51,
+            '1280': 40,
+            '1024': 30,
+            '768': 25,
+            default: 25
+          },
+          'where-we-are': {
+            '768': 50
+          },
+          trajectory: {
+            '768': 30
+          },
+          environment: {
+            '768': 50
+          },
+          'our-people': {
+            '768': 40
+          },
+          'our-values': {
+            '768': 40
+          },
+          production: {
+            '768': 40
+          },
+          management: {
+            '768': 40
+          },
+          supplier: {
+            '768': 49
+          }
         }
-    }
-};
 
-  
-  
-  
-  
+        let headerLimit = headerLimits.default.default
+
+        const limitsForCurrentWidth = Object.keys(headerLimits.default)
+          .reverse()
+          .find((width) => window.innerWidth < Number(width))
+
+        if (limitsForCurrentWidth) {
+          headerLimit = headerLimits.default[limitsForCurrentWidth]
+        }
+
+        if (
+          limitsForCurrentWidth &&
+          headerLimits[elementId] &&
+          headerLimits[elementId][limitsForCurrentWidth]
+        ) {
+          headerLimit = headerLimits[elementId][limitsForCurrentWidth]
+        }
+
+        let additionalOffset = 0
+
+        if (elementId === 'where-we-are') {
+          additionalOffset = 10
+        } else if (elementId === 'environment') {
+          additionalOffset = 10 // Replace X with the offset value you want for "environment"
+        } else if (elementId === 'our-people') {
+          additionalOffset = 10 // Replace Y with the offset value you want for "our-people"
+        } else if (elementId === 'our-values') {
+          additionalOffset = 10
+        } else if (elementId === 'production') {
+          additionalOffset = 10
+        } else if (elementId === 'supplier') {
+          additionalOffset = 10
+        } else if (elementId === 'management') {
+          additionalOffset = 10
+        }
+
+        window.scrollTo({
+          top:
+            element.getBoundingClientRect().top +
+            window.pageYOffset -
+            headerLimit -
+            additionalOffset,
+          behavior: 'smooth'
+        })
+      }
+    }
+  }
 
   return (
-
     <Flex onClick={onClick} flexDir="column">
       <CustomLink linkTo={href}>
         <Flex
@@ -168,7 +169,7 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
       <Box>
         {subItems?.map((i, j) => {
           return (
-            <CustomLink linkTo={i.href}>
+            <CustomLink key={j} linkTo={i.href}>
               <Flex
                 key={j}
                 onClick={(event) => handleNavigation(event, i.href || '/')}
@@ -222,5 +223,5 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
         })}
       </Box>
     </Flex>
-  );
-};
+  )
+}

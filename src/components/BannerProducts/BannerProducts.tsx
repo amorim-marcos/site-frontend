@@ -35,125 +35,123 @@ export const BannerProducts = ({
   const [mouseEnter, setMouseEnter] = useState(false)
   return (
     <Link href={linkTo ?? ''}>
-      <a>
-        <Flex
-          onMouseEnter={() => setMouseEnter(true)}
-          onMouseLeave={() => setMouseEnter(false)}
-          data-testid="pattern-info-box-photo"
-          bg={bgColor}
-          cursor="pointer"
-          pos="relative"
+      <Flex
+        onMouseEnter={() => setMouseEnter(true)}
+        onMouseLeave={() => setMouseEnter(false)}
+        data-testid="pattern-info-box-photo"
+        bg={bgColor}
+        cursor="pointer"
+        pos="relative"
+        zIndex="base"
+        _hover={{
+          filter: 'brightness(90%)'
+        }}
+        overflowY="hidden"
+        overflowX="hidden"
+        borderRadius="33px"
+        h={'100%'}
+        w={'100%'}
+        alignItems={'flex-end'}
+        onClick={onClick}
+      >
+        <Box
+          // border="1px solid red"
+          position={'absolute'}
+          right={
+            sizeType === 'rectangle-horizontal'
+              ? mouseEnter
+                ? '-12%'
+                : '-15%'
+              : mouseEnter
+              ? { base: '-17%', '2xl': '-13%' }
+              : { base: '-20%', '2xl': '-20%' }
+          }
+          top={
+            sizeType === 'rectangle-horizontal'
+              ? mouseEnter
+                ? '-14%'
+                : '-17%'
+              : mouseEnter
+              ? '-1%'
+              : '-3%'
+          }
+          transition={'0.5s'}
           zIndex="base"
-          _hover={{
-            filter: 'brightness(90%)'
-          }}
-          overflowY="hidden"
-          overflowX="hidden"
-          borderRadius="33px"
-          h={'100%'}
-          w={'100%'}
-          alignItems={'flex-end'}
-          onClick={onClick}
+          h={sizeType === 'square' ? '80%' : '130%'}
+          w={
+            sizeType === 'square'
+              ? { base: '90%', lg: '95%' }
+              : { base: '63%', lg: '68%' }
+          }
+          // background={`url(${srcImg})`}
+          // backgroundRepeat={'no-repeat'}
+          // backgroundPosition={'center left'}
+          // backgroundSize={'auto 100%'}
         >
-          <Box
-            // border="1px solid red"
-            position={'absolute'}
-            right={
-              sizeType === 'rectangle-horizontal'
-                ? mouseEnter
-                  ? '-12%'
-                  : '-15%'
-                : mouseEnter
-                ? { base: '-17%', '2xl': '-13%' }
-                : { base: '-20%', '2xl': '-20%' }
-            }
-            top={
-              sizeType === 'rectangle-horizontal'
-                ? mouseEnter
-                  ? '-14%'
-                  : '-17%'
-                : mouseEnter
-                ? '-1%'
-                : '-3%'
-            }
-            transition={'0.5s'}
-            zIndex="base"
-            h={sizeType === 'square' ? '80%' : '130%'}
-            w={
-              sizeType === 'square'
-                ? { base: '90%', lg: '95%' }
-                : { base: '63%', lg: '68%' }
-            }
-            // background={`url(${srcImg})`}
-            // backgroundRepeat={'no-repeat'}
-            // backgroundPosition={'center left'}
-            // backgroundSize={'auto 100%'}
-          >
-            <Image
-              src={srcImg}
-              objectFit="cover"
-              objectPosition={'left bottom'}
-              width={'100%'}
-              height="100%"
-            />
-          </Box>
+          <Image
+            src={srcImg}
+            objectFit="cover"
+            objectPosition={'left bottom'}
+            width={'100%'}
+            height="100%"
+          />
+        </Box>
 
+        <Flex
+          zIndex={10}
+          mr={bannerSize}
+          // bg="black"
+          flex="1"
+          mb={{ base: '6%', sm: '25px', lg: '25px', xl: '40px' }}
+          ml={{ base: '6%', sm: '25px', lg: '25px', xl: '40px' }}
+          direction={{ base: 'row', sm: 'row', lg: 'row', xl: 'row' }}
+        >
           <Flex
-            zIndex={10}
-            mr={bannerSize}
-            // bg="black"
+            // bg="yellow"
             flex="1"
-            mb={{ base: '6%', sm: '25px', lg: '25px', xl: '40px' }}
-            ml={{ base: '6%', sm: '25px', lg: '25px', xl: '40px' }}
-            direction={{ base: 'row', sm: 'row', lg: 'row', xl: 'row' }}
+            alignItems={'flex-start'}
+            direction={{
+              base: 'column',
+              sm: 'column',
+              lg: 'column',
+              xl: 'column'
+            }}
           >
             <Flex
-              // bg="yellow"
+              // bg="pink"
               flex="1"
-              alignItems={'flex-start'}
-              direction={{
-                base: 'column',
-                sm: 'column',
-                lg: 'column',
-                xl: 'column'
-              }}
+              w={sizeType === 'rectangle-horizontal' ? '50%' : '100%'}
             >
-              <Flex
-                // bg="pink"
-                flex="1"
-                w={sizeType === 'rectangle-horizontal' ? '50%' : '100%'}
+              <Text
+                as="h1"
+                variant={'h1' as any}
+                color={titleColor}
+                lineHeight={{
+                  base: '35px',
+                  sm: '35px',
+                  lg: '40px',
+                  xl: '40px'
+                }}
               >
-                <Text
-                  as="h1"
-                  variant={'h1' as any}
-                  color={titleColor}
-                  lineHeight={{
-                    base: '35px',
-                    sm: '35px',
-                    lg: '40px',
-                    xl: '40px'
-                  }}
-                >
-                  {title}
-                </Text>
-              </Flex>
-              <Flex
-                // bg="white"
-                flex="1"
+                {title}
+              </Text>
+            </Flex>
+            <Flex
+              // bg="white"
+              flex="1"
+            >
+              <Text
+                as="h4"
+                variant={'h4' as any}
+                color={subtitleColor}
+                fontWeight={'medium'}
               >
-                <Text
-                  as="h4"
-                  variant={'h4' as any}
-                  color={subtitleColor}
-                  fontWeight={'medium'}
-                >
-                  {subtitle}
-                </Text>
-              </Flex>
+                {subtitle}
+              </Text>
             </Flex>
           </Flex>
         </Flex>
-      </a>
+      </Flex>
     </Link>
   )
 }
