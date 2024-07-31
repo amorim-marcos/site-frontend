@@ -8,20 +8,7 @@ import { smartString } from 'utils/utils'
 import CustomLink from '@components/CustomLink'
 import { HomeBannerItem } from 'types/data/HomeBanner'
 
-// export type HomeBannerProps = {
-//   items: {
-//     imageUrl: string
-//     category: {
-//       name: string
-//       id: number
-//     }
-//     title: string
-//     url_code: string
-//     color: string
-//   }[]
-// }
-
-type HomeBannerProps = {
+export type HomeBannerProps = {
   items: HomeBannerItem[]
 }
 
