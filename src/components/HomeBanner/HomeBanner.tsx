@@ -6,20 +6,26 @@ import ArrowIcon from '@components/Icons/ArrowIcon'
 
 import { smartString } from 'utils/utils'
 import CustomLink from '@components/CustomLink'
+import { HomeBannerItem } from 'types/data/HomeBanner'
 
-export type HomeBannerProps = {
-  items: {
-    imageUrl: string
-    category: {
-      name: string
-      id: number
-    }
-    title: string
-    url_code: string
-    color: string
-  }[]
+// export type HomeBannerProps = {
+//   items: {
+//     imageUrl: string
+//     category: {
+//       name: string
+//       id: number
+//     }
+//     title: string
+//     url_code: string
+//     color: string
+//   }[]
+// }
+
+type HomeBannerProps = {
+  items: HomeBannerItem[]
 }
 
+// export const HomeBanner = ({ items }: HomeBannerProps) => {
 export const HomeBanner = ({ items }: HomeBannerProps) => {
   const [opacity, setOpacity] = useState(true)
   const [currentItem, setCurrentItem] = useState(0)
@@ -39,6 +45,10 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
   }
 
   useInterval(next, 5000)
+
+  const linkToUrl = items[currentItem].isPost
+    ? `bnk-channel/${items[currentItem]?.category.id}/${items[currentItem].url_code}`
+    : items[currentItem]?.linkTo
 
   return items.length <= 0 ? (
     <h1>No items passed</h1>
@@ -70,9 +80,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
             onClick={(i) => setCurrentItem(i)}
           />
         </Flex>
-        <CustomLink
-          linkTo={`bnk-channel/${items[currentItem].category.id}/${items[currentItem].url_code}`}
-        >
+        <CustomLink linkTo={linkToUrl}>
           <Image
             src="/assets/imgs/grafismos_home_header/grafismo_esquerda_home.svg"
             position={'absolute'}
@@ -86,9 +94,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
           />
         </CustomLink>
 
-        <CustomLink
-          linkTo={`bnk-channel/${items[currentItem].category.id}/${items[currentItem].url_code}`}
-        >
+        <CustomLink linkTo={linkToUrl}>
           <Image
             src="/assets/imgs/grafismos_home_header/grafismo_direita_home_parte1.svg"
             position={'absolute'}
@@ -103,9 +109,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
           />
         </CustomLink>
 
-        <CustomLink
-          linkTo={`bnk-channel/${items[currentItem].category.id}/${items[currentItem].url_code}`}
-        >
+        <CustomLink linkTo={linkToUrl}>
           <Box
             zIndex={'base'}
             position={{ base: 'relative', md: 'absolute' }}
@@ -166,9 +170,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                 stroke={items[currentItem].color}
               />
             </Box>
-            <CustomLink
-              linkTo={`bnk-channel/${items[currentItem].category.id}/${items[currentItem].url_code}`}
-            >
+            <CustomLink linkTo={linkToUrl}>
               <Flex
                 // onClick={navigateToThePost}
                 marginLeft={{
@@ -201,7 +203,8 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                     xl: '2px'
                   }}
                 >
-                  {items[currentItem].category.name}
+                  {/* {items[currentItem].category.name} */}
+                  {items[currentItem].subTitle}
                 </Text>
                 <Box
                   opacity={opacity ? '1' : '0'}
@@ -267,8 +270,8 @@ type IndicatorProps = {
   items: {
     imageUrl: string
     category: {
-      name: string
-      id: number
+      name?: string
+      id?: number
     }
     title: string
   }[]
@@ -280,7 +283,7 @@ const Indicator = ({ items, currentItem, onClick }: IndicatorProps) => {
   return (
     <Flex marginLeft={{ md: '4%' }}>
       {items &&
-        items.map((item, i) => {
+        items.map((_item, i) => {
           return i === currentItem ? (
             <Box
               key={i}
