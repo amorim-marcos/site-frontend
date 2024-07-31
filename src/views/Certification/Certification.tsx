@@ -16,7 +16,6 @@ import PatternCertification from '@components/PatternCertification'
 import { CheckIcon } from '@chakra-ui/icons'
 import parser from 'react-html-parser'
 import { useTranslation } from 'react-i18next'
-import { HtmlContext } from 'next/dist/shared/lib/utils'
 import HtmlTextParser from '@components/HtmlTextParser'
 
 export type CertificationViewProps = {
