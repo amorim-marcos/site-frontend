@@ -1,5 +1,3 @@
-import { useRouter } from 'next/router'
-
 import { Box } from '@chakra-ui/react'
 
 import HomeBanner from '@components/HomeBanner'
@@ -11,6 +9,8 @@ import { SectionBanners } from './sections/SectionBanners'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
 import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
+import { HomeBannerItem } from 'types/data/HomeBanner'
+import { TreatedHighlight } from 'pages'
 
 type PostProps = {
   id: number
@@ -34,15 +34,13 @@ type PostProps = {
 }
 
 export type HomeProps = {
-  highlights: PostProps[]
+  highlights: TreatedHighlight[]
   latest: PostProps[]
   youtubeLink?: string
   lastYoutubeVideo?: string
 }
 
 export default function Home(props: HomeProps) {
-  const router = useRouter()
-
   const productsView = useTranslation('productsView')
   const homeView = useTranslation('homeView')
   const [lastYoutubeVideo, setLastYoutubeVideo] = useState<string>()
@@ -69,34 +67,40 @@ export default function Home(props: HomeProps) {
     }
 
     fetchYoutubeData()
-
   })
+
+  const getFormattedBannerItems = (highlights: TreatedHighlight[]) => {
+    let formatted: HomeBannerItem[] = []
+
+    formatted = highlights.map((item) => {
+      return {
+        imageUrl: item.cover.url,
+        category: {
+          id: item?.category?.id,
+          name: item?.category?.name,
+          color: item?.category?.color
+        },
+        title: item.title,
+        url_code: item?.url_code,
+        color: item?.category?.color || '#e0cba5',
+        subTitle: item.isPost ? item?.category?.name : item?.subTitle,
+        linkTo: item?.link,
+        isPost: item?.isPost,
+        created_at: item?.created_at,
+        updated_at: item?.updated_at
+      }
+    })
+
+    return formatted
+  }
 
   return (
     <Box bg="white.100">
       {/* INICIO BANNER CAROUSEL */}
       <ConditionalLanguageRender>
-
-        
-      {props.highlights && props.highlights.length > 0 && (
-        <HomeBanner
-          items={props.highlights
-            .sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
-            .map((item) => {
-              console.log ( ' carousel data', item )
-              return {
-                imageUrl: item.cover.url,
-                category: {
-                  id: item.category.id,
-                  name: item.category.name
-                },
-                title: item.title,
-                url_code: item.url_code,
-                color: item.category.color
-              }
-            })}
-        />
-      )}
+        {props.highlights && props.highlights.length > 0 && (
+          <HomeBanner items={getFormattedBannerItems(props.highlights)} />
+        )}
       </ConditionalLanguageRender>
       {/* FIM BANNER CAROUSEL */}
 
