@@ -1,4 +1,5 @@
 import { Flex, Box, Text, Image, Link } from '@chakra-ui/react'
+import CustomLink from '@components/CustomLink'
 import HtmlTextParser from '@components/HtmlTextParser'
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
@@ -6,13 +7,19 @@ import { useTranslation } from 'react-i18next'
 export type SectionPackBpDownloadsProps = {
   title: string
   text: string
+  // todo
+  // remove this property in the future
   download_url: string | null
+  download_url_jpgs: string | null
+  download_url_skps: string | null
 }
 
 export const SectionPackBpDownloads = ({
   title,
   text,
-  download_url
+  download_url,
+  download_url_jpgs,
+  download_url_skps
 }: SectionPackBpDownloadsProps) => {
   const { width } = useMobile(568)
 
@@ -82,27 +89,76 @@ export const SectionPackBpDownloads = ({
           >
             <HtmlTextParser>{text}</HtmlTextParser>
           </Text>
-          <Link
+          {/* wrapper */}
+          <Flex
             marginTop="6%"
-            bg="green.600"
-            color="white.100"
-            w="60%"
-            height={{ base: '50px', md: '20%' }}
-            href={download_url ? download_url : '#'}
-            target="_blank"
-            download
-            fontWeight="bold"
-            borderRadius="18px"
-            transition="all .2s ease-in-out"
-            _hover={{ outline: 'none', bg: 'green.700' }}
-            _focus={{ outline: 'none' }}
+            flexDirection="column"
+            w="100%"
+            alignItems="center"
+            justifyContent="center"
+            rowGap="10px"
           >
-            <Flex h="100%" w="100%" alignItems="center" justifyContent="center">
-              <Text color="white.100" fontWeight="bold" variant="body">
-                {componentsLabels.t('sectionPackBpDownloads.patternPacks')}
-              </Text>
+            <Flex
+              w="60%"
+              border={'1px'}
+              borderColor="green.600"
+              fontWeight="bold"
+              borderRadius="18px"
+              color="green.600"
+              transition="all .2s ease-in-out"
+              _hover={{ outline: 'none', bg: 'green.700', color: 'white.100' }}
+              _focus={{ outline: 'none' }}
+            >
+              <Flex
+                h="100%"
+                w="100%"
+                paddingY="10px"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Text fontWeight="bold" variant="body">
+                  <CustomLink
+                    linkTo={download_url_jpgs ? download_url_jpgs : '#'}
+                    download
+                  >
+                    {componentsLabels.t(
+                      'sectionPackBpDownloads.patternPacksJpgs'
+                    )}
+                  </CustomLink>
+                </Text>
+              </Flex>
             </Flex>
-          </Link>
+            <Flex
+              w="60%"
+              border={'1px'}
+              borderColor="green.600"
+              fontWeight="bold"
+              borderRadius="18px"
+              color="green.600"
+              transition="all .2s ease-in-out"
+              _hover={{ outline: 'none', bg: 'green.700', color: 'white.100' }}
+              _focus={{ outline: 'none' }}
+            >
+              <Flex
+                h="100%"
+                w="100%"
+                paddingY="10px"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Text fontWeight="bold" variant="body">
+                  <CustomLink
+                    linkTo={download_url_skps ? download_url_skps : '#'}
+                    download
+                  >
+                    {componentsLabels.t(
+                      'sectionPackBpDownloads.patternPacksSkps'
+                    )}
+                  </CustomLink>
+                </Text>
+              </Flex>
+            </Flex>
+          </Flex>
         </Flex>
 
         <Box w={{ base: '40%', md: '30%', lg: '25%' }}></Box>
