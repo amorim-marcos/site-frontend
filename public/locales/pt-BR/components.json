@@ -62,7 +62,9 @@
         "title": "Qualidade BERNECK® PINUS"
     },
     "sectionPackBpDownloads": {
-        "patternPacks": "Pack de Padrões"
+        "patternPacks": "Pack de Padrões",
+        "patternPacksJpgs": "Padrões JPGs", 
+        "patternPacksSkps": "Padrões SKPs"
     },
     "whereBuyTable": {
         "country": "PAÍS",
