@@ -51,8 +51,7 @@ function App({ Component, pageProps }: AppProps) {
     if (
       router &&
       router.locale &&
-      (router.pathname.includes('bnk-channel') ||
-        router.pathname.includes('where-to-buy')) &&
+      router.pathname.includes('bnk-channel') &&
       router.locale !== 'pt-BR'
     ) {
       console.log('AAAAAAA - CANAL- BNK')
