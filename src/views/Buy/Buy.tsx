@@ -8,9 +8,15 @@ import useMobile from 'hooks/useMobile'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { colors } from '../../theme/colors'
+import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
+import { useRouter } from 'next/router'
 
 export const Buy = ({ representatives_list = '/where-to-buy' }) => {
-  const [locationBrasil, setLocationBrasil] = useState(true)
+  const router = useRouter()
+  const { locale } = router
+  const isBrazil = locale === 'pt-BR'
+
+  const [locationBrasil, setLocationBrasil] = useState(isBrazil)
   const { isMobile } = useMobile(568)
   const buyViewLabels = useTranslation('buyView')
   return (
@@ -62,125 +68,133 @@ export const Buy = ({ representatives_list = '/where-to-buy' }) => {
         >
           {buyViewLabels.t('headerBanner.description')}
         </Text>
-        <Text
-          marginTop="4%"
-          w={{ base: '100%', md: '50%' }}
-          variant={'body' as any}
-          color="brown.350"
-          zIndex={'docked'}
-        >
-          {buyViewLabels.t('headerBanner.industrialApplications')}{' '}
-          <Link
-            onClick={() => window.open(representatives_list, '_blank')}
-            textDecoration={'underline #59993F'}
-            color="#59993F"
+        <ConditionalLanguageRender>
+          <Text
+            marginTop="4%"
+            w={{ base: '100%', md: '50%' }}
+            variant={'body' as any}
+            color="brown.350"
+            zIndex={'docked'}
           >
-            {buyViewLabels.t('headerBanner.ourRepresentatives')}
-          </Link>
-        </Text>
+            {buyViewLabels.t('headerBanner.industrialApplications')}{' '}
+            <Link
+              onClick={() => window.open(representatives_list, '_blank')}
+              textDecoration={'underline #59993F'}
+              color="#59993F"
+            >
+              {buyViewLabels.t('headerBanner.ourRepresentatives')}
+            </Link>
+          </Text>
+        </ConditionalLanguageRender>
       </Flex>
-
-      <Flex padding="25px 0" w="100%" bg="green.400" justifyContent={'center'}>
+      <ConditionalLanguageRender>
         <Flex
-          border="1px solid"
-          borderColor={'green.600'}
-          borderRadius={'15px'}
-          overflow="hidden"
-          w={{ base: '95%', sm: 'auto' }}
+          padding="25px 0"
+          w="100%"
+          bg="green.400"
+          justifyContent={'center'}
         >
           <Flex
-            alignItems={'center'}
-            justifyContent={'center'}
-            bg={locationBrasil ? 'green.600' : 'none'}
-            width={{
-              base: '50%',
-              sm: '92px',
-              md: '122px',
-              lg: '153px',
-              xl: '184px',
-              '2xl': '230px'
-            }}
-            height={{
-              base: '50px',
-              sm: '24px',
-              md: '32px',
-              lg: '40px',
-              xl: '48px',
-              '2xl': '60px'
-            }}
-            cursor={'pointer'}
-            _hover={{ opacity: '0.8' }}
-            onClick={() => setLocationBrasil(true)}
+            border="1px solid"
+            borderColor={'green.600'}
+            borderRadius={'15px'}
+            overflow="hidden"
+            w={{ base: '95%', sm: 'auto' }}
           >
-            <BrasilIcon
+            <Flex
+              alignItems={'center'}
+              justifyContent={'center'}
+              bg={locationBrasil ? 'green.600' : 'none'}
               width={{
-                base: '30px',
-                sm: '16px',
-                md: '21px',
-                lg: '26px',
-                xl: '32px',
-                '2xl': '40px'
+                base: '50%',
+                sm: '92px',
+                md: '122px',
+                lg: '153px',
+                xl: '184px',
+                '2xl': '230px'
               }}
-              stroke={locationBrasil ? 'white.100' : 'gray.400'}
-            />
-
-            <Text
-              whiteSpace={'nowrap'}
-              variant={'body' as any}
-              color={locationBrasil ? 'white.100' : 'gray.400'}
-              marginLeft={'5%'}
+              height={{
+                base: '50px',
+                sm: '24px',
+                md: '32px',
+                lg: '40px',
+                xl: '48px',
+                '2xl': '60px'
+              }}
+              cursor={'pointer'}
+              _hover={{ opacity: '0.8' }}
+              onClick={() => setLocationBrasil(true)}
             >
-              {buyViewLabels.t('locationSelector.inBrazil')}
-            </Text>
-          </Flex>
+              <BrasilIcon
+                width={{
+                  base: '30px',
+                  sm: '16px',
+                  md: '21px',
+                  lg: '26px',
+                  xl: '32px',
+                  '2xl': '40px'
+                }}
+                stroke={locationBrasil ? 'white.100' : 'gray.400'}
+              />
 
-          <Flex
-            width={{
-              base: '50%',
-              sm: '92px',
-              md: '122px',
-              lg: '153px',
-              xl: '184px',
-              '2xl': '230px'
-            }}
-            height={{
-              base: '50px',
-              sm: '24px',
-              md: '32px',
-              lg: '40px',
-              xl: '48px',
-              '2xl': '60px'
-            }}
-            bg={locationBrasil ? 'none' : 'green.600'}
-            alignItems={'center'}
-            justifyContent={'center'}
-            cursor={'pointer'}
-            _hover={{ opacity: '0.6' }}
-            onClick={() => setLocationBrasil(false)}
-          >
-            <Text
-              whiteSpace={'nowrap'}
-              variant={'body' as any}
-              marginRight={'5%'}
-              color={locationBrasil ? 'gray.400' : 'white.100'}
-            >
-              {buyViewLabels.t('locationSelector.inTheWorld')}
-            </Text>
-            <EarthIcon
+              <Text
+                whiteSpace={'nowrap'}
+                variant={'body' as any}
+                color={locationBrasil ? 'white.100' : 'gray.400'}
+                marginLeft={'5%'}
+              >
+                {buyViewLabels.t('locationSelector.inBrazil')}
+              </Text>
+            </Flex>
+
+            <Flex
               width={{
-                base: '30px',
-                sm: '16px',
-                md: '21px',
-                lg: '26px',
-                xl: '32px',
-                '2xl': '40px'
+                base: '50%',
+                sm: '92px',
+                md: '122px',
+                lg: '153px',
+                xl: '184px',
+                '2xl': '230px'
               }}
-              stroke1={locationBrasil ? colors.green[600] : colors.white[100]}
-              stroke2={locationBrasil ? colors.gray[400] : colors.white[100]}
-            />
+              height={{
+                base: '50px',
+                sm: '24px',
+                md: '32px',
+                lg: '40px',
+                xl: '48px',
+                '2xl': '60px'
+              }}
+              bg={locationBrasil ? 'none' : 'green.600'}
+              alignItems={'center'}
+              justifyContent={'center'}
+              cursor={'pointer'}
+              _hover={{ opacity: '0.6' }}
+              onClick={() => setLocationBrasil(false)}
+            >
+              <Text
+                whiteSpace={'nowrap'}
+                variant={'body' as any}
+                marginRight={'5%'}
+                color={locationBrasil ? 'gray.400' : 'white.100'}
+              >
+                {buyViewLabels.t('locationSelector.inTheWorld')}
+              </Text>
+              <EarthIcon
+                width={{
+                  base: '30px',
+                  sm: '16px',
+                  md: '21px',
+                  lg: '26px',
+                  xl: '32px',
+                  '2xl': '40px'
+                }}
+                stroke1={locationBrasil ? colors.green[600] : colors.white[100]}
+                stroke2={locationBrasil ? colors.gray[400] : colors.white[100]}
+              />
+            </Flex>
           </Flex>
         </Flex>
-      </Flex>
+      </ConditionalLanguageRender>
       <Flex
         w={'100%'}
         overflowX="scroll"
