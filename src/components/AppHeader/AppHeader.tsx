@@ -215,17 +215,18 @@ export const AppHeader = () => {
                     }
                     title={header.t(menuNavigation.speakWithUs.key)}
                   />
+
                   <ConditionalLanguageRender>
                     <HeaderSecondaryItem
                       href={menuNavigation.workWithUs.href}
                       title={header.t(menuNavigation.workWithUs.key)}
                       isExternal={true}
                     />
-                    <HeaderSecondaryItem
-                      href={menuNavigation.whereBuy.href}
-                      title={header.t(menuNavigation.whereBuy.key)}
-                    />
                   </ConditionalLanguageRender>
+                  <HeaderSecondaryItem
+                    href={menuNavigation.whereBuy.href}
+                    title={header.t(menuNavigation.whereBuy.key)}
+                  />
                 </Flex>
               </Flex>
             </Box>
