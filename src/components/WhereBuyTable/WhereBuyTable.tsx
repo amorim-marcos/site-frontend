@@ -1,5 +1,6 @@
 import { Flex, Text, FlexProps, Image } from '@chakra-ui/react'
 import useMobile from 'hooks/useMobile'
+import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 
 const cellStyle: FlexProps = {
@@ -25,6 +26,12 @@ const cellBodyStyle: FlexProps = {
 export const WhereBuyTable = () => {
   const { isMobile } = useMobile(768)
   const componentsLabels = useTranslation('components')
+
+  const router = useRouter()
+  const { locale } = router
+
+  const formattedLocale = locale === 'pt-BR' ? 'pt-BR' : 'en'
+
   return (
     <Flex w="100%" maxWidth={'1536px'} flexDirection={'column'} marginX="auto">
       <Flex bg="green.400" w="100%">
@@ -80,7 +87,7 @@ export const WhereBuyTable = () => {
                 borderColor="gray.100"
               >
                 <Image marginY="10px" src={c.imgUrl} w="40px" />
-                <Text variant={'body' as any}>{c.name}</Text>
+                <Text variant={'body' as any}>{c.name[formattedLocale]}</Text>
               </Flex>
               <Flex w="90%" flexDirection={'column'}>
                 {c.rows &&
@@ -141,10 +148,15 @@ export const WhereBuyTable = () => {
   )
 }
 
+// todo
+// increase translation approach
 const data = {
   countries: [
     {
-      name: 'Bolívia',
+      name: {
+        'pt-BR': 'Bolívia',
+        en: 'Bolivia'
+      },
       imgUrl: '/img/onde-comprar/bolivia.svg',
       id: 0,
       rows: [
@@ -202,7 +214,7 @@ const data = {
       ]
     },
     {
-      name: 'Bonaire',
+      name: { 'pt-BR': 'Bonaire', en: 'Bonaire' },
       imgUrl: '/img/onde-comprar/bonaire.svg',
       id: 1,
       rows: [
@@ -216,7 +228,7 @@ const data = {
       ]
     },
     {
-      name: 'China',
+      name: { 'pt-BR': 'China', en: 'China' },
       imgUrl: '/img/onde-comprar/china.svg',
       id: 2,
       rows: [
@@ -290,7 +302,7 @@ const data = {
       ]
     },
     {
-      name: 'Colômbia',
+      name: { 'pt-BR': 'Colômbia', en: 'Colombia' },
       imgUrl: '/img/onde-comprar/colombia.svg',
       id: 3,
       rows: [
@@ -304,7 +316,7 @@ const data = {
       ]
     },
     {
-      name: 'E. Árabes Unidos',
+      name: { 'pt-BR': 'E. Árabes Unidos', en: 'U. Arab Emirates' },
       imgUrl: '/img/onde-comprar/emirados.svg',
       id: 4,
       rows: [
@@ -319,7 +331,7 @@ const data = {
       ]
     },
     {
-      name: 'EUA',
+      name: { 'pt-BR': 'EUA', en: 'USA' },
       imgUrl: '/img/onde-comprar/eua.svg',
       id: 5,
       rows: [
@@ -333,7 +345,7 @@ const data = {
       ]
     },
     {
-      name: 'Índia',
+      name: { 'pt-BR': 'Índia', en: 'India' },
       imgUrl: '/img/onde-comprar/india.svg',
       id: 6,
       rows: [
@@ -347,7 +359,7 @@ const data = {
       ]
     },
     {
-      name: 'Paraguai',
+      name: { 'pt-BR': 'Paraguai', en: 'Paraguay' },
       imgUrl: '/img/onde-comprar/paraguay.svg',
       id: 7,
       rows: [
@@ -403,7 +415,7 @@ const data = {
       ]
     },
     {
-      name: 'Panamá',
+      name: { 'pt-BR': 'Panamá', en: 'Panama' },
       imgUrl: '/img/onde-comprar/panama.svg',
       id: 8,
       rows: [
@@ -431,7 +443,7 @@ const data = {
       ]
     },
     {
-      name: 'Tailândia',
+      name: { 'pt-BR': 'Tailândia', en: 'Thailand' },
       imgUrl: '/img/onde-comprar/tailandia.svg',
       id: 9,
       rows: [
@@ -446,7 +458,7 @@ const data = {
       ]
     },
     {
-      name: 'Uruguai',
+      name: { 'pt-BR': 'Uruguai', en: 'Uruguay' },
       imgUrl: '/img/onde-comprar/uruguay.svg',
       id: 10,
       rows: [
@@ -481,7 +493,7 @@ const data = {
       ]
     },
     {
-      name: 'Vietnã',
+      name: { 'pt-BR': 'Vietnã', en: 'Vietnam' },
       imgUrl: '/img/onde-comprar/vietna.svg',
       id: 11,
       rows: [
