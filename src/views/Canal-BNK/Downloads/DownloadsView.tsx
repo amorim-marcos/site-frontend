@@ -44,6 +44,8 @@ type PageContent = {
   patterns_pack_title: string
   patterns_pack_text: string
   patterns_pack_download_url: string | null
+  patterns_pack_download_jpgs_url: string | null
+  patterns_pack_download_skps_url: string | null
   sections: DownloadItem[]
 }
 
@@ -58,6 +60,8 @@ export const DownloadsView = ({
     patterns_pack_title,
     patterns_pack_text,
     patterns_pack_download_url,
+    patterns_pack_download_jpgs_url,
+    patterns_pack_download_skps_url,
     sections
   }
 }: DownloadsViewProps) => {
@@ -226,6 +230,8 @@ useEffect(() => {
             title={patterns_pack_title}
             text={patterns_pack_text}
             download_url={patterns_pack_download_url}
+            download_url_jpgs={patterns_pack_download_jpgs_url}
+            download_url_skps={patterns_pack_download_skps_url}
           />
 
           {items.map((i, j) => {

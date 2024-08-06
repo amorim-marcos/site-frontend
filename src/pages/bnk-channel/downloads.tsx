@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next'
 import { loadTranslations } from 'ni18n'
 import { DownloadsView } from 'views/Canal-BNK/Downloads/DownloadsView'
 import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
+import { DownloadsPageResponse } from 'types/data/DownloadsPage'
 
 type DownloadsItemProps = {
   download_type: { type: string }
@@ -43,6 +44,8 @@ type PageContent = {
   patterns_pack_title: string
   patterns_pack_text: string
   patterns_pack_download_url: string | null
+  patterns_pack_download_jpgs_url: string | null
+  patterns_pack_download_skps_url: string | null
   sections: DownloadItem[]
 }
 
@@ -57,7 +60,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale
   let downloadTypes: { id: number; type: string }[]
   let downloadItems: DownloadsItemProps[]
-  let downloadPageContent
+  let downloadPageContent: DownloadsPageResponse
   let res
 
   try {
@@ -89,6 +92,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     downloadPageContent = await res.json()
   }
 
+  const uploadBaseUrl = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
+
   const page_content: PageContent = downloadPageContent.page_title
     ? {
         title: downloadPageContent.page_title,
@@ -96,8 +101,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
         patterns_pack_title: downloadPageContent.patterns_pack_title,
         patterns_pack_text: downloadPageContent.pattern_pack_text,
         patterns_pack_download_url: downloadPageContent.patterns_pack_file
-          ? `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}${downloadPageContent.patterns_pack_file.url}`
+          ? `${uploadBaseUrl}${downloadPageContent.patterns_pack_file.url}`
           : null,
+        patterns_pack_download_jpgs_url:
+          `${uploadBaseUrl}${downloadPageContent?.patterns_pack_file_jpgs.url}` ||
+          '',
+        patterns_pack_download_skps_url:
+          `${uploadBaseUrl}${downloadPageContent?.patterns_pack_file_skps.url}` ||
+          '',
         sections: []
       }
     : {
@@ -106,8 +117,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
         patterns_pack_title: '',
         patterns_pack_text: '',
         patterns_pack_download_url: downloadPageContent.patterns_pack_file
-          ? `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}${downloadPageContent.patterns_pack_file.url}`
+          ? `${uploadBaseUrl}${downloadPageContent.patterns_pack_file.url}`
           : null,
+        patterns_pack_download_jpgs_url:
+          `${uploadBaseUrl}${downloadPageContent?.patterns_pack_file_jpgs.url}` ||
+          '',
+        patterns_pack_download_skps_url:
+          `${uploadBaseUrl}${downloadPageContent?.patterns_pack_file_skps?.url}` ||
+          '',
         sections: []
       }
 
