@@ -5,8 +5,12 @@
     "privacy": "Privacy Policy.",
     "btn": "CONTINUE"
   },
-  "appError": { "returnToHome": "RETURN TO HOMEPAGE" },
-  "connect": { "title": "Connect yourself" },
+  "appError": {
+    "returnToHome": "RETURN TO HOMEPAGE"
+  },
+  "connect": {
+    "title": "Connect yourself"
+  },
   "contactChannelForm": {
     "name": "Name",
     "email": "E-mail",
@@ -21,7 +25,9 @@
     "messageAcknowledgment": "Thank you for your message",
     "errorMessage": "Something went wrong. Please try again."
   },
-  "pagebar": { "back": "Return" },
+  "pagebar": {
+    "back": "Return"
+  },
   "plusInfoTable": {
     "testBody": "TEST BODY",
     "amountOfWaterAbsorbed": "Amount of water absorbed",
@@ -29,7 +35,9 @@
     "thicknessIncrease": "Thickness Increase",
     "swelling": "Swelling"
   },
-  "postRelationalContent": { "title": "Related Content" },
+  "postRelationalContent": {
+    "title": "Related Content"
+  },
   "product": {
     "thickness": "Thickness",
     "length": "Length",
@@ -50,8 +58,14 @@
     "plusBerneck": "PLUS BERNECK",
     "knowMoreAbout": "Learn more about the"
   },
-  "qualitiesPinusBerneck": { "title": "Quality BERNECK® PINUS" },
-  "sectionPackBpDownloads": { "patternPacks": "Patterns Pack" },
+  "qualitiesPinusBerneck": {
+    "title": "Quality BERNECK® PINUS"
+  },
+  "sectionPackBpDownloads": {
+    "patternPacks": "Patterns Pack",
+    "patternPacksJpgs": "JPGs Patterns",
+    "patternPacksSkps": "SKPs Patterns"
+  },
   "whereBuyTable": {
     "country": "Country",
     "city": "City",
