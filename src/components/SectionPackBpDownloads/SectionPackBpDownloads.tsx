@@ -1,8 +1,10 @@
 import { Flex, Box, Text, Image, Link } from '@chakra-ui/react'
 import CustomLink from '@components/CustomLink'
 import HtmlTextParser from '@components/HtmlTextParser'
+import axios from 'axios'
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
+import { FileProps } from 'types/utils'
 
 export type SectionPackBpDownloadsProps = {
   title: string
@@ -12,6 +14,8 @@ export type SectionPackBpDownloadsProps = {
   download_url: string | null
   download_url_jpgs: string | null
   download_url_skps: string | null
+  patterns_pack_download_jpgs: FileProps | undefined
+  patterns_pack_download_skps: FileProps | undefined
 }
 
 export const SectionPackBpDownloads = ({
@@ -19,11 +23,52 @@ export const SectionPackBpDownloads = ({
   text,
   download_url,
   download_url_jpgs,
-  download_url_skps
+  download_url_skps,
+  patterns_pack_download_jpgs,
+  patterns_pack_download_skps
 }: SectionPackBpDownloadsProps) => {
   const { width } = useMobile(568)
 
   const componentsLabels = useTranslation('components')
+
+  const handleRenameAndDownload = async (
+    fileUrl: string | undefined,
+    fileName: string | undefined
+  ) => {
+    // todo
+    // remove in prd
+    console.log('file url: ', fileUrl)
+    console.log('file name? ', fileName)
+
+    try {
+      const fileType = 'application/zip'
+
+      const fileResponse = await axios.get(fileUrl!, {
+        headers: {
+          'Content-Type': `application/${fileType}`
+        },
+        responseType: 'blob'
+      })
+
+      const fileData = fileResponse.data
+
+      const blob = new Blob([fileData], {
+        type: `application/${fileType}`
+      })
+
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = fileName!
+
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      window.URL.revokeObjectURL(url)
+    } catch (error) {
+      console.log('error when trying to download file: ', error)
+    }
+  }
 
   return (
     <Flex
@@ -117,14 +162,19 @@ export const SectionPackBpDownloads = ({
                 justifyContent="center"
               >
                 <Text fontWeight="bold" variant="body">
-                  <CustomLink
-                    linkTo={download_url_jpgs ? download_url_jpgs : '#'}
-                    download
+                  <Flex
+                    cursor="pointer"
+                    onClick={() =>
+                      handleRenameAndDownload(
+                        download_url_jpgs!,
+                        patterns_pack_download_jpgs?.name
+                      )
+                    }
                   >
                     {componentsLabels.t(
                       'sectionPackBpDownloads.patternPacksJpgs'
                     )}
-                  </CustomLink>
+                  </Flex>
                 </Text>
               </Flex>
             </Flex>
@@ -147,14 +197,19 @@ export const SectionPackBpDownloads = ({
                 justifyContent="center"
               >
                 <Text fontWeight="bold" variant="body">
-                  <CustomLink
-                    linkTo={download_url_skps ? download_url_skps : '#'}
-                    download
+                  <Flex
+                    cursor="pointer"
+                    onClick={() =>
+                      handleRenameAndDownload(
+                        download_url_skps!,
+                        patterns_pack_download_skps?.name
+                      )
+                    }
                   >
                     {componentsLabels.t(
                       'sectionPackBpDownloads.patternPacksSkps'
                     )}
-                  </CustomLink>
+                  </Flex>
                 </Text>
               </Flex>
             </Flex>
