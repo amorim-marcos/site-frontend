@@ -3,6 +3,7 @@ import { loadTranslations } from 'ni18n'
 import { DownloadsView } from 'views/Canal-BNK/Downloads/DownloadsView'
 import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 import { DownloadsPageResponse } from 'types/data/DownloadsPage'
+import { FileProps } from 'types/utils'
 
 type DownloadsItemProps = {
   download_type: { type: string }
@@ -46,6 +47,8 @@ type PageContent = {
   patterns_pack_download_url: string | null
   patterns_pack_download_jpgs_url: string | null
   patterns_pack_download_skps_url: string | null
+  patterns_pack_download_jpgs: FileProps
+  patterns_pack_download_skps: FileProps
   sections: DownloadItem[]
 }
 
@@ -102,14 +105,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
         patterns_pack_text: downloadPageContent.pattern_pack_text,
         patterns_pack_download_url: downloadPageContent.patterns_pack_file
           ? `${uploadBaseUrl}${downloadPageContent.patterns_pack_file.url}`
-          : null,
+          : '',
         patterns_pack_download_jpgs_url:
-          `${uploadBaseUrl}${downloadPageContent?.patterns_pack_file_jpgs.url}` ||
+          `${uploadBaseUrl}${downloadPageContent?.patterns_pack_file_jpgs?.url}` ||
           '',
         patterns_pack_download_skps_url:
-          `${uploadBaseUrl}${downloadPageContent?.patterns_pack_file_skps.url}` ||
+          `${uploadBaseUrl}${downloadPageContent?.patterns_pack_file_skps?.url}` ||
           '',
-        sections: []
+        sections: [],
+        patterns_pack_download_jpgs:
+          downloadPageContent.patterns_pack_file_jpgs,
+        patterns_pack_download_skps: downloadPageContent.patterns_pack_file_skps
       }
     : {
         title: '',
@@ -120,12 +126,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
           ? `${uploadBaseUrl}${downloadPageContent.patterns_pack_file.url}`
           : null,
         patterns_pack_download_jpgs_url:
-          `${uploadBaseUrl}${downloadPageContent?.patterns_pack_file_jpgs.url}` ||
+          `${uploadBaseUrl}${downloadPageContent?.patterns_pack_file_jpgs?.url}` ||
           '',
         patterns_pack_download_skps_url:
           `${uploadBaseUrl}${downloadPageContent?.patterns_pack_file_skps?.url}` ||
           '',
-        sections: []
+        sections: [],
+        patterns_pack_download_jpgs:
+          downloadPageContent.patterns_pack_file_jpgs,
+        patterns_pack_download_skps: downloadPageContent.patterns_pack_file_skps
       }
 
   if (downloadTypes.length) {
