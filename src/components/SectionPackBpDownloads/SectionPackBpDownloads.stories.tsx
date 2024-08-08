@@ -12,7 +12,9 @@ export default {
     text: 'Text',
     download_url: '/',
     download_url_jpgs: '/',
-    download_url_skps: '/'
+    download_url_skps: '/',
+    patterns_pack_download_jpgs: undefined,
+    patterns_pack_download_skps: undefined
   } as SectionPackBpDownloadsProps
 } as Meta
 
@@ -23,5 +25,7 @@ export const Default: Story = (args) => (
     download_url={args.download_url}
     download_url_jpgs={args.download_url_jpgs}
     download_url_skps={args.download_url_skps}
+    patterns_pack_download_jpgs={args.patterns_pack_download_jpgs}
+    patterns_pack_download_skps={args.patterns_pack_download_skps}
   />
 )
