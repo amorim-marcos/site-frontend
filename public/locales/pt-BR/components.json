@@ -9,7 +9,7 @@
         "returnToHome": "RETORNAR PARA HOME"
     },
     "connect": {
-        "title":"Conecte-se"
+        "title": "Conecte-se"
     },
     "contactChannelForm": {
         "name": "Nome",
@@ -22,18 +22,18 @@
         "message": "Mensagem",
         "requireFields": "Campos obrigatórios",
         "send": "ENVIAR",
-        "messageAcknowledgment":"Agradecemos a sua mensagem",
+        "messageAcknowledgment": "Agradecemos a sua mensagem",
         "errorMessage": "Alguma coisa aconteceu de errado. Por favor, tente novamente."
     },
     "pagebar": {
         "back": "Voltar"
     },
     "plusInfoTable": {
-        "testBody":"CORPO DE PROVA",
-        "amountOfWaterAbsorbed":"Quantidade de água absorvida",
-        "absorption":"Absorção",
-        "thicknessIncrease":"Aumento de espessura",
-        "swelling":"Inchamento"
+        "testBody": "CORPO DE PROVA",
+        "amountOfWaterAbsorbed": "Quantidade de água absorvida",
+        "absorption": "Absorção",
+        "thicknessIncrease": "Aumento de espessura",
+        "swelling": "Inchamento"
     },
     "postRelationalContent": {
         "title": "Conteúdos Relacionados"
@@ -42,7 +42,7 @@
         "thickness": "Espessura",
         "length": "Comprimento",
         "width": "Largura",
-        "otherDimensionsText" : "*Outras dimensões sob consulta",
+        "otherDimensionsText": "*Outras dimensões sob consulta",
         "dimensionsMM": "Dimensões (mm)",
         "datasheet": "Ficha técnica",
         "whereBuy": "Onde comprar",
@@ -53,31 +53,36 @@
         "moreTechnologyQualityProtection": "Mais tecnologia, mais qualidade, mais proteção",
         "specifications": "Especificações",
         "qualityStandards": "Normas de qualidade",
-        "machinability":"Usinabilidade",
+        "machinability": "Usinabilidade",
         "supplyInformationTitleTeca": "Fornecemos a BERNECK® TECA serrada bruta e aplainada:",
         "plusBerneck": "PLUS BERNECK",
         "knowMoreAbout": "Saiba mais sobre o"
     },
     "qualitiesPinusBerneck": {
-        "title": "Qualidade BERNECK® PINUS"
+        "title": "Qualidade BERNECK® PINUS",
+        "bannerProps": {
+            "bannerTitle": "BERNECK® PINUS",
+            "bannerSubtitle": "Descritivo das Qualidades",
+            "bannerSeeMore": "Ver mais detalhes"
+        }
     },
     "sectionPackBpDownloads": {
         "patternPacks": "Pack de Padrões",
-        "patternPacksJpgs": "Padrões JPGs", 
+        "patternPacksJpgs": "Padrões JPGs",
         "patternPacksSkps": "Padrões SKPs"
     },
     "whereBuyTable": {
         "country": "PAÍS",
         "city": "CIDADE",
         "client": "CLIENTE",
-        "fantasyName":"NOME FANTASIA",
-        "address" : "ENDEREÇO",
+        "fantasyName": "NOME FANTASIA",
+        "address": "ENDEREÇO",
         "contact": "CONTATO"
     },
     "whereWeArePanel": {
         "structure": "ESTRUTURA",
-        "location" : "LOCALIZAÇÃO",
-        "phones" : "TELEFONES",
+        "location": "LOCALIZAÇÃO",
+        "phones": "TELEFONES",
         "airportsDistance": "DISTÂNCIA DO AEROPORTO"
     }
 }

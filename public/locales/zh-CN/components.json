@@ -5,8 +5,12 @@
     "privacy": "隐私政策",
     "btn": "继续"
   },
-  "appError": { "returnToHome": "返回主页" },
-  "connect": { "title": "连接您自己" },
+  "appError": {
+    "returnToHome": "返回主页"
+  },
+  "connect": {
+    "title": "连接您自己"
+  },
   "contactChannelForm": {
     "name": "姓名",
     "email": "电子邮件",
@@ -21,7 +25,9 @@
     "messageAcknowledgment": "感谢您的留言",
     "errorMessage": "出现问题。请重试。"
   },
-  "pagebar": { "back": "返回" },
+  "pagebar": {
+    "back": "返回"
+  },
   "plusInfoTable": {
     "testBody": "试验体",
     "amountOfWaterAbsorbed": "吸水量",
@@ -29,7 +35,9 @@
     "thicknessIncrease": "厚度增加",
     "swelling": "通货膨胀"
   },
-  "postRelationalContent": { "title": "相关内容" },
+  "postRelationalContent": {
+    "title": "相关内容"
+  },
   "product": {
     "thickness": "厚度",
     "length": "长度",
@@ -50,8 +58,17 @@
     "plusBerneck": "PLUS BERNECK",
     "knowMoreAbout": "了解更多有关"
   },
-  "qualitiesPinusBerneck": { "title": "优质BERNECK®松木" },
-  "sectionPackBpDownloads": { "patternPacks": "图案包" },
+  "qualitiesPinusBerneck": {
+    "title": "优质BERNECK®松木",
+    "bannerProps": {
+      "bannerTitle": "BERNECK®松木",
+      "bannerSubtitle": "品质描述",
+      "bannerSeeMore": "查看更多"
+    }
+  },
+  "sectionPackBpDownloads": {
+    "patternPacks": "图案包"
+  },
   "whereBuyTable": {
     "country": "国家",
     "city": "城市",
