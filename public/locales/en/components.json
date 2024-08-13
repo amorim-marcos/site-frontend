@@ -59,7 +59,12 @@
     "knowMoreAbout": "Learn more about the"
   },
   "qualitiesPinusBerneck": {
-    "title": "Quality BERNECK® PINUS"
+    "title": "Quality BERNECK® PINUS",
+    "bannerProps": {
+      "bannerTitle": "BERNECK® PINUS",
+      "bannerSubtitle": "Quality descriptions",
+      "bannerSeeMore": "See more"
+    }
   },
   "sectionPackBpDownloads": {
     "patternPacks": "Patterns Pack",
