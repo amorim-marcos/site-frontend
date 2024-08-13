@@ -5,8 +5,12 @@
     "privacy": "Política de Privacidad.",
     "btn": "CONTINUAR"
   },
-  "appError": { "returnToHome": "VOLVER A PÁGINA PRINCIPAL" },
-  "connect": { "title": "Conectate" },
+  "appError": {
+    "returnToHome": "VOLVER A PÁGINA PRINCIPAL"
+  },
+  "connect": {
+    "title": "Conectate"
+  },
   "contactChannelForm": {
     "name": "Nombre",
     "email": "Correo Electrónico",
@@ -21,7 +25,9 @@
     "messageAcknowledgment": "Gracias por tu mensaje",
     "errorMessage": "Algo salió mal. Por favor, inténtelo de nuevo."
   },
-  "pagebar": { "back": "Volver" },
+  "pagebar": {
+    "back": "Volver"
+  },
   "plusInfoTable": {
     "testBody": "CUERPO DE PRUEBA",
     "amountOfWaterAbsorbed": "Cantidad de agua absorbida",
@@ -29,7 +35,9 @@
     "thicknessIncrease": "Aumento de espesura",
     "swelling": "Hinchazón"
   },
-  "postRelationalContent": { "title": "Contenidos Relacionados" },
+  "postRelationalContent": {
+    "title": "Contenidos Relacionados"
+  },
   "product": {
     "thickness": "Espesura",
     "length": "Longitud",
@@ -50,8 +58,17 @@
     "plusBerneck": "PLUS BERNECK",
     "knowMoreAbout": "Conoce más sobre el"
   },
-  "qualitiesPinusBerneck": { "title": "Calidad BERNECK® PINUS" },
-  "sectionPackBpDownloads": { "patternPacks": "Pack de Estándares" },
+  "qualitiesPinusBerneck": {
+    "title": "Calidad BERNECK® PINUS",
+    "bannerProps": {
+      "bannerTitle": "BERNECK® PINUS",
+      "bannerSubtitle": "Descripción de las calidades",
+      "bannerSeeMore": "Ver más"
+    }
+  },
+  "sectionPackBpDownloads": {
+    "patternPacks": "Pack de Estándares"
+  },
   "whereBuyTable": {
     "country": "PAÍS",
     "city": "CIUDAD",
