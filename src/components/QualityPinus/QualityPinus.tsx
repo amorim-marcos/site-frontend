@@ -32,9 +32,20 @@ type ItemProps = {
 export type QualityPinusProps = {
   items: ItemProps[]
   pdfUrl?: string
+  bannerProps: BannerProps
 }
 
-export const QualityPinus = ({ items, pdfUrl }: QualityPinusProps) => {
+export type BannerProps = {
+  bannerTitle: string
+  bannerSubtitle: string
+  bannerSeeMore: string
+}
+
+export const QualityPinus = ({
+  items,
+  pdfUrl,
+  bannerProps
+}: QualityPinusProps) => {
   const componentsLabels = useTranslation('components')
   const { isMobile } = useMobile(568)
 
@@ -77,17 +88,67 @@ export const QualityPinus = ({ items, pdfUrl }: QualityPinusProps) => {
             h={{ base: '300px', sm: '500px', md: '100%' }}
             marginTop={{ base: '30px', md: '0' }}
             // css={isMobile ? { height: '40vh' } : { height: 'full' }}
+            position="relative"
           >
             {items && items.length > 0 && (
               <Image
                 h="100%"
                 w="100%"
                 objectFit={'cover'}
-                src={'/img/banner_pinus_novo.png'}
+                src={'/img/banner_pinus_novo.jpg'}
                 cursor="pointer"
                 onClick={() => window.open(pdfUrl, '_blank')}
               />
             )}
+            <Flex
+              position="absolute"
+              top={{ base: '35%', '2xl': '40%' }}
+              justifyContent="center"
+              alignItems="center"
+              width="100%"
+              // bgColor={'blackAlpha.400'}
+              display="block"
+            >
+              <Flex
+                flexDirection="column"
+                justifyContent="center"
+                textAlign="center"
+                bgColor="blackAlpha.100"
+                rowGap="4px"
+              >
+                <Text
+                  as="h3"
+                  variant="h3"
+                  fontSize={{ base: 'lg', '2xl': '4xl' }}
+                  textColor="#133128"
+                >
+                  {bannerProps?.bannerTitle}
+                </Text>
+                <Text
+                  fontWeight="500"
+                  fontSize={{ base: 'medium', '2xl': 'md' }}
+                  paddingBottom="2"
+                >
+                  {bannerProps?.bannerSubtitle}
+                </Text>
+                <Flex
+                  title="See quality descriptions"
+                  onClick={() => window.open(pdfUrl, '_blank')}
+                  justifyContent="center"
+                  alignItems="center"
+                  alignSelf={'center'}
+                  cursor="pointer"
+                  padding={{ base: '16px 0', '2xl': '24px 0' }}
+                  borderRadius="3xl"
+                  bgColor="#a9bbaf"
+                  width="85%"
+                >
+                  <Text fontWeight="bold" textColor="white">
+                    {bannerProps?.bannerSeeMore}
+                  </Text>
+                </Flex>
+              </Flex>
+            </Flex>
           </Flex>
 
           <Flex
