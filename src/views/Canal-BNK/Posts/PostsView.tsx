@@ -35,6 +35,14 @@ export const PostsView = ({
 
   return (
     <>
+      {/* todo
+      create custom head to handle header data
+    */}
+      <Head>
+        <title>
+          {`Berneck` + ' | ' + postBody?.postTitle?.slice(0, 45) + '...'}
+        </title>
+      </Head>
       <Box>
         <Pagebar
           paths={[
