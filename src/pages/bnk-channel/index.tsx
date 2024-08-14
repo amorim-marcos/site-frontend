@@ -5,6 +5,7 @@ import DOMPurify from 'isomorphic-dompurify'
 import { CanalBNKProps } from '../../views/Canal-BNK/index'
 import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 import { loadTranslations } from 'ni18n'
+import { ImageProps } from 'types/utils'
 
 export default function CanalBnk(props: CanalBNKProps) {
   return (
@@ -64,9 +65,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const data: Post[] = page_content
     ? page_content.map(
         (item: {
-          cover: {
-            url: string
-          }
+          cover: ImageProps
           category: {
             name: string
             id: number
@@ -90,6 +89,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             },
             content: DOMPurify.sanitize(item.content),
             cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url,
+            cover_img: item.cover,
             tags: item.tags
               ? item.tags.map((j) => ({
                   Tag: j.tag

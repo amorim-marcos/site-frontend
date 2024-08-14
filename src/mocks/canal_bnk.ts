@@ -13,13 +13,76 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   },
   {
     title: 'Aposte na biofilia e potencialize o bem-estar',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum iaculis nulla at pretium. Nulla id eleifend metus, in tristique enim. Nunc aliquet semper lacinia. Vestibulum eget arcu at odio accumsan faucibus. Integer blandit felis suscipit, feugiat dolor quis, pretium nulla. Vivamus vitae auctor augue. Duis et velit a purus condimentum tempor at sit amet quam. Quisque pulvinar varius arcu, ac egestas tortor pellentesque quis. Nunc eget velit sodales, tincidunt dolor vel, aliquet sem. Nulla facilisi.',
-    category: { name: 'INSPIRAÇÃO SOB MEDIDA', id: 1, description: '', color: '' },
+    category: {
+      name: 'INSPIRAÇÃO SOB MEDIDA',
+      id: 1,
+      description: '',
+      color: ''
+    },
     tags: [
       {
         Tag: 'INSPIRAÇÃO SOB MEDIDA'
@@ -27,13 +90,77 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   },
+
   {
     title: 'MDP, MDF ou HDF: qual a melhor escolha?',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum iaculis nulla at pretium. Nulla id eleifend metus, in tristique enim. Nunc aliquet semper lacinia. Vestibulum eget arcu at odio accumsan faucibus. Integer blandit felis suscipit, feugiat dolor quis, pretium nulla. Vivamus vitae auctor augue. Duis et velit a purus condimentum tempor at sit amet quam. Quisque pulvinar varius arcu, ac egestas tortor pellentesque quis. Nunc eget velit sodales, tincidunt dolor vel, aliquet sem. Nulla facilisi.',
-    category: { name: 'MATÉRIA-PRIMA: CONHECIMENTO', id: 2, description: '', color: '' },
+    category: {
+      name: 'MATÉRIA-PRIMA: CONHECIMENTO',
+      id: 2,
+      description: '',
+      color: ''
+    },
     tags: [
       {
         Tag: 'MATÉRIA-PRIMA: CONHECIMENTO'
@@ -41,7 +168,65 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   },
   {
     title: 'BERNECK® Talks traz novo ciclo de conversas no instagram0',
@@ -55,13 +240,76 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   },
   {
     title: 'MDP, MDF ou HDF: qual a melhor escolha?',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum iaculis nulla at pretium. Nulla id eleifend metus, in tristique enim. Nunc aliquet semper lacinia. Vestibulum eget arcu at odio accumsan faucibus. Integer blandit felis suscipit, feugiat dolor quis, pretium nulla. Vivamus vitae auctor augue. Duis et velit a purus condimentum tempor at sit amet quam. Quisque pulvinar varius arcu, ac egestas tortor pellentesque quis. Nunc eget velit sodales, tincidunt dolor vel, aliquet sem. Nulla facilisi.',
-    category: { name: 'MATÉRIA-PRIMA: CONHECIMENTO', id: 1, description: '', color: '' },
+    category: {
+      name: 'MATÉRIA-PRIMA: CONHECIMENTO',
+      id: 1,
+      description: '',
+      color: ''
+    },
     tags: [
       {
         Tag: 'MATÉRIA-PRIMA: CONHECIMENTO'
@@ -69,13 +317,76 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   },
   {
     title: 'Aposte na biofilia e potencialize o bem-estar',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum iaculis nulla at pretium. Nulla id eleifend metus, in tristique enim. Nunc aliquet semper lacinia. Vestibulum eget arcu at odio accumsan faucibus. Integer blandit felis suscipit, feugiat dolor quis, pretium nulla. Vivamus vitae auctor augue. Duis et velit a purus condimentum tempor at sit amet quam. Quisque pulvinar varius arcu, ac egestas tortor pellentesque quis. Nunc eget velit sodales, tincidunt dolor vel, aliquet sem. Nulla facilisi.',
-    category: { name: 'INSPIRAÇÃO SOB MEDIDA', id: 2, description: '', color: '' },
+    category: {
+      name: 'INSPIRAÇÃO SOB MEDIDA',
+      id: 2,
+      description: '',
+      color: ''
+    },
     tags: [
       {
         Tag: 'INSPIRAÇÃO SOB MEDIDA'
@@ -83,13 +394,76 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   },
   {
     title: 'Aposte na biofilia e potencialize o bem-estar',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum iaculis nulla at pretium. Nulla id eleifend metus, in tristique enim. Nunc aliquet semper lacinia. Vestibulum eget arcu at odio accumsan faucibus. Integer blandit felis suscipit, feugiat dolor quis, pretium nulla. Vivamus vitae auctor augue. Duis et velit a purus condimentum tempor at sit amet quam. Quisque pulvinar varius arcu, ac egestas tortor pellentesque quis. Nunc eget velit sodales, tincidunt dolor vel, aliquet sem. Nulla facilisi.',
-    category: { name: 'INSPIRAÇÃO SOB MEDIDA', id: 2, description: '', color: '' },
+    category: {
+      name: 'INSPIRAÇÃO SOB MEDIDA',
+      id: 2,
+      description: '',
+      color: ''
+    },
     tags: [
       {
         Tag: 'INSPIRAÇÃO SOB MEDIDA'
@@ -97,13 +471,76 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   },
   {
     title: 'Aposte na biofilia e potencialize o bem-estar',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum iaculis nulla at pretium. Nulla id eleifend metus, in tristique enim. Nunc aliquet semper lacinia. Vestibulum eget arcu at odio accumsan faucibus. Integer blandit felis suscipit, feugiat dolor quis, pretium nulla. Vivamus vitae auctor augue. Duis et velit a purus condimentum tempor at sit amet quam. Quisque pulvinar varius arcu, ac egestas tortor pellentesque quis. Nunc eget velit sodales, tincidunt dolor vel, aliquet sem. Nulla facilisi.',
-    category: { name: 'INSPIRAÇÃO SOB MEDIDA', id: 1, description: '', color: '' },
+    category: {
+      name: 'INSPIRAÇÃO SOB MEDIDA',
+      id: 1,
+      description: '',
+      color: ''
+    },
     tags: [
       {
         Tag: 'INSPIRAÇÃO SOB MEDIDA'
@@ -111,13 +548,76 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   },
   {
     title: 'MDP, MDF ou HDF: qual a melhor escolha?',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum iaculis nulla at pretium. Nulla id eleifend metus, in tristique enim. Nunc aliquet semper lacinia. Vestibulum eget arcu at odio accumsan faucibus. Integer blandit felis suscipit, feugiat dolor quis, pretium nulla. Vivamus vitae auctor augue. Duis et velit a purus condimentum tempor at sit amet quam. Quisque pulvinar varius arcu, ac egestas tortor pellentesque quis. Nunc eget velit sodales, tincidunt dolor vel, aliquet sem. Nulla facilisi.',
-    category: { name: 'MATÉRIA-PRIMA: CONHECIMENTO', id: 2, description: '', color: '' },
+    category: {
+      name: 'MATÉRIA-PRIMA: CONHECIMENTO',
+      id: 2,
+      description: '',
+      color: ''
+    },
     tags: [
       {
         Tag: 'MATÉRIA-PRIMA: CONHECIMENTO'
@@ -125,13 +625,76 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   },
   {
     title: 'MDP, MDF ou HDF: qual a melhor escolha?',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum iaculis nulla at pretium. Nulla id eleifend metus, in tristique enim. Nunc aliquet semper lacinia. Vestibulum eget arcu at odio accumsan faucibus. Integer blandit felis suscipit, feugiat dolor quis, pretium nulla. Vivamus vitae auctor augue. Duis et velit a purus condimentum tempor at sit amet quam. Quisque pulvinar varius arcu, ac egestas tortor pellentesque quis. Nunc eget velit sodales, tincidunt dolor vel, aliquet sem. Nulla facilisi.',
-    category: { name: 'MATÉRIA-PRIMA: CONHECIMENTO', id: 2, description: '', color: '' },
+    category: {
+      name: 'MATÉRIA-PRIMA: CONHECIMENTO',
+      id: 2,
+      description: '',
+      color: ''
+    },
     tags: [
       {
         Tag: 'MATÉRIA-PRIMA: CONHECIMENTO'
@@ -139,13 +702,76 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   },
   {
     title: 'MDP, MDF ou HDF: qual a melhor escolha?',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras interdum iaculis nulla at pretium. Nulla id eleifend metus, in tristique enim. Nunc aliquet semper lacinia. Vestibulum eget arcu at odio accumsan faucibus. Integer blandit felis suscipit, feugiat dolor quis, pretium nulla. Vivamus vitae auctor augue. Duis et velit a purus condimentum tempor at sit amet quam. Quisque pulvinar varius arcu, ac egestas tortor pellentesque quis. Nunc eget velit sodales, tincidunt dolor vel, aliquet sem. Nulla facilisi.',
-    category: { name: 'MATÉRIA-PRIMA: CONHECIMENTO', id: 2, description: '', color: '' },
+    category: {
+      name: 'MATÉRIA-PRIMA: CONHECIMENTO',
+      id: 2,
+      description: '',
+      color: ''
+    },
     tags: [
       {
         Tag: 'MATÉRIA-PRIMA: CONHECIMENTO'
@@ -153,7 +779,65 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   },
   {
     title: 'BERNECK® Talks traz novo ciclo de conversas no instagram0',
@@ -167,7 +851,65 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   },
   {
     title: 'BERNECK® Talks traz novo ciclo de conversas no instagram0',
@@ -181,7 +923,65 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   },
   {
     title: 'BERNECK® Talks traz novo ciclo de conversas no instagram0',
@@ -195,6 +995,64 @@ export const POSTS: Post[] = [
     ],
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
-    url_code: ''
+    url_code: '',
+    cover_img: {
+      url: '/img/foto_matriz.png',
+      alternativeText: '',
+      caption: '',
+      created_at: new Date(),
+      ext: '',
+      formats: {
+        large: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        medium: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        small: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        },
+        thumbnail: {
+          ext: '',
+          hash: '',
+          height: 1024,
+          width: 1920,
+          mime: '',
+          name: '',
+          size: 0,
+          url: '/img/foto_matriz.png'
+        }
+      },
+      hash: '',
+      height: 1024,
+      width: 1920,
+      id: 1,
+      mime: '',
+      name: '',
+      provider: '',
+      size: 0,
+      updated_at: new Date()
+    }
   }
 ]

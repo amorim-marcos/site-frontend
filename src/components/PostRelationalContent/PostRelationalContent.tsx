@@ -2,6 +2,7 @@ import { Flex, Text } from '@chakra-ui/react'
 
 import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
 import { useTranslation } from 'react-i18next'
+import { ImageProps } from 'types/utils'
 
 export type PostRelationalContentProps = {
   items: {
@@ -13,6 +14,7 @@ export type PostRelationalContentProps = {
     urlImage: string
     title: string
     url_code: string
+    cover_img: ImageProps
   }[]
 }
 export const PostRelationalContent = ({
@@ -49,6 +51,7 @@ export const PostRelationalContent = ({
                     categoryId={item.category.id}
                     color={item.category.color}
                     urlImage={item.urlImage}
+                    cover_img={item.cover_img}
                     title={item.title}
                     marginRight={{
                       base: '40px',

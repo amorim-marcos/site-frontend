@@ -368,6 +368,7 @@ export const Intro = (props: {
                       color={props.posts[1].category.color}
                       showInvert
                       currentCategory={currentCategory}
+                      cover_img={props?.posts[1]?.cover_img}
                     />
                   )}
                   {props.posts.length > 2 && (
@@ -380,6 +381,7 @@ export const Intro = (props: {
                       color={props.posts[2].category.color}
                       showInvert
                       currentCategory={currentCategory}
+                      cover_img={props?.posts[2]?.cover_img}
                     />
                   )}
                   {props.posts.length > 3 && (
@@ -391,6 +393,7 @@ export const Intro = (props: {
                       title={props.posts[3].title}
                       color={props.posts[3].category.color}
                       showInvert
+                      cover_img={props?.posts[3]?.cover_img}
                     />
                   )}
                   {/* FIM SECTION CANAL BNK */}
