@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react'
 import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 import { HomeBannerItem } from 'types/data/HomeBanner'
 import { TreatedHighlight } from 'pages'
+import { ImageProps } from 'types/utils'
 
 type PostProps = {
   id: number
@@ -22,10 +23,7 @@ type PostProps = {
     name: string
     color: string
   }
-  cover: {
-    name: string
-    url: string
-  }
+  cover: ImageProps
   tags: {
     id: number
     tag: string
@@ -117,7 +115,8 @@ export default function Home(props: HomeProps) {
                 },
                 title: item.title,
                 urlImage: item.cover.url,
-                url_code: item.url_code
+                url_code: item.url_code,
+                cover_img: item?.cover
               }
             })}
           />

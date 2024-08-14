@@ -8,6 +8,7 @@ import ArrowIcon from '@components/Icons/ArrowIcon'
 import useWindowDimensions from 'hooks/useWindow'
 import { smartString } from 'utils/utils'
 import Link from 'next/link'
+import { ImageProps } from 'types/utils'
 
 function getBetterStrSize(
   tam: number | undefined,
@@ -46,6 +47,7 @@ export interface ChannelBnkRelationalItemProps extends FlexProps {
   url_code: string
   title: string
   urlImage: string
+  cover_img: ImageProps
   showInvert?: boolean
   currentCategory?: number
 }
@@ -58,6 +60,7 @@ export const ChannelBnkRelationalItem = ({
   title,
   showInvert,
   currentCategory = -1,
+  cover_img,
   ...props
 }: ChannelBnkRelationalItemProps) => {
   const router = useRouter()
@@ -92,7 +95,13 @@ export const ChannelBnkRelationalItem = ({
           w="100%"
         >
           {/* {IMAGEM CAPA CARD  } */}
-          <Image h="100%" w="100%" objectFit="cover" src={urlImage} />
+          <Image
+            h="100%"
+            w="100%"
+            objectFit="cover"
+            src={urlImage}
+            alt={cover_img?.alternativeText}
+          />
         </Box>
 
         {/* { CARD TEXT  } */}
