@@ -11,4 +11,5 @@ export type Post = {
   date: Date | string
   url_code: string
   cover_img: ImageProps
+  meta_description: string
 }

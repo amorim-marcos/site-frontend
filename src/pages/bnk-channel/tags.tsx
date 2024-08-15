@@ -78,7 +78,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
               : [],
             title: item.title,
             date: item.published_at,
-            url_code: item.url_code
+            url_code: item.url_code,
+            meta_description: item.meta_description
           }
           return post
         })
@@ -110,4 +111,5 @@ type PostResponse = {
   published_at: string
   publication_date: string
   url_code: string
+  meta_description: string
 }

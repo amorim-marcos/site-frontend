@@ -22,6 +22,7 @@ export type PostViewProps = {
   backgroundColor: string
   postCategory: Category
   cover_img: ImageProps
+  meta_description: string
 }
 
 export const PostsView = ({
@@ -30,7 +31,8 @@ export const PostsView = ({
   coverImageUrl,
   backgroundColor,
   postCategory,
-  cover_img
+  cover_img,
+  meta_description
 }: PostViewProps) => {
   const channelBnkLabels = useTranslation('channelBnkView')
 
@@ -44,6 +46,9 @@ export const PostsView = ({
           {`Berneck` + ' | ' + smartString(postBody?.postTitle, 40)}
         </title>
         <meta name="keywords" content={getStringList(postBody?.tags)} />
+        {meta_description && (
+          <meta name="description" content={meta_description} />
+        )}
       </Head>
       <Box>
         <Pagebar

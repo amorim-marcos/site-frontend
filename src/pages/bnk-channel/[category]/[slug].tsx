@@ -46,6 +46,7 @@ export default function PostPage(props: PostPageProps) {
       }}
       backgroundColor="brown.100"
       postCategory={props.currentPost.category}
+      meta_description={props?.currentPost?.meta_description}
     />
   )
 }
@@ -88,7 +89,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         title: item.title,
         date: item.published_at,
         url_code: item.url_code,
-        cover_img: item.cover
+        cover_img: item.cover,
+        meta_description: item.meta_description
       }
       return post
     })
@@ -113,7 +115,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       ? getCorrectDate(currentPost.publication_date, ctx.locale || 'pt-BR')
       : getCorrectDate(currentPost.published_at, ctx.locale || 'pt-BR'),
     url_code: currentPost.url_code,
-    cover_img: currentPost.cover
+    cover_img: currentPost.cover,
+    meta_description: currentPost?.meta_description
   }
 
   return {
@@ -141,6 +144,7 @@ type PostResponse = {
   published_at: string
   publication_date: string
   url_code: string
+  meta_description: string
 }
 
 function getCorrectDate(a: string | Date, locale: string) {
