@@ -1,11 +1,17 @@
 {
+  "pageMetadata": {
+    "pageTitle": "Berneck | Our Commitment",
+    "pageDescription": "Our commitment to sustainable actions is present in all our daily actions, from caring for our employees to the delivery of our products."
+  },
   "ethicsCodeSection": {
     "title": "道德和行为准则",
     "description": "我们的《道德与行为准则》明确规定了所有员工和合作伙伴应遵守的权利和义务",
     "know": "了解：",
     "btn": "道德和行为准则"
   },
-  "ourCorporativeValues": { "title": "我们的企业价值观" },
+  "ourCorporativeValues": {
+    "title": "我们的企业价值观"
+  },
   "fsc": {
     "description": "通过选择FSC®认证产品，您可以支持对世界森林的负责任管理"
   },
@@ -31,7 +37,9 @@
     "measure": "一千",
     "description": "直接和间接合作者"
   },
-  "weCultivateOurPeople": { "bePartOfThisTeamBtn": "加入这个团队" },
+  "weCultivateOurPeople": {
+    "bePartOfThisTeamBtn": "加入这个团队"
+  },
   "socialProjects": {
     "description": "通过激励法则，BERNECK®支持能帮助国家创造协同效应和正面社会影响力的项目，为年轻人和普通民众带来激励",
     "checkOutSponsoredProjects": "查看我们赞助的一些项目：",
@@ -40,5 +48,7 @@
     "herdeirosDaTerraSubtitle": "Curitibanos | 社會項目 - 兒童",
     "fundoMunicipalDoIdosoSubtitle": "Joinville, SC | 社會項目 - 老年人"
   },
-  "ESG": { "title": "ESG" }
+  "ESG": {
+    "title": "ESG"
+  }
 }

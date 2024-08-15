@@ -13,6 +13,7 @@ import { useRouter } from 'next/router'
 import HtmlTextParser from '@components/HtmlTextParser'
 import { useTranslation } from 'react-i18next'
 import ArrowIcon from '@components/Icons/ArrowIcon'
+import PageHead from '@components/PageHead'
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/nosso-compromisso-filtro-1x.jpg)',
@@ -73,6 +74,10 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
   const compromiseView = useTranslation('compromiseView')
   return (
     <Box bg="white">
+      <PageHead
+        page_title={compromiseView.t('pageMetadata.pageTitle')}
+        page_description={compromiseView.t('pageMetadata.pageDescription')}
+      />
       <Pagebar
         paths={[
           {

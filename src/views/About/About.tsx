@@ -14,6 +14,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
 import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
+import PageHead from '@components/PageHead'
 
 export type AboutPageContent = {
   page_title?: string
@@ -52,6 +53,10 @@ export const About = ({
 
   return (
     <Box>
+      <PageHead
+        page_title={aboutView.t('pageMetadata.pageTitle')}
+        page_description={aboutView.t('pageMetadata.pageDescription')}
+      />
       <Pagebar
         paths={[
           {
@@ -65,7 +70,7 @@ export const About = ({
         <PageSession
           data={{
             imageUrl: 'url(/assets/imgs/capa_somos_berneck.png)',
-            title: page_content.page_title  || '',
+            title: page_content.page_title || '',
             subtitle: page_content.header_title || '',
             text: page_content.header_text || ''
           }}
@@ -382,84 +387,88 @@ export const About = ({
 
       {/* INICIO REVENDEDORES */}
       <ConditionalLanguageRender>
-      <Box bg="green.200">
-        <Flex
-          maxWidth="1536px"
-          marginX="auto"
-          // alignItems='center'
-          // justifyContent='center'
-          position="relative"
-          zIndex="base"
-          overflowY="hidden"
-          overflowX="hidden"
-          bg="green.200"
-        >
+        <Box bg="green.200">
           <Flex
-            // bg='red'
-            direction={{ base: 'column', lg: 'row' }}
-            width={'100%'}
+            maxWidth="1536px"
+            marginX="auto"
+            // alignItems='center'
+            // justifyContent='center'
+            position="relative"
+            zIndex="base"
+            overflowY="hidden"
+            overflowX="hidden"
+            bg="green.200"
           >
-            <Box
-              // bg='pink'
-              flex="1"
-              margin={{
-                base: '8% 8% 5% 5%',
-                sm: '8% 8% 2% 5%',
-                lg: '5%',
-                xl: '5%'
-              }}
-              // alignSelf='center'
+            <Flex
+              // bg='red'
+              direction={{ base: 'column', lg: 'row' }}
+              width={'100%'}
             >
-              <Text as="h3" variant={'h3' as any} textAlign={{ base: 'left' }}>
-                {aboutView.t('discoverWhereBuy.dealers')}
-              </Text>
-              <Text
-                color="green.900"
-                textAlign={{ base: 'left' }}
-                marginTop={{ base: '8px', lg: '10px', xl: '20px' }}
+              <Box
+                // bg='pink'
+                flex="1"
+                margin={{
+                  base: '8% 8% 5% 5%',
+                  sm: '8% 8% 2% 5%',
+                  lg: '5%',
+                  xl: '5%'
+                }}
+                // alignSelf='center'
               >
-                <HtmlTextParser>
-                  {page_content.resellers_description}
-                </HtmlTextParser>
-              </Text>
-            </Box>
-            <Box
-              // bg="yellow"
-              flex="1"
-              margin={{
-                base: '3% 0% 0% 0%',
-                sm: '3% 0% 0% 0%',
-                lg: '5%',
-                xl: '5%'
-              }}
-            >
-              <PatternInfo
-                title={aboutView.t('discoverWhereBuy.discover')}
-                description={aboutView.t('discoverWhereBuy.whereBuy')}
-                onClick={() => router.push('/where-to-buy')}
-                icon={
-                  <EarthIcon
-                    width={{
-                      base: '60px',
-                      xs: '30px',
-                      sm: '58px',
-                      lg: '70px',
-                      xl: '80px'
-                    }}
-                    height={{
-                      base: '60px',
-                      xs: '30px',
-                      sm: '58px',
-                      lg: '70px',
-                      xl: '80px'
-                    }}
-                  />
-                }
-              />
-            </Box>
+                <Text
+                  as="h3"
+                  variant={'h3' as any}
+                  textAlign={{ base: 'left' }}
+                >
+                  {aboutView.t('discoverWhereBuy.dealers')}
+                </Text>
+                <Text
+                  color="green.900"
+                  textAlign={{ base: 'left' }}
+                  marginTop={{ base: '8px', lg: '10px', xl: '20px' }}
+                >
+                  <HtmlTextParser>
+                    {page_content.resellers_description}
+                  </HtmlTextParser>
+                </Text>
+              </Box>
+              <Box
+                // bg="yellow"
+                flex="1"
+                margin={{
+                  base: '3% 0% 0% 0%',
+                  sm: '3% 0% 0% 0%',
+                  lg: '5%',
+                  xl: '5%'
+                }}
+              >
+                <PatternInfo
+                  title={aboutView.t('discoverWhereBuy.discover')}
+                  description={aboutView.t('discoverWhereBuy.whereBuy')}
+                  onClick={() => router.push('/where-to-buy')}
+                  icon={
+                    <EarthIcon
+                      width={{
+                        base: '60px',
+                        xs: '30px',
+                        sm: '58px',
+                        lg: '70px',
+                        xl: '80px'
+                      }}
+                      height={{
+                        base: '60px',
+                        xs: '30px',
+                        sm: '58px',
+                        lg: '70px',
+                        xl: '80px'
+                      }}
+                    />
+                  }
+                />
+              </Box>
+            </Flex>
           </Flex>
-        </Flex>
-      </Box> 
+        </Box>
       </ConditionalLanguageRender>
       {/* FIM REVENDEDORES */}
 

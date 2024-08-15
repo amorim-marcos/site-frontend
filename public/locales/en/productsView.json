@@ -1,6 +1,12 @@
 {
+  "pageMetadata": {
+    "pageTitle": "Berneck | Our Products",
+    "pageDescription": "We produce high-quality MDP, MDF, HDF and Pine / Teak Lumber, ensuring resistance, durability and sustainability for furniture, coverings and constructions."
+  },
   "ourProducts": "Our Products",
-  "pagebar": { "products": "Products" },
+  "pagebar": {
+    "products": "Products"
+  },
   "bpBerneck": {
     "title": "BERNECK® BP",
     "description": "Decorative Melaminic Laminate",
@@ -8,7 +14,9 @@
       "title": "Learn about BP BERNECK® patterns",
       "subtitle": "Decorative Melaminic Laminate"
     },
-    "bannerCollections": { "title": "Get to know" },
+    "bannerCollections": {
+      "title": "Get to know"
+    },
     "inspireSection": {
       "title": "Get inspired",
       "accessOurs": "Access our",
@@ -89,6 +97,12 @@
     "density": "Average density 12% moisture",
     "variation": "Measurement variation"
   },
-  "berneckPinus": { "title": "BERNECK® PINUS", "description": "Pine Lumber" },
-  "berneckTeca": { "title": "BERNECK® TECA", "description": "Teak Sawn Wood" }
+  "berneckPinus": {
+    "title": "BERNECK® PINUS",
+    "description": "Pine Lumber"
+  },
+  "berneckTeca": {
+    "title": "BERNECK® TECA",
+    "description": "Teak Sawn Wood"
+  }
 }

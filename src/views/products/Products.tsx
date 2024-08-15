@@ -8,6 +8,7 @@ import Pagebar from '@components/Pagebar'
 import CompletedTitle from '@components/CompletedTitle'
 import BannerProducts from '@components/BannerProducts'
 import { useTranslation } from 'react-i18next'
+import PageHead from '@components/PageHead'
 
 export const Products = () => {
   const { isMobile, width } = useMobile(1024)
@@ -17,6 +18,12 @@ export const Products = () => {
 
   return (
     <Box>
+      <PageHead
+        page_title={productsViewTranslation.t('pageMetadata.pageTitle')}
+        page_description={productsViewTranslation.t(
+          'pageMetadata.pageDescription'
+        )}
+      />
       <Pagebar
         paths={[
           {
