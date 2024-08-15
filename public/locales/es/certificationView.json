@@ -1,5 +1,11 @@
 {
-  "pagebar": { "berneckCertifications": "Certificaciones BERNECK®" },
+  "pageMetadata": {
+    "pageTitle": "Berneck | Our Certifications",
+    "pageDescription": "Berneck has several certifications that guarantee our environmentally sustainable and socially responsible management."
+  },
+  "pagebar": {
+    "berneckCertifications": "Certificaciones BERNECK®"
+  },
   "certificatedForests": "Bosques Certificados",
   "highlyQualifiedProducts": "Productos altamente calificados",
   "qualityNorms": "Normas de calidad"

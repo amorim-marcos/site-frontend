@@ -17,6 +17,7 @@ import { CheckIcon } from '@chakra-ui/icons'
 import parser from 'react-html-parser'
 import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
+import PageHead from '@components/PageHead'
 
 export type CertificationViewProps = {
   forestCertificate: {
@@ -55,6 +56,12 @@ export const Certification = (props: CertificationViewProps) => {
 
   return (
     <Box>
+      <PageHead
+        page_title={certificationViewLabels.t('pageMetadata.pageTitle')}
+        page_description={certificationViewLabels.t(
+          'pageMetadata.pageDescription'
+        )}
+      />
       <Pagebar
         paths={[
           {
