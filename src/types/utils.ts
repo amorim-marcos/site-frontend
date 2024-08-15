@@ -50,3 +50,8 @@ export interface ImageFormat {
   size: number
   url: string
 }
+
+export interface NameValueProps {
+  name: string
+  value?: string
+}

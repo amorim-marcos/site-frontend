@@ -13,6 +13,8 @@ import { HomeBannerItem } from 'types/data/HomeBanner'
 import { TreatedHighlight } from 'pages'
 import { ImageProps } from 'types/utils'
 
+import PageHead from '@components/PageHead'
+
 type PostProps = {
   id: number
   title: string
@@ -94,6 +96,10 @@ export default function Home(props: HomeProps) {
 
   return (
     <Box bg="white.100">
+      <PageHead
+        page_title={homeView.t('pageMetadata.pageTitle')}
+        page_description={homeView.t('pageMetadata.pageDescription')}
+      />
       {/* INICIO BANNER CAROUSEL */}
       <ConditionalLanguageRender>
         {props.highlights && props.highlights.length > 0 && (

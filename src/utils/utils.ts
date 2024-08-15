@@ -1,7 +1,12 @@
 import punycode from 'punycode'
+import { NameValueProps } from 'types/utils'
 
-export function smartString(phrase: string, num: number) {
+export function smartString(phrase: string | undefined, num: number) {
   let subString, restString, proxSpace, subString2
+
+  if (!phrase) {
+    return ''
+  }
 
   if (phrase.length > num) {
     subString = phrase.substring(0, num)
@@ -85,4 +90,13 @@ export function exportationContactChannelCode(locale: string) {
     case 'zh-CN':
       return 'vhq57g6xbr0b5w65b'
   }
+}
+
+/**  
+Returns a string list separated by comma
+* @returns somename,anothername,andanother
+ */
+export const getStringList = (objectList?: NameValueProps[]): string => {
+  const stringList = objectList?.map((item) => item.name)
+  return stringList?.join(',') || ''
 }

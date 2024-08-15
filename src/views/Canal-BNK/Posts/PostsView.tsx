@@ -12,7 +12,8 @@ import { PostBodyProps } from '@components/PostBody/PostBody'
 import { Category } from 'types/data/Post'
 import { useTranslation } from 'react-i18next'
 import { ImageProps } from 'types/utils'
-import Head from 'next/head'
+
+import PageHead from '@components/PageHead'
 
 export type PostViewProps = {
   postBody: PostBodyProps
@@ -21,6 +22,7 @@ export type PostViewProps = {
   backgroundColor: string
   postCategory: Category
   cover_img: ImageProps
+  meta_description: string
 }
 
 export const PostsView = ({
@@ -29,20 +31,18 @@ export const PostsView = ({
   coverImageUrl,
   backgroundColor,
   postCategory,
-  cover_img
+  cover_img,
+  meta_description
 }: PostViewProps) => {
   const channelBnkLabels = useTranslation('channelBnkView')
 
   return (
     <>
-      {/* todo
-      create custom head to handle header data
-    */}
-      <Head>
-        <title>
-          {`Berneck` + ' | ' + postBody?.postTitle?.slice(0, 45) + '...'}
-        </title>
-      </Head>
+      <PageHead
+        page_title={`Berneck` + ' | ' + postBody?.postTitle}
+        page_description={meta_description}
+      />
+
       <Box>
         <Pagebar
           paths={[

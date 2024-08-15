@@ -14,6 +14,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
@@ -91,6 +92,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
@@ -169,6 +171,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
@@ -241,6 +244,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
@@ -318,6 +322,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
@@ -395,6 +400,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
@@ -472,6 +478,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
@@ -549,6 +556,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
@@ -626,6 +634,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
@@ -703,6 +712,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
@@ -780,6 +790,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
@@ -852,6 +863,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
@@ -924,6 +936,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
@@ -996,6 +1009,7 @@ export const POSTS: Post[] = [
     cover: '/img/foto_matriz.png',
     date: '2020-10-30',
     url_code: '',
+    meta_description: '',
     cover_img: {
       url: '/img/foto_matriz.png',
       alternativeText: '',
