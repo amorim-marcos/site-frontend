@@ -1,4 +1,8 @@
 {
+  "pageMetadata": {
+    "pageTitle": "Berneck | Forest Division",
+    "pageDescription": "We are the wood brand, that's why our raw material is so important to us and we take such responsible care of our forests."
+  },
   "weCultivate": {
     "sloganPartOne": "我们耕耘是为了收获",
     "sloganPartTwo": "我们始终保持的收获",
@@ -24,8 +28,12 @@
     "wildAnimalSpecies": "野生动物种类",
     "monitoredFarms": "受监管的农场"
   },
-  "forestProductionHighlights": { "title": "森林生产重点" },
-  "forestSupplier": { "becomeAForestSupplierBtn": "成为林业供应商" },
+  "forestProductionHighlights": {
+    "title": "森林生产重点"
+  },
+  "forestSupplier": {
+    "becomeAForestSupplierBtn": "成为林业供应商"
+  },
   "publicSummaryOfForestManagement": {
     "title": "森林管理公开摘要",
     "description": "了解有关负责任的森林管理的更多信息"
