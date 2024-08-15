@@ -1,14 +1,30 @@
 {
+  "pageMetadata": {
+    "pageTitle": "Berneck | Indústria de Painéis - MDF, MDP e HDF - e Serrados",
+    "pageDescription": "Berneck is one of the largest manufacturers of MDP, MDF and HDF panels and Pine / Teak Lumber . For over 70 years, it has been working in a versatile and renewable way, 100% from cultivated forests."
+  },
   "connectTitle": "连接",
-  "knowOurCommitment": { "title": "认知", "description": "我们的约定" },
-  "knowOurFlorestalDivision": { "title": "认知", "description": "林业部" },
+  "knowOurCommitment": {
+    "title": "认知",
+    "description": "我们的约定"
+  },
+  "knowOurFlorestalDivision": {
+    "title": "认知",
+    "description": "林业部"
+  },
   "sectionChannelBnk": {
     "channelDescription": "我们关于木材、灵感等内容频道"
   },
   "productsSection": {
     "ourProducts": "我们的产品",
     "seeAllProducts": "查看所有产品",
-    "discoverBanner": { "title": "发现 ", "description": "从哪里购买" },
-    "contactBanner": { "title": "联系我们 ", "description": "与我们交谈" }
+    "discoverBanner": {
+      "title": "发现 ",
+      "description": "从哪里购买"
+    },
+    "contactBanner": {
+      "title": "联系我们 ",
+      "description": "与我们交谈"
+    }
   }
 }
