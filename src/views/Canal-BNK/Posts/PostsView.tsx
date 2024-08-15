@@ -12,8 +12,8 @@ import { PostBodyProps } from '@components/PostBody/PostBody'
 import { Category } from 'types/data/Post'
 import { useTranslation } from 'react-i18next'
 import { ImageProps } from 'types/utils'
-import Head from 'next/head'
-import { getStringList, smartString } from 'utils/utils'
+
+import PageHead from '@components/PageHead'
 
 export type PostViewProps = {
   postBody: PostBodyProps
@@ -38,18 +38,8 @@ export const PostsView = ({
 
   return (
     <>
-      {/* todo
-      create custom head to handle header data
-    */}
-      <Head>
-        <title>
-          {`Berneck` + ' | ' + smartString(postBody?.postTitle, 40)}
-        </title>
-        <meta name="keywords" content={getStringList(postBody?.tags)} />
-        {meta_description && (
-          <meta name="description" content={meta_description} />
-        )}
-      </Head>
+      <PageHead page_title={`Berneck` + ' | ' + postBody?.postTitle} />
+
       <Box>
         <Pagebar
           paths={[
