@@ -38,7 +38,10 @@ export const PostsView = ({
 
   return (
     <>
-      <PageHead page_title={`Berneck` + ' | ' + postBody?.postTitle} />
+      <PageHead
+        page_title={`Berneck` + ' | ' + postBody?.postTitle}
+        page_description={meta_description}
+      />
 
       <Box>
         <Pagebar
