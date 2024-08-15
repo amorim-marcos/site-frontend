@@ -1,13 +1,30 @@
 {
-  "pagebar": { "weAreBerneck": "We are BERNECK®" },
-  "headerBanner": { "title": "Who are are" },
+  "pageMetadata": {
+    "pageTitle": "Berneck | About us",
+    "pageDescription": "Berneck is one of the largest manufacturers of MDP, MDF and HDF panels and Pine / Teak Lumber . For over 70 years, it has been working in a versatile and renewable way, 100% from cultivated forests."
+  },
+  "pagebar": {
+    "weAreBerneck": "We are BERNECK®"
+  },
+  "headerBanner": {
+    "title": "Who are are"
+  },
   "infoGraphic": {
     "exportVolume": "Export Volumes",
     "exportMeasure": "TEUs / month",
     "comercialRelations": "Commercial Relationships",
     "countries": "countries"
   },
-  "discoverWhereBuy": { "discover": "FIND OUT", "whereBuy": "Where to Buy", "dealers": "Dealers" },
-  "certifications": { "title": "Certifications" },
-  "knowOurCertifications": { "know": "GET TO KNOW", "whereBuy": "Our Certifications" }
+  "discoverWhereBuy": {
+    "discover": "FIND OUT",
+    "whereBuy": "Where to Buy",
+    "dealers": "Dealers"
+  },
+  "certifications": {
+    "title": "Certifications"
+  },
+  "knowOurCertifications": {
+    "know": "GET TO KNOW",
+    "whereBuy": "Our Certifications"
+  }
 }

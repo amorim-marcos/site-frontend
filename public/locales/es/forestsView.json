@@ -1,4 +1,8 @@
 {
+  "pageMetadata": {
+    "pageTitle": "Berneck | Forest Division",
+    "pageDescription": "We are the wood brand, that's why our raw material is so important to us and we take such responsible care of our forests."
+  },
   "weCultivate": {
     "sloganPartOne": "Cultivamos para cosechar,",
     "sloganPartTwo": "¡Conservamos para cosechar siempre!",
@@ -27,7 +31,9 @@
   "forestProductionHighlights": {
     "title": "Destacados de la producción forestal"
   },
-  "forestSupplier": { "becomeAForestSupplierBtn": "Sea un Proveedor Forestal" },
+  "forestSupplier": {
+    "becomeAForestSupplierBtn": "Sea un Proveedor Forestal"
+  },
   "publicSummaryOfForestManagement": {
     "title": "Resumen público de Manejo Forestal",
     "description": "Obtenga más información sobre el manejo responsable de nuestros bosques."

@@ -1,4 +1,8 @@
 {
+    "pageMetadata": {
+        "pageTitle": "Berneck | Nosso Compromisso",
+        "pageDescription": "Nosso compromisso com ações sustentáveis está presente em todas as ações do nosso dia a dia, desde o cuidado com nossos colaboradores até a entrega dos nossos produtos. "
+    },
     "ethicsCodeSection": {
         "title": "Código de ética e conduta",
         "description": "Nosso Código de Ética e Conduta apresenta os direitos e deveres que todos os nossos colaboradores e parceiros seguem à risca.",
@@ -17,7 +21,7 @@
     },
     "infoGraphicAtmospheric": {
         "carbonSequestration": "Sequestro de Carbono",
-        "moreOf":"Mais de",
+        "moreOf": "Mais de",
         "millionCo2": "milhões de tCO₂e",
         "AtmosphericEmissions": "Emissões Atmosféricas",
         "about": "Cerca de",
@@ -36,7 +40,7 @@
     "weCultivateOurPeople": {
         "bePartOfThisTeamBtn": "Faça parte desse time"
     },
-    "socialProjects":{
+    "socialProjects": {
         "description": "Por meio das leis de incentivo, a BERNECK® apoia projetos que auxiliam o Estado a criar uma sinergia e impacto social positivo, levando estímulo aos jovens e à população em geral.",
         "checkOutSponsoredProjects": "Confira alguns projetos patrocinados por nós:",
         "handlagesSubtitle": "Lages, SC | Projeto Desportivo",
@@ -45,6 +49,6 @@
         "fundoMunicipalDoIdosoSubtitle": "Joinville, SC | Projeto Social • Idosos"
     },
     "ESG": {
-        "title":"ESG"
+        "title": "ESG"
     }
 }

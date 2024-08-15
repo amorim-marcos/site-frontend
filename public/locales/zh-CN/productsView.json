@@ -1,6 +1,12 @@
 {
+  "pageMetadata": {
+    "pageTitle": "Berneck | Our Products",
+    "pageDescription": "We produce high-quality MDP, MDF, HDF and Pine / Teak Lumber, ensuring resistance, durability and sustainability for furniture, coverings and constructions."
+  },
   "ourProducts": "我们的产品",
-  "pagebar": { "products": "产品" },
+  "pagebar": {
+    "products": "产品"
+  },
   "bpBerneck": {
     "title": "BP BERNECK®",
     "description": "装饰三聚氰胺贴面板",
@@ -8,7 +14,9 @@
       "title": "符合BP BERNECK标准®",
       "subtitle": "装饰三聚氰胺贴面板"
     },
-    "bannerCollections": { "title": "认知" },
+    "bannerCollections": {
+      "title": "认知"
+    },
     "inspireSection": {
       "title": "获得灵感",
       "accessOurs": "访问我们的",
@@ -93,5 +101,8 @@
     "title": "BERNECK® PINUS",
     "description": "BERNECK 松木®"
   },
-  "berneckTeca": { "title": "BERNECK® TECA", "description": "BERNECK 松木®" }
+  "berneckTeca": {
+    "title": "BERNECK® TECA",
+    "description": "BERNECK 松木®"
+  }
 }

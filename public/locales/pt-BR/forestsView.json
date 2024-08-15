@@ -1,4 +1,8 @@
 {
+    "pageMetadata": {
+        "pageTitle": "Berneck | Divisão Florestal",
+        "pageDescription": "Somos a marca da madeira, por isso, nossa matéria-prima é tão importante para nós e cuidamos com responsabilidade de nossas florestas."
+    },
     "weCultivate": {
         "sloganPartOne": "Cultivamos para colher,",
         "sloganPartTwo": " Conservamos para colher sempre!",
@@ -22,7 +26,7 @@
     },
     "infoGraphicBiodiversity": {
         "wildAnimalSpecies": "Espécies de Animais Silvestres",
-        "monitoredFarms":"Fazendas Monitoradas"
+        "monitoredFarms": "Fazendas Monitoradas"
     },
     "forestProductionHighlights": {
         "title": "Destaques da produção florestal"
@@ -30,7 +34,7 @@
     "forestSupplier": {
         "becomeAForestSupplierBtn": "Seja um Fornecedor Florestal"
     },
-    "publicSummaryOfForestManagement":{
+    "publicSummaryOfForestManagement": {
         "title": "Resumo público de Manejo Florestal",
         "description": " Saiba mais sobre o manejo responsável das nossas florestas."
     }
