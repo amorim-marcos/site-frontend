@@ -1,6 +1,12 @@
 {
+  "pageMetadata": {
+    "pageTitle": "Berneck | Our Products",
+    "pageDescription": "We produce high-quality MDP, MDF, HDF and Pine / Teak Lumber, ensuring resistance, durability and sustainability for furniture, coverings and constructions."
+  },
   "ourProducts": "Nuestros Productos",
-  "pagebar": { "products": "Productos" },
+  "pagebar": {
+    "products": "Productos"
+  },
   "bpBerneck": {
     "title": "BP BERNECK®",
     "description": "Laminado Melamínico Decorativo",
@@ -8,7 +14,9 @@
       "title": "Conoce los estándares BP BERNECK®",
       "subtitle": "Laminado Melamínico Decorativo"
     },
-    "bannerCollections": { "title": "Conoce" },
+    "bannerCollections": {
+      "title": "Conoce"
+    },
     "inspireSection": {
       "title": "Inspírate",
       "accessOurs": "Accede a nuestra",
