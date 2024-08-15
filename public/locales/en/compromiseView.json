@@ -1,12 +1,20 @@
 {
+  "pageMetadata": {
+    "pageTitle": "Berneck | Our Commitment",
+    "pageDescription": "Our commitment to sustainable actions is present in all our daily actions, from caring for our employees to the delivery of our products."
+  },
   "ethicsCodeSection": {
     "title": "Code of ethics and conduct",
     "description": "Our Code of Ethics and Conduct presents the rights and duties that all our employees and partners follow to the letter.",
     "know": "Get to know:",
     "btn": "Code of ethics and conduct"
   },
-  "ourCorporativeValues": { "title": "Our corporate values" },
-  "fsc": { "description": "By choosing FSC® certified products, you support the responsible management of the world's forests." },
+  "ourCorporativeValues": {
+    "title": "Our corporate values"
+  },
+  "fsc": {
+    "description": "By choosing FSC® certified products, you support the responsible management of the world's forests."
+  },
   "knowOurCertifications": {
     "know": "GET TO KNOW",
     "ourCertifications": "Our Certifications"
@@ -29,7 +37,9 @@
     "measure": "thousand",
     "description": "Direct and indirect collaborators"
   },
-  "weCultivateOurPeople": { "bePartOfThisTeamBtn": "Be part of this team" },
+  "weCultivateOurPeople": {
+    "bePartOfThisTeamBtn": "Be part of this team"
+  },
   "socialProjects": {
     "description": "Through the incentive laws, BERNECK® supports projects that help the state to create a synergy and positive social impact, bringing stimulus to young people and the population in general.",
     "checkOutSponsoredProjects": "Check out some projects we sponsor:",
@@ -38,5 +48,7 @@
     "herdeirosDaTerraSubtitle": "Curitibanos | Social Project - Children",
     "fundoMunicipalDoIdosoSubtitle": "Joinville, SC | Social Project - Senior Citizens"
   },
-  "ESG": { "title": "ESG" }
+  "ESG": {
+    "title": "ESG"
+  }
 }
