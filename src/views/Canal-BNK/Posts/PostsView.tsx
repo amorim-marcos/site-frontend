@@ -13,6 +13,7 @@ import { Category } from 'types/data/Post'
 import { useTranslation } from 'react-i18next'
 import { ImageProps } from 'types/utils'
 import Head from 'next/head'
+import { getStringList, smartString } from 'utils/utils'
 
 export type PostViewProps = {
   postBody: PostBodyProps
@@ -40,8 +41,9 @@ export const PostsView = ({
     */}
       <Head>
         <title>
-          {`Berneck` + ' | ' + postBody?.postTitle?.slice(0, 45) + '...'}
+          {`Berneck` + ' | ' + smartString(postBody?.postTitle, 40)}
         </title>
+        <meta name="keywords" content={getStringList(postBody?.tags)} />
       </Head>
       <Box>
         <Pagebar
