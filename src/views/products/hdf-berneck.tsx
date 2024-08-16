@@ -2,7 +2,7 @@ import Pagebar from '@components/Pagebar'
 import { useTranslation } from 'react-i18next'
 import Product from '../../components/Product'
 import { useRouter } from 'next/router'
-
+import PageHead from '@components/PageHead'
 
 export interface ProductProps {
   title: string
@@ -30,6 +30,12 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
 
   return (
     <div>
+      <PageHead
+        page_title={productsViewLabels.t('hdfBerneck.pageMetadata.pageTitle')}
+        page_description={productsViewLabels.t(
+          'hdfBerneck.pageMetadata.pageDescription'
+        )}
+      />
       <Pagebar
         paths={[
           {
