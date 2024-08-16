@@ -1,5 +1,9 @@
 {
-    "pagebar":{
+    "pageMetadata": {
+        "pageTitle": "Berneck | Nossos Produtos - Catálogo BP",
+        "pageDescription": "Conheça nosso catálogo de produtos BP para móveis e revestimentos em projetos residenciais e comerciais, com tons neutros, trend colors, amadeirados e metalizados."
+    },
+    "pagebar": {
         "products": "Produtos",
         "bpBerneck": "BP BERNECK®",
         "bpCatalog": "Catálogo BP"
@@ -10,22 +14,22 @@
     },
     "filtersAccordion": {
         "filterResults": "Filtrar Resultados",
-        "hideFilters":"Esconder filtros",
+        "hideFilters": "Esconder filtros",
         "panels": "PAINÉIS",
-        "collections":"COLEÇÕES",
+        "collections": "COLEÇÕES",
         "coloration": "COLORAÇÃO",
         "filter": "Filtrar",
         "clearFilters": "Limpar filtros",
-        "orderBy":"Ordenar por",
-        "launch":"Lançamento",
-        "name":"Ordem alfabética",
-        "colorScale":"Escala de cor"
+        "orderBy": "Ordenar por",
+        "launch": "Lançamento",
+        "name": "Ordem alfabética",
+        "colorScale": "Escala de cor"
     },
     "filtersTab": {
         "filterResults": "Filtrar Resultados",
-        "hideFilters":"Esconder filtros",
+        "hideFilters": "Esconder filtros",
         "panels": "PAINÉIS",
-        "collections":"COLEÇÕES",
+        "collections": "COLEÇÕES",
         "coloration": "COLORAÇÃO",
         "filter": "Filtrar",
         "clearFilters": "Limpar filtros",
@@ -33,10 +37,10 @@
         "exhibitionFormat": "Formato de exibição",
         "searchByName": "Pesquise pelo nome",
         "bgColor": "Cor do fundo",
-        "productsFound":"Produtos Encontrados",
-        "launch":"Lançamento",
-        "name":"Ordem alfabética",
-        "colorScale":"Escala de cor",
+        "productsFound": "Produtos Encontrados",
+        "launch": "Lançamento",
+        "name": "Ordem alfabética",
+        "colorScale": "Escala de cor",
         "filtersCounter": "Filtros Aplicados",
         "filtersCounter1": "Filtro Aplicado",
         "noFiltersApplied": "Nenhum Filtro Aplicado"

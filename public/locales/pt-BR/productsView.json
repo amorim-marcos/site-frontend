@@ -8,6 +8,10 @@
         "products": "Produtos"
     },
     "bpBerneck": {
+        "pageMetadata": {
+            "pageTitle": "Berneck | Nossos Produtos - BP",
+            "pageDescription": "Conheça nossos painéis melamínicos de alta qualidade para móveis e revestimentos. Duráveis, resistentes a riscos e fáceis de manter, com diversas opções de acabamentos e cores."
+        },
         "title": "BP BERNECK®",
         "description": "Laminado Melamínico Decorativo",
         "bannerProducts": {
@@ -38,6 +42,10 @@
         }
     },
     "mdpBerneck": {
+        "pageMetadata": {
+            "pageTitle": "Berneck | Nossos Produtos - MDP",
+            "pageDescription": "MDP | Painel de Partículas de Média Densidade é produzido com alta tecnologia, destacando-se pela cor clara, homogeneidade e baixa absorção superficial, ideal para móveis de linhas retas."
+        },
         "title": "MDP BERNECK®",
         "description": "Painel de Partículas de Média Densidade",
         "productWithBP": {
@@ -52,6 +60,10 @@
         }
     },
     "mdfBerneck": {
+        "pageMetadata": {
+            "pageTitle": "Berneck | Nossos Produtos - MDF",
+            "pageDescription": "MDF | Painel de Fibra de Média Densidade é produzido com alta tecnologia, o painel de Pinus é homogêneo, maleável e claro, ideal para usinagem, baixo relevo, pintura e impressão."
+        },
         "title": "MDF BERNECK®",
         "description": "Painel de Fibra de Média Densidade",
         "productWithBP": {
@@ -66,6 +78,10 @@
         }
     },
     "hdfBerneck": {
+        "pageMetadata": {
+            "pageTitle": "Berneck | Nossos produtos - HDF",
+            "pageDescription": "HDF | Painel de Fibra de Alta Densidade estabilidade dimensional, superfície uniforme e lisa com espessuras a partir de 2,5 mm."
+        },
         "title": "HDF BERNECK®",
         "description": "Painel de Fibra de Alta Densidade",
         "productWithBP": {
@@ -75,6 +91,10 @@
         }
     },
     "plusBerneck": {
+        "pageMetadata": {
+            "pageTitle": "Berneck | Nossos Produtos - Plus",
+            "pageDescription": "A BERNECK  oferece a seus clientes painéis de madeira reconstituída MDP e MDF indicados para uso em ambientes úmidos, conforme exigências de norma definidas pela ABNT."
+          },
         "title": "PLUS BERNECK®",
         "description": "Linha de Painéis com Resistência Extra à Umidade",
         "extraInfoTitle": "Muito importante",
@@ -98,10 +118,18 @@
         "variation": "Variação de medida"
     },
     "berneckPinus": {
+        "pageMetadata": {
+            "pageTitle": "Berneck | Nossos Produtos - Madeira Serrada de Pinus",
+            "pageDescription": "A Madeira serrada de Pinus Berneck está disponível em diversas qualidades para atender suas necessidades. É versátil e sustentável, ideal para construção, molduras, móveis e embalagens."
+          },
         "title": "BERNECK® PINUS",
         "description": "Madeira Serrada de Pinus"
     },
     "berneckTeca": {
+        "pageMetadata": {
+            "pageTitle": "Berneck | Nossos Produtos - Madeira Serrada de Teca",
+            "pageDescription": "A Madeira Serrada de Teca é uma exclusividade da Berneck. Durável, resistente e ideal para móveis e projetos de alto padrão. Disponível em diferentes cortes e dimensões."
+          },
         "title": "BERNECK® TECA",
         "description": "Madeira Serrada de Teca"
     }

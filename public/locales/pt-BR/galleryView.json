@@ -1,4 +1,8 @@
 {
+    "pageMetadata": {
+        "pageTitle": "Berneck | Galeria de Ambientes",
+        "pageDescription": "Explore nossa galeria de ambientes e conheça nossos padrões aplicados. Veja como nossos produtos transformam espaços."
+    },
     "pagebar": {
         "products": "Produtos",
         "bpBerneck": "BP BERNECK®",
@@ -11,7 +15,7 @@
     },
     "filtersAccordion": {
         "filterResults": "Filtrar Resultados",
-        "hideFilters":"Esconder filtros",
+        "hideFilters": "Esconder filtros",
         "bpBerneck": "BP BERNECK®",
         "seeLess": "Ver menos",
         "seeMore": "Ver mais",
@@ -23,7 +27,7 @@
     },
     "filtersTab": {
         "filterResults": "Filtrar Resultados",
-        "hideFilters":"Esconder filtros",
+        "hideFilters": "Esconder filtros",
         "bpBerneck": "BP BERNECK®",
         "environment": "AMBIENTE",
         "style": "ESTILO",
@@ -35,8 +39,5 @@
         "filtersCounter": "Filtros Aplicados",
         "noFiltersApplied": "Nenhum Filtro Aplicado",
         "filtersCounter1": "Filtro Aplicado"
-
-        
-
     }
 }

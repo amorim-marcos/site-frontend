@@ -141,7 +141,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             id: bp.id,
             name: bp.name,
             pattern_image: `${url}${bp.pattern_image.url}`,
-            product_texture: bp.product_texture.name,
+            // todo
+            // check
+            product_texture: bp.product_texture.name || '',
             launch: bp.launch
               ? new Date(bp.launch).toISOString().split('T')[0]
               : new Date().toISOString().split('T')[0],

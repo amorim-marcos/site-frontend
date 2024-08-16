@@ -3,6 +3,7 @@ import Product from '../../components/Product'
 import Pagebar from '@components/Pagebar'
 import { Box } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
+import PageHead from '@components/PageHead'
 
 export type BerneckTecaViewProps = {
   title: string
@@ -22,6 +23,12 @@ export default function BerneckTecaView(props: BerneckTecaViewProps) {
   const productsViewLabels = useTranslation('productsView')
   return (
     <Box>
+      <PageHead
+        page_title={productsViewLabels.t('berneckTeca.pageMetadata.pageTitle')}
+        page_description={productsViewLabels.t(
+          'berneckTeca.pageMetadata.pageDescription'
+        )}
+      />
       <Pagebar
         paths={[
           {
