@@ -100,3 +100,16 @@ export const getStringList = (objectList?: NameValueProps[]): string => {
   const stringList = objectList?.map((item) => item.name)
   return stringList?.join(',') || ''
 }
+
+/**  
+Returns a string with every word in upper case
+* @returns Some String Text
+ */
+export const capitalizeText = (text: string) => {
+  const capitalizedText = text
+    ?.split(' ')
+    ?.map((word) => word[0]?.toUpperCase() + word?.slice(1)?.toLowerCase())
+    .join(' ')
+
+  return capitalizedText
+}
