@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { CategoryContext } from '..'
 import CompletedTitle from '@components/CompletedTitle'
+import CustomLink from '@components/CustomLink'
 
 interface SectionProps extends FlexProps {
   title?: string
@@ -84,10 +85,15 @@ const SeeMore = (props: SeeMoreProps) => {
       onClick={() => {
         if (props.onClick) {
           props.onClick()
-        } else if (typeof props.link !== 'undefined') {
-          router.push(props.link)
         }
       }}
+      // onClick={() => {
+      //   if (props.onClick) {
+      //     props.onClick()
+      //   } else if (typeof props.link !== 'undefined') {
+      //     router.push(props.link)
+      //   }
+      // }}
       alignSelf="flex-end"
       align="center"
       justify="center"
@@ -95,20 +101,22 @@ const SeeMore = (props: SeeMoreProps) => {
       cursor="pointer"
       // bg="black"
     >
-      <Link
-        letterSpacing="-0.4px"
-        fontSize={{
-          base: '16px',
-          md: '12px',
-          lg: '14px',
-          xl: '14px',
-          '2xl': '16px'
-        }}
-        color={props.textColor ? props.textColor : 'green.550'}
-        whiteSpace="nowrap"
-      >
-        {props?.text}
-      </Link>
+      <CustomLink linkTo={props?.link}>
+        <Flex
+          letterSpacing="-0.4px"
+          fontSize={{
+            base: '16px',
+            md: '12px',
+            lg: '14px',
+            xl: '14px',
+            '2xl': '16px'
+          }}
+          color={props.textColor ? props.textColor : 'green.550'}
+          whiteSpace="nowrap"
+        >
+          {props?.text}
+        </Flex>
+      </CustomLink>
       <Arrow
         width={{ base: '8px', lg: '11px' }}
         height={{ base: '11px', lg: '16px' }}
