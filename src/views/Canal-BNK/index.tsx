@@ -17,6 +17,8 @@ import { Intro, Videos, Downloads } from './sections'
 import { Post, Category } from 'types/data/Post'
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
+import PageHead from '@components/PageHead'
+import { capitalizeText } from 'utils/utils'
 
 export const CategoryContext = createContext(
   {} as {
@@ -156,26 +158,39 @@ function CanalBNKFC(props: CanalBNKProps) {
 
   const channelBnkLabels = useTranslation('channelBnkView')
 
+  const categoryData = categories[currentCategory]
+
   return (
     <Box>
+      <PageHead
+        page_title={channelBnkLabels.t('pageMetadata.pageTitle')}
+        page_description={channelBnkLabels.t('pageMetadata.pageDescription')}
+      />
       {currentCategory !== -1 ? (
-        <Pagebar
-          paths={[
-            {
-              title: channelBnkLabels.t('pagebar.channelBnk'),
-              url: '/bnk-channel'
-            },
-            {
-              title: categories[currentCategory].name
-                .split(' ')
-                .map(
-                  (name) => name[0].toUpperCase() + name.slice(1).toLowerCase()
-                )
-                .join(' '),
-              url: '/bnk-channel'
-            }
-          ]}
-        />
+        <>
+          <PageHead
+            page_title={`Berneck | ` + capitalizeText(categoryData?.name)}
+            page_description={categoryData?.description}
+          />
+          <Pagebar
+            paths={[
+              {
+                title: channelBnkLabels.t('pagebar.channelBnk'),
+                url: '/bnk-channel'
+              },
+              {
+                title: categories[currentCategory].name
+                  .split(' ')
+                  .map(
+                    (name) =>
+                      name[0].toUpperCase() + name.slice(1).toLowerCase()
+                  )
+                  .join(' '),
+                url: '/bnk-channel'
+              }
+            ]}
+          />
+        </>
       ) : (
         <Pagebar
           paths={[
