@@ -85,15 +85,10 @@ const SeeMore = (props: SeeMoreProps) => {
       onClick={() => {
         if (props.onClick) {
           props.onClick()
+        } else if (typeof props.link !== 'undefined') {
+          router.push(props.link)
         }
       }}
-      // onClick={() => {
-      //   if (props.onClick) {
-      //     props.onClick()
-      //   } else if (typeof props.link !== 'undefined') {
-      //     router.push(props.link)
-      //   }
-      // }}
       alignSelf="flex-end"
       align="center"
       justify="center"
@@ -101,22 +96,21 @@ const SeeMore = (props: SeeMoreProps) => {
       cursor="pointer"
       // bg="black"
     >
-      <CustomLink linkTo={props?.link}>
-        <Flex
-          letterSpacing="-0.4px"
-          fontSize={{
-            base: '16px',
-            md: '12px',
-            lg: '14px',
-            xl: '14px',
-            '2xl': '16px'
-          }}
-          color={props.textColor ? props.textColor : 'green.550'}
-          whiteSpace="nowrap"
-        >
-          {props?.text}
-        </Flex>
-      </CustomLink>
+      <Flex
+        letterSpacing="-0.4px"
+        fontSize={{
+          base: '16px',
+          md: '12px',
+          lg: '14px',
+          xl: '14px',
+          '2xl': '16px'
+        }}
+        color={props.textColor ? props.textColor : 'green.550'}
+        whiteSpace="nowrap"
+      >
+        {props?.text}
+      </Flex>
+
       <Arrow
         width={{ base: '8px', lg: '11px' }}
         height={{ base: '11px', lg: '16px' }}
