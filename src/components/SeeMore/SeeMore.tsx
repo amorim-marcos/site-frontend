@@ -1,6 +1,7 @@
 import { Link, Flex, Box, Text, Center, Container } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import Arrow from '@components/Arrow'
+import CustomLink from '@components/CustomLink'
 
 export type SeeMoreProps = {
   text?: string
@@ -9,17 +10,22 @@ export type SeeMoreProps = {
   textColor?: string
 }
 export const SeeMore = (props: SeeMoreProps) => {
-  const router = useRouter()
+  // const router = useRouter()
 
   return (
     <Flex
       onClick={() => {
         if (props.onClick) {
           props.onClick()
-        } else if (typeof props.link !== 'undefined') {
-          router.push(props.link)
         }
       }}
+      // onClick={() => {
+      //   if (props.onClick) {
+      //     props.onClick()
+      //   } else if (typeof props.link !== 'undefined') {
+      //     router.push(props.link)
+      //   }
+      // }}
       alignSelf="flex-end"
       align="center"
       justify="center"
@@ -27,20 +33,22 @@ export const SeeMore = (props: SeeMoreProps) => {
       cursor="pointer"
       //bg="black"
     >
-      <Link
-        letterSpacing="-0.4px"
-        fontSize={{
-          base: '16px',
-          md: '12px',
-          lg: '14px',
-          xl: '14px',
-          '2xl': '16px'
-        }}
-        color={props.textColor ? props.textColor : 'green.550'}
-        whiteSpace="nowrap"
-      >
-        {props?.text}
-      </Link>
+      <CustomLink linkTo={props?.link}>
+        <Flex
+          letterSpacing="-0.4px"
+          fontSize={{
+            base: '16px',
+            md: '12px',
+            lg: '14px',
+            xl: '14px',
+            '2xl': '16px'
+          }}
+          color={props.textColor ? props.textColor : 'green.550'}
+          whiteSpace="nowrap"
+        >
+          {props?.text}
+        </Flex>
+      </CustomLink>
       <Arrow
         width={{ base: '8px', lg: '11px' }}
         height={{ base: '11px', lg: '16px' }}

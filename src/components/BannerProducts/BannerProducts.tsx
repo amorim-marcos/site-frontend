@@ -12,6 +12,7 @@ export type BannerProductsProps = {
   subtitleColor?: string
   bgColor?: string
   srcImg?: string
+  imgAltText: string
   bannerSize?: ResponsiveCss
   onClick?: () => void
   sizeType?: SizeTypes
@@ -26,6 +27,7 @@ export const BannerProducts = ({
   subtitleColor,
   bgColor,
   srcImg,
+  imgAltText,
   bannerSize,
   sizeType = 'square',
   onClick,
@@ -89,6 +91,7 @@ export const BannerProducts = ({
           // backgroundSize={'auto 100%'}
         >
           <Image
+            alt={imgAltText}
             src={srcImg}
             objectFit="cover"
             objectPosition={'left bottom'}
