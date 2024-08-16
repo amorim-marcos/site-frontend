@@ -26,6 +26,7 @@ import { useState, useEffect } from 'react'
 import { BPPageBanner } from 'pages/products/bp-berneck'
 import { useTranslation } from 'react-i18next'
 import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
+import PageHead from '@components/PageHead'
 
 export type BpBerneckViewProps = {
   galleries?: Gallery[]
@@ -39,6 +40,12 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
 
   return (
     <Box>
+      <PageHead
+        page_title={productsViewLabels.t('bpBerneck.pageMetadata.pageTitle')}
+        page_description={productsViewLabels.t(
+          'bpBerneck.pageMetadata.pageDescription'
+        )}
+      />
       <Pagebar
         paths={[
           {

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import Product from '../../components/Product'
 import { ProductProps } from './hdf-berneck'
 import { useRouter } from 'next/router'
+import PageHead from '@components/PageHead'
 
 export type MdpBerneckViewProps = {
   mdp: ProductProps
@@ -16,6 +17,12 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
 
   return (
     <Box>
+      <PageHead
+        page_title={productsViewLabels.t('mdpBerneck.pageMetadata.pageTitle')}
+        page_description={productsViewLabels.t(
+          'mdpBerneck.pageMetadata.pageDescription'
+        )}
+      />
       <Pagebar
         paths={[
           {

@@ -22,6 +22,7 @@ import { env } from 'process'
 import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
 import useRouterCustom from 'hooks/useRouterCustom'
+import PageHead from '@components/PageHead'
 
 export type ValidFilterNames =
   | 'bps'
@@ -449,6 +450,10 @@ export const EnvGallery = ({
   }
   return (
     <>
+      <PageHead
+        page_title={galleryViewLabels.t('pageMetadata.pageTitle')}
+        page_description={galleryViewLabels.t('pageMetadata.pageDescription')}
+      />
       <Pagebar
         paths={[
           {

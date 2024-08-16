@@ -8,6 +8,10 @@
     "products": "Productos"
   },
   "bpBerneck": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - BP",
+      "pageDescription": "Discover our high-quality melamine panels for furniture and coverings. Durable, scratch resistant surface and easy to maintain, with a variety of texture and colors."
+    },
     "title": "BP BERNECK®",
     "description": "Laminado Melamínico Decorativo",
     "bannerProducts": {
@@ -38,6 +42,10 @@
     }
   },
   "mdpBerneck": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - MDP",
+      "pageDescription": "MDP | Medium Density Particleboard is produced using high technology, standing out for its light color, homogeneity and low surface absorption, ideal for straight line furnitures."
+    },
     "title": "MDP BERNECK®",
     "description": "Tablero de Partículas de Densidad Media",
     "productWithBP": {
@@ -52,6 +60,10 @@
     }
   },
   "mdfBerneck": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - MDF",
+      "pageDescription": "MDF | Medium Density Fiberboard is produced with high technology, the Pine panel is homogeneous, malleable and clear, ideal for machining, low relief, painting and printing."
+    },
     "title": "MDF BERNECK®",
     "description": "Panel de Fibra de Densidad Media",
     "productWithBP": {
@@ -66,6 +78,10 @@
     }
   },
   "hdfBerneck": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - HDF",
+      "pageDescription": "HDF | High Density Fiberboard with dimensional stability, uniform and smooth surface available in thicknesses from 2.5 mm."
+    },
     "title": "HDF BERNECK®",
     "description": "Panel de Fibra de Alta Densidad",
     "productWithBP": {
@@ -75,6 +91,10 @@
     }
   },
   "plusBerneck": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - Plus",
+      "pageDescription": "BERNECK offers to the customers reconstituted wood panels, MDP and MDF suitable for use in humid environments, in accordance with the requirements of the standards defined by ABNT (Brazillian Regulator)."
+    },
     "title": "PLUS BERNECK®",
     "description": "Línea de Paneles con Resistencia Adicional a la Humedad",
     "extraInfoTitle": "Muy importante",
@@ -98,10 +118,18 @@
     "variation": "Variación de medida"
   },
   "berneckPinus": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - Pine Lumber",
+      "pageDescription": "Berneck Pine Lumber is available in a variety of Grades to meet your needs and applications. It is versatile and sustainable, ideal for construction, framing, upholstery, furniture and packagings."
+    },
     "title": "BERNECK® PINUS",
     "description": "Madera Aserrada de Pino"
   },
   "berneckTeca": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - Teak Lumber",
+      "pageDescription": "Teak sawn wood is exclusive to Berneck. Durable, resistant and ideal for high grade furnitures and projects. Available in different qualities and sizes."
+    },
     "title": "BERNECK® TECA",
     "description": "Madera Aserrada de Teca"
   }

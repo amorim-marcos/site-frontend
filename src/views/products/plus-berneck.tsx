@@ -5,6 +5,7 @@ import { Box, Flex, Grid, GridItem } from '@chakra-ui/react'
 import Pagebar from '@components/Pagebar'
 import BannerProducts from '@components/BannerProducts'
 import { useTranslation } from 'react-i18next'
+import PageHead from '@components/PageHead'
 
 export type PlusBerneckViewProps = {
   title?: string
@@ -34,6 +35,12 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
 
   return (
     <Box>
+      <PageHead
+        page_title={productsViewLabels.t('plusBerneck.pageMetadata.pageTitle')}
+        page_description={productsViewLabels.t(
+          'plusBerneck.pageMetadata.pageDescription'
+        )}
+      />
       <Pagebar
         paths={[
           {
@@ -171,7 +178,9 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
               subtitleColor="brown.350"
               bgColor="green.400"
               srcImg="/img/hdf_plus.png"
-              onClick={() => router.push(`/${router.locale}/products/hdf-berneck#plus`)}
+              onClick={() =>
+                router.push(`/${router.locale}/products/hdf-berneck#plus`)
+              }
               bannerSize={{ base: '15%', sm: '20px', lg: '30px', xl: '35px' }}
             />
           </GridItem>
@@ -188,7 +197,9 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
               subtitleColor="brown.350"
               bgColor="green.400"
               srcImg="/img/mdf_plus_small.png"
-              onClick={() => router.push(`/${router.locale}/products/mdf-berneck#plus`)}
+              onClick={() =>
+                router.push(`/${router.locale}/products/mdf-berneck#plus`)
+              }
               bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
             />
           </GridItem>
@@ -205,7 +216,9 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
               subtitleColor="brown.350"
               bgColor="green.400"
               srcImg="/img/mdp_plus.png"
-              onClick={() => router.push(`/${router.locale}/products/mdp-berneck#plus`)}
+              onClick={() =>
+                router.push(`/${router.locale}/products/mdp-berneck#plus`)
+              }
               bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
             />
           </GridItem>

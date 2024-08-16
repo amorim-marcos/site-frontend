@@ -6,6 +6,7 @@ import {
 } from '@components/QualityPinus/QualityPinus'
 import { useTranslation } from 'react-i18next'
 import Product from '../../components/Product'
+import PageHead from '@components/PageHead'
 
 export type BerneckPinusViewProps = {
   pinus: {
@@ -32,6 +33,12 @@ export default function BerneckPinusView({
   const productsViewLabels = useTranslation('productsView')
   return (
     <Box>
+      <PageHead
+        page_title={productsViewLabels.t('berneckPinus.pageMetadata.pageTitle')}
+        page_description={productsViewLabels.t(
+          'berneckPinus.pageMetadata.pageDescription'
+        )}
+      />
       <Pagebar
         paths={[
           {
