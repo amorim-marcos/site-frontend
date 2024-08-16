@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
 import { normalizeTitle } from 'utils/utils'
 import useRouterCustom from 'hooks/useRouterCustom'
+import PageHead from '@components/PageHead'
 
 export type filtersBP = {
   orderBy: string
@@ -556,6 +557,10 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   return (
     <>
+      <PageHead
+        page_title={bpCatalog.t('pageMetadata.pageTitle')}
+        page_description={bpCatalog.t('pageMetadata.pageDescription')}
+      />
       <Pagebar
         paths={[
           {

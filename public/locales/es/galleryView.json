@@ -1,4 +1,8 @@
 {
+  "pageMetadata": {
+    "pageTitle": "Berneck | Room gallery",
+    "pageDescription": "Explore our rooms gallery and learn about our applied collors. See how our products transform rooms and spaces."
+  },
   "pagebar": {
     "products": "Productos",
     "bpBerneck": "BP BERNECK®",
@@ -35,8 +39,5 @@
     "filtersCounter": "Filtros Aplicados",
     "noFiltersApplied": "No Hay Filtros Aplicados",
     "filtersCounter1": "Filtro Aplicado"
-
-
-
   }
 }
