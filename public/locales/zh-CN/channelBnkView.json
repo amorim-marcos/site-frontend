@@ -1,7 +1,25 @@
 {
-  "pagebar": { "channelBnk": "BNK 渠道" },
-  "downloadsView": { "pagebar": { "downloads": "下载" } },
-  "postsView": { "pagebar": { "channelBnk": "BNK 渠道" } },
+  "pageMetadata": {
+    "pageTitle": "Berneck | Channel",
+    "pageDescription": "Here you will find all the latest news and market trends. Our channel with contents about wood atmosphere and inspiration for your projects or everyday life."
+  },
+  "pagebar": {
+    "channelBnk": "BNK 渠道"
+  },
+  "downloadsView": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Downloads",
+      "pageDescription": "Access and download Berneck communication materials and products."
+    },
+    "pagebar": {
+      "downloads": "下载"
+    }
+  },
+  "postsView": {
+    "pagebar": {
+      "channelBnk": "BNK 渠道"
+    }
+  },
   "downloadsSection": {
     "title": "下载",
     "seeMore": "查看更多下载",
@@ -21,5 +39,8 @@
     "seeAll": "查看全部",
     "seeMore": "查看更多内容"
   },
-  "videosSection": { "title": "视频", "seeMoreVideos": "查看更多视频" }
+  "videosSection": {
+    "title": "视频",
+    "seeMoreVideos": "查看更多视频"
+  }
 }
