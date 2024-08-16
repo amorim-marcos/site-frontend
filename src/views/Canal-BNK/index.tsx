@@ -17,6 +17,7 @@ import { Intro, Videos, Downloads } from './sections'
 import { Post, Category } from 'types/data/Post'
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
+import PageHead from '@components/PageHead'
 
 export const CategoryContext = createContext(
   {} as {
@@ -158,6 +159,10 @@ function CanalBNKFC(props: CanalBNKProps) {
 
   return (
     <Box>
+      <PageHead
+        page_title={channelBnkLabels.t('pageMetadata.pageTitle')}
+        page_description={channelBnkLabels.t('pageMetadata.pageDescription')}
+      />
       {currentCategory !== -1 ? (
         <Pagebar
           paths={[

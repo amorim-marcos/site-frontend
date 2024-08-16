@@ -1,7 +1,25 @@
 {
-  "pagebar": { "channelBnk": "Canal BNK" },
-  "downloadsView": { "pagebar": { "downloads": "Descargas" } },
-  "postsView": { "pagebar": { "channelBnk": "Canal BNK" } },
+  "pageMetadata": {
+    "pageTitle": "Berneck | Channel",
+    "pageDescription": "Here you will find all the latest news and market trends. Our channel with contents about wood atmosphere and inspiration for your projects or everyday life."
+  },
+  "pagebar": {
+    "channelBnk": "Canal BNK"
+  },
+  "downloadsView": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Downloads",
+      "pageDescription": "Access and download Berneck communication materials and products."
+    },
+    "pagebar": {
+      "downloads": "Descargas"
+    }
+  },
+  "postsView": {
+    "pagebar": {
+      "channelBnk": "Canal BNK"
+    }
+  },
   "downloadsSection": {
     "title": "Descargas",
     "seeMore": "Vea más descargas",
@@ -21,5 +39,8 @@
     "seeAll": "VER TODO",
     "seeMore": "Vea más contenidos"
   },
-  "videosSection": { "title": "Videos", "seeMoreVideos": "Vea más videos" }
+  "videosSection": {
+    "title": "Videos",
+    "seeMoreVideos": "Vea más videos"
+  }
 }

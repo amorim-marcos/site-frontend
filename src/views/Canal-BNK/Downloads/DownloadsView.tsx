@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-
+import PageHead from '@components/PageHead'
 
 export type DownloadItem = {
   id: number
@@ -32,11 +32,10 @@ export type DownloadItem = {
   }[]
 }
 
-
 interface HeaderLimits {
   [key: string]: {
-    [key: string]: number;
-  };
+    [key: string]: number
+  }
 }
 type PageContent = {
   title: string
@@ -73,46 +72,55 @@ export const DownloadsView = ({
 
   const headerLimits: HeaderLimits = {
     default: {
-        'default': 85,
+      default: 85
     }
-}
+  }
 
-useEffect(() => {
+  useEffect(() => {
     if (router.asPath.includes('#')) {
-        const elementId = router.asPath.split('#')[1];
+      const elementId = router.asPath.split('#')[1]
 
-        setTimeout(() => {
-            const element = document.getElementById(elementId);
-            
-            if (element) {
-                let headerLimit = headerLimits.default.default;
-                const limitsForCurrentWidth = Object.keys(headerLimits.default)
-                    .reverse()
-                    .find((width) => window.innerWidth < Number(width));
+      setTimeout(() => {
+        const element = document.getElementById(elementId)
 
-                if (limitsForCurrentWidth) {
-                    headerLimit = headerLimits.default[limitsForCurrentWidth];
-                }
+        if (element) {
+          let headerLimit = headerLimits.default.default
+          const limitsForCurrentWidth = Object.keys(headerLimits.default)
+            .reverse()
+            .find((width) => window.innerWidth < Number(width))
 
-                if (limitsForCurrentWidth && headerLimits[elementId] && headerLimits[elementId][limitsForCurrentWidth]) {
-                    headerLimit = headerLimits[elementId][limitsForCurrentWidth];
-                }
+          if (limitsForCurrentWidth) {
+            headerLimit = headerLimits.default[limitsForCurrentWidth]
+          }
 
-                const position = element.getBoundingClientRect().top + window.scrollY - headerLimit;
+          if (
+            limitsForCurrentWidth &&
+            headerLimits[elementId] &&
+            headerLimits[elementId][limitsForCurrentWidth]
+          ) {
+            headerLimit = headerLimits[elementId][limitsForCurrentWidth]
+          }
 
+          const position =
+            element.getBoundingClientRect().top + window.scrollY - headerLimit
 
-                window.scrollTo({
-                    top: position,
-                    behavior: 'smooth'
-                });
-            }
-        }, 100); 
+          window.scrollTo({
+            top: position,
+            behavior: 'smooth'
+          })
+        }
+      }, 100)
     }
-}, [router.asPath]);
-
+  }, [router.asPath])
 
   return (
     <Box>
+      <PageHead
+        page_title={channelBnkLabels.t('downloadsView.pageMetadata.pageTitle')}
+        page_description={channelBnkLabels.t(
+          'downloadsView.pageMetadata.pageDescription'
+        )}
+      />
       <Pagebar
         paths={[
           {
@@ -193,38 +201,35 @@ useEffect(() => {
           flexDir="column"
           maxWidth={'1536px'}
         >
-      {items.map((i, j) => {
-        const id = i.type
-          .normalize('NFD')
-          .replace(/[^\w ]/g, '')
-          .split(' ')
-          .join('-')
-          .toLowerCase();
+          {items.map((i, j) => {
+            const id = i.type
+              .normalize('NFD')
+              .replace(/[^\w ]/g, '')
+              .split(' ')
+              .join('-')
+              .toLowerCase()
 
-        return (
-          <Box key={j} id={id}>
-            <DownloadSection
-              title={i.type}
-              description={i.description}
-              items={i.items.map((w) => ({
-                title: w.title,
-                urlImage: w.image.url,
-                downloadUrl: w.file.url
-              }))}
-              grafism={
-                (j + 1) % 3 === 0
-                  ? 'type3'
-                  : (j + 1) % 3 === 1
-                  ? 'type1'
-                  : 'type2'
-              }
-            />
-            
-          </Box>
-          
-        );
-      })}
-
+            return (
+              <Box key={j} id={id}>
+                <DownloadSection
+                  title={i.type}
+                  description={i.description}
+                  items={i.items.map((w) => ({
+                    title: w.title,
+                    urlImage: w.image.url,
+                    downloadUrl: w.file.url
+                  }))}
+                  grafism={
+                    (j + 1) % 3 === 0
+                      ? 'type3'
+                      : (j + 1) % 3 === 1
+                      ? 'type1'
+                      : 'type2'
+                  }
+                />
+              </Box>
+            )
+          })}
 
           <SectionPackBpDownloads
             title={patterns_pack_title}
@@ -245,7 +250,6 @@ useEffect(() => {
                     .split(' ')
                     .join('-')
                     .toLowerCase()}
-                    
                 >
                   <DownloadSection
                     title={i.type}
