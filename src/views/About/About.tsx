@@ -522,6 +522,7 @@ export const About = ({
             <PatternInfoPhoto
               onClick={() => router.push('/certifications')}
               imgSrc="/img/banner_certificacoes_about.png"
+              imgAltText="Certificate picture"
               title={aboutView.t('knowOurCertifications.know')}
               description={aboutView.t('knowOurCertifications.whereBuy')}
               titleColor="green.900"

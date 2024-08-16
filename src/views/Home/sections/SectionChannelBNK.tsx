@@ -49,6 +49,7 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
           // bg="red.100"
         >
           <Image
+            alt="Bnk Channel logo"
             w={{ base: '45%', md: '50%' }}
             maxWidth={'170px'}
             src="/assets/imgs/canal-bnk/Canal_Berneck.svg"

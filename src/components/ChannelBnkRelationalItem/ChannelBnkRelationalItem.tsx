@@ -100,7 +100,7 @@ export const ChannelBnkRelationalItem = ({
             w="100%"
             objectFit="cover"
             src={urlImage}
-            alt={cover_img?.alternativeText}
+            alt={cover_img.alternativeText}
           />
         </Box>
 

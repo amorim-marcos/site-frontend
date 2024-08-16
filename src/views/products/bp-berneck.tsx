@@ -114,6 +114,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               subtitleColor="brown.200"
               bgColor="brown.300"
               srcImg="../img/BPS.png"
+              imgAltText="Berneck BP pannels"
               onClick={() => router.push('/products/bp-berneck/catalog')}
               sizeType="rectangle-horizontal"
             />

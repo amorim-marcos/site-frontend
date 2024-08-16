@@ -9,6 +9,7 @@ export type PatternInfoPhotoProps = {
   description: string
   descriptionColor: string
   imgSrc: string
+  imgAltText: string
   onClick?: () => void
   grafism?: boolean
   linkTo?: string
@@ -16,6 +17,7 @@ export type PatternInfoPhotoProps = {
 export const PatternInfoPhoto = ({
   onClick,
   imgSrc,
+  imgAltText,
   grafism = true,
   title,
   titleColor,
@@ -50,6 +52,7 @@ export const PatternInfoPhoto = ({
         }}
       >
         <Image
+          alt={imgAltText}
           position={'absolute'}
           top="0"
           left="0"
@@ -60,6 +63,7 @@ export const PatternInfoPhoto = ({
         />
         {grafism && (
           <Image
+            alt="Banner grafism"
             position={'absolute'}
             zIndex="base"
             src="/img/home_grafismo_banner.svg"

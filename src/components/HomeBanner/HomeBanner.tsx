@@ -69,6 +69,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
         </Flex>
         <CustomLink linkTo={linkToUrl}>
           <Image
+            alt="Site Banner left grafism"
             src="/assets/imgs/grafismos_home_header/grafismo_esquerda_home.svg"
             position={'absolute'}
             top="10%"
@@ -83,6 +84,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
 
         <CustomLink linkTo={linkToUrl}>
           <Image
+            alt="Site Banner right grafism"
             src="/assets/imgs/grafismos_home_header/grafismo_direita_home_parte1.svg"
             position={'absolute'}
             top={{ base: 'none', md: '0' }}
@@ -127,6 +129,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
             ></Box>
 
             <Image
+              alt={items[currentItem]?.cover?.alternativeText}
               src={items[currentItem].imageUrl}
               objectFit={'cover'}
               w="100%"

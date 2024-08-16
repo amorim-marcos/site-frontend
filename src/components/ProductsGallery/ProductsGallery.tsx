@@ -39,6 +39,7 @@ export const ProductsGallery = ({
                 subtitleColor={p.subtitleColor}
                 bgColor={p.bgColor}
                 srcImg={p.srcImg}
+                imgAltText={p.imgAltText}
                 // onClick={() => router.push(`/products/${p.urlLink}`)}
                 linkTo={`/products/${p.urlLink}`}
                 bannerSize={p.bannerSize}
