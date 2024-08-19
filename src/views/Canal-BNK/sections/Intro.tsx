@@ -69,6 +69,7 @@ export const Intro = (props: {
         paddingBottom={{ base: '2%', '2xl': '5%' }}
       >
         <Image
+          alt="BNK channel banner left grafism"
           src="/assets/imgs/canal-bnk/grafismo_esquerda.svg"
           w="232px"
           h="618px"
@@ -88,6 +89,7 @@ export const Intro = (props: {
         />
 
         <Image
+          alt="BNK channel banner right grafism"
           src="/assets/imgs/canal-bnk/grafismo_direita.svg"
           w="810px"
           h="980px"
@@ -134,6 +136,7 @@ export const Intro = (props: {
               // bg="blue"
             >
               <Image
+                alt="BNK channel banner arrow"
                 src={
                   currentCategory === -1
                     ? '/assets/imgs/canal-bnk/Canal_Berneck.svg'

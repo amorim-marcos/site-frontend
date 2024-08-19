@@ -1,10 +1,10 @@
 export interface ResponseDefaultProperties {
   created_at: string | Date
   updated_at: string | Date
-  locale?: keyof typeof LocateOptions
+  locale?: keyof typeof LocaleOptions
 }
 
-export enum LocateOptions {
+export enum LocaleOptions {
   'pt-BR' = 'pt-BR',
   en = 'en',
   'es' = 'es',
