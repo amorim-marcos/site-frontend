@@ -100,7 +100,13 @@ export const Post = (props: PostProps) => {
         overflow="hidden"
         bg={getPanelColor(currentCategory)}
       >
-        <Image src={post?.cover} objectFit="cover" h="auto" w="100%" />
+        <Image
+          src={post?.cover}
+          objectFit="cover"
+          h="auto"
+          w="100%"
+          alt={post?.cover_img?.alternativeText}
+        />
       </Flex>
 
       {/* box content */}
