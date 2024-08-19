@@ -4,6 +4,7 @@ import { HomeProps } from '../views/Home/index'
 import { ni18nConfig, nameSpaces } from '../../ni18n.config'
 import { loadTranslations } from 'ni18n'
 import { HomeBannerResponse, PostCategory } from 'types/data/HomeBanner'
+import { ImageProps } from 'types/utils'
 
 export type TreatedHighlight = {
   title: string
@@ -14,9 +15,7 @@ export type TreatedHighlight = {
   updated_at?: string | Date
   url_code?: string
   is_highlighted?: boolean
-  cover: {
-    url: string
-  }
+  cover: ImageProps
   tags?: []
   isPost: boolean
   custom_order?: number
@@ -35,11 +34,7 @@ type PostProps = {
   published_at: string | Date
   url_code: string
   is_highlighted: boolean
-  cover: {
-    id: number
-    name: string
-    url: string
-  }
+  cover: ImageProps
   tags: []
   localizations: []
 }
@@ -54,7 +49,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let postHighlights: PostProps[]
   let homeBanners: HomeBannerResponse[]
 
-  let latestPosts
+  let latestPosts: PostProps[]
 
   let res
   let postHighlightsResponse
@@ -103,9 +98,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       ...banner,
       isPost: false,
       cover: {
-        url: banner?.banner_image
-          ? uploadBaseUrl + banner?.banner_image?.url
-          : ''
+        ...banner?.banner_image,
+        url: uploadBaseUrl + banner?.banner_image?.url
       }
     })
   })
@@ -122,6 +116,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         ...item,
         isPost: true,
         cover: {
+          ...item?.cover,
           url: item.cover === null ? '' : uploadBaseUrl + item.cover.url
         }
       })
@@ -135,17 +130,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   console.log('formatted banner items: ', formattedBannerItems)
 
-  const latestTreated: object[] = []
+  const latestTreated: PostProps[] = []
 
   if (latestPosts.length > 0) {
-    latestPosts.forEach((item: { cover: { url: string } }) => {
+    latestPosts.forEach((item) => {
       if (item !== null) {
         latestTreated.push({
           ...item,
           cover: {
+            ...item.cover,
             url:
               item.cover === null
-                ? null
+                ? ''
                 : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url
           }
         })

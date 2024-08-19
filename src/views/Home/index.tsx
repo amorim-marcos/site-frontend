@@ -87,7 +87,8 @@ export default function Home(props: HomeProps) {
         linkTo: item?.link,
         isPost: item?.isPost,
         created_at: item?.created_at,
-        updated_at: item?.updated_at
+        updated_at: item?.updated_at,
+        cover: item?.cover
       }
     })
 
@@ -141,6 +142,7 @@ export default function Home(props: HomeProps) {
             subtitleColor: 'brown.200',
             bgColor: 'brown.300',
             srcImg: '/img/produto_bp_banner.png',
+            imgAltText: 'Berneck BP pannels',
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -156,6 +158,7 @@ export default function Home(props: HomeProps) {
             subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: '/img/mdp.png',
+            imgAltText: 'Berneck MDP pannels',
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -171,6 +174,7 @@ export default function Home(props: HomeProps) {
             subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: '/img/mdf.png',
+            imgAltText: 'Berneck MDF pannels',
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -186,6 +190,7 @@ export default function Home(props: HomeProps) {
             subtitleColor: 'gray.400',
             bgColor: 'brown.200',
             srcImg: '/img/hdf.png',
+            imgAltText: 'Berneck HDF pannels',
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -201,6 +206,7 @@ export default function Home(props: HomeProps) {
             subtitleColor: 'brown.350',
             bgColor: 'green.400',
             srcImg: '/img/plus.png',
+            imgAltText: 'Berneck Plus pannels',
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -216,6 +222,7 @@ export default function Home(props: HomeProps) {
             subtitleColor: 'gray.400',
             bgColor: 'green.300',
             srcImg: '/img/pinus.png',
+            imgAltText: 'Berneck Pine Lumber',
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -231,6 +238,7 @@ export default function Home(props: HomeProps) {
             subtitleColor: 'gray.400',
             bgColor: 'brown.250',
             srcImg: '/img/teca.png',
+            imgAltText: 'Berneck Teak Sawn Wood',
             bannerSize: {
               base: '100px',
               sm: '150px',
@@ -250,6 +258,7 @@ export default function Home(props: HomeProps) {
           // onClick: () => router.push('/our-commitment'),
           linkTo: '/our-commitment',
           imgSrc: '/assets/imgs/banner_compromisso.jpg',
+          imgAltText: 'Two men smilling',
           title: homeView.t('knowOurCommitment.title'),
           description: homeView.t('knowOurCommitment.description'),
           titleColor: 'green.600',
@@ -259,6 +268,7 @@ export default function Home(props: HomeProps) {
           // onClick: () => router.push('/forest-division'),
           linkTo: '/forest-division',
           imgSrc: '/img/conheca_divisao_florestal.png',
+          imgAltText: 'Pine Forest',
           title: homeView.t('knowOurFlorestalDivision.title'),
           description: homeView.t('knowOurFlorestalDivision.description'),
           titleColor: 'green.600',

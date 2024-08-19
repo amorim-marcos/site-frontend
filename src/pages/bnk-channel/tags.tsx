@@ -79,7 +79,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             title: item.title,
             date: item.published_at,
             url_code: item.url_code,
-            meta_description: item.meta_description
+            meta_description: item?.meta_description || ''
           }
           return post
         })

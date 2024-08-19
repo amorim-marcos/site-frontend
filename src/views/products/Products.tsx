@@ -123,6 +123,7 @@ export const Products = () => {
               subtitleColor="brown.200"
               bgColor="brown.300"
               srcImg="/img/produto_bp_banner.png"
+              imgAltText="Berneck BP pannels"
               onClick={() => router.push('/products/bp-berneck')}
               bannerSize={{ base: '30px', sm: '20px', lg: '30px', xl: '35 px' }}
               sizeType={
@@ -139,6 +140,7 @@ export const Products = () => {
               subtitleColor="gray.400"
               bgColor="brown.200"
               srcImg="/img/mdp.png"
+              imgAltText="Berneck MDP pannels"
               onClick={() => router.push('/products/mdp-berneck')}
               bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
             />
@@ -152,6 +154,7 @@ export const Products = () => {
               subtitleColor="gray.400"
               bgColor="brown.200"
               srcImg="/img/mdf.png"
+              imgAltText="Berneck MDF pannels"
               onClick={() => router.push('/products/mdf-berneck')}
               // bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
             />
@@ -165,6 +168,7 @@ export const Products = () => {
               subtitleColor="gray.400"
               bgColor="brown.200"
               srcImg="/img/hdf.png"
+              imgAltText="Berneck HDF pannels"
               onClick={() => router.push('/products/hdf-berneck')}
               bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
             />
@@ -178,6 +182,7 @@ export const Products = () => {
               subtitleColor="brown.350"
               bgColor="green.400"
               srcImg="/img/plus.png"
+              imgAltText="Berneck Plus pannels"
               onClick={() => router.push('/products/plus-berneck')}
               bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
             />
@@ -191,6 +196,7 @@ export const Products = () => {
               subtitleColor="gray.400"
               bgColor="green.300"
               srcImg="/img/pinus.png"
+              imgAltText="Berneck Pine Lumb"
               onClick={() => router.push('/products/berneck-pinus')}
               bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
               sizeType={isMobile ? 'square' : 'rectangle-horizontal'}
@@ -205,6 +211,7 @@ export const Products = () => {
               subtitleColor="gray.400"
               bgColor="brown.250"
               srcImg="/img/teca.png"
+              imgAltText="Berneck Teak Sawn Wood"
               onClick={() => router.push('/products/berneck-teca')}
               bannerSize={{ base: '5%', sm: '20px', lg: '30px', xl: '35px' }}
             />

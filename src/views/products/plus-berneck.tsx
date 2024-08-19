@@ -178,6 +178,7 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
               subtitleColor="brown.350"
               bgColor="green.400"
               srcImg="/img/hdf_plus.png"
+              imgAltText="Berneck HDF pannels"
               onClick={() =>
                 router.push(`/${router.locale}/products/hdf-berneck#plus`)
               }
@@ -197,6 +198,7 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
               subtitleColor="brown.350"
               bgColor="green.400"
               srcImg="/img/mdf_plus_small.png"
+              imgAltText="Berneck MDF Panels"
               onClick={() =>
                 router.push(`/${router.locale}/products/mdf-berneck#plus`)
               }
@@ -216,6 +218,7 @@ export default function PlusBerneckView(props: PlusBerneckViewProps) {
               subtitleColor="brown.350"
               bgColor="green.400"
               srcImg="/img/mdp_plus.png"
+              imgAltText="Berneck MDP pannels"
               onClick={() =>
                 router.push(`/${router.locale}/products/mdp-berneck#plus`)
               }
