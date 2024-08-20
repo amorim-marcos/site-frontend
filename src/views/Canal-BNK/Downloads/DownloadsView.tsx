@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-
+import { FileProps } from 'types/utils'
 
 export type DownloadItem = {
   id: number
@@ -47,6 +47,8 @@ type PageContent = {
   patterns_pack_download_jpgs_url: string | null
   patterns_pack_download_skps_url: string | null
   sections: DownloadItem[]
+  patterns_pack_download_jpgs: FileProps
+  patterns_pack_download_skps: FileProps
 }
 
 export type DownloadsViewProps = {
@@ -62,6 +64,8 @@ export const DownloadsView = ({
     patterns_pack_download_url,
     patterns_pack_download_jpgs_url,
     patterns_pack_download_skps_url,
+    patterns_pack_download_jpgs,
+    patterns_pack_download_skps,
     sections
   }
 }: DownloadsViewProps) => {
@@ -232,6 +236,8 @@ useEffect(() => {
             download_url={patterns_pack_download_url}
             download_url_jpgs={patterns_pack_download_jpgs_url}
             download_url_skps={patterns_pack_download_skps_url}
+            patterns_pack_download_jpgs={patterns_pack_download_jpgs}
+            patterns_pack_download_skps={patterns_pack_download_skps}
           />
 
           {items.map((i, j) => {

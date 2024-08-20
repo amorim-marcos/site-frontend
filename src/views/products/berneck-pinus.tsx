@@ -83,7 +83,11 @@ export default function BerneckPinusView({
           backgroundColor: '#E8E8E8'
         }}
       />
-      <QualityPinus items={qualityPinus.items} pdfUrl={pinus.technical_sheet} />
+      <QualityPinus
+        items={qualityPinus.items}
+        pdfUrl={pinus.technical_sheet}
+        bannerProps={qualityPinus?.bannerProps}
+      />
     </Box>
   )
 }

@@ -39,7 +39,9 @@ export type BerneckPinusPageProps = {
 }
 
 export default function BerneckPinus(props: BerneckPinusPageProps) {
-  const productsView = useTranslation('productsView');
+  const productsView = useTranslation('productsView')
+
+  const componentsTranslations = useTranslation('components')
 
   return (
     <BerneckPinusView
@@ -71,7 +73,20 @@ export default function BerneckPinus(props: BerneckPinusPageProps) {
           title: productsView.t('plusBerneck.variation')
         }
       ]}
-      qualityPinus={{ items: props.page_content.sawns_qualities }}
+      qualityPinus={{
+        items: props.page_content.sawns_qualities,
+        bannerProps: {
+          bannerTitle: componentsTranslations?.t(
+            'qualitiesPinusBerneck.bannerProps.bannerTitle'
+          ),
+          bannerSubtitle: componentsTranslations?.t(
+            'qualitiesPinusBerneck.bannerProps.bannerSubtitle'
+          ),
+          bannerSeeMore: componentsTranslations?.t(
+            'qualitiesPinusBerneck.bannerProps.bannerSeeMore'
+          )
+        }
+      }}
     />
   )
 }
