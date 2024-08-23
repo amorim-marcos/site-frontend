@@ -15,7 +15,7 @@ import { PagebarGrafism } from './PagebarGrafism/PagebarGrafism'
 import { useTranslation } from 'react-i18next'
 
 import { CategoryContext } from 'views/Canal-BNK/index'
-import Link from 'next/link'
+import useRouterCustom from 'hooks/useRouterCustom'
 
 export type Path = {
   title: string
@@ -38,6 +38,7 @@ export const Pagebar = ({
   const { seeOnlyPosts, setSeeOnlyPosts } = useContext(CategoryContext)
   const componentsLabels = useTranslation('components')
   const router = useRouter()
+  const { getTranslatedPath } = useRouterCustom()
 
   return (
     <Box
@@ -120,6 +121,7 @@ export const Pagebar = ({
           >
             {paths &&
               paths.map((s, i) => {
+                const translatedUrl = getTranslatedPath(s.url)
                 return (
                   <BreadcrumbItem
                     key={i}
@@ -130,7 +132,9 @@ export const Pagebar = ({
                     <BreadcrumbLink
                       color="white.100"
                       href={
-                        router.locale ? `/${router.locale}/${s.url}` : s.url
+                        router.locale
+                          ? `/${router.locale}/${translatedUrl}`
+                          : translatedUrl
                       }
                       onClick={s.onItemClick ? s.onItemClick : undefined}
                     >
