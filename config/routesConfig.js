@@ -11,6 +11,7 @@ const pathTranslations = {
   },
   'pt-BR': {
     '/quem-somos': '/we-are-berneck',
+    '/quem-somos#quem-somos': '/we-are-berneck#who-we-are',
     // todo
     // fix element id redirects
     '/quem-somos#nossa-trajetoria': '/we-are-berneck#trajectory',
@@ -28,6 +29,7 @@ const pathTranslations = {
     '/divisao-florestal#manejo-florestal': '/forest-division#management',
     '/divisao-florestal#fornecedor-florestal': '/forest-division#supplier',
     '/divisao-florestal#resumo-publico': '/forest-division#public-summary',
+    '/divisao-florestal#producao-florestal': '/forest-division#production',
 
     '/produtos': '/products',
     '/produtos/bp': '/products/bp-berneck',

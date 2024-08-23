@@ -27,7 +27,7 @@ export const PatternInfoPhoto = ({
 }: PatternInfoPhotoProps) => {
   const [mouseEnter, setMouseEnter] = useState(false)
   return (
-    <CustomLink linkTo={linkTo}>
+    <CustomLink linkTo={linkTo} translatePaths>
       <Flex
         onMouseLeave={() => setMouseEnter(false)}
         onMouseEnter={() => setMouseEnter(true)}

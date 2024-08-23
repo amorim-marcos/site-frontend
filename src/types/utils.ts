@@ -55,3 +55,9 @@ export interface NameValueProps {
   name: string
   value?: string
 }
+
+export interface PathnamesTranslations {
+  [locale: 'pt-BR' | 'en' | 'es' | 'zn-CN' | string]: {
+    [path: string]: string
+  }
+}

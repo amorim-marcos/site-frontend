@@ -35,7 +35,11 @@ export const HeaderSecondaryItem = ({
       marginX={{ base: '10px', md: '0' }}
       marginLeft={{ base: '0', md: '6%', xl: '7%' }}
     >
-      <CustomLink linkTo={href} target={isExternal ? '_blank' : '_self'}>
+      <CustomLink
+        linkTo={href}
+        target={isExternal ? '_blank' : '_self'}
+        translatePaths
+      >
         <Text
           // onClick={navigate}
           _hover={{ color: '#FFF' }}

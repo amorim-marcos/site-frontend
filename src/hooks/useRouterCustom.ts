@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { LocateOptions, PathnamesTranslations } from 'types/utils'
 
 const useRouterCustom = () => {
   const router = useRouter()
@@ -50,10 +51,30 @@ const useRouterCustom = () => {
     )
   }
 
+  function getTranslatedPath(
+    url: string,
+    customLocale?: keyof typeof LocateOptions
+  ) {
+    let { locale } = router
+
+    locale = customLocale || locale || 'pt-BR'
+
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const pathnames: PathnamesTranslations = require('../../config/routesConfig')
+
+    // find the translated pathname from the original passed link
+    const translatedPath = Object.keys(pathnames[locale] || {})?.find(
+      (pathKey) => pathnames[locale || 'pt-BR'][pathKey] === url
+    )
+
+    return translatedPath || url
+  }
+
   return {
     addQueryToUrl,
     removeQueryFromUrl,
-    resetQueriesFromUrl
+    resetQueriesFromUrl,
+    getTranslatedPath
   }
 }
 
