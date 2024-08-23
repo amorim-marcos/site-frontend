@@ -126,7 +126,7 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
 
   return (
     <Flex onClick={onClick} flexDir="column">
-      <CustomLink linkTo={href}>
+      <CustomLink linkTo={href} translatePaths>
         <Flex
           onClick={(event) => handleNavigation(event, href)}
           paddingLeft={{
@@ -169,7 +169,7 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
       <Box>
         {subItems?.map((i, j) => {
           return (
-            <CustomLink key={j} linkTo={i.href}>
+            <CustomLink key={j} linkTo={i.href} translatePaths>
               <Flex
                 key={j}
                 onClick={(event) => handleNavigation(event, i.href || '/')}

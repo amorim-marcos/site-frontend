@@ -95,7 +95,7 @@ export const FooterList = ({ title, items }: FooterListProps) => {
           cursor="pointer"
           onClick={(event) => handleNavigation(event, title.href)}
         >
-          <CustomLink linkTo={title?.href}>
+          <CustomLink linkTo={title?.href} translatePaths>
             <Text
               _hover={{ color: 'green.600' }}
               variant={'header-menu' as any}
@@ -123,7 +123,7 @@ export const FooterList = ({ title, items }: FooterListProps) => {
                 key={j}
                 onClick={(event) => handleNavigation(event, i.href)}
               >
-                <CustomLink linkTo={i.href}>
+                <CustomLink linkTo={i.href} translatePaths>
                   <Text
                     _hover={{ color: '#FFF' }}
                     variant={'tags' as any}
@@ -145,5 +145,5 @@ export const FooterList = ({ title, items }: FooterListProps) => {
           )}
       </List>
     </Box>
-  );
-};
+  )
+}
