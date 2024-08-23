@@ -2,7 +2,7 @@ import useRouterCustom from 'hooks/useRouterCustom'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
-import { LocateOptions } from 'types/utils'
+import { LocaleOptions } from 'types/utils'
 
 export type CustomLinkProps = {
   linkTo?: string
@@ -44,7 +44,7 @@ export const CustomLink = ({
 
   const translatedPath = getTranslatedPath(
     linkTo!,
-    locale as keyof typeof LocateOptions
+    locale as keyof typeof LocaleOptions
   )
 
   const href = translatedPath ? `${translatedPath}` : linkTo
