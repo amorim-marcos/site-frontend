@@ -556,6 +556,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     handleResetFilters()
   }
 
+  const catalogPath = '/products/bp-berneck/catalog'
+  const translatedCatalogPath = getTranslatedPath(catalogPath)
   return (
     <>
       <Pagebar
@@ -684,8 +686,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
                       url_code={bp.url_code}
                       href={
                         router.locale == 'pt-BR'
-                          ? `/products/bp-berneck/catalog/${bp.url_code}`
-                          : `/${router.locale}/products/bp-berneck/catalog/${bp.url_code}`
+                          ? `${translatedCatalogPath}/${bp.url_code}`
+                          : `/${router.locale}${translatedCatalogPath}/${bp.url_code}`
                       }
                       color={darkMode ? 'white.100' : 'gray.400'}
                     />
