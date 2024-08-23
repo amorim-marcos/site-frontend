@@ -50,3 +50,9 @@ export interface ImageFormat {
   size: number
   url: string
 }
+
+export interface PathnamesTranslations {
+  [locale: 'pt-BR' | 'en' | 'es' | 'zn-CN' | string]: {
+    [path: string]: string
+  }
+}
