@@ -67,7 +67,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
             onClick={(i) => setCurrentItem(i)}
           />
         </Flex>
-        <CustomLink linkTo={linkToUrl}>
+        <CustomLink linkTo={linkToUrl} translatePaths>
           <Image
             alt="Site Banner left grafism"
             src="/assets/imgs/grafismos_home_header/grafismo_esquerda_home.svg"
@@ -82,7 +82,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
           />
         </CustomLink>
 
-        <CustomLink linkTo={linkToUrl}>
+        <CustomLink linkTo={linkToUrl} translatePaths>
           <Image
             alt="Site Banner right grafism"
             src="/assets/imgs/grafismos_home_header/grafismo_direita_home_parte1.svg"
@@ -98,7 +98,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
           />
         </CustomLink>
 
-        <CustomLink linkTo={linkToUrl}>
+        <CustomLink linkTo={linkToUrl} translatePaths>
           <Box
             zIndex={'base'}
             position={{ base: 'relative', md: 'absolute' }}
@@ -160,7 +160,7 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
                 stroke={items[currentItem].color}
               />
             </Box>
-            <CustomLink linkTo={linkToUrl}>
+            <CustomLink linkTo={linkToUrl} translatePaths>
               <Flex
                 // onClick={navigateToThePost}
                 marginLeft={{
