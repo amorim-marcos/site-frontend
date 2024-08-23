@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { LocateOptions, PathnamesTranslations } from 'types/utils'
+import { LocaleOptions, PathnamesTranslations } from 'types/utils'
 
 const useRouterCustom = () => {
   const router = useRouter()
@@ -53,7 +53,7 @@ const useRouterCustom = () => {
 
   function getTranslatedPath(
     url: string,
-    customLocale?: keyof typeof LocateOptions
+    customLocale?: keyof typeof LocaleOptions
   ) {
     let { locale } = router
 
