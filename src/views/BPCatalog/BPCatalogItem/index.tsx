@@ -33,11 +33,13 @@ export interface BPCatalogItemProps {
     name: string
     href: string
     img: string
+    url_code: string
   }[]
   in_ambients: {
     id: number
     image_url: string
     ambient_href: string
+    ambient_url_code: string
   }[]
   available_at: {
     id: number
