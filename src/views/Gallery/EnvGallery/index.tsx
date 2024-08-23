@@ -80,10 +80,15 @@ export const EnvGallery = ({
   const [isInitialRender, setIsInitialRender] = useState(true)
   const router = useRouter()
 
-  const { addQueryToUrl, removeQueryFromUrl, resetQueriesFromUrl } =
-    useRouterCustom()
+  const {
+    addQueryToUrl,
+    removeQueryFromUrl,
+    resetQueriesFromUrl,
+    getTranslatedPath
+  } = useRouterCustom()
 
   const pathname = router.pathname
+  const translatedPathName = getTranslatedPath(pathname)
 
   const initialURLFilters = getFiltersFromURL()
   const initialPage = initialURLFilters?.page
@@ -465,7 +470,7 @@ export const EnvGallery = ({
             onItemClick: handleBackAction
           }
         ]}
-        goToUrl={pathname}
+        goToUrl={translatedPathName}
         onBackAction={handleBackAction}
       />
 

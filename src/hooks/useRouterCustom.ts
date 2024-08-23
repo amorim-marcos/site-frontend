@@ -5,10 +5,12 @@ const useRouterCustom = () => {
   const router = useRouter()
   const pathname = router.pathname
 
+  const translatedPathName = getTranslatedPath(pathname)
+
   function resetQueriesFromUrl() {
     router.replace(
       {
-        pathname: pathname
+        pathname: translatedPathName
       },
       undefined,
       {
@@ -25,7 +27,7 @@ const useRouterCustom = () => {
 
     router.replace(
       {
-        pathname: pathname,
+        pathname: translatedPathName,
         query: {
           ...newQuery
         }
@@ -40,7 +42,7 @@ const useRouterCustom = () => {
   function addQueryToUrl(queryName: string, value: string) {
     router.replace(
       {
-        pathname: pathname,
+        pathname: translatedPathName,
         query: {
           ...router.query,
           [queryName]: value

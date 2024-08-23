@@ -90,9 +90,11 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   const [isInitialRender, setIsInitialRender] = useState(true)
 
   const router = useRouter()
-  const { resetQueriesFromUrl } = useRouterCustom()
+  const { resetQueriesFromUrl, getTranslatedPath } = useRouterCustom()
 
   const pathname = router.pathname
+
+  const translatedPathName = getTranslatedPath(pathname)
 
   const [filtersBP, setFilters] = useState(() => {
     // const filtersCookie = Cookies.get('filtersBP')
@@ -256,7 +258,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
     router.replace(
       {
-        pathname: pathname,
+        pathname: translatedPathName,
         query: {
           ...router.query,
           [queryParamsMapping[queryName]]: friendlyValue
@@ -278,7 +280,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
     router.replace(
       {
-        pathname: pathname,
+        pathname: translatedPathName,
         query: {
           ...newQuery
         }
@@ -572,7 +574,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
             onItemClick: handleBackAction
           }
         ]}
-        goToUrl={pathname}
+        goToUrl={translatedPathName}
         onBackAction={handleBackAction}
       />
       <Box backgroundColor={darkMode ? 'gray.400' : 'white.100'}>
