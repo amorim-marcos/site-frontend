@@ -1,36 +1,43 @@
 import { List, ListItem, Text, Box } from '@chakra-ui/react'
 import CustomLink from '@components/CustomLink'
+import useRouterCustom from 'hooks/useRouterCustom'
 import { useRouter } from 'next/router'
 
 export type FooterListProps = {
   title: {
-    href: string;
-    title: string;
-  };
+    href: string
+    title: string
+  }
   items: {
-    href: string;
-    title: string;
-    empty?: boolean;
-  }[];
-};
+    href: string
+    title: string
+    empty?: boolean
+  }[]
+}
 
 interface HeaderLimits {
   [key: string]: {
-    [key: string]: number;
-  };
+    [key: string]: number
+  }
 }
 
 export const FooterList = ({ title, items }: FooterListProps) => {
-  const router = useRouter();
-  const handleNavigation = (event: React.MouseEvent<HTMLElement>, link: string): void => {
-    event.preventDefault();
-  
-    router.push(link);
-  
+  const router = useRouter()
+  const { getTranslatedPath } = useRouterCustom()
+  const handleNavigation = (
+    event: React.MouseEvent<HTMLElement>,
+    link: string
+  ): void => {
+    event.preventDefault()
+
+    const translatedLink = getTranslatedPath(link)
+
+    router.push(translatedLink)
+
     if (link.includes('#')) {
-      const elementId = link.split('#')[1];
-      const element = document.getElementById(elementId);
-  
+      const elementId = link.split('#')[1]
+      const element = document.getElementById(elementId)
+
       if (element) {
         const headerLimits: HeaderLimits = {
           default: {
@@ -38,55 +45,62 @@ export const FooterList = ({ title, items }: FooterListProps) => {
             '1280': 40,
             '1024': 30,
             '768': 25,
-            'default': 25,
+            default: 25
           },
           'where-we-are': {
-            '768': 50,
+            '768': 50
           },
-          'trajectory': {
-            '768': 30,
+          trajectory: {
+            '768': 30
           },
-          'environment': {
-            '768': 50,
+          environment: {
+            '768': 50
           },
           'our-people': {
-            '768': 40,
+            '768': 40
           },
           'our-values': {
-            '768': 40,
+            '768': 40
           },
-          'production': {
-            '768': 40,
+          production: {
+            '768': 40
           },
-          'management': {
-            '768': 40,
+          management: {
+            '768': 40
           },
-          'supplier': {
-            '768': 49,
-          },
-        };
-  
-        let headerLimit = headerLimits.default.default;
-  
+          supplier: {
+            '768': 49
+          }
+        }
+
+        let headerLimit = headerLimits.default.default
+
         const limitsForCurrentWidth = Object.keys(headerLimits.default)
           .reverse()
-          .find((width) => window.innerWidth < Number(width));
-          
+          .find((width) => window.innerWidth < Number(width))
+
         if (limitsForCurrentWidth) {
-          headerLimit = headerLimits.default[limitsForCurrentWidth];
+          headerLimit = headerLimits.default[limitsForCurrentWidth]
         }
-  
-        if (limitsForCurrentWidth && headerLimits[elementId] && headerLimits[elementId][limitsForCurrentWidth]) {
-          headerLimit = headerLimits[elementId][limitsForCurrentWidth];
-        }        
-  
+
+        if (
+          limitsForCurrentWidth &&
+          headerLimits[elementId] &&
+          headerLimits[elementId][limitsForCurrentWidth]
+        ) {
+          headerLimit = headerLimits[elementId][limitsForCurrentWidth]
+        }
+
         window.scrollTo({
-          top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit,
-          behavior: 'smooth',
-        });
+          top:
+            element.getBoundingClientRect().top +
+            window.pageYOffset -
+            headerLimit,
+          behavior: 'smooth'
+        })
       }
     }
-  };
+  }
 
   return (
     <Box aria-label="footer-list">
