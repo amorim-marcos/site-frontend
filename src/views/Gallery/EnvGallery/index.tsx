@@ -432,6 +432,8 @@ export const EnvGallery = ({
   // }, [router.query])
 
   const ref = useRef<HTMLDivElement>(null)
+  const envPath = '/products/bp-berneck/gallery'
+  const translatedEnvPath = getTranslatedPath(envPath)
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -579,13 +581,12 @@ export const EnvGallery = ({
                 >
                   {filteredEnvs.map((env, i) => {
                     return (
-                      // i < pagination * pageSize && (
                       <GridItem key={env.id} mt="20px">
                         <Env
                           href={
                             router.locale == 'pt-BR'
-                              ? `/products/bp-berneck/gallery/${env.url_code}`
-                              : `/${router.locale}/products/bp-berneck/gallery/${env.url_code}`
+                              ? `${translatedEnvPath}/${env.url_code}`
+                              : `${router.locale}${translatedEnvPath}/${env.url_code}`
                           }
                           title={env.title}
                           place={env.subTitle}

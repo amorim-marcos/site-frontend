@@ -29,11 +29,13 @@ export interface CatalogItemProps {
     name: string
     href: string
     img: string
+    url_code: string
   }[]
   in_ambients: {
     id: number
     image_url: string
     ambient_href: string
+    ambient_url_code: string
   }[]
   available_at: {
     id: number
@@ -84,7 +86,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         galleryOfImages.push({
           id: image.id,
           ambient_href: `/products/bp-berneck/gallery/${item.url_code}`,
-          image_url: `${url}${image.url}`
+          image_url: `${url}${image.url}`,
+          ambient_url_code: item.url_code
         })
       })
     })
@@ -124,7 +127,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       combine_with: productFetch.combine_with.map((item: any) => ({
         name: item.name,
         href: `/products/bp-berneck/catalog/${item.url_code}`,
-        img: `${url}${item.pattern_image.url}`
+        img: `${url}${item.pattern_image.url}`,
+        url_code: item.url_code
       })),
       available_at: productFetch.available_at.map((item: any) => ({
         ...item,
