@@ -62,7 +62,7 @@ export const HeaderMenuItem = ({
       borderBottomColor={{ base: borderBottom ? 'green.800' : '', md: 'none' }}
     >
       <Box display={{ base: 'none', md: 'block' }}>
-        <CustomLink linkTo={href}>
+        <CustomLink linkTo={href} translatePaths>
           <Flex
             justifyContent="space-between"
             alignItems="center"

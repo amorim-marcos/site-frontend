@@ -1,6 +1,7 @@
 import { Text, Flex, Box } from '@chakra-ui/react'
 import CustomLink from '@components/CustomLink'
 import ArrowIcon from '@components/Icons/ArrowIcon'
+import useRouterCustom from 'hooks/useRouterCustom'
 import { useRouter } from 'next/router'
 type SubItem = {
   title?: string
@@ -23,6 +24,8 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
 }) => {
   const router = useRouter()
 
+  const { getTranslatedPath } = useRouterCustom()
+
   interface HeaderLimits {
     [key: string]: {
       [key: string]: number
@@ -35,7 +38,12 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
   ): void => {
     event.preventDefault()
 
-    router.push(link)
+    // todo
+    // check need of this
+
+    const translatedLink = getTranslatedPath(link)
+
+    router.push(translatedLink)
 
     if (link.includes('#')) {
       const elementId = link.split('#')[1]
@@ -126,7 +134,7 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
 
   return (
     <Flex onClick={onClick} flexDir="column">
-      <CustomLink linkTo={href}>
+      <CustomLink linkTo={href} translatePaths>
         <Flex
           onClick={(event) => handleNavigation(event, href)}
           paddingLeft={{
@@ -169,7 +177,7 @@ export const HeaderMenuSubItem: React.FC<HeaderMenuSubItemProps> = ({
       <Box>
         {subItems?.map((i, j) => {
           return (
-            <CustomLink key={j} linkTo={i.href}>
+            <CustomLink key={j} linkTo={i.href} translatePaths>
               <Flex
                 key={j}
                 onClick={(event) => handleNavigation(event, i.href || '/')}
