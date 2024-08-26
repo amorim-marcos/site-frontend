@@ -13,9 +13,10 @@ import { FiltersTabs } from './FiltersTabs'
 import { BP } from './BP'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
-import Cookies from 'js-cookie'
+
 import { normalizeTitle } from 'utils/utils'
 import useRouterCustom from 'hooks/useRouterCustom'
+import { LocateOptions } from 'types/utils'
 
 export type filtersBP = {
   orderBy: string
@@ -77,6 +78,38 @@ export type BPCatalogProps = {
   }
 }
 
+const translatedQueryParamsMapping = {
+  en: {
+    collections: 'collections',
+    panels: 'panels',
+    colorations: 'colorations',
+    nameSearched: 'nameSearched'
+  },
+  'pt-BR': {
+    collections: 'colecoes',
+    panels: 'paineis',
+    colorations: 'coloracoes',
+    nameSearched: 'nomePesquisado'
+  },
+  es: {
+    collections: 'collections',
+    panels: 'panels',
+    colorations: 'colorations',
+    nameSearched: 'nameSearched'
+  },
+  'zn-CN': {
+    collections: 'collections',
+    panels: 'panels',
+    colorations: 'colorations',
+    nameSearched: 'nameSearched'
+  }
+}
+function getTranslatedFilterNames(locale: keyof typeof LocateOptions) {
+  return (
+    translatedQueryParamsMapping[locale] || translatedQueryParamsMapping['en']
+  )
+}
+
 export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   const { isMobile } = useMobile(1024)
   const [displayFilters, setDisplayFilters] = useState(false)
@@ -91,20 +124,27 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
 
   const router = useRouter()
   const { resetQueriesFromUrl, getTranslatedPath } = useRouterCustom()
+  let { locale } = router
+
+  locale = locale || 'pt-BR'
 
   const pathname = router.pathname
 
   const translatedPathName = getTranslatedPath(pathname)
+
+  const translatedFilterNames = getTranslatedFilterNames(
+    locale as keyof typeof LocateOptions
+  )
 
   const [filtersBP, setFilters] = useState(() => {
     // const filtersCookie = Cookies.get('filtersBP')
 
     let initialProcessedFilters = { ...initialFilters }
 
-    if (router.query.collection) {
+    if (router.query[translatedFilterNames['collections']]) {
       const matchedCollection = filtersContext.collections.find(
         (c: any) =>
-          router.query.collection ===
+          router.query[translatedFilterNames['collections']] ===
           c.title
             .toLowerCase()
             .normalize('NFD')
@@ -121,10 +161,10 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
       //   collections: matchedCollection ? [matchedCollection.code] : []
       // }
     }
-    if (router.query.panel) {
+    if (router.query[translatedFilterNames['panels']]) {
       const matchedPanel = filtersContext.panels.find(
         (p: any) =>
-          router.query.panel ===
+          router.query[translatedFilterNames['panels']] ===
           p.title
             .toLowerCase()
             .normalize('NFD')
@@ -141,10 +181,10 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
       // }
     }
 
-    if (router.query.coloration) {
+    if (router.query[translatedFilterNames['colorations']]) {
       const matchedColoration = filtersContext.colorations.find(
         (color: any) =>
-          router.query.coloration ===
+          router.query[translatedFilterNames['colorations']] ===
           color.title
             .toLowerCase()
             .normalize('NFD')
@@ -161,19 +201,19 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
       // }
     }
 
-    if (router.query.nameSearched) {
-      const queryName = Array.isArray(router.query.nameSearched)
-        ? router.query.nameSearched[0]
-        : router.query.nameSearched
+    if (router.query[translatedFilterNames['nameSearched']]) {
+      const translatedQueryName =
+        router.query[translatedFilterNames['nameSearched']] || 'nameSearched'
+
+      const queryName = Array.isArray(translatedQueryName)
+        ? translatedQueryName[0]
+        : translatedQueryName
 
       initialProcessedFilters = {
         ...initialProcessedFilters,
         nameSearched: queryName
       }
     }
-    // else if (filtersCookie) {
-    //   return JSON.parse(decodeURIComponent(filtersCookie))
-    // }
 
     return initialProcessedFilters
   })
@@ -193,13 +233,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
       ...f,
       [type]: [...f[type], value]
     }))
-  }
-
-  const queryParamsMapping = {
-    collections: 'collection',
-    panels: 'panel',
-    colorations: 'coloration',
-    nameSearched: 'nameSearched'
   }
 
   function getCollectionName(collectionCode: string, collections: any) {
@@ -261,7 +294,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         pathname: translatedPathName,
         query: {
           ...router.query,
-          [queryParamsMapping[queryName]]: friendlyValue
+          [translatedFilterNames[queryName]]: friendlyValue
         }
       },
       undefined,
@@ -272,7 +305,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   }
 
   function handleRemoveQueryFromUrl(queryName: ValidFilterNames) {
-    const queryFilterName = queryParamsMapping[queryName]
+    const queryFilterName = translatedFilterNames[queryName]
     const { query: queryObj } = router
 
     const newQuery = { ...queryObj }
@@ -461,10 +494,13 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
           .toLowerCase()
       }
 
-      if (router.query.panel) {
-        const queryPanel = Array.isArray(router.query.panel)
-          ? router.query.panel[0]
-          : router.query.panel
+      if (router.query[translatedFilterNames['panels']]) {
+        const translatedQueryName =
+          router.query[translatedFilterNames['panels']] || 'panels'
+
+        const queryPanel = Array.isArray(translatedQueryName)
+          ? translatedQueryName[0]
+          : translatedQueryName
         const normalizedPanelQuery = normalizeTitle(queryPanel)
 
         for (const panel of filtersContext.panels) {
@@ -504,10 +540,13 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         }
       }
 
-      if (router.query.collection) {
-        const queryCollection = Array.isArray(router.query.collection)
-          ? router.query.collection[0]
-          : router.query.collection
+      if (router.query[translatedFilterNames['collections']]) {
+        const translatedQueryName =
+          router.query[translatedFilterNames['collections']] || 'collections'
+
+        const queryCollection = Array.isArray(translatedQueryName)
+          ? translatedQueryName[0]
+          : translatedQueryName
         const normalizedCollectionQuery = normalizeTitle(queryCollection)
 
         for (const collection of filtersContext.collections) {
