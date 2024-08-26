@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next'
 import { normalizeTitle } from 'utils/utils'
 import useRouterCustom from 'hooks/useRouterCustom'
 import PageHead from '@components/PageHead'
-import { LocateOptions } from 'types/utils'
+import { LocaleOptions } from 'types/utils'
 
 export type filtersBP = {
   orderBy: string
@@ -105,7 +105,7 @@ const translatedQueryParamsMapping = {
     nameSearched: 'nameSearched'
   }
 }
-function getTranslatedFilterNames(locale: keyof typeof LocateOptions) {
+function getTranslatedFilterNames(locale: keyof typeof LocaleOptions) {
   return (
     translatedQueryParamsMapping[locale] || translatedQueryParamsMapping['en']
   )
@@ -134,7 +134,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   const translatedPathName = getTranslatedPath(pathname)
 
   const translatedFilterNames = getTranslatedFilterNames(
-    locale as keyof typeof LocateOptions
+    locale as keyof typeof LocaleOptions
   )
 
   const [filtersBP, setFilters] = useState(() => {
