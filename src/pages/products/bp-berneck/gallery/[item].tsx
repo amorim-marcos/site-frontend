@@ -5,11 +5,12 @@ import { loadTranslations } from 'ni18n'
 import { strapiClient } from 'services'
 import { EnvView } from 'views/Gallery/EnvView'
 import { nameSpaces, ni18nConfig } from '../../../../../ni18n.config'
+import { GalleryResponse } from 'types/data/Gallery'
 
 export interface GalleryItemProps {
   env: {
     id: number
-    imgSrc: string
+    imgSrcs: string[]
     title: string
     subTitle: string
     panels: {
@@ -42,84 +43,104 @@ export default function GalleryItem(props: GalleryItemProps) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { item } = ctx.query
-  const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
-  const translations = await loadTranslations(ni18nConfig, ctx.locale, nameSpaces);
+  const uploadBaseUrl = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
+  const translations = await loadTranslations(
+    ni18nConfig,
+    ctx.locale,
+    nameSpaces
+  )
 
-  const t = translations.__ni18n_server__.resources[ctx.locale ?? 'pt-BR'].envView as any;
+  const t = translations.__ni18n_server__.resources[ctx.locale ?? 'pt-BR']
+    .envView as any
 
-  let envFetch = await strapiClient({
+  const envFetch: GalleryResponse[] = await strapiClient({
     defaultOnEmpty: true,
     locale: ctx.locale,
     query: [{ url_code: item }],
     resource: 'ambients'
   })
 
-  const otherEnvsFetch = await strapiClient({
+  const otherEnvsFetch: GalleryResponse[] = await strapiClient({
     defaultOnEmpty: true,
     locale: ctx.locale,
     resource: 'ambients'
   })
 
-  envFetch = envFetch[0]
+  const formattedEnvFetch = envFetch[0]
 
   const env: GalleryItemProps['env'] = {
-    id: envFetch.id,
-    imgSrc: envFetch.gallery_of_images.map((img: any) => `${url}${img.url}`),
-    title: envFetch.ambient_type.type,
-    subTitle: envFetch.title,
-    panels: envFetch.products.map((product: any) => {
+    id: formattedEnvFetch.id,
+    imgSrcs: formattedEnvFetch.gallery_imgs.map(
+      (img) => `${uploadBaseUrl}${img.img.url}`
+    ),
+    title: formattedEnvFetch.ambient_type.type,
+    subTitle: formattedEnvFetch.title,
+    panels: formattedEnvFetch.products.map((product: any) => {
       return {
         id: product.id,
         name: product.name,
         href: `/products/bp-berneck/catalog/${product.url_code}`,
-        imgSrc: `${url}${product.pattern_image.url}`,
+        imgSrc: `${uploadBaseUrl}${product.pattern_image.url}`,
         product_texture: product.product_texture
       }
     })
   }
 
   const otherEnvs: GalleryItemProps['otherEnvs'] = otherEnvsFetch
-    .filter((env: any) => env.id !== envFetch.id)
+    .filter((env) => env.id !== formattedEnvFetch.id)
     .slice(0, 4)
-    .map((env: any) => {
+    .map((env) => {
       return {
         id: env.id,
         url_code: env.url_code,
-        imgSrc: `${url}${env.gallery_of_images[0].url}`,
+        imgSrc: env.gallery_imgs[0]
+          ? `${uploadBaseUrl}${env.gallery_imgs[0].img?.url}`
+          : `${uploadBaseUrl}${env.gallery_of_images[0]?.url}`,
         title: env.ambient_type.type,
         subTitle: env.title
       }
     })
 
-  const imgs = envFetch.gallery_of_images
-    .map((img: any) => {
+  let imgs = formattedEnvFetch.gallery_imgs.map((img) => {
+    return {
+      id: img.id,
+      imgSrc: `${uploadBaseUrl}${img.img.url}`
+    }
+  })
+
+  // todo
+  // remove retro compatibility
+  if (imgs.length === 0) {
+    imgs = formattedEnvFetch.gallery_of_images.map((img) => {
       return {
         id: img.id,
-        imgSrc: `${url}${img.url}`
+        imgSrc: `${uploadBaseUrl}${img.url}`
       }
     })
-    .reverse()
+  }
 
   const tableContent = [
     {
-      column1: t["year"] ?? "",
-      column2: envFetch.informations?.year ?? null
+      column1: t['year'] ?? '',
+      column2: formattedEnvFetch.informations?.year ?? null
     },
     {
-      column1: t["environment"] ?? "",
-      column2: envFetch.ambient_type.type
+      column1: t['environment'] ?? '',
+      column2: formattedEnvFetch.ambient_type.type
     },
     {
-      column1: t["style"] ?? "",
-      column2: envFetch.ambient_styles.map((i: any) => i.style).join(', ')
+      column1: t['style'] ?? '',
+      column2: formattedEnvFetch.ambient_styles
+        .map((i: any) => i.style)
+        .join(', ')
     },
     {
-      column1: t["architect"] ?? "",
-      column2: envFetch.informations?.architect ?? null
+      column1: t['architect'] ?? '',
+      column2: formattedEnvFetch.informations?.architect ?? null
     },
     {
-      column1: t["photographer"] ?? "",
-      column2: envFetch.informations?.photographer ?? null
+      column1: t['photographer'] ?? '',
+      column2: formattedEnvFetch.informations?.photographer ?? null
     }
   ]
 

@@ -5,6 +5,7 @@ import { loadTranslations } from 'ni18n'
 import { strapiClient } from 'services'
 import BPCatalog from 'views/BPCatalog'
 import { nameSpaces, ni18nConfig } from '../../../../../ni18n.config'
+import { AvailableAt } from 'types/data/Product'
 
 export interface BpBerneckProps {
   bps: {
@@ -41,36 +42,36 @@ export interface BpBerneckProps {
   }
 }
 
-export interface AvailableAt {
-  id: number
-  panel_type: PanelType
-}
+// export interface AvailableAt {
+//   id: number
+//   panel_type: PanelType
+// }
 
-export interface PanelType {
-  id: number
-  name: string
-  created_at: string | Date
-  update_at: string | Date
-  background_image_small: ImageProps
-}
+// export interface PanelType {
+//   id: number
+//   name: string
+//   created_at: string | Date
+//   update_at: string | Date
+//   background_image_small: ImageProps
+// }
 
-export interface ImageProps {
-  id: number
-  name: string
-  alternativeText: string
-  caption: string
-  width: number
-  height: number
-  hash: string
-  ext: string
-  mime: string
-  size: number
-  url: string
-  previewUrl: string
-  provider: string
-  created_at: string | Date
-  updated_at: string | Date
-}
+// export interface ImageProps {
+//   id: number
+//   name: string
+//   alternativeText: string
+//   caption: string
+//   width: number
+//   height: number
+//   hash: string
+//   ext: string
+//   mime: string
+//   size: number
+//   url: string
+//   previewUrl: string
+//   provider: string
+//   created_at: string | Date
+//   updated_at: string | Date
+// }
 
 export default function BpBerneck(props: BpBerneckProps) {
   return <BPCatalog {...props} />
