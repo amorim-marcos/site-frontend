@@ -61,3 +61,9 @@ export interface PathnamesTranslations {
     [path: string]: string
   }
 }
+
+export interface Localization {
+  id: number
+  // locale: keyof typeof LocateOptions
+  locale: 'en' | 'pt-BR' | 'es' | 'zn-CN'
+}
