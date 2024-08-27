@@ -50,3 +50,9 @@ export interface ImageFormat {
   size: number
   url: string
 }
+
+export interface Localization {
+  id: number
+  // locale: keyof typeof LocateOptions
+  locale: 'en' | 'pt-BR' | 'es' | 'zn-CN'
+}
