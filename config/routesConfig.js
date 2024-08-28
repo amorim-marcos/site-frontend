@@ -55,7 +55,9 @@ const pathTranslations = {
     '/canal-bnk/:category': '/bnk-channel/:category',
     '/canal-bnk/:category/:slug': '/bnk-channel/:category/:slug',
 
-    '/canal-bnk/downloads': '/bnk-channel/downloads'
+    '/canal-bnk/downloads': '/bnk-channel/downloads',
+    '/onde-comprar': '/where-to-buy',
+    '/contato': '/contact'
   }
 }
 
