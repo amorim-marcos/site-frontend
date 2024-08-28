@@ -239,43 +239,6 @@ useEffect(() => {
             patterns_pack_download_jpgs={patterns_pack_download_jpgs}
             patterns_pack_download_skps={patterns_pack_download_skps}
           />
-
-          {items.map((i, j) => {
-            return (
-              j >= 2 && (
-                <Box
-                  key={j}
-                  id={i.type
-                    .normalize('NFD')
-                    .replace(/[^\w ]/g, '')
-                    .split(' ')
-                    .join('-')
-                    .toLowerCase()}
-                    
-                >
-                  <DownloadSection
-                    title={i.type}
-                    description={i.description}
-                    items={i.items.map((w) => {
-                      return {
-                        title: w.title,
-                        urlImage: w.image.url,
-                        downloadUrl: w.file.url
-                      }
-                    })}
-                    key={0}
-                    grafism={
-                      (j + 1) % 3 === 0
-                        ? 'type3'
-                        : (j + 1) % 3 === 1
-                        ? 'type1'
-                        : 'type2'
-                    }
-                  />
-                </Box>
-              )
-            )
-          })}
         </Flex>
       </Flex>
     </Box>
