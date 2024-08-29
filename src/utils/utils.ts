@@ -61,6 +61,23 @@ export const normalizeTitle = (title: string): string => {
     .toLowerCase()
 }
 
+/**
+ * Normalizes a title by removing diacritical marks and non-alphanumeric characters,
+ * converting it to lowercase.
+ *
+ * @param title - The title to be normalized.
+ * @returns The normalized title.
+ * @example: normalizeTitle('Solicitação de Mostruário') => 'solicitacao-de-mostruario'
+ */
+export const normalizeTitleUrl = (title: string): string => {
+  return title
+    .normalize('NFD')
+    .replace(/[^\w ]/g, '')
+    .split(' ')
+    .join('-')
+    .toLowerCase()
+}
+
 export function showcaseChannelCode(locale: string) {
   switch (locale) {
     case 'pt-BR':
