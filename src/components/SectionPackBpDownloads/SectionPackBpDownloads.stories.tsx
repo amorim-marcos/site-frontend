@@ -27,5 +27,6 @@ export const Default: Story = (args) => (
     download_url_skps={args.download_url_skps}
     patterns_pack_download_jpgs={args.patterns_pack_download_jpgs}
     patterns_pack_download_skps={args.patterns_pack_download_skps}
+    sectionId=""
   />
 )

@@ -10,6 +10,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import PageHead from '@components/PageHead'
 import { FileProps } from 'types/utils'
+import { normalizeTitleUrl } from 'utils/utils'
 
 export type DownloadItem = {
   id: number
@@ -207,16 +208,11 @@ export const DownloadsView = ({
           maxWidth={'1536px'}
         >
           {items.map((i, j) => {
-            const id = i.type
-              .normalize('NFD')
-              .replace(/[^\w ]/g, '')
-              .split(' ')
-              .join('-')
-              .toLowerCase()
-
+            const sectionId = normalizeTitleUrl(i.type)
             return (
-              <Box key={j} id={id}>
+              <Box key={j} id={sectionId}>
                 <DownloadSection
+                  sectionId={sectionId}
                   title={i.type}
                   description={i.description}
                   items={i.items.map((w) => ({
@@ -237,6 +233,7 @@ export const DownloadsView = ({
           })}
 
           <SectionPackBpDownloads
+            sectionId={normalizeTitleUrl(patterns_pack_title)}
             title={patterns_pack_title}
             text={patterns_pack_text}
             download_url={patterns_pack_download_url}
