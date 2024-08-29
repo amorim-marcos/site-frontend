@@ -66,6 +66,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let downloadPageContent: DownloadsPageResponse
   let res
 
+  const sortQuery = `_sort=custom_order:asc`
+
   try {
     res = await fetch(
       process.env.NEXT_PUBLIC_API_URL + `/downloads?_locale=${locale}`
@@ -73,7 +75,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     downloadItems = await res.json()
 
     res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/download-types?_locale=${locale}`
+      process.env.NEXT_PUBLIC_API_URL +
+        `/download-types?_locale=${locale}&${sortQuery}`
     )
     downloadTypes = await res.json()
 
@@ -87,7 +90,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/downloads`)
     downloadItems = await res.json()
 
-    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/download-types`)
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/download-types?${sortQuery}`
+    )
     downloadTypes = await res.json()
 
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/downloads-page`)
