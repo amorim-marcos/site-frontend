@@ -103,3 +103,11 @@ export function exportationContactChannelCode(locale: string) {
       return 'vhq57g6xbr0b5w65b'
   }
 }
+
+export const getPageCompleteUrl = (pathName?: string) => {
+  const complement = pathName ? pathName : ''
+
+  const pageBaseUrl = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + complement
+
+  return pageBaseUrl || ''
+}

@@ -1,10 +1,14 @@
-import { Flex, Box, Text, Image, Link } from '@chakra-ui/react'
+import { Flex, Box, Text, Image, Link, FlexProps } from '@chakra-ui/react'
 import CustomLink from '@components/CustomLink'
 import HtmlTextParser from '@components/HtmlTextParser'
+import UrlCopyIcon from '@components/UrlCopyIcon'
 import axios from 'axios'
 import useMobile from 'hooks/useMobile'
+
+import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import { FileProps } from 'types/utils'
+import { getPageCompleteUrl } from 'utils/utils'
 
 export type SectionPackBpDownloadsProps = {
   title: string
@@ -32,6 +36,12 @@ export const SectionPackBpDownloads = ({
   const { width } = useMobile(568)
 
   const componentsLabels = useTranslation('components')
+
+  const { asPath } = useRouter()
+
+  const pathWithouHash = asPath.split('#')[0]
+
+  const completePageBaseUrl = getPageCompleteUrl(pathWithouHash)
 
   const handleRenameAndDownload = async (
     fileUrl: string | undefined,
@@ -89,6 +99,9 @@ export const SectionPackBpDownloads = ({
         justifyContent="space-around"
         flexDirection={{ base: 'column', md: 'row' }}
       >
+        {/* link icon */}
+
+        <UrlCopyIcon urlToCopy={completePageBaseUrl + '#' + sectionId} />
         <Box
           bg="brown.300"
           w={{ base: '100vw', md: '40%' }}

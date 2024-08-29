@@ -9,9 +9,12 @@ import {
 } from '@chakra-ui/react'
 import Arrow from '@components/Arrow'
 import HtmlTextParser from '@components/HtmlTextParser'
-import ArrowIcon from '@components/Icons/ArrowIcon'
+
+import UrlCopyIcon from '@components/UrlCopyIcon'
 import useMobile from 'hooks/useMobile'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { getPageCompleteUrl } from 'utils/utils'
 
 export type DownloadSectionProps = {
   title: string
@@ -34,6 +37,12 @@ export const DownloadSection = ({
   const { isMobile } = useMobile(768)
   const [itemsData, setItemsData] = useState(items)
   const [hoverBtnControl, setHoverBtnControl] = useState(false)
+
+  const { asPath } = useRouter()
+
+  const pathWithouHash = asPath.split('#')[0]
+
+  const completeBaseUrl = getPageCompleteUrl(pathWithouHash)
 
   function avanceRight() {
     if (isMobile || items.length > 5) {
@@ -62,6 +71,7 @@ export const DownloadSection = ({
       position="relative"
       paddingBottom={{ base: '10%', md: '0' }}
     >
+      <UrlCopyIcon urlToCopy={completeBaseUrl + '#' + sectionId} />
       <Text as="h3" variant={'h3' as any} color="green.800" zIndex="docked">
         {title}
       </Text>
