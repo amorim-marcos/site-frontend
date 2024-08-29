@@ -8,6 +8,7 @@ import { FileProps } from 'types/utils'
 
 export type SectionPackBpDownloadsProps = {
   title: string
+  sectionId: string
   text: string
   // todo
   // remove this property in the future
@@ -20,6 +21,7 @@ export type SectionPackBpDownloadsProps = {
 
 export const SectionPackBpDownloads = ({
   title,
+  sectionId,
   text,
   download_url,
   download_url_jpgs,
@@ -72,7 +74,7 @@ export const SectionPackBpDownloads = ({
 
   return (
     <Flex
-      id="pack-bp-downloads"
+      id={sectionId}
       w="100%"
       marginBottom={{ base: '400px', md: '10%' }}
       justifyContent="center"

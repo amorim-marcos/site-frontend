@@ -9,6 +9,7 @@ import HtmlTextParser from '@components/HtmlTextParser'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { FileProps } from 'types/utils'
+import { normalizeTitleUrl } from 'utils/utils'
 
 export type DownloadItem = {
   id: number
@@ -197,40 +198,33 @@ useEffect(() => {
           flexDir="column"
           maxWidth={'1536px'}
         >
-      {items.map((i, j) => {
-        const id = i.type
-          .normalize('NFD')
-          .replace(/[^\w ]/g, '')
-          .split(' ')
-          .join('-')
-          .toLowerCase();
-
-        return (
-          <Box key={j} id={id}>
-            <DownloadSection
-              title={i.type}
-              description={i.description}
-              items={i.items.map((w) => ({
-                title: w.title,
-                urlImage: w.image.url,
-                downloadUrl: w.file.url
-              }))}
-              grafism={
-                (j + 1) % 3 === 0
-                  ? 'type3'
-                  : (j + 1) % 3 === 1
-                  ? 'type1'
-                  : 'type2'
-              }
-            />
-            
-          </Box>
-          
-        );
-      })}
-
+          {items.map((i, j) => {
+            const sectionId = normalizeTitleUrl(i.type)
+            return (
+              <Box key={j} id={sectionId}>
+                <DownloadSection
+                  sectionId={sectionId}
+                  title={i.type}
+                  description={i.description}
+                  items={i.items.map((w) => ({
+                    title: w.title,
+                    urlImage: w.image.url,
+                    downloadUrl: w.file.url
+                  }))}
+                  grafism={
+                    (j + 1) % 3 === 0
+                      ? 'type3'
+                      : (j + 1) % 3 === 1
+                      ? 'type1'
+                      : 'type2'
+                  }
+                />
+              </Box>
+            )
+          })}
 
           <SectionPackBpDownloads
+            sectionId={normalizeTitleUrl(patterns_pack_title)}
             title={patterns_pack_title}
             text={patterns_pack_text}
             download_url={patterns_pack_download_url}

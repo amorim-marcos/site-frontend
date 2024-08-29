@@ -15,6 +15,7 @@ import { useState } from 'react'
 
 export type DownloadSectionProps = {
   title: string
+  sectionId: string
   description: string
   grafism: 'type1' | 'type2' | 'type3'
   items: Array<{
@@ -27,7 +28,8 @@ export const DownloadSection = ({
   title,
   grafism,
   items,
-  description
+  description,
+  sectionId
 }: DownloadSectionProps) => {
   const { isMobile } = useMobile(768)
   const [itemsData, setItemsData] = useState(items)
