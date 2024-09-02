@@ -5,6 +5,7 @@ import DOMPurify from 'isomorphic-dompurify'
 import { smartDate } from 'utils/utils'
 import { nameSpaces, ni18nConfig } from '../../../../ni18n.config'
 import { loadTranslations } from 'ni18n'
+import { ImageProps } from 'types/utils'
 
 export type PostPageProps = {
   posts: Post[]
@@ -25,6 +26,7 @@ export default function PostPage(props: PostPageProps) {
         postSlug: props.currentPost.url_code
       }}
       coverImageUrl={props.currentPost.cover}
+      cover_img={props.currentPost.cover_img}
       relationalContent={{
         items: props.posts
           ? props.posts.map((item) => {
@@ -36,13 +38,15 @@ export default function PostPage(props: PostPageProps) {
                 },
                 url_code: item.url_code,
                 urlImage: item.cover,
-                title: item.title
+                title: item.title,
+                cover_img: item.cover_img
               }
             })
           : []
       }}
       backgroundColor="brown.100"
       postCategory={props.currentPost.category}
+      meta_description={props?.currentPost?.meta_description}
     />
   )
 }
@@ -56,6 +60,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/posts`)
   const allPosts = await res.json()
+
+  const uploadBaseUrl = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
   const data: Post[] = allPosts
     .filter(
@@ -72,9 +78,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         },
         content: DOMPurify.sanitize(item.content).replace(
           '/uploads',
-          `${process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL}/uploads`
+          `${uploadBaseUrl}/uploads`
         ),
-        cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url,
+        cover: uploadBaseUrl + item.cover.url,
         tags: item.tags
           ? item.tags.map((j) => ({
               Tag: j.tag
@@ -82,7 +88,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
           : [],
         title: item.title,
         date: item.published_at,
-        url_code: item.url_code
+        url_code: item.url_code,
+        cover_img: item.cover,
+        meta_description: item?.meta_description || ''
       }
       return post
     })
@@ -98,7 +106,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       ADD_TAGS: ['oembed', 'figure'],
       ADD_ATTR: ['url', 'allow', 'allowfullscreen', 'frameborder', 'scrolling']
     }),
-    cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + currentPost.cover.url,
+    cover: uploadBaseUrl + currentPost.cover.url,
     tags: currentPost.tags.map((j) => ({
       Tag: j.tag
     })),
@@ -106,7 +114,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     date: currentPost.publication_date
       ? getCorrectDate(currentPost.publication_date, ctx.locale || 'pt-BR')
       : getCorrectDate(currentPost.published_at, ctx.locale || 'pt-BR'),
-    url_code: currentPost.url_code
+    url_code: currentPost.url_code,
+    cover_img: currentPost.cover,
+    meta_description: currentPost?.meta_description
   }
 
   return {
@@ -119,9 +129,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 }
 
 type PostResponse = {
-  cover: {
-    url: string
-  }
+  cover: ImageProps
   category: {
     name: string
     id: number
@@ -136,6 +144,7 @@ type PostResponse = {
   published_at: string
   publication_date: string
   url_code: string
+  meta_description: string
 }
 
 function getCorrectDate(a: string | Date, locale: string) {

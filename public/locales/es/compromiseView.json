@@ -1,11 +1,17 @@
 {
+  "pageMetadata": {
+    "pageTitle": "Berneck | Our Commitment",
+    "pageDescription": "Our commitment to sustainable actions is present in all our daily actions, from caring for our employees to the delivery of our products."
+  },
   "ethicsCodeSection": {
     "title": "Código de ética y conducta",
     "description": "Nuestro Código de Ética y Conducta presenta los derechos y deberes que todos nuestros colaboradores y socios siguen al pie de la letra.",
     "know": "Conoce:",
     "btn": "Código de ética y conducta"
   },
-  "ourCorporativeValues": { "title": "Nuestros valores corporativos" },
+  "ourCorporativeValues": {
+    "title": "Nuestros valores corporativos"
+  },
   "fsc": {
     "description": "Al elegir productos certificados por FSC®, apoyas la gestión responsable de los bosques del mundo."
   },
@@ -42,5 +48,7 @@
     "herdeirosDaTerraSubtitle": "Curitibanos | Proyecto Social - Niños",
     "fundoMunicipalDoIdosoSubtitle": "Joinville, SC | Proyecto Social - Mayores"
   },
-  "ESG": { "title": "ESG" }
+  "ESG": {
+    "title": "ESG"
+  }
 }

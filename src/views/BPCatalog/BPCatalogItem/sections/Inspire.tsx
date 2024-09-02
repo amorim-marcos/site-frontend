@@ -1,12 +1,14 @@
 import { ReactNode, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import { Box, Flex, Image, Link, Text, Button } from '@chakra-ui/react'
+import { Box, Flex, Image, Text, Button } from '@chakra-ui/react'
 
 import { ReportsIcon, PlayIcon, Arrow } from '@components/Icons'
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
+import CustomLink from '@components/CustomLink'
+import useRouterCustom from 'hooks/useRouterCustom'
 
 export interface InspireProps {
   textureName: string
@@ -15,13 +17,19 @@ export interface InspireProps {
   productPresentation: string
   urlVideo: string
   urlEbook: string
-  combine_with: { name: string; href: string; img: string }[]
-  in_ambients: { id: number; ambient_href: string; image_url: string }[]
+  combine_with: { name: string; href: string; img: string; url_code: string }[]
+  in_ambients: {
+    id: number
+    ambient_href: string
+    image_url: string
+    ambient_url_code: string
+  }[]
 }
 
 export const Inspire = (props: InspireProps) => {
   const [curr, setCurr] = useState(0)
   const router = useRouter()
+  const { getTranslatedPath } = useRouterCustom()
   const isMobile = useMobile(568)
 
   const switchTo = (act: 'next' | 'prev') => {
@@ -33,6 +41,11 @@ export const Inspire = (props: InspireProps) => {
   }
 
   const bpCatalogItem = useTranslation('bpCatalogItem')
+  const catalogPath = '/products/bp-berneck/catalog'
+  const translatedCatalogPath = getTranslatedPath(catalogPath)
+
+  const envPath = '/products/bp-berneck/gallery'
+  const translatedEnvPath = getTranslatedPath(envPath)
 
   return (
     <Box pos="relative">
@@ -134,14 +147,16 @@ export const Inspire = (props: InspireProps) => {
                   gap={{ sm: '9px' }}
                   // bg="yellow"
                 >
-                  <Link href={texture.href}>
+                  <CustomLink
+                    linkTo={`${translatedCatalogPath}/${texture.url_code}`}
+                  >
                     <Image
                       src={texture.img}
                       w={{ base: '100vw', sm: '214px' }}
                       h={{ base: '120px', sm: '350px' }}
                       objectFit="cover"
                     />
-                  </Link>
+                  </CustomLink>
                   <Text
                     as={'h5'}
                     variant={'h5' as any}
@@ -219,20 +234,26 @@ export const Inspire = (props: InspireProps) => {
             >
               {bpCatalogItem.t('inspire.inspire')}
             </Text>
-
-            <Image
-              onClick={() => router.push(props.in_ambients[curr].ambient_href)}
-              cursor="pointer"
-              src={props.in_ambients[curr].image_url}
-              // h="100%"
-              // w="100%"
-              // objectFit={'cover'}
-              w={{ base: '320px', xs: '100%', sm: '846px', lg: '980px' }}
-              h={{ base: '321px', sm: '562px', lg: '650px' }}
-              // border="1px solid red"
-              // objectFit={'scale-down'}
-              objectFit={{ base: 'scale-down', xs: 'cover' }}
-            />
+            {/* <CustomLink linkTo={props?.in_ambients[curr]?.ambient_href}> */}
+            <CustomLink
+              linkTo={`${translatedEnvPath}/${props.in_ambients[curr]?.ambient_url_code}`}
+            >
+              <Image
+                // onClick={() =>
+                //   router.push(props.in_ambients[curr].ambient_href)
+                // }
+                cursor="pointer"
+                src={props.in_ambients[curr].image_url}
+                // h="100%"
+                // w="100%"
+                // objectFit={'cover'}
+                w={{ base: '320px', xs: '100%', sm: '846px', lg: '980px' }}
+                h={{ base: '321px', sm: '562px', lg: '650px' }}
+                // border="1px solid red"
+                // objectFit={'scale-down'}
+                objectFit={{ base: 'scale-down', xs: 'cover' }}
+              />
+            </CustomLink>
 
             <Flex
               data-testid="examples-control"

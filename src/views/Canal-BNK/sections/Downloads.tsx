@@ -26,6 +26,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       url="/bnk-channel/downloads#magazine-inspirare-bnk"
       img="/assets/imgs/canal-bnk/img_revista_inspirare.png"
       graphism="/assets/imgs/canal-bnk/grafismo_revista_inspirare.svg"
+      imgAltText="Inspirare magazine image"
     />,
 
     <DownloadColorPanel
@@ -36,6 +37,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       img="/assets/imgs/canal-bnk/img_pack_padroes.png"
       graphism="/assets/imgs/canal-bnk/grafismos_pack_de_padroes.svg"
       download={true}
+      imgAltText="Pattern pack image"
     />,
 
     <DownloadColorPanel
@@ -45,6 +47,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       url="/bnk-channel/downloads#promotional-materials"
       img="/assets/imgs/canal-bnk/materiais_de_divulgacao.png"
       graphism="/assets/imgs/canal-bnk/grafismos_materiais_de_divulgação.svg"
+      imgAltText="Promotional materials banner image"
     />
   ]
 
@@ -56,6 +59,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       url="/bnk-channel/downloads#support-materials"
       img="/assets/imgs/canal-bnk/img_materiais_de_suporte.png"
       graphism="/assets/imgs/canal-bnk/grafismo_materiais_de_suporte.svg"
+      imgAltText="Support materials banner image"
     />,
 
     <DownloadColorPanel
@@ -65,6 +69,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       url="/certifications#products-certificate"
       img="/assets/imgs/canal-bnk/img_certificados_de_produto.png"
       graphism="/assets/imgs/canal-bnk/grafismo_certificados_de_produto.svg"
+      imgAltText="Certificate products banner image"
     />
   ]
 
@@ -76,6 +81,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       url="/bnk-channel/downloads#magazine-opinus"
       img="/assets/imgs/canal-bnk/img_revista_opinus.png"
       graphism="/assets/imgs/canal-bnk/grafismos_opinus.svg"
+      imgAltText="Magazine opinus banner image"
     />,
 
     <DownloadColorPanel
@@ -85,6 +91,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       url="/bnk-channel/downloads#reports-and-docs"
       img="/assets/imgs/canal-bnk/img_relatorios.png"
       graphism="/assets/imgs/canal-bnk/grafismo_relatorios.svg"
+      imgAltText="Report and docs banner image"
     />,
 
     <DownloadColorPanel
@@ -94,6 +101,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
       url="/certifications#forest-certificates"
       img="/assets/imgs/canal-bnk/img_certificados_florestais.png"
       graphism="/assets/imgs/canal-bnk/grafismo_certificados_florestais.svg"
+      imgAltText="Forest certficates banner image"
     />
   ]
 
@@ -118,7 +126,12 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
             gap="34px"
             direction="column"
           >
-            <Flex w="100%" gap="34px" id="magazine-inspirare-bnk" px={{ base: '0', lg: '3%', '2xl': '0' }}>
+            <Flex
+              w="100%"
+              gap="34px"
+              id="magazine-inspirare-bnk"
+              px={{ base: '0', lg: '3%', '2xl': '0' }}
+            >
               <DownloadColorPanel
                 title={channelBnkLabels.t(
                   'downloadsSection.inspirareBnkMagazine'
@@ -127,6 +140,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                 url="/bnk-channel/downloads#magazine-inspirare-bnk"
                 img="/assets/imgs/canal-bnk/img_revista_inspirare.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_revista_inspirare.svg"
+                imgAltText="Inspirare magazine banner image"
               />
 
               <DownloadColorPanel
@@ -135,6 +149,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                 url="/bnk-channel/downloads#magazine-opinus"
                 img="/assets/imgs/canal-bnk/img_revista_opinus.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_opinus.svg"
+                imgAltText="Opinus magazine banner image"
               />
             </Flex>
 
@@ -145,6 +160,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                 url="/bnk-channel/downloads#reports-and-docs"
                 img="/assets/imgs/canal-bnk/img_relatorios.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_relatorios.svg"
+                imgAltText="Report and docs banner image"
               />
 
               <DownloadColorPanel
@@ -154,6 +170,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                 url="/bnk-channel/downloads#support-materials"
                 img="/assets/imgs/canal-bnk/img_materiais_de_suporte.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_materiais_de_suporte.svg"
+                imgAltText="Support materials banner image"
               />
 
               <DownloadColorPanel
@@ -164,6 +181,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                 url="/bnk-channel/downloads#promotional-materials"
                 img="/assets/imgs/canal-bnk/materiais_de_divulgacao.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_materiais_de_divulgação.svg"
+                imgAltText="Promotional materials banner image"
               />
             </Flex>
 
@@ -176,6 +194,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                 img="/assets/imgs/canal-bnk/img_pack_padroes.png"
                 graphism="/assets/imgs/canal-bnk/grafismos_pack_de_padroes.svg"
                 download={true}
+                imgAltText="Pattern packs banner image"
               />
 
               <DownloadColorPanel
@@ -186,6 +205,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                 url="/certifications#forest-certificates"
                 img="/assets/imgs/canal-bnk/img_certificados_florestais.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_certificados_florestais.svg"
+                imgAltText="Forest certificates banner image"
               />
 
               <DownloadColorPanel
@@ -196,6 +216,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
                 url="/certifications#products-certificate"
                 img="/assets/imgs/canal-bnk/img_certificados_de_produto.png"
                 graphism="/assets/imgs/canal-bnk/grafismo_certificados_de_produto.svg"
+                imgAltText="Product certificates banner image"
               />
             </Flex>
           </Flex>
@@ -229,7 +250,7 @@ export const Downloads = ({ patterns_pack_url }: DownloadsProps) => {
           justify="center"
           overflow="hidden"
           // bg="yellow"
-        >  
+        >
           <Carousel>{categoryOne}</Carousel>
 
           <Carousel>{categoryTwo}</Carousel>
@@ -265,13 +286,14 @@ interface DownloadColorPanelProps extends FlexProps {
   title: string
   url: string
   img: string
+  imgAltText: string
   graphism: string
   colorPanel: 'gray' | 'green' | 'brown'
   download?: boolean
 }
 
 const DownloadColorPanel = (props: DownloadColorPanelProps) => {
-  const { title, url, img, graphism, colorPanel, ...rest } = props
+  const { title, url, img, imgAltText, graphism, colorPanel, ...rest } = props
   const gradientColor = props.colorPanel === 'brown' ? '#987765' : '#C8C9C1'
 
   const hexColorToRgb = (hex: string) => {
@@ -300,8 +322,21 @@ const DownloadColorPanel = (props: DownloadColorPanelProps) => {
         _hover={{}}
         {...(props.download ?? 'download')}
       >
-        <Image src={graphism} h="100%" pos="absolute" objectFit="cover" />
-        <Image src={img} right={0} h="100%" pos="absolute" objectFit="cover" />
+        <Image
+          src={graphism}
+          h="100%"
+          pos="absolute"
+          objectFit="cover"
+          alt="Downloads section grafism"
+        />
+        <Image
+          src={img}
+          right={0}
+          h="100%"
+          pos="absolute"
+          objectFit="cover"
+          alt={imgAltText}
+        />
 
         <Box
           bg={`linear-gradient(0deg,

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { CategoryContext } from '..'
 import CompletedTitle from '@components/CompletedTitle'
+import CustomLink from '@components/CustomLink'
 
 interface SectionProps extends FlexProps {
   title?: string
@@ -95,7 +96,7 @@ const SeeMore = (props: SeeMoreProps) => {
       cursor="pointer"
       // bg="black"
     >
-      <Link
+      <Flex
         letterSpacing="-0.4px"
         fontSize={{
           base: '16px',
@@ -108,7 +109,8 @@ const SeeMore = (props: SeeMoreProps) => {
         whiteSpace="nowrap"
       >
         {props?.text}
-      </Link>
+      </Flex>
+
       <Arrow
         width={{ base: '8px', lg: '11px' }}
         height={{ base: '11px', lg: '16px' }}

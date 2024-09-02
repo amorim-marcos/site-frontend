@@ -1,7 +1,12 @@
 import punycode from 'punycode'
+import { NameValueProps } from 'types/utils'
 
-export function smartString(phrase: string, num: number) {
+export function smartString(phrase: string | undefined, num: number) {
   let subString, restString, proxSpace, subString2
+
+  if (!phrase) {
+    return ''
+  }
 
   if (phrase.length > num) {
     subString = phrase.substring(0, num)
@@ -61,6 +66,23 @@ export const normalizeTitle = (title: string): string => {
     .toLowerCase()
 }
 
+/**
+ * Normalizes a title by removing diacritical marks and non-alphanumeric characters,
+ * converting it to lowercase.
+ *
+ * @param title - The title to be normalized.
+ * @returns The normalized title.
+ * @example: normalizeTitle('Solicitação de Mostruário') => 'solicitacao-de-mostruario'
+ */
+export const normalizeTitleUrl = (title: string): string => {
+  return title
+    .normalize('NFD')
+    .replace(/[^\w ]/g, '')
+    .split(' ')
+    .join('-')
+    .toLowerCase()
+}
+
 export function showcaseChannelCode(locale: string) {
   switch (locale) {
     case 'pt-BR':
@@ -85,4 +107,34 @@ export function exportationContactChannelCode(locale: string) {
     case 'zh-CN':
       return 'vhq57g6xbr0b5w65b'
   }
+}
+
+/**  
+Returns a string list separated by comma
+* @returns somename,anothername,andanother
+ */
+export const getStringList = (objectList?: NameValueProps[]): string => {
+  const stringList = objectList?.map((item) => item.name)
+  return stringList?.join(',') || ''
+}
+
+/**  
+Returns a string with every word in upper case
+* @returns Some String Text
+ */
+export const capitalizeText = (text: string) => {
+  const capitalizedText = text
+    ?.split(' ')
+    ?.map((word) => word[0]?.toUpperCase() + word?.slice(1)?.toLowerCase())
+    .join(' ')
+
+  return capitalizedText
+}
+
+export const getPageCompleteUrl = (pathName?: string) => {
+  const complement = pathName ? pathName : ''
+
+  const pageBaseUrl = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + complement
+
+  return pageBaseUrl || ''
 }

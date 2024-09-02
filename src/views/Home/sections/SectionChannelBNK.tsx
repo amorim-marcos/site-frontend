@@ -1,6 +1,7 @@
 import { Flex, Image, Text } from '@chakra-ui/react'
 import ChannelBnkRelationalItem from '@components/ChannelBnkRelationalItem'
 import { useTranslation } from 'react-i18next'
+import { ImageProps } from 'types/utils'
 
 export type SectionChannelBNKProps = {
   items: {
@@ -12,6 +13,7 @@ export type SectionChannelBNKProps = {
     url_code: string
     urlImage: string
     title: string
+    cover_img: ImageProps
   }[]
 }
 
@@ -47,6 +49,7 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
           // bg="red.100"
         >
           <Image
+            alt="Bnk Channel logo"
             w={{ base: '45%', md: '50%' }}
             maxWidth={'170px'}
             src="/assets/imgs/canal-bnk/Canal_Berneck.svg"
@@ -90,6 +93,7 @@ export const SectionChannelBNK = (props: SectionChannelBNKProps) => {
                   urlImage={item.urlImage}
                   title={item.title}
                   w="28%"
+                  cover_img={item?.cover_img}
                 />
               )
             })}

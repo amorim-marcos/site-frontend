@@ -69,6 +69,7 @@ export const Intro = (props: {
         paddingBottom={{ base: '2%', '2xl': '5%' }}
       >
         <Image
+          alt="BNK channel banner left grafism"
           src="/assets/imgs/canal-bnk/grafismo_esquerda.svg"
           w="232px"
           h="618px"
@@ -88,6 +89,7 @@ export const Intro = (props: {
         />
 
         <Image
+          alt="BNK channel banner right grafism"
           src="/assets/imgs/canal-bnk/grafismo_direita.svg"
           w="810px"
           h="980px"
@@ -134,6 +136,7 @@ export const Intro = (props: {
               // bg="blue"
             >
               <Image
+                alt="BNK channel banner arrow"
                 src={
                   currentCategory === -1
                     ? '/assets/imgs/canal-bnk/Canal_Berneck.svg'
@@ -368,6 +371,7 @@ export const Intro = (props: {
                       color={props.posts[1].category.color}
                       showInvert
                       currentCategory={currentCategory}
+                      cover_img={props?.posts[1]?.cover_img}
                     />
                   )}
                   {props.posts.length > 2 && (
@@ -380,6 +384,7 @@ export const Intro = (props: {
                       color={props.posts[2].category.color}
                       showInvert
                       currentCategory={currentCategory}
+                      cover_img={props?.posts[2]?.cover_img}
                     />
                   )}
                   {props.posts.length > 3 && (
@@ -391,6 +396,7 @@ export const Intro = (props: {
                       title={props.posts[3].title}
                       color={props.posts[3].category.color}
                       showInvert
+                      cover_img={props?.posts[3]?.cover_img}
                     />
                   )}
                   {/* FIM SECTION CANAL BNK */}

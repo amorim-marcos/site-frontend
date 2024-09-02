@@ -11,6 +11,9 @@ import React, { useState } from 'react'
 import { PostBodyProps } from '@components/PostBody/PostBody'
 import { Category } from 'types/data/Post'
 import { useTranslation } from 'react-i18next'
+import { ImageProps } from 'types/utils'
+
+import PageHead from '@components/PageHead'
 
 export type PostViewProps = {
   postBody: PostBodyProps
@@ -18,6 +21,8 @@ export type PostViewProps = {
   coverImageUrl: string
   backgroundColor: string
   postCategory: Category
+  cover_img: ImageProps
+  meta_description: string
 }
 
 export const PostsView = ({
@@ -25,12 +30,19 @@ export const PostsView = ({
   relationalContent,
   coverImageUrl,
   backgroundColor,
-  postCategory
+  postCategory,
+  cover_img,
+  meta_description
 }: PostViewProps) => {
   const channelBnkLabels = useTranslation('channelBnkView')
 
   return (
     <>
+      <PageHead
+        page_title={`Berneck` + ' | ' + postBody?.postTitle}
+        page_description={meta_description}
+      />
+
       <Box>
         <Pagebar
           paths={[
@@ -58,6 +70,7 @@ export const PostsView = ({
           >
             {/* Header Image */}
             <Image
+              alt={cover_img?.alternativeText}
               zIndex="docked"
               height={{
                 base: '320px',
@@ -91,6 +104,7 @@ export const PostsView = ({
               width={{ base: '590px', md: '30vw', '2xl': '43vw' }}
               maxWidth="825px"
               display={{ base: 'none', md: 'block' }}
+              alt="site right grafism image"
             />
             <Image
               src="/img/grafismo_superior_post.svg"
@@ -101,6 +115,7 @@ export const PostsView = ({
               width={{ base: '40vw', sm: '30vw', md: '20vw' }}
               maxWidth={'384px'}
               // display={{ base: 'none', md: 'block' }}
+              alt="site top grafism image"
             />
             <Image
               src="/img/grafismo_esquerda_post.svg"
@@ -112,6 +127,7 @@ export const PostsView = ({
               maxWidth="230px"
               zIndex={{ base: 'docked' }}
               opacity={{ base: '0.7', md: '1' }}
+              alt="site left grafism image"
             />
             {/* End of Grafisms */}
 

@@ -5,6 +5,7 @@ import { loadTranslations } from 'ni18n'
 import { strapiClient } from 'services'
 import BPCatalog from 'views/BPCatalog'
 import { nameSpaces, ni18nConfig } from '../../../../../ni18n.config'
+import { AvailableAt } from 'types/data/Product'
 
 export interface BpBerneckProps {
   bps: {
@@ -41,36 +42,36 @@ export interface BpBerneckProps {
   }
 }
 
-export interface AvailableAt {
-  id: number
-  panel_type: PanelType
-}
+// export interface AvailableAt {
+//   id: number
+//   panel_type: PanelType
+// }
 
-export interface PanelType {
-  id: number
-  name: string
-  created_at: string | Date
-  update_at: string | Date
-  background_image_small: ImageProps
-}
+// export interface PanelType {
+//   id: number
+//   name: string
+//   created_at: string | Date
+//   update_at: string | Date
+//   background_image_small: ImageProps
+// }
 
-export interface ImageProps {
-  id: number
-  name: string
-  alternativeText: string
-  caption: string
-  width: number
-  height: number
-  hash: string
-  ext: string
-  mime: string
-  size: number
-  url: string
-  previewUrl: string
-  provider: string
-  created_at: string | Date
-  updated_at: string | Date
-}
+// export interface ImageProps {
+//   id: number
+//   name: string
+//   alternativeText: string
+//   caption: string
+//   width: number
+//   height: number
+//   hash: string
+//   ext: string
+//   mime: string
+//   size: number
+//   url: string
+//   previewUrl: string
+//   provider: string
+//   created_at: string | Date
+//   updated_at: string | Date
+// }
 
 export default function BpBerneck(props: BpBerneckProps) {
   return <BPCatalog {...props} />
@@ -126,7 +127,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             name: product.name,
             complete_name: product.complete_name,
             url_code: product.url_code,
-            product_texture: product.product_texture.name,
+            // todo
+            // to check textures
+            product_texture: product?.product_texture?.name || '',
             pattern_image: `${url}${product.pattern_image.url}`,
             collections:
               typeof product.product_collections.map === 'function'

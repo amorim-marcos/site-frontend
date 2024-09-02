@@ -13,6 +13,7 @@ import { useRouter } from 'next/router'
 import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
 import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
+import PageHead from '@components/PageHead'
 
 const dataPageSession = {
   imageUrl: 'url(/assets/imgs/Grupo_1872.png)',
@@ -71,9 +72,13 @@ export type ForestsViewProps = {
 export const ForestsView = (props: ForestsViewProps) => {
   const router = useRouter()
   const forestView = useTranslation('forestsView')
-  console.log(props)
+
   return (
     <Box>
+      <PageHead
+        page_title={forestView.t('pageMetadata.pageTitle')}
+        page_description={forestView.t('pageMetadata.pageDescription')}
+      />
       <Pagebar
         paths={[
           {

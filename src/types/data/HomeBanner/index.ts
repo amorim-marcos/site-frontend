@@ -1,3 +1,5 @@
+import { ImageProps } from 'types/utils'
+
 export type HomeBannerItem = {
   // id?: number
   title: string
@@ -12,18 +14,19 @@ export type HomeBannerItem = {
   category: PostCategory
   color?: string
   url_code?: string
+  cover: ImageProps
 }
 
-export type ImageProps = {
-  id: number
-  name: string
-  alternativeText: string
-  caption: string
-  width: number
-  height: number
-  created_at: string | Date
-  url: string
-}
+// export type ImageProps = {
+//   id: number
+//   name: string
+//   alternativeText: string
+//   caption: string
+//   width: number
+//   height: number
+//   created_at: string | Date
+//   url: string
+// }
 
 export type HomeBannerResponse = {
   id: number

@@ -7,6 +7,30 @@ const withPWA = require('next-pwa')({
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const securityHeaders = require('./config/securityHeaders')
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const pathTranslations = require('./config/routesConfig')
+
+/** Generate a list of object for using to redirect translated paths
+ex:
+{
+  source: "/produtos",
+  destination: "/products",
+  locale: false
+} */
+const generateRedirectTranslatedPaths = () => {
+  const redirects = []
+  for (const [locale, paths] of Object.entries(pathTranslations)) {
+    for (const [source, destination] of Object.entries(paths)) {
+      redirects.push({
+        source: `/${locale}${source}`,
+        destination: destination,
+        locale: false
+      })
+    }
+  }
+  return redirects
+}
+
 module.exports = withPWA({
   images: {
     domains: ['scontent.cdninstagram.com']
@@ -24,6 +48,10 @@ module.exports = withPWA({
   i18n: {
     defaultLocale: 'pt-BR',
     locales: ['en', 'es', 'pt-BR', 'zh-CN']
+  },
+  // translate pt-BR pathnames
+  async rewrites() {
+    return generateRedirectTranslatedPaths()
   },
   async headers() {
     return [

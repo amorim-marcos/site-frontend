@@ -5,6 +5,7 @@ import { loadTranslations } from 'ni18n'
 import { strapiClient } from 'services'
 import EnvGallery from 'views/Gallery'
 import { nameSpaces, ni18nConfig } from '../../../../../ni18n.config'
+import { GalleryResponse } from 'types/data/Gallery'
 
 export interface GalleryProps {
   filtersContext: {
@@ -28,7 +29,7 @@ export interface GalleryProps {
     style: string
     image_url: string
     bps: number[]
-    created_at: string
+    created_at: string | Date
   }[]
   availableBps: {
     // check this
@@ -65,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       resource: 'ambient-styles'
     })
 
-  let envs: GalleryProps['envs'] = await strapiClient({
+  const envs: GalleryResponse[] = await strapiClient({
     defaultOnEmpty: true,
     locale: ctx.locale,
     resource: 'ambients'
@@ -106,23 +107,23 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   )
 
-  envs =
+  const formattedEnvs: GalleryProps['envs'] =
     envs && typeof envs.map === 'function'
       ? envs
-          .map((gallery: any) => {
+          .map((gallery) => {
             return {
               id: gallery.id,
               title: gallery.title,
               name: gallery.place,
-              bps: gallery.products.map((product: any) => product.id),
+              bps: gallery.products.map((product) => product.id),
               type: gallery.ambient_type.url_code,
-              style: gallery.ambient_styles.map((gallery: any) =>
-                gallery.id.toString()
+              style: String(
+                gallery.ambient_styles.map((gallery) => gallery.id.toString())
               ),
               url_code: gallery.url_code,
               image_url: `${url}${
-                gallery.gallery_of_images[gallery.gallery_of_images.length - 1]
-                  .url
+                gallery.gallery_imgs[0]?.img.url ||
+                gallery.gallery_of_images[0]?.url
               }`,
               created_at: gallery.created_at
             }
@@ -141,7 +142,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             id: bp.id,
             name: bp.name,
             pattern_image: `${url}${bp.pattern_image.url}`,
-            product_texture: bp.product_texture.name,
+            product_texture: bp?.product_texture?.name || '',
             launch: bp.launch
               ? new Date(bp.launch).toISOString().split('T')[0]
               : new Date().toISOString().split('T')[0],
@@ -170,7 +171,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         ambients: ambientTypes,
         bps: ambientBps
       },
-      envs,
+      envs: formattedEnvs,
       availableBps,
       initialFilters,
       ...(await loadTranslations(ni18nConfig, ctx.locale, nameSpaces))

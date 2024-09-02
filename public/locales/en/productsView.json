@@ -1,14 +1,26 @@
 {
+  "pageMetadata": {
+    "pageTitle": "Berneck | Our Products",
+    "pageDescription": "We produce high-quality MDP, MDF, HDF and Pine / Teak Lumber, ensuring resistance, durability and sustainability for furniture, coverings and constructions."
+  },
   "ourProducts": "Our Products",
-  "pagebar": { "products": "Products" },
+  "pagebar": {
+    "products": "Products"
+  },
   "bpBerneck": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - BP",
+      "pageDescription": "Discover our high-quality melamine panels for furniture and coverings. Durable, scratch resistant surface and easy to maintain, with a variety of texture and colors."
+    },
     "title": "BERNECK® BP",
     "description": "Decorative Melaminic Laminate",
     "bannerProducts": {
       "title": "Learn about BP BERNECK® patterns",
       "subtitle": "Decorative Melaminic Laminate"
     },
-    "bannerCollections": { "title": "Get to know" },
+    "bannerCollections": {
+      "title": "Get to know"
+    },
     "inspireSection": {
       "title": "Get inspired",
       "accessOurs": "Access our",
@@ -30,6 +42,10 @@
     }
   },
   "mdpBerneck": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - MDP",
+      "pageDescription": "MDP | Medium Density Particleboard is produced using high technology, standing out for its light color, homogeneity and low surface absorption, ideal for straight line furnitures."
+    },
     "title": "MDP BERNECK®",
     "description": "Medium Density Particleboard",
     "productWithBP": {
@@ -44,6 +60,10 @@
     }
   },
   "mdfBerneck": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - MDF",
+      "pageDescription": "MDF | Medium Density Fiberboard is produced with high technology, the Pine panel is homogeneous, malleable and clear, ideal for machining, low relief, painting and printing."
+    },
     "title": "MDF BERNECK®",
     "description": "Medium Density Fiberboard",
     "productWithBP": {
@@ -58,6 +78,10 @@
     }
   },
   "hdfBerneck": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - HDF",
+      "pageDescription": "HDF | High Density Fiberboard with dimensional stability, uniform and smooth surface available in thicknesses from 2.5 mm."
+    },
     "title": "HDF BERNECK®",
     "description": "High Density Fiberboard",
     "productWithBP": {
@@ -67,6 +91,10 @@
     }
   },
   "plusBerneck": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - Plus",
+      "pageDescription": "BERNECK offers to the customers reconstituted wood panels, MDP and MDF suitable for use in humid environments, in accordance with the requirements of the standards defined by ABNT (Brazillian Regulator)."
+    },
     "title": "PLUS BERNECK®",
     "description": "Extra Humidity Resistant Panel Line",
     "extraInfoTitle": "Very important",
@@ -89,6 +117,20 @@
     "density": "Average density 12% moisture",
     "variation": "Measurement variation"
   },
-  "berneckPinus": { "title": "BERNECK® PINUS", "description": "Pine Lumber" },
-  "berneckTeca": { "title": "BERNECK® TECA", "description": "Teak Sawn Wood" }
+  "berneckPinus": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - Pine Lumber",
+      "pageDescription": "Berneck Pine Lumber is available in a variety of Grades to meet your needs and applications. It is versatile and sustainable, ideal for construction, framing, upholstery, furniture and packagings."
+    },
+    "title": "BERNECK® PINUS",
+    "description": "Pine Lumber"
+  },
+  "berneckTeca": {
+    "pageMetadata": {
+      "pageTitle": "Berneck | Our Products - Teak Lumber",
+      "pageDescription": "Teak sawn wood is exclusive to Berneck. Durable, resistant and ideal for high grade furnitures and projects. Available in different qualities and sizes."
+    },
+    "title": "BERNECK® TECA",
+    "description": "Teak Sawn Wood"
+  }
 }

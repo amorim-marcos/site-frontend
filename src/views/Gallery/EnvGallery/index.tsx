@@ -22,6 +22,7 @@ import { env } from 'process'
 import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
 import useRouterCustom from 'hooks/useRouterCustom'
+import PageHead from '@components/PageHead'
 
 export type ValidFilterNames =
   | 'bps'
@@ -29,6 +30,45 @@ export type ValidFilterNames =
   | 'styles'
   | 'page'
   | 'nameSearched'
+
+const translatedQueryParamsMapping = {
+  en: {
+    bps: 'bps',
+    ambients: 'ambients',
+    styles: 'styles',
+    page: 'page',
+    nameSearched: 'nameSearched'
+  },
+  'pt-BR': {
+    bps: 'bps',
+    ambients: 'ambientes',
+    styles: 'estilos',
+    page: 'pagina',
+    nameSearched: 'nomePesquisado'
+  },
+  es: {
+    bps: 'bps',
+    ambients: 'ambients',
+    styles: 'styles',
+    page: 'page',
+    nameSearched: 'nameSearched'
+  },
+  'zn-CN': {
+    bps: 'bps',
+    ambients: 'panels',
+    styles: 'styles',
+    page: 'page',
+    nameSearched: 'nameSearched'
+  }
+}
+
+// function getTranslatedFilterNames(locale: keyof typeof LocaleOptions) {
+function getTranslatedFilterNames(locale: string) {
+  return (
+    translatedQueryParamsMapping[locale as 'en' | 'pt-BR' | 'es' | 'zn-CN'] ||
+    translatedQueryParamsMapping['en']
+  )
+}
 
 export type FilterPanelName = 'none' | ValidFilterNames
 
@@ -80,10 +120,20 @@ export const EnvGallery = ({
   const [isInitialRender, setIsInitialRender] = useState(true)
   const router = useRouter()
 
-  const { addQueryToUrl, removeQueryFromUrl, resetQueriesFromUrl } =
-    useRouterCustom()
+  let { locale } = router
+  locale = locale || 'pt-BR'
+
+  const translatedFilterNames = getTranslatedFilterNames(locale)
+
+  const {
+    addQueryToUrl,
+    removeQueryFromUrl,
+    resetQueriesFromUrl,
+    getTranslatedPath
+  } = useRouterCustom()
 
   const pathname = router.pathname
+  const translatedPathName = getTranslatedPath(pathname)
 
   const initialURLFilters = getFiltersFromURL()
   const initialPage = initialURLFilters?.page
@@ -164,8 +214,11 @@ export const EnvGallery = ({
     const { query } = router
     const filtersFromURL: any = {}
 
+    const translatedAmbientsQuery = query[translatedFilterNames['ambients']]
     const ambientValue =
-      (typeof query.ambients === 'string' ? query.ambients : '') || ''
+      (typeof translatedAmbientsQuery === 'string'
+        ? translatedAmbientsQuery
+        : '') || ''
     const sanitizedAmbient: string = sanitizeValue(ambientValue)
 
     if (sanitizedAmbient) {
@@ -177,9 +230,11 @@ export const EnvGallery = ({
       }
     }
 
-    if (query.bps) {
+    if (query[translatedFilterNames['bps']]) {
+      const translatedBPsQuery = query[translatedFilterNames['bps']]
+
       const queryBpsValue =
-        (typeof query.bps === 'string' ? query.bps : '') || ''
+        (typeof translatedBPsQuery === 'string' ? translatedBPsQuery : '') || ''
       const sanitizedBpsValue = sanitizeValue(queryBpsValue!)
 
       const itemFilter = filtersContext?.bps?.find(
@@ -191,9 +246,13 @@ export const EnvGallery = ({
       }
     }
 
-    if (query.styles) {
+    if (query[translatedFilterNames['styles']]) {
+      const translatedStylesQuery = query[translatedFilterNames['styles']]
+
       const queryStylesValue =
-        (typeof query.styles === 'string' ? query.styles : '') || ''
+        (typeof translatedStylesQuery === 'string'
+          ? translatedStylesQuery
+          : '') || ''
       const sanitizedStylesValue = sanitizeValue(queryStylesValue!)
 
       const itemFilter = filtersContext?.styles?.find(
@@ -206,9 +265,14 @@ export const EnvGallery = ({
       }
     }
 
-    if (query.nameSearched) {
+    if (query[translatedFilterNames['nameSearched']]) {
+      const translatedNameSearchedQuery =
+        query[translatedFilterNames['nameSearched']]
+
       const queryNameSearchedValue =
-        (typeof query.nameSearched === 'string' ? query.nameSearched : '') || ''
+        (typeof translatedNameSearchedQuery === 'string'
+          ? translatedNameSearchedQuery
+          : '') || ''
       const sanitizedName = sanitizeValue(queryNameSearchedValue) || ''
 
       filtersFromURL['nameSearched'] = sanitizedName
@@ -242,8 +306,6 @@ export const EnvGallery = ({
   }
 
   function applyFilters(filters: any, originalEnvs: Array<any>) {
-    console.log('applying filter: ', filters)
-
     let filteredEnvs = originalEnvs
 
     // search
@@ -426,6 +488,8 @@ export const EnvGallery = ({
   // }, [router.query])
 
   const ref = useRef<HTMLDivElement>(null)
+  const envPath = '/products/bp-berneck/gallery'
+  const translatedEnvPath = getTranslatedPath(envPath)
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -447,8 +511,31 @@ export const EnvGallery = ({
   const handleBackAction = () => {
     handleResetFilters()
   }
+
+  const handleRemoveQueryFromUrl = (
+    queryName: ValidFilterNames,
+    value: string
+  ) => {
+    const queryFilterName = translatedFilterNames[queryName]
+
+    removeQueryFromUrl(queryFilterName, value)
+  }
+
+  const handleAddQueryParamFromUrl = (
+    queryName: ValidFilterNames,
+    value: string
+  ) => {
+    const queryFilterName = translatedFilterNames[queryName]
+
+    addQueryToUrl(queryFilterName, value)
+  }
+
   return (
     <>
+      <PageHead
+        page_title={galleryViewLabels.t('pageMetadata.pageTitle')}
+        page_description={galleryViewLabels.t('pageMetadata.pageDescription')}
+      />
       <Pagebar
         paths={[
           {
@@ -465,7 +552,7 @@ export const EnvGallery = ({
             onItemClick: handleBackAction
           }
         ]}
-        goToUrl={pathname}
+        goToUrl={translatedPathName}
         onBackAction={handleBackAction}
       />
 
@@ -501,8 +588,8 @@ export const EnvGallery = ({
                 envs={envs}
                 filters={filters}
                 filtersEmpty={filtersEmpty}
-                onAddQueryParam={addQueryToUrl}
-                onRemoveQueryParam={removeQueryFromUrl}
+                onAddQueryParam={handleAddQueryParamFromUrl}
+                onRemoveQueryParam={handleRemoveQueryFromUrl}
               />
             ) : (
               <FiltersTabs
@@ -521,8 +608,8 @@ export const EnvGallery = ({
                 envs={envs}
                 filters={filters}
                 filtersEmpty={filtersEmpty}
-                onAddQueryParam={addQueryToUrl}
-                onRemoveQueryParam={removeQueryFromUrl}
+                onAddQueryParam={handleAddQueryParamFromUrl}
+                onRemoveQueryParam={handleRemoveQueryFromUrl}
               />
             )}
           </Container>
@@ -569,13 +656,12 @@ export const EnvGallery = ({
                 >
                   {filteredEnvs.map((env, i) => {
                     return (
-                      // i < pagination * pageSize && (
                       <GridItem key={env.id} mt="20px">
                         <Env
                           href={
                             router.locale == 'pt-BR'
-                              ? `/products/bp-berneck/gallery/${env.url_code}`
-                              : `/${router.locale}/products/bp-berneck/gallery/${env.url_code}`
+                              ? `${translatedEnvPath}/${env.url_code}`
+                              : `${router.locale}${translatedEnvPath}/${env.url_code}`
                           }
                           title={env.title}
                           place={env.subTitle}

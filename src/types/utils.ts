@@ -1,10 +1,10 @@
 export interface ResponseDefaultProperties {
   created_at: string | Date
   updated_at: string | Date
-  locale?: keyof typeof LocateOptions
+  locale?: keyof typeof LocaleOptions
 }
 
-export enum LocateOptions {
+export enum LocaleOptions {
   'pt-BR' = 'pt-BR',
   en = 'en',
   'es' = 'es',
@@ -49,4 +49,21 @@ export interface ImageFormat {
   height: number
   size: number
   url: string
+}
+
+export interface NameValueProps {
+  name: string
+  value?: string
+}
+
+export interface PathnamesTranslations {
+  [locale: 'pt-BR' | 'en' | 'es' | 'zn-CN' | string]: {
+    [path: string]: string
+  }
+}
+
+export interface Localization {
+  id: number
+  // locale: keyof typeof LocateOptions
+  locale: 'en' | 'pt-BR' | 'es' | 'zn-CN'
 }

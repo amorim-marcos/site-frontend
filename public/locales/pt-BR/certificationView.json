@@ -1,5 +1,9 @@
 {
-    "pagebar":{
+    "pageMetadata": {
+        "pageTitle": "Berneck | Nossos Certificados",
+        "pageDescription": "A Berneck possui diversas certificações que garantem nossa gestão ambientalmente sustentável e socialmente responsável."
+    },
+    "pagebar": {
         "berneckCertifications": "Certificações BERNECK®"
     },
     "certificatedForests": "Florestas Certificadas",

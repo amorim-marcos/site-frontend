@@ -1,13 +1,16 @@
 import { useRouter } from 'next/router'
+import { LocaleOptions, PathnamesTranslations } from 'types/utils'
 
 const useRouterCustom = () => {
   const router = useRouter()
   const pathname = router.pathname
 
+  const translatedPathName = getTranslatedPath(pathname)
+
   function resetQueriesFromUrl() {
     router.replace(
       {
-        pathname: pathname
+        pathname: translatedPathName
       },
       undefined,
       {
@@ -24,7 +27,7 @@ const useRouterCustom = () => {
 
     router.replace(
       {
-        pathname: pathname,
+        pathname: translatedPathName,
         query: {
           ...newQuery
         }
@@ -39,7 +42,7 @@ const useRouterCustom = () => {
   function addQueryToUrl(queryName: string, value: string) {
     router.replace(
       {
-        pathname: pathname,
+        pathname: translatedPathName,
         query: {
           ...router.query,
           [queryName]: value
@@ -50,10 +53,30 @@ const useRouterCustom = () => {
     )
   }
 
+  function getTranslatedPath(
+    url: string,
+    customLocale?: keyof typeof LocaleOptions
+  ) {
+    let { locale } = router
+
+    locale = customLocale || locale || 'pt-BR'
+
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const pathnames: PathnamesTranslations = require('../../config/routesConfig')
+
+    // find the translated pathname from the original passed link
+    const translatedPath = Object.keys(pathnames[locale] || {})?.find(
+      (pathKey) => pathnames[locale || 'pt-BR'][pathKey] === url
+    )
+
+    return translatedPath || url
+  }
+
   return {
     addQueryToUrl,
     removeQueryFromUrl,
-    resetQueriesFromUrl
+    resetQueriesFromUrl,
+    getTranslatedPath
   }
 }
 

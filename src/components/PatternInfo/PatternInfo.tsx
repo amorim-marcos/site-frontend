@@ -47,7 +47,7 @@ export const PatternInfo = ({
         {...props}
       >
         <Box position={'absolute'} zIndex="base" left="-50px" top="-70px">
-          <Image src="/img/grafismo_banner_1.svg" />
+          <Image alt="Banner grafism" src="/img/grafismo_banner_1.svg" />
         </Box>
 
         <Flex

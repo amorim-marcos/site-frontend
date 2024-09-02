@@ -5,6 +5,8 @@ import { Post, Category as CategoryProps } from 'types/data/Post'
 
 import CanalBNK, { IVideos } from 'views/Canal-BNK'
 import { nameSpaces, ni18nConfig } from '../../../../ni18n.config'
+import { ImageProps } from 'types/utils'
+import { PostResponse } from 'types/data/Post/Post'
 
 export interface CategoryPageProps {
   category: CategoryProps
@@ -38,8 +40,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let res
   let allCategories
   let downloads_page
-  let posts
-  let allPosts
+  let posts: Post[] = []
+  let allPosts: PostResponse[]
   let currentCategory
   let youtubeVideos
 
@@ -106,10 +108,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (allPosts && allPosts.length) {
     posts =
       allPosts && typeof allPosts.map === 'function'
-        ? allPosts.map((item: { cover: { url: string } }) => {
+        ? allPosts.map((item) => {
             return {
               ...item,
-              cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url
+              cover: process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + item.cover.url,
+              date: item?.created_at,
+              cover_img: item?.cover
             }
           })
         : []

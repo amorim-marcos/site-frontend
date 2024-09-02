@@ -1,5 +1,9 @@
 {
-    "pagebar":{
+    "pageMetadata": {
+        "pageTitle": "Berneck | Quem Somos",
+        "pageDescription": "A Berneck é uma das maiores produtoras de painéis de madeira MDP, MDF, HDF e madeira serrada. Há mais de 70 anos trabalhando de forma versátil e renovável, 100% provenientes de cultivos florestais."
+    },
+    "pagebar": {
         "weAreBerneck": "Somos BERNECK®"
     },
     "headerBanner": {
