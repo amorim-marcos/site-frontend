@@ -661,7 +661,7 @@ export const EnvGallery = ({
                           href={
                             router.locale == 'pt-BR'
                               ? `${translatedEnvPath}/${env.url_code}`
-                              : `${router.locale}${translatedEnvPath}/${env.url_code}`
+                              : `/${router.locale}${translatedEnvPath}/${env.url_code}`
                           }
                           title={env.title}
                           place={env.subTitle}
