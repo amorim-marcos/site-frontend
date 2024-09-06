@@ -47,11 +47,6 @@ export const SectionPackBpDownloads = ({
     fileUrl: string | undefined,
     fileName: string | undefined
   ) => {
-    // todo
-    // remove in prd
-    console.log('file url: ', fileUrl)
-    console.log('file name? ', fileName)
-
     try {
       const fileType = 'application/zip'
 
@@ -86,7 +81,8 @@ export const SectionPackBpDownloads = ({
     <Flex
       id={sectionId}
       w="100%"
-      marginBottom={{ base: '400px', md: '10%' }}
+      // marginBottom={{ base: '400px', md: '10%' }}
+      marginBottom={'2%'}
       justifyContent="center"
     >
       <Flex

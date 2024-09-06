@@ -207,6 +207,16 @@ export const DownloadsView = ({
           flexDir="column"
           maxWidth={'1536px'}
         >
+          <SectionPackBpDownloads
+            sectionId={normalizeTitleUrl(patterns_pack_title)}
+            title={patterns_pack_title}
+            text={patterns_pack_text}
+            download_url={patterns_pack_download_url}
+            download_url_jpgs={patterns_pack_download_jpgs_url}
+            download_url_skps={patterns_pack_download_skps_url}
+            patterns_pack_download_jpgs={patterns_pack_download_jpgs}
+            patterns_pack_download_skps={patterns_pack_download_skps}
+          />
           {items.map((i, j) => {
             const sectionId = normalizeTitleUrl(i.type)
             return (
@@ -231,17 +241,6 @@ export const DownloadsView = ({
               </Box>
             )
           })}
-
-          <SectionPackBpDownloads
-            sectionId={normalizeTitleUrl(patterns_pack_title)}
-            title={patterns_pack_title}
-            text={patterns_pack_text}
-            download_url={patterns_pack_download_url}
-            download_url_jpgs={patterns_pack_download_jpgs_url}
-            download_url_skps={patterns_pack_download_skps_url}
-            patterns_pack_download_jpgs={patterns_pack_download_jpgs}
-            patterns_pack_download_skps={patterns_pack_download_skps}
-          />
         </Flex>
       </Flex>
     </Box>
