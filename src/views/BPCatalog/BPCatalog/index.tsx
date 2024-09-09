@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as Scroll from 'react-scroll'
 
 import { Box, Container, Grid, GridItem, Flex, Text } from '@chakra-ui/react'
@@ -121,8 +121,6 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   const [filteredBps, setFilteredBps] = useState(bps)
   const [filtersEmpty, setFiltersEmpty] = useState(true)
 
-  const [isInitialRender, setIsInitialRender] = useState(true)
-
   const router = useRouter()
   const { resetQueriesFromUrl, getTranslatedPath } = useRouterCustom()
   let { locale } = router
@@ -140,84 +138,131 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   const [filtersBP, setFilters] = useState(() => {
     // const filtersCookie = Cookies.get('filtersBP')
 
-    let initialProcessedFilters = { ...initialFilters }
-
-    if (router.query[translatedFilterNames['collections']]) {
-      const matchedCollection = filtersContext.collections.find(
-        (c: any) =>
-          router.query[translatedFilterNames['collections']] ===
-          c.title
-            .toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-      )
-
-      initialProcessedFilters = {
-        ...initialProcessedFilters,
-        collections: matchedCollection ? [matchedCollection.code] : []
-      }
-
-      // return {
-      //   ...initialFilters,
-      //   collections: matchedCollection ? [matchedCollection.code] : []
-      // }
-    }
-    if (router.query[translatedFilterNames['panels']]) {
-      const matchedPanel = filtersContext.panels.find(
-        (p: any) =>
-          router.query[translatedFilterNames['panels']] ===
-          p.title
-            .toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-      )
-
-      initialProcessedFilters = {
-        ...initialProcessedFilters,
-        panels: matchedPanel ? [matchedPanel.code] : []
-      }
-      // return {
-      //   ...initialFilters,
-      //   panels: matchedPanel ? [matchedPanel.code] : []
-      // }
-    }
-
-    if (router.query[translatedFilterNames['colorations']]) {
-      const matchedColoration = filtersContext.colorations.find(
-        (color: any) =>
-          router.query[translatedFilterNames['colorations']] ===
-          color.title
-            .toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-      )
-
-      initialProcessedFilters = {
-        ...initialProcessedFilters,
-        colorations: matchedColoration ? [matchedColoration.code] : []
-      }
-      // return {
-      //   ...initialFilters,
-      //   panels: matchedPanel ? [matchedPanel.code] : []
-      // }
-    }
-
-    if (router.query[translatedFilterNames['nameSearched']]) {
-      const translatedQueryName =
-        router.query[translatedFilterNames['nameSearched']] || 'nameSearched'
-
-      const queryName = Array.isArray(translatedQueryName)
-        ? translatedQueryName[0]
-        : translatedQueryName
-
-      initialProcessedFilters = {
-        ...initialProcessedFilters,
-        nameSearched: queryName
-      }
-    }
+    const initialProcessedFilters = { ...initialFilters }
 
     return initialProcessedFilters
   })
+  const [filterCount, setFilterCount] = useState('')
+
+  const renderCountRef = useRef(0)
+
+  /** check if the component is rendered more than the expected render count
+   *
+   *  */
+  const checkIsInitialRender = (renderCountToCheck: number) => {
+    if (renderCountRef.current < renderCountToCheck) {
+      return true
+    }
+    return false
+  }
+
+  useEffect(() => {
+    renderCountRef.current += 1
+  }, [router])
+
+  const normalizeTitle = (title: string): string => {
+    return title
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+    // return title
+    //   .normalize('NFD')
+    //   .replace(/[^\w ]/g, '')
+    //   .split(' ')
+    //   .join('-')
+    //   .toLowerCase()
+  }
+
+  // fill with url initial filters
+  useEffect(() => {
+    const isInitialRender = checkIsInitialRender(3)
+    if (isInitialRender) {
+      if (Object.keys(router.query).length > 0) {
+        let initialProcessedFilters = { ...initialFilters }
+        if (router.query[translatedFilterNames['collections']]) {
+          const matchedCollection = filtersContext.collections.find(
+            (collection) =>
+              router.query[translatedFilterNames['collections']] ===
+              normalizeTitle(collection.title)
+          )
+          if (matchedCollection) {
+            changeFilterPanel('collections')
+          }
+
+          initialProcessedFilters = {
+            ...initialProcessedFilters,
+            collections: matchedCollection ? [matchedCollection.code] : []
+          }
+
+          // return {
+          //   ...initialFilters,
+          //   collections: matchedCollection ? [matchedCollection.code] : []
+          // }
+        }
+        if (router.query[translatedFilterNames['panels']]) {
+          const matchedPanel = filtersContext.panels.find(
+            (panel) =>
+              router.query[translatedFilterNames['panels']] ===
+              panel.title
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+          )
+
+          initialProcessedFilters = {
+            ...initialProcessedFilters,
+            panels: matchedPanel ? [matchedPanel.code] : []
+          }
+          if (matchedPanel) {
+            changeFilterPanel('panels')
+          }
+          // return {
+          //   ...initialFilters,
+          //   panels: matchedPanel ? [matchedPanel.code] : []
+          // }
+        }
+
+        if (router.query[translatedFilterNames['colorations']]) {
+          const matchedColoration = filtersContext.colorations.find(
+            (color) =>
+              router.query[translatedFilterNames['colorations']] ===
+              normalizeTitle(color.title)
+          )
+
+          initialProcessedFilters = {
+            ...initialProcessedFilters,
+            colorations: matchedColoration ? [matchedColoration.code] : []
+          }
+          if (matchedColoration) {
+            changeFilterPanel('colorations')
+          }
+          // return {
+          //   ...initialFilters,
+          //   panels: matchedPanel ? [matchedPanel.code] : []
+          // }
+        }
+
+        if (router.query[translatedFilterNames['nameSearched']]) {
+          const translatedQueryName =
+            router.query[translatedFilterNames['nameSearched']] ||
+            'nameSearched'
+
+          const queryName = Array.isArray(translatedQueryName)
+            ? translatedQueryName[0]
+            : translatedQueryName
+
+          initialProcessedFilters = {
+            ...initialProcessedFilters,
+            nameSearched: queryName
+          }
+        }
+
+        setFilters(initialProcessedFilters)
+
+        setFilteredBps(applyFilters({ ...initialProcessedFilters }, bps))
+      }
+    }
+  }, [router.query])
 
   function changeGridSize(newGridSize: GridSize) {
     setGridSize(newGridSize)
@@ -430,6 +475,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     }
   }, [gridSize])
 
+  // check if filters are empty
   useEffect(() => {
     setFiltersEmpty(
       filtersBP.panels.length == 0 &&
@@ -449,7 +495,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
   //   }, [])
   // }
 
-  const [filterCount, setFilterCount] = useState('')
+  // build filter count text
   useEffect(() => {
     let numFilters =
       filtersBP.collections.length +
@@ -480,105 +526,107 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
     }
   }, [filteredBps])
 
-  useEffect(() => {
-    setIsInitialRender(false)
-  }, [])
+  // useEffect(() => {
+  //   if (isInitialRender) {
+  //     const normalizeTitle = (title: string): string => {
+  //       return title
+  //         .normalize('NFD')
+  //         .replace(/[^\w ]/g, '')
+  //         .split(' ')
+  //         .join('-')
+  //         .toLowerCase()
+  //     }
 
-  useEffect(() => {
-    if (isInitialRender) {
-      const normalizeTitle = (title: string): string => {
-        return title
-          .normalize('NFD')
-          .replace(/[^\w ]/g, '')
-          .split(' ')
-          .join('-')
-          .toLowerCase()
-      }
+  //     if (router.query[translatedFilterNames['panels']]) {
+  //       const translatedQueryName =
+  //         router.query[translatedFilterNames['panels']] || 'panels'
 
-      if (router.query[translatedFilterNames['panels']]) {
-        const translatedQueryName =
-          router.query[translatedFilterNames['panels']] || 'panels'
+  //       const queryPanel = Array.isArray(translatedQueryName)
+  //         ? translatedQueryName[0]
+  //         : translatedQueryName
+  //       const normalizedPanelQuery = normalizeTitle(queryPanel)
 
-        const queryPanel = Array.isArray(translatedQueryName)
-          ? translatedQueryName[0]
-          : translatedQueryName
-        const normalizedPanelQuery = normalizeTitle(queryPanel)
+  //       for (const panel of filtersContext.panels) {
+  //         const normalizedTitle = normalizeTitle(panel.title)
 
-        for (const panel of filtersContext.panels) {
-          const normalizedTitle = normalizeTitle(panel.title)
+  //         if (
+  //           normalizedPanelQuery === normalizedTitle &&
+  //           !initialFilters['panels'].includes(panel.code)
+  //         ) {
+  //           appendFilter('panels', panel.code as any)
+  //         }
 
-          if (
-            normalizedPanelQuery === normalizedTitle &&
-            !initialFilters['panels'].includes(panel.code)
-          ) {
-            appendFilter('panels', panel.code as any)
-          }
+  //         if (
+  //           normalizedPanelQuery === normalizedTitle &&
+  //           initialFilters['panels'].includes(panel.code)
+  //         ) {
+  //           removeFilter('panels', panel.code as any)
+  //         }
+  //       }
 
-          if (
-            normalizedPanelQuery === normalizedTitle &&
-            initialFilters['panels'].includes(panel.code)
-          ) {
-            removeFilter('panels', panel.code as any)
-          }
-        }
+  //       const itemFilter = filtersContext.panels.find(
+  //         (item) => normalizeTitle(item.title) === normalizedPanelQuery
+  //       )
+  //       if (itemFilter) {
+  //         appendFilter('panels', itemFilter.code as any)
 
-        const itemFilter = filtersContext.panels.find(
-          (item) => normalizeTitle(item.title) === normalizedPanelQuery
-        )
-        if (itemFilter) {
-          appendFilter('panels', itemFilter.code as any)
+  //         setFilteredBps(
+  //           applyFilters(
+  //             {
+  //               ...filtersBP,
+  //               ['panels']: [itemFilter.code as any]
+  //             },
+  //             bps
+  //           )
+  //         )
+  //         changeFilterPanel('panels')
+  //       }
+  //     }
 
-          setFilteredBps(
-            applyFilters(
-              {
-                ...filtersBP,
-                ['panels']: [itemFilter.code as any]
-              },
-              bps
-            )
-          )
-          changeFilterPanel('panels')
-        }
-      }
+  //     if (router.query[translatedFilterNames['collections']]) {
+  //       const translatedQueryName =
+  //         router.query[translatedFilterNames['collections']] || 'collections'
 
-      if (router.query[translatedFilterNames['collections']]) {
-        const translatedQueryName =
-          router.query[translatedFilterNames['collections']] || 'collections'
+  //       const queryCollection = Array.isArray(translatedQueryName)
+  //         ? translatedQueryName[0]
+  //         : translatedQueryName
+  //       const normalizedCollectionQuery = normalizeTitle(queryCollection)
 
-        const queryCollection = Array.isArray(translatedQueryName)
-          ? translatedQueryName[0]
-          : translatedQueryName
-        const normalizedCollectionQuery = normalizeTitle(queryCollection)
+  //       for (const collection of filtersContext.collections) {
+  //         const normalizedTitle = normalizeTitle(collection.title)
 
-        for (const collection of filtersContext.collections) {
-          const normalizedTitle = normalizeTitle(collection.title)
-
-          if (
-            normalizedCollectionQuery === normalizedTitle &&
-            !initialFilters['collections'].includes(collection.code)
-          ) {
-            appendFilter('collections', collection.code as any)
-            setFilteredBps(
-              applyFilters(
-                {
-                  ...filtersBP,
-                  ['collections']: [collection.code as any]
-                },
-                bps
-              )
-            )
-            changeFilterPanel('collections')
-            break
-          }
-        }
-      }
-    }
-  }, [router.query, isInitialRender])
+  //         if (
+  //           normalizedCollectionQuery === normalizedTitle &&
+  //           !initialFilters['collections'].includes(collection.code)
+  //         ) {
+  //           appendFilter('collections', collection.code as any)
+  //           setFilteredBps(
+  //             applyFilters(
+  //               {
+  //                 ...filtersBP,
+  //                 ['collections']: [collection.code as any]
+  //               },
+  //               bps
+  //             )
+  //           )
+  //           changeFilterPanel('collections')
+  //           break
+  //         }
+  //       }
+  //     }
+  //   }
+  // }, [router.query, isInitialRender])
 
   useEffect(() => {
     setFilters({ ...filtersBP, orderBy: 'scale' })
     setFilteredBps(applyFilters({ ...filtersBP, orderBy: 'scale' }, bps))
   }, [])
+
+  // useEffect(() => {
+  //   console.log(`executei: `, filtersBP)
+
+  //   setFilteredBps(applyFilters({ ...filtersBP, orderBy: 'scale' }, bps))
+  // }, [filtersBP])
 
   const bpCatalog = useTranslation('bpCatalog')
   const galleryViewLabels = useTranslation('galleryView')
