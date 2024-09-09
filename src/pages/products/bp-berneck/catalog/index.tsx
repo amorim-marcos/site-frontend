@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import { loadTranslations } from 'ni18n'
 
 import { strapiClient } from 'services'
@@ -77,7 +77,7 @@ export default function BpBerneck(props: BpBerneckProps) {
   return <BPCatalog {...props} />
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
   let bps: BpBerneckProps['bps'] = await strapiClient({
@@ -198,6 +198,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         colorations
       },
       ...(await loadTranslations(ni18nConfig, ctx.locale, nameSpaces))
-    }
+    },
+    revalidate: 60
   }
 }
