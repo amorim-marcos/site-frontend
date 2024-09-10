@@ -79,7 +79,7 @@ export type BPCatalogProps = {
   }
 }
 
-const translatedQueryParamsMapping = {
+export const translatedQueryParamsMapping = {
   en: {
     collections: 'collections',
     panels: 'panels',
@@ -105,7 +105,7 @@ const translatedQueryParamsMapping = {
     nameSearched: 'nameSearched'
   }
 }
-function getTranslatedFilterNames(locale: keyof typeof LocaleOptions) {
+export function getTranslatedFilterNames(locale: keyof typeof LocaleOptions) {
   return (
     translatedQueryParamsMapping[locale] || translatedQueryParamsMapping['en']
   )

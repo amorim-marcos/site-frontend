@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next'
 import Product from '../../components/Product'
 import { useRouter } from 'next/router'
 import PageHead from '@components/PageHead'
+import useRouterCustom from 'hooks/useRouterCustom'
+import { getTranslatedFilterNames } from 'views/BPCatalog/BPCatalog'
+import { LocaleOptions } from 'types/utils'
 
 export interface ProductProps {
   title: string
@@ -27,6 +30,15 @@ export type HdfBerneckViewProps = {
 export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
   const productsViewLabels = useTranslation('productsView')
   const router = useRouter()
+  const { getTranslatedPath } = useRouterCustom()
+
+  const translateCatalogPathName = getTranslatedPath(
+    '/products/bp-berneck/catalog'
+  )
+
+  const translatedCatalogFilterNames = getTranslatedFilterNames(
+    router.locale as keyof typeof LocaleOptions
+  )
 
   return (
     <div>
@@ -153,7 +165,7 @@ export default function HdfBerneckView({ hdf, hdf_plus }: HdfBerneckViewProps) {
             ),
             btnText: productsViewLabels.t('hdfBerneck.productWithBP.button'),
             imgSrc: '/img/hdf_plus_bp.png',
-            href: `/${router.locale}/products/bp-berneck/catalog?panel=hdf plus`
+            href: `/${router.locale}${translateCatalogPathName}?${translatedCatalogFilterNames['panels']}=hdf+plus`
           }
         }}
       />
