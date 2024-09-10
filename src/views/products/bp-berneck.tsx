@@ -27,6 +27,9 @@ import { BPPageBanner } from 'pages/products/bp-berneck'
 import { useTranslation } from 'react-i18next'
 import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 import PageHead from '@components/PageHead'
+import useRouterCustom from 'hooks/useRouterCustom'
+import { getTranslatedFilterNames } from 'views/BPCatalog/BPCatalog'
+import { LocaleOptions } from 'types/utils'
 
 export type BpBerneckViewProps = {
   galleries?: Gallery[]
@@ -37,6 +40,16 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
   const { isMobile } = useMobile(768)
   const router = useRouter()
   const productsViewLabels = useTranslation('productsView')
+
+  const { getTranslatedPath } = useRouterCustom()
+
+  const translatedCatalogPathName = getTranslatedPath(
+    '/products/bp-berneck/catalog'
+  )
+
+  const translatedCatalogFilterNames = getTranslatedFilterNames(
+    router.locale as keyof typeof LocaleOptions
+  )
 
   return (
     <Box>
@@ -115,7 +128,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               bgColor="brown.300"
               srcImg="../img/BPS.png"
               imgAltText="Berneck BP pannels"
-              onClick={() => router.push('/products/bp-berneck/catalog')}
+              linkTo={`/${router.locale}${translatedCatalogPathName}`}
               sizeType="rectangle-horizontal"
             />
           </GridItem>
@@ -127,7 +140,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             <BannerCollections
               onClick={() =>
                 router.push(
-                  `/${router.locale}/products/bp-berneck/catalog?collection=horizontes`
+                  `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=horizontes`
                 )
               }
               title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
@@ -145,7 +158,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             <BannerCollections
               onClick={() =>
                 router.push(
-                  `/${router.locale}/products/bp-berneck/catalog?collection=sentido`
+                  `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=sentido`
                 )
               }
               title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
