@@ -12,9 +12,10 @@ const useCountRender = () => {
   const router = useRouter()
 
   /** check if the component is rendered more than the expected render count
-   *
+   * @param {number} renderCountToCheck 3 is the default value that was identified as the initial render count.
+   * It was necessary to add this check because the initial render count was not always 1. In case of using a static page, the proper router render count that identifies the correct initial render is about 3
    *  */
-  const checkIsInitialRender = (renderCountToCheck: number) => {
+  const checkIsInitialRender = (renderCountToCheck = 3) => {
     if (renderCountRef.current < renderCountToCheck) {
       return true
     }
