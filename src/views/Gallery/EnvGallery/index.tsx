@@ -151,6 +151,7 @@ export const EnvGallery = ({
     }
   })
 
+  // filter the environments based on the query param filters only on the first render
   useEffect(() => {
     const isInitialRender = checkIsInitialRender(3)
 
@@ -164,6 +165,8 @@ export const EnvGallery = ({
         )
       }
     }
+    // todo
+    // fix unspected render when the filters are changed and it is not the first render
   }, [router.query])
 
   function getFiltersFromCookies() {
@@ -324,69 +327,33 @@ export const EnvGallery = ({
     setFilteredEnvs(applyFilters(cleanedFilters, envs))
   }
 
-  // useEffect(() => {
-  //   if (
-  //     initialFilters.ambients.length !== 0 ||
-  //     initialFilters.bps.length !== 0 ||
-  //     initialFilters.styles.length !== 0 ||
-  //     initialFilters.nameSearched.length !== 0
-  //   ) {
-  //     setFilteredEnvs(applyFilters(filters, envs))
-
-  //     initialFilters.ambients.length !== 0
-  //       ? setCurrentFilterPanel('ambients')
-  //       : initialFilters.styles.length !== 0
-  //       ? setCurrentFilterPanel('styles')
-  //       : initialFilters.bps.length !== 0
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [filters])
-
-  // todo
-  // check this useEffect
   useEffect(() => {
     const isInitialRender = checkIsInitialRender(3)
-    if (isInitialRender) {
-      const queryParams: Filters = getFiltersFromURL()
 
-      if (queryParams?.ambients) {
-        changeFilterPanel('ambients')
-      }
-      if (queryParams?.bps) {
-        changeFilterPanel('bps')
-      }
-      if (queryParams?.styles) {
-        changeFilterPanel('styles')
+    if (isInitialRender) {
+      if (Object.keys(router.query).length > 0) {
+        const queryParams: Filters = getFiltersFromURL()
+
+        if (queryParams?.ambients) {
+          changeFilterPanel('ambients')
+        }
+        if (queryParams?.bps) {
+          changeFilterPanel('bps')
+        }
+        if (queryParams?.styles) {
+          changeFilterPanel('styles')
+        }
       }
     }
-  }, [router.query])
+    // todo
+    // check this useEffect in order to avoid it running on every render
+    // }, [router.query])
+  }, [])
 
   useEffect(() => {
     // setFilters({ ...filters })
     setFilteredEnvs(applyFilters({ ...filters }, envs))
   }, [])
-
-  // if (Cookies.get('cookieAccepted')) {
-  //   useEffect(() => {
-  //     const filtersCookie = Cookies.get('filters')
-  //     if (filtersCookie) {
-  //       setFilteredEnvs(applyFilters(JSON.parse(filtersCookie), envs))
-  //       setDisplayFilters(true)
-  //     }
-  //   }, [])
-  // }
-
-  // useEffect(() => {
-  //   if (Cookies.get('cookieAccepted')) {
-  //     Cookies.set('filters', JSON.stringify(filters), { expires: 7 });
-  //   }
-  // }, [filters]);
-
-  // useEffect(() => {
-  //   // Since we already considered URL and cookies for the initial filter state,
-  //   // we only need to reapply filters when "filters" state changes
-  //   setFilteredEnvs(applyFilters(filters, envs));
-  // }, [filters]);
 
   useEffect(() => {
     if (
@@ -403,6 +370,7 @@ export const EnvGallery = ({
 
   const [filterCount, setFilterCount] = useState('')
 
+  // update the filter count text
   useEffect(() => {
     const numEnvs =
       filters.bps.length +
@@ -431,28 +399,6 @@ export const EnvGallery = ({
     }
   }, [filteredEnvs])
 
-  // useEffect(() => {
-  //   if (router.query.ambients) {
-  //     const itemFilter = filtersContext.ambients.find(
-  //       (item) => item.title === router.query.ambients
-  //     )
-  //     if (typeof itemFilter !== 'undefined') {
-  //       appendFilter('ambients', itemFilter.code as any)
-
-  //       setFilteredEnvs(
-  //         applyFilters(
-  //           {
-  //             ...filters,
-  //             ['ambients']: [itemFilter.code as any]
-  //           },
-  //           envs
-  //         )
-  //       )
-  //       changeFilterPanel('ambients')
-  //     }
-  //   }
-  // }, [router.query])
-
   const ref = useRef<HTMLDivElement>(null)
   const envPath = '/products/bp-berneck/gallery'
   const translatedEnvPath = getTranslatedPath(envPath)
@@ -460,7 +406,6 @@ export const EnvGallery = ({
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        // console.log('It works!')
         setPagination((p) => {
           const newPage = p + 1
           // handleAddQueryToUrl('page', String(newPage))
