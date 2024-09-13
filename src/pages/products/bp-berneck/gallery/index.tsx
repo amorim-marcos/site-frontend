@@ -177,6 +177,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
       initialFilters,
       ...(await loadTranslations(ni18nConfig, ctx.locale, nameSpaces))
     },
-    revalidate: 60
+    revalidate: 60 * 10
   }
 }
