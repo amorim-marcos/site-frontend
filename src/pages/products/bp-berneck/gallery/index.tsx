@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import { loadTranslations } from 'ni18n'
 
 import { strapiClient } from 'services'
@@ -48,8 +48,8 @@ export default function Gallery(props: GalleryProps) {
   return <EnvGallery {...props} />
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const queryAmbients = ctx.query.ambients
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  // const queryAmbients = ctx.query.ambients
   const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
   let ambientTypes: GalleryProps['filtersContext']['styles'] =
@@ -160,7 +160,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const initialFilters = {
     nameSearched: '',
     bps: [],
-    ambients: queryAmbients ? String(queryAmbients).split(',') : [],
+    // ambients: queryAmbients ? String(queryAmbients).split(',') : [],
+    ambients: [],
     styles: []
   }
 
@@ -175,6 +176,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       availableBps,
       initialFilters,
       ...(await loadTranslations(ni18nConfig, ctx.locale, nameSpaces))
-    }
+    },
+    revalidate: 60
   }
 }

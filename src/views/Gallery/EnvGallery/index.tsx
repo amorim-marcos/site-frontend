@@ -23,6 +23,7 @@ import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
 import useRouterCustom from 'hooks/useRouterCustom'
 import PageHead from '@components/PageHead'
+import useCountRender from 'hooks/useCountRender'
 
 export type ValidFilterNames =
   | 'bps'
@@ -117,7 +118,6 @@ export const EnvGallery = ({
   const [filtersEmpty, setFiltersEmpty] = useState(true)
   const { isMobile } = useMobile(1024)
 
-  const [isInitialRender, setIsInitialRender] = useState(true)
   const router = useRouter()
 
   let { locale } = router
@@ -131,6 +131,7 @@ export const EnvGallery = ({
     resetQueriesFromUrl,
     getTranslatedPath
   } = useRouterCustom()
+  const { checkIsInitialRender } = useCountRender()
 
   const pathname = router.pathname
   const translatedPathName = getTranslatedPath(pathname)
@@ -150,54 +151,23 @@ export const EnvGallery = ({
     }
   })
 
-  // function handleAddQueryToUrl(queryName: ValidFilterNames, value: string) {
-  //   router.replace(
-  //     {
-  //       pathname: pathname,
-  //       query: {
-  //         ...router.query,
-  //         [queryName]: value
-  //       }
-  //     },
-  //     undefined,
-  //     { shallow: true }
-  //   )
-  // }
+  // filter the environments based on the query param filters only on the first render
+  useEffect(() => {
+    const isInitialRender = checkIsInitialRender(3)
 
-  // function handleResetQueriesFromUrl() {
-  //   router.replace(
-  //     {
-  //       pathname: pathname
-  //     },
-  //     undefined,
-  //     {
-  //       shallow: true
-  //     }
-  //   )
-  // }
+    if (isInitialRender) {
+      if (Object.keys(router.query).length > 0) {
+        const initialQueryFilters = getFiltersFromURL()
 
-  // function handleRemoveQueryFromUrl(
-  //   queryName: ValidFilterNames,
-  //   value: string
-  // ) {
-  //   const { query: queryObj } = router
-
-  //   const newQuery = { ...queryObj }
-  //   delete newQuery[queryName]
-
-  //   router.replace(
-  //     {
-  //       pathname: pathname,
-  //       query: {
-  //         ...newQuery
-  //       }
-  //     },
-  //     undefined,
-  //     {
-  //       shallow: true
-  //     }
-  //   )
-  // }
+        setFilters({ ...initialFilters, ...initialQueryFilters })
+        setFilteredEnvs(
+          applyFilters({ ...initialFilters, ...initialURLFilters }, envs)
+        )
+      }
+    }
+    // todo
+    // fix unspected render when the filters are changed and it is not the first render
+  }, [router.query])
 
   function getFiltersFromCookies() {
     const filtersCookie = Cookies.get('filters')
@@ -318,21 +288,21 @@ export const EnvGallery = ({
     }
 
     // bps
-    if (filters['bps'].length > 0) {
+    if (filters['bps']?.length > 0) {
       filteredEnvs = filteredEnvs.filter((env: any) => {
         return env?.bps?.some((bp: any) => filters['bps'].includes(bp))
       })
     }
 
     // ambients
-    if (filters['ambients'].length > 0) {
+    if (filters['ambients']?.length > 0) {
       filteredEnvs = filteredEnvs.filter((env: any) => {
         return filters['ambients'].includes(env.type)
       })
     }
 
     // styles
-    if (filters['styles'].length > 0) {
+    if (filters['styles']?.length > 0) {
       filteredEnvs = filteredEnvs.filter((env: any) => {
         return filters['styles'].some((style: any) => env.style.includes(style))
       })
@@ -357,70 +327,33 @@ export const EnvGallery = ({
     setFilteredEnvs(applyFilters(cleanedFilters, envs))
   }
 
-  // useEffect(() => {
-  //   if (
-  //     initialFilters.ambients.length !== 0 ||
-  //     initialFilters.bps.length !== 0 ||
-  //     initialFilters.styles.length !== 0 ||
-  //     initialFilters.nameSearched.length !== 0
-  //   ) {
-  //     setFilteredEnvs(applyFilters(filters, envs))
-
-  //     initialFilters.ambients.length !== 0
-  //       ? setCurrentFilterPanel('ambients')
-  //       : initialFilters.styles.length !== 0
-  //       ? setCurrentFilterPanel('styles')
-  //       : initialFilters.bps.length !== 0
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [filters])
-
   useEffect(() => {
-    if (isInitialRender) {
-      const queryParams: Filters = getFiltersFromURL()
+    const isInitialRender = checkIsInitialRender(3)
 
-      if (queryParams?.ambients) {
-        changeFilterPanel('ambients')
-      }
-      if (queryParams?.bps) {
-        changeFilterPanel('bps')
-      }
-      if (queryParams?.styles) {
-        changeFilterPanel('styles')
+    if (isInitialRender) {
+      if (Object.keys(router.query).length > 0) {
+        const queryParams: Filters = getFiltersFromURL()
+
+        if (queryParams?.ambients) {
+          changeFilterPanel('ambients')
+        }
+        if (queryParams?.bps) {
+          changeFilterPanel('bps')
+        }
+        if (queryParams?.styles) {
+          changeFilterPanel('styles')
+        }
       }
     }
-  }, [isInitialRender])
-
-  useEffect(() => {
-    setIsInitialRender(false)
+    // todo
+    // check this useEffect in order to avoid it running on every render
+    // }, [router.query])
   }, [])
 
   useEffect(() => {
     // setFilters({ ...filters })
     setFilteredEnvs(applyFilters({ ...filters }, envs))
   }, [])
-
-  // if (Cookies.get('cookieAccepted')) {
-  //   useEffect(() => {
-  //     const filtersCookie = Cookies.get('filters')
-  //     if (filtersCookie) {
-  //       setFilteredEnvs(applyFilters(JSON.parse(filtersCookie), envs))
-  //       setDisplayFilters(true)
-  //     }
-  //   }, [])
-  // }
-
-  // useEffect(() => {
-  //   if (Cookies.get('cookieAccepted')) {
-  //     Cookies.set('filters', JSON.stringify(filters), { expires: 7 });
-  //   }
-  // }, [filters]);
-
-  // useEffect(() => {
-  //   // Since we already considered URL and cookies for the initial filter state,
-  //   // we only need to reapply filters when "filters" state changes
-  //   setFilteredEnvs(applyFilters(filters, envs));
-  // }, [filters]);
 
   useEffect(() => {
     if (
@@ -437,6 +370,7 @@ export const EnvGallery = ({
 
   const [filterCount, setFilterCount] = useState('')
 
+  // update the filter count text
   useEffect(() => {
     const numEnvs =
       filters.bps.length +
@@ -465,28 +399,6 @@ export const EnvGallery = ({
     }
   }, [filteredEnvs])
 
-  // useEffect(() => {
-  //   if (router.query.ambients) {
-  //     const itemFilter = filtersContext.ambients.find(
-  //       (item) => item.title === router.query.ambients
-  //     )
-  //     if (typeof itemFilter !== 'undefined') {
-  //       appendFilter('ambients', itemFilter.code as any)
-
-  //       setFilteredEnvs(
-  //         applyFilters(
-  //           {
-  //             ...filters,
-  //             ['ambients']: [itemFilter.code as any]
-  //           },
-  //           envs
-  //         )
-  //       )
-  //       changeFilterPanel('ambients')
-  //     }
-  //   }
-  // }, [router.query])
-
   const ref = useRef<HTMLDivElement>(null)
   const envPath = '/products/bp-berneck/gallery'
   const translatedEnvPath = getTranslatedPath(envPath)
@@ -494,7 +406,6 @@ export const EnvGallery = ({
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        // console.log('It works!')
         setPagination((p) => {
           const newPage = p + 1
           // handleAddQueryToUrl('page', String(newPage))

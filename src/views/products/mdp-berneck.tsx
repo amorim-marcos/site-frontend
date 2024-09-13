@@ -5,6 +5,9 @@ import Product from '../../components/Product'
 import { ProductProps } from './hdf-berneck'
 import { useRouter } from 'next/router'
 import PageHead from '@components/PageHead'
+import { getTranslatedFilterNames } from 'views/BPCatalog/BPCatalog'
+import { LocaleOptions } from 'types/utils'
+import useRouterCustom from 'hooks/useRouterCustom'
 
 export type MdpBerneckViewProps = {
   mdp: ProductProps
@@ -14,6 +17,15 @@ export type MdpBerneckViewProps = {
 export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
   const productsViewLabels = useTranslation('productsView')
   const router = useRouter()
+  const { getTranslatedPath } = useRouterCustom()
+
+  const translatedCatalogPathName = getTranslatedPath(
+    '/products/bp-berneck/catalog'
+  )
+
+  const translatedCatalogFilterNames = getTranslatedFilterNames(
+    router.locale as keyof typeof LocaleOptions
+  )
 
   return (
     <Box>
@@ -80,7 +92,7 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
               'mdpBerneck.productWithBP.description'
             ),
             btnText: productsViewLabels.t('mdpBerneck.productWithBP.button'),
-            href: `/${router.locale}/products/bp-berneck/catalog?panel=mdp`
+            href: `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['panels']}=mdp`
           }
         }}
       />
@@ -130,7 +142,7 @@ export default function Mdp({ mdp, mdp_plus }: MdpBerneckViewProps) {
               'mdpBerneck.productWithBpPlus.button'
             ),
             imgSrc: '/img/mdp_plus_bp.png',
-            href: `/${router.locale}/products/bp-berneck/catalog?panel=mdp plus`
+            href: `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['panels']}=mdp+plus`
           }
         }}
       />

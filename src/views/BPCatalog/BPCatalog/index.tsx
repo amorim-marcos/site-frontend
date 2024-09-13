@@ -79,7 +79,7 @@ export type BPCatalogProps = {
   }
 }
 
-const translatedQueryParamsMapping = {
+export const translatedQueryParamsMapping = {
   en: {
     collections: 'collections',
     panels: 'panels',
@@ -105,7 +105,7 @@ const translatedQueryParamsMapping = {
     nameSearched: 'nameSearched'
   }
 }
-function getTranslatedFilterNames(locale: keyof typeof LocaleOptions) {
+export function getTranslatedFilterNames(locale: keyof typeof LocaleOptions) {
   return (
     translatedQueryParamsMapping[locale] || translatedQueryParamsMapping['en']
   )
@@ -185,9 +185,9 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
               router.query[translatedFilterNames['collections']] ===
               normalizeTitle(collection.title)
           )
-          if (matchedCollection) {
-            changeFilterPanel('collections')
-          }
+          // if (matchedCollection) {
+          //   changeFilterPanel('collections')
+          // }
 
           initialProcessedFilters = {
             ...initialProcessedFilters,
@@ -213,9 +213,9 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
             ...initialProcessedFilters,
             panels: matchedPanel ? [matchedPanel.code] : []
           }
-          if (matchedPanel) {
-            changeFilterPanel('panels')
-          }
+          // if (matchedPanel) {
+          //   changeFilterPanel('panels')
+          // }
           // return {
           //   ...initialFilters,
           //   panels: matchedPanel ? [matchedPanel.code] : []
@@ -233,9 +233,9 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
             ...initialProcessedFilters,
             colorations: matchedColoration ? [matchedColoration.code] : []
           }
-          if (matchedColoration) {
-            changeFilterPanel('colorations')
-          }
+          // if (matchedColoration) {
+          //   changeFilterPanel('colorations')
+          // }
           // return {
           //   ...initialFilters,
           //   panels: matchedPanel ? [matchedPanel.code] : []
@@ -262,6 +262,8 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         setFilteredBps(applyFilters({ ...initialProcessedFilters }, bps))
       }
     }
+    // todo
+    // fix unspected render when the filters are changed and it is not the first render
   }, [router.query])
 
   function changeGridSize(newGridSize: GridSize) {
