@@ -173,19 +173,21 @@ export const SectionPackBpDownloads = ({
                 justifyContent="center"
               >
                 <Text fontWeight="bold" variant="body">
-                  <Flex
+                  <CustomLink
+                    linkTo={download_url_jpgs}
+                    download
                     cursor="pointer"
-                    onClick={() =>
-                      handleRenameAndDownload(
-                        download_url_jpgs!,
-                        patterns_pack_download_jpgs?.name
-                      )
-                    }
+                    // onClick={() =>
+                    //   handleRenameAndDownload(
+                    //     download_url_jpgs!,
+                    //     patterns_pack_download_jpgs?.name
+                    //   )
+                    // }
                   >
                     {componentsLabels.t(
                       'sectionPackBpDownloads.patternPacksJpgs'
                     )}
-                  </Flex>
+                  </CustomLink>
                 </Text>
               </Flex>
             </Flex>
@@ -208,19 +210,21 @@ export const SectionPackBpDownloads = ({
                 justifyContent="center"
               >
                 <Text fontWeight="bold" variant="body">
-                  <Flex
+                  <CustomLink
+                    linkTo={download_url_skps}
                     cursor="pointer"
-                    onClick={() =>
-                      handleRenameAndDownload(
-                        download_url_skps!,
-                        patterns_pack_download_skps?.name
-                      )
-                    }
+                    download
+                    // onClick={() =>
+                    //   handleRenameAndDownload(
+                    //     download_url_skps!,
+                    //     patterns_pack_download_skps?.name
+                    //   )
+                    // }
                   >
                     {componentsLabels.t(
                       'sectionPackBpDownloads.patternPacksSkps'
                     )}
-                  </Flex>
+                  </CustomLink>
                 </Text>
               </Flex>
             </Flex>
