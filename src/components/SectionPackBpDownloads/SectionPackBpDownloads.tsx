@@ -174,9 +174,9 @@ export const SectionPackBpDownloads = ({
               >
                 <Text fontWeight="bold" variant="body">
                   <CustomLink
-                    linkTo={download_url_jpgs}
+                    linkTo={download_url_jpgs!}
                     download
-                    cursor="pointer"
+
                     // onClick={() =>
                     //   handleRenameAndDownload(
                     //     download_url_jpgs!,
@@ -211,8 +211,7 @@ export const SectionPackBpDownloads = ({
               >
                 <Text fontWeight="bold" variant="body">
                   <CustomLink
-                    linkTo={download_url_skps}
-                    cursor="pointer"
+                    linkTo={download_url_skps!}
                     download
                     // onClick={() =>
                     //   handleRenameAndDownload(
