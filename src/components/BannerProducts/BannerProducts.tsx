@@ -1,6 +1,7 @@
 import { Heading, Flex, Box, Text, Center, Image } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useState } from 'react'
+import { CollectionBanner } from 'types/data/BPsPage'
 import { ResponsiveCss } from 'types/responsive'
 
 type SizeTypes = 'square' | 'rectangle-horizontal' | 'rectangle-vertical'
@@ -19,6 +20,7 @@ export type BannerProductsProps = {
   urlLink?: string
   biggerImage?: boolean
   linkTo?: string
+  // catalogBannerData?: CollectionBanner
 }
 export const BannerProducts = ({
   title,
@@ -33,8 +35,10 @@ export const BannerProducts = ({
   onClick,
   linkTo,
   biggerImage = false
-}: BannerProductsProps) => {
+}: // catalogBannerData
+BannerProductsProps) => {
   const [mouseEnter, setMouseEnter] = useState(false)
+
   return (
     <Link href={linkTo ?? ''}>
       <Flex
