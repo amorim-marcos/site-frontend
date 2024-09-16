@@ -30,16 +30,20 @@ import PageHead from '@components/PageHead'
 import useRouterCustom from 'hooks/useRouterCustom'
 import { getTranslatedFilterNames } from 'views/BPCatalog/BPCatalog'
 import { LocaleOptions } from 'types/utils'
+import { BPsPageResponse } from 'types/data/BPsPage'
 
 export type BpBerneckViewProps = {
   galleries?: Gallery[]
   banners: BPPageBanner[]
+  bpsPageData: BPsPageResponse | undefined
 }
 
 export default function BpBerneckView(props: BpBerneckViewProps) {
   const { isMobile } = useMobile(768)
   const router = useRouter()
   const productsViewLabels = useTranslation('productsView')
+
+  const uploadBaseUrl = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL ?? ''
 
   const { getTranslatedPath } = useRouterCustom()
 
@@ -50,6 +54,8 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
   const translatedCatalogFilterNames = getTranslatedFilterNames(
     router.locale as keyof typeof LocaleOptions
   )
+
+  const catalogBannerData = props.bpsPageData?.catalog_bp_banner
 
   return (
     <Box>
@@ -119,16 +125,29 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             rowSpan={{ base: '2', sm: '2', lg: '2', xl: '2' } as any}
           >
             <BannerProducts
-              title={productsViewLabels.t('bpBerneck.bannerProducts.title')}
+              title={
+                catalogBannerData?.title ||
+                productsViewLabels.t('bpBerneck.bannerProducts.title')
+              }
               titleColor="white"
-              subtitle={productsViewLabels.t(
-                'bpBerneck.bannerProducts.subtitle'
-              )}
+              subtitle={
+                catalogBannerData?.subTitle ||
+                productsViewLabels.t('bpBerneck.bannerProducts.subtitle')
+              }
               subtitleColor="brown.200"
               bgColor="brown.300"
-              srcImg="../img/BPS.png"
+              srcImg={
+                uploadBaseUrl + catalogBannerData?.banner_image.url ||
+                '../img/BPS.png'
+              }
+              // srcImg={catalogBannerData?.banner_image '../img/BPS.png'}
               imgAltText="Berneck BP pannels"
-              linkTo={`/${router.locale}${translatedCatalogPathName}`}
+              // todo
+              // remove in the future when the catalog banner data link is available
+              linkTo={
+                catalogBannerData?.link ??
+                `/${router.locale}${translatedCatalogPathName}`
+              }
               sizeType="rectangle-horizontal"
             />
           </GridItem>
