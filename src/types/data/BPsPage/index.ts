@@ -5,7 +5,9 @@ export interface BPsPageResponse extends ResponseDefaultProperties {
   title: string
   metatag_title: string
   meta_description: string
-  collection_banners: CollectionBanner[]
+  // todo
+  // fix collection banners field name
+  colection_banners: CollectionBanner[]
   catalog_bp_banner: CatalogBPBanner
 }
 

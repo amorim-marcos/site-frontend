@@ -9,10 +9,12 @@ export type BannerCollectionsProps = {
   ArrowIconColor: string
   bgColor: string
   onClick?: () => void
+  linkTo?: string
 }
 export const BannerCollections = (props: BannerCollectionsProps) => {
   return (
     <CustomLink
+      linkTo={props.linkTo}
       data-testid="pattern-info-box-photo"
       bg={props.bgColor}
       cursor="pointer"
