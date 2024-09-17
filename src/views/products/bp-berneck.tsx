@@ -57,6 +57,13 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
 
   const catalogBannerData = props.bpsPageData?.catalog_bp_banner
 
+  const collectionBannersList = props.bpsPageData?.colection_banners || []
+
+  const collectionBanner1 = collectionBannersList[0]
+  const collectionBanner2 = collectionBannersList[1]
+
+  console.log(`collectionBannersList`, collectionBannersList)
+
   return (
     <Box>
       <PageHead
@@ -157,14 +164,21 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             bg="papayawhip"
           >
             <BannerCollections
-              onClick={() =>
-                router.push(
-                  `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=horizontes`
-                )
+              // onClick={() =>
+              //   router.push(
+              //     `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=horizontes`
+              //   )
+              // }
+              linkTo={
+                collectionBanner1.link ||
+                `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=horizontes`
               }
               title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
               titleColor="brown.300"
-              imgSrc="../img/horizontes_banner.jpg"
+              imgSrc={
+                uploadBaseUrl + collectionBanner1.banner_image?.url ||
+                '../img/horizontes_banner.jpg'
+              }
               ArrowIconColor="#74675D"
               bgColor="rgb(228, 230, 222)"
             />
@@ -175,14 +189,21 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             // bg="blue"
           >
             <BannerCollections
-              onClick={() =>
-                router.push(
-                  `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=sentido`
-                )
+              // onClick={() =>
+              //   router.push(
+              //     `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=sentido`
+              //   )
+              // }
+              linkTo={
+                collectionBanner2.link ||
+                `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=sentido`
               }
               title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
               titleColor="brown.300"
-              imgSrc="../img/sentido_banner.jpg"
+              imgSrc={
+                uploadBaseUrl + collectionBanner2.banner_image.url ||
+                '../img/sentido_banner.jpg'
+              }
               ArrowIconColor="#74675D"
               bgColor="brown.100"
             />

@@ -1,4 +1,5 @@
-import { Heading, Flex, Box, Text, Center, Container } from '@chakra-ui/react'
+import { Flex, Box, Text } from '@chakra-ui/react'
+import CustomLink from '@components/CustomLink'
 import ArrowIcon from '@components/Icons/ArrowIcon'
 
 export type BannerCollectionsProps = {
@@ -8,10 +9,12 @@ export type BannerCollectionsProps = {
   ArrowIconColor: string
   bgColor: string
   onClick?: () => void
+  linkTo?: string
 }
 export const BannerCollections = (props: BannerCollectionsProps) => {
   return (
-    <Flex
+    <CustomLink
+      linkTo={props.linkTo}
       data-testid="pattern-info-box-photo"
       bg={props.bgColor}
       cursor="pointer"
@@ -74,6 +77,6 @@ export const BannerCollections = (props: BannerCollectionsProps) => {
           </Box>
         </Flex>
       </Flex>
-    </Flex>
+    </CustomLink>
   )
 }
