@@ -9,6 +9,7 @@ import useWindowDimensions from 'hooks/useWindow'
 import { smartString } from 'utils/utils'
 import Link from 'next/link'
 import { ImageProps } from 'types/utils'
+import CustomLink from '@components/CustomLink'
 
 function getBetterStrSize(
   tam: number | undefined,
@@ -83,16 +84,20 @@ export const ChannelBnkRelationalItem = ({
       }}
       maxWidth={{ base: '270px', '2xl': '100%' }}
       {...props}
-      cursor="pointer"
+      // cursor="pointer"
       // onClick={() => router.push(`/bnk-channel/${categoryId}/${url_code}`)}
     >
-      <Link href={`/bnk-channel/${categoryId}/${url_code}`}>
-        {/* {CARD CHANNEL  } */}
-        <Box
-          h={{
-            base: '180px'
-          }}
-          w="100%"
+      <Box
+        h={{
+          base: '180px'
+        }}
+        w="100%"
+      >
+        {/* todo
+        translate urls */}
+        <CustomLink
+          useFlexComponent={false}
+          linkTo={`/bnk-channel/${categoryId}/${url_code}`}
         >
           {/* {IMAGEM CAPA CARD  } */}
           <Image
@@ -102,32 +107,37 @@ export const ChannelBnkRelationalItem = ({
             src={urlImage}
             alt={cover_img?.alternativeText}
           />
-        </Box>
+        </CustomLink>
+      </Box>
 
-        {/* { CARD TEXT  } */}
+      {/* {CARD CHANNEL  } */}
+      <Flex
+        bg={getPanelColor(categoryId, currentCategory)}
+        flexDirection={{
+          base: 'column',
+          md: showInvert ? 'column' : 'column'
+        }}
+        // justifyContent="space-between"
+        h={{ base: '50%', xl: showInvert ? '100%' : '50%' }}
+        w="100%"
+      >
         <Flex
-          //  bg = "tomato"
-          bg={getPanelColor(categoryId, currentCategory)}
+          padding={{
+            base: '8%',
+            xl: showInvert ? '5%' : '6%',
+            '2xl': '6%'
+          }}
           flexDirection={{
             base: 'column',
             md: showInvert ? 'column' : 'column'
           }}
-          // justifyContent="space-between"
-          h={{ base: '50%', xl: showInvert ? '100%' : '50%' }}
-          w="100%"
+          // bg= "violet"
+          h={{ base: '100%', xl: showInvert ? '98%' : '96%' }}
+          // h="100%"
         >
-          <Flex
-            padding={{
-              base: '8%',
-              xl: showInvert ? '5%' : '6%',
-              '2xl': '6%'
-            }}
-            flexDirection={{
-              base: 'column',
-              md: showInvert ? 'column' : 'column'
-            }}
-            // bg= "violet"
-            h={{ base: '100%', xl: showInvert ? '98%' : '96%' }}
+          <CustomLink
+            useFlexComponent={false}
+            linkTo={`/bnk-channel/${categoryId}/${url_code}`}
           >
             <Flex
               alignItems="flex-start"
@@ -193,25 +203,25 @@ export const ChannelBnkRelationalItem = ({
                 getBetterStrSize(useWindowDimensionsLocal.width, showInvert)
               )}
             </Text>
-          </Flex>
-
-          <Box
-            transition={'0.5s'}
-            width={mouseDown ? '80%' : '50%'}
-            borderBottom="solid"
-            borderBottomWidth={{
-              base: '3px',
-              sm: '4px',
-              md: '3px',
-              lg: '4px',
-              xl: '5px',
-              '2xl': '6px'
-            }}
-            borderBottomColor={getAccentColor(categoryId, currentCategory)}
-            marginLeft="10%"
-          />
+          </CustomLink>
         </Flex>
-      </Link>
+
+        <Box
+          transition={'0.5s'}
+          width={mouseDown ? '80%' : '50%'}
+          borderBottom="solid"
+          borderBottomWidth={{
+            base: '3px',
+            sm: '4px',
+            md: '3px',
+            lg: '4px',
+            xl: '5px',
+            '2xl': '6px'
+          }}
+          borderBottomColor={getAccentColor(categoryId, currentCategory)}
+          marginLeft="10%"
+        />
+      </Flex>
     </Flex>
   )
 }
