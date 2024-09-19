@@ -30,7 +30,6 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@googlemaps/react-wrapper": "^1.1.27",
-    "@hotjar/browser": "^1.0.9",
     "axios": "^0.26.1",
     "dompurify": "^2.3.5",
     "fb-sdk-wrapper": "^1.1.0",
