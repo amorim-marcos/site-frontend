@@ -1,15 +1,15 @@
 const contentSecurityPolicyItems = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-eval' *.berneck.com.br berneck.pertinhodemim.com *.google-analytics.com *.jquery.com d335luupugsy2.cloudfront.net *.googletagmanager.com *.instagram.com *.pinterest.com *.elfsight.com *.facebook.net *.facebook.com *.juicer.io 'unsafe-inline'",
-  "style-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.jquery.com *.googleapis.com 'unsafe-inline'",
-  "img-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.google-analytics.com data: *.pinimg.com *.pinterest.com",
-  "font-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.jquery.com *.gstatic.com *.googleapis.com fonts.gstatic.com", 
-  "connect-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.doubleclick.net *.google-analytics.com *.googleapis.com *.rdstation.com.br *.facebook.com *.juicer.io fonts.gstatic.com *.pinterest.com *.elfsight.com *.jquery.com *.facebook.net *.pinimg.com *.googletagmanager.com d335luupugsy2.cloudfront.net", 
+  "script-src 'self' 'unsafe-eval' *.berneck.com.br berneck.pertinhodemim.com *.google-analytics.com *.jquery.com d335luupugsy2.cloudfront.net *.googletagmanager.com *.instagram.com *.pinterest.com *.elfsight.com *.facebook.net *.facebook.com *hotjar.com *.juicer.io 'unsafe-inline'",
+  "style-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.jquery.com *.googleapis.com 'unsafe-inline' *hotjar.com",
+  "img-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.google-analytics.com data: *.pinimg.com *.pinterest.com *hotjar.com",
+  "font-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.jquery.com *.gstatic.com *.googleapis.com fonts.gstatic.com *hotjar.com",
+  "connect-src 'self' *.ytimg.com *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.doubleclick.net *.google-analytics.com *.googleapis.com *.rdstation.com.br *.facebook.com *.juicer.io fonts.gstatic.com *.pinterest.com *.elfsight.com *.jquery.com *.facebook.net *.pinimg.com *.googletagmanager.com d335luupugsy2.cloudfront.net *hotjar.com",
   "media-src 'self'",
   "object-src 'self' data:",
   "prefetch-src 'self'",
   "child-src 'self'",
-  "frame-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.linkedin.com *.youtube.com *.facebook.com *.juicer.io",
+  "frame-src 'self' *.berneck.com.br *.instagram.com berneck.pertinhodemim.com *.linkedin.com *.youtube.com *.facebook.com *.juicer.io *hotjar.com",
   "worker-src 'self' *.berneck.com.br berneck.pertinhodemim.com",
   "frame-ancestors 'self'",
   "form-action 'self'",
@@ -17,7 +17,7 @@ const contentSecurityPolicyItems = [
   'block-all-mixed-content',
   "base-uri 'self'",
   "manifest-src 'self'"
-];
+]
 
 const securityHeaders = [
   {
@@ -42,7 +42,8 @@ const securityHeaders = [
   },
   {
     key: 'Permissions-Policy',
-    value: 'accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(self), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()'
+    value:
+      'accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), geolocation=(self), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()'
   },
   {
     key: 'Content-Security-Policy',
@@ -52,6 +53,6 @@ const securityHeaders = [
     key: 'Referrer-Policy',
     value: 'no-referrer'
   }
-];
+]
 
-module.exports = securityHeaders;
+module.exports = securityHeaders
