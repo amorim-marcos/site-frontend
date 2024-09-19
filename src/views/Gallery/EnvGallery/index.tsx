@@ -24,6 +24,7 @@ import Cookies from 'js-cookie'
 import useRouterCustom from 'hooks/useRouterCustom'
 import PageHead from '@components/PageHead'
 import useCountRender from 'hooks/useCountRender'
+import HotjarComponent from 'services/Hotjar'
 
 export type ValidFilterNames =
   | 'bps'
@@ -447,6 +448,7 @@ export const EnvGallery = ({
         page_title={galleryViewLabels.t('pageMetadata.pageTitle')}
         page_description={galleryViewLabels.t('pageMetadata.pageDescription')}
       />
+      <HotjarComponent />
       <Pagebar
         paths={[
           {

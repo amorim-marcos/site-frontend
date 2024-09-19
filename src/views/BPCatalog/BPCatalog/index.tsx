@@ -18,6 +18,7 @@ import { normalizeTitle } from 'utils/utils'
 import useRouterCustom from 'hooks/useRouterCustom'
 import PageHead from '@components/PageHead'
 import { LocaleOptions } from 'types/utils'
+import HotjarComponent from 'services/Hotjar'
 
 export type filtersBP = {
   orderBy: string
@@ -654,6 +655,7 @@ export const BPCatalog = ({ bps, filtersContext }: BPCatalogProps) => {
         page_title={bpCatalog.t('pageMetadata.pageTitle')}
         page_description={bpCatalog.t('pageMetadata.pageDescription')}
       />
+      <HotjarComponent />
       <Pagebar
         paths={[
           {
