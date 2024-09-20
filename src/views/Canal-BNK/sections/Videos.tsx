@@ -7,6 +7,8 @@ import { PlayIcon } from '@components/Icons'
 import { Section } from './Section'
 import { CategoryContext, IVideos } from '..'
 import { useTranslation } from 'react-i18next'
+import { ChannelVideos } from 'types/data/Post/ChannelPage'
+import CustomLink from '@components/CustomLink'
 
 function getPlaylist(currentCategory: number) {
   if (currentCategory === -1)
@@ -31,10 +33,21 @@ function getPlaylist(currentCategory: number) {
     }[currentCategory]
 }
 
-export const Videos = (props: { videos?: IVideos[] }) => {
+export const Videos = (props: {
+  videos?: IVideos[]
+  strapiVideos: ChannelVideos[]
+}) => {
   const { currentCategory } = useContext(CategoryContext)
 
   const channelBnkLabels = useTranslation('channelBnkView')
+
+  const getYTVideoId = (ytUrl: string) => {
+    const urlParamsObject = new URL(ytUrl)
+    const urlParams = new URLSearchParams(urlParamsObject.search)
+    const videoId = urlParams.get('v')
+
+    return videoId || ytUrl
+  }
 
   return (
     <Section
@@ -56,14 +69,38 @@ export const Videos = (props: { videos?: IVideos[] }) => {
         w="100%"
         data-testid="videos"
         gap="34px"
-        px={{ base: '0', lg: '88px' }}
+        px={{ base: '0' }}
         pt="60px"
         pb={{ base: '20px', lg: '0' }}
-        justify={{ base: 'flex-start', lg: 'center' }}
-        overflowX={{ base: 'scroll', lg: 'hidden' }}
+        justify={{ base: 'flex-start' }}
+        overflowX={{ base: 'scroll', lg: 'scroll' }}
+        css={{
+          '&::-webkit-scrollbar': {
+            display: 'none'
+          },
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none'
+        }}
         overflowY="hidden"
       >
-        {props.videos?.map(({ id, snippet }) => (
+        {props.strapiVideos?.map((video) => (
+          <Box key={video.id} w="410px">
+            <CustomLink linkTo={video.yt_video_url}>
+              <iframe
+                // width="100%"
+                height="230"
+                src={`https://www.youtube.com/embed/${getYTVideoId(
+                  video.yt_video_url
+                )}`}
+                title={video.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </CustomLink>
+          </Box>
+        ))}
+        {/* {props?.videos?.map(({ id, snippet }) => (
           <Link
             key={id.videoId}
             href={`https://www.youtube.com/watch?v=${id.videoId}`}
@@ -107,7 +144,7 @@ export const Videos = (props: { videos?: IVideos[] }) => {
               </Text>
             </Flex>
           </Link>
-        ))}
+        ))} */}
       </Flex>
     </Section>
   )
