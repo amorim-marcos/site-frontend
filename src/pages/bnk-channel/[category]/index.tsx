@@ -28,6 +28,7 @@ export default function CategoryPage(props: CategoryPageProps) {
       patterns_pack_url={props.patterns_pack_url}
       defaultCategory={index}
       youtubeVideos={props.youtubeVideos || []}
+      strapiVideos={[]}
     />
   )
 }

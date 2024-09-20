@@ -20,6 +20,9 @@ import { useRouter } from 'next/router'
 import PageHead from '@components/PageHead'
 import { capitalizeText } from 'utils/utils'
 
+import { ChannelVideos } from 'types/data/Post/ChannelPage'
+import { strapiClient } from 'services'
+
 export const CategoryContext = createContext(
   {} as {
     currentCategory: number
@@ -31,6 +34,7 @@ export const CategoryContext = createContext(
     youtubeDownloadLink?: string
     youtubeVideos?: IVideos[]
     lastYoutubeVideo?: string
+    strapiVideos: ChannelVideos[]
   }
 )
 
@@ -40,12 +44,16 @@ export function CategoryCtxProvider(props: {
 }) {
   const router = useRouter()
 
+  let { locale } = router
+  locale = locale || 'pt-BR'
+
   const [currentCategory, setCurrentCategory] = useState<number>(-1)
   const [categories, setCategories] = useState<Category[]>([])
   const [seeOnlyPosts, setSeeOnlyPosts] = useState(false)
 
   const [youtubeDownloadLink, setYoutubeDownloadLink] = useState('')
   const [youtubeVideos, setYoutubeVideos] = useState<IVideos[]>([])
+  const [strapiVideos, setStrapiVideos] = useState<ChannelVideos[]>([])
   const [lastYoutubeVideo, setLastYoutubeVideo] = useState('')
 
   const changeCurrentCategory = useCallback(
@@ -116,6 +124,30 @@ export function CategoryCtxProvider(props: {
     setSeeOnlyPosts(props.seeOnlyPostsDefault || false)
   }, [props.seeOnlyPostsDefault])
 
+  useEffect(() => {
+    const fetchVideos = async () => {
+      const videos = await fetchStrapiVideos()
+      setStrapiVideos(videos)
+      console.log('fetching videos', videos)
+    }
+
+    fetchVideos()
+  }, [])
+
+  const fetchStrapiVideos = async () => {
+    try {
+      const videosResponse: ChannelVideos[] = await strapiClient({
+        resource: 'channel-bnk-videos',
+        locale: locale
+      })
+
+      return videosResponse
+    } catch (error) {
+      console.log('error', error)
+      return Promise.reject(error)
+    }
+  }
+
   return (
     <Box>
       <CategoryContext.Provider
@@ -128,7 +160,8 @@ export function CategoryCtxProvider(props: {
           setSeeOnlyPosts,
           youtubeDownloadLink,
           youtubeVideos,
-          lastYoutubeVideo
+          lastYoutubeVideo,
+          strapiVideos
         }}
       >
         {props.children}
@@ -146,7 +179,8 @@ function CanalBNKFC(props: CanalBNKProps) {
     changeCurrentCategory,
     youtubeDownloadLink,
     youtubeVideos,
-    lastYoutubeVideo
+    lastYoutubeVideo,
+    strapiVideos
   } = useContext(CategoryContext)
 
   useEffect(() => {
@@ -221,7 +255,7 @@ function CanalBNKFC(props: CanalBNKProps) {
         }
         justify={'center'}
       >
-        <Videos videos={youtubeVideos} />
+        <Videos strapiVideos={strapiVideos} />
       </Flex>
       {!seeOnlyPosts && (
         <>
@@ -263,6 +297,7 @@ export interface CanalBNKProps {
   youtubeDownloadLink?: string
   youtubeVideos?: IVideos[]
   lastYoutubeVideo?: string
+  strapiVideos: ChannelVideos[]
 }
 
 export default function CanalBNK(props: CanalBNKProps) {
