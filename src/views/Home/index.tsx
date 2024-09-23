@@ -13,6 +13,8 @@ import { HomeBannerItem } from 'types/data/HomeBanner'
 import { TreatedHighlight } from 'pages'
 import { ImageProps } from 'types/utils'
 
+import HotjarComponent from 'services/Hotjar'
+
 import PageHead from '@components/PageHead'
 
 type PostProps = {
@@ -101,6 +103,7 @@ export default function Home(props: HomeProps) {
         page_title={homeView.t('pageMetadata.pageTitle')}
         page_description={homeView.t('pageMetadata.pageDescription')}
       />
+      <HotjarComponent />
       {/* INICIO BANNER CAROUSEL */}
       <ConditionalLanguageRender>
         {props.highlights && props.highlights.length > 0 && (

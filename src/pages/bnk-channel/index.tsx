@@ -14,6 +14,7 @@ export default function CanalBnk(props: CanalBNKProps) {
       categories={props.categories}
       patterns_pack_url={props.patterns_pack_url}
       defaultCategory={-1}
+      strapiVideos={[]}
     />
   )
 }

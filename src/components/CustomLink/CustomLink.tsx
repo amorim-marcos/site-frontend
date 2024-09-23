@@ -1,21 +1,25 @@
+import { Flex, FlexProps } from '@chakra-ui/react'
 import useRouterCustom from 'hooks/useRouterCustom'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { ReactNode } from 'react'
+import { Fragment, ReactNode } from 'react'
 import { LocaleOptions } from 'types/utils'
 
-export type CustomLinkProps = {
+export interface CustomLinkProps extends FlexProps {
   linkTo?: string
   children?: ReactNode
   target?: '_blank' | '_self'
   download?: boolean
   translatePaths?: boolean
+  useFlexComponent?: boolean
 }
 export const CustomLink = ({
   linkTo,
   children,
   target,
+  download,
   translatePaths,
+  useFlexComponent=true,
   ...props
 }: CustomLinkProps) => {
   const { getTranslatedPath } = useRouterCustom()
@@ -24,10 +28,12 @@ export const CustomLink = ({
 
   locale = locale || 'pt-BR'
 
+  const WrapperTag = useFlexComponent ? Flex : Fragment
+
   if (!translatePaths) {
     return (
-      <Link href={linkTo ?? '#'} target={target ?? '_self'} {...props}>
-        {children}
+      <Link href={linkTo ?? '#'} target={target ?? '_self'} download={download}>
+        <WrapperTag {...props}>{children}</WrapperTag>
       </Link>
     )
   }
@@ -54,9 +60,9 @@ export const CustomLink = ({
       href={href || '#'}
       // as={translatedAs}
       target={target ?? '_self'}
-      {...props}
+      download={download}
     >
-      {children}
+      <WrapperTag {...props}>{children}</WrapperTag>
     </Link>
   )
 }

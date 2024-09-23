@@ -30,16 +30,20 @@ import PageHead from '@components/PageHead'
 import useRouterCustom from 'hooks/useRouterCustom'
 import { getTranslatedFilterNames } from 'views/BPCatalog/BPCatalog'
 import { LocaleOptions } from 'types/utils'
+import { BPsPageResponse } from 'types/data/BPsPage'
 
 export type BpBerneckViewProps = {
   galleries?: Gallery[]
   banners: BPPageBanner[]
+  bpsPageData: BPsPageResponse | undefined
 }
 
 export default function BpBerneckView(props: BpBerneckViewProps) {
   const { isMobile } = useMobile(768)
   const router = useRouter()
   const productsViewLabels = useTranslation('productsView')
+
+  const uploadBaseUrl = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL ?? ''
 
   const { getTranslatedPath } = useRouterCustom()
 
@@ -50,6 +54,15 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
   const translatedCatalogFilterNames = getTranslatedFilterNames(
     router.locale as keyof typeof LocaleOptions
   )
+
+  const catalogBannerData = props.bpsPageData?.catalog_bp_banner
+
+  const collectionBannersList = props.bpsPageData?.colection_banners || []
+
+  const collectionBanner1 = collectionBannersList[0]
+  const collectionBanner2 = collectionBannersList[1]
+
+  console.log(`collectionBannersList`, collectionBannersList)
 
   return (
     <Box>
@@ -119,16 +132,29 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             rowSpan={{ base: '2', sm: '2', lg: '2', xl: '2' } as any}
           >
             <BannerProducts
-              title={productsViewLabels.t('bpBerneck.bannerProducts.title')}
+              title={
+                catalogBannerData?.title ||
+                productsViewLabels.t('bpBerneck.bannerProducts.title')
+              }
               titleColor="white"
-              subtitle={productsViewLabels.t(
-                'bpBerneck.bannerProducts.subtitle'
-              )}
+              subtitle={
+                catalogBannerData?.subTitle ||
+                productsViewLabels.t('bpBerneck.bannerProducts.subtitle')
+              }
               subtitleColor="brown.200"
               bgColor="brown.300"
-              srcImg="../img/BPS.png"
+              srcImg={
+                uploadBaseUrl + catalogBannerData?.banner_image.url ||
+                '../img/BPS.png'
+              }
+              // srcImg={catalogBannerData?.banner_image '../img/BPS.png'}
               imgAltText="Berneck BP pannels"
-              linkTo={`/${router.locale}${translatedCatalogPathName}`}
+              // todo
+              // remove in the future when the catalog banner data link is available
+              linkTo={
+                catalogBannerData?.link ??
+                `/${router.locale}${translatedCatalogPathName}`
+              }
               sizeType="rectangle-horizontal"
             />
           </GridItem>
@@ -138,14 +164,21 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             bg="papayawhip"
           >
             <BannerCollections
-              onClick={() =>
-                router.push(
-                  `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=horizontes`
-                )
+              // onClick={() =>
+              //   router.push(
+              //     `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=horizontes`
+              //   )
+              // }
+              linkTo={
+                collectionBanner1.link ||
+                `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=horizontes`
               }
               title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
               titleColor="brown.300"
-              imgSrc="../img/horizontes_banner.jpg"
+              imgSrc={
+                uploadBaseUrl + collectionBanner1.banner_image?.url ||
+                '../img/horizontes_banner.jpg'
+              }
               ArrowIconColor="#74675D"
               bgColor="rgb(228, 230, 222)"
             />
@@ -156,14 +189,21 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             // bg="blue"
           >
             <BannerCollections
-              onClick={() =>
-                router.push(
-                  `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=sentido`
-                )
+              // onClick={() =>
+              //   router.push(
+              //     `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=sentido`
+              //   )
+              // }
+              linkTo={
+                collectionBanner2.link ||
+                `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=sentido`
               }
               title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
               titleColor="brown.300"
-              imgSrc="../img/sentido_banner.jpg"
+              imgSrc={
+                uploadBaseUrl + collectionBanner2.banner_image.url ||
+                '../img/sentido_banner.jpg'
+              }
               ArrowIconColor="#74675D"
               bgColor="brown.100"
             />
