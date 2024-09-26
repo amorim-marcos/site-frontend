@@ -54,6 +54,9 @@
       "knowledge_channel": "Raw Material: Knowledge",
       "bernecks_world_channel": "BERNECK World",
       "downloads": "Downloads"
+    },
+    "downloads": {
+      "title": "DOWNLOADS"
     }
   },
   "search": { "placeholder": "Enter your search" }

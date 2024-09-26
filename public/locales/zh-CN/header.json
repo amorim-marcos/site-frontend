@@ -54,6 +54,9 @@
       "knowledge_channel": "原材料：知识",
       "bernecks_world_channel": "BERNECK世界",
       "downloads": "下载"
+    },
+    "downloads": {
+      "title": "下载"
     }
   },
   "search": { "placeholder": "输入您的搜索" }
