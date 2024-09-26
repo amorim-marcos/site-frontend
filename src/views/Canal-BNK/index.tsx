@@ -18,10 +18,11 @@ import { Post, Category } from 'types/data/Post'
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
 import PageHead from '@components/PageHead'
-import { capitalizeText } from 'utils/utils'
+import { capitalizeText, compose } from 'utils/utils'
 
 import { ChannelVideos } from 'types/data/Post/ChannelPage'
 import { strapiClient } from 'services'
+import { withLocale } from 'hocs/with-locale'
 
 export const CategoryContext = createContext(
   {} as {
@@ -300,10 +301,12 @@ export interface CanalBNKProps {
   strapiVideos: ChannelVideos[]
 }
 
-export default function CanalBNK(props: CanalBNKProps) {
+function CanalBNK(props: CanalBNKProps) {
   return (
     <CategoryCtxProvider>
       <CanalBNKFC {...props} />
     </CategoryCtxProvider>
   )
 }
+
+export default compose(withLocale())(CanalBNK)

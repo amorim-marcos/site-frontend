@@ -10,7 +10,8 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import PageHead from '@components/PageHead'
 import { FileProps } from 'types/utils'
-import { normalizeTitleUrl } from 'utils/utils'
+import { compose, normalizeTitleUrl } from 'utils/utils'
+import { withLocale } from 'hocs/with-locale'
 
 export type DownloadItem = {
   id: number
@@ -56,7 +57,7 @@ export type DownloadsViewProps = {
   page_content: PageContent
 }
 
-export const DownloadsView = ({
+const DownloadsView = ({
   page_content: {
     title,
     header_text,
@@ -246,3 +247,5 @@ export const DownloadsView = ({
     </Box>
   )
 }
+
+export default compose(withLocale())(DownloadsView)
