@@ -1,6 +1,15 @@
 import punycode from 'punycode'
 import { NameValueProps } from 'types/utils'
 
+export type HoCDecorator<C = void> = (
+  config: C
+) => <P>(Component: React.ComponentType<P>) => React.ComponentType<P>
+
+export const compose =
+  (...fn: CallableFunction[]) =>
+  (arg: any) =>
+    fn.reduce((returned, fn) => fn(returned), arg)
+
 export function smartString(phrase: string | undefined, num: number) {
   let subString, restString, proxSpace, subString2
 
