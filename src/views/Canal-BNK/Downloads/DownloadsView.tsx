@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import PageHead from '@components/PageHead'
 import { FileProps } from 'types/utils'
 import { compose, normalizeTitleUrl } from 'utils/utils'
-import { withLocale } from 'hocs/with-locale'
+import { withConditionalLocale } from 'hocs/with-conditional-locale'
 
 export type DownloadItem = {
   id: number
@@ -248,4 +248,4 @@ const DownloadsView = ({
   )
 }
 
-export default compose(withLocale())(DownloadsView)
+export default compose(withConditionalLocale())(DownloadsView)

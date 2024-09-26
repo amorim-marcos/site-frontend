@@ -2,7 +2,7 @@ import { withGuard } from './with-guard'
 
 // todo
 // find a way to get the locale from the router
-export const withLocale = () => {
+export const withConditionalLocale = () => {
   return withGuard({
     useGuard: () => {
       return true

@@ -22,7 +22,7 @@ import { capitalizeText, compose } from 'utils/utils'
 
 import { ChannelVideos } from 'types/data/Post/ChannelPage'
 import { strapiClient } from 'services'
-import { withLocale } from 'hocs/with-locale'
+import { withConditionalLocale } from 'hocs/with-conditional-locale'
 
 export const CategoryContext = createContext(
   {} as {
@@ -309,4 +309,4 @@ function CanalBNK(props: CanalBNKProps) {
   )
 }
 
-export default compose(withLocale())(CanalBNK)
+export default compose(withConditionalLocale())(CanalBNK)
