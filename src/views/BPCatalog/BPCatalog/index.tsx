@@ -99,7 +99,7 @@ export const translatedQueryParamsMapping = {
     colorations: 'colorations',
     nameSearched: 'nameSearched'
   },
-  'zn-CN': {
+  'zh-CN': {
     collections: 'collections',
     panels: 'panels',
     colorations: 'colorations',

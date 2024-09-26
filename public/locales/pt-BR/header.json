@@ -54,6 +54,9 @@
 			"knowledge_channel": "Matéria-Prima: Conhecimento",
 			"bernecks_world_channel": "Mundo BERNECK",
 			"downloads": "Downloads"
+		},
+		"downloads": {
+			"title": "DOWNLOADS"
 		}
 	},
 	"search": {

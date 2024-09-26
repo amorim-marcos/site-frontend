@@ -67,7 +67,9 @@
     }
   },
   "sectionPackBpDownloads": {
-    "patternPacks": "Pack de Estándares"
+    "patternPacks": "Pack de Estándares",
+    "patternPacksJpgs": "JPGs Estándares",
+    "patternPacksSkps": "SKPs Estándares"
   },
   "whereBuyTable": {
     "country": "PAÍS",
