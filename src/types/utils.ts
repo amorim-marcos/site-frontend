@@ -8,7 +8,7 @@ export enum LocaleOptions {
   'pt-BR' = 'pt-BR',
   en = 'en',
   'es' = 'es',
-  'zn-CN' = 'zn-CN'
+  'zh-CN' = 'zh-CN'
 }
 
 export interface FileProps {
@@ -57,7 +57,7 @@ export interface NameValueProps {
 }
 
 export interface PathnamesTranslations {
-  [locale: 'pt-BR' | 'en' | 'es' | 'zn-CN' | string]: {
+  [locale: 'pt-BR' | 'en' | 'es' | 'zh-CN' | string]: {
     [path: string]: string
   }
 }
@@ -65,5 +65,5 @@ export interface PathnamesTranslations {
 export interface Localization {
   id: number
   // locale: keyof typeof LocateOptions
-  locale: 'en' | 'pt-BR' | 'es' | 'zn-CN'
+  locale: 'en' | 'pt-BR' | 'es' | 'zh-CN'
 }

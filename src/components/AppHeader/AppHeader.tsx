@@ -16,15 +16,13 @@ import { IoMdClose } from 'react-icons/io'
 import { colors } from '../../theme/colors'
 import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 import { exportationContactChannelCode } from 'utils/utils'
-
+import { LocaleOptions } from 'types/utils'
 
 interface HeaderLimits {
   [key: string]: {
-    [key: string]: number;
-  };
+    [key: string]: number
+  }
 }
-
-
 
 export type AppHeaderProps = null
 
@@ -61,90 +59,92 @@ export const AppHeader = () => {
 
   useEffect(() => {
     if (router.asPath.includes('#')) {
-        const elementId = router.asPath.split('#')[1];
+      const elementId = router.asPath.split('#')[1]
 
-        setTimeout(() => {
-            const element = document.getElementById(elementId);
+      setTimeout(() => {
+        const element = document.getElementById(elementId)
 
-            if (element) {
-                const headerLimits: HeaderLimits = {
-                    default: {
-                        '1536': 51,
-                        '1280': 40,
-                        '1024': 30,
-                        '768': 25,
-                        'default': 25,
-                    },
-                    'where-we-are': {
-                        '768': 50,
-                    },
-                    'trajectory': {
-                        '768': 30,
-                    },
-                    'environment': {
-                        '768': 50,
-                    },
-                    'our-people': {
-                        '768': 40,
-                    },
-                    'our-values': {
-                        '768': 40,
-                    },
-                    'production': {
-                        '768': 40,
-                    },
-                    'supplier': {
-                        '768': 49,
-                    },
-                };
-
-                let headerLimit = headerLimits.default.default;
-
-                const limitsForCurrentWidth = Object.keys(headerLimits.default)
-                    .reverse()
-                    .find((width) => window.innerWidth < Number(width));
-
-                if (limitsForCurrentWidth) {
-                    headerLimit = headerLimits.default[limitsForCurrentWidth];
-                }
-
-                if (limitsForCurrentWidth && headerLimits[elementId] && headerLimits[elementId][limitsForCurrentWidth]) {
-                    headerLimit = headerLimits[elementId][limitsForCurrentWidth];
-                }
-
-                let additionalOffset = 0;
-
-                if (elementId === "where-we-are") {
-                    additionalOffset = 15;
-                } else if (elementId === "environment") {
-                    additionalOffset = 15;  
-                } else if (elementId === "our-people") {
-                    additionalOffset = 20;  
-                }
-                  else if (elementId === "our-values") {
-                    additionalOffset = 15;
-                  }
-                  else if (elementId === "production") {
-                    additionalOffset = 15;
-                  }
-                  else if (elementId === "supplier") {
-                    additionalOffset = 20;
-                  }
-                  else if (elementId === "management") {
-                    additionalOffset = 15;
-                  }
-
-                  
-                window.scrollTo({
-                    top: element.getBoundingClientRect().top + window.pageYOffset - headerLimit - additionalOffset,
-                    behavior: 'smooth',
-                });
+        if (element) {
+          const headerLimits: HeaderLimits = {
+            default: {
+              '1536': 51,
+              '1280': 40,
+              '1024': 30,
+              '768': 25,
+              default: 25
+            },
+            'where-we-are': {
+              '768': 50
+            },
+            trajectory: {
+              '768': 30
+            },
+            environment: {
+              '768': 50
+            },
+            'our-people': {
+              '768': 40
+            },
+            'our-values': {
+              '768': 40
+            },
+            production: {
+              '768': 40
+            },
+            supplier: {
+              '768': 49
             }
-        }, 50);
-    }
-}, [router.asPath]);
+          }
 
-  
+          let headerLimit = headerLimits.default.default
+
+          const limitsForCurrentWidth = Object.keys(headerLimits.default)
+            .reverse()
+            .find((width) => window.innerWidth < Number(width))
+
+          if (limitsForCurrentWidth) {
+            headerLimit = headerLimits.default[limitsForCurrentWidth]
+          }
+
+          if (
+            limitsForCurrentWidth &&
+            headerLimits[elementId] &&
+            headerLimits[elementId][limitsForCurrentWidth]
+          ) {
+            headerLimit = headerLimits[elementId][limitsForCurrentWidth]
+          }
+
+          let additionalOffset = 0
+
+          if (elementId === 'where-we-are') {
+            additionalOffset = 15
+          } else if (elementId === 'environment') {
+            additionalOffset = 15
+          } else if (elementId === 'our-people') {
+            additionalOffset = 20
+          } else if (elementId === 'our-values') {
+            additionalOffset = 15
+          } else if (elementId === 'production') {
+            additionalOffset = 15
+          } else if (elementId === 'supplier') {
+            additionalOffset = 20
+          } else if (elementId === 'management') {
+            additionalOffset = 15
+          }
+
+          window.scrollTo({
+            top:
+              element.getBoundingClientRect().top +
+              window.pageYOffset -
+              headerLimit -
+              additionalOffset,
+            behavior: 'smooth'
+          })
+        }
+      }, 50)
+    }
+  }, [router.asPath])
+
   return (
     <>
       <Box
@@ -368,6 +368,20 @@ export const AppHeader = () => {
                         }
                         href={menuNavigation.channelBNK.href}
                         title={header.t(menuNavigation.channelBNK.key)}
+                        closeMenuMobile={() => setMenuMobileOpen(false)}
+                        borderBottom={false}
+                      />
+                    </ConditionalLanguageRender>
+                    <ConditionalLanguageRender
+                      allowedLocale={[
+                        LocaleOptions.en,
+                        LocaleOptions.es,
+                        LocaleOptions['zh-CN']
+                      ]}
+                    >
+                      <HeaderMenuItem
+                        href={menuNavigation.downloads.href}
+                        title={header.t(menuNavigation.downloads.key)}
                         closeMenuMobile={() => setMenuMobileOpen(false)}
                         borderBottom={false}
                       />

@@ -149,5 +149,9 @@ export const menuNavigation = {
         href: '/bnk-channel/downloads'
       }
     ]
+  },
+  downloads: {
+    key: 'menu.downloads.title',
+    href: '/bnk-channel/downloads'
   }
 }

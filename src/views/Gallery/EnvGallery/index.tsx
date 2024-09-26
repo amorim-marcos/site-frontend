@@ -55,9 +55,9 @@ const translatedQueryParamsMapping = {
     page: 'page',
     nameSearched: 'nameSearched'
   },
-  'zn-CN': {
+  'zh-CN': {
     bps: 'bps',
-    ambients: 'panels',
+    ambients: 'ambients',
     styles: 'styles',
     page: 'page',
     nameSearched: 'nameSearched'
@@ -67,7 +67,7 @@ const translatedQueryParamsMapping = {
 // function getTranslatedFilterNames(locale: keyof typeof LocaleOptions) {
 function getTranslatedFilterNames(locale: string) {
   return (
-    translatedQueryParamsMapping[locale as 'en' | 'pt-BR' | 'es' | 'zn-CN'] ||
+    translatedQueryParamsMapping[locale as 'en' | 'pt-BR' | 'es' | 'zh-CN'] ||
     translatedQueryParamsMapping['en']
   )
 }
