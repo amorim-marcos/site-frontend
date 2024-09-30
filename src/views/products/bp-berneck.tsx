@@ -156,6 +156,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
                 `/${router.locale}${translatedCatalogPathName}`
               }
               sizeType="rectangle-horizontal"
+              fillImage
             />
           </GridItem>
           <GridItem
