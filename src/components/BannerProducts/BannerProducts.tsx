@@ -21,6 +21,7 @@ export type BannerProductsProps = {
   biggerImage?: boolean
   linkTo?: string
   // catalogBannerData?: CollectionBanner
+  fillImage?: boolean
 }
 export const BannerProducts = ({
   title,
@@ -34,10 +35,78 @@ export const BannerProducts = ({
   sizeType = 'square',
   onClick,
   linkTo,
-  biggerImage = false
+
+  fillImage = false
 }: // catalogBannerData
 BannerProductsProps) => {
   const [mouseEnter, setMouseEnter] = useState(false)
+
+  const getTopStyle = (sizeType: SizeTypes, mouseEnter: boolean) => {
+    let topStyles = {}
+    if (sizeType === 'rectangle-horizontal') {
+      topStyles = mouseEnter ? '-14%' : '-17%'
+      if (fillImage) {
+        // topStyles = mouseEnter ? '-14%' : '-0%'
+        topStyles = '0%'
+      }
+    } else {
+      return mouseEnter ? '-1%' : '-3%'
+    }
+    return topStyles
+  }
+
+  const getRightStyle = (sizeType: SizeTypes, mouseEnter: boolean) => {
+    let rightStyles = {}
+
+    if (sizeType === 'rectangle-horizontal') {
+      rightStyles = mouseEnter ? '-12%' : '-15%'
+      if (fillImage) {
+        // rightStyles = mouseEnter ? '-12%' : '-0%'
+        rightStyles = '-0%'
+      }
+    } else {
+      rightStyles = mouseEnter
+        ? { base: '-17%', '2xl': '-13%' }
+        : { base: '-20%', '2xl': '-20%' }
+    }
+
+    return rightStyles
+  }
+
+  const getWidthStyles = (sizeType: SizeTypes) => {
+    let widthStyles = {}
+    if (sizeType === 'square') {
+      widthStyles = { base: '90%', lg: '95%' }
+    } else {
+      widthStyles = { base: '63%', lg: '68%' }
+      if (fillImage) {
+        widthStyles = { base: '100%', lg: '100%' }
+      }
+    }
+    return widthStyles
+  }
+
+  const getHeigthStyles = (sizeType: SizeTypes) => {
+    let heightStyles = {}
+    if (sizeType === 'square') {
+      heightStyles = '80%'
+    } else {
+      heightStyles = '130%'
+      if (fillImage) {
+        heightStyles = '100%'
+      }
+    }
+
+    return heightStyles
+  }
+
+  const rightStyles = getRightStyle(sizeType, mouseEnter)
+
+  const topStyles = getTopStyle(sizeType, mouseEnter)
+
+  const widthStyles = getWidthStyles(sizeType)
+
+  const heightStyles = getHeigthStyles(sizeType)
 
   return (
     <Link href={linkTo ?? ''}>
@@ -63,32 +132,14 @@ BannerProductsProps) => {
         <Box
           // border="1px solid red"
           position={'absolute'}
-          right={
-            sizeType === 'rectangle-horizontal'
-              ? mouseEnter
-                ? '-12%'
-                : '-15%'
-              : mouseEnter
-              ? { base: '-17%', '2xl': '-13%' }
-              : { base: '-20%', '2xl': '-20%' }
-          }
-          top={
-            sizeType === 'rectangle-horizontal'
-              ? mouseEnter
-                ? '-14%'
-                : '-17%'
-              : mouseEnter
-              ? '-1%'
-              : '-3%'
-          }
+          right={rightStyles}
+          top={topStyles}
           transition={'0.5s'}
           zIndex="base"
-          h={sizeType === 'square' ? '80%' : '130%'}
-          w={
-            sizeType === 'square'
-              ? { base: '90%', lg: '95%' }
-              : { base: '63%', lg: '68%' }
-          }
+          h={heightStyles}
+          // h={'100%'}
+          // w={'100%'}
+          w={widthStyles}
           // background={`url(${srcImg})`}
           // backgroundRepeat={'no-repeat'}
           // backgroundPosition={'center left'}
