@@ -47,17 +47,17 @@ function App({ Component, pageProps }: AppProps) {
     }
   }
 
-  useEffect(() => {
-    if (
-      router &&
-      router.locale &&
-      router.pathname.includes('bnk-channel') &&
-      router.locale !== 'pt-BR'
-    ) {
-      console.log('AAAAAAA - CANAL- BNK')
-      router.push('/')
-    }
-  }, [router])
+  // useEffect(() => {
+  //   if (
+  //     router &&
+  //     router.locale &&
+  //     router.pathname.includes('bnk-channel') &&
+  //     router.locale !== 'pt-BR'
+  //   ) {
+  //     console.log('AAAAAAA - CANAL- BNK')
+  //     router.push('/')
+  //   }
+  // }, [router])
 
   useEffect(() => {
     const existingScript = document.getElementById('replaceTrademarkScript')

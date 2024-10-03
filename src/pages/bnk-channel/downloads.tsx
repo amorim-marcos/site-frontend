@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
 import { loadTranslations } from 'ni18n'
-import { DownloadsView } from 'views/Canal-BNK/Downloads/DownloadsView'
+import DownloadsView from 'views/Canal-BNK/Downloads/DownloadsView'
 import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 import { DownloadsPageResponse } from 'types/data/DownloadsPage'
 import { FileProps } from 'types/utils'
