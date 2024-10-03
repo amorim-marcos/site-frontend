@@ -339,7 +339,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
                       base: 'center'
                     }}
                   >
-                    FSC® C115987 / C003917
+                    FSC® C003917
                   </Text>
                   <Text
                     textAlign={{
