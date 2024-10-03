@@ -9,8 +9,10 @@ import HtmlTextParser from '@components/HtmlTextParser'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import PageHead from '@components/PageHead'
-import { FileProps } from 'types/utils'
-import { normalizeTitleUrl } from 'utils/utils'
+import { FileProps, LocaleOptions } from 'types/utils'
+import { compose, normalizeTitleUrl } from 'utils/utils'
+import { withConditionalLocale } from 'hocs/with-conditional-locale'
+import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 
 export type DownloadItem = {
   id: number
@@ -32,6 +34,9 @@ export type DownloadItem = {
       type: string
     }
   }[]
+  // todo
+  // insert types
+  document_type: 'reports-and-documents'
 }
 
 interface HeaderLimits {
@@ -56,7 +61,7 @@ export type DownloadsViewProps = {
   page_content: PageContent
 }
 
-export const DownloadsView = ({
+const DownloadsView = ({
   page_content: {
     title,
     header_text,
@@ -118,6 +123,13 @@ export const DownloadsView = ({
       }, 100)
     }
   }, [router.asPath])
+
+  const filteredSections = items.filter((item) => {
+    if (router.locale === 'pt-BR') {
+      return true
+    }
+    return item.document_type === 'reports-and-documents'
+  })
 
   return (
     <Box>
@@ -207,33 +219,36 @@ export const DownloadsView = ({
           flexDir="column"
           maxWidth={'1536px'}
         >
-          <SectionPackBpDownloads
-            sectionId={normalizeTitleUrl(patterns_pack_title)}
-            title={patterns_pack_title}
-            text={patterns_pack_text}
-            download_url={patterns_pack_download_url}
-            download_url_jpgs={patterns_pack_download_jpgs_url}
-            download_url_skps={patterns_pack_download_skps_url}
-            patterns_pack_download_jpgs={patterns_pack_download_jpgs}
-            patterns_pack_download_skps={patterns_pack_download_skps}
-          />
-          {items.map((i, j) => {
-            const sectionId = normalizeTitleUrl(i.type)
+          <ConditionalLanguageRender allowedLocale={[LocaleOptions['pt-BR']]}>
+            <SectionPackBpDownloads
+              sectionId={normalizeTitleUrl(patterns_pack_title)}
+              title={patterns_pack_title}
+              text={patterns_pack_text}
+              download_url={patterns_pack_download_url}
+              download_url_jpgs={patterns_pack_download_jpgs_url}
+              download_url_skps={patterns_pack_download_skps_url}
+              patterns_pack_download_jpgs={patterns_pack_download_jpgs}
+              patterns_pack_download_skps={patterns_pack_download_skps}
+            />
+          </ConditionalLanguageRender>
+
+          {filteredSections.map((item, i) => {
+            const sectionId = normalizeTitleUrl(item.type)
             return (
-              <Box key={j} id={sectionId}>
+              <Box key={i} id={sectionId}>
                 <DownloadSection
                   sectionId={sectionId}
-                  title={i.type}
-                  description={i.description}
-                  items={i.items.map((w) => ({
+                  title={item.type}
+                  description={item.description}
+                  items={item.items.map((w) => ({
                     title: w.title,
                     urlImage: w.image.url,
                     downloadUrl: w.file.url
                   }))}
                   grafism={
-                    (j + 1) % 3 === 0
+                    (i + 1) % 3 === 0
                       ? 'type3'
-                      : (j + 1) % 3 === 1
+                      : (i + 1) % 3 === 1
                       ? 'type1'
                       : 'type2'
                   }
@@ -246,3 +261,5 @@ export const DownloadsView = ({
     </Box>
   )
 }
+
+export default compose(withConditionalLocale())(DownloadsView)
