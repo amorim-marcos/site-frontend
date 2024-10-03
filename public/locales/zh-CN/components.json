@@ -67,7 +67,9 @@
     }
   },
   "sectionPackBpDownloads": {
-    "patternPacks": "图案包"
+    "patternPacks": "图案包",
+    "patternPacksJpgs": "JPG 图案",
+    "patternPacksSkps": "SKP 图案"
   },
   "whereBuyTable": {
     "country": "国家",
