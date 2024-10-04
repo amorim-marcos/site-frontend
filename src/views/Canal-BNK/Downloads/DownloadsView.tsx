@@ -33,10 +33,14 @@ export type DownloadItem = {
       id: number
       type: string
     }
+    issuu_embed_code: string
   }[]
   // todo
   // insert types
-  document_type: 'reports-and-documents'
+  document_type:
+    | 'reports-and-documents'
+    | 'inspirare-magazine'
+    | 'opinus-magazine'
 }
 
 interface HeaderLimits {
@@ -131,6 +135,8 @@ const DownloadsView = ({
     return item.document_type === 'reports-and-documents'
   })
 
+  const document_types_modal = ['inspirare-magazine', 'opinus-magazine']
+
   return (
     <Box>
       <PageHead
@@ -147,7 +153,6 @@ const DownloadsView = ({
           }
         ]}
       />
-
       <Flex bg="brown.150" alignItems={'center'} flexDir="column" flex="1">
         {/* Downloads Header */}
         <Box bg="blue.150">
@@ -232,18 +237,22 @@ const DownloadsView = ({
             />
           </ConditionalLanguageRender>
 
-          {filteredSections.map((item, i) => {
-            const sectionId = normalizeTitleUrl(item.type)
+          {filteredSections.map((section, i) => {
+            const displayItemOnModal = document_types_modal.includes(
+              section.document_type
+            )
+            const sectionId = normalizeTitleUrl(section.type)
             return (
               <Box key={i} id={sectionId}>
                 <DownloadSection
                   sectionId={sectionId}
-                  title={item.type}
-                  description={item.description}
-                  items={item.items.map((w) => ({
-                    title: w.title,
-                    urlImage: w.image.url,
-                    downloadUrl: w.file.url
+                  title={section.type}
+                  description={section.description}
+                  items={section.items.map((item) => ({
+                    title: item.title,
+                    urlImage: item.image.url,
+                    downloadUrl: item.file.url,
+                    issuu_embed_code: item.issuu_embed_code
                   }))}
                   grafism={
                     (i + 1) % 3 === 0
@@ -252,6 +261,7 @@ const DownloadsView = ({
                       ? 'type1'
                       : 'type2'
                   }
+                  displayContentOnModal={displayItemOnModal}
                 />
               </Box>
             )
