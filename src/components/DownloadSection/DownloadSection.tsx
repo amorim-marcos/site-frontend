@@ -14,8 +14,9 @@ import HtmlTextParser from '@components/HtmlTextParser'
 
 import UrlCopyIcon from '@components/UrlCopyIcon'
 import useMobile from 'hooks/useMobile'
+import useRouterCustom from 'hooks/useRouterCustom'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getPageCompleteUrl } from 'utils/utils'
 
 export type DownloadSectionProps = {
@@ -51,14 +52,38 @@ export const DownloadSection = ({
   const [hoverBtnControl, setHoverBtnControl] = useState(false)
   const [selectedItem, setSelectedItem] = useState<FormattedDownloadItem>()
 
+  const checkIsMobile = (maxWidth?: number) => {
+    return window.innerWidth <= (maxWidth || 768)
+  }
+
   const {
     isOpen: isModalOpen,
     onOpen: onModalOpen,
     onClose: onModalClose
   } = useDisclosure()
 
+  const { addQueryToUrl, removeQueryFromUrl } = useRouterCustom()
+
+  const router = useRouter()
+
+  useEffect(() => {
+    const queries = router.query
+
+    if (queries && queries.modal === 'true' && selectedItem) {
+      onModalOpen()
+      return
+    }
+    onModalClose()
+  }, [router.query])
+
   const toggleModal = () => {
-    isModalOpen ? onModalClose() : onModalOpen()
+    if (isModalOpen) {
+      removeQueryFromUrl('modal', true)
+      // onModalClose()
+    } else {
+      addQueryToUrl('modal', 'true', true)
+      // onModalOpen()
+    }
   }
 
   const { asPath } = useRouter()
@@ -112,7 +137,8 @@ export const DownloadSection = ({
     const jsxElement = div.firstElementChild as HTMLElement
 
     // change the page layout to single page if is mobile
-    if (isMobile) {
+
+    if (checkIsMobile()) {
       const frameElement = jsxElement?.querySelector('iframe')
       const frameSrc = frameElement?.getAttribute('src')
       const frameURL = new URL(frameSrc || '')
@@ -265,7 +291,7 @@ export const DownloadSection = ({
         isModalOpen={isModalOpen}
         // modalTitle="Teste de modal"
         onModalClose={toggleModal}
-        modalSize="5xl"
+        modalSize={checkIsMobile() ? 'full' : '5xl'}
         // modalHeight="100%"
       >
         {selectedItem?.issuu_embed_code ? selectedItem.issuu_embed_code : ''}
