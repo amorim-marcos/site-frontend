@@ -5,9 +5,11 @@ import {
   Image,
   Button,
   FlexProps,
-  Link
+  Link,
+  useDisclosure
 } from '@chakra-ui/react'
 import Arrow from '@components/Arrow'
+import CustomModal from '@components/CustomModal'
 import HtmlTextParser from '@components/HtmlTextParser'
 
 import UrlCopyIcon from '@components/UrlCopyIcon'
@@ -21,22 +23,43 @@ export type DownloadSectionProps = {
   sectionId: string
   description: string
   grafism: 'type1' | 'type2' | 'type3'
-  items: Array<{
-    urlImage: string
-    title: string
-    downloadUrl: string
-  }>
+  items: DownloadSectionItemProps[]
+  displayContentOnModal?: boolean
+}
+
+export type DownloadSectionItemProps = {
+  title: string
+  urlImage: string
+  downloadUrl: string
+  issuu_embed_code: string
+}
+
+interface FormattedDownloadItem
+  extends Omit<DownloadSectionItemProps, 'issuu_embed_code'> {
+  issuu_embed_code: JSX.Element | undefined
 }
 export const DownloadSection = ({
   title,
   grafism,
   items,
   description,
-  sectionId
+  sectionId,
+  displayContentOnModal = false
 }: DownloadSectionProps) => {
   const { isMobile } = useMobile(768)
   const [itemsData, setItemsData] = useState(items)
   const [hoverBtnControl, setHoverBtnControl] = useState(false)
+  const [selectedItem, setSelectedItem] = useState<FormattedDownloadItem>()
+
+  const {
+    isOpen: isModalOpen,
+    onOpen: onModalOpen,
+    onClose: onModalClose
+  } = useDisclosure()
+
+  const toggleModal = () => {
+    isModalOpen ? onModalClose() : onModalOpen()
+  }
 
   const { asPath } = useRouter()
 
@@ -238,6 +261,15 @@ export const DownloadSection = ({
           </Button>
         </Flex>
       )}
+      <CustomModal
+        isModalOpen={isModalOpen}
+        // modalTitle="Teste de modal"
+        onModalClose={toggleModal}
+        modalSize="5xl"
+        // modalHeight="100%"
+      >
+        {selectedItem?.issuu_embed_code ? selectedItem.issuu_embed_code : ''}
+      </CustomModal>
     </Flex>
   )
 }
@@ -245,7 +277,7 @@ export const DownloadSection = ({
 export interface ItemProps extends FlexProps {
   imageUrl: string
   title: string
-  url: string
+  url?: string
 }
 
 const Item = ({ url, title, imageUrl, ...props }: ItemProps) => {
