@@ -430,7 +430,7 @@ export const EnvGallery = ({
   ) => {
     const queryFilterName = translatedFilterNames[queryName]
 
-    removeQueryFromUrl(queryFilterName, value)
+    removeQueryFromUrl(queryFilterName)
   }
 
   const handleAddQueryParamFromUrl = (
