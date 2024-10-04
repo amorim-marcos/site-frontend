@@ -62,6 +62,62 @@ export const DownloadSection = ({
     }
   }
 
+  // todo
+  // to handle invalid issuu embed code
+  function checkToDisplayOnModal(item: DownloadSectionItemProps) {
+    return displayContentOnModal && item.issuu_embed_code
+  }
+
+  function handleClickItem(item: DownloadSectionItemProps) {
+    if (!checkToDisplayOnModal(item)) return
+
+    const formattedIssuuJSX = getJsxIssuuEmbedCode(item.issuu_embed_code)
+    const newFormattedItem = { ...item, issuu_embed_code: formattedIssuuJSX }
+
+    setSelectedItem(newFormattedItem)
+
+    toggleModal()
+  }
+
+  // change style properties and format the issuu embed code to jsx
+  function getJsxIssuuEmbedCode(issuu_embed_code: string | undefined) {
+    if (!issuu_embed_code) return
+
+    const div = document.createElement('div')
+    div.innerHTML = issuu_embed_code
+
+    const jsxElement = div.firstElementChild as HTMLElement
+
+    // change the page layout to single page if is mobile
+    if (isMobile) {
+      const frameElement = jsxElement?.querySelector('iframe')
+      const frameSrc = frameElement?.getAttribute('src')
+      const frameURL = new URL(frameSrc || '')
+      frameURL.searchParams.set('pageLayout', 'singlePage')
+
+      frameElement?.setAttribute('src', frameURL.href)
+    }
+
+    jsxElement.style.height = '100%'
+    jsxElement.style.paddingTop = '59%'
+    jsxElement.style.width = '100%'
+
+    const htmlStringElement = jsxElement.outerHTML
+
+    const convertedJsxElement = (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: htmlStringElement
+        }}
+        style={{
+          height: '100%'
+        }}
+      ></div>
+    )
+
+    return convertedJsxElement
+  }
+
   return (
     <Flex
       marginBottom="10%"
@@ -111,7 +167,9 @@ export const DownloadSection = ({
               return i < 5 ? (
                 <Item
                   key={i}
-                  url={item.downloadUrl}
+                  url={
+                    !checkToDisplayOnModal(item) ? item.downloadUrl : undefined
+                  }
                   cursor={'pointer'}
                   display={
                     i < 1 ? { base: 'flex' } : { base: 'none', md: 'flex' }
@@ -121,6 +179,7 @@ export const DownloadSection = ({
                   marginRight={
                     itemsData.length <= 4 ? { base: '0', md: '3.5%' } : '0'
                   }
+                  onClick={() => handleClickItem(item)}
                 />
               ) : (
                 ''
