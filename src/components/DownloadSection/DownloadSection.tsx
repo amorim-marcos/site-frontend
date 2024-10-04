@@ -5,9 +5,11 @@ import {
   Image,
   Button,
   FlexProps,
-  Link
+  Link,
+  useDisclosure
 } from '@chakra-ui/react'
 import Arrow from '@components/Arrow'
+import CustomModal from '@components/CustomModal'
 import HtmlTextParser from '@components/HtmlTextParser'
 
 import UrlCopyIcon from '@components/UrlCopyIcon'
@@ -21,22 +23,43 @@ export type DownloadSectionProps = {
   sectionId: string
   description: string
   grafism: 'type1' | 'type2' | 'type3'
-  items: Array<{
-    urlImage: string
-    title: string
-    downloadUrl: string
-  }>
+  items: DownloadSectionItemProps[]
+  displayContentOnModal?: boolean
+}
+
+export type DownloadSectionItemProps = {
+  title: string
+  urlImage: string
+  downloadUrl: string
+  issuu_embed_code: string
+}
+
+interface FormattedDownloadItem
+  extends Omit<DownloadSectionItemProps, 'issuu_embed_code'> {
+  issuu_embed_code: JSX.Element | undefined
 }
 export const DownloadSection = ({
   title,
   grafism,
   items,
   description,
-  sectionId
+  sectionId,
+  displayContentOnModal = false
 }: DownloadSectionProps) => {
   const { isMobile } = useMobile(768)
   const [itemsData, setItemsData] = useState(items)
   const [hoverBtnControl, setHoverBtnControl] = useState(false)
+  const [selectedItem, setSelectedItem] = useState<FormattedDownloadItem>()
+
+  const {
+    isOpen: isModalOpen,
+    onOpen: onModalOpen,
+    onClose: onModalClose
+  } = useDisclosure()
+
+  const toggleModal = () => {
+    isModalOpen ? onModalClose() : onModalOpen()
+  }
 
   const { asPath } = useRouter()
 
@@ -60,6 +83,62 @@ export const DownloadSection = ({
       newArray.unshift(item)
       setItemsData(newArray)
     }
+  }
+
+  // todo
+  // to handle invalid issuu embed code
+  function checkToDisplayOnModal(item: DownloadSectionItemProps) {
+    return displayContentOnModal && item.issuu_embed_code
+  }
+
+  function handleClickItem(item: DownloadSectionItemProps) {
+    if (!checkToDisplayOnModal(item)) return
+
+    const formattedIssuuJSX = getJsxIssuuEmbedCode(item.issuu_embed_code)
+    const newFormattedItem = { ...item, issuu_embed_code: formattedIssuuJSX }
+
+    setSelectedItem(newFormattedItem)
+
+    toggleModal()
+  }
+
+  // change style properties and format the issuu embed code to jsx
+  function getJsxIssuuEmbedCode(issuu_embed_code: string | undefined) {
+    if (!issuu_embed_code) return
+
+    const div = document.createElement('div')
+    div.innerHTML = issuu_embed_code
+
+    const jsxElement = div.firstElementChild as HTMLElement
+
+    // change the page layout to single page if is mobile
+    if (isMobile) {
+      const frameElement = jsxElement?.querySelector('iframe')
+      const frameSrc = frameElement?.getAttribute('src')
+      const frameURL = new URL(frameSrc || '')
+      frameURL.searchParams.set('pageLayout', 'singlePage')
+
+      frameElement?.setAttribute('src', frameURL.href)
+    }
+
+    jsxElement.style.height = '100%'
+    jsxElement.style.paddingTop = '59%'
+    jsxElement.style.width = '100%'
+
+    const htmlStringElement = jsxElement.outerHTML
+
+    const convertedJsxElement = (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: htmlStringElement
+        }}
+        style={{
+          height: '100%'
+        }}
+      ></div>
+    )
+
+    return convertedJsxElement
   }
 
   return (
@@ -111,7 +190,9 @@ export const DownloadSection = ({
               return i < 5 ? (
                 <Item
                   key={i}
-                  url={item.downloadUrl}
+                  url={
+                    !checkToDisplayOnModal(item) ? item.downloadUrl : undefined
+                  }
                   cursor={'pointer'}
                   display={
                     i < 1 ? { base: 'flex' } : { base: 'none', md: 'flex' }
@@ -121,6 +202,7 @@ export const DownloadSection = ({
                   marginRight={
                     itemsData.length <= 4 ? { base: '0', md: '3.5%' } : '0'
                   }
+                  onClick={() => handleClickItem(item)}
                 />
               ) : (
                 ''
@@ -179,6 +261,15 @@ export const DownloadSection = ({
           </Button>
         </Flex>
       )}
+      <CustomModal
+        isModalOpen={isModalOpen}
+        // modalTitle="Teste de modal"
+        onModalClose={toggleModal}
+        modalSize="5xl"
+        // modalHeight="100%"
+      >
+        {selectedItem?.issuu_embed_code ? selectedItem.issuu_embed_code : ''}
+      </CustomModal>
     </Flex>
   )
 }
@@ -186,7 +277,7 @@ export const DownloadSection = ({
 export interface ItemProps extends FlexProps {
   imageUrl: string
   title: string
-  url: string
+  url?: string
 }
 
 const Item = ({ url, title, imageUrl, ...props }: ItemProps) => {
