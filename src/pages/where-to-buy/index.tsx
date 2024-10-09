@@ -57,10 +57,24 @@ export const getStaticProps: GetStaticProps = async (context) => {
       representatives_list.pdf_list.url
     : ''
 
+  const formattedCountryRepresentatives = country_representatives.map(
+    (country) => {
+      return {
+        ...country,
+        country_svg_img: {
+          ...country.country_svg_img,
+          url:
+            process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
+            country.country_svg_img.url
+        }
+      }
+    }
+  )
+
   return {
     props: {
       representatives_list,
-      country_representatives,
+      country_representatives: formattedCountryRepresentatives,
       ...(await loadTranslations(ni18nConfig, locale, nameSpaces))
       // ...clientNamespaces(ni18nConfig, ['components/header'])
     },

@@ -12,10 +12,10 @@ export interface Representative {
   client: string
   name_fantasy: string
   address: string
-  contact: Contact[]
+  contacts: Contact[]
 }
 
-interface Contact {
+export interface Contact {
   id: number
   contact_type: 'phone' | 'email' | 'WeChat' | 'WhatsApp'
   contact_text: string

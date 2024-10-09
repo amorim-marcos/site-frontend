@@ -1,7 +1,10 @@
 import { Flex, Text, FlexProps, Image } from '@chakra-ui/react'
+import ContactItem from '@components/ContactItem'
+
 import useMobile from 'hooks/useMobile'
-import { useRouter } from 'next/router'
+
 import { useTranslation } from 'react-i18next'
+import { CountryRepresentative } from 'types/data/WhereBuy'
 
 const cellStyle: FlexProps = {
   w: '16.666667%',
@@ -23,14 +26,15 @@ const cellBodyStyle: FlexProps = {
   padding: '0 5px',
   textAlign: 'center'
 }
-export const WhereBuyTable = () => {
+
+interface WhereBuyTableProps {
+  country_representatives: CountryRepresentative[]
+}
+export const WhereBuyTable = ({
+  country_representatives
+}: WhereBuyTableProps) => {
   const { isMobile } = useMobile(768)
   const componentsLabels = useTranslation('components')
-
-  const router = useRouter()
-  const { locale } = router
-
-  const formattedLocale = locale === 'pt-BR' ? 'pt-BR' : 'en'
 
   return (
     <Flex w="100%" maxWidth={'1536px'} flexDirection={'column'} marginX="auto">
@@ -70,8 +74,8 @@ export const WhereBuyTable = () => {
           </Flex>
         </Flex>
       </Flex>
-      {data.countries &&
-        data.countries.map((c, i) => {
+      {country_representatives &&
+        country_representatives.map((country, i) => {
           return (
             <Flex key={i} bg="green.400" w="100%">
               <Flex
@@ -86,29 +90,39 @@ export const WhereBuyTable = () => {
                 border="1px solid"
                 borderColor="gray.100"
               >
-                <Image marginY="10px" src={c.imgUrl} w="40px" />
-                <Text variant={'body' as any}>{c.name[formattedLocale]}</Text>
+                <Image
+                  marginY="10px"
+                  src={country.country_svg_img.url}
+                  w="40px"
+                />
+                <Text variant={'body' as any}>{country.country_name}</Text>
               </Flex>
               <Flex w="90%" flexDirection={'column'}>
-                {c.rows &&
-                  c.rows.map((r, i) => {
+                {country.representatives &&
+                  country.representatives.map((representative, i) => {
                     return (
                       <Flex key={i} w="100%">
                         <Flex
                           {...cellBodyStyle}
                           {...(isMobile && { width: '20%' })}
                         >
-                          <Text variant={'body' as any}>{r.city}</Text>
+                          <Text variant={'body' as any}>
+                            {representative.city}
+                          </Text>
                         </Flex>
                         <Flex
                           {...cellBodyStyle}
                           {...(isMobile && { width: '20%' })}
                         >
-                          <Text variant={'body' as any}>{r.client}</Text>
+                          <Text variant={'body' as any}>
+                            {representative.client}
+                          </Text>
                         </Flex>
                         {!isMobile && (
                           <Flex {...cellBodyStyle} w="13.66667%">
-                            <Text variant={'body' as any}>{r.nameFantasy}</Text>
+                            <Text variant={'body' as any}>
+                              {representative.name_fantasy}
+                            </Text>
                           </Flex>
                         )}
                         <Flex
@@ -117,7 +131,7 @@ export const WhereBuyTable = () => {
                           {...(isMobile && { width: '40%' })}
                         >
                           <Text variant={'body' as any} fontSize={'100%'}>
-                            {r.address}
+                            {representative.address}
                           </Text>
                         </Flex>
                         <Flex
@@ -126,14 +140,8 @@ export const WhereBuyTable = () => {
                           {...(isMobile && { width: '20%' })}
                         >
                           <Flex flexDirection={'column'}>
-                            {r?.contact?.map((item) => (
-                              <Text
-                                key={item}
-                                variant={'body' as any}
-                                fontSize={'90%'}
-                              >
-                                {item}
-                              </Text>
+                            {representative?.contacts?.map((contact) => (
+                              <ContactItem key={contact.id} contact={contact} />
                             ))}
                           </Flex>
                         </Flex>

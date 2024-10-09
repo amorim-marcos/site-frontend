@@ -220,7 +220,11 @@ export const Buy = ({
           ></iframe>
         ) : (
           <Box minWidth={'1536px'} w="100%">
-            <WhereBuyTable />
+            {country_representatives.length > 0 && (
+              <WhereBuyTable
+                country_representatives={country_representatives}
+              />
+            )}
           </Box>
         )}
       </Flex>
