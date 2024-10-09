@@ -34,7 +34,7 @@ export type SectionPackBpDownloadsProps = {
 
 const LoadingComponent = () => {
   return (
-    <Flex position="absolute" right={'50%'} height={'100%'} zIndex={100000}>
+    <Flex position="fixed" right={'50%'} height={'100%'} zIndex={100000}>
       <Spinner size="xl" />
     </Flex>
   )
