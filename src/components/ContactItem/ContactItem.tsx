@@ -11,7 +11,8 @@ export const ContactItem = ({ contact }: ContactItemProps) => {
     phone: 'tel',
     email: 'mailto',
     WeChat: undefined,
-    WhatsApp: undefined
+    WhatsApp: undefined,
+    site: undefined
   }
 
   const contactsTypeToDisplay = ['WeChat']
@@ -20,17 +21,22 @@ export const ContactItem = ({ contact }: ContactItemProps) => {
     contact.contact_type
   )
 
+  let contactHref = iconHrefMapping[contact.contact_type]
+    ? iconHrefMapping[contact.contact_type] + ':' + contact.contact_text
+    : undefined
+
+  if (contact.contact_type === 'site') {
+    contactHref = `https://` + contact.contact_text
+  }
+
   return (
     <Text variant={'body' as any} fontSize={'90%'} textAlign={'center'}>
       {/* {iconHrefMapping[contact.contact_type]} {contact.contact_text} */}
       <CustomLink
-        linkTo={
-          iconHrefMapping[contact.contact_type]
-            ? iconHrefMapping[contact.contact_type] + ':' + contact.contact_text
-            : undefined
-        }
+        linkTo={contactHref}
         textAlign={'center'}
         justify={'center'}
+        target={contact.contact_type === 'site' ? '_blank' : '_self'}
       >
         {displayContactType && contact.contact_type + ': '}
         {contact.contact_text}
