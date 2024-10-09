@@ -17,6 +17,6 @@ export interface Representative {
 
 export interface Contact {
   id: number
-  contact_type: 'phone' | 'email' | 'WeChat' | 'WhatsApp'
+  contact_type: 'phone' | 'email' | 'WeChat' | 'WhatsApp' | 'site'
   contact_text: string
 }
