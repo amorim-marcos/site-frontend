@@ -1,4 +1,12 @@
-import { Flex, Box, Text, Image, Link, FlexProps } from '@chakra-ui/react'
+import {
+  Flex,
+  Box,
+  Text,
+  Image,
+  Link,
+  FlexProps,
+  Spinner
+} from '@chakra-ui/react'
 import CustomLink from '@components/CustomLink'
 import HtmlTextParser from '@components/HtmlTextParser'
 import UrlCopyIcon from '@components/UrlCopyIcon'
@@ -6,6 +14,7 @@ import axios from 'axios'
 import useMobile from 'hooks/useMobile'
 
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FileProps } from 'types/utils'
 import { getPageCompleteUrl } from 'utils/utils'
@@ -23,6 +32,14 @@ export type SectionPackBpDownloadsProps = {
   patterns_pack_download_skps: FileProps | undefined
 }
 
+const LoadingComponent = () => {
+  return (
+    <Flex position="absolute" right={'50%'} height={'100%'} zIndex={100000}>
+      <Spinner size="xl" />
+    </Flex>
+  )
+}
+
 export const SectionPackBpDownloads = ({
   title,
   sectionId,
@@ -33,6 +50,7 @@ export const SectionPackBpDownloads = ({
   patterns_pack_download_jpgs,
   patterns_pack_download_skps
 }: SectionPackBpDownloadsProps) => {
+  const [isLoadingDownload, setIsLoadingDownload] = useState(false)
   const { width } = useMobile(568)
 
   const componentsLabels = useTranslation('components')
@@ -47,6 +65,7 @@ export const SectionPackBpDownloads = ({
     fileUrl: string | undefined,
     fileName: string | undefined
   ) => {
+    setIsLoadingDownload(true)
     try {
       const fileType = 'application/zip'
 
@@ -74,6 +93,8 @@ export const SectionPackBpDownloads = ({
       window.URL.revokeObjectURL(url)
     } catch (error) {
       console.log('error when trying to download file: ', error)
+    } finally {
+      setIsLoadingDownload(false)
     }
   }
 
@@ -173,21 +194,19 @@ export const SectionPackBpDownloads = ({
                 justifyContent="center"
               >
                 <Text fontWeight="bold" variant="body">
-                  <CustomLink
-                    linkTo={download_url_jpgs!}
-                    download
-
-                    // onClick={() =>
-                    //   handleRenameAndDownload(
-                    //     download_url_jpgs!,
-                    //     patterns_pack_download_jpgs?.name
-                    //   )
-                    // }
+                  <Flex
+                    cursor="pointer"
+                    onClick={() =>
+                      handleRenameAndDownload(
+                        download_url_jpgs!,
+                        patterns_pack_download_jpgs?.name
+                      )
+                    }
                   >
                     {componentsLabels.t(
                       'sectionPackBpDownloads.patternPacksJpgs'
                     )}
-                  </CustomLink>
+                  </Flex>
                 </Text>
               </Flex>
             </Flex>
@@ -210,25 +229,25 @@ export const SectionPackBpDownloads = ({
                 justifyContent="center"
               >
                 <Text fontWeight="bold" variant="body">
-                  <CustomLink
-                    linkTo={download_url_skps!}
-                    download
-                    // onClick={() =>
-                    //   handleRenameAndDownload(
-                    //     download_url_skps!,
-                    //     patterns_pack_download_skps?.name
-                    //   )
-                    // }
+                  <Flex
+                    cursor="pointer"
+                    onClick={() =>
+                      handleRenameAndDownload(
+                        download_url_skps!,
+                        patterns_pack_download_skps?.name
+                      )
+                    }
                   >
                     {componentsLabels.t(
                       'sectionPackBpDownloads.patternPacksSkps'
                     )}
-                  </CustomLink>
+                  </Flex>
                 </Text>
               </Flex>
             </Flex>
           </Flex>
         </Flex>
+        {isLoadingDownload && <LoadingComponent />}
 
         <Box w={{ base: '40%', md: '30%', lg: '25%' }}></Box>
       </Flex>
