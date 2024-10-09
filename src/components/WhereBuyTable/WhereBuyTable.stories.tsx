@@ -6,4 +6,6 @@ export default {
   component: WhereBuyTable
 } as Meta
 
-export const Default: Story = (args) => <WhereBuyTable {...args} />
+export const Default: Story = (args) => (
+  <WhereBuyTable country_representatives={[]} {...args} />
+)
