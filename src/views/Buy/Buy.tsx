@@ -10,8 +10,17 @@ import { useTranslation } from 'react-i18next'
 import { colors } from '../../theme/colors'
 import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 import { useRouter } from 'next/router'
+import { CountryRepresentative } from 'types/data/WhereBuy'
 
-export const Buy = ({ representatives_list = '/where-to-buy' }) => {
+interface BuyProps {
+  representatives_list: string
+  country_representatives: CountryRepresentative[]
+}
+
+export const Buy = ({
+  representatives_list = '/where-to-buy',
+  country_representatives
+}: BuyProps) => {
   const router = useRouter()
   const { locale } = router
   const isBrazil = locale === 'pt-BR'
@@ -211,7 +220,11 @@ export const Buy = ({ representatives_list = '/where-to-buy' }) => {
           ></iframe>
         ) : (
           <Box minWidth={'1536px'} w="100%">
-            <WhereBuyTable />
+            {country_representatives.length > 0 && (
+              <WhereBuyTable
+                country_representatives={country_representatives}
+              />
+            )}
           </Box>
         )}
       </Flex>
