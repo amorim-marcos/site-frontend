@@ -121,7 +121,7 @@ export const SectionPackBpDownloads = ({
         <UrlCopyIcon urlToCopy={completePageBaseUrl + '#' + sectionId} />
         <Box
           bg="brown.300"
-          w={{ base: '100vw', md: '40%' }}
+          w={{ base: '100vw', md: '38%' }}
           height={{ base: '335px', md: '100%' }}
           right="0"
           position="absolute"
