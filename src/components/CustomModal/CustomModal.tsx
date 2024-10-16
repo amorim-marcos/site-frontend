@@ -104,7 +104,6 @@ export const CustomModal = ({
                 transition="all 0.2s ease-in-out"
                 _hover={{ filter: 'brightness(0.5)' }}
               />
-              hello
             </Box>
           )}
           {children}
