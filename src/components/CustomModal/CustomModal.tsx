@@ -33,6 +33,7 @@ export type CustomModalProps = {
     | '6xl'
     | '7xl'
     | 'full'
+  displayAbsoluteCloseIcon?: boolean
 }
 export const CustomModal = ({
   modalTitle,
@@ -41,7 +42,8 @@ export const CustomModal = ({
   modalWidth,
   isModalOpen,
   onModalClose,
-  modalSize
+  modalSize,
+  displayAbsoluteCloseIcon
 }: CustomModalProps) => {
   return (
     <Modal
@@ -91,7 +93,20 @@ export const CustomModal = ({
             </Flex>
           </ModalHeader>
         )}
-        <ModalBody padding={0} borderTopRadius="22px">
+        <ModalBody padding={0} borderTopRadius="22px" position="relative">
+          {displayAbsoluteCloseIcon && (
+            <Box position="absolute" top="1rem" right="1rem" zIndex={1}>
+              <CloseIcon
+                onClick={onModalClose}
+                boxSize={'25px'}
+                color="#fff"
+                cursor="pointer"
+                transition="all 0.2s ease-in-out"
+                _hover={{ filter: 'brightness(0.5)' }}
+              />
+              hello
+            </Box>
+          )}
           {children}
         </ModalBody>
       </ModalContent>
