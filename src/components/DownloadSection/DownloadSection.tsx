@@ -293,6 +293,7 @@ export const DownloadSection = ({
         onModalClose={toggleModal}
         modalSize={checkIsMobile() ? 'full' : '5xl'}
         // modalHeight="100%"
+        displayAbsoluteCloseIcon
       >
         {selectedItem?.issuu_embed_code ? selectedItem.issuu_embed_code : ''}
       </CustomModal>
