@@ -15,6 +15,7 @@ type DownloadsItemProps = {
   file: {
     url: string
   }
+  issuu_embed_code: string
 }
 
 export type DownloadItem = {
@@ -36,6 +37,7 @@ export type DownloadItem = {
       id: number
       type: string
     }
+    issuu_embed_code: string
   }[]
 }
 
@@ -158,7 +160,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
                 file: {
                   url:
                     process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + element.file.url
-                }
+                },
+                issuu_embed_code: element.issuu_embed_code
               })
           }
         }

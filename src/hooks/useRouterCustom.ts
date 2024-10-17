@@ -19,11 +19,27 @@ const useRouterCustom = () => {
     )
   }
 
-  function removeQueryFromUrl(queryName: string, value: string) {
+  function removeQueryFromUrl(queryName: string, usePush = false) {
     const { query: queryObj } = router
 
     const newQuery = { ...queryObj }
     delete newQuery[queryName]
+
+    if (usePush) {
+      router.push(
+        {
+          pathname: translatedPathName,
+          query: {
+            ...newQuery
+          }
+        },
+        undefined,
+        {
+          shallow: true
+        }
+      )
+      return
+    }
 
     router.replace(
       {
@@ -39,7 +55,22 @@ const useRouterCustom = () => {
     )
   }
 
-  function addQueryToUrl(queryName: string, value: string) {
+  function addQueryToUrl(queryName: string, value: string, usePush = false) {
+    if (usePush) {
+      router.push(
+        {
+          pathname: translatedPathName,
+          query: {
+            ...router.query,
+            [queryName]: value
+          }
+        },
+        undefined,
+        { shallow: true }
+      )
+      return
+    }
+
     router.replace(
       {
         pathname: translatedPathName,
