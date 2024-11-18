@@ -40,14 +40,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
     representatives_list = await res.json()
   }
 
+  const countrySortQuery = {
+    _sort: 'country_name:asc'
+  }
   try {
     country_representatives = await strapiClient({
       resource: 'country-representatives',
-      locale: context.locale
+      locale: context.locale,
+      query: [countrySortQuery]
     })
   } catch (error) {
     country_representatives = await strapiClient({
-      resource: 'country-representatives'
+      resource: 'country-representatives',
+      query: [countrySortQuery]
     })
     console.log('error when trying to get representatives list data', error)
   }
