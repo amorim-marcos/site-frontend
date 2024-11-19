@@ -79,6 +79,7 @@ export const DownloadSection = ({
   const toggleModal = () => {
     if (isModalOpen) {
       removeQueryFromUrl('modal', true)
+      setSelectedItem(undefined)
       // onModalClose()
     } else {
       addQueryToUrl('modal', 'true', true)
