@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
   const sortQuery = {
-    _sort: 'created_at:desc'
+    _sort: 'custom_order:asc'
   }
 
   let ambientTypes: GalleryProps['filtersContext']['styles'] =
@@ -113,7 +113,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     }
   )
 
-  let formattedEnvs: GalleryProps['envs'] =
+  const formattedEnvs: GalleryProps['envs'] =
     envs && typeof envs.map === 'function'
       ? envs.map((gallery) => {
           return {
@@ -135,20 +135,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
           }
         })
       : []
-
-  // todo
-  // increase performance
-  const formattedEnvsWithCustomOrder = formattedEnvs
-    .filter((formattedEnv) => formattedEnv.custom_order)
-    .sort((a, b) => {
-      return a.custom_order - b.custom_order
-    })
-
-  formattedEnvs = formattedEnvs.filter(
-    (formattedEnv) => !formattedEnv.custom_order
-  )
-
-  formattedEnvs = [...formattedEnvsWithCustomOrder, ...formattedEnvs]
 
   availableBps =
     availableBps && typeof availableBps.map === 'function'
