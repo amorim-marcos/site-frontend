@@ -1,10 +1,19 @@
 {
+  "pageMetadata": {
+    "pageTitle": "Berneck",
+    "pageDescription": "Find authorized Berneck distributors and purchase high-quality wood panels (MDF, MDP, HDF) and sawn timber."
+  },
   "headerBanner": {
     "title": "Dónde Comprar",
     "description": "Los productos BERNECK® se pueden encontrar en los mejores muebles y reventas de Brasil y del mundo. Consulta a continuación los puntos de reventa más cercanos a ti.",
     "industrialApplications": "Para aplicaciones industriales, contacte uno de nuestros representantes.",
     "ourRepresentatives": "nuestros representantes."
   },
-  "pagebar": { "whereToBuy": "Dónde Comprar" },
-  "locationSelector": { "inBrazil": "EN BRASIL", "inTheWorld": "EN EL MUNDO" }
+  "pagebar": {
+    "whereToBuy": "Dónde Comprar"
+  },
+  "locationSelector": {
+    "inBrazil": "EN BRASIL",
+    "inTheWorld": "EN EL MUNDO"
+  }
 }

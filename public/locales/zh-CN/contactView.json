@@ -1,7 +1,24 @@
 {
-  "pagebar": { "speakWithUs": "与我们交谈" },
-  "headerBanner": { "title": "你想谈什么？" },
-  "discoverBanner": { "title": "发现", "description": "从哪里购买" },
-  "showcaseBanner": { "title": "请求我们的", "description": "玻璃陈列柜" },
-  "positionsBanner": { "title": "查看我们的", "description": "空缺职位" }
+  "pageMetadata": {
+    "pageTitle": "Berneck",
+    "pageDescription": "Contact Berneck, a specialist in MDP, MDF and HDF panels, as well as pine and sawn teak. Ask your questions and request quotes."
+  },
+  "pagebar": {
+    "speakWithUs": "与我们交谈"
+  },
+  "headerBanner": {
+    "title": "你想谈什么？"
+  },
+  "discoverBanner": {
+    "title": "发现",
+    "description": "从哪里购买"
+  },
+  "showcaseBanner": {
+    "title": "请求我们的",
+    "description": "玻璃陈列柜"
+  },
+  "positionsBanner": {
+    "title": "查看我们的",
+    "description": "空缺职位"
+  }
 }

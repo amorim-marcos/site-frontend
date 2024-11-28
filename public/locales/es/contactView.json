@@ -1,7 +1,18 @@
 {
-  "pagebar": { "speakWithUs": "Conctáctenos" },
-  "headerBanner": { "title": "¿De qué quieres hablar?" },
-  "discoverBanner": { "title": "DESCUBRA", "description": "Dónde Comprar" },
+  "pageMetadata": {
+    "pageTitle": "Berneck",
+    "pageDescription": "Contact Berneck, a specialist in MDP, MDF and HDF panels, as well as pine and sawn teak. Ask your questions and request quotes."
+  },
+  "pagebar": {
+    "speakWithUs": "Conctáctenos"
+  },
+  "headerBanner": {
+    "title": "¿De qué quieres hablar?"
+  },
+  "discoverBanner": {
+    "title": "DESCUBRA",
+    "description": "Dónde Comprar"
+  },
   "showcaseBanner": {
     "title": "Solicite Nuestro",
     "description": "Muestrario"

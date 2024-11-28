@@ -21,6 +21,7 @@ import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
 import { showcaseChannelCode } from 'utils/utils'
 import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
+import PageHead from '@components/PageHead'
 
 export type ContactViewProps = {
   contact_channels: IContactChannel[]
@@ -46,6 +47,10 @@ export const Contact = ({
 
   return (
     <>
+      <PageHead
+        page_title={contactViewLabels.t('pageMetadata.pageTitle')}
+        page_description={contactViewLabels.t('pageMetadata.pageDescription')}
+      />
       <Pagebar
         paths={[
           {
