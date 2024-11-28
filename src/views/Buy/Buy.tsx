@@ -11,6 +11,7 @@ import { colors } from '../../theme/colors'
 import ConditionalLanguageRender from '@components/ConditionalLanguageRender/ConditionalLanguageRender'
 import { useRouter } from 'next/router'
 import { CountryRepresentative } from 'types/data/WhereBuy'
+import PageHead from '@components/PageHead'
 
 interface BuyProps {
   representatives_list: string
@@ -30,6 +31,10 @@ export const Buy = ({
   const buyViewLabels = useTranslation('buyView')
   return (
     <Box>
+      <PageHead
+        page_title={buyViewLabels.t('pageMetadata.pageTitle')}
+        page_description={buyViewLabels.t('pageMetadata.pageDescription')}
+      />
       <Pagebar
         paths={[
           {
