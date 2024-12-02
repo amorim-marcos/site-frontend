@@ -31,6 +31,7 @@ import useRouterCustom from 'hooks/useRouterCustom'
 import { getTranslatedFilterNames } from 'views/BPCatalog/BPCatalog'
 import { LocaleOptions } from 'types/utils'
 import { BPsPageResponse } from 'types/data/BPsPage'
+import HtmlTextParser from '@components/HtmlTextParser'
 
 export type BpBerneckViewProps = {
   galleries?: Gallery[]
@@ -132,16 +133,34 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
             rowSpan={{ base: '2', sm: '2', lg: '2', xl: '2' } as any}
           >
             <BannerProducts
-              title={
-                catalogBannerData?.title ||
-                productsViewLabels.t('bpBerneck.bannerProducts.title')
+              // title={
+              //   catalogBannerData?.title ||
+              //   productsViewLabels.t('bpBerneck.bannerProducts.title')
+              // }
+              customTitleElement={
+                <Text
+                  fontFamily="montserrat"
+                  color={`#004934`}
+                  as={`h1`}
+                  fontSize={{ base: '1xl', sm: '3xl', lg: '4xl' }}
+                >
+                  <HtmlTextParser>
+                    {catalogBannerData?.title ||
+                      productsViewLabels.t('bpBerneck.bannerProducts.title')}
+                  </HtmlTextParser>
+                </Text>
               }
-              titleColor="white"
-              subtitle={
-                catalogBannerData?.subTitle ||
-                productsViewLabels.t('bpBerneck.bannerProducts.subtitle')
+              // subtitle={
+              //   catalogBannerData?.subTitle ||
+              //   productsViewLabels.t('bpBerneck.bannerProducts.subtitle')
+              // }
+              // subtitleColor="brown.200"
+              customSubtitleElement={
+                <Text color={`#004934`} as={`h4`} hidden>
+                  {catalogBannerData?.subTitle ||
+                    productsViewLabels.t('bpBerneck.bannerProducts.subtitle')}
+                </Text>
               }
-              subtitleColor="brown.200"
               bgColor="brown.300"
               srcImg={
                 uploadBaseUrl + catalogBannerData?.banner_image.url ||
