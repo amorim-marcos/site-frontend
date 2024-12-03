@@ -9,8 +9,10 @@ type SizeTypes = 'square' | 'rectangle-horizontal' | 'rectangle-vertical'
 export type BannerProductsProps = {
   title?: string
   titleColor?: string
+  customTitleElement?: JSX.Element
   subtitle?: string
   subtitleColor?: string
+  customSubtitleElement?: JSX.Element
   bgColor?: string
   srcImg?: string
   imgAltText: string
@@ -26,8 +28,10 @@ export type BannerProductsProps = {
 export const BannerProducts = ({
   title,
   titleColor,
+  customTitleElement,
   subtitle,
   subtitleColor,
+  customSubtitleElement,
   bgColor,
   srcImg,
   imgAltText,
@@ -179,33 +183,42 @@ BannerProductsProps) => {
               // bg="pink"
               flex="1"
               w={sizeType === 'rectangle-horizontal' ? '50%' : '100%'}
+              width={customTitleElement ? 'fit-content' : undefined}
             >
-              <Text
-                as="h1"
-                variant={'h1' as any}
-                color={titleColor}
-                lineHeight={{
-                  base: '35px',
-                  sm: '35px',
-                  lg: '40px',
-                  xl: '40px'
-                }}
-              >
-                {title}
-              </Text>
+              {customTitleElement ? (
+                customTitleElement
+              ) : (
+                <Text
+                  as="h1"
+                  variant={'h1' as any}
+                  color={titleColor}
+                  lineHeight={{
+                    base: '35px',
+                    sm: '35px',
+                    lg: '40px',
+                    xl: '40px'
+                  }}
+                >
+                  {title}
+                </Text>
+              )}
             </Flex>
             <Flex
               // bg="white"
               flex="1"
             >
-              <Text
-                as="h4"
-                variant={'h4' as any}
-                color={subtitleColor}
-                fontWeight={'medium'}
-              >
-                {subtitle}
-              </Text>
+              {customSubtitleElement ? (
+                customSubtitleElement
+              ) : (
+                <Text
+                  as="h4"
+                  variant={'h4' as any}
+                  color={subtitleColor}
+                  fontWeight={'medium'}
+                >
+                  {subtitle}
+                </Text>
+              )}
             </Flex>
           </Flex>
         </Flex>
