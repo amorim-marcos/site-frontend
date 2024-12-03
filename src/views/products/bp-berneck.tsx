@@ -139,10 +139,10 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               // }
               customTitleElement={
                 <Text
-                  fontFamily="montserrat"
                   color={`#004934`}
                   as={`h1`}
-                  fontSize={{ base: '1xl', sm: '3xl', lg: '4xl' }}
+                  fontSize={{ base: '1xl', sm: '3xl', lg: '3xl' }}
+                  width={'100%'}
                 >
                   <HtmlTextParser>
                     {catalogBannerData?.title ||
@@ -190,7 +190,7 @@ export default function BpBerneckView(props: BpBerneckViewProps) {
               //   )
               // }
               linkTo={
-                collectionBanner1.link ||
+                collectionBanner1?.link ||
                 `/${router.locale}${translatedCatalogPathName}?${translatedCatalogFilterNames['collections']}=horizontes`
               }
               title={productsViewLabels.t('bpBerneck.bannerCollections.title')}
