@@ -1,10 +1,19 @@
 {
+  "pageMetadata": {
+    "pageTitle": "Berneck",
+    "pageDescription": "Find authorized Berneck distributors and purchase high-quality wood panels (MDF, MDP, HDF) and sawn timber."
+  },
   "headerBanner": {
     "title": "从哪里购买",
     "description": "BERNECK®产品可以在巴西和世界上最好的家具和分售商店找到。检查以下离您最近的分售点",
     "industrialApplications": "对于工业领域应用，请联系",
     "ourRepresentatives": "我们的代表"
   },
-  "pagebar": { "whereToBuy": "从哪里购买" },
-  "locationSelector": { "inBrazil": "在巴西", "inTheWorld": "在世界上" }
+  "pagebar": {
+    "whereToBuy": "从哪里购买"
+  },
+  "locationSelector": {
+    "inBrazil": "在巴西",
+    "inTheWorld": "在世界上"
+  }
 }
