@@ -183,6 +183,7 @@ BannerProductsProps) => {
               // bg="pink"
               flex="1"
               w={sizeType === 'rectangle-horizontal' ? '50%' : '100%'}
+              width={customTitleElement ? 'fit-content' : undefined}
             >
               {customTitleElement ? (
                 customTitleElement
