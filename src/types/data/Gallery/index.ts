@@ -30,6 +30,7 @@ export interface GalleryResponse extends ResponseDefaultProperties {
   products: ProductResponse[]
   ambient_styles: AmbientStyle[]
   localizations: Localization[]
+  custom_order: number
 }
 
 export interface AmbientType {
