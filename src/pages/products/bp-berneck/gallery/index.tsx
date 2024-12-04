@@ -30,6 +30,7 @@ export interface GalleryProps {
     image_url: string
     bps: number[]
     created_at: string | Date
+    custom_order: number
   }[]
   availableBps: {
     // check this
@@ -52,6 +53,10 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   // const queryAmbients = ctx.query.ambients
   const url = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL
 
+  const sortQuery = {
+    _sort: 'custom_order:asc'
+  }
+
   let ambientTypes: GalleryProps['filtersContext']['styles'] =
     await strapiClient({
       defaultOnEmpty: true,
@@ -69,7 +74,8 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const envs: GalleryResponse[] = await strapiClient({
     defaultOnEmpty: true,
     locale: ctx.locale,
-    resource: 'ambients'
+    resource: 'ambients',
+    query: [sortQuery]
   })
 
   let availableBps: GalleryProps['availableBps'] = await strapiClient({
@@ -109,30 +115,25 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const formattedEnvs: GalleryProps['envs'] =
     envs && typeof envs.map === 'function'
-      ? envs
-          .map((gallery) => {
-            return {
-              id: gallery.id,
-              title: gallery.title,
-              name: gallery.place,
-              bps: gallery.products.map((product) => product.id),
-              type: gallery.ambient_type.url_code,
-              style: String(
-                gallery.ambient_styles.map((gallery) => gallery.id.toString())
-              ),
-              url_code: gallery.url_code,
-              image_url: `${url}${
-                gallery.gallery_imgs[0]?.img.url ||
-                gallery.gallery_of_images[0]?.url
-              }`,
-              created_at: gallery.created_at
-            }
-          })
-          .sort(
-            (a, b) =>
-              new Date(b.created_at).getTime() -
-              new Date(a.created_at).getTime()
-          )
+      ? envs.map((gallery) => {
+          return {
+            id: gallery.id,
+            title: gallery.title,
+            name: gallery.place,
+            bps: gallery.products.map((product) => product.id),
+            type: gallery.ambient_type.url_code,
+            style: String(
+              gallery.ambient_styles.map((gallery) => gallery.id.toString())
+            ),
+            url_code: gallery.url_code,
+            image_url: `${url}${
+              gallery.gallery_imgs[0]?.img.url ||
+              gallery.gallery_of_images[0]?.url
+            }`,
+            created_at: gallery.created_at,
+            custom_order: gallery.custom_order
+          }
+        })
       : []
 
   availableBps =

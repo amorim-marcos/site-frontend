@@ -128,6 +128,7 @@ const DownloadsView = ({
     }
   }, [router.asPath])
 
+  // Filter sections to show only reports and documents in other languages and all in pt-BR
   const filteredSections = items.filter((item) => {
     if (router.locale === 'pt-BR') {
       return true
@@ -135,7 +136,13 @@ const DownloadsView = ({
     return item.document_type === 'reports-and-documents'
   })
 
-  const document_types_modal = ['inspirare-magazine', 'opinus-magazine']
+  const document_types_modal = [
+    'inspirare-magazine',
+    'opinus-magazine',
+    'reports-and-documents',
+    'support-materials',
+    'publicity_materials'
+  ]
 
   return (
     <Box>
