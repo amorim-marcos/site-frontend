@@ -10,11 +10,12 @@ import { SocialIcon } from '@components/Icons'
 import CompletedTitle from '@components/CompletedTitle'
 
 import useFacebook from 'hooks/useFacebook'
-import useInstagram from 'hooks/useInstagram'
+// import useInstagram from 'hooks/useInstagram'
 import useLinkedin from 'hooks/useLinkedin'
 
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
+import InstaPost from './InstaPost'
 
 export default function Connect({
   youtubeLink = '',
@@ -22,84 +23,93 @@ export default function Connect({
 }) {
   const { isMobile, width } = useMobile(568)
   const componentsLabels = useTranslation('components')
-  const instagramIframeRef = useRef<HTMLIFrameElement>(null)
+  // const instagramIframeRef = useRef<HTMLIFrameElement>(null)
   const { linkedinLink } = useLinkedin()
 
   // const { Feed } = useInstagram()
 
-
   // These are hooks to ensure the loading of social networks widgets (Facebook, Pinterest, Linkedin) on the page.
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-    script.async = true;
-    document.body.appendChild(script);
+    const script = document.createElement('script')
+    script.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0'
+    script.async = true
+    document.body.appendChild(script)
 
     script.onload = () => {
-        if ((window as any).FB) {
-            (window as any).FB.XFBML.parse();
-        }
-    };
+      if ((window as any).FB) {
+        ;(window as any).FB.XFBML.parse()
+      }
+    }
 
     return () => {
       if (document.body.contains(script)) {
-          document.body.removeChild(script);
+        document.body.removeChild(script)
       }
-    };
-  
-  }, []);
-
-  
-
+    }
+  }, [])
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "//assets.pinterest.com/js/pinit.js";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
+    const script = document.createElement('script')
+    script.src = '//assets.pinterest.com/js/pinit.js'
+    script.async = true
+    script.defer = true
+    document.body.appendChild(script)
     script.onload = () => {
       if ((window as any).PinUtils) {
-        (window as any).PinUtils.build();
+        ;(window as any).PinUtils.build()
       }
-    };
-    
+    }
 
     return () => {
       if (document.body.contains(script)) {
-          document.body.removeChild(script);
+        document.body.removeChild(script)
       }
-    };
-  
-  }, []); 
-
+    }
+  }, [])
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "https://platform.linkedin.com/in.js";
-    script.async = true;
-    document.body.appendChild(script);
+    const script = document.createElement('script')
+    script.src = 'https://platform.linkedin.com/in.js'
+    script.async = true
+    document.body.appendChild(script)
 
     // Note: LinkedIn might not require an onload re-initialization. This is just a pattern.
     script.onload = () => {
-        if ((window as any).IN && (window as any).IN.parse) {
-            (window as any).IN.parse();
-        }
-    };
+      if ((window as any).IN && (window as any).IN.parse) {
+        ;(window as any).IN.parse()
+      }
+    }
 
     return () => {
       if (document.body.contains(script)) {
-          document.body.removeChild(script);
+        document.body.removeChild(script)
       }
-    };
-
-  }, []);
-
-
-
+    }
+  }, [])
 
   useFacebook()
+
+  // Loads the Instagram embed script
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.async = true
+    script.src = 'https://www.instagram.com/embed.js'
+    document.body.appendChild(script)
+
+    // Cleans up the Instagram embed script
+    return () => {
+      document.body.removeChild(script)
+    }
+  }, [])
+
+  // todo
+  // change the links to the real instagram posts
+  const instaPostLinks = [
+    'https://www.instagram.com/p/DC1c4L8N-p5/?img_index=1',
+    'https://www.instagram.com/p/DDEwkDBhlHf/',
+    'https://www.instagram.com/p/DDHR_u1Nbtt/?img_index=1'
+  ]
 
   return (
     <>
@@ -224,25 +234,12 @@ export default function Connect({
                     // h="calc(100% + 50px)"
                     h="100%"
                     w="100%"
+                    direction={'column'}
+                    overflow={'auto'}
                   >
-                    <iframe
-                      src="https://www.juicer.io/api/feeds/berneckoficial/iframe"
-                      frameBorder="0"
-                      width="100%"
-                      height="100%"
-                      style={{
-                        display: 'block',
-                        margin: '0 auto'
-                      }}
-                      ref={instagramIframeRef}
-                      // style="display:block;margin:0 auto;"
-                    ></iframe>
-
-                    {/* <div className="juicer-feed" data-feed-id="berneckoficial">
-                      <h1 className="referral">
-                        <a href="https://www.juicer.io">Powered by Juicer.io</a>
-                      </h1>
-                    </div> */}
+                    {instaPostLinks.map((postLink, index) => (
+                      <InstaPost key={index} postLink={postLink} />
+                    ))}
                   </Flex>
                   {/* <Feed /> */}
                 </Flex>
