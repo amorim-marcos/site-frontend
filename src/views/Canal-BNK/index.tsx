@@ -23,6 +23,7 @@ import { capitalizeText, compose } from 'utils/utils'
 import { ChannelVideos } from 'types/data/Post/ChannelPage'
 import { strapiClient } from 'services'
 import { withConditionalLocale } from 'hocs/with-conditional-locale'
+import { ConnectPageResponse } from 'types/data/Connect'
 
 export const CategoryContext = createContext(
   {} as {
@@ -36,6 +37,7 @@ export const CategoryContext = createContext(
     youtubeVideos?: IVideos[]
     lastYoutubeVideo?: string
     strapiVideos: ChannelVideos[]
+    connectPageData?: ConnectPageResponse
   }
 )
 
@@ -56,6 +58,8 @@ export function CategoryCtxProvider(props: {
   const [youtubeVideos, setYoutubeVideos] = useState<IVideos[]>([])
   const [strapiVideos, setStrapiVideos] = useState<ChannelVideos[]>([])
   const [lastYoutubeVideo, setLastYoutubeVideo] = useState('')
+
+  const [connectPageData, setConnectPageData] = useState<ConnectPageResponse>()
 
   const changeCurrentCategory = useCallback(
     (i: number) => {
@@ -104,6 +108,23 @@ export function CategoryCtxProvider(props: {
 
     fetchYoutube()
   })
+
+  useEffect(() => {
+    const fetchConnectPageData = async () => {
+      let connectPageData: ConnectPageResponse
+      try {
+        const response = await fetch(
+          process.env.NEXT_PUBLIC_API_URL + `/connect`
+        )
+        connectPageData = await response.json()
+
+        setConnectPageData(connectPageData)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchConnectPageData()
+  }, [])
 
   useEffect(() => {
     if (categories.length <= 0) {
@@ -162,7 +183,8 @@ export function CategoryCtxProvider(props: {
           youtubeDownloadLink,
           youtubeVideos,
           lastYoutubeVideo,
-          strapiVideos
+          strapiVideos,
+          connectPageData
         }}
       >
         {props.children}
@@ -181,7 +203,8 @@ function CanalBNKFC(props: CanalBNKProps) {
     youtubeDownloadLink,
     youtubeVideos,
     lastYoutubeVideo,
-    strapiVideos
+    strapiVideos,
+    connectPageData
   } = useContext(CategoryContext)
 
   useEffect(() => {
@@ -266,6 +289,7 @@ function CanalBNKFC(props: CanalBNKProps) {
           <Connect
             youtubeLink={youtubeDownloadLink}
             lastYoutubeVideo={lastYoutubeVideo}
+            connectPageData={connectPageData}
           />
         </>
       )}
@@ -299,6 +323,7 @@ export interface CanalBNKProps {
   youtubeVideos?: IVideos[]
   lastYoutubeVideo?: string
   strapiVideos: ChannelVideos[]
+  connectPageData?: ConnectPageResponse
 }
 
 function CanalBNK(props: CanalBNKProps) {

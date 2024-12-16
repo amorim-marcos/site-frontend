@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import { ReactNode, useEffect, useRef } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 import { Box, Button, Flex, Text, Link } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
@@ -16,11 +16,19 @@ import useLinkedin from 'hooks/useLinkedin'
 import useMobile from 'hooks/useMobile'
 import { useTranslation } from 'react-i18next'
 import InstaPost from './InstaPost'
+import { ConnectPageResponse } from 'types/data/Connect'
+
+interface ConnectProps {
+  youtubeLink?: string
+  lastYoutubeVideo?: string
+  connectPageData?: ConnectPageResponse
+}
 
 export default function Connect({
   youtubeLink = '',
-  lastYoutubeVideo = 'PtRcMibSJgk'
-}) {
+  lastYoutubeVideo = 'PtRcMibSJgk',
+  connectPageData
+}: ConnectProps) {
   const { isMobile, width } = useMobile(568)
   const componentsLabels = useTranslation('components')
   // const instagramIframeRef = useRef<HTMLIFrameElement>(null)
@@ -103,6 +111,24 @@ export default function Connect({
     }
   }, [])
 
+  // useEffect(() => {
+  //   const fetchConnectPageData = async () => {
+  //     let connectPageData: ConnectPageResponse
+  //     try {
+  //       const response = await fetch(
+  //         process.env.NEXT_PUBLIC_API_URL + `/connect`
+  //       )
+  //       connectPageData = await response.json()
+  //       console.log(`hello: `, connectPageData)
+
+  //       setConnectPageData(connectPageData)
+  //       setInstagramPosts(connectPageData.instagram_posts)
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
+  //   fetchConnectPageData()
+  // }, [])
   // todo
   // change the links to the real instagram posts
   const instaPostLinks = [
@@ -170,7 +196,7 @@ export default function Connect({
               <div
                 className="fb-page"
                 data-href="https://www.facebook.com/BerneckSA"
-                data-show-posts="true" 
+                data-show-posts="true"
                 data-width=""
                 data-height="630"
                 data-small-header="false"
@@ -203,13 +229,13 @@ export default function Connect({
           <SocialNetwork
             title="INSTAGRAM"
             icon={
-                <SocialIcon
-                  media="instagram"
-                  width="51px"
-                  height="51px"
-                  color="#59993F"
-                  href = "https://www.instagram.com/berneckoficial/"
-                />
+              <SocialIcon
+                media="instagram"
+                width="51px"
+                height="51px"
+                color="#59993F"
+                href="https://www.instagram.com/berneckoficial/"
+              />
             }
           >
             <Flex direction="column" gap="24px" align="center" w="100%">
@@ -237,9 +263,13 @@ export default function Connect({
                     direction={'column'}
                     overflow={'auto'}
                   >
-                    {instaPostLinks.map((postLink, index) => (
-                      <InstaPost key={index} postLink={postLink} />
-                    ))}
+                    {connectPageData && (
+                      <>
+                        {connectPageData?.instagram_posts?.map((post) => (
+                          <InstaPost key={post.id} postLink={post?.post_url} />
+                        ))}
+                      </>
+                    )}
                   </Flex>
                   {/* <Feed /> */}
                 </Flex>
@@ -254,12 +284,12 @@ export default function Connect({
           <SocialNetwork
             title="LINKEDIN"
             icon={
-                <SocialIcon
-                  media="linkedin"
-                  width="51px"
-                  height="51px"
-                  href = "https://www.linkedin.com/company/berneck-s.a.-pain-is-e-serrados/"
-                />
+              <SocialIcon
+                media="linkedin"
+                width="51px"
+                height="51px"
+                href="https://www.linkedin.com/company/berneck-s.a.-pain-is-e-serrados/"
+              />
             }
           >
             <Flex w="100%" direction="column" gap="24px" align="center">
@@ -282,13 +312,13 @@ export default function Connect({
           <SocialNetwork
             title="YOUTUBE"
             icon={
-                <SocialIcon
-                  media="youtube"
-                  width="51px"
-                  height="51px"
-                  color="#59993F"
-                  href = "https://www.youtube.com/@Berneckoficial"
-                />
+              <SocialIcon
+                media="youtube"
+                width="51px"
+                height="51px"
+                color="#59993F"
+                href="https://www.youtube.com/@Berneckoficial"
+              />
             }
           >
             <Flex
@@ -322,13 +352,13 @@ export default function Connect({
               <SocialNetwork
                 title="PINTEREST"
                 icon={
-                    <SocialIcon
-                      media="pinterest"
-                      width="51px"
-                      height="51px"
-                      color="#59993F"
-                      href = "https://br.pinterest.com/berneckoficial/"
-                    />
+                  <SocialIcon
+                    media="pinterest"
+                    width="51px"
+                    height="51px"
+                    color="#59993F"
+                    href="https://br.pinterest.com/berneckoficial/"
+                  />
                 }
               >
                 <Flex
