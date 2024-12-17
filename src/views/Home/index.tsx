@@ -303,11 +303,13 @@ export default function Home(props: HomeProps) {
       {/* INICIO Redes Sociais */}
 
       <ConditionalLanguageRender>
-        <Connect
-          youtubeLink={youtubeLink}
-          lastYoutubeVideo={lastYoutubeVideo}
-          connectPageData={connectPageData}
-        />
+        {connectPageData && (
+          <Connect
+            youtubeLink={youtubeLink}
+            lastYoutubeVideo={lastYoutubeVideo}
+            connectPageData={connectPageData}
+          />
+        )}
       </ConditionalLanguageRender>
     </Box>
   )
