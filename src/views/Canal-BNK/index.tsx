@@ -286,11 +286,13 @@ function CanalBNKFC(props: CanalBNKProps) {
           <Flex bg="white.100" justify={'center'}>
             <Downloads patterns_pack_url={props.patterns_pack_url} />
           </Flex>
-          <Connect
-            youtubeLink={youtubeDownloadLink}
-            lastYoutubeVideo={lastYoutubeVideo}
-            connectPageData={connectPageData}
-          />
+          {connectPageData && (
+            <Connect
+              youtubeLink={youtubeDownloadLink}
+              lastYoutubeVideo={lastYoutubeVideo}
+              connectPageData={connectPageData}
+            />
+          )}
         </>
       )}
     </Box>

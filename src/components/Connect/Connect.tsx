@@ -111,24 +111,6 @@ export default function Connect({
     }
   }, [])
 
-  // useEffect(() => {
-  //   const fetchConnectPageData = async () => {
-  //     let connectPageData: ConnectPageResponse
-  //     try {
-  //       const response = await fetch(
-  //         process.env.NEXT_PUBLIC_API_URL + `/connect`
-  //       )
-  //       connectPageData = await response.json()
-  //       console.log(`hello: `, connectPageData)
-
-  //       setConnectPageData(connectPageData)
-  //       setInstagramPosts(connectPageData.instagram_posts)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  //   fetchConnectPageData()
-  // }, [])
   // todo
   // change the links to the real instagram posts
   const instaPostLinks = [
