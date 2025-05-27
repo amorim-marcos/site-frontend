@@ -18,6 +18,7 @@ import parser from 'react-html-parser'
 import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
 import PageHead from '@components/PageHead'
+import { ForestCertification } from 'types/data/ForestCertifications'
 
 export type CertificationViewProps = {
   forestCertificate: {
@@ -30,6 +31,7 @@ export type CertificationViewProps = {
       }
     }[]
     forest_img: string
+    forest_certifications: ForestCertification[]
   }
   productsCertificates: {
     certifier: string

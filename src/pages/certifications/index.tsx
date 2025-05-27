@@ -16,7 +16,7 @@ export default function CertificatesPage(props: CertificatePageProps) {
 export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale
   let productsCertificates
-  let forestCertificate
+  let forestCertificate: ForestCertificationsResponse
   let page_content
   let res
 
