@@ -4,6 +4,10 @@ export interface ForestCertificationsResponse
   extends ResponseDefaultProperties {
   id: number
   forest_certifications: ForestCertification[]
+  // TODO
+  // remover description do response
+  description: string
+  forest_img: ImageProps | null
 }
 
 export interface ForestCertification {
@@ -12,11 +16,11 @@ export interface ForestCertification {
   certifier: string
   title: string
   certificates: ForestCertificationItem[]
-  forest_img: ImageProps | null
+  forest_img: ImageProps
 }
 
 interface ForestCertificationItem {
   id: number
   certificate_name: string
-  certificate_file: ImageProps | null
+  certificate_file: ImageProps
 }

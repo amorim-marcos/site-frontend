@@ -54,35 +54,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   forestCertificate.description = DOMPurify.sanitize(
-    forestCertificate.description
+    forestCertificate?.description
   )
-
-  if (forestCertificate.forest_img) {
-    forestCertificate.forest_img = buildImageUrl(forestCertificate.forest_img)
-  }
-
-  if (
-    typeof forestCertificate.certificates !== 'undefined' &&
-    typeof forestCertificate.certificates.map === 'function'
-  ) {
-    forestCertificate.certificates = forestCertificate.certificates.map(
-      (item: { certificate_file: { url: string } }) => {
-        return {
-          ...item,
-          certificate_file: {
-            ...item.certificate_file,
-            url:
-              item.certificate_file === null
-                ? null
-                : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
-                  item.certificate_file.url
-          }
-        }
-      }
-    )
-  } else {
-    forestCertificate.certificates = []
-  }
 
   productsCertificates =
     typeof productsCertificates !== 'undefined' &&

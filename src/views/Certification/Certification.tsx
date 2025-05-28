@@ -251,7 +251,10 @@ export const Certification = (props: CertificationViewProps) => {
                           return (
                             <PatternCertification
                               onClick={() =>
-                                window.open(item.certificate_file.url, '_blank')
+                                window.open(
+                                  buildImageUrl(item?.certificate_file),
+                                  '_blank'
+                                )
                               }
                               key={i}
                               title={item.certificate_name}
@@ -270,7 +273,7 @@ export const Certification = (props: CertificationViewProps) => {
                   // bg='pink'
                   flex="1"
                   justifyItems={'center'}
-                  backgroundImage={buildImageUrl(certificate.forest_img)}
+                  backgroundImage={buildImageUrl(certificate?.forest_img)}
                   backgroundPosition="center"
                   backgroundRepeat="no-repeat"
                   margin={{
