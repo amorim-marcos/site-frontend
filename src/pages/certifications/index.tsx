@@ -6,6 +6,8 @@ import {
 import DOMPurify from 'isomorphic-dompurify'
 import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 import { loadTranslations } from 'ni18n'
+import { ForestCertificationsResponse } from 'types/data/ForestCertifications'
+import { buildImageUrl } from 'utils/utils'
 
 export type CertificatePageProps = CertificationViewProps
 
@@ -56,9 +58,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   )
 
   if (forestCertificate.forest_img) {
-    forestCertificate.forest_img =
-      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
-      forestCertificate.forest_img.url
+    forestCertificate.forest_img = buildImageUrl(forestCertificate.forest_img)
   }
 
   if (
