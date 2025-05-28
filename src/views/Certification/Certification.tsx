@@ -18,6 +18,8 @@ import parser from 'react-html-parser'
 import { useTranslation } from 'react-i18next'
 import HtmlTextParser from '@components/HtmlTextParser'
 import PageHead from '@components/PageHead'
+import { ForestCertification } from 'types/data/ForestCertifications'
+import { buildImageUrl } from 'utils/utils'
 
 export type CertificationViewProps = {
   forestCertificate: {
@@ -30,6 +32,7 @@ export type CertificationViewProps = {
       }
     }[]
     forest_img: string
+    forest_certifications: ForestCertification[]
   }
   productsCertificates: {
     certifier: string
@@ -53,6 +56,8 @@ export type CertificationViewProps = {
 
 export const Certification = (props: CertificationViewProps) => {
   const certificationViewLabels = useTranslation('certificationView')
+
+  const forestCertifications = props.forestCertificate.forest_certifications
 
   return (
     <Box>
@@ -95,7 +100,6 @@ export const Certification = (props: CertificationViewProps) => {
               zIndex="docked"
             />
           </Box>
-
           <Box display={{ base: 'block', md: 'none' }}>
             <CompletedTitle
               titleString={props.page_content.page_title}
@@ -148,20 +152,25 @@ export const Certification = (props: CertificationViewProps) => {
         id="forest-certificates"
       >
         <Flex
-          // bg='blue'
+          // bg="blue"
           flex="1"
-          direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
+          direction={{
+            base: 'column',
+            sm: 'column',
+            lg: 'column',
+            xl: 'column'
+          }}
         >
-          {/* BOX 1 */}
+          {/* Area title */}
           <Box
             margin={{
-              base: '8% 5% 10% 5%',
-              sm: '5% 5% 8% 5%',
-              lg: '5% 5% 5% 5%',
-              xl: '5% 5% 5% 5%'
+              base: '5% 5% 5% 5%',
+              sm: '5% 5% 5% 5%',
+              lg: '5% 2% 5% 5%',
+              xl: '5% 2% 5% 5%'
             }}
-            // bg='yellow'
             flex="1"
+            // bg="yellow"
           >
             <CompletedTitle
               titleString={certificationViewLabels.t('certificatedForests')}
@@ -173,86 +182,133 @@ export const Certification = (props: CertificationViewProps) => {
                 xl: 'flex-start'
               }}
             />
-            <Text
-              as="h3"
-              variant={'h3' as any}
-              marginTop={{ base: '5%', sm: '2%', lg: '3%', xl: '3%' }}
-              color={'green.800'}
-            >
-              {props.forestCertificate.certifier}
-            </Text>
-            <Text
-              marginTop={{ base: '5%', sm: '2%', lg: '3%', xl: '3%' }}
-              color={'green.800'}
-            >
-              <HtmlTextParser>
-                {props.forestCertificate.description}
-              </HtmlTextParser>
-            </Text>
+          </Box>
+          {/* Area de certificações */}
+          {forestCertifications?.map((certificate) => {
+            const isOdd = certificate.id % 2 !== 0
+            console.log(`id: ${certificate.id}, isEven: ${isOdd}`)
 
-            <Flex
-              flex="1"
-              backgroundImage="/assets/imgs/fundo_relatorio.svg"
-              backgroundPosition="left"
-              backgroundRepeat="no-repeat"
-              backgroundSize={'cover'}
-              marginTop={{ base: '5%', sm: '2%', lg: '3%', xl: '3%' }}
-              padding={{ base: '3%', sm: '3%', lg: '1%', xl: '1%' }}
-              direction={{ base: 'column', sm: 'column', lg: 'row', xl: 'row' }}
-            >
-              {typeof props.forestCertificate.certificates !== 'undefined'
-                ? props.forestCertificate.certificates.map((item, i) => {
-                    return (
-                      <PatternCertification
-                        onClick={() =>
-                          window.open(item.certificate_file.url, '_blank')
-                        }
-                        key={i}
-                        title={item.certificate_name}
-                        titleInitialColor="green.800"
-                        iconName="certification"
-                        iconInitialColor1="#004934"
-                        iconInitialColor2="#004934"
-                      />
-                    )
-                  })
-                : []}
-            </Flex>
-          </Box>
-          {/* BOX 2 */}
-          <Box
-            // bg='pink'
-            flex="1"
-            justifyItems={'center'}
-            backgroundImage={props.forestCertificate.forest_img}
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"
-            // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
-          >
-            <Box
-              margin={{
-                base: '30% 8% 5% 8%',
-                sm: '30% 8% 5% 8%',
-                lg: '80% 5% 8% 5%',
-                xl: '8% 8% 8% 8%'
-              }}
-              h="100%"
-            >
-              <Image
-                src="/assets/imgs/fsc.png"
-                w={{ base: '30%', sm: '18%', lg: '25%', xl: '25%' }}
-                margin={{
-                  base: '50% 0% 0% 70%',
-                  sm: '50% 0% 0% 80%',
-                  lg: '100% 0% 0% 70%',
-                  xl: '95% 0% 0% 70%',
-                  '2xl': '60% 0% 0% 75%'
+            return (
+              <Flex
+                key={certificate.id}
+                flex="1"
+                direction={{
+                  base: 'column',
+                  sm: 'column',
+                  lg: 'row',
+                  xl: 'row'
                 }}
-              />
-            </Box>
-          </Box>
+                flexDirection={{
+                  base: 'column',
+                  sm: 'column',
+                  lg: isOdd ? 'row' : 'row-reverse',
+                  xl: isOdd ? 'row' : 'row-reverse'
+                }}
+              >
+                {/* BOX 1 */}
+                <Box
+                  margin={{
+                    base: '0% 5% 10% 5%',
+                    sm: '0% 5% 8% 5%',
+                    lg: '0% 5% 5% 5%',
+                    xl: '0% 5% 5% 5%'
+                  }}
+                  // bg="yellow"
+                  flex="1"
+                >
+                  <Text
+                    as="h3"
+                    variant={'h3' as any}
+                    marginTop={{ base: '5%', sm: '2%', lg: '3%', xl: '3%' }}
+                    color={'green.800'}
+                  >
+                    {certificate.certifier}
+                  </Text>
+                  <Text
+                    marginTop={{ base: '5%', sm: '2%', lg: '3%', xl: '3%' }}
+                    color={'green.800'}
+                  >
+                    <HtmlTextParser>{certificate.description}</HtmlTextParser>
+                  </Text>
+
+                  <Flex
+                    flex="1"
+                    backgroundImage="/assets/imgs/fundo_relatorio.svg"
+                    backgroundPosition="left"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize={'cover'}
+                    marginTop={{ base: '5%', sm: '2%', lg: '3%', xl: '3%' }}
+                    padding={{ base: '3%', sm: '3%', lg: '1%', xl: '1%' }}
+                    direction={{
+                      base: 'column',
+                      sm: 'column',
+                      lg: 'row',
+                      xl: 'row'
+                    }}
+                  >
+                    {typeof certificate.certificates !== 'undefined'
+                      ? certificate.certificates.map((item, i) => {
+                          return (
+                            <PatternCertification
+                              onClick={() =>
+                                window.open(
+                                  buildImageUrl(item?.certificate_file),
+                                  '_blank'
+                                )
+                              }
+                              key={i}
+                              title={item.certificate_name}
+                              titleInitialColor="green.800"
+                              iconName="certification"
+                              iconInitialColor1="#004934"
+                              iconInitialColor2="#004934"
+                            />
+                          )
+                        })
+                      : []}
+                  </Flex>
+                </Box>
+                {/* BOX 2 */}
+                <Box
+                  // bg='pink'
+                  flex="1"
+                  justifyItems={'center'}
+                  backgroundImage={buildImageUrl(certificate?.forest_img)}
+                  backgroundPosition="center"
+                  backgroundRepeat="no-repeat"
+                  margin={{
+                    lg: '0% 5% 5% 5%',
+                    xl: '0% 5% 5% 5%'
+                  }}
+                >
+                  <Box
+                    margin={{
+                      base: '30% 8% 5% 8%',
+                      sm: '30% 8% 5% 8%',
+                      lg: '80% 5% 8% 5%',
+                      xl: '8% 8% 8% 8%'
+                    }}
+                    h="100%"
+                  >
+                    <Image
+                      src="/assets/imgs/fsc.png"
+                      w={{ base: '30%', sm: '18%', lg: '25%', xl: '25%' }}
+                      margin={{
+                        base: '50% 0% 0% 70%',
+                        sm: '50% 0% 0% 80%',
+                        lg: '100% 0% 0% 70%',
+                        xl: '95% 0% 0% 70%',
+                        '2xl': '60% 0% 0% 75%'
+                      }}
+                    />
+                  </Box>
+                </Box>
+              </Flex>
+            )
+          })}
         </Flex>
       </Flex>
+
       {/* FIM Florestas Certificadas*/}
 
       {/* INICIO Produtos altamente qualificados */}

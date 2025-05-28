@@ -1,5 +1,5 @@
 import punycode from 'punycode'
-import { NameValueProps } from 'types/utils'
+import { ImageProps, NameValueProps } from 'types/utils'
 
 export type HoCDecorator<C = void> = (
   config: C
@@ -146,4 +146,19 @@ export const getPageCompleteUrl = (pathName?: string) => {
   const pageBaseUrl = process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + complement
 
   return pageBaseUrl || ''
+}
+
+/**
+ * Builds a complete image URL from the given image object.
+ * @param image - The image object containing the URL.
+ * @returns The complete URL of the image, or an empty string if the image is null.
+ * @example
+ * buildImageUrl({ url: '/images/example.jpg' })
+ * returns 'https://uploads.berneck.com/images/example.jpg'
+ */
+export const buildImageUrl = (image: ImageProps) => {
+  if (image === null) {
+    return ''
+  }
+  return process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + image.url
 }
