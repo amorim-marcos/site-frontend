@@ -17,6 +17,7 @@ export interface ForestCertification {
   title: string
   certificates: ForestCertificationItem[]
   forest_img: ImageProps
+  certificate_img_mini: ImageProps
 }
 
 interface ForestCertificationItem {
