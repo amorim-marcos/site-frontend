@@ -160,5 +160,5 @@ export const buildImageUrl = (image: ImageProps) => {
   if (image === null) {
     return ''
   }
-  return process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + image.url
+  return process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL + image?.url
 }
