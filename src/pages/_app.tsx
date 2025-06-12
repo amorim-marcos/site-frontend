@@ -15,6 +15,7 @@ import AppCookieConsent from '@components/AppCookieConsent'
 
 import ErrorBoundaryProvider from 'services/errorBoundary'
 
+import '../styles/rdstation.css'
 import '../styles/zoomout.css'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'

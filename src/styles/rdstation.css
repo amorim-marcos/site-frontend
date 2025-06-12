@@ -1,0 +1,13 @@
+
+/* Corrige posicionamento de popups do rdstation */
+@media screen and (max-width: 767px) {
+  #rd-row-m1b2njal .bricks--column > div {
+    min-height: 90vh !important;
+  }
+  #rd-column-m1b2njam > div {
+    min-height: unset !important;
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+}
