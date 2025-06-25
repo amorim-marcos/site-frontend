@@ -1,0 +1,27 @@
+NEXT_PUBLIC_UPLOADS_ROOT_URL="https://devtestesite.berneck.com.br"
+NEXT_PUBLIC_API_URL="https://devapisite.berneck.com.br"
+NEXT_PUBLIC_PAGES_REVALITATION_TIME=10
+
+NODE_TLS_REJECT_UNAUTHORIZED=0
+
+# https://account.mapbox.com/
+MAPBOX_API_KEY="pk.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXX"
+
+# https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com
+# Create Google API Key in Google Cloud Console, tab Credentials
+# Active youtube API
+YOUTUBE_API_KEY=AIzaSyBisoGsiHdZqtSm5zbhGP9SfkojxbZVeWM
+YOUTUBE_CHANNEL_ID=UC-YLSfIYCSIyMHH_6I9G8cw
+# https://developers.facebook.com/apps/
+
+FACEBOOK_APP_ID="xxxxxxxxxxxxxxx"
+
+MEILI_API_HOST="http://127.0.0.1:7700/"
+MEILI_API_KEY="mH6ZTb2kYATTdTRj"
+
+GOOGLE_MAPS_API_KEY="AIzaSyBxc4gJk37POSn0WDSIPVjN2Ow4ScvVFW4"
+
+INSTAGRAM_APP="7948908401846796"
+INSTAGRAM_KEY="8da86289b34a339c4641c13f4e89e341"
+INSTAGRAM_PROFILE="https://www.instagram.com/berneckoficial/"
+NEXT_PUBLIC_HOTJAR_SITE_ID=5141301
