@@ -185,9 +185,6 @@ export const Certification = (props: CertificationViewProps) => {
           </Box>
           {/* Area de certificações */}
           {forestCertifications?.map((certificate) => {
-            const isOdd = certificate.id % 2 !== 0
-            console.log(`id: ${certificate.id}, isEven: ${isOdd}`)
-
             return (
               <Flex
                 key={certificate.id}
@@ -201,11 +198,41 @@ export const Certification = (props: CertificationViewProps) => {
                 flexDirection={{
                   base: 'column',
                   sm: 'column',
-                  lg: isOdd ? 'row' : 'row-reverse',
-                  xl: isOdd ? 'row' : 'row-reverse'
+                  lg: 'row',
+                  xl: 'row'
                 }}
               >
                 {/* BOX 1 */}
+                <Box
+                  flex="1"
+                  justifyItems={'center'}
+                  alignContent={'center'}
+                  margin={{
+                    base: '5% 5% 0% 5%',
+                    sm: '5% 5% 0% 5%',
+                    lg: '0% 0% 5% 5%',
+                    xl: '0% 0% 5% 5%'
+                  }}
+                  maxWidth={{
+                    base: '100%',
+                    sm: '100%',
+                    lg: '100px',
+                    xl: '100px'
+                  }}
+                >
+                  <Image
+                    src={buildImageUrl(certificate?.certificate_img_mini)}
+                    objectFit="cover"
+                    width={{
+                      base: '50px',
+                      sm: '50px',
+                      lg: '100px',
+                      xl: '100px'
+                    }}
+                  />
+                </Box>
+
+                {/* BOX 2 */}
                 <Box
                   margin={{
                     base: '0% 5% 10% 5%',
@@ -268,40 +295,26 @@ export const Certification = (props: CertificationViewProps) => {
                       : []}
                   </Flex>
                 </Box>
-                {/* BOX 2 */}
+                {/* BOX 3 */}
                 <Box
-                  // bg='pink'
                   flex="1"
                   justifyItems={'center'}
-                  backgroundImage={buildImageUrl(certificate?.forest_img)}
-                  backgroundPosition="center"
-                  backgroundRepeat="no-repeat"
                   margin={{
                     lg: '0% 5% 5% 5%',
                     xl: '0% 5% 5% 5%'
                   }}
                 >
-                  <Box
-                    margin={{
-                      base: '30% 8% 5% 8%',
-                      sm: '30% 8% 5% 8%',
-                      lg: '80% 5% 8% 5%',
-                      xl: '8% 8% 8% 8%'
+                  <Image
+                    src={buildImageUrl(certificate?.forest_img)}
+                    maxHeight={{
+                      base: '200px',
+                      sm: '400px',
+                      lg: '450px',
+                      xl: '450px'
                     }}
-                    h="100%"
-                  >
-                    <Image
-                      // src={buildImageUrl(certificate?.certificate_img_mini)}
-                      w={{ base: '30%', sm: '18%', lg: '25%', xl: '25%' }}
-                      margin={{
-                        base: '50% 0% 0% 70%',
-                        sm: '50% 0% 0% 80%',
-                        lg: '100% 0% 0% 70%',
-                        xl: '95% 0% 0% 70%',
-                        '2xl': '60% 0% 0% 75%'
-                      }}
-                    />
-                  </Box>
+                    objectFit="cover"
+                    width="100%"
+                  />
                 </Box>
               </Flex>
             )
