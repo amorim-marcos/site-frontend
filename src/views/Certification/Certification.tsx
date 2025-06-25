@@ -239,7 +239,7 @@ export const Certification = (props: CertificationViewProps) => {
               h="100%"
             >
               <Image
-                src="/assets/imgs/fsc.png"
+                // src="/assets/imgs/fsc.png"
                 w={{ base: '30%', sm: '18%', lg: '25%', xl: '25%' }}
                 margin={{
                   base: '50% 0% 0% 70%',
