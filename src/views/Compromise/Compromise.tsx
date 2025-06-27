@@ -938,7 +938,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       {/* FIM Confira alguns projetos patrocinados por nós */}
 
       {/* INICIO Cultivamos nossos valores */}
-      <Box bg="gray.100">
+      <Box bg="gray.450">
         <Flex
           id="our-values"
           maxWidth="1536px"
@@ -949,7 +949,7 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           zIndex="base"
           overflowY="hidden"
           overflowX="hidden"
-          bg="gray.100"
+          bg="gray.450"
           backgroundImage="/assets/imgs/textura_madeira_esquerda.png"
           backgroundPosition="center top"
           backgroundRepeat="no-repeat"
