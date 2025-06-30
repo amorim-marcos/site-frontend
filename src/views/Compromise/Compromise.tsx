@@ -934,111 +934,11 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
       {/* FIM Compromisso com a sociedade */}
 
       {/* INICIO Confira alguns projetos patrocinados por nós */}
-      <Box bg="gray.450">
-        <Flex
-          maxWidth="1536px"
-          marginX="auto"
-          alignItems="center"
-          justifyContent="center"
-          position="relative"
-          zIndex="base"
-          overflowY="hidden"
-          overflowX="hidden"
-          bg="gray.450"
-        >
-          <Flex
-            // bg='blue'
-            direction={{
-              base: 'column'
-            }}
-            // border="1px solid red"
-          >
-            {/* BOX 1 */}
-            <Box
-              bg="gray.500"
-              flex="1"
-              margin={{
-                base: '3% 5% 0% 5%',
-                sm: '5% 5% 0% 5%',
-                lg: '5% 5% 0% 5%',
-                xl: '5% 5% 0% 5%'
-              }}
-              padding={{ base: '5%', lg: '3%' }}
-            >
-              <Flex
-                alignItems={'center'}
-                // bg="pink.600"
-                direction={{
-                  base: 'column',
-                  lg: 'row'
-                }}
-              >
-                <SynergyIcon
-                  stroke1="#59993f"
-                  stroke2="#143127"
-                  height={{
-                    base: '60px',
-                    sm: '80px',
-                    lg: '100px',
-                    xl: '150px'
-                  }}
-                  width={{ base: '60px', sm: '80px', lg: '100px', xl: '150px' }}
-                />
-                <Text
-                  as="h4"
-                  variant={'h4' as any}
-                  fontSize={{
-                    base: '14px',
-                    sm: '12px',
-                    lg: '16px',
-                    xl: '20px'
-                  }}
-                  fontWeight="semibold"
-                  color="green.900"
-                  textAlign={{
-                    base: 'center',
-                    xl: 'left'
-                  }}
-                  padding={{ base: '5%', lg: '3%' }}
-                >
-                  {compromiseView.t('socialProjects.description')}
-                </Text>
-              </Flex>
-            </Box>
-            {/* BOX 2 */}
-            <Box
-              margin={{
-                base: '2% 5% 30% 5%',
-                sm: '2% 5% 15% 5%',
-                lg: '5% 5% 10% 5%',
-                xl: '2% 5% 5% 5%'
-              }}
-              // bg='yellow'
-              flex="1"
-            >
-              <Text
-                as="h3"
-                variant={'h3' as any}
-                textAlign={{ base: 'left' }}
-                margin={{
-                  base: '20px 0px',
-                  sm: '20px 0px',
-                  lg: '30px 0px',
-                  xl: '30px 0px'
-                }}
-                color="green.600"
-              >
-                {compromiseView.t('socialProjects.checkOutSponsoredProjects')}
-              </Text>
-              <SponsoredProjects />
-            </Box>
-          </Flex>
-        </Flex>
-      </Box>
+
       {/* FIM Confira alguns projetos patrocinados por nós */}
 
       {/* INICIO Cultivamos nossos valores */}
-      <Box bg="green.400">
+      <Box bg="gray.450">
         <Flex
           id="our-values"
           maxWidth="1536px"
@@ -1049,30 +949,18 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
           zIndex="base"
           overflowY="hidden"
           overflowX="hidden"
-          bg="green.400"
+          bg="gray.450"
           backgroundImage="/assets/imgs/textura_madeira_esquerda.png"
           backgroundPosition="center top"
           backgroundRepeat="no-repeat"
         >
           <Flex
             // bg='blue'
-            direction={{ base: 'column', lg: 'row' }}
+            direction={{ base: 'column-reverse', lg: 'row' }}
             alignItems={'center'}
           >
             {/* BOX 1 */}
-            <Box
-              // bg='pink'
-              flex="1"
-              justifyItems={'center'}
-              // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
-            >
-              <Image
-                src={page_content.section7_img}
-                maxW={{ base: '100vw', lg: '690px' }}
-              />
-              {/* <Image src="/assets/imgs/cultivamos_nossos_valores.png" /> */}
-            </Box>
-            {/* BOX 2 */}
+
             <Box
               margin={{
                 base: '5% 5% 10% 5%',
@@ -1093,6 +981,19 @@ export const Compromise = ({ page_content }: CompromiseViewProps) => {
               <Text marginTop={{ base: '8%', sm: '2%', lg: '3%', xl: '3%' }}>
                 <HtmlTextParser>{page_content.section7_text}</HtmlTextParser>
               </Text>
+            </Box>
+            {/* BOX 2 */}
+            <Box
+              // bg='pink'
+              flex="1"
+              justifyItems={'center'}
+              // margin = {{ base: '5% 5% 5% 5%', sm: '5% 5% 5% 5%', lg: '5% 2% 5% 5%', xl: '5% 2% 5% 5%'}}
+            >
+              <Image
+                src={page_content.section7_img}
+                maxW={{ base: '100vw', lg: '690px' }}
+              />
+              {/* <Image src="/assets/imgs/cultivamos_nossos_valores.png" /> */}
             </Box>
           </Flex>
         </Flex>
