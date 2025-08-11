@@ -6,6 +6,8 @@ import {
 import DOMPurify from 'isomorphic-dompurify'
 import { nameSpaces, ni18nConfig } from '../../../ni18n.config'
 import { loadTranslations } from 'ni18n'
+import { ForestCertificationsResponse } from 'types/data/ForestCertifications'
+import { buildImageUrl } from 'utils/utils'
 
 export type CertificatePageProps = CertificationViewProps
 
@@ -16,7 +18,7 @@ export default function CertificatesPage(props: CertificatePageProps) {
 export const getStaticProps: GetStaticProps = async (context) => {
   const locale = context.locale
   let productsCertificates
-  let forestCertificate
+  let forestCertificate: ForestCertificationsResponse
   let page_content
   let res
 
@@ -52,37 +54,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   forestCertificate.description = DOMPurify.sanitize(
-    forestCertificate.description
+    forestCertificate?.description
   )
-
-  if (forestCertificate.forest_img) {
-    forestCertificate.forest_img =
-      process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
-      forestCertificate.forest_img.url
-  }
-
-  if (
-    typeof forestCertificate.certificates !== 'undefined' &&
-    typeof forestCertificate.certificates.map === 'function'
-  ) {
-    forestCertificate.certificates = forestCertificate.certificates.map(
-      (item: { certificate_file: { url: string } }) => {
-        return {
-          ...item,
-          certificate_file: {
-            ...item.certificate_file,
-            url:
-              item.certificate_file === null
-                ? null
-                : process.env.NEXT_PUBLIC_UPLOADS_ROOT_URL +
-                  item.certificate_file.url
-          }
-        }
-      }
-    )
-  } else {
-    forestCertificate.certificates = []
-  }
 
   productsCertificates =
     typeof productsCertificates !== 'undefined' &&

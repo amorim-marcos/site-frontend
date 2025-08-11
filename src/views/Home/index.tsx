@@ -16,6 +16,7 @@ import { ImageProps } from 'types/utils'
 import HotjarComponent from 'services/Hotjar'
 
 import PageHead from '@components/PageHead'
+import { ConnectPageResponse } from 'types/data/Connect'
 
 type PostProps = {
   id: number
@@ -47,6 +48,7 @@ export default function Home(props: HomeProps) {
   const homeView = useTranslation('homeView')
   const [lastYoutubeVideo, setLastYoutubeVideo] = useState<string>()
   const [youtubeLink, setYoutubeLink] = useState<string>()
+  const [connectPageData, setConnectPageData] = useState<ConnectPageResponse>()
 
   useEffect(() => {
     const fetchYoutubeData = async () => {
@@ -96,6 +98,23 @@ export default function Home(props: HomeProps) {
 
     return formatted
   }
+
+  useEffect(() => {
+    const fetchConnectPageData = async () => {
+      let connectPageData: ConnectPageResponse
+      try {
+        const response = await fetch(
+          process.env.NEXT_PUBLIC_API_URL + `/connect`
+        )
+        connectPageData = await response.json()
+
+        setConnectPageData(connectPageData)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchConnectPageData()
+  }, [])
 
   return (
     <Box bg="white.100">
@@ -284,10 +303,13 @@ export default function Home(props: HomeProps) {
       {/* INICIO Redes Sociais */}
 
       <ConditionalLanguageRender>
-        <Connect
-          youtubeLink={youtubeLink}
-          lastYoutubeVideo={lastYoutubeVideo}
-        />
+        {connectPageData && (
+          <Connect
+            youtubeLink={youtubeLink}
+            lastYoutubeVideo={lastYoutubeVideo}
+            connectPageData={connectPageData}
+          />
+        )}
       </ConditionalLanguageRender>
     </Box>
   )
