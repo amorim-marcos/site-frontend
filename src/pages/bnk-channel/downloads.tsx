@@ -70,7 +70,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const sortQuery = `_sort=custom_order:asc`
 
-  const sortByCreatedAtQuery = `_sort=created_at:desc`
+  const sortByCreatedAtQuery = `_sort=custom_order_and_created_at`
 
   try {
     res = await fetch(
@@ -152,7 +152,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (downloadTypes.length) {
     page_content.sections = downloadTypes.map((i) => {
       const list: DownloadsItemProps[] = []
-      downloadItems.forEach((element: DownloadsItemProps) => {
+      downloadItems?.forEach((element: DownloadsItemProps) => {
         if (element.download_type) {
           if (element.download_type.type === i.type) {
             if (element.image && element.file)
