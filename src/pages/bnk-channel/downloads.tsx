@@ -70,9 +70,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const sortQuery = `_sort=custom_order:asc`
 
+  const sortByCreatedAtQuery = `_sort=created_at:desc`
+
   try {
     res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/downloads?_locale=${locale}`
+      process.env.NEXT_PUBLIC_API_URL +
+        `/downloads?_locale=${locale}&${sortByCreatedAtQuery}`
     )
     downloadItems = await res.json()
 
@@ -89,7 +92,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     downloadPageContent = await res.json()
   } catch (e) {
     // if locale not working, get default
-    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/downloads`)
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/downloads?${sortByCreatedAtQuery}`
+    )
     downloadItems = await res.json()
 
     res = await fetch(
@@ -167,7 +172,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }
       })
       return {
-        items: list.sort((a, b) => a.title.localeCompare(b.title) * -1),
+        items: [...list],
         ...i
       } as DownloadItem
     })
