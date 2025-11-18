@@ -61,6 +61,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         })
       : []
 
+// Move "Ouvidoria" to the end of the list
+  if (Array.isArray(contact_channels)) {
+    const ouvidoriaIndex = contact_channels.findIndex(
+      (channel) => channel.name?.trim().toLowerCase() === 'ouvidoria'
+    )
+    if (ouvidoriaIndex !== -1) {
+      const [ouvidoriaChannel] = contact_channels.splice(ouvidoriaIndex, 1)
+      contact_channels.push(ouvidoriaChannel)
+    }
+  }
+
   if (context.query.channel) {
     const queryChannel = context.query.channel
     contact_channel = contact_channels.find(
