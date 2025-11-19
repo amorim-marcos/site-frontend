@@ -23,6 +23,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let contact_channel = null
   let res
 
+  const sortByNameQuery = '&_sort=name:ASC'
+
   try {
     res = await fetch(
       process.env.NEXT_PUBLIC_API_URL + `/fire-warning?_locale=${locale}`
@@ -30,7 +32,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     fireWarning = await res.json()
 
     res = await fetch(
-      process.env.NEXT_PUBLIC_API_URL + `/contact-channels?_locale=${locale}`
+      process.env.NEXT_PUBLIC_API_URL +
+        `/contact-channels?_locale=${locale}` +
+        sortByNameQuery
     )
     contact_channels = await res.json()
   } catch (e) {
@@ -38,8 +42,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/fire-warning`)
     fireWarning = await res.json()
 
-    res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/contact-channels`)
-    contact_channels = await res.json()
+    res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/contact-channels` + sortByNameQuery
+    )
+    contact_channels = await res?.json()
   }
 
   contact_channels =
@@ -54,6 +60,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           }
         })
       : []
+
+// Move "Ouvidoria" to the end of the list
+  if (Array.isArray(contact_channels)) {
+    const ouvidoriaIndex = contact_channels.findIndex(
+      (channel) => channel.name?.trim().toLowerCase() === 'ouvidoria'
+    )
+    if (ouvidoriaIndex !== -1) {
+      const [ouvidoriaChannel] = contact_channels.splice(ouvidoriaIndex, 1)
+      contact_channels.push(ouvidoriaChannel)
+    }
+  }
 
   if (context.query.channel) {
     const queryChannel = context.query.channel
