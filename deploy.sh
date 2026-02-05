@@ -26,4 +26,6 @@ git pull origin $DEPLOYMENT_GROUP_NAME
 
 yarn install &&
 yarn build &&
+echo "Build completed"
+echo "Restarting application with PM2"
 pm2 restart frontend --interpreter=$(nvm which 16)
