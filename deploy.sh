@@ -19,6 +19,7 @@ echo "Node version: $(node -v)"
 git pull origin "$DEPLOYMENT_GROUP_NAME"
 
 # Instala dependências e builda
+echo "=== Instalando dependências e buildando ==="
 yarn install
 yarn build
 
