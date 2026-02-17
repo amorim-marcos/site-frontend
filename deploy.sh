@@ -1,29 +1,30 @@
 #!/bin/bash
+set -e
 
-APP_DIR="/home/admin/html/frontend"
+echo "=== Deploy Frontend: $DEPLOYMENT_GROUP_NAME ==="
 
-cd $APP_DIR
-
-node -v
-
-# installs nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+# Carrega NVM (já instalado)
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-nvm -v
-nvm install 16
+# Usa Node 16
 nvm use 16
-node -v 
 
+# Vai para a pasta
+cd /home/admin/html/frontend
 
-echo $DEPLOYMENT_GROUP_NAME
-git pull origin $DEPLOYMENT_GROUP_NAME
-# git pull origin qas
-# rm -r node_modules/
-# rm -r .next/
+echo "Node version: $(node -v)"
 
-yarn install &&
-yarn build &&
-pm2 restart frontend --interpreter=$(nvm which 16)
+# Atualiza código
+git pull origin "$DEPLOYMENT_GROUP_NAME"
+
+# Instala dependências e builda
+echo "=== Instalando dependências e buildando ==="
+yarn install
+yarn build
+
+echo "=== Reiniciando PM2 frontend ==="
+pm2 startOrReload ecosystem.frontend.config.js --update-env
+
+echo "=== Deploy concluído ==="
+pm2 list

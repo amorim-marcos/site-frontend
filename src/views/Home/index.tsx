@@ -50,6 +50,8 @@ export default function Home(props: HomeProps) {
   const [youtubeLink, setYoutubeLink] = useState<string>()
   const [connectPageData, setConnectPageData] = useState<ConnectPageResponse>()
 
+  console.log('Hello there!')
+
   useEffect(() => {
     const fetchYoutubeData = async () => {
       let res
