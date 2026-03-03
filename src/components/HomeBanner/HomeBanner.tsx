@@ -83,22 +83,6 @@ export const HomeBanner = ({ items }: HomeBannerProps) => {
         </CustomLink>
 
         <CustomLink linkTo={linkToUrl} translatePaths>
-          <Image
-            alt="Site Banner right grafism"
-            src="/assets/imgs/grafismos_home_header/grafismo_direita_home_parte1.svg"
-            position={'absolute'}
-            top={{ base: 'none', md: '0' }}
-            bottom={{ base: '5%', md: 'none' }}
-            right={{ base: '-15%', md: '0%' }}
-            w={{ base: '100vw', md: '34vw' }}
-            maxWidth={'655px'}
-            zIndex={'docked'}
-            // onClick={navigateToThePost}
-            cursor={'pointer'}
-          />
-        </CustomLink>
-
-        <CustomLink linkTo={linkToUrl} translatePaths>
           <Box
             zIndex={'base'}
             position={{ base: 'relative', md: 'absolute' }}
