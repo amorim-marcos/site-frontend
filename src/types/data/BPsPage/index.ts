@@ -25,3 +25,10 @@ export interface CatalogBPBanner {
   link: string
   banner_image: ImageProps
 }
+
+export interface BPPageBannerResponse {
+  id: number
+  link: string
+  custom_order: number | null
+  banner_image: ImageProps
+}
