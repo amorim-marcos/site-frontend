@@ -7,7 +7,7 @@ import BpBerneckView from 'views/products/bp-berneck'
 import type { Gallery } from 'types/data'
 import { nameSpaces, ni18nConfig } from '../../../../ni18n.config'
 import { loadTranslations } from 'ni18n'
-import { BPsPageResponse } from 'types/data/BPsPage'
+import { BPsPageResponse, BPPageBannerResponse } from 'types/data/BPsPage'
 
 export type BPPageBanner = {
   link: string
@@ -38,10 +38,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     console.log('error when trying to get bps page data', error)
   }
 
-  const banners = await strapiClient({
+  const rawBanners: BPPageBannerResponse[] = await strapiClient({
     resource: 'bp-page-banners',
-    locale: context.locale
+    locale: context.locale,
+    query: [{ _sort: 'custom_order:ASC' }]
   })
+
+  const banners =
+    rawBanners && typeof rawBanners.sort === 'function'
+      ? [...rawBanners].sort((a, b) => {
+          if (a.custom_order == null) return 1
+          if (b.custom_order == null) return -1
+          return a.custom_order - b.custom_order
+        })
+      : rawBanners
 
   let galleries: Gallery[] = await strapiClient({
     resource: 'highlighted-ambient-types',
@@ -69,12 +79,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       galleries,
       banners:
         banners && typeof banners.map === 'function'
-          ? banners.map((banner: any) => {
-              return {
-                link: banner.link,
-                banner_image: `${url}${banner.banner_image.url}`
-              }
-            })
+          ? banners.map((banner: BPPageBannerResponse) => ({
+              link: banner.link,
+              banner_image: `${url}${banner.banner_image.url}`
+            }))
           : [],
       bpsPageData: bpsPageResponse,
       ...(await loadTranslations(ni18nConfig, context.locale, nameSpaces))
