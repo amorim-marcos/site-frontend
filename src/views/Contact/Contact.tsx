@@ -6,6 +6,7 @@ import { Container, Flex, Image, Text, Box, Button } from '@chakra-ui/react'
 
 import ContactChannelSelectButton from '@components/ContactChannelForm/ContactChannelSelectButton'
 import ContactChannelForm from '@components/ContactChannelForm'
+import OuvidoriaForm from '@components/OuvidoriaForm'
 
 import { EarthIcon, BagIcon, BadgeIcon } from '@components/Icons'
 import Pagebar from '@components/Pagebar'
@@ -207,12 +208,21 @@ const ContactChannelSection = ({ channel }: { channel: IContactChannel }) => (
         />
       </Flex>
       <Flex flex="2">
-        <ContactChannelForm
-          channel_name={channel.name}
-          contact_channel_id={channel.id}
-          paddingLeft={{ base: 0, lg: '80px' }}
-          paddingRight={{ base: 0, lg: '10px', xl: '30px' }}
-        />
+        {channel.flow === 'ouvidoria' ? (
+          <OuvidoriaForm
+            channel_name={channel.name}
+            contact_channel_id={channel.id}
+            paddingLeft={{ base: 0, lg: '80px' }}
+            paddingRight={{ base: 0, lg: '10px', xl: '30px' }}
+          />
+        ) : (
+          <ContactChannelForm
+            channel_name={channel.name}
+            contact_channel_id={channel.id}
+            paddingLeft={{ base: 0, lg: '80px' }}
+            paddingRight={{ base: 0, lg: '10px', xl: '30px' }}
+          />
+        )}
       </Flex>
     </Flex>
   </Flex>
