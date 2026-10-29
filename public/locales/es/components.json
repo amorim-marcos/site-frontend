@@ -25,6 +25,29 @@
     "messageAcknowledgment": "Gracias por tu mensaje",
     "errorMessage": "Algo salió mal. Por favor, inténtelo de nuevo."
   },
+  "ouvidoriaForm": {
+    "attachment": "Archivo adjunto (opcional)",
+    "chooseFile": "Elegir archivo",
+    "removeFile": "Quitar",
+    "sending": "Enviando… {{percent}}%",
+    "success": "Hemos recibido su relato. Gracias por su contribución.",
+    "errors": {
+      "generic": "Algo salió mal. Por favor, inténtelo de nuevo.",
+      "config": "No se pudo cargar el formulario. Recargue la página.",
+      "fileTooLarge": "El archivo supera el tamaño máximo de {{maxMb}} MB.",
+      "fileType": "Tipo de archivo no permitido. Envíe una imagen, PDF, vídeo o documento (Word, Excel, PowerPoint o texto).",
+      "fileMacro": "No se aceptan archivos con macros. Guarde el documento sin macros y envíelo de nuevo.",
+      "fileProtected": "No se aceptan archivos protegidos con contraseña. Quite la contraseña y envíelo de nuevo.",
+      "emptySubmission": "Escriba su relato o adjunte un archivo para enviar.",
+      "fileMismatch": "El contenido del archivo no corresponde al tipo indicado.",
+      "fileEmpty": "El archivo está vacío.",
+      "tooManyRequests": "Demasiados intentos. Espere unos minutos e inténtelo de nuevo.",
+      "tooFast": "Espere unos segundos y envíe de nuevo.",
+      "tokenExpired": "La página estuvo abierta demasiado tiempo. Revise los datos y envíe de nuevo.",
+      "network": "No se pudo enviar. Compruebe su conexión e inténtelo de nuevo.",
+      "unavailable": "El servicio no está disponible en este momento. Inténtelo más tarde."
+    }
+  },
   "pagebar": {
     "back": "Volver"
   },

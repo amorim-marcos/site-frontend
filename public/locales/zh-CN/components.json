@@ -25,6 +25,29 @@
     "messageAcknowledgment": "感谢您的留言",
     "errorMessage": "出现问题。请重试。"
   },
+  "ouvidoriaForm": {
+    "attachment": "附件（可选）",
+    "chooseFile": "选择文件",
+    "removeFile": "移除",
+    "sending": "发送中… {{percent}}%",
+    "success": "我们已收到您的举报。感谢您的反馈。",
+    "errors": {
+      "generic": "出现问题。请重试。",
+      "config": "无法加载表单。请刷新页面。",
+      "fileTooLarge": "文件超过最大限制 {{maxMb}} MB。",
+      "fileType": "不允许的文件类型。请发送图片、PDF、视频或文档（Word、Excel、PowerPoint 或文本）。",
+      "fileMacro": "不接受包含宏的文件。请保存为不含宏的文档后重新发送。",
+      "fileProtected": "不接受受密码保护的文件。请移除密码后重新发送。",
+      "emptySubmission": "请填写您的举报内容或附上文件后发送。",
+      "fileMismatch": "文件内容与其类型不符。",
+      "fileEmpty": "文件为空。",
+      "tooManyRequests": "尝试次数过多。请稍等几分钟后重试。",
+      "tooFast": "请稍等几秒后再次提交。",
+      "tokenExpired": "页面打开时间过长。请检查数据后重新提交。",
+      "network": "无法发送。请检查网络连接后重试。",
+      "unavailable": "服务当前不可用。请稍后再试。"
+    }
+  },
   "pagebar": {
     "back": "返回"
   },

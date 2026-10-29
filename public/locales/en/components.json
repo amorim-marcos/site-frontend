@@ -25,6 +25,29 @@
     "messageAcknowledgment": "Thank you for your message",
     "errorMessage": "Something went wrong. Please try again."
   },
+  "ouvidoriaForm": {
+    "attachment": "Attachment (optional)",
+    "chooseFile": "Choose file",
+    "removeFile": "Remove",
+    "sending": "Sending… {{percent}}%",
+    "success": "We have received your report. Thank you for your contribution.",
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "config": "The form could not be loaded. Please reload the page.",
+      "fileTooLarge": "The file exceeds the maximum size of {{maxMb}} MB.",
+      "fileType": "File type not allowed. Please send an image, PDF, video or document (Word, Excel, PowerPoint or text).",
+      "fileMacro": "Files with macros are not accepted. Save the document without macros and send it again.",
+      "fileProtected": "Password-protected files are not accepted. Remove the password and send it again.",
+      "emptySubmission": "Write your report or attach a file to send.",
+      "fileMismatch": "The file content does not match its type.",
+      "fileEmpty": "The file is empty.",
+      "tooManyRequests": "Too many attempts. Please wait a few minutes and try again.",
+      "tooFast": "Please wait a few seconds and submit again.",
+      "tokenExpired": "The page has been open for too long. Review your data and submit again.",
+      "network": "Could not send. Check your connection and try again.",
+      "unavailable": "The service is currently unavailable. Please try again later."
+    }
+  },
   "pagebar": {
     "back": "Return"
   },
