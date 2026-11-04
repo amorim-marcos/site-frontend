@@ -2,10 +2,12 @@ import {
   bytesToMb,
   errorKeyFor,
   fetchOuvidoriaConfig,
+  getFieldErrors,
   getFileError,
   getFileExtension,
   OuvidoriaFields,
-  sendOuvidoria
+  sendOuvidoria,
+  validationKeyFor
 } from './ouvidoriaUpload'
 
 const config = {
@@ -109,9 +111,82 @@ describe('ouvidoriaUpload', () => {
       [{ status: 503, code: 'QUEUE_UNAVAILABLE' }, 'unavailable'],
       [{ status: 404, code: 'OUVIDORIA_DISABLED' }, 'unavailable'],
       [{ status: 500, code: 'INTERNAL_ERROR' }, 'generic'],
-      [{ status: 400, code: 'VALIDATION_ERROR' }, 'generic']
+      [{ status: 400, code: 'VALIDATION_ERROR' }, 'validation'],
+      [
+        {
+          status: 400,
+          code: 'VALIDATION_ERROR',
+          fields: [
+            { field: 'email', code: 'INVALID' },
+            { field: 'phone', code: 'INVALID' }
+          ]
+        },
+        'invalidEmail'
+      ],
+      [
+        {
+          status: 400,
+          code: 'VALIDATION_ERROR',
+          fields: [{ field: 'phone', code: 'INVALID' }]
+        },
+        'invalidPhone'
+      ],
+      [
+        {
+          status: 400,
+          code: 'VALIDATION_ERROR',
+          fields: [{ field: 'name', code: 'REQUIRED' }]
+        },
+        'requiredFields'
+      ]
     ])('%j -> %s', (result, key) => {
       expect(errorKeyFor(result)).toBe(key)
+    })
+  })
+
+  describe('getFieldErrors', () => {
+    it('exige 8 dígitos no telefone e aceita formatos internacionais', () => {
+      expect(getFieldErrors({ email: '', phone: '(((( ))))' })).toEqual([
+        { field: 'phone', code: 'INVALID' }
+      ])
+      ;['+1 415 555 0100', '0800 123 4567', '(41) 3333-4444'].forEach((phone) =>
+        expect(getFieldErrors({ email: '', phone })).toEqual([])
+      )
+    })
+
+    it('aceita campos vazios e válidos', () => {
+      expect(getFieldErrors({ email: '', phone: '' })).toEqual([])
+      expect(
+        getFieldErrors({
+          email: 'maria@exemplo.com.br',
+          phone: '(41) 99888-5544'
+        })
+      ).toEqual([])
+    })
+
+    it('recusa e-mail sem domínio e telefone com letras ou curto', () => {
+      expect(getFieldErrors({ email: 'teste@teste', phone: 'teste' })).toEqual([
+        { field: 'email', code: 'INVALID' },
+        { field: 'phone', code: 'INVALID' }
+      ])
+      expect(getFieldErrors({ email: '', phone: '1234567' })).toEqual([
+        { field: 'phone', code: 'INVALID' }
+      ])
+    })
+
+    it('ignora espaços nas pontas', () => {
+      expect(
+        getFieldErrors({ email: ' maria@exemplo.com ', phone: ' 41988885544 ' })
+      ).toEqual([])
+    })
+  })
+
+  describe('validationKeyFor', () => {
+    it('sem campos devolve a mensagem geral', () => {
+      expect(validationKeyFor()).toBe('validation')
+      expect(validationKeyFor([{ field: 'state', code: 'INVALID' }])).toBe(
+        'validation'
+      )
     })
   })
 
@@ -223,6 +298,23 @@ describe('ouvidoriaUpload', () => {
         ok: false,
         status: 413,
         code: 'FILE_TOO_LARGE'
+      })
+    })
+
+    it('devolve os campos recusados na validação', async () => {
+      const promise = send()
+      const xhr = FakeXHR.last
+      xhr.status = 400
+      xhr.responseText = JSON.stringify({
+        code: 'VALIDATION_ERROR',
+        fields: [{ field: 'email', code: 'INVALID' }]
+      })
+      xhr.onload?.()
+      await expect(promise).resolves.toEqual({
+        ok: false,
+        status: 400,
+        code: 'VALIDATION_ERROR',
+        fields: [{ field: 'email', code: 'INVALID' }]
       })
     })
 

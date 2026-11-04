@@ -39,12 +39,16 @@
       "fileMacro": "No se aceptan archivos con macros. Guarde el documento sin macros y envíelo de nuevo.",
       "fileProtected": "No se aceptan archivos protegidos con contraseña. Quite la contraseña y envíelo de nuevo.",
       "emptySubmission": "Escriba su relato o adjunte un archivo para enviar.",
+      "invalidEmail": "Introduzca un correo electrónico válido, como nombre@empresa.com.",
+      "invalidPhone": "Introduzca un teléfono válido, con código de área. Ej.: (41) 99999-9999.",
+      "requiredFields": "Complete los campos obligatorios (*).",
+      "validation": "Revise los campos resaltados e inténtelo de nuevo.",
       "fileMismatch": "El contenido del archivo no corresponde al tipo indicado.",
       "fileEmpty": "El archivo está vacío.",
       "tooManyRequests": "Demasiados intentos. Espere unos minutos e inténtelo de nuevo.",
       "tooFast": "Espere unos segundos y envíe de nuevo.",
       "tokenExpired": "La página estuvo abierta demasiado tiempo. Revise los datos y envíe de nuevo.",
-      "network": "No se pudo enviar. Compruebe su conexión e inténtelo de nuevo.",
+      "network": "No se pudo completar el envío. Compruebe su conexión e inténtelo de nuevo. Sus datos siguen en el formulario.",
       "unavailable": "El servicio no está disponible en este momento. Inténtelo más tarde."
     }
   },

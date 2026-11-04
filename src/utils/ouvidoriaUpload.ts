@@ -27,10 +27,28 @@ export type FileErrorCode =
   | 'FILE_TYPE_NOT_ALLOWED'
   | 'FILE_EMPTY'
 
+export type FieldError = {
+  field: string
+  code: string
+}
+
 export type SendResult = {
   ok: boolean
   status: number
   code?: string
+  fields?: FieldError[]
+}
+
+// Mesmas regras do backend (utils/ouvidoria/submission.js); aqui só avisam antes do envio.
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const PHONE_PATTERN = /^[0-9()+\-.\s]{8,30}$/
+const PHONE_MIN_DIGITS = 8
+
+function isValidPhone(phone: string) {
+  return (
+    PHONE_PATTERN.test(phone) &&
+    phone.replace(/\D/g, '').length >= PHONE_MIN_DIGITS
+  )
 }
 
 export const TOKEN_HEADER = 'X-Ouvidoria-Token'
@@ -54,12 +72,39 @@ export function getFileError(
   return null
 }
 
+export function getFieldErrors(
+  fields: Pick<OuvidoriaFields, 'email' | 'phone'>
+): FieldError[] {
+  const errors: FieldError[] = []
+  const email = fields.email.trim()
+  const phone = fields.phone.trim()
+  if (email !== '' && !EMAIL_PATTERN.test(email)) {
+    errors.push({ field: 'email', code: 'INVALID' })
+  }
+  if (phone !== '' && !isValidPhone(phone)) {
+    errors.push({ field: 'phone', code: 'INVALID' })
+  }
+  return errors
+}
+
+/** Chave i18n da mensagem para os campos recusados (localmente ou pelo backend). */
+export function validationKeyFor(fields: FieldError[] = []) {
+  const invalid = (name: string) =>
+    fields.some((item) => item.field === name && item.code === 'INVALID')
+  if (invalid('email')) return 'invalidEmail'
+  if (invalid('phone')) return 'invalidPhone'
+  if (fields.some((item) => item.code === 'REQUIRED')) return 'requiredFields'
+  return 'validation'
+}
+
 export function bytesToMb(bytes: number): number {
   return Math.round(bytes / (1024 * 1024))
 }
 
 /** Chave i18n (em `ouvidoriaForm.errors`) para cada resposta de erro. */
-export function errorKeyFor(result: Pick<SendResult, 'status' | 'code'>) {
+export function errorKeyFor(
+  result: Pick<SendResult, 'status' | 'code' | 'fields'>
+) {
   switch (result.code) {
     case 'FILE_TOO_LARGE':
     case 'BODY_TOO_LARGE':
@@ -77,6 +122,8 @@ export function errorKeyFor(result: Pick<SendResult, 'status' | 'code'>) {
       return 'fileProtected'
     case 'EMPTY_SUBMISSION':
       return 'emptySubmission'
+    case 'VALIDATION_ERROR':
+      return validationKeyFor(result.fields)
     case 'FORM_TOO_FAST':
       return 'tooFast'
     case 'FORM_TOKEN_EXPIRED':
@@ -154,15 +201,19 @@ export function sendOuvidoria({
 
     xhr.onload = () => {
       let code: string | undefined
+      let fields: FieldError[] | undefined
       try {
-        code = JSON.parse(xhr.responseText).code
+        const parsed = JSON.parse(xhr.responseText)
+        code = parsed.code
+        fields = Array.isArray(parsed.fields) ? parsed.fields : undefined
       } catch (e) {
         code = undefined
       }
       resolve({
         ok: xhr.status >= 200 && xhr.status < 300,
         status: xhr.status,
-        code
+        code,
+        fields
       })
     }
     xhr.onerror = () => resolve({ ok: false, status: 0, code: 'NETWORK' })

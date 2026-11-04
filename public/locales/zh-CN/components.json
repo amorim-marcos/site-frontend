@@ -39,12 +39,16 @@
       "fileMacro": "不接受包含宏的文件。请保存为不含宏的文档后重新发送。",
       "fileProtected": "不接受受密码保护的文件。请移除密码后重新发送。",
       "emptySubmission": "请填写您的举报内容或附上文件后发送。",
+      "invalidEmail": "请输入有效的电子邮箱，例如 name@company.com。",
+      "invalidPhone": "请输入有效的电话号码，需含区号，例如 (41) 99999-9999。",
+      "requiredFields": "请填写必填项（*）。",
+      "validation": "请检查标出的字段后重试。",
       "fileMismatch": "文件内容与其类型不符。",
       "fileEmpty": "文件为空。",
       "tooManyRequests": "尝试次数过多。请稍等几分钟后重试。",
       "tooFast": "请稍等几秒后再次提交。",
       "tokenExpired": "页面打开时间过长。请检查数据后重新提交。",
-      "network": "无法发送。请检查网络连接后重试。",
+      "network": "无法完成发送。请检查网络连接后重试。您填写的内容仍保留在表单中。",
       "unavailable": "服务当前不可用。请稍后再试。"
     }
   },

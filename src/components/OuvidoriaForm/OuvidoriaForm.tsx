@@ -22,10 +22,12 @@ import {
   errorKeyFor,
   fetchOuvidoriaConfig,
   FileErrorCode,
+  getFieldErrors,
   getFileError,
   OuvidoriaConfig,
   OuvidoriaFields,
-  sendOuvidoria
+  sendOuvidoria,
+  validationKeyFor
 } from 'utils/ouvidoriaUpload'
 
 export type OuvidoriaFormProps = FlexProps & {
@@ -72,6 +74,7 @@ export const OuvidoriaForm = ({
   const [honeypot, setHoneypot] = useState('')
   const [file, setFile] = useState<File | null>(null)
   const [fileError, setFileError] = useState<FileErrorCode | null>(null)
+  const [invalidFields, setInvalidFields] = useState<string[]>([])
   const [config, setConfig] = useState<OuvidoriaConfig | null>(null)
   const [configFailed, setConfigFailed] = useState(false)
   const [status, setStatus] = useState<Status>({ kind: 'idle' })
@@ -105,6 +108,7 @@ export const OuvidoriaForm = ({
     setFields({ ...emptyFields })
     setFile(null)
     setFileError(null)
+    setInvalidFields([])
     setStatus({ kind: 'idle' })
     setConfig(null)
     loadConfig()
@@ -149,6 +153,13 @@ export const OuvidoriaForm = ({
       return
     }
 
+    const fieldErrors = getFieldErrors(fields)
+    setInvalidFields(fieldErrors.map((item) => item.field))
+    if (fieldErrors.length > 0) {
+      setStatus({ kind: 'error', key: validationKeyFor(fieldErrors) })
+      return
+    }
+
     setStatus({ kind: 'sending', percent: 0 })
 
     let current = config
@@ -189,6 +200,7 @@ export const OuvidoriaForm = ({
     }
 
     const key = errorKeyFor(result)
+    if (result.fields) setInvalidFields(result.fields.map((item) => item.field))
     setStatus({ kind: 'error', key })
     // Token vencido ou inválido: busca outro para o usuário reenviar.
     if (key === 'tokenExpired') await loadConfig()
@@ -200,10 +212,13 @@ export const OuvidoriaForm = ({
       event: React.ChangeEvent<
         HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
       >
-    ) =>
+    ) => {
       setFields({ ...fields, [name]: event.target.value })
+      setInvalidFields(invalidFields.filter((field) => field !== name))
+    }
 
   const focusStyle = { label: { visibility: 'visible' as const } }
+  const invalidStyle = { border: '1px', borderColor: 'red.100' }
 
   const feedback = () => {
     if (fileError) {
@@ -294,6 +309,8 @@ export const OuvidoriaForm = ({
               name="email"
               value={fields.email}
               onChange={setField('email')}
+              isInvalid={invalidFields.includes('email')}
+              _invalid={invalidStyle}
               placeholder={`${marker}${labels.t('contactChannelForm.email')}`}
             />
           </FormControl>
@@ -313,6 +330,8 @@ export const OuvidoriaForm = ({
               name="phone"
               value={fields.phone}
               onChange={setField('phone')}
+              isInvalid={invalidFields.includes('phone')}
+              _invalid={invalidStyle}
               placeholder={`${marker}${labels.t('contactChannelForm.phone')}`}
             />
           </FormControl>

@@ -39,12 +39,16 @@
       "fileMacro": "Files with macros are not accepted. Save the document without macros and send it again.",
       "fileProtected": "Password-protected files are not accepted. Remove the password and send it again.",
       "emptySubmission": "Write your report or attach a file to send.",
+      "invalidEmail": "Enter a valid email address, such as name@company.com.",
+      "invalidPhone": "Enter a valid phone number with area code, e.g. (41) 99999-9999.",
+      "requiredFields": "Fill in the required fields (*).",
+      "validation": "Review the highlighted fields and try again.",
       "fileMismatch": "The file content does not match its type.",
       "fileEmpty": "The file is empty.",
       "tooManyRequests": "Too many attempts. Please wait a few minutes and try again.",
       "tooFast": "Please wait a few seconds and submit again.",
       "tokenExpired": "The page has been open for too long. Review your data and submit again.",
-      "network": "Could not send. Check your connection and try again.",
+      "network": "Could not complete the submission. Check your connection and try again. Your data is still in the form.",
       "unavailable": "The service is currently unavailable. Please try again later."
     }
   },
