@@ -48,7 +48,8 @@
       "tooManyRequests": "Too many attempts. Please wait a few minutes and try again.",
       "tooFast": "Please wait a few seconds and submit again.",
       "tokenExpired": "The page has been open for too long. Review your data and submit again.",
-      "network": "Could not complete the submission. Check your connection and try again. Your data is still in the form.",
+      "network": "Could not complete the submission. Check your connection and the attached file and try again.",
+      "connection": "Could not complete the submission. Check your connection and try again.",
       "unavailable": "The service is currently unavailable. Please try again later."
     }
   },

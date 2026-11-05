@@ -103,7 +103,8 @@ export function bytesToMb(bytes: number): number {
 
 /** Chave i18n (em `ouvidoriaForm.errors`) para cada resposta de erro. */
 export function errorKeyFor(
-  result: Pick<SendResult, 'status' | 'code' | 'fields'>
+  result: Pick<SendResult, 'status' | 'code' | 'fields'>,
+  { hasFile = true }: { hasFile?: boolean } = {}
 ) {
   switch (result.code) {
     case 'FILE_TOO_LARGE':
@@ -132,7 +133,7 @@ export function errorKeyFor(
     case 'RATE_LIMITED':
       return 'tooManyRequests'
     case 'NETWORK':
-      return 'network'
+      return hasFile ? 'network' : 'connection'
   }
   if (result.status === 429) return 'tooManyRequests'
   if (result.status === 413) return 'fileTooLarge'

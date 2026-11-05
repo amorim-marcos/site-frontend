@@ -142,6 +142,12 @@ describe('ouvidoriaUpload', () => {
     ])('%j -> %s', (result, key) => {
       expect(errorKeyFor(result)).toBe(key)
     })
+
+    it('usa a mensagem de conexão quando a falha de rede ocorre sem anexo', () => {
+      const result = { status: 0, code: 'NETWORK' }
+      expect(errorKeyFor(result, { hasFile: true })).toBe('network')
+      expect(errorKeyFor(result, { hasFile: false })).toBe('connection')
+    })
   })
 
   describe('getFieldErrors', () => {

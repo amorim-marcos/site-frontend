@@ -166,7 +166,7 @@ export const OuvidoriaForm = ({
     if (Date.now() - configLoadedAt.current > TOKEN_REFRESH_MS) {
       const refreshed = await loadConfig()
       if (!refreshed) {
-        if (mounted.current) setStatus({ kind: 'error', key: 'network' })
+        if (mounted.current) setStatus({ kind: 'error', key: 'connection' })
         return
       }
       current = refreshed
@@ -199,7 +199,7 @@ export const OuvidoriaForm = ({
       return
     }
 
-    const key = errorKeyFor(result)
+    const key = errorKeyFor(result, { hasFile: file !== null })
     if (result.fields) setInvalidFields(result.fields.map((item) => item.field))
     setStatus({ kind: 'error', key })
     // Token vencido ou inválido: busca outro para o usuário reenviar.

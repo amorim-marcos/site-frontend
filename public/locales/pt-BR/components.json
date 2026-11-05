@@ -48,7 +48,8 @@
             "tooManyRequests": "Muitas tentativas. Aguarde alguns minutos e tente novamente.",
             "tooFast": "Aguarde alguns segundos e envie novamente.",
             "tokenExpired": "A página ficou aberta por muito tempo. Revise os dados e envie novamente.",
-            "network": "Não foi possível concluir o envio. Verifique sua conexão e tente novamente. Seus dados continuam no formulário.",
+            "network": "Não foi possível concluir o envio. Verifique sua conexão e o arquivo anexado e tente novamente.",
+            "connection": "Não foi possível concluir o envio. Verifique sua conexão e tente novamente.",
             "unavailable": "O serviço está indisponível no momento. Tente novamente mais tarde."
         }
     },
